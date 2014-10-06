@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.StringToStringMapImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entry<String, String> {

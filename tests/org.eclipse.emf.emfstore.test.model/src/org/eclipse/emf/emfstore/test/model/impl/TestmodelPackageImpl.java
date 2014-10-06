@@ -19,8 +19,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.emfstore.test.model.TestElement;
+import org.eclipse.emf.emfstore.test.model.TestType;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,6 +72,30 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * @generated
 	 */
 	private EClass stringToTestElementMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass testTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass typeWithFeatureMapNonContainmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass typeWithFeatureMapContainmentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -525,6 +552,116 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
+	public EClass getTestType()
+	{
+		return testTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getTestType_Name()
+	{
+		return (EAttribute) testTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getTypeWithFeatureMapNonContainment()
+	{
+		return typeWithFeatureMapNonContainmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getTypeWithFeatureMapNonContainment_Map()
+	{
+		return (EAttribute) typeWithFeatureMapNonContainmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getTypeWithFeatureMapNonContainment_FirstKey()
+	{
+		return (EReference) typeWithFeatureMapNonContainmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getTypeWithFeatureMapNonContainment_SecondKey()
+	{
+		return (EReference) typeWithFeatureMapNonContainmentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getTypeWithFeatureMapContainment()
+	{
+		return typeWithFeatureMapContainmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getTypeWithFeatureMapContainment_MapContainment()
+	{
+		return (EAttribute) typeWithFeatureMapContainmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getTypeWithFeatureMapContainment_FirstKeyContainment()
+	{
+		return (EReference) typeWithFeatureMapContainmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getTypeWithFeatureMapContainment_SecondKeyContainment()
+	{
+		return (EReference) typeWithFeatureMapContainmentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public TestmodelFactory getTestmodelFactory() {
 		return (TestmodelFactory) getEFactoryInstance();
 	}
@@ -593,6 +730,19 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 		stringToTestElementMapEClass = createEClass(STRING_TO_TEST_ELEMENT_MAP);
 		createEReference(stringToTestElementMapEClass, STRING_TO_TEST_ELEMENT_MAP__VALUE);
 		createEAttribute(stringToTestElementMapEClass, STRING_TO_TEST_ELEMENT_MAP__KEY);
+
+		testTypeEClass = createEClass(TEST_TYPE);
+		createEAttribute(testTypeEClass, TEST_TYPE__NAME);
+
+		typeWithFeatureMapNonContainmentEClass = createEClass(TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT);
+		createEAttribute(typeWithFeatureMapNonContainmentEClass, TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP);
+		createEReference(typeWithFeatureMapNonContainmentEClass, TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY);
+		createEReference(typeWithFeatureMapNonContainmentEClass, TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY);
+
+		typeWithFeatureMapContainmentEClass = createEClass(TYPE_WITH_FEATURE_MAP_CONTAINMENT);
+		createEAttribute(typeWithFeatureMapContainmentEClass, TYPE_WITH_FEATURE_MAP_CONTAINMENT__MAP_CONTAINMENT);
+		createEReference(typeWithFeatureMapContainmentEClass, TYPE_WITH_FEATURE_MAP_CONTAINMENT__FIRST_KEY_CONTAINMENT);
+		createEReference(typeWithFeatureMapContainmentEClass, TYPE_WITH_FEATURE_MAP_CONTAINMENT__SECOND_KEY_CONTAINMENT);
 	}
 
 	/**
@@ -627,6 +777,8 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 
 		// Add supertypes to classes
 		testElementEClass.getESuperTypes().add(ecorePackage.getEObject());
+		typeWithFeatureMapNonContainmentEClass.getESuperTypes().add(this.getTestType());
+		typeWithFeatureMapContainmentEClass.getESuperTypes().add(this.getTestType());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(testElementEClass, TestElement.class,
@@ -801,6 +953,46 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 			ecorePackage.getEString(),
 			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(testTypeEClass, TestType.class, "TestType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getTestType_Name(),
+			ecorePackage.getEString(),
+			"name", null, 0, 1, TestType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(typeWithFeatureMapNonContainmentEClass, TypeWithFeatureMapNonContainment.class,
+			"TypeWithFeatureMapNonContainment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getTypeWithFeatureMapNonContainment_Map(),
+			ecorePackage.getEFeatureMapEntry(),
+			"map", null, 0, -1, TypeWithFeatureMapNonContainment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getTypeWithFeatureMapNonContainment_FirstKey(),
+			this.getTestType(),
+			null,
+			"firstKey", null, 0, -1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getTypeWithFeatureMapNonContainment_SecondKey(),
+			this.getTestType(),
+			null,
+			"secondKey", null, 0, -1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(typeWithFeatureMapContainmentEClass, TypeWithFeatureMapContainment.class,
+			"TypeWithFeatureMapContainment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getTypeWithFeatureMapContainment_MapContainment(),
+			ecorePackage.getEFeatureMapEntry(),
+			"mapContainment", null, 0, -1, TypeWithFeatureMapContainment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getTypeWithFeatureMapContainment_FirstKeyContainment(),
+			this.getTestType(),
+			null,
+			"firstKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getTypeWithFeatureMapContainment_SecondKeyContainment(),
+			this.getTestType(),
+			null,
+			"secondKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -818,7 +1010,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 */
 	protected void createExtendedMetaDataAnnotations()
 	{
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$			
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$	
 		addAnnotation(getTestElement_FeatureMapEntries(),
 			source,
 			new String[]
@@ -833,6 +1025,36 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 			source,
 			new String[]
 			{ "group", "#featureMapEntries" //$NON-NLS-1$ //$NON-NLS-2$
+			});
+		addAnnotation(getTypeWithFeatureMapNonContainment_Map(),
+			source,
+			new String[]
+			{ "kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
+			});
+		addAnnotation(getTypeWithFeatureMapNonContainment_FirstKey(),
+			source,
+			new String[]
+			{ "group", "#map" //$NON-NLS-1$ //$NON-NLS-2$
+			});
+		addAnnotation(getTypeWithFeatureMapNonContainment_SecondKey(),
+			source,
+			new String[]
+			{ "group", "#map" //$NON-NLS-1$ //$NON-NLS-2$
+			});
+		addAnnotation(getTypeWithFeatureMapContainment_MapContainment(),
+			source,
+			new String[]
+			{ "kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
+			});
+		addAnnotation(getTypeWithFeatureMapContainment_FirstKeyContainment(),
+			source,
+			new String[]
+			{ "group", "#mapContainment" //$NON-NLS-1$ //$NON-NLS-2$
+			});
+		addAnnotation(getTypeWithFeatureMapContainment_SecondKeyContainment(),
+			source,
+			new String[]
+			{ "group", "#mapContainment" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 	}
 

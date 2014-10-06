@@ -224,6 +224,89 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.test.model.TestType} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected TestTypeItemProvider testTypeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TestType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createTestTypeAdapter()
+	{
+		if (testTypeItemProvider == null)
+		{
+			testTypeItemProvider = new TestTypeItemProvider(this);
+		}
+
+		return testTypeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected TypeWithFeatureMapNonContainmentItemProvider typeWithFeatureMapNonContainmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createTypeWithFeatureMapNonContainmentAdapter()
+	{
+		if (typeWithFeatureMapNonContainmentItemProvider == null)
+		{
+			typeWithFeatureMapNonContainmentItemProvider = new TypeWithFeatureMapNonContainmentItemProvider(this);
+		}
+
+		return typeWithFeatureMapNonContainmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected TypeWithFeatureMapContainmentItemProvider typeWithFeatureMapContainmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createTypeWithFeatureMapContainmentAdapter()
+	{
+		if (typeWithFeatureMapContainmentItemProvider == null)
+		{
+			typeWithFeatureMapContainmentItemProvider = new TypeWithFeatureMapContainmentItemProvider(this);
+		}
+
+		return typeWithFeatureMapContainmentItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,6 +436,12 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 			testElementToTestElementMapItemProvider.dispose();
 		if (stringToTestElementMapItemProvider != null)
 			stringToTestElementMapItemProvider.dispose();
+		if (testTypeItemProvider != null)
+			testTypeItemProvider.dispose();
+		if (typeWithFeatureMapNonContainmentItemProvider != null)
+			typeWithFeatureMapNonContainmentItemProvider.dispose();
+		if (typeWithFeatureMapContainmentItemProvider != null)
+			typeWithFeatureMapContainmentItemProvider.dispose();
 	}
 
 }

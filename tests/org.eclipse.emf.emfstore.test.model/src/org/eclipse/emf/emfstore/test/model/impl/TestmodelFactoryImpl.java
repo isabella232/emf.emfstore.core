@@ -19,8 +19,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.emfstore.test.model.TestElement;
+import org.eclipse.emf.emfstore.test.model.TestType;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,6 +87,12 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 			return (EObject) createTestElementToTestElementMap();
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP:
 			return (EObject) createStringToTestElementMap();
+		case TestmodelPackage.TEST_TYPE:
+			return createTestType();
+		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT:
+			return createTypeWithFeatureMapNonContainment();
+		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_CONTAINMENT:
+			return createTypeWithFeatureMapContainment();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -142,6 +151,42 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	public Map.Entry<String, TestElement> createStringToTestElementMap() {
 		StringToTestElementMapImpl stringToTestElementMap = new StringToTestElementMapImpl();
 		return stringToTestElementMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public TestType createTestType()
+	{
+		TestTypeImpl testType = new TestTypeImpl();
+		return testType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public TypeWithFeatureMapNonContainment createTypeWithFeatureMapNonContainment()
+	{
+		TypeWithFeatureMapNonContainmentImpl typeWithFeatureMapNonContainment = new TypeWithFeatureMapNonContainmentImpl();
+		return typeWithFeatureMapNonContainment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public TypeWithFeatureMapContainment createTypeWithFeatureMapContainment()
+	{
+		TypeWithFeatureMapContainmentImpl typeWithFeatureMapContainment = new TypeWithFeatureMapContainmentImpl();
+		return typeWithFeatureMapContainment;
 	}
 
 	/**

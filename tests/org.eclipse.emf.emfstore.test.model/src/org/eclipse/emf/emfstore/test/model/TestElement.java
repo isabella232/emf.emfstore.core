@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Test Element</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -55,7 +55,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement()
  * @model
  * @generated

@@ -83,7 +83,7 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * References2</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestElementImpl extends EObjectImpl implements TestElement {

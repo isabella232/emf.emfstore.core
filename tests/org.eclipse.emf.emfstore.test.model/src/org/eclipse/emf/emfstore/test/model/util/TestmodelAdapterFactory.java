@@ -18,7 +18,10 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.test.model.TestElement;
+import org.eclipse.emf.emfstore.test.model.TestType;
 import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
 
 /**
  * <!-- begin-user-doc -->
@@ -117,6 +120,24 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 			}
 
 			@Override
+			public Adapter caseTestType(TestType object)
+			{
+				return createTestTypeAdapter();
+			}
+
+			@Override
+			public Adapter caseTypeWithFeatureMapNonContainment(TypeWithFeatureMapNonContainment object)
+			{
+				return createTypeWithFeatureMapNonContainmentAdapter();
+			}
+
+			@Override
+			public Adapter caseTypeWithFeatureMapContainment(TypeWithFeatureMapContainment object)
+			{
+				return createTypeWithFeatureMapContainmentAdapter();
+			}
+
+			@Override
 			public Adapter defaultCase(EObject object)
 			{
 				return createEObjectAdapter();
@@ -211,6 +232,59 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStringToTestElementMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.emfstore.test.model.TestType
+	 * <em>Test Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.test.model.TestType
+	 * @generated
+	 */
+	public Adapter createTestTypeAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment
+	 * <em>Type With Feature Map Non Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment
+	 * @generated
+	 */
+	public Adapter createTypeWithFeatureMapNonContainmentAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment
+	 * <em>Type With Feature Map Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment
+	 * @generated
+	 */
+	public Adapter createTypeWithFeatureMapContainmentAdapter()
+	{
 		return null;
 	}
 

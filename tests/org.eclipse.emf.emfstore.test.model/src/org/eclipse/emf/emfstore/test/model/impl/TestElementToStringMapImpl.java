@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementToStringMapImpl#getTypedKey <em>Key</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestElementToStringMapImpl extends EObjectImpl implements BasicEMap.Entry<TestElement, String> {

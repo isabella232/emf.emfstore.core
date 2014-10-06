@@ -1,13 +1,14 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- * Julian Sommerfeldt, Stephan Koehler, Eugen Neufeld, Philip Achenbach, Dmitry Litvinov - initial API and
+ * Julian Sommerfeldt, Stephan Koehler, Eugen Neufeld, Philip Achenbach, Dmitry Litvinov, Philip Langer - initial API
+ * and
  * implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.api;
@@ -16,6 +17,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -59,10 +61,14 @@ import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.Attribute
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterELong;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEShort;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEString;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Util class for the ModelMutator.
- * 
+ *
  * @author Eugen Neufeld
  * @author Stephan Koehler
  * @author Philip Achenbach
@@ -86,6 +92,8 @@ public final class ModelMutatorUtil {
 	 */
 	public static final int DELETE_ECORE = 2;
 
+	private final Set<Object> registeredIDs = new LinkedHashSet<Object>();
+
 	private Map<EClassifier, AttributeSetter<?>> attributeSetters;
 
 	private final Map<EObject, List<EReference>> validContainmentReferences = new LinkedHashMap<EObject, List<EReference>>();
@@ -100,11 +108,15 @@ public final class ModelMutatorUtil {
 
 	private final ModelMutatorConfiguration config;
 
+	private final Map<EStructuralFeature, List<EObject>> featureToOfferingObjects = new LinkedHashMap<EStructuralFeature, List<EObject>>();
+
+	private final Map<EStructuralFeature, List<EObject>> featureToSuitableObjects = new LinkedHashMap<EStructuralFeature, List<EObject>>();
+
 	private List<EClass> allEClasses;
 
 	/**
 	 * A new {@link ModelMutatorUtil}.
-	 * 
+	 *
 	 * @param config The {@link ModelMutatorConfiguration} of the {@link ModelMutatorUtil}.
 	 */
 	public ModelMutatorUtil(ModelMutatorConfiguration config) {
@@ -113,7 +125,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Returns the EPackage to the specified <code>nsURI</code>.
-	 * 
+	 *
 	 * @param nsURI
 	 *            the NsUri of the EPackage to get
 	 * @return the EPackage belonging to <code>nsURI</code>
@@ -127,10 +139,10 @@ public final class ModelMutatorUtil {
 	 * Returns all valid containment references for an EObject. A reference is valid if it is neither
 	 * derived nor volatile and if it is changeable and either many-valued or
 	 * not already set.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject to get references for
-	 * 
+	 *
 	 * @return all valid references as a list
 	 */
 	public List<EReference> getValidContainmentReferences(EObject eObject) {
@@ -152,7 +164,7 @@ public final class ModelMutatorUtil {
 	 * container/containment references. A reference is valid if it is neither
 	 * derived nor volatile and if it is changeable and either many-valued or
 	 * not already set.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject to get references for
 	 * @return all valid references as a list
@@ -174,7 +186,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Returns whether an EStructuralFeature is valid for an EObject or not. A
 	 * reference is valid, if it can be set or added to.
-	 * 
+	 *
 	 * @param feature
 	 *            the EStructuralFeature in question
 	 * @param eObject
@@ -204,7 +216,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Handles <code>exception</code>, meaning it is thrown if <code>ignoreAndLog</code> is <code>false</code>.
 	 * Otherwise <code>exception</code> is ignored and added to <code>exceptionLog</code>.
-	 * 
+	 *
 	 * @param exception the exception to handle
 	 * @param exceptionLog the current log of exceptions
 	 * @param ignoreAndLog should exceptions be ignored and added to <code>exceptionLog</code>?
@@ -219,7 +231,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Get all containments of a reference.
-	 * 
+	 *
 	 * @param reference The {@link EReference} for which to get all containments.
 	 * @return All containments of the {@link EReference}.
 	 */
@@ -249,7 +261,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Returns whether <code>eClass</code> can be instantiated or not. An EClass
 	 * can be instantiated, if it is neither an interface nor abstract.
-	 * 
+	 *
 	 * @param eClass
 	 *            the EClass in question
 	 * @return whether <code>eClass</code> can be instantiated or not.
@@ -261,7 +273,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Returns all subclasses of an EClass, excluding abstract classes and
 	 * interfaces.
-	 * 
+	 *
 	 * @param eClass
 	 *            the EClass to get subclasses for
 	 * @return all subclasses of <code>eClass</code>
@@ -288,7 +300,7 @@ public final class ModelMutatorUtil {
 	 * Iterates over all registered EPackages in order to retrieve all available
 	 * EClasses, excluding abstract classes and interfaces, and returns them as
 	 * a Set.
-	 * 
+	 *
 	 * @return a set of all EClasses that are contained in registered EPackages
 	 * @see Registry
 	 */
@@ -312,7 +324,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Get all {@link EClass}es in the {@link EPackage}s.
-	 * 
+	 *
 	 * @param ePackages The {@link EPackage}s containg the {@link EClass}es.
 	 * @return The {@link EClass}es contained in the {@link EPackage}s.
 	 */
@@ -326,7 +338,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Retrieve all EClasses that are contained in <code>ePackage</code>.
-	 * 
+	 *
 	 * @param ePackage
 	 *            the package to get contained EClasses from
 	 * @return a set of EClasses contained in <code>ePackage</code>
@@ -355,10 +367,10 @@ public final class ModelMutatorUtil {
 	 * Returns all direct and indirect contents of <code>rootObject</code> as a
 	 * map. All EObjects that appear in these contents are mapped to their
 	 * corresponding EClass.<br>
-	 * 
+	 *
 	 * NOTE: this is a very expensive method!
-	 * 
-	 * 
+	 *
+	 *
 	 * @param rootObject
 	 *            the EObject to get contents for
 	 * @return all contents as a map from EClass to lists of EObjects
@@ -389,7 +401,7 @@ public final class ModelMutatorUtil {
 	 * Adds <code>newValue</code> to the many-valued feature of <code>eObject</code> using an AddCommand. Exceptions are
 	 * caught if <code>ignoreAndLog</code> is true, otherwise a RuntimeException might be
 	 * thrown if the command fails.
-	 * 
+	 *
 	 * @param eObject the EObject to which <code>newObject</code> shall be added
 	 * @param feature the EStructuralFeature that <code>newObject</code> shall be added to
 	 * @param newValue the Object that shall be added to <code>feature</code>
@@ -420,7 +432,7 @@ public final class ModelMutatorUtil {
 	 * Adds all <code>objects</code> to the many-valued feature of <code>eObject</code> using an AddCommand. Exceptions
 	 * are caught if <code>ignoreAndLog</code> is true, otherwise a RuntimeException might be
 	 * thrown if the command fails.
-	 * 
+	 *
 	 * @param eObject the EObject to which <code>objects</code> shall be added
 	 * @param feature the EReference that <code>objects</code> shall be added to
 	 * @param objects collection of objects that shall be added to <code>feature</code>
@@ -448,7 +460,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Move an object.
-	 * 
+	 *
 	 * @param parent The parent object.
 	 * @param feature The feature of the parent object.
 	 * @param objectToMove The object to move within the parents feature.
@@ -474,7 +486,7 @@ public final class ModelMutatorUtil {
 	 * Sets a feature between <code>eObject</code> and <code>newValue</code> using a SetCommand. Exceptions are caught
 	 * if <code>ignoreAndLog</code> is
 	 * true, otherwise a RuntimeException might be thrown if the command fails.
-	 * 
+	 *
 	 * @param eObject the EObject for which <code>feature</code> shall be set
 	 * @param feature the EStructuralFeature that shall be set
 	 * @param newValue the Object that shall be set as a feature in <code>parentEObject</code>
@@ -515,7 +527,7 @@ public final class ModelMutatorUtil {
 	 * Sets a feature between <code>eObject</code> and <code>newValue</code> using a SetCommand. Exceptions are caught
 	 * if <code>ignoreAndLog</code> is
 	 * true, otherwise a RuntimeException might be thrown if the command fails.
-	 * 
+	 *
 	 * @param eObject the EObject for which <code>feature</code> shall be set
 	 * @param feature the EStructuralFeature that shall be set
 	 * @param newValue the Object that shall be set as a feature in <code>parentEObject</code>
@@ -531,7 +543,7 @@ public final class ModelMutatorUtil {
 	 * Removes <code>objects</code> from a feature of <code>eObject</code> using
 	 * a RemoveCommand. Exceptions are caught if <code>ignoreAndLog</code> is
 	 * true, otherwise a RuntimeException might be thrown if the command fails.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject to remove <code>objects</code> from
 	 * @param feature
@@ -554,7 +566,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Deletes the {@link EObject} using the specified <code>howToDelete</code>.
-	 * 
+	 *
 	 * @param eObject The {@link EObject} to delete.
 	 * @param howToDelete The way to delete: {@link #DELETE_ECORE}, {@link #DELETE_DELETE_COMMAND} or
 	 *            {@link #DELETE_CUT_CONTAINMENT}.
@@ -602,7 +614,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Sets all possible attributes of known types to random values using {@link AttributeSetter} and
 	 * SetCommands/AddCommands.
-	 * 
+	 *
 	 * @param eObject the EObject to set attributes for
 	 * @see AttributeSetter
 	 */
@@ -613,7 +625,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Sets all possible attributes of known types to random values using {@link AttributeSetter} and
 	 * SetCommands/AddCommands.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject to set attributes for
 	 * @param maxNumber
@@ -664,7 +676,7 @@ public final class ModelMutatorUtil {
 							setPerCommand(eObject, attribute, attributeSetter.createNewAttribute(), i);
 						} else {
 							final Object attributeToMove = ((Collection<?>) eObject.eGet(attribute)).toArray()[random
-								.nextInt(size)];
+							                                                                                   .nextInt(size)];
 							movePerCommand(eObject, attribute, attributeToMove, random.nextInt(size));
 						}
 					}
@@ -681,7 +693,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Returns whether <code>attributeType</code> is an instance of EEnum.
-	 * 
+	 *
 	 * @param attributeType
 	 *            the EClassifier in question
 	 * @return is <code>attributeType</code> an instance of EEnum?
@@ -692,7 +704,7 @@ public final class ModelMutatorUtil {
 
 	/**
 	 * Computes the random amount of objects to add to a feature.
-	 * 
+	 *
 	 * @param feature
 	 *            the feature to compute the amount of objects for
 	 * @param random
@@ -716,7 +728,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Returns a map containing an AttributeSetter-instance for each attribute
 	 * type, granting access to all AttributeSetters.
-	 * 
+	 *
 	 * @return the map that maps every attribute type to its attribute setter
 	 * @see AttributeSetter
 	 */
@@ -778,7 +790,7 @@ public final class ModelMutatorUtil {
 		return attributeSetters;
 	}
 
-	private AttributeSetter<?> getAttributeSetter(EClassifier attributeType) {
+	public AttributeSetter<?> getAttributeSetter(EClassifier attributeType) {
 		getAttributeSetters();
 		if (attributeSetters.containsKey(attributeType)) {
 			return attributeSetters.get(attributeType);
@@ -791,7 +803,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Retrieves all EClasses from <code>allEClasses</code> that can possibly be
 	 * referenced by <code>reference</code> and returns them as a list.
-	 * 
+	 *
 	 * @param reference
 	 *            the EReference to get EClasses for
 	 * @param allEClasses
@@ -819,7 +831,7 @@ public final class ModelMutatorUtil {
 	 * SetCommand/AddCommand. If the reference
 	 * is not required, <code>random</code> decides whether the reference is set
 	 * or how many EObjects are added to it.
-	 * 
+	 *
 	 * @param eObject the EObject to set the reference for
 	 * @param referenceClass the EClass all referenced EObject shall be instances of
 	 * @param reference the reference to set
@@ -890,7 +902,7 @@ public final class ModelMutatorUtil {
 	/**
 	 * Sets all possible attributes of known types to random values using {@link AttributeSetter} and
 	 * SetCommands/AddCommands.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject to set attributes for
 	 * @param ignoredFeatures
@@ -899,5 +911,228 @@ public final class ModelMutatorUtil {
 	 */
 	public void setEObjectAttributes(EObject eObject, Set<EStructuralFeature> ignoredFeatures) {
 		setEObjectAttributes(eObject, Integer.MAX_VALUE, ignoredFeatures);
+	}
+
+	/**
+	 * Returns the model mutator configuration.
+	 *
+	 * @return the model mutator configuration.
+	 */
+	public ModelMutatorConfiguration getModelMutatorConfiguration() {
+		return config;
+	}
+
+	private Map<EStructuralFeature, List<EObject>> getOrBuildFeatureToOfferingObjectsMap() {
+		if (featureToOfferingObjects.isEmpty()) {
+			buildFeatureToOfferingObjectsMap();
+		}
+		return featureToOfferingObjects;
+	}
+
+	/**
+	 * Returns the features that are currently available for mutation.
+	 *
+	 * @return The features that can be mutated.
+	 */
+	public Iterable<EStructuralFeature> getAvailableFeatures() {
+		return getOrBuildFeatureToOfferingObjectsMap().keySet();
+	}
+
+	/**
+	 * Returns the features that are currently available for mutation filtered by the given {@code predicate}.
+	 *
+	 * @param predicate The predicate to be used for filtering the available features.
+	 * @return The filtered features that can be mutated.
+	 */
+	public Iterable<EStructuralFeature> getAvailableFeatures(Predicate<? super EStructuralFeature> predicate) {
+		return Iterables.filter(getAvailableFeatures(), predicate);
+	}
+
+	/**
+	 * Returns the currently existing objects to be mutated that offer the given {@code feature}.
+	 *
+	 * @param feature The feature to get existing objects for.
+	 * @return The existing objects offering the given {@code feature}.
+	 */
+	public Iterable<EObject> getOfferingEObjectsForAvailableFeature(EStructuralFeature feature) {
+		final List<EObject> objectsOfferingFeature = getOrBuildFeatureToOfferingObjectsMap().get(feature);
+		if (objectsOfferingFeature == null) {
+			return Collections.emptyList();
+		}
+		return objectsOfferingFeature;
+	}
+
+	/**
+	 * Returns the currently existing objects to be mutated that offer the given {@code feature} filtered by the given
+	 * {@code predicate}.
+	 *
+	 * @param feature The feature to get existing objects for.
+	 * @param predicate The predicate to be used for filtering the objects.
+	 * @return The filtered existing objects offering the given {@code feature}.
+	 */
+	public Iterable<EObject> getOfferingEObjectsForAvailableFeature(EStructuralFeature feature,
+		Predicate<? super EObject> predicate) {
+		return Iterables.filter(getOfferingEObjectsForAvailableFeature(feature), predicate);
+	}
+
+	private void buildFeatureToOfferingObjectsMap() {
+		featureToOfferingObjects.clear();
+		final EObject rootEObject = config.getRootEObject();
+		addToFeatureToOfferingObjectsMap(rootEObject);
+		for (final Iterator<EObject> iter = rootEObject.eAllContents(); iter.hasNext();) {
+			addToFeatureToOfferingObjectsMap(iter.next());
+		}
+	}
+
+	private void addToFeatureToOfferingObjectsMap(EObject eObject) {
+		final EClass eClassOfObject = eObject.eClass();
+		final EList<EStructuralFeature> featuresOfObject = eClassOfObject.getEAllStructuralFeatures();
+		for (final EStructuralFeature feature : featuresOfObject) {
+			addToFeatureToOfferingObjectsMap(feature, eObject);
+		}
+	}
+
+	private void addToFeatureToOfferingObjectsMap(EStructuralFeature feature, EObject eObject) {
+		if (!featureToOfferingObjects.containsKey(feature)) {
+			featureToOfferingObjects.put(feature, new ArrayList<EObject>());
+		}
+		featureToOfferingObjects.get(feature).add(eObject);
+	}
+
+	private void removeFromFeatureToOfferingObjectsMap(EStructuralFeature feature, EObject eObject) {
+		if (featureToOfferingObjects.containsKey(feature)) {
+			featureToOfferingObjects.get(feature).remove(eObject);
+		}
+	}
+
+	/**
+	 * Returns currently existing objects that are suitable to act as values for the given {@code feature} filtered by
+	 * the given {@code predicate}.
+	 *
+	 * @param feature The feature to get suitable objects for.
+	 * @return The existing objects that can be used as values for the given {@code feature}.
+	 */
+	public Iterable<EObject> getSuitableEObjectsForAvailableFeature(EStructuralFeature feature) {
+		final List<EObject> suitableEObjectsForFeature = getOrBuildFeatureToSuitableObjectsMap().get(feature);
+		if (suitableEObjectsForFeature == null) {
+			return Collections.emptyList();
+		}
+		return suitableEObjectsForFeature;
+	}
+
+	/**
+	 * Returns currently existing objects that are suitable to act as values for the given {@code feature}.
+	 *
+	 * @param feature The feature to get suitable objects for.
+	 * @param predicate The predicate to be used for filtering the objects.
+	 * @return The existing objects that can be used as values for the given {@code feature}.
+	 */
+	public Iterable<EObject> getSuitableEObjectsForAvailableFeature(EStructuralFeature feature,
+		Predicate<? super EObject> predicate) {
+		return Iterables.filter(getSuitableEObjectsForAvailableFeature(feature), predicate);
+	}
+
+	private Map<EStructuralFeature, List<EObject>> getOrBuildFeatureToSuitableObjectsMap() {
+		if (featureToSuitableObjects.isEmpty()) {
+			buildFeatureToSuitableObjectsMap();
+		}
+		return featureToSuitableObjects;
+	}
+
+	private void buildFeatureToSuitableObjectsMap() {
+		featureToSuitableObjects.clear();
+		final EObject rootEObject = config.getRootEObject();
+		addToFeatureToSuitableObjectsMap(rootEObject);
+		for (final Iterator<EObject> iter = rootEObject.eAllContents(); iter.hasNext();) {
+			addToFeatureToSuitableObjectsMap(iter.next());
+		}
+	}
+
+	private void addToFeatureToSuitableObjectsMap(EObject eObject) {
+		for (final EStructuralFeature feature : getAvailableFeatures(MutationPredicates.isReference)) {
+			if (feature.getEType().isInstance(eObject)) {
+				addToFeatureToSuitableObjectsMap(feature, eObject);
+			}
+		}
+	}
+
+	private void addToFeatureToSuitableObjectsMap(EStructuralFeature feature, EObject eObject) {
+		if (!featureToSuitableObjects.containsKey(feature)) {
+			featureToSuitableObjects.put(feature, new ArrayList<EObject>());
+		}
+		featureToSuitableObjects.get(feature).add(eObject);
+	}
+
+	/**
+	 * Notifies this util that a new object has been added to maintain the index of offering and suitable objects.
+	 *
+	 * @param addedEObject The added object.
+	 */
+	public void addedEObject(EObject addedEObject) {
+		addToFeatureToOfferingObjectsMap(addedEObject);
+		addToFeatureToSuitableObjectsMap(addedEObject);
+	}
+
+	/**
+	 * Notifies this util that an object has been deleted to maintain the index of offering and suitable objects.
+	 *
+	 * @param deletedEObject The added object.
+	 */
+	public void deletedEObject(EObject deletedEObject) {
+		removeFromFeatureToOfferingObjectsMap(deletedEObject);
+		removeFromFeatureToSuitableObjectMap(deletedEObject);
+	}
+
+	private void removeFromFeatureToOfferingObjectsMap(EObject deletedEObject) {
+		final EClass eClassOfDeletedObject = deletedEObject.eClass();
+		final List<EStructuralFeature> objectsFeatures = eClassOfDeletedObject.getEAllStructuralFeatures();
+		for (final EStructuralFeature feature : objectsFeatures) {
+			removeFromFeatureToOfferingObjectsMap(feature, deletedEObject);
+		}
+	}
+
+	private void removeFromFeatureToSuitableObjectMap(EObject deletedEObject) {
+		for (final EStructuralFeature feature : featureToSuitableObjects.keySet()) {
+			featureToSuitableObjects.get(feature).remove(deletedEObject);
+		}
+	}
+
+	/**
+	 * Returns the delete modes.
+	 *
+	 * @return The delete modes.
+	 */
+	public List<Integer> getDeleteModes() {
+		final List<Integer> deleteModes = new ArrayList<Integer>();
+		deleteModes.add(ModelMutatorUtil.DELETE_DELETE_COMMAND);
+		deleteModes.add(ModelMutatorUtil.DELETE_CUT_CONTAINMENT);
+		if (config.isUseEcoreUtilDelete()) {
+			deleteModes.add(ModelMutatorUtil.DELETE_ECORE);
+		}
+		return deleteModes;
+	}
+
+	/**
+	 * Returns a random delete mode.
+	 *
+	 * @return A random delete mode.
+	 */
+	public int getRandomDeleteMode() {
+		return getDeleteModes().get(config.getRandom().nextInt(getDeleteModes().size()));
+	}
+
+	/**
+	 * @param id the ID to check for uniqueness
+	 * @return true if {@code id} is unique, false otherwise
+	 */
+	public boolean isUniqueID(Object id) {
+		return !registeredIDs.contains(id);
+	}
+
+	/**
+	 * @param id the ID to register
+	 */
+	public void registerID(Object id) {
+		registeredIDs.add(id);
 	}
 }
