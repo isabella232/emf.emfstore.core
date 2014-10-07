@@ -123,7 +123,7 @@ public class ObserverBus {
 		if (clazz == null) {
 			return null;
 		}
-		return createProxy(clazz, false);
+		return createProxy(clazz, prioritized);
 	}
 
 	/**
@@ -199,21 +199,6 @@ public class ObserverBus {
 		return new ArrayList<ESObserver>(list);
 	}
 
-	private boolean isPrioritizedObserver(Class<?> clazz, Method method) {
-		// Only prioritize if requested class extends ESPrioritizedObserver and method is part of this class and not
-		// part
-		// of some super class
-		if (!clazz.equals(method.getDeclaringClass())) {
-			return false;
-		}
-		for (final Class<?> interfaceClass : clazz.getInterfaces()) {
-			if (ESPrioritizedObserver.class.equals(interfaceClass)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	@SuppressWarnings("unchecked")
 	private <T extends ESObserver> T createProxy(Class<T> clazz, boolean prioritized) {
 		final ProxyHandler handler = new ProxyHandler((Class<ESObserver>) clazz, prioritized);
@@ -248,8 +233,21 @@ public class ObserverBus {
 
 			final List<ESObserver> observers = getObserverByClass(clazz);
 
-			if (prioritized && isPrioritizedObserver(clazz, method)) {
+			if (prioritized) {
+				final List<ESObserver> nonPrioritizedObservers = filterNonPrioritizedObservers(observers);
+				observers.removeAll(nonPrioritizedObservers);
 				sortObservers(observers);
+
+				// return default value if no observers are registered
+				if (observers.size() == 0 && nonPrioritizedObservers.size() == 0) {
+					lastResults = new ArrayList<ObserverCall.Result>();
+					return Result.getDefaultValue(method);
+				}
+
+				// TODO: check for emptiness
+				lastResults = notifiyObservers(observers, method, args);
+				notifiyObservers(nonPrioritizedObservers, method, args);
+				return lastResults.get(0).getResultOrDefaultValue();
 			}
 
 			// return default value if no observers are registered
@@ -260,6 +258,23 @@ public class ObserverBus {
 
 			lastResults = notifiyObservers(observers, method, args);
 			return lastResults.get(0).getResultOrDefaultValue();
+		}
+
+		/**
+		 * Returns all observers that are not an instance of {@link ESPrioritizedObserver}.
+		 * 
+		 * @param observers
+		 *            the list of observers to be filtered
+		 * @return a list of non prioritized observers
+		 */
+		private List<ESObserver> filterNonPrioritizedObservers(List<ESObserver> observers) {
+			final List<ESObserver> nonPrioritizedObservers = new ArrayList<ESObserver>();
+			for (final ESObserver o : observers) {
+				if (!ESPrioritizedObserver.class.isInstance(o)) {
+					nonPrioritizedObservers.add(o);
+				}
+			}
+			return nonPrioritizedObservers;
 		}
 
 		private Object accessObserverCall(Method method, Object[] args) throws IllegalArgumentException,
@@ -302,7 +317,7 @@ public class ObserverBus {
 				if (prio1 == prio2) {
 					return 0;
 				}
-				return prio1 > prio2 ? 1 : -1;
+				return prio1 < prio2 ? 1 : -1;
 			}
 		});
 	}

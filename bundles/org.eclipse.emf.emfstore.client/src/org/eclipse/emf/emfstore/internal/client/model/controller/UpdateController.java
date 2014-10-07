@@ -142,7 +142,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		ESWorkspaceProviderImpl
 			.getObserverBus()
-			.notify(ESUpdateObserver.class)
+			.notify(ESUpdateObserver.class, true)
 			.inspectChanges(getProjectSpace().toAPI(), copy, getProgressMonitor());
 
 		if (getProjectSpace().getOperations().size() > 0) {
@@ -166,7 +166,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProjectSpace().applyChanges(resolvedVersion, incomingChanges, localChanges, getProgressMonitor(), true);
 
-		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class)
+		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
 			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
 
 		return getProjectSpace().getBaseVersion();

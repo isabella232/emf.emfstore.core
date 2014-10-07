@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.A;
@@ -23,6 +24,11 @@ import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.BImpl;
 import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.C;
 import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.CImpl;
 import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.DImpl;
+import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.IAppendItem;
+import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.P;
+import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.PImpl;
+import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.QImpl;
+import org.eclipse.emf.emfstore.client.test.common.observerbus.assets.RImpl;
 import org.eclipse.emf.emfstore.internal.common.observer.ObserverBus;
 import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall;
 import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall.Result;
@@ -35,7 +41,7 @@ public class ObserverBusTest {
 
 	@Test
 	public void testUnregister() {
-		C observer = new C() {
+		final C observer = new C() {
 			public String fourtyTwo() {
 				return "42";
 			}
@@ -49,7 +55,7 @@ public class ObserverBusTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testSuperUnregister() {
-		DImpl d = new DImpl();
+		final DImpl d = new DImpl();
 		getObserverBus().register(d, C.class);
 		assertEquals("42", getObserverBus().notify(C.class).fourtyTwo());
 		getObserverBus().unregister(d);
@@ -81,7 +87,7 @@ public class ObserverBusTest {
 	@Test
 	public void simpleVoidObserverTest() {
 		getObserverBus().register(new BImpl());
-		CImpl tester = new CImpl();
+		final CImpl tester = new CImpl();
 		getObserverBus().notify(B.class).setMSGToFoo(tester);
 		assertEquals(tester.msg, "foo");
 	}
@@ -90,9 +96,9 @@ public class ObserverBusTest {
 	public void simpleWithTwoObserverTest() {
 		getObserverBus().register(new AImpl());
 		getObserverBus().register(new AImpl());
-		A observerProxy = getObserverBus().notify(A.class);
+		final A observerProxy = getObserverBus().notify(A.class);
 		assertEquals(observerProxy.returnTwo(), 2);
-		List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
+		final List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
 		assertEquals(callResults.size(), 2);
 		assertEquals(callResults.get(0).getResult(), 2);
 		assertEquals(callResults.get(1).getResult(), 2);
@@ -103,9 +109,9 @@ public class ObserverBusTest {
 		getObserverBus().register(new AImpl());
 		// B inherits from A
 		getObserverBus().register(new BImpl());
-		A observerProxy = getObserverBus().notify(A.class);
+		final A observerProxy = getObserverBus().notify(A.class);
 		assertEquals(observerProxy.returnTwo(), 2);
-		List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
+		final List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
 		assertEquals(callResults.size(), 2);
 		assertEquals(callResults.get(0).getResult(), 2);
 		assertEquals(callResults.get(1).getResult(), 2);
@@ -115,13 +121,13 @@ public class ObserverBusTest {
 	public void simpleObserverInheritanceAndUnRegAllTest() {
 		getObserverBus().register(new AImpl());
 		// B inherits from A
-		BImpl b = new BImpl();
+		final BImpl b = new BImpl();
 		getObserverBus().register(b);
 		getObserverBus().unregister(b);
 
-		A observerProxy = getObserverBus().notify(A.class);
+		final A observerProxy = getObserverBus().notify(A.class);
 		assertEquals(observerProxy.returnTwo(), 2);
-		List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
+		final List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
 		assertEquals(callResults.size(), 1);
 		assertEquals(callResults.get(0).getResult(), 2);
 	}
@@ -131,13 +137,13 @@ public class ObserverBusTest {
 	public void simpleObserverInheritanceAndUnRegSubTest() {
 		getObserverBus().register(new AImpl());
 		// B inherits from A
-		BImpl b = new BImpl();
+		final BImpl b = new BImpl();
 		getObserverBus().register(b);
 		getObserverBus().unregister(b, B.class);
 
-		A observerProxy = getObserverBus().notify(A.class);
+		final A observerProxy = getObserverBus().notify(A.class);
 		assertEquals(observerProxy.returnTwo(), 2);
-		List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
+		final List<Result> callResults = ((ObserverCall) observerProxy).getObserverCallResults();
 		assertEquals(callResults.size(), 2);
 		assertEquals(callResults.get(0).getResult(), 2);
 		assertEquals(callResults.get(1).getResult(), 2);
@@ -148,10 +154,10 @@ public class ObserverBusTest {
 		getObserverBus().register(new AImpl());
 		getObserverBus().register(new BImpl());
 
-		A proxy = getObserverBus().notify(A.class);
+		final A proxy = getObserverBus().notify(A.class);
 		proxy.returnFoobarOrException();
 
-		List<Result> results = ((ObserverCall) proxy).getObserverCallResults();
+		final List<Result> results = ((ObserverCall) proxy).getObserverCallResults();
 		assertEquals(results.size(), 2);
 		assertFalse(results.get(0).exceptionOccurred());
 		assertTrue(results.get(1).exceptionOccurred());
@@ -171,13 +177,42 @@ public class ObserverBusTest {
 	public void registerForOneInterfaceTest() {
 		getObserverBus().register(new BImpl(), B.class);
 
-		A a = getObserverBus().notify(A.class);
-		B b = getObserverBus().notify(B.class);
+		final A a = getObserverBus().notify(A.class);
+		final B b = getObserverBus().notify(B.class);
 
 		a.returnTwo();
 		assertTrue(((ObserverCall) a).getObserverCallResults().size() == 0);
 		b.returnTwo();
 		assertTrue(((ObserverCall) b).getObserverCallResults().size() == 1);
+	}
+
+	@Test
+	public void prioritizedNotify() {
+		final PImpl p = new PImpl();
+		final QImpl q = new QImpl();
+		getObserverBus().register(p);
+		getObserverBus().register(q);
+		final List<String> items = new ArrayList<String>();
+		getObserverBus().notify(P.class, true).appendItem(items);
+		// P should have been notified first
+		assertEquals(items.get(0), "P");
+		assertEquals(items.get(1), "Q");
+	}
+
+	@Test
+	public void prioritizedNotifyWithMixedObserver() {
+		final PImpl p = new PImpl();
+		final QImpl q = new QImpl();
+		final RImpl r = new RImpl();
+		getObserverBus().register(p);
+		getObserverBus().register(q);
+		getObserverBus().register(r);
+		final List<String> items = new ArrayList<String>();
+		getObserverBus().notify(IAppendItem.class, true).appendItem(items);
+		// P should have been notified first
+		assertEquals(items.get(0), "P");
+		assertEquals(items.get(1), "Q");
+		assertEquals(items.get(2), "R");
 	}
 
 	public String fourtyTwo() {
