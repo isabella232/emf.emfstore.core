@@ -8,6 +8,7 @@
  * 
  * Contributors:
  * JulianSommerfeldt
+ * PhilipLanger
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy.emf;
 
@@ -151,6 +152,8 @@ public class EMFDataProvider implements FuzzyDataProvider<EObject> {
 			.isUseEcoreUtilDelete());
 		modelMutatorConfig.setMaxDeleteCount(mutatorConfig.getMaxDeleteCount());
 		modelMutatorConfig.setModelPackages(mutatorConfig.getEPackages());
+		modelMutatorConfig.setMutationCount(mutatorConfig.getMutationCount());
+		modelMutatorConfig.setAllowDuplicateIDs(mutatorConfig.isAllowDuplicateIDs());
 
 		// create new TestRun with config
 		testRun = ConfigFactory.eINSTANCE.createTestRun();

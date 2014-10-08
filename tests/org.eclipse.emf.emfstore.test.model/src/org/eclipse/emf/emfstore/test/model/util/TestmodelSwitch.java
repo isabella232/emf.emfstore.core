@@ -17,7 +17,10 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.test.model.TestElement;
+import org.eclipse.emf.emfstore.test.model.TestType;
 import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment;
+import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
 
 /**
  * <!-- begin-user-doc -->
@@ -141,6 +144,31 @@ public class TestmodelSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case TestmodelPackage.TEST_TYPE: {
+			TestType testType = (TestType) theEObject;
+			T result = caseTestType(testType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT: {
+			TypeWithFeatureMapNonContainment typeWithFeatureMapNonContainment = (TypeWithFeatureMapNonContainment) theEObject;
+			T result = caseTypeWithFeatureMapNonContainment(typeWithFeatureMapNonContainment);
+			if (result == null)
+				result = caseTestType(typeWithFeatureMapNonContainment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_CONTAINMENT: {
+			TypeWithFeatureMapContainment typeWithFeatureMapContainment = (TypeWithFeatureMapContainment) theEObject;
+			T result = caseTypeWithFeatureMapContainment(typeWithFeatureMapContainment);
+			if (result == null)
+				result = caseTestType(typeWithFeatureMapContainment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -223,6 +251,57 @@ public class TestmodelSwitch<T> {
 	 * @generated
 	 */
 	public T caseStringToTestElementMap(Map.Entry<String, TestElement> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Test Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Test Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTestType(TestType object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type With Feature Map Non Containment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type With Feature Map Non Containment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeWithFeatureMapNonContainment(TypeWithFeatureMapNonContainment object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type With Feature Map Containment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type With Feature Map Containment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTypeWithFeatureMapContainment(TypeWithFeatureMapContainment object)
+	{
 		return null;
 	}
 

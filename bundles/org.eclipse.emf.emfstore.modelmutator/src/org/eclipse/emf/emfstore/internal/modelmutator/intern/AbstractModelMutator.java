@@ -8,6 +8,7 @@
  * 
  * Contributors:
  * JulianSommerfeldt
+ * PhilipLanger
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern;
 
@@ -29,6 +30,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
 import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.AddObjectMutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.AttributeChangeMutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.DeleteObjectMutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.FeatureMapKeyMutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.MoveObjectMutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.ReferenceChangeMutation;
 
 /**
  * Basic implementation of the {@link org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutator}.
@@ -56,6 +64,8 @@ public abstract class AbstractModelMutator {
 	private int currentWidth = 1;
 
 	private int currentDepth = 1;
+	
+	private List<Mutation> defaultMutationPrototypes;
 
 	/**
 	 * @param config The {@link ModelMutatorConfiguration} to use for mutation.
@@ -97,11 +107,19 @@ public abstract class AbstractModelMutator {
 
 	/**
 	 * Mutation after an initial generation.
-	 * 
+	 *
 	 * @param ignoredFeatures
 	 *            a set of features to be ignored while mutating
 	 */
 	public void mutate(Set<EStructuralFeature> ignoredFeatures) {
+		if (config.getMutationCount() == -1) {
+			performFullMutation(ignoredFeatures);
+		} else {
+			performConfiguredNumberOfMutations();
+		}
+	}
+
+	private void performFullMutation(Set<EStructuralFeature> ignoredFeatures) {
 		deleteEObjects(config.getRootEObject());
 
 		currentObjectCount = ModelMutatorUtil.getAllObjectsCount(config.getRootEObject());
@@ -111,6 +129,38 @@ public abstract class AbstractModelMutator {
 		changeCrossReferences();
 
 		mutateAttributes(ignoredFeatures);
+	}
+
+	private void performConfiguredNumberOfMutations() {
+		final List<Mutation> mutations = getDefaultMutationPrototypes();
+
+		int i = 0;
+		while (i < config.getMutationCount()) {
+			final int rndIdx = config.getRandom().nextInt(mutations.size());
+			final Mutation nextMutation = mutations.get(rndIdx);
+			final Mutation mutationToRun = nextMutation.clone();
+			if (mutationToRun.apply()) {
+				i++;
+			}
+		}
+	}
+
+	private List<Mutation> getDefaultMutationPrototypes() {
+		if (defaultMutationPrototypes == null) {
+			defaultMutationPrototypes = createDefaultMutationPrototypes();
+		}
+		return defaultMutationPrototypes;
+	}
+
+	private List<Mutation> createDefaultMutationPrototypes() {
+		final List<Mutation> defaultMutationPrototypes = new ArrayList<Mutation>();
+		defaultMutationPrototypes.add(new AddObjectMutation(util));
+		defaultMutationPrototypes.add(new DeleteObjectMutation(util));
+		defaultMutationPrototypes.add(new MoveObjectMutation(util));
+		defaultMutationPrototypes.add(new AttributeChangeMutation(util));
+		defaultMutationPrototypes.add(new ReferenceChangeMutation(util));
+		defaultMutationPrototypes.add(new FeatureMapKeyMutation(util));
+		return defaultMutationPrototypes;
 	}
 
 	/**

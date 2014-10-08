@@ -64,8 +64,8 @@ import org.eclipse.emf.emfstore.fuzzy.emf.config.MutatorConfig;
  */
 public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	/**
-	 * The cached value of the '{@link #getRootEClass() <em>Root EClass</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRootEClass() <em>Root EClass</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @see #getRootEClass()
 	 * @generated
@@ -74,8 +74,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected EClass rootEClass;
 
 	/**
-	 * The default value of the '{@link #getMinObjectsCount()
-	 * <em>Min Objects Count</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getMinObjectsCount() <em>Min Objects Count</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #getMinObjectsCount()
@@ -85,8 +85,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected static final int MIN_OBJECTS_COUNT_EDEFAULT = 100;
 
 	/**
-	 * The cached value of the '{@link #getMinObjectsCount()
-	 * <em>Min Objects Count</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getMinObjectsCount() <em>Min Objects Count</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #getMinObjectsCount()
@@ -96,8 +96,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected int minObjectsCount = MIN_OBJECTS_COUNT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIgnoreAndLog()
-	 * <em>Ignore And Log</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isIgnoreAndLog() <em>Ignore And Log</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #isIgnoreAndLog()
@@ -107,8 +107,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected static final boolean IGNORE_AND_LOG_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIgnoreAndLog()
-	 * <em>Ignore And Log</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #isIgnoreAndLog() <em>Ignore And Log</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #isIgnoreAndLog()
@@ -118,8 +118,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected boolean ignoreAndLog = IGNORE_AND_LOG_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isDoNotGenerateRoot()
-	 * <em>Do Not Generate Root</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isDoNotGenerateRoot() <em>Do Not Generate Root</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #isDoNotGenerateRoot()
@@ -129,8 +129,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected static final boolean DO_NOT_GENERATE_ROOT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDoNotGenerateRoot()
-	 * <em>Do Not Generate Root</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #isDoNotGenerateRoot() <em>Do Not Generate Root</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #isDoNotGenerateRoot()
@@ -140,8 +140,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected boolean doNotGenerateRoot = DO_NOT_GENERATE_ROOT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUseEcoreUtilDelete()
-	 * <em>Use Ecore Util Delete</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore Util Delete</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #isUseEcoreUtilDelete()
@@ -151,8 +151,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected static final boolean USE_ECORE_UTIL_DELETE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUseEcoreUtilDelete()
-	 * <em>Use Ecore Util Delete</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore Util Delete</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #isUseEcoreUtilDelete()
@@ -162,8 +162,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected boolean useEcoreUtilDelete = USE_ECORE_UTIL_DELETE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEClassesToIgnore()
-	 * <em>EClasses To Ignore</em>}' reference list. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEClassesToIgnore() <em>EClasses To Ignore</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see #getEClassesToIgnore()
@@ -184,8 +184,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected EList<EStructuralFeature> eStructuralFeaturesToIgnore;
 
 	/**
-	 * The cached value of the '{@link #getEPackages() <em>EPackages</em>}'
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEPackages() <em>EPackages</em>}' reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @see #getEPackages()
 	 * @generated
@@ -194,8 +194,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected EList<EPackage> ePackages;
 
 	/**
-	 * The default value of the '{@link #getMaxDeleteCount()
-	 * <em>Max Delete Count</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getMaxDeleteCount() <em>Max Delete Count</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #getMaxDeleteCount()
@@ -205,8 +205,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	protected static final Integer MAX_DELETE_COUNT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMaxDeleteCount()
-	 * <em>Max Delete Count</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getMaxDeleteCount() <em>Max Delete Count</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @see #getMaxDeleteCount()
@@ -214,6 +214,50 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	 * @ordered
 	 */
 	protected Integer maxDeleteCount = MAX_DELETE_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMutationCount() <em>Mutation Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see #getMutationCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MUTATION_COUNT_EDEFAULT = -1;
+
+	/**
+	 * The cached value of the '{@link #getMutationCount() <em>Mutation Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see #getMutationCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected int mutationCount = MUTATION_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isAllowDuplicateIDs() <em>Allow Duplicate IDs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see #isAllowDuplicateIDs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ALLOW_DUPLICATE_IDS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAllowDuplicateIDs() <em>Allow Duplicate IDs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see #isAllowDuplicateIDs()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean allowDuplicateIDs = ALLOW_DUPLICATE_IDS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -246,8 +290,7 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 			if (rootEClass != oldRootEClass) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						ConfigPackage.MUTATOR_CONFIG__ROOT_ECLASS,
-						oldRootEClass, rootEClass));
+						ConfigPackage.MUTATOR_CONFIG__ROOT_ECLASS, oldRootEClass, rootEClass));
 			}
 		}
 		return rootEClass;
@@ -271,9 +314,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		EClass oldRootEClass = rootEClass;
 		rootEClass = newRootEClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ConfigPackage.MUTATOR_CONFIG__ROOT_ECLASS, oldRootEClass,
-				rootEClass));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__ROOT_ECLASS,
+				oldRootEClass, rootEClass));
 	}
 
 	/**
@@ -294,8 +336,7 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		int oldMinObjectsCount = minObjectsCount;
 		minObjectsCount = newMinObjectsCount;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ConfigPackage.MUTATOR_CONFIG__MIN_OBJECTS_COUNT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__MIN_OBJECTS_COUNT,
 				oldMinObjectsCount, minObjectsCount));
 	}
 
@@ -317,8 +358,7 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		boolean oldIgnoreAndLog = ignoreAndLog;
 		ignoreAndLog = newIgnoreAndLog;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ConfigPackage.MUTATOR_CONFIG__IGNORE_AND_LOG,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__IGNORE_AND_LOG,
 				oldIgnoreAndLog, ignoreAndLog));
 	}
 
@@ -340,8 +380,7 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		boolean oldDoNotGenerateRoot = doNotGenerateRoot;
 		doNotGenerateRoot = newDoNotGenerateRoot;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ConfigPackage.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT,
 				oldDoNotGenerateRoot, doNotGenerateRoot));
 	}
 
@@ -363,8 +402,7 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		boolean oldUseEcoreUtilDelete = useEcoreUtilDelete;
 		useEcoreUtilDelete = newUseEcoreUtilDelete;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ConfigPackage.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE,
 				oldUseEcoreUtilDelete, useEcoreUtilDelete));
 	}
 
@@ -375,8 +413,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	 */
 	public EList<EClass> getEClassesToIgnore() {
 		if (eClassesToIgnore == null) {
-			eClassesToIgnore = new EObjectResolvingEList<EClass>(EClass.class,
-				this, ConfigPackage.MUTATOR_CONFIG__ECLASSES_TO_IGNORE);
+			eClassesToIgnore = new EObjectResolvingEList<EClass>(EClass.class, this,
+				ConfigPackage.MUTATOR_CONFIG__ECLASSES_TO_IGNORE);
 		}
 		return eClassesToIgnore;
 	}
@@ -388,9 +426,7 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	 */
 	public EList<EStructuralFeature> getEStructuralFeaturesToIgnore() {
 		if (eStructuralFeaturesToIgnore == null) {
-			eStructuralFeaturesToIgnore = new EObjectResolvingEList<EStructuralFeature>(
-				EStructuralFeature.class,
-				this,
+			eStructuralFeaturesToIgnore = new EObjectResolvingEList<EStructuralFeature>(EStructuralFeature.class, this,
 				ConfigPackage.MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE);
 		}
 		return eStructuralFeaturesToIgnore;
@@ -403,8 +439,8 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 	 */
 	public EList<EPackage> getEPackages() {
 		if (ePackages == null) {
-			ePackages = new EObjectResolvingEList<EPackage>(EPackage.class,
-				this, ConfigPackage.MUTATOR_CONFIG__EPACKAGES);
+			ePackages = new EObjectResolvingEList<EPackage>(EPackage.class, this,
+				ConfigPackage.MUTATOR_CONFIG__EPACKAGES);
 		}
 		return ePackages;
 	}
@@ -427,9 +463,56 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		Integer oldMaxDeleteCount = maxDeleteCount;
 		maxDeleteCount = newMaxDeleteCount;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT,
 				oldMaxDeleteCount, maxDeleteCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public int getMutationCount() {
+		return mutationCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setMutationCount(int newMutationCount) {
+		int oldMutationCount = mutationCount;
+		mutationCount = newMutationCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT,
+				oldMutationCount, mutationCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public boolean isAllowDuplicateIDs() {
+		return allowDuplicateIDs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public void setAllowDuplicateIDs(boolean newAllowDuplicateIDs) {
+		boolean oldAllowDuplicateIDs = allowDuplicateIDs;
+		allowDuplicateIDs = newAllowDuplicateIDs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS,
+				oldAllowDuplicateIDs, allowDuplicateIDs));
 	}
 
 	/**
@@ -460,6 +543,10 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 			return getEPackages();
 		case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
 			return getMaxDeleteCount();
+		case ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT:
+			return getMutationCount();
+		case ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS:
+			return isAllowDuplicateIDs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -490,13 +577,11 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 			return;
 		case ConfigPackage.MUTATOR_CONFIG__ECLASSES_TO_IGNORE:
 			getEClassesToIgnore().clear();
-			getEClassesToIgnore().addAll(
-				(Collection<? extends EClass>) newValue);
+			getEClassesToIgnore().addAll((Collection<? extends EClass>) newValue);
 			return;
 		case ConfigPackage.MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE:
 			getEStructuralFeaturesToIgnore().clear();
-			getEStructuralFeaturesToIgnore().addAll(
-				(Collection<? extends EStructuralFeature>) newValue);
+			getEStructuralFeaturesToIgnore().addAll((Collection<? extends EStructuralFeature>) newValue);
 			return;
 		case ConfigPackage.MUTATOR_CONFIG__EPACKAGES:
 			getEPackages().clear();
@@ -504,6 +589,12 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 			return;
 		case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
 			setMaxDeleteCount((Integer) newValue);
+			return;
+		case ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT:
+			setMutationCount((Integer) newValue);
+			return;
+		case ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS:
+			setAllowDuplicateIDs((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -544,6 +635,12 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
 			setMaxDeleteCount(MAX_DELETE_COUNT_EDEFAULT);
 			return;
+		case ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT:
+			setMutationCount(MUTATION_COUNT_EDEFAULT);
+			return;
+		case ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS:
+			setAllowDuplicateIDs(ALLOW_DUPLICATE_IDS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -569,13 +666,16 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		case ConfigPackage.MUTATOR_CONFIG__ECLASSES_TO_IGNORE:
 			return eClassesToIgnore != null && !eClassesToIgnore.isEmpty();
 		case ConfigPackage.MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE:
-			return eStructuralFeaturesToIgnore != null
-				&& !eStructuralFeaturesToIgnore.isEmpty();
+			return eStructuralFeaturesToIgnore != null && !eStructuralFeaturesToIgnore.isEmpty();
 		case ConfigPackage.MUTATOR_CONFIG__EPACKAGES:
 			return ePackages != null && !ePackages.isEmpty();
 		case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
-			return MAX_DELETE_COUNT_EDEFAULT == null ? maxDeleteCount != null
-				: !MAX_DELETE_COUNT_EDEFAULT.equals(maxDeleteCount);
+			return MAX_DELETE_COUNT_EDEFAULT == null ? maxDeleteCount != null : !MAX_DELETE_COUNT_EDEFAULT
+				.equals(maxDeleteCount);
+		case ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT:
+			return mutationCount != MUTATION_COUNT_EDEFAULT;
+		case ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS:
+			return allowDuplicateIDs != ALLOW_DUPLICATE_IDS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -601,6 +701,10 @@ public class MutatorConfigImpl extends EObjectImpl implements MutatorConfig {
 		result.append(useEcoreUtilDelete);
 		result.append(", maxDeleteCount: ");
 		result.append(maxDeleteCount);
+		result.append(", mutationCount: ");
+		result.append(mutationCount);
+		result.append(", allowDuplicateIDs: ");
+		result.append(allowDuplicateIDs);
 		result.append(')');
 		return result.toString();
 	}

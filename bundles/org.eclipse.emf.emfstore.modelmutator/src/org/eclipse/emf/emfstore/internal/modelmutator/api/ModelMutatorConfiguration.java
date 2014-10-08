@@ -11,6 +11,7 @@
  * StephanK?hler
  * EugenNeufeld
  * PhilipAchenbach
+ * PhilipLanger
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.api;
 
@@ -47,6 +48,7 @@ public class ModelMutatorConfiguration {
 
 	private int minObjectsCount;
 	private Integer maxDeleteCount;
+	private Integer mutationCount;
 
 	private boolean ignoreAndLog;
 	private Collection<EClass> eClassesToIgnore;
@@ -55,6 +57,7 @@ public class ModelMutatorConfiguration {
 
 	private boolean doNotGenerateRoot;
 	private boolean useEcoreUtilDelete;
+	private boolean allowDuplicateIDs;
 
 	private EditingDomain editingDomain;
 
@@ -287,6 +290,43 @@ public class ModelMutatorConfiguration {
 	 */
 	public void setMaxDeleteCount(Integer maxDeleteCount) {
 		this.maxDeleteCount = maxDeleteCount;
+	}
+	
+	/**
+	 * Returns the number of mutations to be performed.
+	 *
+	 * @return the number of mutations
+	 */
+	public int getMutationCount() {
+		return mutationCount != null ? mutationCount : -1;
+	}
+
+	/**
+	 * Sets the number of mutations to be performed.
+	 *
+	 * @param mutationCount the number of mutations to set
+	 */
+	public void setMutationCount(Integer mutationCount) {
+		this.mutationCount = mutationCount;
+	}
+
+	/**
+	 * Specifies whether the model generation or mutation are allowed to add non-unique values in ID attributes.
+	 * 
+	 * @return <code>true</code> if duplicate IDs are allowed, <code>false</code> otherwise.
+	 */
+	public boolean isAllowDuplicateIDs() {
+		return allowDuplicateIDs;
+	}
+
+	/**
+	 * Sets whether the model generation or mutation should be allowed to add non-unique values in ID attributes.
+	 * 
+	 * @param allowDuplicateIDs Should the model generator and mutator be allowed to add non-unique values in ID
+	 *            attributes?
+	 */
+	public void setAllowDuplicateIDs(boolean allowDuplicateIDs) {
+		this.allowDuplicateIDs = allowDuplicateIDs;
 	}
 
 }

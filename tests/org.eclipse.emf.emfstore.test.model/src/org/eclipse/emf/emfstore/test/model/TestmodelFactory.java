@@ -43,6 +43,36 @@ public interface TestmodelFactory extends EFactory {
 	TestElement createTestElement();
 
 	/**
+	 * Returns a new object of class '<em>Test Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Test Type</em>'.
+	 * @generated
+	 */
+	TestType createTestType();
+
+	/**
+	 * Returns a new object of class '<em>Type With Feature Map Non Containment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Type With Feature Map Non Containment</em>'.
+	 * @generated
+	 */
+	TypeWithFeatureMapNonContainment createTypeWithFeatureMapNonContainment();
+
+	/**
+	 * Returns a new object of class '<em>Type With Feature Map Containment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Type With Feature Map Containment</em>'.
+	 * @generated
+	 */
+	TypeWithFeatureMapContainment createTypeWithFeatureMapContainment();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -463,6 +463,26 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getMutatorConfig_MutationCount() {
+		return (EAttribute) mutatorConfigEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getMutatorConfig_AllowDuplicateIDs() {
+		return (EAttribute) mutatorConfigEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -526,16 +546,14 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(mutatorConfigEClass, MUTATOR_CONFIG__ROOT_ECLASS);
 		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__MIN_OBJECTS_COUNT);
 		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__IGNORE_AND_LOG);
-		createEAttribute(mutatorConfigEClass,
-			MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT);
-		createEAttribute(mutatorConfigEClass,
-			MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE);
-		createEReference(mutatorConfigEClass,
-			MUTATOR_CONFIG__ECLASSES_TO_IGNORE);
-		createEReference(mutatorConfigEClass,
-			MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE);
+		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT);
+		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE);
+		createEReference(mutatorConfigEClass, MUTATOR_CONFIG__ECLASSES_TO_IGNORE);
+		createEReference(mutatorConfigEClass, MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE);
 		createEReference(mutatorConfigEClass, MUTATOR_CONFIG__EPACKAGES);
 		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__MAX_DELETE_COUNT);
+		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__MUTATION_COUNT);
+		createEAttribute(mutatorConfigEClass, MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS);
 	}
 
 	/**
@@ -569,151 +587,106 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(testConfigEClass, TestConfig.class, "TestConfig",
-			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestConfig_Seed(), ecorePackage.getELong(), "seed",
-			null, 0, 1, TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEAttribute(getTestConfig_Count(), ecorePackage.getEInt(), "count",
-			null, 0, 1, TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
+		initEClass(testConfigEClass, TestConfig.class, "TestConfig", !IS_ABSTRACT, !IS_INTERFACE,
+			IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestConfig_Seed(), ecorePackage.getELong(), "seed", null, 0, 1, TestConfig.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestConfig_Count(), ecorePackage.getEInt(), "count", null, 0, 1, TestConfig.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEJavaClass());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEAttribute(getTestConfig_TestClass(), g1, "testClass", null, 0, 1,
-			TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-			!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestConfig_Id(), ecorePackage.getEString(), "id",
-			null, 0, 1, TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEReference(getTestConfig_MutatorConfig(), this.getMutatorConfig(),
-			null, "mutatorConfig", null, 0, 1, TestConfig.class,
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-
-		initEClass(testRunEClass, TestRun.class, "TestRun", !IS_ABSTRACT,
-			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTestRun_Config(), this.getTestConfig(), null,
-			"config", null, 0, 1, TestRun.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestRun_Time(), ecorePackage.getEDate(), "time",
-			null, 0, 1, TestRun.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEReference(getTestRun_Results(), this.getTestResult(), null,
-			"results", null, 0, -1, TestRun.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEAttribute(getTestConfig_TestClass(), g1, "testClass", null, 0, 1, TestConfig.class, !IS_TRANSIENT,
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestConfig_Id(), ecorePackage.getEString(), "id", null, 0, 1, TestConfig.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestConfig_MutatorConfig(), this.getMutatorConfig(), null, "mutatorConfig", null, 0, 1,
+			TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(testResultEClass, TestResult.class, "TestResult",
-			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestResult_SeedCount(), ecorePackage.getEInt(),
-			"seedCount", null, 0, 1, TestResult.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(testRunEClass, TestRun.class, "TestRun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestRun_Config(), this.getTestConfig(), null, "config", null, 0, 1, TestRun.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestResult_TestName(), ecorePackage.getEString(),
-			"testName", null, 0, 1, TestResult.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestResult_Error(), ecorePackage.getEString(),
-			"error", null, 0, 1, TestResult.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestResult_Failure(), ecorePackage.getEString(),
-			"failure", null, 0, 1, TestResult.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTestResult_ExecutionTime(), ecorePackage.getELong(),
-			"executionTime", null, 0, 1, TestResult.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getTestRun_Time(), ecorePackage.getEDate(), "time", null, 0, 1, TestRun.class, !IS_TRANSIENT,
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestRun_Results(), this.getTestResult(), null, "results", null, 0, -1, TestRun.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
 
-		initEClass(testDiffEClass, TestDiff.class, "TestDiff", !IS_ABSTRACT,
-			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestDiff_LastUpdate(), ecorePackage.getEDate(),
-			"lastUpdate", null, 0, 1, TestDiff.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getTestDiff_Config(), this.getTestConfig(), null,
-			"config", null, 0, 1, TestDiff.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestDiff_OldResult(), this.getTestResult(), null,
-			"oldResult", null, 0, 1, TestDiff.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestDiff_NewResult(), this.getTestResult(), null,
-			"newResult", null, 0, 1, TestDiff.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(diffReportEClass, DiffReport.class, "DiffReport",
-			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDiffReport_Diffs(), this.getTestDiff(), null,
-			"diffs", null, 0, -1, DiffReport.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(testResultEClass, TestResult.class, "TestResult", !IS_ABSTRACT, !IS_INTERFACE,
 			IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRoot_Elements(), ecorePackage.getEObject(), null,
-			"elements", null, 0, -1, Root.class, !IS_TRANSIENT,
-			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestResult_SeedCount(), ecorePackage.getEInt(), "seedCount", null, 0, 1, TestResult.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestResult_TestName(), ecorePackage.getEString(), "testName", null, 0, 1, TestResult.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestResult_Error(), ecorePackage.getEString(), "error", null, 0, 1, TestResult.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestResult_Failure(), ecorePackage.getEString(), "failure", null, 0, 1, TestResult.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestResult_ExecutionTime(), ecorePackage.getELong(), "executionTime", null, 0, 1,
+			TestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
 
-		initEClass(mutatorConfigEClass, MutatorConfig.class, "MutatorConfig",
-			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMutatorConfig_RootEClass(), ecorePackage.getEClass(),
-			null, "rootEClass", null, 0, 1, MutatorConfig.class,
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-			IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEAttribute(getMutatorConfig_MinObjectsCount(),
-			ecorePackage.getEInt(), "minObjectsCount", "100", 0, 1,
-			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEAttribute(getMutatorConfig_IgnoreAndLog(),
-			ecorePackage.getEBoolean(), "ignoreAndLog", "false", 0, 1,
-			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEAttribute(getMutatorConfig_DoNotGenerateRoot(),
-			ecorePackage.getEBoolean(), "doNotGenerateRoot", "false", 0, 1,
-			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEAttribute(getMutatorConfig_UseEcoreUtilDelete(),
-			ecorePackage.getEBoolean(), "useEcoreUtilDelete", "false", 0,
-			1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
-		initEReference(getMutatorConfig_EClassesToIgnore(),
-			ecorePackage.getEClass(), null, "eClassesToIgnore", null, 0,
-			-1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEClass(testDiffEClass, TestDiff.class, "TestDiff", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestDiff_LastUpdate(), ecorePackage.getEDate(), "lastUpdate", null, 0, 1, TestDiff.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestDiff_Config(), this.getTestConfig(), null, "config", null, 0, 1, TestDiff.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getTestDiff_OldResult(), this.getTestResult(), null, "oldResult", null, 0, 1, TestDiff.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getTestDiff_NewResult(), this.getTestResult(), null, "newResult", null, 0, 1, TestDiff.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+
+		initEClass(diffReportEClass, DiffReport.class, "DiffReport", !IS_ABSTRACT, !IS_INTERFACE,
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDiffReport_Diffs(), this.getTestDiff(), null, "diffs", null, 0, -1, DiffReport.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+
+		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRoot_Elements(), ecorePackage.getEObject(), null, "elements", null, 0, -1, Root.class,
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+
+		initEClass(mutatorConfigEClass, MutatorConfig.class, "MutatorConfig", !IS_ABSTRACT, !IS_INTERFACE,
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMutatorConfig_RootEClass(), ecorePackage.getEClass(), null, "rootEClass", null, 0, 1,
+			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMutatorConfig_EStructuralFeaturesToIgnore(),
-			ecorePackage.getEStructuralFeature(), null,
-			"eStructuralFeaturesToIgnore", null, 0, -1,
-			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEAttribute(getMutatorConfig_MinObjectsCount(), ecorePackage.getEInt(), "minObjectsCount", "100", 0, 1,
+			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutatorConfig_IgnoreAndLog(), ecorePackage.getEBoolean(), "ignoreAndLog", "false", 0, 1,
+			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutatorConfig_DoNotGenerateRoot(), ecorePackage.getEBoolean(), "doNotGenerateRoot", "false",
+			0, 1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutatorConfig_UseEcoreUtilDelete(), ecorePackage.getEBoolean(), "useEcoreUtilDelete",
+			"false", 0, 1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMutatorConfig_EClassesToIgnore(), ecorePackage.getEClass(), null, "eClassesToIgnore", null,
+			0, -1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMutatorConfig_EPackages(),
-			ecorePackage.getEPackage(), null, "ePackages", null, 0, -1,
-			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getMutatorConfig_EStructuralFeaturesToIgnore(), ecorePackage.getEStructuralFeature(), null,
+			"eStructuralFeaturesToIgnore", null, 0, -1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMutatorConfig_EPackages(), ecorePackage.getEPackage(), null, "ePackages", null, 0, -1,
+			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMutatorConfig_MaxDeleteCount(),
-			ecorePackage.getEIntegerObject(), "maxDeleteCount", null, 0, 1,
-			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE,
-			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-			IS_ORDERED);
+		initEAttribute(getMutatorConfig_MaxDeleteCount(), ecorePackage.getEIntegerObject(), "maxDeleteCount", null, 0,
+			1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutatorConfig_MutationCount(), ecorePackage.getEInt(), "mutationCount", "-1", 0, 1,
+			MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMutatorConfig_AllowDuplicateIDs(), ecorePackage.getEBoolean(), "allowDuplicateIDs", "false",
+			0, 1, MutatorConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

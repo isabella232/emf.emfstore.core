@@ -107,6 +107,14 @@ public class MutateUtil implements Util {
 		ModelMutator.changeModel(mmc,
 			new LinkedHashSet<EStructuralFeature>(getEStructuralFeaturesToIgnore()));
 	}
+	
+	/**
+	 * Mutate with the {@link ModelMutatorConfiguration} from configuration file.
+	 *
+	 */
+	public void mutate() {
+		ModelMutator.changeModel(getDataProvider().getModelMutatorConfiguration());
+	}
 
 	/**
 	 * @see #saveEObject(EObject, String, boolean)

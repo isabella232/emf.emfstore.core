@@ -511,6 +511,162 @@ public interface TestmodelPackage extends EPackage {
 	int STRING_TO_TEST_ELEMENT_MAP_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.emfstore.test.model.impl.TestTypeImpl <em>Test Type</em>}'
+	 * class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.emfstore.test.model.impl.TestTypeImpl
+	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestType()
+	 * @generated
+	 */
+	int TEST_TYPE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_TYPE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Test Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_TYPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl
+	 * <em>Type With Feature Map Non Containment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl
+	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapNonContainment()
+	 * @generated
+	 */
+	int TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__NAME = TEST_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Map</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP = TEST_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>First Key</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY = TEST_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Second Key</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY = TEST_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Type With Feature Map Non Containment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT_FEATURE_COUNT = TEST_TYPE_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapContainmentImpl
+	 * <em>Type With Feature Map Containment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapContainmentImpl
+	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapContainment()
+	 * @generated
+	 */
+	int TYPE_WITH_FEATURE_MAP_CONTAINMENT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_CONTAINMENT__NAME = TEST_TYPE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Map Containment</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_CONTAINMENT__MAP_CONTAINMENT = TEST_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>First Key Containment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_CONTAINMENT__FIRST_KEY_CONTAINMENT = TEST_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Second Key Containment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_CONTAINMENT__SECOND_KEY_CONTAINMENT = TEST_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Type With Feature Map Containment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_WITH_FEATURE_MAP_CONTAINMENT_FEATURE_COUNT = TEST_TYPE_FEATURE_COUNT + 3;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.test.model.TestElement <em>Test Element</em>}
 	 * '.
 	 * <!-- begin-user-doc -->
@@ -1003,6 +1159,135 @@ public interface TestmodelPackage extends EPackage {
 	EAttribute getStringToTestElementMap_Key();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.test.model.TestType <em>Test Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Test Type</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TestType
+	 * @generated
+	 */
+	EClass getTestType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.emfstore.test.model.TestType#getName
+	 * <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TestType#getName()
+	 * @see #getTestType()
+	 * @generated
+	 */
+	EAttribute getTestType_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment
+	 * <em>Type With Feature Map Non Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Type With Feature Map Non Containment</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment
+	 * @generated
+	 */
+	EClass getTypeWithFeatureMapNonContainment();
+
+	/**
+	 * Returns the meta object for the attribute list '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getMap <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute list '<em>Map</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getMap()
+	 * @see #getTypeWithFeatureMapNonContainment()
+	 * @generated
+	 */
+	EAttribute getTypeWithFeatureMapNonContainment_Map();
+
+	/**
+	 * Returns the meta object for the reference list '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getFirstKey <em>First Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference list '<em>First Key</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getFirstKey()
+	 * @see #getTypeWithFeatureMapNonContainment()
+	 * @generated
+	 */
+	EReference getTypeWithFeatureMapNonContainment_FirstKey();
+
+	/**
+	 * Returns the meta object for the reference list '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getSecondKey <em>Second Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference list '<em>Second Key</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getSecondKey()
+	 * @see #getTypeWithFeatureMapNonContainment()
+	 * @generated
+	 */
+	EReference getTypeWithFeatureMapNonContainment_SecondKey();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment
+	 * <em>Type With Feature Map Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Type With Feature Map Containment</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment
+	 * @generated
+	 */
+	EClass getTypeWithFeatureMapContainment();
+
+	/**
+	 * Returns the meta object for the attribute list '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getMapContainment
+	 * <em>Map Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute list '<em>Map Containment</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getMapContainment()
+	 * @see #getTypeWithFeatureMapContainment()
+	 * @generated
+	 */
+	EAttribute getTypeWithFeatureMapContainment_MapContainment();
+
+	/**
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getFirstKeyContainment
+	 * <em>First Key Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the containment reference list '<em>First Key Containment</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getFirstKeyContainment()
+	 * @see #getTypeWithFeatureMapContainment()
+	 * @generated
+	 */
+	EReference getTypeWithFeatureMapContainment_FirstKeyContainment();
+
+	/**
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getSecondKeyContainment
+	 * <em>Second Key Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the containment reference list '<em>Second Key Containment</em>'.
+	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getSecondKeyContainment()
+	 * @see #getTypeWithFeatureMapContainment()
+	 * @generated
+	 */
+	EReference getTypeWithFeatureMapContainment_SecondKeyContainment();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1386,6 +1671,112 @@ public interface TestmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STRING_TO_TEST_ELEMENT_MAP__KEY = eINSTANCE.getStringToTestElementMap_Key();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.test.model.impl.TestTypeImpl
+		 * <em>Test Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @see org.eclipse.emf.emfstore.test.model.impl.TestTypeImpl
+		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestType()
+		 * @generated
+		 */
+		EClass TEST_TYPE = eINSTANCE.getTestType();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute TEST_TYPE__NAME = eINSTANCE.getTestType_Name();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl
+		 * <em>Type With Feature Map Non Containment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl
+		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapNonContainment()
+		 * @generated
+		 */
+		EClass TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT = eINSTANCE.getTypeWithFeatureMapNonContainment();
+
+		/**
+		 * The meta object literal for the '<em><b>Map</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP = eINSTANCE.getTypeWithFeatureMapNonContainment_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>First Key</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY = eINSTANCE
+			.getTypeWithFeatureMapNonContainment_FirstKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Second Key</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY = eINSTANCE
+			.getTypeWithFeatureMapNonContainment_SecondKey();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapContainmentImpl
+		 * <em>Type With Feature Map Containment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapContainmentImpl
+		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapContainment()
+		 * @generated
+		 */
+		EClass TYPE_WITH_FEATURE_MAP_CONTAINMENT = eINSTANCE.getTypeWithFeatureMapContainment();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Containment</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute TYPE_WITH_FEATURE_MAP_CONTAINMENT__MAP_CONTAINMENT = eINSTANCE
+			.getTypeWithFeatureMapContainment_MapContainment();
+
+		/**
+		 * The meta object literal for the '<em><b>First Key Containment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference TYPE_WITH_FEATURE_MAP_CONTAINMENT__FIRST_KEY_CONTAINMENT = eINSTANCE
+			.getTypeWithFeatureMapContainment_FirstKeyContainment();
+
+		/**
+		 * The meta object literal for the '<em><b>Second Key Containment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference TYPE_WITH_FEATURE_MAP_CONTAINMENT__SECOND_KEY_CONTAINMENT = eINSTANCE
+			.getTypeWithFeatureMapContainment_SecondKeyContainment();
 
 	}
 

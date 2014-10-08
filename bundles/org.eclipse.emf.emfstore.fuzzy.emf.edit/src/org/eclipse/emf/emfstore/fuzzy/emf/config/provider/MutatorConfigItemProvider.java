@@ -68,6 +68,8 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 			addEStructuralFeaturesToIgnorePropertyDescriptor(object);
 			addEPackagesPropertyDescriptor(object);
 			addMaxDeleteCountPropertyDescriptor(object);
+			addMutationCountPropertyDescriptor(object);
+			addAllowDuplicateIDsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -79,16 +81,19 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addRootEClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_rootEClass_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_rootEClass_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__ROOT_ECLASS, true,
-			false, true, null, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_rootEClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_rootEClass_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__ROOT_ECLASS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -98,17 +103,19 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addMinObjectsCountPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_minObjectsCount_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_minObjectsCount_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__MIN_OBJECTS_COUNT, true,
-			false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-			null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_minObjectsCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_minObjectsCount_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__MIN_OBJECTS_COUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -118,57 +125,61 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addIgnoreAndLogPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_ignoreAndLog_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_ignoreAndLog_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__IGNORE_AND_LOG, true,
-			false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
-			null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_ignoreAndLog_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_ignoreAndLog_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__IGNORE_AND_LOG,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Do Not Generate Root feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addDoNotGenerateRootPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_doNotGenerateRoot_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_doNotGenerateRoot_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT,
-			true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-			null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_doNotGenerateRoot_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_doNotGenerateRoot_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Use Ecore Util Delete feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addUseEcoreUtilDeletePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_useEcoreUtilDelete_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_useEcoreUtilDelete_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE,
-			true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-			null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_useEcoreUtilDelete_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_useEcoreUtilDelete_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -178,38 +189,41 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addEClassesToIgnorePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_eClassesToIgnore_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_eClassesToIgnore_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__ECLASSES_TO_IGNORE,
-			true, false, true, null, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_eClassesToIgnore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_eClassesToIgnore_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__ECLASSES_TO_IGNORE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the EStructural Features To Ignore
-	 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This adds a property descriptor for the EStructural Features To Ignore feature.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addEStructuralFeaturesToIgnorePropertyDescriptor(
 		Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature"),
-				getString(
-					"_UI_PropertyDescriptor_description",
-					"_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature",
-					"_UI_MutatorConfig_type"),
-				ConfigPackage.Literals.MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -219,16 +233,19 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addEPackagesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_ePackages_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_ePackages_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__EPACKAGES, true, false,
-			true, null, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_ePackages_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_ePackages_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__EPACKAGES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -238,17 +255,63 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	protected void addMaxDeleteCountPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory)
-				.getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MutatorConfig_maxDeleteCount_feature"),
-			getString("_UI_PropertyDescriptor_description",
-				"_UI_MutatorConfig_maxDeleteCount_feature",
-				"_UI_MutatorConfig_type"),
-			ConfigPackage.Literals.MUTATOR_CONFIG__MAX_DELETE_COUNT, true,
-			false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-			null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_maxDeleteCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_maxDeleteCount_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__MAX_DELETE_COUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Mutation Count feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMutationCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_mutationCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_mutationCount_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__MUTATION_COUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Allow Duplicate IDs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAllowDuplicateIDsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MutatorConfig_allowDuplicateIDs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_allowDuplicateIDs_feature", "_UI_MutatorConfig_type"),
+				 ConfigPackage.Literals.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -259,29 +322,26 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-			getResourceLocator().getImage("full/obj16/MutatorConfig"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MutatorConfig"));
 	}
 
 	/**
-	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		MutatorConfig mutatorConfig = (MutatorConfig) object;
-		return getString("_UI_MutatorConfig_type") + " "
-			+ mutatorConfig.getMinObjectsCount();
+		MutatorConfig mutatorConfig = (MutatorConfig)object;
+		return getString("_UI_MutatorConfig_type") + " " + mutatorConfig.getMinObjectsCount();
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -289,14 +349,15 @@ public class MutatorConfigItemProvider extends ItemProviderAdapter implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MutatorConfig.class)) {
-		case ConfigPackage.MUTATOR_CONFIG__MIN_OBJECTS_COUNT:
-		case ConfigPackage.MUTATOR_CONFIG__IGNORE_AND_LOG:
-		case ConfigPackage.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT:
-		case ConfigPackage.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE:
-		case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
-			fireNotifyChanged(new ViewerNotification(notification,
-				notification.getNotifier(), false, true));
-			return;
+			case ConfigPackage.MUTATOR_CONFIG__MIN_OBJECTS_COUNT:
+			case ConfigPackage.MUTATOR_CONFIG__IGNORE_AND_LOG:
+			case ConfigPackage.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT:
+			case ConfigPackage.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE:
+			case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
+			case ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT:
+			case ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
