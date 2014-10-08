@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -42,7 +41,6 @@ public class TestTypeItemProvider
 	extends ItemProviderAdapter
 	implements
 	IEditingDomainItemProvider,
-	IStructuredItemContentProvider,
 	ITreeItemContentProvider,
 	IItemLabelProvider,
 	IItemPropertySource
@@ -125,7 +123,7 @@ public class TestTypeItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((TestType) object).getName();
+		final String label = ((TestType) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TestType_type") : //$NON-NLS-1$
 			getString("_UI_TestType_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$

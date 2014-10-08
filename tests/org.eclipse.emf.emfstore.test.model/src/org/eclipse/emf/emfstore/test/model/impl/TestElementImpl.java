@@ -83,7 +83,7 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * References2</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TestElementImpl extends EObjectImpl implements TestElement {
@@ -370,10 +370,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -429,13 +430,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	public TestElement getReference() {
 		if (reference != null && reference.eIsProxy())
 		{
-			InternalEObject oldReference = (InternalEObject) reference;
+			final InternalEObject oldReference = (InternalEObject) reference;
 			reference = (TestElement) eResolveProxy(oldReference);
 			if (reference != oldReference)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TestmodelPackage.TEST_ELEMENT__REFERENCE,
 						oldReference, reference));
+				}
 			}
 		}
 		return reference;
@@ -458,11 +460,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public void setReference(TestElement newReference) {
-		TestElement oldReference = reference;
+		final TestElement oldReference = reference;
 		reference = newReference;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__REFERENCE,
 				oldReference, reference));
+		}
 	}
 
 	/**
@@ -482,16 +485,17 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public NotificationChain basicSetContainedElement(TestElement newContainedElement, NotificationChain msgs) {
-		TestElement oldContainedElement = containedElement;
+		final TestElement oldContainedElement = containedElement;
 		containedElement = newContainedElement;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT, oldContainedElement, newContainedElement);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -506,19 +510,23 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		if (newContainedElement != containedElement)
 		{
 			NotificationChain msgs = null;
-			if (containedElement != null)
+			if (containedElement != null) {
 				msgs = ((InternalEObject) containedElement).eInverseRemove(this,
 					TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER, TestElement.class, msgs);
-			if (newContainedElement != null)
+			}
+			if (newContainedElement != null) {
 				msgs = ((InternalEObject) newContainedElement).eInverseAdd(this,
 					TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER, TestElement.class, msgs);
+			}
 			msgs = basicSetContainedElement(newContainedElement, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT,
 				newContainedElement, newContainedElement));
+		}
 	}
 
 	/**
@@ -530,13 +538,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	public TestElement getOtherReference() {
 		if (otherReference != null && otherReference.eIsProxy())
 		{
-			InternalEObject oldOtherReference = (InternalEObject) otherReference;
+			final InternalEObject oldOtherReference = (InternalEObject) otherReference;
 			otherReference = (TestElement) eResolveProxy(oldOtherReference);
 			if (otherReference != oldOtherReference)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.TEST_ELEMENT__OTHER_REFERENCE, oldOtherReference, otherReference));
+				}
 			}
 		}
 		return otherReference;
@@ -559,11 +568,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public void setOtherReference(TestElement newOtherReference) {
-		TestElement oldOtherReference = otherReference;
+		final TestElement oldOtherReference = otherReference;
 		otherReference = newOtherReference;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__OTHER_REFERENCE,
 				oldOtherReference, otherReference));
+		}
 	}
 
 	/**
@@ -583,11 +593,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
-		String oldDescription = description;
+		final String oldDescription = description;
 		description = newDescription;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__DESCRIPTION,
 				oldDescription, description));
+		}
 	}
 
 	/**
@@ -597,8 +608,9 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public TestElement getContainer() {
-		if (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER)
+		if (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER) {
 			return null;
+		}
 		return (TestElement) eInternalContainer();
 	}
 
@@ -621,23 +633,29 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 */
 	public void setContainer(TestElement newContainer) {
 		if (newContainer != eInternalContainer()
-			|| (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER && newContainer != null))
+			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER && newContainer != null)
 		{
 			if (EcoreUtil.isAncestor(this, newContainer))
+			{
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainer != null)
+			}
+			if (newContainer != null) {
 				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
 					TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS, TestElement.class, msgs);
+			}
 			msgs = basicSetContainer(newContainer, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__CONTAINER,
 				newContainer, newContainer));
+		}
 	}
 
 	/**
@@ -647,8 +665,9 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public TestElement getSrefContainer() {
-		if (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER)
+		if (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER) {
 			return null;
+		}
 		return (TestElement) eInternalContainer();
 	}
 
@@ -672,23 +691,29 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 */
 	public void setSrefContainer(TestElement newSrefContainer) {
 		if (newSrefContainer != eInternalContainer()
-			|| (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER && newSrefContainer != null))
+			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER && newSrefContainer != null)
 		{
 			if (EcoreUtil.isAncestor(this, newSrefContainer))
+			{
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newSrefContainer != null)
+			}
+			if (newSrefContainer != null) {
 				msgs = ((InternalEObject) newSrefContainer).eInverseAdd(this,
 					TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT, TestElement.class, msgs);
+			}
 			msgs = basicSetSrefContainer(newSrefContainer, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER,
 				newSrefContainer, newSrefContainer));
+		}
 	}
 
 	/**
@@ -763,13 +788,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	public TestElement getNonContained_NTo1() {
 		if (nonContained_NTo1 != null && nonContained_NTo1.eIsProxy())
 		{
-			InternalEObject oldNonContained_NTo1 = (InternalEObject) nonContained_NTo1;
+			final InternalEObject oldNonContained_NTo1 = (InternalEObject) nonContained_NTo1;
 			nonContained_NTo1 = (TestElement) eResolveProxy(oldNonContained_NTo1);
 			if (nonContained_NTo1 != oldNonContained_NTo1)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1, oldNonContained_NTo1, nonContained_NTo1));
+				}
 			}
 		}
 		return nonContained_NTo1;
@@ -792,16 +818,17 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public NotificationChain basicSetNonContained_NTo1(TestElement newNonContained_NTo1, NotificationChain msgs) {
-		TestElement oldNonContained_NTo1 = nonContained_NTo1;
+		final TestElement oldNonContained_NTo1 = nonContained_NTo1;
 		nonContained_NTo1 = newNonContained_NTo1;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1, oldNonContained_NTo1, newNonContained_NTo1);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -816,19 +843,23 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		if (newNonContained_NTo1 != nonContained_NTo1)
 		{
 			NotificationChain msgs = null;
-			if (nonContained_NTo1 != null)
+			if (nonContained_NTo1 != null) {
 				msgs = ((InternalEObject) nonContained_NTo1).eInverseRemove(this,
 					TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N, TestElement.class, msgs);
-			if (newNonContained_NTo1 != null)
+			}
+			if (newNonContained_NTo1 != null) {
 				msgs = ((InternalEObject) newNonContained_NTo1).eInverseAdd(this,
 					TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N, TestElement.class, msgs);
+			}
 			msgs = basicSetNonContained_NTo1(newNonContained_NTo1, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1,
 				newNonContained_NTo1, newNonContained_NTo1));
+		}
 	}
 
 	/**
@@ -898,8 +929,9 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * @generated
 	 */
 	public TestElement getContainer2() {
-		if (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER2)
+		if (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER2) {
 			return null;
+		}
 		return (TestElement) eInternalContainer();
 	}
 
@@ -922,23 +954,29 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 */
 	public void setContainer2(TestElement newContainer2) {
 		if (newContainer2 != eInternalContainer()
-			|| (eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER2 && newContainer2 != null))
+			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER2 && newContainer2 != null)
 		{
 			if (EcoreUtil.isAncestor(this, newContainer2))
+			{
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainer2 != null)
+			}
+			if (newContainer2 != null) {
 				msgs = ((InternalEObject) newContainer2).eInverseAdd(this,
 					TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS2, TestElement.class, msgs);
+			}
 			msgs = basicSetContainer2(newContainer2, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__CONTAINER2,
 				newContainer2, newContainer2));
+		}
 	}
 
 	/**
@@ -977,17 +1015,18 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	public NotificationChain basicSetContainedElement_NoOpposite(TestElement newContainedElement_NoOpposite,
 		NotificationChain msgs)
 	{
-		TestElement oldContainedElement_NoOpposite = containedElement_NoOpposite;
+		final TestElement oldContainedElement_NoOpposite = containedElement_NoOpposite;
 		containedElement_NoOpposite = newContainedElement_NoOpposite;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, oldContainedElement_NoOpposite,
 				newContainedElement_NoOpposite);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -1003,20 +1042,24 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		if (newContainedElement_NoOpposite != containedElement_NoOpposite)
 		{
 			NotificationChain msgs = null;
-			if (containedElement_NoOpposite != null)
+			if (containedElement_NoOpposite != null) {
 				msgs = ((InternalEObject) containedElement_NoOpposite).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, null, msgs);
-			if (newContainedElement_NoOpposite != null)
+			}
+			if (newContainedElement_NoOpposite != null) {
 				msgs = ((InternalEObject) newContainedElement_NoOpposite).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, null, msgs);
+			}
 			msgs = basicSetContainedElement_NoOpposite(newContainedElement_NoOpposite, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, newContainedElement_NoOpposite,
 				newContainedElement_NoOpposite));
+		}
 	}
 
 	/**
@@ -1071,22 +1114,26 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getContainedElements())
 				.basicAdd(otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT:
-			if (containedElement != null)
+			if (containedElement != null) {
 				msgs = ((InternalEObject) containedElement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT, null, msgs);
+			}
 			return basicSetContainedElement((TestElement) otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINER:
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
+			}
 			return basicSetContainer((TestElement) otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER:
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
+			}
 			return basicSetSrefContainer((TestElement) otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1:
-			if (nonContained_NTo1 != null)
+			if (nonContained_NTo1 != null) {
 				msgs = ((InternalEObject) nonContained_NTo1).eInverseRemove(this,
 					TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N, TestElement.class, msgs);
+			}
 			return basicSetNonContained_NTo1((TestElement) otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_1ToN())
@@ -1101,8 +1148,9 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getContainedElements2()).basicAdd(otherEnd,
 				msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINER2:
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
+			}
 			return basicSetContainer2((TestElement) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -1202,14 +1250,16 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS:
 			return getContainedElements();
 		case TestmodelPackage.TEST_ELEMENT__REFERENCE:
-			if (resolve)
+			if (resolve) {
 				return getReference();
+			}
 			return basicGetReference();
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT:
 			return getContainedElement();
 		case TestmodelPackage.TEST_ELEMENT__OTHER_REFERENCE:
-			if (resolve)
+			if (resolve) {
 				return getOtherReference();
+			}
 			return basicGetOtherReference();
 		case TestmodelPackage.TEST_ELEMENT__DESCRIPTION:
 			return getDescription();
@@ -1218,28 +1268,29 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		case TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER:
 			return getSrefContainer();
 		case TestmodelPackage.TEST_ELEMENT__ELEMENT_MAP:
-			if (coreType)
+			if (coreType) {
 				return getElementMap();
-			else
-				return getElementMap().map();
+			}
+			return getElementMap().map();
 		case TestmodelPackage.TEST_ELEMENT__STRING_TO_STRING_MAP:
-			if (coreType)
+			if (coreType) {
 				return getStringToStringMap();
-			else
-				return getStringToStringMap().map();
+			}
+			return getStringToStringMap().map();
 		case TestmodelPackage.TEST_ELEMENT__ELEMENT_TO_STRING_MAP:
-			if (coreType)
+			if (coreType) {
 				return getElementToStringMap();
-			else
-				return getElementToStringMap().map();
+			}
+			return getElementToStringMap().map();
 		case TestmodelPackage.TEST_ELEMENT__STRING_TO_ELEMENT_MAP:
-			if (coreType)
+			if (coreType) {
 				return getStringToElementMap();
-			else
-				return getStringToElementMap().map();
+			}
+			return getStringToElementMap().map();
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1:
-			if (resolve)
+			if (resolve) {
 				return getNonContained_NTo1();
+			}
 			return basicGetNonContained_NTo1();
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N:
 			return getNonContained_1ToN();
@@ -1256,8 +1307,9 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE:
 			return getContainedElement_NoOpposite();
 		case TestmodelPackage.TEST_ELEMENT__FEATURE_MAP_ENTRIES:
-			if (coreType)
+			if (coreType) {
 				return getFeatureMapEntries();
+			}
 			return ((FeatureMap.Internal) getFeatureMapEntries()).getWrapper();
 		case TestmodelPackage.TEST_ELEMENT__FEATURE_MAP_REFERENCES1:
 			return getFeatureMapReferences1();
@@ -1528,10 +1580,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", strings: "); //$NON-NLS-1$

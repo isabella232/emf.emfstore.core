@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
@@ -40,7 +39,6 @@ public class TestElementToTestElementMapItemProvider
 	extends ItemProviderAdapter
 	implements
 	IEditingDomainItemProvider,
-	IStructuredItemContentProvider,
 	ITreeItemContentProvider,
 	IItemLabelProvider,
 	IItemPropertySource
@@ -152,7 +150,7 @@ public class TestElementToTestElementMapItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		Map.Entry<?, ?> testElementToTestElementMap = (Map.Entry<?, ?>) object;
+		final Map.Entry<?, ?> testElementToTestElementMap = (Map.Entry<?, ?>) object;
 		return "" + testElementToTestElementMap.getKey() + " -> " + testElementToTestElementMap.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

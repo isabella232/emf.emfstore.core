@@ -120,7 +120,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((TypeWithFeatureMapContainment) object).getName();
+		final String label = ((TypeWithFeatureMapContainment) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TypeWithFeatureMapContainment_type") : //$NON-NLS-1$
 			getString("_UI_TypeWithFeatureMapContainment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$

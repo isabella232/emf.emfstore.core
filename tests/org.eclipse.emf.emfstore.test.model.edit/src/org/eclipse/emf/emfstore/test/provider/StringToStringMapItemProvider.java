@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -42,7 +41,6 @@ public class StringToStringMapItemProvider
 	extends ItemProviderAdapter
 	implements
 	IEditingDomainItemProvider,
-	IStructuredItemContentProvider,
 	ITreeItemContentProvider,
 	IItemLabelProvider,
 	IItemPropertySource
@@ -154,7 +152,7 @@ public class StringToStringMapItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		Map.Entry<?, ?> stringToStringMap = (Map.Entry<?, ?>) object;
+		final Map.Entry<?, ?> stringToStringMap = (Map.Entry<?, ?>) object;
 		return "" + stringToStringMap.getKey() + " -> " + stringToStringMap.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.emfstore.test.model.edit" version="2">
+    <resource path="META-INF/MANIFEST.MF">
+        <filter comment="internal plugin for testing purposes only" id="924844039">
+            <message_arguments>
+                <message_argument value="1.4.1"/>
+                <message_argument value="1.4.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/test/provider/TestTypeItemProvider.java" type="org.eclipse.emf.emfstore.test.provider.TestTypeItemProvider">
+        <filter comment="internal for testing purposes only" id="1110441988">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.emfstore.test.provider.TestTypeItemProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/test/provider/TestmodelItemProviderAdapterFactory.java" type="org.eclipse.emf.emfstore.test.provider.TestmodelItemProviderAdapterFactory">
+        <filter comment="internal for testing purposes only" id="576720909">
+            <message_arguments>
+                <message_argument value="TestmodelAdapterFactory"/>
+                <message_argument value="TestmodelItemProviderAdapterFactory"/>
+            </message_arguments>
+        </filter>
+        <filter comment="internal for testing purposes only" id="1143996420">
+            <message_arguments>
+                <message_argument value="createTestTypeAdapter()"/>
+            </message_arguments>
+        </filter>
+        <filter comment="internal for testing purposes only" id="1143996420">
+            <message_arguments>
+                <message_argument value="createTypeWithFeatureMapContainmentAdapter()"/>
+            </message_arguments>
+        </filter>
+        <filter comment="internal for testing purposes only" id="1143996420">
+            <message_arguments>
+                <message_argument value="createTypeWithFeatureMapNonContainmentAdapter()"/>
+            </message_arguments>
+        </filter>
+        <filter comment="internal for testing purposes only" id="1143996420">
+            <message_arguments>
+                <message_argument value="testTypeItemProvider"/>
+            </message_arguments>
+        </filter>
+        <filter comment="internal for testing purposes only" id="1143996420">
+            <message_arguments>
+                <message_argument value="typeWithFeatureMapContainmentItemProvider"/>
+            </message_arguments>
+        </filter>
+        <filter comment="internal for testing purposes only" id="1143996420">
+            <message_arguments>
+                <message_argument value="typeWithFeatureMapNonContainmentItemProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/test/provider/TypeWithFeatureMapContainmentItemProvider.java" type="org.eclipse.emf.emfstore.test.provider.TypeWithFeatureMapContainmentItemProvider">
+        <filter id="1110441988">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.emfstore.test.provider.TypeWithFeatureMapContainmentItemProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/test/provider/TypeWithFeatureMapNonContainmentItemProvider.java" type="org.eclipse.emf.emfstore.test.provider.TypeWithFeatureMapNonContainmentItemProvider">
+        <filter comment="internal for testing purposes onlys" id="1110441988">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.emfstore.test.provider.TypeWithFeatureMapNonContainmentItemProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

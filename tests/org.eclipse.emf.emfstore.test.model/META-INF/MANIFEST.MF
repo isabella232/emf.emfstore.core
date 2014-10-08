@@ -20,6 +20,5 @@ Export-Package: org.eclipse.emf.emfstore.test.model;version="1.4.1";
    org.eclipse.emf.emfstore.client.conflictdetection.test,
    org.eclipse.emf.emfstore.client.test,
    org.eclipse.emf.emfstore.client.test.ui",
- org.eclipse.emf.emfstore.test.model.impl;version="1.4.1";
-  x-friends:="org.eclipse.emf.emfstore.client.conflictdetection.test",
- org.eclipse.emf.emfstore.test.model.util;version="1.4.1";x-internal:=true
+ org.eclipse.emf.emfstore.test.model.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.client.conflictdetection.test",
+ org.eclipse.emf.emfstore.test.model.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.test.model.edit"
