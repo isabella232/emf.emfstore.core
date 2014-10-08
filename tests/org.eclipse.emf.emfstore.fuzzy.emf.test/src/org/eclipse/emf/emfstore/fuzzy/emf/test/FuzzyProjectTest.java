@@ -43,6 +43,7 @@ import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
 import org.junit.After;
 import org.junit.Before;
@@ -88,8 +89,6 @@ public abstract class FuzzyProjectTest {
 		CommonUtil.setTesting(true);
 	}
 
-	/***/
-	@SuppressWarnings("restriction")
 	@Before
 	public void setup() {
 		// set testing to true so it uses test profile
@@ -105,12 +104,24 @@ public abstract class FuzzyProjectTest {
 			public void run() {
 				final ESWorkspaceImpl esWorkspaceImpl = (ESWorkspaceImpl) ESWorkspaceProvider.INSTANCE
 					.getWorkspace();
-				projectSpace = esWorkspaceImpl.createLocalProject("").toInternalAPI();
+				final WorkspaceBase workspace = (WorkspaceBase) esWorkspaceImpl.toInternalAPI();
+				projectSpace = workspace.createLocalProject("testProject", project, false);
+
 				if (projectSpaceCopyNeeded()) {
 					copyProjectSpace = ((WorkspaceBase) esWorkspaceImpl
-						.toInternalAPI()).cloneProject("",
-						projectSpace.getProject());
+						.toInternalAPI()).cloneProject("", projectSpace.getProject());
 				}
+			}
+		});
+
+	}
+
+	public void clearOperations() {
+		RunESCommand.run(new Callable<Void>() {
+			public Void call() throws Exception {
+				getProjectSpace().getOperationManager().clearOperations();
+				getProjectSpace().getOperations().clear();
+				return null;
 			}
 		});
 	}
@@ -288,6 +299,26 @@ public abstract class FuzzyProjectTest {
 			}
 			project2.getModelElements().move(index, eObject2);
 			index++;
+		}
+
+		try {
+			final String eObjectToString = ModelUtil.eObjectToString(project1);
+			final String eObjectToString2 = ModelUtil.eObjectToString(project2);
+			System.out.println();
+		} catch (final SerializationException ex) {
+			// TODO Auto-generated catch block
+			// Do NOT catch all Exceptions ("catch (Exception e)")
+			// Log AND handle Exceptions if possible
+			//
+			// You can just uncomment one of the lines below to log an exception:
+			// logException will show the logged excpetion to the user
+			// ModelUtil.logException(ex);
+			// ModelUtil.logException("YOUR MESSAGE HERE", ex);
+			// logWarning will only add the message to the error log
+			// ModelUtil.logWarning("YOUR MESSAGE HERE", ex);
+			// ModelUtil.logWarning("YOUR MESSAGE HERE");
+			//
+			// If handling is not possible declare and rethrow Exception
 		}
 
 		if (!ModelUtil.areEqual(project1, project2)) {

@@ -7,7 +7,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and implementation
+ * Edgar Mueller - bug fixing
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
@@ -47,12 +48,12 @@ public class OperationReverseTest extends FuzzyProjectTest {
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				projectSpace.getLocalChangePackage().reverse()
+				projectSpace.getLocalChangePackage()
+					.reverse()
 					.apply(projectSpace.getProject());
 			}
 		}.run(false);
 
-		compareIgnoreOrder(getCopyProjectSpace().getProject(),
-			projectSpace.getProject());
+		compareIgnoreOrder(projectSpace.getProject(), getCopyProjectSpace().getProject());
 	}
 }

@@ -89,16 +89,21 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * Clone a project.
+	 * Initializes a new project space.
 	 * 
-	 * @param projectName The name of the new project.
-	 * @param originalProject The project to clone.
-	 * @return The new {@link ProjectSpace} of the cloned {@link Project}.
+	 * @param projectName
+	 *            the name of the new project
+	 * @param project
+	 *            the project to be contained in the project space
+	 * @param cloneProject
+	 *            whether to clone the project
+	 * 
+	 * @return the new {@link ProjectSpace} of the cloned {@link Project}
 	 */
-	public ProjectSpace cloneProject(String projectName, Project originalProject) {
+	public ProjectSpace createLocalProject(String projectName, Project project, boolean cloneProject) {
 
 		final ProjectSpace projectSpace = ModelFactory.eINSTANCE.createProjectSpace();
-		projectSpace.setProject(ModelUtil.clone(originalProject));
+		projectSpace.setProject(cloneProject ? ModelUtil.clone(project) : project);
 		projectSpace.setProjectName(projectName);
 
 		projectSpace.initResources(getResourceSet());
@@ -110,14 +115,27 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
+	 * Initializes a new project space and clones the given project.
+	 * 
+	 * @param projectName
+	 *            the name of the new project
+	 * @param project
+	 *            the project to be cloned and contained in the project space
+	 * @return the new {@link ProjectSpace} of the cloned {@link Project}
+	 */
+	public ProjectSpace cloneProject(String projectName, Project project) {
+		return createLocalProject(projectName, project, true);
+	}
+
+	/**
 	 * 
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#createLocalProject(java.lang.String)
 	 */
 	public ProjectSpace createLocalProject(String projectName) {
-		return cloneProject(projectName,
-			org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.createProject());
+		return createLocalProject(projectName,
+			org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.createProject(), false);
 	}
 
 	/**
