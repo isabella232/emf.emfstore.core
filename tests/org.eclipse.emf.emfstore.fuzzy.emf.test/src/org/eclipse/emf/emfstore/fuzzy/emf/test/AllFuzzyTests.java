@@ -24,7 +24,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(FilteredSuite.class)
 @FilteredSuiteParameter({ "runFuzzyTests" })
-@Suite.SuiteClasses({ OperationApplyTest.class, OperationReverseTest.class })
+@Suite.SuiteClasses({ OperationApplyTest.class, OperationReverseTest.class, FuzzyProjectConfigTest.class })
 public class AllFuzzyTests {
 
 }
