@@ -244,10 +244,12 @@ public class ObserverBus {
 					return Result.getDefaultValue(method);
 				}
 
-				// TODO: check for emptiness
 				lastResults = notifiyObservers(observers, method, args);
-				notifiyObservers(nonPrioritizedObservers, method, args);
-				return lastResults.get(0).getResultOrDefaultValue();
+				final List<Result> nonPrioritizedResults = notifiyObservers(nonPrioritizedObservers, method, args);
+				if (lastResults.size() == 0) {
+					lastResults = nonPrioritizedResults;
+				}
+				return lastResults.get(0).getResult();
 			}
 
 			// return default value if no observers are registered
