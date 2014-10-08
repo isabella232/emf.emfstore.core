@@ -63,7 +63,8 @@ public class AcUserImportWizard extends Wizard {
 		if (wrappedOrgUnits.size() > 0) {
 			final ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(getShell());
 			progressMonitorDialog.open();
-			progressMonitorDialog.getProgressMonitor().beginTask(Messages.AcUserImportWizard_ImportingUsers, IProgressMonitor.UNKNOWN);
+			progressMonitorDialog.getProgressMonitor().beginTask(Messages.AcUserImportWizard_ImportingUsers,
+				IProgressMonitor.UNKNOWN);
 
 			importController.importOrgUnits(wrappedOrgUnits);
 

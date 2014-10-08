@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.ChecksumErrorHandler;
 
 /**
  * Configuration options that influence the behavior of the client.
- *
+ * 
  * @author emueller
  * @author ovonwesen
  * @author mkoegel
@@ -59,7 +59,7 @@ public class Behavior {
 	 * Whether to enable the automatic saving of the workspace.
 	 * If disabled, performance improves vastly, but clients have to
 	 * perform the saving of the workspace manually.
-	 *
+	 * 
 	 * @param enabled whether to enable auto save
 	 */
 	public void setAutoSave(boolean enabled) {
@@ -68,28 +68,28 @@ public class Behavior {
 
 	/**
 	 * Whether auto-save is enabled.
-	 *
+	 * 
 	 * @return true, if auto-save is enabled, false otherwise
 	 */
 	public boolean isAutoSaveEnabled() {
 		if (isAutoSaveActive == null) {
 			isAutoSaveActive = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
-			.getBoolean(
-				AUTO_SAVE_EXTENSION_POINT_ATTRIBUTE_NAME, false);
+				.getBoolean(
+					AUTO_SAVE_EXTENSION_POINT_ATTRIBUTE_NAME, false);
 		}
 		return isAutoSaveActive;
 	}
 
 	/**
 	 * Whether re-recording is enabled.
-	 *
+	 * 
 	 * @return <code>true</code>, if re-recording is enabled, <code>false</code> otherwise
 	 */
 	public Boolean isRerecordingActivated() {
 
 		if (isRerecordingActive == null) {
 			isRerecordingActive = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
-			.getBoolean(RERECORD_LOCAL_CHANGES_EXTENSION_POINT_ATTRIBUTE_NAME, Boolean.TRUE);
+				.getBoolean(RERECORD_LOCAL_CHANGES_EXTENSION_POINT_ATTRIBUTE_NAME, Boolean.TRUE);
 		}
 
 		return isRerecordingActive;
@@ -97,14 +97,14 @@ public class Behavior {
 
 	/**
 	 * Whether incoming cross references should be cut off.
-	 *
+	 * 
 	 * @return {@link Boolean#TRUE}, if incoming cross references are cut off, {@link Boolean#FALSE} otherwise
 	 */
 	public Boolean isCutOffIncomingCrossReferencesActivated() {
 
 		if (isCutOffIncomingCrossReferencesActive == null) {
 			isCutOffIncomingCrossReferencesActive = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
-			.getBoolean(CUT_OFF_INCOMING_CROSS_REFS_EXTENSION_POINT_ATTRIBUTE_NAME, Boolean.TRUE);
+				.getBoolean(CUT_OFF_INCOMING_CROSS_REFS_EXTENSION_POINT_ATTRIBUTE_NAME, Boolean.TRUE);
 		}
 
 		return isCutOffIncomingCrossReferencesActive;
@@ -112,14 +112,14 @@ public class Behavior {
 
 	/**
 	 * Whether the usage of commands is enforced. Default is {@link Boolean#FALSE}.
-	 *
+	 * 
 	 * @return {@link Boolean#TRUE}, if usage of commands is enforced, {@link Boolean#FALSE} otherwise
 	 */
 	public Boolean isForceCommandsActived() {
 
 		if (isForceCommandsActive == null) {
 			isForceCommandsActive = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
-			.getBoolean(FORCE_COMMANDS_EXTENSION_POINT_ATTRIBUTE_NAME, Boolean.FALSE);
+				.getBoolean(FORCE_COMMANDS_EXTENSION_POINT_ATTRIBUTE_NAME, Boolean.FALSE);
 		}
 
 		return isForceCommandsActive;
@@ -127,7 +127,7 @@ public class Behavior {
 
 	/**
 	 * Whether cut elements are added automatically as regular model elements by default.
-	 *
+	 * 
 	 * @return {@link Boolean#TRUE}, if cut elements are added automatically as regular elements, {@link Boolean#FALSE}
 	 *         otherwise
 	 */
@@ -136,8 +136,8 @@ public class Behavior {
 		if (isDenyAddCutElementsToModelElementsFeatureActive == null) {
 			isDenyAddCutElementsToModelElementsFeatureActive = new ESExtensionPoint(
 				RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
-			.getBoolean(DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME,
-				Boolean.FALSE);
+				.getBoolean(DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME,
+					Boolean.FALSE);
 		}
 
 		return isDenyAddCutElementsToModelElementsFeatureActive;
@@ -146,7 +146,7 @@ public class Behavior {
 	/**
 	 * Whether the checksum check is active. If true, and checksum comparison fails, an {@link ESChecksumErrorHandler}
 	 * will be active.
-	 *
+	 * 
 	 * @return true, if the checksum comparison is activated, false otherwise
 	 */
 	public boolean isChecksumCheckActive() {
@@ -157,7 +157,7 @@ public class Behavior {
 
 	/**
 	 * Returns the active {@link ESChecksumErrorHandler}. The default is {@link ChecksumErrorHandler#AUTOCORRECT}.
-	 *
+	 * 
 	 * @return the active checksum error handler
 	 */
 	public ESChecksumErrorHandler getChecksumErrorHandler() {
@@ -189,7 +189,7 @@ public class Behavior {
 
 	/**
 	 * Set the active {@link ESChecksumErrorHandler}.
-	 *
+	 * 
 	 * @param errorHandler
 	 *            the error handler to be set
 	 */
@@ -199,14 +199,14 @@ public class Behavior {
 
 	/**
 	 * Get the default server info.
-	 *
+	 * 
 	 * @return server info
 	 */
 	public List<ServerInfo> getDefaultServerInfos() {
 		final ESClientConfigurationProvider provider = new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.defaultConfigurationProvider") //$NON-NLS-1$
-		.getClass("providerClass", //$NON-NLS-1$
-			ESClientConfigurationProvider.class);
+			.getClass("providerClass", //$NON-NLS-1$
+				ESClientConfigurationProvider.class);
 		final ArrayList<ServerInfo> result = new ArrayList<ServerInfo>();
 		if (provider != null) {
 			final List<ESServer> defaultServerInfos = provider.getDefaultServerInfos();

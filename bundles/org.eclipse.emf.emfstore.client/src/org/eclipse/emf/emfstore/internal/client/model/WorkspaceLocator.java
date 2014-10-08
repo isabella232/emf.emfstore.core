@@ -1,14 +1,14 @@
 /*******************************************************************************
  * Copyright (c) 2014 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Edgar Mueller, Neil Mackenzie - initial API and implementation
- *
+ * 
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model;
 
@@ -31,7 +31,7 @@ public final class WorkspaceLocator {
 
 	/**
 	 * Creates a workspace and associates it with the given ID.
-	 *
+	 * 
 	 * @param workspaceProviderId
 	 *            the identifier that will be associated with the workspace
 	 * @return the created workspace
@@ -44,7 +44,7 @@ public final class WorkspaceLocator {
 
 	/**
 	 * Creates a workspace with a particular ID.
-	 *
+	 * 
 	 * @param workspaceProviderId
 	 *            the workspace identifier
 	 * @return the created workspace
@@ -66,7 +66,7 @@ public final class WorkspaceLocator {
 
 	/**
 	 * Checks whether a workspace provier exists for the given identifier.
-	 *
+	 * 
 	 * @param workspaceProviderId
 	 *            the workspace provider identifier
 	 * @return the resulting boolean
@@ -84,7 +84,7 @@ public final class WorkspaceLocator {
 	/**
 	 * Retrieves the workspace associated with the given ID.
 	 * If no such workspace can be found, one will be created.
-	 *
+	 * 
 	 * @param workspaceProviderId
 	 *            the workspace ID
 	 * @return the associated workspace provider, if any

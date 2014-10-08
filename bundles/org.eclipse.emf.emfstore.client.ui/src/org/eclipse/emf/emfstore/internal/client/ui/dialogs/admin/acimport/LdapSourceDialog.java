@@ -97,7 +97,8 @@ public class LdapSourceDialog extends TitleAreaDialog {
 	public void okPressed() {
 		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(getShell());
 		progressMonitorDialog.open();
-		progressMonitorDialog.getProgressMonitor().beginTask(Messages.LdapSourceDialog_Connecting, IProgressMonitor.UNKNOWN);
+		progressMonitorDialog.getProgressMonitor().beginTask(Messages.LdapSourceDialog_Connecting,
+			IProgressMonitor.UNKNOWN);
 
 		Properties serverProperties = new Properties();
 

@@ -12,7 +12,6 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.common.model;
 
-
 /**
  * Allows clients to return a custom ID for new model elements.
  * 

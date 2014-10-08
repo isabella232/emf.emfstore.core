@@ -12,7 +12,6 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server;
 
-
 /**
  * Interface for workspace location providers. Implementing classes provide a location for the workspace - or server
  * workspace - files to store models and other files. You may subclass

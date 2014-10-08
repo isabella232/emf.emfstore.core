@@ -88,7 +88,8 @@ public final class VersionVerifier {
 
 			acceptedVersions.replace(acceptedVersions.length() - 2, acceptedVersions.length(), "."); //$NON-NLS-1$
 
-			throw new ClientVersionOutOfDateException(Messages.VersionVerifier_ClientVersion + clientVersionInfo.getVersion()
+			throw new ClientVersionOutOfDateException(Messages.VersionVerifier_ClientVersion
+				+ clientVersionInfo.getVersion()
 				+ " - " //$NON-NLS-1$
 				+ Messages.VersionVerifier_AcceptedVersions + acceptedVersions);
 		}
