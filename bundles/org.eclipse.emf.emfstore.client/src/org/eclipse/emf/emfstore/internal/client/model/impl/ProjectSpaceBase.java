@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
  * Johannes Faltermeier - adaptions for independent storage
@@ -110,15 +110,15 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Project space base class that contains custom user methods.
- *
+ * 
  * @author koegel
  * @author wesendon
  * @author emueller
  * @author jfaltermeier
- *
+ * 
  */
 public abstract class ProjectSpaceBase extends IdentifiableElementImpl
-implements ProjectSpace, ESLoginObserver, ESDisposable {
+	implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private ESLocalProjectImpl esLocalProjectImpl;
 
@@ -154,7 +154,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	 * This may be used to provide a context while applying operations on a
 	 * {@link org.eclipse.emf.emfstore.client.ESLocalProject}.
 	 * </p>
-	 *
+	 * 
 	 * @param runnableContext
 	 *            the runnable context to be set
 	 */
@@ -171,7 +171,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#addFile(java.io.File)
 	 */
 	public FileIdentifier addFile(File file) throws FileTransferException {
@@ -179,9 +179,19 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#addFile(java.io.File, java.lang.String)
+	 */
+	public FileIdentifier addFile(File file, String fileIdentifier) throws FileTransferException {
+		return fileTransferManager.addFile(file, fileIdentifier);
+	}
+
+	/**
+	 * 
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#addOperations(java.util.List)
 	 */
 	public void addOperations(List<? extends AbstractOperation> operations) {
@@ -194,9 +204,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#addTag(org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec)
 	 */
@@ -208,7 +218,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	/**
 	 * Helper method which applies merged changes on the ProjectSpace. This
 	 * method is used by merge mechanisms in update as well as branch merging.
-	 *
+	 * 
 	 * @param baseSpec
 	 *            new base version
 	 * @param incoming
@@ -219,7 +229,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	 *            an {@link IProgressMonitor} to inform about the progress of the UpdateCallback in case it is called
 	 * @param runChecksumTestOnBaseSpec
 	 *            whether the checksum check is performed while applying the changes
-	 *
+	 * 
 	 * @throws ESException in case the checksum comparison failed and the activated IChecksumErrorHandler
 	 *             also failed
 	 */
@@ -255,7 +265,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<ChangePackage> incoming,
 		IProgressMonitor progressMonitor)
-			throws ESException {
+		throws ESException {
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 		if (!performChecksumCheck(baseSpec, getProject())) {
 			progressMonitor.subTask(Messages.ProjectSpaceBase_Activate_ChecksumErrorHandler_Invalid_Chekcum);
@@ -302,13 +312,13 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	/**
 	 * Applies a list of operations to the project. The change tracking will be
 	 * stopped meanwhile.
-	 *
-	 *
+	 * 
+	 * 
 	 * @param operations
 	 *            the list of operations to be applied upon the project space
 	 * @param addOperations
 	 *            whether the operations should be saved in project space
-	 *
+	 * 
 	 */
 	public void applyOperations(List<AbstractOperation> operations, boolean addOperations) {
 		executeRunnable(new ApplyOperationsRunnable(this, operations, addOperations));
@@ -317,11 +327,11 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	/**
 	 * Applies a list of operations to the project. The change tracking will be
 	 * stopped meanwhile.
-	 *
-	 *
+	 * 
+	 * 
 	 * @param operations
 	 *            the list of operations to be applied upon the project space
-	 *
+	 * 
 	 */
 	public void applyOperationsWithRerecording(List<AbstractOperation> operations) {
 		executeRunnable(new ApplyOperationsAndRecordRunnable(this, operations));
@@ -330,7 +340,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	/**
 	 * Executes a given {@link Runnable} in the context of this {@link ProjectSpace}.<br>
 	 * The {@link Runnable} usually modifies the Project contained in the {@link ProjectSpace}.
-	 *
+	 * 
 	 * @param runnable
 	 *            the {@link Runnable} to be executed in the context of this {@link ProjectSpace}
 	 */
@@ -340,7 +350,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#beginCompositeOperation()
 	 */
 	public CompositeOperationHandle beginCompositeOperation() {
@@ -358,9 +368,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#commit(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public PrimaryVersionSpec commit(IProgressMonitor monitor) throws ESException {
@@ -368,9 +378,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#commit(java.lang.String,
 	 *      org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -389,9 +399,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#exportLocalChanges(java.io.File,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -400,9 +410,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#exportLocalChanges(java.io.File)
 	 */
 	public void exportLocalChanges(File file) throws IOException {
@@ -410,9 +420,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#exportProject(java.io.File,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -421,9 +431,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#exportProject(java.io.File)
 	 */
 	public void exportProject(File file) throws IOException {
@@ -431,9 +441,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getChanges(org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec)
 	 */
@@ -448,9 +458,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getFile(org.eclipse.emf.emfstore.internal.server.model.FileIdentifier)
 	 */
 	public FileDownloadStatus getFile(FileIdentifier fileIdentifier) throws FileTransferException {
@@ -458,9 +468,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getFileInfo(org.eclipse.emf.emfstore.internal.server.model.FileIdentifier)
 	 */
 	public FileInformation getFileInfo(FileIdentifier fileIdentifier) {
@@ -469,7 +479,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage()
 	 */
 	public ChangePackage getLocalChangePackage(boolean canonize) {
@@ -493,7 +503,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * Get the current notification recorder.
-	 *
+	 * 
 	 * @return the recorder
 	 */
 	public NotificationRecorder getNotificationRecorder() {
@@ -501,9 +511,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getOperationManager()
 	 */
 	public OperationManager getOperationManager() {
@@ -512,7 +522,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getOperations()
 	 */
 	public List<AbstractOperation> getOperations() {
@@ -525,9 +535,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getProjectInfo()
 	 */
 	public ProjectInfo getProjectInfo() {
@@ -542,7 +552,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getPropertyManager()
 	 */
 	public PropertyManager getPropertyManager() {
@@ -570,7 +580,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#importLocalChanges(java.lang.String)
 	 */
 	public void importLocalChanges(String fileName) throws IOException {
@@ -594,9 +604,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#init()
 	 */
 	public void init() {
@@ -653,7 +663,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.inverseCrossReferenceCache") //$NON-NLS-1$
-		.getExtensionElements()) {
+			.getExtensionElements()) {
 			useCrossReferenceAdapter &= element.getBoolean("activated"); //$NON-NLS-1$
 		}
 
@@ -678,7 +688,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * Returns the file transfer manager.
-	 *
+	 * 
 	 * @return the file transfer manager
 	 */
 	public FileTransferManager getFileTransferManager() {
@@ -686,9 +696,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#initResources(org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void initResources(ResourceSet resourceSet) {
@@ -736,9 +746,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#delete(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void delete(IProgressMonitor monitor) throws IOException {
@@ -768,10 +778,10 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * Returns the {@link ECrossReferenceAdapter}, if available.
-	 *
+	 * 
 	 * @param modelElement
 	 *            the model element for which to find inverse cross references
-	 *
+	 * 
 	 * @return the {@link ECrossReferenceAdapter}
 	 */
 	public Collection<Setting> findInverseCrossReferences(EObject modelElement) {
@@ -783,9 +793,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getResourceSet()
 	 */
 	public ResourceSet getResourceSet() {
@@ -793,9 +803,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#setResourceSet(org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void setResourceSet(ResourceSet resourceSet) {
@@ -803,9 +813,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#isTransient()
 	 */
 	public boolean isTransient() {
@@ -813,9 +823,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#isUpdated()
 	 */
 	public boolean isUpdated() throws ESException {
@@ -844,7 +854,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#makeTransient()
 	 */
 	public void makeTransient() {
@@ -859,7 +869,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -897,15 +907,15 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#mergeResolvedConflicts(org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet,
 	 *      java.util.List, java.util.List)
 	 */
 	public ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<ChangePackage> myChangePackages, List<ChangePackage> theirChangePackages)
-			throws ChangeConflictException {
+		throws ChangeConflictException {
 
 		final Set<AbstractOperation> accceptedMineSet = new LinkedHashSet<AbstractOperation>();
 		final Set<AbstractOperation> rejectedTheirsSet = new LinkedHashSet<AbstractOperation>();
@@ -958,9 +968,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getBranches()
 	 */
 	public List<BranchInfo> getBranches() throws ESException {
@@ -974,9 +984,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#removeTag(org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec)
 	 */
@@ -986,9 +996,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#resolve(org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment)
 	 */
 	public EObject resolve(ModelElementUrlFragment modelElementUrlFragment) throws MEUrlResolutionException {
@@ -1001,9 +1011,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#resolveVersionSpec(org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -1021,9 +1031,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#revert()
 	 */
 	public void revert() {
@@ -1051,7 +1061,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#hasUnsavedChanges()
 	 */
 	public boolean hasUnsavedChanges() {
@@ -1073,7 +1083,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * Save the given resource that is part of the project space resource set.
-	 *
+	 * 
 	 * @param resource
 	 *            the resource
 	 */
@@ -1094,9 +1104,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#setProperty(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty)
 	 */
 	public void setProperty(OrgUnitProperty property) {
@@ -1130,9 +1140,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#shareProject(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public ProjectInfo shareProject(IProgressMonitor monitor) throws ESException {
@@ -1140,9 +1150,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#shareProject(org.eclipse.emf.emfstore.internal.client.model.Usersession,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -1170,9 +1180,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#transmitProperties()
 	 */
 	public void transmitProperties() {
@@ -1186,10 +1196,10 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 		while (iterator.hasNext()) {
 			try {
 				ESWorkspaceProviderImpl
-				.getInstance()
-				.getConnectionManager()
-				.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
-					getProjectId());
+					.getInstance()
+					.getConnectionManager()
+					.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
+						getProjectId());
 				iterator.remove();
 			} catch (final ESException e) {
 				WorkspaceUtil.logException(Messages.ProjectSpaceBase_Transmission_Of_Properties_Failed, e);
@@ -1198,9 +1208,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#undoLastOperation()
 	 */
 	public void undoLastOperation() {
@@ -1208,9 +1218,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#undoLastOperation()
 	 */
 	public void undoLastOperations(int numberOfOperations) {
@@ -1233,9 +1243,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#update(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public PrimaryVersionSpec update(IProgressMonitor monitor) throws ESException {
@@ -1243,9 +1253,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#update(org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec)
 	 */
 	public PrimaryVersionSpec update(final VersionSpec version) throws ESException {
@@ -1253,9 +1263,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#update(org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec,
 	 *      org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -1275,9 +1285,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.ESDisposable#dispose()
 	 */
 	@SuppressWarnings("unchecked")
@@ -1311,9 +1321,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#isShared()
 	 */
 	public boolean isShared() {
@@ -1322,7 +1332,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private void notifyPreRevertMyChanges(final ChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-		.preRevertMyChanges(toAPI(), changePackage.toAPI());
+			.preRevertMyChanges(toAPI(), changePackage.toAPI());
 	}
 
 	private void notifyPostRevertMyChanges() {
@@ -1332,19 +1342,19 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	private void notifyPostApplyTheirChanges(List<ChangePackage> theirChangePackages) {
 		// TODO ASYNC review this cancel
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-		.postApplyTheirChanges(toAPI(), APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages));
+			.postApplyTheirChanges(toAPI(), APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages));
 	}
 
 	private void notifyPostApplyMergedChanges(ChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-		.postApplyMergedChanges(
-			toAPI(), changePackage.toAPI());
+			.postApplyMergedChanges(
+				toAPI(), changePackage.toAPI());
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESLocalProjectImpl toAPI() {
@@ -1355,9 +1365,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESLocalProjectImpl createAPI() {
@@ -1366,7 +1376,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	/**
 	 * Returns the {@link ESRunnableContext} operations are applied in.
-	 *
+	 * 
 	 * @return the runnable context operations are executed in
 	 */
 	public ESRunnableContext getRunnableContext() {

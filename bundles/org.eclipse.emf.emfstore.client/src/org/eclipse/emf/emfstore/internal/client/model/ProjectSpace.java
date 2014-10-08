@@ -141,6 +141,25 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	FileIdentifier addFile(File file) throws FileTransferException;
 
 	/**
+	 * Adds a file to this project space. The file will be uploaded to the
+	 * EMFStore upon a commit. As long as the file is not yet committed, it can
+	 * be removed by first retrieving the {@link FileInformation} via {@link #getFileInfo(FileIdentifier)} and then
+	 * remove it via {@link FileInformation#cancelPendingUpload()}.
+	 * 
+	 * @param file
+	 *            to be added to the project space
+	 * @param fileIdentifier
+	 *            the file identifier to be used for the given file
+	 * @return The file identifier the file was assigned to. This identifier can
+	 *         be used to retrieve the file later on
+	 * @throws FileTransferException
+	 *             if any error occurs
+	 * 
+	 * @generated NOT
+	 */
+	FileIdentifier addFile(File file, String fileIdentifier) throws FileTransferException;
+
+	/**
 	 * Adds a list of operations to this project space.
 	 * 
 	 * @param operations

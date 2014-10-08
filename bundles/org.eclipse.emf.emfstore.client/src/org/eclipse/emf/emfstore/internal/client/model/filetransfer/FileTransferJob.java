@@ -73,7 +73,7 @@ public abstract class FileTransferJob extends Job {
 		projectId = projectSpace.getProjectId();
 
 		if (projectSpace.getUsersession() == null) {
-			throw new FileTransferException("Session ID is unknown. Please login first!");
+			throw new FileTransferException(Messages.FileTransferJob_UnknownSession);
 		}
 
 		new EMFStoreCommand() {
@@ -88,7 +88,7 @@ public abstract class FileTransferJob extends Job {
 	 * @param monitor monitor
 	 */
 	protected void setTotalWork(IProgressMonitor monitor) {
-		monitor.beginTask("Transfering ", fileInformation.getFileSize() / FilePartitionerUtil.getChunkSize());
+		monitor.beginTask(Messages.FileTransferJob_Transferring, fileInformation.getFileSize() / FilePartitionerUtil.getChunkSize());
 	}
 
 	/**

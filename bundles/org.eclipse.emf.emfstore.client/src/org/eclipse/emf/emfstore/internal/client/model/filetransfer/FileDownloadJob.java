@@ -44,7 +44,7 @@ public class FileDownloadJob extends FileTransferJob {
 	FileDownloadJob(FileDownloadStatus status, FileTransferManager transferManager, FileIdentifier fileId,
 		boolean isTriggeredByUI) {
 		super(transferManager, new FileTransferInformation(fileId, FileTransferInformation.UNKOWN_SIZE),
-			"File Download");
+			Messages.FileDownloadJob_FileDownload);
 		setUser(isTriggeredByUI);
 		this.status = status;
 	}
@@ -110,7 +110,7 @@ public class FileDownloadJob extends FileTransferJob {
 		} while (!fileChunk.isLast());
 
 		// Once the file is downloaded, it can be moved from the tmp folder to the cache
-		final File result = getCache().moveTempFileToCache(getFileId());
+		final File result = getCache().moveTempFileToCache(getFileId(), true);
 		status.transferFinished(result);
 		return true;
 	}

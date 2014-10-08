@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.internal.client.model.filetransfer;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -86,14 +87,14 @@ public class FileTransferManager {
 	 */
 	public FileIdentifier addFile(File file, String id) throws FileTransferException {
 		if (file == null) {
-			throw new FileTransferException("File to be added is null!");
+			throw new FileTransferException(Messages.FileTransferManager_FileIsNull);
 		}
 		if (file.isDirectory()) {
-			throw new FileTransferException("Can only upload files! File is a directory.\nPath:"
+			throw new FileTransferException(Messages.FileTransferManager_UploadIsDirectory
 				+ file.getAbsolutePath());
 		}
 		if (!file.exists()) {
-			throw new FileTransferException("The file to be uploaded does not exist.\nPath:" + file.getAbsolutePath());
+			throw new FileTransferException(Messages.FileTransferManager_FileDoesNotExist + file.getAbsolutePath());
 		}
 
 		// Create the file identifier
@@ -106,7 +107,7 @@ public class FileTransferManager {
 		try {
 			cacheManager.cacheFile(file, identifier);
 		} catch (final IOException e) {
-			throw new FileTransferException("An exception occurred while trying to cache an incoming file:\n"
+			throw new FileTransferException(Messages.FileTransferManager_ExceptionDuringCaching
 				+ e.getMessage(), e);
 		}
 
@@ -156,9 +157,12 @@ public class FileTransferManager {
 				// (it should be, unless there is a severe bug or the user has
 				// manually deleted it)
 				if (!cacheManager.hasCachedFile(fi)) {
-					WorkspaceUtil.logException("The file with the id " + fi.getIdentifier()
-						+ " was not found in cache. It was queued for upload but"
-						+ " is now removed from the queue. The file will NOT be on the server.", null);
+					WorkspaceUtil.logException(
+						MessageFormat.format(
+							Messages.FileTransferManager_FileNoInCache_1
+								+ Messages.FileTransferManager_FileNoInCache_2
+								+ Messages.FileTransferManager_FileNoInCache_3,
+							fi.getIdentifier()), null);
 					// Remove from commit queue
 					new EMFStoreCommand() {
 						@Override
@@ -174,7 +178,7 @@ public class FileTransferManager {
 				final IStatus result = job.run(progress);
 
 				if (job.getException() != null) {
-					WorkspaceUtil.logException("An exception occurred while trying to upload a file to the server",
+					WorkspaceUtil.logException(Messages.FileTransferManager_ExceptionDuringUpload,
 						job.getException());
 					return;
 				}
@@ -184,7 +188,7 @@ public class FileTransferManager {
 				}
 			}
 		} catch (final FileTransferException e) {
-			WorkspaceUtil.logException("Uploading the waiting files did not succeed", e);
+			WorkspaceUtil.logException(Messages.FileTransferManager_UploadFailed, e);
 		}
 	}
 
@@ -193,26 +197,51 @@ public class FileTransferManager {
 	 * 
 	 * @param fileIdentifier
 	 *            the file identifier whose download status should be retrieved
+	 * @param isTriggeredByUI
+	 *            whether the download of the file has been triggered by the UI
+	 * @param forceDownload
+	 *            whether to re-fetch the file even, if a file with the same identifier is already present;
+	 *            set this to <code>true</code> in case you have files, which will be updated but keep the same
+	 *            identifier
+	 * @return the download status of the file
 	 * 
+	 * @throws FileTransferException in case the given file identifier is {@code null}
+	 */
+	public FileDownloadStatus getFile(FileIdentifier fileIdentifier,
+		boolean isTriggeredByUI, boolean forceDownload) throws FileTransferException {
+
+		if (fileIdentifier == null) {
+			throw new FileTransferException(Messages.FileTransferManager_FileIdentifierIsNull);
+		}
+
+		if (forceDownload || !cacheManager.hasCachedFile(fileIdentifier)) {
+			return startDownload(fileIdentifier, isTriggeredByUI);
+		}
+
+		// If the file is cached locally, get it
+		// if (cacheManager.hasCachedFile(fileIdentifier)) {
+		return FileDownloadStatus.Factory.createAlreadyFinished(projectSpace, fileIdentifier,
+			cacheManager.getCachedFile(fileIdentifier));
+		// }
+
+		// Otherwise, start a download
+		// return startDownload(fileIdentifier, isTriggeredByUI);
+	}
+
+	/**
+	 * Returns the download status of the file that is associated with the given {@link FileIdentifier}.
+	 * 
+	 * @param fileIdentifier
+	 *            the file identifier whose download status should be retrieved
+	 * @param isTriggeredByUI
+	 *            whether the download of the file has been triggered by the UI
 	 * @return the download status of the file
 	 * 
 	 * @throws FileTransferException in case the given file identifier is {@code null}
 	 */
 	public FileDownloadStatus getFile(FileIdentifier fileIdentifier, boolean isTriggeredByUI)
 		throws FileTransferException {
-
-		if (fileIdentifier == null) {
-			throw new FileTransferException("File identifier may not be null,");
-		}
-
-		// If the file is cached locally, get it
-		if (cacheManager.hasCachedFile(fileIdentifier)) {
-			return FileDownloadStatus.Factory.createAlreadyFinished(projectSpace, fileIdentifier,
-				cacheManager.getCachedFile(fileIdentifier));
-		}
-
-		// Otherwise, start a download
-		return startDownload(fileIdentifier, isTriggeredByUI);
+		return getFile(fileIdentifier, isTriggeredByUI, false);
 	}
 
 	/**
@@ -274,7 +303,7 @@ public class FileTransferManager {
 
 	/**
 	 * Removes a waiting upload from the queue. Throws a file transfer exception
-	 * if the fil is not in the list.
+	 * if the file is not in the list.
 	 * 
 	 * @param fileId
 	 *            the file to remove from the queue
@@ -289,8 +318,9 @@ public class FileTransferManager {
 
 		} else {
 			// Not found in list? exception!
-			throw new FileTransferException("Could not remove pending upload with id " + fileId
-				+ ": No upload with that id is pending");
+			throw new FileTransferException(
+				MessageFormat.format(
+					Messages.FileTransferManager_NoUploadPendingWithThatId, fileId));
 		}
 	}
 

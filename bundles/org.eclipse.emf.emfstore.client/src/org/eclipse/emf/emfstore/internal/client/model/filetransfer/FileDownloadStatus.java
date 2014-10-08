@@ -155,7 +155,7 @@ public final class FileDownloadStatus {
 			public void update(Observable arg0, Object arg1) {
 				final FileDownloadStatus status = (FileDownloadStatus) arg1;
 				final Exception e = status.getException();
-				ModelUtil.logException("File transfer failed!", e);
+				ModelUtil.logException(Messages.FileDownloadStatus_TransferFailed, e);
 
 			}
 		});
@@ -204,11 +204,11 @@ public final class FileDownloadStatus {
 	public File getTransferredFile() throws FileTransferException {
 		if (isNotOnServer()) {
 			throw new FileNotOnServerException(MessageFormat.format(
-				"File {0} has not been found on the server",
+				Messages.FileDownloadStatus_FileNotOnServer,
 				id.getIdentifier()));
 		} else if (!isTransferFinished()) {
 			throw new FileTransferException(MessageFormat.format(
-				"Trying to get transferred file {0} while transfer is not yet finished",
+				Messages.FileDownloadStatus_TransferNotFinishedYet,
 				id.getIdentifier()));
 		}
 		return transferredFile;
@@ -245,7 +245,7 @@ public final class FileDownloadStatus {
 					observer.wait();
 				}
 			} catch (final InterruptedException e) {
-				throw new FileTransferException("Failed to initialize blocked get.", e);
+				throw new FileTransferException(Messages.FileDownloadStatus_BlockedGetInitFailed, e);
 			}
 		}
 		return getTransferredFile();
@@ -291,7 +291,7 @@ public final class FileDownloadStatus {
 	 */
 	void transferStarted(int fileSize) throws FileTransferException {
 		if (status != Status.NOT_STARTED) {
-			throw new FileTransferException("Cannot start a job that is " + status.name());
+			throw new FileTransferException(Messages.FileDownloadStatus_CannotStartJob + status.name());
 		}
 		statistics.registerStart(fileSize);
 		status = Status.TRANSFERING;

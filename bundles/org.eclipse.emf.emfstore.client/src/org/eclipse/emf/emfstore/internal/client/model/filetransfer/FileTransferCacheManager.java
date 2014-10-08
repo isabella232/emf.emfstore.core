@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.internal.client.model.filetransfer;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 
 import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -33,23 +34,23 @@ public class FileTransferCacheManager {
 	/**
 	 * Temporary folder for file uploads to server.
 	 */
-	public static final String TEMP_FOLDER = "tmp";
+	public static final String TEMP_FOLDER = "tmp"; //$NON-NLS-1$
 
 	/**
 	 * project folder prefix.
 	 */
-	public static final String PROJECT_FOLDER_PREFIX = "project-";
+	public static final String PROJECT_FOLDER_PREFIX = "project-"; //$NON-NLS-1$
 
 	/**
 	 * Attachment folder for uploads and downloads.
 	 */
-	public static final String ATTACHMENT_FOLDER = "attachment";
+	public static final String ATTACHMENT_FOLDER = "attachment"; //$NON-NLS-1$
 
 	/**
 	 * The delimiter that separates file attachment id, file version and file
 	 * name in an uploaded file.
 	 */
-	public static final String FILE_NAME_DELIMITER = "_";
+	public static final String FILE_NAME_DELIMITER = "_"; //$NON-NLS-1$
 
 	/**
 	 * The associated project space.
@@ -75,7 +76,7 @@ public class FileTransferCacheManager {
 	public FileTransferCacheManager(ProjectSpace projectSpaceImpl) {
 		projectSpace = projectSpaceImpl;
 		cacheFolder = new File(getCacheFolder(projectSpace));
-		tempCacheFolder = new File(cacheFolder, "temp");
+		tempCacheFolder = new File(cacheFolder, "temp"); //$NON-NLS-1$
 		mkdirs();
 	}
 
@@ -90,7 +91,7 @@ public class FileTransferCacheManager {
 			+ XMIClientURIConverter.PROJECT_SAPCE_DIRECTORY_PREFIX
 			+ projectSpace.getIdentifier()
 			+ File.separatorChar
-			+ "files" + File.separatorChar;
+			+ "files" + File.separatorChar; //$NON-NLS-1$
 	}
 
 	/**
@@ -99,7 +100,7 @@ public class FileTransferCacheManager {
 	 * getCachedFile method finds the file and does not throw an exception.
 	 * 
 	 * @param identifier
-	 *            the identifer of the file
+	 *            the identifier of the file
 	 * @return if the file is present in the cache
 	 */
 	public boolean hasCachedFile(FileIdentifier identifier) {
@@ -112,7 +113,7 @@ public class FileTransferCacheManager {
 	 * exist, a FileTransferException is thrown.
 	 * 
 	 * @param identifier
-	 *            the idntifier of the file
+	 *            the identifier of the file
 	 * @return the file
 	 * @throws FileTransferException
 	 *             if the file is not present in the cache
@@ -120,7 +121,9 @@ public class FileTransferCacheManager {
 	public File getCachedFile(FileIdentifier identifier) throws FileTransferException {
 		final File f = getFileFromId(cacheFolder, identifier);
 		if (!f.exists()) {
-			throw new FileTransferException("The file with the id " + identifier + " is not in the cache");
+			throw new FileTransferException(
+				MessageFormat.format(
+					Messages.FileTransferCacheManager_FileNotInCache, identifier));
 		}
 		return f;
 	}
@@ -145,14 +148,14 @@ public class FileTransferCacheManager {
 	}
 
 	/**
-	 * Creates a file in the temp cache folder for a specified file id and
+	 * Creates a file in the temporary cache folder for a specified file id and
 	 * returns it. If the file already exists, it is deleted and newly created.
 	 * 
 	 * @param id
 	 *            the file id for which to create a temporary file
 	 * @return the temporary file
 	 * @throws FileTransferException
-	 *             if an io exception occurred during the creation of a new file
+	 *             if an IO exception occurred during the creation of a new file
 	 */
 	public File createTempFile(FileIdentifier id) throws FileTransferException {
 		mkdirs();
@@ -163,42 +166,66 @@ public class FileTransferCacheManager {
 		try {
 			cacheFile.createNewFile();
 		} catch (final IOException e) {
-			throw new FileTransferException("Could not create temporary file");
+			throw new FileTransferException(Messages.FileTransferCacheManager_CreateTempFileFailed);
 		}
 		return cacheFile;
 	}
 
 	/**
-	 * This method moves a file from the temp folder into the cache. It should
+	 * This method moves a file from the temporary folder into the cache. It should
 	 * be called after a temporary file was written successfully. A file
 	 * transfer exception is thrown in the following cases: - The file does not
-	 * exist in the temp folder - The file already exists in the cache folder -
+	 * exist in the temporary folder - The file already exists in the cache folder -
 	 * The file cannot be moved to the cache folder (the rename operation fails)
 	 * 
 	 * @param id
 	 *            the id of the file which is to be moved
 	 * @return the new location of the file after moving it
 	 * @throws FileTransferException
-	 *             thrown if the temp file does not exist, the final file
+	 *             thrown if the temporary file does not exist, the final file
 	 *             already exists, or if the rename operation which moves the
 	 *             file fails
 	 */
 	public File moveTempFileToCache(FileIdentifier id) throws FileTransferException {
+		return moveTempFileToCache(id, false);
+	}
+
+	/**
+	 * This method moves a file from the temporary folder into the cache. It should
+	 * be called after a temporary file was written successfully. A file
+	 * transfer exception is thrown in the following cases: - The file does not
+	 * exist in the temporary folder - The file already exists in the cache folder -
+	 * The file cannot be moved to the cache folder (the rename operation fails)
+	 * 
+	 * @param id
+	 *            the id of the file which is to be moved
+	 * @param overwrite
+	 *            whether to overwrite an existing file, if one with the given id is found
+	 * @return the new location of the file after moving it
+	 * @throws FileTransferException
+	 *             thrown if the temporary file does not exist, the final file
+	 *             already exists, or if the rename operation which moves the
+	 *             file fails
+	 */
+	public File moveTempFileToCache(FileIdentifier id, boolean overwrite) throws FileTransferException {
 		mkdirs();
 		final File cacheFile = getFileFromId(cacheFolder, id);
 		final File tmpFile = getFileFromId(tempCacheFolder, id);
 		if (!tmpFile.exists()) {
 			throw new FileTransferException(
-				"Could not move temp file to cache folder. The file does not exist in the temp folder. FileId: "
+				Messages.FileTransferCacheManager_MoveToCacheFailed_FileMissing
 					+ id.getIdentifier());
+		}
+		if (cacheFile.exists() && overwrite) {
+			cacheFile.delete();
 		}
 		if (cacheFile.exists()) {
 			throw new FileTransferException(
-				"Could not move temp file to cache folder. The file already exists in the cache folder"
+				Messages.FileTransferCacheManager_MoveToCacheFailed_Exists
 					+ id.getIdentifier());
 		}
 		if (!tmpFile.renameTo(cacheFile)) {
-			throw new FileTransferException("Could not move temp file to cache folder. The move operation failed");
+			throw new FileTransferException(Messages.FileTransferCacheManager_MoveToCacheFailed_MoveFailed);
 		}
 		return cacheFile;
 	}

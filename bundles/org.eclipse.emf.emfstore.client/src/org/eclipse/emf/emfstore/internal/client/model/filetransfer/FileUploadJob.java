@@ -11,6 +11,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.filetransfer;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -39,7 +41,7 @@ public class FileUploadJob extends FileTransferJob {
 	public FileUploadJob(FileTransferManager transferManager, FileIdentifier fileId, boolean transferVisibleToUser)
 		throws FileTransferException {
 		super(transferManager, new FileTransferInformation(fileId, (int) transferManager.getCache()
-			.getCachedFile(fileId).length()), "File Upload");
+			.getCachedFile(fileId).length()), Messages.FileUploadJob_FileUpload);
 		setUser(transferVisibleToUser);
 		setFile(getCache().getCachedFile(fileId));
 	}
@@ -57,7 +59,7 @@ public class FileUploadJob extends FileTransferJob {
 			if (!executeTransfer(monitor)) {
 				return Status.CANCEL_STATUS;
 			}
-		} catch (ESException e) {
+		} catch (final ESException e) {
 			setException(e);
 			monitor.setCanceled(true);
 			monitor.done();
@@ -82,8 +84,10 @@ public class FileUploadJob extends FileTransferJob {
 			getConnectionManager().uploadFileChunk(getSessionId(), getProjectId(), fileChunk);
 			transmitted += fileChunk.getData().length;
 			monitor.worked(1);
-			monitor.subTask("Sending file " + getFileInformation() + ": " + transmitted + "/"
-				+ getFileInformation().getFileSize() + " bytes transmitted");
+			monitor.subTask(
+				MessageFormat.format(Messages.FileUploadJob_SendingFile,
+					transmitted,
+					getFileInformation().getFileSize()));
 			incrementChunkNumber();
 			if (isCanceled()) {
 				return false;
