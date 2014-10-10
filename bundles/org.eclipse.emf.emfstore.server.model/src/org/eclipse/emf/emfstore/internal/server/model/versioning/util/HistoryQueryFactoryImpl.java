@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 /**
  * Factory for creating {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery HistoryQueries}.
  */
-public class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
+public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 
 	/**
 	 * The instance.
@@ -49,7 +49,7 @@ public class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#rangeQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      int, int, boolean, boolean, boolean, boolean)
 	 */
-	public ESRangeQuery rangeQuery(ESPrimaryVersionSpec source, int upper, int lower, boolean allVersions,
+	public ESRangeQuery<?> rangeQuery(ESPrimaryVersionSpec source, int upper, int lower, boolean allVersions,
 		boolean incoming, boolean outgoing, boolean includeChangePackages) {
 
 		final PrimaryVersionSpec sourceVersionSpec = ((ESPrimaryVersionSpecImpl) source).toInternalAPI();

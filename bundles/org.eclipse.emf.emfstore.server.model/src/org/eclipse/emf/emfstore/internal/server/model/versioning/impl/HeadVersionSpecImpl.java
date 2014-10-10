@@ -26,11 +26,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
 public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionSpec {
 
 	/**
-	 * @generated NOT
-	 */
-	private ESHeadVersionSpecImpl apiImpl;
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -48,6 +43,13 @@ public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionS
 	protected EClass eStaticClass() {
 		return VersioningPackage.Literals.HEAD_VERSION_SPEC;
 	}
+
+	/**
+	 * The API wrapper implementation class.
+	 * 
+	 * @generated NOT
+	 */
+	private ESHeadVersionSpecImpl apiImpl;
 
 	/**
 	 * 

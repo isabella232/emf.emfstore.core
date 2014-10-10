@@ -60,6 +60,15 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/server/model/versioning/util/HistoryQueryFactoryImpl.java" type="org.eclipse.emf.emfstore.internal.server.model.versioning.util.HistoryQueryFactoryImpl">
+        <filter comment="internal API usage" id="574668824">
+            <message_arguments>
+                <message_argument value="ESHistoryQueryFactory"/>
+                <message_argument value="HistoryQueryFactoryImpl"/>
+                <message_argument value="ESFactory"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/emfstore/server/model/ESGlobalProjectId.java" type="org.eclipse.emf.emfstore.server.model.ESGlobalProjectId">
         <filter id="571473929">
             <message_arguments>

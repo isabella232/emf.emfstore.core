@@ -36,6 +36,8 @@ import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
  * </p>
  * 
  * @generated NOT
+ * 
+ * @param <T> a API history query subtype
  */
 public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObjectImpl implements
 	HistoryQuery<T> {

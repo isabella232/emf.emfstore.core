@@ -36,13 +36,13 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	public static ServerFactory init() {
 		try
 		{
-			ServerFactory theServerFactory = (ServerFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/events/server/");
+			final ServerFactory theServerFactory = (ServerFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/events/server/"); //$NON-NLS-1$
 			if (theServerFactory != null)
 			{
 				return theServerFactory;
 			}
-		} catch (Exception exception)
+		} catch (final Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -72,7 +72,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 		case ServerPackage.PROJECT_UPDATED_EVENT:
 			return createProjectUpdatedEvent();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -82,7 +82,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 * @generated
 	 */
 	public ProjectUpdatedEvent createProjectUpdatedEvent() {
-		ProjectUpdatedEventImpl projectUpdatedEvent = new ProjectUpdatedEventImpl();
+		final ProjectUpdatedEventImpl projectUpdatedEvent = new ProjectUpdatedEventImpl();
 		return projectUpdatedEvent;
 	}
 

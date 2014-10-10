@@ -38,11 +38,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
 public class AncestorVersionSpecImpl extends VersionSpecImpl implements AncestorVersionSpec {
 
 	/**
-	 * @generated NOT
-	 */
-	ESAncestorVersionSpecImpl apiImpl;
-
-	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -355,6 +350,11 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 		}
 		return super.eIsSet(featureID);
 	}
+
+	/**
+	 * @generated NOT
+	 */
+	private ESAncestorVersionSpecImpl apiImpl;
 
 	/**
 	 * 

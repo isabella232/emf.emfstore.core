@@ -30,12 +30,12 @@ import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithResult;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutator;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.versionspec.ESPrimaryVersionSpecImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
+import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
@@ -58,7 +58,7 @@ public class MemoryLoadTest {
 
 	private static final Logger LOGGER = Logger.getLogger("org.eclipse.emf.emfstore.client.test");
 	private long currentProjectCount; // The current project count.
-	private ModelMutatorConfiguration currentProjectConfiguration;
+	private ESModelMutatorConfiguration currentProjectConfiguration;
 	private static final ESSystemOutProgressMonitor MONITOR = new ESSystemOutProgressMonitor();
 
 	/** Class Rule for starting an EMFStore-Server. */
@@ -314,7 +314,7 @@ public class MemoryLoadTest {
 		final String projectName = "Generated project_" + currentProjectCount;
 		final Project project = org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.createProject();
 
-		final ModelMutatorConfiguration config = createModelMutatorConfigurationRandom(modelKey,
+		final ESModelMutatorConfiguration config = createModelMutatorConfigurationRandom(modelKey,
 			project,
 			minProjectSize,
 			seed);
@@ -322,7 +322,7 @@ public class MemoryLoadTest {
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				ModelMutator.generateModel(config);
+				ESDefaultModelMutator.generateModel(config);
 			}
 		}.run(false);
 
@@ -348,23 +348,25 @@ public class MemoryLoadTest {
 		}
 		currentProjectConfiguration.setMinObjectsCount(minChangeSize);
 
-		final ModelMutatorConfiguration mmc = currentProjectConfiguration;
+		final ESModelMutatorConfiguration mmc = currentProjectConfiguration;
 
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
 				final long time = System.currentTimeMillis();
-				ModelMutator.changeModel(mmc);
+				ESDefaultModelMutator.changeModel(mmc);
 				System.out.println("Changed model: " + (System.currentTimeMillis() - time) / 1000.0 + "sec");
 			}
 		}.run(false);
 	}
 
-	private ModelMutatorConfiguration createModelMutatorConfigurationRandom(String modelKey, EObject rootObject,
+	private ESModelMutatorConfiguration createModelMutatorConfigurationRandom(String modelKey, EObject rootObject,
 		int minObjectsCount, long seed) {
 
-		final ModelMutatorConfiguration config = new ModelMutatorConfiguration(ModelMutatorUtil.getEPackage(modelKey),
-			rootObject, seed);
+		final ESModelMutatorConfiguration config = new ESModelMutatorConfiguration(
+				ESModelMutatorUtil.getEPackage(modelKey),
+				rootObject, 
+				seed);
 
 		config.setIgnoreAndLog(false);
 		config.setMinObjectsCount(minObjectsCount);

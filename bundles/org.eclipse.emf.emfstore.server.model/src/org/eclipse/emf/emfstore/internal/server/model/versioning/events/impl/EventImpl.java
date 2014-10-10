@@ -86,11 +86,12 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * @generated
 	 */
 	public void setTimestamp(Date newTimestamp) {
-		Date oldTimestamp = timestamp;
+		final Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, EventsPackage.EVENT__TIMESTAMP, oldTimestamp,
 				timestamp));
+		}
 	}
 
 	/**
@@ -162,11 +163,12 @@ public class EventImpl extends EObjectImpl implements Event {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (timestamp: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (timestamp: "); //$NON-NLS-1$
 		result.append(timestamp);
 		result.append(')');
 		return result.toString();

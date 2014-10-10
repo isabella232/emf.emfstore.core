@@ -26,11 +26,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
 public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVersionSpec {
 
 	/**
-	 * @generated NOT
-	 */
-	private ESBranchVersionSpecImpl apiImpl;
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -48,6 +43,11 @@ public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVers
 	protected EClass eStaticClass() {
 		return VersioningPackage.Literals.BRANCH_VERSION_SPEC;
 	}
+
+	/**
+	 * @generated NOT
+	 */
+	private ESBranchVersionSpecImpl apiImpl;
 
 	/**
 	 * 

@@ -35,6 +35,8 @@ import org.eclipse.emf.emfstore.server.model.query.ESRangeQuery;
  * </p>
  * 
  * @generated NOT
+ * 
+ * @param <T> a API range query subtype
  */
 public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	extends HistoryQueryImpl<T> implements RangeQuery<T> {

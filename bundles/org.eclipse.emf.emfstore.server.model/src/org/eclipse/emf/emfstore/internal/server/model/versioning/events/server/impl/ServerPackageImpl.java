@@ -103,11 +103,12 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 * @generated
 	 */
 	public static ServerPackage init() {
-		if (isInited)
+		if (isInited) {
 			return (ServerPackage) EPackage.Registry.INSTANCE.getEPackage(ServerPackage.eNS_URI);
+		}
 
 		// Obtain or create and register package
-		ServerPackageImpl theServerPackage = (ServerPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ServerPackageImpl ? EPackage.Registry.INSTANCE
+		final ServerPackageImpl theServerPackage = (ServerPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ServerPackageImpl ? EPackage.Registry.INSTANCE
 			.get(eNS_URI)
 			: new ServerPackageImpl());
 
@@ -117,29 +118,30 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 		ModelPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		ModelPackageImpl theModelPackage_1 = (ModelPackageImpl) (EPackage.Registry.INSTANCE
+		final ModelPackageImpl theModelPackage_1 = (ModelPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI)
 			: org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eINSTANCE);
-		VersioningPackageImpl theVersioningPackage = (VersioningPackageImpl) (EPackage.Registry.INSTANCE
+		final VersioningPackageImpl theVersioningPackage = (VersioningPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(VersioningPackage.eNS_URI) instanceof VersioningPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(VersioningPackage.eNS_URI) : VersioningPackage.eINSTANCE);
-		OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl) (EPackage.Registry.INSTANCE
+		final OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(OperationsPackage.eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(OperationsPackage.eNS_URI) : OperationsPackage.eINSTANCE);
-		SemanticPackageImpl theSemanticPackage = (SemanticPackageImpl) (EPackage.Registry.INSTANCE
+		final SemanticPackageImpl theSemanticPackage = (SemanticPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(SemanticPackage.eNS_URI) instanceof SemanticPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(SemanticPackage.eNS_URI) : SemanticPackage.eINSTANCE);
-		EventsPackageImpl theEventsPackage = (EventsPackageImpl) (EPackage.Registry.INSTANCE
+		final EventsPackageImpl theEventsPackage = (EventsPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(EventsPackage.eNS_URI) instanceof EventsPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(EventsPackage.eNS_URI) : EventsPackage.eINSTANCE);
-		AccesscontrolPackageImpl theAccesscontrolPackage = (AccesscontrolPackageImpl) (EPackage.Registry.INSTANCE
+		final AccesscontrolPackageImpl theAccesscontrolPackage = (AccesscontrolPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(AccesscontrolPackage.eNS_URI) instanceof AccesscontrolPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(AccesscontrolPackage.eNS_URI) : AccesscontrolPackage.eINSTANCE);
-		RolesPackageImpl theRolesPackage = (RolesPackageImpl) (EPackage.Registry.INSTANCE
+		final RolesPackageImpl theRolesPackage = (RolesPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(RolesPackage.eNS_URI) instanceof RolesPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
-		UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
+		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
+			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI)
 			: UrlPackage.eINSTANCE);
 
@@ -243,8 +245,9 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated)
+		if (isCreated) {
 			return;
+		}
 		isCreated = true;
 
 		// Create classes and their features
@@ -272,8 +275,9 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized)
+		if (isInitialized) {
 			return;
+		}
 		isInitialized = true;
 
 		// Initialize package
@@ -282,10 +286,11 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EventsPackage theEventsPackage = (EventsPackage) EPackage.Registry.INSTANCE.getEPackage(EventsPackage.eNS_URI);
-		org.eclipse.emf.emfstore.internal.server.model.ModelPackage theModelPackage_1 = (org.eclipse.emf.emfstore.internal.server.model.ModelPackage) EPackage.Registry.INSTANCE
+		final EventsPackage theEventsPackage = (EventsPackage) EPackage.Registry.INSTANCE
+			.getEPackage(EventsPackage.eNS_URI);
+		final org.eclipse.emf.emfstore.internal.server.model.ModelPackage theModelPackage_1 = (org.eclipse.emf.emfstore.internal.server.model.ModelPackage) EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI);
-		VersioningPackage theVersioningPackage = (VersioningPackage) EPackage.Registry.INSTANCE
+		final VersioningPackage theVersioningPackage = (VersioningPackage) EPackage.Registry.INSTANCE
 			.getEPackage(VersioningPackage.eNS_URI);
 
 		// Create type parameters
@@ -294,23 +299,23 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 
 		// Add supertypes to classes
 		serverEventEClass.getESuperTypes().add(theEventsPackage.getEvent());
-		serverProjectEventEClass.getESuperTypes().add(this.getServerEvent());
-		projectUpdatedEventEClass.getESuperTypes().add(this.getServerProjectEvent());
+		serverProjectEventEClass.getESuperTypes().add(getServerEvent());
+		projectUpdatedEventEClass.getESuperTypes().add(getServerProjectEvent());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(serverEventEClass, ServerEvent.class, "ServerEvent", IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(serverEventEClass, ServerEvent.class, "ServerEvent", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 			IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(serverProjectEventEClass, ServerProjectEvent.class, "ServerProjectEvent", IS_ABSTRACT,
+		initEClass(serverProjectEventEClass, ServerProjectEvent.class, "ServerProjectEvent", IS_ABSTRACT, //$NON-NLS-1$
 			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getServerProjectEvent_ProjectId(), theModelPackage_1.getProjectId(), null, "projectId", null, 0,
+		initEReference(getServerProjectEvent_ProjectId(), theModelPackage_1.getProjectId(), null, "projectId", null, 0, //$NON-NLS-1$
 			1, ServerProjectEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(projectUpdatedEventEClass, ProjectUpdatedEvent.class, "ProjectUpdatedEvent", !IS_ABSTRACT,
+		initEClass(projectUpdatedEventEClass, ProjectUpdatedEvent.class, "ProjectUpdatedEvent", !IS_ABSTRACT, //$NON-NLS-1$
 			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProjectUpdatedEvent_NewVersion(), theVersioningPackage.getPrimaryVersionSpec(), null,
-			"newVersion", null, 0, 1, ProjectUpdatedEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			"newVersion", null, 0, 1, ProjectUpdatedEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 

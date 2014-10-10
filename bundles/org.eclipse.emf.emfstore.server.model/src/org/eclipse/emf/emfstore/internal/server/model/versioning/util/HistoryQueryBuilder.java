@@ -51,10 +51,10 @@ public final class HistoryQueryBuilder {
 	 *            include changepackges
 	 * @return query
 	 */
-	public static RangeQuery rangeQuery(PrimaryVersionSpec source, int upper,
+	public static RangeQuery<?> rangeQuery(PrimaryVersionSpec source, int upper,
 		int lower, boolean allVersions, boolean incoming, boolean outgoing,
 		boolean includeCp) {
-		RangeQuery query = VersioningFactory.eINSTANCE.createRangeQuery();
+		final RangeQuery<?> query = VersioningFactory.eINSTANCE.createRangeQuery();
 		query.setSource(ModelUtil.clone(source));
 		query.setUpperLimit(upper);
 		query.setLowerLimit(lower);
@@ -80,7 +80,7 @@ public final class HistoryQueryBuilder {
 	 */
 	public static PathQuery pathQuery(PrimaryVersionSpec source,
 		PrimaryVersionSpec target, boolean allVersions, boolean includeCp) {
-		PathQuery query = VersioningFactory.eINSTANCE.createPathQuery();
+		final PathQuery query = VersioningFactory.eINSTANCE.createPathQuery();
 		query.setSource(ModelUtil.clone(source));
 		query.setTarget(ModelUtil.clone(target));
 		query.setIncludeAllVersions(allVersions);
@@ -109,7 +109,7 @@ public final class HistoryQueryBuilder {
 		PrimaryVersionSpec source,
 		List<ModelElementId> modelElements, int upper,
 		int lower, boolean allVersions, boolean includeCp) {
-		ModelElementQuery query = VersioningFactory.eINSTANCE
+		final ModelElementQuery query = VersioningFactory.eINSTANCE
 			.createModelElementQuery();
 		query.setSource(ModelUtil.clone(source));
 		query.getModelElements().addAll(modelElements);

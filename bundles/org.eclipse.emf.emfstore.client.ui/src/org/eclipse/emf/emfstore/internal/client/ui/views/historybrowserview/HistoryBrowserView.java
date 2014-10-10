@@ -60,7 +60,6 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
 import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
 import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
-import org.eclipse.emf.emfstore.server.model.query.ESRangeQuery;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
@@ -374,7 +373,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private List<ESHistoryInfo> rangeQuery() throws ESException {
-		final RangeQuery<ESRangeQuery<ESRangeQuery<?>>> rangeQuery = HistoryQueryBuilder
+		final RangeQuery<?> rangeQuery = HistoryQueryBuilder
 			.rangeQuery(
 				centerVersion,
 				UPPER_LIMIT,
