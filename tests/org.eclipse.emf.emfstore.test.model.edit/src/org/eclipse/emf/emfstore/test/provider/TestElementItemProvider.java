@@ -21,7 +21,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -39,6 +43,9 @@ import org.eclipse.emf.emfstore.test.model.provider.TestmodelEditPlugin;
  */
 public class TestElementItemProvider
 	extends ItemProviderAdapter
+	implements
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -432,7 +439,7 @@ public class TestElementItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((TestElement) object).getName();
+		final String label = ((TestElement) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TestElement_type") : //$NON-NLS-1$
 			getString("_UI_TestElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -567,12 +574,12 @@ public class TestElementItemProvider
 		if (childFeature instanceof EStructuralFeature
 			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature))
 		{
-			FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
+			final FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
 
-		boolean qualify =
+		final boolean qualify =
 			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS ||
 				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT ||
 				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS2 ||
