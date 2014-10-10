@@ -40,13 +40,13 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	public static AccesscontrolFactory init() {
 		try
 		{
-			AccesscontrolFactory theAccesscontrolFactory = (AccesscontrolFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/accesscontrol");
+			final AccesscontrolFactory theAccesscontrolFactory = (AccesscontrolFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://eclipse.org/emf/emfstore/server/model/accesscontrol"); //$NON-NLS-1$
 			if (theAccesscontrolFactory != null)
 			{
 				return theAccesscontrolFactory;
 			}
-		} catch (Exception exception)
+		} catch (final Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -84,7 +84,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY:
 			return createOrgUnitProperty();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -94,7 +94,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACUser createACUser() {
-		ACUserImpl acUser = new ACUserImpl();
+		final ACUserImpl acUser = new ACUserImpl();
 		return acUser;
 	}
 
@@ -104,7 +104,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACOrgUnit createACOrgUnit() {
-		ACOrgUnitImpl acOrgUnit = new ACOrgUnitImpl();
+		final ACOrgUnitImpl acOrgUnit = new ACOrgUnitImpl();
 		return acOrgUnit;
 	}
 
@@ -114,7 +114,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACGroup createACGroup() {
-		ACGroupImpl acGroup = new ACGroupImpl();
+		final ACGroupImpl acGroup = new ACGroupImpl();
 		return acGroup;
 	}
 
@@ -124,7 +124,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACOrgUnitId createACOrgUnitId() {
-		ACOrgUnitIdImpl acOrgUnitId = new ACOrgUnitIdImpl();
+		final ACOrgUnitIdImpl acOrgUnitId = new ACOrgUnitIdImpl();
 		return acOrgUnitId;
 	}
 
@@ -134,7 +134,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public OrgUnitProperty createOrgUnitProperty() {
-		OrgUnitPropertyImpl orgUnitProperty = new OrgUnitPropertyImpl();
+		final OrgUnitPropertyImpl orgUnitProperty = new OrgUnitPropertyImpl();
 		return orgUnitProperty;
 	}
 

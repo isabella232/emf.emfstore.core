@@ -20,8 +20,10 @@ package org.eclipse.emf.emfstore.server.model.query;
  * 
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
+ * 
+ * @param <R> a {@link ESRangeQuery} subtype
  */
-public interface ESRangeQuery<T extends ESRangeQuery<?>> extends ESHistoryQuery<T> {
+public interface ESRangeQuery<R extends ESRangeQuery<?>> extends ESHistoryQuery<R> {
 
 	/**
 	 * <p>

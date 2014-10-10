@@ -68,4 +68,28 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/emfstore/server/model/ESLocalProjectId.java" type="org.eclipse.emf.emfstore.server.model.ESLocalProjectId">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESUniqueIdentifier"/>
+                <message_argument value="ESLocalProjectId"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/server/model/ESProjectId.java" type="org.eclipse.emf.emfstore.server.model.ESProjectId">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESUniqueIdentifier"/>
+                <message_argument value="ESProjectId"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/server/model/ESSessionId.java" type="org.eclipse.emf.emfstore.server.model.ESSessionId">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESUniqueIdentifier"/>
+                <message_argument value="ESSessionId"/>
+            </message_arguments>
+        </filter>
+    </resource>
 </component>

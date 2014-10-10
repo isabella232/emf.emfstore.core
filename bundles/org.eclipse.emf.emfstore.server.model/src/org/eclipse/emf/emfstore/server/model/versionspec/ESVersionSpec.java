@@ -33,22 +33,22 @@ public interface ESVersionSpec {
 	/**
 	 * HEAD identifier.
 	 */
-	String HEAD = "HEAD";
+	String HEAD = "HEAD"; //$NON-NLS-1$
 
 	/**
 	 * BASE identifier.
 	 */
-	String BASE = "BASE";
+	String BASE = "BASE"; //$NON-NLS-1$
 
 	/**
 	 * The default branch name 'trunk'.
 	 */
-	String BRANCH_DEFAULT_NAME = "trunk";
+	String BRANCH_DEFAULT_NAME = "trunk"; //$NON-NLS-1$
 
 	/**
 	 * Global identifier.
 	 */
-	String GLOBAL = "___GLOBAL___";
+	String GLOBAL = "___GLOBAL___"; //$NON-NLS-1$
 
 	/**
 	 * The factory used for creating {@link ESVersionSpec}s.

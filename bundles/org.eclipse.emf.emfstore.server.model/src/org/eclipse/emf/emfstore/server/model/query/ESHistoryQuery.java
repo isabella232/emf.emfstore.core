@@ -23,8 +23,10 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * 
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
+ * 
+ * @param <H> a {@link ESHistoryQuery} subtype
  */
-public interface ESHistoryQuery<U extends ESHistoryQuery<?>> {
+public interface ESHistoryQuery<H extends ESHistoryQuery<?>> {
 
 	/**
 	 * Factory for creating history queries.
