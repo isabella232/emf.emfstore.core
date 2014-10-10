@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.emfstore.modelmutator.feature"
       label="Model Mutator"
-      version="1.4.1.qualifier"
+      version="2.0.0.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.modelmutator"
       license-feature="org.eclipse.emf.emfstore.license.feature"
