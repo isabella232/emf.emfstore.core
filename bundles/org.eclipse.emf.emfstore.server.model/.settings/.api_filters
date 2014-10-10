@@ -43,12 +43,39 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/server/model/impl/api/ESGlobalProjectIdImpl.java" type="org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl">
+        <filter comment="internal API usage" id="574668824">
+            <message_arguments>
+                <message_argument value="ESGlobalProjectId"/>
+                <message_argument value="ESGlobalProjectIdImpl"/>
+                <message_argument value="ESUniqueIdentifier"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/emfstore/internal/server/model/impl/api/ESLocalProjectIdImpl.java" type="org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLocalProjectIdImpl">
         <filter comment="API wrapper class" id="574668824">
             <message_arguments>
                 <message_argument value="ESLocalProjectId"/>
                 <message_argument value="ESLocalProjectIdImpl"/>
                 <message_argument value="ESUniqueIdentifier"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/server/model/impl/api/ESSessionIdImpl.java" type="org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl">
+        <filter comment="internal API usage" id="574668824">
+            <message_arguments>
+                <message_argument value="ESSessionId"/>
+                <message_argument value="ESSessionIdImpl"/>
+                <message_argument value="ESUniqueIdentifier"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/server/model/impl/api/versionspec/ESVersionsFactoryImpl.java" type="org.eclipse.emf.emfstore.internal.server.model.impl.api.versionspec.ESVersionsFactoryImpl">
+        <filter comment="internal API usage" id="574668824">
+            <message_arguments>
+                <message_argument value="ESVersionFactory"/>
+                <message_argument value="ESVersionsFactoryImpl"/>
+                <message_argument value="ESFactory"/>
             </message_arguments>
         </filter>
     </resource>

@@ -26,11 +26,6 @@ import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectId
 public class ProjectIdImpl extends UniqueIdentifierImpl implements ProjectId {
 
 	/**
-	 * @generated NOT
-	 */
-	private ESGlobalProjectIdImpl apiImpl;
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -48,6 +43,11 @@ public class ProjectIdImpl extends UniqueIdentifierImpl implements ProjectId {
 	protected EClass eStaticClass() {
 		return ModelPackage.Literals.PROJECT_ID;
 	}
+
+	/**
+	 * @generated NOT
+	 */
+	private ESGlobalProjectIdImpl apiImpl;
 
 	/**
 	 * 

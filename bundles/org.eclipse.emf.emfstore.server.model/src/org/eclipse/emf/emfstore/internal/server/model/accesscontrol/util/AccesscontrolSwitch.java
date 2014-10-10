@@ -84,13 +84,10 @@ public class AccesscontrolSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		else
-		{
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ?
-				defaultCase(theEObject) :
-				doSwitch(eSuperTypes.get(0), theEObject);
-		}
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		return eSuperTypes.isEmpty() ?
+			defaultCase(theEObject) :
+			doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -106,50 +103,61 @@ public class AccesscontrolSwitch<T> {
 		switch (classifierID)
 		{
 		case AccesscontrolPackage.AC_USER: {
-			ACUser acUser = (ACUser) theEObject;
+			final ACUser acUser = (ACUser) theEObject;
 			T result = caseACUser(acUser);
-			if (result == null)
+			if (result == null) {
 				result = caseACOrgUnit(acUser);
-			if (result == null)
+			}
+			if (result == null) {
 				result = caseIdentifiableElement(acUser);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case AccesscontrolPackage.AC_ORG_UNIT: {
-			ACOrgUnit acOrgUnit = (ACOrgUnit) theEObject;
+			final ACOrgUnit acOrgUnit = (ACOrgUnit) theEObject;
 			T result = caseACOrgUnit(acOrgUnit);
-			if (result == null)
+			if (result == null) {
 				result = caseIdentifiableElement(acOrgUnit);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case AccesscontrolPackage.AC_GROUP: {
-			ACGroup acGroup = (ACGroup) theEObject;
+			final ACGroup acGroup = (ACGroup) theEObject;
 			T result = caseACGroup(acGroup);
-			if (result == null)
+			if (result == null) {
 				result = caseACOrgUnit(acGroup);
-			if (result == null)
+			}
+			if (result == null) {
 				result = caseIdentifiableElement(acGroup);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case AccesscontrolPackage.AC_ORG_UNIT_ID: {
-			ACOrgUnitId acOrgUnitId = (ACOrgUnitId) theEObject;
+			final ACOrgUnitId acOrgUnitId = (ACOrgUnitId) theEObject;
 			T result = caseACOrgUnitId(acOrgUnitId);
-			if (result == null)
+			if (result == null) {
 				result = caseUniqueIdentifier(acOrgUnitId);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY: {
-			OrgUnitProperty orgUnitProperty = (OrgUnitProperty) theEObject;
+			final OrgUnitProperty orgUnitProperty = (OrgUnitProperty) theEObject;
 			T result = caseOrgUnitProperty(orgUnitProperty);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		default:

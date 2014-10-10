@@ -58,12 +58,12 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 */
 	public ESPrimaryVersionSpec createPRIMARY(ESVersionSpec versionSpec, int index) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
-			ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = ((ESVersionSpecImpl<?, ?>) versionSpec);
-			PrimaryVersionSpec primaryVersionSpec = Versions.createPRIMARY(versionSpecImpl.toInternalAPI(), index);
+			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
+			final PrimaryVersionSpec primaryVersionSpec = Versions
+				.createPRIMARY(versionSpecImpl.toInternalAPI(), index);
 			return primaryVersionSpec.toAPI();
-		} else {
-			throw new IllegalArgumentException();
 		}
+		throw new IllegalArgumentException();
 	}
 
 	/**
@@ -116,12 +116,11 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 */
 	public ESHeadVersionSpec createHEAD(ESVersionSpec versionSpec) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
-			ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = ((ESVersionSpecImpl<?, ?>) versionSpec);
-			HeadVersionSpec headVersionSpec = Versions.createHEAD(versionSpecImpl.toInternalAPI());
+			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
+			final HeadVersionSpec headVersionSpec = Versions.createHEAD(versionSpecImpl.toInternalAPI());
 			return headVersionSpec.toAPI();
-		} else {
-			throw new IllegalArgumentException();
 		}
+		throw new IllegalArgumentException();
 	}
 
 	/**
@@ -142,12 +141,11 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 */
 	public ESBranchVersionSpec createBRANCH(ESVersionSpec versionSpec) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
-			ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = ((ESVersionSpecImpl<?, ?>) versionSpec);
-			BranchVersionSpec branchVersionSpec = Versions.createBRANCH(versionSpecImpl.toInternalAPI());
+			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
+			final BranchVersionSpec branchVersionSpec = Versions.createBRANCH(versionSpecImpl.toInternalAPI());
 			return branchVersionSpec.toAPI();
-		} else {
-			throw new IllegalArgumentException();
 		}
+		throw new IllegalArgumentException();
 	}
 
 	/**
@@ -160,14 +158,13 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	public boolean isSameBranch(ESVersionSpec versionSpec, ESVersionSpec otherVersionSpec) {
 
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?> && otherVersionSpec instanceof ESVersionSpecImpl<?, ?>) {
-			ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = ((ESVersionSpecImpl<?, ?>) versionSpec);
-			ESVersionSpecImpl<?, ? extends VersionSpec> otherVersionSpecImpl = ((ESVersionSpecImpl<?, ?>) otherVersionSpec);
+			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
+			final ESVersionSpecImpl<?, ? extends VersionSpec> otherVersionSpecImpl = (ESVersionSpecImpl<?, ?>) otherVersionSpec;
 			return Versions.isSameBranch(
 				versionSpecImpl.toInternalAPI(),
 				otherVersionSpecImpl.toInternalAPI());
-		} else {
-			throw new IllegalArgumentException();
 		}
+		throw new IllegalArgumentException();
 	}
 
 	/**
@@ -189,7 +186,7 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *      int)
 	 */
 	public ESPagedUpdateVersionSpec createPAGEDUPDATE(ESPrimaryVersionSpec baseVersion, int maxChanges) {
-		PrimaryVersionSpec primaryVersionSpec = ((ESPrimaryVersionSpecImpl) baseVersion).toInternalAPI();
+		final PrimaryVersionSpec primaryVersionSpec = ((ESPrimaryVersionSpecImpl) baseVersion).toInternalAPI();
 		return Versions.createPAGEDUPDATE(primaryVersionSpec, maxChanges).toAPI();
 	}
 }

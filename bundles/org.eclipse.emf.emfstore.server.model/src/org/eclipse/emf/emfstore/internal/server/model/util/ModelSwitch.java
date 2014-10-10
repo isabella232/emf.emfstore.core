@@ -88,13 +88,10 @@ public class ModelSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		else
-		{
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ?
-				defaultCase(theEObject) :
-				doSwitch(eSuperTypes.get(0), theEObject);
-		}
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		return eSuperTypes.isEmpty() ?
+			defaultCase(theEObject) :
+			doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -110,72 +107,84 @@ public class ModelSwitch<T> {
 		switch (classifierID)
 		{
 		case ModelPackage.PROJECT_HISTORY: {
-			ProjectHistory projectHistory = (ProjectHistory) theEObject;
+			final ProjectHistory projectHistory = (ProjectHistory) theEObject;
 			T result = caseProjectHistory(projectHistory);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.PROJECT_INFO: {
-			ProjectInfo projectInfo = (ProjectInfo) theEObject;
+			final ProjectInfo projectInfo = (ProjectInfo) theEObject;
 			T result = caseProjectInfo(projectInfo);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.SESSION_ID: {
-			SessionId sessionId = (SessionId) theEObject;
+			final SessionId sessionId = (SessionId) theEObject;
 			T result = caseSessionId(sessionId);
-			if (result == null)
+			if (result == null) {
 				result = caseUniqueIdentifier(sessionId);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.SERVER_SPACE: {
-			ServerSpace serverSpace = (ServerSpace) theEObject;
+			final ServerSpace serverSpace = (ServerSpace) theEObject;
 			T result = caseServerSpace(serverSpace);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.PROJECT_ID: {
-			ProjectId projectId = (ProjectId) theEObject;
+			final ProjectId projectId = (ProjectId) theEObject;
 			T result = caseProjectId(projectId);
-			if (result == null)
+			if (result == null) {
 				result = caseUniqueIdentifier(projectId);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.VERSION_INFO: {
-			VersionInfo versionInfo = (VersionInfo) theEObject;
+			final VersionInfo versionInfo = (VersionInfo) theEObject;
 			T result = caseVersionInfo(versionInfo);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.CLIENT_VERSION_INFO: {
-			ClientVersionInfo clientVersionInfo = (ClientVersionInfo) theEObject;
+			final ClientVersionInfo clientVersionInfo = (ClientVersionInfo) theEObject;
 			T result = caseClientVersionInfo(clientVersionInfo);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.FILE_IDENTIFIER: {
-			FileIdentifier fileIdentifier = (FileIdentifier) theEObject;
+			final FileIdentifier fileIdentifier = (FileIdentifier) theEObject;
 			T result = caseFileIdentifier(fileIdentifier);
-			if (result == null)
+			if (result == null) {
 				result = caseIdentifiableElement(fileIdentifier);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ModelPackage.AUTHENTICATION_INFORMATION: {
-			AuthenticationInformation authenticationInformation = (AuthenticationInformation) theEObject;
+			final AuthenticationInformation authenticationInformation = (AuthenticationInformation) theEObject;
 			T result = caseAuthenticationInformation(authenticationInformation);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		default:

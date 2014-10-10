@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -125,11 +126,12 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME,
 				oldName, name));
+		}
 	}
 
 	/**
@@ -147,11 +149,12 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
-		String oldValue = value;
+		final String oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.ORG_UNIT_PROPERTY__VALUE,
 				oldValue, value));
+		}
 	}
 
 	/**
@@ -162,11 +165,11 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	public ProjectId getProject() {
 		if (project != null && project.eIsProxy())
 		{
-			InternalEObject oldProject = (InternalEObject) project;
+			final InternalEObject oldProject = (InternalEObject) project;
 			project = (ProjectId) eResolveProxy(oldProject);
 			if (project != oldProject)
 			{
-				InternalEObject newProject = (InternalEObject) project;
+				final InternalEObject newProject = (InternalEObject) project;
 				NotificationChain msgs = oldProject.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, null);
 				if (newProject.eInternalContainer() == null)
@@ -174,11 +177,13 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 					msgs = newProject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, oldProject, project));
+				}
 			}
 		}
 		return project;
@@ -199,16 +204,17 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 * @generated
 	 */
 	public NotificationChain basicSetProject(ProjectId newProject, NotificationChain msgs) {
-		ProjectId oldProject = project;
+		final ProjectId oldProject = project;
 		project = newProject;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, oldProject, newProject);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -222,19 +228,23 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 		if (newProject != project)
 		{
 			NotificationChain msgs = null;
-			if (project != null)
+			if (project != null) {
 				msgs = ((InternalEObject) project).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
-			if (newProject != null)
+			}
+			if (newProject != null) {
 				msgs = ((InternalEObject) newProject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
+			}
 			msgs = basicSetProject(newProject, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT,
 				newProject, newProject));
+		}
 	}
 
 	/**
@@ -266,8 +276,9 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__VALUE:
 			return getValue();
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT:
-			if (resolve)
+			if (resolve) {
 				return getProject();
+			}
 			return basicGetProject();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -343,13 +354,14 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
-		result.append(", value: ");
+		result.append(", value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');
 		return result.toString();
@@ -361,9 +373,9 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	public void setValue(boolean value) {
 		String newValue = null;
 		if (value) {
-			newValue = "true";
+			newValue = "true"; //$NON-NLS-1$
 		} else {
-			newValue = "false";
+			newValue = "false"; //$NON-NLS-1$
 		}
 		setValue(newValue);
 	}
@@ -380,15 +392,15 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	public void setValue(String[] value) {
 		if (value.length == 0) {
-			setValue("");
+			setValue(StringUtils.EMPTY);
 			return;
 		}
-		StringBuilder newValue = new StringBuilder();
-		for (String s : value) {
+		final StringBuilder newValue = new StringBuilder();
+		for (final String s : value) {
 			newValue.append(s);
 			newValue.append(OrgUnitProperty.ARRAY_SEPARATOR);
 		}
-		String ret = newValue.toString();
+		final String ret = newValue.toString();
 		setValue(ret.substring(0, ret.length() - 2));
 	}
 
@@ -396,13 +408,13 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 * {@inheritDoc}
 	 */
 	public void setValue(EObject[] value) {
-		String[] newValue = new String[value.length];
+		final String[] newValue = new String[value.length];
 		try {
 			for (int i = 0; i < value.length; i++) {
 				newValue[i] = ModelUtil.eObjectToString(value[i]);
 			}
 			setValue(newValue);
-		} catch (SerializationException e) {
+		} catch (final SerializationException e) {
 		}
 	}
 
@@ -410,39 +422,39 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 * {@inheritDoc}
 	 */
 	public Boolean getBooleanProperty() {
-		String value = getValue();
+		final String value = getValue();
 		if (value != null) {
-			Boolean b = new Boolean(value);
+			final Boolean b = new Boolean(value);
 			return b;
 		}
-		throw new IllegalStateException("Existing key without value!");
+		throw new IllegalStateException("Existing key without value!"); //$NON-NLS-1$
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public Integer getIntegerProperty() {
-		String value = getValue();
+		final String value = getValue();
 		if (value != null) {
-			Integer b = new Integer(value);
+			final Integer b = new Integer(value);
 			return b;
 		}
-		throw new IllegalStateException("Existing key without value!");
+		throw new IllegalStateException("Existing key without value!"); //$NON-NLS-1$
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public String[] getStringArrayProperty() {
-		String value = getValue();
+		final String value = getValue();
 		if (value != null) {
-			if (value.equals("")) {
+			if (value.equals(StringUtils.EMPTY)) {
 				return new String[0];
 			}
-			String[] split = value.split(OrgUnitProperty.ARRAY_SEPARATOR);
+			final String[] split = value.split(OrgUnitProperty.ARRAY_SEPARATOR);
 			return split;
 		}
-		throw new IllegalStateException("Existing key without value!");
+		throw new IllegalStateException("Existing key without value!"); //$NON-NLS-1$
 	}
 
 } // OrgUnitPropertyImpl

@@ -343,11 +343,11 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 		}
 
 		final StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (firstName: ");
+		result.append(" (firstName: "); //$NON-NLS-1$
 		result.append(firstName);
-		result.append(", lastName: ");
+		result.append(", lastName: "); //$NON-NLS-1$
 		result.append(lastName);
-		result.append(", password: ");
+		result.append(", password: "); //$NON-NLS-1$
 		result.append(password);
 		result.append(')');
 		return result.toString();

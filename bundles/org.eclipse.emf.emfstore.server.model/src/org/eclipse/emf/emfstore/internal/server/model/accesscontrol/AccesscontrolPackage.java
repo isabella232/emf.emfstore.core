@@ -38,7 +38,7 @@ public interface AccesscontrolPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNAME = "accesscontrol";
+	String eNAME = "accesscontrol"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
@@ -46,7 +46,7 @@ public interface AccesscontrolPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_URI = "http://eclipse.org/emf/emfstore/server/model/accesscontrol";
+	String eNS_URI = "http://eclipse.org/emf/emfstore/server/model/accesscontrol"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -54,7 +54,7 @@ public interface AccesscontrolPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.server.model.accesscontrol";
+	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.server.model.accesscontrol"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

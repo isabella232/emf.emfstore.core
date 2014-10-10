@@ -36,7 +36,7 @@ public interface EventsPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNAME = "events";
+	String eNAME = "events"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
@@ -44,7 +44,7 @@ public interface EventsPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_URI = "http://eclipse.org/emf/emfstore/server/model/versioning/events";
+	String eNS_URI = "http://eclipse.org/emf/emfstore/server/model/versioning/events"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -52,7 +52,7 @@ public interface EventsPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.server.model.versioning.events";
+	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.server.model.versioning.events"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

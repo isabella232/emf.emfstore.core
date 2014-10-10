@@ -140,10 +140,11 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_ORG_UNIT__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -169,11 +170,11 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 * @generated NOT
 	 */
 	public ACOrgUnitId getId() {
-		if (this.identifier == null) {
-			throw new IllegalStateException("ACOrgunit does not have an identifier");
+		if (identifier == null) {
+			throw new IllegalStateException("ACOrgunit does not have an identifier"); //$NON-NLS-1$
 		}
-		ACOrgUnitId orgUnitId = AccesscontrolFactory.eINSTANCE.createACOrgUnitId();
-		orgUnitId.setId(this.identifier);
+		final ACOrgUnitId orgUnitId = AccesscontrolFactory.eINSTANCE.createACOrgUnitId();
+		orgUnitId.setId(identifier);
 		return orgUnitId;
 	}
 
@@ -186,10 +187,9 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof ACOrgUnit) {
-			return this.getId().equals(((ACOrgUnit) obj).getId());
-		} else {
-			return super.equals(obj);
+			return getId().equals(((ACOrgUnit) obj).getId());
 		}
+		return super.equals(obj);
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 */
 	@Override
 	public int hashCode() {
-		return this.getId().getId().hashCode();
+		return getId().getId().hashCode();
 	}
 
 	// end of custom code
@@ -236,11 +236,12 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
-		String oldDescription = description;
+		final String oldDescription = description;
 		description = newDescription;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_ORG_UNIT__DESCRIPTION,
 				oldDescription, description));
+		}
 	}
 
 	/**
@@ -359,13 +360,14 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
-		result.append(", description: ");
+		result.append(", description: "); //$NON-NLS-1$
 		result.append(description);
 		result.append(')');
 		return result.toString();

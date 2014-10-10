@@ -104,11 +104,12 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @generated
 	 */
 	public void setHostName(String newHostName) {
-		String oldHostName = hostName;
+		final String oldHostName = hostName;
 		hostName = newHostName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.SERVER_URL__HOST_NAME, oldHostName,
 				hostName));
+		}
 	}
 
 	/**
@@ -126,10 +127,11 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @generated
 	 */
 	public void setPort(int newPort) {
-		int oldPort = port;
+		final int oldPort = port;
 		port = newPort;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.SERVER_URL__PORT, oldPort, port));
+		}
 	}
 
 	/**
@@ -211,13 +213,14 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (hostName: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (hostName: "); //$NON-NLS-1$
 		result.append(hostName);
-		result.append(", port: ");
+		result.append(", port: "); //$NON-NLS-1$
 		result.append(port);
 		result.append(')');
 		return result.toString();
@@ -230,9 +233,9 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @generated NOT
 	 */
 	public String getUrlString() {
-		StringBuilder stringBuilder = new StringBuilder();
+		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getHostName());
-		stringBuilder.append(":");
+		stringBuilder.append(":"); //$NON-NLS-1$
 		stringBuilder.append(getPort());
 		return stringBuilder.toString();
 	}

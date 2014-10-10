@@ -39,13 +39,13 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	public static RolesFactory init() {
 		try
 		{
-			RolesFactory theRolesFactory = (RolesFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/roles");
+			final RolesFactory theRolesFactory = (RolesFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://eclipse.org/emf/emfstore/server/model/roles"); //$NON-NLS-1$
 			if (theRolesFactory != null)
 			{
 				return theRolesFactory;
 			}
-		} catch (Exception exception)
+		} catch (final Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -81,7 +81,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 		case RolesPackage.SERVER_ADMIN:
 			return createServerAdmin();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -91,7 +91,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public ReaderRole createReaderRole() {
-		ReaderRoleImpl readerRole = new ReaderRoleImpl();
+		final ReaderRoleImpl readerRole = new ReaderRoleImpl();
 		return readerRole;
 	}
 
@@ -101,7 +101,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public WriterRole createWriterRole() {
-		WriterRoleImpl writerRole = new WriterRoleImpl();
+		final WriterRoleImpl writerRole = new WriterRoleImpl();
 		return writerRole;
 	}
 
@@ -111,7 +111,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public ProjectAdminRole createProjectAdminRole() {
-		ProjectAdminRoleImpl projectAdminRole = new ProjectAdminRoleImpl();
+		final ProjectAdminRoleImpl projectAdminRole = new ProjectAdminRoleImpl();
 		return projectAdminRole;
 	}
 
@@ -121,7 +121,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public ServerAdmin createServerAdmin() {
-		ServerAdminImpl serverAdmin = new ServerAdminImpl();
+		final ServerAdminImpl serverAdmin = new ServerAdminImpl();
 		return serverAdmin;
 	}
 

@@ -40,14 +40,14 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * 
 	 * @generated NOT
 	 */
-	public static final String PREFIX = "emfstore://";
+	public static final String PREFIX = "emfstore://"; //$NON-NLS-1$
 
 	/**
 	 * The standard parsing exception message.
 	 * 
 	 * @generated NOT
 	 */
-	private static final String EXCEPTION_MESSAGE = "Invalid EMFStore URL!";
+	private static final String EXCEPTION_MESSAGE = "Invalid EMFStore URL!"; //$NON-NLS-1$
 
 	/**
 	 * Creates the default factory implementation.
@@ -59,13 +59,13 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	public static UrlFactory init() {
 		try
 		{
-			UrlFactory theUrlFactory = (UrlFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/url");
+			final UrlFactory theUrlFactory = (UrlFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://eclipse.org/emf/emfstore/server/model/url"); //$NON-NLS-1$
 			if (theUrlFactory != null)
 			{
 				return theUrlFactory;
 			}
-		} catch (Exception exception)
+		} catch (final Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -101,7 +101,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 		case UrlPackage.MODEL_ELEMENT_URL:
 			return createModelElementUrl();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -111,7 +111,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ServerUrl createServerUrl() {
-		ServerUrlImpl serverUrl = new ServerUrlImpl();
+		final ServerUrlImpl serverUrl = new ServerUrlImpl();
 		return serverUrl;
 	}
 
@@ -121,7 +121,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ProjectUrlFragment createProjectUrlFragment() {
-		ProjectUrlFragmentImpl projectUrlFragment = new ProjectUrlFragmentImpl();
+		final ProjectUrlFragmentImpl projectUrlFragment = new ProjectUrlFragmentImpl();
 		return projectUrlFragment;
 	}
 
@@ -131,7 +131,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ModelElementUrlFragment createModelElementUrlFragment() {
-		ModelElementUrlFragmentImpl modelElementUrlFragment = new ModelElementUrlFragmentImpl();
+		final ModelElementUrlFragmentImpl modelElementUrlFragment = new ModelElementUrlFragmentImpl();
 		return modelElementUrlFragment;
 	}
 
@@ -142,53 +142,53 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 */
 	public ModelElementUrl createModelElementUrl(String url) throws MalformedURLException {
 
-		ModelElementUrl modelURL = createModelElementUrl();
+		final ModelElementUrl modelURL = createModelElementUrl();
 
-		ModelElementUrlFragment modelFragment = createModelElementUrlFragment();
-		ProjectUrlFragment projectFragment = createProjectUrlFragment();
-		ServerUrl serverFragment = createServerUrl();
+		final ModelElementUrlFragment modelFragment = createModelElementUrlFragment();
+		final ProjectUrlFragment projectFragment = createProjectUrlFragment();
+		final ServerUrl serverFragment = createServerUrl();
 		modelURL.setModelElementUrlFragment(modelFragment);
 		modelURL.setProjectUrlFragment(projectFragment);
 		modelURL.setServerUrl(serverFragment);
 		if (url.startsWith(PREFIX)) {
 			int trail = 0;
-			if (url.endsWith("/")) {
+			if (url.endsWith("/")) { //$NON-NLS-1$
 				trail = 1;
 			}
-			String text = url.substring(PREFIX.length(), url.length() - trail);
-			String[] elements = text.split("/");
+			final String text = url.substring(PREFIX.length(), url.length() - trail);
+			final String[] elements = text.split("/"); //$NON-NLS-1$
 			if (elements.length >= 3) {
-				String[] server = elements[0].split(":");
+				final String[] server = elements[0].split(":"); //$NON-NLS-1$
 				if (server.length != 2) {
 					throw new MalformedURLException(EXCEPTION_MESSAGE);
 				}
 				serverFragment.setHostName(server[0]);
 				try {
 					serverFragment.setPort(Integer.parseInt(server[1]));
-				} catch (NumberFormatException e) {
+				} catch (final NumberFormatException e) {
 					throw new MalformedURLException(EXCEPTION_MESSAGE);
 				}
 
-				String[] project = elements[1].split("%");
+				final String[] project = elements[1].split("%"); //$NON-NLS-1$
 				if (project.length != 2) {
 					throw new MalformedURLException(EXCEPTION_MESSAGE);
 				}
 				projectFragment.setName(project[0]);
-				ProjectId projectId = ModelFactory.eINSTANCE.createProjectId();
+				final ProjectId projectId = ModelFactory.eINSTANCE.createProjectId();
 				projectId.setId(project[1]);
 				projectFragment.setProjectId(projectId);
 
-				StringBuilder model = new StringBuilder();
+				final StringBuilder model = new StringBuilder();
 				for (int i = 2; i < elements.length; i++) {
 					model.append(elements[i]);
 				}
 				final String string = model.toString();
-				int p = string.lastIndexOf("%");
+				final int p = string.lastIndexOf("%"); //$NON-NLS-1$
 				if (p == -1) {
 					throw new MalformedURLException(EXCEPTION_MESSAGE);
 				}
 				modelFragment.setName(string.substring(0, p));
-				ModelElementId modelElementId = org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
+				final ModelElementId modelElementId = org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
 					.createModelElementId();
 				modelElementId.setId(string.substring(p + 1));
 				modelFragment.setModelElementId(modelElementId);
@@ -205,7 +205,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ModelElementUrl createModelElementUrl() {
-		ModelElementUrlImpl modelElementUrl = new ModelElementUrlImpl();
+		final ModelElementUrlImpl modelElementUrl = new ModelElementUrlImpl();
 		return modelElementUrl;
 	}
 

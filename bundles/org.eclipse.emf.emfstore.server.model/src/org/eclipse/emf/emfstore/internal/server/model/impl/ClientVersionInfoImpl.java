@@ -105,11 +105,12 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 * @generated
 	 */
 	public void setVersion(String newVersion) {
-		String oldVersion = version;
+		final String oldVersion = version;
 		version = newVersion;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__VERSION,
 				oldVersion, version));
+		}
 	}
 
 	/**
@@ -127,10 +128,11 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -212,13 +214,14 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (version: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (version: "); //$NON-NLS-1$
 		result.append(version);
-		result.append(", name: ");
+		result.append(", name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');
 		return result.toString();

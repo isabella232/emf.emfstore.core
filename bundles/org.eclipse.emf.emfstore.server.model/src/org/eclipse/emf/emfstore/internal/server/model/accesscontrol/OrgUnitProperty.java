@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
  */
 public interface OrgUnitProperty extends EObject {
 
-	public final static String ARRAY_SEPARATOR = "%%";
+	public final static String ARRAY_SEPARATOR = "%%"; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--

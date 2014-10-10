@@ -81,13 +81,10 @@ public class UrlSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		else
-		{
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ?
-				defaultCase(theEObject) :
-				doSwitch(eSuperTypes.get(0), theEObject);
-		}
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		return eSuperTypes.isEmpty() ?
+			defaultCase(theEObject) :
+			doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -103,31 +100,35 @@ public class UrlSwitch<T> {
 		switch (classifierID)
 		{
 		case UrlPackage.SERVER_URL: {
-			ServerUrl serverUrl = (ServerUrl) theEObject;
+			final ServerUrl serverUrl = (ServerUrl) theEObject;
 			T result = caseServerUrl(serverUrl);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case UrlPackage.PROJECT_URL_FRAGMENT: {
-			ProjectUrlFragment projectUrlFragment = (ProjectUrlFragment) theEObject;
+			final ProjectUrlFragment projectUrlFragment = (ProjectUrlFragment) theEObject;
 			T result = caseProjectUrlFragment(projectUrlFragment);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT: {
-			ModelElementUrlFragment modelElementUrlFragment = (ModelElementUrlFragment) theEObject;
+			final ModelElementUrlFragment modelElementUrlFragment = (ModelElementUrlFragment) theEObject;
 			T result = caseModelElementUrlFragment(modelElementUrlFragment);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case UrlPackage.MODEL_ELEMENT_URL: {
-			ModelElementUrl modelElementUrl = (ModelElementUrl) theEObject;
+			final ModelElementUrl modelElementUrl = (ModelElementUrl) theEObject;
 			T result = caseModelElementUrl(modelElementUrl);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		default:
