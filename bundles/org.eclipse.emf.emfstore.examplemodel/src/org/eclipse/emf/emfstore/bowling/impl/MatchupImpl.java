@@ -33,11 +33,11 @@ import org.eclipse.emf.emfstore.bowling.Matchup;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl#getGames <em>Games</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl#getNrSpectators <em>Nr Spectators</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl#getGames <em>Games</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl#getNrSpectators <em>Nr Spectators</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MatchupImpl extends EObjectImpl implements Matchup {
@@ -45,7 +45,6 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	 * The cached value of the '{@link #getGames() <em>Games</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getGames()
 	 * @generated
 	 * @ordered
@@ -56,7 +55,6 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	 * The default value of the '{@link #getNrSpectators() <em>Nr Spectators</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getNrSpectators()
 	 * @generated
 	 * @ordered
@@ -67,7 +65,6 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	 * The cached value of the '{@link #getNrSpectators() <em>Nr Spectators</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getNrSpectators()
 	 * @generated
 	 * @ordered
@@ -77,7 +74,6 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected MatchupImpl() {
@@ -87,7 +83,6 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -98,13 +93,11 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Game> getGames() {
 		if (games == null) {
-			games = new EObjectContainmentWithInverseEList.Resolving<Game>(Game.class, this,
-				BowlingPackage.MATCHUP__GAMES, BowlingPackage.GAME__MATCHUP);
+			games = new EObjectContainmentWithInverseEList.Resolving<Game>(Game.class, this, BowlingPackage.MATCHUP__GAMES, BowlingPackage.GAME__MATCHUP);
 		}
 		return games;
 	}
@@ -112,7 +105,6 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public BigInteger getNrSpectators() {
@@ -122,29 +114,26 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setNrSpectators(BigInteger newNrSpectators) {
 		BigInteger oldNrSpectators = nrSpectators;
 		nrSpectators = newNrSpectators;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MATCHUP__NR_SPECTATORS,
-				oldNrSpectators, nrSpectators));
+			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MATCHUP__NR_SPECTATORS, oldNrSpectators, nrSpectators));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case BowlingPackage.MATCHUP__GAMES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getGames()).basicAdd(otherEnd, msgs);
+			case BowlingPackage.MATCHUP__GAMES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getGames()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -152,14 +141,13 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case BowlingPackage.MATCHUP__GAMES:
-			return ((InternalEList<?>) getGames()).basicRemove(otherEnd, msgs);
+			case BowlingPackage.MATCHUP__GAMES:
+				return ((InternalEList<?>)getGames()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -167,16 +155,15 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case BowlingPackage.MATCHUP__GAMES:
-			return getGames();
-		case BowlingPackage.MATCHUP__NR_SPECTATORS:
-			return getNrSpectators();
+			case BowlingPackage.MATCHUP__GAMES:
+				return getGames();
+			case BowlingPackage.MATCHUP__NR_SPECTATORS:
+				return getNrSpectators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,20 +171,19 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case BowlingPackage.MATCHUP__GAMES:
-			getGames().clear();
-			getGames().addAll((Collection<? extends Game>) newValue);
-			return;
-		case BowlingPackage.MATCHUP__NR_SPECTATORS:
-			setNrSpectators((BigInteger) newValue);
-			return;
+			case BowlingPackage.MATCHUP__GAMES:
+				getGames().clear();
+				getGames().addAll((Collection<? extends Game>)newValue);
+				return;
+			case BowlingPackage.MATCHUP__NR_SPECTATORS:
+				setNrSpectators((BigInteger)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -205,18 +191,17 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case BowlingPackage.MATCHUP__GAMES:
-			getGames().clear();
-			return;
-		case BowlingPackage.MATCHUP__NR_SPECTATORS:
-			setNrSpectators(NR_SPECTATORS_EDEFAULT);
-			return;
+			case BowlingPackage.MATCHUP__GAMES:
+				getGames().clear();
+				return;
+			case BowlingPackage.MATCHUP__NR_SPECTATORS:
+				setNrSpectators(NR_SPECTATORS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -224,16 +209,15 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case BowlingPackage.MATCHUP__GAMES:
-			return games != null && !games.isEmpty();
-		case BowlingPackage.MATCHUP__NR_SPECTATORS:
-			return NR_SPECTATORS_EDEFAULT == null ? nrSpectators != null : !NR_SPECTATORS_EDEFAULT.equals(nrSpectators);
+			case BowlingPackage.MATCHUP__GAMES:
+				return games != null && !games.isEmpty();
+			case BowlingPackage.MATCHUP__NR_SPECTATORS:
+				return NR_SPECTATORS_EDEFAULT == null ? nrSpectators != null : !NR_SPECTATORS_EDEFAULT.equals(nrSpectators);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -241,16 +225,14 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (nrSpectators: ");
+		result.append(" (nrSpectators: "); //$NON-NLS-1$
 		result.append(nrSpectators);
 		result.append(')');
 		return result.toString();

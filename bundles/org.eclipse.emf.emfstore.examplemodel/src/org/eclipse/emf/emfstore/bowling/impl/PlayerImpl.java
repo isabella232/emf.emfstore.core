@@ -267,10 +267,11 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -290,11 +291,12 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setDateOfBirth(Date newDateOfBirth) {
-		Date oldDateOfBirth = dateOfBirth;
+		final Date oldDateOfBirth = dateOfBirth;
 		dateOfBirth = newDateOfBirth;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__DATE_OF_BIRTH, oldDateOfBirth,
 				dateOfBirth));
+		}
 	}
 
 	/**
@@ -314,10 +316,11 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setHeight(double newHeight) {
-		double oldHeight = height;
+		final double oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__HEIGHT, oldHeight, height));
+		}
 	}
 
 	/**
@@ -337,11 +340,12 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setIsProfessional(boolean newIsProfessional) {
-		boolean oldIsProfessional = isProfessional;
+		final boolean oldIsProfessional = isProfessional;
 		isProfessional = newIsProfessional;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__IS_PROFESSIONAL,
 				oldIsProfessional, isProfessional));
+		}
 	}
 
 	/**
@@ -374,11 +378,12 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setNumberOfVictories(int newNumberOfVictories) {
-		int oldNumberOfVictories = numberOfVictories;
+		final int oldNumberOfVictories = numberOfVictories;
 		numberOfVictories = newNumberOfVictories;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__NUMBER_OF_VICTORIES,
 				oldNumberOfVictories, numberOfVictories));
+		}
 	}
 
 	/**
@@ -412,11 +417,12 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setWinLossRatio(BigDecimal newWinLossRatio) {
-		BigDecimal oldWinLossRatio = winLossRatio;
+		final BigDecimal oldWinLossRatio = winLossRatio;
 		winLossRatio = newWinLossRatio;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__WIN_LOSS_RATIO,
 				oldWinLossRatio, winLossRatio));
+		}
 	}
 
 	/**
@@ -436,10 +442,11 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * @generated
 	 */
 	public void setGender(Gender newGender) {
-		Gender oldGender = gender;
+		final Gender oldGender = gender;
 		gender = newGender == null ? GENDER_EDEFAULT : newGender;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__GENDER, oldGender, gender));
+		}
 	}
 
 	/**
@@ -623,27 +630,28 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
-		result.append(", dateOfBirth: ");
+		result.append(", dateOfBirth: "); //$NON-NLS-1$
 		result.append(dateOfBirth);
-		result.append(", height: ");
+		result.append(", height: "); //$NON-NLS-1$
 		result.append(height);
-		result.append(", isProfessional: ");
+		result.append(", isProfessional: "); //$NON-NLS-1$
 		result.append(isProfessional);
-		result.append(", eMails: ");
+		result.append(", eMails: "); //$NON-NLS-1$
 		result.append(eMails);
-		result.append(", numberOfVictories: ");
+		result.append(", numberOfVictories: "); //$NON-NLS-1$
 		result.append(numberOfVictories);
-		result.append(", playedTournamentTypes: ");
+		result.append(", playedTournamentTypes: "); //$NON-NLS-1$
 		result.append(playedTournamentTypes);
-		result.append(", winLossRatio: ");
+		result.append(", winLossRatio: "); //$NON-NLS-1$
 		result.append(winLossRatio);
-		result.append(", gender: ");
+		result.append(", gender: "); //$NON-NLS-1$
 		result.append(gender);
 		result.append(')');
 		return result.toString();

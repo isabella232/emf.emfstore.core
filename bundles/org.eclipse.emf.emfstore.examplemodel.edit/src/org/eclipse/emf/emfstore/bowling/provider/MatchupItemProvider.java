@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -40,7 +39,7 @@ import org.eclipse.emf.emfstore.bowling.Matchup;
  * @generated
  */
 public class MatchupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,8 +81,8 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Matchup_games_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Matchup_games_feature", "_UI_Matchup_type"),
+				getString("_UI_Matchup_games_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Matchup_games_feature", "_UI_Matchup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.MATCHUP__GAMES,
 				true,
 				false,
@@ -106,8 +105,8 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Matchup_nrSpectators_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Matchup_nrSpectators_feature", "_UI_Matchup_type"),
+				getString("_UI_Matchup_nrSpectators_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Matchup_nrSpectators_feature", "_UI_Matchup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.MATCHUP__NR_SPECTATORS,
 				true,
 				false,
@@ -158,7 +157,7 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Matchup"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Matchup")); //$NON-NLS-1$
 	}
 
 	/**
@@ -170,11 +169,11 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		BigInteger labelValue = ((Matchup) object).getNrSpectators();
-		String label = labelValue == null ? null : labelValue.toString();
+		final BigInteger labelValue = ((Matchup) object).getNrSpectators();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Matchup_type") :
-			getString("_UI_Matchup_type") + " " + label;
+			getString("_UI_Matchup_type") : //$NON-NLS-1$
+			getString("_UI_Matchup_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Technische Universitaet Muenchen.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.util;
 
@@ -31,7 +39,6 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * 
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage
  * @generated
- * @since 1.1
  */
 public class BowlingValidator extends EObjectValidator {
 	/**
@@ -53,7 +60,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
 	 */
-	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.emf.emfstore.bowling";
+	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.emf.emfstore.bowling"; //$NON-NLS-1$
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate' of 'Player'.

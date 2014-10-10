@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Technische Universitaet Muenchen.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.impl;
 
@@ -152,10 +160,11 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MERCHANDISE__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -175,13 +184,14 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * @generated
 	 */
 	public void setPrice(BigDecimal newPrice) {
-		BigDecimal oldPrice = price;
+		final BigDecimal oldPrice = price;
 		price = newPrice;
-		boolean oldPriceESet = priceESet;
+		final boolean oldPriceESet = priceESet;
 		priceESet = true;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MERCHANDISE__PRICE, oldPrice, price,
 				!oldPriceESet));
+		}
 	}
 
 	/**
@@ -191,13 +201,14 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * @generated
 	 */
 	public void unsetPrice() {
-		BigDecimal oldPrice = price;
-		boolean oldPriceESet = priceESet;
+		final BigDecimal oldPrice = price;
+		final boolean oldPriceESet = priceESet;
 		price = PRICE_EDEFAULT;
 		priceESet = false;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.UNSET, BowlingPackage.MERCHANDISE__PRICE, oldPrice,
 				PRICE_EDEFAULT, oldPriceESet));
+		}
 	}
 
 	/**
@@ -227,13 +238,14 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * @generated
 	 */
 	public void setSerialNumber(BigInteger newSerialNumber) {
-		BigInteger oldSerialNumber = serialNumber;
+		final BigInteger oldSerialNumber = serialNumber;
 		serialNumber = newSerialNumber;
-		boolean oldSerialNumberESet = serialNumberESet;
+		final boolean oldSerialNumberESet = serialNumberESet;
 		serialNumberESet = true;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MERCHANDISE__SERIAL_NUMBER,
 				oldSerialNumber, serialNumber, !oldSerialNumberESet));
+		}
 	}
 
 	/**
@@ -243,13 +255,14 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * @generated
 	 */
 	public void unsetSerialNumber() {
-		BigInteger oldSerialNumber = serialNumber;
-		boolean oldSerialNumberESet = serialNumberESet;
+		final BigInteger oldSerialNumber = serialNumber;
+		final boolean oldSerialNumberESet = serialNumberESet;
 		serialNumber = SERIAL_NUMBER_EDEFAULT;
 		serialNumberESet = false;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.UNSET, BowlingPackage.MERCHANDISE__SERIAL_NUMBER,
 				oldSerialNumber, SERIAL_NUMBER_EDEFAULT, oldSerialNumberESet));
+		}
 	}
 
 	/**
@@ -352,22 +365,27 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
-		result.append(", price: ");
-		if (priceESet)
+		result.append(", price: "); //$NON-NLS-1$
+		if (priceESet) {
 			result.append(price);
-		else
-			result.append("<unset>");
-		result.append(", serialNumber: ");
-		if (serialNumberESet)
+		}
+		else {
+			result.append("<unset>"); //$NON-NLS-1$
+		}
+		result.append(", serialNumber: "); //$NON-NLS-1$
+		if (serialNumberESet) {
 			result.append(serialNumber);
-		else
-			result.append("<unset>");
+		}
+		else {
+			result.append("<unset>"); //$NON-NLS-1$
+		}
 		result.append(')');
 		return result.toString();
 	}

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.emfstore.examplemodel/src" modelPluginID="org.eclipse.emf.emfstore.examplemodel"
-    modelName="Bowling" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
-    complianceLevel="5.0" copyrightFields="false" runtimeVersion="2.5" classNamePattern="">
+    modelName="Bowling" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
+    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" runtimeVersion="2.5"
+    classNamePattern="">
   <foreignModel>bowling.ecore</foreignModel>
   <genPackages prefix="Bowling" basePackage="org.eclipse.emf.emfstore" disposableProviderFactory="true"
       ecorePackage="bowling.ecore#/">
@@ -14,6 +15,7 @@
       <genEnumLiterals ecoreEnumLiteral="bowling.ecore#//Gender/Female"/>
       <genEnumLiterals ecoreEnumLiteral="bowling.ecore#//Gender/Male"/>
     </genEnums>
+    <genDataTypes ecoreDataType="bowling.ecore#//XMLDate"/>
     <genClasses ecoreClass="bowling.ecore#//Player">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//Player/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//Player/dateOfBirth"/>
@@ -24,6 +26,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//Player/playedTournamentTypes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//Player/winLossRatio"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//Player/gender"/>
+      <genOperations ecoreOperation="bowling.ecore#//Player/validate">
+        <genParameters ecoreParameter="bowling.ecore#//Player/validate/chain"/>
+        <genParameters ecoreParameter="bowling.ecore#//Player/validate/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="bowling.ecore#//League">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//League/name"/>
@@ -53,6 +59,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//PlayerToPointsMap/value"/>
     </genClasses>
     <genClasses ecoreClass="bowling.ecore#//Referee">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bowling.ecore#//Referee/dateOfBirth"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bowling.ecore#//Referee/league"/>
     </genClasses>
     <genClasses ecoreClass="bowling.ecore#//RefereeToGamesMap">

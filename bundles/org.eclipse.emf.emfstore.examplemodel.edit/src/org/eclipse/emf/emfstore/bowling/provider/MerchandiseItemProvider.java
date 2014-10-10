@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Technische Universitaet Muenchen.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.provider;
 
@@ -13,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -32,7 +39,6 @@ public class MerchandiseItemProvider
 	extends ItemProviderAdapter
 	implements
 	IEditingDomainItemProvider,
-	IStructuredItemContentProvider,
 	ITreeItemContentProvider,
 	IItemLabelProvider,
 	IItemPropertySource {
@@ -79,8 +85,8 @@ public class MerchandiseItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Merchandise_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_name_feature", "_UI_Merchandise_type"),
+				getString("_UI_Merchandise_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_name_feature", "_UI_Merchandise_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.MERCHANDISE__NAME,
 				true,
 				false,
@@ -103,8 +109,8 @@ public class MerchandiseItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Merchandise_price_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_price_feature", "_UI_Merchandise_type"),
+				getString("_UI_Merchandise_price_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_price_feature", "_UI_Merchandise_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.MERCHANDISE__PRICE,
 				true,
 				false,
@@ -122,13 +128,14 @@ public class MerchandiseItemProvider
 	 * @generated
 	 */
 	protected void addSerialNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Merchandise_serialNumber_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_serialNumber_feature",
-					"_UI_Merchandise_type"),
+				getString("_UI_Merchandise_serialNumber_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Merchandise_serialNumber_feature", "_UI_Merchandise_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.MERCHANDISE__SERIAL_NUMBER,
 				true,
 				false,
@@ -147,7 +154,7 @@ public class MerchandiseItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Merchandise"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Merchandise")); //$NON-NLS-1$
 	}
 
 	/**
@@ -159,10 +166,10 @@ public class MerchandiseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Merchandise) object).getName();
+		final String label = ((Merchandise) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Merchandise_type") :
-			getString("_UI_Merchandise_type") + " " + label;
+			getString("_UI_Merchandise_type") : //$NON-NLS-1$
+			getString("_UI_Merchandise_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

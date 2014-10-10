@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -40,7 +39,7 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * @generated
  */
 public class TournamentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -86,9 +85,9 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Tournament_matchups_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_matchups_feature",
-					"_UI_Tournament_type"),
+				getString("_UI_Tournament_matchups_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Tournament_matchups_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.TOURNAMENT__MATCHUPS,
 				true,
 				false,
@@ -110,8 +109,8 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Tournament_type_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_type_feature", "_UI_Tournament_type"),
+				getString("_UI_Tournament_type_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_type_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.TOURNAMENT__TYPE,
 				true,
 				false,
@@ -134,8 +133,8 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Tournament_players_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_players_feature", "_UI_Tournament_type"),
+				getString("_UI_Tournament_players_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_players_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.TOURNAMENT__PLAYERS,
 				true,
 				false,
@@ -157,9 +156,9 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Tournament_priceMoney_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_priceMoney_feature",
-					"_UI_Tournament_type"),
+				getString("_UI_Tournament_priceMoney_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Tournament_priceMoney_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.TOURNAMENT__PRICE_MONEY,
 				true,
 				false,
@@ -177,13 +176,14 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addReceivesTrophyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Tournament_receivesTrophy_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_receivesTrophy_feature",
-					"_UI_Tournament_type"),
+				getString("_UI_Tournament_receivesTrophy_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Tournament_receivesTrophy_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.TOURNAMENT__RECEIVES_TROPHY,
 				true,
 				false,
@@ -205,9 +205,9 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Tournament_matchDays_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_matchDays_feature",
-					"_UI_Tournament_type"),
+				getString("_UI_Tournament_matchDays_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Tournament_matchDays_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.TOURNAMENT__MATCH_DAYS,
 				true,
 				false,
@@ -260,7 +260,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Tournament"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Tournament")); //$NON-NLS-1$
 	}
 
 	/**
@@ -272,11 +272,11 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public String getText(Object object) {
-		TournamentType labelValue = ((Tournament) object).getType();
-		String label = labelValue == null ? null : labelValue.toString();
+		final TournamentType labelValue = ((Tournament) object).getType();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Tournament_type") :
-			getString("_UI_Tournament_type") + " " + label;
+			getString("_UI_Tournament_type") : //$NON-NLS-1$
+			getString("_UI_Tournament_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

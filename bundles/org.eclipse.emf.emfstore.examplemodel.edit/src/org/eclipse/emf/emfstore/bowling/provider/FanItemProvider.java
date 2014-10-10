@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Technische Universitaet Muenchen.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.provider;
 
@@ -14,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -34,7 +41,6 @@ public class FanItemProvider
 	extends ItemProviderAdapter
 	implements
 	IEditingDomainItemProvider,
-	IStructuredItemContentProvider,
 	ITreeItemContentProvider,
 	IItemLabelProvider,
 	IItemPropertySource {
@@ -86,8 +92,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_name_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_name_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__NAME,
 				true,
 				false,
@@ -109,8 +115,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_dateOfBirth_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_dateOfBirth_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_dateOfBirth_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_dateOfBirth_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__DATE_OF_BIRTH,
 				true,
 				false,
@@ -132,8 +138,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_hasSeasonTicket_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_hasSeasonTicket_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_hasSeasonTicket_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_hasSeasonTicket_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__HAS_SEASON_TICKET,
 				true,
 				false,
@@ -155,8 +161,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_eMails_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_eMails_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_eMails_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_eMails_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__EMAILS,
 				true,
 				false,
@@ -178,8 +184,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_gender_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_gender_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_gender_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_gender_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__GENDER,
 				true,
 				false,
@@ -201,8 +207,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_favouritePlayer_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_favouritePlayer_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_favouritePlayer_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_favouritePlayer_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__FAVOURITE_PLAYER,
 				true,
 				false,
@@ -224,8 +230,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_visitedTournaments_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_visitedTournaments_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_visitedTournaments_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_visitedTournaments_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__VISITED_TOURNAMENTS,
 				true,
 				false,
@@ -243,13 +249,14 @@ public class FanItemProvider
 	 * @generated
 	 */
 	protected void addNumberOfTournamentsVisitedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_numberOfTournamentsVisited_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_numberOfTournamentsVisited_feature",
-					"_UI_Fan_type"),
+				getString("_UI_Fan_numberOfTournamentsVisited_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Fan_numberOfTournamentsVisited_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__NUMBER_OF_TOURNAMENTS_VISITED,
 				true,
 				false,
@@ -271,8 +278,8 @@ public class FanItemProvider
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Fan_moneySpentOnTickets_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Fan_moneySpentOnTickets_feature", "_UI_Fan_type"),
+				getString("_UI_Fan_moneySpentOnTickets_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_moneySpentOnTickets_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.FAN__MONEY_SPENT_ON_TICKETS,
 				true,
 				false,
@@ -324,7 +331,7 @@ public class FanItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Fan"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Fan")); //$NON-NLS-1$
 	}
 
 	/**
@@ -336,10 +343,10 @@ public class FanItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Fan) object).getName();
+		final String label = ((Fan) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Fan_type") :
-			getString("_UI_Fan_type") + " " + label;
+			getString("_UI_Fan_type") : //$NON-NLS-1$
+			getString("_UI_Fan_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -404,15 +411,15 @@ public class FanItemProvider
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+		final Object childFeature = feature;
+		final Object childObject = child;
 
-		boolean qualify =
+		final boolean qualify =
 			childFeature == BowlingPackage.Literals.FAN__FAN_MERCHANDISE ||
 				childFeature == BowlingPackage.Literals.FAN__FAVOURITE_MERCHANDISE;
 
 		if (qualify) {
-			return getString("_UI_CreateChild_text2",
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);

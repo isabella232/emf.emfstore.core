@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -39,7 +38,7 @@ import org.eclipse.emf.emfstore.bowling.Referee;
  * @generated
  */
 public class RefereeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -81,8 +80,8 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Referee_dateOfBirth_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Referee_dateOfBirth_feature", "_UI_Referee_type"),
+				getString("_UI_Referee_dateOfBirth_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Referee_dateOfBirth_feature", "_UI_Referee_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.REFEREE__DATE_OF_BIRTH,
 				true,
 				false,
@@ -104,8 +103,8 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Referee_league_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Referee_league_feature", "_UI_Referee_type"),
+				getString("_UI_Referee_league_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Referee_league_feature", "_UI_Referee_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.REFEREE__LEAGUE,
 				true,
 				false,
@@ -124,7 +123,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Referee"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Referee")); //$NON-NLS-1$
 	}
 
 	/**
@@ -136,11 +135,11 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		XMLGregorianCalendar labelValue = ((Referee) object).getDateOfBirth();
-		String label = labelValue == null ? null : labelValue.toString();
+		final XMLGregorianCalendar labelValue = ((Referee) object).getDateOfBirth();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Referee_type") :
-			getString("_UI_Referee_type") + " " + label;
+			getString("_UI_Referee_type") : //$NON-NLS-1$
+			getString("_UI_Referee_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

@@ -41,7 +41,7 @@ public interface BowlingPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNAME = "bowling";
+	String eNAME = "bowling"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
@@ -50,7 +50,7 @@ public interface BowlingPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_URI = "http://org/eclipse/example/bowling";
+	String eNS_URI = "http://org/eclipse/example/bowling"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -59,7 +59,7 @@ public interface BowlingPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.eclipse.example.bowling";
+	String eNS_PREFIX = "org.eclipse.example.bowling"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

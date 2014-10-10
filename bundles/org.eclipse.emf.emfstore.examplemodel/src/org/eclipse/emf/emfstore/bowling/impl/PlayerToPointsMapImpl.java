@@ -28,19 +28,18 @@ import org.eclipse.emf.emfstore.bowling.Player;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl#getTypedKey <em>Key</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl#getTypedKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entry<Player, Integer> {
+public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entry<Player,Integer> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
@@ -51,7 +50,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 * The default value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
@@ -62,7 +60,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
@@ -72,7 +69,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PlayerToPointsMapImpl() {
@@ -82,7 +78,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -93,17 +88,15 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Player getTypedKey() {
 		if (key != null && key.eIsProxy()) {
-			InternalEObject oldKey = (InternalEObject) key;
-			key = (Player) eResolveProxy(oldKey);
+			InternalEObject oldKey = (InternalEObject)key;
+			key = (Player)eResolveProxy(oldKey);
 			if (key != oldKey) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.PLAYER_TO_POINTS_MAP__KEY,
-						oldKey, key));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.PLAYER_TO_POINTS_MAP__KEY, oldKey, key));
 			}
 		}
 		return key;
@@ -112,7 +105,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Player basicGetTypedKey() {
@@ -122,7 +114,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTypedKey(Player newKey) {
@@ -135,7 +126,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Integer getTypedValue() {
@@ -145,32 +135,28 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setTypedValue(Integer newValue) {
 		Integer oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE, oldValue,
-				value));
+			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE, oldValue, value));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
-			if (resolve)
-				return getTypedKey();
-			return basicGetTypedKey();
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
-			return getTypedValue();
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
+				if (resolve) return getTypedKey();
+				return basicGetTypedKey();
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
+				return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -178,18 +164,17 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
-			setTypedKey((Player) newValue);
-			return;
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
-			setTypedValue((Integer) newValue);
-			return;
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
+				setTypedKey((Player)newValue);
+				return;
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
+				setTypedValue((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -197,18 +182,17 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
-			setTypedKey((Player) null);
-			return;
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
-			setTypedValue(VALUE_EDEFAULT);
-			return;
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
+				setTypedKey((Player)null);
+				return;
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
+				setTypedValue(VALUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -216,16 +200,15 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
-			return key != null;
-		case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__KEY:
+				return key != null;
+			case BowlingPackage.PLAYER_TO_POINTS_MAP__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -233,16 +216,14 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
+		result.append(" (value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');
 		return result.toString();
@@ -251,7 +232,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected int hash = -1;
@@ -259,7 +239,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getHash() {
@@ -273,7 +252,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHash(int hash) {
@@ -283,7 +261,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Player getKey() {
@@ -293,7 +270,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setKey(Player key) {
@@ -303,7 +279,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Integer getValue() {
@@ -313,7 +288,6 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Integer setValue(Integer value) {
@@ -325,13 +299,12 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EMap<Player, Integer> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<Player, Integer>) container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<Player, Integer>)container.eGet(eContainmentFeature());
 	}
 
 } // PlayerToPointsMapImpl

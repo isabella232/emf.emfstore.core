@@ -51,12 +51,12 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 */
 	public static BowlingFactory init() {
 		try {
-			BowlingFactory theBowlingFactory = (BowlingFactory) EPackage.Registry.INSTANCE
+			final BowlingFactory theBowlingFactory = (BowlingFactory) EPackage.Registry.INSTANCE
 				.getEFactory(BowlingPackage.eNS_URI);
 			if (theBowlingFactory != null) {
 				return theBowlingFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new BowlingFactoryImpl();
@@ -105,7 +105,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 		case BowlingPackage.MERCHANDISE:
 			return createMerchandise();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -125,7 +125,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 		case BowlingPackage.XML_DATE:
 			return createXMLDateFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -145,7 +145,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 		case BowlingPackage.XML_DATE:
 			return convertXMLDateToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -156,7 +156,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Player createPlayer() {
-		PlayerImpl player = new PlayerImpl();
+		final PlayerImpl player = new PlayerImpl();
 		return player;
 	}
 
@@ -167,7 +167,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public League createLeague() {
-		LeagueImpl league = new LeagueImpl();
+		final LeagueImpl league = new LeagueImpl();
 		return league;
 	}
 
@@ -178,7 +178,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Tournament createTournament() {
-		TournamentImpl tournament = new TournamentImpl();
+		final TournamentImpl tournament = new TournamentImpl();
 		return tournament;
 	}
 
@@ -189,7 +189,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Matchup createMatchup() {
-		MatchupImpl matchup = new MatchupImpl();
+		final MatchupImpl matchup = new MatchupImpl();
 		return matchup;
 	}
 
@@ -200,7 +200,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Game createGame() {
-		GameImpl game = new GameImpl();
+		final GameImpl game = new GameImpl();
 		return game;
 	}
 
@@ -211,7 +211,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Map.Entry<Player, Integer> createPlayerToPointsMap() {
-		PlayerToPointsMapImpl playerToPointsMap = new PlayerToPointsMapImpl();
+		final PlayerToPointsMapImpl playerToPointsMap = new PlayerToPointsMapImpl();
 		return playerToPointsMap;
 	}
 
@@ -222,7 +222,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Referee createReferee() {
-		RefereeImpl referee = new RefereeImpl();
+		final RefereeImpl referee = new RefereeImpl();
 		return referee;
 	}
 
@@ -233,7 +233,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Map.Entry<Referee, Game> createRefereeToGamesMap() {
-		RefereeToGamesMapImpl refereeToGamesMap = new RefereeToGamesMapImpl();
+		final RefereeToGamesMapImpl refereeToGamesMap = new RefereeToGamesMapImpl();
 		return refereeToGamesMap;
 	}
 
@@ -244,7 +244,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Area createArea() {
-		AreaImpl area = new AreaImpl();
+		final AreaImpl area = new AreaImpl();
 		return area;
 	}
 
@@ -255,7 +255,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Fan createFan() {
-		FanImpl fan = new FanImpl();
+		final FanImpl fan = new FanImpl();
 		return fan;
 	}
 
@@ -266,7 +266,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Merchandise createMerchandise() {
-		MerchandiseImpl merchandise = new MerchandiseImpl();
+		final MerchandiseImpl merchandise = new MerchandiseImpl();
 		return merchandise;
 	}
 
@@ -277,10 +277,12 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public TournamentType createTournamentTypeFromString(EDataType eDataType, String initialValue) {
-		TournamentType result = TournamentType.get(initialValue);
+		final TournamentType result = TournamentType.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
-				+ eDataType.getName() + "'");
+		{
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		}
 		return result;
 	}
 
@@ -301,10 +303,12 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * @generated
 	 */
 	public Gender createGenderFromString(EDataType eDataType, String initialValue) {
-		Gender result = Gender.get(initialValue);
+		final Gender result = Gender.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
-				+ eDataType.getName() + "'");
+		{
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		}
 		return result;
 	}
 

@@ -20,21 +20,21 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Tournament</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchups <em>Matchups</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getType <em>Type</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getPlayerPoints <em>Player Points</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getPlayers <em>Players</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getReferees <em>Referees</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getPriceMoney <em>Price Money</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getReceivesTrophy <em>Receives Trophy</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchDays <em>Match Days</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchups <em>Matchups</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getPlayerPoints <em>Player Points</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getPlayers <em>Players</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getReferees <em>Referees</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getPriceMoney <em>Price Money</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getReceivesTrophy <em>Receives Trophy</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchDays <em>Match Days</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament()
  * @model
  * @generated
@@ -49,7 +49,6 @@ public interface Tournament extends EObject {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Matchups</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_Matchups()
 	 * @model containment="true" resolveProxies="true"
@@ -65,7 +64,6 @@ public interface Tournament extends EObject {
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.bowling.TournamentType
 	 * @see #setType(TournamentType)
@@ -79,7 +77,6 @@ public interface Tournament extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Tournament#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.bowling.TournamentType
 	 * @see #getType()
@@ -97,11 +94,9 @@ public interface Tournament extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Player Points</em>' map.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_PlayerPoints()
-	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.bowling.PlayerToPointsMap<org.eclipse.emf.emfstore.bowling.Player, org.eclipse.emf.ecore.EIntegerObject>"
+	 * @model mapType="org.eclipse.emf.emfstore.bowling.PlayerToPointsMap<org.eclipse.emf.emfstore.bowling.Player, org.eclipse.emf.ecore.EIntegerObject>"
 	 * @generated
 	 */
 	EMap<Player, Integer> getPlayerPoints();
@@ -115,7 +110,6 @@ public interface Tournament extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Players</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_Players()
 	 * @model
@@ -132,11 +126,9 @@ public interface Tournament extends EObject {
 	 * If the meaning of the '<em>Referees</em>' map isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Referees</em>' map.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_Referees()
-	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.bowling.RefereeToGamesMap<org.eclipse.emf.emfstore.bowling.Referee, org.eclipse.emf.emfstore.bowling.Game>"
+	 * @model mapType="org.eclipse.emf.emfstore.bowling.RefereeToGamesMap<org.eclipse.emf.emfstore.bowling.Referee, org.eclipse.emf.emfstore.bowling.Game>"
 	 * @generated
 	 */
 	EMap<Referee, Game> getReferees();
@@ -150,7 +142,6 @@ public interface Tournament extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Price Money</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_PriceMoney()
 	 * @model unique="false"
@@ -167,7 +158,6 @@ public interface Tournament extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Receives Trophy</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_ReceivesTrophy()
 	 * @model unique="false"
@@ -184,7 +174,6 @@ public interface Tournament extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Match Days</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_MatchDays()
 	 * @model

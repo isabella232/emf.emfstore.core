@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -37,7 +36,7 @@ import org.eclipse.emf.emfstore.bowling.Player;
  * @generated
  */
 public class PlayerItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -86,8 +85,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_name_feature", "_UI_Player_type"),
+				getString("_UI_Player_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_name_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__NAME,
 				true,
 				false,
@@ -109,8 +108,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_dateOfBirth_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_dateOfBirth_feature", "_UI_Player_type"),
+				getString("_UI_Player_dateOfBirth_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_dateOfBirth_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__DATE_OF_BIRTH,
 				true,
 				false,
@@ -132,8 +131,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_height_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_height_feature", "_UI_Player_type"),
+				getString("_UI_Player_height_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_height_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__HEIGHT,
 				true,
 				false,
@@ -156,8 +155,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_isProfessional_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_isProfessional_feature", "_UI_Player_type"),
+				getString("_UI_Player_isProfessional_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_isProfessional_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__IS_PROFESSIONAL,
 				true,
 				false,
@@ -179,8 +178,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_eMails_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_eMails_feature", "_UI_Player_type"),
+				getString("_UI_Player_eMails_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_eMails_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__EMAILS,
 				true,
 				false,
@@ -202,9 +201,9 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_numberOfVictories_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_numberOfVictories_feature",
-					"_UI_Player_type"),
+				getString("_UI_Player_numberOfVictories_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Player_numberOfVictories_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__NUMBER_OF_VICTORIES,
 				true,
 				false,
@@ -222,13 +221,14 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 	 * @generated
 	 */
 	protected void addPlayedTournamentTypesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_playedTournamentTypes_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_playedTournamentTypes_feature",
-					"_UI_Player_type"),
+				getString("_UI_Player_playedTournamentTypes_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Player_playedTournamentTypes_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__PLAYED_TOURNAMENT_TYPES,
 				true,
 				false,
@@ -250,8 +250,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_winLossRatio_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_winLossRatio_feature", "_UI_Player_type"),
+				getString("_UI_Player_winLossRatio_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_winLossRatio_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__WIN_LOSS_RATIO,
 				true,
 				false,
@@ -273,8 +273,8 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Player_gender_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Player_gender_feature", "_UI_Player_type"),
+				getString("_UI_Player_gender_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Player_gender_feature", "_UI_Player_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER__GENDER,
 				true,
 				false,
@@ -293,7 +293,7 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Player"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Player")); //$NON-NLS-1$
 	}
 
 	/**
@@ -305,10 +305,10 @@ public class PlayerItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Player) object).getName();
+		final String label = ((Player) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Player_type") :
-			getString("_UI_Player_type") + " " + label;
+			getString("_UI_Player_type") : //$NON-NLS-1$
+			getString("_UI_Player_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

@@ -36,7 +36,7 @@ public enum TournamentType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PRO(0, "Pro", "Pro"),
+	PRO(0, "Pro", "Pro"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Amateur</b></em>' literal object.
@@ -47,7 +47,7 @@ public enum TournamentType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	AMATEUR(1, "Amateur", "Amateur");
+	AMATEUR(1, "Amateur", "Amateur"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Pro</b></em>' literal value.
@@ -111,7 +111,7 @@ public enum TournamentType implements Enumerator {
 	 */
 	public static TournamentType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			TournamentType result = VALUES_ARRAY[i];
+			final TournamentType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -128,7 +128,7 @@ public enum TournamentType implements Enumerator {
 	 */
 	public static TournamentType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			TournamentType result = VALUES_ARRAY[i];
+			final TournamentType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}

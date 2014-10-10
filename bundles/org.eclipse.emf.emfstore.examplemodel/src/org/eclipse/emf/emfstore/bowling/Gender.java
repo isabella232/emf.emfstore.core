@@ -1,4 +1,12 @@
 /**
+ * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Technische Universitaet Muenchen.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling;
 
@@ -28,7 +36,7 @@ public enum Gender implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FEMALE(0, "Female", "Female"),
+	FEMALE(0, "Female", "Female"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Male</b></em>' literal object.
@@ -39,7 +47,7 @@ public enum Gender implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MALE(1, "Male", "Male");
+	MALE(1, "Male", "Male"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Female</b></em>' literal value.
@@ -104,7 +112,7 @@ public enum Gender implements Enumerator {
 	 */
 	public static Gender get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Gender result = VALUES_ARRAY[i];
+			final Gender result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -121,7 +129,7 @@ public enum Gender implements Enumerator {
 	 */
 	public static Gender getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Gender result = VALUES_ARRAY[i];
+			final Gender result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}

@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -37,7 +36,7 @@ import org.eclipse.emf.emfstore.bowling.BowlingPackage;
  * @generated
  */
 public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -75,13 +74,14 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_PlayerToPointsMap_key_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_key_feature",
-					"_UI_PlayerToPointsMap_type"),
+				getString("_UI_PlayerToPointsMap_key_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_key_feature", "_UI_PlayerToPointsMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER_TO_POINTS_MAP__KEY,
 				true,
 				false,
@@ -99,13 +99,14 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_PlayerToPointsMap_value_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_value_feature",
-					"_UI_PlayerToPointsMap_type"),
+				getString("_UI_PlayerToPointsMap_value_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_value_feature", "_UI_PlayerToPointsMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				BowlingPackage.Literals.PLAYER_TO_POINTS_MAP__VALUE,
 				true,
 				false,
@@ -124,7 +125,7 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PlayerToPointsMap"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PlayerToPointsMap")); //$NON-NLS-1$
 	}
 
 	/**
@@ -136,8 +137,8 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> playerToPointsMap = (Map.Entry<?, ?>) object;
-		return "" + playerToPointsMap.getKey() + " -> " + playerToPointsMap.getValue();
+		final Map.Entry<?, ?> playerToPointsMap = (Map.Entry<?, ?>) object;
+		return "" + playerToPointsMap.getKey() + " -> " + playerToPointsMap.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

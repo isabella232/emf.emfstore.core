@@ -208,10 +208,11 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * @generated
 	 */
 	public void setType(TournamentType newType) {
-		TournamentType oldType = type;
+		final TournamentType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.TOURNAMENT__TYPE, oldType, type));
+		}
 	}
 
 	/**
@@ -328,17 +329,17 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 		case BowlingPackage.TOURNAMENT__TYPE:
 			return getType();
 		case BowlingPackage.TOURNAMENT__PLAYER_POINTS:
-			if (coreType)
+			if (coreType) {
 				return getPlayerPoints();
-			else
-				return getPlayerPoints().map();
+			}
+			return getPlayerPoints().map();
 		case BowlingPackage.TOURNAMENT__PLAYERS:
 			return getPlayers();
 		case BowlingPackage.TOURNAMENT__REFEREES:
-			if (coreType)
+			if (coreType) {
 				return getReferees();
-			else
-				return getReferees().map();
+			}
+			return getReferees().map();
 		case BowlingPackage.TOURNAMENT__PRICE_MONEY:
 			return getPriceMoney();
 		case BowlingPackage.TOURNAMENT__RECEIVES_TROPHY:
@@ -466,17 +467,18 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (type: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (type: "); //$NON-NLS-1$
 		result.append(type);
-		result.append(", priceMoney: ");
+		result.append(", priceMoney: "); //$NON-NLS-1$
 		result.append(priceMoney);
-		result.append(", receivesTrophy: ");
+		result.append(", receivesTrophy: "); //$NON-NLS-1$
 		result.append(receivesTrophy);
-		result.append(", matchDays: ");
+		result.append(", matchDays: "); //$NON-NLS-1$
 		result.append(matchDays);
 		result.append(')');
 		return result.toString();
