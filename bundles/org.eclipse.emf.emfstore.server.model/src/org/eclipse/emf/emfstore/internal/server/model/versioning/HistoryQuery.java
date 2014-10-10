@@ -35,7 +35,10 @@ import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryQuery()
  * @model abstract="true"
  * @generated NOT
+ * 
+ * @param <T> an API history query subtype
  */
+@SuppressWarnings("rawtypes")
 public interface HistoryQuery<T extends ESHistoryQuery> extends EObject, APIDelegate<T> {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' containment reference.

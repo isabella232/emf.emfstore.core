@@ -93,6 +93,7 @@ public interface VersioningFactory extends EFactory {
 	 * @return a new object of class '<em>Range Query</em>'.
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	RangeQuery createRangeQuery();
 
 	/**

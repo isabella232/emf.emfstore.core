@@ -33,12 +33,12 @@ public interface VersionSpec extends EObject {
 	/**
 	 * The default branch name 'trunk'.
 	 */
-	String BRANCH_DEFAULT_NAME = "trunk";
+	String BRANCH_DEFAULT_NAME = "trunk"; //$NON-NLS-1$
 
 	/**
 	 * Global identifier.
 	 */
-	String GLOBAL = "___GLOBAL___";
+	String GLOBAL = "___GLOBAL___"; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Branch</b></em>' attribute.

@@ -25,10 +25,11 @@ import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
+import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutator;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -276,8 +277,10 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 	
 	public void generateModels(final ProjectSpace projectSpace, int numberOfModleElements) {
 		lastSeed = lastSeed == seed ? seed + 1 : seed;
-		final ModelMutatorConfiguration mmc = new ModelMutatorConfiguration(ModelMutatorUtil.getEPackage(MODEL_KEY),
-			projectSpace.getProject(), lastSeed);
+		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
+				ESModelMutatorUtil.getEPackage(MODEL_KEY),
+				projectSpace.getProject(), lastSeed);
+		
 		mmc.setMaxDeleteCount(1);
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(numberOfModleElements);
@@ -289,7 +292,7 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
-				ModelMutator.generateModel(mmc);
+				ESDefaultModelMutator.generateModel(mmc);
 			}
 		});
 		
@@ -298,8 +301,9 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 
 	public void changeModel(final ProjectSpace prjSpace, final int nrOfChanges) {
 		lastSeed = lastSeed == seed ? seed + 1 : seed;
-		final ModelMutatorConfiguration mmc = new ModelMutatorConfiguration(ModelMutatorUtil.getEPackage(MODEL_KEY),
-			prjSpace.getProject(), lastSeed);
+		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
+						ESModelMutatorUtil.getEPackage(MODEL_KEY),
+						prjSpace.getProject(), lastSeed);
 		mmc.setMaxDeleteCount(1);
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(1);
@@ -316,7 +320,7 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 			@Override
 			public void run() {
 				mmc.setMinObjectsCount(nrOfChanges);
-				ModelMutator.changeModel(mmc);
+				ESDefaultModelMutator.changeModel(mmc);
 			}
 		});
 		System.out.println("Changed model: " + (System.currentTimeMillis() - time) / 1000.0 + "sec");

@@ -7,6 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
@@ -16,7 +17,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
  * Factory for creating {@link VersionSpec VersionSpecs}.
  * 
  */
-public class VersionsFactory {
+public final class VersionsFactory {
 
 	/**
 	 * The instance.
