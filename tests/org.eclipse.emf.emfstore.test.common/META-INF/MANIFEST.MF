@@ -11,32 +11,39 @@ Require-Bundle: org.eclipse.emf.emfstore.test.model;bundle-version="[1.4.1,2.0.0
  org.eclipse.emf.emfstore.examplemodel;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
  org.eclipse.emf.emfstore.test.model.edit;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="[3.8.1,4.0.0)"
-Export-Package: org.eclipse.emf.emfstore.client.test.common;version="1
- .4.1";x-friends:="org.eclipse.emf.emfstore.client.api.test",org.eclip
- se.emf.emfstore.client.test.common.builders;version="1.4.1";x-friends
- :="org.eclipse.emf.emfstore.server.test",org.eclipse.emf.emfstore.cli
- ent.test.common.cases;version="1.4.1"; x-friends:="org.eclipse.emf.em
- fstore.client.changetracking.test,  org.eclipse.emf.emfstore.client.c
- onflictdetection.test,  org.eclipse.emf.emfstore.client.recording.tes
- t,  org.eclipse.emf.emfstore.client.test,  org.eclipse.emf.emfstore.c
- lient.test.ui,  org.eclipse.emf.emfstore.server.test,  org.eclipse.em
- f.emfstore.fuzzy.emf.test,  org.eclipse.emf.emfstore.client.example.t
- est,  org.eclipse.emf.emfstore.performance.test,  org.eclipse.emf.emf
- store.client.api.test",org.eclipse.emf.emfstore.client.test.common.co
- nfig;version="1.4.1";x-internal:=true,org.eclipse.emf.emfstore.client
- .test.common.dsl;version="1.4.1"; x-friends:="org.eclipse.emf.emfstor
- e.server.test,  org.eclipse.emf.emfstore.test.common,  org.eclipse.em
- f.emfstore.client.changetracking.test,  org.eclipse.emf.emfstore.clie
- nt.conflictdetection.test,  org.eclipse.emf.emfstore.client.recording
- .test,  org.eclipse.emf.emfstore.client.test,  org.eclipse.emf.emfsto
- re.client.test.ui,  org.eclipse.emf.emfstore.client.api.test",org.ecl
- ipse.emf.emfstore.client.test.common.mocks;version="1.4.1";x-friends:
- ="org.eclipse.emf.emfstore.server.test",org.eclipse.emf.emfstore.clie
- nt.test.common.util;version="1.4.1"; x-friends:="org.eclipse.emf.emfs
- tore.server.test,  org.eclipse.emf.emfstore.client.changetracking.tes
- t,  org.eclipse.emf.emfstore.client.recording.test,  org.eclipse.emf.
- emfstore.client.test,  org.eclipse.emf.emfstore.client.test.ui,  org.
- eclipse.emf.emfstore.client.conflictdetection.test,  org.eclipse.emf.
- emfstore.fuzzy.emf.test,  org.eclipse.emf.emfstore.performance.test, 
-  org.eclipse.emf.emfstore.client.api.test"
+Export-Package: org.eclipse.emf.emfstore.client.test.common;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.client.api.test",
+ org.eclipse.emf.emfstore.client.test.common.builders;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server.test",
+ org.eclipse.emf.emfstore.client.test.common.cases;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client.changetracking.test,
+   org.eclipse.emf.emfstore.client.conflictdetection.test,
+   org.eclipse.emf.emfstore.client.recording.test,
+   org.eclipse.emf.emfstore.client.test,
+   org.eclipse.emf.emfstore.client.test.ui,
+   org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.fuzzy.emf.test,
+   org.eclipse.emf.emfstore.client.example.test,
+   org.eclipse.emf.emfstore.performance.test,
+   org.eclipse.emf.emfstore.client.api.test",
+ org.eclipse.emf.emfstore.client.test.common.config;version="1.4.1";x-internal:=true,
+ org.eclipse.emf.emfstore.client.test.common.dsl;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.emfstore.client.changetracking.test,
+   org.eclipse.emf.emfstore.client.conflictdetection.test,
+   org.eclipse.emf.emfstore.client.recording.test,
+   org.eclipse.emf.emfstore.client.test,
+   org.eclipse.emf.emfstore.client.test.ui,
+   org.eclipse.emf.emfstore.client.api.test",
+ org.eclipse.emf.emfstore.client.test.common.mocks;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server.test",
+ org.eclipse.emf.emfstore.client.test.common.util;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.client.changetracking.test,
+   org.eclipse.emf.emfstore.client.recording.test,
+   org.eclipse.emf.emfstore.client.test,
+   org.eclipse.emf.emfstore.client.test.ui,
+   org.eclipse.emf.emfstore.client.conflictdetection.test,
+   org.eclipse.emf.emfstore.fuzzy.emf.test,
+   org.eclipse.emf.emfstore.performance.test,
+   org.eclipse.emf.emfstore.client.api.test,
+   org.eclipse.emf.emfstore.fuzzy.emf"
 Bundle-ActivationPolicy: lazy

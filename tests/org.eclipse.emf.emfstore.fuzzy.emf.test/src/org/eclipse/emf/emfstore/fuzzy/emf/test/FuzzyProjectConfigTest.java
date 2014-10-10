@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.emf.EMFDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(FuzzyRunner.class)
-@DataProvider(EMFDataProvider.class)
+@DataProvider(ESEMFDataProvider.class)
 public class FuzzyProjectConfigTest extends FuzzyProjectTest {
 
 	@Data

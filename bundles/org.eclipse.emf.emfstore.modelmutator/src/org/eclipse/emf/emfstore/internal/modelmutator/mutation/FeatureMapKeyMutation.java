@@ -1,18 +1,18 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.mutation;
 
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.hasGroupFeatureMapEntryType;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isNonEmptyFeatureMap;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.HAS_GROUP_FEATURE_MAP_ENTRY_TYPE;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_FEATURE_MAP;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,28 +21,30 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.change.FeatureMapEntry;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESFeatureMapKeyMutation;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
 
 import com.google.common.collect.Lists;
 
 /**
- * A mutation, which changes the keys of {@link FeatureMapEntry feature map entries}.
- *
+ * A mutation, which changes the keys of {@link org.eclipse.emf.ecore.change.FeatureMapEntry feature map entries}.
+ * 
  * @author Philip Langer
- *
+ * 
  */
-public class FeatureMapKeyMutation extends StructuralFeatureMutation {
+public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMapKeyMutation>
+	implements ESFeatureMapKeyMutation {
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 *
+	 * 
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
-	public FeatureMapKeyMutation(ModelMutatorUtil util) {
+	public FeatureMapKeyMutation(ESModelMutatorUtil util) {
 		super(util);
 		addTargetFeaturePredicate();
 		addOriginalFeatureValuePredicate();
@@ -50,42 +52,43 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation {
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 *
+	 * 
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
-	public FeatureMapKeyMutation(ModelMutatorUtil util, MutationTargetSelector selector) {
+	public FeatureMapKeyMutation(ESModelMutatorUtil util, MutationTargetSelector selector) {
 		super(util, selector);
 		addTargetFeaturePredicate();
 		addOriginalFeatureValuePredicate();
 	}
 
 	private void addTargetFeaturePredicate() {
-		targetContainerSelector.getTargetFeaturePredicates().add(hasGroupFeatureMapEntryType);
+		getTargetContainerSelector().getTargetFeaturePredicates().add(HAS_GROUP_FEATURE_MAP_ENTRY_TYPE);
 	}
 
 	private void addOriginalFeatureValuePredicate() {
-		targetContainerSelector.getOriginalFeatureValuePredicates().add(isNonEmptyFeatureMap);
+		getTargetContainerSelector().getOriginalFeatureValuePredicates().add(IS_NON_EMPTY_FEATURE_MAP);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
 	public Mutation clone() {
-		return new FeatureMapKeyMutation(getUtil(), targetContainerSelector);
+		return new FeatureMapKeyMutation(getUtil(), getTargetContainerSelector());
 	}
 
 	/**
+	 * 
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#doApply()
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override
-	protected boolean doApply() throws MutationException {
-		targetContainerSelector.doSelection();
+	public void apply() throws ESMutationException {
+		getTargetContainerSelector().doSelection();
 
 		final List<FeatureMap.Entry> currentEntries = getFeatureMapEntries();
 		final FeatureMap.Entry entry = getRandomFeatureMapEntryOfTarget(currentEntries);
@@ -94,8 +97,6 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation {
 		final EStructuralFeature newFeatureKey = getRandomFeatureKeyExcludingCurrent(currentFeatureKey);
 		final Entry newEntry = FeatureMapUtil.createEntry(newFeatureKey, entry.getValue());
 		currentEntries.set(currentEntries.indexOf(entry), newEntry);
-
-		return true;
 	}
 
 	private FeatureMap.Entry getRandomFeatureMapEntryOfTarget(List<Entry> currentEntries) {
@@ -117,12 +118,12 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation {
 
 	/**
 	 * Returns the features that are derived from the selected feature map.
-	 *
+	 * 
 	 * @return The features of the selected feature map.
 	 */
-	protected List<EStructuralFeature> getFeaturesOfFeatureMapGroup() {
+	public List<EStructuralFeature> getFeaturesOfFeatureMapGroup() {
 		final List<EStructuralFeature> features;
-		final EStructuralFeature targetFeature = targetContainerSelector.getTargetFeature();
+		final EStructuralFeature targetFeature = getTargetContainerSelector().getTargetFeature();
 		if (targetFeature != null) {
 			features = getFeaturesOfFeatureMapGroup(targetFeature);
 		} else {

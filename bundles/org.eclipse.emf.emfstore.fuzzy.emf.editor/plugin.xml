@@ -17,7 +17,7 @@
       <wizard
             id="org.eclipse.emf.emfstore.fuzzy.emf.config.presentation.ConfigModelWizardID"
             name="%_UI_ConfigModelWizard_label"
-            class="org.eclipse.emf.emfstore.fuzzy.emf.config.presentation.ConfigModelWizard"
+            class="org.eclipse.emf.emfstore.internal.fuzzy.emf.config.presentation.ConfigModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/ConfigModelFile.gif">
          <description>%_UI_ConfigModelWizard_description</description>
@@ -26,13 +26,25 @@
    </extension>
 
    <extension point="org.eclipse.ui.editors">
+      <!-- @generated config -->
+      <editor
+            id="org.eclipse.emf.emfstore.internal.fuzzy.emf.config.presentation.ConfigEditorID"
+            name="%_UI_ConfigEditor_label"
+            icon="icons/full/obj16/ConfigModelFile.gif"
+            extensions="fuzzy"
+            class="org.eclipse.emf.emfstore.internal.fuzzy.emf.config.presentation.ConfigEditor"
+            contributorClass="org.eclipse.emf.emfstore.internal.fuzzy.emf.config.presentation.ConfigActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
       <editor
             id="org.eclipse.emf.emfstore.fuzzy.emf.config.presentation.ConfigEditorID"
             name="%_UI_ConfigEditor_label"
             icon="icons/full/obj16/ConfigModelFile.gif"
             extensions="fuzzy"
-            class="org.eclipse.emf.emfstore.fuzzy.emf.config.presentation.ConfigEditor"
-            contributorClass="org.eclipse.emf.emfstore.fuzzy.emf.config.presentation.ConfigActionBarContributor">
+            class="org.eclipse.emf.emfstore.internal.fuzzy.emf.config.presentation.ConfigEditor"
+            contributorClass="org.eclipse.emf.emfstore.internal.fuzzy.emf.config.presentation.ConfigActionBarContributor">
       </editor>
    </extension>
 

@@ -11,8 +11,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
-import org.eclipse.emf.emfstore.client.test.FilteredSuite;
-import org.eclipse.emf.emfstore.client.test.FilteredSuite.FilteredSuiteParameter;
+import org.eclipse.emf.emfstore.client.test.common.util.FilteredSuite;
+import org.eclipse.emf.emfstore.client.test.common.util.FilteredSuite.FilteredSuiteParameter;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

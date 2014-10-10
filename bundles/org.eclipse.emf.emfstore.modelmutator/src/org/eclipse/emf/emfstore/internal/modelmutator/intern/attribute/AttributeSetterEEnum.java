@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -27,7 +25,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
  * Class for creating random Enumerator values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -37,7 +35,7 @@ public class AttributeSetterEEnum extends AttributeSetter<Enumerator> {
 	/**
 	 * The EEnum for which the Enumerators shall be created.
 	 */
-	private EEnum eEnum;
+	private final EEnum eEnum;
 
 	/**
 	 * Creates a new AttributeSetter for Enumerator attributes.
@@ -55,8 +53,9 @@ public class AttributeSetterEEnum extends AttributeSetter<Enumerator> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Enumerator createNewAttribute() {
-		List<EEnumLiteral> literals = new ArrayList<EEnumLiteral>(eEnum.getELiterals());
+		final List<EEnumLiteral> literals = new ArrayList<EEnumLiteral>(eEnum.getELiterals());
 		if (literals.isEmpty()) {
 			return null;
 		}
@@ -67,10 +66,11 @@ public class AttributeSetterEEnum extends AttributeSetter<Enumerator> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<Enumerator> createNewAttributes(int maxAmount) {
-		List<Enumerator> result = new ArrayList<Enumerator>(maxAmount);
+		final List<Enumerator> result = new ArrayList<Enumerator>(maxAmount);
 		// add instances of all possible literals
-		for (EEnumLiteral literal : eEnum.getELiterals()) {
+		for (final EEnumLiteral literal : eEnum.getELiterals()) {
 			result.add(literal.getInstance());
 		}
 		Collections.shuffle(result, getRandom());

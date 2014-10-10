@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -15,9 +15,9 @@ import static com.google.common.base.Predicates.not;
 import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.isEmpty;
 import static com.google.common.collect.Iterables.size;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isContainmentOrOppositeOfContainmentReference;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isMultiValued;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isNonEmptyEObjectList;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_CONTAINMENT_OR_OPPOSITE_OF_CONTAINMENT_REFERENCE;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_MULTI_VALUED;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_EOBJECT_LIST;
 
 import java.util.List;
 
@@ -25,96 +25,92 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
+import org.eclipse.emf.emfstore.modelmutator.ESRandomChangeMode;
+import org.eclipse.emf.emfstore.modelmutator.ESReferenceChangeMutation;
 
 import com.google.common.base.Predicate;
 
 /**
  * A mutation, which changes reference values.
- *
+ * 
  * @author Philip Langer
- *
+ * 
  */
-public class ReferenceChangeMutation extends StructuralFeatureMutation {
+public class ReferenceChangeMutation extends StructuralFeatureMutation<ESReferenceChangeMutation> implements
+	ESReferenceChangeMutation {
 
-	/**
-	 * The modes in which a reference can be changed.
-	 *
-	 * @author Philip Langer
-	 *
-	 */
-	protected enum ReferenceChangeMode {
-		/** Adding or setting a new reference value. */
-		ADD,
-		/** Deleting or unsetting an existing reference value. */
-		DELETE,
-		/** Reordering existing values of a multi-valued reference. */
-		REORDER
-	}
+	private EObject newReferenceValue;
+	private ESRandomChangeMode randomChangeMode;
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 *
+	 * 
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
-	public ReferenceChangeMutation(ModelMutatorUtil util) {
+	public ReferenceChangeMutation(ESModelMutatorUtil util) {
 		super(util);
 		addTargetFeatureReferencePredicate();
 	}
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 *
+	 * 
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
-	protected ReferenceChangeMutation(ModelMutatorUtil util, MutationTargetSelector selector) {
+	protected ReferenceChangeMutation(ESModelMutatorUtil util, MutationTargetSelector selector) {
 		super(util, selector);
 		addTargetFeatureReferencePredicate();
 	}
 
 	private void addTargetFeatureReferencePredicate() {
-		targetContainerSelector.getTargetFeaturePredicates().add(
-			MutationPredicates.isMutatableReference);
+		getTargetContainerSelector().getTargetFeaturePredicates().add(
+			MutationPredicates.IS_MUTABLE_REFERENCE);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
 	public Mutation clone() {
-		return new ReferenceChangeMutation(getUtil(), targetContainerSelector);
+		return new ReferenceChangeMutation(getUtil(), getTargetContainerSelector());
 	}
 
 	/**
+	 * 
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#doApply()
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override
-	protected boolean doApply() throws MutationException {
+	public void apply() throws ESMutationException {
 		switch (getRandomChangeMode()) {
 		case ADD:
-			return doAddReferenceValue();
+			doAddReferenceValue();
+			break;
 		case DELETE:
-			return doDeleteReferenceValue();
+			doDeleteReferenceValue();
+			break;
 		case REORDER:
-			return doReorderReferenceValue();
+			doReorderReferenceValue();
+			break;
 		default:
-			return false;
+			break;
 		}
 	}
 
-	private boolean doAddReferenceValue() throws MutationException {
+	private boolean doAddReferenceValue() throws ESMutationException {
 		final boolean success;
 		makeSureChangingTargetDoesNotAffectContainmentReference();
 		makeSureValueForSelectedFeatureToAddExists();
-		targetContainerSelector.doSelection();
+		getTargetContainerSelector().doSelection();
 
-		final EObject eObject = targetContainerSelector.getTargetObject();
-		final EReference eReference = (EReference) targetContainerSelector.getTargetFeature();
+		final EObject eObject = getTargetContainerSelector().getTargetObject();
+		final EReference eReference = (EReference) getTargetContainerSelector().getTargetFeature();
 		final EObject newValue = selectNewReferenceValue();
 
 		if (newValue != null) {
@@ -131,7 +127,7 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation {
 		final boolean success;
 		if (newValue != null) {
 			if (eReference.isMany()) {
-				final int insertionIndex = targetContainerSelector.
+				final int insertionIndex = getTargetContainerSelector().
 					getRandomIndexFromTargetObjectAndFeatureValueRange();
 				getUtil().addPerCommand(eObject, eReference, newValue, insertionIndex);
 			} else {
@@ -146,20 +142,25 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation {
 
 	/**
 	 * Selects and returns a suitable value for the currently selected reference.
-	 *
+	 * 
 	 * @return The selected reference value.
-	 * @throws MutationException Thrown if no valid value could be found.
+	 * @throws ESMutationException Thrown if no valid value could be found.
 	 */
-	protected EObject selectNewReferenceValue() throws MutationException {
+	protected EObject selectNewReferenceValue() throws ESMutationException {
+
+		if (newReferenceValue != null) {
+			return newReferenceValue;
+		}
+
 		final EObject newReferenceValue;
-		final EReference eReference = (EReference) targetContainerSelector.getTargetFeature();
+		final EReference eReference = (EReference) getTargetContainerSelector().getTargetFeature();
 
 		final Iterable<EObject> suitableEObjects = getUtil().
 			getSuitableEObjectsForAvailableFeature(eReference);
 		final int numberOfAvailableEObjects = size(suitableEObjects);
 
 		if (numberOfAvailableEObjects < 1) {
-			throw new MutationException("No objects available as feature values to add"); //$NON-NLS-1$
+			throw new ESMutationException("No objects available as feature values to add"); //$NON-NLS-1$
 		}
 
 		final int randomIndex = getRandom().nextInt(numberOfAvailableEObjects);
@@ -168,12 +169,12 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation {
 		return newReferenceValue;
 	}
 
-	private boolean doDeleteReferenceValue() throws MutationException {
+	private boolean doDeleteReferenceValue() throws ESMutationException {
 		makeSureChangingTargetDoesNotAffectContainmentReference();
 		makeSureWeHaveValuesInSelectedObjectAtSelectedFeature();
-		targetContainerSelector.doSelection();
-		final EObject eObject = targetContainerSelector.getTargetObject();
-		final EReference eReference = (EReference) targetContainerSelector.getTargetFeature();
+		getTargetContainerSelector().doSelection();
+		final EObject eObject = getTargetContainerSelector().getTargetObject();
+		final EReference eReference = (EReference) getTargetContainerSelector().getTargetFeature();
 
 		if (eReference.isMany()) {
 			final List<?> currentValues = (List<?>) eObject.eGet(eReference);
@@ -189,12 +190,12 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation {
 	}
 
 	private void makeSureChangingTargetDoesNotAffectContainmentReference() {
-		targetContainerSelector.getTargetFeaturePredicates().add(
-			not(isContainmentOrOppositeOfContainmentReference));
+		getTargetContainerSelector().getTargetFeaturePredicates().add(
+			not(IS_CONTAINMENT_OR_OPPOSITE_OF_CONTAINMENT_REFERENCE));
 	}
 
 	private void makeSureValueForSelectedFeatureToAddExists() {
-		targetContainerSelector.getTargetFeaturePredicates().add(new Predicate<EStructuralFeature>() {
+		getTargetContainerSelector().getTargetFeaturePredicates().add(new Predicate<EStructuralFeature>() {
 			public boolean apply(EStructuralFeature input) {
 				return input != null
 					&& !isEmpty(getUtil().getSuitableEObjectsForAvailableFeature(input));
@@ -202,13 +203,13 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation {
 		});
 	}
 
-	private boolean doReorderReferenceValue() throws MutationException {
+	private boolean doReorderReferenceValue() throws ESMutationException {
 		final boolean success;
 		makeSureSelectedFeatureIsMultiValued();
 		makeSureWeHaveValuesInSelectedObjectAtSelectedFeature();
-		targetContainerSelector.doSelection();
-		final EObject eObject = targetContainerSelector.getTargetObject();
-		final EReference eReference = (EReference) targetContainerSelector.getTargetFeature();
+		getTargetContainerSelector().doSelection();
+		final EObject eObject = getTargetContainerSelector().getTargetObject();
+		final EReference eReference = (EReference) getTargetContainerSelector().getTargetFeature();
 
 		if (eReference.isMany()) {
 			@SuppressWarnings("unchecked")
@@ -226,22 +227,50 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation {
 	}
 
 	private void makeSureSelectedFeatureIsMultiValued() {
-		targetContainerSelector.getTargetFeaturePredicates().add(isMultiValued);
+		getTargetContainerSelector().getTargetFeaturePredicates().add(IS_MULTI_VALUED);
 	}
 
 	private void makeSureWeHaveValuesInSelectedObjectAtSelectedFeature() {
-		targetContainerSelector.getOriginalFeatureValuePredicates().add(isNonEmptyEObjectList);
+		getTargetContainerSelector().getOriginalFeatureValuePredicates().add(IS_NON_EMPTY_EOBJECT_LIST);
 	}
 
 	/**
 	 * Returns a random change mode.
-	 *
+	 * 
 	 * @return A random change mode.
 	 */
-	protected ReferenceChangeMode getRandomChangeMode() {
-		final ReferenceChangeMode[] values = ReferenceChangeMode.values();
+	protected ESRandomChangeMode getRandomChangeMode() {
+
+		if (randomChangeMode != null) {
+			return randomChangeMode;
+		}
+
+		final ESRandomChangeMode[] values = ESRandomChangeMode.values();
 		final int nextInt = getRandom().nextInt(values.length);
 		return values[nextInt];
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESReferenceChangeMutation#setRandomChangeMode(org.eclipse.emf.emfstore.modelmutator.ESRandomChangeMode)
+	 */
+	public ESReferenceChangeMutation setRandomChangeMode(ESRandomChangeMode randomChangeMode) {
+		this.randomChangeMode = randomChangeMode;
+		return this;
+	}
+
+	/**
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESReferenceChangeMutation#setNewReferenceValue(org.eclipse.emf.ecore.EObject)
+	 */
+	public ESReferenceChangeMutation setNewReferenceValue(EObject newValue) {
+		if (newValue != null) {
+			newReferenceValue = newValue;
+		}
+
+		return this;
+	}
 }

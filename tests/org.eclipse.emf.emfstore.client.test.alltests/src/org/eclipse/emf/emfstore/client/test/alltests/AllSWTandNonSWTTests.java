@@ -6,12 +6,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: jfaltermeier
+ * Contributors:
+ * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.alltests;
 
-import org.eclipse.emf.emfstore.client.test.AllTests;
 import org.eclipse.emf.emfstore.client.test.ui.AllUITests;
+import org.eclipse.emf.emfstore.internal.client.test.AllTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;

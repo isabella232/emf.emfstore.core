@@ -29,7 +29,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -47,7 +48,7 @@ import com.google.common.collect.Lists;
  */
 public class MutationTargetSelector {
 
-	private final ModelMutatorUtil util;
+	private final ESModelMutatorUtil util;
 	private final Collection<EClass> excludedEClasses = new HashSet<EClass>();
 	private final Collection<EStructuralFeature> excludedFeatures = new HashSet<EStructuralFeature>();
 	private final Collection<EObject> excludedObjects = new HashSet<EObject>();
@@ -63,7 +64,7 @@ public class MutationTargetSelector {
 	 *
 	 * @param util The model mutator util to be used.
 	 */
-	public MutationTargetSelector(ModelMutatorUtil util) {
+	public MutationTargetSelector(ESModelMutatorUtil util) {
 		this.util = util;
 		addExcludedEStructuralFeaturesAndEClassesFromConfig();
 	}
@@ -80,7 +81,7 @@ public class MutationTargetSelector {
 	 * @param util The model mutator util to be used.
 	 * @param selector The selector to copy from.
 	 */
-	public MutationTargetSelector(ModelMutatorUtil util, MutationTargetSelector selector) {
+	public MutationTargetSelector(ESModelMutatorUtil util, MutationTargetSelector selector) {
 		this.util = util;
 		setupFromOtherSelector(selector);
 	}
@@ -220,9 +221,9 @@ public class MutationTargetSelector {
 	/**
 	 * Performs the selection according to the configured predicates and optionally pre-filled data.
 	 *
-	 * @throws MutationException If no valid target object or feature could be found.
+	 * @throws ESMutationException If no valid target object or feature could be found.
 	 */
-	protected void doSelection() throws MutationException {
+	protected void doSelection() throws ESMutationException {
 		final List<EStructuralFeature> features = getShuffledFeaturesToSelect();
 		for (final EStructuralFeature feature : features) {
 			for (final EObject eObject : getShuffledTargetObjectsToSelect(feature)) {
@@ -233,7 +234,7 @@ public class MutationTargetSelector {
 				}
 			}
 		}
-		throw new MutationException("No valid target found."); //$NON-NLS-1$
+		throw new ESMutationException("No valid target found."); //$NON-NLS-1$
 	}
 
 	private List<EStructuralFeature> getShuffledFeaturesToSelect() {

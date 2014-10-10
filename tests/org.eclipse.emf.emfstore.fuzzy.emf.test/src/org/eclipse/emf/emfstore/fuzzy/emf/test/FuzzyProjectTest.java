@@ -18,8 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-import junit.framework.Assert;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -32,8 +30,8 @@ import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Options;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
 import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.emf.EMFDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.emf.MutateUtil;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
 import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -43,9 +41,9 @@ import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
@@ -57,20 +55,20 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(FuzzyRunner.class)
-@DataProvider(EMFDataProvider.class)
+@DataProvider(ESEMFDataProvider.class)
 public abstract class FuzzyProjectTest {
 
 	@Data
 	private Project project;
 
 	@Util
-	private MutateUtil util;
+	private ESMutateUtil util;
 
 	@SuppressWarnings({ "serial" })
 	@Options
 	private final Map<String, Object> options = new HashMap<String, Object>() {
 		{
-			put(EMFDataProvider.MUTATOR_EDITINGDOMAIN,
+			put(ESEMFDataProvider.MUTATOR_EDITINGDOMAIN,
 				((ESWorkspaceProviderImpl) ESWorkspaceProvider.INSTANCE)
 					.getEditingDomain());
 		}
@@ -154,30 +152,31 @@ public abstract class FuzzyProjectTest {
 	}
 
 	/**
-	 * Constructs a new {@link ModelMutatorConfiguration} based on the existing
+	 * Constructs a new {@link ESModelMutatorConfiguration} based on the existing
 	 * one and the given project.
 	 * 
 	 * @param project
-	 *            The root object of the {@link ModelMutatorConfiguration}.
-	 * @return The new {@link ModelMutatorConfiguration}.
+	 *            The root object of the {@link ESModelMutatorConfiguration}.
+	 * @return The new {@link ESModelMutatorConfiguration}.
 	 */
-	public ModelMutatorConfiguration getModelMutatorConfiguration(
+	public ESModelMutatorConfiguration getModelMutatorConfiguration(
 		Project project) {
 		return getModelMutatorConfiguration(project, util);
 	}
 
 	/**
-	 * Constructs a new {@link ModelMutatorConfiguration} based on the given {@link MutateUtil} and the given project.
+	 * Constructs a new {@link ESModelMutatorConfiguration} based on the given {@link ESMutateUtil} and the given
+	 * project.
 	 * 
 	 * @param project
-	 *            The root object of the {@link ModelMutatorConfiguration}.
+	 *            The root object of the {@link ESModelMutatorConfiguration}.
 	 * @param util
-	 *            The {@link MutateUtil} connected to the {@link EMFDataProvider}.
-	 * @return The new {@link ModelMutatorConfiguration}.
+	 *            The {@link ESMutateUtil} connected to the {@link ESEMFDataProvider}.
+	 * @return The new {@link ESModelMutatorConfiguration}.
 	 */
-	public static ModelMutatorConfiguration getModelMutatorConfiguration(
-		Project project, MutateUtil util) {
-		final ModelMutatorConfiguration mmc = new ModelMutatorConfiguration(
+	public static ESModelMutatorConfiguration getModelMutatorConfiguration(
+		Project project, ESMutateUtil util) {
+		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
 			util.getEPackages(), project, 1L);
 		mmc.seteStructuralFeaturesToIgnore(util
 			.getEStructuralFeaturesToIgnore());
@@ -217,11 +216,11 @@ public abstract class FuzzyProjectTest {
 	 * @param project2
 	 *            The second {@link Project}.
 	 * @param util
-	 *            The {@link MutateUtil} connected to the {@link EMFDataProvider}.
+	 *            The {@link ESMutateUtil} connected to the {@link ESEMFDataProvider}.
 	 */
-	public static void fail(Project project1, Project project2, MutateUtil util) {
+	public static void fail(Project project1, Project project2, ESMutateUtil util) {
 		save(project1, project2, util);
-		Assert.fail();
+		Assert.fail("Projects are not equal");
 	}
 
 	/**
@@ -232,10 +231,10 @@ public abstract class FuzzyProjectTest {
 	 * @param project2
 	 *            The second {@link Project}.
 	 * @param util
-	 *            The {@link MutateUtil} connected to the {@link EMFDataProvider}.
+	 *            The {@link ESMutateUtil} connected to the {@link ESEMFDataProvider}.
 	 */
 	public static void save(final Project project1, final Project project2,
-		final MutateUtil util) {
+		final ESMutateUtil util) {
 		final Map<Object, Object> options = new HashMap<Object, Object>();
 		options.put(XMLResource.OPTION_PROCESS_DANGLING_HREF,
 			XMLResource.OPTION_PROCESS_DANGLING_HREF_DISCARD);
@@ -277,10 +276,10 @@ public abstract class FuzzyProjectTest {
 	 * @param project2
 	 *            The second {@link Project}.
 	 * @param util
-	 *            The {@link MutateUtil} connected to the {@link EMFDataProvider}.
+	 *            The {@link ESMutateUtil} connected to the {@link ESEMFDataProvider}.
 	 */
 	public static void compareIgnoreOrder(Project project1, Project project2,
-		MutateUtil util) {
+		ESMutateUtil util) {
 		if (project1.getModelElements().size() != project2.getModelElements()
 			.size()) {
 			fail(project1, project2, util);
@@ -301,35 +300,15 @@ public abstract class FuzzyProjectTest {
 			index++;
 		}
 
-		try {
-			final String eObjectToString = ModelUtil.eObjectToString(project1);
-			final String eObjectToString2 = ModelUtil.eObjectToString(project2);
-			System.out.println();
-		} catch (final SerializationException ex) {
-			// TODO Auto-generated catch block
-			// Do NOT catch all Exceptions ("catch (Exception e)")
-			// Log AND handle Exceptions if possible
-			//
-			// You can just uncomment one of the lines below to log an exception:
-			// logException will show the logged excpetion to the user
-			// ModelUtil.logException(ex);
-			// ModelUtil.logException("YOUR MESSAGE HERE", ex);
-			// logWarning will only add the message to the error log
-			// ModelUtil.logWarning("YOUR MESSAGE HERE", ex);
-			// ModelUtil.logWarning("YOUR MESSAGE HERE");
-			//
-			// If handling is not possible declare and rethrow Exception
-		}
-
 		if (!ModelUtil.areEqual(project1, project2)) {
 			fail(project1, project2, util);
 		}
 	}
 
 	/**
-	 * @return The {@link MutateUtil} connected with the {@link EMFDataProvider} .
+	 * @return The {@link ESMutateUtil} connected with the {@link ESEMFDataProvider} .
 	 */
-	public MutateUtil getUtil() {
+	public ESMutateUtil getUtil() {
 		return util;
 	}
 

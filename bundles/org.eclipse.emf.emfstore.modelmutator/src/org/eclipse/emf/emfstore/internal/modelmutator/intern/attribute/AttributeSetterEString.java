@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -22,7 +20,7 @@ import java.util.Random;
  * Class for creating random String values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -42,11 +40,12 @@ public class AttributeSetterEString extends AttributeSetter<String> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String createNewAttribute() {
 		if (getRandom().nextBoolean()) {
 			return null;
 		}
-		StringBuffer string = new StringBuffer();
+		final StringBuffer string = new StringBuffer();
 		string.delete(0, string.length());
 		for (int j = -5; j < getRandom().nextInt(10); j++) {
 			// string.append((char) (random.nextInt(94) + 33));
@@ -59,8 +58,9 @@ public class AttributeSetterEString extends AttributeSetter<String> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<String> createNewAttributes(int maxAmount) {
-		List<String> result = new ArrayList<String>(maxAmount);
+		final List<String> result = new ArrayList<String>(maxAmount);
 		for (int i = 0; i < maxAmount; i++) {
 			result.add(createNewAttribute());
 		}

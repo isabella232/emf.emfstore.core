@@ -20,12 +20,11 @@ import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
 import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.emf.EMFDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.emf.MutateUtil;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,14 +37,14 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(FuzzyRunner.class)
-@DataProvider(EMFDataProvider.class)
+@DataProvider(ESEMFDataProvider.class)
 public class ServerTest extends ESTestWithLoggedInUser {
 
 	@Data
 	private Project project;
 
 	@Util
-	private MutateUtil util;
+	private ESMutateUtil util;
 
 	/**
 	 * Setup the needed projectspace.
@@ -64,8 +63,6 @@ public class ServerTest extends ESTestWithLoggedInUser {
 	public void shareCheckoutCommitUpdate() throws ESException {
 
 		ProjectUtil.share(getUsersession(), getLocalProject());
-		// share original project
-		final PrimaryVersionSpec versionSpec = getProjectSpace().getBaseVersion();
 
 		final ESLocalProjectImpl checkout = (ESLocalProjectImpl) ProjectUtil.checkout(getLocalProject());
 
@@ -74,7 +71,7 @@ public class ServerTest extends ESTestWithLoggedInUser {
 			checkout.toInternalAPI().getProject(), util);
 
 		// change & commit original project
-		final ModelMutatorConfiguration mmc = FuzzyProjectTest
+		final ESModelMutatorConfiguration mmc = FuzzyProjectTest
 			.getModelMutatorConfiguration(getProject(), util);
 
 		RunESCommand.run(new ESVoidCallable() {

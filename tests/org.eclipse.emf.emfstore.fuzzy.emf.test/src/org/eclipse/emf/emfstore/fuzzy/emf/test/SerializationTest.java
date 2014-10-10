@@ -17,12 +17,12 @@ import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.emf.EMFDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -33,7 +33,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(FuzzyRunner.class)
-@DataProvider(EMFDataProvider.class)
+@DataProvider(ESEMFDataProvider.class)
 public class SerializationTest extends FuzzyProjectTest {
 
 	/**
@@ -46,7 +46,7 @@ public class SerializationTest extends FuzzyProjectTest {
 		// mutate already saved (through importing) projectSpace and save it
 		// again
 		final ProjectSpace projectSpace = getProjectSpace();
-		final ModelMutatorConfiguration mmc = getModelMutatorConfiguration(projectSpace
+		final ESModelMutatorConfiguration mmc = getModelMutatorConfiguration(projectSpace
 			.getProject());
 
 		RunESCommand.run(new ESVoidCallable() {

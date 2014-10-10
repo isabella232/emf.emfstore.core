@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -19,9 +19,9 @@ import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPr
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isCompatibleWithAnyFeatureOfEClass;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isContainedByEObject;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isContainedByFeature;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isNonEmptyEObjectValueOrList;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_EOBJECT_OR_LIST;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isNotTheSame;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isNullValueOrList;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NULL_OR_LIST;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.mayBeContainedByAnyOfTheseReferences;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.mayBeContainedByFeature;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.mayTakeEObjectAsValue;
@@ -34,27 +34,29 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation;
+import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
 
 import com.google.common.base.Predicate;
 
 /**
  * A mutation, which moves an object from one container into another.
- *
+ * 
  * @author Philip Langer
- *
+ * 
  */
-public class MoveObjectMutation extends ContainmentChangeMutation {
+public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMutation> implements ESMoveObjectMutation {
 
 	private final MutationTargetSelector sourceContainerSelector;
 	private EObject eObjectToMove;
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 *
+	 * 
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
-	public MoveObjectMutation(ModelMutatorUtil util) {
+	public MoveObjectMutation(ESModelMutatorUtil util) {
 		super(util);
 		sourceContainerSelector = new MutationTargetSelector(util);
 		addSourceContainmentFeaturePredicate();
@@ -66,12 +68,12 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 	/**
 	 * Creates a new mutation with the specified {@code util} and a selector for the source and target container,
 	 * {@code sourceContainerSelector} and {@code targetContainerSelector}.
-	 *
+	 * 
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param sourceContainerSelector The source selector for selecting the source container and feature.
 	 * @param targetContainerSelector The target selector for selecting the target container and feature.
 	 */
-	protected MoveObjectMutation(ModelMutatorUtil util, MutationTargetSelector sourceContainerSelector,
+	protected MoveObjectMutation(ESModelMutatorUtil util, MutationTargetSelector sourceContainerSelector,
 		MutationTargetSelector targetContainerSelector) {
 		super(util, targetContainerSelector);
 		this.sourceContainerSelector = sourceContainerSelector;
@@ -82,16 +84,16 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 
 	private void addSourceContainmentFeaturePredicate() {
 		sourceContainerSelector.getTargetFeaturePredicates().add(
-			MutationPredicates.isMutatableContainmentReference);
+			MutationPredicates.IS_MUTABLE_CONTAINMENT_REFERENCE);
 	}
 
 	private void addSourceOriginalFeatureValueNotEmptyPredicate() {
 		sourceContainerSelector.getOriginalFeatureValuePredicates().add(
-			isNonEmptyEObjectValueOrList);
+			IS_NON_EMPTY_EOBJECT_OR_LIST);
 	}
 
 	private void addTargetValueIsEmptySingleValuedReferenceOrMultivalueReferencePredicate() {
-		targetContainerSelector.getOriginalFeatureValuePredicates().add(isNullValueOrList);
+		getTargetContainerSelector().getOriginalFeatureValuePredicates().add(IS_NULL_OR_LIST);
 	}
 
 	/**
@@ -102,7 +104,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 	 * contained in this collection. The returned collection is changeable. Add items using
 	 * {@code getExcludedSourceEClasses().add}.
 	 * </p>
-	 *
+	 * 
 	 * @return The collection of excluded EClasses.
 	 */
 	public Collection<EClass> getExcludedSourceEClasses() {
@@ -115,7 +117,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 	 * <p>
 	 * The returned collection is changeable. Add items using {@code getExcludedSourceFeatures().add}.
 	 * </p>
-	 *
+	 * 
 	 * @return The collection of excluded features.
 	 */
 	public Collection<EStructuralFeature> getExcludedSourceFeatures() {
@@ -128,7 +130,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 	 * <p>
 	 * The returned collection is changeable. Add items using {@code getExcludedSourceObjects().add}.
 	 * </p>
-	 *
+	 * 
 	 * @return The collection of EObjects.
 	 */
 	public Collection<EObject> getExcludedSourceObjects() {
@@ -136,37 +138,41 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 	}
 
 	/**
-	 * Sets the {@link EObject} to be used as source object from which this mutation will move an object.
-	 *
-	 * @param sourceContainer The source object to be moved from.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#setSourceObject(org.eclipse.emf.ecore.EObject)
 	 */
-	public void setSourceObject(EObject sourceContainer) {
-		sourceContainerSelector.setTargetObject(sourceContainer);
+	public ESMoveObjectMutation setSourceObject(EObject sourceObject) {
+		sourceContainerSelector.setTargetObject(sourceObject);
+		return this;
 	}
 
 	/**
-	 * Returns the selected or set source object from which this mutation will move or moved an object.
-	 *
-	 * @return The source object of the moved or to-be-moved object.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#getSourceObject()
 	 */
 	public EObject getSourceObject() {
 		return sourceContainerSelector.getTargetObject();
 	}
 
 	/**
-	 * Sets the {@link EStructuralFeature} of a source object from which this mutation will move or moved an object.
-	 *
-	 * @param sourceFeature The feature of the source object through which the moved or to-be-moved object was or is
-	 *            contained.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#setSourceFeature(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
-	public void setSourceFeature(EStructuralFeature sourceFeature) {
+	public ESMoveObjectMutation setSourceFeature(EStructuralFeature sourceFeature) {
 		sourceContainerSelector.setTargetFeature(sourceFeature);
+		return this;
 	}
 
 	/**
 	 * Returns the {@link EStructuralFeature} of a source object from which this mutation will move or moved an
 	 * object.
-	 *
+	 * 
 	 * @return The feature of the source object through which the moved or to-be-moved object was or is contained.
 	 */
 	public EStructuralFeature getSourceFeature() {
@@ -174,18 +180,21 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 	}
 
 	/**
-	 * Sets the {@link EObject} to be moved.
-	 *
-	 * @param eObjectToMove The object to be moved.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#setEObjectToMove(org.eclipse.emf.ecore.EObject)
 	 */
-	public void setEObjectToMove(EObject eObjectToMove) {
+	public ESMoveObjectMutation setEObjectToMove(EObject eObjectToMove) {
 		this.eObjectToMove = eObjectToMove;
+		return this;
 	}
 
 	/**
-	 * Returns the {@link EObject} that will be or has been moved.
-	 *
-	 * @return The moved or to-be-moved object.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#getEObjectToMove()
 	 */
 	public EObject getEObjectToMove() {
 		return eObjectToMove;
@@ -193,28 +202,29 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
 	public Mutation clone() {
 		final MoveObjectMutation clone = new MoveObjectMutation(getUtil(), sourceContainerSelector,
-			targetContainerSelector);
+			getTargetContainerSelector());
 		clone.setEObjectToMove(eObjectToMove);
 		return clone;
 	}
 
 	/**
+	 * 
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#doApply()
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override
-	protected boolean doApply() throws MutationException {
+	public void apply() throws ESMutationException {
 		doSelection();
 
-		final EObject targetObject = targetContainerSelector.getTargetObject();
-		final EReference targetReference = (EReference) targetContainerSelector.getTargetFeature();
+		final EObject targetObject = getTargetContainerSelector().getTargetObject();
+		final EReference targetReference = (EReference) getTargetContainerSelector().getTargetFeature();
 		final Random random = getRandom();
 
 		if (targetReference.isMany()) {
@@ -223,15 +233,13 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 		} else {
 			getUtil().setPerCommand(targetObject, targetReference, getEObjectToMove());
 		}
-
-		return true;
 	}
 
-	private void doSelection() throws MutationException {
+	private void doSelection() throws ESMutationException {
 		if (getEObjectToMove() != null) {
 			makeSureTargetFitsSelectedEObjectToMove();
 			makeSureTargetContainerIsNotChildOfEObjectToMove();
-			targetContainerSelector.doSelection();
+			getTargetContainerSelector().doSelection();
 		} else if (haveTargetContainer() && haveTargetFeature()) {
 			makeSureSourceContainerIsNotTheSameAsTargetContainer();
 			makeSureSourceFeatureIsCompatibleWithTargetFeature();
@@ -250,51 +258,51 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 		}
 	}
 
-	private void selectSourceAndTarget() throws MutationException {
+	private void selectSourceAndTarget() throws ESMutationException {
 		sourceContainerSelector.doSelection();
 		selectEObjectToMove();
 		makeSureTargetFitsSelectedEObjectToMove();
 		makeSureTargetContainerIsNotTheSameAsSourceContainer();
 		makeSureTargetContainerIsNotChildOfEObjectToMove();
-		targetContainerSelector.doSelection();
+		getTargetContainerSelector().doSelection();
 	}
 
 	private boolean haveTargetFeature() {
-		return targetContainerSelector.getTargetFeature() != null;
+		return getTargetContainerSelector().getTargetFeature() != null;
 	}
 
 	private boolean haveTargetContainer() {
-		return targetContainerSelector.getTargetObject() != null;
+		return getTargetContainerSelector().getTargetObject() != null;
 	}
 
 	private void makeSureTargetFitsSelectedEObjectToMove() {
-		targetContainerSelector.getTargetFeaturePredicates().add(
+		getTargetContainerSelector().getTargetFeaturePredicates().add(
 			mayTakeEObjectAsValue(getEObjectToMove()));
-		targetContainerSelector.getTargetObjectPredicates().add(
+		getTargetContainerSelector().getTargetObjectPredicates().add(
 			isNotTheSame(getEObjectToMove().eContainer()));
 	}
 
 	private void makeSureSourceContainerIsNotTheSameAsTargetContainer() {
 		sourceContainerSelector.getTargetObjectPredicates().add(
-			isNotTheSame(targetContainerSelector.getTargetObject()));
+			isNotTheSame(getTargetContainerSelector().getTargetObject()));
 	}
 
 	private void makeSureSourceFeatureIsCompatibleWithAnyFeatureOfTargetContainer() {
 		sourceContainerSelector.getTargetFeaturePredicates().add(
-			isCompatibleWithAnyFeatureOfEClass(targetContainerSelector.getTargetObject().eClass()));
+			isCompatibleWithAnyFeatureOfEClass(getTargetContainerSelector().getTargetObject().eClass()));
 	}
 
 	private void makeSureSourceFeatureIsCompatibleWithTargetFeature() {
 		sourceContainerSelector.getTargetFeaturePredicates().add(
-			hasCompatibleType(targetContainerSelector.getTargetFeature()));
+			hasCompatibleType(getTargetContainerSelector().getTargetFeature()));
 	}
 
 	private void makeSureTargetContainerIsNotTheSameAsSourceContainer() {
-		targetContainerSelector.getTargetObjectPredicates().add(
+		getTargetContainerSelector().getTargetObjectPredicates().add(
 			isNotTheSame(sourceContainerSelector.getTargetObject()));
 	}
 
-	private void selectEObjectToMove() throws MutationException {
+	private void selectEObjectToMove() throws ESMutationException {
 		// we assume that source selector has already selected everything now
 		final Collection<Predicate<? super Object>> predicates = new HashSet<Predicate<? super Object>>();
 		predicates.addAll(predicatesOnEObjectToMoveFromSourceSelector());
@@ -305,7 +313,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 		if (objectToMove != null && objectToMove instanceof EObject) {
 			setEObjectToMove((EObject) objectToMove);
 		} else {
-			throw new MutationException("Cannot find object to move."); //$NON-NLS-1$
+			throw new ESMutationException("Cannot find object to move."); //$NON-NLS-1$
 		}
 	}
 
@@ -325,7 +333,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 		if (haveTargetFeature()) {
 			predicates.add(getMayBeContainedByFeaturePredicate());
 		} else if (haveTargetContainer()) {
-			final EClass targetEClass = targetContainerSelector.getTargetObject().eClass();
+			final EClass targetEClass = getTargetContainerSelector().getTargetObject().eClass();
 			predicates.add(getMayBeContainedByAnyOfTheseReferencesPredicate(targetEClass));
 		}
 		return predicates;
@@ -348,16 +356,17 @@ public class MoveObjectMutation extends ContainmentChangeMutation {
 
 	@SuppressWarnings("unchecked")
 	private Predicate<? super Object> getMayBeContainedByFeaturePredicate() {
-		return (Predicate<? super Object>) mayBeContainedByFeature(targetContainerSelector.getTargetFeature());
+		return (Predicate<? super Object>) mayBeContainedByFeature(getTargetContainerSelector().getTargetFeature());
 	}
 
 	private void makeSureTargetContainerIsNotChildOfEObjectToMove() {
-		targetContainerSelector.getTargetObjectPredicates().add(
+		getTargetContainerSelector().getTargetObjectPredicates().add(
 			not(isChild(getEObjectToMove())));
 	}
 
 	private void makeSureSourceContainerIsNotAncesterOfTargetContainer() {
 		sourceContainerSelector.getTargetObjectPredicates().add(
-			not(isAncestor(targetContainerSelector.getTargetObject())));
+			not(isAncestor(getTargetContainerSelector().getTargetObject())));
 	}
+
 }

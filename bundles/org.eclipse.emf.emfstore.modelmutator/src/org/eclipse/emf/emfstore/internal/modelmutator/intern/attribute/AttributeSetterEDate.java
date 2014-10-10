@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -23,7 +21,7 @@ import java.util.Random;
  * Class for creating random Date values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -45,16 +43,18 @@ public class AttributeSetterEDate extends AttributeSetter<Date> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Date createNewAttribute() {
-		long value = (long) (getRandom().nextDouble() * HUNDRED_YEARS_MILLIS);
+		final long value = (long) (getRandom().nextDouble() * HUNDRED_YEARS_MILLIS);
 		return new Date(value);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<Date> createNewAttributes(int maxAmount) {
-		List<Date> result = new ArrayList<Date>(maxAmount);
+		final List<Date> result = new ArrayList<Date>(maxAmount);
 		for (int i = 0; i < maxAmount; i++) {
 			result.add(createNewAttribute());
 		}

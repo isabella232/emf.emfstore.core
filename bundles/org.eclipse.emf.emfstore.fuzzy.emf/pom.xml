@@ -23,7 +23,7 @@
         <configuration>
                    
           <testSuite>org.eclipse.emf.emfstore.fuzzy.emf</testSuite>
-          <testClass>org.eclipse.emf.emfstore.fuzzy.emf.diff.CreateAllDiffs</testClass>
+          <testClass>org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.CreateAllDiffs</testClass>
           <useUIHarness>true</useUIHarness>
           <useUIThread>false</useUIThread>
           

@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -22,7 +20,7 @@ import java.util.Random;
  * Class for creating random Double values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -42,6 +40,7 @@ public class AttributeSetterEDouble extends AttributeSetter<Double> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Double createNewAttribute() {
 		return getRandom().nextDouble() * getRandom().nextInt();
 	}
@@ -49,8 +48,9 @@ public class AttributeSetterEDouble extends AttributeSetter<Double> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<Double> createNewAttributes(int maxAmount) {
-		List<Double> result = new ArrayList<Double>(maxAmount);
+		final List<Double> result = new ArrayList<Double>(maxAmount);
 		for (int i = 0; i < maxAmount; i++) {
 			result.add(createNewAttribute());
 		}

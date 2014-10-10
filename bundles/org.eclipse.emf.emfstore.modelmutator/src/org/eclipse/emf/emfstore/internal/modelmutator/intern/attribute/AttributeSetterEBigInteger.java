@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -23,7 +21,7 @@ import java.util.Random;
  * Class for creating random BigInteger values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -43,6 +41,7 @@ public class AttributeSetterEBigInteger extends AttributeSetter<BigInteger> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public BigInteger createNewAttribute() {
 		return new BigInteger(20, getRandom());
 	}
@@ -50,8 +49,9 @@ public class AttributeSetterEBigInteger extends AttributeSetter<BigInteger> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<BigInteger> createNewAttributes(int maxAmount) {
-		List<BigInteger> result = new ArrayList<BigInteger>(maxAmount);
+		final List<BigInteger> result = new ArrayList<BigInteger>(maxAmount);
 		for (int i = 0; i < maxAmount; i++) {
 			result.add(createNewAttribute());
 		}

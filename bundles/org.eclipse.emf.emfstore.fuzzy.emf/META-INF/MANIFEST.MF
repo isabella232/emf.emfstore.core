@@ -2,21 +2,21 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMFDataProvider for FuzzyTestRunner
 Bundle-SymbolicName: org.eclipse.emf.emfstore.fuzzy.emf;singleton:=true
-Bundle-Version: 1.4.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ClassPath: .,
  lib/dom4j-1.6.1.jar
 Bundle-Localization: plugin
-Export-Package: org.eclipse.emf.emfstore.fuzzy.emf;version="1.4.1",org
- .eclipse.emf.emfstore.fuzzy.emf.config;version="1.4.1",org.eclipse.em
- f.emfstore.fuzzy.emf.config.impl;version="1.4.1";x-internal:=true,org
- .eclipse.emf.emfstore.fuzzy.emf.config.util;version="1.4.1",org.eclip
- se.emf.emfstore.fuzzy.emf.diff;version="1.4.1"
-Require-Bundle: org.eclipse.emf.emfstore.modelmutator;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
+Export-Package: org.eclipse.emf.emfstore.fuzzy.emf;version="2.0.0",
+ org.eclipse.emf.emfstore.fuzzy.emf.diff.spi;version="2.0.0";x-internal:=true,
+ org.eclipse.emf.emfstore.fuzzy.emf.internal.diff;version="2.0.0";x-internal:=true,
+ org.eclipse.emf.emfstore.internal.fuzzy.emf;version="2.0.0";x-internal:=true,
+ org.eclipse.emf.emfstore.internal.fuzzy.emf.api;version="2.0.0";x-internal:=true,
+ org.eclipse.emf.emfstore.internal.fuzzy.emf.config;version="2.0.0";x-friends:="org.eclipse.emf.emfstore.fuzzy.emf.edit,org.eclipse.emf.emfstore.fuzzy.emf.editor",
+ org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;version="2.0.0";x-internal:=true,
+ org.eclipse.emf.emfstore.internal.fuzzy.emf.config.util;version="2.0.0";x-friends:="org.eclipse.emf.emfstore.fuzzy.emf.edit"
+Require-Bundle: org.eclipse.emf.emfstore.modelmutator;bundle-version="[2.0.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.emfstore.fuzzy;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
- org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.ecore.xmi;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
- org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)";visibility:=reexport,
- org.eclipse.emf.edit;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.emfstore.client.test;bundle-version="1.4.1"
+ org.eclipse.emf.emfstore.test.common;bundle-version="[1.4.1,2.0.0)"
+Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse Modeling Project

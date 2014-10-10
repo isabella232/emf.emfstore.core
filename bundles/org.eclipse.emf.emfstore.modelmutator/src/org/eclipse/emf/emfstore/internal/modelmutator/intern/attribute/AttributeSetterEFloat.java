@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -22,7 +20,7 @@ import java.util.Random;
  * Class for creating random Float values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -42,6 +40,7 @@ public class AttributeSetterEFloat extends AttributeSetter<Float> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Float createNewAttribute() {
 		return getRandom().nextFloat() * getRandom().nextInt();
 	}
@@ -49,8 +48,9 @@ public class AttributeSetterEFloat extends AttributeSetter<Float> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<Float> createNewAttributes(int maxAmount) {
-		List<Float> result = new ArrayList<Float>(maxAmount);
+		final List<Float> result = new ArrayList<Float>(maxAmount);
 		for (int i = 0; i < maxAmount; i++) {
 			result.add(createNewAttribute());
 		}

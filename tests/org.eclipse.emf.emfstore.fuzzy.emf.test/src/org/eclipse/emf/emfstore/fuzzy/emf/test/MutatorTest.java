@@ -22,34 +22,33 @@ import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
 import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.emf.EMFDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.emf.MutateUtil;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutator;
-import org.eclipse.emf.emfstore.internal.modelmutator.api.ModelMutatorConfiguration;
+import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Test to test the {@link ModelMutator}.
+ * Test to test the {@link ESDefaultModelMutator}.
  * 
  * @author Julian Sommerfeldt
  * 
  */
 @RunWith(FuzzyRunner.class)
-@DataProvider(EMFDataProvider.class)
+@DataProvider(ESEMFDataProvider.class)
 public class MutatorTest {
 
-	@SuppressWarnings("unused")
 	@Data
 	private EObject obj;
 
 	@Util
-	private MutateUtil util;
+	private ESMutateUtil util;
 
 	/**
 	 * Tests if two generated models are equal.
@@ -57,13 +56,13 @@ public class MutatorTest {
 	@Test
 	public void compareTwoGeneratedProjects() {
 
-		Project project1 = ModelFactory.eINSTANCE.createProject();
-		Project project2 = ModelFactory.eINSTANCE.createProject();
-		ModelMutator.generateModel(getConfig(project1));
-		ModelMutator.generateModel(getConfig(project2));
+		final Project project1 = ModelFactory.eINSTANCE.createProject();
+		final Project project2 = ModelFactory.eINSTANCE.createProject();
+		ESDefaultModelMutator.generateModel(getConfig(project1));
+		ESDefaultModelMutator.generateModel(getConfig(project2));
 
-		ModelMutator.changeModel(getConfig(project1));
-		ModelMutator.changeModel(getConfig(project2));
+		ESDefaultModelMutator.changeModel(getConfig(project1));
+		ESDefaultModelMutator.changeModel(getConfig(project2));
 
 		Iterator<EObject> project1Iterator = project1.getAllModelElements()
 			.iterator();
@@ -71,26 +70,26 @@ public class MutatorTest {
 			.iterator();
 
 		while (project1Iterator.hasNext()) {
-			EObject modelElement = project1Iterator.next();
-			ModelElementId modelElementId = project1
+			final EObject modelElement = project1Iterator.next();
+			final ModelElementId modelElementId = project1
 				.getModelElementId(modelElement);
 			if (!project2.contains(modelElementId)) {
 				failed(project1, project2);
 			}
 		}
 
-		TreeIterator<EObject> allContentsProject1 = project1.eAllContents();
-		TreeIterator<EObject> allContentsProject2 = project2.eAllContents();
+		final TreeIterator<EObject> allContentsProject1 = project1.eAllContents();
+		final TreeIterator<EObject> allContentsProject2 = project2.eAllContents();
 
 		while (allContentsProject1.hasNext()) {
 			if (!allContentsProject2.hasNext()) {
 				failed(project1, project2);
 			}
-			EObject modelElement = allContentsProject1.next();
-			ModelElementId modelElementId = project1
+			final EObject modelElement = allContentsProject1.next();
+			final ModelElementId modelElementId = project1
 				.getModelElementId(modelElement);
-			EObject modelElement2 = allContentsProject2.next();
-			ModelElementId modelElementId2 = project2
+			final EObject modelElement2 = allContentsProject2.next();
+			final ModelElementId modelElementId2 = project2
 				.getModelElementId(modelElement2);
 			if (!modelElementId.equals(modelElementId2)) {
 				failed(project1, project2);
@@ -101,10 +100,10 @@ public class MutatorTest {
 		project2Iterator = project2.getAllModelElements().iterator();
 
 		while (project1Iterator.hasNext()) {
-			EObject modelElement = project1Iterator.next();
-			ModelElementId modelElementId = project1
+			final EObject modelElement = project1Iterator.next();
+			final ModelElementId modelElementId = project1
 				.getModelElementId(modelElement);
-			ModelElementId modelElementId2 = project2
+			final ModelElementId modelElementId2 = project2
 				.getModelElementId(project2Iterator.next());
 			if (!modelElementId.equals(modelElementId2)) {
 				failed(project1, project2);
@@ -118,10 +117,10 @@ public class MutatorTest {
 		Assert.assertTrue(false);
 	}
 
-	private ModelMutatorConfiguration getConfig(Project root) {
-		ModelMutatorConfiguration mmc = new ModelMutatorConfiguration(
+	private ESModelMutatorConfiguration getConfig(Project root) {
+		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
 			util.getEPackages(), root, util.getSeed());
-		Collection<EStructuralFeature> eStructuralFeaturesToIgnore = new HashSet<EStructuralFeature>();
+		final Collection<EStructuralFeature> eStructuralFeaturesToIgnore = new HashSet<EStructuralFeature>();
 		eStructuralFeaturesToIgnore
 			.add(ModelPackage.Literals.PROJECT__CUT_ELEMENTS);
 		mmc.seteStructuralFeaturesToIgnore(eStructuralFeaturesToIgnore);

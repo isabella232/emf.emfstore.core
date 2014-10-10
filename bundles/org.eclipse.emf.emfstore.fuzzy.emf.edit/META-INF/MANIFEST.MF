@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Fuzzy EMF Edit plugin
 Bundle-SymbolicName: org.eclipse.emf.emfstore.fuzzy.emf.edit;singleton:=true
-Bundle-Version: 1.4.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.emf.emfstore.fuzzy.emf.config.provider.ConfigEditPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.emfstore.internal.fuzzy.emf.config.provider.ConfigEditPlugin$Implementation
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.emfstore.fuzzy.emf.config.provider;ver
- sion="1.4.1"
-Require-Bundle: org.eclipse.emf.emfstore.fuzzy.emf;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.8.0,4.0.0)",
+ org.eclipse.emf.emfstore.fuzzy.emf;bundle-version="[2.0.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.edit;bundle-version="[2.5.0,3.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.emf.emfstore.internal.fuzzy.emf.config.provider;version="2.0.0";x-friends:="org.eclipse.emf.emfstore.fuzzy.emf.editor"

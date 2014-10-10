@@ -7,9 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * StephanK?hler
- * EugenNeufeld
- * PhilipAchenbach
+ * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
 
@@ -22,7 +20,7 @@ import java.util.Random;
  * Class for creating random Byte[] values.
  * 
  * @author Eugen Neufeld
- * @author Stephan K?hler
+ * @author Stephan Koehler
  * @author Philip Achenbach
  * 
  * @see AttributeSetter
@@ -32,7 +30,7 @@ public class AttributeSetterEByteArray extends AttributeSetter<byte[]> {
 	/**
 	 * Length of the Byte-array that is randomly filled.
 	 */
-	private int bytesize;
+	private final int bytesize;
 
 	/**
 	 * Creates a new AttributeSetter for Byte[] attributes.
@@ -50,8 +48,9 @@ public class AttributeSetterEByteArray extends AttributeSetter<byte[]> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public byte[] createNewAttribute() {
-		byte[] bytes = new byte[bytesize];
+		final byte[] bytes = new byte[bytesize];
 		getRandom().nextBytes(bytes);
 		return bytes;
 	}
@@ -59,8 +58,9 @@ public class AttributeSetterEByteArray extends AttributeSetter<byte[]> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Collection<byte[]> createNewAttributes(int maxAmount) {
-		List<byte[]> result = new ArrayList<byte[]>(maxAmount);
+		final List<byte[]> result = new ArrayList<byte[]>(maxAmount);
 		for (int i = 0; i < maxAmount; i++) {
 			result.add(createNewAttribute());
 		}
