@@ -27,9 +27,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.emfstore.fuzzy.Util;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
-import org.eclipse.emf.emfstore.internal.fuzzy.emf.Messages;
-import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**
  * A {@link Util} class for tests using the {@link ESEMFDataProvider}.

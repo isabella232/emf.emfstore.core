@@ -9,7 +9,7 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.fuzzy.emf;
+package org.eclipse.emf.emfstore.fuzzy.emf;
 
 import org.eclipse.osgi.util.NLS;
 
@@ -21,11 +21,11 @@ import org.eclipse.osgi.util.NLS;
  */
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.fuzzy.emf.messages"; //$NON-NLS-1$
-
-	static String FuzzyUtil_LoadPropertiesFailed;
-	static String FuzzyUtil_NoTestConfigFound;
-	static String FuzzyUtil_WrontTestDiffConfiguration;
-
+	static String EMFDataProvider_ConfigFileLoadFailed;
+	static String EMFDataProvider_ConfigFileSaveFailed;
+	static String EMFDataProvider_DiffFileLoadFailed;
+	static String EMFDataProvider_SaveRunResultFailed;
+	static String MutateUtil_SaveFailed;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

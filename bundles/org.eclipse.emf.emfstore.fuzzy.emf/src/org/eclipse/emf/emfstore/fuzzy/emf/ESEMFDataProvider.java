@@ -38,7 +38,6 @@ import org.eclipse.emf.emfstore.fuzzy.Util;
 import org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.HudsonTestRunProvider;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.EMFRunListener;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
-import org.eclipse.emf.emfstore.internal.fuzzy.emf.Messages;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigFactory;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage;
@@ -47,8 +46,8 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
-import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
