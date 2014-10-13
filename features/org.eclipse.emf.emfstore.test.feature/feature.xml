@@ -310,17 +310,25 @@ litigation.
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.emfstore.server.test"
+         id="org.eclipse.emf.emfstore.performance.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.emfstore.performance.test"
+         id="org.eclipse.emf.emfstore.fuzzy.emf.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.emfstore.server.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
          unpack="false"/>
 
 </feature>
