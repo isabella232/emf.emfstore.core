@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Test Config</b></em>'.
+ * A representation of the model object '<em><b>ESFuzzyTest Config</b></em>'.
  * 
  * @extends APIDelegate<ESTestConfigImpl>
  *          <!-- end-user-doc -->
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getSeed <em>Seed</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getCount <em>Count</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass <em>Test Class</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass <em>ESFuzzyTest Class</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getId <em>Id</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getMutatorConfig <em>Mutator Config
  *          </em>}</li>
@@ -96,15 +96,15 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	void setCount(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Test Class</b></em>' attribute.
+	 * Returns the value of the '<em><b>ESFuzzyTest Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Test Class</em>' attribute isn't clear, there really should be more of a description
+	 * If the meaning of the '<em>ESFuzzyTest Class</em>' attribute isn't clear, there really should be more of a description
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '<em>Test Class</em>' attribute.
+	 * @return the value of the '<em>ESFuzzyTest Class</em>' attribute.
 	 * @see #setTestClass(Class)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_TestClass()
 	 * @model
@@ -114,11 +114,11 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass
-	 * <em>Test Class</em>}' attribute.
+	 * <em>ESFuzzyTest Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
-	 * @param value the new value of the '<em>Test Class</em>' attribute.
+	 * @param value the new value of the '<em>ESFuzzyTest Class</em>' attribute.
 	 * @see #getTestClass()
 	 * @generated
 	 */

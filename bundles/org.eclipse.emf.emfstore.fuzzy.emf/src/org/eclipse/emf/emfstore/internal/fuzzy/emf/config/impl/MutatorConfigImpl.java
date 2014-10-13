@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isDoNotGenerateRoot <em>Do Not
  * Generate Root</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isUseEcoreUtilDelete <em>Use
- * Ecore Util Delete</em>}</li>
+ * Ecore ESFuzzyUtil Delete</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEClassesToIgnore <em>EClasses
  * To Ignore</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEStructuralFeaturesToIgnore
@@ -140,7 +140,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	protected boolean doNotGenerateRoot = DO_NOT_GENERATE_ROOT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore Util Delete</em>}' attribute.
+	 * The default value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
@@ -151,7 +151,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	protected static final boolean USE_ECORE_UTIL_DELETE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore Util Delete</em>}' attribute.
+	 * The cached value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

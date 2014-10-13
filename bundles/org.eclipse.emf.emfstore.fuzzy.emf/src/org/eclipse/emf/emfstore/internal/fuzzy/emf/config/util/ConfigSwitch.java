@@ -149,13 +149,13 @@ public class ConfigSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Test Config</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ESFuzzyTest Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Test Config</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ESFuzzyTest Config</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -164,13 +164,13 @@ public class ConfigSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Test Run</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ESFuzzyTest Run</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Test Run</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ESFuzzyTest Run</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -179,13 +179,13 @@ public class ConfigSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Test Result</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ESFuzzyTest Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Test Result</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ESFuzzyTest Result</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -194,13 +194,13 @@ public class ConfigSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Test Diff</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ESFuzzyTest Diff</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Test Diff</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ESFuzzyTest Diff</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */

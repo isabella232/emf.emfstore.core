@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Test Run</b></em>'.
+ * A representation of the model object '<em><b>ESFuzzyTest Run</b></em>'.
  * 
  * @extends APIDelegate<ESTestRunImpl>
  *          <!-- end-user-doc -->

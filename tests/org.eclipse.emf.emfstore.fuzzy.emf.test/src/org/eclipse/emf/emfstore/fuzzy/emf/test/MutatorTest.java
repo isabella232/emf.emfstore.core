@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
-import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
@@ -35,12 +35,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Test to test the {@link ESDefaultModelMutator}.
+ * ESFuzzyTest to test the {@link ESDefaultModelMutator}.
  * 
  * @author Julian Sommerfeldt
  * 
  */
-@RunWith(FuzzyRunner.class)
+@RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
 public class MutatorTest {
 

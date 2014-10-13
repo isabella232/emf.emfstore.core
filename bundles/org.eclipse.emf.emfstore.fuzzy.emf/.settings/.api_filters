@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.emfstore.fuzzy.emf" version="2">
+    <resource path="src/org/eclipse/emf/emfstore/fuzzy/emf/ESEMFDataProvider.java" type="org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider">
+        <filter comment="internal API usage" id="576725006">
+            <message_arguments>
+                <message_argument value="FuzzyDataProvider&lt;T&gt;"/>
+                <message_argument value="ESEMFDataProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

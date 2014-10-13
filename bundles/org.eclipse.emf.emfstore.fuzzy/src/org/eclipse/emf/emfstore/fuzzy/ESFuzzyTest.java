@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy;
 
@@ -16,13 +16,14 @@ package org.eclipse.emf.emfstore.fuzzy;
  * Class to get a connection between a test and a specific run of it.
  * 
  * @author Julian Sommerfeldt
+ * @since 2.0
  * 
  */
-public class Test {
+public class ESFuzzyTest {
 
-	private String name;
+	private final String name;
 
-	private int seedCount;
+	private final int seedCount;
 
 	/**
 	 * @param name
@@ -30,7 +31,7 @@ public class Test {
 	 * @param seedCount
 	 *            The count (run) of the test.
 	 */
-	public Test(String name, int seedCount) {
+	public ESFuzzyTest(String name, int seedCount) {
 		this.name = name;
 		this.seedCount = seedCount;
 	}

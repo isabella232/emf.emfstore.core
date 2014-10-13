@@ -7,15 +7,16 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy;
 
 /**
- * Marker Interface for utility classes in test classes using the {@link FuzzyRunner}.
+ * Marker Interface for utility classes in test classes using the {@link ESFuzzyRunner}.
  * 
  * @author Julian Sommerfeldt
+ * @since 2.0
  */
-public interface Util {
+public interface ESFuzzyUtil {
 
 }

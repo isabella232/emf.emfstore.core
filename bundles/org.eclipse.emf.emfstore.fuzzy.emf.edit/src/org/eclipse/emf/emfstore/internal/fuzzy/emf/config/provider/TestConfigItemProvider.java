@@ -128,7 +128,7 @@ public class TestConfigItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Test Class feature.
+	 * This adds a property descriptor for the ESFuzzyTest Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

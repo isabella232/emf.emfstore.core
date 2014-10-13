@@ -32,10 +32,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.emfstore.fuzzy.FuzzyDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.Test;
-import org.eclipse.emf.emfstore.fuzzy.Util;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.HudsonTestRunProvider;
+import org.eclipse.emf.emfstore.internal.fuzzy.FuzzyDataProvider;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.EMFRunListener;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
@@ -278,9 +278,9 @@ public class ESEMFDataProvider implements FuzzyDataProvider<EObject> {
 	}
 
 	/**
-	 * @return all {@link Test}s to run or null if all tests should run.
+	 * @return all {@link ESFuzzyTest}s to run or null if all tests should run.
 	 */
-	public List<Test> getTestsToRun() {
+	public List<ESFuzzyTest> getTestsToRun() {
 		if (!filterTests) {
 			return null;
 		}
@@ -299,13 +299,13 @@ public class ESEMFDataProvider implements FuzzyDataProvider<EObject> {
 
 		// filter for correct config
 		final EList<EObject> contents = diffResource.getContents();
-		final List<Test> tests = new ArrayList<Test>();
+		final List<ESFuzzyTest> tests = new ArrayList<ESFuzzyTest>();
 		for (final EObject obj : contents) {
 			if (obj instanceof DiffReport) {
 				for (final TestDiff diff : ((DiffReport) obj).getDiffs()) {
 					if (diff.getConfig().getId().equals(config.getId())) {
 						final TestResult result = FuzzyUtil.getValidTestResult(diff);
-						tests.add(new Test(result.getTestName(), result
+						tests.add(new ESFuzzyTest(result.getTestName(), result
 							.getSeedCount()));
 					}
 				}
@@ -350,7 +350,7 @@ public class ESEMFDataProvider implements FuzzyDataProvider<EObject> {
 	/**
 	 * @return The a new {@link ESMutateUtil} for this {@link ESEMFDataProvider}.
 	 */
-	public Util getUtil() {
+	public ESFuzzyUtil getUtil() {
 		return new ESMutateUtil(this);
 	}
 

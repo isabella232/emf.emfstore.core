@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Test Diff</b></em>'.
+ * A representation of the model object '<em><b>ESFuzzyTest Diff</b></em>'.
  * <!-- end-user-doc -->
  * 
  * <p>

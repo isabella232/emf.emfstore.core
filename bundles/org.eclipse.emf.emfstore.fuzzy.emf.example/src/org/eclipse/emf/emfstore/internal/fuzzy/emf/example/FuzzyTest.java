@@ -14,19 +14,19 @@ package org.eclipse.emf.emfstore.internal.fuzzy.emf.example;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
-import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Example test for the {@link FuzzyRunner}.
+ * Example test for the {@link ESFuzzyRunner}.
  * 
  * @author Julian Sommerfeldt
  * 
  */
-@RunWith(FuzzyRunner.class)
+@RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
 public class FuzzyTest {
 
@@ -34,7 +34,7 @@ public class FuzzyTest {
 	private EObject root;
 
 	/**
-	 * Test to check if the {@link FuzzyRunner} is working.
+	 * ESFuzzyTest to check if the {@link ESFuzzyRunner} is working.
 	 */
 	@Test
 	public void test() {

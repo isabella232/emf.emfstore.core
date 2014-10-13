@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Test Diff</b></em>'.
+ * An implementation of the model object '<em><b>ESFuzzyTest Diff</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:

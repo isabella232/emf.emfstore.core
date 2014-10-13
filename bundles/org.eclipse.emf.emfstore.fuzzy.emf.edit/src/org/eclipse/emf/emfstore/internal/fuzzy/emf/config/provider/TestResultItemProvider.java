@@ -104,7 +104,7 @@ public class TestResultItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Test Name feature.
+	 * This adds a property descriptor for the ESFuzzyTest Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

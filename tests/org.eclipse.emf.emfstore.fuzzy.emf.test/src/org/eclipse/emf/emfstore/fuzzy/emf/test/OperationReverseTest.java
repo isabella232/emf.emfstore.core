@@ -13,7 +13,7 @@
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
-import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
@@ -22,12 +22,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Fuzzy Test for the reverse functionality of operations.
+ * Fuzzy ESFuzzyTest for the reverse functionality of operations.
  * 
  * @author Julian Sommerfeldt
  * 
  */
-@RunWith(FuzzyRunner.class)
+@RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
 public class OperationReverseTest extends FuzzyProjectTest {
 

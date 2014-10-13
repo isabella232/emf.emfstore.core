@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Test Run</b></em>'.
+ * An implementation of the model object '<em><b>ESFuzzyTest Run</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:

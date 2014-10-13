@@ -190,7 +190,7 @@ public class MutatorConfigItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Use Ecore Util Delete feature.
+	 * This adds a property descriptor for the Use Ecore ESFuzzyUtil Delete feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
-import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
@@ -36,7 +36,7 @@ import org.junit.runner.RunWith;
  * @author Julian Sommerfeldt
  * 
  */
-@RunWith(FuzzyRunner.class)
+@RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
 public class ServerTest extends ESTestWithLoggedInUser {
 

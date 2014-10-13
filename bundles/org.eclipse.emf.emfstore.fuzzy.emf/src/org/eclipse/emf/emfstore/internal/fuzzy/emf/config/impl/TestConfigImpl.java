@@ -23,14 +23,14 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Test Config</b></em>'.
+ * An implementation of the model object '<em><b>ESFuzzyTest Config</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getSeed <em>Seed</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getCount <em>Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getTestClass <em>Test Class</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getTestClass <em>ESFuzzyTest Class</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getId <em>Id</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getMutatorConfig <em>Mutator Config
  * </em>}</li>
@@ -86,7 +86,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	protected int count = COUNT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTestClass() <em>Test Class</em>}' attribute.
+	 * The cached value of the '{@link #getTestClass() <em>ESFuzzyTest Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

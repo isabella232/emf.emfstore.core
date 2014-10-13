@@ -19,13 +19,13 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Test Result</b></em>'.
+ * An implementation of the model object '<em><b>ESFuzzyTest Result</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getSeedCount <em>Seed Count</em>}</li>
- *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getTestName <em>Test Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getTestName <em>ESFuzzyTest Name</em>}</li>
  *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getError <em>Error</em>}</li>
  *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getFailure <em>Failure</em>}</li>
  *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getExecutionTime <em>Execution Time</em>}</li>
@@ -56,7 +56,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	protected int seedCount = SEED_COUNT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTestName() <em>Test Name</em>}' attribute.
+	 * The default value of the '{@link #getTestName() <em>ESFuzzyTest Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTestName()
@@ -66,7 +66,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	protected static final String TEST_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTestName() <em>Test Name</em>}' attribute.
+	 * The cached value of the '{@link #getTestName() <em>ESFuzzyTest Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTestName()

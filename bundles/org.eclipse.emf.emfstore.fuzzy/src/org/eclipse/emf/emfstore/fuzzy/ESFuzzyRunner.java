@@ -7,13 +7,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,6 +23,8 @@ import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Options;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
+import org.eclipse.emf.emfstore.internal.fuzzy.FuzzyDataProvider;
+import org.eclipse.emf.emfstore.internal.fuzzy.FuzzyTestClassRunner;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.RunListener;
 import org.junit.runner.notification.RunNotifier;
@@ -33,7 +36,7 @@ import org.junit.runners.model.InitializationError;
  * A {@link Runner} for JUnit, to realize multiple runs with different values
  * for a data field. <br/>
  * <br/>
- * Activate with the {@link org.junit.runner.RunWith} annotation: <code>@RunWith(FuzzyRunner.class)</code>. <br/>
+ * Activate with the {@link org.junit.runner.RunWith} annotation: <code>@RunWith(ESFuzzyRunner.class)</code>. <br/>
  * <br/>
  * The test class must have a field, which is not static and annotated with {@link Data}, e.g.<br/>
  * <br/>
@@ -47,21 +50,22 @@ import org.junit.runners.model.InitializationError;
  * This class must implement the interface {@link FuzzyDataProvider}. The
  * default value is the example implementation: IntDataProvider.<br/>
  * <br/>
- * The MyTest class illustrates an example usage of the {@link FuzzyRunner}.
+ * The MyTest class illustrates an example usage of the {@link ESFuzzyRunner}.
  * 
  * @author Julian Sommerfeldt
+ * @since 2.0
  * 
  */
-public class FuzzyRunner extends Suite {
+public class ESFuzzyRunner extends Suite {
 
 	private final ArrayList<Runner> runners = new ArrayList<Runner>();
 
 	private final FuzzyDataProvider<?> dataProvider;
 
 	/**
-	 * The string representing a seperation in a name (e.g. test name).
+	 * The string representing a separation in a name (e.g. test name).
 	 */
-	public static final String NAME_SEPARATOR = " ";
+	public static final String NAME_SEPARATOR = " "; //$NON-NLS-1$
 
 	/**
 	 * Default constructor, called by JUnit.
@@ -71,7 +75,7 @@ public class FuzzyRunner extends Suite {
 	 * @throws InitializationError
 	 *             If there
 	 */
-	public FuzzyRunner(Class<?> clazz) throws InitializationError {
+	public ESFuzzyRunner(Class<?> clazz) throws InitializationError {
 		super(clazz, Collections.<Runner> emptyList());
 		dataProvider = getDataProvider();
 		dataProvider.setTestClass(getTestClass());
@@ -79,7 +83,7 @@ public class FuzzyRunner extends Suite {
 		final FrameworkField dataField = getDataField();
 		final FrameworkField utilField = getUtilField();
 		final FrameworkField optionsField = getOptionsField();
-		final org.eclipse.emf.emfstore.fuzzy.Util util = dataProvider.getUtil();
+		final org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil util = dataProvider.getUtil();
 		for (int i = 0; i < dataProvider.size(); i++) {
 			final FuzzyTestClassRunner runner = new FuzzyTestClassRunner(clazz,
 				dataProvider, dataField, utilField, optionsField, util,
@@ -108,7 +112,7 @@ public class FuzzyRunner extends Suite {
 	}
 
 	/**
-	 * @return The field annotated with {@link Util}.
+	 * @return The field annotated with {@link ESFuzzyUtil}.
 	 * @throws Exception
 	 *             If there is are more than one fitting fields.
 	 */
@@ -127,9 +131,11 @@ public class FuzzyRunner extends Suite {
 
 		// Check if there are more than one Data field in the class
 		if (fields.size() > 1) {
-			throw new RuntimeException("Only one field annotated with "
-				+ annotation.getSimpleName() + " permitted: "
-				+ getTestClass().getName() + " contains " + fields.size());
+			throw new RuntimeException(
+				MessageFormat.format(Messages.getString("ESFuzzyRunner.OneAnnotationOnly"), //$NON-NLS-1$
+					annotation.getSimpleName(),
+					getTestClass().getName(),
+					fields.size()));
 		}
 
 		// get the field and check modifiers
@@ -154,9 +160,10 @@ public class FuzzyRunner extends Suite {
 
 		if (field == null) {
 			throw new InitializationError(
-				"No non-static model field anntoted with "
-					+ Data.class.getSimpleName() + " in class "
-					+ getTestClass().getName());
+				MessageFormat.format(
+					Messages.getString("ESFuzzyRunner.NonStaticFieldMissing"), //$NON-NLS-1$
+					Data.class.getSimpleName(),
+					getTestClass().getName()));
 		}
 
 		return field;
@@ -184,9 +191,11 @@ public class FuzzyRunner extends Suite {
 				dataProviderClass = ((DataProvider) annotation).value();
 				if (!FuzzyDataProvider.class
 					.isAssignableFrom(dataProviderClass)) {
-					throw new InitializationError(dataProviderClass
-						+ " is not an implementation of "
-						+ FuzzyDataProvider.class.getSimpleName());
+					throw new InitializationError(
+						MessageFormat.format(
+							Messages.getString("ESFuzzyRunner.NotAnInstanceOf"), //$NON-NLS-1$
+							dataProviderClass,
+							FuzzyDataProvider.class.getSimpleName()));
 				}
 			}
 		}
@@ -197,22 +206,22 @@ public class FuzzyRunner extends Suite {
 				.newInstance();
 		} catch (final InstantiationException e) {
 			throw new InitializationError(
-				"The DataProvider must have a zero-parameter constructor!");
+				Messages.getString("ESFuzzyRunner.DataProviderCTorMissing")); //$NON-NLS-1$
 		} catch (final IllegalAccessException e) {
 			throw new InitializationError(
-				"The DataProvider must have a zero-parameter constructor!");
+				Messages.getString("ESFuzzyRunner.DataProviderCTorMissing")); //$NON-NLS-1$
 		} catch (final IllegalArgumentException e) {
 			throw new InitializationError(
-				"The DataProvider must have a zero-parameter constructor!");
+				Messages.getString("ESFuzzyRunner.DataProviderCTorMissing")); //$NON-NLS-1$
 		} catch (final InvocationTargetException e) {
 			throw new InitializationError(
-				"The DataProvider must have a zero-parameter constructor!");
+				Messages.getString("ESFuzzyRunner.DataProviderCTorMissing")); //$NON-NLS-1$
 		} catch (final NoSuchMethodException e) {
 			throw new InitializationError(
-				"The DataProvider must have a zero-parameter constructor!");
+				Messages.getString("ESFuzzyRunner.DataProviderCTorMissing")); //$NON-NLS-1$
 		} catch (final SecurityException e) {
 			throw new InitializationError(
-				"The DataProvider must have a zero-parameter constructor!");
+				Messages.getString("ESFuzzyRunner.DataProviderCTorMissing")); //$NON-NLS-1$
 		}
 	}
 

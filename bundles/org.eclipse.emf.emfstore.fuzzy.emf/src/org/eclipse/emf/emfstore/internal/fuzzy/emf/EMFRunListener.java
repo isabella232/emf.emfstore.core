@@ -17,7 +17,7 @@ import java.io.StringWriter;
 
 import junit.framework.AssertionFailedError;
 
-import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigFactory;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
@@ -69,7 +69,7 @@ public class EMFRunListener extends RunListener {
 		}
 		testResult = ConfigFactory.eINSTANCE.createTestResult();
 		testResult.setTestName(description.getMethodName().split(
-			FuzzyRunner.NAME_SEPARATOR)[0]);
+			ESFuzzyRunner.NAME_SEPARATOR)[0]);
 		testStartTime = System.currentTimeMillis();
 	}
 

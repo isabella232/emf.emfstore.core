@@ -25,13 +25,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.emfstore.fuzzy.Util;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
 import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**
- * A {@link Util} class for tests using the {@link ESEMFDataProvider}.
+ * A {@link ESFuzzyUtil} class for tests using the {@link ESEMFDataProvider}.
  * 
  * @author Julian Sommerfeldt
  * @since 2.0
@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
-public class ESMutateUtil implements Util {
+public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
 	 * The EMFDataProvider that generates data.

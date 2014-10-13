@@ -12,7 +12,7 @@
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
-import org.eclipse.emf.emfstore.fuzzy.FuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
@@ -22,13 +22,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Test which mutates a project and then applies its changes to another (copied)
+ * ESFuzzyTest which mutates a project and then applies its changes to another (copied)
  * project. Then compares the two mutated projects.
  * 
  * @author Julian Sommerfeldt
  * 
  */
-@RunWith(FuzzyRunner.class)
+@RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
 public class OperationApplyTest extends FuzzyProjectTest {
 

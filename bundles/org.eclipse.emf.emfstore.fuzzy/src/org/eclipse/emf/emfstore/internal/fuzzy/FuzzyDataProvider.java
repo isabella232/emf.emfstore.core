@@ -9,16 +9,18 @@
  * Contributors:
  * JulianSommerfeldt
  ******************************************************************************/
-package org.eclipse.emf.emfstore.fuzzy;
+package org.eclipse.emf.emfstore.internal.fuzzy;
 
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
 import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
 /**
- * A Data Provider for the JUnit Runner: {@link FuzzyRunner}.<br>
+ * A Data Provider for the JUnit Runner: {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner ESFuzzyRunner}.<br>
  * <br>
  * An implementation of it must have a zero-parameter constructor.
  * 
@@ -26,6 +28,7 @@ import org.junit.runners.model.TestClass;
  * 
  * @param <T>
  *            Type to specify the values created by this data provider.
+ * 
  */
 public interface FuzzyDataProvider<T> {
 
@@ -56,7 +59,8 @@ public interface FuzzyDataProvider<T> {
 
 	/**
 	 * @param testClass
-	 *            The {@link TestClass} of the calling {@link FuzzyRunner}.
+	 *            The {@link TestClass} of the calling {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner
+	 *            ESFuzzyRunner}.
 	 */
 	void setTestClass(TestClass testClass);
 
@@ -67,16 +71,16 @@ public interface FuzzyDataProvider<T> {
 	List<RunListener> getListener();
 
 	/**
-	 * @return A list of {@link Test}s to specify, which tests the {@link FuzzyRunner} should run. <code>null</code>
-	 *         means run all
-	 *         tests.
+	 * @return A list of {@link ESFuzzyTest}s to specify, which tests the
+	 *         {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner ESFuzzyRunner} should run. <code>null</code> means
+	 *         run all tests.
 	 */
-	List<Test> getTestsToRun();
+	List<ESFuzzyTest> getTestsToRun();
 
 	/**
-	 * @return The {@link Util} for this {@link FuzzyDataProvider}. <code>null</code> permitted.
+	 * @return The {@link ESFuzzyUtil} for this {@link FuzzyDataProvider}. <code>null</code> permitted.
 	 */
-	Util getUtil();
+	ESFuzzyUtil getUtil();
 
 	/**
 	 * @param options

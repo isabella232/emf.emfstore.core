@@ -16,7 +16,7 @@ Export-Package: org.eclipse.emf.emfstore.fuzzy.emf;version="2.0.0",
  org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;version="2.0.0";x-internal:=true,
  org.eclipse.emf.emfstore.internal.fuzzy.emf.config.util;version="2.0.0";x-friends:="org.eclipse.emf.emfstore.fuzzy.emf.edit"
 Require-Bundle: org.eclipse.emf.emfstore.modelmutator;bundle-version="[2.0.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.emfstore.fuzzy;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.emfstore.fuzzy;bundle-version="[2.0.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.emfstore.test.common;bundle-version="[1.4.1,2.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse Modeling Project

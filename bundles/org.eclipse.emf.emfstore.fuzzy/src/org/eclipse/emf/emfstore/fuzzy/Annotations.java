@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy;
 
@@ -17,7 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotations used in tests using the {@link FuzzyRunner}.
+ * Annotations used in tests using the {@link ESFuzzyRunner}.
  * 
  * @author Julian Sommerfeldt
  * 
@@ -36,7 +36,7 @@ public final class Annotations {
 	}
 
 	/**
-	 * Annotations to declare the field for the {@link Util}.
+	 * Annotations to declare the field for the {@link ESFuzzyUtil}.
 	 * 
 	 * @author Julian Sommerfeldt
 	 * 
@@ -47,7 +47,7 @@ public final class Annotations {
 	}
 
 	/**
-	 * An annotation to set the {@link FuzzyDataProvider} for the {@link FuzzyRunner}.
+	 * An annotation to set the fuzzy data provider for the {@link ESFuzzyRunner}.
 	 * 
 	 * @author Julian Sommerfeldt
 	 * 
@@ -61,7 +61,7 @@ public final class Annotations {
 	}
 
 	/**
-	 * An optional annotation to declare options to use in the {@link FuzzyDataProvider}.
+	 * An optional annotation to declare options to use in the fuzzy data provider.
 	 * 
 	 * @author Julian Sommerfeldt
 	 * 
