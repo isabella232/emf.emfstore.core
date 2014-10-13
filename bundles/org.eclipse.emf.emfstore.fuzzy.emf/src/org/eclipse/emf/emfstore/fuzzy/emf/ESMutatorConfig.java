@@ -90,7 +90,7 @@ public interface ESMutatorConfig {
 	 * 
 	 * @return the number of objects that should be deleted at most
 	 */
-	int getMaxDeleteCount();
+	Integer getMaxDeleteCount();
 
 	/**
 	 * The EPackages to used during object generation.

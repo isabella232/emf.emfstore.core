@@ -107,7 +107,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 	 * 
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getMaxDeleteCount()
 	 */
-	public int getMaxDeleteCount() {
+	public Integer getMaxDeleteCount() {
 		return toInternalAPI().getMaxDeleteCount();
 	}
 

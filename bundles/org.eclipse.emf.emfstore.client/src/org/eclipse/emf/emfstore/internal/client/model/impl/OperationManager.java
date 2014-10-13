@@ -67,7 +67,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 		operationRecorder.getConfig()
 			.setForceCommands(
 				Configuration.getClientBehavior().isForceCommandsActived());
-		// cut elements aren't added automatically as regular model elements by default
+		// cut elements are added automatically as regular model elements by default
 		operationRecorder.getConfig().setDenyAddCutElementsToModelElements(
 			Configuration.getClientBehavior().isDenyAddCutElementsToModelElementsFeatureActived());
 	}
