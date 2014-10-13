@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
@@ -32,16 +33,16 @@ import com.google.common.collect.Lists;
 
 /**
  * A mutation, which changes the keys of {@link org.eclipse.emf.ecore.change.FeatureMapEntry feature map entries}.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  */
 public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMapKeyMutation>
-	implements ESFeatureMapKeyMutation {
+implements ESFeatureMapKeyMutation {
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public FeatureMapKeyMutation(ESModelMutatorUtil util) {
@@ -52,7 +53,7 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMa
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
@@ -72,7 +73,7 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMa
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
@@ -81,9 +82,9 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMa
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override
@@ -109,16 +110,45 @@ public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMa
 		return (List<FeatureMap.Entry>) getTargetObject().eGet(getTargetFeature());
 	}
 
-	private EStructuralFeature getRandomFeatureKeyExcludingCurrent(EStructuralFeature currentFeatureKey) {
-		final List<EStructuralFeature> availableFeatures = Lists.newArrayList(getFeaturesOfFeatureMapGroup());
-		availableFeatures.remove(currentFeatureKey);
+	private EStructuralFeature getRandomFeatureKeyExcludingCurrent(EStructuralFeature currentFeatureKey)
+		throws ESMutationException {
+		final List<EStructuralFeature> availableFeatures = getCompatibleFeatureKeys(currentFeatureKey);
 		final int pickIndex = getRandom().nextInt(availableFeatures.size());
 		return availableFeatures.get(pickIndex);
 	}
 
+	private List<EStructuralFeature> getCompatibleFeatureKeys(EStructuralFeature currentFeatureKey)
+		throws ESMutationException {
+		final List<EStructuralFeature> availableFeatures = Lists.newArrayList(getFeaturesOfFeatureMapGroup());
+		filterIncompatibleFeatures(availableFeatures, currentFeatureKey);
+		if (availableFeatures.isEmpty()) {
+			throw new ESMutationException("Could not find compatible FeatureMapKey to swap."); //$NON-NLS-1$
+		}
+		return availableFeatures;
+	}
+
+	private void filterIncompatibleFeatures(List<EStructuralFeature> availableFeatures,
+		EStructuralFeature compatibleFeature) {
+		availableFeatures.remove(compatibleFeature);
+		for (final EStructuralFeature feature : Lists.newArrayList(availableFeatures)) {
+			if (!isEqualOrSubclass(feature.getEType(), compatibleFeature.getEType())) {
+				availableFeatures.remove(feature);
+			}
+		}
+	}
+
+	private boolean isEqualOrSubclass(EClassifier eClassifier, EClassifier compatibleEClassifier) {
+		if (eClassifier instanceof EClass && compatibleEClassifier instanceof EClass) {
+			final EClass eClass = (EClass) eClassifier;
+			final EClass compatibleEClass = (EClass) compatibleEClassifier;
+			return compatibleEClass.equals(eClass) || compatibleEClass.isSuperTypeOf(eClass);
+		}
+		return compatibleEClassifier.equals(eClassifier);
+	}
+
 	/**
 	 * Returns the features that are derived from the selected feature map.
-	 * 
+	 *
 	 * @return The features of the selected feature map.
 	 */
 	public List<EStructuralFeature> getFeaturesOfFeatureMapGroup() {
