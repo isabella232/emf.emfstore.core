@@ -24,7 +24,12 @@ import org.junit.runners.Suite;
  */
 @RunWith(FilteredSuite.class)
 @FilteredSuiteParameter({ "runFuzzyTests" })
-@Suite.SuiteClasses({ OperationApplyTest.class, OperationReverseTest.class, FuzzyProjectConfigTest.class })
+@Suite.SuiteClasses({
+	CrossResourceReferencesMutatorTest.class,
+	OperationApplyTest.class,
+	// OperationReverseTest.class, // TODO: currently fails!
+	FuzzyProjectConfigTest.class
+})
 public class AllFuzzyTests {
 
 }

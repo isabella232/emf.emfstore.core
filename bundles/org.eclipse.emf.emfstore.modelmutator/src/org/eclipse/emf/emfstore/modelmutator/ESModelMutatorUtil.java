@@ -103,7 +103,7 @@ public final class ESModelMutatorUtil {
 
 	private final Map<EObject, List<EReference>> validContainmentReferences = new LinkedHashMap<EObject, List<EReference>>();
 
-	private final Map<EObject, List<EReference>> validCrossReferences = new LinkedHashMap<EObject, List<EReference>>();
+	private final Map<EObject, List<EReference>> validCrossReferencesByEObject = new LinkedHashMap<EObject, List<EReference>>();
 
 	private final Map<EReference, List<EClass>> allContainments = new LinkedHashMap<EReference, List<EClass>>();
 
@@ -175,17 +175,17 @@ public final class ESModelMutatorUtil {
 	 * @return all valid references as a list
 	 */
 	public List<EReference> getValidCrossReferences(EObject eObject) {
-		List<EReference> list = validCrossReferences.get(eObject);
-		if (list == null) {
-			list = new ArrayList<EReference>();
+		List<EReference> crossReferences = validCrossReferencesByEObject.get(eObject);
+		if (crossReferences == null) {
+			crossReferences = new ArrayList<EReference>();
 			for (final EReference reference : eObject.eClass().getEAllReferences()) {
 				if (!reference.isContainer() && !reference.isContainment() && isValid(reference, eObject)) {
-					list.add(reference);
+					crossReferences.add(reference);
 				}
 			}
-			validCrossReferences.put(eObject, list);
+			validCrossReferencesByEObject.put(eObject, crossReferences);
 		}
-		return list;
+		return crossReferences;
 	}
 
 	/**
@@ -819,13 +819,13 @@ public final class ESModelMutatorUtil {
 
 	/**
 	 * Retrieves all EClasses from <code>allEClasses</code> that can possibly be
-	 * referenced by <code>reference</code> and returns them as a list.
+	 * referenced by <code>reference</code> and returns them as a set.
 	 * 
 	 * @param reference
 	 *            the EReference to get EClasses for
 	 * @param allEClasses
-	 *            set of all possible EClasses
-	 * @return list of all EClasses that can be referenced by <code>reference</code>
+	 *            set of all potentially possible EClasses
+	 * @return set of all EClasses that can be referenced by <code>reference</code>
 	 */
 	public Set<EClass> getReferenceClasses(EReference reference, Set<EClass> allEClasses) {
 		final Set<EClass> result = new LinkedHashSet<EClass>();

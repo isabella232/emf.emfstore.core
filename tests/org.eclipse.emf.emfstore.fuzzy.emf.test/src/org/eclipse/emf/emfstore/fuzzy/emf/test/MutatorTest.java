@@ -11,6 +11,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
+import static org.junit.Assert.fail;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,9 +30,10 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -52,9 +55,11 @@ public class MutatorTest {
 
 	/**
 	 * Tests if two generated models are equal.
+	 * 
+	 * @throws SerializationException
 	 */
 	@Test
-	public void compareTwoGeneratedProjects() {
+	public void compareTwoGeneratedProjects() throws SerializationException {
 
 		final Project project1 = ModelFactory.eINSTANCE.createProject();
 		final Project project2 = ModelFactory.eINSTANCE.createProject();
@@ -63,6 +68,9 @@ public class MutatorTest {
 
 		ESDefaultModelMutator.changeModel(getConfig(project1));
 		ESDefaultModelMutator.changeModel(getConfig(project2));
+
+		final String eObjectToString = ModelUtil.eObjectToString(project1, ModelUtil.getResourceSaveOptions());
+		final String eObjectToString2 = ModelUtil.eObjectToString(project2, ModelUtil.getResourceSaveOptions());
 
 		Iterator<EObject> project1Iterator = project1.getAllModelElements()
 			.iterator();
@@ -114,7 +122,7 @@ public class MutatorTest {
 	private void failed(Project project1, Project project2) {
 		util.saveEObject(project1, "original_project", true);
 		util.saveEObject(project2, "own_project", true);
-		Assert.assertTrue(false);
+		fail();
 	}
 
 	private ESModelMutatorConfiguration getConfig(Project root) {

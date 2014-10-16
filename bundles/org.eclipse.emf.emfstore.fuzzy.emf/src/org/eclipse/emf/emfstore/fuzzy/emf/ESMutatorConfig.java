@@ -43,7 +43,7 @@ public interface ESMutatorConfig {
 	int getMinObjectsCount();
 
 	/**
-	 * Whether the mutator should generate objects on the root level.
+	 * Whether the mutator should generate objects at the root level.
 	 * 
 	 * @return {@code true}, if the mutator should generate objects on the root level, {@code false} otherwise
 	 */

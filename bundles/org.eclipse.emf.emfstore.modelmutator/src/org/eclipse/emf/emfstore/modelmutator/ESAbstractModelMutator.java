@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,13 +7,15 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
- * PhilipLanger
+ * Julian Sommerfeldt - initial API and implementation
+ * Philip Langer - Bug 445193: Allow configuration of the numbers/types of changes being applied by model mutator
+ * Edgar Mueller - Bug 447483: ModelMutator should support cross-resource model generation and mutation, Refactorings
  ******************************************************************************/
 package org.eclipse.emf.emfstore.modelmutator;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -35,6 +37,8 @@ import org.eclipse.emf.emfstore.internal.modelmutator.mutation.FeatureMapKeyMuta
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.MoveObjectMutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.ReferenceChangeMutation;
+
+import com.google.common.base.Predicate;
 
 /**
  * Basic implementation of the {@link org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator}.
@@ -91,12 +95,11 @@ public abstract class ESAbstractModelMutator {
 	public void generate() {
 		preMutate();
 
-		// generate till therer are enough objects
-		final Random random = config.getRandom();
+		// generate till there are enough objects
 		while (currentObjectCount < targetObjectCount) {
 			createChildrenForRoot();
 			currentWidth++;
-			if (random.nextBoolean() && random.nextBoolean() && random.nextBoolean()) {
+			if (randomBoolean() && randomBoolean() && randomBoolean()) {
 				currentDepth++;
 			}
 		}
@@ -118,16 +121,42 @@ public abstract class ESAbstractModelMutator {
 		}
 	}
 
-	private void performFullMutation(Set<EStructuralFeature> ignoredFeatures) {
-		deleteEObjects(config.getRootEObject());
+	/**
+	 * Performs mutation until the given {@link Predicate} is met.
+	 * The predicate input will be the the root object obtained by
+	 * calling {@code getConfig()}.
+	 * 
+	 * @param predicate
+	 *            the predicate that must be fulfilled in order to stop mutation
+	 */
+	public void mutateUntil(final Predicate<EObject> predicate) {
+		mutate(Collections.<EStructuralFeature> emptySet());
+		while (!predicate.apply(getRootEObject())) {
+			mutate(Collections.<EStructuralFeature> emptySet());
+		}
+	}
 
-		currentObjectCount = ESModelMutatorUtil.getAllObjectsCount(config.getRootEObject());
+	private void performFullMutation(Set<EStructuralFeature> ignoredFeatures) {
+		final EObject rootEObject = getRootEObject();
+		deleteEObjects(rootEObject);
+
+		currentObjectCount = ESModelMutatorUtil.getAllObjectsCount(rootEObject);
 
 		generate();
 
 		changeCrossReferences();
 
 		mutateAttributes(ignoredFeatures);
+	}
+
+	/**
+	 * Returns the root {@link EObject} of the {@link ESModelMutatorConfiguration}.
+	 * Clients may override.
+	 * 
+	 * @return the root {@link EObject} of the {@link ESModelMutatorConfiguration}
+	 */
+	protected EObject getRootEObject() {
+		return config.getRootEObject();
 	}
 
 	private void performConfiguredNumberOfMutations() {
@@ -169,15 +198,18 @@ public abstract class ESAbstractModelMutator {
 	 * Create the children for the root object.
 	 */
 	public void createChildrenForRoot() {
+
+		final EObject rootEObject = getRootEObject();
+
 		// if the root depth should not be generated
 		if (config.isDoNotGenerateRoot()) {
 			// create children for each of the children of the root
-			for (final EObject obj : config.getRootEObject().eContents()) {
+			for (final EObject obj : rootEObject.eContents()) {
 				createChildren(obj, 1);
 			}
 		} else {
 			// if the root depth should be generated, create children for the root
-			createChildren(config.getRootEObject(), 0);
+			createChildren(rootEObject, 0);
 		}
 	}
 
@@ -215,7 +247,6 @@ public abstract class ESAbstractModelMutator {
 	public List<EObject> createChildren(EObject root) {
 		final List<EObject> children = new ArrayList<EObject>();
 		final Collection<EStructuralFeature> ignore = config.geteStructuralFeaturesToIgnore();
-		final Random random = config.getRandom();
 
 		// iterate over all references
 		for (final EReference reference : root.eClass().getEAllContainments()) {
@@ -226,16 +257,16 @@ public abstract class ESAbstractModelMutator {
 			}
 
 			// add remaining children (specified through config)
-			int i = currentWidth / 2 - root.eContents().size();
+			final int init = currentWidth / 2 - root.eContents().size();
 
 			// add children to fulfill width constraint
-			for (; i > 0; i--) {
+			for (int i = init; i > 0; i--) {
 				final EClass eClass = getValidEClass(reference);
 				if (eClass != null) {
 					final EObject obj = getEObject(eClass, new LinkedHashSet<EStructuralFeature>(ignore));
 
 					// randomly first changeCrossReferences
-					if (random.nextBoolean()) {
+					if (randomBoolean()) {
 						changeCrossReferences(obj);
 					}
 
@@ -262,6 +293,10 @@ public abstract class ESAbstractModelMutator {
 		return children;
 	}
 
+	private boolean randomBoolean() {
+		return config.getRandom().nextBoolean();
+	}
+
 	/**
 	 * Randomly deletes direct and indirect children of the given root {@link EObject}.
 	 * 
@@ -276,7 +311,7 @@ public abstract class ESAbstractModelMutator {
 		int deleted = 0;
 		for (final TreeIterator<EObject> it = root.eAllContents(); it.hasNext();) {
 			final EObject obj = it.next();
-			if (deleted < maxDeleteCount && random.nextBoolean()) {
+			if (deleted < maxDeleteCount && randomBoolean()) {
 				toDelete.add(obj);
 				deleted++;
 				addToEClassToObjectsMap(obj, freeObjects);
@@ -365,7 +400,7 @@ public abstract class ESAbstractModelMutator {
 
 		// try to get an already existing object if there is one
 		final List<EObject> objects = freeObjects.get(eClass);
-		if (objects != null && objects.size() != 0 && random.nextBoolean()) {
+		if (objects != null && objects.size() != 0 && randomBoolean()) {
 			newObject = objects.remove(random.nextInt(objects.size()));
 		} else {
 			newObject = EcoreUtil.create(eClass);
@@ -382,10 +417,9 @@ public abstract class ESAbstractModelMutator {
 	 * @param newObject The new {@link EObject} to add to the parent.
 	 * @param reference The {@link EReference} where to add the newObject.
 	 */
-	private void addToParent(EObject parent, EObject newObject, EReference reference) {
-		final Random random = config.getRandom();
+	protected void addToParent(EObject parent, EObject newObject, EReference reference) {
 		if (reference.isMany()) {
-			util.addPerCommand(parent, reference, newObject, random.nextBoolean() ? 0 : null);
+			util.addPerCommand(parent, reference, newObject, randomBoolean() ? 0 : null);
 		} else {
 			util.setPerCommand(parent, reference, newObject);
 		}
@@ -398,14 +432,15 @@ public abstract class ESAbstractModelMutator {
 	 *            a set of features to be ignored while mutating
 	 */
 	public void mutateAttributes(Set<EStructuralFeature> ignoredFeatures) {
-		for (final TreeIterator<EObject> it = config.getRootEObject().eAllContents(); it.hasNext();) {
+		final EObject rootEObject = getRootEObject();
+		for (final TreeIterator<EObject> it = rootEObject.eAllContents(); it.hasNext();) {
 			final EObject obj = it.next();
 			util.setEObjectAttributes(obj, ignoredFeatures);
 		}
 	}
 
 	/**
-	 * Changes CrossReferences for all {@link EObject}s of the model.
+	 * Changes cross references of all {@link EObject}s in the model.
 	 */
 	public void changeCrossReferences() {
 		for (final Entry<EClass, List<EObject>> entry : allObjects.entrySet()) {
@@ -416,9 +451,9 @@ public abstract class ESAbstractModelMutator {
 	}
 
 	/**
-	 * Changes CrossReferences of an {@link EObject}.
+	 * Changes CrossReferences of an specific {@link EObject}.
 	 * 
-	 * @param obj The {@link EObject} where to change the CrossReferences.
+	 * @param obj The {@link EObject} whose cross references should be changed
 	 */
 	public void changeCrossReferences(EObject obj) {
 		for (final EReference reference : util.getValidCrossReferences(obj)) {
@@ -426,5 +461,12 @@ public abstract class ESAbstractModelMutator {
 				util.setReference(obj, referenceClass, reference, allObjects);
 			}
 		}
+	}
+
+	/**
+	 * @return the config
+	 */
+	public ESModelMutatorConfiguration getConfig() {
+		return config;
 	}
 }
