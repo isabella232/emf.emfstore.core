@@ -16,12 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.emfstore.internal.common.model.provider.UniqueIdentifierItemProvider;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 
@@ -31,8 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
  * 
  * @generated
  */
-public class ProjectIdItemProvider extends UniqueIdentifierItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ProjectIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -67,7 +61,7 @@ public class ProjectIdItemProvider extends UniqueIdentifierItemProvider implemen
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectId"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectId")); //$NON-NLS-1$
 	}
 
 	/**
@@ -79,10 +73,10 @@ public class ProjectIdItemProvider extends UniqueIdentifierItemProvider implemen
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProjectId) object).getId();
+		final String label = ((ProjectId) object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProjectId_type") :
-			getString("_UI_ProjectId_type") + " " + label;
+			getString("_UI_ProjectId_type") : //$NON-NLS-1$
+			getString("_UI_ProjectId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

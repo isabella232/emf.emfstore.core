@@ -138,17 +138,28 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 
 			// changing containment means relocating the item
 			if (isContainer && oldElement != null && newElement != null) {
-				return "Moved " + elementName + " from " + oldName + " to " + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Moved + elementName
+					+ Messages.SingleReferenceOperationItemProvider_Text_From + oldName +
+					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			} else if (isContainer && newElement != null) {
-				return "Moved " + elementName + " to " + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Moved + elementName +
+					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			} else if (oldElement == null && newElement == null) {
-				return "Unset " + op.getFeatureName() + " in " + elementName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Unset + op.getFeatureName()
+					+ Messages.SingleReferenceOperationItemProvider_Text_In + elementName;
 			} else if (oldElement == null && newElement != null) {
-				return "Set " + op.getFeatureName() + " in " + elementName + " to " + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Set + op.getFeatureName() +
+					Messages.SingleReferenceOperationItemProvider_Text_In + elementName +
+					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			} else if (oldElement != null && newElement == null) {
-				return "Unset " + op.getFeatureName() + " in " + elementName + " from previous value " + oldName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Unset + op.getFeatureName() +
+					Messages.SingleReferenceOperationItemProvider_Text_In + elementName +
+					Messages.SingleReferenceOperationItemProvider_Text_FromPreviousValue + oldName;
 			} else {
-				return "Set " + op.getFeatureName() + " in " + elementName + " from " + oldName + " to " + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Set + op.getFeatureName() +
+					Messages.SingleReferenceOperationItemProvider_Text_In + elementName +
+					Messages.SingleReferenceOperationItemProvider_Text_From + oldName +
+					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			}
 		}
 		return super.getText(object);

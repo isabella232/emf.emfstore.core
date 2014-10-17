@@ -19,12 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ModelElementGroup;
@@ -41,9 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
  * 
  * @generated
  */
-public class SemanticCompositeOperationItemProvider extends CompositeOperationItemProvider implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource {
+public class SemanticCompositeOperationItemProvider extends CompositeOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -79,10 +72,10 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SemanticCompositeOperation) object).getCompositeName();
+		final String label = ((SemanticCompositeOperation) object).getCompositeName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_SemanticCompositeOperation_type") :
-			getString("_UI_SemanticCompositeOperation_type") + " " + label;
+			getString("_UI_SemanticCompositeOperation_type") : //$NON-NLS-1$
+			getString("_UI_SemanticCompositeOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -132,31 +125,31 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	@Override
 	public Collection<?> getChildren(Object object) {
 		if (object instanceof SemanticCompositeOperation) {
-			SemanticCompositeOperation operation = (SemanticCompositeOperation) object;
-			ArrayList<Object> result = new ArrayList<Object>();
+			final SemanticCompositeOperation operation = (SemanticCompositeOperation) object;
+			final ArrayList<Object> result = new ArrayList<Object>();
 
-			OperationsFactory factory = OperationsFactory.eINSTANCE;
-			for (EStructuralFeature feature : operation.eClass().getEStructuralFeatures()) {
+			final OperationsFactory factory = OperationsFactory.eINSTANCE;
+			for (final EStructuralFeature feature : operation.eClass().getEStructuralFeatures()) {
 				if (feature instanceof EReference) {
-					EReference reference = (EReference) feature;
+					final EReference reference = (EReference) feature;
 
-					ModelElementGroup referenceGroup = factory.createModelElementGroup();
-					String key = "_UI_" + reference.getEContainingClass().getName() + "_" + reference.getName()
-						+ "_feature";
+					final ModelElementGroup referenceGroup = factory.createModelElementGroup();
+					final String key = "_UI_" + reference.getEContainingClass().getName() + "_" + reference.getName() //$NON-NLS-1$ //$NON-NLS-2$
+						+ "_feature"; //$NON-NLS-1$
 					referenceGroup.setName(getString(key));
 					if (reference.isMany()) {
-						List<ModelElementId> value = (List<ModelElementId>) operation.eGet(reference);
+						final List<ModelElementId> value = (List<ModelElementId>) operation.eGet(reference);
 						referenceGroup.getModelElements().addAll(value);
 					} else {
-						ModelElementId value = (ModelElementId) operation.eGet(reference);
+						final ModelElementId value = (ModelElementId) operation.eGet(reference);
 						referenceGroup.getModelElements().add(value);
 					}
 					result.add(referenceGroup);
 				}
 			}
 
-			OperationGroup detailsGroup = factory.createOperationGroup();
-			detailsGroup.setName("Sub Operations");
+			final OperationGroup detailsGroup = factory.createOperationGroup();
+			detailsGroup.setName("Sub Operations"); //$NON-NLS-1$
 			detailsGroup.getOperations().addAll(operation.getSubOperations());
 			result.add(detailsGroup);
 

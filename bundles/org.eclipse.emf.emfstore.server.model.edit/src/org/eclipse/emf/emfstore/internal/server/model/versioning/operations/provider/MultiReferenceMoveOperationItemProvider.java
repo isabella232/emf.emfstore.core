@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -155,8 +156,9 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 			final MultiReferenceMoveOperation op = (MultiReferenceMoveOperation) object;
 			final String elementName = getModelElementClassAndName(op.getModelElementId());
 			final String movedElementName = getModelElementClassAndName(op.getReferencedModelElementId());
-			return "Reordered " + op.getFeatureName() + " in " + elementName + ", moved " + movedElementName
-				+ " from position " + op.getOldIndex() + " to " + op.getNewIndex();
+
+			return MessageFormat.format(Messages.MultiReferenceMoveOperationItemProvider_Text,
+				op.getFeatureName(), elementName, movedElementName, op.getOldIndex(), op.getNewIndex());
 		}
 		return super.getText(object);
 	}

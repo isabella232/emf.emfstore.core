@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -40,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
  * @generated
  */
 public class ProjectHistoryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -80,9 +79,9 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectHistory_projectName_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectName_feature",
-					"_UI_ProjectHistory_type"),
+				getString("_UI_ProjectHistory_projectName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectName_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectHistory_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_HISTORY__PROJECT_NAME,
 				true,
 				false,
@@ -103,9 +102,9 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectHistory_projectDescription_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectDescription_feature",
-					"_UI_ProjectHistory_type"),
+				getString("_UI_ProjectHistory_projectDescription_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectDescription_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectHistory_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_HISTORY__PROJECT_DESCRIPTION,
 				true,
 				false,
@@ -158,7 +157,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectHistory"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectHistory")); //$NON-NLS-1$
 	}
 
 	/**
@@ -170,10 +169,10 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProjectHistory) object).getProjectName();
+		final String label = ((ProjectHistory) object).getProjectName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProjectHistory_type") :
-			getString("_UI_ProjectHistory_type") + " " + label;
+			getString("_UI_ProjectHistory_type") : //$NON-NLS-1$
+			getString("_UI_ProjectHistory_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

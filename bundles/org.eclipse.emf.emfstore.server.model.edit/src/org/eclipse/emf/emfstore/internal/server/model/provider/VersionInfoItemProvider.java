@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -37,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.VersionInfo;
  * @generated
  */
 public class VersionInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,9 +75,9 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_VersionInfo_emfStoreVersionString_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_VersionInfo_emfStoreVersionString_feature",
-					"_UI_VersionInfo_type"),
+				getString("_UI_VersionInfo_emfStoreVersionString_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_VersionInfo_emfStoreVersionString_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_VersionInfo_type"), //$NON-NLS-1$
 				ModelPackage.Literals.VERSION_INFO__EMF_STORE_VERSION_STRING,
 				true,
 				false,
@@ -96,7 +95,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VersionInfo"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/VersionInfo")); //$NON-NLS-1$
 	}
 
 	/**
@@ -108,10 +107,10 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((VersionInfo) object).getEmfStoreVersionString();
+		final String label = ((VersionInfo) object).getEmfStoreVersionString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_VersionInfo_type") :
-			getString("_UI_VersionInfo_type") + " " + label;
+			getString("_UI_VersionInfo_type") : //$NON-NLS-1$
+			getString("_UI_VersionInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

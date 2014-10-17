@@ -289,7 +289,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 
 		for (int i = 0; i < idList.size(); i++) {
 			if (i > 0 && i == idList.size() - 1) {
-				sb.append(" and ");
+				sb.append(Messages.AbstractOperationItemProvider_And);
 			} else if (i > 0) {
 				sb.append(", "); //$NON-NLS-1$
 			}

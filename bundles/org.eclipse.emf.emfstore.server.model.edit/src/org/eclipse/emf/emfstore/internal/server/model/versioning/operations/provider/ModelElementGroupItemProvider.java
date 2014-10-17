@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -39,7 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * @generated
  */
 public class ModelElementGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -80,9 +79,9 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ModelElementGroup_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature",
-					"_UI_ModelElementGroup_type"),
+				getString("_UI_ModelElementGroup_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ModelElementGroup_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME,
 				true,
 				false,
@@ -101,7 +100,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	@Override
 	public Collection<?> getChildren(Object object) {
 		if (object instanceof ModelElementGroup) {
-			ModelElementGroup group = (ModelElementGroup) object;
+			final ModelElementGroup group = (ModelElementGroup) object;
 			return group.getModelElements();
 		}
 		return super.getChildren(object);
@@ -118,9 +117,9 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ModelElementGroup_modelElements_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature",
-					"_UI_ModelElementGroup_type"),
+				getString("_UI_ModelElementGroup_modelElements_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ModelElementGroup_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS,
 				true,
 				false,
@@ -138,7 +137,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelElementGroup.png"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelElementGroup.png")); //$NON-NLS-1$
 	}
 
 	/**
@@ -150,7 +149,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	@Override
 	public String getText(Object object) {
 		if (object instanceof ModelElementGroup) {
-			ModelElementGroup group = (ModelElementGroup) object;
+			final ModelElementGroup group = (ModelElementGroup) object;
 			return group.getName();
 		}
 		return super.getText(object);

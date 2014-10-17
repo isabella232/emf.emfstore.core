@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
@@ -35,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  * @generated
  */
 public class RoleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -74,8 +73,8 @@ public class RoleItemProvider extends ItemProviderAdapter implements IEditingDom
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Role_projects_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Role_projects_feature", "_UI_Role_type"),
+				getString("_UI_Role_projects_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Role_projects_feature", "_UI_Role_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				RolesPackage.Literals.ROLE__PROJECTS,
 				true,
 				false,
@@ -94,7 +93,7 @@ public class RoleItemProvider extends ItemProviderAdapter implements IEditingDom
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Role_type");
+		return getString("_UI_Role_type"); //$NON-NLS-1$
 	}
 
 	/**

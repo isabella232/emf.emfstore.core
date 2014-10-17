@@ -18,12 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.common.model.provider.IdentifiableElementItemProvider;
@@ -39,8 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  * 
  * @generated
  */
-public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -82,8 +76,8 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider imple
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ACOrgUnit_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_name_feature", "_UI_ACOrgUnit_type"),
+				getString("_UI_ACOrgUnit_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_name_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				AccesscontrolPackage.Literals.AC_ORG_UNIT__NAME,
 				true,
 				false,
@@ -104,8 +98,8 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider imple
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ACOrgUnit_roles_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_roles_feature", "_UI_ACOrgUnit_type"),
+				getString("_UI_ACOrgUnit_roles_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_roles_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				AccesscontrolPackage.Literals.AC_ORG_UNIT__ROLES,
 				true,
 				false,
@@ -126,9 +120,9 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider imple
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ACOrgUnit_description_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_description_feature",
-					"_UI_ACOrgUnit_type"),
+				getString("_UI_ACOrgUnit_description_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ACOrgUnit_type"), //$NON-NLS-1$
 				AccesscontrolPackage.Literals.AC_ORG_UNIT__DESCRIPTION,
 				true,
 				false,
@@ -177,7 +171,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider imple
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ACOrgUnit"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ACOrgUnit")); //$NON-NLS-1$
 	}
 
 	/**
@@ -189,10 +183,10 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider imple
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ACOrgUnit) object).getName();
+		final String label = ((ACOrgUnit) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ACOrgUnit_type") :
-			getString("_UI_ACOrgUnit_type") + " " + label;
+			getString("_UI_ACOrgUnit_type") : //$NON-NLS-1$
+			getString("_UI_ACOrgUnit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

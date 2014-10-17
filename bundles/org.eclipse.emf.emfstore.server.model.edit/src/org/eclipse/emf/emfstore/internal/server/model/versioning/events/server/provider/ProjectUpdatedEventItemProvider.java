@@ -17,12 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ProjectUpdatedEvent;
@@ -35,9 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * 
  * @generated
  */
-public class ProjectUpdatedEventItemProvider extends ServerProjectEventItemProvider implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource {
+public class ProjectUpdatedEventItemProvider extends ServerProjectEventItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -104,7 +97,7 @@ public class ProjectUpdatedEventItemProvider extends ServerProjectEventItemProvi
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectUpdatedEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectUpdatedEvent")); //$NON-NLS-1$
 	}
 
 	/**
@@ -116,11 +109,11 @@ public class ProjectUpdatedEventItemProvider extends ServerProjectEventItemProvi
 	 */
 	@Override
 	public String getText(Object object) {
-		Date labelValue = ((ProjectUpdatedEvent) object).getTimestamp();
-		String label = labelValue == null ? null : labelValue.toString();
+		final Date labelValue = ((ProjectUpdatedEvent) object).getTimestamp();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProjectUpdatedEvent_type") :
-			getString("_UI_ProjectUpdatedEvent_type") + " " + label;
+			getString("_UI_ProjectUpdatedEvent_type") : //$NON-NLS-1$
+			getString("_UI_ProjectUpdatedEvent_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

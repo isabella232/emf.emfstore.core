@@ -20,12 +20,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
@@ -52,9 +47,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * 
  * @generated
  */
-public class CreateDeleteOperationItemProvider extends AbstractOperationItemProvider implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource {
+public class CreateDeleteOperationItemProvider extends AbstractOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -93,9 +86,9 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_CreateDeleteOperation_delete_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_CreateDeleteOperation_delete_feature",
-					"_UI_CreateDeleteOperation_type"),
+				getString("_UI_CreateDeleteOperation_delete_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_CreateDeleteOperation_delete_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_CreateDeleteOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.CREATE_DELETE_OPERATION__DELETE,
 				true,
 				false,
@@ -144,16 +137,16 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	@Override
 	public Collection<?> getChildren(Object object) {
 		if (object instanceof CreateDeleteOperation) {
-			CreateDeleteOperation operation = (CreateDeleteOperation) object;
-			ArrayList<Object> ret = new ArrayList<Object>();
+			final CreateDeleteOperation operation = (CreateDeleteOperation) object;
+			final ArrayList<Object> ret = new ArrayList<Object>();
 			ret.add(operation.getModelElementId());
-			List<ReferenceOperation> subOps = operation.getSubOperations();
+			final List<ReferenceOperation> subOps = operation.getSubOperations();
 			if (subOps.size() > 0) {
-				OperationGroup operationGroup = OperationsFactory.eINSTANCE.createOperationGroup();
+				final OperationGroup operationGroup = OperationsFactory.eINSTANCE.createOperationGroup();
 				if (operation.isDelete()) {
-					operationGroup.setName("Deleted Cross-References");
+					operationGroup.setName(Messages.CreateDeleteOperationItemProvider_DeletedCrossReferences);
 				} else {
-					operationGroup.setName("Created Cross-References");
+					operationGroup.setName(Messages.CreateDeleteOperationItemProvider_CreatedCrossReferences);
 				}
 				operationGroup.getOperations().addAll(subOps);
 				ret.add(operationGroup);
@@ -175,12 +168,12 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 */
 	@Override
 	public Object getImage(Object object) {
-		CreateDeleteOperation op = (CreateDeleteOperation) object;
+		final CreateDeleteOperation op = (CreateDeleteOperation) object;
 		Object image = null;
 		if (op.isDelete()) {
-			image = getResourceLocator().getImage("full/obj16/DeleteOperation.png");
+			image = getResourceLocator().getImage("full/obj16/DeleteOperation.png"); //$NON-NLS-1$
 		} else {
-			image = getResourceLocator().getImage("full/obj16/CreateOperation.png");
+			image = getResourceLocator().getImage("full/obj16/CreateOperation.png"); //$NON-NLS-1$
 		}
 		return overlayImage(object, image);
 	}
@@ -197,30 +190,30 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	@Override
 	public String getText(Object object) {
 		if (object instanceof CreateDeleteOperation) {
-			CreateDeleteOperation op = (CreateDeleteOperation) object;
-			EObject modelElement = op.getModelElement();
-			int childrenCount = ModelUtil.getAllContainedModelElements(modelElement, false).size();
+			final CreateDeleteOperation op = (CreateDeleteOperation) object;
+			final EObject modelElement = op.getModelElement();
+			final int childrenCount = ModelUtil.getAllContainedModelElements(modelElement, false).size();
 			String description;
 
-			StringBuilder stringBuilder = new StringBuilder();
+			final StringBuilder stringBuilder = new StringBuilder();
 			// stringBuilder.append(modelElement.eClass().getName());
 			stringBuilder.append(getModelElementName(op.getModelElementId()));
-			String elementClassAndName = stringBuilder.toString();
+			final String elementClassAndName = stringBuilder.toString();
 			if (op.isDelete()) {
-				description = "Deleted " + elementClassAndName;
+				description = Messages.CreateDeleteOperationItemProvider_Text_Deleted + elementClassAndName;
 			} else {
-				description = "Created " + elementClassAndName;
+				description = Messages.CreateDeleteOperationItemProvider_Text_Created + elementClassAndName;
 			}
 			if (childrenCount > 0) {
-				description += " including " + childrenCount + " sibling(s)";
+				description += Messages.CreateDeleteOperationItemProvider_Text_Including + childrenCount + Messages.CreateDeleteOperationItemProvider_Text_Siblings;
 			}
 
-			EList<ReferenceOperation> subOperations = op.getSubOperations();
-			int subOperationCount = subOperations.size();
+			final EList<ReferenceOperation> subOperations = op.getSubOperations();
+			final int subOperationCount = subOperations.size();
 			if (op.isDelete() && subOperationCount > 0) {
-				ReferenceOperation referenceOperation = subOperations.get(subOperationCount - 1);
+				final ReferenceOperation referenceOperation = subOperations.get(subOperationCount - 1);
 				if (referenceOperation.getContainmentType().equals(ContainmentType.CONTAINMENT)) {
-					description += " from " + getModelElementClassAndName(referenceOperation.getModelElementId());
+					description += Messages.CreateDeleteOperationItemProvider_Text_From + getModelElementClassAndName(referenceOperation.getModelElementId());
 				}
 			}
 			return description;
@@ -595,17 +588,17 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+		final Object childFeature = feature;
+		final Object childObject = child;
 
-		boolean qualify =
+		final boolean qualify =
 			childFeature == OperationsPackage.Literals.CREATE_DELETE_OPERATION__MODEL_ELEMENT ||
 				childFeature == OperationsPackage.Literals.CREATE_DELETE_OPERATION__SUB_OPERATIONS ||
 				childFeature == OperationsPackage.Literals.CREATE_DELETE_OPERATION__EOBJECT_TO_ID_MAP;
 
 		if (qualify)
 		{
-			return getString("_UI_CreateChild_text2",
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);

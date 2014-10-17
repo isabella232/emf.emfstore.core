@@ -16,12 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeMoveOperation;
@@ -34,9 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * 
  * @generated
  */
-public class MultiAttributeMoveOperationItemProvider extends FeatureOperationItemProvider implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource {
+public class MultiAttributeMoveOperationItemProvider extends FeatureOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -77,9 +70,9 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_MultiAttributeMoveOperation_oldIndex_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_oldIndex_feature",
-					"_UI_MultiAttributeMoveOperation_type"),
+				getString("_UI_MultiAttributeMoveOperation_oldIndex_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_oldIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__OLD_INDEX,
 				true,
 				false,
@@ -100,9 +93,9 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_MultiAttributeMoveOperation_newIndex_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_newIndex_feature",
-					"_UI_MultiAttributeMoveOperation_type"),
+				getString("_UI_MultiAttributeMoveOperation_newIndex_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_newIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__NEW_INDEX,
 				true,
 				false,
@@ -123,9 +116,9 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_MultiAttributeMoveOperation_referencedValue_feature"),
-				getString("_UI_PropertyDescriptor_description",
-					"_UI_MultiAttributeMoveOperation_referencedValue_feature", "_UI_MultiAttributeMoveOperation_type"),
+				getString("_UI_MultiAttributeMoveOperation_referencedValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+					"_UI_MultiAttributeMoveOperation_referencedValue_feature", "_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE,
 				true,
 				false,
@@ -144,7 +137,7 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MultiAttributeMoveOperation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MultiAttributeMoveOperation")); //$NON-NLS-1$
 	}
 
 	/**
@@ -156,10 +149,10 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MultiAttributeMoveOperation) object).getFeatureName();
+		final String label = ((MultiAttributeMoveOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_MultiAttributeMoveOperation_type") :
-			getString("_UI_MultiAttributeMoveOperation_type") + " " + label;
+			getString("_UI_MultiAttributeMoveOperation_type") : //$NON-NLS-1$
+			getString("_UI_MultiAttributeMoveOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

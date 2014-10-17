@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -164,24 +165,31 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 		if (object instanceof MultiReferenceOperation) {
 			final MultiReferenceOperation op = (MultiReferenceOperation) object;
 
-			final boolean containment = op.getContainmentType().equals(ContainmentType.CONTAINMENT);
+			final boolean isContainment = op.getContainmentType().equals(ContainmentType.CONTAINMENT);
 			final String featureType = AbstractOperationItemProvider.REFERENCE_TYPE_TAG_SEPARATOR;
 
 			final String elemNames = getModelElementClassesAndNames(op.getReferencedModelElements(), featureType);
 			final String elementNameAndClass = getModelElementClassAndName(op.getModelElementId());
-			final String children = op.getReferencedModelElements().size() > 1 ? "children" : "child";
-			if (op.isAdd()) {
-				if (containment) {
-					return "Added " + elemNames + " as " + children + " in " + elementNameAndClass;
-				} else {
-					return "Added " + elemNames + " to " + op.getFeatureName() + " in " + elementNameAndClass;
-				}
+			final String children = op.getReferencedModelElements().size() > 1 ?
+				Messages.MultiReferenceOperationItemProvider_Children
+				: Messages.MultiReferenceOperationItemProvider_Child;
+
+			final boolean isAdd = op.isAdd();
+
+			if (isAdd && isContainment) {
+				return MessageFormat.format(
+					Messages.MultiReferenceOperationItemProvider_Add_Containment,
+					elemNames, children, elementNameAndClass);
+			} else if (isAdd && !isContainment) {
+				return MessageFormat.format(
+					Messages.MultiReferenceOperationItemProvider_Add_NonContainment,
+					elemNames, op.getFeatureName(), elementNameAndClass);
+			} else if (!isAdd && isContainment) {
+				return MessageFormat.format(Messages.MultiReferenceOperationItemProvider_Remove_Containment,
+					elemNames, children, elementNameAndClass);
 			} else {
-				if (containment) {
-					return "Removed " + elemNames + " as " + children + " in " + elementNameAndClass;
-				} else {
-					return "Removed " + elemNames + " from " + op.getFeatureName() + " in " + elementNameAndClass;
-				}
+				return MessageFormat.format(Messages.MultiReferenceOperationItemProvider_Remove_NonContainment,
+					elemNames, op.getFeatureName(), elementNameAndClass);
 			}
 
 		}

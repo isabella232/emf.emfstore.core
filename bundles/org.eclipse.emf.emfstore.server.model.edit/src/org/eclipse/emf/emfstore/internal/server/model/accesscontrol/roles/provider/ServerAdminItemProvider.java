@@ -15,12 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
  * This is the item provider adapter for a
@@ -29,8 +24,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * 
  * @generated
  */
-public class ServerAdminItemProvider extends RoleItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ServerAdminItemProvider extends RoleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -65,7 +59,7 @@ public class ServerAdminItemProvider extends RoleItemProvider implements IEditin
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServerAdmin"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServerAdmin")); //$NON-NLS-1$
 	}
 
 	/**
@@ -77,7 +71,7 @@ public class ServerAdminItemProvider extends RoleItemProvider implements IEditin
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ServerAdmin_type");
+		return getString("_UI_ServerAdmin_type"); //$NON-NLS-1$
 	}
 
 	/**

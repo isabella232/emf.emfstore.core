@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -39,7 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
  * @generated
  */
 public class EventItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -78,8 +77,8 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Event_timestamp_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Event_timestamp_feature", "_UI_Event_type"),
+				getString("_UI_Event_timestamp_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Event_timestamp_feature", "_UI_Event_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				EventsPackage.Literals.EVENT__TIMESTAMP,
 				true,
 				false,
@@ -97,7 +96,7 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Event"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Event")); //$NON-NLS-1$
 	}
 
 	/**
@@ -109,11 +108,11 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 	 */
 	@Override
 	public String getText(Object object) {
-		Date labelValue = ((Event) object).getTimestamp();
-		String label = labelValue == null ? null : labelValue.toString();
+		final Date labelValue = ((Event) object).getTimestamp();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Event_type") :
-			getString("_UI_Event_type") + " " + label;
+			getString("_UI_Event_type") : //$NON-NLS-1$
+			getString("_UI_Event_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

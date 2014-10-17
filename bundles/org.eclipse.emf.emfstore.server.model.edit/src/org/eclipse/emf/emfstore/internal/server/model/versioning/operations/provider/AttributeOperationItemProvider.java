@@ -141,15 +141,22 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 			}
 			final String elemNameAndClass = getModelElementClassAndName(op.getModelElementId());
 			if (oldValue == null && newValue == null) {
-				return "Unset " + op.getFeatureName() + " in " + elemNameAndClass;
+				return Messages.AttributeOperationItemProvider_Text_Unset + op.getFeatureName() +
+					Messages.AttributeOperationItemProvider_Text_In + elemNameAndClass;
 			} else if (oldValue == null && newValue != null) {
-				return "Set " + op.getFeatureName() + " in " + elemNameAndClass + " to '" + trim(newValue) + "'";
+				return Messages.AttributeOperationItemProvider_Text_Set + op.getFeatureName()
+					+ Messages.AttributeOperationItemProvider_Text_In + elemNameAndClass
+					+ Messages.AttributeOperationItemProvider_Text_To + "'" + trim(newValue) + "'"; //$NON-NLS-1$//$NON-NLS-2$ 
 			} else if (oldValue != null && newValue == null) {
-				return "Unset " + op.getFeatureName() + " in " + elemNameAndClass + " from previous value '"
-					+ trim(oldValue) + "'";
+				return Messages.AttributeOperationItemProvider_Text_Unset + op.getFeatureName() +
+					Messages.AttributeOperationItemProvider_Text_In + elemNameAndClass +
+					Messages.AttributeOperationItemProvider_Text_FromPreviousValue + "'" + trim(oldValue) + "'"; //$NON-NLS-1$//$NON-NLS-2$ 
 			} else {
-				return "Set " + op.getFeatureName() + " in " + elemNameAndClass + " from '" + trim(oldValue) + "' to '"
-					+ trim(newValue) + "'";
+				return Messages.AttributeOperationItemProvider_Text_Set + op.getFeatureName() +
+					Messages.AttributeOperationItemProvider_Text_In + elemNameAndClass +
+					Messages.AttributeOperationItemProvider_Text_From + "'" + trim(oldValue) + "'" //$NON-NLS-1$ //$NON-NLS-2$
+					+ Messages.AttributeOperationItemProvider_Text_To
+					+ "'" + trim(newValue) + "'"; //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
 		return super.getText(object);

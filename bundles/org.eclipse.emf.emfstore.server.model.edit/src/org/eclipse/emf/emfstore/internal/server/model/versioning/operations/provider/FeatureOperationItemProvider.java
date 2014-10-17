@@ -16,12 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation;
@@ -35,8 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * 
  * @generated
  */
-public class FeatureOperationItemProvider extends AbstractOperationItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FeatureOperationItemProvider extends AbstractOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,9 +70,9 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_FeatureOperation_featureName_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_featureName_feature",
-					"_UI_FeatureOperation_type"),
+				getString("_UI_FeatureOperation_featureName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_featureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_FeatureOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.FEATURE_OPERATION__FEATURE_NAME,
 				true,
 				false,
@@ -101,9 +95,9 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_FeatureOperation_unset_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_unset_feature",
-					"_UI_FeatureOperation_type"),
+				getString("_UI_FeatureOperation_unset_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_unset_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_FeatureOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.FEATURE_OPERATION__UNSET,
 				true,
 				false,
@@ -122,7 +116,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureOperation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureOperation")); //$NON-NLS-1$
 	}
 
 	/**
@@ -134,10 +128,10 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FeatureOperation) object).getFeatureName();
+		final String label = ((FeatureOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_FeatureOperation_type") :
-			getString("_UI_FeatureOperation_type") + " " + label;
+			getString("_UI_FeatureOperation_type") : //$NON-NLS-1$
+			getString("_UI_FeatureOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

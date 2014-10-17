@@ -17,12 +17,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
@@ -36,8 +31,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * 
  * @generated
  */
-public class ACUserItemProvider extends ACOrgUnitItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -78,8 +72,8 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider implements IEditin
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ACUser_firstName_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_firstName_feature", "_UI_ACUser_type"),
+				getString("_UI_ACUser_firstName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_firstName_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				AccesscontrolPackage.Literals.AC_USER__FIRST_NAME,
 				true,
 				false,
@@ -100,8 +94,8 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider implements IEditin
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ACUser_lastName_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_lastName_feature", "_UI_ACUser_type"),
+				getString("_UI_ACUser_lastName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_lastName_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				AccesscontrolPackage.Literals.AC_USER__LAST_NAME,
 				true,
 				false,
@@ -124,8 +118,8 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider implements IEditin
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ACUser_password_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_password_feature", "_UI_ACUser_type"),
+				getString("_UI_ACUser_password_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_password_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				AccesscontrolPackage.Literals.AC_USER__PASSWORD,
 				true,
 				false,
@@ -174,7 +168,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider implements IEditin
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ACUser"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ACUser")); //$NON-NLS-1$
 	}
 
 	/**
@@ -186,10 +180,10 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider implements IEditin
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ACUser) object).getName();
+		final String label = ((ACUser) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ACUser_type") :
-			getString("_UI_ACUser_type") + " " + label;
+			getString("_UI_ACUser_type") : //$NON-NLS-1$
+			getString("_UI_ACUser_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

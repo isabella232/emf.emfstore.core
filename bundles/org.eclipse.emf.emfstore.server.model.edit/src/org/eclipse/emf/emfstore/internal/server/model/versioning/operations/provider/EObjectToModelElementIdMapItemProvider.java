@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
@@ -35,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * @generated
  */
 public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,9 +75,9 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EObjectToModelElementIdMap_key_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature",
-					"_UI_EObjectToModelElementIdMap_type"),
+				getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY,
 				true,
 				false,
@@ -99,9 +98,9 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EObjectToModelElementIdMap_value_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature",
-					"_UI_EObjectToModelElementIdMap_type"),
+				getString("_UI_EObjectToModelElementIdMap_value_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE,
 				true,
 				false,
@@ -120,7 +119,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EObjectToModelElementIdMap"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EObjectToModelElementIdMap")); //$NON-NLS-1$
 	}
 
 	/**
@@ -132,8 +131,8 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> eObjectToModelElementIdMap = (Map.Entry<?, ?>) object;
-		return "" + eObjectToModelElementIdMap.getKey() + " -> " + eObjectToModelElementIdMap.getValue();
+		final Map.Entry<?, ?> eObjectToModelElementIdMap = (Map.Entry<?, ?>) object;
+		return "" + eObjectToModelElementIdMap.getKey() + " -> " + eObjectToModelElementIdMap.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

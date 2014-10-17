@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -40,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * @generated
  */
 public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -80,9 +79,9 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectUrlFragment_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectUrlFragment_name_feature",
-					"_UI_ProjectUrlFragment_type"),
+				getString("_UI_ProjectUrlFragment_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectUrlFragment_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectUrlFragment_type"), //$NON-NLS-1$
 				UrlPackage.Literals.PROJECT_URL_FRAGMENT__NAME,
 				true,
 				false,
@@ -132,7 +131,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectUrlFragment"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectUrlFragment")); //$NON-NLS-1$
 	}
 
 	/**
@@ -144,10 +143,10 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProjectUrlFragment) object).getName();
+		final String label = ((ProjectUrlFragment) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProjectUrlFragment_type") :
-			getString("_UI_ProjectUrlFragment_type") + " " + label;
+			getString("_UI_ProjectUrlFragment_type") : //$NON-NLS-1$
+			getString("_UI_ProjectUrlFragment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

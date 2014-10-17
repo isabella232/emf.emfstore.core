@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -37,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * @generated
  */
 public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -81,8 +80,8 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectInfo_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_name_feature", "_UI_ProjectInfo_type"),
+				getString("_UI_ProjectInfo_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_name_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				ModelPackage.Literals.PROJECT_INFO__NAME,
 				true,
 				false,
@@ -103,9 +102,9 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectInfo_description_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_description_feature",
-					"_UI_ProjectInfo_type"),
+				getString("_UI_ProjectInfo_description_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectInfo_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_INFO__DESCRIPTION,
 				true,
 				false,
@@ -126,9 +125,9 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectInfo_projectId_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature",
-					"_UI_ProjectInfo_type"),
+				getString("_UI_ProjectInfo_projectId_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectInfo_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_INFO__PROJECT_ID,
 				true,
 				false,
@@ -149,9 +148,9 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ProjectInfo_version_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature",
-					"_UI_ProjectInfo_type"),
+				getString("_UI_ProjectInfo_version_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectInfo_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_INFO__VERSION,
 				true,
 				false,
@@ -169,7 +168,7 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectInfo"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProjectInfo")); //$NON-NLS-1$
 	}
 
 	// begin of custom code
@@ -183,12 +182,12 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		ProjectInfo projectInfo = ((ProjectInfo) object);
-		String ret = "";
+		final ProjectInfo projectInfo = (ProjectInfo) object;
+		String ret = ""; //$NON-NLS-1$
 		if (projectInfo.getName() == null || projectInfo.getName().length() == 0) {
-			ret = getString("_UI_ProjectInfo_type");
+			ret = getString("_UI_ProjectInfo_type"); //$NON-NLS-1$
 		} else {
-			ret = projectInfo.getName() + "[Revision: " + ((ProjectInfo) object).getVersion().getIdentifier() + "]";
+			ret = projectInfo.getName() + "[Revision: " + ((ProjectInfo) object).getVersion().getIdentifier() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		return ret;
 	}

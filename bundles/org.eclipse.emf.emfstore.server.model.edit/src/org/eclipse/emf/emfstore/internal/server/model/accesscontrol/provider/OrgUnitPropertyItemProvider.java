@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -40,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  * @generated
  */
 public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -81,9 +80,9 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_OrgUnitProperty_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_OrgUnitProperty_name_feature",
-					"_UI_OrgUnitProperty_type"),
+				getString("_UI_OrgUnitProperty_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_OrgUnitProperty_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_OrgUnitProperty_type"), //$NON-NLS-1$
 				AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__NAME,
 				true,
 				false,
@@ -104,9 +103,9 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_OrgUnitProperty_value_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_OrgUnitProperty_value_feature",
-					"_UI_OrgUnitProperty_type"),
+				getString("_UI_OrgUnitProperty_value_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_OrgUnitProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_OrgUnitProperty_type"), //$NON-NLS-1$
 				AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__VALUE,
 				true,
 				false,
@@ -156,7 +155,7 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OrgUnitProperty"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OrgUnitProperty")); //$NON-NLS-1$
 	}
 
 	/**
@@ -168,10 +167,10 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OrgUnitProperty) object).getName();
+		final String label = ((OrgUnitProperty) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_OrgUnitProperty_type") :
-			getString("_UI_OrgUnitProperty_type") + " " + label;
+			getString("_UI_OrgUnitProperty_type") : //$NON-NLS-1$
+			getString("_UI_OrgUnitProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

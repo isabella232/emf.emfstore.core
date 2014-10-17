@@ -18,12 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -41,9 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * 
  * @generated
  */
-public class CompositeOperationItemProvider extends AbstractOperationItemProvider implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource {
+public class CompositeOperationItemProvider extends AbstractOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -63,22 +56,21 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	@Override
 	public Collection<?> getChildren(Object object) {
 		if (object instanceof CompositeOperation) {
-			CompositeOperation cop = (CompositeOperation) object;
-			ArrayList<Object> ret = new ArrayList<Object>();
+			final CompositeOperation cop = (CompositeOperation) object;
+			final ArrayList<Object> ret = new ArrayList<Object>();
 			if (cop.getMainOperation() != null) {
 				ret.addAll(super.getChildren(cop.getMainOperation()));
-				List<AbstractOperation> subOps = ModelUtil.flatCloneList(cop.getSubOperations());
+				final List<AbstractOperation> subOps = ModelUtil.flatCloneList(cop.getSubOperations());
 				if (subOps.size() > 0) {
 					subOps.remove(cop.getMainOperation());
-					OperationGroup operationGroup = OperationsFactory.eINSTANCE.createOperationGroup();
-					operationGroup.setName("Additional Details");
+					final OperationGroup operationGroup = OperationsFactory.eINSTANCE.createOperationGroup();
+					operationGroup.setName(Messages.CompositeOperationItemProvider_AdditionalDetails);
 					operationGroup.getOperations().addAll(subOps);
 					ret.add(operationGroup);
 				}
 				return ret;
-			} else {
-				return cop.getSubOperations();
 			}
+			return cop.getSubOperations();
 		}
 		return super.getChildren(object);
 	}
@@ -114,9 +106,9 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_CompositeOperation_mainOperation_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_mainOperation_feature",
-					"_UI_CompositeOperation_type"),
+				getString("_UI_CompositeOperation_mainOperation_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_mainOperation_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_CompositeOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.COMPOSITE_OPERATION__MAIN_OPERATION,
 				true,
 				false,
@@ -137,9 +129,9 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_CompositeOperation_compositeName_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeName_feature",
-					"_UI_CompositeOperation_type"),
+				getString("_UI_CompositeOperation_compositeName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeName_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_CompositeOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.COMPOSITE_OPERATION__COMPOSITE_NAME,
 				true,
 				false,
@@ -160,9 +152,9 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_CompositeOperation_compositeDescription_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeDescription_feature",
-					"_UI_CompositeOperation_type"),
+				getString("_UI_CompositeOperation_compositeDescription_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeDescription_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_CompositeOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION,
 				true,
 				false,
@@ -183,9 +175,9 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_CompositeOperation_reversed_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_reversed_feature",
-					"_UI_CompositeOperation_type"),
+				getString("_UI_CompositeOperation_reversed_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_reversed_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_CompositeOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.COMPOSITE_OPERATION__REVERSED,
 				true,
 				false,
@@ -235,7 +227,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeOperation.png"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeOperation.png")); //$NON-NLS-1$
 	}
 
 	/**
@@ -247,12 +239,11 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	@Override
 	public String getText(Object object) {
 		if (object instanceof CompositeOperation) {
-			CompositeOperation compositeOperation = (CompositeOperation) object;
+			final CompositeOperation compositeOperation = (CompositeOperation) object;
 			if (compositeOperation.isReversed()) {
-				return "Undo of " + compositeOperation.getCompositeName();
-			} else {
-				return compositeOperation.getCompositeName();
+				return Messages.CompositeOperationItemProvider_Undo + compositeOperation.getCompositeName();
 			}
+			return compositeOperation.getCompositeName();
 		}
 		return super.getText(object);
 	}
