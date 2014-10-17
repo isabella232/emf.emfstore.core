@@ -36,7 +36,7 @@ import com.google.common.collect.Sets;
 public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutator {
 
 	private static final String VIRTUAL_URI_BASE = "virtualUri"; //$NON-NLS-1$
-	private int nrOfResources = 2;
+	private int noOfResources = 2;
 	private ResourceSet resourceSet;
 	private final Set<Resource> resources = Sets.newLinkedHashSet();
 	private ESResourceSelectionStrategy resourceSelectionStrategy = new ESRoundRobinResourceSelectionStrategy();
@@ -71,7 +71,7 @@ public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutato
 	 */
 	public ESCrossResourceReferencesModelMutator(ESModelMutatorConfiguration config, int howManyResources) {
 		super(config);
-		nrOfResources = howManyResources;
+		noOfResources = howManyResources;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutato
 	public ESCrossResourceReferencesModelMutator(ESModelMutatorConfiguration config,
 		int howManyResources, ESResourceSelectionStrategy resourceSelectionStrategy) {
 		super(config);
-		nrOfResources = howManyResources;
+		noOfResources = howManyResources;
 		this.resourceSelectionStrategy = resourceSelectionStrategy;
 	}
 
@@ -98,7 +98,7 @@ public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutato
 	 */
 	@Override
 	public void preMutate() {
-		resourceSet = createResourceSet(nrOfResources);
+		resourceSet = createResourceSet(noOfResources);
 		resourceSet.getResources().get(0).getContents().add(getRootEObject());
 	}
 
