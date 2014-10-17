@@ -30,7 +30,6 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
@@ -68,9 +67,6 @@ public class MutatorTest {
 
 		ESDefaultModelMutator.changeModel(getConfig(project1));
 		ESDefaultModelMutator.changeModel(getConfig(project2));
-
-		final String eObjectToString = ModelUtil.eObjectToString(project1, ModelUtil.getResourceSaveOptions());
-		final String eObjectToString2 = ModelUtil.eObjectToString(project2, ModelUtil.getResourceSaveOptions());
 
 		Iterator<EObject> project1Iterator = project1.getAllModelElements()
 			.iterator();
