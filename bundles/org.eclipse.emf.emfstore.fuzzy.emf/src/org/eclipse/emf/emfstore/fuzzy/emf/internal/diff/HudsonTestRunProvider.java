@@ -137,7 +137,7 @@ public class HudsonTestRunProvider extends TestRunProvider {
 		final String port = FuzzyUtil.getProperty(PROP_HUDSON + PROP_PORT, null);
 		return FuzzyUtil
 			.getProperty(PROP_HUDSON + PROP_URL, "http://localhost") //$NON-NLS-1$
-			+ (port != null ? ":" + port : "") + "/"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			+ (port != null ? ":" + port : ""); // + "/"; //$NON-NLS-1$ //$NON-NLS-2$ 
 	}
 
 	private static int getLastValidBuildNumber(int maxBuildNumber, String jobUrl)

@@ -18,7 +18,7 @@ import org.eclipse.osgi.util.NLS;
  * 
  */
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.fuzzy.emf.diff.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.messages"; //$NON-NLS-1$
 	public static String CouldNotCreateDiffs;
 	public static String DiffGenerator_Could_Not_Load_Resource;
 	public static String HudsonTestRunProvider_Could_Not_Load_Config_File;
