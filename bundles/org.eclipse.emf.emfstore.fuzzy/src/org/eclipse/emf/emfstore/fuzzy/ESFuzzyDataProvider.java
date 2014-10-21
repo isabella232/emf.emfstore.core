@@ -9,13 +9,11 @@
  * Contributors:
  * JulianSommerfeldt
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.fuzzy;
+package org.eclipse.emf.emfstore.fuzzy;
 
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
 import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
@@ -28,9 +26,10 @@ import org.junit.runners.model.TestClass;
  * 
  * @param <T>
  *            Type to specify the values created by this data provider.
+ * @since 2.0
  * 
  */
-public interface FuzzyDataProvider<T> {
+public interface ESFuzzyDataProvider<T> {
 
 	/**
 	 * Creates and returns the data for the next run.<br>
@@ -46,7 +45,7 @@ public interface FuzzyDataProvider<T> {
 	T get(int count);
 
 	/**
-	 * This method is called after the {@link FuzzyDataProvider} was created and
+	 * This method is called after the {@link ESFuzzyDataProvider} was created and
 	 * everything was set BEFORE the first run.<br/>
 	 * Should be used to to create internal stuff depending on e.g. the {@link TestClass}.
 	 */
@@ -78,13 +77,13 @@ public interface FuzzyDataProvider<T> {
 	List<ESFuzzyTest> getTestsToRun();
 
 	/**
-	 * @return The {@link ESFuzzyUtil} for this {@link FuzzyDataProvider}. <code>null</code> permitted.
+	 * @return The {@link ESFuzzyUtil} for this {@link ESFuzzyDataProvider}. <code>null</code> permitted.
 	 */
 	ESFuzzyUtil getUtil();
 
 	/**
 	 * @param options
-	 *            The options for the {@link FuzzyDataProvider}. Can be <code>null</code>.
+	 *            The options for the {@link ESFuzzyDataProvider}. Can be <code>null</code>.
 	 */
 	void setOptions(Map<String, Object> options);
 }

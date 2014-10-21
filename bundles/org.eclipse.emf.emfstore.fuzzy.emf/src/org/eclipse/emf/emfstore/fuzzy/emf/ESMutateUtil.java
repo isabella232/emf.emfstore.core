@@ -42,9 +42,9 @@ import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
-	 * The EMFDataProvider that generates data.
+	 * The {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider ESFuzzyDataProvider} that generates data.
 	 */
-	private final ESEMFDataProvider dataProvider;
+	private final ESFuzzyEMFDataProvider dataProvider;
 
 	/**
 	 * For internal use.
@@ -52,7 +52,7 @@ public class ESMutateUtil implements ESFuzzyUtil {
 	 * @param dataProvider
 	 *            The {@link ESEMFDataProvider} of the test.
 	 */
-	public ESMutateUtil(ESEMFDataProvider dataProvider) {
+	public ESMutateUtil(ESFuzzyEMFDataProvider dataProvider) {
 		this.dataProvider = dataProvider;
 	}
 
@@ -187,11 +187,12 @@ public class ESMutateUtil implements ESFuzzyUtil {
 	}
 
 	/**
-	 * Returns the {@link ESEMFDataProvider} that is used to generated data.
+	 * Returns the {@link ESFuzzyEMFDataProvider} that is being
+	 * used to generate data.
 	 * 
 	 * @return the dataProvider
 	 */
-	protected ESEMFDataProvider getDataProvider() {
+	protected ESFuzzyEMFDataProvider getDataProvider() {
 		return dataProvider;
 	}
 }

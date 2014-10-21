@@ -23,7 +23,6 @@ import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Options;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
-import org.eclipse.emf.emfstore.internal.fuzzy.FuzzyDataProvider;
 import org.eclipse.emf.emfstore.internal.fuzzy.FuzzyTestClassRunner;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.RunListener;
@@ -42,12 +41,12 @@ import org.junit.runners.model.InitializationError;
  * <br/>
  * <code>@Data<br/>private Integer i;</code> <br/>
  * <br/>
- * To provide data an implementation of {@link FuzzyDataProvider} can be set via
+ * To provide data an implementation of {@link ESFuzzyDataProvider} can be set via
  * the {@link DataProvider} annotation, e.g.<br/>
  * <br/>
  * <code>@DataProvider(IntDataProvider.class)</code><br/>
  * <br/>
- * This class must implement the interface {@link FuzzyDataProvider}. The
+ * This class must implement the interface {@link ESFuzzyDataProvider}. The
  * default value is the example implementation: IntDataProvider.<br/>
  * <br/>
  * The MyTest class illustrates an example usage of the {@link ESFuzzyRunner}.
@@ -60,7 +59,7 @@ public class ESFuzzyRunner extends Suite {
 
 	private final ArrayList<Runner> runners = new ArrayList<Runner>();
 
-	private final FuzzyDataProvider<?> dataProvider;
+	private final ESFuzzyDataProvider<?> dataProvider;
 
 	/**
 	 * The string representing a separation in a name (e.g. test name).
@@ -95,7 +94,7 @@ public class ESFuzzyRunner extends Suite {
 	}
 
 	/*
-	 * Override to add RunListeners of the FuzzyDataProvider (non-Javadoc)
+	 * Override to add RunListeners of the ESFuzzyDataProvider (non-Javadoc)
 	 * @see
 	 * org.junit.runners.ParentRunner#run(org.junit.runner.notification.RunNotifier
 	 * )
@@ -170,12 +169,12 @@ public class ESFuzzyRunner extends Suite {
 	}
 
 	/**
-	 * @return The {@link FuzzyDataProvider} defined by the {@link DataProvider} annotation or the default one.
+	 * @return The {@link ESFuzzyDataProvider} defined by the {@link DataProvider} annotation or the default one.
 	 * @throws InitializationError
 	 * @throws Exception
-	 *             If the data provider does not implement the {@link FuzzyDataProvider} interface.
+	 *             If the data provider does not implement the {@link ESFuzzyDataProvider} interface.
 	 */
-	private FuzzyDataProvider<?> getDataProvider() throws InitializationError {
+	private ESFuzzyDataProvider<?> getDataProvider() throws InitializationError {
 		// Get the DataProvider Annotation
 		final Annotation[] annotations = getTestClass().getAnnotations();
 
@@ -187,22 +186,22 @@ public class ESFuzzyRunner extends Suite {
 			if (annotation instanceof DataProvider) {
 
 				// Check if the given class is an implementation of
-				// FuzzyDataProvider
+				// ESFuzzyDataProvider
 				dataProviderClass = ((DataProvider) annotation).value();
-				if (!FuzzyDataProvider.class
+				if (!ESFuzzyDataProvider.class
 					.isAssignableFrom(dataProviderClass)) {
 					throw new InitializationError(
 						MessageFormat.format(
 							Messages.getString("ESFuzzyRunner.NotAnInstanceOf"), //$NON-NLS-1$
 							dataProviderClass,
-							FuzzyDataProvider.class.getSimpleName()));
+							ESFuzzyDataProvider.class.getSimpleName()));
 				}
 			}
 		}
 
 		// create a new instance of the DataProvider
 		try {
-			return (FuzzyDataProvider<?>) dataProviderClass.getConstructor()
+			return (ESFuzzyDataProvider<?>) dataProviderClass.getConstructor()
 				.newInstance();
 		} catch (final InstantiationException e) {
 			throw new InitializationError(

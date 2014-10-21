@@ -28,7 +28,9 @@ import org.junit.runners.Suite;
 	CrossResourceReferencesMutatorTest.class,
 	OperationApplyTest.class,
 	// OperationReverseTest.class, // TODO: currently fails!
-	FuzzyProjectConfigTest.class
+	MutatorTest.class,
+	ESXMIProviderDataMutatorTest.class,
+	FuzzyProjectConfigTest.class,
 })
 public class AllFuzzyTests {
 

@@ -22,6 +22,7 @@ import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
 import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
+import org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkField;
@@ -44,9 +45,9 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 	private final int counter;
 
 	/**
-	 * The {@link FuzzyDataProvider}, which "contains" the data for the test.
+	 * The {@link ESFuzzyDataProvider}, which "contains" the data for the test.
 	 */
-	private final FuzzyDataProvider<?> dataProvider;
+	private final ESFuzzyDataProvider<?> dataProvider;
 
 	/**
 	 * The {@link FrameworkField} of the {@link TestClass} where to put in the
@@ -69,7 +70,7 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 	 * @param type
 	 *            The testclass
 	 * @param dataProvider
-	 *            The {@link FuzzyDataProvider} providing the data to put into
+	 *            The {@link ESFuzzyDataProvider} providing the data to put into
 	 *            the dataField
 	 * @param dataField
 	 *            The datafield in the testclass
@@ -84,7 +85,7 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 	 * @throws InitializationError
 	 *             If there was a problem during the initialization of the test
 	 */
-	public FuzzyTestClassRunner(Class<?> type, FuzzyDataProvider<?> dataProvider,
+	public FuzzyTestClassRunner(Class<?> type, ESFuzzyDataProvider<?> dataProvider,
 		FrameworkField dataField, FrameworkField utilField,
 		FrameworkField optionsField, ESFuzzyUtil util, int counter)
 		throws InitializationError {

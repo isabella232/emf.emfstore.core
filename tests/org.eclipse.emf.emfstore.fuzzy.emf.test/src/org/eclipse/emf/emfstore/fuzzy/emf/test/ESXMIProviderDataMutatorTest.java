@@ -11,21 +11,23 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.emfstore.bowling.League;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
 import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
-import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
+import org.eclipse.emf.emfstore.fuzzy.emf.ESXMIResourceDataProvider;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
-import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
@@ -39,8 +41,8 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(ESFuzzyRunner.class)
-@DataProvider(ESEMFDataProvider.class)
-public class MutatorTest {
+@DataProvider(ESXMIResourceDataProvider.class)
+public class ESXMIProviderDataMutatorTest {
 
 	@Data
 	private EObject obj;
@@ -54,22 +56,26 @@ public class MutatorTest {
 	 * @throws SerializationException
 	 */
 	@Test
-	public void compareTwoGeneratedProjects() throws SerializationException {
-
-		final Project project1 = ModelFactory.eINSTANCE.createProject();
-		final Project project2 = ModelFactory.eINSTANCE.createProject();
-		ESDefaultModelMutator.generateModel(getConfig(project1));
-		ESDefaultModelMutator.generateModel(getConfig(project2));
-
-		ESDefaultModelMutator.changeModel(getConfig(project1));
-		ESDefaultModelMutator.changeModel(getConfig(project2));
-
-		EcoreUtil.equals(project1, project2);
+	public void readProvidedModel() throws SerializationException {
+		assertTrue(League.class.isInstance(obj));
 	}
 
-	private ESModelMutatorConfiguration getConfig(Project root) {
+	@Test
+	public void changeProvidedModel() {
+
+		final EObject nonMutatedCopiedObject = EcoreUtil.copy(obj);
+		final EObject copiedEObject = EcoreUtil.copy(obj);
+
+		ESDefaultModelMutator.changeModel(getConfig(obj));
+		ESDefaultModelMutator.changeModel(getConfig(copiedEObject));
+
+		assertTrue(EcoreUtil.equals(obj, copiedEObject));
+		assertFalse(EcoreUtil.equals(obj, nonMutatedCopiedObject));
+	}
+
+	private ESModelMutatorConfiguration getConfig(EObject eObject) {
 		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
-			util.getEPackages(), root, util.getSeed());
+			util.getEPackages(), eObject, util.getSeed());
 		final Collection<EStructuralFeature> eStructuralFeaturesToIgnore = new HashSet<EStructuralFeature>();
 		eStructuralFeaturesToIgnore
 			.add(ModelPackage.Literals.PROJECT__CUT_ELEMENTS);
