@@ -59,6 +59,8 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 			protected void doRun() {
 				for (final AbstractOperation operation : operations) {
 					try {
+						projectSpace.getOperationManager().commandStarted(null);
+
 						if (CompositeOperation.class.isInstance(operation)) {
 							final CompositeOperation compositeOperation = CompositeOperation.class.cast(operation);
 							final String compositeName = compositeOperation.getCompositeName();
