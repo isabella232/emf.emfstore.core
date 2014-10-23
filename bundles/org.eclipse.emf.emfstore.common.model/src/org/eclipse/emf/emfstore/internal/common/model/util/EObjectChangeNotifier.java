@@ -176,8 +176,6 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 			// Do not create notifications for transient features
 			if (eReference.isTransient()) {
-				// TODO: why didn't we pop the notification when we return?
-				currentNotifications.pop();
 				return;
 			}
 
@@ -195,14 +193,14 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 			if (!reference.isContainment() && !reference.isContainer()) {
 				if (newValue instanceof EObject) {
-					handleSingleReference((EObject) newValue, (EObject) notifier);
+					handleSingleReference((EObject) newValue);
 				} else if (newValue instanceof List<?>) {
-					handleMultiReference((List<?>) newValue, (EObject) notifier);
+					handleMultiReference((List<?>) newValue);
 				}
 			} else if (reference.isContainment()
 				&& reference.getEType().getInstanceClass() != null
 				&& Map.Entry.class.isAssignableFrom(reference.getEType().getInstanceClass())) {
-				handleMapEntry((Map.Entry<?, ?>) newValue, reference, (EObject) notifier);
+				handleMapEntry((Map.Entry<?, ?>) newValue, reference);
 			}
 		}
 
@@ -228,24 +226,17 @@ public class EObjectChangeNotifier extends EContentAdapter {
 			|| collection.getDeletedModelElementId((EObject) notifier) != null;
 	}
 
-	private void handleMapEntry(Map.Entry<?, ?> entry, EReference reference, EObject notifier) {
+	private void handleMapEntry(Map.Entry<?, ?> entry, EReference reference) {
 		for (final EReference ref : reference.getEReferenceType().getEReferences()) {
 			if (ref.getName().equals("key") && entry.getKey() instanceof EObject) { //$NON-NLS-1$
-				handleSingleReference((EObject) entry.getKey(), notifier);
+				handleSingleReference((EObject) entry.getKey());
 			} else if (ref.getName().equals("value") && entry.getValue() instanceof EObject) { //$NON-NLS-1$
-				handleSingleReference((EObject) entry.getValue(), notifier);
+				handleSingleReference((EObject) entry.getValue());
 			}
 		}
 	}
 
-	private void handleMultiReference(List<?> list, EObject notifier) {
-
-		final boolean isNotifierContained = collection.contains(notifier);
-
-		if (!isNotifierContained) {
-			return;
-		}
-
+	private void handleMultiReference(List<?> list) {
 		for (final Object obj : list) {
 
 			if (!(obj instanceof EObject)) {
@@ -260,20 +251,8 @@ public class EObjectChangeNotifier extends EContentAdapter {
 		}
 	}
 
-	private void handleSingleReference(EObject newEObject, EObject notifier) {
-		// TODO: EM, to my understanding, the check whether the notifier is contained in the collection
-		// shouldn't be necessary since we shouldn't have received a notification
-		// in the first place. Unfortunately, we still seem to receive notifications
-		// for elements that aren't contained in the collection anymore, i.e.
-		// a removeAdapter call has been missed.
-		// The same also applies to handleMultiReference.
-		// To reproduce: remove the collection.contains(notifier) check and execute OperationReverseTest
-		// -> Game with contained players will be removed, later on we receive a notification
-		// with the game being the notifier and a player as the newValue. Since game's adapter has
-		// not been removed, we rescue the player and thus create a CreateDeleteOp for the player
-		// which results in different project states when applying the recorded change onto a
-		// copied project space
-		if (!collection.contains(newEObject) && collection.contains(notifier)) {
+	private void handleSingleReference(EObject newEObject) {
+		if (!collection.contains(newEObject)) {
 			if (ModelUtil.isSingleton(newEObject)) {
 				return;
 			}
