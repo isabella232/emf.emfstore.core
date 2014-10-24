@@ -16,7 +16,6 @@ import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.sessionprovider.ESAbstractSessionProvider;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
-import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.LoginCanceledException;
 import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
@@ -59,27 +58,28 @@ public class BasicUISessionProvider extends ESAbstractSessionProvider {
 			if (userInput == Window.OK) {
 				server = selectedServerInfo;
 			} else if (userInput == Window.CANCEL) {
-				throw new LoginCanceledException("Operation canceled by user.");
+				throw new LoginCanceledException(Messages.BasicUISessionProvider_UserCancelledOperation);
 			}
 		}
 		if (server == null) {
-			throw new AccessControlException("Couldn't determine which server to connect.");
+			throw new AccessControlException(Messages.BasicUISessionProvider_ServerCouldNotBeDetermined);
 		}
 
 		return loginServerInfo(server);
 	}
 
 	/**
-	 * Extracted from {@link #provideUsersession(ServerInfo)} in order to allow overwriting. This method logs in a given
-	 * serverInfo.
+	 * Extracted from {@link #provideUsersession(ESServer)} in order to allow overwriting.
+	 * This method logs in a given server.
 	 * 
-	 * @param serverInfo given serverInfo
-	 * @return Usersession
+	 * @param server
+	 *            the server from which a {@link ESUsersession} should be extracted
+	 * @return a logged in usersession. If none could be obtained the login dialog will open
 	 * @throws ESException in case of an exception
 	 */
 	protected ESUsersession loginServerInfo(ESServer server) throws ESException {
-		// TODO Short cut for logged in sessions to avoid loginscreen. We have to discuss whether this is really
-		// wanted.
+		// TODO Short cut for logged in sessions to avoid login screen.
+		// We have to discuss whether this is really wanted.
 		if (server.getLastUsersession() != null && server.getLastUsersession().isLoggedIn()) {
 			return server.getLastUsersession();
 		}

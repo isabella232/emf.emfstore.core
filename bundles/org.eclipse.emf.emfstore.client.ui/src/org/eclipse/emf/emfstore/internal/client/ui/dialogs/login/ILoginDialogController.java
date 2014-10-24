@@ -7,8 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * ovonwesen
- * emueller
+ * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.login;
 
@@ -16,12 +15,10 @@ import java.util.List;
 
 import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
-import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
-import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
- * The login dialog controller manages a given {@link Usersession} and/or a {@link ServerInfo} instance
+ * The login dialog controller manages a given {@link ESUsersession} and/or a {@link ESServer} instance
  * to determine when it is necessary to open a {@link LoginDialog} in order to authenticate the user.
  * If authentication already took place no such dialog should be opened.
  * 
@@ -31,7 +28,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 public interface ILoginDialogController {
 
 	/**
-	 * Tries to login the given {@link Usersession}. If successful, the user session
+	 * Tries to login the given {@link ESUsersession}. If successful, the user session
 	 * is attached to the workspace and saved.
 	 * 
 	 * @param usersession
@@ -42,14 +39,14 @@ public interface ILoginDialogController {
 	void validate(ESUsersession usersession) throws ESException;
 
 	/**
-	 * Returns the {@link Usersession} the login dialog controller was assigned to, if any.
+	 * Returns the {@link ESUsersession} the login dialog controller was assigned to, if any.
 	 * 
 	 * @return the assigned user session or <code>null</code>, if none exists
 	 */
 	ESUsersession getUsersession();
 
 	/**
-	 * Returns the available {@link Usersession}s based on server info object, that is retrieved via
+	 * Returns the available {@link ESUsersession}s based on server info object, that is retrieved via
 	 * {@link #getServer()}.
 	 * 
 	 * @return all available user sessions as an array.
@@ -57,7 +54,7 @@ public interface ILoginDialogController {
 	List<ESUsersession> getKnownUsersessions();
 
 	/**
-	 * Returns the {@link ServerInfo} the login dialog controller was assigned to, if any.
+	 * Returns the {@link ESServer} the login dialog controller was assigned to, if any.
 	 * If no server info was set, {@link #getUsersession() } will be used to try to determine the
 	 * relevant server info.
 	 * 

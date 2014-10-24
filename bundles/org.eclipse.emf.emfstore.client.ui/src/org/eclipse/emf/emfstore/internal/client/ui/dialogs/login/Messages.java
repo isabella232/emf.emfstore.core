@@ -17,10 +17,12 @@ import org.eclipse.osgi.util.NLS;
  * Login dialog related messages.
  * 
  * @author emueller
- * 
+ * @generated
  */
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.client.ui.dialogs.login.messages"; //$NON-NLS-1$
+	public static String BasicUISessionProvider_ServerCouldNotBeDetermined;
+	public static String BasicUISessionProvider_UserCancelledOperation;
 	public static String LoginDialog_Auth_Required;
 	public static String LoginDialog_Cancel;
 	public static String LoginDialog_Enter_Name_And_Password;
@@ -30,6 +32,7 @@ public final class Messages extends NLS {
 	public static String LoginDialog_Password_Saved_Reenter_To_Change;
 	public static String LoginDialog_Save_Password;
 	public static String LoginDialog_Username;
+	public static String LoginDialogController_LoginFailed;
 	public static String ServerInfoSelectionDialog_Cancel;
 	public static String ServerInfoSelectionDialog_Ok;
 	public static String ServerInfoSelectionDialog_Please_Select_Server;

@@ -89,13 +89,13 @@ public class LoginDialogController implements ILoginDialogController {
 		});
 
 		if (userInput != Window.OK) {
-			throw new AccessControlException("Couldn't login.");
+			throw new AccessControlException(Messages.LoginDialogController_LoginFailed);
 		}
 
 		final Usersession session = dialog.getSelectedUsersession();
 
 		if (session == null) {
-			throw new AccessControlException("Couldn't login.");
+			throw new AccessControlException(Messages.LoginDialogController_LoginFailed);
 		}
 
 		final String password = dialog.getPassword();

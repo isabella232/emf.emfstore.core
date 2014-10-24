@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.action;
 
@@ -33,6 +33,7 @@ public class CreateUserAction extends CreateOrgUnitAction {
 
 	private static final String USER_FIELD_NAME = Messages.CreateUserAction_UserName_Field;
 	private static final String PW_FIELD_NAME = Messages.CreateUserAction_Password_Field;
+	private Boolean passwordControlsEnabled;
 
 	/**
 	 * Creates the create user action.
@@ -58,10 +59,7 @@ public class CreateUserAction extends CreateOrgUnitAction {
 		final Set<String> fieldNames = new LinkedHashSet<String>();
 		fieldNames.add(USER_FIELD_NAME);
 
-		final ESExtensionPoint showPasswordControls = new ESExtensionPoint(
-			"org.eclipse.emf.emfstore.client.ui.showPasswordControls"); //$NON-NLS-1$
-
-		if (showPasswordControls.getBoolean("enabled", false)) { //$NON-NLS-1$
+		if (passwordControlsEnabled()) {
 			fieldNames.add(PW_FIELD_NAME);
 		}
 
@@ -100,12 +98,28 @@ public class CreateUserAction extends CreateOrgUnitAction {
 
 		if (StringUtils.isBlank(userName)) {
 			throw new ESException(Messages.CreateUserAction_UserName_Empty);
-		} else if (StringUtils.isBlank(pwd)) {
+		} else if (passwordControlsEnabled() && StringUtils.isBlank(pwd)) {
 			throw new ESException(Messages.CreateUserAction_Password_Empty);
 		}
 
 		final ACOrgUnitId userId = getAdminBroker().createUser(userName);
-		getAdminBroker().changeUser(userId, userName, pwd);
+
+		if (passwordControlsEnabled()) {
+			getAdminBroker().changeUser(userId, userName, pwd);
+		}
+
 		return userId;
+	}
+
+	private boolean passwordControlsEnabled() {
+
+		if (passwordControlsEnabled == null) {
+			final ESExtensionPoint showPasswordControls = new ESExtensionPoint(
+				"org.eclipse.emf.emfstore.client.ui.showPasswordControls"); //$NON-NLS-1$
+
+			passwordControlsEnabled = showPasswordControls.getBoolean("enabled", false); //$NON-NLS-1$
+		}
+
+		return passwordControlsEnabled;
 	}
 }
