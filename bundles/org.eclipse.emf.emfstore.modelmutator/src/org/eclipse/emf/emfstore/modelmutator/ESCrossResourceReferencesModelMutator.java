@@ -147,11 +147,11 @@ public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutato
 	}
 
 	/**
-	 * Returns a list of resources.
+	 * Returns the {@link ResourceSet} the mutator is acting upon.
 	 * 
-	 * @return the resource as a list
+	 * @return the {@link ResourceSet} of this mutator
 	 */
-	public List<Resource> getResources() {
-		return newArrayList(resourceSet.getResources());
+	public ResourceSet getResourceSet() {
+		return resourceSet;
 	}
 }

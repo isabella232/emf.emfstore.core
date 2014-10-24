@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
@@ -59,7 +60,7 @@ public class CrossResourceReferencesMutatorTest {
 			new ESCrossResourceReferencesModelMutator(getConfig(project));
 
 		mutator.mutateUntil(ESPredicates.hasExternalReference());
-		final List<Resource> resources = mutator.getResources();
+		final List<Resource> resources = mutator.getResourceSet().getResources();
 
 		final int allObjectsCount = computeSize(project.eAllContents());
 
@@ -75,6 +76,22 @@ public class CrossResourceReferencesMutatorTest {
 		assertEquals(2, resources.size());
 		assertEquals(allObjectsCount + 1, firstResourceContents);
 		assertTrue(ESPredicates.hasExternalReference().apply(project));
+	}
+
+	@Test
+	public void createsCrossResourceReferencesWithTwoResourceSets() {
+
+		final Project clonedProject = EcoreUtil.copy(project);
+
+		final ESCrossResourceReferencesModelMutator mutator =
+			new ESCrossResourceReferencesModelMutator(getConfig(project));
+		final ESCrossResourceReferencesModelMutator secondMutator =
+			new ESCrossResourceReferencesModelMutator(getConfig(clonedProject));
+
+		mutator.mutateUntil(ESPredicates.hasExternalReference());
+		secondMutator.mutateUntil(ESPredicates.hasExternalReference());
+
+		EcoreUtil.equals(project, clonedProject);
 	}
 
 	private static int computeSize(final TreeIterator<EObject> allContents) {
