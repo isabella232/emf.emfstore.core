@@ -17,6 +17,7 @@ package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.co
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictDescription;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
@@ -40,11 +41,11 @@ public class MultiAttributeMoveConflict extends VisualConflict {
 	@Override
 	protected ConflictDescription initConflictDescription(ConflictDescription description) {
 		if (isLeftMy()) {
-			description.setDescription(DecisionUtil.getDescription("multiattributemoveconflict.my",
+			description.setDescription(DecisionUtil.getDescription("multiattributemoveconflict.my", //$NON-NLS-1$
 				getDecisionManager().isBranchMerge()));
 
 		} else {
-			description.setDescription(DecisionUtil.getDescription("multiattributemoveconflict.their",
+			description.setDescription(DecisionUtil.getDescription("multiattributemoveconflict.their", //$NON-NLS-1$
 				getDecisionManager().isBranchMerge()));
 		}
 
@@ -58,17 +59,17 @@ public class MultiAttributeMoveConflict extends VisualConflict {
 	 */
 	@Override
 	protected void initConflictOptions(List<ConflictOption> options) {
-		ConflictOption myOption = new ConflictOption("", OptionType.MyOperation);
+		final ConflictOption myOption = new ConflictOption(StringUtils.EMPTY, OptionType.MyOperation);
 		myOption.addOperations(getMyOperations());
-		ConflictOption theirOption = new ConflictOption("", OptionType.TheirOperation);
+		final ConflictOption theirOption = new ConflictOption(StringUtils.EMPTY, OptionType.TheirOperation);
 		theirOption.addOperations(getTheirOperations());
 
 		if (isLeftMy()) {
-			myOption.setOptionLabel("Add element");
-			theirOption.setOptionLabel("Move element");
+			myOption.setOptionLabel(Messages.MultiAttributeMoveConflict_AddElement);
+			theirOption.setOptionLabel(Messages.MultiAttributeMoveConflict_MoveElement);
 		} else {
-			myOption.setOptionLabel("Move element");
-			theirOption.setOptionLabel("Add element");
+			myOption.setOptionLabel(Messages.MultiAttributeMoveConflict_MoveElement);
+			theirOption.setOptionLabel(Messages.MultiAttributeMoveConflict_AddElement);
 		}
 
 		options.add(myOption);

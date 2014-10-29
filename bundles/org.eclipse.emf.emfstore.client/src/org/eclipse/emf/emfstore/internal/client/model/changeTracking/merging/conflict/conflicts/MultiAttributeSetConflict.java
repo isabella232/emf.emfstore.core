@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -17,6 +17,7 @@ package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.co
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictDescription;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
@@ -45,12 +46,14 @@ public class MultiAttributeSetConflict extends VisualConflict {
 	protected ConflictDescription initConflictDescription(ConflictDescription description) {
 
 		if (isLeftMy()) {
-			description.setDescription(DecisionUtil.getDescription("multiattributesetconflict.my", getDecisionManager()
-				.isBranchMerge()));
+			description.setDescription(
+				DecisionUtil.getDescription("multiattributesetconflict.my", //$NON-NLS-1$ 
+					getDecisionManager().isBranchMerge()));
 
 		} else {
-			description.setDescription(DecisionUtil.getDescription("multiattributesetconflict.their",
-				getDecisionManager().isBranchMerge()));
+			description.setDescription(
+				DecisionUtil.getDescription("multiattributesetconflict.their", //$NON-NLS-1$
+					getDecisionManager().isBranchMerge()));
 		}
 
 		return description;
@@ -63,17 +66,17 @@ public class MultiAttributeSetConflict extends VisualConflict {
 	 */
 	@Override
 	protected void initConflictOptions(List<ConflictOption> options) {
-		ConflictOption myOption = new ConflictOption("", OptionType.MyOperation);
+		final ConflictOption myOption = new ConflictOption(StringUtils.EMPTY, OptionType.MyOperation);
 		myOption.addOperations(getMyOperations());
-		ConflictOption theirOption = new ConflictOption("", OptionType.TheirOperation);
+		final ConflictOption theirOption = new ConflictOption(StringUtils.EMPTY, OptionType.TheirOperation);
 		theirOption.addOperations(getTheirOperations());
 
 		if (isLeftMy()) {
-			myOption.setOptionLabel("Remove element");
-			theirOption.setOptionLabel("Change element");
+			myOption.setOptionLabel(Messages.MultiAttributeSetConflict_RemoveElement);
+			theirOption.setOptionLabel(Messages.MultiAttributeSetConflict_ChangeElement);
 		} else {
-			myOption.setOptionLabel("Change element");
-			theirOption.setOptionLabel("Remove element");
+			myOption.setOptionLabel(Messages.MultiAttributeSetConflict_ChangeElement);
+			theirOption.setOptionLabel(Messages.MultiAttributeSetConflict_RemoveElement);
 		}
 
 		options.add(myOption);

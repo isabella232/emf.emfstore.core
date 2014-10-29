@@ -17,6 +17,7 @@ package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.co
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictDescription;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
@@ -39,7 +40,7 @@ public class MultiAttributeSetSetConflict extends VisualConflict {
 	@Override
 	protected ConflictDescription initConflictDescription(ConflictDescription description) {
 
-		description.setDescription(DecisionUtil.getDescription("multiattributesetsetconflict", getDecisionManager()
+		description.setDescription(DecisionUtil.getDescription("multiattributesetsetconflict", getDecisionManager() //$NON-NLS-1$
 			.isBranchMerge()));
 
 		return description;
@@ -47,13 +48,13 @@ public class MultiAttributeSetSetConflict extends VisualConflict {
 
 	@Override
 	protected void initConflictOptions(List<ConflictOption> options) {
-		ConflictOption myOption = new ConflictOption("", OptionType.MyOperation);
+		final ConflictOption myOption = new ConflictOption(StringUtils.EMPTY, OptionType.MyOperation);
 		myOption.addOperations(getMyOperations());
-		ConflictOption theirOption = new ConflictOption("", OptionType.TheirOperation);
+		final ConflictOption theirOption = new ConflictOption(StringUtils.EMPTY, OptionType.TheirOperation);
 		theirOption.addOperations(getTheirOperations());
 
-		myOption.setOptionLabel("Keep my element");
-		theirOption.setOptionLabel("Keep their element");
+		myOption.setOptionLabel(Messages.MultiAttributeSetSetConflict_KeepMy);
+		theirOption.setOptionLabel(Messages.MultiAttributeSetSetConflict_KeepTheir);
 
 		options.add(myOption);
 		options.add(theirOption);

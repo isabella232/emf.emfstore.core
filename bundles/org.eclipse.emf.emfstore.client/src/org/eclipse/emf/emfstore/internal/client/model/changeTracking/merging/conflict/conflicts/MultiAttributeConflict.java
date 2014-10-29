@@ -45,13 +45,13 @@ public class MultiAttributeConflict extends VisualConflict {
 	@Override
 	protected ConflictDescription initConflictDescription(ConflictDescription description) {
 		if (isLeftMy()) {
-			description.setDescription(DecisionUtil.getDescription("multiattributeconflict.my", getDecisionManager()
+			description.setDescription(DecisionUtil.getDescription("multiattributeconflict.my", getDecisionManager() //$NON-NLS-1$
 				.isBranchMerge()));
 		} else {
-			description.setDescription(DecisionUtil.getDescription("multiattributeconflict.their", getDecisionManager()
+			description.setDescription(DecisionUtil.getDescription("multiattributeconflict.their", getDecisionManager() //$NON-NLS-1$
 				.isBranchMerge()));
 		}
-		description.setImage("attribute.gif");
+		description.setImage("attribute.gif"); //$NON-NLS-1$
 		return description;
 	}
 
@@ -62,11 +62,11 @@ public class MultiAttributeConflict extends VisualConflict {
 	 */
 	@Override
 	protected void initConflictOptions(List<ConflictOption> options) {
-		ConflictOption my = new ConflictOption(getLabel(true) + " "
+		final ConflictOption my = new ConflictOption(getLabel(true) + " " //$NON-NLS-1$
 			+ getMyOperation(MultiAttributeOperation.class).getReferencedValues().get(0), OptionType.MyOperation);
 		my.addOperations(getMyOperations());
 
-		ConflictOption their = new ConflictOption(getLabel(false) + " "
+		final ConflictOption their = new ConflictOption(getLabel(false) + " " //$NON-NLS-1$
 			+ getTheirOperation(MultiAttributeOperation.class).getReferencedValues().get(0), OptionType.TheirOperation);
 		their.addOperations(getTheirOperations());
 
@@ -75,12 +75,13 @@ public class MultiAttributeConflict extends VisualConflict {
 	}
 
 	/**
-	 * TODO adjust lable
+	 * TODO adjust label
 	 * 
 	 * @param you
 	 * @return
 	 */
 	private String getLabel(boolean you) {
-		return ((isLeftMy() && you || (!isLeftMy() && !you)) ? "Add" : "Remove") + " ";
+		return (isLeftMy() && you || !isLeftMy() && !you ? Messages.MultiAttributeConflict_Add
+			: Messages.MultiAttributeConflict_Remove) + " "; //$NON-NLS-1$
 	}
 }
