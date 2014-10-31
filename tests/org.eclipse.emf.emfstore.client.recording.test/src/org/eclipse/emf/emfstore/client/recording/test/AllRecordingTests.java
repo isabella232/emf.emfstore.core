@@ -33,6 +33,7 @@ import org.junit.runners.Suite;
 	SingleReferenceOperationTest.class,
 	SimpleOperationObserverTest.class,
 	OperationRecorderTest.class,
+	OperationManagerTest.class,
 	AllocateIdsPolicyTest.class,
 	DuplicateOperationsTest.class
 })

@@ -288,8 +288,8 @@ public class CreateDeleteOperationTest extends ESTest {
 	 * @throws UnsupportedNotificationException on test fail
 	 * @throws IOException
 	 */
-	@Test
 	// BEGIN COMPLEX CODE
+	@Test
 	public void complexDeleteElementTest() throws UnsupportedOperationException, UnsupportedNotificationException,
 		IOException {
 
@@ -517,6 +517,8 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(useCaseId, referencedModelElements3.get(0));
 	}
 
+	// END COMPLEX CODE
+
 	/**
 	 * check complex element deletion tracking.
 	 * 
@@ -524,6 +526,7 @@ public class CreateDeleteOperationTest extends ESTest {
 	 * @throws UnsupportedNotificationException on test fail
 	 * @throws IOException
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void complexDeleteElementReverseTest() throws UnsupportedOperationException,
 		UnsupportedNotificationException, IOException {
@@ -729,6 +732,8 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertTrue(loadedProject.contains(newTestElementId));
 		assertTrue(loadedProject.contains(otherTestElementId));
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * check complex element deletion tracking.
@@ -1171,6 +1176,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(testElement2, getProject().getModelElement(operation2.getReferencedModelElements().get(0)));
 	}
 
+	// BEGIN COMPLEX CODE
 	@Test
 	public void testCreateWithReferencesAndChildrenComplex() {
 
@@ -1292,6 +1298,9 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertTrue(multiRefOp.isAdd());
 	}
 
+	// END COMPLEX CODE
+
+	// BEGIN COMPLEX CODE
 	@Test
 	public void testClearContainmentTree() {
 		final TestElement parentTestElement = Create.testElement(PARENT_TEST_ELEMENT);
@@ -1448,6 +1457,8 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(elementId, getProject().getModelElementId(copiedTestElement));
 		assertEquals(subElementId, getProject().getModelElementId(copiedSubTestElement));
 	}
+
+	// END COMPLEX CODE
 
 	@Test
 	public void testCreateReverse() {
@@ -1788,11 +1799,12 @@ public class CreateDeleteOperationTest extends ESTest {
 
 				getProject().addModelElement(testElement2);
 
-				assertTrue(getProject().contains(testElement2));
-				assertEquals(testElement1, testElement2.getReference());
 				return null;
 			}
 		});
+
+		assertTrue(getProject().contains(testElement2));
+		assertEquals(testElement1, testElement2.getReference());
 	}
 
 	@Test
@@ -1808,10 +1820,6 @@ public class CreateDeleteOperationTest extends ESTest {
 				getProject().addModelElement(useCase1);
 				getProject().addModelElement(useCase2);
 				getProject().addModelElement(actor);
-
-				assertTrue(getProject().contains(useCase1));
-				assertTrue(getProject().contains(useCase2));
-				assertTrue(getProject().contains(actor));
 
 				// test with attribute as setting
 				useCase1.setNonContained_NTo1(actor);
@@ -1832,15 +1840,15 @@ public class CreateDeleteOperationTest extends ESTest {
 				useCase2.setNonContained_NTo1(actor);
 				getProject().addModelElement(actor);
 
-				assertEquals(actor, useCase1.getNonContained_NTo1());
-				assertEquals(actor, useCase2.getNonContained_NTo1());
-				assertTrue(actor.getNonContained_1ToN().contains(useCase1));
-				assertTrue(actor.getNonContained_1ToN().contains(useCase2));
-				assertTrue(getProject().contains(actor));
-
 				return null;
 			}
 		});
+
+		assertEquals(actor, useCase1.getNonContained_NTo1());
+		assertEquals(actor, useCase2.getNonContained_NTo1());
+		assertTrue(actor.getNonContained_1ToN().contains(useCase1));
+		assertTrue(actor.getNonContained_1ToN().contains(useCase2));
+		assertTrue(getProject().contains(actor));
 	}
 
 	@Test
