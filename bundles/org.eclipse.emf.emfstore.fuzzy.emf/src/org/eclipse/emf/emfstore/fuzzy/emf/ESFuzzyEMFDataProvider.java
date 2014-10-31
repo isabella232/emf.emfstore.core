@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**

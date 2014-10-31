@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -10,12 +10,14 @@
  * Stephan Koehler, Eugen Neufeld, Philip Achenbach, DmitryLitvinov - initial API and implementation
  * Edgar Mueller - API layer
  ******************************************************************************/
-package org.eclipse.emf.emfstore.modelmutator;
+package org.eclipse.emf.emfstore.fuzzy.emf.junit;
 
 import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**
  * Implementation of AbstractModelMutator with empty preMutate and postMutate methods.

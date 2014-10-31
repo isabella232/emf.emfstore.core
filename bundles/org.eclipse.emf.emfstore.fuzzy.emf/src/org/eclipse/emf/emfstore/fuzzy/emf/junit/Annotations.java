@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -9,7 +9,7 @@
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.fuzzy;
+package org.eclipse.emf.emfstore.fuzzy.emf.junit;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,6 +20,7 @@ import java.lang.annotation.Target;
  * Annotations used in tests using the {@link ESFuzzyRunner}.
  * 
  * @author Julian Sommerfeldt
+ * @since 2.0
  * 
  */
 public final class Annotations {
@@ -58,6 +59,17 @@ public final class Annotations {
 
 		/***/
 		Class<?> value();
+	}
+
+	/**
+	 * An annotation to set the model mutator that is used by the data provider.
+	 * 
+	 * @author emueller
+	 * 
+	 */
+	@Retention(RetentionPolicy.RUNTIME)
+	@Target({ ElementType.FIELD })
+	public @interface Mutator {
 	}
 
 	/**

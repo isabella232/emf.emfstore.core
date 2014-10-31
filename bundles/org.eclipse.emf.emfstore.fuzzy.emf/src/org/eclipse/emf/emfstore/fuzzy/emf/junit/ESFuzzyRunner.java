@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -9,7 +9,7 @@
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.fuzzy;
+package org.eclipse.emf.emfstore.fuzzy.emf.junit;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -19,11 +19,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
-import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
-import org.eclipse.emf.emfstore.fuzzy.Annotations.Options;
-import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
-import org.eclipse.emf.emfstore.internal.fuzzy.FuzzyTestClassRunner;
+import org.eclipse.emf.emfstore.fuzzy.emf.internal.junit.FrameworkFields;
+import org.eclipse.emf.emfstore.fuzzy.emf.internal.junit.FuzzyTestClassRunner;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Data;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Mutator;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Options;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Util;
 import org.junit.runner.Runner;
 import org.junit.runner.notification.RunListener;
 import org.junit.runner.notification.RunNotifier;
@@ -79,13 +81,17 @@ public class ESFuzzyRunner extends Suite {
 		dataProvider = getDataProvider();
 		dataProvider.setTestClass(getTestClass());
 		dataProvider.init();
-		final FrameworkField dataField = getDataField();
-		final FrameworkField utilField = getUtilField();
-		final FrameworkField optionsField = getOptionsField();
-		final org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil util = dataProvider.getUtil();
+		final ESFuzzyUtil util = dataProvider.getUtil();
+
+		final FrameworkFields fields = FrameworkFields.create()
+			.setDataField(getDataField())
+			.setUtilField(getUtilField())
+			.setMutatorField(getMutatorField())
+			.setOptionsField(getOptionsField());
+
 		for (int i = 0; i < dataProvider.size(); i++) {
 			final FuzzyTestClassRunner runner = new FuzzyTestClassRunner(clazz,
-				dataProvider, dataField, utilField, optionsField, util,
+				dataProvider, fields, util,
 				i + 1);
 			if (runner.getChildren().size() > 0) {
 				runners.add(runner);
@@ -117,6 +123,10 @@ public class ESFuzzyRunner extends Suite {
 	 */
 	private FrameworkField getUtilField() {
 		return getSingleStaticFrameworkField(Util.class);
+	}
+
+	private FrameworkField getMutatorField() {
+		return getSingleStaticFrameworkField(Mutator.class);
 	}
 
 	private FrameworkField getOptionsField() {

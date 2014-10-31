@@ -25,9 +25,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
-import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**
@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
-	 * The {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider ESFuzzyDataProvider} that generates data.
+	 * The {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider ESFuzzyDataProvider} that generates data.
 	 */
 	private final ESFuzzyEMFDataProvider dataProvider;
 

@@ -34,9 +34,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.HudsonTestRunProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyTest;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigFactory;
@@ -46,12 +46,14 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
+import org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
 /**
- * This implementation of a {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider ESFuzzyDataProvider} provides
+ * This implementation of a {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider ESFuzzyDataProvider}
+ * provides
  * models by reading them from a {@code models} folder.
  * <p>
  * The run of a test is based on a {@link TestConfig}, defining model etc.
@@ -210,7 +212,7 @@ public class ESXMIResourceDataProvider implements ESFuzzyEMFDataProvider {
 	}
 
 	/**
-	 * See {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider ESFuzzyDataProvider}.
+	 * See {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider ESFuzzyDataProvider}.
 	 * 
 	 * @param count
 	 *            Which run is it?
@@ -414,5 +416,14 @@ public class ESXMIResourceDataProvider implements ESFuzzyEMFDataProvider {
 	 */
 	public ESModelMutatorConfiguration getModelMutatorConfiguration() {
 		return modelMutatorConfig;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider#setMutator(org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator)
+	 */
+	public void setMutator(ESAbstractModelMutator modelMutator) {
+
 	}
 }

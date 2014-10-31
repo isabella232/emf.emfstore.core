@@ -224,7 +224,8 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 		if (count == seedCount) {
 			return;
 		} else if (count < seedCount) {
-			random = new Random(config.getSeed());
+			// TODO: review this
+			random = new Random(nextSeed); // config.getSeed());
 			seedCount = 0;
 		}
 

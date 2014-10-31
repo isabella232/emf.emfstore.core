@@ -10,7 +10,7 @@
 <booleanAttribute key="clearConfig" value="true"/>
 <booleanAttribute key="clearws" value="true"/>
 <booleanAttribute key="clearwslog" value="false"/>
-<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/AllFuzzyTests"/>
 <booleanAttribute key="default" value="false"/>
 <stringAttribute key="deselected_workspace_plugins" value="com.eclipsesource.makeithappen.model,com.eclipsesource.makeithappen.model.edit,org.eclipse.emf.emfstore.branding,org.eclipse.emf.emfstore.client.example.test,org.eclipse.emf.emfstore.client.test.alltests,org.eclipse.emf.emfstore.client.test.ui,org.eclipse.emf.emfstore.client.transaction,org.eclipse.emf.emfstore.client.ui,org.eclipse.emf.emfstore.client.ui.historybrowsercomparator,org.eclipse.emf.emfstore.client.ws.test,org.eclipse.emf.emfstore.ecore,org.eclipse.emf.emfstore.example.helloworld,org.eclipse.emf.emfstore.example.installer,org.eclipse.emf.emfstore.example.merging,org.eclipse.emf.emfstore.example.sessionprovider,org.eclipse.emf.emfstore.examplemodel.edit,org.eclipse.emf.emfstore.fuzzy.emf.edit,org.eclipse.emf.emfstore.fuzzy.emf.editor,org.eclipse.emf.emfstore.fuzzy.emf.example,org.eclipse.emf.emfstore.mongodb,org.eclipse.emf.emfstore.mongodb.client,org.eclipse.emf.emfstore.mongodb.server"/>
 <booleanAttribute key="includeOptional" value="false"/>
@@ -40,6 +40,6 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfig" value="true"/>
-<booleanAttribute key="useDefaultConfigArea" value="false"/>
+<booleanAttribute key="useDefaultConfigArea" value="true"/>
 <booleanAttribute key="useProduct" value="false"/>
 </launchConfiguration>

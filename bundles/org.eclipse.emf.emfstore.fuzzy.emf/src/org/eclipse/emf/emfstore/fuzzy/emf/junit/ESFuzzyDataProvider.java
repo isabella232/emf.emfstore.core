@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,18 +7,20 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.fuzzy;
+package org.eclipse.emf.emfstore.fuzzy.emf.junit;
 
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
 /**
- * A Data Provider for the JUnit Runner: {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner ESFuzzyRunner}.<br>
+ * A Data Provider for the JUnit Runner: {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner ESFuzzyRunner}.<br>
  * <br>
  * An implementation of it must have a zero-parameter constructor.
  * 
@@ -58,7 +60,7 @@ public interface ESFuzzyDataProvider<T> {
 
 	/**
 	 * @param testClass
-	 *            The {@link TestClass} of the calling {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner
+	 *            The {@link TestClass} of the calling {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner
 	 *            ESFuzzyRunner}.
 	 */
 	void setTestClass(TestClass testClass);
@@ -71,7 +73,8 @@ public interface ESFuzzyDataProvider<T> {
 
 	/**
 	 * @return A list of {@link ESFuzzyTest}s to specify, which tests the
-	 *         {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner ESFuzzyRunner} should run. <code>null</code> means
+	 *         {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner ESFuzzyRunner} should run.
+	 *         <code>null</code> means
 	 *         run all tests.
 	 */
 	List<ESFuzzyTest> getTestsToRun();
@@ -82,8 +85,25 @@ public interface ESFuzzyDataProvider<T> {
 	ESFuzzyUtil getUtil();
 
 	/**
+	 * Sets the options for the {@link ESFuzzyDataProvider}. May be {@code null}.
+	 * 
 	 * @param options
 	 *            The options for the {@link ESFuzzyDataProvider}. Can be <code>null</code>.
 	 */
 	void setOptions(Map<String, Object> options);
+
+	/**
+	 * Sets the mutator to be used in order to generate and mutate data.
+	 * 
+	 * @param modelMutator
+	 *            the {@link ESAbstractModelMutator} to be used
+	 */
+	void setMutator(ESAbstractModelMutator modelMutator);
+
+	/**
+	 * Returns the {@link ESModelMutatorConfiguration} used by the data provider.
+	 * 
+	 * @return the {@link ESModelMutatorConfiguration} used by the data provider
+	 */
+	ESModelMutatorConfiguration getModelMutatorConfiguration();
 }

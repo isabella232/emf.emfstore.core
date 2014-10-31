@@ -23,13 +23,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
-import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
-import org.eclipse.emf.emfstore.fuzzy.Annotations.Util;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESPredicates;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Data;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Mutator;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Util;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.modelmutator.ESCrossResourceReferencesModelMutator;
@@ -44,7 +45,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(ESFuzzyRunner.class)
-@DataProvider(ESEMFDataProvider.class)
+@DataProvider(value = ESEMFDataProvider.class)
 public class CrossResourceReferencesMutatorTest {
 
 	@Data
@@ -53,11 +54,11 @@ public class CrossResourceReferencesMutatorTest {
 	@Util
 	private ESMutateUtil util;
 
+	@Mutator
+	private ESCrossResourceReferencesModelMutator mutator;
+
 	@Test
 	public void createsCrossResourceReferences() {
-
-		final ESCrossResourceReferencesModelMutator mutator =
-			new ESCrossResourceReferencesModelMutator(getConfig(project));
 
 		mutator.mutateUntil(ESPredicates.hasExternalReference());
 		final List<Resource> resources = mutator.getResourceSet().getResources();

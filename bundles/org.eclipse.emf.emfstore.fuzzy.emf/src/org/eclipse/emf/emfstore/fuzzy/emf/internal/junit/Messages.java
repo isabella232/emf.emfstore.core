@@ -9,7 +9,7 @@
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.fuzzy;
+package org.eclipse.emf.emfstore.fuzzy.emf.internal.junit;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  * @generated
  */
 public class Messages {
-	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.fuzzy.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.fuzzy.emf.internal.junit.messages"; //$NON-NLS-1$
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 

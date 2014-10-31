@@ -11,9 +11,9 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
-import org.eclipse.emf.emfstore.fuzzy.Annotations.DataProvider;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
