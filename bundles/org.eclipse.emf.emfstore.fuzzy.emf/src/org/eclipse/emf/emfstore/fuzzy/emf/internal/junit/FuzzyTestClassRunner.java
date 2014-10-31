@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,9 +7,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * JulianSommerfeldt
+ * Julian Sommerfeldt - initial API and imlementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.fuzzy;
+package org.eclipse.emf.emfstore.fuzzy.emf.internal.junit;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -18,11 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.emfstore.fuzzy.Annotations.Data;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyRunner;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Data;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyTest;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkField;
@@ -64,6 +67,8 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 
 	private final FrameworkField optionsField;
 
+	private final FrameworkField mutatorField;
+
 	/**
 	 * Constructor.
 	 * 
@@ -72,12 +77,8 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 	 * @param dataProvider
 	 *            The {@link ESFuzzyDataProvider} providing the data to put into
 	 *            the dataField
-	 * @param dataField
-	 *            The datafield in the testclass
-	 * @param utilField
-	 *            the utilfield in the testclass
-	 * @param optionsField
-	 *            the options field in the testclass
+	 * @param frameworkFields
+	 *            the {@link FrameworkFields} instance holding different configuration options
 	 * @param util
 	 *            The {@link ESFuzzyUtil} class
 	 * @param counter
@@ -86,14 +87,14 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 	 *             If there was a problem during the initialization of the test
 	 */
 	public FuzzyTestClassRunner(Class<?> type, ESFuzzyDataProvider<?> dataProvider,
-		FrameworkField dataField, FrameworkField utilField,
-		FrameworkField optionsField, ESFuzzyUtil util, int counter)
+		FrameworkFields frameworkFields, ESFuzzyUtil util, int counter)
 		throws InitializationError {
 		super(type);
+		mutatorField = frameworkFields.getMutatorField();
+		dataField = frameworkFields.getDataField();
+		utilField = frameworkFields.getUtilField();
+		optionsField = frameworkFields.getOptionsField();
 		this.counter = counter;
-		this.dataField = dataField;
-		this.utilField = utilField;
-		this.optionsField = optionsField;
 		this.util = util;
 		this.dataProvider = dataProvider;
 	}
@@ -121,6 +122,22 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 						Messages.getString("FuzzyTestClassRunner.OptionsFieldWrongType")); //$NON-NLS-1$
 				}
 			}
+
+			ESAbstractModelMutator modelMutator;
+			final ESModelMutatorConfiguration config = dataProvider.getModelMutatorConfiguration();
+
+			if (mutatorField != null) {
+				modelMutator = (ESAbstractModelMutator) mutatorField.getType().newInstance();
+				modelMutator.setConfig(config);
+				setValueToField(mutatorField.getField(),
+					testInstance,
+					modelMutator,
+					Messages.getString("FuzzyTestClassRunner.MutatorFieldSetFailed")); //$NON-NLS-1$
+			} else {
+				modelMutator = new ESDefaultModelMutator(config);
+			}
+
+			dataProvider.setMutator(modelMutator);
 
 			// get the new data from dataprovider
 			final Object data = dataProvider.get(counter);
@@ -161,6 +178,17 @@ public class FuzzyTestClassRunner extends BlockJUnit4ClassRunner {
 		}
 	}
 
+	/**
+	 * 
+	 * @param field
+	 *            field to be set
+	 * @param instance
+	 *            instance holding the field
+	 * @param value
+	 *            the value to be set
+	 * @param errorMsg
+	 * @throws IllegalAccessException
+	 */
 	private void setValueToField(Field field, Object instance, Object value,
 		String errorMsg) throws IllegalAccessException {
 		try {

@@ -46,6 +46,13 @@ public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutato
 	}
 
 	/**
+	 * Default constructor.
+	 */
+	public ESCrossResourceReferencesModelMutator() {
+
+	}
+
+	/**
 	 * Constructor.
 	 * <p>
 	 * Uses the {@link ESRoundRobinResourceSelectionStrategy} to select resources.

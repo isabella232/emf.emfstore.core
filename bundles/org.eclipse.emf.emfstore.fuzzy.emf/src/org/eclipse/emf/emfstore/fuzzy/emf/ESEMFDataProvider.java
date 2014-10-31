@@ -32,9 +32,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyTest;
-import org.eclipse.emf.emfstore.fuzzy.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.HudsonTestRunProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyTest;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.EMFRunListener;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.FuzzyUtil;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
@@ -45,15 +45,16 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
-import org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
 /**
- * This implementation of a {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider ESFuzzyDataProvider} provides
+ * This implementation of a {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider ESFuzzyDataProvider}
+ * provides
  * generated models
- * using the functionality of {@link ESDefaultModelMutator}. <br>
+ * using the functionality of an {@link ESAbstractModelMutator}. <br>
  * <br>
  * The run of a test is based on a {@link TestConfig}, defining model etc. <br>
  * <br>
@@ -93,6 +94,8 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 
 	private Resource diffResource;
 
+	private ESAbstractModelMutator modelMutator;
+
 	/**
 	 * Prefix of the properties concerning the {@link ESEMFDataProvider}.
 	 */
@@ -110,7 +113,7 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 	public static final String MUTATOR_EXC_LOG = "mutatorExcLog"; //$NON-NLS-1$
 
 	/**
-	 * Options constant for the {@link EditingDomain} for the {@link ESDefaultModelMutator}.
+	 * Options constant for the {@link EditingDomain} for the {@link ESAbstractModelMutator}.
 	 */
 	public static final String MUTATOR_EDITINGDOMAIN = "mutatorEditingDomain"; //$NON-NLS-1$
 
@@ -193,13 +196,14 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 	}
 
 	/**
-	 * See {@link org.eclipse.emf.emfstore.fuzzy.ESFuzzyDataProvider ESFuzzyDataProvider}.
+	 * See {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider ESFuzzyDataProvider}.
 	 * 
 	 * @param count
 	 *            Which run is it?
 	 * @return The new {@link EObject}.
 	 */
 	public EObject get(int count) {
+
 		seedCount++;
 
 		// adjust the seed
@@ -215,7 +219,7 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 		modelMutatorConfig.reset();
 		modelMutatorConfig.setRootEObject(root);
 		modelMutatorConfig.setSeed(nextSeed);
-		ESDefaultModelMutator.generateModel(modelMutatorConfig);
+		modelMutator.generate();
 
 		return root;
 	}
@@ -225,7 +229,7 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 			return;
 		} else if (count < seedCount) {
 			// TODO: review this
-			random = new Random(nextSeed); // config.getSeed());
+			random = new Random(config.getSeed());
 			seedCount = 0;
 		}
 
@@ -403,5 +407,14 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 	 */
 	public ESModelMutatorConfiguration getModelMutatorConfiguration() {
 		return modelMutatorConfig;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider#setMutator(org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator)
+	 */
+	public void setMutator(ESAbstractModelMutator modelMutator) {
+		this.modelMutator = modelMutator;
 	}
 }

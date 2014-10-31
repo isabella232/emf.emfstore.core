@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.modelmutator.mutation.ReferenceChangeMu
 import com.google.common.base.Predicate;
 
 /**
- * Basic implementation of the {@link org.eclipse.emf.emfstore.modelmutator.ESDefaultModelMutator}.
+ * Abstract implementation of an model muator.
  * 
  * @author Julian Sommerfeldt
  * @since 2.0
@@ -49,7 +49,7 @@ import com.google.common.base.Predicate;
  */
 public abstract class ESAbstractModelMutator {
 
-	private final ESModelMutatorConfiguration config;
+	private ESModelMutatorConfiguration modelMutatorConfig;
 
 	private final Map<EReference, List<EClass>> referencesToClasses = new LinkedHashMap<EReference, List<EClass>>();
 
@@ -58,11 +58,11 @@ public abstract class ESAbstractModelMutator {
 
 	private final Map<EClass, List<EObject>> allObjects = new LinkedHashMap<EClass, List<EObject>>();
 
-	private final ESModelMutatorUtil util;
+	private ESModelMutatorUtil util;
 
 	private int currentObjectCount;
 
-	private final int targetObjectCount;
+	private int targetObjectCount;
 
 	private int currentWidth = 1;
 
@@ -71,10 +71,24 @@ public abstract class ESAbstractModelMutator {
 	private List<Mutation> defaultMutationPrototypes;
 
 	/**
-	 * @param config The {@link ESModelMutatorConfiguration} to use for mutation.
+	 * Default constructor.
+	 * 
+	 * Leaves the config uninitialized.
+	 */
+	public ESAbstractModelMutator() {
+		modelMutatorConfig = null;
+		util = null;
+		targetObjectCount = -1;
+	}
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param config
+	 *            The {@link ESModelMutatorConfiguration} to use for mutation.
 	 */
 	public ESAbstractModelMutator(ESModelMutatorConfiguration config) {
-		this.config = config;
+		modelMutatorConfig = config;
 		util = new ESModelMutatorUtil(config);
 		targetObjectCount = config.getMinObjectsCount();
 	}
@@ -114,7 +128,7 @@ public abstract class ESAbstractModelMutator {
 	 *            a set of features to be ignored while mutating
 	 */
 	public void mutate(Set<EStructuralFeature> ignoredFeatures) {
-		if (config.getMutationCount() == -1) {
+		if (modelMutatorConfig.getMutationCount() == -1) {
 			performFullMutation(ignoredFeatures);
 		} else {
 			performConfiguredNumberOfMutations();
@@ -156,15 +170,15 @@ public abstract class ESAbstractModelMutator {
 	 * @return the root {@link EObject} of the {@link ESModelMutatorConfiguration}
 	 */
 	protected EObject getRootEObject() {
-		return config.getRootEObject();
+		return modelMutatorConfig.getRootEObject();
 	}
 
 	private void performConfiguredNumberOfMutations() {
 		final List<Mutation> mutations = getDefaultMutationPrototypes();
 
 		int i = 0;
-		while (i < config.getMutationCount()) {
-			final int rndIdx = config.getRandom().nextInt(mutations.size());
+		while (i < modelMutatorConfig.getMutationCount()) {
+			final int rndIdx = modelMutatorConfig.getRandom().nextInt(mutations.size());
 			final Mutation nextMutation = mutations.get(rndIdx);
 			final Mutation mutationToRun = nextMutation.clone();
 			try {
@@ -202,7 +216,7 @@ public abstract class ESAbstractModelMutator {
 		final EObject rootEObject = getRootEObject();
 
 		// if the root depth should not be generated
-		if (config.isDoNotGenerateRoot()) {
+		if (modelMutatorConfig.isDoNotGenerateRoot()) {
 			// create children for each of the children of the root
 			for (final EObject obj : rootEObject.eContents()) {
 				createChildren(obj, 1);
@@ -246,7 +260,7 @@ public abstract class ESAbstractModelMutator {
 	 */
 	public List<EObject> createChildren(EObject root) {
 		final List<EObject> children = new ArrayList<EObject>();
-		final Collection<EStructuralFeature> ignore = config.geteStructuralFeaturesToIgnore();
+		final Collection<EStructuralFeature> ignore = modelMutatorConfig.geteStructuralFeaturesToIgnore();
 
 		// iterate over all references
 		for (final EReference reference : root.eClass().getEAllContainments()) {
@@ -256,7 +270,7 @@ public abstract class ESAbstractModelMutator {
 				continue;
 			}
 
-			// add remaining children (specified through config)
+			// add remaining children (specified through modelMutatorConfig)
 			final int init = currentWidth / 2 - root.eContents().size();
 
 			// add children to fulfill width constraint
@@ -294,7 +308,7 @@ public abstract class ESAbstractModelMutator {
 	}
 
 	private boolean randomBoolean() {
-		return config.getRandom().nextBoolean();
+		return modelMutatorConfig.getRandom().nextBoolean();
 	}
 
 	/**
@@ -304,8 +318,8 @@ public abstract class ESAbstractModelMutator {
 	 */
 	public void deleteEObjects(EObject root) {
 		final List<EObject> toDelete = new ArrayList<EObject>();
-		final Random random = config.getRandom();
-		final int maxDeleteCount = config.getMaxDeleteCount();
+		final Random random = modelMutatorConfig.getRandom();
+		final int maxDeleteCount = modelMutatorConfig.getMaxDeleteCount();
 
 		// randomly select objects to delete
 		int deleted = 0;
@@ -323,7 +337,7 @@ public abstract class ESAbstractModelMutator {
 		final List<Integer> deleteModes = new ArrayList<Integer>();
 		deleteModes.add(ESModelMutatorUtil.DELETE_DELETE_COMMAND);
 		deleteModes.add(ESModelMutatorUtil.DELETE_CUT_CONTAINMENT);
-		if (config.isUseEcoreUtilDelete()) {
+		if (modelMutatorConfig.isUseEcoreUtilDelete()) {
 			deleteModes.add(ESModelMutatorUtil.DELETE_ECORE);
 		}
 
@@ -360,7 +374,7 @@ public abstract class ESAbstractModelMutator {
 			classes = util.getAllEContainments(reference);
 
 			// check if they should be ignored
-			for (final EClass eClass : config.geteClassesToIgnore()) {
+			for (final EClass eClass : modelMutatorConfig.geteClassesToIgnore()) {
 				classes.remove(eClass);
 				classes.removeAll(util.getAllSubEClasses(eClass));
 			}
@@ -382,7 +396,7 @@ public abstract class ESAbstractModelMutator {
 		}
 
 		// randomly select one class
-		final int index = config.getRandom().nextInt(classes.size());
+		final int index = modelMutatorConfig.getRandom().nextInt(classes.size());
 		return classes.get(index);
 	}
 
@@ -395,7 +409,7 @@ public abstract class ESAbstractModelMutator {
 	 * @return The newly created and modified {@link EObject}.
 	 */
 	protected EObject getEObject(EClass eClass, Set<EStructuralFeature> ignoredFeatures) {
-		final Random random = config.getRandom();
+		final Random random = modelMutatorConfig.getRandom();
 		EObject newObject = null;
 
 		// try to get an already existing object if there is one
@@ -464,9 +478,22 @@ public abstract class ESAbstractModelMutator {
 	}
 
 	/**
-	 * @return the config
+	 * @return the modelMutatorConfig
 	 */
 	public ESModelMutatorConfiguration getConfig() {
-		return config;
+		return modelMutatorConfig;
 	}
+
+	/**
+	 * Sets the config to be used by the mutator.
+	 * 
+	 * @param config
+	 *            the config to be used by the mutator
+	 */
+	public void setConfig(ESModelMutatorConfiguration config) {
+		modelMutatorConfig = config;
+		util = new ESModelMutatorUtil(config);
+		targetObjectCount = config.getMinObjectsCount();
+	}
+
 }
