@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,18 +7,19 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
+ * Edgar Mueller - ObserverBus refactoring
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.changeTracking.commands;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver;
-import org.eclipse.emf.emfstore.common.ESSafeRunnable;
-import org.eclipse.emf.emfstore.common.ESSafeRunner;
+import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall;
+import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall.Result;
 
 /**
  * Notifier for Commands. Notifies Observers about command start, completion and failure.
@@ -27,37 +28,19 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
  */
 public class EMFStoreCommandNotifier {
 
-	private final List<ESCommandObserver> commandObservers;
-
-	/**
-	 * Default constructor.
-	 */
-	public EMFStoreCommandNotifier() {
-		super();
-		commandObservers = new ArrayList<ESCommandObserver>();
-	}
-
 	/**
 	 * Notify all registered listeners about command start.
 	 * 
-	 * @param command the command
+	 * @param startedCommand
+	 *            the command that has been started
 	 */
-	public void notifiyListenersAboutStart(final Command command) {
-		for (final ESCommandObserver commandObservers : this.commandObservers) {
-			final ESSafeRunnable code = new ESSafeRunnable() {
+	public void notifiyListenersAboutStart(final Command startedCommand) {
+		final ESCommandObserver commandObserver = ESWorkspaceProviderImpl
+			.getObserverBus()
+			.notify(ESCommandObserver.class);
+		commandObserver.commandStarted(startedCommand);
 
-				public void run() {
-					commandObservers.commandStarted(command);
-				}
-
-				public void handleException(Throwable exception) {
-					ModelUtil.logWarning(Messages.EMFStoreCommandNotifier_CommandObserverException, exception);
-				}
-			};
-
-			ESSafeRunner.run(code);
-
-		}
+		logExceptions(commandObserver);
 	}
 
 	/**
@@ -67,60 +50,64 @@ public class EMFStoreCommandNotifier {
 	 * @param exception the exception that triggered the failure
 	 */
 	public void notifiyListenersAboutCommandFailed(final Command command, final Exception exception) {
-		for (final ESCommandObserver commandObservers : this.commandObservers) {
-			final ESSafeRunnable code = new ESSafeRunnable() {
 
-				public void run() {
-					commandObservers.commandFailed(command, exception);
-				}
+		final ESCommandObserver commandObserver = ESWorkspaceProviderImpl
+			.getObserverBus()
+			.notify(ESCommandObserver.class);
+		commandObserver.commandFailed(command, exception);
 
-				public void handleException(Throwable exception) {
-					ModelUtil.logWarning(Messages.EMFStoreCommandNotifier_CommandObserverException, exception);
-				}
-			};
-
-			ESSafeRunner.run(code);
-		}
+		logExceptions(commandObserver);
 	}
 
 	/**
 	 * Notify all registered listeners about command completion.
 	 * 
-	 * @param command the command
+	 * @param completedCommand
+	 *            the completed command
 	 */
-	public void notifiyListenersAboutCommandCompleted(final Command command) {
-		for (final ESCommandObserver commandObservers : this.commandObservers) {
-			final ESSafeRunnable code = new ESSafeRunnable() {
+	public void notifiyListenersAboutCommandCompleted(final Command completedCommand) {
+		final ESCommandObserver commandObserver = ESWorkspaceProviderImpl
+			.getObserverBus()
+			.notify(ESCommandObserver.class);
+		commandObserver.commandCompleted(completedCommand);
 
-				public void run() {
-					commandObservers.commandCompleted(command);
-				}
+		logExceptions(commandObserver);
+	}
 
-				public void handleException(Throwable exception) {
-					ModelUtil.logWarning(Messages.EMFStoreCommandNotifier_CommandObserverException, exception);
-				}
-			};
+	private void logExceptions(final ESCommandObserver commandObserver) {
+		final ObserverCall observerCall = ObserverCall.class.cast(commandObserver);
 
-			ESSafeRunner.run(code);
+		final List<Result> results = observerCall.getObserverCallResults();
+
+		for (final Result result : results) {
+			if (result.getException() != null) {
+				ModelUtil.logWarning(Messages.EMFStoreCommandNotifier_CommandObserverException, result.getException());
+			}
 		}
 	}
 
 	/**
 	 * Add a command stack observer.
 	 * 
-	 * @param observer the observer
+	 * @param observer
+	 *            the observer to be added
 	 */
 	public void addCommandStackObserver(ESCommandObserver observer) {
-		commandObservers.add(observer);
+		ESWorkspaceProviderImpl
+			.getObserverBus()
+			.register(observer);
 	}
 
 	/**
-	 * Remove COmmand stack observer.
+	 * Remove a command stack observer.
 	 * 
-	 * @param observer the observer
+	 * @param observer
+	 *            the observer to be removed
 	 */
 	public void removeCommandStackObserver(ESCommandObserver observer) {
-		commandObservers.remove(observer);
+		ESWorkspaceProviderImpl
+			.getObserverBus()
+			.unregister(observer);
 	}
 
 }

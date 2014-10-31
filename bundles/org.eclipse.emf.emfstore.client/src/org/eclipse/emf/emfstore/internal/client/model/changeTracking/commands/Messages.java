@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.changeTracking.commands;
 
@@ -17,7 +17,7 @@ import org.eclipse.osgi.util.NLS;
  * Changetracking command related messages.
  * 
  * @author emueller
- * 
+ * @generated
  */
 public final class Messages extends NLS {
 

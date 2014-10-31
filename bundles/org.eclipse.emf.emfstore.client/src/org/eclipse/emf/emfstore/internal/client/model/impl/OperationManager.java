@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -11,7 +11,6 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -41,7 +40,6 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	IdEObjectCollectionChangeObserver {
 
 	private final OperationRecorder operationRecorder;
-	private final List<OperationObserver> operationListeners;
 	private final ProjectSpace projectSpace;
 
 	/**
@@ -54,7 +52,6 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 		operationRecorder = new OperationRecorder(projectSpace);
 		ESWorkspaceProviderImpl.getObserverBus().register(operationRecorder);
 		operationRecorder.addOperationRecorderListener(this);
-		operationListeners = new ArrayList<OperationObserver>();
 		configureOperationRecorder();
 		this.projectSpace = operationRecorder.getProjectSpace();
 	}
@@ -87,7 +84,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 *            the operation observer to be added
 	 */
 	public void addOperationObserver(OperationObserver operationObserver) {
-		operationListeners.add(operationObserver);
+		ESWorkspaceProviderImpl
+			.getObserverBus()
+			.register(operationObserver);
 	}
 
 	/**
@@ -97,8 +96,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 *            the operation observer to be removed
 	 */
 	public void removeOperationListener(OperationObserver operationObserver) {
-		operationListeners.remove(operationObserver);
-
+		ESWorkspaceProviderImpl
+			.getObserverBus()
+			.unregister(operationObserver);
 	}
 
 	/**
@@ -108,9 +108,10 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 *            the operation that has been undone
 	 */
 	public void notifyOperationUndone(AbstractOperation operation) {
-		for (final OperationObserver operationListener : operationListeners) {
-			operationListener.operationUndone(operation);
-		}
+		ESWorkspaceProviderImpl
+			.getObserverBus()
+			.notify(OperationObserver.class)
+			.operationUndone(operation);
 	}
 
 	/**
@@ -120,9 +121,10 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 *            the operation
 	 */
 	void notifyOperationExecuted(AbstractOperation operation) {
-		for (final OperationObserver operationListener : operationListeners) {
-			operationListener.operationExecuted(operation);
-		}
+		ESWorkspaceProviderImpl
+			.getObserverBus()
+			.notify(OperationObserver.class)
+			.operationExecuted(operation);
 	}
 
 	/**

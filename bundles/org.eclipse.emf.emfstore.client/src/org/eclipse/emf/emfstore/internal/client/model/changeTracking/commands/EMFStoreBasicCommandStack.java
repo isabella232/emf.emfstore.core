@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.changeTracking.commands;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.AbstractEMFStoreComma
  */
 public class EMFStoreBasicCommandStack extends BasicCommandStack implements ESCommandStack {
 
-	private EMFStoreCommandNotifier notifier;
+	private final EMFStoreCommandNotifier notifier;
 	private Command currentCommand;
 
 	/**
@@ -85,7 +85,7 @@ public class EMFStoreBasicCommandStack extends BasicCommandStack implements ESCo
 	private void rethrowComamndInCaseOfError(Command command) {
 		// handle EMFStore commands
 		if (command instanceof AbstractEMFStoreCommand) {
-			AbstractEMFStoreCommand emfStoreCmd = (AbstractEMFStoreCommand) command;
+			final AbstractEMFStoreCommand emfStoreCmd = (AbstractEMFStoreCommand) command;
 
 			// rethrow runtime exceptions if neccessary
 			if (!emfStoreCmd.shouldIgnoreExceptions() && emfStoreCmd.getRuntimeException() != null) {
