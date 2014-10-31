@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.options;
 
@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.DecisionUtil;
@@ -29,14 +30,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Attr
  */
 public class MergeTextOption extends ConflictOption {
 
-	private List<ConflictOption> list;
+	private final List<ConflictOption> list;
 	private String text;
 
 	/**
 	 * Default constructor.
 	 */
 	public MergeTextOption() {
-		super("Select Edited/Merged Value", OptionType.MergeText);
+		super(Messages.MergeTextOption_EditedOrMergedValue, OptionType.MergeText);
 		list = new ArrayList<ConflictOption>();
 		setDetailProvider(DecisionUtil.WIDGET_MULTILINE_EDITABLE);
 	}
@@ -55,9 +56,9 @@ public class MergeTextOption extends ConflictOption {
 	 */
 	@Override
 	public String getFullOptionLabel() {
-		String result = "";
-		for (ConflictOption option : list) {
-			result += " " + option.getFullOptionLabel();
+		String result = StringUtils.EMPTY;
+		for (final ConflictOption option : list) {
+			result += " " + option.getFullOptionLabel(); //$NON-NLS-1$
 		}
 		return result;
 	}
@@ -68,8 +69,8 @@ public class MergeTextOption extends ConflictOption {
 	 * @return text
 	 */
 	public String getMyText() {
-		ConflictOption option = DecisionUtil.getConflictOptionByType(list, OptionType.MyOperation);
-		return (option == null) ? "" : option.getFullOptionLabel();
+		final ConflictOption option = DecisionUtil.getConflictOptionByType(list, OptionType.MyOperation);
+		return option == null ? StringUtils.EMPTY : option.getFullOptionLabel();
 	}
 
 	/**
@@ -78,8 +79,8 @@ public class MergeTextOption extends ConflictOption {
 	 * @return text
 	 */
 	public String getTheirString() {
-		ConflictOption option = DecisionUtil.getConflictOptionByType(list, OptionType.TheirOperation);
-		return (option == null) ? "" : option.getFullOptionLabel();
+		final ConflictOption option = DecisionUtil.getConflictOptionByType(list, OptionType.TheirOperation);
+		return option == null ? StringUtils.EMPTY : option.getFullOptionLabel();
 	}
 
 	/**
@@ -88,15 +89,15 @@ public class MergeTextOption extends ConflictOption {
 	@Override
 	public Set<AbstractOperation> getOperations() {
 		if (text != null) {
-			for (ConflictOption option : list) {
+			for (final ConflictOption option : list) {
 				if (option.getType().equals(OptionType.MyOperation)) {
 					if (option.getOperations().size() == 0) {
 						continue;
 					}
-					AbstractOperation tmp = option.getOperations().iterator().next();
+					final AbstractOperation tmp = option.getOperations().iterator().next();
 					if (tmp instanceof AttributeOperation) {
 						option.getOperations().remove(tmp);
-						AttributeOperation mergedOp = (AttributeOperation) ModelUtil.clone(tmp);
+						final AttributeOperation mergedOp = (AttributeOperation) ModelUtil.clone(tmp);
 						mergedOp.setIdentifier(EcoreUtil.generateUUID());
 						mergedOp.setNewValue(text);
 						option.getOperations().add(mergedOp);

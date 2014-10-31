@@ -9,19 +9,20 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging;
+package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.options;
 
 import org.eclipse.osgi.util.NLS;
 
 /**
- * Merging related messages.
+ * Conflict options related messages.
  * 
  * @author emueller
  * @generated
  */
-public final class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.messages"; //$NON-NLS-1$
-	public static String DecisionManager_No_ConflictRule_Applicable;
+public class Messages extends NLS {
+
+	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.options.messages"; //$NON-NLS-1$
+	public static String MergeTextOption_EditedOrMergedValue;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

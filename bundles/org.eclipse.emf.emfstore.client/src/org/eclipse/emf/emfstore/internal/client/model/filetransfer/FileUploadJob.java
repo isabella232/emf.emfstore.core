@@ -86,6 +86,7 @@ public class FileUploadJob extends FileTransferJob {
 			monitor.worked(1);
 			monitor.subTask(
 				MessageFormat.format(Messages.FileUploadJob_SendingFile,
+					getFile().getName(),
 					transmitted,
 					getFileInformation().getFileSize()));
 			incrementChunkNumber();

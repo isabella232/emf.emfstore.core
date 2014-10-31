@@ -17,10 +17,14 @@ import org.eclipse.osgi.util.NLS;
  * Conflict options related messages.
  * 
  * @author emueller
- * 
+ * @generated
  */
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.messages"; //$NON-NLS-1$
+	public static String ConflictContext_Attribute_Label;
+	public static String ConflictContext_ModelElement_Label;
+	public static String ConflictContext_Opponent_Label;
+	public static String ConflictOption_Unset_Label;
 	public static String VisualConflict_Conflict_Not_Resolved;
 	public static String VisualConflict_No_TheirOps;
 	static {

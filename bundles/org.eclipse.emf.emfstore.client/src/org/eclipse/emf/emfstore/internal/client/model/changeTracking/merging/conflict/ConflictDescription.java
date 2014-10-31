@@ -7,13 +7,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.DecisionUtil;
@@ -28,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  */
 public class ConflictDescription {
 
-	private Map<String, Object> values;
+	private final Map<String, Object> values;
 	private String description;
 	private String imageName;
 	private DecisionManager decisionManager;
@@ -90,7 +91,7 @@ public class ConflictDescription {
 	 * @param name name of file
 	 */
 	public void setImage(String name) {
-		this.imageName = name;
+		imageName = name;
 
 	}
 
@@ -110,13 +111,13 @@ public class ConflictDescription {
 	 */
 	public String getResolvedDescription() {
 		String result = description;
-		for (String token : values.keySet()) {
-			String tmp = "[" + token + "]";
+		for (final String token : values.keySet()) {
+			final String tmp = "[" + token + "]"; //$NON-NLS-1$ //$NON-NLS-2$
 			Object value = values.get(token);
 			if (value instanceof EObject) {
 				value = DecisionUtil.getClassAndName((EObject) value);
 			}
-			result = result.replace(tmp, (value != null) ? value.toString() : "");
+			result = result.replace(tmp, value != null ? value.toString() : StringUtils.EMPTY);
 		}
 		return result;
 	}

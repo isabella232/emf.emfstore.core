@@ -7,10 +7,11 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
@@ -48,7 +49,7 @@ public class ConflictContext {
 	 */
 	public ConflictContext(EObject modelElement, String opponent) {
 		this.modelElement = modelElement;
-		this.attribute = null;
+		attribute = null;
 		this.opponent = opponent;
 	}
 
@@ -61,8 +62,9 @@ public class ConflictContext {
 	 */
 	public ConflictContext(DecisionManager manager, AbstractOperation myOperation, AbstractOperation theirOperation) {
 		this(manager.getModelElement(myOperation.getModelElementId()),
-			(myOperation instanceof FeatureOperation) ? ((FeatureOperation) myOperation).getFeatureName() : "", manager
-				.getAuthorForOperation(theirOperation));
+			myOperation instanceof FeatureOperation ?
+				((FeatureOperation) myOperation).getFeatureName()
+				: StringUtils.EMPTY, manager.getAuthorForOperation(theirOperation));
 	}
 
 	/**
@@ -98,7 +100,7 @@ public class ConflictContext {
 	 * @return label
 	 */
 	public String getModelElementTitleLabel() {
-		return "ModelElement";
+		return Messages.ConflictContext_ModelElement_Label;
 	}
 
 	/**
@@ -107,7 +109,7 @@ public class ConflictContext {
 	 * @return label
 	 */
 	public String getAttributeTitleLabel() {
-		return "Attribute";
+		return Messages.ConflictContext_Attribute_Label;
 	}
 
 	/**
@@ -116,6 +118,6 @@ public class ConflictContext {
 	 * @return label
 	 */
 	public String getOpponentTitleLabel() {
-		return "Opponent";
+		return Messages.ConflictContext_Opponent_Label;
 	}
 }
