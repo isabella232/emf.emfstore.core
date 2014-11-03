@@ -323,8 +323,8 @@ public class CommandTest extends ESTest {
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
-	@Test
 	// BEGIN COMPLEX CODE
+	@Test
 	public void complexDeleteCommandTest() throws UnsupportedOperationException, UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
@@ -485,8 +485,9 @@ public class CommandTest extends ESTest {
 		assertEquals(false, mrSuboperation7.isAdd());
 		assertEquals(1, mrSuboperation7.getReferencedModelElements().size());
 		assertEquals(useCaseId, mrSuboperation7.getReferencedModelElements().get(0));
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Tests the copy to clipboard and paste from clipboard command.
@@ -549,6 +550,7 @@ public class CommandTest extends ESTest {
 	/**
 	 * Tests the cut to clipboard and paste from clipboard command.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void cutAndPasteFromClipboardCommand_DirectCreation() {
 
@@ -605,8 +607,9 @@ public class CommandTest extends ESTest {
 		// redo the paste command
 		editingDomain.getCommandStack().redo();
 		assertEquals(1, leafSection.getContainedElements().size());
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Might be no problem in runtime??!! Please have a look at it.
@@ -656,6 +659,7 @@ public class CommandTest extends ESTest {
 	/**
 	 * Tests remove command.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void removeCommand_DirectCreation() {
 
@@ -691,8 +695,9 @@ public class CommandTest extends ESTest {
 		// redo the command
 		editingDomain.getCommandStack().redo();
 		assertEquals(0, leafSection.getContainedElements().size());
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Tests the remove command.
@@ -740,7 +745,7 @@ public class CommandTest extends ESTest {
 	 * Tests delete command.
 	 */
 	@Test
-	public void deleteCommand_DirectCreation() {
+	public void deleteCommandDirectCreation() {
 
 		final TestElement leafSection = Create.testElement();
 		final TestElement actor = Create.testElement();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * chodnick
+ * chodnick - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.changetracking.test.notification;
 
@@ -96,6 +96,7 @@ public class MoveNotificationTest extends ESTest {
 		assertEquals(1, n.getOldValue());
 	}
 
+	// BEGIN COMPLEX CODE
 	@Test
 	public void testMoveElementAndUndoOnRootLevel() {
 		final ESLocalProjectImpl localProject = ESWorkspaceProviderImpl.getInstance().getWorkspace()
@@ -189,6 +190,8 @@ public class MoveNotificationTest extends ESTest {
 				&& !observer.resetRemovedCalled()
 				&& !observer.resetDeletedCalled());
 	}
+
+	// END COMPLEX CODE
 
 	private class TestIdEObjectCollectionChangeObserver implements IdEObjectCollectionChangeObserver {
 

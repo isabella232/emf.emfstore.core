@@ -1252,6 +1252,7 @@ public class AttributeTest extends ComparingESTest {
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void attributeChangesACAAndDelete() throws InvalidHandleException, IOException {
 
@@ -1347,6 +1348,8 @@ public class AttributeTest extends ComparingESTest {
 
 		assertTrue(ModelUtil.areEqual(getProject(), expectedProject));
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Tests canonization for create, attribute changes and delete.

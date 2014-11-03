@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Edgar Mueller
+ * chodnick - initial API and implementation
+ * Edgar Mueller - refactorings
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.changetracking.test.toplogy;
 
@@ -48,6 +49,7 @@ import org.junit.Test;
  * @author chodnick
  * @author emueller
  */
+// BEGIN COMPLEX CODE
 public class Topology1toNTest extends ESTest {
 
 	private static final String ACTOR2 = "actor2"; //$NON-NLS-1$
@@ -520,6 +522,7 @@ public class Topology1toNTest extends ESTest {
 	/**
 	 * Add several already contained children to an empty containment feature.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddSameFeatureContainedChildrenToEmpty() {
 
@@ -628,9 +631,12 @@ public class Topology1toNTest extends ESTest {
 		assertTrue(op6.isAdd());
 	}
 
+	// END COMPLEX CODE
+
 	/**
 	 * Add several already contained children to an empty containment feature.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddSameFeatureContainedChildrenToNonEmpty() {
 
@@ -743,8 +749,9 @@ public class Topology1toNTest extends ESTest {
 		assertEquals(actor4Id, op6.getReferencedModelElements().get(3));
 		assertEquals(1, op6.getIndex());
 		assertTrue(op6.isAdd());
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Add an contained child to a non-empty containment feature.
@@ -873,6 +880,7 @@ public class Topology1toNTest extends ESTest {
 	/**
 	 * Add several already contained children to an empty containment feature.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddDifferentFeatureContainedNChildrenToEmpty() {
 
@@ -1003,12 +1011,14 @@ public class Topology1toNTest extends ESTest {
 		assertEquals(4, op10.getReferencedModelElements().size());
 		assertEquals(0, op10.getIndex());
 		assertTrue(op10.isAdd());
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Add several already contained children to a non-empty containment feature.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddDifferentFeatureContainedNChildrenToNonEmpty() {
 
@@ -1142,9 +1152,12 @@ public class Topology1toNTest extends ESTest {
 		assertTrue(op10.isAdd());
 	}
 
+	// END COMPLEX CODE
+
 	/**
 	 * Add several already contained children to an empty containment feature.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddDifferentFeatureContained1ChildrenToEmpty() {
 
@@ -1225,8 +1238,9 @@ public class Topology1toNTest extends ESTest {
 		assertEquals(2, op6.getReferencedModelElements().size());
 		assertEquals(0, op6.getIndex());
 		assertTrue(op6.isAdd());
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * add several already contained children to a non-empty containment feature.
@@ -1234,6 +1248,7 @@ public class Topology1toNTest extends ESTest {
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddDifferentFeatureContained1ChildrenToNonEmpty() throws UnsupportedOperationException,
 		UnsupportedNotificationException {
@@ -1319,6 +1334,8 @@ public class Topology1toNTest extends ESTest {
 		assertEquals(1, op6.getIndex());
 		assertTrue(op6.isAdd());
 	}
+
+	// END COMPLEX CODE
 
 	// BEGIN COMPLEX CODE
 	/**
@@ -1623,31 +1640,31 @@ public class Topology1toNTest extends ESTest {
 		assertEquals(op2.getModelElementId(), solution1Id);
 		assertEquals(op2.getFeatureName(), TestElementFeatures.container().getName());
 		assertEquals(op2.getNewValue(), sectionId);
-		assertEquals(op2.getOldValue(), null);
+		assertNull(op2.getOldValue());
 
 		assertEquals(op3.getModelElementId(), issue2Id);
 		assertEquals(TestElementFeatures.containedElement().getName(), op3.getFeatureName());
-		assertEquals(op3.getNewValue(), null);
+		assertNull(op3.getNewValue());
 		assertEquals(op3.getOldValue(), solution2Id);
 
 		assertEquals(op4.getModelElementId(), solution2Id);
 		assertEquals(op4.getFeatureName(), TestElementFeatures.srefContainer().getName());
-		assertEquals(op4.getNewValue(), null);
+		assertNull(op4.getNewValue());
 		assertEquals(op4.getOldValue(), issue2Id);
 
 		assertEquals(op5.getModelElementId(), solution2Id);
 		assertEquals(op5.getFeatureName(), TestElementFeatures.container().getName());
 		assertEquals(op5.getNewValue(), sectionId);
-		assertEquals(op5.getOldValue(), null);
+		assertNull(op5.getOldValue());
 
 		assertEquals(op6.getModelElementId(), newTestElementId);
 		assertEquals(op6.getFeatureName(), TestElementFeatures.container().getName());
 		assertEquals(op6.getNewValue(), sectionId);
-		assertEquals(op6.getOldValue(), null);
+		assertNull(op6.getOldValue());
 
 		assertEquals(op7.getModelElementId(), oldSection1Id);
 		assertEquals(op7.getFeatureName(), TestElementFeatures.containedElements().getName());
-		assertEquals(op7.isAdd(), false);
+		assertFalse(op7.isAdd());
 		assertEquals(op7.getReferencedModelElements().size(), 2);
 		assertEquals(op7.getReferencedModelElements().get(0), sectionTestElement1Id);
 		assertEquals(op7.getReferencedModelElements().get(1), sectionTestElement2Id);
@@ -2065,7 +2082,7 @@ public class Topology1toNTest extends ESTest {
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
-		assertEquals(true, operation instanceof CompositeOperation);
+		assertTrue(operation instanceof CompositeOperation);
 
 		final List<AbstractOperation> subOperations = ((CompositeOperation) operation).getSubOperations();
 
@@ -2389,3 +2406,4 @@ public class Topology1toNTest extends ESTest {
 	}
 
 }
+// END COMPLEX CODE

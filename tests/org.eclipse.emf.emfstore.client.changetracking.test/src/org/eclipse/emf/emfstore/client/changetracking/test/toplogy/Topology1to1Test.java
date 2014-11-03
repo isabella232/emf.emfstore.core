@@ -593,6 +593,7 @@ public class Topology1to1Test extends ESTest {
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentValueToOtherValueContainedAlreadyNOperateOnParent() throws UnsupportedOperationException,
 		UnsupportedNotificationException {
@@ -680,12 +681,15 @@ public class Topology1to1Test extends ESTest {
 		assertEquals(srefContainerId, refOp4.getModelElementId());
 	}
 
+	// END COMPLEX CODE
+
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
 	 * 
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentValueToOtherValueContainedAlreadyNOperateOnChild() throws UnsupportedOperationException,
 		UnsupportedNotificationException {
@@ -769,6 +773,8 @@ public class Topology1to1Test extends ESTest {
 		assertNull(refOp4.getOldValue());
 
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
