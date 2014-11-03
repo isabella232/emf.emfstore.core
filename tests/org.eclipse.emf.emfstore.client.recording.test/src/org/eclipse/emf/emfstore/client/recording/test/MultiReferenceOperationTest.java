@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
@@ -215,6 +215,7 @@ public class MultiReferenceOperationTest extends ESTest {
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void addManyMultiReference() throws UnsupportedOperationException, UnsupportedNotificationException {
 		final TestElement useCase = Create.testElement();
@@ -305,8 +306,9 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertTrue(otherInvolvedModelElements.contains(useCaseId));
 		assertTrue(otherInvolvedModelElements.contains(useCase2Id));
 		assertTrue(otherInvolvedModelElements.contains(useCase3Id));
-
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Change a multi reference and check the generated operation.
@@ -314,6 +316,7 @@ public class MultiReferenceOperationTest extends ESTest {
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void removeManyMultiReference() throws UnsupportedOperationException, UnsupportedNotificationException {
 		final TestElement useCase = Create.testElement();
@@ -402,8 +405,9 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertTrue(otherInvolvedModelElements.contains(useCaseId));
 		assertTrue(otherInvolvedModelElements.contains(useCase2Id));
 		assertTrue(otherInvolvedModelElements.contains(useCase3Id));
-
 	}
+
+	// END COMPLEX CODE
 
 	@Test
 	public void unsetMultiReferenceTest() {
@@ -680,6 +684,7 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertTrue(ModelUtil.areEqual(getProject(), secondProject));
 	}
 
+	// BEGIN COMPLEX CODE
 	@Test
 	public void unsetMultiContainmentReferenceTest() {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
@@ -761,6 +766,9 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertTrue(ModelUtil.areEqual(getProject(), secondProject));
 	}
 
+	// END COMPLEX CODE
+
+	// BEGIN COMPLEX CODE
 	@Test
 	public void reverseUnsetMultiContainmentReferenceTest() {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
@@ -842,6 +850,9 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertTrue(ModelUtil.areEqual(getProject(), secondProject));
 	}
 
+	// END COMPLEX CODE
+
+	// BEGIN COMPLEX CODE
 	@Test
 	public void doubleReverseUnsetMultiContainmentReferenceTest() {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
@@ -926,6 +937,8 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertTrue(!getProject().getAllModelElements().contains(merch3));
 		assertTrue(ModelUtil.areEqual(getProject(), secondProject));
 	}
+
+	// END COMPLEX CODE
 
 	@Test
 	public void reverseSetOfUnsettedMultiContainmentReferenceTest() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 import org.junit.Test;
 
 /**
- * Tests for multiattributemove operations.
+ * Tests for the {@link MultiAttributeMoveOperation}.
  * 
  * @author wesendon
  */
@@ -132,15 +132,16 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void createWithChildrenTest() throws UnsupportedOperationException, UnsupportedNotificationException {
 
-		final TestElement testElement1 = TestmodelFactory.eINSTANCE.createTestElement();
-		final TestElement testElement11 = TestmodelFactory.eINSTANCE.createTestElement();
-		final TestElement testElement12 = TestmodelFactory.eINSTANCE.createTestElement();
-		final TestElement testElement111 = TestmodelFactory.eINSTANCE.createTestElement();
-		final TestElement testElement121 = TestmodelFactory.eINSTANCE.createTestElement();
-		final TestElement testElement122 = TestmodelFactory.eINSTANCE.createTestElement();
+		final TestElement testElement1 = Create.testElement();
+		final TestElement testElement11 = Create.testElement();
+		final TestElement testElement12 = Create.testElement();
+		final TestElement testElement111 = Create.testElement();
+		final TestElement testElement121 = Create.testElement();
+		final TestElement testElement122 = Create.testElement();
 		testElement1.getContainedElements().add(testElement11);
 		testElement1.getContainedElements().add(testElement12);
 		testElement11.getContainedElements().add(testElement111);
@@ -154,92 +155,87 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		new EMFStoreCommand() {
-			@Override
-			protected void doRun() {
-				assertEquals(true, getProject().contains(testElement1));
-				assertEquals(true, getProject().contains(testElement11));
-				assertEquals(true, getProject().contains(testElement12));
-				assertEquals(true, getProject().contains(testElement111));
-				assertEquals(true, getProject().contains(testElement121));
-				assertEquals(true, getProject().contains(testElement122));
+		assertTrue(getProject().contains(testElement1));
+		assertTrue(getProject().contains(testElement11));
+		assertTrue(getProject().contains(testElement12));
+		assertTrue(getProject().contains(testElement111));
+		assertTrue(getProject().contains(testElement121));
+		assertTrue(getProject().contains(testElement122));
 
-				assertNotNull(getProject().getModelElementId(testElement1));
-				assertNotNull(getProject().getModelElementId(testElement11));
-				assertNotNull(getProject().getModelElementId(testElement12));
-				assertNotNull(getProject().getModelElementId(testElement111));
-				assertNotNull(getProject().getModelElementId(testElement121));
-				assertNotNull(getProject().getModelElementId(testElement122));
+		assertNotNull(getProject().getModelElementId(testElement1));
+		assertNotNull(getProject().getModelElementId(testElement11));
+		assertNotNull(getProject().getModelElementId(testElement12));
+		assertNotNull(getProject().getModelElementId(testElement111));
+		assertNotNull(getProject().getModelElementId(testElement121));
+		assertNotNull(getProject().getModelElementId(testElement122));
 
-				assertEquals(1, getProjectSpace().getOperations().size());
-				assertEquals(true, getProjectSpace().getOperations().get(0) instanceof CreateDeleteOperation);
-				CreateDeleteOperation operation = (CreateDeleteOperation) getProjectSpace().getOperations().get(0);
-				assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
-				assertEquals(0, operation.getSubOperations().size());
+		assertEquals(1, getProjectSpace().getOperations().size());
+		assertTrue(getProjectSpace().getOperations().get(0) instanceof CreateDeleteOperation);
+		CreateDeleteOperation operation = (CreateDeleteOperation) getProjectSpace().getOperations().get(0);
+		assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
+		assertEquals(0, operation.getSubOperations().size());
 
-				assertEquals(getProject().getModelElementId(testElement1),
-					operation.getEObjectToIdMap().get(operation.getModelElement()));
-				assertEquals(getProject().getModelElementId(testElement11),
-					operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement12),
-					operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(1)));
-				assertEquals(getProject().getModelElementId(testElement111),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(0).eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement121),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(1).eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement122),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(1).eContents().get(1)));
+		assertEquals(getProject().getModelElementId(testElement1),
+			operation.getEObjectToIdMap().get(operation.getModelElement()));
+		assertEquals(getProject().getModelElementId(testElement11),
+			operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement12),
+			operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(1)));
+		assertEquals(getProject().getModelElementId(testElement111),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(0).eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement121),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(1).eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement122),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(1).eContents().get(1)));
 
-				final CreateDeleteOperation copy = ModelUtil.clone(operation);
+		final CreateDeleteOperation copy = ModelUtil.clone(operation);
 
-				operation = (CreateDeleteOperation) operation.reverse().reverse();
+		operation = (CreateDeleteOperation) operation.reverse().reverse();
 
-				assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
-				assertEquals(0, operation.getSubOperations().size());
+		assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
+		assertEquals(0, operation.getSubOperations().size());
 
-				assertEquals(getProject().getModelElementId(testElement1),
-					operation.getEObjectToIdMap().get(operation.getModelElement()));
-				assertEquals(getProject().getModelElementId(testElement11),
-					operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement12),
-					operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(1)));
-				assertEquals(getProject().getModelElementId(testElement111),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(0).eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement121),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(1).eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement122),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(1).eContents().get(1)));
+		assertEquals(getProject().getModelElementId(testElement1),
+			operation.getEObjectToIdMap().get(operation.getModelElement()));
+		assertEquals(getProject().getModelElementId(testElement11),
+			operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement12),
+			operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(1)));
+		assertEquals(getProject().getModelElementId(testElement111),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(0).eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement121),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(1).eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement122),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(1).eContents().get(1)));
 
-				operation = copy;
-				assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
-				assertEquals(0, operation.getSubOperations().size());
+		operation = copy;
+		assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
+		assertEquals(0, operation.getSubOperations().size());
 
-				assertEquals(getProject().getModelElementId(testElement1),
-					operation.getEObjectToIdMap().get(operation.getModelElement()));
-				assertEquals(getProject().getModelElementId(testElement11),
-					operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement12),
-					operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(1)));
-				assertEquals(getProject().getModelElementId(testElement111),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(0).eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement121),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(1).eContents().get(0)));
-				assertEquals(getProject().getModelElementId(testElement122),
-					operation.getEObjectToIdMap()
-						.get(operation.getModelElement().eContents().get(1).eContents().get(1)));
-
-			}
-		}.run(false);
-
+		assertEquals(getProject().getModelElementId(testElement1),
+			operation.getEObjectToIdMap().get(operation.getModelElement()));
+		assertEquals(getProject().getModelElementId(testElement11),
+			operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement12),
+			operation.getEObjectToIdMap().get(operation.getModelElement().eContents().get(1)));
+		assertEquals(getProject().getModelElementId(testElement111),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(0).eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement121),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(1).eContents().get(0)));
+		assertEquals(getProject().getModelElementId(testElement122),
+			operation.getEObjectToIdMap()
+				.get(operation.getModelElement().eContents().get(1).eContents().get(1)));
 	}
+
+	// END COMPLEX CODE
 
 	/**
 	 * Move and validate operation.

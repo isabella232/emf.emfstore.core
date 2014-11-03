@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.client.recording.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -204,6 +205,7 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 	/**
 	 * Tests a false index while moving.
 	 */
+	// BEGIN COMPLEX CODE
 	@Test
 	public void makeOutOfBoundMove() {
 		final TestElement actor = Create.testElement();
@@ -281,7 +283,7 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 			protected void doRun() {
 				multiReferenceMoveOperation2.apply(getProject());
 			}
-		};
+		}.run(false);
 
 		assertEquals(actor, useCase1.getNonContained_NTo1());
 		assertEquals(actor, useCase2.getNonContained_NTo1());
@@ -293,7 +295,7 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 		assertEquals(useCase3, initiatedTestElements3.get(2));
 
 		final TestElement useCase4 = Create.testElement();
-		// useCase4.setIdentifier("usecase4");
+
 		new EMFStoreCommand() {
 
 			@Override
@@ -301,7 +303,7 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 				getProject().addModelElement(useCase4);
 				clearOperations();
 			}
-		}.run();
+		}.run(false);
 
 		final MultiReferenceMoveOperation multiReferenceMoveOperation3 = OperationsFactory.eINSTANCE
 			.createMultiReferenceMoveOperation();
@@ -320,16 +322,17 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 			protected void doRun() {
 				multiReferenceMoveOperation3.apply(getProject());
 			}
-		};
+		}.run(false);
 
 		assertEquals(actor, useCase1.getNonContained_NTo1());
 		assertEquals(actor, useCase2.getNonContained_NTo1());
 		assertEquals(actor, useCase3.getNonContained_NTo1());
-		assertEquals(null, useCase4.getNonContained_NTo1());
+		assertNull(useCase4.getNonContained_NTo1());
 		final List<TestElement> initiatedTestElements4 = actor.getNonContained_1ToN();
 		assertEquals(3, initiatedTestElements4.size());
 		assertEquals(useCase1, initiatedTestElements4.get(0));
 		assertEquals(useCase2, initiatedTestElements4.get(1));
 		assertEquals(useCase3, initiatedTestElements4.get(2));
 	}
+	// END COMPLEX CODE
 }
