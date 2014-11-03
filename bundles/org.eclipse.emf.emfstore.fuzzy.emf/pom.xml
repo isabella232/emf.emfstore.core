@@ -74,12 +74,7 @@
               <id>org.eclipse.emf.emfstore.fuzzy.emf</id>
               <level>4</level>
               <autoStart>false</autoStart>
-            </bundle>
-            <bundle>
-              <id>org.eclipse.emf.emfstore.fuzzy</id>
-              <level>4</level>
-              <autoStart>false</autoStart>
-            </bundle>          
+            </bundle>      
             <bundle>
               <id>org.eclipse.emf.emfstore.client.model.edit</id>
               <level>4</level>

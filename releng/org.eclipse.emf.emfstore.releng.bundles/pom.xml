@@ -37,7 +37,6 @@
 		<module>../../bundles/org.eclipse.emf.emfstore.mongodb.client</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.mongodb.server</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.modelmutator</module>
-		<module>../../bundles/org.eclipse.emf.emfstore.fuzzy</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.fuzzy.emf</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.fuzzy.emf.edit</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.fuzzy.emf.editor</module>
