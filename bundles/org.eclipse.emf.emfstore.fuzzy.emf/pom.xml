@@ -36,12 +36,7 @@
               <type>eclipse-plugin</type>
               <artifactId>org.eclipse.emf.emfstore.fuzzy.emf</artifactId>
               <version>0.0.0</version>
-            </dependency>   
-            <dependency>
-              <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.emf.emfstore.fuzzy</artifactId>
-              <version>0.0.0</version>
-            </dependency>        
+            </dependency>    
             <dependency>
               <type>eclipse-plugin</type>
               <artifactId>org.eclipse.emf.emfstore.client.model.edit</artifactId>
