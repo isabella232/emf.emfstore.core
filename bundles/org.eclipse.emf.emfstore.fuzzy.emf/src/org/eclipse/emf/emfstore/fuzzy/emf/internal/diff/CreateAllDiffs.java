@@ -14,13 +14,9 @@ package org.eclipse.emf.emfstore.fuzzy.emf.internal.diff;
 import java.io.IOException;
 
 import org.dom4j.DocumentException;
-import org.eclipse.emf.emfstore.client.test.common.util.FilteredSuite;
-import org.eclipse.emf.emfstore.client.test.common.util.FilteredSuite.FilteredSuiteParameter;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * Class used as JUnit plugin test to create diff reports from a
@@ -29,9 +25,6 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Julian Sommerfeldt
  * 
  */
-@RunWith(FilteredSuite.class)
-@FilteredSuiteParameter({ "createDiffs" })
-@SuiteClasses({ CreateAllDiffs.class })
 public class CreateAllDiffs {
 
 	/**
