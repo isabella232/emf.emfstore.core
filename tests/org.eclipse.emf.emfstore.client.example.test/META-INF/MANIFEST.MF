@@ -8,5 +8,5 @@ Require-Bundle: org.eclipse.emf.emfstore.example.merging;bundle-version="[1.4.1,
  org.eclipse.emf.emfstore.example.helloworld;bundle-version="[1.4.1,2.0.0)",
  org.eclipse.emf.emfstore.client;bundle-version="[1.4.1,2.0.0)",
  org.junit;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.emf.emfstore.test.common;bundle-version="[1.4.1,2.0.0)"
+ org.eclipse.emf.emfstore.test.common;bundle-version="[2.0.0,3.0.0)"
 Export-Package: org.eclipse.emf.emfstore.client.example.test;version="1.4.1";x-internal:=true
