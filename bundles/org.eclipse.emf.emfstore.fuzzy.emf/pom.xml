@@ -39,11 +39,6 @@
             </dependency>    
             <dependency>
               <type>eclipse-plugin</type>
-              <artifactId>org.eclipse.emf.emfstore.fuzzy.emf.test</artifactId>
-              <version>0.0.0</version>
-            </dependency>    
-            <dependency>
-              <type>eclipse-plugin</type>
               <artifactId>org.eclipse.emf.emfstore.client.model.edit</artifactId>
               <version>0.0.0</version>
             </dependency>
@@ -72,11 +67,6 @@
           <bundleStartLevel>  
           	<bundle>
               <id>org.eclipse.emf.emfstore.fuzzy.emf</id>
-              <level>4</level>
-              <autoStart>false</autoStart>
-            </bundle>      
-            <bundle>
-              <id>org.eclipse.emf.emfstore.fuzzy.emf.test</id>
               <level>4</level>
               <autoStart>false</autoStart>
             </bundle>      
