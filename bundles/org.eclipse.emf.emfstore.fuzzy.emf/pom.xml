@@ -75,7 +75,7 @@
               <level>4</level>
               <autoStart>false</autoStart>
             </bundle>      
-                <bundle>
+            <bundle>
               <id>org.eclipse.emf.emfstore.fuzzy.emf.test</id>
               <level>4</level>
               <autoStart>false</autoStart>
