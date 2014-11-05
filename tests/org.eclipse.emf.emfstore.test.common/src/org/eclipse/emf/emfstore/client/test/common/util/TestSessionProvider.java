@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2014 EclipseSource Muenchen GmbH and others.
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * Edgar Mueller - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.util;
 
 import org.eclipse.emf.emfstore.client.ESServer;
@@ -24,12 +35,12 @@ public class TestSessionProvider extends ESAbstractSessionProvider {
 	private void initSession(ESServer server) {
 
 		if (server == null) {
-			server = ESServer.FACTORY.createServer("localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE);
+			server = ESServer.FACTORY.createServer("localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE); //$NON-NLS-1$
 		}
 
 		final ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
 		final Workspace internalWorkspace = workspace.toInternalAPI();
-		// TODO: contaisn check for server infos
+		// TODO: contains check for server infos
 		if (!internalWorkspace.getServerInfos().contains(server)) {
 			workspace.addServer(server);
 		}
@@ -37,8 +48,8 @@ public class TestSessionProvider extends ESAbstractSessionProvider {
 		// ServerInfo serverInfo = SetupHelper.getServerInfo();
 		session = ModelFactory.eINSTANCE.createUsersession();
 		// session.setServerInfo(serverInfo);
-		session.setUsername("super");
-		session.setPassword("super");
+		session.setUsername("super"); //$NON-NLS-1$
+		session.setPassword("super"); //$NON-NLS-1$
 		session.setSavePassword(true);
 		session.setServerInfo(((ESServerImpl) server).toInternalAPI());
 		RunESCommand.run(new ESVoidCallable() {

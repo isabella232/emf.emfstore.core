@@ -51,13 +51,13 @@ public class ResourceFactoryMock extends XMIResourceFactoryImpl implements Regis
 
 			@Override
 			public void load(Map<?, ?> options) throws IOException {
-				throw new FileNotFoundException("Mock Resource does not support loading");
+				throw new FileNotFoundException("Mock Resource does not support loading"); //$NON-NLS-1$
 			}
 
 			@Override
 			public URI getURI() {
 				final URI uri = super.getURI();
-				return uri == null ? URI.createURI("/f/a/k/e") : uri;
+				return uri == null ? URI.createURI("/f/a/k/e") : uri; //$NON-NLS-1$
 			}
 		};
 

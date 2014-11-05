@@ -20,7 +20,6 @@ import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
-import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -47,7 +46,6 @@ public final class TestSessionProvider2 extends ESAbstractSessionProvider {
 	 * Returns the default {@link Usersession}.
 	 * 
 	 * @return the default user session
-	 * @throws AccessControlException if login fails
 	 * @throws ESException if anything else fails
 	 */
 	public Usersession getDefaultUsersession() throws ESException {
@@ -64,9 +62,9 @@ public final class TestSessionProvider2 extends ESAbstractSessionProvider {
 
 	public TestSessionProvider2() {
 		ESUsersessionImpl login;
-		final ESServer server = ESServer.FACTORY.createServer("localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE);
+		final ESServer server = ESServer.FACTORY.createServer("localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE); //$NON-NLS-1$
 		try {
-			login = (ESUsersessionImpl) server.login("super", "super");
+			login = (ESUsersessionImpl) server.login("super", "super"); //$NON-NLS-1$ //$NON-NLS-2$
 			usersession = login.toInternalAPI();
 		} catch (final ESException e) {
 			throw new RuntimeException(e);
