@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.migration;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
  */
 public final class EMFStoreMigratorUtil {
 
-	private static final String MIGRATOR_CLASS = "migratorClass";
+	private static final String MIGRATOR_CLASS = "migratorClass"; //$NON-NLS-1$
 	private static EMFStoreMigrator migrator;
 
 	private EMFStoreMigratorUtil() {
@@ -40,7 +40,7 @@ public final class EMFStoreMigratorUtil {
 		}
 		try {
 			migrator = loadMigrator();
-		} catch (EMFStoreMigrationException e) {
+		} catch (final EMFStoreMigrationException e) {
 			return false;
 		}
 		return true;
@@ -61,15 +61,16 @@ public final class EMFStoreMigratorUtil {
 	}
 
 	private static EMFStoreMigrator loadMigrator() throws EMFStoreMigrationException {
-		ESExtensionPoint extensionPoint = new ESExtensionPoint("org.eclipse.emf.emfstore.migration.migrator", true);
+		final ESExtensionPoint extensionPoint = new ESExtensionPoint("org.eclipse.emf.emfstore.migration.migrator", //$NON-NLS-1$
+			true);
 		if (extensionPoint.size() > 1) {
 			ModelUtil
-				.logWarning("Multiple EMFStore Migrators are registered. EMFStore will default to first loadable migrator.");
+				.logWarning(Messages.EMFStoreMigratorUtil_MultipMigratorsFound);
 		}
 		try {
 			return extensionPoint.getFirst().getClass(MIGRATOR_CLASS, EMFStoreMigrator.class);
-		} catch (ESExtensionPointException e) {
-			throw new EMFStoreMigrationException("No EMFStore migrator registered.");
+		} catch (final ESExtensionPointException e) {
+			throw new EMFStoreMigrationException(Messages.EMFStoreMigratorUtil_NoMigratorFournd);
 		}
 	}
 
