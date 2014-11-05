@@ -21,8 +21,8 @@
         <version>${tycho-version}</version>
 
         <configuration>
-          <testSuite>org.eclipse.emf.emfstore.fuzzy.emf</testSuite>
-          <testClass>org.eclipse.emf.emfstore.fuzzy.emf.internal.diff.CreateAllDiffs</testClass>
+          <testSuite>org.eclipse.emf.emfstore.fuzzy.emf.diff.test</testSuite>
+          <testClass>org.eclipse.emf.emfstore.fuzzy.emf.diff.test.CreateAllDiffs</testClass>
           <useUIHarness>true</useUIHarness>
           <useUIThread>false</useUIThread>
           
