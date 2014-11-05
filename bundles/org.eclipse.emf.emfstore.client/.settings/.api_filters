@@ -40,6 +40,38 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/CancelOperationException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.CancelOperationException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="CancelOperationException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/CommitCanceledException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.CommitCanceledException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="CommitCanceledException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/LoginCanceledException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.LoginCanceledException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="LoginCanceledException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/WorkspaceException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.WorkspaceException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="WorkspaceException"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/emfstore/internal/client/model/impl/ProjectSpaceBase.java" type="org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase">
         <filter comment="internal API usage" id="572522506">
             <message_arguments>

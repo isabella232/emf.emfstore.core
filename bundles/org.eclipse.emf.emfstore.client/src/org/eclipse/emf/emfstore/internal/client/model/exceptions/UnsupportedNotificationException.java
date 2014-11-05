@@ -7,12 +7,12 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.exceptions;
 
 /**
- * Represents exceptional condition where the notification is unkown to a receiver.
+ * Represents exceptional condition where the notification is unknown to a receiver.
  * 
  * @author koegel
  */

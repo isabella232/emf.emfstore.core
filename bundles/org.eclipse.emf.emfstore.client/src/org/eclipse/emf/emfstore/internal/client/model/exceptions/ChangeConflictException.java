@@ -30,7 +30,7 @@ public class ChangeConflictException extends WorkspaceException {
 	 *            the {@link ChangeConflictSet} leading to the conflict
 	 */
 	public ChangeConflictException(ChangeConflictSet changeConflict) {
-		this("Conflict detected on update", changeConflict);
+		this(Messages.ChangeConflictException_ConflictDetected, changeConflict);
 	}
 
 	/**
