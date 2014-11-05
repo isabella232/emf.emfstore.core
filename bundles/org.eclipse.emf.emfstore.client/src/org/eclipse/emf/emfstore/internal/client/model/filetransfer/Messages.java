@@ -48,6 +48,7 @@ public class Messages extends NLS {
 	public static String FileTransferManager_UploadIsDirectory;
 	public static String FileUploadJob_FileUpload;
 	public static String FileUploadJob_SendingFile;
+	public static String TransferCanceledException_FileTransferCancelled;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

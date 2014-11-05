@@ -24,7 +24,7 @@ public class TransferCanceledException extends FileTransferException {
 	 * Default constructor.
 	 */
 	public TransferCanceledException() {
-		super("File transfer has been cancelled");
+		super(Messages.TransferCanceledException_FileTransferCancelled);
 	}
 
 	private static final long serialVersionUID = 1L;
