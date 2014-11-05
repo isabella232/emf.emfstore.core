@@ -7,112 +7,107 @@ Bundle-ClassPath: .
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.emfstore.internal.server.model;version
- ="1.4.1"; x-friends:="org.eclipse.emf.emfstore.client,  org.eclipse.e
- mf.emfstore.client.model.edit,  org.eclipse.emf.emfstore.client.test.
- common,  org.eclipse.emf.emfstore.client.ui,  org.eclipse.emf.emfstor
- e.server,  org.eclipse.emf.emfstore.server.model.edit,  org.eclipse.e
- mf.emfstore.test.common,  org.eclipse.emf.emfstore.server.test",org.e
- clipse.emf.emfstore.internal.server.model.accesscontrol;version="1.4.
- 1"; x-friends:="org.eclipse.emf.emfstore.client,  org.eclipse.emf.emf
- store.client.model.edit,  org.eclipse.emf.emfstore.client.ui,  org.ec
- lipse.emf.emfstore.server,  org.eclipse.emf.emfstore.server.model.edi
- t,  org.eclipse.emf.emfstore.server.test,  org.eclipse.emf.emfstore.c
- lient.test.common,  org.eclipse.emf.emfstore.test.common",org.eclipse
- .emf.emfstore.internal.server.model.accesscontrol.impl;version="1.4.1
- ";x-friends:="org.eclipse.emf.emfstore.server",org.eclipse.emf.emfsto
- re.internal.server.model.accesscontrol.roles;version="1.4.1"; x-frien
- ds:="org.eclipse.emf.emfstore.client,  org.eclipse.emf.emfstore.clien
- t.ui,  org.eclipse.emf.emfstore.server,  org.eclipse.emf.emfstore.ser
- ver.model.edit,  org.eclipse.emf.emfstore.server.test,  org.eclipse.e
- mf.emfstore.test.common",org.eclipse.emf.emfstore.internal.server.mod
- el.accesscontrol.roles.impl;version="1.4.1";x-friends:="org.eclipse.e
- mf.emfstore.server",org.eclipse.emf.emfstore.internal.server.model.ac
- cesscontrol.roles.util;version="1.4.1";x-friends:="org.eclipse.emf.em
- fstore.server,org.eclipse.emf.emfstore.server.model.edit",org.eclipse
- .emf.emfstore.internal.server.model.accesscontrol.util;version="1.4.1
- ";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstor
- e.server.model.edit",org.eclipse.emf.emfstore.internal.server.model.d
- ao;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.ec
- lipse.emf.emfstore.test.common",org.eclipse.emf.emfstore.internal.ser
- ver.model.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.s
- erver,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.test.c
- ommon",org.eclipse.emf.emfstore.internal.server.model.impl.api;versio
- n="1.4.1"; x-friends:="org.eclipse.emf.emfstore.client,  org.eclipse.
- emf.emfstore.client.ui,  org.eclipse.emf.emfstore.test.common,  org.e
- clipse.emf.emfstore.server.test",org.eclipse.emf.emfstore.internal.se
- rver.model.impl.api.query;version="1.4.1";x-friends:="org.eclipse.emf
- .emfstore.client.ui,org.eclipse.emf.emfstore.client,org.eclipse.emf.e
- mfstore.client.test",org.eclipse.emf.emfstore.internal.server.model.i
- mpl.api.versionspec;version="1.4.1"; x-friends:="org.eclipse.emf.emfs
- tore.client,  org.eclipse.emf.emfstore.client.ui,  org.eclipse.emf.em
- fstore.server.test,  org.eclipse.emf.emfstore.test.common,  org.eclip
- se.emf.emfstore.client.api.test",org.eclipse.emf.emfstore.internal.se
- rver.model.url;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.s
- erver,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.server
- .model.edit",org.eclipse.emf.emfstore.internal.server.model.url.impl;
- version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",org.ecli
- pse.emf.emfstore.internal.server.model.url.util;version="1.4.1";x-fri
- ends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.serve
- r.model.edit",org.eclipse.emf.emfstore.internal.server.model.util;ver
- sion="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.
- emf.emfstore.server.model.edit",org.eclipse.emf.emfstore.internal.ser
- ver.model.versioning;version="1.4.1"; x-friends:="org.eclipse.emf.emf
- store.client,  org.eclipse.emf.emfstore.client.model.edit,  org.eclip
- se.emf.emfstore.client.ui,  org.eclipse.emf.emfstore.example.merging,
-   org.eclipse.emf.emfstore.fuzzy.emf.test,  org.eclipse.emf.emfstore.
- server,  org.eclipse.emf.emfstore.server.model.edit,  org.eclipse.emf
- .emfstore.server.test,  org.eclipse.emf.emfstore.test.common,  org.ec
- lipse.emf.emfstore.client.recording.test,  org.eclipse.emf.emfstore.c
- lient.conflictdetection.test",org.eclipse.emf.emfstore.internal.serve
- r.model.versioning.events;version="1.4.1";x-friends:="org.eclipse.emf
- .emfstore.server,org.eclipse.emf.emfstore.server.model.edit",org.ecli
- pse.emf.emfstore.internal.server.model.versioning.events.impl;version
- ="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",org.eclipse.emf
- .emfstore.internal.server.model.versioning.events.server;version="1.4
- .1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfst
- ore.server.model.edit",org.eclipse.emf.emfstore.internal.server.model
- .versioning.events.server.impl;version="1.4.1";x-friends:="org.eclips
- e.emf.emfstore.server",org.eclipse.emf.emfstore.internal.server.model
- .versioning.events.server.util;version="1.4.1";x-friends:="org.eclips
- e.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",org
- .eclipse.emf.emfstore.internal.server.model.versioning.events.util;ve
- rsion="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse
- .emf.emfstore.server.model.edit",org.eclipse.emf.emfstore.internal.se
- rver.model.versioning.impl;version="1.4.1";x-friends:="org.eclipse.em
- f.emfstore.server,org.eclipse.emf.emfstore.client",org.eclipse.emf.em
- fstore.internal.server.model.versioning.operations;version="1.4.1"; x
- -friends:="org.eclipse.emf.emfstore.client,  org.eclipse.emf.emfstore
- .client.changetracking.test,  org.eclipse.emf.emfstore.client.conflic
- tdetection.test,  org.eclipse.emf.emfstore.client.model.edit,  org.ec
- lipse.emf.emfstore.client.recording.test,  org.eclipse.emf.emfstore.c
- lient.ui,  org.eclipse.emf.emfstore.example.merging,  org.eclipse.emf
- .emfstore.server,  org.eclipse.emf.emfstore.server.model.edit,  org.e
- clipse.emf.emfstore.test.common,  org.eclipse.emf.ecp.emfstore.core, 
-  org.eclipse.emf.ecp.emfstore.ui.e3",org.eclipse.emf.emfstore.interna
- l.server.model.versioning.operations.impl;version="1.4.1";x-friends:=
- "org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.server,org.
- eclipse.emf.emfstore.client.recording.test",org.eclipse.emf.emfstore.
- internal.server.model.versioning.operations.semantic;version="1.4.1";
- x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.
- client,org.eclipse.emf.emfstore.server.model.edit",org.eclipse.emf.em
- fstore.internal.server.model.versioning.operations.semantic.impl;vers
- ion="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",org.eclipse.
- emf.emfstore.internal.server.model.versioning.operations.semantic.uti
- l;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.ecl
- ipse.emf.emfstore.server.model.edit",org.eclipse.emf.emfstore.interna
- l.server.model.versioning.operations.util;version="1.4.1"; x-friends:
- ="org.eclipse.emf.emfstore.client,  org.eclipse.emf.emfstore.client.u
- i,  org.eclipse.emf.emfstore.server,  org.eclipse.emf.emfstore.server
- .model.edit,  org.eclipse.emf.emfstore.client.test.common,  org.eclip
- se.emf.emfstore.client.recording.test,  org.eclipse.emf.emfstore.test
- .common",org.eclipse.emf.emfstore.internal.server.model.versioning.ut
- il;version="1.4.1"; x-friends:="org.eclipse.emf.emfstore.server,  org
- .eclipse.emf.emfstore.client.test,  org.eclipse.emf.emfstore.server.m
- odel.edit,  org.eclipse.emf.emfstore.client.ui",org.eclipse.emf.emfst
- ore.server.model;version="1.4.1",org.eclipse.emf.emfstore.server.mode
- l.query;version="1.4.1",org.eclipse.emf.emfstore.server.model.version
- spec;version="1.4.1"
+Export-Package: org.eclipse.emf.emfstore.internal.server.model;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.model.edit,
+   org.eclipse.emf.emfstore.client.test.common,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.emfstore.server.test",
+ org.eclipse.emf.emfstore.internal.server.model.accesscontrol;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.model.edit,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.client.test.common,
+   org.eclipse.emf.emfstore.test.common",
+ org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",
+ org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.test.common",
+ org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",
+ org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.accesscontrol.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.dao;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.test.common",
+ org.eclipse.emf.emfstore.internal.server.model.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.test.common",
+ org.eclipse.emf.emfstore.internal.server.model.impl.api;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.emfstore.server.test",
+ org.eclipse.emf.emfstore.internal.server.model.impl.api.query;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.client.ui,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.client.test",
+ org.eclipse.emf.emfstore.internal.server.model.impl.api.versionspec;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.emfstore.client.api.test",
+ org.eclipse.emf.emfstore.internal.server.model.url;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.url.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",
+ org.eclipse.emf.emfstore.internal.server.model.url.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.model.edit,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.example.merging,
+   org.eclipse.emf.emfstore.fuzzy.emf.test,
+   org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.emfstore.client.recording.test,
+   org.eclipse.emf.emfstore.client.conflictdetection.test,
+   org.eclipse.emf.emfstore.client.changetracking.test",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.events;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.events.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.events.server;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.events.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.client",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.operations;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.changetracking.test,
+   org.eclipse.emf.emfstore.client.conflictdetection.test,
+   org.eclipse.emf.emfstore.client.model.edit,
+   org.eclipse.emf.emfstore.client.recording.test,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.example.merging,
+   org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.ecp.emfstore.core,
+   org.eclipse.emf.ecp.emfstore.ui.e3",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.client.recording.test",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.util;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.server,org.eclipse.emf.emfstore.server.model.edit",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.client,
+   org.eclipse.emf.emfstore.client.ui,
+   org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.client.test.common,
+   org.eclipse.emf.emfstore.client.recording.test,
+   org.eclipse.emf.emfstore.test.common,
+   org.eclipse.emf.emfstore.client.changetracking.test",
+ org.eclipse.emf.emfstore.internal.server.model.versioning.util;version="1.4.1";
+  x-friends:="org.eclipse.emf.emfstore.server,
+   org.eclipse.emf.emfstore.client.test,
+   org.eclipse.emf.emfstore.server.model.edit,
+   org.eclipse.emf.emfstore.client.ui",
+ org.eclipse.emf.emfstore.server.model;version="1.4.1",
+ org.eclipse.emf.emfstore.server.model.query;version="1.4.1",
+ org.eclipse.emf.emfstore.server.model.versionspec;version="1.4.1"
 Require-Bundle: org.eclipse.emf.emfstore.common.model;bundle-version="[1.4.1,2.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)",
  org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",

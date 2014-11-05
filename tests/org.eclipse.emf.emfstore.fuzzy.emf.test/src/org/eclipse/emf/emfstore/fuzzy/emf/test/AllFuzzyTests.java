@@ -27,7 +27,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	CrossResourceReferencesMutatorTest.class,
 	OperationApplyTest.class,
-	// OperationReverseTest.class, // TODO: currently fails!
+	OperationReverseTest.class,
 	MutatorTest.class,
 	ESXMIProviderDataMutatorTest.class,
 	FuzzyProjectConfigTest.class,

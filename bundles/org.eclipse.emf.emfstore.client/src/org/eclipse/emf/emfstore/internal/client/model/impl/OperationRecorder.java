@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
@@ -211,7 +213,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		List<AbstractOperation> resultingOperations;
 
 		// check if create element has been deleted during running command, if so do not record a create operation
-		if (commandIsRunning && removedElementsCache.getRemovedRootElements().contains(modelElement)) {
+		if (commandIsRunning && removedElementsCache.contains(modelElement)) {
 			resultingOperations = new ArrayList<AbstractOperation>(recordedOperations);
 		} else {
 			final CreateDeleteOperation createDeleteOperation = createCreateDeleteOperation(modelElement, false);
@@ -219,12 +221,12 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 			resultingOperations = new ArrayList<AbstractOperation>();
 			resultingOperations.add(createDeleteOperation);
 		}
+
 		if (compositeOperation != null) {
 			compositeOperation.getSubOperations().addAll(resultingOperations);
-			return;
+		} else {
+			bufferOrRecordOperations(resultingOperations);
 		}
-
-		bufferOrRecordOperations(resultingOperations);
 	}
 
 	private void checkCommandConstraints(EObject modelElement) {
@@ -446,7 +448,10 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 			} else {
 				final Set<EObject> allModelElements = new LinkedHashSet<EObject>();
 				allModelElements.add(modelElement);
-				allModelElements.addAll(ModelUtil.getAllContainedModelElements(modelElement, false));
+				allModelElements.addAll(
+					ModelUtil.getAllContainedModelElements(
+						modelElement,
+						/* includeTransientContainments= */false));
 				final List<SettingWithReferencedElement> crossReferences = ModelUtil.collectOutgoingCrossReferences(
 					collection, allModelElements);
 				final List<SettingWithReferencedElement> ingoingCrossReferences = collectIngoingCrossReferences(
@@ -534,12 +539,16 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	private void deleteOutgoingCrossReferencesOfContainmentTree(Set<EObject> allEObjects) {
+
+		final Set<Setting> settingsToUnset = new LinkedHashSet<Setting>();
+		final Map<Setting, Set<EObject>> manySettingsToUnset = new LinkedHashMap<Setting, Set<EObject>>();
+
 		// delete all non containment cross references to other elements
 		for (final EObject modelElement : allEObjects) {
 			for (final EReference reference : modelElement.eClass().getEAllReferences()) {
 				final EClassifier eType = reference.getEType();
 
-				if (!(eType instanceof EClass)) {
+				if (!EClass.class.isInstance(eType)) {
 					continue;
 				}
 
@@ -558,23 +567,49 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 				// deleted
 				if (reference.isMany()) {
 					@SuppressWarnings("unchecked")
-					final List<EObject> referencedElements = (List<EObject>) modelElement.eGet(reference);
-					final List<EObject> referencesToRemove = new ArrayList<EObject>();
-					for (final EObject referencedElement : referencedElements) {
-						if (!allEObjects.contains(referencedElement)) {
-							referencesToRemove.add(referencedElement);
-						}
-					}
-					referencedElements.removeAll(referencesToRemove);
+					final Set<EObject> referencesToRemove =
+						filterAllNonContained(
+							(List<EObject>) modelElement.eGet(reference),
+							allEObjects);
+					manySettingsToUnset.put(
+						InternalEObject.class.cast(modelElement).eSetting(reference),
+						referencesToRemove);
 				} else {
 					final EObject referencedElement = (EObject) modelElement.eGet(reference);
 					if (referencedElement != null && !allEObjects.contains(referencedElement)) {
-						modelElement.eSet(reference, null);
+						settingsToUnset.add(InternalEObject.class.cast(modelElement).eSetting(reference));
 					}
 				}
-
 			}
 		}
+
+		for (final Setting setting : settingsToUnset) {
+			setting.getEObject().eSet(setting.getEStructuralFeature(), null);
+		}
+
+		for (final Map.Entry<Setting, Set<EObject>> manySettingWithElementsToBeRemoved : manySettingsToUnset.entrySet()) {
+			final Setting manySetting = manySettingWithElementsToBeRemoved.getKey();
+			final Set<EObject> referencesToRemove = manySettingWithElementsToBeRemoved.getValue();
+			@SuppressWarnings("unchecked")
+			final List<EObject> referencedElements =
+				(List<EObject>) manySetting.getEObject().eGet(manySetting.getEStructuralFeature());
+			referencedElements.removeAll(referencesToRemove);
+		}
+	}
+
+	/**
+	 * Returns all elements that are not contained in {@code allElements}.
+	 * 
+	 * @param elements
+	 *            the set of elements whose containment in {@code allElements} should be checked
+	 * @param allElements
+	 *            the set of all elements
+	 * @return all elements that are not contained in {@code allElements}
+	 */
+	private Set<EObject> filterAllNonContained(final List<EObject> elements, Set<EObject> allElements) {
+		final Set<EObject> referencedElementsCopy = new LinkedHashSet<EObject>(elements);
+		referencedElementsCopy.removeAll(allElements);
+		return referencedElementsCopy;
 	}
 
 	private void handleMapEntryDeletion(EObject modelElement, EClassifier eType, EReference reference,
