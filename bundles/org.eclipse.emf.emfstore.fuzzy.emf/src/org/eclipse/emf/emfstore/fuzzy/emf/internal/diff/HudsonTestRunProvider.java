@@ -168,7 +168,12 @@ public class HudsonTestRunProvider extends TestRunProvider {
 	@SuppressWarnings("unchecked")
 	private static String getFirstElementValue(String url)
 		throws MalformedURLException, DocumentException {
-		final Document doc = saxReader.read(new URL(url));
+		Document doc;
+		try {
+			doc = saxReader.read(new URL(url));
+		} catch (final DocumentException ex) {
+			throw new DocumentException("URL is " + url + ". " + ex.getMessage(), ex);
+		}
 		final List<Element> elements = doc.getRootElement().elements();
 		if (elements.size() == 0) {
 			throw new RuntimeException(
