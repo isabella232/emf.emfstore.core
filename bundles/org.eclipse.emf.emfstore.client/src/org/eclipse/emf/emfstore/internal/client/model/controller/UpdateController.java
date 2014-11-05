@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,8 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * ovonwesen
- * emueller
+ * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.controller;
 
@@ -98,9 +97,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	private PrimaryVersionSpec doUpdate(VersionSpec version) throws ChangeConflictException, ESException {
-		getProgressMonitor().beginTask("Updating Project...", 100);
+		getProgressMonitor().beginTask(Messages.UpdateController_UpdatingProject, 100);
 		getProgressMonitor().worked(1);
-		getProgressMonitor().subTask("Resolving new version");
+		getProgressMonitor().subTask(Messages.UpdateController_ResolvingNewVersion);
 		final PrimaryVersionSpec resolvedVersion = getProjectSpace().resolveVersionSpec(version, getProgressMonitor());
 		if (equalsBaseVersion(resolvedVersion)) {
 			return resolvedVersion;
@@ -111,7 +110,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			return getProjectSpace().getBaseVersion();
 		}
 
-		getProgressMonitor().subTask("Fetching changes from server");
+		getProgressMonitor().subTask(Messages.UpdateController_FetchingChanges);
 
 		final List<ChangePackage> incomingChanges = getIncomingChanges(resolvedVersion);
 
@@ -130,7 +129,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			return getProjectSpace().getBaseVersion();
 		}
 
-		getProgressMonitor().subTask("Checking for conflicts");
+		getProgressMonitor().subTask(Messages.UpdateController_CheckingForConflicts);
 
 		final List<ESChangePackage> copy = APIUtil.mapToAPI(ESChangePackage.class, incomingChanges);
 
@@ -148,7 +147,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		if (getProjectSpace().getOperations().size() > 0) {
 			final ChangeConflictSet changeConflictSet = calcConflicts(localChanges, incomingChanges, idToEObjectMapping);
 			if (changeConflictSet.getConflictBuckets().size() > 0) {
-				getProgressMonitor().subTask("Conflicts detected, calculating conflicts");
+				getProgressMonitor().subTask(Messages.UpdateController_ConflictsDetected);
 				if (callback.conflictOccurred(new ESConflictSetImpl(changeConflictSet), getProgressMonitor())) {
 					localChanges = getProjectSpace().mergeResolvedConflicts(changeConflictSet,
 						Collections.singletonList(localChanges),
@@ -162,7 +161,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().worked(15);
 
-		getProgressMonitor().subTask("Applying changes");
+		getProgressMonitor().subTask(Messages.UpdateController_ApplyingChanges);
 
 		getProjectSpace().applyChanges(resolvedVersion, incomingChanges, localChanges, getProgressMonitor(), true);
 
@@ -219,11 +218,11 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		baseVersion.setIdentifier(baseVersion.getIdentifier() + baseVersionDelta);
 		ModelUtil.logError(MessageFormat
 			.format(
-				"{0} change packages removed during update!.\n"
-					+ "Pulling up base version from {1} to {2} and persisting changes.",
+				Messages.UpdateController_ChangePackagesRemoved
+					+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
-		save(getProjectSpace(), "Could not save project space");
-		save(localChanges, "Could not save local changes");
+		save(getProjectSpace(), Messages.UpdateController_ProjectSpace_SaveFailed);
+		save(localChanges, Messages.UpdateController_LocalChanges_SaveFailed);
 	}
 
 	/**
@@ -283,8 +282,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				operationMatchingStarted = true;
 			} else {
 				if (operationMatchingStarted) {
-					ModelUtil.logError("Incoming operations only partly match with local.");
-					throw new IllegalStateException("Incoming operations only partly match with local.");
+					ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
+					throw new IllegalStateException("Incoming operations only partly match with local."); //$NON-NLS-1$
 				}
 				// first operation of incoming change package does not match
 				return false;
@@ -295,8 +294,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		if (incomingIdx == incomingOpsSize) {
 			return true;
 		}
-		ModelUtil.logError("Incoming operations are not fully consumed.");
-		throw new IllegalStateException("Incoming operations are not fully consumed.");
+		ModelUtil.logError(Messages.UpdateController_IncomingOperationsNotFullyConsumed);
+		throw new IllegalStateException("Incoming operations are not fully consumed."); //$NON-NLS-1$
 	}
 
 }

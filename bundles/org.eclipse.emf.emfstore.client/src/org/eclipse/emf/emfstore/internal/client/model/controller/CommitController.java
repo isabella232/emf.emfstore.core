@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -75,10 +75,10 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 	 * Branching Constructor.
 	 * 
 	 * @param projectSpace
-	 *            the project space whose pending changes should be commited
+	 *            the project space whose pending changes should be committed
 	 * @param branch
 	 *            Specification of the branch to which the changes should be
-	 *            commited.
+	 *            committed.
 	 * @param logMessage
 	 *            a log message documenting the commit
 	 * @param callback
@@ -92,7 +92,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		ESCommitCallback callback, IProgressMonitor monitor) {
 		super(projectSpace);
 		this.branch = branch;
-		this.logMessage = logMessage == null ? "<NO MESSAGE>" : logMessage;
+		this.logMessage = logMessage == null ? Messages.CommitController_NoMessage : logMessage;
 		this.callback = callback == null ? ESCommitCallback.NOCALLBACK : callback;
 		setProgressMonitor(monitor);
 	}
@@ -109,9 +109,9 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 			throw new ESProjectNotSharedException();
 		}
 
-		getProgressMonitor().beginTask("Commiting changes", 100);
+		getProgressMonitor().beginTask(Messages.CommitController_CommitingChanges, 100);
 		getProgressMonitor().worked(1);
-		getProgressMonitor().subTask("Checking changes");
+		getProgressMonitor().subTask(Messages.CommitController_CheckingChanges);
 
 		// check if there are any changes. Branch commits are allowed with no changes, whereas normal commits are not.
 		if (!getProjectSpace().isDirty() && branch == null) {
@@ -121,12 +121,12 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 		getProjectSpace().cleanCutElements();
 
-		getProgressMonitor().subTask("Resolving new version");
+		getProgressMonitor().subTask(Messages.CommitController_ResolvingNewVersion);
 
 		checkForCommitPreconditions(branch, getProgressMonitor());
 
 		getProgressMonitor().worked(10);
-		getProgressMonitor().subTask("Gathering changes");
+		getProgressMonitor().subTask(Messages.CommitController_GatheringChanges);
 
 		final ChangePackage changePackage = getProjectSpace().getLocalChangePackage();
 
@@ -138,7 +138,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), changePackage);
 
-		getProgressMonitor().subTask("Presenting Changes");
+		getProgressMonitor().subTask(Messages.CommitController_PresentingChanges);
 		if (!callback.inspectChanges(getProjectSpace().toAPI(),
 			changePackage.toAPI(),
 			idToEObjectMapping.toAPI())
@@ -147,18 +147,18 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 			return getProjectSpace().getBaseVersion();
 		}
 
-		getProgressMonitor().subTask("Sending files to server");
+		getProgressMonitor().subTask(Messages.CommitController_SendingFilesToServer);
 		// TODO reimplement with ObserverBus and think about subtasks for commit
 		getProjectSpace().getFileTransferManager().uploadQueuedFiles(getProgressMonitor());
 		getProgressMonitor().worked(30);
 
-		getProgressMonitor().subTask("Sending changes to server");
+		getProgressMonitor().subTask(Messages.CommitController_SendingChangesToServer);
 
 		// check again if an update is required
 		final boolean updatePerformed = checkForCommitPreconditions(branch, getProgressMonitor());
 		// present changes again if update was performed
 		if (updatePerformed) {
-			getProgressMonitor().subTask("Presenting Changes");
+			getProgressMonitor().subTask("Presenting Changes"); //$NON-NLS-1$
 			if (!callback.inspectChanges(getProjectSpace().toAPI(),
 				changePackage.toAPI(),
 				idToEObjectMapping.toAPI())
@@ -171,16 +171,16 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 		// TODO reimplement with ObserverBus and think about subtasks for commit
 		getProgressMonitor().worked(35);
-		getProgressMonitor().subTask("Sending files to server");
+		getProgressMonitor().subTask("Sending files to server"); //$NON-NLS-1$
 
 		getProjectSpace().getFileTransferManager().uploadQueuedFiles(getProgressMonitor());
 
 		getProgressMonitor().worked(30);
-		getProgressMonitor().subTask("Computing checksum");
+		getProgressMonitor().subTask(Messages.CommitController_ComputingChecksum);
 
 		handleChecksumProcessing(newBaseVersion);
 
-		getProgressMonitor().subTask("Finalizing commit");
+		getProgressMonitor().subTask(Messages.CommitController_FinalizingCommit);
 
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
@@ -203,16 +203,16 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		try {
 			validChecksum = performChecksumCheck(newBaseVersion, getProjectSpace().getProject());
 		} catch (final SerializationException exception) {
-			WorkspaceUtil.logWarning(MessageFormat.format("Checksum computation for project {0} failed.",
+			WorkspaceUtil.logWarning(MessageFormat.format(Messages.CommitController_ChecksumComputationFailed,
 				getProjectSpace().getProjectName()), exception);
 		}
 
 		if (!validChecksum) {
-			getProgressMonitor().subTask("Invalid checksum.  Activating checksum error handler.");
+			getProgressMonitor().subTask(Messages.CommitController_InvalidChecksum);
 			final boolean errorHandled = Configuration.getClientBehavior().getChecksumErrorHandler()
 				.execute(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 			if (!errorHandled) {
-				throw new ESException("Commit cancelled by checksum error handler due to invalid checksum.");
+				throw new ESException(Messages.CommitController_CommitCancelled_InvalidChecksum);
 			}
 		}
 	}
@@ -267,7 +267,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		if (branch != null) {
 			// check branch conditions
 			if (StringUtils.isEmpty(branch.getBranch())) {
-				throw new InvalidVersionSpecException("Empty branch name is not permitted.");
+				throw new InvalidVersionSpecException(Messages.CommitController_EmptyBranchName);
 			}
 			PrimaryVersionSpec potentialBranch = null;
 			try {
@@ -276,7 +276,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 				// branch doesn't exist, create.
 			}
 			if (potentialBranch != null) {
-				throw new InvalidVersionSpecException("Branch already exists. You need to merge.");
+				throw new InvalidVersionSpecException(Messages.CommitController_BranchAlreadyExists);
 			}
 
 		} else {
