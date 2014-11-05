@@ -7,6 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.mocks;
 
@@ -27,11 +28,11 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class ResourceFactoryMock extends XMIResourceFactoryImpl implements Registry {
 
-	private List<Resource> resources = new LinkedList<Resource>();
+	private final List<Resource> resources = new LinkedList<Resource>();
 
 	@Override
 	public Resource createResource(URI uri) {
-		Resource result = new ResourceImpl() {
+		final Resource result = new ResourceImpl() {
 			@Override
 			protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
 			}
@@ -55,11 +56,8 @@ public class ResourceFactoryMock extends XMIResourceFactoryImpl implements Regis
 
 			@Override
 			public URI getURI() {
-				URI uri = super.getURI();
-				if (uri == null) {
-					uri = URI.createURI("/f/a/k/e");
-				}
-				return uri;
+				final URI uri = super.getURI();
+				return uri == null ? URI.createURI("/f/a/k/e") : uri;
 			}
 		};
 

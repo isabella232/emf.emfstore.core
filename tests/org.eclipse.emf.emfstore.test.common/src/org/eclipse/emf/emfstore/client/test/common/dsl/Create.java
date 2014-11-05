@@ -56,6 +56,8 @@ import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 // TODO: class returns internal as well as external types
 public final class Create {
 
+	private static final String TRUNK = "trunk"; //$NON-NLS-1$
+
 	private Create() {
 		// util class
 	}
@@ -93,7 +95,7 @@ public final class Create {
 	}
 
 	public static PrimaryVersionSpec primaryVersionSpec(int identifier) {
-		return primaryVersionSpec(identifier, "trunk");
+		return primaryVersionSpec(identifier, TRUNK);
 	}
 
 	public static PrimaryVersionSpec primaryVersionSpec(int identifier, String branch) {
@@ -104,7 +106,7 @@ public final class Create {
 	}
 
 	public static BranchVersionSpec branchVersionSpec() {
-		return branchVersionSpec("trunk");
+		return branchVersionSpec(TRUNK);
 	}
 
 	public static BranchVersionSpec branchVersionSpec(String branch) {
@@ -154,8 +156,8 @@ public final class Create {
 		final PagedUpdateVersionSpec pagedUpdateVersionSpec = VersioningFactory.eINSTANCE
 			.createPagedUpdateVersionSpec();
 		pagedUpdateVersionSpec.setBaseVersionSpec(
-			Create.primaryVersionSpec(baseVersion.getIdentifier(), "trunk"));
-		pagedUpdateVersionSpec.setBranch("trunk");
+			Create.primaryVersionSpec(baseVersion.getIdentifier(), TRUNK));
+		pagedUpdateVersionSpec.setBranch(TRUNK);
 		return pagedUpdateVersionSpec;
 	}
 

@@ -7,15 +7,17 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.util;
 
 import org.eclipse.osgi.util.NLS;
 
 /**
- * @author Edgar
+ * Utility classes related messages.
  * 
+ * @author emueller
+ * @generated
  */
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.client.test.common.util.messages"; //$NON-NLS-1$

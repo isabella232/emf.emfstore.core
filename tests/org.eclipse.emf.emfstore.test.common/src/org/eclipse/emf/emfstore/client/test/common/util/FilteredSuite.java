@@ -60,9 +60,9 @@ public class FilteredSuite extends Suite {
 
 		if (fsParameter) {
 			return new ArrayList<Runner>();
-		} else {
-			return super.getChildren();
 		}
+
+		return super.getChildren();
 	}
 
 	/**
