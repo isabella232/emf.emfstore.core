@@ -9,7 +9,7 @@
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.fuzzy.emf.test;
+package org.eclipse.emf.emfstore.fuzzy.emf.diff.test;
 
 import org.eclipse.emf.emfstore.client.test.common.util.FilteredSuite;
 import org.eclipse.emf.emfstore.client.test.common.util.FilteredSuite.FilteredSuiteParameter;
