@@ -540,12 +540,12 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		assertEquals(2, operations.size());
 		final CreateDeleteOperation createDeleteOperation = checkAndCast(operations.get(0), CreateDeleteOperation.class);
 
-		final SingleReferenceOperation singleRefOp = checkAndCast(
-			createDeleteOperation.getSubOperations().get(0),
-			SingleReferenceOperation.class);
 		final MultiReferenceOperation multiRefOp = checkAndCast(
-			createDeleteOperation.getSubOperations().get(1),
+			createDeleteOperation.getSubOperations().get(0),
 			MultiReferenceOperation.class);
+		final SingleReferenceOperation singleRefOp = checkAndCast(
+			createDeleteOperation.getSubOperations().get(1),
+			SingleReferenceOperation.class);
 
 		assertEquals("key", singleRefOp.getFeatureName()); //$NON-NLS-1$
 		assertNull(singleRefOp.getNewValue());

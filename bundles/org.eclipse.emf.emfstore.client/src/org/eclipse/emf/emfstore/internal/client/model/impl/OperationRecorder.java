@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +31,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -540,8 +540,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	private void deleteOutgoingCrossReferencesOfContainmentTree(Set<EObject> allEObjects) {
 
-		final Set<Setting> settingsToUnset = new LinkedHashSet<Setting>();
-		final Map<Setting, Set<EObject>> manySettingsToUnset = new LinkedHashMap<Setting, Set<EObject>>();
+		final List<SettingWithElementsToRemove> settingsToUnset = new ArrayList<SettingWithElementsToRemove>();
 
 		// delete all non containment cross references to other elements
 		for (final EObject modelElement : allEObjects) {
@@ -571,29 +570,39 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 						filterAllNonContained(
 							(List<EObject>) modelElement.eGet(reference),
 							allEObjects);
-					manySettingsToUnset.put(
-						InternalEObject.class.cast(modelElement).eSetting(reference),
-						referencesToRemove);
+					if (referencesToRemove.size() > 0) {
+						settingsToUnset.add(
+							new SettingWithElementsToRemove(
+								InternalEObject.class.cast(modelElement).eSetting(reference),
+								referencesToRemove));
+					}
 				} else {
 					final EObject referencedElement = (EObject) modelElement.eGet(reference);
 					if (referencedElement != null && !allEObjects.contains(referencedElement)) {
-						settingsToUnset.add(InternalEObject.class.cast(modelElement).eSetting(reference));
+						settingsToUnset.add(new SettingWithElementsToRemove(
+							InternalEObject.class.cast(modelElement).eSetting(reference)));
 					}
 				}
 			}
 		}
 
-		for (final Setting setting : settingsToUnset) {
-			setting.getEObject().eSet(setting.getEStructuralFeature(), null);
-		}
+		unsetAll(settingsToUnset);
+	}
 
-		for (final Map.Entry<Setting, Set<EObject>> manySettingWithElementsToBeRemoved : manySettingsToUnset.entrySet()) {
-			final Setting manySetting = manySettingWithElementsToBeRemoved.getKey();
-			final Set<EObject> referencesToRemove = manySettingWithElementsToBeRemoved.getValue();
-			@SuppressWarnings("unchecked")
-			final List<EObject> referencedElements =
-				(List<EObject>) manySetting.getEObject().eGet(manySetting.getEStructuralFeature());
-			referencedElements.removeAll(referencesToRemove);
+	private void unsetAll(final List<SettingWithElementsToRemove> settingsToUnset) {
+		for (final SettingWithElementsToRemove settingWithElementsToRemove : settingsToUnset) {
+			final Setting setting = settingWithElementsToRemove.setting;
+			final EStructuralFeature feature = setting.getEStructuralFeature();
+			final Set<EObject> referencesToRemove = settingWithElementsToRemove.elementsToRemove;
+
+			if (feature.isMany()) {
+				@SuppressWarnings("unchecked")
+				final List<EObject> referencedElements =
+					(List<EObject>) setting.getEObject().eGet(feature);
+				referencedElements.removeAll(referencesToRemove);
+			} else {
+				setting.getEObject().eSet(feature, null);
+			}
 		}
 	}
 
@@ -1054,4 +1063,64 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		return commandIsRunning;
 	}
 
+	/**
+	 * Helper class to capture a setting a all elements that need to be
+	 * removed from the feature in case the feature represents a many reference.
+	 * Otherwise the collection of elements to be removed remains empty.
+	 * 
+	 */
+	class SettingWithElementsToRemove {
+
+		/**
+		 * The {@link Setting}.
+		 */
+		private final Setting setting;
+
+		/**
+		 * The elements to be removed in case the feature within in the setting is a many reference.
+		 */
+		private final Set<EObject> elementsToRemove = new LinkedHashSet<EObject>();
+
+		/**
+		 * Constructor for non-many references.
+		 * 
+		 * @param setting
+		 *            a setting consisting of an {@link EObject} and a non-many reference
+		 */
+		public SettingWithElementsToRemove(Setting setting) {
+			this.setting = setting;
+		}
+
+		/**
+		 * Constructor for many references.
+		 * 
+		 * @param setting
+		 *            a setting consisting of an {@link EObject} and a many reference
+		 * @param elementsToRemove
+		 *            the elemets to be removed from the many reference
+		 */
+		public SettingWithElementsToRemove(Setting setting, Set<EObject> elementsToRemove) {
+			this.setting = setting;
+			this.elementsToRemove.addAll(elementsToRemove);
+		}
+
+		/**
+		 * Returns the {@link Setting}.
+		 * 
+		 * @return the setting
+		 */
+		public Setting getSetting() {
+			return setting;
+		}
+
+		/**
+		 * Returns the elements to be removed in case the feature within in the setting is a many reference.
+		 * 
+		 * @return the elements to be removed. In case the feature of the setting is non-many, the set
+		 *         will be empty
+		 */
+		public Set<EObject> getElementsToRemove() {
+			return elementsToRemove;
+		}
+	}
 }
