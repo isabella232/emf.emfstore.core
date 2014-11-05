@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import org.apache.commons.io.IOExceptionWithCause;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
@@ -37,6 +38,9 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 
 public final class Delete {
+
+	private static final int DELETION_RETRIES = 3;
+	private static final NullProgressMonitor NULL_PROGRESS_MONITOR = new NullProgressMonitor();
 
 	private Delete() {
 
@@ -121,12 +125,34 @@ public final class Delete {
 		}
 	}
 
-	public static void allLocalProjects() throws IOException, ESException {
+	public static void allLocalProjects() throws ESException, IOException {
 		final ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
 		final List<ESLocalProject> localProjects = workspace.getLocalProjects();
+
 		for (final ESLocalProject localProject : localProjects) {
-			localProject.delete(new NullProgressMonitor());
+			tryDeleteProject(localProject);
 		}
 	}
 
+	private static void tryDeleteProject(ESLocalProject localProject) throws ESException, IOException {
+		int deletionAttempt = 0;
+		IOException ioException = null;
+		do {
+			try {
+				localProject.delete(NULL_PROGRESS_MONITOR);
+			} catch (final IOException e) {
+				deletionAttempt += 1;
+				ioException = e;
+				try {
+					Thread.sleep(100);
+				} catch (final InterruptedException ex) {
+					throw new IOExceptionWithCause(ex);
+				}
+			}
+		} while (deletionAttempt < DELETION_RETRIES && ioException != null);
+
+		if (ioException != null) {
+			throw ioException;
+		}
+	}
 }
