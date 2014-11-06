@@ -14,6 +14,7 @@ package org.eclipse.emf.emfstore.fuzzy.emf.internal.diff;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,7 +173,9 @@ public class HudsonTestRunProvider extends TestRunProvider {
 		try {
 			doc = saxReader.read(new URL(url));
 		} catch (final DocumentException ex) {
-			throw new DocumentException("URL is " + url + ". " + ex.getMessage(), ex);
+			throw new DocumentException(
+				MessageFormat.format(
+					Messages.HudsonTestRunProvider_ReadFailed, url), ex);
 		}
 		final List<Element> elements = doc.getRootElement().elements();
 		if (elements.size() == 0) {
@@ -197,7 +200,9 @@ public class HudsonTestRunProvider extends TestRunProvider {
 
 		resource = getTestRunResource(secondBuildNumber);
 		if (!FuzzyUtil.resourceExists(resource)) {
-			throw new RuntimeException(Messages.HudsonTestRunProvider_No_TestRunFile_For_2nd_Run);
+			throw new RuntimeException(
+				MessageFormat.format(
+					Messages.HudsonTestRunProvider_No_TestRunFile_For_2nd_Run, resource.getURI()));
 		}
 		resource.load(null);
 

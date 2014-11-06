@@ -26,6 +26,7 @@ public class Messages extends NLS {
 	public static String HudsonTestRunProvider_No_TestRunFile_For_1st_Run;
 	public static String HudsonTestRunProvider_No_TestRunFile_For_2nd_Run;
 	public static String HudsonTestRunProvider_Not_Enough_Valid_Builds;
+	public static String HudsonTestRunProvider_ReadFailed;
 	public static String TestRunProvider_Could_Not_Load_TestRuns_From_Config;
 	static {
 		// initialize resource bundle
