@@ -41,7 +41,7 @@ public interface ModelPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNAME = "model";
+	String eNAME = "model"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
@@ -50,7 +50,7 @@ public interface ModelPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_URI = "http://eclipse.org/emf/emfstore/common/model";
+	String eNS_URI = "http://eclipse.org/emf/emfstore/common/model"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -59,7 +59,7 @@ public interface ModelPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.common.model";
+	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.common.model"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

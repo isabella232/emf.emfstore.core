@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -37,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * @generated
  */
 public class EMFStorePropertyItemProvider extends RootElementItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -82,9 +81,9 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EMFStoreProperty_key_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_key_feature",
-					"_UI_EMFStoreProperty_type"),
+				getString("_UI_EMFStoreProperty_key_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EMFStoreProperty_type"), //$NON-NLS-1$
 				ModelPackage.Literals.EMF_STORE_PROPERTY__KEY,
 				true,
 				false,
@@ -106,9 +105,9 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EMFStoreProperty_value_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_value_feature",
-					"_UI_EMFStoreProperty_type"),
+				getString("_UI_EMFStoreProperty_value_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EMFStoreProperty_type"), //$NON-NLS-1$
 				ModelPackage.Literals.EMF_STORE_PROPERTY__VALUE,
 				true,
 				false,
@@ -130,9 +129,9 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EMFStoreProperty_type_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_type_feature",
-					"_UI_EMFStoreProperty_type"),
+				getString("_UI_EMFStoreProperty_type_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_type_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EMFStoreProperty_type"), //$NON-NLS-1$
 				ModelPackage.Literals.EMF_STORE_PROPERTY__TYPE,
 				true,
 				false,
@@ -154,9 +153,9 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_EMFStoreProperty_version_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_version_feature",
-					"_UI_EMFStoreProperty_type"),
+				getString("_UI_EMFStoreProperty_version_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_version_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EMFStoreProperty_type"), //$NON-NLS-1$
 				ModelPackage.Literals.EMF_STORE_PROPERTY__VERSION,
 				true,
 				false,
@@ -175,7 +174,7 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EMFStoreProperty"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EMFStoreProperty")); //$NON-NLS-1$
 	}
 
 	/**
@@ -187,10 +186,10 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EMFStoreProperty) object).getKey();
+		final String label = ((EMFStoreProperty) object).getKey();
 		return label == null || label.length() == 0 ?
-			getString("_UI_EMFStoreProperty_type") :
-			getString("_UI_EMFStoreProperty_type") + " " + label;
+			getString("_UI_EMFStoreProperty_type") : //$NON-NLS-1$
+			getString("_UI_EMFStoreProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

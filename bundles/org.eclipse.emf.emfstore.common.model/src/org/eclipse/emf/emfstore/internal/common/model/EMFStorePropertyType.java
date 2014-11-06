@@ -36,7 +36,7 @@ public enum EMFStorePropertyType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SHARED(0, "Shared", "Shared"),
+	SHARED(0, "Shared", "Shared"), //$NON-NLS-1$//$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Local</b></em>' literal object.
@@ -47,7 +47,7 @@ public enum EMFStorePropertyType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LOCAL(1, "Local", "Local");
+	LOCAL(1, "Local", "Local"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Shared</b></em>' literal value.
@@ -108,7 +108,7 @@ public enum EMFStorePropertyType implements Enumerator {
 	 */
 	public static EMFStorePropertyType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EMFStorePropertyType result = VALUES_ARRAY[i];
+			final EMFStorePropertyType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -125,7 +125,7 @@ public enum EMFStorePropertyType implements Enumerator {
 	 */
 	public static EMFStorePropertyType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EMFStorePropertyType result = VALUES_ARRAY[i];
+			final EMFStorePropertyType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}

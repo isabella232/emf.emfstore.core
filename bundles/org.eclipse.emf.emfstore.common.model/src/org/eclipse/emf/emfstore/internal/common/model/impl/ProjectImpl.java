@@ -61,7 +61,6 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	private ESModelElementIdToEObjectMappingImpl mappingImpl;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */

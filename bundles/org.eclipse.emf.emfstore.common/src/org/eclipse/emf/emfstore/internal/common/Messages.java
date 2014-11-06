@@ -14,8 +14,10 @@ package org.eclipse.emf.emfstore.internal.common;
 import org.eclipse.osgi.util.NLS;
 
 /**
- * @author emueller
+ * Internal common related messages.
  * 
+ * @author emueller
+ * @generated
  */
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.common.messages"; //$NON-NLS-1$

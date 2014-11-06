@@ -91,11 +91,12 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	 * @generated
 	 */
 	public void setValue(String newValue) {
-		String oldValue = value;
+		final String oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_STRING_VALUE__VALUE, oldValue,
 				value));
+		}
 	}
 
 	/**
@@ -168,11 +169,12 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');
 		return result.toString();

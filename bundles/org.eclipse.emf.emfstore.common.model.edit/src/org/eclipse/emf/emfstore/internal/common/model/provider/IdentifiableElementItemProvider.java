@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -37,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * @generated
  */
 public class IdentifiableElementItemProvider extends RootElementItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -76,9 +75,9 @@ public class IdentifiableElementItemProvider extends RootElementItemProvider imp
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_IdentifiableElement_identifier_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableElement_identifier_feature",
-					"_UI_IdentifiableElement_type"),
+				getString("_UI_IdentifiableElement_identifier_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableElement_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_IdentifiableElement_type"), //$NON-NLS-1$
 				ModelPackage.Literals.IDENTIFIABLE_ELEMENT__IDENTIFIER,
 				true,
 				false,
@@ -96,10 +95,10 @@ public class IdentifiableElementItemProvider extends RootElementItemProvider imp
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((IdentifiableElement) object).getIdentifier();
+		final String label = ((IdentifiableElement) object).getIdentifier();
 		return label == null || label.length() == 0 ?
-			getString("_UI_IdentifiableElement_type") :
-			getString("_UI_IdentifiableElement_type") + " " + label;
+			getString("_UI_IdentifiableElement_type") : //$NON-NLS-1$
+			getString("_UI_IdentifiableElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

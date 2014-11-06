@@ -15,12 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 
 /**
@@ -30,8 +25,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * 
  * @generated
  */
-public class ModelElementIdItemProvider extends UniqueIdentifierItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ModelElementIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -66,7 +60,7 @@ public class ModelElementIdItemProvider extends UniqueIdentifierItemProvider imp
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelElementId"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelElementId")); //$NON-NLS-1$
 	}
 
 	/**
@@ -77,10 +71,10 @@ public class ModelElementIdItemProvider extends UniqueIdentifierItemProvider imp
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelElementId) object).getId();
+		final String label = ((ModelElementId) object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ModelElementId_type") :
-			getString("_UI_ModelElementId_type") + " " + label;
+			getString("_UI_ModelElementId_type") : //$NON-NLS-1$
+			getString("_UI_ModelElementId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

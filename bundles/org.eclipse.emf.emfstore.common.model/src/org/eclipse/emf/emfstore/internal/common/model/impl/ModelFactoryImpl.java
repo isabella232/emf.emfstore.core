@@ -43,12 +43,12 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 */
 	public static ModelFactory init() {
 		try {
-			ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/common/model");
+			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://eclipse.org/emf/emfstore/common/model"); //$NON-NLS-1$
 			if (theModelFactory != null) {
 				return theModelFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ModelFactoryImpl();
@@ -86,7 +86,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 		case ModelPackage.PROPERTY_STRING_VALUE:
 			return createPropertyStringValue();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -101,7 +101,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 		case ModelPackage.EMF_STORE_PROPERTY_TYPE:
 			return createEMFStorePropertyTypeFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -116,7 +116,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 		case ModelPackage.EMF_STORE_PROPERTY_TYPE:
 			return convertEMFStorePropertyTypeToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -126,7 +126,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public Project createProject() {
-		ProjectImpl project = new ProjectImpl();
+		final ProjectImpl project = new ProjectImpl();
 		return project;
 	}
 
@@ -136,7 +136,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ModelElementId createModelElementId() {
-		ModelElementIdImpl modelElementId = new ModelElementIdImpl();
+		final ModelElementIdImpl modelElementId = new ModelElementIdImpl();
 		return modelElementId;
 	}
 
@@ -146,7 +146,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ModelVersion createModelVersion() {
-		ModelVersionImpl modelVersion = new ModelVersionImpl();
+		final ModelVersionImpl modelVersion = new ModelVersionImpl();
 		return modelVersion;
 	}
 
@@ -156,7 +156,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public EMFStoreProperty createEMFStoreProperty() {
-		EMFStorePropertyImpl emfStoreProperty = new EMFStorePropertyImpl();
+		final EMFStorePropertyImpl emfStoreProperty = new EMFStorePropertyImpl();
 		return emfStoreProperty;
 	}
 
@@ -167,7 +167,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public Map.Entry<String, EMFStoreProperty> createPropertyMapEntry() {
-		PropertyMapEntryImpl propertyMapEntry = new PropertyMapEntryImpl();
+		final PropertyMapEntryImpl propertyMapEntry = new PropertyMapEntryImpl();
 		return propertyMapEntry;
 	}
 
@@ -177,7 +177,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public PropertyStringValue createPropertyStringValue() {
-		PropertyStringValueImpl propertyStringValue = new PropertyStringValueImpl();
+		final PropertyStringValueImpl propertyStringValue = new PropertyStringValueImpl();
 		return propertyStringValue;
 	}
 
@@ -187,10 +187,12 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public EMFStorePropertyType createEMFStorePropertyTypeFromString(EDataType eDataType, String initialValue) {
-		EMFStorePropertyType result = EMFStorePropertyType.get(initialValue);
+		final EMFStorePropertyType result = EMFStorePropertyType.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '"
-				+ eDataType.getName() + "'");
+		{
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" //$NON-NLS-1$ //$NON-NLS-2$
+				+ eDataType.getName() + "'"); //$NON-NLS-1$
+		}
 		return result;
 	}
 

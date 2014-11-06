@@ -57,7 +57,7 @@ public final class MongoDBConfiguration {
 
 		if (!propertyFile.exists()) {
 			if (!dropPropertiesFileToHardDrive(propertyFile)) {
-				ModelUtil.logWarning("MongoDB property initialization failed, using default properties.");
+				ModelUtil.logWarning(Messages.MongoDBConfiguration_PropertyInitFailed);
 				return null;
 			}
 		}
@@ -68,7 +68,7 @@ public final class MongoDBConfiguration {
 			fis = new FileInputStream(propertyFile);
 			properties.load(fis);
 		} catch (final IOException e) {
-			ModelUtil.logWarning("MongoDB property initialization failed, using default properties.");
+			ModelUtil.logWarning(Messages.MongoDBConfiguration_PropertyInitFailed);
 			return null;
 		} finally {
 			try {
@@ -89,7 +89,7 @@ public final class MongoDBConfiguration {
 		try {
 			FileUtil.copyFile(getClass().getResourceAsStream("mongodb.properties"), targetFile); //$NON-NLS-1$
 		} catch (final IOException e) {
-			ModelUtil.logWarning("Copying MongoDB property file to configuration folder failed");
+			ModelUtil.logWarning(Messages.MongoDBConfiguration_PropertyCopyFailed);
 			return false;
 		}
 		return true;

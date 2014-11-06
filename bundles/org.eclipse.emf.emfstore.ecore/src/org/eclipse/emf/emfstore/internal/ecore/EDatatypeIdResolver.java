@@ -30,55 +30,55 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
  */
 public class EDatatypeIdResolver implements ESSingletonIdResolver {
 
-	private Map<String, EDataType> datatypes = new LinkedHashMap<String, EDataType>();
+	private final Map<String, EDataType> datatypes = new LinkedHashMap<String, EDataType>();
 
 	/**
 	 * Default constructor.
 	 */
 	public EDatatypeIdResolver() {
-		datatypes.put("Literal", EcorePackage.eINSTANCE.getEString());
+		datatypes.put("Literal", EcorePackage.eINSTANCE.getEString()); //$NON-NLS-1$
 		// String
-		datatypes.put("String", EcorePackage.eINSTANCE.getEString());
-		datatypes.put("EString", EcorePackage.eINSTANCE.getEString());
+		datatypes.put("String", EcorePackage.eINSTANCE.getEString()); //$NON-NLS-1$
+		datatypes.put("EString", EcorePackage.eINSTANCE.getEString()); //$NON-NLS-1$
 		// Date
-		datatypes.put("Date", EcorePackage.eINSTANCE.getEDate());
-		datatypes.put("EDate", EcorePackage.eINSTANCE.getEDate());
+		datatypes.put("Date", EcorePackage.eINSTANCE.getEDate()); //$NON-NLS-1$
+		datatypes.put("EDate", EcorePackage.eINSTANCE.getEDate()); //$NON-NLS-1$
 		// integer
-		datatypes.put("Int", EcorePackage.eINSTANCE.getEInt());
-		datatypes.put("EInt", EcorePackage.eINSTANCE.getEInt());
-		datatypes.put("Integer", EcorePackage.eINSTANCE.getEIntegerObject());
-		datatypes.put("EInteger", EcorePackage.eINSTANCE.getEIntegerObject());
-		datatypes.put("EIntegerObject", EcorePackage.eINSTANCE.getEIntegerObject());
+		datatypes.put("Int", EcorePackage.eINSTANCE.getEInt()); //$NON-NLS-1$
+		datatypes.put("EInt", EcorePackage.eINSTANCE.getEInt()); //$NON-NLS-1$
+		datatypes.put("Integer", EcorePackage.eINSTANCE.getEIntegerObject()); //$NON-NLS-1$
+		datatypes.put("EInteger", EcorePackage.eINSTANCE.getEIntegerObject()); //$NON-NLS-1$
+		datatypes.put("EIntegerObject", EcorePackage.eINSTANCE.getEIntegerObject()); //$NON-NLS-1$
 		// double
-		datatypes.put("Double", EcorePackage.eINSTANCE.getEDouble());
-		datatypes.put("EDouble", EcorePackage.eINSTANCE.getEDouble());
-		datatypes.put("EDoubleObject", EcorePackage.eINSTANCE.getEDoubleObject());
+		datatypes.put("Double", EcorePackage.eINSTANCE.getEDouble()); //$NON-NLS-1$
+		datatypes.put("EDouble", EcorePackage.eINSTANCE.getEDouble()); //$NON-NLS-1$
+		datatypes.put("EDoubleObject", EcorePackage.eINSTANCE.getEDoubleObject()); //$NON-NLS-1$
 		// long
-		datatypes.put("Long", EcorePackage.eINSTANCE.getELong());
-		datatypes.put("ELong", EcorePackage.eINSTANCE.getELong());
-		datatypes.put("ELongObject", EcorePackage.eINSTANCE.getELongObject());
+		datatypes.put("Long", EcorePackage.eINSTANCE.getELong()); //$NON-NLS-1$
+		datatypes.put("ELong", EcorePackage.eINSTANCE.getELong()); //$NON-NLS-1$
+		datatypes.put("ELongObject", EcorePackage.eINSTANCE.getELongObject()); //$NON-NLS-1$
 		// float
-		datatypes.put("Float", EcorePackage.eINSTANCE.getEFloat());
-		datatypes.put("EFloat", EcorePackage.eINSTANCE.getEFloat());
-		datatypes.put("EFloatObject", EcorePackage.eINSTANCE.getEFloatObject());
+		datatypes.put("Float", EcorePackage.eINSTANCE.getEFloat()); //$NON-NLS-1$
+		datatypes.put("EFloat", EcorePackage.eINSTANCE.getEFloat()); //$NON-NLS-1$
+		datatypes.put("EFloatObject", EcorePackage.eINSTANCE.getEFloatObject()); //$NON-NLS-1$
 		// short
-		datatypes.put("Short", EcorePackage.eINSTANCE.getEShort());
-		datatypes.put("EShort", EcorePackage.eINSTANCE.getEShort());
-		datatypes.put("EShortObject", EcorePackage.eINSTANCE.getEShortObject());
+		datatypes.put("Short", EcorePackage.eINSTANCE.getEShort()); //$NON-NLS-1$
+		datatypes.put("EShort", EcorePackage.eINSTANCE.getEShort()); //$NON-NLS-1$
+		datatypes.put("EShortObject", EcorePackage.eINSTANCE.getEShortObject()); //$NON-NLS-1$
 		// boolean
-		datatypes.put("Boolean", EcorePackage.eINSTANCE.getEBoolean());
-		datatypes.put("EBoolean", EcorePackage.eINSTANCE.getEBoolean());
-		datatypes.put("EBooleanObject", EcorePackage.eINSTANCE.getEBooleanObject());
+		datatypes.put("Boolean", EcorePackage.eINSTANCE.getEBoolean()); //$NON-NLS-1$
+		datatypes.put("EBoolean", EcorePackage.eINSTANCE.getEBoolean()); //$NON-NLS-1$
+		datatypes.put("EBooleanObject", EcorePackage.eINSTANCE.getEBooleanObject()); //$NON-NLS-1$
 		// byte
-		datatypes.put("Byte", EcorePackage.eINSTANCE.getEByte());
-		datatypes.put("EByte", EcorePackage.eINSTANCE.getEByte());
-		datatypes.put("EByteObject", EcorePackage.eINSTANCE.getEByteObject());
-		datatypes.put("EByteArray", EcorePackage.eINSTANCE.getEByteArray());
+		datatypes.put("Byte", EcorePackage.eINSTANCE.getEByte()); //$NON-NLS-1$
+		datatypes.put("EByte", EcorePackage.eINSTANCE.getEByte()); //$NON-NLS-1$
+		datatypes.put("EByteObject", EcorePackage.eINSTANCE.getEByteObject()); //$NON-NLS-1$
+		datatypes.put("EByteArray", EcorePackage.eINSTANCE.getEByteArray()); //$NON-NLS-1$
 		// char
-		datatypes.put("EChar", EcorePackage.eINSTANCE.getEChar());
-		datatypes.put("ECharacterObject", EcorePackage.eINSTANCE.getECharacterObject());
-		datatypes.put("EBigDecimal", EcorePackage.eINSTANCE.getEBigDecimal());
-		datatypes.put("EBigInteger", EcorePackage.eINSTANCE.getEBigInteger());
+		datatypes.put("EChar", EcorePackage.eINSTANCE.getEChar()); //$NON-NLS-1$
+		datatypes.put("ECharacterObject", EcorePackage.eINSTANCE.getECharacterObject()); //$NON-NLS-1$
+		datatypes.put("EBigDecimal", EcorePackage.eINSTANCE.getEBigDecimal()); //$NON-NLS-1$
+		datatypes.put("EBigInteger", EcorePackage.eINSTANCE.getEBigInteger()); //$NON-NLS-1$
 	}
 
 	/**
@@ -101,18 +101,18 @@ public class EDatatypeIdResolver implements ESSingletonIdResolver {
 	 */
 	public ESModelElementId getSingletonModelElementId(EObject singleton) {
 
-		if (!(singleton instanceof EDataType) || singleton == null) {
+		if (!EDataType.class.isInstance(singleton)) {
 			return null;
 		}
 
 		// TODO: EM, provide 2nd map for performance reasons
-		for (Map.Entry<String, EDataType> entry : datatypes.entrySet()) {
+		for (final Map.Entry<String, EDataType> entry : datatypes.entrySet()) {
 			if (entry.getValue() != singleton) {
 				continue;
 			}
 
 			// TODO: don't create IDs on the fly rather put them directly into the map
-			ModelElementId id = ModelFactory.eINSTANCE.createModelElementId();
+			final ModelElementId id = ModelFactory.eINSTANCE.createModelElementId();
 			id.setId(entry.getKey());
 			return id.toAPI();
 		}
@@ -125,7 +125,7 @@ public class EDatatypeIdResolver implements ESSingletonIdResolver {
 	 */
 	public boolean isSingleton(EObject eDataType) {
 
-		if (!(eDataType instanceof EDataType) || eDataType == null) {
+		if (!EDataType.class.isInstance(eDataType)) {
 			return false;
 		}
 

@@ -9,22 +9,21 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.common.extensionpoint;
+package org.eclipse.emf.emfstore.mongodb;
 
 import org.eclipse.osgi.util.NLS;
 
 /**
- * Extension point related messages.
+ * MongoDB related messages.
  * 
  * @author emueller
  * @generated
- * @since 1.3
- * 
  */
-public final class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.common.extensionpoint.messages"; //$NON-NLS-1$
-	public static String ESExtensionPoint_ExceptionOccurred;
-	public static String ESExtensionPoint_ValueNotFound;
+public class Messages extends NLS {
+	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.mongodb.messages"; //$NON-NLS-1$
+	public static String AbstractMongoDBResourceSetProvider_SetupFailed;
+	public static String MongoDBConfiguration_PropertyCopyFailed;
+	public static String MongoDBConfiguration_PropertyInitFailed;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

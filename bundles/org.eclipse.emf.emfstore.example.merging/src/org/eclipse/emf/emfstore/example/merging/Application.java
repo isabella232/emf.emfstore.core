@@ -51,7 +51,7 @@ public class Application implements IApplication {
 
 		try {
 			// Create a client representation for a local server and start a local server.
-			ESServer localServer = ESServer.FACTORY.createAndStartLocalServer();
+			final ESServer localServer = ESServer.FACTORY.createAndStartLocalServer();
 
 			// Reuse the client from the hello world example. It will clean up all local and remote projects and create
 			// one project with some content on the server and two checked-out copies of the project on the client.
@@ -60,49 +60,56 @@ public class Application implements IApplication {
 			// We run our own client code to demonstrate merging now.
 			runClient(localServer);
 
-		} catch (ESServerStartFailedException e) {
-			System.out.println("Server start failed!");
+		} catch (final ESServerStartFailedException e) {
+			System.out.println("Server start failed!"); //$NON-NLS-1$
 			e.printStackTrace();
-		} catch (ESException e) {
+		} catch (final ESException e) {
 			// If there is a problem with the connection to the server
 			// e.g. a network, a specific EMFStoreException will be thrown
-			System.out.println("Connection to Server failed!");
+			System.out.println("Connection to Server failed!"); //$NON-NLS-1$
 			e.printStackTrace();
 		}
 		return IApplication.EXIT_OK;
 	}
 
+	/**
+	 * Simulates a client.
+	 * 
+	 * @param server
+	 *            the server the client will interact with
+	 * @throws ESException in case any error occurs
+	 */
 	public static void runClient(ESServer server) throws ESException {
-		System.out.println("Client starting...");
+		System.out.println("Client starting..."); //$NON-NLS-1$
 
-		ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
-		ESLocalProject demoProject = workspace.getLocalProjects().get(0);
-		League league = (League) demoProject.getModelElements().get(0);
+		final ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
+		final ESLocalProject demoProject = workspace.getLocalProjects().get(0);
+		final League league = (League) demoProject.getModelElements().get(0);
 		final ESLocalProject demoProjectCopy = workspace.getLocalProjects().get(1);
-		League leagueCopy = (League) demoProjectCopy.getModelElements().get(0);
+		final League leagueCopy = (League) demoProjectCopy.getModelElements().get(0);
 
 		// Change the name of the league in project 1,add a new player and commit the change
-		league.setName("Euro-League");
-		Player newPlayer = BowlingFactory.eINSTANCE.createPlayer();
-		newPlayer.setName("Eugene");
+		league.setName("Euro-League"); //$NON-NLS-1$
+		final Player newPlayer = BowlingFactory.eINSTANCE.createPlayer();
+		newPlayer.setName("Eugene"); //$NON-NLS-1$
 		league.getPlayers().add(newPlayer);
 
 		demoProject.commit(new ESSystemOutProgressMonitor());
 
 		// Changing the name again value without calling update() on the copy first will cause a conflict on commit.
 		// We also add one change which is non-conflicting, setting the name of the first player.
-		leagueCopy.setName("EU-League");
-		leagueCopy.getPlayers().get(0).setName("Johannes");
+		leagueCopy.setName("EU-League"); //$NON-NLS-1$
+		leagueCopy.getPlayers().get(0).setName("Johannes"); //$NON-NLS-1$
 
 		try {
 			demoProjectCopy.commit(new ESSystemOutProgressMonitor());
-		} catch (ESUpdateRequiredException e) {
+		} catch (final ESUpdateRequiredException e) {
 			// The commit failed since the other demoProject was committed first and therefore demoProjectCopy needs an
 			// update
-			System.out.println("\nCommit of demoProjectCopy failed.");
+			System.out.println("\nCommit of demoProjectCopy failed."); //$NON-NLS-1$
 
 			// We run update in demoProjectCopy with an UpdateCallback to handle conflicts
-			System.out.println("\nUpdate of demoProjectCopy with conflict resolver...");
+			System.out.println("\nUpdate of demoProjectCopy with conflict resolver..."); //$NON-NLS-1$
 			demoProjectCopy.update(ESVersionSpec.FACTORY.createHEAD(), new ESUpdateCallback() {
 				public void noChangesOnServer() {
 					// do nothing if there are no changes on the server (in this example we know
@@ -119,7 +126,7 @@ public class Application implements IApplication {
 
 					// One or more conflicts have occured, they are delivered in a change conflict set
 					// We know there is only one conflict so we grab it
-					ESConflict conflict = changeConflictSet.getConflicts().iterator().next();
+					final ESConflict conflict = changeConflictSet.getConflicts().iterator().next();
 
 					// We resolve the conflict by accepting all of the conflicting local operations and rejecting all of
 					// the remote
@@ -133,22 +140,28 @@ public class Application implements IApplication {
 			}, new ESSystemOutProgressMonitor());
 
 			// commit merge result in project 2
-			System.out.println("\nCommit of merge result of demoProjectCopy");
+			System.out.println("\nCommit of merge result of demoProjectCopy"); //$NON-NLS-1$
 			demoProjectCopy.commit(new ESSystemOutProgressMonitor());
 
 			// After having merged the two projects update local project 1
-			System.out.println("\nUpdate of demoProject");
+			System.out.println("\nUpdate of demoProject"); //$NON-NLS-1$
 			demoProject.update(new NullProgressMonitor());
 
 			// Finally we print the league and player names of both projects
-			System.out.println("\nLeague name in demoProject  is now: " + league.getName());
-			System.out.println("\nLeague name in demoProjectCopy  is now: " + leagueCopy.getName());
-			System.out.println("\nPlayer name in demoProject is now: " + league.getPlayers().get(0).getName());
-			System.out.println("\nPlayer name in demoProjectCopy is now: " + leagueCopy.getPlayers().get(0).getName());
+			System.out.println("\nLeague name in demoProject  is now: " + league.getName()); //$NON-NLS-1$
+			System.out.println("\nLeague name in demoProjectCopy  is now: " + leagueCopy.getName()); //$NON-NLS-1$
+			System.out.println("\nPlayer name in demoProject is now: " + league.getPlayers().get(0).getName()); //$NON-NLS-1$
+			System.out.println("\nPlayer name in demoProjectCopy is now: " + leagueCopy.getPlayers().get(0).getName()); //$NON-NLS-1$
 
 		}
 	}
 
+	/**
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.equinox.app.IApplication#stop()
+	 */
 	public void stop() {
 		// do nothing
 	}

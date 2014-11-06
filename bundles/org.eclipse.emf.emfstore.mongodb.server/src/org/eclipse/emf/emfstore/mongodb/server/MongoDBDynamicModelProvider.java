@@ -48,7 +48,7 @@ public class MongoDBDynamicModelProvider implements ESDynamicModelProvider {
 		try {
 			ResourceSetFactoryProvider.COUNT_DOWN_LATCH.await(10, TimeUnit.SECONDS);
 		} catch (final InterruptedException e) {
-			ModelUtil.logException("Setup of Mongo-DB ResourceSet failed", e);
+			ModelUtil.logException(Messages.MongoDBDynamicModelProvider_SetupFailed, e);
 		}
 		final ResourceSet resourceSet = ResourceSetFactoryProvider.getResourceSetFactory().createResourceSet();
 		final Resource resource = resourceSet.getResource(dynamicModelsURI, true);

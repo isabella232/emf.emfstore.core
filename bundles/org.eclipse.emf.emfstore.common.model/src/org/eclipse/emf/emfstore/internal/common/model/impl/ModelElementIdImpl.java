@@ -29,7 +29,6 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 	private ESModelElementIdImpl apiImpl;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 */

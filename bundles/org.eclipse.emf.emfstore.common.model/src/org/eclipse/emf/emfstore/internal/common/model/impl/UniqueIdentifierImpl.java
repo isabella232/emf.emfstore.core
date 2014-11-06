@@ -39,7 +39,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = "Default Value Literal\t";
+	protected static final String ID_EDEFAULT = "Default Value Literal\t"; //$NON-NLS-1$
 
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -59,7 +59,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	 */
 	protected UniqueIdentifierImpl() {
 		super();
-		this.id = EcoreUtil.generateUUID();
+		id = EcoreUtil.generateUUID();
 	}
 
 	// end of custom code
@@ -89,10 +89,11 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	 * @generated
 	 */
 	public void setId(String newId) {
-		String oldId = id;
+		final String oldId = id;
 		id = newId;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.UNIQUE_IDENTIFIER__ID, oldId, id));
+		}
 	}
 
 	/**
@@ -166,8 +167,8 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 			return super.toString();
 		}
 
-		StringBuffer result = new StringBuffer();
-		result.append(" (id: ");
+		final StringBuffer result = new StringBuffer();
+		result.append(" (id: "); //$NON-NLS-1$
 		result.append(id);
 		result.append(')');
 		return result.toString();
@@ -184,8 +185,8 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	@Override
 	public boolean equals(Object otherObject) {
 		if (otherObject instanceof UniqueIdentifierImpl) {
-			UniqueIdentifierImpl otherUniqueIdentifier = (UniqueIdentifierImpl) otherObject;
-			return otherUniqueIdentifier.id.equals(this.id);
+			final UniqueIdentifierImpl otherUniqueIdentifier = (UniqueIdentifierImpl) otherObject;
+			return otherUniqueIdentifier.id.equals(id);
 		} else if (otherObject instanceof String) {
 			return id.equals(otherObject);
 		} else {
@@ -200,7 +201,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	 */
 	@Override
 	public int hashCode() {
-		return this.id.hashCode();
+		return id.hashCode();
 	}
 	// end of custom code
 

@@ -24,6 +24,9 @@ public class Messages extends NLS {
 	public static String IdEObjectCollectionImpl_ResoruceCouldNotBeLoaded;
 	public static String IdEObjectCollectionImpl_ResourceCouldNotBeSaved;
 	public static String IdEObjectCollectionImpl_XMIResourceNotLoaded;
+	public static String NotifiableIdEObjectCollectionImpl_Exception;
+	public static String NotifiableIdEObjectCollectionImpl_Exception_Detach;
+	public static String NotifiableIdEObjectCollectionImpl_Exception_NoDetach;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

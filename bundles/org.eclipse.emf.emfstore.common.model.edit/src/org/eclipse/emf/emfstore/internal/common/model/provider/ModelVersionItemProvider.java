@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -36,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelVersion;
  * @generated
  */
 public class ModelVersionItemProvider extends RootElementItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -75,9 +74,9 @@ public class ModelVersionItemProvider extends RootElementItemProvider implements
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ModelVersion_releaseNumber_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelVersion_releaseNumber_feature",
-					"_UI_ModelVersion_type"),
+				getString("_UI_ModelVersion_releaseNumber_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ModelVersion_releaseNumber_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ModelVersion_type"), //$NON-NLS-1$
 				ModelPackage.Literals.MODEL_VERSION__RELEASE_NUMBER,
 				true,
 				false,
@@ -95,7 +94,7 @@ public class ModelVersionItemProvider extends RootElementItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelVersion"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelVersion")); //$NON-NLS-1$
 	}
 
 	/**
@@ -106,8 +105,8 @@ public class ModelVersionItemProvider extends RootElementItemProvider implements
 	 */
 	@Override
 	public String getText(Object object) {
-		ModelVersion modelVersion = (ModelVersion) object;
-		return getString("_UI_ModelVersion_type") + " " + modelVersion.getReleaseNumber();
+		final ModelVersion modelVersion = (ModelVersion) object;
+		return getString("_UI_ModelVersion_type") + " " + modelVersion.getReleaseNumber(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

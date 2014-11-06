@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -36,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * @generated
  */
 public class PropertyMapEntryItemProvider extends RootElementItemProvider implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -79,9 +78,9 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_PropertyMapEntry_key_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_PropertyMapEntry_key_feature",
-					"_UI_PropertyMapEntry_type"),
+				getString("_UI_PropertyMapEntry_key_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_PropertyMapEntry_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PropertyMapEntry_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROPERTY_MAP_ENTRY__KEY,
 				true,
 				false,
@@ -103,9 +102,9 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_PropertyMapEntry_value_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_PropertyMapEntry_value_feature",
-					"_UI_PropertyMapEntry_type"),
+				getString("_UI_PropertyMapEntry_value_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_PropertyMapEntry_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PropertyMapEntry_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROPERTY_MAP_ENTRY__VALUE,
 				true,
 				false,
@@ -124,7 +123,7 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyMapEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/PropertyMapEntry")); //$NON-NLS-1$
 	}
 
 	/**
@@ -136,8 +135,8 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> propertyMapEntry = (Map.Entry<?, ?>) object;
-		return "" + propertyMapEntry.getKey() + " -> " + propertyMapEntry.getValue();
+		final Map.Entry<?, ?> propertyMapEntry = (Map.Entry<?, ?>) object;
+		return "" + propertyMapEntry.getKey() + " -> " + propertyMapEntry.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

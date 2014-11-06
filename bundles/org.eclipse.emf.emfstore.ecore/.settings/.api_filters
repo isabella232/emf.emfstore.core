@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.emfstore.ecore" version="2">
+    <resource path="src/org/eclipse/emf/emfstore/internal/ecore/EDatatypeIdResolver.java" type="org.eclipse.emf.emfstore.internal.ecore.EDatatypeIdResolver">
+        <filter comment="internal API usage" id="574619656">
+            <message_arguments>
+                <message_argument value="ESSingletonIdResolver"/>
+                <message_argument value="EDatatypeIdResolver"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/ecore/ETypeIdResolver.java" type="org.eclipse.emf.emfstore.internal.ecore.ETypeIdResolver">
+        <filter comment="internal API usage" id="574619656">
+            <message_arguments>
+                <message_argument value="ESSingletonIdResolver"/>
+                <message_argument value="ETypeIdResolver"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

@@ -86,11 +86,12 @@ public class ModelVersionImpl extends EObjectImpl implements ModelVersion {
 	 * @generated
 	 */
 	public void setReleaseNumber(int newReleaseNumber) {
-		int oldReleaseNumber = releaseNumber;
+		final int oldReleaseNumber = releaseNumber;
 		releaseNumber = newReleaseNumber;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODEL_VERSION__RELEASE_NUMBER,
 				oldReleaseNumber, releaseNumber));
+		}
 	}
 
 	/**
@@ -158,11 +159,12 @@ public class ModelVersionImpl extends EObjectImpl implements ModelVersion {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (releaseNumber: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (releaseNumber: "); //$NON-NLS-1$
 		result.append(releaseNumber);
 		result.append(')');
 		return result.toString();

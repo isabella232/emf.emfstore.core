@@ -59,7 +59,7 @@ public class Application implements IApplication {
 	// END SUPRESS CATCH EXCEPTION
 
 	private void runClient() throws ESException {
-		System.out.println("Client starting...");
+		System.out.println("Client starting..."); //$NON-NLS-1$
 
 		// The workspace is the core controller to access
 		// local and remote projects
@@ -77,31 +77,31 @@ public class Application implements IApplication {
 
 			// create a new local project
 			// and share it with the server
-			ESLocalProject project1 = workspace.createLocalProject("projectNo1");
+			ESLocalProject project1 = workspace.createLocalProject("projectNo1"); //$NON-NLS-1$
 			project1.shareProject(usersession, null);
 
 			// create a league
 			// and add 2 players to it
 			League league1 = BowlingFactory.eINSTANCE.createLeague();
-			league1.setName("league no. 1");
-			league1.getPlayers().add(createPlayer("no. 1"));
-			league1.getPlayers().add(createPlayer("no. 2"));
+			league1.setName("league no. 1"); //$NON-NLS-1$
+			league1.getPlayers().add(createPlayer("no. 1")); //$NON-NLS-1$
+			league1.getPlayers().add(createPlayer("no. 2")); //$NON-NLS-1$
 			project1.getModelElements().add(league1);
 
 			// commit the changes of the project to the EMF
 			// Store
 			project1.commit(null, null, null);
-			System.out.println("Project 1: The \"league no. 1\" was sent to the server!");
+			System.out.println("Project 1: The \"league no. 1\" was sent to the server!"); //$NON-NLS-1$
 
 			/*
 			 * Now lets checkout the same project twice, modify the element and
 			 * commit the changes to the server.
 			 */
-			ESLocalProject project2 = project1.getRemoteProject().checkout("My checkout",
+			ESLocalProject project2 = project1.getRemoteProject().checkout("My checkout", //$NON-NLS-1$
 				usersession, new NullProgressMonitor());
 			League league2 = (League) project2.getModelElements().get(0);
-			System.out.println(String.format("Project 2: League \"%s\" was checked out twice!", league1.getName()));
-			league2.setName("league no. 1 - changed");
+			System.out.println(String.format("Project 2: League \"%s\" was checked out twice!", league1.getName())); //$NON-NLS-1$
+			league2.setName("league no. 1 - changed"); //$NON-NLS-1$
 			// now lets try to commit
 			project2.commit(null, null, null);
 
@@ -110,26 +110,26 @@ public class Application implements IApplication {
 			 * we update the values from the server and check the contents
 			 * again.
 			 */
-			System.out.println(String.format("Project 1: Name of league is \"%s\"", league1.getName()));
+			System.out.println(String.format("Project 1: Name of league is \"%s\"", league1.getName())); //$NON-NLS-1$
 
 			// update from server
 			project1.update(new NullProgressMonitor());
 
-			System.out.println(String.format("Project 1: Name of league is \"%s\" after update from server",
+			System.out.println(String.format("Project 1: Name of league is \"%s\" after update from server", //$NON-NLS-1$
 				league1.getName()));
 
 			/*
 			 * Now lets create a conflict!
 			 */
-			System.out.println("Creating a conflict");
-			league1.setName("Not conflicting change");
+			System.out.println("Creating a conflict"); //$NON-NLS-1$
+			league1.setName("Not conflicting change"); //$NON-NLS-1$
 			project1.commit(null, null, null);
 
 			try {
-				league2.setName("Uuups - conflicting change");
+				league2.setName("Uuups - conflicting change"); //$NON-NLS-1$
 				project2.commit(null, null, null);
 			} catch (ESException e) {
-				System.out.println("That was a conflict since league1#name was changed and commited earlier!");
+				System.out.println("That was a conflict since league1#name was changed and commited earlier!"); //$NON-NLS-1$
 
 				/*
 				 * Now lets revert the changes, update the project and change it
@@ -137,11 +137,11 @@ public class Application implements IApplication {
 				 */
 				project2.revert();
 				project2.update(new NullProgressMonitor());
-				league2.setName("Not conflicting anymore");
+				league2.setName("Not conflicting anymore"); //$NON-NLS-1$
 				project2.commit(null, null, null);
 			}
 
-			System.out.println("Client run completed.");
+			System.out.println("Client run completed."); //$NON-NLS-1$
 		} catch (ESException e) {
 			ModelUtil.logException(e);
 		}
@@ -194,7 +194,7 @@ public class Application implements IApplication {
 	 */
 	private Player createPlayer(String name) {
 		Player player = BowlingFactory.eINSTANCE.createPlayer();
-		player.setName(String.format("Player %s", name));
+		player.setName(String.format("Player %s", name)); //$NON-NLS-1$
 		return player;
 	}
 

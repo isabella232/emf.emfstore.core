@@ -35,8 +35,8 @@ public class ETypeIdResolver implements ESSingletonIdResolver {
 	 */
 	public ETypeIdResolver() {
 		// eclass stuff
-		datatypes.put("EClass", EcorePackage.eINSTANCE.getEClass());
-		datatypes.put("EStructuralFeature", EcorePackage.eINSTANCE.getEStructuralFeature());
+		datatypes.put("EClass", EcorePackage.eINSTANCE.getEClass()); //$NON-NLS-1$
+		datatypes.put("EStructuralFeature", EcorePackage.eINSTANCE.getEStructuralFeature()); //$NON-NLS-1$
 	}
 
 	/**

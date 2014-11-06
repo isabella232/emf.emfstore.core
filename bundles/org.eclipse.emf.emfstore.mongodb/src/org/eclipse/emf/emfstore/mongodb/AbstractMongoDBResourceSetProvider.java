@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -38,7 +38,7 @@ public abstract class AbstractMongoDBResourceSetProvider implements ESResourceSe
 		try {
 			ResourceSetFactoryProvider.COUNT_DOWN_LATCH.await(10, TimeUnit.SECONDS);
 		} catch (final InterruptedException e) {
-			ModelUtil.logException("Setup of Mongo-DB ResourceSet failed", e);
+			ModelUtil.logException(Messages.AbstractMongoDBResourceSetProvider_SetupFailed, e);
 		}
 		final ResourceSetImpl resourceSet = (ResourceSetImpl) ResourceSetFactoryProvider.getResourceSetFactory()
 			.createResourceSet();

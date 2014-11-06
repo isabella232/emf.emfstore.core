@@ -48,12 +48,12 @@ public class Application implements IApplication {
 			// Run a client on the local server that shows the basic features of the EMFstore
 			runClient(localServer);
 		} catch (ESServerStartFailedException e) {
-			System.out.println("Server start failed!");
+			System.out.println("Server start failed!"); //$NON-NLS-1$
 			e.printStackTrace();
 		} catch (ESException e) {
 			// If there is a problem with the connection to the server,
 			// e.g., a network, a specific EMFStoreException will be thrown.
-			System.out.println("Connection to Server failed!");
+			System.out.println("Connection to Server failed!"); //$NON-NLS-1$
 			e.printStackTrace();
 		}
 		return IApplication.EXIT_OK;
@@ -66,7 +66,7 @@ public class Application implements IApplication {
 	 * @throws ESException if the server connection fails
 	 */
 	public static void runClient(ESServer server) throws ESException {
-		System.out.println("Client starting...");
+		System.out.println("Client starting..."); //$NON-NLS-1$
 
 		// The workspace is the core controller to access local and remote projects.
 		// A project is a container for models and their elements (EObjects).
@@ -91,7 +91,7 @@ public class Application implements IApplication {
 		// The workspace also contains a list of local projects that have either been created locally or checked out
 		// from a server.
 		// We create a new local project. The project new created is not yet shared with the server.
-		ESLocalProject demoProject = workspace.createLocalProject("DemoProject");
+		ESLocalProject demoProject = workspace.createLocalProject("DemoProject"); //$NON-NLS-1$
 
 		// We delete all projects from the local workspace other than the one just created.
 		for (ESLocalProject existingLocalProject : workspace.getLocalProjects()) {
@@ -106,7 +106,7 @@ public class Application implements IApplication {
 
 		// Next, we create a user session by logging in to the local EMFStore server with default super user
 		// credentials.
-		ESUsersession usersession = server.login("super", "super");
+		ESUsersession usersession = server.login("super", "super"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		// Now we can share the created local project to our server.
 		ESRemoteProject remoteDemoProject = demoProject.shareProject(usersession, new ESSystemOutProgressMonitor());
@@ -124,7 +124,7 @@ public class Application implements IApplication {
 		// server with only this one project.
 
 		// We check out a second, independent copy of the project (simulating a second client).
-		ESLocalProject demoProjectCopy = demoProject.getRemoteProject().checkout("DemoProject Copy",
+		ESLocalProject demoProjectCopy = demoProject.getRemoteProject().checkout("DemoProject Copy", //$NON-NLS-1$
 			usersession, new ESSystemOutProgressMonitor());
 
 		// We start working now with the local project and later we will synchronize it with the copy of the project we
@@ -136,7 +136,7 @@ public class Application implements IApplication {
 
 		// First we add a league and set the league name.
 		League league = BowlingFactory.eINSTANCE.createLeague();
-		league.setName("Suprbowling League");
+		league.setName("Suprbowling League"); //$NON-NLS-1$
 
 		// Next we add the league to the root of the project. The project has a containment feature called model
 		// element that holds all root elements of a project. This list is comparable to the content list in EMF
@@ -146,9 +146,9 @@ public class Application implements IApplication {
 
 		// Then we create two players.
 		Player player1 = BowlingFactory.eINSTANCE.createPlayer();
-		player1.setName("Maximilian");
+		player1.setName("Maximilian"); //$NON-NLS-1$
 		Player player2 = BowlingFactory.eINSTANCE.createPlayer();
-		player2.setName("Ottgar");
+		player2.setName("Ottgar"); //$NON-NLS-1$
 
 		// Finally, we add the players to the league. Since the league is already part of the project and League.players
 		// is a containment feature, the players also become part of the project.
@@ -156,7 +156,7 @@ public class Application implements IApplication {
 		league.getPlayers().add(player2);
 
 		// To synchronize the local changes of the client with the server, we will commit the project.
-		demoProject.commit("My message", null,
+		demoProject.commit("My message", null, //$NON-NLS-1$
 			new ESSystemOutProgressMonitor());
 		// The server is now up-to-date, but we still need to synchronize the copy of the project we checked out
 		// earlier.
@@ -167,7 +167,7 @@ public class Application implements IApplication {
 		League leagueCopy = (League) demoProjectCopy.getModelElements().get(0);
 		if (league.getName().equals(leagueCopy.getName()) &&
 			league.getPlayers().size() == leagueCopy.getPlayers().size()) {
-			System.out.println("Leagues names and player count are equal.");
+			System.out.println("Leagues names and player count are equal."); //$NON-NLS-1$
 		}
 
 		// Of course, we can also change something in the project copy and synchronize it back to the project.
@@ -175,13 +175,13 @@ public class Application implements IApplication {
 		// This time, we use the IDs assigned to every EObject of a project to identify the copy of league in the
 		// project�s copy.
 		leagueCopy = (League) demoProjectCopy.getModelElement(demoProject.getModelElementId(league));
-		league.setName("Superbowling League");
+		league.setName("Superbowling League"); //$NON-NLS-1$
 		demoProject.commit(new ESSystemOutProgressMonitor());
 		demoProjectCopy.update(new ESSystemOutProgressMonitor());
 
 		if (league.getName().equals(leagueCopy.getName()) &&
 			league.getPlayers().size() == leagueCopy.getPlayers().size()) {
-			System.out.println("Leagues names and player count are still equal.");
+			System.out.println("Leagues names and player count are still equal."); //$NON-NLS-1$
 		}
 	}
 

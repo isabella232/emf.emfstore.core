@@ -147,16 +147,16 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 						if (!undetachableObservers.contains(changeObserver)) {
 							observersToRemove.add(changeObserver);
 							ModelUtil.logException(
-								"EObject Change Observer threw an exception again, it has been detached, UI may not update now: "
+								Messages.NotifiableIdEObjectCollectionImpl_Exception_Detach
 									+ changeObserver.getClass().getName(), exception);
 						} else {
 							ModelUtil.logException(
-								"EObject Change Observer threw an exception again, but it will not be detached."
+								Messages.NotifiableIdEObjectCollectionImpl_Exception_NoDetach
 									+ changeObserver.getClass().getName(), exception);
 						}
 					} else {
 						exceptionThrowingObservers.add(changeObserver);
-						ModelUtil.logWarning("EObject Change Observer threw an exception: "
+						ModelUtil.logWarning(Messages.NotifiableIdEObjectCollectionImpl_Exception
 							+ changeObserver.getClass().getName(), exception);
 					}
 				}
