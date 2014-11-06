@@ -28,7 +28,14 @@
       <ePackages href="http://org/eclipse/example/bowling#/"/>
     </mutatorConfig>
   </org.eclipse.emf.emfstore.fuzzy.emf.config:TestConfig>
-  <org.eclipse.emf.emfstore.fuzzy.emf.config:TestConfig seed="1" count="10" testClass="org.eclipse.emf.emfstore.fuzzy.emf.test.ESXMIProviderDataMutatorTest" id="_SCHXhIvSEeGC3oFJZ-5KUS">
+   <org.eclipse.emf.emfstore.fuzzy.emf.config:TestConfig seed="1" count="10" testClass="org.eclipse.emf.emfstore.fuzzy.emf.test.CrossResourceReferencesMutatorTest" id="_MCHGhIvSEeGC3oFJZ-5KUS">
+    <mutatorConfig minObjectsCount="100">
+      <rootEClass href="http://eclipse.org/emf/emfstore/common/model#//Project"/>
+      <eStructuralFeaturesToIgnore xsi:type="ecore:EReference" href="http://eclipse.org/emf/emfstore/common/model#//Project/cutElements"/>
+      <ePackages href="http://org/eclipse/example/bowling#/"/>
+    </mutatorConfig>
+  </org.eclipse.emf.emfstore.fuzzy.emf.config:TestConfig>
+    <org.eclipse.emf.emfstore.fuzzy.emf.config:TestConfig seed="1" count="10" testClass="org.eclipse.emf.emfstore.fuzzy.emf.test.ESXMIProviderDataMutatorTest" id="_SCHXhIvSEeGC3oFJZ-5KUS">
     <mutatorConfig minObjectsCount="100">
       <eStructuralFeaturesToIgnore xsi:type="ecore:EReference" href="http://eclipse.org/emf/emfstore/common/model#//Project/cutElements"/>
       <ePackages href="http://org/eclipse/example/bowling#/"/>
