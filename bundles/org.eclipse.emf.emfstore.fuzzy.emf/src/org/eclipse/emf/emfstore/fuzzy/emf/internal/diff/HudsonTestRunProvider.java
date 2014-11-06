@@ -51,7 +51,7 @@ public class HudsonTestRunProvider extends TestRunProvider {
 	private final int secondBuildNumber;
 
 	/**
-	 * The prefix for hudson peroperties.
+	 * The prefix for hudson properties.
 	 */
 	public static final String PROP_HUDSON = ".hudson"; //$NON-NLS-1$
 
@@ -192,7 +192,9 @@ public class HudsonTestRunProvider extends TestRunProvider {
 
 		Resource resource = getTestRunResource(firstBuildNumber);
 		if (!FuzzyUtil.resourceExists(resource)) {
-			throw new RuntimeException(Messages.HudsonTestRunProvider_No_TestRunFile_For_1st_Run);
+			throw new RuntimeException(
+				MessageFormat.format(
+					Messages.HudsonTestRunProvider_No_TestRunFile_For_1st_Run, resource.getURI()));
 		}
 		resource.load(null);
 
