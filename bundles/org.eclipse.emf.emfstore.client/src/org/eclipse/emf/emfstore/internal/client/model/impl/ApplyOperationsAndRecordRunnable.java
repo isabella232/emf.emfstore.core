@@ -69,13 +69,13 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 							operation.apply(projectSpace.getProject());
 							try {
 								handle.end(compositeName, StringUtils.EMPTY, compositeOperation.getModelElementId());
-								projectSpace.getOperationManager().commandCompleted(null, false);
+								projectSpace.getOperationManager().commandCompleted(null, true);
 							} catch (final InvalidHandleException ex) {
 								WorkspaceUtil.logException(ex.getMessage(), ex);
 							}
 						} else {
 							operation.apply(projectSpace.getProject());
-							projectSpace.getOperationManager().commandCompleted(null, false);
+							projectSpace.getOperationManager().commandCompleted(null, true);
 						}
 						// BEGIN SUPRESS CATCH EXCEPTION
 					} catch (final RuntimeException e) {
