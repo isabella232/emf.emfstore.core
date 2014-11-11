@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
@@ -32,10 +32,10 @@ import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**
  * A {@link ESFuzzyUtil} class for tests using the {@link ESEMFDataProvider}.
- * 
+ *
  * @author Julian Sommerfeldt
  * @since 2.0
- * 
+ *
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
@@ -48,7 +48,7 @@ public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
 	 * For internal use.
-	 * 
+	 *
 	 * @param dataProvider
 	 *            The {@link ESEMFDataProvider} of the test.
 	 */
@@ -103,7 +103,7 @@ public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
 	 * Mutate with a {@link ESModelMutatorConfiguration}.
-	 * 
+	 *
 	 * @param mmc
 	 *            The {@link ESModelMutatorConfiguration} to use for mutation.
 	 */
@@ -114,7 +114,7 @@ public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
 	 * Mutate with the {@link ESModelMutatorConfiguration} from configuration file.
-	 * 
+	 *
 	 */
 	public void mutate() {
 		ESDefaultModelMutator.changeModel(getDataProvider().getModelMutatorConfiguration());
@@ -122,7 +122,7 @@ public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
 	 * @see #saveEObject(EObject, String, boolean)
-	 * 
+	 *
 	 * @param obj
 	 *            The {@link EObject} to save.
 	 */
@@ -132,11 +132,11 @@ public class ESMutateUtil implements ESFuzzyUtil {
 
 	/**
 	 * Save an {@link EObject} in the folder: artifacts/runs/configID.
-	 * 
+	 *
 	 * Use it for instance to save objects, when an error occurs.
-	 * 
+	 *
 	 * The file name is always: COUNT_SUFFIX.xml so e.g. 3_testFile.xml
-	 * 
+	 *
 	 * @param obj
 	 *            The EObject to save.
 	 * @param suffix
@@ -177,7 +177,7 @@ public class ESMutateUtil implements ESFuzzyUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param suffix
 	 *            The suffix for the file: e.g. testFile. <code>null</code> permitted.
 	 * @return A file {@link URI} to the current run folder.
@@ -189,10 +189,19 @@ public class ESMutateUtil implements ESFuzzyUtil {
 	/**
 	 * Returns the {@link ESFuzzyEMFDataProvider} that is being
 	 * used to generate data.
-	 * 
+	 *
 	 * @return the dataProvider
 	 */
 	protected ESFuzzyEMFDataProvider getDataProvider() {
 		return dataProvider;
+	}
+
+	/**
+	 * Returns how many mutation should be performed, if set
+	 *
+	 * @return the number of mutations to be performed
+	 */
+	public Integer getMutationCount() {
+		return getDataProvider().getModelMutatorConfiguration().getMutationCount();
 	}
 }
