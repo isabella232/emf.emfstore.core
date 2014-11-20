@@ -17,6 +17,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.client.exceptions.ESCertificateException;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
+import org.eclipse.emf.emfstore.internal.client.ui.util.FileDialogHelper;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -32,7 +33,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
@@ -224,11 +224,11 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 		 *            selection event
 		 */
 		public void widgetSelected(SelectionEvent event) {
-			final FileDialog fileDialog = new FileDialog(Display.getCurrent().getActiveShell());
-			fileDialog.open();
-			if (StringUtils.isNotBlank(fileDialog.getFileName())) {
-				final String location = fileDialog.getFilterPath() + System.getProperty("file.separator") //$NON-NLS-1$
-					+ fileDialog.getFileName();
+
+			final String absoluteFilePath = FileDialogHelper.openImportDialog(getShell());
+
+			if (StringUtils.isNotBlank(absoluteFilePath)) {
+				final String location = absoluteFilePath;
 
 				final InputDialog inputDialog = new InputDialog(Display.getCurrent().getActiveShell(),
 					Messages.CertificateSelectionDialog_CertificateDesignation_Title,

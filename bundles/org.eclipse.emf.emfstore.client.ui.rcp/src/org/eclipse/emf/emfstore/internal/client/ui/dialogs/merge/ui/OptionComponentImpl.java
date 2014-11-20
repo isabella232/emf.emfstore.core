@@ -9,14 +9,14 @@
  * Contributors:
  * Otto von Wesendonk
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components;
+package org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.CustomConflictOption;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.DecisionUtil;
-import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox;
+import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components.DetailsDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.util.UIDecisionConfig;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.util.UIDecisionUtil;
 import org.eclipse.swt.SWT;
@@ -40,11 +40,11 @@ import org.eclipse.swt.widgets.Listener;
  * 
  * @author wesendon
  */
-public class OptionComponent {
+public class OptionComponentImpl {
 
-	private Group group;
+	private final Group group;
 	private final VisualConflict conflict;
-	private DecisionBox dBox;
+	private final DecisionBox dBox;
 
 	/**
 	 * Default constructor.
@@ -54,20 +54,20 @@ public class OptionComponent {
 	 * @param conflict
 	 *            conflict.
 	 */
-	public OptionComponent(DecisionBox dBox, VisualConflict conflict) {
+	public OptionComponentImpl(DecisionBox dBox, VisualConflict conflict) {
 		this.dBox = dBox;
 		this.conflict = conflict;
 		group = new Group(dBox, SWT.NONE);
-		GridLayout layout = new GridLayout();
+		final GridLayout layout = new GridLayout();
 		layout.horizontalSpacing = 1;
 		layout.verticalSpacing = 1;
 		group.setLayout(layout);
-		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
 		gridData.verticalSpan = 2;
 		group.setLayoutData(gridData);
-		group.setText("Choose your Option: ");
+		group.setText(Messages.OptionComponentImpl_ChooseYourOption);
 
-		for (ConflictOption option : conflict.getOptions()) {
+		for (final ConflictOption option : conflict.getOptions()) {
 			new OptionContainer(conflict, option);
 		}
 
@@ -76,20 +76,20 @@ public class OptionComponent {
 
 	private String generatePrefix(ConflictOption option) {
 		String result = StringUtils.EMPTY;
-		int operationCount = option.getOperations().size();
-		String countInfo = (operationCount > 1) ? "s (" + operationCount + ")" : StringUtils.EMPTY;
+		final int operationCount = option.getOperations().size();
+		final String countInfo = operationCount > 1 ? "s (" + operationCount + ")" : StringUtils.EMPTY; //$NON-NLS-1$ //$NON-NLS-2$
 		switch (option.getType()) {
 		case MyOperation:
-			result = dBox.getDecisionManager().isBranchMerge() ? "Incoming Branch: " : "Keep My Change" + countInfo
-				+ ": ";
+			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch : Messages.OptionComponentImpl_KeepMyChange + countInfo
+				+ ": "; //$NON-NLS-1$
 			break;
 		case TheirOperation:
-			result = dBox.getDecisionManager().isBranchMerge() ? "Current Branch: " : "Keep Their Change" + countInfo
-				+ ": ";
+			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch : Messages.OptionComponentImpl_KeepTheirChange + countInfo
+				+ ": "; //$NON-NLS-1$
 			break;
 		case Custom:
 			if (option instanceof CustomConflictOption) {
-				String optionPrefix = ((CustomConflictOption) option).getOptionPrefix();
+				final String optionPrefix = ((CustomConflictOption) option).getOptionPrefix();
 				if (optionPrefix != null) {
 					result = optionPrefix;
 				}
@@ -106,7 +106,7 @@ public class OptionComponent {
 		composite.addListener(SWT.MouseExit, listener);
 		composite.addListener(SWT.MouseDown, listener);
 		composite.addListener(SWT.MouseUp, listener);
-		for (Control child : composite.getChildren()) {
+		for (final Control child : composite.getChildren()) {
 			child.addListener(SWT.MouseEnter, listener);
 			child.addListener(SWT.MouseExit, listener);
 			child.addListener(SWT.MouseDown, listener);
@@ -118,7 +118,7 @@ public class OptionComponent {
 	 * Updates the color of the buttons.
 	 */
 	public void refreshButtonColor() {
-		for (Control composite : group.getChildren()) {
+		for (final Control composite : group.getChildren()) {
 			if (composite instanceof OptionContainer) {
 				if (conflict.isResolved() && conflict.getSolution() == ((OptionContainer) composite).getOption()) {
 					setColor((Composite) composite, UIDecisionConfig.getOptionSelectedBack(),
@@ -134,7 +134,7 @@ public class OptionComponent {
 	private void setColor(Composite composite, Color background, Color foreground) {
 		composite.setBackground(background);
 		composite.setForeground(foreground);
-		for (Control control : composite.getChildren()) {
+		for (final Control control : composite.getChildren()) {
 			control.setBackground(background);
 			control.setForeground(foreground);
 		}
@@ -155,31 +155,31 @@ public class OptionComponent {
 	private final class OptionContainer extends Composite {
 
 		private final ConflictOption option;
-		private StyledText styledText;
+		private final StyledText styledText;
 
 		private OptionContainer(VisualConflict conflict, final ConflictOption option) {
 			super(group, SWT.BORDER | SWT.INHERIT_FORCE);
 			this.option = option;
-			GridLayout layout = new GridLayout(2, false);
+			final GridLayout layout = new GridLayout(2, false);
 			layout.verticalSpacing = 1;
 			setLayout(layout);
 			setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 			styledText = new StyledText(this, SWT.READ_ONLY);
-			styledText.setCursor(new Cursor(this.getDisplay(), SWT.CURSOR_HAND));
+			styledText.setCursor(new Cursor(getDisplay(), SWT.CURSOR_HAND));
 			styledText.setEditable(false);
 			styledText.setEnabled(false);
 			styledText.setBackground(getBackground());
 			styledText.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
 			setText();
 
-			Button detailsButton = new Button(this, SWT.NONE);
-			detailsButton.setText("Details");
+			final Button detailsButton = new Button(this, SWT.NONE);
+			detailsButton.setText(Messages.OptionComponentImpl_Details);
 			detailsButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false));
 			detailsButton.addSelectionListener(new SelectionListener() {
 
 				public void widgetSelected(SelectionEvent e) {
-					DetailsDialog detailsDialog = new DetailsDialog(getShell(), dBox.getDecisionManager(), option);
+					final DetailsDialog detailsDialog = new DetailsDialog(getShell(), dBox.getDecisionManager(), option);
 					detailsDialog.open();
 				}
 
@@ -188,18 +188,19 @@ public class OptionComponent {
 				}
 			});
 
-			OptionMouseListener listener = new OptionMouseListener(this);
-			OptionComponent.this.addMouseListener(this, listener);
+			final OptionMouseListener listener = new OptionMouseListener(this);
+			OptionComponentImpl.this.addMouseListener(this, listener);
 		}
 
 		private void setText() {
-			String prefix = generatePrefix(option);
-			String result = UIDecisionUtil.cutString(option.getStrippedOptionLabel(), DecisionUtil.OPTION_LENGTH, true);
+			final String prefix = generatePrefix(option);
+			final String result = UIDecisionUtil.cutString(option.getStrippedOptionLabel(), DecisionUtil.OPTION_LENGTH,
+				true);
 
-			styledText.setText(prefix + " " + result);
+			styledText.setText(prefix + " " + result); //$NON-NLS-1$
 
-			if (prefix != "") {
-				StyleRange prefixRange = new StyleRange();
+			if (prefix != StringUtils.EMPTY) {
+				final StyleRange prefixRange = new StyleRange();
 				prefixRange.start = 0;
 				prefixRange.length = prefix.length();
 				prefixRange.fontStyle = SWT.ITALIC;

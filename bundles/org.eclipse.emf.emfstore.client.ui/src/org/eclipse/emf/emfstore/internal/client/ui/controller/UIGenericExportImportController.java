@@ -20,10 +20,9 @@ import org.eclipse.emf.emfstore.internal.client.importexport.ExportImportControl
 import org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.EMFStoreMessageDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.util.EMFStorePreferenceHelper;
+import org.eclipse.emf.emfstore.internal.client.ui.util.FileDialogHelper;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -65,26 +64,27 @@ public class UIGenericExportImportController extends AbstractEMFStoreUIControlle
 	}
 
 	private File selectFile() {
-		final FileDialog dialog = new FileDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-			controller.isExport() ? SWT.SAVE : SWT.OPEN);
-		dialog.setFilterNames(controller.getFilteredNames());
-		dialog.setFilterExtensions(controller.getFilteredExtensions());
-		dialog.setOverwrite(true);
 
-		if (controller.getParentFolderPropertyKey() != null) {
-			final String initialPath = EMFStorePreferenceHelper.getPreference(controller.getParentFolderPropertyKey(),
-				System.getProperty("user.home")); //$NON-NLS-1$
-			dialog.setFilterPath(initialPath);
+		final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+		String absoluteFilePath;
+		if (controller.isExport()) {
+			absoluteFilePath = FileDialogHelper.openExportDialog(shell, controller.getFilename());
+		} else {
+			absoluteFilePath = FileDialogHelper.openImportDialog(shell);
 		}
 
-		dialog.setFileName(controller.getFilename());
-		final String fn = dialog.open();
+		// if (controller.getParentFolderPropertyKey() != null) {
+		// final String initialPath = EMFStorePreferenceHelper.getPreference(controller.getParentFolderPropertyKey(),
+		//				System.getProperty("user.home")); //$NON-NLS-1$
+		// dialog.setFilterPath(initialPath);
+		// }
 
-		if (fn == null) {
+		if (absoluteFilePath == null) {
 			return null;
 		}
 
-		final File file = new File(dialog.getFilterPath(), dialog.getFileName());
+		final File file = new File(absoluteFilePath);
 		return file;
 	}
 

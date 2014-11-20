@@ -7,18 +7,20 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.DecisionUtil;
+import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components.ContextComponent;
-import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components.DescriptionComponent;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components.DetailsComponent;
-import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components.OptionComponent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.graphics.Color;
@@ -26,6 +28,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.osgi.framework.Bundle;
 
 /**
  * Generic container for conflicts.
@@ -34,6 +37,9 @@ import org.eclipse.swt.widgets.Control;
  */
 public class DecisionBox extends Composite {
 
+	private static final String EMFSTORE_CLIENT_UI_PLUGIN_ID = "org.eclipse.emf.emfstore.client.ui"; //$NON-NLS-1$
+	private static final String OPTION_COMPONENT_CLASS = "org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.OptionComponentImpl"; //$NON-NLS-1$
+	private static final String DESCRIPTION_COMPONENT_CLASS = "org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DescriptionComponenptUtil"; //$NON-NLS-1$
 	private final VisualConflict conflict;
 	private final DecisionManager decisionManager;
 	private OptionComponent optionComponent;
@@ -59,23 +65,28 @@ public class DecisionBox extends Composite {
 
 	private void init(Color color) {
 
-		GridLayout decisionLayout = new GridLayout(2, true);
-		this.setLayout(decisionLayout);
-		this.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		final GridLayout decisionLayout = new GridLayout(2, true);
+		setLayout(decisionLayout);
+		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 
 		if (color != null) {
 			setBackground(color);
 		}
 
 		new ContextComponent(this, conflict);
-		optionComponent = new OptionComponent(this, conflict);
-		new DescriptionComponent(this, conflict);
+		optionComponent = newInstanceOf(OPTION_COMPONENT_CLASS);
+		optionComponent.setParent(this);
+		optionComponent.setVisualConflict(conflict);
+
+		final DescriptionComponent descriptionComponent = newInstanceOf(DESCRIPTION_COMPONENT_CLASS);
+		descriptionComponent.setParent(this);
+		descriptionComponent.setVisualConflict(conflict);
 
 		if (DecisionUtil.detailsNeeded(conflict)) {
 			new DetailsComponent(this, conflict);
 		}
 
-		for (Control control : getChildren()) {
+		for (final Control control : getChildren()) {
 			control.setBackground(getBackground());
 		}
 	}
@@ -108,7 +119,7 @@ public class DecisionBox extends Composite {
 	 *            size delta
 	 */
 	public void layoutPage(int heightSizeChange) {
-		ScrolledComposite scrollArea = (ScrolledComposite) getParent().getParent();
+		final ScrolledComposite scrollArea = (ScrolledComposite) getParent().getParent();
 		scrollArea.setMinSize(scrollArea.getMinWidth(), scrollArea.getMinHeight() + heightSizeChange);
 		scrollArea.layout();
 	}
@@ -120,5 +131,38 @@ public class DecisionBox extends Composite {
 	 */
 	public VisualConflict getConflict() {
 		return conflict;
+	}
+
+	private <T> T newInstanceOf(String clazz) {
+		try {
+			final Class<T> c = loadClass(EMFSTORE_CLIENT_UI_PLUGIN_ID, clazz);
+			c.getConstructor().newInstance();
+		} catch (final ClassNotFoundException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		} catch (final InstantiationException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		} catch (final IllegalAccessException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		} catch (final IllegalArgumentException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		} catch (final InvocationTargetException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		} catch (final NoSuchMethodException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		} catch (final SecurityException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		}
+
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T> Class<T> loadClass(String bundleName, String clazz) throws ClassNotFoundException {
+		final Bundle bundle = Platform.getBundle(bundleName);
+		if (bundle == null) {
+			throw new ClassNotFoundException(clazz + " cannot be loaded because bundle " + bundleName //$NON-NLS-1$
+				+ " cannot be resolved"); //$NON-NLS-1$
+		}
+		return (Class<T>) bundle.loadClass(clazz);
 	}
 }

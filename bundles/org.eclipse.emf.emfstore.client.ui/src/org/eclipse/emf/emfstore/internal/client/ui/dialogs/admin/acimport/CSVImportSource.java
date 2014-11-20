@@ -24,14 +24,12 @@ import java.util.Map;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.EMFStoreMessageDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.util.EMFStorePreferenceHelper;
+import org.eclipse.emf.emfstore.internal.client.ui.util.FileDialogHelper;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolFactory;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * @author gurcankarakoc, deser
@@ -101,20 +99,27 @@ public class CSVImportSource extends ImportSource {
 		groups = new ArrayList<ImportItemWrapper>();
 		users = new ArrayList<ImportItemWrapper>();
 
-		final FileDialog dialog = createFileDialog();
-		if (dialog.open() == null) {
+		final String absolutePath = FileDialogHelper.openImportDialog(shell);
+
+		// // TODO: RAP compat
+		// final FileDialog dialog = createFileDialog();
+		// if (dialog.open() == null) {
+		// return false;
+		// }
+		//
+		// final String fileName = dialog.getFileName();
+		// final String filterPath = dialog.getFilterPath();
+		// if (fileName == null) {
+		// return false;
+		// }
+
+		if (absolutePath == null) {
 			return false;
 		}
 
-		final String fileName = dialog.getFileName();
-		final String filterPath = dialog.getFilterPath();
-		if (fileName == null) {
-			return false;
-		}
-
-		absFileName = filterPath + File.separatorChar + fileName;
+		absFileName = absolutePath;
 		final File file = new File(absFileName);
-		EMFStorePreferenceHelper.setPreference(CSV_IMPORT_SOURCE_PATH, filterPath);
+		EMFStorePreferenceHelper.setPreference(CSV_IMPORT_SOURCE_PATH, file.getParent());
 
 		try {
 			return readFile(file);
@@ -187,22 +192,6 @@ public class CSVImportSource extends ImportSource {
 		return true;
 	}
 
-	/**
-	 * @return
-	 */
-	private FileDialog createFileDialog() {
-		final FileDialog dialog = new FileDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-			SWT.OPEN);
-		dialog.setText(Messages.CSVImportSource_ChooseFile);
-		final String initialPath = EMFStorePreferenceHelper.getPreference(CSV_IMPORT_SOURCE_PATH,
-			System.getProperty("user.home")); //$NON-NLS-1$
-		dialog.setFilterPath(initialPath);
-		return dialog;
-	}
-
-	/**
-	 * @param e
-	 */
 	private void handleError(final Exception e) {
 		WorkspaceUtil.logWarning(e.getMessage(), e);
 		EMFStoreMessageDialog.showExceptionDialog(e);

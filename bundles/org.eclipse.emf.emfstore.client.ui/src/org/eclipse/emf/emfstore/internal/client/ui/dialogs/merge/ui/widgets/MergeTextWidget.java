@@ -13,7 +13,6 @@ package org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.widgets;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,14 +22,12 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.con
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components.DetailsComponent;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyleRange;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 
 import diff.match.patch.diff_match_patch;
@@ -45,7 +42,7 @@ import diff.match.patch.diff_match_patch.Operation;
 public class MergeTextWidget implements Observer {
 
 	private final DecisionBox decisionBox;
-	private ArrayList<ConflictOption> options;
+	private final ArrayList<ConflictOption> options;
 	private TabFolder tabFolder;
 	private final DetailsComponent detailsComponent;
 
@@ -81,19 +78,20 @@ public class MergeTextWidget implements Observer {
 		tabFolder.setBackground(parent.getBackground());
 		tabFolder.setLayout(new TableWrapLayout());
 
-		for (ConflictOption option : options) {
+		for (final ConflictOption option : options) {
 			createTab(tabFolder, option);
 		}
 	}
 
 	private void createTab(TabFolder tabFolder, ConflictOption option) {
-		TabItem tab = new TabItem(tabFolder, SWT.NONE);
+		final TabItem tab = new TabItem(tabFolder, SWT.NONE);
 		tab.setText(getTitle(option));
-		StyledText text = new StyledText(tabFolder, SWT.MULTI | SWT.WRAP);
+		final Text text = new Text(tabFolder, SWT.MULTI | SWT.WRAP);
 		setText(option, text);
 		text.setBackground(tabFolder.getBackground());
 		text.setEditable(isEditable(option));
-		text.setWordWrap(true);
+		// TODO: RAP compat
+		// text.setWordWrap(true);
 		// text.setTopMargin(5);
 		// text.setLeftMargin(5);
 		// text.setRightMargin(5);
@@ -101,7 +99,7 @@ public class MergeTextWidget implements Observer {
 
 	}
 
-	private void setText(ConflictOption option, final StyledText styledText) {
+	private void setText(ConflictOption option, final Text styledText) {
 		if (option instanceof MergeTextOption) {
 			handleMergeTextOption(option, styledText);
 		} else {
@@ -109,38 +107,39 @@ public class MergeTextWidget implements Observer {
 		}
 	}
 
-	private void handleMergeTextOption(ConflictOption option, final StyledText styledText) {
+	private void handleMergeTextOption(ConflictOption option, final Text styledText) {
 		final MergeTextOption mergeOption = (MergeTextOption) option;
-		diff_match_patch dmp = new diff_match_patch();
+		final diff_match_patch dmp = new diff_match_patch();
 		dmp.Diff_EditCost = 10;
-		LinkedList<Diff> diffMain = dmp.diff_main(mergeOption.getMyText(), mergeOption.getTheirString());
+		final LinkedList<Diff> diffMain = dmp.diff_main(mergeOption.getMyText(), mergeOption.getTheirString());
 		dmp.diff_cleanupEfficiency(diffMain);
 
 		String description = "";
-		List<StyleRange> styleRanges = new ArrayList<StyleRange>();
+		// TODO: RAP compat
+		// List<StyleRange> styleRanges = new ArrayList<StyleRange>();
 
-		for (Diff diff : diffMain) {
-			String text = diff.text;
+		for (final Diff diff : diffMain) {
+			final String text = diff.text;
 			if (!diff.operation.equals(Operation.EQUAL)) {
-				StyleRange styleRange = new StyleRange();
-				styleRange.start = description.length();
-				styleRange.length = text.length();
+				// StyleRange styleRange = new StyleRange();
+				// styleRange.start = description.length();
+				// styleRange.length = text.length();
 
-				if (diff.operation.equals(Operation.DELETE)) {
-					styleRange.foreground = Display.getDefault().getSystemColor(SWT.COLOR_RED);
-				} else if (diff.operation.equals(Operation.INSERT)) {
-					styleRange.foreground = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GREEN);
-				}
-				styleRanges.add(styleRange);
+				// if (diff.operation.equals(Operation.DELETE)) {
+				// styleRange.foreground = Display.getDefault().getSystemColor(SWT.COLOR_RED);
+				// } else if (diff.operation.equals(Operation.INSERT)) {
+				// styleRange.foreground = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GREEN);
+				// }
+				// styleRanges.add(styleRange);
 			}
 			description += text;
 		}
 		styledText.setText(description);
-		styledText.setStyleRanges(styleRanges.toArray(new StyleRange[styleRanges.size()]));
+		// styledText.setStyleRanges(styleRanges.toArray(new StyleRange[styleRanges.size()]));
 		styledText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
-				String newText = styledText.getText();
-				String oldText = mergeOption.getMergedText();
+				final String newText = styledText.getText();
+				final String oldText = mergeOption.getMergedText();
 				if (newText != null && !newText.equals(oldText)) {
 					mergeOption.setMergedText(newText);
 					decisionBox.setSolution(mergeOption);
@@ -173,9 +172,9 @@ public class MergeTextWidget implements Observer {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable o, Object arg) {
-		VisualConflict conflict = decisionBox.getConflict();
+		final VisualConflict conflict = decisionBox.getConflict();
 		if (conflict != null && conflict == o) {
-			ConflictOption solution = conflict.getSolution();
+			final ConflictOption solution = conflict.getSolution();
 			if (solution instanceof MergeTextOption) {
 				for (int i = 0; i < options.size(); i++) {
 					if (options.get(i) == solution) {
