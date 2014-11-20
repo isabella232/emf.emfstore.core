@@ -7,8 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Shterev
- * emueller
+ * Aleksander Shterev, Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.changes;
 
@@ -111,7 +110,7 @@ public class TabbedChangesComposite extends Composite {
 
 		contentProvider = new SCMContentProvider(idToEObjectMapping);
 		contentProvider.setShowRootNodes(showRootNodes);
-		SCMLabelProvider detailedLabelProvider = new SCMLabelProvider(project);
+		final SCMLabelProvider detailedLabelProvider = new SCMLabelProvider(project);
 		detailedLabelProvider
 			.setChangePackageVisualizationHelper(new ChangePackageVisualizationHelper(
 				idToEObjectMapping));
@@ -119,8 +118,8 @@ public class TabbedChangesComposite extends Composite {
 		tabTreeViewer.setLabelProvider(detailedLabelProvider);
 		tabTreeViewer.expandToLevel(1);
 
-		TabItem opTab = new TabItem(folder, style);
-		opTab.setText("Operations");
+		final TabItem opTab = new TabItem(folder, style);
+		opTab.setText(Messages.TabbedChangesComposite_OperationsText);
 		opTab.setControl(tabComposite);
 	}
 

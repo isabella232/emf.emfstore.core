@@ -47,7 +47,15 @@ import org.eclipse.swt.graphics.Image;
  */
 public class ChangePackageVisualizationHelper {
 
-	private ModelElementIdToEObjectMapping idToEObjectMapping;
+	private static final String ICON_MODIFY_OVERLAY = "icons/modify_overlay.png"; //$NON-NLS-1$
+
+	private static final String ICON_ADD_OVERLAY = "icons/add_overlay.png"; //$NON-NLS-1$
+
+	private static final String ICON_DELETE_OVERLAY = "icons/delete_overlay.png"; //$NON-NLS-1$
+
+	private static final String ICON_LINK_OVERLAY = "icons/link_overlay.png"; //$NON-NLS-1$
+
+	private final ModelElementIdToEObjectMapping idToEObjectMapping;
 
 	/**
 	 * Constructor.
@@ -70,40 +78,40 @@ public class ChangePackageVisualizationHelper {
 	public ImageDescriptor getOverlayImage(AbstractOperation operation) {
 		String overlay = null;
 		if (operation instanceof CreateDeleteOperation) {
-			CreateDeleteOperation op = (CreateDeleteOperation) operation;
+			final CreateDeleteOperation op = (CreateDeleteOperation) operation;
 			if (op.isDelete()) {
-				overlay = "icons/delete_overlay.png";
+				overlay = ICON_DELETE_OVERLAY;
 			} else {
-				overlay = "icons/add_overlay.png";
+				overlay = ICON_ADD_OVERLAY;
 			}
 		} else if (operation instanceof AttributeOperation) {
-			AttributeOperation op = (AttributeOperation) operation;
+			final AttributeOperation op = (AttributeOperation) operation;
 			if (op.getNewValue() == null) {
-				overlay = "icons/delete_overlay.png";
+				overlay = ICON_DELETE_OVERLAY;
 			} else if (op.getOldValue() == null) {
-				overlay = "icons/add_overlay.png";
+				overlay = ICON_ADD_OVERLAY;
 			} else {
-				overlay = "icons/modify_overlay.png";
+				overlay = ICON_MODIFY_OVERLAY;
 			}
 		} else if (operation instanceof SingleReferenceOperation) {
-			SingleReferenceOperation op = (SingleReferenceOperation) operation;
+			final SingleReferenceOperation op = (SingleReferenceOperation) operation;
 			if (op.getNewValue() == null) {
-				overlay = "icons/delete_overlay.png";
+				overlay = ICON_DELETE_OVERLAY;
 			} else {
-				overlay = "icons/link_overlay.png";
+				overlay = ICON_LINK_OVERLAY;
 			}
 		} else if (operation instanceof MultiReferenceOperation) {
-			MultiReferenceOperation op = (MultiReferenceOperation) operation;
+			final MultiReferenceOperation op = (MultiReferenceOperation) operation;
 			if (op.getReferencedModelElements().size() > 0) {
-				overlay = "icons/link_overlay.png";
+				overlay = ICON_LINK_OVERLAY;
 			}
 		} else if (operation instanceof MultiReferenceMoveOperation) {
-			overlay = "icons/link_overlay.png";
+			overlay = ICON_LINK_OVERLAY;
 		} else {
-			overlay = "icons/modify_overlay.png";
+			overlay = ICON_MODIFY_OVERLAY;
 		}
 
-		ImageDescriptor overlayDescriptor = Activator.getImageDescriptor(overlay);
+		final ImageDescriptor overlayDescriptor = Activator.getImageDescriptor(overlay);
 		return overlayDescriptor;
 	}
 
@@ -119,7 +127,7 @@ public class ChangePackageVisualizationHelper {
 	public Image getImage(ILabelProvider emfProvider, AbstractOperation operation) {
 
 		// check if a custom label provider can provide an image
-		Image image = getCustomOperationProviderLabel(operation);
+		final Image image = getCustomOperationProviderLabel(operation);
 		if (image != null) {
 			return image;
 		}
@@ -128,16 +136,17 @@ public class ChangePackageVisualizationHelper {
 	}
 
 	private Image getCustomOperationProviderLabel(AbstractOperation operation) {
-		OperationCustomLabelProvider customLabelProvider = ExtensionRegistry.INSTANCE.get(
+		final OperationCustomLabelProvider customLabelProvider = ExtensionRegistry.INSTANCE.get(
 			OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class, new DefaultOperationLabelProvider(),
 			true);
 		if (customLabelProvider != null) {
 			try {
 				return (Image) customLabelProvider.getImage(operation);
 				// BEGIN SUPRESS CATCH EXCEPTION
-			} catch (RuntimeException e) {
+			} catch (final RuntimeException e) {
 				// END SUPRESS CATCH EXCEPTION
-				ModelUtil.logWarning("Image load from custom operation item provider failed!", e);
+				ModelUtil.logWarning(Messages.ChangePackageVisualizationHelper_CustomOperationProvider_LoadImageFailed,
+					e);
 			}
 		}
 		return null;
@@ -153,14 +162,14 @@ public class ChangePackageVisualizationHelper {
 	public String getDescription(AbstractOperation op) {
 
 		// check of a custom operation label provider can provide a label
-		OperationCustomLabelProvider customLabelProvider =
+		final OperationCustomLabelProvider customLabelProvider =
 			ExtensionRegistry.INSTANCE.get(
 				OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class,
 				new DefaultOperationLabelProvider(),
 				true);
 
 		if (op instanceof CompositeOperation) {
-			CompositeOperation compositeOperation = (CompositeOperation) op;
+			final CompositeOperation compositeOperation = (CompositeOperation) op;
 			// artificial composite because of opposite ref, take description of
 			// main operation
 			if (compositeOperation.getMainOperation() != null) {
@@ -172,9 +181,9 @@ public class ChangePackageVisualizationHelper {
 	}
 
 	private String decorate(OperationCustomLabelProvider labelProvider, AbstractOperation op) {
-		String namesResolved = resolveIds(labelProvider, labelProvider.getDescription(op),
+		final String namesResolved = resolveIds(labelProvider, labelProvider.getDescription(op),
 			AbstractOperationItemProvider.NAME_TAG__SEPARATOR, op);
-		String allResolved = resolveIds(labelProvider, namesResolved,
+		final String allResolved = resolveIds(labelProvider, namesResolved,
 			AbstractOperationItemProvider.NAME_CLASS_TAG_SEPARATOR, op);
 		if (op instanceof ReferenceOperation) {
 			return resolveTypes(allResolved, (ReferenceOperation) op);
@@ -188,16 +197,16 @@ public class ChangePackageVisualizationHelper {
 	}
 
 	private String resolveTypes(String unresolvedString, ReferenceOperation op) {
-		EObject modelElement = getModelElement(op.getModelElementId());
+		final EObject modelElement = getModelElement(op.getModelElementId());
 		String type;
 		if (modelElement == null) {
-			type = "ModelElement";
+			type = "ModelElement"; //$NON-NLS-1$
 		} else {
 			try {
-				EStructuralFeature feature = op.getFeature(modelElement);
+				final EStructuralFeature feature = op.getFeature(modelElement);
 				type = feature.getEType().getName();
-			} catch (UnkownFeatureException e) {
-				type = "ModelElement";
+			} catch (final UnkownFeatureException e) {
+				type = "ModelElement"; //$NON-NLS-1$
 			}
 		}
 
@@ -206,18 +215,18 @@ public class ChangePackageVisualizationHelper {
 
 	private String resolveIds(OperationCustomLabelProvider labelProvider, String unresolvedString,
 		String devider, AbstractOperation op) {
-		String[] strings = unresolvedString.split(devider);
-		StringBuilder stringBuilder = new StringBuilder();
+		final String[] strings = unresolvedString.split(devider);
+		final StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < strings.length; i++) {
 			if (isOdd(i)) {
-				ModelElementId modelElementId = ModelFactory.eINSTANCE.createModelElementId();
+				final ModelElementId modelElementId = ModelFactory.eINSTANCE.createModelElementId();
 				modelElementId.setId(strings[i]);
-				EObject modelElement = getModelElement(modelElementId);
+				final EObject modelElement = getModelElement(modelElementId);
 				if (modelElement != null) {
 					stringBuilder.append(labelProvider.getModelElementName(modelElement));
-				} else if (modelElement == null && op instanceof CreateDeleteOperation) {
-					CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) op;
-					for (Map.Entry<EObject, ModelElementId> entry : createDeleteOp.getEObjectToIdMap()) {
+				} else if (op instanceof CreateDeleteOperation) {
+					final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) op;
+					for (final Map.Entry<EObject, ModelElementId> entry : createDeleteOp.getEObjectToIdMap()) {
 						if (entry.getValue().equals(modelElementId)) {
 							stringBuilder.append(labelProvider.getModelElementName(entry.getKey()));
 							break;
@@ -232,7 +241,7 @@ public class ChangePackageVisualizationHelper {
 	}
 
 	private boolean isOdd(int i) {
-		int res = i % 2;
+		final int res = i % 2;
 		return res == -1 || res == 1;
 	}
 

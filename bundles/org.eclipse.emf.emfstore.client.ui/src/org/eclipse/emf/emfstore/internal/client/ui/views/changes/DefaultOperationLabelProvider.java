@@ -29,7 +29,7 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	/**
 	 * The label to be shown for unknown element.
 	 */
-	protected static final String UNKOWN_ELEMENT = "(Unkown Element)";
+	protected static final String UNKOWN_ELEMENT = Messages.DefaultOperationLabelProvider_UnknownElement;
 
 	private final AdapterFactoryLabelProvider adapterFactoryLabelProvider;
 	private final ComposedAdapterFactory adapterFactory;
@@ -103,7 +103,7 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 		final String result = string.trim();
 
 		if (result.length() == 0) {
-			return "(empty name)";
+			return Messages.DefaultOperationLabelProvider_EmptyName;
 		}
 
 		return result;

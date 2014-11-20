@@ -13,7 +13,6 @@
 package org.eclipse.emf.emfstore.client.ui;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.ESProject;
 import org.eclipse.emf.emfstore.client.ESRemoteProject;
@@ -146,7 +145,7 @@ public interface ESUIControllerFactory {
 	void mergeBranch(Shell shell, ESLocalProject project);
 
 	/**
-	 * Register a new {@link EPackage} at the server.
+	 * Register a new {@link org.eclipse.emf.ecore.EPackage EPackage} at the server.
 	 * 
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param server the server at which the package should be registered

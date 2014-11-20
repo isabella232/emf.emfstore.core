@@ -25,7 +25,7 @@ import org.osgi.service.prefs.Preferences;
  */
 public final class EMFStorePreferenceHelper {
 
-	private static final String PREFERENCE_NODE = "emfstore";
+	private static final String PREFERENCE_NODE = "emfstore"; //$NON-NLS-1$
 
 	private EMFStorePreferenceHelper() {
 		// nothing to do here
@@ -55,14 +55,14 @@ public final class EMFStorePreferenceHelper {
 	 */
 	public static void setPreference(String key, String value) {
 		if (key != null && value != null) {
-			Preferences node = Platform.getPreferencesService().getRootNode().node(ConfigurationScope.SCOPE)
+			final Preferences node = Platform.getPreferencesService().getRootNode().node(ConfigurationScope.SCOPE)
 				.node(PREFERENCE_NODE);
 			node.put(key, value);
 			try {
 				node.flush();
-			} catch (BackingStoreException e) {
-				WorkspaceUtil.handleException("Could not persist the preference change: {" + key + ", " + value + "}",
-					e);
+			} catch (final BackingStoreException e) {
+				WorkspaceUtil.handleException(Messages.EMFStorePreferenceHelper_SavePreferenceFailed
+					+ " {" + key + ", " + value + "}", e); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
 			}
 		}
 	}
