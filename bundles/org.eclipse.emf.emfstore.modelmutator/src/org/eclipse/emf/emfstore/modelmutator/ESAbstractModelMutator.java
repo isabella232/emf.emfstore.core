@@ -34,6 +34,7 @@ import org.eclipse.emf.emfstore.internal.modelmutator.mutation.AddObjectMutation
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.AttributeChangeMutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.DeleteObjectMutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.FeatureMapKeyMutation;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.FeatureMapValueMutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.MoveObjectMutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.ReferenceChangeMutation;
@@ -41,7 +42,7 @@ import org.eclipse.emf.emfstore.internal.modelmutator.mutation.ReferenceChangeMu
 import com.google.common.base.Predicate;
 
 /**
- * Abstract implementation of an model muator.
+ * Abstract implementation of an model mutator.
  * 
  * @author Julian Sommerfeldt
  * @since 2.0
@@ -108,7 +109,6 @@ public abstract class ESAbstractModelMutator {
 	 */
 	public void generate() {
 		preMutate();
-
 		// generate till there are enough objects
 		while (currentObjectCount < targetObjectCount) {
 			createChildrenForRoot();
@@ -205,6 +205,7 @@ public abstract class ESAbstractModelMutator {
 		defaultMutationPrototypes.add(new AttributeChangeMutation(util));
 		defaultMutationPrototypes.add(new ReferenceChangeMutation(util));
 		defaultMutationPrototypes.add(new FeatureMapKeyMutation(util));
+		defaultMutationPrototypes.add(new FeatureMapValueMutation(util));
 		return defaultMutationPrototypes;
 	}
 
@@ -256,7 +257,7 @@ public abstract class ESAbstractModelMutator {
 	 * Creates/deletes direct children for the given {@link EObject}.
 	 * 
 	 * @param root The {@link EObject} for which children should be created.
-	 * @return A list of the newly generated children.
+	 * @return A list of the newly generated children
 	 */
 	public List<EObject> createChildren(EObject root) {
 		final List<EObject> children = new ArrayList<EObject>();

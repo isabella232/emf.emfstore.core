@@ -21,6 +21,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
@@ -97,7 +98,19 @@ implements ESFeatureMapKeyMutation {
 
 		final EStructuralFeature newFeatureKey = getRandomFeatureKeyExcludingCurrent(currentFeatureKey);
 		final Entry newEntry = FeatureMapUtil.createEntry(newFeatureKey, entry.getValue());
-		currentEntries.set(currentEntries.indexOf(entry), newEntry);
+
+		if (isMonoReference(currentFeatureKey)) {
+			return;
+		}
+
+		if (!currentEntries.contains(newEntry)) {
+			currentEntries.set(currentEntries.indexOf(entry), newEntry);
+		}
+	}
+
+	private static boolean isMonoReference(EStructuralFeature feature) {
+		return EReference.class.isInstance(feature)
+			&& !EReference.class.cast(feature).isMany();
 	}
 
 	private FeatureMap.Entry getRandomFeatureMapEntryOfTarget(List<Entry> currentEntries) {

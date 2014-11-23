@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.change.FeatureMapEntry;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AbstractOverrideableCommand;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -58,6 +59,7 @@ import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.Attribute
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEDate;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEDouble;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEEnum;
+import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEFeatureMapEntry;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEFloat;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEInt;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterELong;
@@ -67,6 +69,8 @@ import org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicate
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * Util class for the ModelMutator.
@@ -620,7 +624,8 @@ public final class ESModelMutatorUtil {
 	 * Sets all possible attributes of known types to random values using {@link AttributeSetter} and
 	 * SetCommands/AddCommands.
 	 * 
-	 * @param eObject the EObject to set attributes for
+	 * @param eObject
+	 *            the EObject to set attributes for
 	 * @see AttributeSetter
 	 */
 	public void setEObjectAttributes(EObject eObject) {
@@ -640,8 +645,10 @@ public final class ESModelMutatorUtil {
 	 * @see AttributeSetter
 	 */
 	public void setEObjectAttributes(EObject eObject, int maxNumber, Set<EStructuralFeature> ignoredFeatures) {
+
 		final Random random = config.getRandom();
 		int numAttrLeft = maxNumber;
+
 		for (final EAttribute attribute : eObject.eClass().getEAllAttributes()) {
 
 			if (ignoredFeatures.contains(attribute)) {
@@ -668,32 +675,242 @@ public final class ESModelMutatorUtil {
 			}
 
 			if (attribute.isMany()) {
-				final int numberOfAttributes = computeFeatureAmount(attribute, random);
-
-				// vary between empty attributes and already value containing ones
-				final int size = ((Collection<?>) eObject.eGet(attribute)).size();
-				if (size == 0) {
-					addPerCommand(eObject, attribute, attributeSetter.createNewAttributes(numberOfAttributes));
-				} else {
-					// vary between set and and move for higher coverage
-					for (int i = 0; i < size; i++) {
-						if (random.nextBoolean()) {
-							setPerCommand(eObject, attribute, attributeSetter.createNewAttribute(), i);
-						} else {
-							final Object attributeToMove = ((Collection<?>) eObject.eGet(attribute)).toArray()[random
-								.nextInt(size)];
-							movePerCommand(eObject, attribute, attributeToMove, random.nextInt(size));
-						}
-					}
-				}
+				setManyAttribute(eObject, random, attribute, attributeSetter);
 			} else {
-				setPerCommand(eObject, attribute, attributeSetter.createNewAttribute());
+				setMonoAttribute(eObject, attribute, attributeSetter);
 			}
+
 			numAttrLeft--;
+
+			// maxNumber has been reached
 			if (numAttrLeft == 0) {
 				return;
 			}
 		}
+	}
+
+	private void setMonoAttribute(EObject eObject, final EAttribute attribute, final AttributeSetter<?> attributeSetter) {
+		setPerCommand(eObject, attribute, attributeSetter.createNewAttribute());
+	}
+
+	private void setManyAttribute(EObject eObject, final Random random, final EAttribute attribute,
+		final AttributeSetter<?> attributeSetter) {
+
+		final int numberOfAttributes = computeFeatureAmount(attribute, random);
+
+		// vary between empty attributes and already value containing ones
+		final int size = ((Collection<?>) eObject.eGet(attribute)).size();
+
+		if (size == 0) {
+			if (isFeatureMap(attribute)) {
+
+				final EClass eClass = (EClass) attribute.eContainer();
+
+				@SuppressWarnings("unchecked")
+				final List<FeatureMapEntry> entries = initFeatureMapEntries(random,
+					((AttributeSetter<FeatureMapEntry>) attributeSetter).createNewAttributes(numberOfAttributes),
+					numberOfAttributes, eClass);
+
+				if (!entries.isEmpty()) {
+					final List<Object> toBeRemoved = new ArrayList<Object>();
+					entries.removeAll(toBeRemoved);
+					// TODO: warning
+					if (!entries.isEmpty()) {
+						addPerCommand(eObject, attribute, entries);
+					}
+				}
+			} else {
+				// not a feature map
+				addPerCommand(eObject, attribute, attributeSetter.createNewAttributes(numberOfAttributes));
+			}
+		} else {
+			if (isFeatureMap(attribute)) {
+				@SuppressWarnings("unchecked")
+				final FeatureMapEntry entry = initializeFeatureMapEntry(eObject, random, attribute,
+					((AttributeSetter<FeatureMapEntry>) attributeSetter).createNewAttribute());
+
+				setPerCommand(eObject, attribute, entry);
+				return;
+			}
+
+			// vary between set and and move for higher coverage
+			for (int i = 0; i < size; i++) {
+				if (random.nextBoolean()) {
+					setPerCommand(eObject, attribute, attributeSetter.createNewAttribute(), i);
+				} else {
+					final Object attributeToMove = ((Collection<?>) eObject.eGet(attribute))
+						.toArray()[random.nextInt(size)];
+					movePerCommand(eObject, attribute, attributeToMove, random.nextInt(size));
+				}
+			}
+		}
+	}
+
+	private boolean isReference(EStructuralFeature feature) {
+		return EReference.class.isInstance(feature);
+	}
+
+	private boolean isContaimentReference(EStructuralFeature feature) {
+		return EReference.class.isInstance(feature) && EReference.class.cast(feature).isContainment();
+	}
+
+	private FeatureMapEntry initializeFeatureMapEntry(EObject eObject, final Random random, final EAttribute attribute,
+		FeatureMapEntry uninitializedFeatureMapEntry) {
+		final EClass eClass = (EClass) attribute.eContainer();
+
+		final List<FeatureMapEntry> entries = initFeatureMapEntries(random,
+			Collections.singleton(uninitializedFeatureMapEntry), 1, eClass);
+		return entries.get(0);
+	}
+
+	private static boolean isFeatureMap(EAttribute eAttribute) {
+		return eAttribute.getEAttributeType().equals(EcorePackage.eINSTANCE.getEFeatureMapEntry());
+	}
+
+	private List<EStructuralFeature> getAvailableFeatureKeys(EClass eClass) {
+		final List<EStructuralFeature> eStructuralFeatures = new ArrayList<EStructuralFeature>(
+			eClass.getEStructuralFeatures());
+		final Iterator<EStructuralFeature> iterator = eStructuralFeatures.iterator();
+		while (iterator.hasNext()) {
+			final EStructuralFeature eStructuralFeature = iterator.next();
+			if (eStructuralFeature.getEType().equals(EcorePackage.eINSTANCE.getEFeatureMapEntry())) {
+				iterator.remove();
+			}
+		}
+		Collections.shuffle(eStructuralFeatures);
+		return eStructuralFeatures;
+	}
+
+	class Pair {
+		public EStructuralFeature feature;
+		public EObject value;
+	}
+
+	/**
+	 * @param random
+	 * @param uninitializedFeatureMapEntries
+	 * @param addThese
+	 * @param used
+	 * @param eStructuralFeatures
+	 * @param generatedEObjects
+	 */
+	private List<FeatureMapEntry> initFeatureMapEntries(final Random random,
+		Collection<FeatureMapEntry> uninitializedFeatureMapEntries, int numberOfAttributes, EClass eClass) {
+
+		final List<EStructuralFeature> features = getAvailableFeatureKeys(eClass);
+		final Map<EStructuralFeature, List<EObject>> occupiedEObjects = Maps
+			.<EStructuralFeature, List<EObject>> newLinkedHashMap();
+		final List<FeatureMapEntry> entries = Lists.<FeatureMapEntry> newArrayList();
+
+		for (final FeatureMapEntry entry : uninitializedFeatureMapEntries) {
+
+			Collections.shuffle(features);
+			final EStructuralFeature feature = features.get(0);
+
+			if (isReference(feature) && !isContaimentReference(feature)) {
+
+				final EReference reference = EReference.class.cast(feature);
+
+				final EObject selectedEObject = selectUnusedEObject(random, reference.getEReferenceType(),
+					getAllObjects(getModelMutatorConfiguration().getRootEObject()), occupiedEObjects);
+
+				if (selectedEObject == null) {
+					continue;
+				}
+
+				entry.setFeature(feature);
+				entry.setReferenceValue(selectedEObject);
+
+				if (!occupiedEObjects.containsKey(reference)) {
+					occupiedEObjects.put(reference, Lists.<EObject> newArrayList());
+				}
+
+				if (occupiedEObjects.get(reference).contains(selectedEObject)) {
+					continue;
+				}
+
+				occupiedEObjects.get(reference).add(selectedEObject);
+				entries.add(entry);
+			} else if (isContaimentReference(feature)) {
+				entry.setFeature(feature);
+				entry.setReferenceValue(
+					createOfType(
+					EReference.class.cast(feature).getEReferenceType()));
+				entries.add(entry);
+			} else {
+				final EAttribute attribute = EAttribute.class.cast(feature);
+				final AttributeSetter<?> setter = getAttributeSetter(attribute.getEAttributeType());
+				entry.setFeature(feature);
+				Object attributeValue = null;
+				while (attributeValue == null) {
+					// FIXME: entry attribute must not be null
+					attributeValue = setter.createNewAttribute();
+				}
+				entry.setDataValue(attributeValue.toString());
+				entries.add(entry);
+			}
+		}
+
+		return entries;
+	}
+
+	private EObject selectUnusedEObject(final Random random, EClass desiredClass,
+		Map<EClass, List<EObject>> allEObjects, Map<EStructuralFeature, List<EObject>> eObjectsInUse) {
+
+		final List<EObject> p = allEObjects.get(desiredClass);
+
+		if (desiredClass == null || p == null || p.isEmpty()) {
+			return null;
+		}
+
+		final List<EObject> possibleEObjects = new ArrayList<EObject>(p);
+		List<EObject> reservedEObjects = eObjectsInUse.get(desiredClass);
+
+		if (reservedEObjects == null) {
+			reservedEObjects = Lists.<EObject> newArrayList();
+		}
+
+		while (true) {
+			if (possibleEObjects.isEmpty()) {
+				return null;
+			}
+			final EObject eObject = possibleEObjects.get(random.nextInt(possibleEObjects.size()));
+			if (reservedEObjects.contains(eObject)) {
+				possibleEObjects.remove(eObject);
+				continue;
+			}
+			return eObject;
+		}
+	}
+
+	private EObject createOfType(EClass eClass) {
+		final EObject eObjectToAdd = EcoreUtil.create(eClass);
+		setEObjectAttributes(eObjectToAdd);
+		return eObjectToAdd;
+	}
+
+	/**
+	 * Returns all contents of the given {@link EObject} sorted by
+	 * the {@link EClass} of the contained children.
+	 * 
+	 * @param root The root object containing the direct and indirect children.
+	 * @return The count of all direct and indirect children of the object.
+	 */
+	public static Map<EClass, List<EObject>> getAllObjects(EObject root) {
+
+		final Map<EClass, List<EObject>> map = new LinkedHashMap<EClass, List<EObject>>();
+		final TreeIterator<EObject> eAllContents = root.eAllContents();
+
+		while (eAllContents.hasNext()) {
+			final EObject eObject = eAllContents.next();
+			final EClass eClass = eObject.eClass();
+			if (!map.containsKey(eClass)) {
+				map.put(eClass, Lists.<EObject> newArrayList());
+			}
+			map.get(eClass).add(eObject);
+		}
+
+		return map;
 	}
 
 	/**
@@ -759,6 +976,7 @@ public final class ESModelMutatorUtil {
 			oAttributeSetter = new AttributeSetterEInt(random);
 			attributeSetters.put(ecoreInstance.getEInt(), oAttributeSetter);
 			attributeSetters.put(ecoreInstance.getEIntegerObject(), oAttributeSetter);
+			attributeSetters.put(ecoreInstance.getEFeatureMapEntry(), new AttributeSetterEFeatureMapEntry(random));
 
 			attributeSetters.put(ecoreInstance.getEDate(), new AttributeSetterEDate(random));
 
@@ -924,6 +1142,7 @@ public final class ESModelMutatorUtil {
 	 *            the EObject to set attributes for
 	 * @param ignoredFeatures
 	 *            a set of attributes to be ignored
+	 * 
 	 * @see AttributeSetter
 	 */
 	public void setEObjectAttributes(EObject eObject, Set<EStructuralFeature> ignoredFeatures) {
