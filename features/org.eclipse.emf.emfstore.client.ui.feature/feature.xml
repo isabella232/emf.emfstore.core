@@ -62,4 +62,20 @@ for client applications connecting to the EMFStore server.
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.eclipse.emf.emfstore.client.ui.rap"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.emfstore.client.ui.rcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
 </feature>
