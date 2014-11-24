@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Carl Pfeiffer, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -38,12 +38,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 /**
  * The modified ElementListSelectionDialog. Includes further functionality to
  * import certificates from files instead of choosing from the list.
- * 
+ *
  * @author pfeifferc
  */
 public class CertificateSelectionDialog extends ElementListSelectionDialog {
@@ -53,7 +52,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 
 	/**
 	 * The constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            Parent
 	 * @param renderer
@@ -67,7 +66,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 	/**
 	 * Overridden method to allow adding further elements onto the dialog
 	 * composite.
-	 * 
+	 *
 	 * @see org.eclipse.ui.dialogs.ElementListSelectionDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
 	 * @return Control
 	 * @param parent
@@ -130,6 +129,8 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 		delete.setText(Messages.CertificateSelectionDialog_Delete);
 		delete.addSelectionListener(new SelectionListener() {
 
+			private static final long serialVersionUID = 1L;
+
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// nothing to do
 			}
@@ -146,13 +147,13 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 				}
 			}
 		});
-		fFilteredList.addSelectionListener(new SelectionListenerImplementation(certDetails, certAlias));
+		getFilteredList().addSelectionListener(new SelectionListenerImplementation(certDetails, certAlias));
 		return control;
 	}
 
 	/**
 	 * Returns the alias of the certificate.
-	 * 
+	 *
 	 * @return the certificate alias
 	 */
 	public String getCertificateAlias() {
@@ -161,7 +162,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 
 	/**
 	 * Opens up an information {@link MessageDialog} with the given <code>errorMessage</code>.
-	 * 
+	 *
 	 * @param errorMessage
 	 *            the error message
 	 */
@@ -173,11 +174,12 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 
 	/**
 	 * Certificate Selection Listener.
-	 * 
+	 *
 	 * @author koegel
-	 * 
+	 *
 	 */
 	private final class SelectionListenerImplementation implements SelectionListener {
+		private static final long serialVersionUID = 1L;
 		private final Text certDetails;
 		private final Text certAlias;
 
@@ -200,7 +202,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 					final String[] details = selectedCertificate.toString().split("\n"); //$NON-NLS-1$
 					String tmp = StringUtils.EMPTY;
 					for (int i = 2; i < 14; i++) {
-						tmp += i == 7 || i == 8 ? StringUtils.EMPTY : details[i].trim() + "\n"; //$NON-NLS-1$ 
+						tmp += i == 7 || i == 8 ? StringUtils.EMPTY : details[i].trim() + "\n"; //$NON-NLS-1$
 					}
 					certAlias.setText(alias);
 					certDetails.setText(tmp);
@@ -213,13 +215,15 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 
 	/**
 	 * Choose certificate from file system and name it.
-	 * 
+	 *
 	 * @author pfeifferc
 	 */
 	class CertificateSelectionListener implements SelectionListener {
+		private static final long serialVersionUID = 1L;
+
 		/**
 		 * Add a certificate specified by the user.
-		 * 
+		 *
 		 * @param event
 		 *            selection event
 		 */

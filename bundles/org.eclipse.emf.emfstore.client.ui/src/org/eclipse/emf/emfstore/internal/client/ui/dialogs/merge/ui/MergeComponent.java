@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui;
 
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict;
+import org.eclipse.swt.widgets.Composite;
 
 /**
  * Interface for a singe merge component.
@@ -22,18 +23,7 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.con
 public interface MergeComponent {
 
 	/**
-	 * Sets the parent of this merge component.
-	 * 
-	 * @param decisionBox
-	 *            the parent {@link DecisionBox}
+	 * Initializes this component.
 	 */
-	void setParent(DecisionBox decisionBox);
-
-	/**
-	 * Sets the conflict this merge component belongs to.
-	 * 
-	 * @param visualConflict
-	 *            the {@link VisualConflict} this merge component belongs to
-	 */
-	void setVisualConflict(VisualConflict visualConflict);
+	void init(Composite parent, DecisionBox decisionBox, VisualConflict visualConflict);
 }

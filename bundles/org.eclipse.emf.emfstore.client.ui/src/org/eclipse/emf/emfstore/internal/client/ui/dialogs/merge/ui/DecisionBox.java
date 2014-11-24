@@ -39,7 +39,7 @@ public class DecisionBox extends Composite {
 
 	private static final String EMFSTORE_CLIENT_UI_PLUGIN_ID = "org.eclipse.emf.emfstore.client.ui"; //$NON-NLS-1$
 	private static final String OPTION_COMPONENT_CLASS = "org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.OptionComponentImpl"; //$NON-NLS-1$
-	private static final String DESCRIPTION_COMPONENT_CLASS = "org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DescriptionComponenptUtil"; //$NON-NLS-1$
+	private static final String DESCRIPTION_COMPONENT_CLASS = "org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DescriptionComponentImpl"; //$NON-NLS-1$
 	private final VisualConflict conflict;
 	private final DecisionManager decisionManager;
 	private OptionComponent optionComponent;
@@ -75,12 +75,10 @@ public class DecisionBox extends Composite {
 
 		new ContextComponent(this, conflict);
 		optionComponent = newInstanceOf(OPTION_COMPONENT_CLASS);
-		optionComponent.setParent(this);
-		optionComponent.setVisualConflict(conflict);
+		optionComponent.init(this, this, conflict);
 
 		final DescriptionComponent descriptionComponent = newInstanceOf(DESCRIPTION_COMPONENT_CLASS);
-		descriptionComponent.setParent(this);
-		descriptionComponent.setVisualConflict(conflict);
+		descriptionComponent.init(this, this, conflict);
 
 		if (DecisionUtil.detailsNeeded(conflict)) {
 			new DetailsComponent(this, conflict);
@@ -136,7 +134,8 @@ public class DecisionBox extends Composite {
 	private <T> T newInstanceOf(String clazz) {
 		try {
 			final Class<T> c = loadClass(EMFSTORE_CLIENT_UI_PLUGIN_ID, clazz);
-			c.getConstructor().newInstance();
+			final T newInstance = c.getConstructor().newInstance();
+			return newInstance;
 		} catch (final ClassNotFoundException ex) {
 			WorkspaceUtil.logException(ex.getMessage(), ex);
 		} catch (final InstantiationException ex) {

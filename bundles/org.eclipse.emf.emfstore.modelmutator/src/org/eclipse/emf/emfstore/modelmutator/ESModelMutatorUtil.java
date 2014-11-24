@@ -883,7 +883,7 @@ public final class ESModelMutatorUtil {
 		}
 	}
 
-	private EObject createOfType(EClass eClass) {
+	public EObject createOfType(EClass eClass) {
 		final EObject eObjectToAdd = EcoreUtil.create(eClass);
 		setEObjectAttributes(eObjectToAdd);
 		return eObjectToAdd;

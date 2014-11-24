@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Alexander Shterev, Carl Pfeiffer - initial API and implementation
  ******************************************************************************/
@@ -36,7 +36,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * The main page of the wizard.
- * 
+ *
  * @author shterev
  */
 public class NewRepositoryWizardPageOne extends WizardPage {
@@ -120,20 +120,24 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 				return;
 			}
 
-			try {
-				if (KeyStoreManager.getInstance().contains(server.getCertificateAlias())) {
-					for (int i = 0; i < certificateCombo.getItemCount(); i++) {
-						if (certificateCombo.getItem(i).equals(server.getCertificateAlias())) {
-							certificateCombo.select(i);
-							break;
-						}
+			setCertificateSelection(server);
+		}
+	}
+
+	private void setCertificateSelection(final ESServer server) {
+		try {
+			if (KeyStoreManager.getInstance().contains(server.getCertificateAlias())) {
+				for (int i = 0; i < certificateCombo.getItemCount(); i++) {
+					if (certificateCombo.getItem(i).equals(server.getCertificateAlias())) {
+						certificateCombo.select(i);
+						break;
 					}
-				} else {
-					certificateCombo.setText(StringUtils.EMPTY);
 				}
-			} catch (final ESCertificateException e1) {
+			} else {
 				certificateCombo.setText(StringUtils.EMPTY);
 			}
+		} catch (final ESCertificateException e1) {
+			certificateCombo.setText(StringUtils.EMPTY);
 		}
 	}
 
@@ -168,7 +172,7 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 	/**
 	 * Saves the uses choices from this page to the model. Called on exit of the
 	 * page
-	 * 
+	 *
 	 * @return the server
 	 */
 	public ESServer getServer() {
@@ -180,7 +184,7 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 
 	/**
 	 * Returns true if Text is not empty, i.e. not null/only space characters.
-	 * 
+	 *
 	 * @param t
 	 * @return boolean
 	 */
@@ -198,10 +202,12 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 
 	/**
 	 * Listener for the selection dialog.
-	 * 
+	 *
 	 * @author pfeifferc
 	 */
 	class SelectionDialogListener implements SelectionListener {
+
+		private static final long serialVersionUID = 1L;
 
 		/**
 		 * @param e

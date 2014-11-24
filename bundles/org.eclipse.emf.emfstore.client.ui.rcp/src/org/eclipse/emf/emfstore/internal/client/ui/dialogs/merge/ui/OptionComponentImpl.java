@@ -40,24 +40,24 @@ import org.eclipse.swt.widgets.Listener;
  * 
  * @author wesendon
  */
-public class OptionComponentImpl {
+public class OptionComponentImpl implements OptionComponent {
 
-	private final Group group;
-	private final VisualConflict conflict;
-	private final DecisionBox dBox;
+	private Group group;
+	private VisualConflict conflict;
+	private DecisionBox dBox;
 
 	/**
-	 * Default constructor.
 	 * 
-	 * @param dBox
-	 *            parent
-	 * @param conflict
-	 *            conflict.
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.MergeComponent#init(org.eclipse.swt.widgets.Composite,
+	 *      org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox,
+	 *      org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict)
 	 */
-	public OptionComponentImpl(DecisionBox dBox, VisualConflict conflict) {
-		this.dBox = dBox;
-		this.conflict = conflict;
-		group = new Group(dBox, SWT.NONE);
+	public void init(Composite parent, DecisionBox decisionBox, VisualConflict visualConflict) {
+		dBox = decisionBox;
+		conflict = visualConflict;
+		group = new Group(parent, SWT.NONE);
 		final GridLayout layout = new GridLayout();
 		layout.horizontalSpacing = 1;
 		layout.verticalSpacing = 1;
@@ -80,12 +80,14 @@ public class OptionComponentImpl {
 		final String countInfo = operationCount > 1 ? "s (" + operationCount + ")" : StringUtils.EMPTY; //$NON-NLS-1$ //$NON-NLS-2$
 		switch (option.getType()) {
 		case MyOperation:
-			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch : Messages.OptionComponentImpl_KeepMyChange + countInfo
-				+ ": "; //$NON-NLS-1$
+			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch
+				: Messages.OptionComponentImpl_KeepMyChange + countInfo
+					+ ": "; //$NON-NLS-1$
 			break;
 		case TheirOperation:
-			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch : Messages.OptionComponentImpl_KeepTheirChange + countInfo
-				+ ": "; //$NON-NLS-1$
+			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch
+				: Messages.OptionComponentImpl_KeepTheirChange + countInfo
+					+ ": "; //$NON-NLS-1$
 			break;
 		case Custom:
 			if (option instanceof CustomConflictOption) {
