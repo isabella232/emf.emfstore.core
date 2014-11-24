@@ -306,14 +306,13 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 * 
 	 * @param command
 	 *            the {@link Command} that has been completed
-	 * @param isCommandChain
-	 *            whether the operation manager should reset its internal
-	 *            command-is-running state. If multiple commands are
-	 *            executed and completed but we don't want the recorder
-	 *            to clear its internal state, set this <code>true</code>
+	 * @param isNestedCommand
+	 *            whether the completed command is a command inside another one.
+	 *            If the completed command is nested, the {@link OperationRecorder}'s
+	 *            internal state maintains the state of a command still being run
 	 */
-	public void commandCompleted(Command command, boolean isCommandChain) {
-		operationRecorder.commandCompleted(command, isCommandChain);
+	public void commandCompleted(Command command, boolean isNestedCommand) {
+		operationRecorder.commandCompleted(command, isNestedCommand);
 	}
 
 	/**

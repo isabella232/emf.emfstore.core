@@ -478,11 +478,10 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * 
 	 * @param command
 	 *            the completed command
-	 * @param isCommandChain
-	 *            determines whether the command-is-running state is reset.
-	 *            If true, it won't be reset.
+	 * @param isNestedCommand
+	 *            whether the completed command is a command inside another one
 	 */
-	public void commandCompleted(Command command, boolean isCommandChain) {
+	public void commandCompleted(Command command, boolean isNestedCommand) {
 
 		// means that we have not seen a command start yet
 		// if (currentClipboard == null) {
@@ -528,7 +527,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		operations.clear();
 		collection.clearAllocatedCaches();
 
-		commandIsRunning = isCommandChain;
+		commandIsRunning = isNestedCommand;
 	}
 
 	private List<AbstractOperation> modifyOperations(List<AbstractOperation> operations, Command command) {
