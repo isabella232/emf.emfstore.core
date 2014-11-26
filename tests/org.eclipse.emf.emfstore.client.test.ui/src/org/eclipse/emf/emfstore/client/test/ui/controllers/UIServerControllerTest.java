@@ -51,13 +51,13 @@ public class UIServerControllerTest extends AbstractUIControllerTest {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIRemoveServerController removeServerController = new UIRemoveServerController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					serverToBeRemoved);
 				removeServerController.execute();
 			}
 		});
-		bot.button("Yes").click();
-		bot.waitUntil(new DefaultCondition() {
+		getBot().button("Yes").click();
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return howManyServers - 1 == ESWorkspaceProvider.INSTANCE.getWorkspace().getServers().size();
@@ -77,12 +77,12 @@ public class UIServerControllerTest extends AbstractUIControllerTest {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIAddServerController addServerController = new UIAddServerController(
-					bot.getDisplay().getActiveShell());
+					getBot().getDisplay().getActiveShell());
 				addServerController.execute();
 			}
 		});
-		bot.button("Finish").click();
-		bot.waitUntil(new DefaultCondition() {
+		getBot().button("Finish").click();
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 
 			public boolean test() throws Exception {

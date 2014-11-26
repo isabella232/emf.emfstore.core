@@ -45,9 +45,9 @@ public class UIUndoLastOperationControllerTest extends AbstractUIControllerTest 
 	@Override
 	@Test
 	public void testController() throws ESException {
-		assertEquals(0, localProject.getModelElements().size());
-		Add.toProject(localProject, Create.player());
-		assertEquals(1, localProject.getModelElements().size());
+		assertEquals(0, getLocalProject().getModelElements().size());
+		Add.toProject(getLocalProject(), Create.player());
+		assertEquals(1, getLocalProject().getModelElements().size());
 		undoLastOperation();
 	}
 
@@ -70,16 +70,16 @@ public class UIUndoLastOperationControllerTest extends AbstractUIControllerTest 
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIUndoLastOperationController undoLastOperationController = new UIUndoLastOperationController(
-					bot
-						.getDisplay().getActiveShell(), localProject);
+					getBot()
+						.getDisplay().getActiveShell(), getLocalProject());
 				undoLastOperationController.execute();
 			}
 		});
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return localProject.getModelElements().size() == 0;
+				return getLocalProject().getModelElements().size() == 0;
 			}
 
 			// END SURPRESS CATCH EXCEPTION

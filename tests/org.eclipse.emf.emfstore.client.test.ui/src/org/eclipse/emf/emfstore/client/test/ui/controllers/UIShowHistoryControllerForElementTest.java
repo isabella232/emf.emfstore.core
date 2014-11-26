@@ -36,12 +36,12 @@ public class UIShowHistoryControllerForElementTest extends AbstractUIControllerT
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIShowHistoryController showHistoryController =
-					new UIShowHistoryController(bot.getDisplay().getActiveShell(), player);
+					new UIShowHistoryController(getBot().getDisplay().getActiveShell(), player);
 				showHistoryController.execute();
 			}
 		});
 
-		final SWTBotView historyView = bot.viewById(
+		final SWTBotView historyView = getBot().viewById(
 			"org.eclipse.emf.emfstore.client.ui.views.historybrowserview.HistoryBrowserView");
 
 		assertNotNull(historyView);

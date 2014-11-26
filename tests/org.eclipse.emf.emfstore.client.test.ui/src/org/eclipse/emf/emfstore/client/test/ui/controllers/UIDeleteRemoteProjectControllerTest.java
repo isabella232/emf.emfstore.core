@@ -23,26 +23,26 @@ public class UIDeleteRemoteProjectControllerTest extends AbstractUIControllerTes
 	@Override
 	@Test
 	public void testController() throws ESException {
-		final int remoteProjectsSize = server.getRemoteProjects().size();
+		final int remoteProjectsSize = getServer().getRemoteProjects().size();
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				UIDeleteRemoteProjectController deleteRemoteProjectController;
 				try {
-					deleteRemoteProjectController = new UIDeleteRemoteProjectController(bot.getDisplay()
+					deleteRemoteProjectController = new UIDeleteRemoteProjectController(getBot().getDisplay()
 						.getActiveShell(),
-						usersession, localProject.getRemoteProject());
+						getUsersession(), getLocalProject().getRemoteProject());
 					deleteRemoteProjectController.execute();
 				} catch (final ESException e) {
 					fail();
 				}
 			}
 		});
-		bot.button("Yes").click();
-		bot.waitUntil(new DefaultCondition() {
+		getBot().button("Yes").click();
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return server.getRemoteProjects().size() == remoteProjectsSize - 1;
+				return getServer().getRemoteProjects().size() == remoteProjectsSize - 1;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -51,7 +51,7 @@ public class UIDeleteRemoteProjectControllerTest extends AbstractUIControllerTes
 				return "Delete remote project did not succeed.";
 			}
 		});
-		assertEquals(remoteProjectsSize - 1, server.getRemoteProjects().size());
+		assertEquals(remoteProjectsSize - 1, getServer().getRemoteProjects().size());
 	}
 
 }

@@ -41,24 +41,24 @@ public class UIRevertCommitControllerTest2 extends AbstractUIControllerTestWithC
 	@Override
 	@Test
 	public void testController() throws ESException {
-		assertEquals(0, localProject.getModelElements().size());
+		assertEquals(0, getLocalProject().getModelElements().size());
 		final ESUpdateCallback updateCallback = new MyUpdateCallback();
 		final IProgressMonitor monitor = new NullProgressMonitor();
 
 		// create checkout
 		checkout();
 		createPlayerAndTournamentAndCommit();
-		final ESPrimaryVersionSpec baseVersion = localProject.getBaseVersion();
+		final ESPrimaryVersionSpec baseVersion = getLocalProject().getBaseVersion();
 
 		// update checkout
-		getCopy().update(localProject.getBaseVersion(), updateCallback, monitor);
+		getCopy().update(getLocalProject().getBaseVersion(), updateCallback, monitor);
 
 		// delete player
 		deleteTournamentAndCommit();
-		assertEquals(1, localProject.getModelElements().size());
+		assertEquals(1, getLocalProject().getModelElements().size());
 
 		// update checkout
-		getCopy().update(localProject.getBaseVersion(), updateCallback, monitor);
+		getCopy().update(getLocalProject().getBaseVersion(), updateCallback, monitor);
 		assertEquals(1, getCopy().getModelElements().size());
 
 		// revert to version where tournament has been created
@@ -85,8 +85,8 @@ public class UIRevertCommitControllerTest2 extends AbstractUIControllerTestWithC
 
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				localProject.getModelElements().add(player);
-				localProject.getModelElements().add(tournament);
+				getLocalProject().getModelElements().add(player);
+				getLocalProject().getModelElements().add(tournament);
 				return null;
 			}
 		});
@@ -100,17 +100,17 @@ public class UIRevertCommitControllerTest2 extends AbstractUIControllerTestWithC
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIRevertCommitController revertCommitController = new UIRevertCommitController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					baseVersion,
-					localProject);
+					getLocalProject());
 				revertCommitController.execute();
 			}
 		});
 
-		final SWTBotShell shell = bot.shell("Confirmation");
+		final SWTBotShell shell = getBot().shell("Confirmation");
 		shell.bot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 
 			public boolean test() throws Exception {
@@ -131,17 +131,17 @@ public class UIRevertCommitControllerTest2 extends AbstractUIControllerTestWithC
 	}
 
 	protected void deleteTournamentAndCommit() {
-		assertEquals(2, localProject.getModelElements().size());
+		assertEquals(2, getLocalProject().getModelElements().size());
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				final Tournament tournament = localProject.getAllModelElementsByClass(Tournament.class).iterator()
+				final Tournament tournament = getLocalProject().getAllModelElementsByClass(Tournament.class).iterator()
 					.next();
-				localProject.getModelElements().remove(tournament);
+				getLocalProject().getModelElements().remove(tournament);
 				return null;
 			}
 		});
 		commit();
-		assertEquals(1, localProject.getModelElements().size());
+		assertEquals(1, getLocalProject().getModelElements().size());
 	}
 
 	private class MyUpdateCallback implements ESUpdateCallback {

@@ -51,19 +51,19 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		final Tournament tournament = BowlingFactory.eINSTANCE.createTournament();
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				localProject.getModelElements().add(tournament);
+				getLocalProject().getModelElements().add(tournament);
 				return null;
 			}
 		});
-		commit(localProject);
+		commit(getLocalProject());
 	}
 
 	protected void createLeagueAndCommit() {
-		createLeagueAndCommit(localProject);
+		createLeagueAndCommit(getLocalProject());
 	}
 
 	protected Player createPlayerAndCommit() {
-		return createPlayerAndCommit(localProject);
+		return createPlayerAndCommit(getLocalProject());
 	}
 
 	protected Player createPlayerAndCommit(final ESLocalProject localProject) {
@@ -92,7 +92,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 	}
 
 	protected void commit() {
-		commit(localProject);
+		commit(getLocalProject());
 	}
 
 	protected void commit(final ESLocalProject localProject) {
@@ -100,15 +100,15 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				ESUIControllerFactory.INSTANCE.commitProject(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					localProject);
 			}
 		});
 
-		final SWTBotButton buttonWithLabel = bot.button("OK");
+		final SWTBotButton buttonWithLabel = getBot().button("OK");
 		buttonWithLabel.click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return baseVersion.getIdentifier() + 1 == localProject.getBaseVersion()
@@ -133,22 +133,22 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 				UICheckoutController checkoutController;
 				try {
 					checkoutController = new UICheckoutController(
-						bot.getDisplay().getActiveShell(),
-						localProject.getRemoteProject());
-					checkedoutCopy = checkoutController.execute();
+						getBot().getDisplay().getActiveShell(),
+						getLocalProject().getRemoteProject());
+					setCheckedoutCopy(checkoutController.execute());
 				} catch (final ESException e) {
 					fail(e.getMessage());
 				}
 			}
 		});
 
-		bot.text().setText("checkout");
-		bot.button("OK").click();
+		getBot().text().setText("checkout");
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return checkedoutCopy != null;
+				return getCheckedoutCopy() != null;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -169,9 +169,9 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 				UICheckoutController checkoutController;
 				try {
 					checkoutController = new UICheckoutController(
-						bot.getDisplay().getActiveShell(),
+						getBot().getDisplay().getActiveShell(),
 						versionSpec,
-						localProject.getRemoteProject());
+						getLocalProject().getRemoteProject());
 					localProjectArr[0] = checkoutController.execute();
 				} catch (final ESException e) {
 					fail(e.getMessage());
@@ -179,10 +179,10 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 			}
 		});
 
-		bot.text().setText(checkoutName);
-		bot.button("OK").click();
+		getBot().text().setText(checkoutName);
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
@@ -200,7 +200,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 	}
 
 	public ESLocalProject getCopy() {
-		return checkedoutCopy;
+		return getCheckedoutCopy();
 	}
 
 	protected ESPrimaryVersionSpec updateCopy() {
@@ -214,17 +214,17 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIUpdateProjectController updateProjectController = new UIUpdateProjectController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					getCopy());
 				updateProjectController.execute();
 			}
 		});
 
 		final Matcher<Shell> matcher = withText("Update");
-		bot.waitUntil(waitForShell(matcher));
-		bot.button("OK").click();
+		getBot().waitUntil(waitForShell(matcher));
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return didUpdate;
@@ -254,21 +254,21 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIUpdateProjectToVersionController updateProjectController = new UIUpdateProjectToVersionController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					getCopy());
 				updateProjectController.execute();
 			}
 		});
 
 		Matcher<Shell> matcher = withText("Select a Version to update to");
-		bot.waitUntil(waitForShell(matcher));
-		bot.button("OK").click();
+		getBot().waitUntil(waitForShell(matcher));
+		getBot().button("OK").click();
 
 		matcher = withText("Update");
-		bot.waitUntil(waitForShell(matcher));
-		bot.button("OK").click();
+		getBot().waitUntil(waitForShell(matcher));
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return didUpdate;
@@ -306,20 +306,20 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIUpdateProjectController updateProjectController = new UIUpdateProjectController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					getCopy());
 				updateProjectController.execute();
 			}
 		});
 
-		final SWTBotButton buttonWithLabel = bot.button("OK");
+		final SWTBotButton buttonWithLabel = getBot().button("OK");
 		buttonWithLabel.click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return getCopy().getBaseVersion().getIdentifier() ==
-				localProject.getBaseVersion().getIdentifier() - 1;
+				getLocalProject().getBaseVersion().getIdentifier() - 1;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -330,15 +330,15 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		}, timeout());
 
 		final Matcher<Shell> matcher = withText("More updates available");
-		bot.waitUntil(waitForShell(matcher));
-		bot.button("OK").click(); // update notification hint
-		bot.button("OK").click(); // inspect changes on update
+		getBot().waitUntil(waitForShell(matcher));
+		getBot().button("OK").click(); // update notification hint
+		getBot().button("OK").click(); // inspect changes on update
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return getCopy().getBaseVersion().getIdentifier() ==
-				localProject.getBaseVersion().getIdentifier();
+				getLocalProject().getBaseVersion().getIdentifier();
 			}
 
 			// END SUPRESS CATCH EXCEPTION

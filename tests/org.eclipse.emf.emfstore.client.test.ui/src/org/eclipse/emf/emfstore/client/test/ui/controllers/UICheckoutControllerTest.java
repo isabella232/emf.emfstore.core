@@ -34,10 +34,10 @@ public class UICheckoutControllerTest extends AbstractUIControllerTestWithCommit
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				try {
-					final UICheckoutController checkoutController = new UICheckoutController(bot.getDisplay()
+					final UICheckoutController checkoutController = new UICheckoutController(getBot().getDisplay()
 						.getActiveShell(),
 						ESVersionSpec.FACTORY.createPRIMARY(1),
-						localProject.getRemoteProject());
+						getLocalProject().getRemoteProject());
 					checkoutController.execute();
 				} catch (final ESException e) {
 					fail(e.getMessage());
@@ -45,10 +45,10 @@ public class UICheckoutControllerTest extends AbstractUIControllerTestWithCommit
 			}
 		});
 
-		bot.text(0).setText("checkout");
-		bot.button("OK").click();
+		getBot().text(0).setText("checkout");
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {

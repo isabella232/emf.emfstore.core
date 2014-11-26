@@ -58,15 +58,15 @@ public class UIUpdateProjectToVersionControllerTest extends AbstractUIController
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIUpdateProjectToVersionController updateProjectController = new UIUpdateProjectToVersionController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					getCopy());
 				updateProjectController.execute();
 			}
 		});
 
 		final Matcher<Shell> matcher = withText("No need to update");
-		bot.waitUntil(waitForShell(matcher));
-		bot.button("OK").click();
+		getBot().waitUntil(waitForShell(matcher));
+		getBot().button("OK").click();
 	}
 
 }

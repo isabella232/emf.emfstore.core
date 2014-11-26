@@ -34,15 +34,15 @@ public class UIMergeControllerTest extends AbstractUIControllerTestWithCommitAnd
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				UIMergeController mergeController = null;
-				mergeController = new UIMergeController(bot.getDisplay().getActiveShell(), getCopy());
+				mergeController = new UIMergeController(getBot().getDisplay().getActiveShell(), getCopy());
 				mergeController.execute();
 			}
 		});
 
-		bot.table().select(0);
-		bot.button("OK").click();
+		getBot().table().select(0);
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {

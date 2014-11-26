@@ -44,21 +44,21 @@ public class LocalProjectNeedsToBeUpdatedCommitControllerTest extends AbstractUI
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				ESUIControllerFactory.INSTANCE.commitProject(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					getCopy());
 			}
 		});
 
 		// confirm update dialogs
-		bot.shell("Confirmation");
-		bot.button("OK").click();
-		bot.button("OK").click();
+		getBot().shell("Confirmation");
+		getBot().button("OK").click();
+		getBot().button("OK").click();
 
 		// confirm commit dialog
-		final SWTBotButton buttonWithLabel = bot.button("OK");
+		final SWTBotButton buttonWithLabel = getBot().button("OK");
 		buttonWithLabel.click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {

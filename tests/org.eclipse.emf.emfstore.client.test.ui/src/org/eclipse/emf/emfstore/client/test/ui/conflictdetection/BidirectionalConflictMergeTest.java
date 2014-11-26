@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -42,9 +42,9 @@ import org.junit.runner.RunWith;
  * Tests:
  * UpdateProjectController
  * CheckoutController
- * 
+ *
  * @author emueller
- * 
+ *
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class BidirectionalConflictMergeTest extends AbstractUIControllerTestWithCommit {
@@ -65,38 +65,40 @@ public class BidirectionalConflictMergeTest extends AbstractUIControllerTestWith
 		final TestElement child = Create.testElement("CHILD");
 		testElement.getContainedElements2().add(child);
 
-		ProjectUtil.addElement(localProject, testElement);
-		ProjectUtil.addElement(localProject, testElement2);
-		ProjectUtil.addElement(localProject, testElement3);
+		ProjectUtil.addElement(getLocalProject(), testElement);
+		ProjectUtil.addElement(getLocalProject(), testElement2);
+		ProjectUtil.addElement(getLocalProject(), testElement3);
 
 		commit();
 
 		checkout();
 
-		changeContainer(localProject,
-			localProject.getModelElementId(child),
-			localProject.getModelElementId(testElement2));
+		changeContainer(getLocalProject(),
+			getLocalProject().getModelElementId(child),
+			getLocalProject().getModelElementId(testElement2));
 		commit();
 
 		changeContainer(getCopy(),
-			localProject.getModelElementId(child),
-			localProject.getModelElementId(testElement3));
+			getLocalProject().getModelElementId(child),
+			getLocalProject().getModelElementId(testElement3));
 
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIUpdateProjectController updateProjectController = new UIUpdateProjectController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					getCopy());
 				updateProjectController.execute();
 			}
 		});
 		final Matcher<Shell> matcher = withText("Update");
-		bot.waitUntil(waitForShell(matcher));
-		bot.button("OK").click();
+		getBot().waitUntil(waitForShell(matcher));
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
+			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
+				// END SUPRESS CATCH EXCEPTION
 				return bot.shell("Merge Wizard") != null;
 			}
 
@@ -105,7 +107,7 @@ public class BidirectionalConflictMergeTest extends AbstractUIControllerTestWith
 			}
 		});
 
-		final SWTBotShell shell2 = bot.shell("Merge Wizard");
+		final SWTBotShell shell2 = getBot().shell("Merge Wizard");
 		shell2.bot().button(1).click();
 		shell2.bot().button(4).click();
 

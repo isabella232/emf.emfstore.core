@@ -30,13 +30,13 @@ public class NoLocalChangesCommitControllerTest extends AbstractUIControllerTest
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				ESUIControllerFactory.INSTANCE.commitProject(
-					bot.getDisplay().getActiveShell(),
-					localProject);
+					getBot().getDisplay().getActiveShell(),
+					getLocalProject());
 			}
 		});
 
-		bot.shell("No local changes");
-		bot.button("OK").click();
+		getBot().shell("No local changes");
+		getBot().button("OK").click();
 	}
 
 }

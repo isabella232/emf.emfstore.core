@@ -39,32 +39,32 @@ public class UISessionControllerTest extends AbstractUIControllerTest {
 	}
 
 	private void logoutSession() throws ESException {
-		usersession.logout();
+		getUsersession().logout();
 	}
 
 	private void login() {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				loginSessionController = new UILoginSessionController(
-					bot.getDisplay().getActiveShell(),
-					server);
+					getBot().getDisplay().getActiveShell(),
+					getServer());
 				loginSessionController.execute();
 			}
 		});
-		final SWTBotButton okButton = bot.button("OK");
+		final SWTBotButton okButton = getBot().button("OK");
 		okButton.click();
-		assertNotNull(server.getLastUsersession());
-		usersession = server.getLastUsersession();
+		assertNotNull(getServer().getLastUsersession());
+		setUsersession(getServer().getLastUsersession());
 	}
 
 	private void logout() {
 		UIThreadRunnable.syncExec(new VoidResult() {
 			public void run() {
 				logoutSessionController =
-					new UILogoutSessionController(bot.getDisplay().getActiveShell(), usersession);
+					new UILogoutSessionController(getBot().getDisplay().getActiveShell(), getUsersession());
 				logoutSessionController.execute();
 			}
 		});
-		assertNotNull(server.getLastUsersession());
+		assertNotNull(getServer().getLastUsersession());
 	}
 }

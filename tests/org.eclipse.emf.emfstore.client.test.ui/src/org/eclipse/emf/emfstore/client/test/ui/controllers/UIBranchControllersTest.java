@@ -28,27 +28,27 @@ public class UIBranchControllersTest extends AbstractUIControllerTestWithCommit 
 	@Test
 	public void testController() throws ESException {
 		final NullProgressMonitor monitor = new NullProgressMonitor();
-		final int branchesSize = localProject.getBranches(monitor).size();
+		final int branchesSize = getLocalProject().getBranches(monitor).size();
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				final UICreateBranchController createBranchController = new UICreateBranchController(bot.getDisplay()
+				final UICreateBranchController createBranchController = new UICreateBranchController(getBot().getDisplay()
 					.getActiveShell(),
-					localProject);
+					getLocalProject());
 				createBranchController.execute();
 			}
 		});
-		final SWTBotShell shell = bot.shell("Create Branch");
+		final SWTBotShell shell = getBot().shell("Create Branch");
 
 		shell.bot().text(0).setText("foo");
 		shell.bot().button("OK").click();
-		final SWTBotShell commitDialogShell = bot.shell("Commit");
+		final SWTBotShell commitDialogShell = getBot().shell("Commit");
 		commitDialogShell.bot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return branchesSize + 1 == localProject.getBranches(monitor).size();
+				return branchesSize + 1 == getLocalProject().getBranches(monitor).size();
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -57,14 +57,14 @@ public class UIBranchControllersTest extends AbstractUIControllerTestWithCommit 
 				return "Create branch did not succeed.";
 			}
 		}, timeout());
-		assertEquals(branchesSize + 1, localProject.getBranches(monitor).size());
+		assertEquals(branchesSize + 1, getLocalProject().getBranches(monitor).size());
 
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				try {
-					final UICheckoutController checkoutController = new UICheckoutController(bot.getDisplay()
+					final UICheckoutController checkoutController = new UICheckoutController(getBot().getDisplay()
 						.getActiveShell(),
-						localProject.getRemoteProject(), true);
+						getLocalProject().getRemoteProject(), true);
 					checkoutController.execute();
 				} catch (final ESException e) {
 					fail(e.getMessage());
@@ -72,13 +72,13 @@ public class UIBranchControllersTest extends AbstractUIControllerTestWithCommit 
 			}
 		});
 
-		bot.text(0).setText("branch-checkout");
-		bot.button("OK").click();
+		getBot().text(0).setText("branch-checkout");
+		getBot().button("OK").click();
 
-		bot.table().select(0);
-		bot.button("OK").click();
+		getBot().table().select(0);
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects()) {

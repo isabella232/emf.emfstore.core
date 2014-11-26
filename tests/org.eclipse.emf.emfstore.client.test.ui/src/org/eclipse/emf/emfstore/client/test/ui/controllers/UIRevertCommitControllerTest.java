@@ -27,27 +27,27 @@ public class UIRevertCommitControllerTest extends AbstractUIControllerTestWithCo
 	@Override
 	@Test
 	public void testController() throws ESException {
-		assertEquals(0, localProject.getModelElements().size());
+		assertEquals(0, getLocalProject().getModelElements().size());
 		final int localProjectsSize = ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects().size();
-		final ESPrimaryVersionSpec baseVersion = localProject.getBaseVersion();
+		final ESPrimaryVersionSpec baseVersion = getLocalProject().getBaseVersion();
 		createPlayerAndCommit();
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIRevertCommitController revertCommitController = new UIRevertCommitController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					baseVersion,
-					localProject);
+					getLocalProject());
 				revertCommitController.execute();
 			}
 		});
 
-		final SWTBotShell shell = bot.shell("Confirmation");
+		final SWTBotShell shell = getBot().shell("Confirmation");
 		shell.bot().button("OK").click();
 
 		final ESLocalProject clonedProject = ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects()
 			.get(localProjectsSize);
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return localProjectsSize + 1 == ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects().size()

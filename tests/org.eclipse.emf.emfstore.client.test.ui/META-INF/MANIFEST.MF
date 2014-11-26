@@ -19,5 +19,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.emfstore.client.test.ui.Activator
 Bundle-ClassPath: .
 Export-Package: org.eclipse.emf.emfstore.client.test.ui;version="1.4.1";x-internal:=true,
- org.eclipse.emf.emfstore.client.test.ui.conflictdetection;x-internal:=true,
+ org.eclipse.emf.emfstore.client.test.ui.conflictdetection;version="1.4.1";x-internal:=true,
  org.eclipse.emf.emfstore.client.test.ui.controllers;version="1.4.1";x-internal:=true

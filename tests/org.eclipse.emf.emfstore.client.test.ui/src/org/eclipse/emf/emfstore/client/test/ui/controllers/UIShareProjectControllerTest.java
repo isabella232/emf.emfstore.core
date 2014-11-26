@@ -39,7 +39,7 @@ public class UIShareProjectControllerTest extends AbstractUIControllerTest {
 	@Override
 	@Test
 	public void testController() throws ESException {
-		usersession.refresh();
+		getUsersession().refresh();
 		createLocalProject();
 		shareProject();
 	}
@@ -52,13 +52,13 @@ public class UIShareProjectControllerTest extends AbstractUIControllerTest {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UIShareProjectController shareProjectController = new UIShareProjectController(
-					bot.getDisplay().getActiveShell(),
+					getBot().getDisplay().getActiveShell(),
 					localProject);
 				shareProjectController.execute();
 			}
 		});
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				return didShare;
@@ -70,7 +70,7 @@ public class UIShareProjectControllerTest extends AbstractUIControllerTest {
 				return "Share did not succeed.";
 			}
 		}, timeout());
-		final SWTBotButton confirmButton = bot.button("OK");
+		final SWTBotButton confirmButton = getBot().button("OK");
 		confirmButton.click();
 		ESWorkspaceProviderImpl.getInstance();
 		ESWorkspaceProviderImpl.getObserverBus().unregister(observer);
@@ -89,15 +89,15 @@ public class UIShareProjectControllerTest extends AbstractUIControllerTest {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				final UICreateLocalProjectController localProjectController = new UICreateLocalProjectController(
-					bot.getDisplay().getActiveShell());
+					getBot().getDisplay().getActiveShell());
 				localProject = localProjectController.execute();
 			}
 		});
-		final SWTBotText text = bot.text(0);
+		final SWTBotText text = getBot().text(0);
 		text.setText("quux");
-		final SWTBotButton button = bot.button("OK");
+		final SWTBotButton button = getBot().button("OK");
 		button.click();
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {

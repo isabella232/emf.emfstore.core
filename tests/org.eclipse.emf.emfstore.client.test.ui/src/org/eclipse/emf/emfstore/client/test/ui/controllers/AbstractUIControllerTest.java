@@ -1,18 +1,16 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.ui.controllers;
 
 import java.io.IOException;
-
-import junit.framework.Assert;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
@@ -35,13 +33,13 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public abstract class AbstractUIControllerTest extends SWTBotTestCase {
 
-	protected static SWTWorkbenchBot bot = new SWTWorkbenchBot();
+	private final SWTWorkbenchBot bot = new SWTWorkbenchBot();
 
-	protected ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
-	protected ESLocalProject localProject;
-	protected ESLocalProject checkedoutCopy;
-	protected ESServer server;
-	protected ESUsersession usersession;
+	private final ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
+	private ESLocalProject localProject;
+	private ESLocalProject checkedoutCopy;
+	private ESServer server;
+	private ESUsersession usersession;
 
 	@Override
 	@Before
@@ -53,7 +51,7 @@ public abstract class AbstractUIControllerTest extends SWTBotTestCase {
 		} catch (final ESException e) {
 			fail(e.getMessage());
 		}
-		Assert.assertEquals(usersession, server.getLastUsersession());
+		assertEquals(usersession, server.getLastUsersession());
 		deleteLocalProjects();
 		deleteRemoteProjects(usersession);
 
@@ -88,4 +86,32 @@ public abstract class AbstractUIControllerTest extends SWTBotTestCase {
 
 	@Test
 	public abstract void testController() throws ESException;
+
+	public SWTWorkbenchBot getBot() {
+		return bot;
+	}
+
+	public ESLocalProject getLocalProject() {
+		return localProject;
+	}
+
+	public ESLocalProject getCheckedoutCopy() {
+		return checkedoutCopy;
+	}
+
+	public ESUsersession getUsersession() {
+		return usersession;
+	}
+
+	public ESServer getServer() {
+		return server;
+	}
+
+	public void setCheckedoutCopy(ESLocalProject localProject) {
+		checkedoutCopy = localProject;
+	}
+
+	public void setUsersession(ESUsersession usersession) {
+		this.usersession = usersession;
+	}
 }

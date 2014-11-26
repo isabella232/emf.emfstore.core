@@ -31,7 +31,7 @@ public class UIAddTagControllerTest extends AbstractUIControllerTestWithCommit {
 	@Test
 	public void testController() throws ESException {
 		ESPathQuery pathQuery = createTag();
-		List<ESHistoryInfo> historyInfos = localProject.getHistoryInfos(pathQuery, new NullProgressMonitor());
+		List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery, new NullProgressMonitor());
 		assertEquals(2, historyInfos.size());
 		ESHistoryInfo historyInfo2 = historyInfos.get(1);
 		assertEquals(3, historyInfo2.getTagSpecs().size());
@@ -42,34 +42,34 @@ public class UIAddTagControllerTest extends AbstractUIControllerTestWithCommit {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				UIRemoveTagController removeTagController = new UIRemoveTagController(
-					bot.getDisplay().getActiveShell(), historyInfo);
+					getBot().getDisplay().getActiveShell(), historyInfo);
 				removeTagController.execute();
 			}
 		});
-		List<ESHistoryInfo> historyInfos = localProject.getHistoryInfos(pathQuery, new NullProgressMonitor());
+		List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery, new NullProgressMonitor());
 		assertEquals(2, historyInfos.size());
 	}
 
 	private ESPathQuery createTag() throws ESException {
-		ESPrimaryVersionSpec baseVersion = localProject.getBaseVersion();
+		ESPrimaryVersionSpec baseVersion = getLocalProject().getBaseVersion();
 		createPlayerAndCommit();
 		ESPathQuery pathQuery = ESHistoryQuery.FACTORY
-			.pathQuery(baseVersion, localProject.getBaseVersion(), true, true);
-		List<ESHistoryInfo> historyInfos = localProject.getHistoryInfos(pathQuery, new NullProgressMonitor());
+			.pathQuery(baseVersion, getLocalProject().getBaseVersion(), true, true);
+		List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery, new NullProgressMonitor());
 		assertEquals(2, historyInfos.size());
 		final ESHistoryInfo historyInfo = historyInfos.get(1);
 		assertEquals(2, historyInfo.getTagSpecs().size());
 		UIThreadRunnable.asyncExec(
 			new VoidResult() {
 				public void run() {
-					UIAddTagController addTagController = new UIAddTagController(bot.getDisplay().getActiveShell(),
-						localProject, historyInfo);
+					UIAddTagController addTagController = new UIAddTagController(getBot().getDisplay().getActiveShell(),
+						getLocalProject(), historyInfo);
 					addTagController.execute();
 				}
 			});
 
-		bot.table(0).select(0);
-		SWTBotButton button = bot.button("OK");
+		getBot().table(0).select(0);
+		SWTBotButton button = getBot().button("OK");
 		button.click();
 		return pathQuery;
 	}

@@ -24,7 +24,7 @@ public abstract class AbstractUIControllerTestWithCommitAndBranch extends Abstra
 	protected ESPrimaryVersionSpec createBranch(final String branchName) throws InvalidVersionSpecException,
 		ESUpdateRequiredException,
 		ESException {
-		return localProject.commitToBranch(
+		return getLocalProject().commitToBranch(
 			ESVersionSpec.FACTORY.createBRANCH(branchName),
 			"Created branch " + branchName,
 			ESCommitCallback.NOCALLBACK,

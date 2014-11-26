@@ -27,23 +27,23 @@ public class UICreateRemoteProjectControllerTest extends AbstractUIControllerTes
 	@Override
 	@Test
 	public void testController() throws ESException {
-		final int remoteProjectsSize = server.getRemoteProjects(usersession).size();
+		final int remoteProjectsSize = getServer().getRemoteProjects(getUsersession()).size();
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				createRemoteProjectController = new UICreateRemoteProjectController(
-					bot.getDisplay().getActiveShell(),
-					usersession);
+					getBot().getDisplay().getActiveShell(),
+					getUsersession());
 				createRemoteProjectController.execute();
 			}
 		});
-		final SWTBotText text = bot.text(0);
+		final SWTBotText text = getBot().text(0);
 		text.setText("foo");
-		final SWTBotButton okButton = bot.button("OK");
+		final SWTBotButton okButton = getBot().button("OK");
 		okButton.click();
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return server.getRemoteProjects(usersession).size() == remoteProjectsSize + 1;
+				return getServer().getRemoteProjects(getUsersession()).size() == remoteProjectsSize + 1;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -52,6 +52,6 @@ public class UICreateRemoteProjectControllerTest extends AbstractUIControllerTes
 				return "Create remote project did not succeed.";
 			}
 		}, timeout());
-		assertEquals(remoteProjectsSize + 1, server.getRemoteProjects(usersession).size());
+		assertEquals(remoteProjectsSize + 1, getServer().getRemoteProjects(getUsersession()).size());
 	}
 }

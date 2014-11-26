@@ -35,10 +35,10 @@ public class UIAskForBranchCheckoutControllerTest extends AbstractUIControllerTe
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				try {
-					final UICheckoutController checkoutController = new UICheckoutController(bot.getDisplay()
+					final UICheckoutController checkoutController = new UICheckoutController(getBot().getDisplay()
 						.getActiveShell(),
 						(ESPrimaryVersionSpec) null,
-						localProject.getRemoteProject(),
+						getLocalProject().getRemoteProject(),
 						true);
 					checkoutController.execute();
 				} catch (final ESException e) {
@@ -47,13 +47,13 @@ public class UIAskForBranchCheckoutControllerTest extends AbstractUIControllerTe
 			}
 		});
 
-		bot.text(0).setText("checkout");
-		bot.button("OK").click();
+		getBot().text(0).setText("checkout");
+		getBot().button("OK").click();
 
-		bot.table().select(1);
-		bot.button("OK").click();
+		getBot().table().select(1);
+		getBot().button("OK").click();
 
-		bot.waitUntil(new DefaultCondition() {
+		getBot().waitUntil(new DefaultCondition() {
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {

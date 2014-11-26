@@ -42,7 +42,7 @@ public class UIPagedUpdateProjectControllerTest extends AbstractUIControllerTest
 
 		pagedUpdate();
 
-		assertTrue(getCopy().getBaseVersion().getIdentifier() == localProject.getBaseVersion()
+		assertTrue(getCopy().getBaseVersion().getIdentifier() == getLocalProject().getBaseVersion()
 			.getIdentifier());
 
 	}
