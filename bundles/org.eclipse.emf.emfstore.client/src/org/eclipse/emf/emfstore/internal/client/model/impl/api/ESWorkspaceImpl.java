@@ -1,18 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
+ * Edgar Mueller - Bug 445012: API to get a project by ID/Name
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl.api;
 
 import java.text.MessageFormat;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,14 +35,14 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Mapping between {@link ESWorkspace} and {@link Workspace}.
- * 
+ *
  * @author emueller
  */
 public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace> implements ESWorkspace {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param workspace
 	 *            the internal delegate
 	 */
@@ -48,9 +51,9 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#getLocalProjects()
 	 */
 	public List<ESLocalProject> getLocalProjects() {
@@ -62,9 +65,9 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#createLocalProject(java.lang.String)
 	 */
 	public ESLocalProjectImpl createLocalProject(final String projectName) {
@@ -78,9 +81,9 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#getServers()
 	 */
 	public List<ESServer> getServers() {
@@ -92,9 +95,9 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#addServer(org.eclipse.emf.emfstore.client.ESServer)
 	 */
 	public ESServerImpl addServer(ESServer server) {
@@ -115,7 +118,7 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 
 	/**
 	 * Whether a server with the same name, URL and port as the given one, exists.
-	 * 
+	 *
 	 * @param server
 	 *            the server instance containing the name, URL and port to be checked for
 	 * @return {@code true}, if a server with the same name, URL and port already exists, {@code false} otherwise
@@ -127,7 +130,7 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 
 	/**
 	 * Returns the server with the same name, URL and port as the given one, if there's any.
-	 * 
+	 *
 	 * @param server
 	 *            the server for which to retrieve an already existing server instance
 	 * @return the server with the same URL and port as the given one, or <code>null</code> if no such server exists.
@@ -144,9 +147,9 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#removeServer(org.eclipse.emf.emfstore.client.ESServer)
 	 */
 	public void removeServer(final ESServer server) throws ESServerNotFoundException {
@@ -168,9 +171,9 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#getLocalProject(org.eclipse.emf.ecore.EObject)
 	 */
 	public ESLocalProject getLocalProject(final EObject modelElement) {
@@ -186,6 +189,30 @@ public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>
 		} catch (final UnkownProjectException ex) {
 			return null;
 		}
+	}
+
+	/**
+	 * Returns all projects whose name matches the supplied project name ignoring
+	 * any case. This method returns a set since project names do not have to be unique
+	 * in EMFStore. Furthermore, a project may have been checked-out multiple times, possibly
+	 * in different versions.
+	 *
+	 * @param projectName
+	 *            the project name
+	 * @return a set of {@link ESLocalProject ESLocalProjects} that match the given name. If no such
+	 *         project has been found, an empty set is returned
+	 * @since 1.5
+	 *
+	 */
+	public Set<ESLocalProject> getLocalProjectByName(String projectName) {
+		final Set<ESLocalProject> projects = new LinkedHashSet<ESLocalProject>();
+		final List<ESLocalProject> localProjects = getLocalProjects();
+		for (final ESLocalProject localProject : localProjects) {
+			if (localProject.getProjectName().equalsIgnoreCase(projectName)) {
+				projects.add(localProject);
+			}
+		}
+		return projects;
 	}
 
 }

@@ -1,18 +1,23 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.api.test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+
+import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
@@ -21,6 +26,7 @@ import org.eclipse.emf.emfstore.client.ESWorkspace;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
 import org.eclipse.emf.emfstore.client.exceptions.ESServerNotFoundException;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -86,5 +92,17 @@ public class WorkspaceTest {
 			workspace.removeServer(s);
 		}
 		assertEquals(0, workspace.getServers().size());
+	}
+
+	@Test
+	public void testLocalGetProjectByName() {
+		final ESLocalProject firstProject = workspace.createLocalProject("foo"); //$NON-NLS-1$
+		final ESLocalProject secondProject = workspace.createLocalProject("foo"); //$NON-NLS-1$
+		workspace.createLocalProject("bar"); //$NON-NLS-1$
+
+		final Set<ESLocalProject> projects = ESWorkspaceImpl.class.cast(
+			workspace).getLocalProjectByName("foo"); //$NON-NLS-1$
+		assertThat(projects, hasSize(2));
+		assertThat(projects, contains(firstProject, secondProject));
 	}
 }
