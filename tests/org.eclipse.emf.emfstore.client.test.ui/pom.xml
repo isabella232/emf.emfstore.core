@@ -134,6 +134,11 @@
 							<autoStart>false</autoStart>
 						</bundle>
 						<bundle>
+                            <id>org.eclipse.emf.emfstore.client.ui.rcpp</id>
+                            <level>4</level>
+                            <autoStart>false</autoStart>
+                        </bundle>
+						<bundle>
 							<id>org.eclipse.emf.emfstore.common.model.edit</id>
 							<level>4</level>
 							<autoStart>false</autoStart>
