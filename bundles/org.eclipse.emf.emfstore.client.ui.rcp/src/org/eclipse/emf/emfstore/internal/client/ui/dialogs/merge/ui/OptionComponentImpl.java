@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  ******************************************************************************/
@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Listener;
 
 /**
  * This component of the decision box dynamically displays the possible options.
- * 
+ *
  * @author wesendon
  */
 public class OptionComponentImpl implements OptionComponent {
@@ -46,10 +46,14 @@ public class OptionComponentImpl implements OptionComponent {
 	private VisualConflict conflict;
 	private DecisionBox dBox;
 
+	public OptionComponentImpl() {
+
+	}
+
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.MergeComponent#init(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox,
 	 *      org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict)
@@ -82,12 +86,12 @@ public class OptionComponentImpl implements OptionComponent {
 		case MyOperation:
 			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch
 				: Messages.OptionComponentImpl_KeepMyChange + countInfo
-					+ ": "; //$NON-NLS-1$
+				+ ": "; //$NON-NLS-1$
 			break;
 		case TheirOperation:
 			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch
 				: Messages.OptionComponentImpl_KeepTheirChange + countInfo
-					+ ": "; //$NON-NLS-1$
+				+ ": "; //$NON-NLS-1$
 			break;
 		case Custom:
 			if (option instanceof CustomConflictOption) {
@@ -151,7 +155,7 @@ public class OptionComponentImpl implements OptionComponent {
 
 	/**
 	 * Graphical container for an option.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class OptionContainer extends Composite {
@@ -217,7 +221,7 @@ public class OptionComponentImpl implements OptionComponent {
 
 	/**
 	 * Option mouse listener.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class OptionMouseListener implements Listener {

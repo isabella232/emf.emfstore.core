@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
 	OperationApplyTest.class,
 	OperationReverseTest.class,
 	MutatorTest.class,
-	ESXMIProviderDataMutatorTest.class,
+	ESXMIResourceDataProviderTest.class,
 	FuzzyProjectConfigTest.class,
 })
 public class AllFuzzyTests {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  ******************************************************************************/
@@ -36,27 +36,34 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * This component of the decision box dynamically displays the possible options.
- * 
+ *
  * @author wesendon
  */
-public class OptionComponentImpl {
+public class OptionComponentImpl implements OptionComponent {
 
-	private final Group group;
-	private final VisualConflict conflict;
-	private final DecisionBox dBox;
+	private Group group;
+	private VisualConflict conflict;
+	private DecisionBox dBox;
 
 	/**
-	 * Default constructor.
-	 * 
-	 * @param dBox
-	 *            parent
-	 * @param conflict
-	 *            conflict.
+	 * Default cosntructor.
 	 */
-	public OptionComponentImpl(DecisionBox dBox, VisualConflict conflict) {
-		this.dBox = dBox;
-		this.conflict = conflict;
-		group = new Group(dBox, SWT.NONE);
+	public OptionComponentImpl() {
+
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.MergeComponent#init(org.eclipse.swt.widgets.Composite,
+	 *      org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox,
+	 *      org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict)
+	 */
+	public void init(Composite parent, DecisionBox decisionBox, VisualConflict visualConflict) {
+		dBox = decisionBox;
+		conflict = visualConflict;
+		group = new Group(parent, SWT.NONE);
 		final GridLayout layout = new GridLayout();
 		layout.horizontalSpacing = 1;
 		layout.verticalSpacing = 1;
@@ -79,11 +86,13 @@ public class OptionComponentImpl {
 		final String countInfo = operationCount > 1 ? "s (" + operationCount + ")" : StringUtils.EMPTY; //$NON-NLS-1$ //$NON-NLS-2$
 		switch (option.getType()) {
 		case MyOperation:
-			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch : Messages.OptionComponentImpl_KeepMyChange + countInfo
+			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch
+				: Messages.OptionComponentImpl_KeepMyChange + countInfo
 				+ ": "; //$NON-NLS-1$
 			break;
 		case TheirOperation:
-			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch : Messages.OptionComponentImpl_KeepTheirChange + countInfo
+			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch
+				: Messages.OptionComponentImpl_KeepTheirChange + countInfo
 				+ ": "; //$NON-NLS-1$
 			break;
 		case Custom:
@@ -148,7 +157,7 @@ public class OptionComponentImpl {
 
 	/**
 	 * Graphical container for an option.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class OptionContainer extends Composite {
@@ -215,7 +224,7 @@ public class OptionComponentImpl {
 
 	/**
 	 * Option mouse listener.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class OptionMouseListener implements Listener {
