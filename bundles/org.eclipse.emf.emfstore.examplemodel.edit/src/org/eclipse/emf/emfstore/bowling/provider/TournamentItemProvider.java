@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.provider;
@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -35,16 +36,16 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Tournament} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TournamentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TournamentItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +56,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,7 +78,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Matchups feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMatchupsPropertyDescriptor(Object object) {
@@ -101,7 +102,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
@@ -124,7 +125,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Players feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPlayersPropertyDescriptor(Object object) {
@@ -148,7 +149,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Price Money feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPriceMoneyPropertyDescriptor(Object object) {
@@ -172,7 +173,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Receives Trophy feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addReceivesTrophyPropertyDescriptor(Object object) {
@@ -197,7 +198,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Match Days feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMatchDaysPropertyDescriptor(Object object) {
@@ -223,7 +224,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -240,7 +241,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -255,7 +256,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns Tournament.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -267,7 +268,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -284,7 +285,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -312,7 +313,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -339,7 +340,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

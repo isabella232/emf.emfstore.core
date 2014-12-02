@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.util;
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.bowling.Tournament;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage
  * @generated
  */
@@ -45,7 +45,7 @@ public class BowlingSwitch<T> {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected static BowlingPackage modelPackage;
@@ -54,7 +54,7 @@ public class BowlingSwitch<T> {
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BowlingSwitch() {
@@ -68,7 +68,7 @@ public class BowlingSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -81,7 +81,7 @@ public class BowlingSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -100,7 +100,7 @@ public class BowlingSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -207,7 +207,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Player</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -223,7 +223,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>League</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -239,7 +239,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Tournament</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -255,7 +255,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Matchup</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -271,7 +271,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Game</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -287,7 +287,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Player To Points Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -303,7 +303,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Referee</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -319,7 +319,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Referee To Games Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -335,7 +335,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Area</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -351,7 +351,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Fan</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -367,7 +367,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Merchandise</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -383,7 +383,7 @@ public class BowlingSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.impl;
@@ -53,7 +53,7 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.TournamentImpl#getMatchDays <em>Match Days</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TournamentImpl extends EObjectImpl implements Tournament {
@@ -61,7 +61,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getMatchups() <em>Matchups</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMatchups()
 	 * @generated
 	 * @ordered
@@ -72,7 +72,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -83,7 +83,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -94,7 +94,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getPlayerPoints() <em>Player Points</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPlayerPoints()
 	 * @generated
 	 * @ordered
@@ -105,7 +105,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getPlayers() <em>Players</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPlayers()
 	 * @generated
 	 * @ordered
@@ -116,7 +116,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getReferees() <em>Referees</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getReferees()
 	 * @generated
 	 * @ordered
@@ -127,7 +127,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getPriceMoney() <em>Price Money</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPriceMoney()
 	 * @generated
 	 * @ordered
@@ -138,7 +138,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getReceivesTrophy() <em>Receives Trophy</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getReceivesTrophy()
 	 * @generated
 	 * @ordered
@@ -149,7 +149,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	 * The cached value of the '{@link #getMatchDays() <em>Match Days</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMatchDays()
 	 * @generated
 	 * @ordered
@@ -159,7 +159,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TournamentImpl() {
@@ -169,7 +169,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -180,7 +180,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Matchup> getMatchups() {
@@ -194,7 +194,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TournamentType getType() {
@@ -204,7 +204,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setType(TournamentType newType) {
@@ -218,7 +218,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<Player, Integer> getPlayerPoints() {
@@ -232,7 +232,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Player> getPlayers() {
@@ -245,7 +245,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<Referee, Game> getReferees() {
@@ -259,7 +259,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Double> getPriceMoney() {
@@ -272,7 +272,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Boolean> getReceivesTrophy() {
@@ -286,7 +286,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Date> getMatchDays() {
@@ -299,7 +299,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -318,7 +318,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -331,15 +331,17 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 		case BowlingPackage.TOURNAMENT__PLAYER_POINTS:
 			if (coreType) {
 				return getPlayerPoints();
+			} else {
+				return getPlayerPoints().map();
 			}
-			return getPlayerPoints().map();
 		case BowlingPackage.TOURNAMENT__PLAYERS:
 			return getPlayers();
 		case BowlingPackage.TOURNAMENT__REFEREES:
 			if (coreType) {
 				return getReferees();
+			} else {
+				return getReferees().map();
 			}
-			return getReferees().map();
 		case BowlingPackage.TOURNAMENT__PRICE_MONEY:
 			return getPriceMoney();
 		case BowlingPackage.TOURNAMENT__RECEIVES_TROPHY:
@@ -353,7 +355,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -396,7 +398,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -433,7 +435,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -462,7 +464,7 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

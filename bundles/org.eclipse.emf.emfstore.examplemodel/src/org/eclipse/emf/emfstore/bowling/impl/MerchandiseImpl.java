@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.impl;
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.bowling.Merchandise;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MerchandiseImpl extends EObjectImpl implements Merchandise {
@@ -40,7 +40,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrice()
 	 * @generated
 	 * @ordered
@@ -73,7 +73,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The cached value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrice()
 	 * @generated
 	 * @ordered
@@ -84,7 +84,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * This is true if the Price attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -94,7 +94,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The default value of the '{@link #getSerialNumber() <em>Serial Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSerialNumber()
 	 * @generated
 	 * @ordered
@@ -105,7 +105,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The cached value of the '{@link #getSerialNumber() <em>Serial Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSerialNumber()
 	 * @generated
 	 * @ordered
@@ -116,7 +116,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * This is true if the Serial Number attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +125,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MerchandiseImpl() {
@@ -135,7 +135,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -146,7 +146,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -156,7 +156,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -170,7 +170,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BigDecimal getPrice() {
@@ -180,7 +180,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPrice(BigDecimal newPrice) {
@@ -197,7 +197,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetPrice() {
@@ -214,7 +214,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetPrice() {
@@ -224,7 +224,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BigInteger getSerialNumber() {
@@ -234,7 +234,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSerialNumber(BigInteger newSerialNumber) {
@@ -251,7 +251,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetSerialNumber() {
@@ -268,7 +268,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetSerialNumber() {
@@ -278,7 +278,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -297,7 +297,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -319,7 +319,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -341,7 +341,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -360,7 +360,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

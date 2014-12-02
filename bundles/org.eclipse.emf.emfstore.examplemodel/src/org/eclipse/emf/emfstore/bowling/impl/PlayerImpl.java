@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.impl;
@@ -49,7 +49,7 @@ import org.eclipse.emf.emfstore.bowling.util.BowlingValidator;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getGender <em>Gender</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PlayerImpl extends EObjectImpl implements Player {
@@ -57,7 +57,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -112,7 +112,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -123,7 +123,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #isIsProfessional() <em>Is Professional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIsProfessional()
 	 * @generated
 	 * @ordered
@@ -134,7 +134,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #isIsProfessional() <em>Is Professional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIsProfessional()
 	 * @generated
 	 * @ordered
@@ -145,7 +145,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getEMails() <em>EMails</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEMails()
 	 * @generated
 	 * @ordered
@@ -156,7 +156,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getNumberOfVictories() <em>Number Of Victories</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNumberOfVictories()
 	 * @generated
 	 * @ordered
@@ -167,7 +167,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getNumberOfVictories() <em>Number Of Victories</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNumberOfVictories()
 	 * @generated
 	 * @ordered
@@ -178,7 +178,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getPlayedTournamentTypes() <em>Played Tournament Types</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPlayedTournamentTypes()
 	 * @generated
 	 * @ordered
@@ -189,7 +189,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getWinLossRatio() <em>Win Loss Ratio</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getWinLossRatio()
 	 * @generated
 	 * @ordered
@@ -200,7 +200,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getWinLossRatio() <em>Win Loss Ratio</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getWinLossRatio()
 	 * @generated
 	 * @ordered
@@ -211,7 +211,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getGender() <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGender()
 	 * @generated
 	 * @ordered
@@ -222,7 +222,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getGender() <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGender()
 	 * @generated
 	 * @ordered
@@ -232,7 +232,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PlayerImpl() {
@@ -242,7 +242,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -253,7 +253,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -263,7 +263,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -277,7 +277,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getDateOfBirth() {
@@ -287,7 +287,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDateOfBirth(Date newDateOfBirth) {
@@ -302,7 +302,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public double getHeight() {
@@ -312,7 +312,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setHeight(double newHeight) {
@@ -326,7 +326,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIsProfessional() {
@@ -336,7 +336,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIsProfessional(boolean newIsProfessional) {
@@ -351,7 +351,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<String> getEMails() {
@@ -364,7 +364,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getNumberOfVictories() {
@@ -374,7 +374,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNumberOfVictories(int newNumberOfVictories) {
@@ -389,7 +389,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TournamentType> getPlayedTournamentTypes() {
@@ -403,7 +403,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BigDecimal getWinLossRatio() {
@@ -413,7 +413,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setWinLossRatio(BigDecimal newWinLossRatio) {
@@ -428,7 +428,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Gender getGender() {
@@ -438,7 +438,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setGender(Gender newGender) {
@@ -452,12 +452,12 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * Validates the player.
-	 * 
+	 *
 	 * @param chain the diagnostic chain
 	 * @param context the context
 	 * @return <code>true</code> if no validation errors, <code>false</code> if validation errors
 	 *         <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public boolean validate(DiagnosticChain chain, Map<?, ?> context) {
@@ -479,7 +479,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * <!-- begin-user-doc -->
 	 * .
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -510,7 +510,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -553,7 +553,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -593,7 +593,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -625,7 +625,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

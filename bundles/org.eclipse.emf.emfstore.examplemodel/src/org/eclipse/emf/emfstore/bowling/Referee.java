@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling;
@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.emfstore.bowling.Referee#getDateOfBirth <em>Date Of Birth</em>}</li>
- *   <li>{@link org.eclipse.emf.emfstore.bowling.Referee#getLeague <em>League</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.bowling.Referee#getDateOfBirth <em>Date Of Birth</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.bowling.Referee#getLeague <em>League</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,6 +40,7 @@ public interface Referee extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Date Of Birth</em>' attribute.
 	 * @see #setDateOfBirth(XMLGregorianCalendar)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getReferee_DateOfBirth()
@@ -49,9 +50,11 @@ public interface Referee extends EObject {
 	XMLGregorianCalendar getDateOfBirth();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Referee#getDateOfBirth <em>Date Of Birth</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Referee#getDateOfBirth <em>Date Of Birth</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Date Of Birth</em>' attribute.
 	 * @see #getDateOfBirth()
 	 * @generated
@@ -66,6 +69,7 @@ public interface Referee extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>League</em>' reference.
 	 * @see #setLeague(League)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getReferee_League()
@@ -78,6 +82,7 @@ public interface Referee extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Referee#getLeague <em>League</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>League</em>' reference.
 	 * @see #getLeague()
 	 * @generated

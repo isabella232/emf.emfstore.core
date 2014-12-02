@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.util;
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.ecore.xml.type.util.XMLTypeValidator;
 import org.eclipse.emf.emfstore.bowling.Area;
 import org.eclipse.emf.emfstore.bowling.BowlingPackage;
 import org.eclipse.emf.emfstore.bowling.Fan;
@@ -36,7 +37,7 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * <!-- begin-user-doc -->
  * The <b>Validator</b> for the model.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage
  * @generated
  */
@@ -45,7 +46,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final BowlingValidator INSTANCE = new BowlingValidator();
@@ -55,7 +56,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * {@link org.eclipse.emf.common.util.Diagnostic#getCode() codes} from this package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.util.Diagnostic#getSource()
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
@@ -66,7 +67,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate' of 'Player'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final int PLAYER__VALIDATE = 1;
@@ -75,7 +76,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 1;
@@ -85,27 +86,37 @@ public class BowlingValidator extends EObjectValidator {
 	 * derived class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
+	 * The cached base package validator.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected XMLTypeValidator xmlTypeValidator;
+
+	/**
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BowlingValidator() {
 		super();
+		xmlTypeValidator = XMLTypeValidator.INSTANCE;
 	}
 
 	/**
 	 * Returns the package of this validator switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -117,7 +128,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -159,7 +170,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validatePlayer(Player player, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -195,7 +206,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * Validates the validate constraint of '<em>Player</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validatePlayer_validate(Player player, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -205,7 +216,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateLeague(League league, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -215,7 +226,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateTournament(Tournament tournament, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -225,7 +236,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateMatchup(Matchup matchup, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -235,7 +246,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateGame(Game game, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -245,7 +256,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validatePlayerToPointsMap(Map.Entry<?, ?> playerToPointsMap, DiagnosticChain diagnostics,
@@ -256,7 +267,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateReferee(Referee referee, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -266,7 +277,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateRefereeToGamesMap(Map.Entry<?, ?> refereeToGamesMap, DiagnosticChain diagnostics,
@@ -277,7 +288,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateArea(Area area, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -287,7 +298,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateFan(Fan fan, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -297,7 +308,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateMerchandise(Merchandise merchandise, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -307,7 +318,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateTournamentType(TournamentType tournamentType, DiagnosticChain diagnostics,
@@ -318,7 +329,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateGender(Gender gender, DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -328,7 +339,7 @@ public class BowlingValidator extends EObjectValidator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean validateXMLDate(XMLGregorianCalendar xmlDate, DiagnosticChain diagnostics,
@@ -340,7 +351,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

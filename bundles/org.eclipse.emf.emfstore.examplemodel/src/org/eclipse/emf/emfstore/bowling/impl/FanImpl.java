@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.impl;
@@ -52,7 +52,7 @@ import org.eclipse.emf.emfstore.bowling.Tournament;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getMoneySpentOnTickets <em>Money Spent On Tickets</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FanImpl extends EObjectImpl implements Fan {
@@ -60,7 +60,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -71,7 +71,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -82,7 +82,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Name attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -92,7 +92,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The default value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -103,7 +103,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -114,7 +114,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Date Of Birth attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -124,7 +124,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The default value of the '{@link #isHasSeasonTicket() <em>Has Season Ticket</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isHasSeasonTicket()
 	 * @generated
 	 * @ordered
@@ -135,7 +135,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #isHasSeasonTicket() <em>Has Season Ticket</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isHasSeasonTicket()
 	 * @generated
 	 * @ordered
@@ -146,7 +146,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Has Season Ticket attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -156,7 +156,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getEMails() <em>EMails</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEMails()
 	 * @generated
 	 * @ordered
@@ -167,7 +167,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The default value of the '{@link #getGender() <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGender()
 	 * @generated
 	 * @ordered
@@ -178,7 +178,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getGender() <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGender()
 	 * @generated
 	 * @ordered
@@ -189,7 +189,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Gender attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -199,7 +199,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getFavouritePlayer() <em>Favourite Player</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFavouritePlayer()
 	 * @generated
 	 * @ordered
@@ -210,7 +210,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Favourite Player reference has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -220,7 +220,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getFanMerchandise() <em>Fan Merchandise</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFanMerchandise()
 	 * @generated
 	 * @ordered
@@ -232,7 +232,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFavouriteMerchandise()
 	 * @generated
 	 * @ordered
@@ -243,7 +243,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Favourite Merchandise containment reference has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -253,7 +253,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getVisitedTournaments() <em>Visited Tournaments</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getVisitedTournaments()
 	 * @generated
 	 * @ordered
@@ -265,7 +265,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNumberOfTournamentsVisited()
 	 * @generated
 	 * @ordered
@@ -277,7 +277,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNumberOfTournamentsVisited()
 	 * @generated
 	 * @ordered
@@ -288,7 +288,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Number Of Tournaments Visited attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -298,7 +298,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The default value of the '{@link #getMoneySpentOnTickets() <em>Money Spent On Tickets</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMoneySpentOnTickets()
 	 * @generated
 	 * @ordered
@@ -309,7 +309,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * The cached value of the '{@link #getMoneySpentOnTickets() <em>Money Spent On Tickets</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMoneySpentOnTickets()
 	 * @generated
 	 * @ordered
@@ -320,7 +320,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	 * This is true if the Money Spent On Tickets attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -329,7 +329,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected FanImpl() {
@@ -339,7 +339,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -350,7 +350,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -360,7 +360,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -376,7 +376,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetName() {
@@ -393,7 +393,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetName() {
@@ -403,7 +403,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getDateOfBirth() {
@@ -413,7 +413,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDateOfBirth(Date newDateOfBirth) {
@@ -430,7 +430,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetDateOfBirth() {
@@ -447,7 +447,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetDateOfBirth() {
@@ -457,7 +457,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isHasSeasonTicket() {
@@ -467,7 +467,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setHasSeasonTicket(boolean newHasSeasonTicket) {
@@ -484,7 +484,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetHasSeasonTicket() {
@@ -501,7 +501,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetHasSeasonTicket() {
@@ -511,7 +511,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<String> getEMails() {
@@ -524,7 +524,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetEMails() {
@@ -536,7 +536,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetEMails() {
@@ -546,7 +546,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Gender getGender() {
@@ -556,7 +556,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setGender(Gender newGender) {
@@ -573,7 +573,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetGender() {
@@ -590,7 +590,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetGender() {
@@ -600,7 +600,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Player getFavouritePlayer() {
@@ -620,7 +620,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Player basicGetFavouritePlayer() {
@@ -630,7 +630,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFavouritePlayer(Player newFavouritePlayer) {
@@ -647,7 +647,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetFavouritePlayer() {
@@ -664,7 +664,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetFavouritePlayer() {
@@ -674,7 +674,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Tournament> getVisitedTournaments() {
@@ -688,7 +688,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetVisitedTournaments() {
@@ -700,7 +700,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetVisitedTournaments() {
@@ -710,7 +710,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getNumberOfTournamentsVisited() {
@@ -720,7 +720,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNumberOfTournamentsVisited(int newNumberOfTournamentsVisited) {
@@ -737,7 +737,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetNumberOfTournamentsVisited() {
@@ -755,7 +755,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetNumberOfTournamentsVisited() {
@@ -765,7 +765,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public double getMoneySpentOnTickets() {
@@ -775,7 +775,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMoneySpentOnTickets(double newMoneySpentOnTickets) {
@@ -792,7 +792,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetMoneySpentOnTickets() {
@@ -809,7 +809,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetMoneySpentOnTickets() {
@@ -819,7 +819,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Merchandise> getFanMerchandise() {
@@ -833,7 +833,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetFanMerchandise() {
@@ -845,7 +845,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetFanMerchandise() {
@@ -855,7 +855,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Merchandise getFavouriteMerchandise() {
@@ -885,7 +885,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Merchandise basicGetFavouriteMerchandise() {
@@ -895,7 +895,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetFavouriteMerchandise(Merchandise newFavouriteMerchandise, NotificationChain msgs) {
@@ -919,7 +919,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFavouriteMerchandise(Merchandise newFavouriteMerchandise) {
@@ -951,7 +951,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicUnsetFavouriteMerchandise(NotificationChain msgs) {
@@ -974,7 +974,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void unsetFavouriteMerchandise() {
@@ -1000,7 +1000,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isSetFavouriteMerchandise() {
@@ -1010,7 +1010,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1027,7 +1027,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1068,7 +1068,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1118,7 +1118,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1164,7 +1164,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1199,7 +1199,7 @@ public class FanImpl extends EObjectImpl implements Fan {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling.impl;
@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.emfstore.bowling.Area;
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
 import org.eclipse.emf.emfstore.bowling.BowlingPackage;
@@ -38,7 +40,7 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
@@ -46,7 +48,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static BowlingFactory init() {
@@ -66,7 +68,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BowlingFactoryImpl() {
@@ -76,7 +78,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +114,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -132,7 +134,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -152,7 +154,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Player createPlayer() {
@@ -163,7 +165,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public League createLeague() {
@@ -174,7 +176,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Tournament createTournament() {
@@ -185,7 +187,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Matchup createMatchup() {
@@ -196,7 +198,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Game createGame() {
@@ -207,7 +209,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<Player, Integer> createPlayerToPointsMap() {
@@ -218,7 +220,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Referee createReferee() {
@@ -229,7 +231,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<Referee, Game> createRefereeToGamesMap() {
@@ -240,7 +242,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Area createArea() {
@@ -251,7 +253,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Fan createFan() {
@@ -262,7 +264,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Merchandise createMerchandise() {
@@ -273,7 +275,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TournamentType createTournamentTypeFromString(EDataType eDataType, String initialValue) {
@@ -289,7 +291,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertTournamentTypeToString(EDataType eDataType, Object instanceValue) {
@@ -299,7 +301,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Gender createGenderFromString(EDataType eDataType, String initialValue) {
@@ -315,7 +317,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertGenderToString(EDataType eDataType, Object instanceValue) {
@@ -325,27 +327,28 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public XMLGregorianCalendar createXMLDateFromString(EDataType eDataType, String initialValue) {
-		return (XMLGregorianCalendar) super.createFromString(eDataType, initialValue);
+		return (XMLGregorianCalendar) XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.DATE,
+			initialValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertXMLDateToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.DATE, instanceValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BowlingPackage getBowlingPackage() {
@@ -355,7 +358,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

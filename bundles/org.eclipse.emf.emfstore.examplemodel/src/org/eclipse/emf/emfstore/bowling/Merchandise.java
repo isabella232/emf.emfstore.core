@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.bowling;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Merchandise</b></em>'.
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.emf.emfstore.bowling.Merchandise#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMerchandise()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface Merchandise extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMerchandise_Name()
@@ -54,7 +54,7 @@ public interface Merchandise extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Merchandise#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -69,7 +69,7 @@ public interface Merchandise extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Price</em>' attribute.
 	 * @see #isSetPrice()
 	 * @see #unsetPrice()
@@ -84,7 +84,7 @@ public interface Merchandise extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Merchandise#getPrice <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Price</em>' attribute.
 	 * @see #isSetPrice()
 	 * @see #unsetPrice()
@@ -97,7 +97,7 @@ public interface Merchandise extends EObject {
 	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Merchandise#getPrice <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetPrice()
 	 * @see #getPrice()
 	 * @see #setPrice(BigDecimal)
@@ -110,7 +110,7 @@ public interface Merchandise extends EObject {
 	 * attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Price</em>' attribute is set.
 	 * @see #unsetPrice()
 	 * @see #getPrice()
@@ -127,7 +127,7 @@ public interface Merchandise extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Serial Number</em>' attribute.
 	 * @see #isSetSerialNumber()
 	 * @see #unsetSerialNumber()
@@ -143,7 +143,7 @@ public interface Merchandise extends EObject {
 	 * <em>Serial Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Serial Number</em>' attribute.
 	 * @see #isSetSerialNumber()
 	 * @see #unsetSerialNumber()
@@ -157,7 +157,7 @@ public interface Merchandise extends EObject {
 	 * <em>Serial Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetSerialNumber()
 	 * @see #getSerialNumber()
 	 * @see #setSerialNumber(BigInteger)
@@ -170,7 +170,7 @@ public interface Merchandise extends EObject {
 	 * <em>Serial Number</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Serial Number</em>' attribute is set.
 	 * @see #unsetSerialNumber()
 	 * @see #getSerialNumber()
