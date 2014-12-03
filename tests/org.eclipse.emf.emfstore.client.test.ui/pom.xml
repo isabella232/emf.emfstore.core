@@ -134,7 +134,7 @@
 							<autoStart>false</autoStart>
 						</bundle>
 						<bundle>
-                            <id>org.eclipse.emf.emfstore.client.ui.rcpp</id>
+                            <id>org.eclipse.emf.emfstore.client.ui.rcp</id>
                             <level>4</level>
                             <autoStart>false</autoStart>
                         </bundle>
@@ -234,6 +234,11 @@
 									<version>0.0.0</version>
 								</dependency>
 								<dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.client.ui.rcp</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+								<dependency>
 									<type>eclipse-plugin</type>
 									<artifactId>org.eclipse.emf.emfstore.common.model.edit</artifactId>
 									<version>0.0.0</version>
@@ -311,6 +316,11 @@
 									<level>4</level>
 									<autoStart>false</autoStart>
 								</bundle>
+								<bundle>
+                                    <id>org.eclipse.emf.emfstore.client.ui.rcp</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
 								<bundle>
 									<id>org.eclipse.emf.emfstore.client.changetracking.test</id>
 									<level>4</level>
