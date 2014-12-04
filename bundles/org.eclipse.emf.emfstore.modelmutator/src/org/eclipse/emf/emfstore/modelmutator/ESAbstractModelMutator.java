@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  * Philip Langer - Bug 445193: Allow configuration of the numbers/types of changes being applied by model mutator
@@ -43,10 +43,10 @@ import com.google.common.base.Predicate;
 
 /**
  * Abstract implementation of an model mutator.
- * 
+ *
  * @author Julian Sommerfeldt
  * @since 2.0
- * 
+ *
  */
 public abstract class ESAbstractModelMutator {
 
@@ -73,7 +73,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * Leaves the config uninitialized.
 	 */
 	public ESAbstractModelMutator() {
@@ -84,7 +84,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param config
 	 *            The {@link ESModelMutatorConfiguration} to use for mutation.
 	 */
@@ -123,7 +123,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Mutation after an initial generation.
-	 * 
+	 *
 	 * @param ignoredFeatures
 	 *            a set of features to be ignored while mutating
 	 */
@@ -139,7 +139,7 @@ public abstract class ESAbstractModelMutator {
 	 * Performs mutation until the given {@link Predicate} is met.
 	 * The predicate input will be the the root object obtained by
 	 * calling {@code getConfig()}.
-	 * 
+	 *
 	 * @param predicate
 	 *            the predicate that must be fulfilled in order to stop mutation
 	 */
@@ -166,7 +166,7 @@ public abstract class ESAbstractModelMutator {
 	/**
 	 * Returns the root {@link EObject} of the {@link ESModelMutatorConfiguration}.
 	 * Clients may override.
-	 * 
+	 *
 	 * @return the root {@link EObject} of the {@link ESModelMutatorConfiguration}
 	 */
 	protected EObject getRootEObject() {
@@ -218,9 +218,18 @@ public abstract class ESAbstractModelMutator {
 
 		// if the root depth should not be generated
 		if (modelMutatorConfig.isDoNotGenerateRoot()) {
+			boolean didCreateChild = false;
 			// create children for each of the children of the root
-			for (final EObject obj : rootEObject.eContents()) {
-				createChildren(obj, 1);
+			final List<EObject> eContents = new ArrayList<EObject>(rootEObject.eContents());
+			try {
+				for (final EObject obj : eContents) {
+					didCreateChild |= createChildren(obj, 1);
+				}
+			} catch (final IndexOutOfBoundsException e) {
+				e.printStackTrace();
+			}
+			if (!didCreateChild) {
+				createChildren(rootEObject, 0);
 			}
 		} else {
 			// if the root depth should be generated, create children for the root
@@ -230,18 +239,20 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Create recursively direct and indirect children for a given {@link EObject} and its children.
-	 * 
+	 *
 	 * @param root The {@link EObject} for which children should be generated.
 	 * @param depth The depth of the EObject in the total tree.
+	 *
+	 * @return {@code true}, if children have been created, {@code false} otherwise
 	 */
-	public void createChildren(EObject root, int depth) {
+	public boolean createChildren(EObject root, int depth) {
 		if (currentObjectCount >= targetObjectCount) {
-			return;
+			return false;
 		}
 
 		// check if we reached the maximal depth
 		if (depth >= currentDepth) {
-			return;
+			return false;
 		}
 
 		// create children for the current root object
@@ -251,11 +262,13 @@ public abstract class ESAbstractModelMutator {
 		for (final EObject obj : children) {
 			createChildren(obj, depth + 1);
 		}
+
+		return !children.isEmpty();
 	}
 
 	/**
 	 * Creates/deletes direct children for the given {@link EObject}.
-	 * 
+	 *
 	 * @param root The {@link EObject} for which children should be created.
 	 * @return A list of the newly generated children
 	 */
@@ -314,7 +327,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Randomly deletes direct and indirect children of the given root {@link EObject}.
-	 * 
+	 *
 	 * @param root The {@link EObject} from which children should be deleted.
 	 */
 	public void deleteEObjects(EObject root) {
@@ -360,7 +373,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Get a {@link EClass}, which is valid for the given {@link EReference}.
-	 * 
+	 *
 	 * @param reference The {@link EReference} to search a {@link EClass} for.
 	 * @return A valid {@link EClass} for the given {@link EReference} or <code>null</code> if there is none.
 	 */
@@ -403,7 +416,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Creates a new {@link EObject} and sets its attributes.
-	 * 
+	 *
 	 * @param eClass The {@link EClass} of the new {@link EObject}.
 	 * @param ignoredFeatures
 	 *            a set of features to be ignored while mutating
@@ -427,7 +440,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Adds an {@link EObject} to the given parent.
-	 * 
+	 *
 	 * @param parent The {@link EObject} where to add the newObject
 	 * @param newObject The new {@link EObject} to add to the parent.
 	 * @param reference The {@link EReference} where to add the newObject.
@@ -442,7 +455,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Randomly mutates all attributes.
-	 * 
+	 *
 	 * @param ignoredFeatures
 	 *            a set of features to be ignored while mutating
 	 */
@@ -467,7 +480,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Changes CrossReferences of an specific {@link EObject}.
-	 * 
+	 *
 	 * @param obj The {@link EObject} whose cross references should be changed
 	 */
 	public void changeCrossReferences(EObject obj) {
@@ -487,7 +500,7 @@ public abstract class ESAbstractModelMutator {
 
 	/**
 	 * Sets the config to be used by the mutator.
-	 * 
+	 *
 	 * @param config
 	 *            the config to be used by the mutator
 	 */
