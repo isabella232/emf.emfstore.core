@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -34,10 +34,12 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notificatio
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.filter.FilterStack;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.filter.TouchFilter;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.filter.TransientFilter;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.common.EMFStoreResource;
 import org.eclipse.emf.emfstore.internal.common.ESDisposable;
 import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
+import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
@@ -45,13 +47,13 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
- * 
- * 
+ * Saves any registered resources upon certain types of triggers like, for instance, update and commit.
+ *
  * @author koegel
  * @author emueller
  */
 public class ResourcePersister implements ESCommandObserver, IdEObjectCollectionChangeObserver, ESCommitObserver,
-	ESUpdateObserver, ESDisposable {
+ESUpdateObserver, ESDisposable {
 
 	private final FilterStack filterStack;
 
@@ -64,28 +66,31 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 	private Set<Resource> resources;
 
-	private IdEObjectCollection collection;
-
 	private List<IDEObjectCollectionDirtyStateListener> listeners;
+
+	private ESLocalProject localProject;
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param collection
-	 *            a collection of EObjects
+	 *
+	 * @param localProject
+	 *            the {@link ESLocalProject} that will be associated with this persister
 	 */
-	public ResourcePersister(IdEObjectCollection collection) {
-		this.collection = collection;
+	public ResourcePersister(ESLocalProject localProject) {
+		this.localProject = localProject;
 		resources = new LinkedHashSet<Resource>();
 		listeners = new ArrayList<IDEObjectCollectionDirtyStateListener>();
-		filterStack = new FilterStack(new ESNotificationFilter[] { new TouchFilter(), new TransientFilter(),
-			new EmptyRemovalsFilter() });
+		filterStack = new FilterStack(new ESNotificationFilter[] {
+			new TouchFilter(),
+			new TransientFilter(),
+			new EmptyRemovalsFilter()
+		});
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandStarted(org.eclipse.emf.common.command.Command)
 	 */
 	public void commandStarted(Command command) {
@@ -93,9 +98,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandCompleted(org.eclipse.emf.common.command.Command)
 	 */
 	public void commandCompleted(Command command) {
@@ -104,9 +109,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandFailed(org.eclipse.emf.common.command.Command,
 	 *      java.lang.Exception)
 	 */
@@ -116,7 +121,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 	/**
 	 * Adds the given resource to the set of resources which should be saved by the persister.
-	 * 
+	 *
 	 * @param resource
 	 *            the resource to be saved
 	 */
@@ -131,7 +136,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	 * If auto-save is disabled, clients have to programatically
 	 * save the dirty resource set by setting the <code>force</code> parameter
 	 * to true.
-	 * 
+	 *
 	 * @param force
 	 *            whether to force the saving of resources
 	 */
@@ -156,8 +161,10 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 			}
 
 			if (resource instanceof EMFStoreResource) {
-				((EMFStoreResource) resource).setIdToEObjectMap(collection.getIdToEObjectMapping(),
-					collection.getEObjectToIdMapping());
+				final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
+				EMFStoreResource.class.cast(resource).setIdToEObjectMap(
+					project.getIdToEObjectMapping(),
+					project.getEObjectToIdMapping());
 			} else {
 				final Set<EObject> modelElements = ModelUtil.getAllContainedModelElements(resource, false, false);
 
@@ -179,7 +186,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 	/**
 	 * Determine if there is resources that still need to be saved.
-	 * 
+	 *
 	 * @return true if there is resource to be saved.
 	 */
 	public boolean isDirty() {
@@ -188,7 +195,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 	/**
 	 * Add a dirty state change listener.
-	 * 
+	 *
 	 * @param listener the listener
 	 */
 	public void addDirtyStateChangeLister(IDEObjectCollectionDirtyStateListener listener) {
@@ -197,7 +204,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 	/**
 	 * Remove a dirty state change listener.
-	 * 
+	 *
 	 * @param listener the listener
 	 */
 	public void removeDirtyStateChangeLister(IDEObjectCollectionDirtyStateListener listener) {
@@ -205,9 +212,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#notify(org.eclipse.emf.common.notify.Notification,
 	 *      org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection, org.eclipse.emf.ecore.EObject)
 	 */
@@ -227,9 +234,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#modelElementAdded(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -238,9 +245,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#modelElementRemoved(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -253,9 +260,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#collectionDeleted(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void collectionDeleted(IdEObjectCollection collection) {
@@ -287,11 +294,12 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	private String getIDForEObject(EObject modelElement) {
-		final String modelElementId = collection.getModelElementId(modelElement).toString();
+		final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
+		final String modelElementId = project.getModelElementId(modelElement).toString();
 
 		if (modelElementId == null) {
 			WorkspaceUtil
-				.handleException(new IllegalStateException(Messages.ResourcePersister_MissingID + modelElement));
+			.handleException(new IllegalStateException(Messages.ResourcePersister_MissingID + modelElement));
 		}
 
 		return modelElementId;
@@ -304,59 +312,67 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages,
 		IProgressMonitor monitor) {
-		saveDirtyResources(true);
+		if (localProject == project) {
+			saveDirtyResources(true);
+		}
 		return true;
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
 	 */
 	public void updateCompleted(ESLocalProject project, IProgressMonitor monitor) {
-		saveDirtyResources(true);
+		if (localProject == project) {
+			saveDirtyResources(true);
+		}
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public boolean inspectChanges(ESLocalProject project, ESChangePackage changePackage, IProgressMonitor monitor) {
-		saveDirtyResources(true);
+		if (localProject == project) {
+			saveDirtyResources(true);
+		}
 		return true;
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#commitCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void commitCompleted(ESLocalProject project, ESPrimaryVersionSpec newRevision, IProgressMonitor monitor) {
-		saveDirtyResources(true);
+		if (localProject == project) {
+			saveDirtyResources(true);
+		}
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ESDisposable#dispose()
 	 */
 	public void dispose() {
 		listeners = null;
 		resources = null;
-		collection = null;
+		localProject = null;
 	}
 }
