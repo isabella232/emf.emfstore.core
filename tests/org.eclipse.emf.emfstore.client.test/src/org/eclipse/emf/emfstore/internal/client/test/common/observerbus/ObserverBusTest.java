@@ -5,8 +5,9 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.test.common.observerbus;
 
@@ -89,7 +90,7 @@ public class ObserverBusTest {
 		getObserverBus().register(new BImpl());
 		final CImpl tester = new CImpl();
 		getObserverBus().notify(B.class).setMSGToFoo(tester);
-		assertEquals(tester.msg, "foo");
+		assertEquals(tester.getMsg(), "foo");
 	}
 
 	@Test
