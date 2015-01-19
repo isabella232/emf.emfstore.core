@@ -38,6 +38,8 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.ServerKeyStoreExcepti
  */
 public class EMFStoreWebServer extends WebServer {
 
+	private final String[] validCiphers;
+
 	/**
 	 * Constructor.
 	 * 
@@ -46,6 +48,8 @@ public class EMFStoreWebServer extends WebServer {
 	 */
 	public EMFStoreWebServer(int port) {
 		super(port);
+		validCiphers = ServerConfiguration.getSplittedProperty(
+			ServerConfiguration.SSL_CIPHERS);
 	}
 
 	/**
@@ -55,12 +59,12 @@ public class EMFStoreWebServer extends WebServer {
 	 */
 	@Override
 	protected boolean allowConnection(Socket socket) {
-		final String[] validCiphers = ServerConfiguration.getSplittedProperty(
-			ServerConfiguration.SSL_CIPHERS);
-
-		if (SSLSocket.class.isInstance(socket) && validCiphers != null) {
+		if (SSLSocket.class.isInstance(socket)) {
 			final SSLSocket ss = (SSLSocket) socket;
-			ss.setEnabledCipherSuites(validCiphers);
+			if (validCiphers != null) {
+				ss.setEnabledCipherSuites(validCiphers);
+			}
+			ss.setEnabledProtocols(new String[] { "TLSv1", "TLSv1.1", "TLSv1.2" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 
 		return super.allowConnection(socket);
