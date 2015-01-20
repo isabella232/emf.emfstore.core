@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -32,9 +32,9 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.ServerKeyStoreExcepti
 
 /**
  * Customized XML RPC web server implementation that support white listing of SSL ciphers.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class EMFStoreWebServer extends WebServer {
 
@@ -42,7 +42,7 @@ public class EMFStoreWebServer extends WebServer {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param port
 	 *            the port to be used by the web server
 	 */
@@ -54,7 +54,7 @@ public class EMFStoreWebServer extends WebServer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.apache.xmlrpc.webserver.WebServer#allowConnection(java.net.Socket)
 	 */
 	@Override
@@ -64,7 +64,7 @@ public class EMFStoreWebServer extends WebServer {
 			if (validCiphers != null) {
 				ss.setEnabledCipherSuites(validCiphers);
 			}
-			ss.setEnabledProtocols(new String[] { "TLSv1", "TLSv1.1", "TLSv1.2" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			ss.setEnabledProtocols(new String[] { "TLSv1" }); //$NON-NLS-1$
 		}
 
 		return super.allowConnection(socket);
