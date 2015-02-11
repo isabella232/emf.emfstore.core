@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -35,6 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
@@ -51,17 +52,18 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * This subinterface implements all version related functionality.
- * 
+ *
  * @author wesendon
  */
 public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface
 	 *            parent interface
 	 * @throws FatalESException
@@ -74,13 +76,13 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	/**
 	 * Resolves a versionSpec and delivers the corresponding primary
 	 * versionSpec.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param versionSpec
 	 *            versionSpec
 	 * @return primary versionSpec
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if the project ID is invalid
 	 * @throws ESException
@@ -235,7 +237,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Create a new version.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session being used to create a new version
 	 * @param projectId
@@ -257,8 +259,11 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
 		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException {
-
-		final ACUser user = getAuthorizationControl().resolveUser(sessionId);
+		getAccessControl().getSessions().isValid(sessionId.toAPI());
+		final ACUser tmpUser = getAccessControl().getSessions().getRawUser(sessionId.toAPI());
+		final ESUser copyAndResolveUser = getAccessControl().getOrgUnitResolverServive().copyAndResolveUser(
+			tmpUser.toAPI());
+		final ACUser user = (ACUser) ESUserImpl.class.cast(copyAndResolveUser).toInternalAPI();
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 		synchronized (getMonitor()) {
 
@@ -472,7 +477,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns all branches for the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @return a list containing information about each branch
@@ -492,7 +497,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Deletes projectstate from last revision depending on persistence policy.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param previousHeadVersion
@@ -522,7 +527,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns all changes within the specified version range for a given project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @param source
@@ -530,7 +535,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @param target
 	 *            the target version (inclusive)
 	 * @return a list of change packages containing all the changes for the specified version range
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if an invalid version has been specified
 	 * @throws ESException
@@ -597,7 +602,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the specified version of a project.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param versionSpec
@@ -615,7 +620,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * Returns a list of versions starting from source and ending with target.
 	 * This method returns the version always in an ascanding order. So if you
 	 * need it ordered differently you have to reverse the list.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param source
@@ -676,7 +681,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * Helper method which retrieves the next version in the history tree. This
 	 * method must be used in reversed order. With the introduction of branches, the versions are organized in a tree
 	 * structure. Therefore, next versions are always searched for walking up the tree.
-	 * 
+	 *
 	 * @param currentVersion
 	 *            current version
 	 * @return version

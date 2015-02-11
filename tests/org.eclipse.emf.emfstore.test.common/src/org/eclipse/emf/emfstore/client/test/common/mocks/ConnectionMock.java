@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -37,6 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
@@ -47,6 +48,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 
 public class ConnectionMock implements ConnectionManager {
 
@@ -64,13 +66,15 @@ public class ConnectionMock implements ConnectionManager {
 
 	public AuthenticationInformation logIn(String username, String password, ServerInfo severInfo,
 		ClientVersionInfo clientVersionInfo) throws ESException {
-		final AuthenticationInformation logIn = accessControl.logIn(username, password, clientVersionInfo);
-		sessions.add(logIn.getSessionId());
-		return logIn;
+		final ESAuthenticationInformation logIn = accessControl.getLoginService()
+			.logIn(username, password, clientVersionInfo.toAPI());
+		final AuthenticationInformation internalAPI = ESAuthenticationInformationImpl.class.cast(logIn).toInternalAPI();
+		sessions.add(internalAPI.getSessionId());
+		return internalAPI;
 	}
 
 	public void logout(SessionId sessionId) throws ESException {
-		accessControl.logout(sessionId);
+		accessControl.getLoginService().logout(sessionId.toAPI());
 		sessions.remove(sessionId);
 	}
 
@@ -225,7 +229,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {
@@ -234,12 +238,12 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager#getVersion(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public String getVersion(ServerInfo serverInfo) throws ESException {
 		final SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
-		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$			
+		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$
 		sessions.add(sessionId);
 		return emfStore.getVersion(sessionId);
 	}

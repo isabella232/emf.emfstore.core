@@ -1,11 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -25,14 +25,16 @@ import javax.naming.directory.SearchResult;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.connection.ServerKeyStoreManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
+import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
- * Verifies username/password using LDAP.
- * 
+ * Verifies user name/password using LDAP.
+ *
  * @author Wesendonk
  */
-public class LDAPVerifier extends AbstractAuthenticationControl {
+public class LDAPUserVerifier extends UserVerifier {
 
 	private final String ldapUrl;
 	private final String ldapBase;
@@ -45,14 +47,17 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param ldapUrl url, if url starts with ldaps:// SSL is used.
 	 * @param ldapBase base
 	 * @param searchDn dn
 	 * @param authUser user to allow access to server
 	 * @param authPassword password of user to allow access to server
 	 */
-	public LDAPVerifier(String ldapUrl, String ldapBase, String searchDn, String authUser, String authPassword) {
+	// TODO: recheck orgUnitPRovier
+	public LDAPUserVerifier(ESOrgUnitProvider orgUnitProvider,
+		String ldapUrl, String ldapBase, String searchDn, String authUser, String authPassword) {
+		super(orgUnitProvider);
 		this.ldapUrl = ldapUrl;
 		this.ldapBase = ldapBase;
 		this.searchDn = searchDn;
@@ -66,14 +71,21 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 	}
 
 	/**
-	 * 
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
-	 *      java.lang.String, java.lang.String)
+	 * This method must be implemented by subclasses in order to verify a pair of username and password.
+	 * When using authentication you should use {@link ESUserVerifier#logIn(String, String, ESClientVersionInfo)} in
+	 * order to gain a session id.
+	 *
+	 * @param username
+	 *            the user name as entered by the client; may differ from the user name of the {@code resolvedUser}
+	 * @param password
+	 *            the password as entered by the client
+	 * @return boolean {@code true} if authentication was successful, {@code false} if not
+	 * @throws AccessControlException
+	 *             if an exception occurs during the verification process
 	 */
+	// TODO: introduce common interface verifying passwords
 	@Override
-	public boolean verifyPassword(ACUser resolvedUser, String username, String password) throws AccessControlException {
+	public boolean verifyPassword(String username, String password) throws AccessControlException {
 		DirContext dirContext = null;
 
 		// anonymous bind and resolve user
@@ -144,7 +156,7 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 		try {
 			results = dirContext.search(ldapBase, "(& (" + //$NON-NLS-1$
 				searchDn + "=" + username //$NON-NLS-1$
-				+ ") (objectclass=*))", //$NON-NLS-1$ 
+				+ ") (objectclass=*))", //$NON-NLS-1$
 				constraints);
 		} catch (final NamingException e) {
 			ModelUtil.logWarning(MessageFormat.format(

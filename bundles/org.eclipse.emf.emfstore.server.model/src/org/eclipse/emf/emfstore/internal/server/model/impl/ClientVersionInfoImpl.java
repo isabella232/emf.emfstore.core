@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl;
@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo;
 import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESClientVersionInfoImpl;
+import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Client Version Info</b></em>'. <!--
@@ -27,14 +29,20 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionInfo {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESClientVersionInfoImpl apiImpl;
+
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getVersion()
 	 * @generated
 	 * @ordered
@@ -44,7 +52,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getVersion()
 	 * @generated
 	 * @ordered
@@ -54,7 +62,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -64,7 +72,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -73,7 +81,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ClientVersionInfoImpl() {
@@ -82,7 +90,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -92,7 +100,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getVersion() {
@@ -101,7 +109,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setVersion(String newVersion) {
@@ -115,7 +123,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -124,7 +132,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -137,7 +145,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,7 +162,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -173,7 +181,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -192,7 +200,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -209,7 +217,7 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -225,6 +233,31 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 		result.append(name);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESClientVersionInfo toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESClientVersionInfoImpl createAPI() {
+		return new ESClientVersionInfoImpl(this);
 	}
 
 } // ClientVersionInfoImpl

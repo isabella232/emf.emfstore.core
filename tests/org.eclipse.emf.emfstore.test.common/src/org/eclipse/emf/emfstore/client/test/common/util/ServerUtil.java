@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -46,12 +46,10 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControlImpl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.factory.AuthenticationControlFactory;
 import org.eclipse.emf.emfstore.internal.server.core.EMFStoreImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ConnectionException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
+import org.eclipse.emf.emfstore.internal.server.impl.api.ESOrgUnitProviderImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
@@ -68,9 +66,9 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.osgi.framework.FrameworkUtil;
 
 /**
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public final class ServerUtil {
 
@@ -84,7 +82,7 @@ public final class ServerUtil {
 
 	/**
 	 * Returns the default port of EMFStore which is 8888.
-	 * 
+	 *
 	 * @return the default port of EMFStore
 	 */
 	public static int defaultPort() {
@@ -93,7 +91,7 @@ public final class ServerUtil {
 
 	/**
 	 * Returns the default port of EMFStore which is 8888.
-	 * 
+	 *
 	 * @return the default port of EMFStore
 	 */
 	public static String localhost() {
@@ -163,9 +161,11 @@ public final class ServerUtil {
 
 		ServerConfiguration.setProperties(initProperties(properties));
 		setSuperUser(daoFacadeMock);
-		final AccessControl accessControl = new AccessControlImpl(daoFacadeMock);
-		accessControl.setAuthenticationControl(AuthenticationControlFactory.INSTANCE
-			.createAuthenticationControl(AuthenticationControlType.model));
+		final ESOrgUnitProviderImpl orgUnitProvider = new ESOrgUnitProviderImpl(serverSpace);
+		final AccessControl accessControl = new AccessControl(orgUnitProvider);
+
+		// accessControl.setAuthenticationControl(ESUserVerifierFactory.INSTANCE
+		// .createAuthenticationControl(ESAuthenticationControlType.model, orgUnitProviderImpl));
 
 		// AdminConnectionManagerMock adminConnectionManagerMock = new AdminConnectionManagerMock(accessControl);
 
@@ -188,14 +188,14 @@ public final class ServerUtil {
 
 	/**
 	 * Convenience method for deleting a group by name instead of its ID.
-	 * 
+	 *
 	 * @param session
 	 *            the {@link ESUsersession} that is used to connection to the admin connection manager
 	 * @param groupName
 	 *            the name of the group to be deleted. Case is ignored
-	 * 
+	 *
 	 * @return {@code true}, if the groups has been deleted successfully, {@code false} otherwise
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case the delete fails
 	 */

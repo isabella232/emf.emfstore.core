@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Andreas Boehlke - method representation
@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
 import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.EMFStorePropertiesSubInterfaceImpl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.server.observer.ESServerCallObserver;
 
 /**
  * This is the main implementation of {@link EMFStore}.
- * 
+ *
  * @author wesendon
  * @see EMFStore
  */
@@ -53,7 +53,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * Represents a method in a subinterface.
-	 * 
+	 *
 	 * @author boehlke
 	 */
 	private class SubInterfaceMethod {
@@ -85,22 +85,22 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param serverSpace
 	 *            the {@link ServerSpace}
-	 * @param authorizationControl
+	 * @param accessControl
 	 *            the {@link AuthorizationControl}
 	 * @throws FatalESException
 	 *             in case of failure
 	 */
-	public EMFStoreImpl(ServerSpace serverSpace, AuthorizationControl authorizationControl)
+	public EMFStoreImpl(ServerSpace serverSpace, AccessControl accessControl)
 		throws FatalESException {
-		super(serverSpace, authorizationControl);
+		super(serverSpace, accessControl);
 		serverCallObservers = initServerCallObservers();
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private Set<ESServerCallObserver> initServerCallObservers() {
 		final Set<ESServerCallObserver> result = new LinkedHashSet<ESServerCallObserver>();
@@ -143,14 +143,15 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
 	 */
 	public Object invoke(Object obj, final Method method, final Object[] args) throws ESException {
 		final MethodInvocation methodInvocation = new MethodInvocation(method.getName(), args);
-		getAuthorizationControl().checkAccess(methodInvocation);
+
+		getAccessControl().getAuthorizationService().checkAccess(methodInvocation);
 
 		notifyServerCallObservers(new ServerCallObserverNotifier() {
 			public void notify(ESServerCallObserver observer) {
@@ -188,7 +189,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * Notify the observers with the given notifier.
-	 * 
+	 *
 	 * @param serverCallObserverNotifier the notifier
 	 */
 	private void notifyServerCallObservers(ServerCallObserverNotifier serverCallObserverNotifier) {
@@ -205,14 +206,14 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * creates a dynamic proxy backed by EmfStoreImpl.
-	 * 
+	 *
 	 * @param serverSpace the server space
 	 * @param accessControl an access control instance
 	 * @return an instance of emfstore
 	 * @throws IllegalArgumentException thrown by Proxy.newInstance
 	 * @throws FatalESException thrown if something fatal happens
 	 */
-	public static EMFStore createInterface(ServerSpace serverSpace, AuthorizationControl accessControl)
+	public static EMFStore createInterface(ServerSpace serverSpace, AccessControl accessControl)
 		throws IllegalArgumentException, FatalESException {
 		return (EMFStore) Proxy.newProxyInstance(EMFStoreImpl.class.getClassLoader(), new Class[] { EMFStore.class },
 			new EMFStoreImpl(serverSpace, accessControl));

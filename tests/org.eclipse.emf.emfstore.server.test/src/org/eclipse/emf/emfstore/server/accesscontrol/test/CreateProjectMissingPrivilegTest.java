@@ -20,8 +20,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the missing {@link org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges
- * PAPrivileges#ShareProject} privilege of a
+ * Test the missing {@link org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges
+ * ESProjectAdminPrivileges#ShareProject} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller

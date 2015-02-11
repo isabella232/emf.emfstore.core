@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.AdminEmfStore;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
@@ -45,11 +44,15 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesFactory;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
 import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
+import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESGroup;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * Implementation of {@link AdminEmfStore} interface.
- * 
+ *
  * @author wesendon
  */
 // TODO: bring this interface in new subinterface structure and refactor it
@@ -59,19 +62,20 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param daoFacade
 	 *            provider facade for access control related DAOs
 	 * @param serverSpace
 	 *            the server space
-	 * @param authorizationControl
+	 * @param accessControl
 	 *            the authorization control
 	 * @throws FatalESException
 	 *             in case of failure
 	 */
-	public AdminEmfStoreImpl(ACDAOFacade daoFacade, ServerSpace serverSpace, AuthorizationControl authorizationControl)
+	public AdminEmfStoreImpl(ACDAOFacade daoFacade, ServerSpace serverSpace,
+		AccessControl accessControl)
 		throws FatalESException {
-		super(serverSpace, authorizationControl);
+		super(serverSpace, accessControl);
 		this.daoFacade = daoFacade;
 	}
 
@@ -80,7 +84,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public List<ACGroup> getGroups(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 		final List<ACGroup> result = new ArrayList<ACGroup>();
 		for (final ACGroup group : daoFacade.getGroups()) {
 			// quickfix
@@ -96,9 +102,11 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public List<ACGroup> getGroups(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		checkForNulls(sessionId, orgUnitId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 		final List<ACGroup> result = new ArrayList<ACGroup>();
-		final ACOrgUnit orgUnit = getOrgUnit(orgUnitId);
+		final ACOrgUnit<?> orgUnit = getOrgUnit(orgUnitId);
 		for (final ACGroup group : daoFacade.getGroups()) {
 			if (group.getMembers().contains(orgUnit)) {
 				// quickfix
@@ -116,11 +124,10 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public ACOrgUnitId createGroup(SessionId sessionId, String name) throws ESException {
 
 		checkForNulls(sessionId, name);
-
-		getAuthorizationControl().checkProjectAdminAccess(
-			sessionId,
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
 			null,
-			PAPrivileges.CreateGroup);
+			ESProjectAdminPrivileges.CreateGroup);
 
 		if (groupExists(name)) {
 			throw new InvalidInputException(Messages.AdminEmfStoreImpl_Group_Already_Exists);
@@ -150,11 +157,15 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, user, group);
 
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccess(
-			sessionId, null, PAPrivileges.DeleteOrgUnit);
+		final boolean isServerAdmin = getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.DeleteOrgUnit);
 
 		if (!isServerAdmin) {
-			getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, group);
+			getAccessControl().getAuthorizationService().checkProjectAdminAccessForOrgUnit(
+				sessionId.toAPI(),
+				group.toAPI());
 		}
 
 		getGroup(group).getMembers().remove(getOrgUnit(user));
@@ -168,15 +179,22 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, groupId);
 
-		getAuthorizationControl().checkProjectAdminAccess(
-			sessionId, null, PAPrivileges.DeleteOrgUnit);
-		getAuthorizationControl().checkProjectAdminAccessForOrgUnit(
-			sessionId, groupId);
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+
+		authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.DeleteOrgUnit);
+		authorizationService.checkProjectAdminAccessForOrgUnit(
+			sessionId.toAPI(),
+			groupId.toAPI());
 
 		// also check all members
 		final ACGroup group = getGroup(groupId);
-		for (final ACOrgUnit member : group.getMembers()) {
-			getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, member.getId());
+		for (final ACOrgUnit<?> member : group.getMembers()) {
+			authorizationService.checkProjectAdminAccessForOrgUnit(
+				sessionId.toAPI(),
+				member.getId().toAPI());
 		}
 
 		for (final Iterator<ACGroup> iter = daoFacade.getGroups().iterator(); iter.hasNext();) {
@@ -201,11 +219,13 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, groupId);
 
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 
 		// quickfix
 		final List<ACOrgUnit> result = new ArrayList<ACOrgUnit>();
-		for (final ACOrgUnit orgUnit : getGroup(groupId).getMembers()) {
+		for (final ACOrgUnit<?> orgUnit : getGroup(groupId).getMembers()) {
 			result.add(ModelUtil.clone(orgUnit));
 		}
 		clearMembersFromGroups(result);
@@ -215,23 +235,29 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addMember(SessionId sessionId, ACOrgUnitId group, ACOrgUnitId member) throws ESException {
+	public void addMember(SessionId sessionId, ACOrgUnitId groupId, ACOrgUnitId member) throws ESException {
 
-		checkForNulls(sessionId, group, member);
+		checkForNulls(sessionId, groupId, member);
 
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccess(
-			sessionId, null, PAPrivileges.ChangeAssignmentsOfOrgUnits);
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+
+		final boolean isServerAdmin = authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.ChangeAssignmentsOfOrgUnits);
 
 		if (!isServerAdmin) {
-			getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, group);
+			authorizationService.checkProjectAdminAccessForOrgUnit(
+				sessionId.toAPI(),
+				groupId.toAPI());
 		}
 
-		addToGroup(group, member);
+		addToGroup(groupId, member);
 	}
 
 	private void addToGroup(ACOrgUnitId group, ACOrgUnitId member) throws ESException {
 		final ACGroup acGroup = getGroup(group);
-		final ACOrgUnit acMember = getOrgUnit(member);
+		final ACOrgUnit<?> acMember = getOrgUnit(member);
 		acGroup.getMembers().add(acMember);
 		save();
 	}
@@ -243,11 +269,17 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, group, member);
 
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccess(
-			sessionId, null, PAPrivileges.ChangeAssignmentsOfOrgUnits);
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+
+		final boolean isServerAdmin = authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.ChangeAssignmentsOfOrgUnits);
 
 		if (!isServerAdmin) {
-			getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, group);
+			authorizationService.checkProjectAdminAccessForOrgUnit(
+				sessionId.toAPI(),
+				group.toAPI());
 		}
 
 		removeFromGroup(group, member);
@@ -255,7 +287,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	private void removeFromGroup(ACOrgUnitId group, ACOrgUnitId member) throws ESException {
 		final ACGroup acGroup = getGroup(group);
-		final ACOrgUnit acMember = getOrgUnit(member);
+		final ACOrgUnit<?> acMember = getOrgUnit(member);
 		if (acGroup.getMembers().contains(acMember)) {
 			acGroup.getMembers().remove(acMember);
 			save();
@@ -268,19 +300,24 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 
 		checkForNulls(sessionId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI());
 
 		final List<ACOrgUnit> result = new ArrayList<ACOrgUnit>();
-		for (final ACOrgUnit orgUnit : daoFacade.getUsers()) {
-			for (final Role role : orgUnit.getRoles()) {
+		for (final ACOrgUnit<ESUser> orgUnit : daoFacade.getUsers()) {
+
+			final List<Role> roles = orgUnit.getRoles();
+			for (final Role role : roles) {
 				if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
 					result.add(ModelUtil.clone(orgUnit));
 				}
 			}
 		}
 
-		for (final ACOrgUnit orgUnit : daoFacade.getGroups()) {
-			for (final Role role : orgUnit.getRoles()) {
+		for (final ACOrgUnit<ESGroup> orgUnit : daoFacade.getGroups()) {
+			final List<Role> roles = orgUnit.getRoles();
+			for (final Role role : roles) {
 				if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
 					result.add(ModelUtil.clone(orgUnit));
 				}
@@ -300,8 +337,11 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, projectId, participantId, roleClass);
 
-		final boolean isServerAdmin = getAuthorizationControl()
-			.checkProjectAdminAccess(sessionId, projectId, PAPrivileges.AssignRoleToOrgUnit);
+		final boolean isServerAdmin = getAccessControl().getAuthorizationService()
+			.checkProjectAdminAccess(
+				sessionId.toAPI(),
+				projectId.toAPI(),
+				ESProjectAdminPrivileges.AssignRoleToOrgUnit);
 
 		if (!isServerAdmin && roleClass.equals(RolesPackage.eINSTANCE.getServerAdmin())) {
 			throw new AccessControlException(
@@ -309,14 +349,16 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		}
 
 		projectId = getProjectId(projectId);
-		final ACOrgUnit orgUnit = getOrgUnit(participantId);
-		for (final Role role : orgUnit.getRoles()) {
+		final ACOrgUnit<?> orgUnit = getOrgUnit(participantId);
+		final List<Role> roles = orgUnit.getRoles();
+		for (final Role role : roles) {
 			if (role.getProjects().contains(projectId)) {
 				return;
 			}
 		}
 		// check whether role exists
-		for (final Role role : orgUnit.getRoles()) {
+		final List<Role> roles2 = orgUnit.getRoles();
+		for (final Role role : roles2) {
 			if (areEqual(role, roleClass)) {
 				role.getProjects().add(ModelUtil.clone(projectId));
 				save();
@@ -341,19 +383,21 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		checkForNulls(sessionId, projectId, participantId, roleClass);
 
 		projectId = getProjectId(projectId);
-		final ACOrgUnit orgUnit = getOrgUnit(participantId);
+		final ACOrgUnit<?> orgUnit = getOrgUnit(participantId);
 
 		final Role newRole = (Role) RolesPackage.eINSTANCE.getEFactoryInstance().create(
 			(EClass) RolesPackage.eINSTANCE.getEClassifier(roleClass.getName()));
 
 		// if participant is server admin, return
-		for (final Role role : orgUnit.getRoles()) {
+		final List<Role> roles = orgUnit.getRoles();
+		for (final Role role : roles) {
 			if (isServerAdmin(role)) {
 				return;
 			}
 		}
 
-		for (final Role role : orgUnit.getRoles()) {
+		final List<Role> roles2 = orgUnit.getRoles();
+		for (final Role role : roles2) {
 			if (areEqual(role, roleClass)) {
 				role.getProjects().add(ModelUtil.clone(projectId));
 				save();
@@ -382,15 +426,16 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		throws ESException {
 		checkForNulls(sessionId, projectId, participantId);
 
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccess(
-			sessionId,
-			projectId,
-			PAPrivileges.AssignRoleToOrgUnit);
+		final boolean isServerAdmin = getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit);
 
-		final ACOrgUnit orgUnit = getOrgUnit(participantId);
+		final ACOrgUnit<?> orgUnit = getOrgUnit(participantId);
 		projectId = getProjectId(projectId);
 
-		for (final Role role : orgUnit.getRoles()) {
+		final List<Role> roles = orgUnit.getRoles();
+		for (final Role role : roles) {
 			if (role.getProjects().contains(projectId)) {
 				if (!isServerAdmin && role.canAdministrate(projectId)) {
 					throw new AccessControlException(Messages.AdminEmfStoreImpl_RemovePA_Violation_1
@@ -409,11 +454,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public Role getRole(SessionId sessionId, ProjectId projectId, ACOrgUnitId orgUnitId) throws ESException {
 
 		checkForNulls(sessionId, projectId, orgUnitId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI());
 		projectId = getProjectId(projectId);
 
-		final ACOrgUnit oUnit = getOrgUnit(orgUnitId);
-		for (final Role role : oUnit.getRoles()) {
+		final ACOrgUnit<?> oUnit = getOrgUnit(orgUnitId);
+		final List<Role> roles = oUnit.getRoles();
+		for (final Role role : roles) {
 			if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
 				return role;
 			}
@@ -429,11 +477,16 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, projectId, orgUnitId, roleClass);
 
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId);
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, orgUnitId,
-			Collections.singleton(projectId));
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+		authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI());
+		final boolean isServerAdmin = authorizationService.checkProjectAdminAccessForOrgUnit(
+			sessionId.toAPI(),
+			orgUnitId.toAPI(),
+			Collections.singleton(projectId.toAPI()));
 
-		if (!ServerConfiguration.isProjectAdminPrivileg(PAPrivileges.AssignRoleToOrgUnit)) {
+		if (!ServerConfiguration.isProjectAdminPrivileg(ESProjectAdminPrivileges.AssignRoleToOrgUnit)) {
 			throw new AccessControlException(Messages.AdminEmfStoreImpl_Assign_Role_Privilege_Not_Set);
 		}
 
@@ -442,7 +495,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		}
 
 		projectId = getProjectId(projectId);
-		final ACOrgUnit orgUnit = getOrgUnit(orgUnitId);
+		final ACOrgUnit<?> orgUnit = getOrgUnit(orgUnitId);
 
 		// delete old role first
 		final Role role = getRole(projectId, orgUnit);
@@ -467,7 +520,8 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			return;
 		}
 		// add project to role if it exists
-		for (final Role r : orgUnit.getRoles()) {
+		final List<Role> roles = orgUnit.getRoles();
+		for (final Role r : roles) {
 			if (r.eClass().getName().equals(roleClass.getName())) {
 				r.getProjects().add(ModelUtil.clone(projectId));
 				save();
@@ -490,19 +544,24 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, orgUnitId, roleClass);
 
-		getAuthorizationControl().checkProjectAdminAccess(
-			sessionId, null, PAPrivileges.AssignRoleToOrgUnit);
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccessForOrgUnit(
-			sessionId, orgUnitId);
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+		authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit);
+		final boolean isServerAdmin = authorizationService.checkProjectAdminAccessForOrgUnit(
+			sessionId.toAPI(),
+			orgUnitId.toAPI());
 
 		if (!isServerAdmin && isServerAdminRole(roleClass)) {
 			throw new AccessControlException("A project admin is not allowed to assign a server admin role"); //$NON-NLS-1$
 		}
 
-		final ACOrgUnit orgUnit = getOrgUnit(orgUnitId);
+		final ACOrgUnit<?> orgUnit = getOrgUnit(orgUnitId);
 
 		// check if org unit alrady has role
-		for (final Role role : orgUnit.getRoles()) {
+		final List<Role> roles = orgUnit.getRoles();
+		for (final Role role : roles) {
 			if (areEqual(role, roleClass)) {
 				return;
 			}
@@ -520,7 +579,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public List<ACUser> getUsers(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 		final List<ACUser> result = new ArrayList<ACUser>();
 		for (final ACUser user : daoFacade.getUsers()) {
 			result.add(user);
@@ -533,12 +594,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 		final List<ACOrgUnit> result = new ArrayList<ACOrgUnit>();
-		for (final ACOrgUnit user : daoFacade.getUsers()) {
+		for (final ACOrgUnit<ESUser> user : daoFacade.getUsers()) {
 			result.add(ModelUtil.clone(user));
 		}
-		for (final ACOrgUnit group : daoFacade.getGroups()) {
+		for (final ACOrgUnit<ESGroup> group : daoFacade.getGroups()) {
 			result.add(ModelUtil.clone(group));
 		}
 		// quickfix
@@ -554,7 +617,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		final List<ProjectInfo> result = new ArrayList<ProjectInfo>();
 		for (final ProjectHistory projectHistory : getServerSpace().getProjects()) {
 			try {
-				getAuthorizationControl().checkProjectAdminAccess(sessionId, projectHistory.getProjectId());
+				getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+					sessionId.toAPI(),
+					projectHistory.getProjectId().toAPI());
 				result.add(getProjectInfo(projectHistory));
 			} catch (final AccessControlException ace) {
 				// ignore
@@ -568,7 +633,10 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public ACOrgUnitId createUser(SessionId sessionId, String name) throws ESException {
 		checkForNulls(sessionId, name);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null, PAPrivileges.CreateUser);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.CreateUser);
 
 		if (userExists(name)) {
 			throw new InvalidInputException("Username '" + name + "' already exists."); //$NON-NLS-1$ //$NON-NLS-2$
@@ -595,10 +663,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public void deleteUser(SessionId sessionId, ACOrgUnitId userId) throws ESException {
 		checkForNulls(sessionId, userId);
-		getAuthorizationControl()
-			.checkProjectAdminAccessForOrgUnit(sessionId, userId);
-		getAuthorizationControl()
-			.checkProjectAdminAccess(sessionId, null, PAPrivileges.DeleteOrgUnit);
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+		authorizationService.checkProjectAdminAccessForOrgUnit(
+			sessionId.toAPI(),
+			userId.toAPI());
+		authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.DeleteOrgUnit);
 		for (final Iterator<ACUser> iter = daoFacade.getUsers().iterator(); iter.hasNext();) {
 			final ACUser user = iter.next();
 			final List<ACGroup> groups = getGroups(sessionId, userId);
@@ -621,17 +693,19 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public void changeOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId, String name, String description)
 		throws ESException {
 		checkForNulls(sessionId, orgUnitId, name, description);
-		getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, orgUnitId);
-		final ACOrgUnit orgUnit = getOrgUnit(orgUnitId);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccessForOrgUnit(
+			sessionId.toAPI(),
+			orgUnitId.toAPI());
+		final ACOrgUnit<?> orgUnit = getOrgUnit(orgUnitId);
 		orgUnit.setName(name);
 		orgUnit.setDescription(description);
 		save();
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#changeUser(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
@@ -639,12 +713,17 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public void changeUser(SessionId sessionId, ACOrgUnitId userId, String name, String password) throws ESException {
 
 		checkForNulls(sessionId, userId, name, password);
+		final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
 
-		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccess(
-			sessionId, null, PAPrivileges.ChangeUserPassword);
+		final boolean isServerAdmin = authorizationService.checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			ESProjectAdminPrivileges.ChangeUserPassword);
 
 		if (!isServerAdmin) {
-			getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, userId);
+			authorizationService.checkProjectAdminAccessForOrgUnit(
+				sessionId.toAPI(),
+				userId.toAPI());
 		}
 
 		updateUser(userId, name, password);
@@ -661,11 +740,13 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
-	public ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
+	public ACOrgUnit<?> getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		checkForNulls(sessionId, orgUnitId);
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 		// quickfix
-		final ACOrgUnit orgUnit = ModelUtil.clone(getOrgUnit(orgUnitId));
+		final ACOrgUnit<?> orgUnit = ModelUtil.clone(getOrgUnit(orgUnitId));
 		clearMembersFromGroup(orgUnit);
 		return orgUnit;
 	}
@@ -674,7 +755,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 * This method is used as fix for the containment issue of group.
 	 */
 	private void clearMembersFromGroups(Collection<ACOrgUnit> orgUnits) {
-		for (final ACOrgUnit orgUnit : orgUnits) {
+		for (final ACOrgUnit<?> orgUnit : orgUnits) {
 			clearMembersFromGroup(orgUnit);
 		}
 	}
@@ -682,7 +763,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * This method is used as fix for the containment issue of group.
 	 */
-	private void clearMembersFromGroup(ACOrgUnit orgUnit) {
+	private void clearMembersFromGroup(ACOrgUnit<?> orgUnit) {
 		if (orgUnit instanceof ACGroup) {
 			((ACGroup) orgUnit).getMembers().clear();
 		}
@@ -718,13 +799,13 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		throw new ESException(Messages.AdminEmfStoreImpl_Group_Does_Not_Exist);
 	}
 
-	private ACOrgUnit getOrgUnit(ACOrgUnitId orgUnitId) throws ESException {
-		for (final ACOrgUnit unit : daoFacade.getUsers()) {
+	private ACOrgUnit<?> getOrgUnit(ACOrgUnitId orgUnitId) throws ESException {
+		for (final ACOrgUnit<ESUser> unit : daoFacade.getUsers()) {
 			if (unit.getId().equals(orgUnitId)) {
 				return unit;
 			}
 		}
-		for (final ACOrgUnit unit : daoFacade.getGroups()) {
+		for (final ACOrgUnit<ESGroup> unit : daoFacade.getGroups()) {
 			if (unit.getId().equals(orgUnitId)) {
 				return unit;
 			}
@@ -732,8 +813,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		throw new ESException(Messages.AdminEmfStoreImpl_OrgUnit_Does_Not_Exist);
 	}
 
-	private Role getRole(ProjectId projectId, ACOrgUnit orgUnit) {
-		for (final Role role : orgUnit.getRoles()) {
+	private Role getRole(ProjectId projectId, ACOrgUnit<?> orgUnit) {
+		final List<Role> roles = orgUnit.getRoles();
+		for (final Role role : roles) {
 			if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
 				// return (Role) ModelUtil.clone(role);
 				return role;
@@ -762,7 +844,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface#initSubInterfaces()
 	 */
 	@Override

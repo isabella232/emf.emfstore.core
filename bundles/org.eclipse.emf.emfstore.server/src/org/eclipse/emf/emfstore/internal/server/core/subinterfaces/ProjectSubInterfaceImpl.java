@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- * Otto von Wesendonk
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core.subinterfaces;
 
@@ -45,18 +45,19 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
- * This subinterface implements all project related functionality.
- * 
+ * This sub-interface implements all project related functionality.
+ *
  * @author wesendon
  */
 public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface
 	 *            parent interface
 	 * @throws FatalESException
@@ -73,7 +74,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the corresponding project.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @return a project or throws exception
@@ -102,13 +103,13 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Get the project state for a specific version.
-	 * 
+	 *
 	 * @param projectId
 	 *            the {@link ProjectId} of the project to be fetched
 	 * @param versionSpec
 	 *            the requested version
 	 * @return the state of the project for the specified version
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if the given version is invalid
 	 * @throws ESException
@@ -134,11 +135,11 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Get the project state for a specific version.
-	 * 
+	 *
 	 * @param version
 	 *            the requested version
 	 * @return the state of the project for the specified version
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if the given version is invalid
 	 * @throws ESException
@@ -171,7 +172,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns all projects.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of a session that is checked whether read access is granted
 	 * @return a list of all projects
@@ -183,7 +184,11 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			final List<ProjectInfo> result = new ArrayList<ProjectInfo>();
 			for (final ProjectHistory projectHistory : getServerSpace().getProjects()) {
 				try {
-					getAuthorizationControl().checkReadAccess(sessionId, projectHistory.getProjectId(), null);
+					final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+					authorizationService.checkReadAccess(
+						sessionId.toAPI(),
+						projectHistory.getProjectId().toAPI(),
+						null);
 					result.add(createProjectInfo(projectHistory));
 				} catch (final AccessControlException e) {
 					// if this exception occurs, project won't be added to list
@@ -195,7 +200,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Creates a empty project.
-	 * 
+	 *
 	 * @param name
 	 *            the name of the project
 	 * @param description
@@ -217,7 +222,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 					description,
 					logMessage,
 					org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
-						.createProject());
+					.createProject());
 			} catch (final FatalESException e) {
 				throw new StorageException(StorageException.NOSAVE);
 			}
@@ -227,7 +232,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Creates a new project.
-	 * 
+	 *
 	 * @param name
 	 *            the name of the project
 	 * @param description
@@ -258,7 +263,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Deletes the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param deleteFiles
@@ -274,7 +279,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Deletes the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param deleteFiles
@@ -348,7 +353,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Import the given project history to the server.
-	 * 
+	 *
 	 * @param projectHistory
 	 *            the history to be imported
 	 * @return the ID of a new project
@@ -395,7 +400,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the history for the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @return the project history

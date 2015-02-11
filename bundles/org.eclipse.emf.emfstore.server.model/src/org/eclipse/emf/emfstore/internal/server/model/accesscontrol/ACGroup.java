@@ -5,28 +5,33 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.server.model.ESGroup;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Group</b></em>'. <!-- end-user-doc -->
- * 
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup#getMembers <em>Members</em>}</li>
- * </ul>
- * </p>
- * 
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Group</b></em>'.
+ *
+ * @extends APIDelegate<ESGroup>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup#getMembers <em>Members</em>}
+ *          </li>
+ *          </ul>
+ *          </p>
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACGroup()
  * @model
  * @generated
  */
-public interface ACGroup extends ACOrgUnit {
+public interface ACGroup extends ACOrgUnit<ESGroup> {
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit}.
@@ -36,12 +41,13 @@ public interface ACGroup extends ACOrgUnit {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Members</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACGroup_Members()
 	 * @model keys="identifier"
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	EList<ACOrgUnit> getMembers();
 
 } // ACGroup

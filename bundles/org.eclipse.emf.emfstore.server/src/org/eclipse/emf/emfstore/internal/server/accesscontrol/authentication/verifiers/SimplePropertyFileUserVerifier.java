@@ -1,11 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -19,17 +19,20 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.SimplePropertyFileUserVerifier.Hash;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * This verifier can be used to store user and passwords in a property file. Entries in the property file look should
  * look like this: <b>user = password</b>
- * 
+ *
  * @author wesendonk
  */
-public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
+public class SimplePropertyFileUserVerifier extends UserVerifier {
 
 	private final Properties passwordFile;
 
@@ -39,7 +42,7 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Hash algorithms supported by SPFV verifier.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	public enum Hash {
@@ -51,24 +54,25 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Default constructor. No hash will be used for passwords
-	 * 
-	 * @see #SimplePropertyFileVerifier(String, Hash)
+	 *
+	 * @see #SimplePropertyFileUserVerifier(String, Hash)
 	 * @param filePath path to password file
 	 * @throws FatalESException in case of failure
 	 */
-	public SimplePropertyFileVerifier(String filePath) throws FatalESException {
-		this(filePath, Hash.NONE);
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String filePath) throws FatalESException {
+		this(orgUnitProvider, filePath, Hash.NONE);
 	}
 
 	/**
 	 * Constructor with ability to select hash algorithm for password.
-	 * 
+	 *
 	 * @param filePath path to file
 	 * @param hash selected hash
 	 * @throws FatalESException if hash is null
 	 */
-	public SimplePropertyFileVerifier(String filePath, Hash hash) throws FatalESException {
-		super();
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String filePath, Hash hash)
+		throws FatalESException {
+		super(orgUnitProvider);
 		this.filePath = filePath;
 		if (hash == null) {
 			throw new FatalESException(Messages.SimplePropertyFileVerifier_HashMayNotBeNull);
@@ -101,14 +105,14 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.PasswordVerifier#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String)
 	 */
 	@Override
-	protected boolean verifyPassword(ACUser resolvedUser, String username, String password)
+	protected boolean verifyPassword(String username, String password)
 		throws AccessControlException {
 		loadPasswordFile(filePath);
 		final String expectedPassword = passwordFile.getProperty(username);
@@ -142,6 +146,36 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 		} catch (final NoSuchAlgorithmException e) {
 		}
 
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#resolve(org.eclipse.emf.emfstore.server.model.ESSessionId)
+	 */
+	public ESUser resolve(ESSessionId api) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#isValid(org.eclipse.emf.emfstore.server.model.ESSessionId)
+	 */
+	public boolean isValid(ESSessionId sessionId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#getUser(org.eclipse.emf.emfstore.server.model.ESSessionId)
+	 */
+	public ESUser getUser(ESSessionId sessionId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

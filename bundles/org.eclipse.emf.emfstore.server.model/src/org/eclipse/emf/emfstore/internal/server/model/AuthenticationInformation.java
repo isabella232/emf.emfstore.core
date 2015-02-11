@@ -5,33 +5,37 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Authentication Information</b></em>'. <!--
- * end-user-doc -->
- * 
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getSessionId <em>Session Id</em>}
- * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getResolvedACUser <em>Resolved AC
- * User</em>}</li>
- * </ul>
- * </p>
- * 
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Authentication Information</b></em>'.
+ *
+ * @extends APIDelegate<ESGlobalProjectId><!-- end-user-doc --
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getSessionId <em>Session
+ *          Id</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getResolvedACUser <em>
+ *          Resolved AC User</em>}</li>
+ *          </ul>
+ *          </p>
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getAuthenticationInformation()
  * @model
  * @generated
  */
-public interface AuthenticationInformation extends EObject {
+public interface AuthenticationInformation extends EObject, APIDelegate<ESAuthenticationInformation> {
 	/**
 	 * Returns the value of the '<em><b>Session Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -40,7 +44,7 @@ public interface AuthenticationInformation extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Session Id</em>' containment reference.
 	 * @see #setSessionId(SessionId)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getAuthenticationInformation_SessionId()
@@ -55,7 +59,7 @@ public interface AuthenticationInformation extends EObject {
 	 * ' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Session Id</em>' containment reference.
 	 * @see #getSessionId()
 	 * @generated
@@ -70,7 +74,7 @@ public interface AuthenticationInformation extends EObject {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Resolved AC User</em>' containment reference.
 	 * @see #setResolvedACUser(ACUser)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getAuthenticationInformation_ResolvedACUser()
@@ -85,7 +89,7 @@ public interface AuthenticationInformation extends EObject {
 	 * <em>Resolved AC User</em>}' containment reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Resolved AC User</em>' containment reference.
 	 * @see #getResolvedACUser()
 	 * @generated

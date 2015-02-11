@@ -7,7 +7,8 @@
    <extension-point id="resourceSetProvider" name="ResourceSet Provider" schema="schema/resourceSetProvider.exsd"/>
    <extension-point id="dynamicModelProvider" name="Dynamic Model Provider" schema="schema/dynamicModelProvider.exsd"/>
    <extension-point id="serverCallObserver" name="Observer all calls to the server" schema="schema/serverCallObserver.exsd"/>
-   <extension-point id="webServerProvider" name="Web Server Provider" schema="schema/webServerProvider.exsd"/>   
+   <extension-point id="webServerProvider" name="Web Server Provider" schema="schema/webServerProvider.exsd"/>
+   <extension-point id="accessControl" name="Access Control Services" schema="schema/accessControl.exsd"/>
    <extension
          id="application"
          name="EMFStore server"

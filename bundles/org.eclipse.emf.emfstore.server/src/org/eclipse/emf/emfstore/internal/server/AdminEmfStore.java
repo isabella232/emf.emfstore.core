@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Wesendonk
  * Hodaie
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * AdminEmfStore offers an interface for administrating the users and their rights.
- * 
+ *
  * @author Hodaie
  * @author Wesendonk
  */
@@ -35,7 +35,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns a list of available project.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @return list of project infos
 	 * @throws ESException if any error in the EmfStore occurs
@@ -44,7 +44,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns all groups on the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @return list of groups
 	 * @throws ESException if any error in the EmfStore occurs
@@ -53,7 +53,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns all users on the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @return list of user
 	 * @throws ESException if any error in the EmfStore occurs
@@ -62,7 +62,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns all orgUnits on the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @return list of orgUnits
 	 * @throws ESException if any error in the EmfStore occurs
@@ -71,7 +71,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns an orgUnit with the specified orgUnitId.
-	 * 
+	 *
 	 * @param orgUnitId the orgUnitId
 	 * @param sessionId the session id for authentication
 	 * @return an orgUnit
@@ -81,7 +81,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Creates a group on the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param name the name for the group
 	 * @return ACOrgUnitId
@@ -91,7 +91,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Deletes a group on the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param group orgUnitId of the group
 	 * @throws ESException if any error in the EmfStore occurs
@@ -100,7 +100,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns a list of all groups in which the specified user is member of.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param user the users orgUnitId
 	 * @return a list of groups
@@ -110,7 +110,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Removes a user from a group.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param user the user's orgUnitId
 	 * @param group the group's orgUnitId
@@ -120,7 +120,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns all members from a group.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param groupId the group's orgUnitId
 	 * @return a list of orgUnits
@@ -130,7 +130,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Adds an orgUnit to a group.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param group the group's orgUnitId
 	 * @param member the members orgUnitId
@@ -140,7 +140,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Removes a orgUnit from a group.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param group the group's orgUnitId
 	 * @param member the members orgUnitId
@@ -150,7 +150,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Creates a user on the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param name the user's name
 	 * @return ACOrgUnitId the {@link ACOrgUnitId} of the created user
@@ -160,7 +160,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Deletes a user from the server.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param user the user's orgUnitId
 	 * @throws ESException if any error in the EmfStore occurs
@@ -169,7 +169,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Changes the orgUnit's name and description.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication.
 	 * @param orgUnitId the orgUnitId
 	 * @param name the new name
@@ -181,7 +181,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Changes the name and password of an {@link ACUser}.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication.
 	 * @param userId
@@ -196,7 +196,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns all orgUnits which are attached to the given project.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param projectId project's id
 	 * @return a list of orgUnits
@@ -206,7 +206,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Adds an organization unit to a project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the {@link SessionId} for authentication
 	 * @param projectId
@@ -222,7 +222,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Adds an organization unit to a project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the {@link SessionId} for authentication
 	 * @param projectId
@@ -239,7 +239,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Removes an orgUnits from a project.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param projectId the project's id
 	 * @param participant the orgUnit's id
@@ -249,7 +249,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Returns an orgUnit's role for a specified project.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param projectId the project's id
 	 * @param orgUnit the orgUnit's id
@@ -260,7 +260,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Changes the role for an orgUnit in a specified project.
-	 * 
+	 *
 	 * @param sessionId the session id for authentication
 	 * @param projectId the project's id
 	 * @param orgUnit the orgUnit
@@ -272,7 +272,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 
 	/**
 	 * Assigns a role for an orgUnit without a project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the {@link SessionId} for authentication
 	 * @param orgUnitId

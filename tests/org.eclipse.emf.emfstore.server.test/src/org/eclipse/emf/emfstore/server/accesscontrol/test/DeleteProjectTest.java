@@ -24,11 +24,11 @@ import org.eclipse.emf.emfstore.client.test.common.mocks.ConnectionMock;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -48,8 +48,8 @@ public class DeleteProjectTest extends ProjectAdminTest {
 	@BeforeClass
 	public static void beforeClass() {
 		startEMFStoreWithPAProperties(
-			PAPrivileges.ShareProject,
-			PAPrivileges.AssignRoleToOrgUnit);
+			ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit);
 	}
 
 	@AfterClass

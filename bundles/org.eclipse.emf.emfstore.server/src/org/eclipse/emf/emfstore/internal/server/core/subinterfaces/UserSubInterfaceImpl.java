@@ -5,12 +5,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core.subinterfaces;
 
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
@@ -19,18 +20,20 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * This subinterface implements all user related functionality.
- * 
+ *
  * @author wesendonk
  */
 public class UserSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface parent interface
 	 * @throws FatalESException in case of failure
 	 */
@@ -40,7 +43,7 @@ public class UserSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Resolves a given user ID to the an actual user instance.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session that is used to resolve the user
 	 * @param id
@@ -52,17 +55,15 @@ public class UserSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	public ACUser resolveUser(SessionId sessionId, ACOrgUnitId id) throws ESException {
 		sanityCheckObjects(sessionId);
 		synchronized (getMonitor()) {
-			final ACUser requestingUser = getAuthorizationControl().resolveUser(sessionId);
-			if (id == null) {
-				return requestingUser;
+			final AccessControl accessControl = getAccessControl();
+			final ACUser requestingUser = accessControl.getSessions().getRawUser(sessionId.toAPI());
+			final ESUser resolvedUser = accessControl.getOrgUnitResolverServive().resolve(id.toAPI());
+			final ACUser acUser = (ACUser) ESUserImpl.class.cast(resolvedUser).toInternalAPI();
+			if (requestingUser.getId().equals(acUser.getId())) {
+				return acUser;
 			}
-			final ACUser user = getAuthorizationControl().resolveUser(id);
-			if (requestingUser.getId().equals(user.getId())) {
-				return user;
-			}
-			getAuthorizationControl().checkServerAdminAccess(sessionId);
-			return user;
+			accessControl.getAuthorizationService().checkServerAdminAccess(sessionId.toAPI());
+			return acUser;
 		}
 	}
-
 }

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -42,10 +42,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 
 /**
  * XML RPC connection interface for emfstore.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcEmfStoreImpl implements EMFStore {
@@ -60,7 +61,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * Log in the given credentials.
-	 * 
+	 *
 	 * @param username
 	 *            the name of the user
 	 * @param password
@@ -71,22 +72,26 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 * @throws AccessControlException
 	 *             in case login fails
 	 */
+	@SuppressWarnings("restriction")
 	public AuthenticationInformation logIn(String username, String password, ClientVersionInfo clientVersionInfo)
 		throws AccessControlException {
-		return getAccessControl().logIn(username, password, clientVersionInfo);
+		final ESAuthenticationInformation authInfo = getAccessControl().getLoginService()
+			.logIn(username, password, clientVersionInfo.toAPI());
+		return org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl.class
+			.cast(authInfo).toInternalAPI();
 	}
 
 	/**
 	 * Logout the session with the given ID.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session to be logged out
-	 * 
+	 *
 	 * @throws AccessControlException
 	 *             in case logout fails
 	 */
 	public void logout(SessionId sessionId) throws AccessControlException {
-		getAccessControl().logout(sessionId);
+		getAccessControl().getLoginService().logout(sessionId.toAPI());
 	}
 
 	/**
@@ -155,7 +160,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
 	 */
 	public List<BranchInfo> getBranches(SessionId sessionId, ProjectId projectId) throws ESException {
@@ -253,7 +258,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#registerEPackage(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.ecore.EPackage)
 	 */
@@ -264,7 +269,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {

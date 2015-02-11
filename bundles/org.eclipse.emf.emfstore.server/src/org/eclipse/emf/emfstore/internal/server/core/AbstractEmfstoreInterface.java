@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -16,46 +16,45 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 
 /**
  * Super class of all EmfstoreInterfaces. Emfstore interfaces performs sanity checks, runs accesscontrol and then
  * delegates the method call to the relating subinterface which actually implements the functionality. Using
  * {@link InternalCommand} it is possible to access the interface without accesscontrol.
- * 
+ *
  * @see AbstractSubEmfstoreInterface
  * @see org.eclipse.emf.emfstore.internal.server.EMFStoreInterface
  * @author wesendon
  */
 public abstract class AbstractEmfstoreInterface {
 
-	private final AuthorizationControl authorizationControl;
 	private final HashMap<Class<? extends AbstractSubEmfstoreInterface>, AbstractSubEmfstoreInterface> subInterfaces;
 	private boolean accessControlDisabled;
 	private final ServerSpace serverSpace;
+	private final AccessControl accessControl;
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param serverSpace the server space
-	 * @param authorizationControl access control
+	 * @param accessControl access control
 	 * @throws FatalESException if initialization fails
 	 */
-	public AbstractEmfstoreInterface(ServerSpace serverSpace,
-		AuthorizationControl authorizationControl)
+	public AbstractEmfstoreInterface(ServerSpace serverSpace, AccessControl accessControl)
 		throws FatalESException {
-		this.serverSpace = serverSpace;
-		if (serverSpace == null || authorizationControl == null) {
+		if (serverSpace == null || accessControl == null) {
 			throw new FatalESException();
 		}
-		this.authorizationControl = authorizationControl;
+		this.serverSpace = serverSpace;
+		this.accessControl = accessControl;
 		accessControlDisabled = false;
 		subInterfaces = new LinkedHashMap<Class<? extends AbstractSubEmfstoreInterface>, AbstractSubEmfstoreInterface>();
 		initSubInterfaces();
@@ -67,7 +66,7 @@ public abstract class AbstractEmfstoreInterface {
 	/**
 	 * Implement this method in order to add subinterfaces. Therefor use the
 	 * {@link #addSubInterface(AbstractSubEmfstoreInterface)} method.
-	 * 
+	 *
 	 * @throws FatalESException in case of failure
 	 */
 	protected abstract void initSubInterfaces() throws FatalESException;
@@ -75,7 +74,7 @@ public abstract class AbstractEmfstoreInterface {
 	/**
 	 * Adds a subinterface to the parent interface. If the subinterface exists already, the present instance is
 	 * overwritten by the new one.
-	 * 
+	 *
 	 * @param subInterface the subinterface
 	 */
 	protected void addSubInterface(AbstractSubEmfstoreInterface subInterface) {
@@ -86,7 +85,7 @@ public abstract class AbstractEmfstoreInterface {
 
 	/**
 	 * Returns list of subinterfaces.
-	 * 
+	 *
 	 * @return list of subinterfaces
 	 */
 	protected HashMap<Class<? extends AbstractSubEmfstoreInterface>, AbstractSubEmfstoreInterface> getSubInterfaces() {
@@ -95,7 +94,7 @@ public abstract class AbstractEmfstoreInterface {
 
 	/**
 	 * Returns the requested subinterface if available.
-	 * 
+	 *
 	 * @param <T> subinterface type
 	 * @param clazz subinterface class type
 	 * @return subinterface
@@ -107,7 +106,7 @@ public abstract class AbstractEmfstoreInterface {
 
 	/**
 	 * Returns the serverspace. Please always use a monitor ({@link #getMonitor()}) when operating on the serverspace.
-	 * 
+	 *
 	 * @return serverspace
 	 */
 	protected ServerSpace getServerSpace() {
@@ -116,7 +115,7 @@ public abstract class AbstractEmfstoreInterface {
 
 	/**
 	 * Return a monitor object which should be used when operating on the serverspace.
-	 * 
+	 *
 	 * @return monitor object
 	 */
 	protected Object getMonitor() {
@@ -125,16 +124,16 @@ public abstract class AbstractEmfstoreInterface {
 
 	/**
 	 * Returns the authorizationControl.
-	 * 
+	 *
 	 * @return authorizationControl
 	 */
-	protected AuthorizationControl getAuthorizationControl() {
-		return authorizationControl;
+	protected AccessControl getAccessControl() {
+		return accessControl;
 	}
 
 	/**
 	 * Checks read access.
-	 * 
+	 *
 	 * @see AuthorizationControl#checkReadAccess(SessionId, ProjectId, Set)
 	 * @param sessionId sessionid
 	 * @param projectId project id
@@ -146,12 +145,15 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkReadAccess(sessionId, projectId, modelElements);
+		getAccessControl().getAuthorizationService().checkReadAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			modelElements);
 	}
 
 	/**
 	 * Checks write access.
-	 * 
+	 *
 	 * @see AuthorizationControl#checkWriteAccess(SessionId, ProjectId, Set)
 	 * @param sessionId sessionid
 	 * @param projectId project id
@@ -163,12 +165,15 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkWriteAccess(sessionId, projectId, modelElements);
+		getAccessControl().getAuthorizationService().checkWriteAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			modelElements);
 	}
 
 	/**
 	 * Checks project admin access.
-	 * 
+	 *
 	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
 	 * @param sessionId sessionid
 	 * @param projectId project id
@@ -176,17 +181,20 @@ public abstract class AbstractEmfstoreInterface {
 	 * @throws AccessControlException access exception
 	 */
 	protected synchronized void checkProjectAdminAccess(SessionId sessionId, ProjectId projectId,
-		PAPrivileges privilege)
-		throws AccessControlException {
+		ESProjectAdminPrivileges privilege)
+			throws AccessControlException {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId, privilege);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			privilege);
 	}
 
 	/**
 	 * Checks project admin access.
-	 * 
+	 *
 	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
 	 * @param sessionId sessionid
 	 * @param projectId project id
@@ -197,12 +205,14 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI());
 	}
 
 	/**
 	 * Checks server admin access.
-	 * 
+	 *
 	 * @see AuthorizationControl#checkServerAdminAccess(SessionId)
 	 * @param sessionId sessionid
 	 * @throws AccessControlException access exception
@@ -211,7 +221,7 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkServerAdminAccess(sessionId);
+		getAccessControl().getAuthorizationService().checkServerAdminAccess(sessionId.toAPI());
 	}
 
 	/**
@@ -219,7 +229,7 @@ public abstract class AbstractEmfstoreInterface {
 	 * same order as the input. This allows you to check attributes as well. E.g.: <code>sanityCheckObjects(element,
 	 * element.getAttribute())</code>. Due to the order, it is important to enter the element BEFORE the attribute,
 	 * otherwise a NPE would occur, if the element would be null.
-	 * 
+	 *
 	 * @param objects objects to check
 	 * @throws InvalidInputException is thrown if the check fails
 	 */
@@ -232,7 +242,7 @@ public abstract class AbstractEmfstoreInterface {
 	/**
 	 * Checks whether a given object is null. Further sanity checks could be added. <strong>Note:</strong> Maybe we
 	 * should use specialized sanity checks for EObjects or other types.
-	 * 
+	 *
 	 * @param object object to check
 	 * @throws InvalidInputException is thrown if the check fails
 	 */
@@ -244,7 +254,7 @@ public abstract class AbstractEmfstoreInterface {
 
 	/**
 	 * Runs an internal command, in order to avoid accesscontrol.
-	 * 
+	 *
 	 * @param command internal command
 	 */
 	public synchronized void runCommand(InternalCommand<? extends AbstractEmfstoreInterface> command) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.impl;
@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESRoleImpl;
+import org.eclipse.emf.emfstore.server.model.ESRole;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Role</b></em>'. <!-- end-user-doc -->
@@ -33,14 +35,20 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class RoleImpl extends EObjectImpl implements Role {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESRoleImpl apiImpl;
+
 	/**
 	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjects()
 	 * @generated
 	 * @ordered
@@ -49,7 +57,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected RoleImpl() {
@@ -58,7 +66,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,7 +77,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	// begin of custom code
 	/**
 	 * <!-- begin-user-doc --> Get all projects of the role.
-	 * 
+	 *
 	 * @return a list of project ids <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -94,7 +102,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	/**
 	 * <!-- begin-user-doc --> Determines if the role can administrate the
 	 * project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the project id
 	 * @return true if the role can <!-- end-user-doc --> {@inheritDoc}
@@ -107,7 +115,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#canCreate(org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
@@ -118,7 +126,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#canDelete(org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
@@ -129,7 +137,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#canModify(org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
@@ -140,7 +148,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#canRead(org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
@@ -153,7 +161,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -168,7 +176,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.impl.BasicEObjectImpl#eGet(int, boolean, boolean)
 	 * @generated
 	 */
@@ -184,7 +192,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -202,7 +210,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -218,7 +226,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -233,7 +241,7 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 
 	/**
 	 * Checks whether the role is connected to a project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the project
 	 * @return true or false
@@ -241,6 +249,31 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 */
 	protected boolean isMyProject(ProjectId projectId) {
 		return getProjects().contains(projectId);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESRole toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESRoleImpl createAPI() {
+		return new ESRoleImpl(this);
 	}
 
 } // RoleImpl

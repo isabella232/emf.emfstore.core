@@ -5,30 +5,34 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
+import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Client Version Info</b></em>'. <!--
- * end-user-doc -->
- * 
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion <em>Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getName <em>Name</em>}</li>
- * </ul>
- * </p>
- * 
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Client Version Info</b></em>'.
+ *
+ * @extends APIDelegate<ESClientVersionInfo>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion <em>Version</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getName <em>Name</em>}</li>
+ *          </ul>
+ *          </p>
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getClientVersionInfo()
  * @model
  * @generated
  */
-public interface ClientVersionInfo extends EObject {
+public interface ClientVersionInfo extends EObject, APIDelegate<ESClientVersionInfo> {
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -37,7 +41,7 @@ public interface ClientVersionInfo extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see ModelPackage#getClientVersionInfo_Version()
@@ -50,7 +54,7 @@ public interface ClientVersionInfo extends EObject {
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion
 	 * <em>Version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Version</em>' attribute.
 	 * @see #getVersion()
@@ -65,7 +69,7 @@ public interface ClientVersionInfo extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see ModelPackage#getClientVersionInfo_Name()
@@ -78,7 +82,7 @@ public interface ClientVersionInfo extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getName
 	 * <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated

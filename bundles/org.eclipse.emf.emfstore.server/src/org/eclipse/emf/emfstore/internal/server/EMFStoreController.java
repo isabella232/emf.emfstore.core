@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Maximilian Koegel - initial API and implementation
  * Johannes Faltermeier - URI related refactorings
@@ -41,7 +41,6 @@ import org.eclipse.emf.emfstore.common.extensionpoint.ESPriorityComparator;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControlImpl;
 import org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.XmlRpcAdminConnectionHandler;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.XmlRpcConnectionHandler;
@@ -52,6 +51,7 @@ import org.eclipse.emf.emfstore.internal.server.core.helper.EPackageHelper;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
+import org.eclipse.emf.emfstore.internal.server.impl.api.ESOrgUnitProviderImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
@@ -75,7 +75,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 /**
  * The {@link EMFStoreController} is controlling startup and shutdown of the
  * EmfStore.
- * 
+ *
  * @author koegel
  * @author wesendonk
  * @author jfaltermeier
@@ -105,14 +105,14 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	private EMFStore emfStore;
 	private AdminEmfStore adminEmfStore;
-	private AccessControlImpl accessControl;
+	private AccessControl accessControl;
 	private Set<ConnectionHandler<? extends EMFStoreInterface>> connectionHandlers;
 	private ServerSpace serverSpace;
 	private Resource resource;
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
 	 */
 	public synchronized Object start(IApplicationContext context) throws FatalESException {
@@ -124,7 +124,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Run the server.
-	 * 
+	 *
 	 * @param waitForTermination
 	 *            true if the server should force the calling thread to wait for
 	 *            its termination
@@ -162,6 +162,7 @@ public class EMFStoreController implements IApplication, Runnable {
 		handleStartupListener();
 
 		accessControl = initAccessControl(serverSpace);
+		// TODO: ugly
 		emfStore = EMFStoreImpl.createInterface(serverSpace, accessControl);
 		adminEmfStore = new AdminEmfStoreImpl(serverSpace, serverSpace, accessControl);
 
@@ -238,19 +239,19 @@ public class EMFStoreController implements IApplication, Runnable {
 		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new
 			ILogListener() {
 
-				public void logging(IStatus status, String plugin) {
-					if (status.getSeverity() == IStatus.INFO) {
-						System.out.println(status.getMessage());
-					} else if (!status.isOK()) {
-						System.err.println(status.getMessage());
-						final Throwable exception = status.getException();
-						if (exception != null) {
-							exception.printStackTrace(System.err);
-						}
+			public void logging(IStatus status, String plugin) {
+				if (status.getSeverity() == IStatus.INFO) {
+					System.out.println(status.getMessage());
+				} else if (!status.isOK()) {
+					System.err.println(status.getMessage());
+					final Throwable exception = status.getException();
+					if (exception != null) {
+						exception.printStackTrace(System.err);
 					}
 				}
+			}
 
-			});
+		});
 	}
 
 	private void handleStartupListener() {
@@ -295,7 +296,7 @@ public class EMFStoreController implements IApplication, Runnable {
 					try {
 						FileUtil.copyFile(new URL("platform:/plugin/" //$NON-NLS-1$
 							+ element.getIConfigurationElement().getNamespaceIdentifier() + "/" + attribute) //$NON-NLS-1$
-							.openConnection().getInputStream(), targetFile);
+						.openConnection().getInputStream(), targetFile);
 						return;
 					} catch (final IOException e) {
 						ModelUtil.logWarning(
@@ -414,19 +415,20 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Return the singleton instance of EmfStoreControler.
-	 * 
+	 *
 	 * @return the instance
 	 */
 	public static EMFStoreController getInstance() {
 		return instance;
 	}
 
-	private AccessControlImpl initAccessControl(ServerSpace serverSpace) throws FatalESException {
+	private static synchronized AccessControl initAccessControl(ServerSpace serverSpace) throws FatalESException {
 		setSuperUser(serverSpace);
-		return new AccessControlImpl(serverSpace);
+		// TODO: extract into extension point
+		return new AccessControl(new ESOrgUnitProviderImpl(serverSpace));
 	}
 
-	private void setSuperUser(ServerSpace serverSpace) throws FatalESException {
+	private static void setSuperUser(ServerSpace serverSpace) throws FatalESException {
 		final String superuser = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER,
 			ServerConfiguration.SUPER_USER_DEFAULT);
 		for (final ACUser user : serverSpace.getUsers()) {
@@ -502,7 +504,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Shutdown EmfStore due to an fatal exception.
-	 * 
+	 *
 	 * @param exception
 	 *            the fatal exception that triggered the shutdown
 	 */
@@ -558,7 +560,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
@@ -571,7 +573,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Starts the server in a new thread.
-	 * 
+	 *
 	 * @return an controller for the running EMFStore
 	 * @throws FatalESException
 	 *             in case of failure
@@ -590,7 +592,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Returns the {@link ServerSpace}.
-	 * 
+	 *
 	 * @return the server space
 	 */
 	public ServerSpace getServerSpace() {
@@ -599,7 +601,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Returns the {@link AccessControl} component of the EMFStore controller.
-	 * 
+	 *
 	 * @return the {@link AccessControl} component
 	 */
 	public AccessControl getAccessControl() {
@@ -608,7 +610,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.equinox.app.IApplication#stop()
 	 */
 	public void stop() {

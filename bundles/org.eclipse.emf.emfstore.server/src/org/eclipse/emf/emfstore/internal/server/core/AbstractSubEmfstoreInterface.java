@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * shouldn't be accessed without the corresponding main interface, because they rely on the sanity checks of the main
  * interfaces. The idea behind subinterfaces is to divide an emfstore interface into logical pieces and to avoid huge
  * classes.
- * 
+ *
  * @author wesendon
  */
 public abstract class AbstractSubEmfstoreInterface {
@@ -42,7 +42,7 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface parentInterface
 	 * @throws FatalESException if parent interface is null
 	 */
@@ -55,7 +55,7 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * This method is called after the initialisation of the parent interface.
-	 * 
+	 *
 	 * @throws FatalESException exception
 	 */
 	protected void initSubInterface() throws FatalESException {
@@ -64,7 +64,7 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the ResourceHelper.
-	 * 
+	 *
 	 * @return resourceHelper
 	 */
 	public ResourceHelper getResourceHelper() {
@@ -73,7 +73,7 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * Saves an eObject.
-	 * 
+	 *
 	 * @param eObject
 	 *            the object
 	 * @throws FatalESException in case of failure
@@ -84,7 +84,7 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the serverspace. Please always use a monitor ({@link #getMonitor()}) when operating on the serverspace.
-	 * 
+	 *
 	 * @return serverspace
 	 */
 	protected ServerSpace getServerSpace() {
@@ -93,7 +93,7 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * Return a monitor object which should be used when operating on the serverspace.
-	 * 
+	 *
 	 * @return monitor object
 	 */
 	protected Object getMonitor() {
@@ -102,17 +102,17 @@ public abstract class AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the authorizationControl.
-	 * 
+	 *
 	 * @return authorizationControl
 	 */
-	protected AuthorizationControl getAuthorizationControl() {
-		return parentInterface.getAuthorizationControl();
+	protected AccessControl getAccessControl() {
+		return parentInterface.getAccessControl();
 	}
 
 	/**
 	 * This method gets a subinterface from the parent interface. Can be used if you need some functionality from
 	 * another subinterface.
-	 * 
+	 *
 	 * @param <T> subinterface type
 	 * @param clazz class of subinterface
 	 * @return subinterface
@@ -124,7 +124,7 @@ public abstract class AbstractSubEmfstoreInterface {
 	/**
 	 * Executes the given method. This will check if the method need the session id as first parameter and invoke the
 	 * method with the correct parameters.
-	 * 
+	 *
 	 * @param method the method to invoke
 	 * @param args parameters
 	 * @return result of the operation
@@ -165,7 +165,7 @@ public abstract class AbstractSubEmfstoreInterface {
 	 * same order as the input. This allows you to check attributes as well. E.g.: <code>sanityCheckObjects(element,
 	 * element.getAttribute())</code>. Due to the order, it is important to enter the element BEFORE the attribute,
 	 * otherwise a NPE would occur, if the element would be null.
-	 * 
+	 *
 	 * @param objects objects to check
 	 * @throws InvalidInputException is thrown if the check fails
 	 */
@@ -178,7 +178,7 @@ public abstract class AbstractSubEmfstoreInterface {
 	/**
 	 * Checks whether a given object is null. Further sanity checks could be added. <strong>Note:</strong> Maybe we
 	 * should use specialized sanity checks for EObjects or other types.
-	 * 
+	 *
 	 * @param object object to check
 	 * @throws InvalidInputException is thrown if the check fails
 	 */

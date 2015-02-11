@@ -5,34 +5,40 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Org Unit</b></em>'. <!-- end-user-doc -->
- * 
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getRoles <em>Roles</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>Description
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getProperties <em>Properties</em>}</li>
- * </ul>
- * </p>
- * 
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Org Unit</b></em>'.
+ *
+ * @extends APIDelegate<ESOrgUnit>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getName <em>Name</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getRoles <em>Roles</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>
+ *          Description </em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getProperties <em>
+ *          Properties</em>}</li>
+ *          </ul>
+ *          </p>
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit()
  * @model
  * @generated
  */
-public interface ACOrgUnit extends IdentifiableElement {
+public interface ACOrgUnit<E extends ESOrgUnit> extends IdentifiableElement, APIDelegate<E> {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -40,7 +46,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit_Name()
@@ -53,7 +59,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getName
 	 * <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -69,7 +75,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Roles</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit_Roles()
 	 * @model containment="true" resolveProxies="true"
@@ -83,7 +89,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * If the meaning of the '<em>Id</em>' reference isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -97,7 +103,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit_Description()
@@ -112,7 +118,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Description</em>' attribute.
 	 * @see #getDescription()
 	 * @generated
@@ -129,7 +135,7 @@ public interface ACOrgUnit extends IdentifiableElement {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Properties</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit_Properties()
 	 * @model containment="true" resolveProxies="true"

@@ -1,62 +1,65 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - refactorings and singleton access
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.factory;
+package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication;
 
 import java.util.Properties;
 
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.EMFModelAuthenticationVerifier;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.LDAPVerifier;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.SimplePropertyFileVerifier;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.VerifierChain;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.EMFModelUserVerifier;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.LDAPUserVerifier;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.SimplePropertyFileUserVerifier;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.UserVerifierChain;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidPropertyException;
+import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
+import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
  * Default authentication control factory.
- * 
+ *
  * @author wesendon
  */
-public final class AuthenticationControlFactoryImpl implements AuthenticationControlFactory {
+public final class ESUserVerifierFactory {
 
-	private static AuthenticationControlFactory instance = new AuthenticationControlFactoryImpl();
+	private static ESUserVerifierFactory instance = new ESUserVerifierFactory();
 
-	private AuthenticationControlFactoryImpl() {
+	private ESUserVerifierFactory() {
 		// private ctor
 	}
 
 	/**
 	 * The singleton instance.
-	 * 
+	 *
 	 * @return the singleton instance
 	 */
-	public static AuthenticationControlFactory getInstance() {
+	public static ESUserVerifierFactory getInstance() {
 		return instance;
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.factory.AuthenticationControlFactory#createAuthenticationControl(org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType)
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.ESUserVerifierFactory#createUserVerifier(org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType,
+	 *      org.eclipse.emf.emfstore.server.auth.ESUserProvider)
 	 */
-	public AbstractAuthenticationControl createAuthenticationControl(AuthenticationControlType authenticationControlType)
-		throws FatalESException {
+	public ESUserVerifier createUserVerifier(
+		ESAuthenticationControlType authenticationControlType, ESOrgUnitProvider orgUnitProvider)
+			throws FatalESException {
 
-		if (authenticationControlType.equals(AuthenticationControlType.ldap)) {
-			final VerifierChain chain = new VerifierChain();
+		if (authenticationControlType.equals(ESAuthenticationControlType.ldap)) {
+			final UserVerifierChain chain = new UserVerifierChain(orgUnitProvider);
 			final Properties properties = ServerConfiguration.getProperties();
 			int count = 1;
 			while (count != -1) {
@@ -77,7 +80,11 @@ public final class AuthenticationControlFactoryImpl implements AuthenticationCon
 					+ count + "." + ServerConfiguration.AUTHENTICATION_LDAP_AUTHPASS);
 
 				if (ldapUrl != null && ldapBase != null && searchDn != null) {
-					final LDAPVerifier ldapVerifier = new LDAPVerifier(ldapUrl, ldapBase, searchDn, authUser,
+					final LDAPUserVerifier ldapVerifier = new LDAPUserVerifier(orgUnitProvider,
+						ldapUrl,
+						ldapBase,
+						searchDn,
+						authUser,
 						authPassword);
 					chain.getVerifiers().add(ldapVerifier);
 					count++;
@@ -88,13 +95,14 @@ public final class AuthenticationControlFactoryImpl implements AuthenticationCon
 
 			return chain;
 
-		} else if (authenticationControlType.equals(AuthenticationControlType.spfv)) {
+		} else if (authenticationControlType.equals(ESAuthenticationControlType.spfv)) {
 
-			return new SimplePropertyFileVerifier(ServerConfiguration.getProperties().getProperty(
-				ServerConfiguration.AUTHENTICATION_SPFV_FILEPATH, ServerConfiguration.getDefaultSPFVFilePath()));
+			return new SimplePropertyFileUserVerifier(orgUnitProvider, ServerConfiguration.getProperties()
+				.getProperty(
+					ServerConfiguration.AUTHENTICATION_SPFV_FILEPATH, ServerConfiguration.getDefaultSPFVFilePath()));
 
-		} else if (authenticationControlType.equals(AuthenticationControlType.model)) {
-			return new EMFModelAuthenticationVerifier();
+		} else if (authenticationControlType.equals(ESAuthenticationControlType.model)) {
+			return new EMFModelUserVerifier(orgUnitProvider);
 
 		} else {
 			throw new InvalidPropertyException();
