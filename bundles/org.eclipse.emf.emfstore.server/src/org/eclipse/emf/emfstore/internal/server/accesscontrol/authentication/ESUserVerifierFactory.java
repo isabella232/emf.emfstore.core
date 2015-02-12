@@ -48,15 +48,18 @@ public final class ESUserVerifierFactory {
 	}
 
 	/**
+	 * Creates an {@link ESUserVerifier} based on the given {@link ESAuthenticationControlType}.
 	 *
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.ESUserVerifierFactory#createUserVerifier(org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType,
-	 *      org.eclipse.emf.emfstore.server.auth.ESUserProvider)
+	 * @param authenticationControlType
+	 *            the requested type of {@link ESUserVerifier}
+	 * @param orgUnitProvider
+	 *            provides access to users and groups if necessary
+	 * @return the requested {@link ESUserVerifier}
+	 * @throws FatalESException in case no fitting {@link ESUserVerifier} can be found or the initialization fails
 	 */
 	public ESUserVerifier createUserVerifier(
 		ESAuthenticationControlType authenticationControlType, ESOrgUnitProvider orgUnitProvider)
-			throws FatalESException {
+		throws FatalESException {
 
 		if (authenticationControlType.equals(ESAuthenticationControlType.ldap)) {
 			final UserVerifierChain chain = new UserVerifierChain(orgUnitProvider);
@@ -64,20 +67,20 @@ public final class ESUserVerifierFactory {
 			int count = 1;
 			while (count != -1) {
 
-				final String ldapUrl = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "."
+				final String ldapUrl = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "." //$NON-NLS-1$
 					+ count
-					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_URL);
-				final String ldapBase = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "."
+					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_URL); //$NON-NLS-1$
+				final String ldapBase = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "." //$NON-NLS-1$
 					+ count
-					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_BASE);
-				final String searchDn = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "."
+					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_BASE); //$NON-NLS-1$
+				final String searchDn = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "." //$NON-NLS-1$
 					+ count
-					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_SEARCHDN);
-				final String authUser = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "."
+					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_SEARCHDN); //$NON-NLS-1$
+				final String authUser = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "." //$NON-NLS-1$
 					+ count
-					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_AUTHUSER);
-				final String authPassword = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "."
-					+ count + "." + ServerConfiguration.AUTHENTICATION_LDAP_AUTHPASS);
+					+ "." + ServerConfiguration.AUTHENTICATION_LDAP_AUTHUSER); //$NON-NLS-1$
+				final String authPassword = properties.getProperty(ServerConfiguration.AUTHENTICATION_LDAP_PREFIX + "." //$NON-NLS-1$
+					+ count + "." + ServerConfiguration.AUTHENTICATION_LDAP_AUTHPASS); //$NON-NLS-1$
 
 				if (ldapUrl != null && ldapBase != null && searchDn != null) {
 					final LDAPUserVerifier ldapVerifier = new LDAPUserVerifier(orgUnitProvider,

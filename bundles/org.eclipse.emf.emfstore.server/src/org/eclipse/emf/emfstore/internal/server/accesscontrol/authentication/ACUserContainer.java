@@ -75,7 +75,7 @@ public class ACUserContainer {
 		 * Integer.parseInt(property)
 		 */) {
 			// OW: delete from map
-			throw new SessionTimedOutException("Usersession timed out.");
+			throw new SessionTimedOutException(Messages.ACUserContainer_Session_Timed_Out);
 		}
 	}
 

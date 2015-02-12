@@ -25,8 +25,6 @@ import javax.naming.directory.SearchResult;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.connection.ServerKeyStoreManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
-import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
-import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
@@ -48,7 +46,10 @@ public class LDAPUserVerifier extends UserVerifier {
 	/**
 	 * Default constructor.
 	 *
-	 * @param ldapUrl url, if url starts with ldaps:// SSL is used.
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 * @param ldapUrl
+	 *            URL, if URLstarts with ldaps:// SSL is used.
 	 * @param ldapBase base
 	 * @param searchDn dn
 	 * @param authUser user to allow access to server
@@ -72,8 +73,8 @@ public class LDAPUserVerifier extends UserVerifier {
 
 	/**
 	 * This method must be implemented by subclasses in order to verify a pair of username and password.
-	 * When using authentication you should use {@link ESUserVerifier#logIn(String, String, ESClientVersionInfo)} in
-	 * order to gain a session id.
+	 * When using authentication you should use {@link org.eclipse.emf.emfstore.server.auth.ESUserVerifier
+	 * ESUserVerifier#verifyUser(String, String, ESClientVersionInfo)} in order to gain a session id.
 	 *
 	 * @param username
 	 *            the user name as entered by the client; may differ from the user name of the {@code resolvedUser}
@@ -83,7 +84,6 @@ public class LDAPUserVerifier extends UserVerifier {
 	 * @throws AccessControlException
 	 *             if an exception occurs during the verification process
 	 */
-	// TODO: introduce common interface verifying passwords
 	@Override
 	public boolean verifyPassword(String username, String password) throws AccessControlException {
 		DirContext dirContext = null;

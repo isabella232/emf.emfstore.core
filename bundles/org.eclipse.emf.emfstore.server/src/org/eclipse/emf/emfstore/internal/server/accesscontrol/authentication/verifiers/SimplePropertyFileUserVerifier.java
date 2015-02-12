@@ -19,12 +19,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.SimplePropertyFileUserVerifier.Hash;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
-import org.eclipse.emf.emfstore.server.model.ESSessionId;
-import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * This verifier can be used to store user and passwords in a property file. Entries in the property file look should
@@ -55,32 +52,38 @@ public class SimplePropertyFileUserVerifier extends UserVerifier {
 	/**
 	 * Default constructor. No hash will be used for passwords
 	 *
-	 * @see #SimplePropertyFileUserVerifier(String, Hash)
-	 * @param filePath path to password file
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 * @param propertyFilePath
+	 *            path to file
 	 * @throws FatalESException in case of failure
 	 */
-	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String filePath) throws FatalESException {
-		this(orgUnitProvider, filePath, Hash.NONE);
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String propertyFilePath) throws FatalESException {
+		this(orgUnitProvider, propertyFilePath, Hash.NONE);
 	}
 
 	/**
 	 * Constructor with ability to select hash algorithm for password.
 	 *
-	 * @param filePath path to file
-	 * @param hash selected hash
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 * @param propertyFilePath
+	 *            path to file
+	 * @param hash
+	 *            selected hash
 	 * @throws FatalESException if hash is null
 	 */
-	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String filePath, Hash hash)
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String propertyFilePath, Hash hash)
 		throws FatalESException {
 		super(orgUnitProvider);
-		this.filePath = filePath;
+		filePath = propertyFilePath;
 		if (hash == null) {
 			throw new FatalESException(Messages.SimplePropertyFileVerifier_HashMayNotBeNull);
 		}
 		this.hash = hash;
 
 		passwordFile = new Properties();
-		loadPasswordFile(filePath);
+		loadPasswordFile(propertyFilePath);
 	}
 
 	private void loadPasswordFile(String filePath) {
@@ -146,36 +149,6 @@ public class SimplePropertyFileUserVerifier extends UserVerifier {
 		} catch (final NoSuchAlgorithmException e) {
 		}
 
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#resolve(org.eclipse.emf.emfstore.server.model.ESSessionId)
-	 */
-	public ESUser resolve(ESSessionId api) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#isValid(org.eclipse.emf.emfstore.server.model.ESSessionId)
-	 */
-	public boolean isValid(ESSessionId sessionId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#getUser(org.eclipse.emf.emfstore.server.model.ESSessionId)
-	 */
-	public ESUser getUser(ESSessionId sessionId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

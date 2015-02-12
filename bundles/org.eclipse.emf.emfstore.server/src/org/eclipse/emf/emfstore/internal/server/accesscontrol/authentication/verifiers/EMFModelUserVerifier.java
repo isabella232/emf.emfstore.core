@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -22,8 +22,14 @@ import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
  */
 public class EMFModelUserVerifier extends UserVerifier {
 
-	public EMFModelUserVerifier(ESOrgUnitProvider userProvider) {
-		super(userProvider);
+	/**
+	 * Constructor.
+	 *
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 */
+	public EMFModelUserVerifier(ESOrgUnitProvider orgUnitProvider) {
+		super(orgUnitProvider);
 	}
 
 	/**
