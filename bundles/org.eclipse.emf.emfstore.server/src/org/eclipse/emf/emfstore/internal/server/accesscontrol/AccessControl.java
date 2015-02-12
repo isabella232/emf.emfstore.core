@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,26 +7,30 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.accesscontrol;
 
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESOrgUnitProviderImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
+import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
- * @author Edgar
+ * Access control class holding references to the customizable access control related services.
+ *
+ * @author emueller
  *
  */
 public class AccessControl {
 
-	private static final String ACCESSCONTROL_EXTENSION_ID = "org.eclipse.emf.emfstore.server.accessControl";
+	private static final String ACCESSCONTROL_EXTENSION_ID = "org.eclipse.emf.emfstore.server.accessControl"; //$NON-NLS-1$
 
 	private final ESOrgUnitProvider orgUnitProvider;
 
@@ -39,6 +43,8 @@ public class AccessControl {
 
 	private final ServerSpace serverSpace;
 
+	private ESAuthenticationControlType authenticationControlType;
+
 	public AccessControl(ServerSpace serverSpace) {
 		this.serverSpace = serverSpace;
 		sessions = new Sessions();
@@ -46,7 +52,37 @@ public class AccessControl {
 		orgUnitProvider = initOrgUnitProviderService();
 		orgUnitResolver = initOrgUnitResolverService();
 		authorizationService = initAuthorizationService();
-		loginService = new LoginService(sessions, orgUnitProvider,
+		loginService = initLoginService();
+	}
+
+	public AccessControl(
+		ESAuthenticationControlType authenticationControlType,
+		ServerSpace serverSpace) {
+
+		this.authenticationControlType = authenticationControlType;
+		this.serverSpace = serverSpace;
+		sessions = new Sessions();
+
+		orgUnitProvider = initOrgUnitProviderService();
+		orgUnitResolver = initOrgUnitResolverService();
+		authorizationService = initAuthorizationService();
+		loginService = initLoginService();
+	}
+
+	/**
+	 * @return
+	 */
+	private LoginService initLoginService() {
+
+		if (authenticationControlType == null) {
+			final String[] splittedProperty = ServerConfiguration
+				.getSplittedProperty(ServerConfiguration.AUTHENTICATION_POLICY);
+			authenticationControlType = ESAuthenticationControlType.valueOf(splittedProperty[0]);
+		}
+		return new LoginService(
+			authenticationControlType,
+			sessions,
+			orgUnitProvider,
 			getOrgUnitResolverServive());
 	}
 

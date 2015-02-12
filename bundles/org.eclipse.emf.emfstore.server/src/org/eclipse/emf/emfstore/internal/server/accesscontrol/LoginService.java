@@ -14,7 +14,6 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.ESUserVerifierFactory;
 import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
@@ -44,6 +43,7 @@ public class LoginService {
 	private final Sessions sessions;
 	private final ESOrgUnitResolver orgUnitResolver;
 	private final ESOrgUnitProvider orgUnitProvider;
+	private final ESAuthenticationControlType authenticationControlType;
 
 	/**
 	 * Constructor.
@@ -57,10 +57,13 @@ public class LoginService {
 	 * @param orgUnitResolver
 	 *            an {@link ESOrgUnitResolver} for resolving any roles and groups on a given organizational unit
 	 */
-	public LoginService(Sessions sessions,
+	public LoginService(
+		ESAuthenticationControlType authenticationControlType,
+		Sessions sessions,
 		ESOrgUnitProvider orgUnitProvider,
 		ESOrgUnitResolver orgUnitResolver) {
 
+		this.authenticationControlType = authenticationControlType;
 		this.sessions = sessions;
 		this.orgUnitProvider = orgUnitProvider;
 		this.orgUnitResolver = orgUnitResolver;
@@ -74,10 +77,9 @@ public class LoginService {
 				return new ESExtensionPoint(USER_VERIFIER_EXTENSION_ID, true).getClass(
 					"providerClass", ESUserVerifier.class); //$NON-NLS-1$
 			}
-			final String[] splittedProperty = ServerConfiguration
-				.getSplittedProperty(ServerConfiguration.AUTHENTICATION_POLICY);
+
 			return ESUserVerifierFactory.getInstance().createUserVerifier(
-				ESAuthenticationControlType.valueOf(splittedProperty[0]),
+				authenticationControlType,
 				orgUnitProvider);
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom Access Control could not be initialized";

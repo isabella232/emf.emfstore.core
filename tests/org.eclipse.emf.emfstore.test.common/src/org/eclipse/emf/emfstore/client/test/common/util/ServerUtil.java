@@ -62,6 +62,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesFactory;
 import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.osgi.framework.FrameworkUtil;
 
@@ -161,12 +162,9 @@ public final class ServerUtil {
 
 		ServerConfiguration.setProperties(initProperties(properties));
 		setSuperUser(daoFacadeMock);
-		final AccessControl accessControl = new AccessControl(serverSpace);
-
-		// accessControl.setAuthenticationControl(ESUserVerifierFactory.INSTANCE
-		// .createAuthenticationControl(ESAuthenticationControlType.model, orgUnitProviderImpl));
-
-		// AdminConnectionManagerMock adminConnectionManagerMock = new AdminConnectionManagerMock(accessControl);
+		final AccessControl accessControl = new AccessControl(
+			ESAuthenticationControlType.model,
+			serverSpace);
 
 		final EMFStore emfStore = EMFStoreImpl.createInterface(serverSpace, accessControl);
 		ESWorkspaceProviderImpl.getInstance().setConnectionManager(

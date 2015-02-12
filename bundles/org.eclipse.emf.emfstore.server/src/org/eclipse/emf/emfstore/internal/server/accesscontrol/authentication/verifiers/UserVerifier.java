@@ -60,9 +60,9 @@ public abstract class UserVerifier extends PasswordVerifier {
 		ESClientVersionInfo clientVersionInfo) throws AccessControlException {
 
 		checkClientVersion(clientVersionInfo);
-		password = preparePassword(password);
+		final String preparedPassword = preparePassword(password);
 
-		if (verifySuperUser(username, password) || verifyPassword(username, password)) {
+		if (verifySuperUser(username, preparedPassword) || verifyPassword(username, preparedPassword)) {
 			final AuthenticationInformation createAuthenticationInfo = createAuthenticationInfo();
 			createAuthenticationInfo.setResolvedACUser(findUser(username));
 			return createAuthenticationInfo.toAPI();
