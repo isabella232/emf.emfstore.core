@@ -3,7 +3,7 @@
     <resource path="META-INF/MANIFEST.MF">
         <filter comment="internal plugin for testing purposes only" id="924844039">
             <message_arguments>
-                <message_argument value="1.4.1"/>
+                <message_argument value="1.5.0"/>
                 <message_argument value="1.4.0"/>
             </message_arguments>
         </filter>

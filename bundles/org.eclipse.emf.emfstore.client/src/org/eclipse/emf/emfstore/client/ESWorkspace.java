@@ -66,7 +66,7 @@ public interface ESWorkspace {
 	 * @since 1.5
 	 *
 	 */
-	// FIXME: breaks API in 1.4.1
+	// FIXME: breaks API in 1.5.0
 	// Set<ESLocalProject> getLocalProjectByName(String projectName);
 
 	/**
