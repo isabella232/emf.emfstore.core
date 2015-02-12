@@ -59,12 +59,12 @@ public class EMFStoreWebServer extends WebServer {
 	 */
 	@Override
 	protected boolean allowConnection(Socket socket) {
-		if (SSLSocket.class.isInstance(socket)) {
+		final String[] validCiphers = ServerConfiguration.getSplittedProperty(
+			ServerConfiguration.SSL_CIPHERS);
+
+		if (SSLSocket.class.isInstance(socket) && validCiphers != null) {
 			final SSLSocket ss = (SSLSocket) socket;
-			if (validCiphers != null) {
-				ss.setEnabledCipherSuites(validCiphers);
-			}
-			ss.setEnabledProtocols(new String[] { "TLSv1" }); //$NON-NLS-1$
+			ss.setEnabledCipherSuites(validCiphers);
 		}
 
 		return super.allowConnection(socket);
