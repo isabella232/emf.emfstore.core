@@ -65,6 +65,7 @@ import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.Attribute
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterELong;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEShort;
 import org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute.AttributeSetterEString;
+import org.eclipse.emf.emfstore.internal.modelmutator.mutation.EMFCycleDetector;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates;
 
 import com.google.common.base.Predicate;
@@ -781,11 +782,6 @@ public final class ESModelMutatorUtil {
 		return eStructuralFeatures;
 	}
 
-	class Pair {
-		public EStructuralFeature feature;
-		public EObject value;
-	}
-
 	/**
 	 * @param random
 	 * @param uninitializedFeatureMapEntries
@@ -883,7 +879,7 @@ public final class ESModelMutatorUtil {
 		}
 	}
 
-	public EObject createOfType(EClass eClass) {
+	private EObject createOfType(EClass eClass) {
 		final EObject eObjectToAdd = EcoreUtil.create(eClass);
 		setEObjectAttributes(eObjectToAdd);
 		return eObjectToAdd;
@@ -1101,7 +1097,7 @@ public final class ESModelMutatorUtil {
 						// if the reference is ordered, do not use an index
 						final Integer newIndex = reference.isOrdered() ? null : random.nextInt(size);
 						final EObject target = possibleReferenceObjects.get(index);
-						if (!Loop.wouldBeCycle(config.getRootEObject(), eObject, target)) {
+						if (!EMFCycleDetector.wouldBeCycle(config.getRootEObject(), eObject, target)) {
 							setPerCommand(eObject, reference, target, newIndex);
 						} else {
 							// TODO
@@ -1113,7 +1109,7 @@ public final class ESModelMutatorUtil {
 					}
 				} else {
 					final EObject target = possibleReferenceObjects.get(index);
-					if (!Loop.wouldBeCycle(config.getRootEObject(), eObject, target)) {
+					if (!EMFCycleDetector.wouldBeCycle(config.getRootEObject(), eObject, target)) {
 						addPerCommand(eObject, reference, target, random.nextBoolean()
 							&& size > 0 ? random.nextInt(size) : null);
 					} else {
@@ -1128,7 +1124,7 @@ public final class ESModelMutatorUtil {
 			}
 		} else if (random.nextBoolean() || reference.isRequired()) {
 			final EObject target = possibleReferenceObjects.get(index);
-			if (!Loop.wouldBeCycle(config.getRootEObject(), eObject, target)) {
+			if (!EMFCycleDetector.wouldBeCycle(config.getRootEObject(), eObject, target)) {
 				setPerCommand(eObject, reference, target);
 			} else {
 				// TODO
