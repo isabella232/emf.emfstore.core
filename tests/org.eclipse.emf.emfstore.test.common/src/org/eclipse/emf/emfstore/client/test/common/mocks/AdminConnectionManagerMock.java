@@ -39,7 +39,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	public AdminConnectionManagerMock(ACDAOFacade daoFacade, AccessControl accessControl,
 		ServerSpace serverSpace)
-		throws FatalESException {
+			throws FatalESException {
 
 		adminEmfStore = new AdminEmfStoreImpl(daoFacade, serverSpace, accessControl);
 	}
@@ -87,7 +87,8 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getOrgUnits(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
-	public List<ACOrgUnit<?>> getOrgUnits(SessionId sessionId) throws ESException {
+	@SuppressWarnings("rawtypes")
+	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getOrgUnits(sessionId);
 	}
@@ -154,7 +155,8 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getMembers(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
-	public List<ACOrgUnit<?>> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
+	@SuppressWarnings("rawtypes")
+	public List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getMembers(sessionId, groupId);
 	}
@@ -237,7 +239,8 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getParticipants(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
-	public List<ACOrgUnit<?>> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
+	@SuppressWarnings("rawtypes")
+	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getParticipants(sessionId, projectId);
 	}

@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.util;
 
+// import java.io.File;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -49,7 +50,6 @@ import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.EMFStoreImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ConnectionException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
-import org.eclipse.emf.emfstore.internal.server.impl.api.ESOrgUnitProviderImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
@@ -161,8 +161,7 @@ public final class ServerUtil {
 
 		ServerConfiguration.setProperties(initProperties(properties));
 		setSuperUser(daoFacadeMock);
-		final ESOrgUnitProviderImpl orgUnitProvider = new ESOrgUnitProviderImpl(serverSpace);
-		final AccessControl accessControl = new AccessControl(orgUnitProvider);
+		final AccessControl accessControl = new AccessControl(serverSpace);
 
 		// accessControl.setAuthenticationControl(ESUserVerifierFactory.INSTANCE
 		// .createAuthenticationControl(ESAuthenticationControlType.model, orgUnitProviderImpl));
