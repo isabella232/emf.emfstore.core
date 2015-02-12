@@ -35,11 +35,12 @@ public interface ESOrgUnitProvider {
 	 *
 	 * @return a set of all known groups.
 	 */
-	// TODO existieren wirklich
 	Set<ESGroup> getGroups();
 
 	/**
-	 * @return
+	 * Returns a list of all known {@link ESProjectHistory ESProjectHistories}.
+	 *
+	 * @return a list of all known {@link ESProjectHistory ESProjectHistories}
 	 */
 	List<ESProjectHistory> getProjects();
 }

@@ -51,7 +51,6 @@ import org.eclipse.emf.emfstore.internal.server.core.helper.EPackageHelper;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
-import org.eclipse.emf.emfstore.internal.server.impl.api.ESOrgUnitProviderImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
@@ -239,19 +238,19 @@ public class EMFStoreController implements IApplication, Runnable {
 		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new
 			ILogListener() {
 
-			public void logging(IStatus status, String plugin) {
-				if (status.getSeverity() == IStatus.INFO) {
-					System.out.println(status.getMessage());
-				} else if (!status.isOK()) {
-					System.err.println(status.getMessage());
-					final Throwable exception = status.getException();
-					if (exception != null) {
-						exception.printStackTrace(System.err);
+				public void logging(IStatus status, String plugin) {
+					if (status.getSeverity() == IStatus.INFO) {
+						System.out.println(status.getMessage());
+					} else if (!status.isOK()) {
+						System.err.println(status.getMessage());
+						final Throwable exception = status.getException();
+						if (exception != null) {
+							exception.printStackTrace(System.err);
+						}
 					}
 				}
-			}
 
-		});
+			});
 	}
 
 	private void handleStartupListener() {
@@ -296,7 +295,7 @@ public class EMFStoreController implements IApplication, Runnable {
 					try {
 						FileUtil.copyFile(new URL("platform:/plugin/" //$NON-NLS-1$
 							+ element.getIConfigurationElement().getNamespaceIdentifier() + "/" + attribute) //$NON-NLS-1$
-						.openConnection().getInputStream(), targetFile);
+							.openConnection().getInputStream(), targetFile);
 						return;
 					} catch (final IOException e) {
 						ModelUtil.logWarning(
@@ -424,8 +423,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	private static synchronized AccessControl initAccessControl(ServerSpace serverSpace) throws FatalESException {
 		setSuperUser(serverSpace);
-		// TODO: extract into extension point
-		return new AccessControl(new ESOrgUnitProviderImpl(serverSpace));
+		return new AccessControl(serverSpace);
 	}
 
 	private static void setSuperUser(ServerSpace serverSpace) throws FatalESException {

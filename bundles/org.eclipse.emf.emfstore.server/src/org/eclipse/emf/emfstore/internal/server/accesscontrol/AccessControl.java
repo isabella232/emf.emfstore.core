@@ -14,6 +14,8 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.impl.api.ESOrgUnitProviderImpl;
+import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
@@ -35,10 +37,13 @@ public class AccessControl {
 
 	private final LoginService loginService;
 
-	public AccessControl(ESOrgUnitProvider orgUnitProvider) {
-		this.orgUnitProvider = orgUnitProvider;
+	private final ServerSpace serverSpace;
+
+	public AccessControl(ServerSpace serverSpace) {
+		this.serverSpace = serverSpace;
 		sessions = new Sessions();
 
+		orgUnitProvider = initOrgUnitProviderService();
 		orgUnitResolver = initOrgUnitResolverService();
 		authorizationService = initAuthorizationService();
 		loginService = new LoginService(sessions, orgUnitProvider,
@@ -79,6 +84,21 @@ public class AccessControl {
 		}
 
 		return new DefaultESOrgUnitResolverService(orgUnitProvider);
+	}
+
+	private ESOrgUnitProvider initOrgUnitProviderService() {
+		try {
+			if (new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size() > 0) {
+				return new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).getClass(
+					"orgUnitProviderClass", ESOrgUnitProvider.class); //$NON-NLS-1$
+			}
+		} catch (final ESExtensionPointException e) {
+			final String message = "Custom org unit provider class not be initialized";
+			ModelUtil.logException(message, e);
+			return null;
+		}
+
+		return new ESOrgUnitProviderImpl(serverSpace);
 	}
 
 	/**
