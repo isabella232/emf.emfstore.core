@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AccesscontrolFactoryImpl extends EFactoryImpl implements AccesscontrolFactory {
@@ -34,7 +34,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static AccesscontrolFactory init() {
@@ -57,7 +57,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AccesscontrolFactoryImpl() {
@@ -66,7 +66,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -90,7 +90,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACUser createACUser() {
@@ -100,9 +100,10 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	public ACOrgUnit createACOrgUnit() {
 		final ACOrgUnitImpl acOrgUnit = new ACOrgUnitImpl();
 		return acOrgUnit;
@@ -110,7 +111,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACGroup createACGroup() {
@@ -120,7 +121,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACOrgUnitId createACOrgUnitId() {
@@ -130,7 +131,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OrgUnitProperty createOrgUnitProperty() {
@@ -140,7 +141,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AccesscontrolPackage getAccesscontrolPackage() {
@@ -149,7 +150,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */
