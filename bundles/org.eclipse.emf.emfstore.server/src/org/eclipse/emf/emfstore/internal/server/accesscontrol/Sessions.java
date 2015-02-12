@@ -53,7 +53,7 @@ public class Sessions {
 
 		final AuthenticationInformation authInfo =
 			org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl.class
-			.cast(authenticationInformation).toInternalAPI();
+				.cast(authenticationInformation).toInternalAPI();
 
 		sessionUserMap.put(
 			authInfo.getSessionId(),
@@ -68,7 +68,7 @@ public class Sessions {
 	 * @throws AccessControlException in case the session is unknown
 	 */
 	public void isValid(ESSessionId sessionId) throws AccessControlException {
-		if (!sessionUserMap.containsKey(sessionId)) {
+		if (!sessionUserMap.containsKey(toInternalSession(sessionId))) {
 			throw new SessionTimedOutException(Messages.AccessControlImpl_SessionID_Unknown);
 		}
 	}
