@@ -12,14 +12,14 @@
 package org.eclipse.emf.emfstore.internal.server.impl.api;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
-import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
 import org.eclipse.emf.emfstore.server.model.ESGroup;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
+import org.eclipse.emf.emfstore.server.model.ESProjectHistory;
 import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
@@ -54,12 +54,11 @@ public class ESOrgUnitProviderImpl implements ESOrgUnitProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider#getProjects()
 	 */
-	public EList<ProjectHistory> getProjects() {
-		// TODO Auto-generated method stub
-		return daoFacade.getProjects();
+	public List<ESProjectHistory> getProjects() {
+		return APIUtil.toExternal(daoFacade.getProjects());
 	}
 
 }

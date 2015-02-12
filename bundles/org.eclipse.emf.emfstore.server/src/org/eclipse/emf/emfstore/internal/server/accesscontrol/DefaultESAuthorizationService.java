@@ -17,7 +17,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
@@ -37,6 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Server
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitIdImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESProjectHistoryImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
@@ -46,6 +46,7 @@ import org.eclipse.emf.emfstore.server.model.ESGroup;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitId;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
+import org.eclipse.emf.emfstore.server.model.ESProjectHistory;
 import org.eclipse.emf.emfstore.server.model.ESSessionId;
 import org.eclipse.emf.emfstore.server.model.ESUser;
 
@@ -69,9 +70,9 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param sessions
-	 * 
+	 *
 	 * @param orgUnitResolver
 	 *            an {@link ESOrgUnitResolver} to resolve the roles and groups of an organizational unit
 	 * @param orgUnitProvider
@@ -539,7 +540,13 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 			return;
 		}
 
-		final EList<ProjectHistory> projects = orgUnitProvider.getProjects();
+		final List<ESProjectHistory> externalProjects = orgUnitProvider.getProjects();
+		final List<ProjectHistory> projects = new ArrayList<ProjectHistory>();
+		for (final ESProjectHistory projectHistory : externalProjects) {
+			projects.add(
+				ESProjectHistoryImpl.class.cast(projectHistory).toInternalAPI());
+		}
+
 		final Set<ProjectId> validProjectIds = new LinkedHashSet<ProjectId>();
 		final Set<ProjectId> invalidProjectIdsOfRole = new LinkedHashSet<ProjectId>();
 		for (final ProjectHistory projectHistory : projects) {
