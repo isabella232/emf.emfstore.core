@@ -13,8 +13,11 @@ package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 import org.eclipse.emf.emfstore.server.model.ESUser;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Mapping between {@link ESAuthenticationInformation} and {@link AuthenticationInformation}.
@@ -43,5 +46,16 @@ ESAuthenticationInformation {
 	public ESUser getUser() {
 		// TODO: double check
 		return toInternalAPI().getResolvedACUser().toAPI();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation#setUser(org.eclipse.emf.emfstore.server.model.ESUser)
+	 */
+	public void setUser(ESUser user) {
+		Preconditions.checkNotNull(user);
+		toInternalAPI().setResolvedACUser(
+			(ACUser) ESUserImpl.class.cast(user).toInternalAPI());
 	}
 }

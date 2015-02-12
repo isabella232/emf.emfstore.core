@@ -22,9 +22,17 @@ public interface ESAuthenticationInformation {
 
 	/**
 	 * Returns the authenticated user.
-	 * 
+	 *
 	 * @return the authenticated user
 	 */
 	ESUser getUser();
+
+	/**
+	 * Sets the authenticated user.
+	 *
+	 * @param user
+	 *            the authenticated user
+	 */
+	void setUser(ESUser user);
 
 }

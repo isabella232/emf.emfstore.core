@@ -33,7 +33,8 @@ public interface ESUserVerifier {
 	 * @param clientVersionInfo
 	 *            the version of the client
 	 * @return an {@link ESAuthenticationInformation} instance holding information about the
-	 *         logged-in session
+	 *         logged-in session. Note that the return {@link ESAuthenticationInformation} must
+	 *         hold an {@link org.eclipse.emf.emfstore.server.model.ESUser ESUser}
 	 *
 	 * @throws AccessControlException in case the login fails
 	 */
