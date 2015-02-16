@@ -97,6 +97,7 @@ public class BowlingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
+	 * @since 1.5
 	 */
 	protected XMLTypeValidator xmlTypeValidator;
 
