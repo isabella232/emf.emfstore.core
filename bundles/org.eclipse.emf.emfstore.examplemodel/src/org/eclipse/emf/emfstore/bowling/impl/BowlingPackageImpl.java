@@ -1241,6 +1241,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
+	 * @since 1.5
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		final String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
