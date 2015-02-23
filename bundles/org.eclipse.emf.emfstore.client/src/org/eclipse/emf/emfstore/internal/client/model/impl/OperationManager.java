@@ -28,7 +28,6 @@ import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
 import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
-import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * This class acts as a simple wrapper around the operation recorder and provides convenience methods
@@ -169,11 +168,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 * 
 	 * {@inheritDoc}
 	 * 
-	 * @throws ESException
-	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.impl.OperationRecorderListener#operationsRecorded(java.util.List)
 	 */
-	public void operationsRecorded(List<? extends AbstractOperation> operations) throws ESException {
+	public void operationsRecorded(List<? extends AbstractOperation> operations) {
 		projectSpace.addOperations(operations);
 	}
 

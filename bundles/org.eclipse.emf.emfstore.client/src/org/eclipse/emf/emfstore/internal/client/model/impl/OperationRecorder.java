@@ -69,7 +69,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.SingleReferenceOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
-import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
@@ -306,12 +305,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		}
 
 		for (final OperationRecorderListener observer : observers) {
-			try {
-				observer.operationsRecorded(operations);
-			} catch (final ESException ex) {
-				// TODO Auto-generated catch block
-				ex.printStackTrace();
-			}
+			observer.operationsRecorded(operations);
 		}
 	}
 
