@@ -29,12 +29,14 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Helper super class for merge tests.
@@ -164,8 +166,10 @@ public class MergeTest extends ESTest {
 			final List<ChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace().getLocalChangePackage(
 				true));
 
-			final ChangeConflictSet changeConflictSet = new ConflictDetector().calculateConflicts(myChangePackages,
-				theirChangePackages, getProject());
+			final ChangeConflictSet changeConflictSet = new ConflictDetector().calculateConflicts(
+				APIUtil.mapToAPI(ESChangePackage.class, myChangePackages),
+				APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages),
+				getProject());
 
 			final DecisionManager manager = new DecisionManager(getProject(), changeConflictSet, false);
 

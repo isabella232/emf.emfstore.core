@@ -23,6 +23,7 @@ import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
@@ -31,6 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetect
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
@@ -82,8 +84,8 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 
 		final ConflictDetector conflictDetector = new ConflictDetector();
 		final ChangeConflictSet conflictSet = conflictDetector.calculateConflicts(
-			myChangePackages,
-			theirChangePackages,
+			APIUtil.mapToAPI(ESChangePackage.class, myChangePackages),
+			APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages),
 			getProject());
 		final ConflictBucket next = conflictSet.getConflictBuckets().iterator().next();
 
@@ -102,9 +104,10 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 
 		// myChangePackage.getOperations().add(generatedAttributeOp);
 
-		final ChangePackage mergeResolvedConflicts = getProjectSpace().mergeResolvedConflicts(conflictSet,
-			myChangePackages,
-			theirChangePackages);
+		final ChangePackage mergeResolvedConflicts = getProjectSpace().mergeResolvedConflicts(
+			conflictSet,
+			APIUtil.mapToAPI(ESChangePackage.class, myChangePackages),
+			APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages));
 		assertTrue(mergeResolvedConflicts.getOperations().contains(generatedAttributeOp));
 	}
 
