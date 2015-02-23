@@ -28,6 +28,9 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 // TODO: iterator
+/**
+ * @since 1.4
+ */
 public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ESChangePackage {
 
 	private static final String NEWLINE = "\n"; //$NON-NLS-1$
@@ -134,7 +137,6 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 			r.save(outputStream, options);
 			outputStream.write((OperationEmitter.OPERATIONS_END_TAG + NEWLINE).getBytes());
-			System.out.println(new String(outputStream.toByteArray()));
 
 			final File file = new File(operationsFilePath);
 			final boolean exists = file.exists();
@@ -274,7 +276,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public List<AbstractOperation> removeFromEnd(int n) {
 		ReversedLinesFileReader r = null;
@@ -345,7 +347,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
 	 */
 	public ESLogMessage getCommitMessage() {
@@ -355,7 +357,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
 	public Iterable<AbstractOperation> operations() {
@@ -368,7 +370,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
 	public Iterable<AbstractOperation> reversedOperations() {
@@ -378,7 +380,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
 	public int size() {
@@ -388,7 +390,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESChangePackage toAPI() {
@@ -398,7 +400,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESChangePackage createAPI() {
