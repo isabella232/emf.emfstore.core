@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -11,7 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl;
 
-import java.util.List;
+import java.util.Collections;
 
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 public class ApplyOperationsRunnable implements Runnable {
 
 	private final ProjectSpaceBase projectSpace;
-	private final List<AbstractOperation> operations;
+	private final Iterable<AbstractOperation> operations;
 	private final boolean addOperations;
 
 	/**
@@ -40,7 +40,7 @@ public class ApplyOperationsRunnable implements Runnable {
 	 * @param addOperations
 	 *            whether the operations should be added to the project space
 	 */
-	public ApplyOperationsRunnable(ProjectSpaceBase projectSpaceBase, List<AbstractOperation> operations,
+	public ApplyOperationsRunnable(ProjectSpaceBase projectSpaceBase, Iterable<AbstractOperation> operations,
 		boolean addOperations) {
 		projectSpace = projectSpaceBase;
 		this.operations = operations;
@@ -61,15 +61,12 @@ public class ApplyOperationsRunnable implements Runnable {
 					for (final AbstractOperation operation : operations) {
 						try {
 							operation.apply(projectSpace.getProject());
-							// BEGIN SUPRESS CATCH EXCEPTION
 						} catch (final RuntimeException e) {
 							WorkspaceUtil.handleException(e);
 						}
-						// END SUPRESS CATCH EXCEPTION
-					}
-
-					if (addOperations) {
-						projectSpace.addOperations(operations);
+						if (addOperations) {
+							projectSpace.addOperations(Collections.singletonList(operation));
+						}
 					}
 				} finally {
 					if (projectSpace.getOperationManager() != null) {

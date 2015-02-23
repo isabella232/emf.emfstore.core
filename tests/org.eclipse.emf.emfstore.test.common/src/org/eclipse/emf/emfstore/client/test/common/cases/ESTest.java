@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -28,6 +29,7 @@ import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.recording.NotificationRecording;
+import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
@@ -50,7 +52,7 @@ public abstract class ESTest {
 
 	private static final String CLONED_PROJECT_NAME = "clonedProject"; //$NON-NLS-1$
 
-	private ProjectSpace projectSpace;
+	private ProjectSpaceBase projectSpace;
 
 	public <T extends AbstractOperation> T checkAndCast(AbstractOperation op, Class<T> clazz) {
 		assertTrue(clazz.isInstance(op));
@@ -85,8 +87,9 @@ public abstract class ESTest {
 			fail(ex.getMessage());
 		}
 		CommonUtil.setTesting(true);
-		projectSpace = ESLocalProjectImpl.class.cast(
-			Create.project(ProjectUtil.defaultName())).toInternalAPI();
+		final ESLocalProject project = Create.project(ProjectUtil.defaultName());
+		projectSpace = (ProjectSpaceBase) ESLocalProjectImpl.class.cast(project
+			).toInternalAPI();
 	}
 
 	@After
@@ -131,8 +134,8 @@ public abstract class ESTest {
 	public void clearOperations() {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
+				getProjectSpace().changePackage().clear();
 				getProjectSpace().getOperationManager().clearOperations();
-				getProjectSpace().getOperations().clear();
 				return null;
 			}
 		});
@@ -151,4 +154,18 @@ public abstract class ESTest {
 		});
 	}
 
+	public List<AbstractOperation> forceGetOperations() {
+		return forceGetOperations(projectSpace);
+	}
+
+	public List<AbstractOperation> forceGetOperations(ProjectSpace projectSpace) {
+		final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
+		final Iterable<AbstractOperation> iterator = projectSpace.changePackage().operations();
+
+		for (final AbstractOperation operation : iterator) {
+			ops.add(operation);
+		}
+
+		return ops;
+	}
 }

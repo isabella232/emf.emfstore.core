@@ -15,7 +15,6 @@ package org.eclipse.emf.emfstore.internal.server.conflictDetection;
 import static org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil.isCreateDelete;
 
 import java.text.MessageFormat;
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * @author emueller
@@ -62,9 +62,9 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 *            be added to the mapping
 	 */
 	public ModelElementIdToEObjectMappingImpl(ModelElementIdToEObjectMapping mapping,
-		List<ChangePackage> changePackages) {
+		List<ESChangePackage> changePackages) {
 		this(mapping);
-		for (final ChangePackage changePackage : changePackages) {
+		for (final ESChangePackage changePackage : changePackages) {
 			this.put(changePackage);
 		}
 	}
@@ -95,7 +95,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * @param changePackage a {@link ChangePackage}s whose involved model elements should
 	 *            be added to the mapping
 	 */
-	public ModelElementIdToEObjectMappingImpl(Project project, ChangePackage changePackage) {
+	public ModelElementIdToEObjectMappingImpl(Project project, ESChangePackage changePackage) {
 		this(project);
 		this.put(changePackage);
 	}
@@ -107,8 +107,8 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * @param changePackages
 	 *            the {@link ChangePackage ChangePackages} whose model elements should be added to the mapping
 	 */
-	public void put(List<ChangePackage> changePackages) {
-		for (final ChangePackage changePackage : changePackages) {
+	public void put(List<ESChangePackage> changePackages) {
+		for (final ESChangePackage changePackage : changePackages) {
 			put(changePackage);
 		}
 	}
@@ -120,8 +120,8 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * @param changePackage
 	 *            the {@link ChangePackage} whose model elements should be added to the mapping
 	 */
-	public void put(ChangePackage changePackage) {
-		put(changePackage.getOperations());
+	public void put(ESChangePackage changePackage) {
+		put(changePackage.operations());
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * 
 	 * @param operations the operations
 	 */
-	public void put(Collection<AbstractOperation> operations) {
+	public void put(Iterable<AbstractOperation> operations) {
 		for (final AbstractOperation op : operations) {
 			scanOperationIntoMapping(op);
 		}

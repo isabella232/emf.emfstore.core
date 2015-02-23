@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
@@ -79,11 +79,13 @@ public class MultiAttributeSetTest extends ESTest {
 			}
 		}.run(false);
 
+		final List<AbstractOperation> operations = forceGetOperations();
+
 		assertTrue(element.getStrings().size() == 1);
 		assertTrue(element.getStrings().get(0).equals(SETTED_VALUE));
 
-		assertTrue(getProjectSpace().getOperations().size() == 1);
-		assertTrue(getProjectSpace().getOperations().get(0) instanceof MultiAttributeSetOperation);
+		assertTrue(operations.size() == 1);
+		assertTrue(operations.get(0) instanceof MultiAttributeSetOperation);
 	}
 
 	/**
@@ -204,10 +206,12 @@ public class MultiAttributeSetTest extends ESTest {
 			}
 		}.run(false);
 
+		final AbstractOperation op = forceGetOperations().get(0);
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				final AbstractOperation operation = getProjectSpace().getOperations().get(0).reverse();
+				AbstractOperation operation;
+				operation = op.reverse();
 				operation.apply(getProject());
 			}
 		}.run(false);
@@ -244,7 +248,7 @@ public class MultiAttributeSetTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -300,7 +304,7 @@ public class MultiAttributeSetTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -358,7 +362,7 @@ public class MultiAttributeSetTest extends ESTest {
 
 		final Project secondProject = ModelUtil.clone(getProject());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -413,7 +417,7 @@ public class MultiAttributeSetTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(3, operations.size());
 
@@ -468,7 +472,7 @@ public class MultiAttributeSetTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);

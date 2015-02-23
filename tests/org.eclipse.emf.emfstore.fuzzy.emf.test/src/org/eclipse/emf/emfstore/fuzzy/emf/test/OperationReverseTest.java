@@ -13,10 +13,11 @@
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,12 +46,11 @@ public class OperationReverseTest extends FuzzyProjectTest {
 			}
 		}.run(false);
 
+		final Iterable<AbstractOperation> reversedOperations = projectSpace.changePackage().reversedOperations();
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				projectSpace.getLocalChangePackage()
-					.reverse()
-					.apply(projectSpace.getProject());
+				projectSpace.applyOperations(reversedOperations, false);
 			}
 		}.run(false);
 

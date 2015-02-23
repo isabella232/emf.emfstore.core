@@ -29,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty;
@@ -38,6 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Change Package</b></em>'. <!-- end-user-doc
@@ -273,22 +275,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	}
 
 	// begin of custom code
-	/**
-	 * <!-- begin-user-doc --> Reverse the change package. That applying the
-	 * change package and the reversed change package to a project is a nop.
-	 * 
-	 * @return the reversed change package <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public ChangePackage reverse() {
-		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		// reverse subOperations and add in reverse order
-		final EList<AbstractOperation> copiedSubOperations = changePackage.getOperations();
-		for (final AbstractOperation abstractOperation : getOperations()) {
-			copiedSubOperations.add(0, abstractOperation.reverse());
-		}
-		return changePackage;
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -451,11 +437,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getCopyOfOperations()
-	 */
 	public List<AbstractOperation> getCopyOfOperations() {
 		final List<AbstractOperation> copiedOperations = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation operation : getOperations()) {
@@ -464,9 +445,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return copiedOperations;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public List<AbstractOperation> getLeafOperations() {
 		final List<AbstractOperation> leafOperations = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation operation : getOperations()) {
@@ -505,29 +483,34 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	public static int countLeafOperations(List<ChangePackage> changePackages) {
 		int count = 0;
 		for (final ChangePackage changePackage : changePackages) {
-			count += countLeafOperations(changePackage.getOperations());
+			for (final AbstractOperation operation : changePackage.operations()) {
+				count += countLeafOperations(operation);
+			}
 		}
 		return count;
 	}
 
-	public static int countLeafOperations(Collection<AbstractOperation> operations) {
-		int ret = 0;
-		for (final AbstractOperation operation : operations) {
-			if (operation instanceof CompositeOperation) {
-				ret = ret + getSize((CompositeOperation) operation);
-			} else {
-				ret++;
-			}
+	public static int countLeafOperations(AbstractOperation operation) {
+		if (operation instanceof CompositeOperation) {
+			return sizeOfCompositeOperation((CompositeOperation) operation);
 		}
-		return ret;
+		return 1;
 	}
 
-	private static int getSize(CompositeOperation compositeOperation) {
+	public static int countLeafOperations(Iterable<AbstractOperation> operations) {
+		int count = 0;
+		for (final AbstractOperation abstractOperation : operations) {
+			count += countLeafOperations(abstractOperation);
+		}
+		return count;
+	}
+
+	private static int sizeOfCompositeOperation(CompositeOperation compositeOperation) {
 		int ret = 0;
 		final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
 		for (final AbstractOperation abstractOperation : subOperations) {
 			if (abstractOperation instanceof CompositeOperation) {
-				ret = ret + getSize((CompositeOperation) abstractOperation);
+				ret = ret + sizeOfCompositeOperation((CompositeOperation) abstractOperation);
 			} else {
 				ret++;
 			}
@@ -535,13 +518,13 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return ret;
 	}
 
-	public static int countOperations(List<ChangePackage> changePackages) {
-		int count = 0;
-		for (final ChangePackage changePackage : changePackages) {
-			count += changePackage.getOperations().size();
-		}
-		return count;
-	}
+	// public static int countOperations(List<ChangePackage> changePackages) {
+	// int count = 0;
+	// for (final ChangePackage changePackage : changePackages) {
+	// count += changePackage.getOperations().size();
+	// }
+	// return count;
+	// }
 
 	/**
 	 * 
@@ -570,6 +553,121 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 */
 	public ESChangePackageImpl createAPI() {
 		return new ESChangePackageImpl(this);
+	}
+
+	/**
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
+	 */
+	public Iterable<AbstractOperation> operations() {
+		return getOperations();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#addAll(java.util.List)
+	 */
+	public void addAll(List<? extends AbstractOperation> ops) {
+		getOperations().addAll(ops);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 */
+	public void add(AbstractOperation op) {
+		getOperations().add(op);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#clear()
+	 */
+	public void clear() {
+		getOperations().clear();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#isEmpty()
+	 */
+	public boolean isEmpty() {
+		return getOperations().isEmpty();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#removeFromEnd(int)
+	 */
+	public List<AbstractOperation> removeFromEnd(int n) {
+		final List<AbstractOperation> removedOperations = new ArrayList<AbstractOperation>();
+		for (int i = 0; i < n; i++) {
+			final AbstractOperation removedOperation = getOperations().remove(size() - 1);
+			removedOperations.add(removedOperation);
+		}
+		return removedOperations;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#size()
+	 */
+	public int size() {
+		return getOperations().size();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
+	 */
+	public ESLogMessage getCommitMessage() {
+		return getLogMessage().toAPI();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setCommitMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
+	 * 
+	 * @generated NOT
+	 */
+	public void setCommitMessage(ESLogMessage logMessage) {
+		setLogMessage(ESLogMessageImpl.class.cast(logMessage).toInternalAPI());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
+	 */
+	public Iterable<AbstractOperation> reversedOperations() {
+		return reverse().getOperations();
+	}
+
+	/**
+	 * <!-- begin-user-doc --> Reverse the change package. That applying the
+	 * change package and the reversed change package to a project is a nop.
+	 * 
+	 * @return the reversed change package <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private ChangePackage reverse() {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		// reverse subOperations and add in reverse order
+		final EList<AbstractOperation> copiedSubOperations = changePackage.getOperations();
+		for (final AbstractOperation abstractOperation : getOperations()) {
+			copiedSubOperations.add(0, abstractOperation.reverse());
+		}
+		return changePackage;
 	}
 
 } // ChangePackageImpl

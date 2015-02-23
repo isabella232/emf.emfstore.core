@@ -662,7 +662,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 			final URI projectURI = migrationResourceSet.getURIConverter().normalize(
 				ps.getProject().eResource().getURI());
 			final URI operationsURI = migrationResourceSet.getURIConverter()
-				.normalize(ps.getLocalChangePackage().eResource().getURI());
+				.normalize(ps.getLocalChangePackageOLD().eResource().getURI());
 			uris.add(projectURI);
 			uris.add(operationsURI);
 			physicalURIs.add(uris);

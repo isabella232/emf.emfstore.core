@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
@@ -62,8 +62,6 @@ public class SingleReferenceOperationTest extends ESTest {
 	/**
 	 * Change a single reference and check the generated operation.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void changeSingleReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -88,7 +86,7 @@ public class SingleReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		AbstractOperation operation = operations.get(0);
@@ -178,9 +176,6 @@ public class SingleReferenceOperationTest extends ESTest {
 	// }
 	/**
 	 * Change an single reference and reverse it.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void reverseSingleReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -205,8 +200,10 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(1, newActor.getNonContained_1ToN().size());
 		assertEquals(useCase, newActor.getNonContained_1ToN().get(0));
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		final List<AbstractOperation> operations = checkAndCast(getProjectSpace().getOperations().get(0),
+		final List<AbstractOperation> ops = forceGetOperations();
+
+		assertEquals(1, ops.size());
+		final List<AbstractOperation> operations = checkAndCast(ops.get(0),
 			CompositeOperation.class).getSubOperations();
 		assertEquals(3, operations.size());
 
@@ -287,7 +284,7 @@ public class SingleReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// composite operation containing a multiref operation and a singleref operation expected
 		assertEquals(operations.size(), 1);
 
@@ -306,8 +303,6 @@ public class SingleReferenceOperationTest extends ESTest {
 	/**
 	 * Move a containee to another container.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void moveContainmentReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -339,9 +334,10 @@ public class SingleReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		assertEquals(1, getProjectSpace().getOperations().size());
+		final List<AbstractOperation> forceGetOperations = forceGetOperations();
+		assertEquals(1, forceGetOperations.size());
 
-		final List<AbstractOperation> operations = checkAndCast(getProjectSpace().getOperations().get(0),
+		final List<AbstractOperation> operations = checkAndCast(forceGetOperations.get(0),
 			CompositeOperation.class).getSubOperations();
 
 		assertEquals(3, operations.size());
@@ -386,8 +382,6 @@ public class SingleReferenceOperationTest extends ESTest {
 
 	/**
 	 * Test containment removing.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
 	 */
 	@Test
 	public void removeContainment() throws UnsupportedOperationException {
@@ -424,7 +418,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(0, issue.getContainedElements().size());
 		assertNull(proposal.getSrefContainer());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 
@@ -491,7 +485,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(null, fan.getFavouritePlayer());
 		assertTrue(getProject().getAllModelElements().contains(favPlayer));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -541,7 +535,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(null, fan.getFavouritePlayer());
 		assertTrue(getProject().getAllModelElements().contains(favPlayer));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -599,7 +593,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertTrue(getProject().getAllModelElements().contains(favPlayer));
 
 		final Project secondProject = ModelUtil.clone(getProject());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -655,7 +649,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(favPlayer, fan.getFavouritePlayer());
 		assertTrue(getProject().getAllModelElements().contains(favPlayer));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -712,7 +706,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(null, fan.getFavouriteMerchandise());
 		assertFalse(getProject().getAllModelElements().contains(merch));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -756,7 +750,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertFalse(getProject().getAllModelElements().contains(merch));
 
 		final Project secondProject = ModelUtil.clone(getProject());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -808,7 +802,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertEquals(null, fan.getFavouriteMerchandise());
 		assertFalse(getProject().getAllModelElements().contains(merch));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -856,7 +850,7 @@ public class SingleReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -905,7 +899,7 @@ public class SingleReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final SingleReferenceOperation singleRefOp = checkAndCast(operations.get(0), SingleReferenceOperation.class);

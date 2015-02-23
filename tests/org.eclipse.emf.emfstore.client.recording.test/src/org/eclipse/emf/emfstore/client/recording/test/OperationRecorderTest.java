@@ -162,11 +162,13 @@ public class OperationRecorderTest extends ComparingESTest {
 
 				public ChangePackage call() throws Exception {
 					final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
-					cp.getOperations().addAll(getProjectSpace().getOperations());
+					cp.getOperations().addAll(forceGetOperations());
 					cp.apply(getClonedProjectSpace().getProject());
 					return cp;
 				}
 			});
+			clearOperations();
+			getClonedProjectSpace().getOperationManager().stopChangeRecording();
 
 			// do not use commands since we only have them on client side
 			// FIXME: if not wrapped in command fails with transactional editing domain, if wrapped in command assert
@@ -174,7 +176,7 @@ public class OperationRecorderTest extends ComparingESTest {
 			// see comment above
 			connection.setContainer(null);
 
-			final List<AbstractOperation> ops = getProjectSpace().getOperations();
+			final List<AbstractOperation> ops = forceGetOperations();
 			assertEquals(2, ops.size());
 			assertThat(ops.get(0), instanceOf(CompositeOperation.class));
 			assertThat(ops.get(1), instanceOf(CreateDeleteOperation.class));

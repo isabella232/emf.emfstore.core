@@ -124,7 +124,7 @@ public class ResourceHelper {
 		final URI changePackageURI = ESServerURIUtil.createChangePackageURI(projectId, versionId);
 		final List<Map.Entry<EObject, ModelElementId>> ignoredDatatypes = new ArrayList<Map.Entry<EObject, ModelElementId>>();
 
-		for (final AbstractOperation op : changePackage.getOperations()) {
+		for (final AbstractOperation op : changePackage.operations()) {
 			if (op instanceof CreateDeleteOperation) {
 				final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) op;
 

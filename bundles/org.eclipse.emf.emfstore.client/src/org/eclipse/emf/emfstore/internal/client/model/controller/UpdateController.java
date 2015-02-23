@@ -36,6 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -112,16 +113,23 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_FetchingChanges);
 
-		final List<ChangePackage> incomingChanges = getIncomingChanges(resolvedVersion);
+		final List<ESChangePackage> incomingChanges = getIncomingChanges(resolvedVersion);
 
-		checkAndRemoveDuplicateOperations(incomingChanges, getProjectSpace().getLocalChangePackage());
+		checkAndRemoveDuplicateOperations(incomingChanges, getProjectSpace().changePackage());
 
-		ChangePackage localChanges = getProjectSpace().getLocalChangePackage(false);
+		// TODO: LCP - getLocalChangePackage actually causes copy
+		final ESChangePackage localChanges2 = getProjectSpace().getLocalChangePackage(false);
+
+		final ESChangePackage changePackage = getProjectSpace().changePackage();
+		ESChangePackage copiedLocalChangedPackage = VersioningFactory.eINSTANCE.createChangePackage();
+		for (final AbstractOperation operation : changePackage.operations()) {
+			copiedLocalChangedPackage.add(operation);
+		}
 
 		// build a mapping including deleted and create model elements in local and incoming change packages
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), incomingChanges);
-		idToEObjectMapping.put(localChanges);
+		idToEObjectMapping.put(copiedLocalChangedPackage);
 
 		getProgressMonitor().worked(65);
 
@@ -131,26 +139,25 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_CheckingForConflicts);
 
-		final List<ESChangePackage> copy = APIUtil.mapToAPI(ESChangePackage.class, incomingChanges);
-
 		// TODO ASYNC review this cancel
 		if (getProgressMonitor().isCanceled()
-			|| !callback.inspectChanges(getProjectSpace().toAPI(), copy, idToEObjectMapping.toAPI())) {
+			|| !callback.inspectChanges(getProjectSpace().toAPI(), incomingChanges, idToEObjectMapping.toAPI())) {
 			return getProjectSpace().getBaseVersion();
 		}
 
 		ESWorkspaceProviderImpl
 			.getObserverBus()
 			.notify(ESUpdateObserver.class, true)
-			.inspectChanges(getProjectSpace().toAPI(), copy, getProgressMonitor());
+			.inspectChanges(getProjectSpace().toAPI(), incomingChanges, getProgressMonitor());
 
-		if (getProjectSpace().getOperations().size() > 0) {
-			final ChangeConflictSet changeConflictSet = calcConflicts(localChanges, incomingChanges, idToEObjectMapping);
+		if (getProjectSpace().changePackage().size() > 0) {
+			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
+				idToEObjectMapping);
 			if (changeConflictSet.getConflictBuckets().size() > 0) {
 				getProgressMonitor().subTask(Messages.UpdateController_ConflictsDetected);
 				if (callback.conflictOccurred(new ESConflictSetImpl(changeConflictSet), getProgressMonitor())) {
-					localChanges = getProjectSpace().mergeResolvedConflicts(changeConflictSet,
-						Collections.singletonList(localChanges),
+					copiedLocalChangedPackage = getProjectSpace().mergeResolvedConflicts(changeConflictSet,
+						Collections.singletonList(copiedLocalChangedPackage),
 						incomingChanges);
 					// continue with update by applying changes
 				} else {
@@ -163,7 +170,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_ApplyingChanges);
 
-		getProjectSpace().applyChanges(resolvedVersion, incomingChanges, localChanges, getProgressMonitor(), true);
+		getProjectSpace().applyChanges(resolvedVersion, incomingChanges, copiedLocalChangedPackage,
+			getProgressMonitor(), true);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
 			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
@@ -185,8 +193,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		return resolvedVersion.compareTo(getProjectSpace().getBaseVersion()) == 0;
 	}
 
-	private List<ChangePackage> getIncomingChanges(final PrimaryVersionSpec resolvedVersion) throws ESException {
-		return new UnknownEMFStoreWorkloadCommand<List<ChangePackage>>(
+	private List<ESChangePackage> getIncomingChanges(final PrimaryVersionSpec resolvedVersion) throws ESException {
+		final List<ChangePackage> changePackages = new UnknownEMFStoreWorkloadCommand<List<ChangePackage>>(
 			getProgressMonitor()) {
 			@Override
 			public List<ChangePackage> run(IProgressMonitor monitor) throws ESException {
@@ -194,18 +202,19 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 					getProjectSpace().getBaseVersion(), resolvedVersion);
 			}
 		}.execute();
+		return APIUtil.mapToAPI(ESChangePackage.class, changePackages);
 	}
 
-	private ChangeConflictSet calcConflicts(ChangePackage localChanges,
-		List<ChangePackage> changes, ModelElementIdToEObjectMappingImpl idToEObjectMapping) {
+	private ChangeConflictSet calcConflicts(ESChangePackage localChanges,
+		List<ESChangePackage> changes, ModelElementIdToEObjectMappingImpl idToEObjectMapping) {
 
 		final ConflictDetector conflictDetector = new ConflictDetector();
 		return conflictDetector.calculateConflicts(
 			Collections.singletonList(localChanges), changes, idToEObjectMapping);
 	}
 
-	private void checkAndRemoveDuplicateOperations(List<ChangePackage> incomingChanges,
-		ChangePackage localChanges) {
+	private void checkAndRemoveDuplicateOperations(List<ESChangePackage> incomingChanges,
+		ESChangePackage localChanges) {
 
 		final int baseVersionDelta = removeFromChangePackages(incomingChanges, localChanges);
 
@@ -222,7 +231,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 					+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 		save(getProjectSpace(), Messages.UpdateController_ProjectSpace_SaveFailed);
-		save(localChanges, Messages.UpdateController_LocalChanges_SaveFailed);
+		// TODO: LCP - if localChanges is a PersistentChangePackage, saving should always occur automatically
+		// save(localChanges, Messages.UpdateController_LocalChanges_SaveFailed);
 	}
 
 	/**
@@ -232,12 +242,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	 * @param localChanges local change package
 	 * @return baseVersionDelta
 	 */
-	public int removeFromChangePackages(List<ChangePackage> incomingChanges, ChangePackage localChanges) {
-		final Iterator<ChangePackage> incomingChangesIterator = incomingChanges.iterator();
+	public int removeFromChangePackages(List<ESChangePackage> incomingChanges, ESChangePackage localChanges) {
+		final Iterator<ESChangePackage> incomingChangesIterator = incomingChanges.iterator();
 		int baseVersionDelta = 0;
 
 		while (incomingChangesIterator.hasNext()) {
-			final ChangePackage incomingChangePackage = incomingChangesIterator.next();
+			final ESChangePackage incomingChangePackage = incomingChangesIterator.next();
 			final boolean hasBeenConsumed = removeDuplicateOperations(incomingChangePackage, localChanges);
 			if (hasBeenConsumed) {
 				baseVersionDelta += 1;
@@ -257,15 +267,16 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed
 	 */
-	public boolean removeDuplicateOperations(ChangePackage incomingChanges, ChangePackage localChanges) {
+	public boolean removeDuplicateOperations(ESChangePackage incomingChanges, ESChangePackage localChanges) {
 
-		final Iterator<AbstractOperation> localOperationsIterator = localChanges.getOperations().iterator();
-		final List<AbstractOperation> incomingOps = incomingChanges.getOperations();
-		final int incomingOpsSize = incomingOps.size();
+		final Iterator<AbstractOperation> localOperationsIterator = localChanges.operations().iterator();
+		final Iterable<AbstractOperation> incomingOps = incomingChanges.operations();
+		final Iterator<AbstractOperation> incomingOpsIterator = incomingChanges.operations().iterator();
+		final int incomingOpsSize = incomingChanges.size();
 		int incomingIdx = 0;
 		boolean operationMatchingStarted = false;
 
-		if (localChanges.getOperations().size() == 0) {
+		if (localChanges.size() == 0) {
 			return false;
 		}
 
@@ -276,7 +287,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			}
 
 			final AbstractOperation localOp = localOperationsIterator.next();
-			final AbstractOperation incomingOp = incomingOps.get(incomingIdx++);
+			final AbstractOperation incomingOp = incomingOpsIterator.next();
+			incomingIdx += 1;
 			if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
 				localOperationsIterator.remove();
 				operationMatchingStarted = true;

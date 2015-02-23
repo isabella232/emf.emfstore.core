@@ -46,7 +46,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * @model
  * @generated
  */
-public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
+public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ESChangePackage {
 
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
@@ -158,12 +158,14 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * 
 	 * @return the reverse change package
 	 */
-	ChangePackage reverse();
+	// TODO: LCP
+	// ChangePackage reverse();
 
 	/**
 	 * Retrieve a copy of all operations in the change package.
 	 */
-	List<AbstractOperation> getCopyOfOperations();
+	// TODO: LCP
+	// List<AbstractOperation> getCopyOfOperations();
 
 	/**
 	 * Get all leaf operations of a change package, decomposing all composite
@@ -172,7 +174,8 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * 
 	 * @return a list of leaf operations.
 	 */
-	List<AbstractOperation> getLeafOperations();
+	// TODO: LCP
+	// List<AbstractOperation> getLeafOperations();
 
 	/**
 	 * Returns all model elements that are involved in this change package.
@@ -187,7 +190,8 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * 
 	 * @return a list of leaf operations.
 	 */
-	List<AbstractOperation> getTouchingOperations(ModelElementId modelElementId);
+	// TODO: LCP
+	// List<AbstractOperation> getTouchingOperations(ModelElementId modelElementId);
 
 	/**
 	 * Counts the number of Leaf Operations within this change package. The
@@ -196,5 +200,21 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * @return the number of Leaf Operations
 	 */
 	int getSize();
+
+	// TODO: LCP
+	void addAll(List<? extends AbstractOperation> ops);
+
+	void add(AbstractOperation op);
+
+	void clear();
+
+	boolean isEmpty();
+
+	List<AbstractOperation> removeFromEnd(int n);
+
+	/**
+	 * 
+	 */
+	int size();
 
 } // ChangePackage

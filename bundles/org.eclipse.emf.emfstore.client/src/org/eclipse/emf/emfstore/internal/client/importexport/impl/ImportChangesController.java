@@ -95,23 +95,23 @@ public class ImportChangesController implements IExportImportController {
 	 */
 	public void execute(File file, IProgressMonitor progressMonitor) throws IOException {
 
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
-		Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
-		EList<EObject> directContents = resource.getContents();
+		final ResourceSetImpl resourceSet = new ResourceSetImpl();
+		final Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
+		final EList<EObject> directContents = resource.getContents();
 
 		// sanity check
-		if (directContents.size() != 1 && (!(directContents.get(0) instanceof ChangePackage))) {
+		if (directContents.size() != 1 && !(directContents.get(0) instanceof ChangePackage)) {
 			throw new IOException("File is corrupt, does not contain changes.");
 		}
 
-		ChangePackage changePackage = (ChangePackage) directContents.get(0);
+		final ChangePackage changePackage = (ChangePackage) directContents.get(0);
 
 		// / TODO
 		// if (!projectSpace.isInitialized()) {
 		// projectSpace.init();
 		// }
 
-		projectSpace.applyOperations(changePackage.getOperations(), true);
+		projectSpace.applyOperations(changePackage.operations(), true);
 	}
 
 	/**

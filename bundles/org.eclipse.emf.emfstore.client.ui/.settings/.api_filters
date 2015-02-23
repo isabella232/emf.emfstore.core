@@ -33,4 +33,12 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/ui/views/historybrowserview/HistoryBrowserView.java" type="org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview.HistoryBrowserView$TreeViewerWithModelElementSelectionProvider">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="TreeViewer"/>
+                <message_argument value="TreeViewerWithModelElementSelectionProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
 </component>

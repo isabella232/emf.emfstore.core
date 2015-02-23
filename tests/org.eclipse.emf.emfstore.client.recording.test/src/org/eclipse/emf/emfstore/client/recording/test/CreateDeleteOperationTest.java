@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and impementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
@@ -35,7 +35,6 @@ import org.eclipse.emf.emfstore.client.observer.ESPostCreationObserver;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
-import org.eclipse.emf.emfstore.client.test.common.dsl.Delete;
 import org.eclipse.emf.emfstore.client.test.common.dsl.TestElementFeatures;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
@@ -105,8 +104,6 @@ public class CreateDeleteOperationTest extends ESTest {
 	/**
 	 * Test element creation tracking.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void createElementTest() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -119,7 +116,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -136,8 +133,6 @@ public class CreateDeleteOperationTest extends ESTest {
 	/**
 	 * Test element creation tracking.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void createElementWithPostCreationObserverTest() throws UnsupportedOperationException,
@@ -164,7 +159,7 @@ public class CreateDeleteOperationTest extends ESTest {
 
 		ESWorkspaceProviderImpl.getObserverBus().unregister(observer);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -182,8 +177,6 @@ public class CreateDeleteOperationTest extends ESTest {
 	/**
 	 * Test adding an element with cross references to an existing element.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void createElementwithCrossreferencesTest() throws UnsupportedOperationException,
@@ -215,7 +208,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertTrue(getProject().contains(functionalRequirement));
 		assertEquals(getProject(), ModelUtil.getProject(functionalRequirement));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -244,9 +237,6 @@ public class CreateDeleteOperationTest extends ESTest {
 
 	/**
 	 * check element deletion tracking.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void deleteElementTest() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -269,7 +259,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getLocalChangePackage().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -282,249 +272,7 @@ public class CreateDeleteOperationTest extends ESTest {
 	}
 
 	/**
-	 * check complex element deletion tracking.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
-	 * @throws IOException
-	 */
-	// BEGIN COMPLEX CODE
-	@Test
-	public void complexDeleteElementTest() throws UnsupportedOperationException, UnsupportedNotificationException,
-		IOException {
-
-		final TestElement section = Create.testElement();
-		final TestElement useCase = Create.testElement();
-		final TestElement oldTestElement = Create.testElement();
-		final TestElement newTestElement = Create.testElement();
-		final TestElement otherTestElement = Create.testElement();
-
-		new EMFStoreCommand() {
-			@Override
-			protected void doRun() {
-				getProject().addModelElement(section);
-				section.getContainedElements().add(useCase);
-				section.getContainedElements().add(oldTestElement);
-				getProject().addModelElement(newTestElement);
-				getProject().addModelElement(otherTestElement);
-				useCase.setNonContained_NTo1(oldTestElement);
-				useCase.getNonContained_NToM().add(newTestElement);
-				useCase.getNonContained_NToM().add(otherTestElement);
-				assertTrue(getProject().contains(useCase));
-				assertEquals(getProject(), ModelUtil.getProject(useCase));
-				clearOperations();
-			}
-		}.run(false);
-
-		final ModelElementId useCaseId = getProject().getModelElementId(useCase);
-		Delete.fromProject(getLocalProject(), useCase);
-
-		assertFalse(getProject().contains(useCase));
-
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
-
-		assertEquals(1, operations.size());
-
-		EList<ReferenceOperation> subOperations = checkAndCast(operations.get(0), CreateDeleteOperation.class)
-			.getSubOperations();
-
-		assertEquals(8, subOperations.size());
-
-		MultiReferenceOperation mrSubOperation0 = checkAndCast(subOperations.get(0), MultiReferenceOperation.class);
-		SingleReferenceOperation srSubOperation1 = checkAndCast(subOperations.get(1), SingleReferenceOperation.class);
-		MultiReferenceOperation mrSubOperation2 = checkAndCast(subOperations.get(2), MultiReferenceOperation.class);
-		MultiReferenceOperation mrSubOperation3 = checkAndCast(subOperations.get(3), MultiReferenceOperation.class);
-		MultiReferenceOperation mrSubOperation4 = checkAndCast(subOperations.get(4), MultiReferenceOperation.class);
-		MultiReferenceOperation mrSubOperation5 = checkAndCast(subOperations.get(5), MultiReferenceOperation.class);
-		SingleReferenceOperation srSubOperation6 = checkAndCast(subOperations.get(6), SingleReferenceOperation.class);
-		MultiReferenceOperation mrSubOperation7 = checkAndCast(subOperations.get(7), MultiReferenceOperation.class);
-
-		assertEquals(INITIATED_USE_CASES, mrSubOperation0.getFeatureName());
-		assertEquals(0, mrSubOperation0.getIndex());
-
-		final ModelElementId oldTestElementId = ModelUtil.getProject(oldTestElement).getModelElementId(oldTestElement);
-		final ModelElementId otherTestElementId = ModelUtil.getProject(otherTestElement).getModelElementId(
-			otherTestElement);
-		final ModelElementId newTestElementId = ModelUtil.getProject(newTestElement).getModelElementId(newTestElement);
-		final ModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section);
-
-		assertEquals(oldTestElementId, mrSubOperation0.getModelElementId());
-		assertEquals(INITIATING_ACTOR, mrSubOperation0.getOppositeFeatureName());
-		assertFalse(mrSubOperation0.isAdd());
-		assertTrue(mrSubOperation0.isBidirectional());
-		Set<ModelElementId> otherInvolvedModelElements0 = mrSubOperation0.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements0.size());
-		EList<ModelElementId> referencedModelElements0 = mrSubOperation0.getReferencedModelElements();
-		assertEquals(1, referencedModelElements0.size());
-		assertEquals(useCaseId, referencedModelElements0.get(0));
-
-		assertEquals(oldTestElementId, srSubOperation1.getOldValue());
-		assertEquals(null, srSubOperation1.getNewValue());
-		assertEquals(INITIATING_ACTOR, srSubOperation1.getFeatureName());
-		assertEquals(useCaseId, srSubOperation1.getModelElementId());
-		assertEquals(INITIATED_USE_CASES, srSubOperation1.getOppositeFeatureName());
-		assertTrue(srSubOperation1.isBidirectional());
-		Set<ModelElementId> otherInvolvedModelElements = srSubOperation1.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements.size());
-		assertEquals(oldTestElementId, otherInvolvedModelElements.iterator().next());
-
-		assertEquals(newTestElementId, mrSubOperation2.getModelElementId());
-		assertEquals(PARTICIPATED_USE_CASES, mrSubOperation2.getFeatureName());
-		assertFalse(mrSubOperation2.isAdd());
-		assertEquals(1, mrSubOperation2.getReferencedModelElements().size());
-		assertEquals(useCaseId, mrSubOperation2.getReferencedModelElements().get(0));
-
-		assertEquals(useCaseId, mrSubOperation3.getModelElementId());
-		assertEquals(PARTICIPATING_ACTORS, mrSubOperation3.getFeatureName());
-		assertFalse(mrSubOperation3.isAdd());
-		assertEquals(1, mrSubOperation3.getReferencedModelElements().size());
-		assertEquals(newTestElementId, mrSubOperation3.getReferencedModelElements().get(0));
-
-		assertEquals(otherTestElementId, mrSubOperation4.getModelElementId());
-		assertEquals(PARTICIPATED_USE_CASES, mrSubOperation4.getFeatureName());
-		assertFalse(mrSubOperation4.isAdd());
-		assertEquals(1, mrSubOperation4.getReferencedModelElements().size());
-		assertEquals(useCaseId, mrSubOperation4.getReferencedModelElements().get(0));
-
-		assertEquals(PARTICIPATING_ACTORS, mrSubOperation5.getFeatureName());
-		assertEquals(0, mrSubOperation5.getIndex());
-		assertEquals(useCaseId, mrSubOperation5.getModelElementId());
-		assertEquals(PARTICIPATED_USE_CASES, mrSubOperation5.getOppositeFeatureName());
-		assertFalse(mrSubOperation5.isAdd());
-		assertTrue(mrSubOperation5.isBidirectional());
-		Set<ModelElementId> otherInvolvedModelElements2 = mrSubOperation5.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements2.size());
-		EList<ModelElementId> referencedModelElements = mrSubOperation5.getReferencedModelElements();
-		assertEquals(1, referencedModelElements.size());
-		assertEquals(otherTestElementId, referencedModelElements.get(0));
-
-		assertEquals(useCaseId, srSubOperation6.getModelElementId());
-		assertEquals(LEAF_SECTION, srSubOperation6.getFeatureName());
-		assertEquals(sectionId, srSubOperation6.getOldValue());
-		assertEquals(null, srSubOperation6.getNewValue());
-
-		assertEquals(MODEL_ELEMENTS, mrSubOperation7.getFeatureName());
-		assertEquals(0, mrSubOperation7.getIndex());
-		assertEquals(sectionId, mrSubOperation7.getModelElementId());
-		assertEquals(LEAF_SECTION, mrSubOperation7.getOppositeFeatureName());
-		assertFalse(mrSubOperation7.isAdd());
-		assertTrue(mrSubOperation7.isBidirectional());
-		Set<ModelElementId> otherInvolvedModelElements3 = mrSubOperation7.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements3.size());
-		EList<ModelElementId> referencedModelElements3 = mrSubOperation7.getReferencedModelElements();
-		assertEquals(1, referencedModelElements3.size());
-		assertEquals(useCaseId, referencedModelElements3.get(0));
-
-		getProjectSpace().save();
-		final ProjectSpace loadedProjectSpace = ModelUtil.loadEObjectFromResource(
-			ModelPackage.eINSTANCE.getProjectSpace(),
-			getProjectSpace().eResource().getURI(), false);
-		final Project loadedProject = loadedProjectSpace.getProject();
-
-		assertFalse(loadedProject.contains(useCase));
-		operations = loadedProjectSpace.getLocalChangePackage().getOperations();
-
-		assertEquals(1, operations.size());
-		final CreateDeleteOperation createDeleteOperation = checkAndCast(operations.get(0), CreateDeleteOperation.class);
-		assertTrue(createDeleteOperation.isDelete());
-
-		assertEquals(useCaseId, createDeleteOperation.getModelElementId());
-		subOperations = createDeleteOperation.getSubOperations();
-
-		mrSubOperation0 = checkAndCast(subOperations.get(0), MultiReferenceOperation.class);
-		srSubOperation1 = checkAndCast(subOperations.get(1), SingleReferenceOperation.class);
-		mrSubOperation2 = checkAndCast(subOperations.get(2), MultiReferenceOperation.class);
-		mrSubOperation3 = checkAndCast(subOperations.get(3), MultiReferenceOperation.class);
-		mrSubOperation4 = checkAndCast(subOperations.get(4), MultiReferenceOperation.class);
-		mrSubOperation5 = checkAndCast(subOperations.get(5), MultiReferenceOperation.class);
-		srSubOperation6 = checkAndCast(subOperations.get(6), SingleReferenceOperation.class);
-		mrSubOperation7 = checkAndCast(subOperations.get(7), MultiReferenceOperation.class);
-
-		assertEquals(INITIATED_USE_CASES, mrSubOperation0.getFeatureName());
-		assertEquals(0, mrSubOperation0.getIndex());
-
-		assertEquals(oldTestElementId, mrSubOperation0.getModelElementId());
-		assertEquals(INITIATING_ACTOR, mrSubOperation0.getOppositeFeatureName());
-		assertFalse(mrSubOperation0.isAdd());
-		assertTrue(mrSubOperation0.isBidirectional());
-		otherInvolvedModelElements0 = mrSubOperation0.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements0.size());
-		referencedModelElements0 = mrSubOperation0.getReferencedModelElements();
-		assertEquals(1, referencedModelElements0.size());
-		assertEquals(useCaseId, referencedModelElements0.get(0));
-
-		assertEquals(oldTestElementId, srSubOperation1.getOldValue());
-		assertEquals(null, srSubOperation1.getNewValue());
-		assertEquals(INITIATING_ACTOR, srSubOperation1.getFeatureName());
-		assertEquals(useCaseId, srSubOperation1.getModelElementId());
-		assertEquals(INITIATED_USE_CASES, srSubOperation1.getOppositeFeatureName());
-		assertTrue(srSubOperation1.isBidirectional());
-		otherInvolvedModelElements = srSubOperation1.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements.size());
-		assertEquals(oldTestElementId, otherInvolvedModelElements.iterator().next());
-
-		assertEquals(newTestElementId, mrSubOperation2.getModelElementId());
-		assertEquals(PARTICIPATED_USE_CASES, mrSubOperation2.getFeatureName());
-		assertFalse(mrSubOperation2.isAdd());
-		assertEquals(1, mrSubOperation2.getReferencedModelElements().size());
-		assertEquals(useCaseId, mrSubOperation2.getReferencedModelElements().get(0));
-
-		assertEquals(useCaseId, mrSubOperation3.getModelElementId());
-		assertEquals(PARTICIPATING_ACTORS, mrSubOperation3.getFeatureName());
-		assertFalse(mrSubOperation3.isAdd());
-		assertEquals(1, mrSubOperation3.getReferencedModelElements().size());
-		assertEquals(newTestElementId, mrSubOperation3.getReferencedModelElements().get(0));
-
-		assertEquals(PARTICIPATED_USE_CASES, mrSubOperation4.getFeatureName());
-		assertEquals(0, mrSubOperation4.getIndex());
-		assertEquals(otherTestElementId, mrSubOperation4.getModelElementId());
-		assertEquals(PARTICIPATING_ACTORS, mrSubOperation4.getOppositeFeatureName());
-		assertFalse(mrSubOperation4.isAdd());
-		assertTrue(mrSubOperation4.isBidirectional());
-		otherInvolvedModelElements2 = mrSubOperation4.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements2.size());
-		referencedModelElements = mrSubOperation4.getReferencedModelElements();
-		assertEquals(1, referencedModelElements.size());
-		assertEquals(useCaseId, referencedModelElements.get(0));
-
-		assertEquals(PARTICIPATING_ACTORS, mrSubOperation5.getFeatureName());
-		assertEquals(0, mrSubOperation5.getIndex());
-		assertEquals(useCaseId, mrSubOperation5.getModelElementId());
-		assertEquals(PARTICIPATED_USE_CASES, mrSubOperation5.getOppositeFeatureName());
-		assertFalse(mrSubOperation5.isAdd());
-		assertTrue(mrSubOperation5.isBidirectional());
-		otherInvolvedModelElements2 = mrSubOperation5.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements2.size());
-		referencedModelElements = mrSubOperation5.getReferencedModelElements();
-		assertEquals(1, referencedModelElements.size());
-		assertEquals(otherTestElementId, referencedModelElements.get(0));
-
-		assertEquals(useCaseId, srSubOperation6.getModelElementId());
-		assertEquals(LEAF_SECTION, srSubOperation6.getFeatureName());
-		assertEquals(sectionId, srSubOperation6.getOldValue());
-		assertNull(srSubOperation6.getNewValue());
-
-		assertEquals(MODEL_ELEMENTS, mrSubOperation7.getFeatureName());
-		assertEquals(0, mrSubOperation7.getIndex());
-		assertEquals(sectionId, mrSubOperation7.getModelElementId());
-		assertEquals(LEAF_SECTION, mrSubOperation7.getOppositeFeatureName());
-		assertFalse(mrSubOperation7.isAdd());
-		assertTrue(mrSubOperation7.isBidirectional());
-		otherInvolvedModelElements3 = mrSubOperation7.getOtherInvolvedModelElements();
-		assertEquals(1, otherInvolvedModelElements3.size());
-		referencedModelElements3 = mrSubOperation7.getReferencedModelElements();
-		assertEquals(1, referencedModelElements3.size());
-		assertEquals(useCaseId, referencedModelElements3.get(0));
-	}
-
-	// END COMPLEX CODE
-
-	/**
-	 * check complex element deletion tracking.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
-	 * @throws IOException
+	 * Check complex element deletion tracking.
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
@@ -577,7 +325,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(0, newTestElement.getNonContained_MToN().size());
 		assertEquals(0, otherTestElement.getNonContained_MToN().size());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -736,14 +484,11 @@ public class CreateDeleteOperationTest extends ESTest {
 	// END COMPLEX CODE
 
 	/**
-	 * check complex element deletion tracking.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
-	 * @throws IOException
+	 * Check complex element deletion tracking.
 	 */
 	@Test
-	public void complexCreateTest() throws UnsupportedOperationException, UnsupportedNotificationException, IOException {
+	public void complexCreateTest() throws UnsupportedOperationException, UnsupportedNotificationException,
+		IOException {
 		for (int i = 0; i < 10; i++) {
 			final TestElement createCompositeSection = Create.testElement();
 			createCompositeSection.setName(HELMUT + i);
@@ -762,7 +507,7 @@ public class CreateDeleteOperationTest extends ESTest {
 				}
 			}.run(false);
 		}
-		assertEquals(230, getProjectSpace().getOperations().size());
+		assertEquals(230, forceGetOperations().size());
 
 		getProjectSpace().save();
 		final ProjectSpace loadedProjectSpace = ModelUtil.loadEObjectFromResource(
@@ -775,7 +520,6 @@ public class CreateDeleteOperationTest extends ESTest {
 	/**
 	 * Delete a parent with a child contained in a single reference.
 	 * 
-	 * @throws IOException
 	 */
 	@Test
 	public void deleteWithSingleReferenceChildTest() throws IOException {
@@ -811,7 +555,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(null, issue.getContainedElement());
 		assertEquals(null, solution.getSrefContainer());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		AbstractOperation operation = operations.get(0);
 		assertTrue(operation instanceof CreateDeleteOperation);
@@ -830,7 +574,7 @@ public class CreateDeleteOperationTest extends ESTest {
 
 		// perform asserts with loaded projects
 		assertTrue(ModelUtil.areEqual(getProjectSpace().getProject(), loadedProjectSpace.getProject()));
-		operations = loadedProjectSpace.getOperations();
+		operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		operation = operations.get(0);
 		assertTrue(operation instanceof CreateDeleteOperation);
@@ -840,9 +584,6 @@ public class CreateDeleteOperationTest extends ESTest {
 
 	/**
 	 * Test creation of element with cross references.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	public void createWithCrossReferencesTest() throws UnsupportedOperationException, UnsupportedNotificationException {
 
@@ -857,16 +598,16 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
+		final List<AbstractOperation> operations = forceGetOperations();
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
 				getProject().addModelElement(useCase);
 				assertTrue(getProject().contains(useCase));
 				assertTrue(getProject().contains(useCase2));
-				assertEquals(1, getProjectSpace().getOperations().size());
-				assertTrue(getProjectSpace().getOperations().get(0) instanceof CreateDeleteOperation);
-				final CreateDeleteOperation operation = (CreateDeleteOperation) getProjectSpace().getOperations()
-					.get(0);
+				assertEquals(1, operations.size());
+				assertTrue(operations.get(0) instanceof CreateDeleteOperation);
+				final CreateDeleteOperation operation = (CreateDeleteOperation) operations.get(0);
 				assertEquals(getProject().getModelElementId(useCase), operation.getModelElementId());
 				assertEquals(2, operation.getSubOperations().size());
 				assertTrue(operation.getSubOperations().get(0) instanceof MultiReferenceOperation);
@@ -877,8 +618,6 @@ public class CreateDeleteOperationTest extends ESTest {
 
 	/**
 	 * Test creating an element in a non project containment.
-	 * 
-	 * @throws IOException
 	 */
 	@Test
 	public void createInNonProjectContainmentTest() throws IOException {
@@ -904,7 +643,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(section, useCase.getContainer());
 		assertEquals(useCase, section.getContainedElements().iterator().next());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -929,7 +668,7 @@ public class CreateDeleteOperationTest extends ESTest {
 
 		// perform asserts with loaded project
 		assertTrue(ModelUtil.areEqual(getProjectSpace().getProject(), loadedProjectSpace.getProject()));
-		operations = loadedProjectSpace.getOperations();
+		operations = forceGetOperations();
 		assertEquals(2, operations.size());
 
 		operation1 = operations.get(0);
@@ -1006,7 +745,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size()); // one delete operation
 		assertTrue(operations.get(0) instanceof CreateDeleteOperation);
 		final CreateDeleteOperation operation = (CreateDeleteOperation) operations.get(0);
@@ -1060,7 +799,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 
 		final AbstractOperation operation1 = operations.get(0);
@@ -1147,7 +886,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(getProject(), ModelUtil.getProject(testElement2));
 		assertEquals(testElement2, parentTestElement.getContainedElements().get(1));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final AbstractOperation operation = operations.get(0);
 		assertTrue(operation instanceof CreateDeleteOperation);
@@ -1252,7 +991,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(testElement, newChildElement2.getReferences().get(1));
 		assertEquals(newChildElement3, testElement.getReferences().get(0));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final AbstractOperation operation = operations.get(0);
 		assertTrue(operation instanceof CreateDeleteOperation);
@@ -1349,7 +1088,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(4, operations.size());
 
 		new EMFStoreCommand() {
@@ -1471,7 +1210,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final CreateDeleteOperation createDeleteOperation = checkAndCast(operations.get(0), CreateDeleteOperation.class);
 
@@ -1528,7 +1267,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -1757,7 +1496,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) getProjectSpace().getOperations()
+		final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) forceGetOperations()
 			.get(0);
 		final EMap<EObject, ModelElementId> eObjectToIdMap = createDeleteOperation.getEObjectToIdMap();
 		for (final ModelElementId id : eObjectToIdMap.values()) {

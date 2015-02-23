@@ -29,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.controller.UpdateController;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
@@ -36,6 +37,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsFactory;
+import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.junit.Test;
 
 /**
@@ -79,7 +82,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testConflictingChangePackage() {
+	public void testConflictingChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -92,7 +95,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testConflictingChangePackageWithMoreOpsThanLocal() {
+	public void testConflictingChangePackageWithMoreOpsThanLocal() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -106,7 +109,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testNonConflictingChangePackage() {
+	public void testNonConflictingChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -118,7 +121,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testNoLocalChanges() {
+	public void testNoLocalChanges() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -129,7 +132,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test(expected = IllegalStateException.class)
-	public void testIllegalIncomingChangePackage() {
+	public void testIllegalIncomingChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -141,7 +144,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test(expected = IllegalStateException.class)
-	public void testIllegalLocalChangePackage() {
+	public void testIllegalLocalChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -153,7 +156,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testRemoveChangePackage() {
+	public void testRemoveChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -162,14 +165,16 @@ public class DuplicateOperationsTest extends ESTest {
 			ModelUtil.clone(a), ModelUtil.clone(b));
 		final List<ChangePackage> incoming = new ArrayList<ChangePackage>();
 		incoming.add(cp);
-		final int delta = updateController.removeFromChangePackages(incoming, localCP);
+		final int delta = updateController.removeFromChangePackages(
+			APIUtil.mapToAPI(ESChangePackage.class, incoming),
+			localCP.toAPI());
 		assertEquals(1, delta);
 		assertEquals(0, localCP.getOperations().size());
 		assertEquals(0, incoming.size());
 	}
 
 	@Test
-	public void testRemoveChangePackageWithMoreIncomingChanges() {
+	public void testRemoveChangePackageWithMoreIncomingChanges() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -181,15 +186,12 @@ public class DuplicateOperationsTest extends ESTest {
 		final List<ChangePackage> incoming = new ArrayList<ChangePackage>();
 		incoming.add(cp);
 		incoming.add(cp2);
-		final int delta = updateController.removeFromChangePackages(incoming, localCP);
+		final int delta = updateController.removeFromChangePackages(
+			APIUtil.mapToAPI(ESChangePackage.class, incoming),
+			localCP);
 		assertEquals(1, delta);
 		assertEquals(0, localCP.getOperations().size());
 		assertEquals(1, incoming.size());
 	}
 
-	// @Test
-	// public void testConflictingChangePackageWithLocalChanges() {
-	// final UpdateController updateController = createDummyUpdateController();
-	// updateController.removeDuplicateOperations(incomingChanges, localChanges);
-	// }
 }

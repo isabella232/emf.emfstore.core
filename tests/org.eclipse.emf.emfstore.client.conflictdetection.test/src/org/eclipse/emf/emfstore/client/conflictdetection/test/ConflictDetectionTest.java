@@ -20,6 +20,7 @@ import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithResult;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
@@ -28,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetect
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Abstract super class for operation tests, contains setup.
@@ -50,8 +52,9 @@ public abstract class ConflictDetectionTest extends ESTest {
 		final ChangePackage changePackage2 = VersioningFactory.eINSTANCE.createChangePackage();
 		changePackage2.getOperations().add(opB);
 
-		final ChangeConflictSet conflictSet = conflictDetector.calculateConflicts(Arrays.asList(changePackage1),
-			Arrays.asList(changePackage2),
+		final ChangeConflictSet conflictSet = conflictDetector.calculateConflicts(
+			APIUtil.mapToAPI(ESChangePackage.class, Arrays.asList(changePackage1)),
+			APIUtil.mapToAPI(ESChangePackage.class, Arrays.asList(changePackage2)),
 			ModelFactory.eINSTANCE.createProject());
 		return conflictSet.getConflictBuckets().size() > 0;
 	}
@@ -70,8 +73,10 @@ public abstract class ConflictDetectionTest extends ESTest {
 			}
 		});
 
-		final ChangeConflictSet conflicts = new ConflictDetector().calculateConflicts(Arrays.asList(changePackage1),
-			Arrays.asList(changePackage2), project);
+		final ChangeConflictSet conflicts = new ConflictDetector().calculateConflicts(
+			APIUtil.mapToAPI(ESChangePackage.class, Arrays.asList(changePackage1)),
+			APIUtil.mapToAPI(ESChangePackage.class, Arrays.asList(changePackage2)),
+			project);
 		final LinkedHashSet<AbstractOperation> result = new LinkedHashSet<AbstractOperation>();
 		for (final ConflictBucket conflictBucket : conflicts.getConflictBuckets()) {
 			final Set<AbstractOperation> myOperations = conflictBucket.getMyOperations();

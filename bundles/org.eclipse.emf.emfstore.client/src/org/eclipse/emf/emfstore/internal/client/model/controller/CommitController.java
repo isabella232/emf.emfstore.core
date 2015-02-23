@@ -32,14 +32,16 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * The controller responsible for performing a commit.
@@ -128,19 +130,19 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		getProgressMonitor().worked(10);
 		getProgressMonitor().subTask(Messages.CommitController_GatheringChanges);
 
-		final ChangePackage changePackage = getProjectSpace().getLocalChangePackage();
+		final ESChangePackage changePackage = getProjectSpace().changePackage();
 
 		setLogMessage(logMessage, changePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.inspectChanges(getProjectSpace().toAPI(), changePackage.toAPI(), getProgressMonitor());
+			.inspectChanges(getProjectSpace().toAPI(), changePackage, getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), changePackage);
 
 		getProgressMonitor().subTask(Messages.CommitController_PresentingChanges);
 		if (!callback.inspectChanges(getProjectSpace().toAPI(),
-			changePackage.toAPI(),
+			changePackage,
 			idToEObjectMapping.toAPI())
 			|| getProgressMonitor().isCanceled()) {
 
@@ -160,7 +162,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		if (updatePerformed) {
 			getProgressMonitor().subTask("Presenting Changes"); //$NON-NLS-1$
 			if (!callback.inspectChanges(getProjectSpace().toAPI(),
-				changePackage.toAPI(),
+				changePackage,
 				idToEObjectMapping.toAPI())
 				|| getProgressMonitor().isCanceled()) {
 				return getProjectSpace().getBaseVersion();
@@ -185,7 +187,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				getProjectSpace().setBaseVersion(newBaseVersion);
-				getProjectSpace().getOperations().clear();
+				getProjectSpace().changePackage().clear();
 				getProjectSpace().setMergedVersion(null);
 				getProjectSpace().updateDirtyState();
 				return null;
@@ -217,7 +219,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		}
 	}
 
-	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final ChangePackage changePackage)
+	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final ESChangePackage changePackage)
 		throws ESException {
 		// Branching case: branch specifier added
 		final PrimaryVersionSpec newBaseVersion = new UnknownEMFStoreWorkloadCommand<PrimaryVersionSpec>(
@@ -228,23 +230,23 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 					getUsersession().getSessionId(),
 					getProjectSpace().getProjectId(),
 					getProjectSpace().getBaseVersion(),
-					changePackage,
+					ESChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 					branch,
 					getProjectSpace().getMergedVersion(),
-					changePackage.getLogMessage());
+					ESLogMessageImpl.class.cast(changePackage.getCommitMessage()).toInternalAPI());
 			}
 		}.execute();
 		return newBaseVersion;
 	}
 
-	private void setLogMessage(final String logMessage, final ChangePackage changePackage) {
+	private void setLogMessage(final String logMessage, final ESChangePackage changePackage) {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				final LogMessage logMessageObject = VersioningFactory.eINSTANCE.createLogMessage();
 				logMessageObject.setMessage(logMessage);
 				logMessageObject.setClientDate(new Date());
 				logMessageObject.setAuthor(getProjectSpace().getUsersession().getUsername());
-				changePackage.setLogMessage(logMessageObject);
+				changePackage.setCommitMessage(logMessageObject.toAPI());
 				return null;
 			}
 		});

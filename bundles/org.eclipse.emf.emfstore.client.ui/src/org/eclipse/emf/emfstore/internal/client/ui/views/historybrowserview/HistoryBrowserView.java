@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -57,6 +58,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.util.HistoryQueryBuilder;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
 import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
 import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
@@ -168,10 +170,10 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 		initMenuManager();
 
-		changeColumn = createColumn("Changes", 250);
-		branchColumn = createColumn("Branches", 150);
-		commitColumn = createColumn("Commit Message", 250);
-		authorColumn = createColumn("Author and Date", 250);
+		changeColumn = createColumn(Messages.HistoryBrowserView_Changes, 250);
+		branchColumn = createColumn(Messages.HistoryBrowserView_Branches, 150);
+		commitColumn = createColumn(Messages.HistoryBrowserView_CommitMessage, 250);
+		authorColumn = createColumn(Messages.HistoryBrowserView_AuthorAndDate, 250);
 
 		initContentAndLabelProvider();
 		initGraphRenderer();
@@ -249,7 +251,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	// TODO review this stuff
 	private void initMenuManager() {
 		final MenuManager menuMgr = new MenuManager();
-		menuMgr.add(new Separator("additions"));
+		menuMgr.add(new Separator("additions")); //$NON-NLS-1$
 		getSite().registerContextMenu(menuMgr, viewer);
 		final Control control = viewer.getControl();
 		final Menu menu = menuMgr.createContextMenu(control);
@@ -293,13 +295,13 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	private void setDescription() {
 		if (projectSpace == null) {
-			setContentDescription("No element selected.");
+			setContentDescription(Messages.HistoryBrowserView_NoSelection);
 			showNoProjectHint(true);
 			return;
 		}
-		String label = "History for ";
+		String label = Messages.HistoryBrowserView_HistoryFor;
 		if (modelElement == projectSpace) {
-			label += projectSpace.getProjectName() + " [" + projectSpace.getBaseVersion().getBranch() + "]";
+			label += projectSpace.getProjectName() + " [" + projectSpace.getBaseVersion().getBranch() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
 			label += adapterFactoryLabelProvider.getText(modelElement);
 		}
@@ -334,7 +336,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		return new ServerCall<List<HistoryInfo>>(projectSpace) {
 			@Override
 			protected List<HistoryInfo> run() throws ESException {
-				monitor.beginTask("Fetching history form server", 100);
+				monitor.beginTask(Messages.HistoryBrowserView_FetchingHistory, 100);
 				final List<HistoryInfo> historyInfos = getLocalChanges();
 				monitor.worked(10);
 				if (projectSpace != modelElement) {
@@ -415,10 +417,11 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private void resetProviders(List<HistoryInfo> infos) {
-		final ArrayList<ChangePackage> cps = new ArrayList<ChangePackage>();
+		// TODO: LCP
+		final ArrayList<ESChangePackage> cps = new ArrayList<ESChangePackage>();
 		for (final HistoryInfo info : infos) {
 			if (info.getChangePackage() != null) {
-				cps.add(info.getChangePackage());
+				cps.add(info.getChangePackage().toAPI());
 			}
 		}
 
@@ -487,13 +490,12 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		GridDataFactory.fillDefaults().align(SWT.CENTER, SWT.CENTER).grab(true, false).applyTo(noProjectHint);
 
 		noProjectHint
-			.setText("Select a <a>project</a> or call 'Show history' from the context menu of an element in the navigator.");
+			.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
 		noProjectHint.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				final ElementListSelectionDialog elsd = new ElementListSelectionDialog(parent.getShell(),
 					new ESBrowserLabelProvider());
 				final List<ProjectSpace> relevantProjectSpaces = new ArrayList<ProjectSpace>();
-				// TODO OTS
 				final ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
 				for (final ProjectSpace ps : workspace.toInternalAPI().getProjectSpaces()) {
 					if (ps.getUsersession() != null) {
@@ -502,8 +504,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 				}
 				elsd.setElements(relevantProjectSpaces.toArray());
 				elsd.setMultipleSelection(false);
-				elsd.setTitle("Select a project from the workspace");
-				elsd.setMessage("Please select a project from the current workspace.");
+				elsd.setTitle(Messages.HistoryBrowserView_SelectProjectTitle);
+				elsd.setMessage(Messages.HistoryBrowserView_SelectProjectMsg);
 				if (Window.OK == elsd.open()) {
 					for (final Object o : elsd.getResult()) {
 						final ProjectSpace resultSelection = (ProjectSpace) o;
@@ -570,8 +572,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			}
 
 		};
-		refresh.setImageDescriptor(Activator.getImageDescriptor("/icons/refresh.png"));
-		refresh.setToolTipText("Refresh");
+		refresh.setImageDescriptor(Activator.getImageDescriptor("/icons/refresh.png")); //$NON-NLS-1$
+		refresh.setToolTipText(Messages.HistoryBrowserView_Refresh);
 		menuManager.add(refresh);
 	}
 
@@ -584,8 +586,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			}
 
 		};
-		prev.setImageDescriptor(Activator.getImageDescriptor("/icons/prev.png"));
-		prev.setToolTipText("Previous items");
+		prev.setImageDescriptor(Activator.getImageDescriptor("/icons/prev.png")); //$NON-NLS-1$
+		prev.setToolTipText(Messages.HistoryBrowserView_PreviousItems);
 		menuManager.add(prev);
 
 		final Action next = new Action() {
@@ -596,8 +598,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			}
 
 		};
-		next.setImageDescriptor(Activator.getImageDescriptor("/icons/next.png"));
-		next.setToolTipText("Next items");
+		next.setImageDescriptor(Activator.getImageDescriptor("/icons/next.png")); //$NON-NLS-1$
+		next.setToolTipText(Messages.HistoryBrowserView_NextItems);
 		menuManager.add(next);
 	}
 
@@ -678,24 +680,24 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private void addLinkWithNavigatorAction(IToolBarManager menuManager) {
-		isUnlinkedFromNavigator = Activator.getDefault().getDialogSettings().getBoolean("LinkWithNavigator");
-		final Action linkWithNavigator = new Action("Link with navigator", SWT.TOGGLE) {
+		isUnlinkedFromNavigator = Activator.getDefault().getDialogSettings().getBoolean("LinkWithNavigator"); //$NON-NLS-1$
+		final Action linkWithNavigator = new Action(Messages.HistoryBrowserView_LinkWithNavigator, SWT.TOGGLE) {
 
 			@Override
 			public void run() {
-				Activator.getDefault().getDialogSettings().put("LinkWithNavigator", !isChecked());
+				Activator.getDefault().getDialogSettings().put("LinkWithNavigator", !isChecked()); //$NON-NLS-1$
 				isUnlinkedFromNavigator = !isChecked();
 			}
 
 		};
-		linkWithNavigator.setImageDescriptor(Activator.getImageDescriptor("icons/link_with_editor.gif"));
-		linkWithNavigator.setToolTipText("Link with Navigator");
+		linkWithNavigator.setImageDescriptor(Activator.getImageDescriptor("icons/link_with_editor.gif")); //$NON-NLS-1$
+		linkWithNavigator.setToolTipText("Link with Navigator"); //$NON-NLS-1$
 		linkWithNavigator.setChecked(!isUnlinkedFromNavigator);
 		menuManager.add(linkWithNavigator);
 	}
 
 	private void addShowAllBranchesAction(IToolBarManager menuManager) {
-		showAllBranches = new Action("", SWT.TOGGLE) {
+		showAllBranches = new Action("", SWT.TOGGLE) { //$NON-NLS-1$
 			@Override
 			public void run() {
 				showAllVersions = isChecked();
@@ -703,8 +705,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			}
 
 		};
-		showAllBranches.setImageDescriptor(Activator.getImageDescriptor("icons/arrow_branch.png"));
-		showAllBranches.setToolTipText("Show All Branches");
+		showAllBranches.setImageDescriptor(Activator.getImageDescriptor("icons/arrow_branch.png")); //$NON-NLS-1$
+		showAllBranches.setToolTipText(Messages.HistoryBrowserView_ShowAllBranches);
 		showAllBranches.setChecked(true);
 		menuManager.add(showAllBranches);
 	}
@@ -713,7 +715,10 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		final Action jumpTo = new Action() {
 			@Override
 			public void run() {
-				final InputDialog inputDialog = new InputDialog(getSite().getShell(), "Go to revision", "Revision", "",
+				final InputDialog inputDialog = new InputDialog(getSite().getShell(),
+					Messages.HistoryBrowserView_GoToRevision,
+					Messages.HistoryBrowserView_Revision,
+					StringUtils.EMPTY,
 					null);
 				if (inputDialog.open() == Window.OK) {
 					if (projectSpace != null) {
@@ -728,8 +733,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			}
 
 		};
-		jumpTo.setImageDescriptor(Activator.getImageDescriptor("/icons/magnifier.png"));
-		jumpTo.setToolTipText("Go to revision...");
+		jumpTo.setImageDescriptor(Activator.getImageDescriptor("/icons/magnifier.png")); //$NON-NLS-1$
+		jumpTo.setToolTipText(Messages.HistoryBrowserView_GoToRevisionToolTip);
 		menuManager.add(jumpTo);
 	}
 
@@ -745,9 +750,10 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 								VersionSpec.GLOBAL, Integer.parseInt(value)), new NullProgressMonitor());
 						} catch (final ESException e) {
 							EMFStoreMessageDialog.showExceptionDialog(
-								"Error: The version you requested does not exist.", e);
+								Messages.HistoryBrowserView_VersionDoesNotExist, e);
 						} catch (final NumberFormatException e) {
-							MessageDialog.openError(getSite().getShell(), "Error", "A numeric value was expected!");
+							MessageDialog.openError(getSite().getShell(), Messages.HistoryBrowserView_Error,
+								Messages.HistoryBrowserView_NumericValueExpected);
 						}
 						return null;
 					}
@@ -757,12 +763,12 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private void addExpandAllAndCollapseAllAction(IToolBarManager menuManager) {
-		final ImageDescriptor expandImg = Activator.getImageDescriptor("icons/expandall.gif");
-		final ImageDescriptor collapseImg = Activator.getImageDescriptor("icons/collapseall.gif");
+		final ImageDescriptor expandImg = Activator.getImageDescriptor("icons/expandall.gif"); //$NON-NLS-1$
+		final ImageDescriptor collapseImg = Activator.getImageDescriptor("icons/collapseall.gif"); //$NON-NLS-1$
 
-		expandAndCollapse = new ExpandCollapseAction("", SWT.TOGGLE, expandImg, collapseImg);
+		expandAndCollapse = new ExpandCollapseAction("", SWT.TOGGLE, expandImg, collapseImg); //$NON-NLS-1$
 		expandAndCollapse.setImageDescriptor(expandImg);
-		expandAndCollapse.setToolTipText("Use this toggle to expand or collapse all elements");
+		expandAndCollapse.setToolTipText(Messages.HistoryBrowserView_ExpandToggle);
 		menuManager.add(expandAndCollapse);
 	}
 
@@ -810,7 +816,6 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 		@Override
 		protected Widget internalExpand(Object elementOrPath, boolean expand) {
-			// TODO Auto-generated method stub
 			return super.internalExpand(elementOrPath, expand);
 		}
 

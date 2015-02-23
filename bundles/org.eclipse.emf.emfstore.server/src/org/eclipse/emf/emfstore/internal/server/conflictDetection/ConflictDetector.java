@@ -18,8 +18,8 @@ import java.util.Set;
 
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Detects conflicts between operation.
@@ -35,18 +35,18 @@ public class ConflictDetector {
 	}
 
 	/**
-	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ChangePackage}s.
+	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ESChangePackage}s.
 	 * 
 	 * @param myChangePackages
-	 *            a list of {@link ChangePackage}s
+	 *            a list of {@link ESChangePackage}s
 	 * @param theirChangePackages
-	 *            a other list of {@link ChangePackage}s
+	 *            a other list of {@link ESChangePackage}s
 	 * @param project
 	 *            the project for which calculate conflicts
 	 * @return a {@link ChangeConflictSet}
 	 */
-	public ChangeConflictSet calculateConflicts(List<ChangePackage> myChangePackages,
-		List<ChangePackage> theirChangePackages, Project project) {
+	public ChangeConflictSet calculateConflicts(List<ESChangePackage> myChangePackages,
+		List<ESChangePackage> theirChangePackages, Project project) {
 		final ModelElementIdToEObjectMappingImpl idToEObjectMappingImpl = new ModelElementIdToEObjectMappingImpl(
 			project,
 			myChangePackages);
@@ -55,18 +55,19 @@ public class ConflictDetector {
 	}
 
 	/**
-	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ChangePackage}s.
+	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ESChangePackage}s.
 	 * 
 	 * @param myChangePackages
-	 *            a list of {@link ChangePackage}s
+	 *            a list of {@link ESChangePackage}s
 	 * @param theirChangePackages
-	 *            a other list of {@link ChangePackage}s
+	 *            a other list of {@link ESChangePackage}s
 	 * @param idToEObjectMapping
 	 *            a mapping that is used to resolve model elements while calculating conflicts
 	 * @return a {@link ChangeConflictSet}
 	 */
-	public ChangeConflictSet calculateConflicts(List<ChangePackage> myChangePackages,
-		List<ChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
+	public ChangeConflictSet calculateConflicts(List<ESChangePackage> myChangePackages,
+		List<ESChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
+
 		final Set<ConflictBucketCandidate> conflictCandidateBuckets = calculateConflictCandidateBuckets(
 			myChangePackages,
 			theirChangePackages, idToEObjectMapping);
@@ -84,18 +85,19 @@ public class ConflictDetector {
 	 * @param theirChangePackages their operations in a list of change packages
 	 * @return a set of buckets with potentially conflicting operations
 	 */
-	private Set<ConflictBucketCandidate> calculateConflictCandidateBuckets(List<ChangePackage> myChangePackages,
-		List<ChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
+	private Set<ConflictBucketCandidate> calculateConflictCandidateBuckets(List<ESChangePackage> myChangePackages,
+		List<ESChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
 
-		final List<AbstractOperation> myOperations = flattenChangepackages(myChangePackages);
-		final List<AbstractOperation> theirOperations = flattenChangepackages(theirChangePackages);
+		final Iterable<AbstractOperation> myOperations = flattenChangepackages(myChangePackages);
+		final Iterable<AbstractOperation> theirOperations = flattenChangepackages(theirChangePackages);
 
 		return calculateConflictCandidateBuckets(idToEObjectMapping, myOperations, theirOperations);
 	}
 
 	private Set<ConflictBucketCandidate> calculateConflictCandidateBuckets(
 		ModelElementIdToEObjectMapping idToEObjectMapping,
-		List<AbstractOperation> myOperations, List<AbstractOperation> theirOperations) {
+		Iterable<AbstractOperation> myOperations,
+		Iterable<AbstractOperation> theirOperations) {
 
 		final ReservationToConflictBucketCandidateMap conflictMap = new ReservationToConflictBucketCandidateMap();
 
@@ -112,10 +114,13 @@ public class ConflictDetector {
 		return conflictMap.getConflictBucketCandidates();
 	}
 
-	private List<AbstractOperation> flattenChangepackages(List<ChangePackage> cps) {
+	// TODO: LCP, List return type
+	private List<AbstractOperation> flattenChangepackages(List<ESChangePackage> changePackages) {
 		final List<AbstractOperation> operations = new ArrayList<AbstractOperation>();
-		for (final ChangePackage cp : cps) {
-			operations.addAll(cp.getOperations());
+		for (final ESChangePackage cp : changePackages) {
+			for (final AbstractOperation operation : cp.operations()) {
+				operations.add(operation);
+			}
 		}
 		return operations;
 	}

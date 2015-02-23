@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -18,9 +18,9 @@ import java.util.Set;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESConflictSet;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * The actual implementation of an {@link ESConflictSetImpl} containing
@@ -36,8 +36,8 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	private ESConflictSetImpl apiImpl;
 	private final Set<ConflictBucket> conflictBuckets;
 	private final Set<AbstractOperation> notInvolvedInConflict;
-	private final List<ChangePackage> leftChanges;
-	private final List<ChangePackage> rightChanges;
+	private final List<ESChangePackage> leftChanges;
+	private final List<ESChangePackage> rightChanges;
 
 	/**
 	 * Constructor.
@@ -48,16 +48,16 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	 *            a set of operations not involved in any conflict
 	 * @param idToEObjectMapping
 	 *            a mapping from IDs to EObjects and vice versa.<br/>
-	 *            Contains all IDs of model elements involved in the {@link ChangePackage}s
+	 *            Contains all IDs of model elements involved in the {@link ESChangePackage}s
 	 *            as well as those contained by the project in the ProjectSpace
 	 * @param leftChanges
-	 *            a list of {@link ChangePackage}s representing one side of the conflict
+	 *            a list of {@link ESChangePackage}s representing one side of the conflict
 	 * @param rightChanges
-	 *            a list of {@link ChangePackage}s representing the other side of the conflict
+	 *            a list of {@link ESChangePackage}s representing the other side of the conflict
 	 */
 	public ChangeConflictSet(Set<ConflictBucket> conflictBuckets, Set<AbstractOperation> notInvolvedInConflict,
-		ModelElementIdToEObjectMapping idToEObjectMapping, List<ChangePackage> leftChanges,
-		List<ChangePackage> rightChanges) {
+		ModelElementIdToEObjectMapping idToEObjectMapping, List<ESChangePackage> leftChanges,
+		List<ESChangePackage> rightChanges) {
 
 		this.conflictBuckets = conflictBuckets;
 		this.notInvolvedInConflict = notInvolvedInConflict;
@@ -68,7 +68,7 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 
 	/**
 	 * Returns the mapping from IDs to EObjects and vice versa.<br/>
-	 * The mapping contains all IDs of model elements involved in the {@link ChangePackage}s
+	 * The mapping contains all IDs of model elements involved in the {@link ESChangePackage}s
 	 * as well as those contained by the project in the ProjectSpace
 	 * 
 	 * @return the mapping from IDs to EObjects and vice versa
@@ -119,20 +119,20 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	}
 
 	/**
-	 * Returns a list of {@link ChangePackage}s representing one side of the conflict.
+	 * Returns a list of {@link ESChangePackage}s representing one side of the conflict.
 	 * 
-	 * @return a list of {@link ChangePackage}s representing one side of the conflict
+	 * @return a list of {@link ESChangePackage}s representing one side of the conflict
 	 */
-	public List<ChangePackage> getLeftChanges() {
+	public List<ESChangePackage> getLeftChanges() {
 		return leftChanges;
 	}
 
 	/**
-	 * Returns a list of {@link ChangePackage}s representing the other side of the conflict.
+	 * Returns a list of {@link ESChangePackage}s representing the other side of the conflict.
 	 * 
-	 * @return a list of {@link ChangePackage}s representing the other side of the conflict
+	 * @return a list of {@link ESChangePackage}s representing the other side of the conflict
 	 */
-	public List<ChangePackage> getRightChanges() {
+	public List<ESChangePackage> getRightChanges() {
 		return rightChanges;
 	}
 }

@@ -12,6 +12,10 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.model;
 
+import java.util.List;
+
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+
 /**
  * Represents a change package.
  * 
@@ -30,7 +34,7 @@ public interface ESChangePackage {
 	 * 
 	 * @return the log message as entered by the user
 	 */
-	ESLogMessage getLogMessage();
+	ESLogMessage getCommitMessage();
 
 	/**
 	 * Sets the log message of this change package.
@@ -38,6 +42,33 @@ public interface ESChangePackage {
 	 * @param logMessage
 	 *            the log message to be set
 	 */
-	void setLogMessage(ESLogMessage logMessage);
+	void setCommitMessage(ESLogMessage logMessage);
 
+	void addAll(List<? extends AbstractOperation> ops);
+
+	void add(AbstractOperation op);
+
+	void clear();
+
+	boolean isEmpty();
+
+	List<AbstractOperation> removeFromEnd(int n);
+
+	/**
+	 * @return
+	 */
+	Iterable<AbstractOperation> operations();
+
+	Iterable<AbstractOperation> reversedOperations();
+
+	/**
+	 * 
+	 */
+	// TODO: check whether we need this method
+	// void save();
+
+	/**
+	 * 
+	 */
+	int size();
 }

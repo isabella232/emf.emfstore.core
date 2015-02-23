@@ -54,6 +54,7 @@ public class NotificationToOperationConverterTest extends ESTest {
 
 	/**
 	 * Remove all attributes in a many attribute.
+	 * 
 	 */
 	@Test
 	public void removeAllAttributes() {
@@ -76,7 +77,7 @@ public class NotificationToOperationConverterTest extends ESTest {
 			}
 		});
 
-		final AbstractOperation operation = getProjectSpace().getOperations().get(1);
+		final AbstractOperation operation = forceGetOperations().get(1);
 		Assert.assertTrue(operation instanceof MultiAttributeOperation);
 		final List<Integer> indices = ((MultiAttributeOperation) operation).getIndexes();
 		Assert.assertEquals(indices.get(0), (Integer) 0);

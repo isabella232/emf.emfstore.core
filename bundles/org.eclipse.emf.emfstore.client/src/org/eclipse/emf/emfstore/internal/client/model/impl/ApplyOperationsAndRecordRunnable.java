@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -10,8 +10,6 @@
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl;
-
-import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.client.model.CompositeOperationHandle;
@@ -31,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Comp
 public class ApplyOperationsAndRecordRunnable implements Runnable {
 
 	private final ProjectSpaceBase projectSpace;
-	private final List<AbstractOperation> operations;
+	private final Iterable<AbstractOperation> operations;
 
 	/**
 	 * Constructor.
@@ -43,7 +41,7 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 	 */
 	public ApplyOperationsAndRecordRunnable(
 		ProjectSpaceBase projectSpaceBase,
-		List<AbstractOperation> operations) {
+		Iterable<AbstractOperation> operations) {
 		projectSpace = projectSpaceBase;
 		this.operations = operations;
 	}

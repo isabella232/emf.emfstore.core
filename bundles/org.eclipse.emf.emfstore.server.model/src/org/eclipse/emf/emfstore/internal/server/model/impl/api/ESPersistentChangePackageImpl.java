@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.PersistentChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
@@ -25,7 +26,8 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  * @author emueller
  * 
  */
-public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, ChangePackage> implements ESChangePackage {
+public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage> implements
+	ESChangePackage {
 
 	/**
 	 * Constructor.
@@ -33,7 +35,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @param changePackage
 	 *            the delegate
 	 */
-	public ESChangePackageImpl(ChangePackage changePackage) {
+	public ESPersistentChangePackageImpl(PersistentChangePackage changePackage) {
 		super(changePackage);
 	}
 
@@ -44,7 +46,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
 	 */
 	public ESLogMessage getCommitMessage() {
-		return toInternalAPI().getLogMessage().toAPI();
+		return toInternalAPI().getCommitMessage();
 	}
 
 	/**
@@ -54,8 +56,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setCommitMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
 	public void setCommitMessage(ESLogMessage logMessage) {
-		final ESLogMessageImpl logMessageImpl = (ESLogMessageImpl) logMessage;
-		toInternalAPI().setLogMessage(logMessageImpl.toInternalAPI());
+		toInternalAPI().setCommitMessage(logMessage);
 	}
 
 	/**

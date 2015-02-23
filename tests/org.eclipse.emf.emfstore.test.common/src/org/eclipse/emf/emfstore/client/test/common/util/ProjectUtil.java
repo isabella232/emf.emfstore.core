@@ -30,6 +30,7 @@ import org.eclipse.emf.emfstore.client.test.common.dsl.CreateAPI;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
+import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -84,11 +85,11 @@ public class ProjectUtil {
 	}
 
 	public static ESLocalProject clearOperations(ESLocalProject localProject) {
-		final ProjectSpace projectSpace = ((ESLocalProjectImpl) localProject).toInternalAPI();
+		final ProjectSpaceBase projectSpace = (ProjectSpaceBase) ((ESLocalProjectImpl) localProject).toInternalAPI();
 
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				projectSpace.getLocalChangePackage().getOperations().clear();
+				projectSpace.changePackage().clear();
 				projectSpace.getOperationManager().clearOperations();
 				projectSpace.getOperations().clear();
 				return null;

@@ -69,6 +69,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.SingleReferenceOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
+import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
@@ -298,14 +299,19 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		return result;
 	}
 
-	private void operationsRecorded(List<? extends AbstractOperation> operations) {
+	private void operationsRecorded(List<AbstractOperation> operations) {
 
 		if (operations.size() == 0) {
 			return;
 		}
 
 		for (final OperationRecorderListener observer : observers) {
-			observer.operationsRecorded(operations);
+			try {
+				observer.operationsRecorded(operations);
+			} catch (final ESException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+			}
 		}
 	}
 
@@ -906,7 +912,8 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * Aborts the current composite operation.
 	 */
 	public void abortCompositeOperation() {
-		projectSpace.applyOperations(Collections.singletonList(compositeOperation.reverse()), false);
+		projectSpace.applyOperations(
+			Collections.singletonList(compositeOperation.reverse()), false);
 
 		removedElementsCache.clear();
 		notificationRecorder.stopRecording();

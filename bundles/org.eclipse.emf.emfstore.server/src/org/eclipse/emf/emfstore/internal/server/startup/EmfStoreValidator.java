@@ -169,7 +169,7 @@ public class EmfStoreValidator {
 					projectHistory.getProjectId().getId()));
 			for (final Version version : projectHistory.getVersions()) {
 				if (version.getChanges() != null) {
-					for (final AbstractOperation abstractOperation : version.getChanges().getOperations()) {
+					for (final AbstractOperation abstractOperation : version.getChanges().operations()) {
 						if (!(abstractOperation instanceof CompositeOperation)
 							&& (abstractOperation.getModelElementId() == null
 							|| abstractOperation.getModelElementId().getId() == null)) {

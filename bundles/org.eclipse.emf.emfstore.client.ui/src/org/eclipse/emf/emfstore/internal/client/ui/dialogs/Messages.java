@@ -30,6 +30,15 @@ public final class Messages extends NLS {
 	public static String BranchSelectionDialog_OK;
 	public static String BranchSelectionDialog_Select_Branch_To_Merge_With;
 	public static String BranchSelectionDialog_Select_Checkout_Branch;
+	public static String CommitDialog_Commit;
+	public static String CommitDialog_CommitLocalChanges;
+	public static String CommitDialog_EmptyMessage;
+	public static String CommitDialog_LogMessage;
+	public static String CommitDialog_NumberOfCompositeChanges;
+	public static String CommitDialog_NumberOverallChanges;
+	public static String CommitDialog_OfProject;
+	public static String CommitDialog_PreviousMessage;
+	public static String CommitDialog_ToServer;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

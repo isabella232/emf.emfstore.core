@@ -50,6 +50,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Container</b></em>'.
@@ -278,7 +279,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @throws ChangeConflictException in case the conflicts can not be resolved
 	 */
 	ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
-		List<ChangePackage> myChangePackages, List<ChangePackage> theirChangePackages)
+		List<ESChangePackage> myChangePackages, List<ESChangePackage> theirChangePackages)
 		throws ChangeConflictException;
 
 	/**
@@ -427,7 +428,10 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ChangePackage getLocalChangePackage();
+	ChangePackage getLocalChangePackageOLD();
+
+	// TODO: LCP
+	ESChangePackage changePackage();
 
 	/**
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage
@@ -481,7 +485,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 *             if any error in the EmfStore occurs
 	 * @generated NOT
 	 */
-	List<ChangePackage> getChanges(VersionSpec sourceVersion, VersionSpec targetVersion) throws ESException;
+	List<ESChangePackage> getChanges(VersionSpec sourceVersion, VersionSpec targetVersion) throws ESException;
 
 	/**
 	 * Gets a file with a specific identifier. If the file is not cached
@@ -598,6 +602,8 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @return a list of operations
 	 * @generated NOT
 	 */
+	// TODO: LCP
+	@Deprecated
 	List<AbstractOperation> getOperations();
 
 	/**

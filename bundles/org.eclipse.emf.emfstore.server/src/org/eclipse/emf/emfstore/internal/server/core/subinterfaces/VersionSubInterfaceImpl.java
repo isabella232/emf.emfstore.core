@@ -49,6 +49,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
 
@@ -579,7 +580,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				// reverse list and change packages
 				final List<ChangePackage> resultReverse = new ArrayList<ChangePackage>();
 				for (final ChangePackage changePackage : result) {
-					final ChangePackage changePackageReverse = changePackage.reverse();
+
+					final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
+					final Iterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
+
+					for (final AbstractOperation reversedOperation : reversedOperations) {
+						changePackageReverse.add(reversedOperation);
+					}
+
 					// copy again log message
 					// reverse() created a new change package without copying
 					// existent attributes
