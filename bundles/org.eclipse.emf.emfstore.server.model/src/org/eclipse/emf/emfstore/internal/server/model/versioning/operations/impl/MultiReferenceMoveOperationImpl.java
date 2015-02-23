@@ -47,7 +47,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * <em>Referenced Model Element Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implements MultiReferenceMoveOperation {
@@ -136,12 +136,11 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setOldIndex(int newOldIndex) {
-		final int oldOldIndex = oldIndex;
+		int oldOldIndex = oldIndex;
 		oldIndex = newOldIndex;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__OLD_INDEX, oldOldIndex, oldIndex));
-		}
 	}
 
 	/**
@@ -159,12 +158,11 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setNewIndex(int newNewIndex) {
-		final int oldNewIndex = newIndex;
+		int oldNewIndex = newIndex;
 		newIndex = newNewIndex;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__NEW_INDEX, oldNewIndex, newIndex));
-		}
 	}
 
 	/**
@@ -175,11 +173,11 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	public ModelElementId getReferencedModelElementId() {
 		if (referencedModelElementId != null && referencedModelElementId.eIsProxy())
 		{
-			final InternalEObject oldReferencedModelElementId = (InternalEObject) referencedModelElementId;
+			InternalEObject oldReferencedModelElementId = (InternalEObject) referencedModelElementId;
 			referencedModelElementId = (ModelElementId) eResolveProxy(oldReferencedModelElementId);
 			if (referencedModelElementId != oldReferencedModelElementId)
 			{
-				final InternalEObject newReferencedModelElementId = (InternalEObject) referencedModelElementId;
+				InternalEObject newReferencedModelElementId = (InternalEObject) referencedModelElementId;
 				NotificationChain msgs = oldReferencedModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, null);
 				if (newReferencedModelElementId.eInternalContainer() == null)
@@ -187,14 +185,12 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 					msgs = newReferencedModelElementId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
 						oldReferencedModelElementId, referencedModelElementId));
-				}
 			}
 		}
 		return referencedModelElementId;
@@ -216,18 +212,17 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 */
 	public NotificationChain basicSetReferencedModelElementId(ModelElementId newReferencedModelElementId,
 		NotificationChain msgs) {
-		final ModelElementId oldReferencedModelElementId = referencedModelElementId;
+		ModelElementId oldReferencedModelElementId = referencedModelElementId;
 		referencedModelElementId = newReferencedModelElementId;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
 				oldReferencedModelElementId, newReferencedModelElementId);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -241,24 +236,20 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 		if (newReferencedModelElementId != referencedModelElementId)
 		{
 			NotificationChain msgs = null;
-			if (referencedModelElementId != null) {
+			if (referencedModelElementId != null)
 				msgs = ((InternalEObject) referencedModelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, msgs);
-			}
-			if (newReferencedModelElementId != null) {
+			if (newReferencedModelElementId != null)
 				msgs = ((InternalEObject) newReferencedModelElementId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, msgs);
-			}
 			msgs = basicSetReferencedModelElementId(newReferencedModelElementId, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
 				newReferencedModelElementId, newReferencedModelElementId));
-		}
 	}
 
 	/**
@@ -290,9 +281,8 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 		case OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__NEW_INDEX:
 			return getNewIndex();
 		case OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID:
-			if (resolve) {
+			if (resolve)
 				return getReferencedModelElementId();
-			}
 			return basicGetReferencedModelElementId();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -368,11 +358,10 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (oldIndex: "); //$NON-NLS-1$
 		result.append(oldIndex);
 		result.append(", newIndex: "); //$NON-NLS-1$

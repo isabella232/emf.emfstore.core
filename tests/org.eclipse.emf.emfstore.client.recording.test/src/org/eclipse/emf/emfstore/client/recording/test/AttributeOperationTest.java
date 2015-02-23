@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.client.recording.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -36,6 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.UnsetType;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
@@ -54,12 +56,9 @@ public class AttributeOperationTest extends ESTest {
 
 	/**
 	 * Change an attribute and check the generated operation.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
-	public void changeAttribute() throws UnsupportedOperationException, UnsupportedNotificationException {
+	public void changeAttribute() throws UnsupportedOperationException, UnsupportedNotificationException, ESException {
 
 		final TestElement testElement = Create.testElement();
 		ProjectUtil.addElement(getProjectSpace().toAPI(), testElement);
@@ -67,7 +66,7 @@ public class AttributeOperationTest extends ESTest {
 		Update.testElement(TestElementFeatures.name(), testElement, NEW_NAME);
 		assertEquals(NEW_NAME, testElement.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -89,9 +88,11 @@ public class AttributeOperationTest extends ESTest {
 	 * 
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
+	 * @throws ESException
 	 */
 	@Test
-	public void changeAttributeTwice() throws UnsupportedOperationException, UnsupportedNotificationException {
+	public void changeAttributeTwice() throws UnsupportedOperationException, UnsupportedNotificationException,
+		ESException {
 		final TestElement testElement = Create.testElement();
 		ProjectUtil.addElement(getProjectSpace().toAPI(), testElement);
 		ProjectUtil.clearOperations(getProjectSpace().toAPI());
@@ -110,7 +111,7 @@ public class AttributeOperationTest extends ESTest {
 			}
 		});
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
@@ -138,9 +139,11 @@ public class AttributeOperationTest extends ESTest {
 	 * 
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
+	 * @throws ESException
 	 */
 	@Test
-	public void changeAttributeAndReverse() throws UnsupportedOperationException, UnsupportedNotificationException {
+	public void changeAttributeAndReverse() throws UnsupportedOperationException, UnsupportedNotificationException,
+		ESException {
 
 		final TestElement testElement = Create.testElement();
 
@@ -158,7 +161,7 @@ public class AttributeOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -193,7 +196,7 @@ public class AttributeOperationTest extends ESTest {
 	}
 
 	@Test
-	public void changeAttributeDoubleReversal() throws IOException {
+	public void changeAttributeDoubleReversal() throws IOException, ESException {
 
 		final TestElement testElement = Create.testElement();
 
@@ -211,7 +214,7 @@ public class AttributeOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -267,7 +270,7 @@ public class AttributeOperationTest extends ESTest {
 	}
 
 	@Test
-	public void unsetAttribute() {
+	public void unsetAttribute() throws ESException {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
 
 		new EMFStoreCommand() {
@@ -295,7 +298,7 @@ public class AttributeOperationTest extends ESTest {
 		assertEquals(false, fan.isSetName());
 		assertEquals(null, fan.getName());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		AbstractOperation operation = operations.get(0);
@@ -323,21 +326,21 @@ public class AttributeOperationTest extends ESTest {
 		assertEquals(true, fan.isSetName());
 		assertEquals(null, fan.getName());
 
-		operations = getProjectSpace().getOperations();
+		operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		operation = operations.get(0);
 		assertEquals(true, operation instanceof AttributeOperation);
 		attributeOperation = (AttributeOperation) operation;
 
-		assertEquals(null, attributeOperation.getOldValue());
-		assertEquals(null, attributeOperation.getNewValue());
+		assertNull(attributeOperation.getOldValue());
+		assertNull(attributeOperation.getNewValue());
 		assertEquals(NAME, attributeOperation.getFeatureName());
-		assertEquals(false, attributeOperation.getUnset() == UnsetType.IS_UNSET);
+		assertFalse(attributeOperation.getUnset() == UnsetType.IS_UNSET);
 	}
 
 	@Test
-	public void unsetAttributeReverse() {
+	public void unsetAttributeReverse() throws ESException {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
 
 		new EMFStoreCommand() {
@@ -364,7 +367,7 @@ public class AttributeOperationTest extends ESTest {
 		assertEquals(false, fan.isSetName());
 		assertEquals(null, fan.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -390,7 +393,7 @@ public class AttributeOperationTest extends ESTest {
 	}
 
 	@Test
-	public void unsetAttributeDoubleReverse() {
+	public void unsetAttributeDoubleReverse() throws ESException {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
 
 		new EMFStoreCommand() {
@@ -417,7 +420,7 @@ public class AttributeOperationTest extends ESTest {
 		assertEquals(false, fan.isSetName());
 		assertEquals(null, fan.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -443,7 +446,7 @@ public class AttributeOperationTest extends ESTest {
 	}
 
 	@Test
-	public void setOfUnsettedAttributeReverse() {
+	public void setOfUnsettedAttributeReverse() throws ESException {
 		final Fan fan = BowlingFactory.eINSTANCE.createFan();
 
 		new EMFStoreCommand() {
@@ -469,7 +472,7 @@ public class AttributeOperationTest extends ESTest {
 		assertEquals(true, fan.isSetName());
 		assertEquals(FAN, fan.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);

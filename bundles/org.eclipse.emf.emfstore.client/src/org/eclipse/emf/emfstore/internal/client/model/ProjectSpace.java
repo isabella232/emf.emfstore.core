@@ -42,9 +42,9 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
 import org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
@@ -277,8 +277,8 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * 
 	 * @throws ChangeConflictException in case the conflicts can not be resolved
 	 */
-	ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
-		List<ChangePackage> myChangePackages, List<ChangePackage> theirChangePackages)
+	AbstractChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
+		List<AbstractChangePackage> myChangePackages, List<AbstractChangePackage> theirChangePackages)
 		throws ChangeConflictException;
 
 	/**
@@ -422,25 +422,35 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <!-- end-user-doc -->
 	 * 
 	 * @return the value of the '<em>Local Change Package</em>' containment reference.
-	 * @see #setLocalChangePackage(ChangePackage)
+	 * @see #setLocalChangePackage(AbstractChangePackage)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_LocalChangePackage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ChangePackage getLocalChangePackage();
+	AbstractChangePackage getLocalChangePackage();
 
 	/**
-	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage
-	 * <em>Local Change Package</em>}' containment reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage
+	 * <em>Local Change Package</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * 
-	 * @param value
-	 *            the new value of the '<em>Local Change Package</em>'
-	 *            containment reference.
+	 * @param changePackage the new value of the '<em>Local Change Package</em>' containment reference.
 	 * @see #getLocalChangePackage()
 	 * @generated
 	 */
-	void setLocalChangePackage(ChangePackage value);
+	void setLocalChangePackage(AbstractChangePackage changePackage);
+
+	/**
+	 * Gathers all local operations and canonizes them.
+	 * 
+	 * @param canonize
+	 *            true if the operations should be canonized
+	 * @return the list of operations
+	 * 
+	 * @generated NOT
+	 */
+	AbstractChangePackage getLocalChangePackage(boolean canonize);
 
 	/**
 	 * Returns the value of the '<em><b>Merged Version</b></em>' containment reference.
@@ -474,14 +484,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	/**
 	 * @return a list of the change packages between two PrimarySpecVersions.
 	 * @param sourceVersion
-	 *            the source version spec
+	 *            the source version specification
 	 * @param targetVersion
-	 *            the target version spec
+	 *            the target version specification
 	 * @throws ESException
 	 *             if any error in the EmfStore occurs
 	 * @generated NOT
 	 */
-	List<ChangePackage> getChanges(VersionSpec sourceVersion, VersionSpec targetVersion) throws ESException;
+	List<AbstractChangePackage> getChanges(VersionSpec sourceVersion, VersionSpec targetVersion) throws ESException;
 
 	/**
 	 * Gets a file with a specific identifier. If the file is not cached
@@ -556,17 +566,6 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	Date getLastUpdated();
 
 	/**
-	 * Gathers all local operations and canonizes them.
-	 * 
-	 * @param canonized
-	 *            true if the operations should be canonized
-	 * @return the list of operations
-	 * 
-	 * @generated NOT
-	 */
-	ChangePackage getLocalChangePackage(boolean canonized);
-
-	/**
 	 * Returns the value of the '<em><b>Old Log Messages</b></em>' attribute
 	 * list. The list contents are of type {@link java.lang.String}. <!--
 	 * begin-user-doc -->
@@ -590,15 +589,6 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @generated NOT
 	 */
 	OperationManager getOperationManager();
-
-	/**
-	 * Return the list of operations that have already been performed on the
-	 * project space.
-	 * 
-	 * @return a list of operations
-	 * @generated NOT
-	 */
-	List<AbstractOperation> getOperations();
 
 	/**
 	 * Returns the value of the '<em><b>Project</b></em>' containment reference.

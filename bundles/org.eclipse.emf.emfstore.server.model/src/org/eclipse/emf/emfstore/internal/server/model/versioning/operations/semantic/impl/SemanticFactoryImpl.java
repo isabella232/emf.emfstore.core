@@ -35,13 +35,13 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 	public static SemanticFactory init() {
 		try
 		{
-			final SemanticFactory theSemanticFactory = (SemanticFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/operations/semantic"); //$NON-NLS-1$
+			SemanticFactory theSemanticFactory = (SemanticFactory) EPackage.Registry.INSTANCE
+				.getEFactory(SemanticPackage.eNS_URI);
 			if (theSemanticFactory != null)
 			{
 				return theSemanticFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}

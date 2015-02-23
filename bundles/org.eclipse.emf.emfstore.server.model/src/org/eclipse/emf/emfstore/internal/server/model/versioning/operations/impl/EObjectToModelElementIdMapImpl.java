@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EObjectToModelElementIdMapImpl extends EObjectImpl implements BasicEMap.Entry<EObject, ModelElementId> {

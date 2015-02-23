@@ -22,6 +22,7 @@ import org.eclipse.osgi.util.NLS;
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.common.model.util.messages"; //$NON-NLS-1$
 	public static String FileUtil_Comparing;
+	public static String FileUtil_DeleteFaild;
 	public static String FileUtil_DestinationExists;
 	public static String FileUtil_SourceMustBeFolder;
 	public static String FileUtil_SourceOrDestinationIsNull;

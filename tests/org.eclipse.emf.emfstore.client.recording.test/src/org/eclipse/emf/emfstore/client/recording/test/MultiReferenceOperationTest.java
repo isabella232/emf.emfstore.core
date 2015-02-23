@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2014 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -55,10 +55,7 @@ public class MultiReferenceOperationTest extends ESTest {
 	private static final String M1 = "M1"; //$NON-NLS-1$
 
 	/**
-	 * Change a multi reference and check the generated operation.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
+	 * Change a multi-reference and check the generated operation.
 	 */
 	@Test
 	public void changeMultiReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -81,7 +78,7 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertEquals(1, initiatedTestElements.size());
 		assertEquals(useCase, initiatedTestElements.get(0));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		AbstractOperation operation = operations.get(0);
@@ -129,9 +126,6 @@ public class MultiReferenceOperationTest extends ESTest {
 
 	/**
 	 * Change a multi reference and check the generated operation.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void reverseMultiReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -157,7 +151,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation comp = operations.get(0);
@@ -211,9 +205,6 @@ public class MultiReferenceOperationTest extends ESTest {
 
 	/**
 	 * Change a multi reference and check the generated operation.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
@@ -253,7 +244,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		AbstractOperation operation = operations.get(0);
@@ -312,9 +303,6 @@ public class MultiReferenceOperationTest extends ESTest {
 
 	/**
 	 * Change a multi reference and check the generated operation.
-	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
@@ -357,9 +345,11 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertNull(useCase3.getNonContained_NTo1());
 		assertEquals(0, actor.getNonContained_1ToN().size());
 
-		assertEquals(1, getProjectSpace().getOperations().size());
+		final List<AbstractOperation> operations = forceGetOperations();
 
-		final List<AbstractOperation> subOperations = checkAndCast(getProjectSpace().getOperations().get(0),
+		assertEquals(1, operations.size());
+
+		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0),
 			CompositeOperation.class).getSubOperations();
 
 		assertEquals(4, subOperations.size());
@@ -446,7 +436,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -512,7 +502,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -581,7 +571,7 @@ public class MultiReferenceOperationTest extends ESTest {
 		}.run(false);
 
 		final Project secondProject = ModelUtil.clone(getProject());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 
@@ -649,7 +639,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(3, operations.size());
 
@@ -722,7 +712,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(5, operations.size());
 
@@ -806,7 +796,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(5, operations.size());
 
@@ -891,7 +881,7 @@ public class MultiReferenceOperationTest extends ESTest {
 
 		final Project secondProject = ModelUtil.clone(getProject());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(5, operations.size());
 
@@ -976,7 +966,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(3, operations.size());
 
@@ -1037,7 +1027,7 @@ public class MultiReferenceOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);

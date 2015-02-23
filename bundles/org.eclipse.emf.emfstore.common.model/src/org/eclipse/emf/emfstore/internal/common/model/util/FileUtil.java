@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and imlementation
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 
 /**
  * Helper class for file system operations.
- * 
+ *
  * @author wesendonk
  */
 public final class FileUtil {
@@ -43,7 +43,7 @@ public final class FileUtil {
 
 	/**
 	 * This method copies a single file.
-	 * 
+	 *
 	 * @param source the source
 	 * @param destination the destination
 	 * @throws IOException copy problem
@@ -55,7 +55,7 @@ public final class FileUtil {
 
 	/**
 	 * This method copies a single file and closes the given stream.
-	 * 
+	 *
 	 * @param source the source input stream
 	 * @param destination the destination
 	 * @throws IOException copy problem
@@ -88,7 +88,7 @@ public final class FileUtil {
 
 	/**
 	 * Copy a directory from source to target including its contained files and directories.
-	 * 
+	 *
 	 * @param source directory
 	 * @param destination directory
 	 * @throws IOException on a IO problem during copy
@@ -110,7 +110,7 @@ public final class FileUtil {
 
 	/**
 	 * This method allows you to zip a folder. *UNDER CONSTRUCTION*
-	 * 
+	 *
 	 * @param source folder to zip
 	 * @param destination target zip file
 	 * @throws IOException in case of failure
@@ -153,7 +153,7 @@ public final class FileUtil {
 
 	/**
 	 * Compares the contents of two files.
-	 * 
+	 *
 	 * @param file1
 	 *            the first file
 	 * @param file2
@@ -166,7 +166,7 @@ public final class FileUtil {
 
 	/**
 	 * Compares the contents of two files.
-	 * 
+	 *
 	 * @param file1
 	 *            the first file
 	 * @param file2
@@ -221,7 +221,7 @@ public final class FileUtil {
 
 	/**
 	 * Deletes a directory.
-	 * 
+	 *
 	 * @param file the directory
 	 * @param force true if delete should try to delete forcefully including retries, this may be slow.
 	 * @throws IOException if delete fails
@@ -251,7 +251,7 @@ public final class FileUtil {
 
 	/**
 	 * Returns the extension of the given file.
-	 * 
+	 *
 	 * @param file
 	 *            the file whose extension should be determined
 	 * @return the file extension, if any, otherwise empty string
@@ -264,5 +264,34 @@ public final class FileUtil {
 		}
 
 		return StringUtils.substring(file.getName(), lastIndexOf);
+	}
+
+	/**
+	 * Moves the given {@code source} File to the given {@code destination}.
+	 *
+	 * @param source
+	 *            the source {@link File} being moved
+	 * @param destination
+	 *            the destination the {@code source} file should be moved to
+	 * @throws IOException
+	 *             in case the move fails
+	 */
+	public static void moveAndOverwrite(File source, File destination) throws IOException {
+		FileUtils.copyFile(source, destination);
+		if (!source.delete()) {
+			throw new IOException(Messages.FileUtil_DeleteFaild + source.getName());
+		}
+	}
+
+	public static String createLocationForTemporaryChangePackage() {
+		File tempFile;
+		try {
+			tempFile = File.createTempFile("temp-", ".eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+			tempFile.deleteOnExit();
+			return tempFile.getAbsolutePath();
+		} catch (final IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 }

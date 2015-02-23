@@ -127,12 +127,11 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * @generated
 	 */
 	public void setFeatureName(String newFeatureName) {
-		final String oldFeatureName = featureName;
+		String oldFeatureName = featureName;
 		featureName = newFeatureName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.FEATURE_OPERATION__FEATURE_NAME,
 				oldFeatureName, featureName));
-		}
 	}
 
 	/**
@@ -154,12 +153,11 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 */
 	public void setUnset(UnsetType newUnset)
 	{
-		final UnsetType oldUnset = unset;
+		UnsetType oldUnset = unset;
 		unset = newUnset == null ? UNSET_EDEFAULT : newUnset;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.FEATURE_OPERATION__UNSET, oldUnset,
 				unset));
-		}
 	}
 
 	/**
@@ -241,11 +239,10 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (featureName: "); //$NON-NLS-1$
 		result.append(featureName);
 		result.append(", unset: "); //$NON-NLS-1$

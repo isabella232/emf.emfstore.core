@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * 
  * @extends APIDelegate<ESUsersessionImpl>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *          Properties</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession()
  * @model
  * @generated

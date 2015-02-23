@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI.WithException;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.BranchSelectionDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.CommitDialog;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAbstractChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -49,13 +49,13 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * UIController for branch creation. Slightly modified copy of the commit
  * controller
- * 
+ *
  * @author wesendon
- * 
+ *
  */
 public class UICreateBranchController extends
-	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
-	ESCommitCallback {
+AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
+ESCommitCallback {
 
 	private final ProjectSpace projectSpace;
 	private int dialogReturnValue;
@@ -63,7 +63,7 @@ public class UICreateBranchController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the
 	 *            creation of the branch
@@ -76,7 +76,7 @@ public class UICreateBranchController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the
 	 *            creation of the branch
@@ -94,9 +94,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#noLocalChanges(ESLocalProject)
 	 */
 	public void noLocalChanges(ESLocalProject projectSpace) {
@@ -110,9 +110,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#baseVersionOutOfDate(ESLocalProject,
 	 *      IProgressMonitor)
 	 */
@@ -131,7 +131,7 @@ public class UICreateBranchController extends
 						.getBaseVersion().toAPI();
 					final ESPrimaryVersionSpec version = new UIUpdateProjectController(
 						getShell(), projectSpace)
-						.executeSub(progressMonitor);
+					.executeSub(progressMonitor);
 					if (version.equals(baseVersion)) {
 						return false;
 					}
@@ -143,9 +143,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#inspectChanges(ESLocalProject, ESChangePackage,
 	 *      ESModelElementIdToEObjectMapping)
 	 */
@@ -155,11 +155,10 @@ public class UICreateBranchController extends
 		final ESChangePackage changePackage,
 		ESModelElementIdToEObjectMapping idToEObjectMapping) {
 
-		final ESChangePackageImpl internalChangePackage = (ESChangePackageImpl) changePackage;
 		final ESLocalProjectImpl localProjectImpl = (ESLocalProjectImpl) localProject;
 
 		final CommitDialog commitDialog = new CommitDialog(getShell(),
-			internalChangePackage.toInternalAPI(),
+			ESAbstractChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 			localProjectImpl.toInternalAPI(),
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
 
@@ -188,9 +187,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.controller.AbstractEMFStoreUIController#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

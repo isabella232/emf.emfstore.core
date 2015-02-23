@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.util.DefaultMergeLabelProvider;
 import org.eclipse.emf.emfstore.internal.common.ExtensionRegistry;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
-import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 
@@ -66,6 +66,7 @@ public class MergeProjectHandler extends AbstractConflictResolver {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected boolean controlDecisionManager(final DecisionManager decisionManager, ChangeConflictSet changeConflictSet) {
 		authorProvider = new DefaultOperationAuthorProvider(changeConflictSet.getLeftChanges(),
@@ -74,16 +75,16 @@ public class MergeProjectHandler extends AbstractConflictResolver {
 		return RunInUI.runWithResult(new Callable<Boolean>() {
 
 			public Boolean call() {
-				MergeWizard wizard = new MergeWizard(decisionManager);
-				WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
+				final MergeWizard wizard = new MergeWizard(decisionManager);
+				final WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
 				dialog.setPageSize(1000, 500);
 				dialog.setBlockOnOpen(true);
 				dialog.create();
 
-				int open = dialog.open();
+				final int open = dialog.open();
 
 				getLabelProvider().dispose();
-				return (open == Dialog.OK);
+				return open == Window.OK;
 			}
 		});
 	}

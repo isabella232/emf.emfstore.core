@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 public class ExportProjectHistoryController extends ServerCall<Void> implements IExportImportController {
 
 	private ProjectHistory projectHistory;
-	private ProjectInfo projectInfo;
+	private final ProjectInfo projectInfo;
 
 	/**
 	 * Constructor.
@@ -108,8 +108,8 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	private void saveProjectHistory(ProjectHistory projectHistory, String absoluteFileName) throws IOException {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource resource = resourceSet.createResource(URI.createFileURI(absoluteFileName));
+		final ResourceSet resourceSet = new ResourceSetImpl();
+		final Resource resource = resourceSet.createResource(URI.createFileURI(absoluteFileName));
 		resource.getContents().add(projectHistory);
 		ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
 	}

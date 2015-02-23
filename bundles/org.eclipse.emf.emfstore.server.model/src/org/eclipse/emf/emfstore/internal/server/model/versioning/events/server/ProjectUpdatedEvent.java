@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Updated Event</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  * <em>New Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerPackage#getProjectUpdatedEvent()
  * @model
  * @generated

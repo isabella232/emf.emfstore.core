@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.test;
@@ -14,8 +14,6 @@ import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.addEl
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.checkout;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.cloneProject;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.computeChecksum;
-import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.getOperationSize;
-import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.removeModelElement;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.revert;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.share;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.startRecording;
@@ -36,18 +34,22 @@ import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
-import org.eclipse.emf.emfstore.client.test.common.dsl.Delete;
 import org.eclipse.emf.emfstore.client.test.common.dsl.TestElementFeatures;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Update;
+import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.common.model.ESModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
+import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.client.model.util.ChecksumErrorHandler;
+import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.versionspec.ESPrimaryVersionSpecImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 import org.eclipse.emf.emfstore.server.ESConflictSet;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -115,11 +117,24 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		final long checksum = computeChecksum(getLocalProject());
 
 		clearOperations();
-		Delete.fromProject(getLocalProject(), attribute);
 
-		removeModelElement(getLocalProject(), attribute);
+		assertTrue(getProjectSpace().getLocalChangePackage().isEmpty());
+
+		final ProjectSpace clonedProjectSpace = cloneProjectSpace(getProjectSpace());
+		final ModelElementId attributeId = getProject().getModelElementId(attribute);
+
+		// Delete.fromProject(getLocalProject(), attribute);
+		ProjectUtil.removeModelElement(getLocalProject(), attribute);
+
+		final List<AbstractOperation> forceGetOperations = forceGetOperations();
+		final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) forceGetOperations.get(0);
+
+		assertEquals(attributeId, createDeleteOperation.getModelElementId());
+		assertTrue(createDeleteOperation.isDelete());
+
 		revert(getLocalProject());
 
+		assertTrue(ModelUtil.areEqual(getProject(), clonedProjectSpace.getProject()));
 		final long checksumAfterRevert = computeChecksum(getLocalProject());
 
 		assertEquals(checksum, checksumAfterRevert);
@@ -161,6 +176,8 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		final TestElement testElement = Create.testElement();
 		share(getUsersession(), addElement(getLocalProject(), testElement));
 
+		assertEquals(0, forceGetOperations().size());
+
 		Update.testElement(TestElementFeatures.name(),
 			testElement, A);
 
@@ -176,7 +193,7 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		// FIXME: ugly
 		assertEquals(1,
-			((ESLocalProjectImpl) getLocalProject()).toInternalAPI().getOperations().size());
+			forceGetOperations().size());
 
 		// re-checkout should be triggered
 		final ESPrimaryVersionSpec commit = commitWithoutCommand(getLocalProject());
@@ -211,7 +228,7 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		commitWithoutCommand(getLocalProject());
 
-		assertEquals(0, getOperationSize(getLocalProject()));
+		assertEquals(0, forceGetOperations().size());
 
 		addElement(checkout,
 			Update.testElement(TestElementFeatures.name(),
@@ -220,8 +237,8 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		update(checkout);
 		commitWithoutCommand(checkout);
 
-		assertEquals(0, getOperationSize(checkout));
-		assertEquals(0, getOperationSize(getLocalProject()));
+		assertEquals(0, forceGetOperations(ESLocalProjectImpl.class.cast(checkout).toInternalAPI()).size());
+		assertEquals(0, forceGetOperations().size());
 
 		Update.testElement(TestElementFeatures.name(),
 			testElement, BOOL);
@@ -232,12 +249,12 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		startRecording(getLocalProject());
 
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 
 		// cancel should be triggered via exception
 		update(getLocalProject(), new MyUpdateCallback());
 
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 	}
 
 	@Test(expected = ESException.class)
@@ -351,11 +368,11 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		Update.testElement(TestElementFeatures.name(), testElement, C);
 		startRecording(getLocalProject());
 
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 
 		// autocorrect should be triggered, will fail
 		update(getLocalProject());
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 	}
 
 	private class MyCommitCallback implements ESCommitCallback {

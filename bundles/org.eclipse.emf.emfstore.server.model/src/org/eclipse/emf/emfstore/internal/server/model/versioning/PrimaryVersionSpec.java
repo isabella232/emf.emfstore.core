@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @extends Comparable<PrimaryVersionSpec>, APIDelegate<ESPrimaryVersionSpec>
  * 
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *          <em>Project State Checksum</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPrimaryVersionSpec()
  * @model
  * @generated

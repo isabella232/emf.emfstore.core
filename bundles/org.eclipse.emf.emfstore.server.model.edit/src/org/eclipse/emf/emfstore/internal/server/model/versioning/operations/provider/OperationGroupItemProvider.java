@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationGroup} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OperationGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -42,7 +42,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OperationGroupItemProvider(AdapterFactory adapterFactory) {
@@ -63,7 +63,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -82,17 +82,18 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_OperationGroup_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_OperationGroup_name_feature", //$NON-NLS-2$ //$NON-NLS-1$
-					"_UI_OperationGroup_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_OperationGroup_name_feature", "_UI_OperationGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.OPERATION_GROUP__NAME,
 				true,
 				false,
@@ -105,17 +106,18 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	/**
 	 * This adds a property descriptor for the Operations feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addOperationsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_OperationGroup_operations_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_OperationGroup_operations_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_OperationGroup_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_OperationGroup_operations_feature", "_UI_OperationGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.OPERATION_GROUP__OPERATIONS,
 				true,
 				false,
@@ -158,7 +160,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -178,7 +180,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -189,7 +191,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

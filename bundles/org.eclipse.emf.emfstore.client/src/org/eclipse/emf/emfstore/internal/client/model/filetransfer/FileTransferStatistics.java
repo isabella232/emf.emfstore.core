@@ -23,7 +23,7 @@ public class FileTransferStatistics {
 	private int transferredBytes;
 	private long startTime;
 	private long stopTime;
-	private FileDownloadStatus status;
+	private final FileDownloadStatus status;
 
 	/**
 	 * Default constructor.
@@ -31,7 +31,7 @@ public class FileTransferStatistics {
 	 * @param status the starting status.
 	 */
 	FileTransferStatistics(FileDownloadStatus status) {
-		this.fileSize = FileDownloadStatus.NOT_AVAILABLE;
+		fileSize = FileDownloadStatus.NOT_AVAILABLE;
 		this.status = status;
 	}
 
@@ -68,7 +68,7 @@ public class FileTransferStatistics {
 		default:
 		}
 
-		int fileSize = getFileSize();
+		final int fileSize = getFileSize();
 
 		// Better not risk a division by zero
 		if (fileSize <= 0) {
@@ -89,7 +89,7 @@ public class FileTransferStatistics {
 			return 0;
 		default:
 		}
-		long elapsed = getElapsedMilis();
+		final long elapsed = getElapsedMilis();
 
 		// No div by zero
 		if (elapsed == 0) {
@@ -115,8 +115,8 @@ public class FileTransferStatistics {
 			return 0;
 		default:
 		}
-		int remaining = getRemainingBytes();
-		float avgThroughput = getAverageThroughput();
+		final int remaining = getRemainingBytes();
+		final float avgThroughput = getAverageThroughput();
 
 		if (avgThroughput == 0) {
 			return FileDownloadStatus.NOT_AVAILABLE;

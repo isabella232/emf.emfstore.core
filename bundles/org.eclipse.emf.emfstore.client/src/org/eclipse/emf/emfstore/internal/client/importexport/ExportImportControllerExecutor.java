@@ -25,8 +25,8 @@ import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
  */
 public class ExportImportControllerExecutor {
 
-	private File file;
-	private IProgressMonitor monitor;
+	private final File file;
+	private final IProgressMonitor monitor;
 	private IOException importExportError;
 
 	/**
@@ -62,7 +62,7 @@ public class ExportImportControllerExecutor {
 				monitor.worked(10);
 				try {
 					controller.execute(file, monitor);
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					importExportError = e;
 				}
 				// / TODO

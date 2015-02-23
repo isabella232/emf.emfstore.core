@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -26,14 +26,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MultiAttributeSetOperationItemProvider extends FeatureOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiAttributeSetOperationItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -62,77 +62,80 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	/**
 	 * This adds a property descriptor for the Index feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeSetOperation_index_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__INDEX,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_index_feature", "_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__INDEX,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Old Value feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeSetOperation_oldValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__OLD_VALUE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_oldValue_feature", "_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__OLD_VALUE,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the New Value feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeSetOperation_newValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__NEW_VALUE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_newValue_feature", "_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__NEW_VALUE,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns MultiAttributeSetOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -144,7 +147,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -152,7 +155,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 		final String label = ((MultiAttributeSetOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MultiAttributeSetOperation_type") : //$NON-NLS-1$
-			getString("_UI_MultiAttributeSetOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_MultiAttributeSetOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -160,7 +163,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -182,7 +185,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

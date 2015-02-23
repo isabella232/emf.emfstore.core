@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
@@ -74,7 +74,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * From Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VersionImpl extends EObjectImpl implements Version {
@@ -118,7 +118,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getPrimarySpec() <em>Primary Spec</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrimarySpec()
 	 * @generated
 	 * @ordered
@@ -128,7 +128,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getTagSpecs() <em>Tag Specs</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTagSpecs()
 	 * @generated
 	 * @ordered
@@ -138,7 +138,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getNextVersion() <em>Next Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNextVersion()
 	 * @generated
 	 * @ordered
@@ -149,7 +149,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getPreviousVersion() <em>Previous Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getPreviousVersion()
 	 * @generated
 	 * @ordered
@@ -159,7 +159,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLogMessage()
 	 * @generated
 	 * @ordered
@@ -170,7 +170,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getAncestorVersion() <em>Ancestor Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getAncestorVersion()
 	 * @generated
 	 * @ordered
@@ -181,7 +181,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getBranchedVersions() <em>Branched Versions</em>}' reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getBranchedVersions()
 	 * @generated
 	 * @ordered
@@ -192,7 +192,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getMergedToVersion() <em>Merged To Version</em>}' reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedToVersion()
 	 * @generated
 	 * @ordered
@@ -203,7 +203,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getMergedFromVersion() <em>Merged From Version</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedFromVersion()
 	 * @generated
 	 * @ordered
@@ -212,7 +212,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected VersionImpl() {
@@ -221,7 +221,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,7 +231,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getPrimarySpec() {
@@ -263,7 +263,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetPrimarySpec() {
@@ -272,7 +272,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPrimarySpec(PrimaryVersionSpec newPrimarySpec, NotificationChain msgs) {
@@ -293,7 +293,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPrimarySpec(PrimaryVersionSpec newPrimarySpec) {
@@ -321,7 +321,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TagVersionSpec> getTagSpecs() {
@@ -335,7 +335,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version getNextVersion() {
@@ -356,7 +356,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version basicGetNextVersion() {
@@ -365,7 +365,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNextVersion(Version newNextVersion, NotificationChain msgs) {
@@ -386,7 +386,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNextVersion(Version newNextVersion) {
@@ -414,7 +414,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version getPreviousVersion() {
@@ -435,7 +435,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version basicGetPreviousVersion() {
@@ -444,7 +444,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPreviousVersion(Version newPreviousVersion, NotificationChain msgs) {
@@ -465,7 +465,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPreviousVersion(Version newPreviousVersion) {
@@ -495,7 +495,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * Loads the XMI IDs from the given resource and returns them in a map
 	 * together with the object each ID belongs to.
-	 * 
+	 *
 	 * @param resource
 	 *            the resource from which to load the ID mappings
 	 * @return a map consisting of object/id mappings, if the resource doesn't
@@ -526,7 +526,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage getLogMessage() {
@@ -558,7 +558,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage basicGetLogMessage() {
@@ -567,7 +567,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
@@ -588,7 +588,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLogMessage(LogMessage newLogMessage) {
@@ -616,7 +616,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version getAncestorVersion() {
@@ -637,7 +637,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version basicGetAncestorVersion() {
@@ -646,7 +646,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetAncestorVersion(Version newAncestorVersion, NotificationChain msgs) {
@@ -667,7 +667,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAncestorVersion(Version newAncestorVersion) {
@@ -695,7 +695,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getBranchedVersions() {
@@ -709,7 +709,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getMergedToVersion() {
@@ -723,7 +723,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getMergedFromVersion() {
@@ -737,7 +737,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -776,7 +776,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -807,7 +807,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -853,7 +853,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -898,7 +898,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -938,7 +938,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -976,18 +976,18 @@ public class VersionImpl extends EObjectImpl implements Version {
 		return project;
 	}
 
-	public ChangePackage getChanges() {
+	public AbstractChangePackage getChanges() {
 		final Resource resource = getChangePackageResource();
 		if (resource == null || resource.getContents().size() < 1) {
 			return null;
 		}
-		final ChangePackage changePackage = (ChangePackage) resource.getContents().get(0);
+		final AbstractChangePackage changePackage = (AbstractChangePackage) resource.getContents().get(0);
 		return changePackage;
 	}
 
 	/**
 	 * Returns a resource containing the associated project state. If a resource is not in memory one will be loaded.
-	 * 
+	 *
 	 * @return the resource
 	 */
 	private Resource getProjectStateResource() {
@@ -1039,7 +1039,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * Returns a resource containing the associated ChangePackage. If a resource is not in memory one will be loaded.
-	 * 
+	 *
 	 * @return the resource
 	 */
 	private Resource getChangePackageResource() {
@@ -1066,7 +1066,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * Loads a resource for the given URI.
-	 * 
+	 *
 	 * @param uri the URI
 	 * @return the loaded resource
 	 * @throws IOException - in case the resource could not be read.
@@ -1105,7 +1105,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * allows to retrieve the URI for the resource containing the project state associated with this version.
-	 * 
+	 *
 	 * @return the uri for the project state resource
 	 */
 	private URI getProjectURI() {
@@ -1115,7 +1115,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * allows to retrieve the URI for the resource containing the ChangePackege associated with this version.
-	 * 
+	 *
 	 * @return the uri for the ChangePackage resource
 	 */
 	private URI getChangePackageURI() {
@@ -1126,7 +1126,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * allows to retrieve the Base-URI of this version, i.e. the URI of the resource
 	 * containing the version trimmed by its last segment.
-	 * 
+	 *
 	 * @return the base URI
 	 */
 	private URI getBaseURI() {

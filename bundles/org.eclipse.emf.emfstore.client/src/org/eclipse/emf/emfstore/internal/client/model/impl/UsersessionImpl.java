@@ -59,7 +59,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * Properties</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class UsersessionImpl extends EObjectImpl implements Usersession {
@@ -228,11 +228,12 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public void setUsername(String newUsername) {
-		String oldUsername = username;
+		final String oldUsername = username;
 		username = newUsername;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__USERNAME, oldUsername,
 				username));
+		}
 	}
 
 	/**
@@ -267,11 +268,12 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public void setPasswordGen(String newPassword) {
-		String oldPassword = password;
+		final String oldPassword = password;
 		password = newPassword;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__PASSWORD, oldPassword,
 				password));
+		}
 	}
 
 	// begin of custom code
@@ -304,13 +306,14 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	public SessionId getSessionIdGen() {
 		if (sessionId != null && sessionId.eIsProxy())
 		{
-			InternalEObject oldSessionId = (InternalEObject) sessionId;
+			final InternalEObject oldSessionId = (InternalEObject) sessionId;
 			sessionId = (SessionId) eResolveProxy(oldSessionId);
 			if (sessionId != oldSessionId)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.USERSESSION__SESSION_ID,
 						oldSessionId, sessionId));
+				}
 			}
 		}
 		return sessionId;
@@ -331,11 +334,12 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public void setSessionId(SessionId newSessionId) {
-		SessionId oldSessionId = sessionId;
+		final SessionId oldSessionId = sessionId;
 		sessionId = newSessionId;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__SESSION_ID, oldSessionId,
 				sessionId));
+		}
 	}
 
 	/**
@@ -353,11 +357,12 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public void setPersistentPasswordGen(String newPersistentPassword) {
-		String oldPersistentPassword = persistentPassword;
+		final String oldPersistentPassword = persistentPassword;
 		persistentPassword = newPersistentPassword;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__PERSISTENT_PASSWORD,
 				oldPersistentPassword, persistentPassword));
+		}
 	}
 
 	/**
@@ -380,13 +385,14 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	public ServerInfo getServerInfo() {
 		if (serverInfo != null && serverInfo.eIsProxy())
 		{
-			InternalEObject oldServerInfo = (InternalEObject) serverInfo;
+			final InternalEObject oldServerInfo = (InternalEObject) serverInfo;
 			serverInfo = (ServerInfo) eResolveProxy(oldServerInfo);
 			if (serverInfo != oldServerInfo)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.USERSESSION__SERVER_INFO,
 						oldServerInfo, serverInfo));
+				}
 			}
 		}
 		return serverInfo;
@@ -407,11 +413,12 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public void setServerInfo(ServerInfo newServerInfo) {
-		ServerInfo oldServerInfo = serverInfo;
+		final ServerInfo oldServerInfo = serverInfo;
 		serverInfo = newServerInfo;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__SERVER_INFO, oldServerInfo,
 				serverInfo));
+		}
 	}
 
 	/**
@@ -429,11 +436,12 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public void setSavePasswordGen(boolean newSavePassword) {
-		boolean oldSavePassword = savePassword;
+		final boolean oldSavePassword = savePassword;
 		savePassword = newSavePassword;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__SAVE_PASSWORD,
 				oldSavePassword, savePassword));
+		}
 	}
 
 	// begin of custom code
@@ -464,11 +472,11 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	public ACUser getACUser() {
 		if (acUser != null && acUser.eIsProxy())
 		{
-			InternalEObject oldACUser = (InternalEObject) acUser;
+			final InternalEObject oldACUser = (InternalEObject) acUser;
 			acUser = (ACUser) eResolveProxy(oldACUser);
 			if (acUser != oldACUser)
 			{
-				InternalEObject newACUser = (InternalEObject) acUser;
+				final InternalEObject newACUser = (InternalEObject) acUser;
 				NotificationChain msgs = oldACUser.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.USERSESSION__AC_USER, null, null);
 				if (newACUser.eInternalContainer() == null)
@@ -476,11 +484,13 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 					msgs = newACUser.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.USERSESSION__AC_USER,
 						null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.USERSESSION__AC_USER,
 						oldACUser, acUser));
+				}
 			}
 		}
 		return acUser;
@@ -501,16 +511,17 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 	 * @generated
 	 */
 	public NotificationChain basicSetACUser(ACUser newACUser, NotificationChain msgs) {
-		ACUser oldACUser = acUser;
+		final ACUser oldACUser = acUser;
 		acUser = newACUser;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ModelPackage.USERSESSION__AC_USER, oldACUser, newACUser);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -524,19 +535,23 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 		if (newACUser != acUser)
 		{
 			NotificationChain msgs = null;
-			if (acUser != null)
+			if (acUser != null) {
 				msgs = ((InternalEObject) acUser).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.USERSESSION__AC_USER, null, msgs);
-			if (newACUser != null)
+			}
+			if (newACUser != null) {
 				msgs = ((InternalEObject) newACUser).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.USERSESSION__AC_USER, null, msgs);
+			}
 			msgs = basicSetACUser(newACUser, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.USERSESSION__AC_USER, newACUser,
 				newACUser));
+		}
 	}
 
 	/**
@@ -639,20 +654,23 @@ public class UsersessionImpl extends EObjectImpl implements Usersession {
 		case ModelPackage.USERSESSION__PASSWORD:
 			return getPassword();
 		case ModelPackage.USERSESSION__SESSION_ID:
-			if (resolve)
+			if (resolve) {
 				return getSessionId();
+			}
 			return basicGetSessionId();
 		case ModelPackage.USERSESSION__PERSISTENT_PASSWORD:
 			return getPersistentPassword();
 		case ModelPackage.USERSESSION__SERVER_INFO:
-			if (resolve)
+			if (resolve) {
 				return getServerInfo();
+			}
 			return basicGetServerInfo();
 		case ModelPackage.USERSESSION__SAVE_PASSWORD:
 			return isSavePassword();
 		case ModelPackage.USERSESSION__AC_USER:
-			if (resolve)
+			if (resolve) {
 				return getACUser();
+			}
 			return basicGetACUser();
 		case ModelPackage.USERSESSION__CHANGED_PROPERTIES:
 			return getChangedProperties();

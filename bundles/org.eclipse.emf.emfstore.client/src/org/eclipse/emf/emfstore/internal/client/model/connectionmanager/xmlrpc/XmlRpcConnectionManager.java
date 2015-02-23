@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -33,9 +33,9 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -46,7 +46,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * XML RPC based Implementation of ConnectionManager.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcClientManager> implements
@@ -103,7 +103,7 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	 * {@inheritDoc}
 	 */
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
+		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
 		return getConnectionProxy(sessionId).callWithResult("createVersion", PrimaryVersionSpec.class, sessionId, //$NON-NLS-1$
 			projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion, logMessage);
@@ -137,17 +137,16 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
-		VersionSpec target)
-		throws InvalidVersionSpecException, ESException {
-		return getConnectionProxy(sessionId).callWithListResult("getChanges", ChangePackage.class, sessionId, //$NON-NLS-1$
+	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+		VersionSpec target) throws InvalidVersionSpecException, ESException {
+		return getConnectionProxy(sessionId).callWithListResult("getChanges", AbstractChangePackage.class, sessionId, //$NON-NLS-1$
 			projectId, source, target);
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getBranches(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
@@ -248,9 +247,9 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager#isLoggedIn(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public boolean isLoggedIn(SessionId id) {
@@ -259,7 +258,7 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#registerEPackage(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.ecore.EPackage)
 	 */
@@ -269,9 +268,9 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager#getVersion(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public String getVersion(ServerInfo serverInfo) throws ESException {
@@ -294,14 +293,14 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {
 		return getConnectionProxy(sessionId)
-			.callWithResult("getVersion", String.class, sessionId); //$NON-NLS-1$ 
+			.callWithResult("getVersion", String.class, sessionId); //$NON-NLS-1$
 	}
 
 }

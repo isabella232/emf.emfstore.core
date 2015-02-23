@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -27,14 +27,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ReferenceOperationItemProvider extends FeatureOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ReferenceOperationItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +44,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -63,70 +63,73 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	/**
 	 * This adds a property descriptor for the Bidirectional feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addBidirectionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ReferenceOperation_bidirectional_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_bidirectional_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.REFERENCE_OPERATION__BIDIRECTIONAL,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_bidirectional_feature", "_UI_ReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.REFERENCE_OPERATION__BIDIRECTIONAL,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Opposite Feature Name feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addOppositeFeatureNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ReferenceOperation_oppositeFeatureName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_oppositeFeatureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_oppositeFeatureName_feature", "_UI_ReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Containment Type feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addContainmentTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ReferenceOperation_containmentType_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_containmentType_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.REFERENCE_OPERATION__CONTAINMENT_TYPE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_containmentType_feature", "_UI_ReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.REFERENCE_OPERATION__CONTAINMENT_TYPE,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	// begin of custom code
@@ -147,7 +150,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -155,7 +158,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 		final String label = ((ReferenceOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ReferenceOperation_type") : //$NON-NLS-1$
-			getString("_UI_ReferenceOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ReferenceOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -163,7 +166,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -185,7 +188,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -71,8 +71,6 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 	/**
 	 * Test creation of element with cross references.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void createMultipleChildrenTestAtOnce() throws UnsupportedOperationException,
@@ -123,14 +121,12 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 		assertNotNull(getProject().getModelElementId(testElement12));
 		assertNotNull(getProject().getModelElementId(testElement13));
 
-		assertEquals(4, getProjectSpace().getOperations().size());
+		assertEquals(4, forceGetOperations().size());
 	}
 
 	/**
 	 * Test creation of element with cross references.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
@@ -169,9 +165,11 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 		assertNotNull(getProject().getModelElementId(testElement121));
 		assertNotNull(getProject().getModelElementId(testElement122));
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		assertTrue(getProjectSpace().getOperations().get(0) instanceof CreateDeleteOperation);
-		CreateDeleteOperation operation = (CreateDeleteOperation) getProjectSpace().getOperations().get(0);
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		assertEquals(1, operations.size());
+		assertTrue(operations.get(0) instanceof CreateDeleteOperation);
+		CreateDeleteOperation operation = (CreateDeleteOperation) operations.get(0);
 		assertEquals(getProject().getModelElementId(testElement1), operation.getModelElementId());
 		assertEquals(0, operation.getSubOperations().size());
 
@@ -260,8 +258,10 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		final AbstractOperation tmp = getProjectSpace().getOperations().get(0);
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		assertEquals(1, operations.size());
+		final AbstractOperation tmp = operations.get(0);
 		assertTrue(tmp instanceof MultiAttributeMoveOperation);
 		final MultiAttributeMoveOperation operation = (MultiAttributeMoveOperation) tmp;
 		assertTrue(operation.getNewIndex() == 0);
@@ -296,11 +296,11 @@ public class MultiAttributeMoveOperationTest extends ESTest {
 			}
 		}.run(false);
 
+		final AbstractOperation reversedOperation = forceGetOperations().get(0).reverse();
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				final AbstractOperation operation = getProjectSpace().getOperations().get(0).reverse();
-				operation.apply(getProject());
+				reversedOperation.apply(getProject());
 				assertTrue(testElement.getStrings().size() == 2);
 				assertTrue(testElement.getStrings().get(0).equals(FIRST));
 				assertTrue(testElement.getStrings().get(1).equals(SECOND));

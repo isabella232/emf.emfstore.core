@@ -5,16 +5,16 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
@@ -22,13 +22,14 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
 /**
  * Tests conflict detection behaviour on attributes.
- * 
+ *
  * @author chodnick
  */
 public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
@@ -69,11 +70,14 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+
+		final ConflictBucket bucket = conflicts.get(0);
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
 
 		assertEquals(conflicts.size(), 1);
 
@@ -117,14 +121,15 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		final ConflictBucket bucket = conflicts.get(0);
 
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
 		assertEquals(conflicts.size(), 1);
-
 	}
 
 	/**
@@ -161,12 +166,14 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		final ConflictBucket bucket = conflicts.get(0);
 
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
 		assertEquals(conflicts.size(), 1);
 
 	}
@@ -191,31 +198,28 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 		}.run(false);
 
 		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		final Project project2 = ps2.getProject();
+		final Project clonedProject = ps2.getProject();
 
 		final ModelElementId actorId = getProject().getModelElementId(actor);
 		final ModelElementId sectionId = getProject().getModelElementId(section);
 
 		final TestElement actor1 = (TestElement) getProject().getModelElement(actorId);
-		final TestElement section2 = (TestElement) project2.getModelElement(sectionId);
+		final TestElement clonedSection = (TestElement) clonedProject.getModelElement(sectionId);
 		new EMFStoreCommand() {
 
 			@Override
 			protected void doRun() {
 				actor1.setName(CHANGE_TO_UNRELATED_OBJECT_ON_ANOTHER_WORKING_COPY);
-				project2.deleteModelElement(section2);
+				clonedProject.deleteModelElement(clonedSection);
 
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
-		assertEquals(conflicts.size(), 0);
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -259,12 +263,14 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		final ConflictBucket bucket = conflicts.get(0);
 
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
 		assertEquals(conflicts.size(), 1);
 
 	}
@@ -310,17 +316,19 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
-
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
 		// technically no conflict, since annotated milestone will not be deleted,
 		// but there is no way to tell containment from non-containment changes,
 		// therefore it is expected that this will be detected as a hard conflict
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(conflicts.size(), 1);
+		final ConflictBucket bucket = conflicts.get(0);
 
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
+		assertEquals(conflicts.size(), 1);
 	}
 
 	/**
@@ -377,15 +385,18 @@ public class ConflictDetectionDeleteTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
-
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
 		// a move change is a change... from users perspective it should not be lost, probably..
 		// currently considered to be a hard conflict, because the user should know
-		assertEquals(1, conflicts.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertEquals(conflicts.size(), 1);
+		final ConflictBucket bucket = conflicts.get(0);
+
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
+		assertEquals(conflicts.size(), 1);
 
 	}
 }

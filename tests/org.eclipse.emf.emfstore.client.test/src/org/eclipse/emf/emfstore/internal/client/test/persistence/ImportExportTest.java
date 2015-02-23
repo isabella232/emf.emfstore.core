@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.test.persistence;
@@ -53,7 +53,7 @@ public class ImportExportTest extends ESTest {
 		final ProjectSpace clonedProjectSpace = ModelUtil.clone(getProjectSpace());
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
-		assertTrue(getProjectSpace().getOperations().size() > 0);
+		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
 
 		// TODO: assert file extension is correct
 
@@ -73,7 +73,7 @@ public class ImportExportTest extends ESTest {
 	public void testExportImportProjectController() throws IOException {
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
-		assertTrue(getProjectSpace().getOperations().size() > 0);
+		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
 
 		// TODO: assert file extension is correct
 
@@ -121,7 +121,7 @@ public class ImportExportTest extends ESTest {
 	public void testExportImportProjectSpaceController() throws IOException {
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
-		assertTrue(getProjectSpace().getOperations().size() > 0);
+		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
 
 		// TODO: assert file extension is correct
 

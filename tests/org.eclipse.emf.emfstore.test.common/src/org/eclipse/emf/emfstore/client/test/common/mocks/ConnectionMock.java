@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -37,15 +37,20 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 public class ConnectionMock implements ConnectionManager {
@@ -96,13 +101,38 @@ public class ConnectionMock implements ConnectionManager {
 			ModelUtil.clone(versionSpec)));
 	}
 
-	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
-		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
+	public PrimaryVersionSpec createVersion(final SessionId sessionId, final ProjectId projectId,
+		final PrimaryVersionSpec baseVersionSpec, final AbstractChangePackage changePackage,
+		final BranchVersionSpec targetBranch,
+		final PrimaryVersionSpec sourceVersion, final LogMessage logMessage) throws ESException,
+		InvalidVersionSpecException {
+
+		AbstractChangePackage cp = changePackage;
 		checkSessionId(sessionId);
+
+		if (FileBasedChangePackage.class.isInstance(changePackage)) {
+			cp = toInMemoryChangePackage(FileBasedChangePackage.class.cast(changePackage));
+		}
+
 		return ModelUtil.clone(emfStore.createVersion(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(baseVersionSpec), ModelUtil.clone(changePackage), ModelUtil.clone(targetBranch),
+			ModelUtil.clone(baseVersionSpec), ModelUtil.clone(cp), ModelUtil.clone(targetBranch),
 			ModelUtil.clone(sourceVersion), ModelUtil.clone(logMessage)));
+	}
+
+	private static ChangePackage toInMemoryChangePackage(FileBasedChangePackage fileBasedChangePackage) {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operationsHandle = fileBasedChangePackage.operations();
+		try {
+			for (final AbstractOperation operation : operationsHandle.iterable()) {
+				changePackage.add(operation);
+			}
+		} finally {
+			operationsHandle.close();
+		}
+
+		changePackage.setLogMessage(ModelUtil.clone(fileBasedChangePackage.getLogMessage()));
+
+		return changePackage;
 	}
 
 	public PrimaryVersionSpec resolveVersionSpec(SessionId sessionId, ProjectId projectId, VersionSpec versionSpec)
@@ -112,11 +142,15 @@ public class ConnectionMock implements ConnectionManager {
 			ModelUtil.clone(versionSpec)));
 	}
 
-	public List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
 		VersionSpec target) throws ESException {
 		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getChanges(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(source), ModelUtil.clone(target)));
+		final List<AbstractChangePackage> changes = emfStore.getChanges(
+			ModelUtil.clone(sessionId),
+			ModelUtil.clone(projectId),
+			ModelUtil.clone(source),
+			ModelUtil.clone(target));
+		return ModelUtil.clone(changes);
 	}
 
 	public List<BranchInfo> getBranches(SessionId sessionId, ProjectId projectId) throws ESException {
@@ -225,7 +259,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {
@@ -234,12 +268,12 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager#getVersion(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public String getVersion(ServerInfo serverInfo) throws ESException {
 		final SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
-		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$			
+		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$
 		sessions.add(sessionId);
 		return emfStore.getVersion(sessionId);
 	}

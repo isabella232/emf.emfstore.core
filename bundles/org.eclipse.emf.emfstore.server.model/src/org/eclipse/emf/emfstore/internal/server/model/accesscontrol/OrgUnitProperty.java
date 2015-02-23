@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Org Unit Properties</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty#getProject <em>Project</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getOrgUnitProperty()
  * @model
  * @generated

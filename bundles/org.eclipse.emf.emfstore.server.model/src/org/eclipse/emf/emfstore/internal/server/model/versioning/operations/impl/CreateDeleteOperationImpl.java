@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -60,7 +60,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * <em>EObject To Id Map</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateDeleteOperationImpl extends AbstractOperationImpl implements CreateDeleteOperation {
@@ -178,7 +178,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	/**
 	 * The default value of the '{@link #isDelete() <em>Delete</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isDelete()
 	 * @generated
 	 * @ordered
@@ -188,7 +188,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	/**
 	 * The cached value of the '{@link #isDelete() <em>Delete</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isDelete()
 	 * @generated
 	 * @ordered
@@ -199,7 +199,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 * The cached value of the '{@link #getModelElement() <em>Model Element</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getModelElement()
 	 * @generated
 	 * @ordered
@@ -210,7 +210,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 * The cached value of the '{@link #getSubOperations() <em>Sub Operations</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSubOperations()
 	 * @generated
 	 * @ordered
@@ -221,7 +221,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 * The cached value of the '{@link #getEObjectToIdMap() <em>EObject To Id Map</em>}' map.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getEObjectToIdMap()
 	 * @generated
 	 * @ordered
@@ -230,7 +230,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected CreateDeleteOperationImpl() {
@@ -239,7 +239,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -249,7 +249,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isDelete() {
@@ -258,7 +258,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDelete(boolean newDelete) {
@@ -272,7 +272,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EObject getModelElement() {
@@ -304,7 +304,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EObject basicGetModelElement() {
@@ -313,7 +313,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetModelElement(EObject newModelElement, NotificationChain msgs) {
@@ -334,7 +334,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setModelElement(EObject newModelElement) {
@@ -362,7 +362,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ReferenceOperation> getSubOperations() {
@@ -376,7 +376,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<EObject, ModelElementId> getEObjectToIdMap() {
@@ -391,7 +391,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -410,7 +410,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -437,7 +437,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -464,7 +464,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -489,7 +489,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -510,7 +510,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -542,7 +542,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
 	public List<AbstractOperation> getLeafOperations() {
@@ -555,9 +555,9 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#getParentofDeletedElement(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 * @generated NOT
 	 */

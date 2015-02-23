@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.provider;
@@ -28,14 +28,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser}
  * object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACUserItemProvider(AdapterFactory adapterFactory) {
@@ -45,7 +45,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -64,12 +64,12 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This adds a property descriptor for the First Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addFirstNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ACUser_firstName_feature"), //$NON-NLS-1$
@@ -86,12 +86,12 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This adds a property descriptor for the Last Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addLastNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ACUser_lastName_feature"), //$NON-NLS-1$
@@ -109,13 +109,13 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * This adds a property descriptor for the Password feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPasswordPropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ACUser_password_feature"), //$NON-NLS-1$
@@ -134,7 +134,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +149,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -163,7 +163,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This returns ACUser.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -183,7 +183,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 		final String label = ((ACUser) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ACUser_type") : //$NON-NLS-1$
-			getString("_UI_ACUser_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ACUser_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -216,7 +216,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -224,7 +224,7 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(AccesscontrolPackage.Literals.AC_USER__EFFECTIVE_GROUPS,
 				AccesscontrolFactory.eINSTANCE.createACGroup()));
 	}

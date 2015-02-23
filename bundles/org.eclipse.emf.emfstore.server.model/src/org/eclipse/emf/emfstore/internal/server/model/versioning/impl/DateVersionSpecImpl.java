@@ -94,12 +94,11 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 * @generated
 	 */
 	public void setDate(Date newDate) {
-		final Date oldDate = date;
+		Date oldDate = date;
 		date = newDate;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.DATE_VERSION_SPEC__DATE, oldDate,
 				date));
-		}
 	}
 
 	/**
@@ -171,11 +170,10 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (date: "); //$NON-NLS-1$
 		result.append(date);
 		result.append(')');

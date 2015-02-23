@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ProjectAdminRoleImpl extends RoleImpl implements ProjectAdminRole {

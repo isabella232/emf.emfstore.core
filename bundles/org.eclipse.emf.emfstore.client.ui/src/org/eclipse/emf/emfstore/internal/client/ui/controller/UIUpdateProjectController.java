@@ -1,17 +1,18 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.controller;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -27,14 +28,17 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.UpdateDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.MergeProjectHandler;
-import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.ExtensionRegistry;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESFileBasedChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.versionspec.ESPrimaryVersionSpecImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.server.ESConflictSet;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -46,7 +50,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for performing a paged update.
- * 
+ *
  * @author emueller
  */
 public class UIUpdateProjectController extends
@@ -67,7 +71,7 @@ public class UIUpdateProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the {@link Shell} that will be used during the update
 	 * @param localProject
@@ -82,7 +86,7 @@ public class UIUpdateProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the {@link Shell} that will be used during the update
 	 * @param localProject
@@ -100,7 +104,7 @@ public class UIUpdateProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the {@link Shell} that will be used during the update
 	 * @param localProject
@@ -126,9 +130,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback#noChangesOnServer()
 	 */
 	public void noChangesOnServer() {
@@ -144,9 +148,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback#conflictOccurred(org.eclipse.emf.emfstore.server.ESConflictSet,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -158,9 +162,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.emf.emfstore.common.model.ESModelElementIdToEObjectMapping)
 	 */
@@ -168,7 +172,19 @@ public class UIUpdateProjectController extends
 		final List<ESChangePackage> changePackages,
 		final ESModelElementIdToEObjectMapping idToEObjectMapping) {
 
-		final List<ChangePackage> internal = APIUtil.toInternal(ChangePackage.class, changePackages);
+		final List<AbstractChangePackage> internal = new ArrayList<AbstractChangePackage>();
+		for (final ESChangePackage changePackage : changePackages) {
+			// TODO LCP: ugly, refactor
+			if (ESChangePackageImpl.class.isInstance(changePackage)) {
+				final ChangePackage internalAPI = ESChangePackageImpl.class.cast(changePackage).toInternalAPI();
+				internal.add(internalAPI);
+			} else if (ESFileBasedChangePackageImpl.class.isInstance(changePackage)) {
+				final FileBasedChangePackage internalAPI = ESFileBasedChangePackageImpl.class.cast(changePackage)
+					.toInternalAPI();
+				internal.add(internalAPI);
+			}
+		}
+
 		final UpdateDialog updateDialog = new UpdateDialog(getShell(), localProject,
 			internal,
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
@@ -184,9 +200,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

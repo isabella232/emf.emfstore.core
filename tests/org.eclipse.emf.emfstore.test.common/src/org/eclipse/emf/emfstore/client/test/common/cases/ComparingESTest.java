@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -25,12 +25,14 @@ import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceBase;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.junit.After;
 import org.junit.Before;
 
 /**
  * @author emueller
- * 
+ *
  */
 public class ComparingESTest extends ESTest {
 
@@ -71,13 +73,15 @@ public class ComparingESTest extends ESTest {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				if (isCompareAtEnd) {
-					clonedProjectSpace.applyOperations(getProjectSpace().getOperations(), false);
-					clonedProjectSpace
-						.applyOperations(getProjectSpace().getOperationManager().clearOperations(), false);
-				} else {
-					getProjectSpace().getOperationManager().clearOperations();
+					final ESCloseableIterable<AbstractOperation> operations =
+						getProjectSpace().getLocalChangePackage().operations();
+					try {
+						clonedProjectSpace.applyOperations(operations.iterable(), false);
+					} finally {
+						operations.close();
+					}
 				}
-				getProjectSpace().getOperations().clear();
+				getProjectSpace().getLocalChangePackage().clear();
 				return null;
 			}
 		});
@@ -94,7 +98,13 @@ public class ComparingESTest extends ESTest {
 		String clonedProjectString = StringUtils.EMPTY;
 
 		if (isCompareAtEnd) {
-			clonedProjectSpace.applyOperations(getProjectSpace().getOperations(), true);
+			final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+				.operations();
+			try {
+				clonedProjectSpace.applyOperations(operations.iterable(), true);
+			} finally {
+				operations.close();
+			}
 
 			try {
 				projectString = ModelUtil.eObjectToString(getProjectSpace().getProject());

@@ -76,7 +76,7 @@ public class ImportProjectSpaceController implements IExportImportController {
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void execute(File file, IProgressMonitor progressMonitor) throws IOException {
-		Workspace currentWorkspace = ESWorkspaceProviderImpl.getInstance().getWorkspace().toInternalAPI();
+		final Workspace currentWorkspace = ESWorkspaceProviderImpl.getInstance().getWorkspace().toInternalAPI();
 		currentWorkspace.importProjectSpace(file.getAbsolutePath());
 	}
 

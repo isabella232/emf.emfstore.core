@@ -33,7 +33,7 @@ public final class NotificationRecordingHint {
 	public static final NotificationRecordingHint DEFAULT = new NotificationRecordingHint(
 		NotificationRecordingHint.HINT_NONE);
 
-	private int hint;
+	private final int hint;
 
 	private NotificationRecordingHint(int hint) {
 		this.hint = hint;

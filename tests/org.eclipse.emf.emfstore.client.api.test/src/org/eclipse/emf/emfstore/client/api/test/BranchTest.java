@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -41,9 +41,9 @@ import org.junit.Test;
 
 /**
  * Testing of branch related API.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class BranchTest extends ESTestWithSharedProject {
 
@@ -131,6 +131,8 @@ public class BranchTest extends ESTestWithSharedProject {
 		// modify trunk
 		dummyChange(trunk, playerName1);
 		final ESPrimaryVersionSpec trunkCommit = trunk.commit(noProgressMonitor());
+
+		assertEquals(branchName, getLocalProject().getBaseVersion().getBranch());
 
 		// merge trunk into branch
 		// FIXME: merge API not yet available

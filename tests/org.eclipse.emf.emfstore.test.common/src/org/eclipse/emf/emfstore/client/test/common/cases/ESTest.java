@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -28,6 +29,7 @@ import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.recording.NotificationRecording;
+import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
@@ -36,21 +38,22 @@ import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
 
 /**
  * Common base class for all EMFStore tests.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class ESTest {
 
 	private static final String CLONED_PROJECT_NAME = "clonedProject"; //$NON-NLS-1$
 
-	private ProjectSpace projectSpace;
+	private ProjectSpaceBase projectSpace;
 
 	public <T extends AbstractOperation> T checkAndCast(AbstractOperation op, Class<T> clazz) {
 		assertTrue(clazz.isInstance(op));
@@ -59,7 +62,7 @@ public abstract class ESTest {
 
 	/**
 	 * Clones a {@link ProjectSpace} including the project.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be cloned
 	 * @return the cloned project space
@@ -85,8 +88,9 @@ public abstract class ESTest {
 			fail(ex.getMessage());
 		}
 		CommonUtil.setTesting(true);
-		projectSpace = ESLocalProjectImpl.class.cast(
-			Create.project(ProjectUtil.defaultName())).toInternalAPI();
+		final ESLocalProject project = Create.project(ProjectUtil.defaultName());
+		projectSpace = (ProjectSpaceBase) ESLocalProjectImpl.class.cast(project
+			).toInternalAPI();
 	}
 
 	@After
@@ -103,16 +107,17 @@ public abstract class ESTest {
 
 	/**
 	 * Convenience to get an operation by type.
-	 * 
+	 *
 	 * @param clazz class of operation
 	 * @return operation
 	 */
 	protected AbstractOperation checkAndGetOperation(Class<? extends AbstractOperation> clazz) {
-		assertEquals(1, getProjectSpace().getOperations().size());
-		assertTrue(clazz.isInstance(getProjectSpace().getOperations().get(0)));
-		final AbstractOperation operation = getProjectSpace().getOperations().get(0);
+		final List<AbstractOperation> operations = forceGetOperations();
+		assertEquals(1, operations.size());
+		assertTrue(clazz.isInstance(operations.get(0)));
+		final AbstractOperation operation = operations.get(0);
 		clearOperations();
-		assertEquals(getProjectSpace().getOperations().size(), 0);
+		assertEquals(forceGetOperations().size(), 0);
 		return operation;
 	}
 
@@ -131,8 +136,8 @@ public abstract class ESTest {
 	public void clearOperations() {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
+				getProjectSpace().getLocalChangePackage().clear();
 				getProjectSpace().getOperationManager().clearOperations();
-				getProjectSpace().getOperations().clear();
 				return null;
 			}
 		});
@@ -151,4 +156,22 @@ public abstract class ESTest {
 		});
 	}
 
+	public List<AbstractOperation> forceGetOperations() {
+		return forceGetOperations(projectSpace);
+	}
+
+	public List<AbstractOperation> forceGetOperations(ProjectSpace projectSpace) {
+		final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
+		final ESCloseableIterable<AbstractOperation> operations = projectSpace.getLocalChangePackage().operations();
+
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				ops.add(operation);
+			}
+		} finally {
+			operations.close();
+		}
+
+		return ops;
+	}
 }

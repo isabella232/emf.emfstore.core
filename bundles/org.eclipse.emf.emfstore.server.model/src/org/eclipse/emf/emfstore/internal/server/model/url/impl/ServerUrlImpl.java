@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ServerUrlImpl#getPort <em>Port</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
@@ -104,12 +104,11 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @generated
 	 */
 	public void setHostName(String newHostName) {
-		final String oldHostName = hostName;
+		String oldHostName = hostName;
 		hostName = newHostName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.SERVER_URL__HOST_NAME, oldHostName,
 				hostName));
-		}
 	}
 
 	/**
@@ -127,11 +126,10 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @generated
 	 */
 	public void setPort(int newPort) {
-		final int oldPort = port;
+		int oldPort = port;
 		port = newPort;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.SERVER_URL__PORT, oldPort, port));
-		}
 	}
 
 	/**
@@ -213,11 +211,10 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (hostName: "); //$NON-NLS-1$
 		result.append(hostName);
 		result.append(", port: "); //$NON-NLS-1$

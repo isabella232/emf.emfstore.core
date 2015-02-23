@@ -27,7 +27,7 @@ import org.osgi.framework.Version;
  * Version String</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
@@ -87,12 +87,11 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 * @generated
 	 */
 	public void setEmfStoreVersionString(String newEmfStoreVersionString) {
-		final String oldEmfStoreVersionString = emfStoreVersionString;
+		String oldEmfStoreVersionString = emfStoreVersionString;
 		emfStoreVersionString = newEmfStoreVersionString;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.VERSION_INFO__EMF_STORE_VERSION_STRING,
 				oldEmfStoreVersionString, emfStoreVersionString));
-		}
 	}
 
 	// begin of custom code
@@ -189,11 +188,10 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (emfStoreVersionString: "); //$NON-NLS-1$
 		result.append(emfStoreVersionString);
 		result.append(')');

@@ -12,10 +12,12 @@
 package org.eclipse.emf.emfstore.client.recording.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.emfstore.client.handler.ESOperationModifier;
@@ -23,7 +25,6 @@ import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.CompositeOperationHandle;
-import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.InvalidHandleException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.AutoOperationWrapper;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
@@ -34,6 +35,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
@@ -76,9 +78,11 @@ public class CompositeOperationTest extends ESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation.
+	 * 
+	 * @throws ESException
 	 */
 	@Test
-	public void createSmallComposite() {
+	public void createSmallComposite() throws ESException {
 
 		final TestElement section = addSection();
 		final TestElement useCase = Create.testElement();
@@ -114,18 +118,22 @@ public class CompositeOperationTest extends ESTest {
 		assertEquals(NEW_NAME, section.getName());
 		assertEquals(NEW_DESCRIPTION, section.getDescription());
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		final AbstractOperation operation = getProjectSpace().getOperations().iterator().next();
-		assertEquals(true, operation instanceof CompositeOperation);
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		assertEquals(1, operations.size());
+		final AbstractOperation operation = operations.get(0);
+		assertTrue(operation instanceof CompositeOperation);
 		final CompositeOperation compositeOperation = (CompositeOperation) operation;
 		assertEquals(4, compositeOperation.getSubOperations().size());
 	}
 
 	/**
 	 * Test the creation and completion of a composite operation.
+	 * 
+	 * @throws ESException
 	 */
 	@Test
-	public void createSmallCompositeAcrossCommands() {
+	public void createSmallCompositeAcrossCommands() throws ESException {
 
 		final TestElement section = addSection();
 		final TestElement useCase = Create.testElement();
@@ -149,8 +157,7 @@ public class CompositeOperationTest extends ESTest {
 		}.run(false);
 
 		final ModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section);
-		final ProjectSpace projectSpace = ModelUtil.getParent(ProjectSpace.class, section);
-		assertEquals(0, projectSpace.getOperations().size());
+		assertEquals(0, forceGetOperations().size());
 
 		new EMFStoreCommand() {
 
@@ -164,14 +171,16 @@ public class CompositeOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		assertEquals(true, getProject().contains(useCase));
+		assertTrue(getProject().contains(useCase));
 		assertEquals(getProject(), ModelUtil.getProject(useCase));
 		assertEquals(useCase, section.getContainedElements().iterator().next());
 		assertEquals(NEW_NAME, section.getName());
 		assertEquals(NEW_DESCRIPTION, section.getDescription());
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		final AbstractOperation operation = getProjectSpace().getOperations().iterator().next();
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		assertEquals(1, operations.size());
+		final AbstractOperation operation = operations.get(0);
 		assertEquals(true, operation instanceof CompositeOperation);
 		final CompositeOperation compositeOperation = (CompositeOperation) operation;
 		assertEquals(4, compositeOperation.getSubOperations().size());
@@ -179,9 +188,11 @@ public class CompositeOperationTest extends ESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation.
+	 * 
+	 * @throws ESException
 	 */
 	@Test
-	public void createSmallCompositeAcrossCommandsWithAutoOperationWrapper() {
+	public void createSmallCompositeAcrossCommandsWithAutoOperationWrapper() throws ESException {
 
 		// TODO: Think about elegant solution to replace the operation modifier during a single test
 		final ESOperationModifier operationModifier = ExtensionRegistry.INSTANCE.get(ESOperationModifier.ID,
@@ -213,8 +224,7 @@ public class CompositeOperationTest extends ESTest {
 		}.run(false);
 
 		final ModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section);
-		final ProjectSpace projectSpace = ModelUtil.getParent(ProjectSpace.class, section);
-		assertEquals(0, projectSpace.getOperations().size());
+		assertEquals(0, forceGetOperations().size());
 
 		new EMFStoreCommand() {
 
@@ -228,15 +238,16 @@ public class CompositeOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		assertEquals(true, getProject().contains(useCase));
+		assertTrue(getProject().contains(useCase));
 		assertEquals(getProject(), ModelUtil.getProject(useCase));
 		assertEquals(useCase, section.getContainedElements().iterator().next());
 		assertEquals(NEW_NAME, section.getName());
 		assertEquals(NEW_DESCRIPTION, section.getDescription());
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		final AbstractOperation operation = getProjectSpace().getOperations().iterator().next();
-		assertEquals(true, operation instanceof CompositeOperation);
+		final List<AbstractOperation> operations = forceGetOperations();
+		assertEquals(1, operations.size());
+		final AbstractOperation operation = operations.iterator().next();
+		assertTrue(operation instanceof CompositeOperation);
 		final CompositeOperation compositeOperation = (CompositeOperation) operation;
 		assertEquals(4, compositeOperation.getSubOperations().size());
 
@@ -250,9 +261,10 @@ public class CompositeOperationTest extends ESTest {
 	 * 
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
+	 * @throws ESException
 	 */
 	@Test
-	public void abortSmallComposite() throws InvalidHandleException, IOException {
+	public void abortSmallComposite() throws InvalidHandleException, IOException, ESException {
 
 		final TestElement section = addSection();
 		final TestElement useCase = Create.testElement();
@@ -284,9 +296,9 @@ public class CompositeOperationTest extends ESTest {
 		assertEquals(NAME, section.getName());
 		assertEquals(DESCRIPTION2, section.getDescription());
 		assertEquals(0, section.getContainedElements().size());
-		assertEquals(false, getProject().contains(useCase));
+		assertFalse(getProject().contains(useCase));
 
-		assertEquals(0, getProjectSpace().getOperations().size());
+		assertEquals(0, forceGetOperations().size());
 
 		getProjectSpace().save();
 

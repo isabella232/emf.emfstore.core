@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * <em>Containment Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ReferenceOperationImpl extends FeatureOperationImpl implements ReferenceOperation {
@@ -151,12 +151,11 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setBidirectional(boolean newBidirectional) {
-		final boolean oldBidirectional = bidirectional;
+		boolean oldBidirectional = bidirectional;
 		bidirectional = newBidirectional;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.REFERENCE_OPERATION__BIDIRECTIONAL,
 				oldBidirectional, bidirectional));
-		}
 	}
 
 	/**
@@ -174,13 +173,12 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setOppositeFeatureName(String newOppositeFeatureName) {
-		final String oldOppositeFeatureName = oppositeFeatureName;
+		String oldOppositeFeatureName = oppositeFeatureName;
 		oppositeFeatureName = newOppositeFeatureName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME, oldOppositeFeatureName,
 				oppositeFeatureName));
-		}
 	}
 
 	/**
@@ -198,12 +196,11 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setContainmentType(ContainmentType newContainmentType) {
-		final ContainmentType oldContainmentType = containmentType;
+		ContainmentType oldContainmentType = containmentType;
 		containmentType = newContainmentType == null ? CONTAINMENT_TYPE_EDEFAULT : newContainmentType;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.REFERENCE_OPERATION__CONTAINMENT_TYPE, oldContainmentType, containmentType));
-		}
 	}
 
 	/**
@@ -296,11 +293,10 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (bidirectional: "); //$NON-NLS-1$
 		result.append(bidirectional);
 		result.append(", oppositeFeatureName: "); //$NON-NLS-1$

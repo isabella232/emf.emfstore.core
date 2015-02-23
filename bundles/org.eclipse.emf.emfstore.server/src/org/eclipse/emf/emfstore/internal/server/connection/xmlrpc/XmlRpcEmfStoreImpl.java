@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -32,9 +32,9 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -45,7 +45,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * XML RPC connection interface for emfstore.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcEmfStoreImpl implements EMFStore {
@@ -60,7 +60,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * Log in the given credentials.
-	 * 
+	 *
 	 * @param username
 	 *            the name of the user
 	 * @param password
@@ -78,10 +78,10 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * Logout the session with the given ID.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session to be logged out
-	 * 
+	 *
 	 * @throws AccessControlException
 	 *             in case logout fails
 	 */
@@ -117,7 +117,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 * {@inheritDoc}
 	 */
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
+		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
 		return getEmfStore().createVersion(sessionId, projectId, baseVersionSpec, changePackage, targetBranch,
 			sourceVersion, logMessage);
@@ -149,13 +149,13 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
 		VersionSpec target) throws ESException {
 		return getEmfStore().getChanges(sessionId, projectId, source, target);
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
 	 */
 	public List<BranchInfo> getBranches(SessionId sessionId, ProjectId projectId) throws ESException {
@@ -253,7 +253,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#registerEPackage(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.ecore.EPackage)
 	 */
@@ -264,7 +264,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {

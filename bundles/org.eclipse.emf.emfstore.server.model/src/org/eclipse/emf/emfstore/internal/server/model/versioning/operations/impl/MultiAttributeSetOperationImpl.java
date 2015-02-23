@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiAttributeSetOperationImpl extends FeatureOperationImpl implements MultiAttributeSetOperation {
@@ -139,12 +139,11 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 * @generated
 	 */
 	public void setIndex(int newIndex) {
-		final int oldIndex = index;
+		int oldIndex = index;
 		index = newIndex;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__INDEX, oldIndex, index));
-		}
 	}
 
 	/**
@@ -162,12 +161,11 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 * @generated
 	 */
 	public void setOldValue(Object newOldValue) {
-		final Object oldOldValue = oldValue;
+		Object oldOldValue = oldValue;
 		oldValue = newOldValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__OLD_VALUE, oldOldValue, oldValue));
-		}
 	}
 
 	/**
@@ -185,12 +183,11 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 * @generated
 	 */
 	public void setNewValue(Object newNewValue) {
-		final Object oldNewValue = newValue;
+		Object oldNewValue = newValue;
 		newValue = newNewValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__NEW_VALUE, oldNewValue, newValue));
-		}
 	}
 
 	/**
@@ -282,11 +279,10 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (index: "); //$NON-NLS-1$
 		result.append(index);
 		result.append(", oldValue: "); //$NON-NLS-1$

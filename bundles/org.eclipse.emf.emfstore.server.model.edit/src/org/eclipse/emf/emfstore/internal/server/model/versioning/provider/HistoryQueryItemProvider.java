@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -33,15 +33,15 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public HistoryQueryItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -70,76 +70,78 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	/**
 	 * This adds a property descriptor for the Source feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_HistoryQuery_source_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_source_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_HistoryQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.HISTORY_QUERY__SOURCE,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_HistoryQuery_source_feature", "_UI_HistoryQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.HISTORY_QUERY__SOURCE,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Include Change Packages feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIncludeChangePackagesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_HistoryQuery_includeChangePackages_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeChangePackages_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_HistoryQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_CHANGE_PACKAGES,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeChangePackages_feature", "_UI_HistoryQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_CHANGE_PACKAGES,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Include All Versions feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIncludeAllVersionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_HistoryQuery_includeAllVersions_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeAllVersions_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_HistoryQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_ALL_VERSIONS,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeAllVersions_feature", "_UI_HistoryQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_ALL_VERSIONS,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns HistoryQuery.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -151,7 +153,7 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -165,7 +167,7 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +188,7 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -197,7 +199,7 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

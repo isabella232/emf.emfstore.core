@@ -82,7 +82,7 @@ public class RolesSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -101,55 +101,46 @@ public class RolesSwitch<T> {
 		switch (classifierID)
 		{
 		case RolesPackage.ROLE: {
-			final Role role = (Role) theEObject;
+			Role role = (Role) theEObject;
 			T result = caseRole(role);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case RolesPackage.READER_ROLE: {
-			final ReaderRole readerRole = (ReaderRole) theEObject;
+			ReaderRole readerRole = (ReaderRole) theEObject;
 			T result = caseReaderRole(readerRole);
-			if (result == null) {
+			if (result == null)
 				result = caseRole(readerRole);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case RolesPackage.WRITER_ROLE: {
-			final WriterRole writerRole = (WriterRole) theEObject;
+			WriterRole writerRole = (WriterRole) theEObject;
 			T result = caseWriterRole(writerRole);
-			if (result == null) {
+			if (result == null)
 				result = caseRole(writerRole);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case RolesPackage.PROJECT_ADMIN_ROLE: {
-			final ProjectAdminRole projectAdminRole = (ProjectAdminRole) theEObject;
+			ProjectAdminRole projectAdminRole = (ProjectAdminRole) theEObject;
 			T result = caseProjectAdminRole(projectAdminRole);
-			if (result == null) {
+			if (result == null)
 				result = caseRole(projectAdminRole);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case RolesPackage.SERVER_ADMIN: {
-			final ServerAdmin serverAdmin = (ServerAdmin) theEObject;
+			ServerAdmin serverAdmin = (ServerAdmin) theEObject;
 			T result = caseServerAdmin(serverAdmin);
-			if (result == null) {
+			if (result == null)
 				result = caseRole(serverAdmin);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:

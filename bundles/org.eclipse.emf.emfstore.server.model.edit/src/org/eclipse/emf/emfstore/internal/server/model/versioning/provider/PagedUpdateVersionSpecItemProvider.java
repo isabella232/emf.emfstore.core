@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -27,16 +27,16 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PagedUpdateVersionSpecItemProvider
-	extends VersionSpecItemProvider {
+extends VersionSpecItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PagedUpdateVersionSpecItemProvider(AdapterFactory adapterFactory)
@@ -48,7 +48,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,57 +68,59 @@ public class PagedUpdateVersionSpecItemProvider
 	 * This adds a property descriptor for the Max Changes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMaxChangesPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PagedUpdateVersionSpec_maxChanges_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_maxChanges_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_maxChanges_feature", "_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Base Version Spec feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addBaseVersionSpecPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PagedUpdateVersionSpec_baseVersionSpec_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_baseVersionSpec_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_baseVersionSpec_feature", "_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns PagedUpdateVersionSpec.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -131,7 +133,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +142,7 @@ public class PagedUpdateVersionSpecItemProvider
 		final String label = ((PagedUpdateVersionSpec) object).getBranch();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PagedUpdateVersionSpec_type") : //$NON-NLS-1$
-			getString("_UI_PagedUpdateVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_PagedUpdateVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -148,7 +150,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -170,7 +172,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.model.ESBranchInfo;
  * 
  * @extends APIDelegate<ESBranchInfo>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.server.model.ESBranchInfo;
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo#getSource <em>Source</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getBranchInfo()
  * @model
  * @generated

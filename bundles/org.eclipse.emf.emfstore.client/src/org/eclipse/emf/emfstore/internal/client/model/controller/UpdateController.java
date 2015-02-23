@@ -5,20 +5,21 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
 import org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException;
 import org.eclipse.emf.emfstore.client.observer.ESUpdateObserver;
@@ -27,23 +28,29 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
-import org.eclipse.emf.emfstore.internal.common.APIUtil;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
+import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
+import com.google.common.collect.Lists;
+
 /**
  * Controller class for updating a project space.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -54,7 +61,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be updated
 	 * @param version
@@ -86,9 +93,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override
@@ -112,16 +119,28 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_FetchingChanges);
 
-		final List<ChangePackage> incomingChanges = getIncomingChanges(resolvedVersion);
+		final List<AbstractChangePackage> incomingChanges = getIncomingChanges(resolvedVersion);
 
-		checkAndRemoveDuplicateOperations(incomingChanges, getProjectSpace().getLocalChangePackage());
+		checkAndRemoveDuplicateOperations(incomingChanges);
 
-		ChangePackage localChanges = getProjectSpace().getLocalChangePackage(false);
+		// TODO: LCP - operations are fully copied and held in memory
+		FileBasedChangePackage copiedLocalChangedPackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		copiedLocalChangedPackage.initialize(
+			FileUtil.createLocationForTemporaryChangePackage());
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				copiedLocalChangedPackage.add(operation);
+			}
+		} finally {
+			operations.close();
+		}
 
 		// build a mapping including deleted and create model elements in local and incoming change packages
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), incomingChanges);
-		idToEObjectMapping.put(localChanges);
+		idToEObjectMapping.put(copiedLocalChangedPackage);
 
 		getProgressMonitor().worked(65);
 
@@ -131,26 +150,43 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_CheckingForConflicts);
 
-		final List<ESChangePackage> copy = APIUtil.mapToAPI(ESChangePackage.class, incomingChanges);
+		final List<ESChangePackage> incomingAPIChangePackages = new ArrayList<ESChangePackage>();
+		for (final AbstractChangePackage incomingChange : incomingChanges) {
+			incomingAPIChangePackages.add(incomingChange.toAPI());
+		}
 
 		// TODO ASYNC review this cancel
 		if (getProgressMonitor().isCanceled()
-			|| !callback.inspectChanges(getProjectSpace().toAPI(), copy, idToEObjectMapping.toAPI())) {
+			|| !callback.inspectChanges(
+				getProjectSpace().toAPI(),
+				incomingAPIChangePackages,
+				idToEObjectMapping.toAPI())) {
+
 			return getProjectSpace().getBaseVersion();
 		}
 
 		ESWorkspaceProviderImpl
 			.getObserverBus()
 			.notify(ESUpdateObserver.class, true)
-			.inspectChanges(getProjectSpace().toAPI(), copy, getProgressMonitor());
+			.inspectChanges(
+				getProjectSpace().toAPI(),
+				incomingAPIChangePackages,
+				getProgressMonitor());
 
-		if (getProjectSpace().getOperations().size() > 0) {
-			final ChangeConflictSet changeConflictSet = calcConflicts(localChanges, incomingChanges, idToEObjectMapping);
+		if (!getProjectSpace().getLocalChangePackage().isEmpty()) {
+			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
+				idToEObjectMapping);
 			if (changeConflictSet.getConflictBuckets().size() > 0) {
 				getProgressMonitor().subTask(Messages.UpdateController_ConflictsDetected);
 				if (callback.conflictOccurred(new ESConflictSetImpl(changeConflictSet), getProgressMonitor())) {
-					localChanges = getProjectSpace().mergeResolvedConflicts(changeConflictSet,
-						Collections.singletonList(localChanges),
+
+					final List<AbstractChangePackage> changePackageAsList = Lists.newArrayList();
+					changePackageAsList.add(copiedLocalChangedPackage);
+
+					// TODO: LCP cast
+					copiedLocalChangedPackage = (FileBasedChangePackage) getProjectSpace().mergeResolvedConflicts(
+						changeConflictSet,
+						changePackageAsList,
 						incomingChanges);
 					// continue with update by applying changes
 				} else {
@@ -163,7 +199,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_ApplyingChanges);
 
-		getProjectSpace().applyChanges(resolvedVersion, incomingChanges, localChanges, getProgressMonitor(), true);
+		getProjectSpace().applyChanges(
+			resolvedVersion,
+			incomingChanges,
+			copiedLocalChangedPackage,
+			getProgressMonitor(),
+			true);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
 			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
@@ -171,43 +212,33 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		return getProjectSpace().getBaseVersion();
 	}
 
-	private void save(EObject eObject, String failureMsg) {
-		try {
-			if (eObject.eResource() != null) {
-				eObject.eResource().save(ModelUtil.getResourceSaveOptions());
-			}
-		} catch (final IOException ex) {
-			ModelUtil.logException(failureMsg, ex);
-		}
-	}
-
 	private boolean equalsBaseVersion(final PrimaryVersionSpec resolvedVersion) {
 		return resolvedVersion.compareTo(getProjectSpace().getBaseVersion()) == 0;
 	}
 
-	private List<ChangePackage> getIncomingChanges(final PrimaryVersionSpec resolvedVersion) throws ESException {
-		return new UnknownEMFStoreWorkloadCommand<List<ChangePackage>>(
+	private List<AbstractChangePackage> getIncomingChanges(final PrimaryVersionSpec resolvedVersion) throws ESException {
+		final List<AbstractChangePackage> changePackages = new UnknownEMFStoreWorkloadCommand<List<AbstractChangePackage>>(
 			getProgressMonitor()) {
 			@Override
-			public List<ChangePackage> run(IProgressMonitor monitor) throws ESException {
+			public List<AbstractChangePackage> run(IProgressMonitor monitor) throws ESException {
 				return getConnectionManager().getChanges(getSessionId(), getProjectSpace().getProjectId(),
 					getProjectSpace().getBaseVersion(), resolvedVersion);
 			}
 		}.execute();
+		return changePackages;
 	}
 
-	private ChangeConflictSet calcConflicts(ChangePackage localChanges,
-		List<ChangePackage> changes, ModelElementIdToEObjectMappingImpl idToEObjectMapping) {
+	private ChangeConflictSet calcConflicts(AbstractChangePackage localChanges,
+		List<AbstractChangePackage> changes, ModelElementIdToEObjectMappingImpl idToEObjectMapping) {
 
 		final ConflictDetector conflictDetector = new ConflictDetector();
 		return conflictDetector.calculateConflicts(
 			Collections.singletonList(localChanges), changes, idToEObjectMapping);
 	}
 
-	private void checkAndRemoveDuplicateOperations(List<ChangePackage> incomingChanges,
-		ChangePackage localChanges) {
+	private void checkAndRemoveDuplicateOperations(List<AbstractChangePackage> incomingChanges) {
 
-		final int baseVersionDelta = removeFromChangePackages(incomingChanges, localChanges);
+		final int baseVersionDelta = removeFromChangePackages(incomingChanges);
 
 		if (baseVersionDelta == 0) {
 			return;
@@ -221,24 +252,24 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				Messages.UpdateController_ChangePackagesRemoved
 					+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
-		save(getProjectSpace(), Messages.UpdateController_ProjectSpace_SaveFailed);
-		save(localChanges, Messages.UpdateController_LocalChanges_SaveFailed);
 	}
 
 	/**
 	 * Remove duplicate change packages from the change package.
-	 * 
+	 *
 	 * @param incomingChanges incoming change packages
-	 * @param localChanges local change package
 	 * @return baseVersionDelta
 	 */
-	public int removeFromChangePackages(List<ChangePackage> incomingChanges, ChangePackage localChanges) {
-		final Iterator<ChangePackage> incomingChangesIterator = incomingChanges.iterator();
+	public int removeFromChangePackages(List<AbstractChangePackage> incomingChanges) {
+		final Iterator<AbstractChangePackage> incomingChangesIterator = incomingChanges.iterator();
 		int baseVersionDelta = 0;
 
 		while (incomingChangesIterator.hasNext()) {
-			final ChangePackage incomingChangePackage = incomingChangesIterator.next();
-			final boolean hasBeenConsumed = removeDuplicateOperations(incomingChangePackage, localChanges);
+			final AbstractChangePackage incomingChangePackage = incomingChangesIterator.next();
+			final boolean hasBeenConsumed = removeDuplicateOperations(
+				incomingChangePackage,
+				getProjectSpace().getLocalChangePackage());
+
 			if (hasBeenConsumed) {
 				baseVersionDelta += 1;
 				incomingChangesIterator.remove();
@@ -252,50 +283,103 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate operations.
-	 * 
+	 *
 	 * @param incomingChanges incoming change package
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed
 	 */
-	public boolean removeDuplicateOperations(ChangePackage incomingChanges, ChangePackage localChanges) {
+	public boolean removeDuplicateOperations(AbstractChangePackage incomingChanges, AbstractChangePackage localChanges) {
 
-		final Iterator<AbstractOperation> localOperationsIterator = localChanges.getOperations().iterator();
-		final List<AbstractOperation> incomingOps = incomingChanges.getOperations();
-		final int incomingOpsSize = incomingOps.size();
-		int incomingIdx = 0;
-		boolean operationMatchingStarted = false;
-
-		if (localChanges.getOperations().size() == 0) {
+		// TODO: cleanup this mess, ensure compatibility with in-memory change package
+		if (localChanges.size() == 0) {
 			return false;
 		}
 
-		while (localOperationsIterator.hasNext()) {
+		final FileBasedChangePackage tempChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		tempChangePackage.initialize(
+			FileUtil.createLocationForTemporaryChangePackage());
+		final ESCloseableIterable<AbstractOperation> localOperations = localChanges.operations();
+		final ESCloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
+		final Iterator<AbstractOperation> localOperationsIterator = localOperations.iterable().iterator();
+		final Iterator<AbstractOperation> incomingOpsIterator = incomingOps.iterable().iterator();
+
+		final int incomingOpsSize = incomingChanges.size();
+		int incomingIdx = 0;
+		boolean operationMatchingStarted = false;
+
+		try {
+			while (localOperationsIterator.hasNext()) {
+				final AbstractOperation localOp = localOperationsIterator.next();
+				if (incomingIdx == incomingOpsSize) {
+					new EMFStoreCommand() {
+						@Override
+						protected void doRun() {
+							tempChangePackage.add(localOp);
+						}
+					}.run(false);
+					while (localOperationsIterator.hasNext()) {
+						// add all remaining local ops
+						final AbstractOperation next = localOperationsIterator.next();
+						tempChangePackage.add(next);
+					}
+
+					// incoming change package is fully consumed, continue with next change package
+					return true;
+				}
+
+				final AbstractOperation incomingOp = incomingOpsIterator.next();
+				incomingIdx += 1;
+				if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
+					operationMatchingStarted = true;
+				} else {
+					tempChangePackage.add(localOp);
+					if (operationMatchingStarted) {
+						ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
+						throw new IllegalStateException(Messages.UpdateController_IncomingOpsPartlyMatched);
+					}
+					// first operation of incoming change package does not match
+					return false;
+				}
+			}
+
+			// all incoming and local changes have been consumed
 			if (incomingIdx == incomingOpsSize) {
-				// incoming change package is fully consumed, continue with next change package
 				return true;
 			}
+			ModelUtil.logError(Messages.UpdateController_IncomingOperationsNotFullyConsumed);
+			throw new IllegalStateException(Messages.UpdateController_IncomingOpsNotConsumed);
+		} finally {
+			localOperations.close();
+			incomingOps.close();
+			if (incomingIdx == incomingOpsSize) {
 
-			final AbstractOperation localOp = localOperationsIterator.next();
-			final AbstractOperation incomingOp = incomingOps.get(incomingIdx++);
-			if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
-				localOperationsIterator.remove();
-				operationMatchingStarted = true;
-			} else {
-				if (operationMatchingStarted) {
-					ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
-					throw new IllegalStateException("Incoming operations only partly match with local."); //$NON-NLS-1$
-				}
-				// first operation of incoming change package does not match
-				return false;
+				tempChangePackage.attachToProjectSpace(getProjectSpace());
+
+				// TODO: LCP
+				// final URI operationsURI = ESClientURIUtil.createOperationsURI(getProjectSpace());
+				// final URI normalizedOperationUri = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
+				// .getResourceSet().getURIConverter().normalize(operationsURI);
+				// final String operationFileString = normalizedOperationUri.toFileString();
+				// final File operationFile = new File(operationFileString);
+				// operationFile.delete();
+				// try {
+				// FileUtil.moveAndOverwrite(tempFile, operationFile);
+				// getProjectSpace().setPersistentChangePackage(new PersistentChangePackage(
+				// operationFile.getAbsolutePath()));
+				// } catch (final IOException ex) {
+				// ex.printStackTrace();
+				// }
 			}
 		}
-
-		// all incoming and local changes have been consumed
-		if (incomingIdx == incomingOpsSize) {
-			return true;
-		}
-		ModelUtil.logError(Messages.UpdateController_IncomingOperationsNotFullyConsumed);
-		throw new IllegalStateException("Incoming operations are not fully consumed."); //$NON-NLS-1$
 	}
 
+	private static File createTempFile() {
+		File tempFile;
+		try {
+			tempFile = File.createTempFile("ops", "eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+		} catch (final IOException ex) {
+			throw new RuntimeException(Messages.UpdateController_TempFileCreationFailed);
+		}
+		return tempFile;
+	}
 }

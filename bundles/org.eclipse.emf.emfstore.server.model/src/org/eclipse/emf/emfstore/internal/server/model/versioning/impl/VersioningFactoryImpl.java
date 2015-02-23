@@ -20,10 +20,12 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -51,13 +53,13 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	public static VersioningFactory init() {
 		try
 		{
-			final VersioningFactory theVersioningFactory = (VersioningFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning"); //$NON-NLS-1$
+			VersioningFactory theVersioningFactory = (VersioningFactory) EPackage.Registry.INSTANCE
+				.getEFactory(VersioningPackage.eNS_URI);
 			if (theVersioningFactory != null)
 			{
 				return theVersioningFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -116,6 +118,10 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 			return createAncestorVersionSpec();
 		case VersioningPackage.PAGED_UPDATE_VERSION_SPEC:
 			return createPagedUpdateVersionSpec();
+		case VersioningPackage.FILE_BASED_CHANGE_PACKAGE:
+			return createFileBasedChangePackage();
+		case VersioningPackage.OPERATION_PROXY:
+			return createOperationProxy();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -127,7 +133,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public TagVersionSpec createTagVersionSpec() {
-		final TagVersionSpecImpl tagVersionSpec = new TagVersionSpecImpl();
+		TagVersionSpecImpl tagVersionSpec = new TagVersionSpecImpl();
 		return tagVersionSpec;
 	}
 
@@ -137,7 +143,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public DateVersionSpec createDateVersionSpec() {
-		final DateVersionSpecImpl dateVersionSpec = new DateVersionSpecImpl();
+		DateVersionSpecImpl dateVersionSpec = new DateVersionSpecImpl();
 		return dateVersionSpec;
 	}
 
@@ -147,7 +153,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public PrimaryVersionSpec createPrimaryVersionSpec() {
-		final PrimaryVersionSpecImpl primaryVersionSpec = new PrimaryVersionSpecImpl();
+		PrimaryVersionSpecImpl primaryVersionSpec = new PrimaryVersionSpecImpl();
 		return primaryVersionSpec;
 	}
 
@@ -157,7 +163,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public LogMessage createLogMessage() {
-		final LogMessageImpl logMessage = new LogMessageImpl();
+		LogMessageImpl logMessage = new LogMessageImpl();
 		return logMessage;
 	}
 
@@ -167,7 +173,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public ChangePackage createChangePackage() {
-		final ChangePackageImpl changePackage = new ChangePackageImpl();
+		ChangePackageImpl changePackage = new ChangePackageImpl();
 		return changePackage;
 	}
 
@@ -177,7 +183,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public HistoryInfo createHistoryInfo() {
-		final HistoryInfoImpl historyInfo = new HistoryInfoImpl();
+		HistoryInfoImpl historyInfo = new HistoryInfoImpl();
 		return historyInfo;
 	}
 
@@ -188,7 +194,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 */
 	@SuppressWarnings("rawtypes")
 	public RangeQuery createRangeQuery() {
-		final RangeQueryImpl rangeQuery = new RangeQueryImpl();
+		RangeQueryImpl rangeQuery = new RangeQueryImpl();
 		return rangeQuery;
 	}
 
@@ -198,7 +204,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public PathQuery createPathQuery() {
-		final PathQueryImpl pathQuery = new PathQueryImpl();
+		PathQueryImpl pathQuery = new PathQueryImpl();
 		return pathQuery;
 	}
 
@@ -208,7 +214,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public ModelElementQuery createModelElementQuery() {
-		final ModelElementQueryImpl modelElementQuery = new ModelElementQueryImpl();
+		ModelElementQueryImpl modelElementQuery = new ModelElementQueryImpl();
 		return modelElementQuery;
 	}
 
@@ -218,7 +224,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public Version createVersion() {
-		final VersionImpl version = new VersionImpl();
+		VersionImpl version = new VersionImpl();
 		return version;
 	}
 
@@ -228,7 +234,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public HeadVersionSpec createHeadVersionSpec() {
-		final HeadVersionSpecImpl headVersionSpec = new HeadVersionSpecImpl();
+		HeadVersionSpecImpl headVersionSpec = new HeadVersionSpecImpl();
 		return headVersionSpec;
 	}
 
@@ -238,7 +244,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public VersionProperty createVersionProperty() {
-		final VersionPropertyImpl versionProperty = new VersionPropertyImpl();
+		VersionPropertyImpl versionProperty = new VersionPropertyImpl();
 		return versionProperty;
 	}
 
@@ -248,7 +254,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public BranchVersionSpec createBranchVersionSpec() {
-		final BranchVersionSpecImpl branchVersionSpec = new BranchVersionSpecImpl();
+		BranchVersionSpecImpl branchVersionSpec = new BranchVersionSpecImpl();
 		return branchVersionSpec;
 	}
 
@@ -258,7 +264,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public BranchInfo createBranchInfo() {
-		final BranchInfoImpl branchInfo = new BranchInfoImpl();
+		BranchInfoImpl branchInfo = new BranchInfoImpl();
 		return branchInfo;
 	}
 
@@ -268,7 +274,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * @generated
 	 */
 	public AncestorVersionSpec createAncestorVersionSpec() {
-		final AncestorVersionSpecImpl ancestorVersionSpec = new AncestorVersionSpecImpl();
+		AncestorVersionSpecImpl ancestorVersionSpec = new AncestorVersionSpecImpl();
 		return ancestorVersionSpec;
 	}
 
@@ -280,8 +286,32 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 */
 	public PagedUpdateVersionSpec createPagedUpdateVersionSpec()
 	{
-		final PagedUpdateVersionSpecImpl pagedUpdateVersionSpec = new PagedUpdateVersionSpecImpl();
+		PagedUpdateVersionSpecImpl pagedUpdateVersionSpec = new PagedUpdateVersionSpecImpl();
 		return pagedUpdateVersionSpec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public FileBasedChangePackage createFileBasedChangePackage()
+	{
+		FileBasedChangePackageImpl fileBasedChangePackage = new FileBasedChangePackageImpl();
+		return fileBasedChangePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public OperationProxy createOperationProxy()
+	{
+		OperationProxyImpl operationProxy = new OperationProxyImpl();
+		return operationProxy;
 	}
 
 	/**

@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class RoleImpl extends EObjectImpl implements Role {

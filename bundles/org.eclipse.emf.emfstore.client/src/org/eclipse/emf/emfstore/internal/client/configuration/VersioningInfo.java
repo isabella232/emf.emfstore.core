@@ -39,22 +39,22 @@ public class VersioningInfo {
 	 */
 	@SuppressWarnings("cast")
 	public ClientVersionInfo getClientVersion() {
-		ClientVersionInfo clientVersionInfo = org.eclipse.emf.emfstore.internal.server.model.ModelFactory.eINSTANCE
+		final ClientVersionInfo clientVersionInfo = org.eclipse.emf.emfstore.internal.server.model.ModelFactory.eINSTANCE
 			.createClientVersionInfo();
 		clientVersionInfo.setName(CLIENT_NAME);
 
 		String versionId;
-		ESExtensionElement version = new ESExtensionPoint("org.eclipse.emf.emfstore.client.clientVersion")
+		final ESExtensionElement version = new ESExtensionPoint("org.eclipse.emf.emfstore.client.clientVersion")
 			.setThrowException(false).getFirst();
 
 		if (version != null) {
-			ESClientVersionProvider versionProvider = version.getClass("class", ESClientVersionProvider.class);
+			final ESClientVersionProvider versionProvider = version.getClass("class", ESClientVersionProvider.class);
 			clientVersionInfo.setName(versionProvider.getName());
 			clientVersionInfo.setVersion(versionProvider.getVersion());
 			return clientVersionInfo;
 		}
 
-		Bundle emfStoreBundle = Platform.getBundle("org.eclipse.emf.emfstore.client");
+		final Bundle emfStoreBundle = Platform.getBundle("org.eclipse.emf.emfstore.client");
 		versionId = (String) emfStoreBundle.getHeaders().get(org.osgi.framework.Constants.BUNDLE_VERSION);
 		clientVersionInfo.setVersion(versionId);
 

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -33,14 +33,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CompositeOperationItemProvider extends AbstractOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public CompositeOperationItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider.AbstractOperationItemProvider#getChildren(java.lang.Object)
 	 */
@@ -78,7 +78,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,93 +98,97 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This adds a property descriptor for the Main Operation feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMainOperationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_CompositeOperation_mainOperation_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_mainOperation_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_CompositeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.COMPOSITE_OPERATION__MAIN_OPERATION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_CompositeOperation_mainOperation_feature", "_UI_CompositeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.COMPOSITE_OPERATION__MAIN_OPERATION,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Composite Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addCompositeNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_CompositeOperation_compositeName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_CompositeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.COMPOSITE_OPERATION__COMPOSITE_NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeName_feature", "_UI_CompositeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.COMPOSITE_OPERATION__COMPOSITE_NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Composite Description feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addCompositeDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_CompositeOperation_compositeDescription_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeDescription_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_CompositeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_CompositeOperation_compositeDescription_feature", "_UI_CompositeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Reversed feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addReversedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_CompositeOperation_reversed_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_CompositeOperation_reversed_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_CompositeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.COMPOSITE_OPERATION__REVERSED,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_CompositeOperation_reversed_feature", "_UI_CompositeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.COMPOSITE_OPERATION__REVERSED,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -192,7 +196,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -207,7 +211,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -233,7 +237,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * {@inheritDoc} This returns the label text for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -255,7 +259,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -280,7 +284,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -288,52 +292,52 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createCompositeOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createCreateDeleteOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createAttributeOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiAttributeOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiAttributeSetOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiAttributeMoveOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createSingleReferenceOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiReferenceSetOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiReferenceOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(OperationsPackage.Literals.COMPOSITE_OPERATION__SUB_OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiReferenceMoveOperation()));
 	}

@@ -53,7 +53,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  */
 public class ResourcePersister implements ESCommandObserver, IdEObjectCollectionChangeObserver, ESCommitObserver,
-ESUpdateObserver, ESDisposable {
+	ESUpdateObserver, ESDisposable {
 
 	private final FilterStack filterStack;
 
@@ -299,7 +299,7 @@ ESUpdateObserver, ESDisposable {
 
 		if (modelElementId == null) {
 			WorkspaceUtil
-			.handleException(new IllegalStateException(Messages.ResourcePersister_MissingID + modelElement));
+				.handleException(new IllegalStateException(Messages.ResourcePersister_MissingID + modelElement));
 		}
 
 		return modelElementId;

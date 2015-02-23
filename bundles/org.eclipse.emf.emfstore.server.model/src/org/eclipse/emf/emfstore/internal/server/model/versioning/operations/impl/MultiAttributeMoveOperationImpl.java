@@ -40,7 +40,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * <em>Referenced Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implements MultiAttributeMoveOperation {
@@ -140,12 +140,11 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setOldIndex(int newOldIndex) {
-		final int oldOldIndex = oldIndex;
+		int oldOldIndex = oldIndex;
 		oldIndex = newOldIndex;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__OLD_INDEX, oldOldIndex, oldIndex));
-		}
 	}
 
 	/**
@@ -163,12 +162,11 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setNewIndex(int newNewIndex) {
-		final int oldNewIndex = newIndex;
+		int oldNewIndex = newIndex;
 		newIndex = newNewIndex;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__NEW_INDEX, oldNewIndex, newIndex));
-		}
 	}
 
 	/**
@@ -186,12 +184,11 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 * @generated
 	 */
 	public void setReferencedValue(Object newReferencedValue) {
-		final Object oldReferencedValue = referencedValue;
+		Object oldReferencedValue = referencedValue;
 		referencedValue = newReferencedValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE, oldReferencedValue, referencedValue));
-		}
 	}
 
 	/**
@@ -284,11 +281,10 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (oldIndex: "); //$NON-NLS-1$
 		result.append(oldIndex);
 		result.append(", newIndex: "); //$NON-NLS-1$

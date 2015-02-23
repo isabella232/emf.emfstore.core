@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl;
  */
 public class ProjectSpaceFileURIHandler extends FileURIHandlerImpl {
 
-	private HashSet<String> extensions;
+	private final HashSet<String> extensions;
 
 	/**
 	 * Constructor for {@link ProjectSpaceFileURIHandler}.
@@ -41,7 +41,7 @@ public class ProjectSpaceFileURIHandler extends FileURIHandlerImpl {
 
 	@Override
 	public boolean canHandle(URI uri) {
-		String extension = "." + uri.fileExtension();
+		final String extension = "." + uri.fileExtension();
 		return extensions.contains(extension);
 	}
 
@@ -49,8 +49,8 @@ public class ProjectSpaceFileURIHandler extends FileURIHandlerImpl {
 	public void delete(URI uri, Map<?, ?> options) throws IOException
 	{
 		// TODO options?
-		File file = new File(uri.toFileString());
-		File parent = file.getParentFile();
+		final File file = new File(uri.toFileString());
+		final File parent = file.getParentFile();
 		file.delete();
 
 		if (parent != null && parent.exists() && parent.listFiles().length == 1 && parent.listFiles()[0].isDirectory()) {

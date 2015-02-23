@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
  * 
  * @extends APIDelegate<ESPagedUpdateVersionSpec>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
  *          <em>Base Version Spec</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPagedUpdateVersionSpec()
  * @model
  * @generated

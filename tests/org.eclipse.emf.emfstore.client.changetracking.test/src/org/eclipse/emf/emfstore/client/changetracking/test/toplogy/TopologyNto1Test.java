@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -40,7 +40,7 @@ import org.junit.Test;
 
 /**
  * Tests operations in n:1 topologies.
- * 
+ *
  * @author chodnick
  */
 public class TopologyNto1Test extends ESTest {
@@ -49,7 +49,7 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a container from null to some value.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -66,7 +66,7 @@ public class TopologyNto1Test extends ESTest {
 
 		Update.testElement(TestElementFeatures.container(), useCase, section);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -99,7 +99,7 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a container from some value to null.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -121,7 +121,7 @@ public class TopologyNto1Test extends ESTest {
 
 		Update.testElement(TestElementFeatures.container(), useCase, null);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final EList<ReferenceOperation> subOperations = checkAndCast(operations.get(0), CreateDeleteOperation.class)
 			.getSubOperations();
@@ -145,13 +145,13 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a non-containing parent from null to some value.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void setNoncontainingParentFromNullToValue() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement actor = Create.testElement();
 		final TestElement useCase = Create.testElement();
@@ -167,7 +167,7 @@ public class TopologyNto1Test extends ESTest {
 
 		assertSame(useCase.getNonContained_NTo1(), actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -200,13 +200,13 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a non-containing parent from some value to null.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void setNoncontainingParentFromValueToNull() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement actor = Create.testElement();
 		final TestElement useCase = Create.testElement();
@@ -224,7 +224,7 @@ public class TopologyNto1Test extends ESTest {
 
 		assertNull(useCase.getNonContained_NTo1());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		if (operations.get(0) instanceof CompositeOperation) {
@@ -256,13 +256,13 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a non-containing parent from some value to some.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void setNoncontainingParentFromValueToOtherValue() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement actor = Create.testElement();
 		final TestElement otherTestElement = Create.testElement();
@@ -282,7 +282,7 @@ public class TopologyNto1Test extends ESTest {
 
 		assertSame(otherTestElement, useCase.getNonContained_NTo1());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 
@@ -324,14 +324,14 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a container from some value to some other value on same feature though.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 
 	@Test
 	public void setContainerFromValueToOtherValueSameFeature() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement section1 = Create.testElement();
 		final TestElement section2 = Create.testElement();
@@ -349,7 +349,7 @@ public class TopologyNto1Test extends ESTest {
 
 		Update.testElement(TestElementFeatures.container(), useCase, section2);
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 
@@ -391,14 +391,14 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a container from some value to some other value on different features though.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 
 	@Test
 	public void setContainerFromValueToOtherValueDifferentFeatureN() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement pack = Create.testElement();
@@ -419,7 +419,7 @@ public class TopologyNto1Test extends ESTest {
 		assertFalse(section.getContainedElements().contains(br));
 		assertTrue(pack.getContainedElements2().contains(br));
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		if (operations.get(0) instanceof CompositeOperation) {
@@ -464,14 +464,14 @@ public class TopologyNto1Test extends ESTest {
 
 	/**
 	 * Set a container from some value to some other value on different features though.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 
 	@Test
 	public void setContainerFromValueToOtherValueDifferentFeature1() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement section = Create.testElement();
@@ -490,7 +490,7 @@ public class TopologyNto1Test extends ESTest {
 		assertTrue(section.getContainedElements().contains(solution));
 		assertNull(issue.getContainedElement());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		if (operations.get(0) instanceof CompositeOperation) {

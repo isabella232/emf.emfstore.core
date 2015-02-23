@@ -35,7 +35,7 @@ public class ClientXMIResourceSetProvider implements ESResourceSetProvider {
 	 * @see org.eclipse.emf.emfstore.common.ESResourceSetProvider#getResourceSet()
 	 */
 	public ResourceSet getResourceSet() {
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
+		final ResourceSetImpl resourceSet = new ResourceSetImpl();
 		resourceSet.setResourceFactoryRegistry(new ResourceFactoryRegistry());
 		resourceSet.setURIConverter(new XMIClientURIConverter());
 		resourceSet.setURIResourceMap(new LinkedHashMap<URI, Resource>());

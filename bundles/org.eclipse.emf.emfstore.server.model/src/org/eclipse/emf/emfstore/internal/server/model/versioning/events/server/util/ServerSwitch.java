@@ -81,7 +81,7 @@ public class ServerSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -100,45 +100,36 @@ public class ServerSwitch<T> {
 		switch (classifierID)
 		{
 		case ServerPackage.SERVER_EVENT: {
-			final ServerEvent serverEvent = (ServerEvent) theEObject;
+			ServerEvent serverEvent = (ServerEvent) theEObject;
 			T result = caseServerEvent(serverEvent);
-			if (result == null) {
+			if (result == null)
 				result = caseEvent(serverEvent);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ServerPackage.SERVER_PROJECT_EVENT: {
-			final ServerProjectEvent serverProjectEvent = (ServerProjectEvent) theEObject;
+			ServerProjectEvent serverProjectEvent = (ServerProjectEvent) theEObject;
 			T result = caseServerProjectEvent(serverProjectEvent);
-			if (result == null) {
+			if (result == null)
 				result = caseServerEvent(serverProjectEvent);
-			}
-			if (result == null) {
+			if (result == null)
 				result = caseEvent(serverProjectEvent);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ServerPackage.PROJECT_UPDATED_EVENT: {
-			final ProjectUpdatedEvent projectUpdatedEvent = (ProjectUpdatedEvent) theEObject;
+			ProjectUpdatedEvent projectUpdatedEvent = (ProjectUpdatedEvent) theEObject;
 			T result = caseProjectUpdatedEvent(projectUpdatedEvent);
-			if (result == null) {
+			if (result == null)
 				result = caseServerProjectEvent(projectUpdatedEvent);
-			}
-			if (result == null) {
+			if (result == null)
 				result = caseServerEvent(projectUpdatedEvent);
-			}
-			if (result == null) {
+			if (result == null)
 				result = caseEvent(projectUpdatedEvent);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:

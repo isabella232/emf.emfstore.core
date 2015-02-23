@@ -5,17 +5,17 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceSetOperation;
@@ -33,7 +34,7 @@ import org.junit.Test;
 
 /**
  * Tests conflict detection behaviour on attributes.
- * 
+ *
  * @author chodnick
  */
 public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
@@ -60,11 +61,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
 		final Project project2 = ps2.getProject();
 
-		ModelElementId actor1Id = getProject().getModelElementId(actor);
-		ModelElementId actor2Id = actor1Id;
+		final ModelElementId actor1Id = getProject().getModelElementId(actor);
+		final ModelElementId actor2Id = actor1Id;
 		final ModelElementId section1Id = getProject().getModelElementId(section1);
 		final ModelElementId section2Id = project2.getModelElementId(section1);
 
@@ -81,12 +82,10 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(conflicts.size(), 1);
 
 	}
@@ -113,11 +112,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
 		final Project project2 = ps2.getProject();
 
-		ModelElementId actor1Id = getProject().getModelElementId(actor);
-		ModelElementId actor2Id = actor1Id;
+		final ModelElementId actor1Id = getProject().getModelElementId(actor);
+		final ModelElementId actor2Id = actor1Id;
 		final ModelElementId section1Id = getProject().getModelElementId(section1);
 		final ModelElementId section2Id = section1Id;
 
@@ -135,14 +134,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -169,11 +165,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
 		final Project project2 = ps2.getProject();
 
-		ModelElementId actor1Id = getProject().getModelElementId(actor);
-		ModelElementId actor2Id = actor1Id;
+		final ModelElementId actor1Id = getProject().getModelElementId(actor);
+		final ModelElementId actor2Id = actor1Id;
 		final ModelElementId section1Id = getProject().getModelElementId(section1);
 		final ModelElementId task2Id = project2.getModelElementId(task);
 
@@ -188,13 +184,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
-		assertEquals(conflicts.size(), 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -220,12 +214,12 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId issueId = getProject().getModelElementId(issue);
+		final ModelElementId issueId = getProject().getModelElementId(issue);
 		final ModelElementId solution1Id = getProject().getModelElementId(solution1);
-		ModelElementId solution2Id = getProject().getModelElementId(solution2);
+		final ModelElementId solution2Id = getProject().getModelElementId(solution2);
 
 		final TestElement issue1 = (TestElement) getProject().getModelElement(issueId);
 		final TestElement issue2 = (TestElement) project2.getModelElement(issueId);
@@ -240,14 +234,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -270,11 +261,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId issueId = getProject().getModelElementId(issue);
-		ModelElementId solutionId = getProject().getModelElementId(solution);
+		final ModelElementId issueId = getProject().getModelElementId(issue);
+		final ModelElementId solutionId = getProject().getModelElementId(solution);
 
 		final TestElement issue1 = (TestElement) getProject().getModelElement(issueId);
 		final TestElement issue2 = (TestElement) project2.getModelElement(issueId);
@@ -289,14 +280,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -321,12 +309,12 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId issueId = getProject().getModelElementId(issue);
-		ModelElementId solution1Id = getProject().getModelElementId(solution);
-		ModelElementId sectionId = getProject().getModelElementId(section);
+		final ModelElementId issueId = getProject().getModelElementId(issue);
+		final ModelElementId solution1Id = getProject().getModelElementId(solution);
+		final ModelElementId sectionId = getProject().getModelElementId(section);
 
 		final TestElement issue1 = (TestElement) getProject().getModelElement(issueId);
 		final TestElement issue2 = (TestElement) project2.getModelElement(issueId);
@@ -342,14 +330,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
-		assertEquals(0, conflicts.size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -363,13 +348,13 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 		final TestElement actor = addToProject(Create.testElement());
 
 		clearOperations();
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId actor1Id = getProject().getModelElementId(actor);
-		ModelElementId actor2Id = actor1Id;
+		final ModelElementId actor1Id = getProject().getModelElementId(actor);
+		final ModelElementId actor2Id = actor1Id;
 		final ModelElementId section1Id = getProject().getModelElementId(section1);
-		ModelElementId section2Id = getProject().getModelElementId(section2);
+		final ModelElementId section2Id = getProject().getModelElementId(section2);
 
 		final TestElement actor1 = (TestElement) getProject().getModelElement(actor1Id);
 		final TestElement actor2 = (TestElement) project2.getModelElement(actor2Id);
@@ -385,14 +370,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -417,11 +399,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId actor1Id = getProject().getModelElementId(actor);
-		ModelElementId actor2Id = actor1Id;
+		final ModelElementId actor1Id = getProject().getModelElementId(actor);
+		final ModelElementId actor2Id = actor1Id;
 		final ModelElementId section1Id = getProject().getModelElementId(section1);
 
 		final TestElement actor1 = (TestElement) getProject().getModelElement(actor1Id);
@@ -439,14 +421,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -471,10 +450,10 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
 		final Project project2 = ps2.getProject();
 
-		ModelElementId actorId = getProject().getModelElementId(actor);
+		final ModelElementId actorId = getProject().getModelElementId(actor);
 		final ModelElementId section1Id = getProject().getModelElementId(section1);
 		final ModelElementId useCaseId = getProject().getModelElementId(useCase);
 
@@ -486,19 +465,16 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			@Override
 			protected void doRun() {
 				actor1.setContainer((TestElement) getProject().getModelElement(section1Id));
-				actor2.getReferences().add(((TestElement) project2.getModelElement(useCaseId)));
+				actor2.getReferences().add((TestElement) project2.getModelElement(useCaseId));
 
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
-		assertEquals(conflicts.size(), 0);
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -523,12 +499,12 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId issueId = getProject().getModelElementId(issue);
-		ModelElementId solution1Id = getProject().getModelElementId(solution1);
-		ModelElementId solution2Id = getProject().getModelElementId(solution2);
+		final ModelElementId issueId = getProject().getModelElementId(issue);
+		final ModelElementId solution1Id = getProject().getModelElementId(solution1);
+		final ModelElementId solution2Id = getProject().getModelElementId(solution2);
 
 		final TestElement issue1 = (TestElement) getProject().getModelElement(issueId);
 		final TestElement issue2 = (TestElement) project2.getModelElement(issueId);
@@ -545,14 +521,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -577,11 +550,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId issueId = getProject().getModelElementId(issue);
-		ModelElementId solution1Id = getProject().getModelElementId(solution1);
+		final ModelElementId issueId = getProject().getModelElementId(issue);
+		final ModelElementId solution1Id = getProject().getModelElementId(solution1);
 
 		final TestElement issue1 = (TestElement) getProject().getModelElement(issueId);
 		final TestElement issue2 = (TestElement) project2.getModelElement(issueId);
@@ -598,14 +571,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -632,13 +602,13 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId issue11Id = getProject().getModelElementId(issue1);
-		ModelElementId issue22Id = project2.getModelElementId(issue2);
-		ModelElementId solution1Id = getProject().getModelElementId(solution1);
-		ModelElementId solution2Id = getProject().getModelElementId(solution2);
+		final ModelElementId issue11Id = getProject().getModelElementId(issue1);
+		final ModelElementId issue22Id = project2.getModelElementId(issue2);
+		final ModelElementId solution1Id = getProject().getModelElementId(solution1);
+		final ModelElementId solution2Id = getProject().getModelElementId(solution2);
 
 		final TestElement issue11 = (TestElement) getProject().getModelElement(issue11Id);
 		final TestElement issue22 = (TestElement) project2.getModelElement(issue22Id);
@@ -653,14 +623,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
-		assertEquals(0, conflicts.size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -685,12 +652,12 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId actorId = getProject().getModelElementId(actor);
-		ModelElementId section11Id = getProject().getModelElementId(section1);
-		ModelElementId section22Id = getProject().getModelElementId(section2);
+		final ModelElementId actorId = getProject().getModelElementId(actor);
+		final ModelElementId section11Id = getProject().getModelElementId(section1);
+		final ModelElementId section22Id = getProject().getModelElementId(section2);
 
 		final TestElement actor1 = (TestElement) getProject().getModelElement(actorId);
 		final TestElement actor2 = (TestElement) project2.getModelElement(actorId);
@@ -707,14 +674,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -739,11 +703,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
-		Project project2 = ps2.getProject();
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final Project project2 = ps2.getProject();
 
-		ModelElementId actorId = getProject().getModelElementId(actor);
-		ModelElementId section1Id = getProject().getModelElementId(section1);
+		final ModelElementId actorId = getProject().getModelElementId(actor);
+		final ModelElementId section1Id = getProject().getModelElementId(section1);
 
 		final TestElement actor1 = (TestElement) getProject().getModelElement(actorId);
 		final TestElement actor2 = (TestElement) project2.getModelElement(actorId);
@@ -760,14 +724,11 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
-
 	}
 
 	/**
@@ -792,12 +753,12 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 
 			}
 		}.run(false);
-		ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
+		final ProjectSpace ps2 = cloneProjectSpace(getProjectSpace());
 		final Project project2 = ps2.getProject();
 
-		ModelElementId actor1Id = getProject().getModelElementId(actor);
-		ModelElementId actor2Id = actor1Id;
-		ModelElementId section1Id = getProject().getModelElementId(section);
+		final ModelElementId actor1Id = getProject().getModelElementId(actor);
+		final ModelElementId actor2Id = actor1Id;
+		final ModelElementId section1Id = getProject().getModelElementId(section);
 		final ModelElementId useCaseId = getProject().getModelElementId(useCase);
 
 		final TestElement actor1 = (TestElement) getProject().getModelElement(actor1Id);
@@ -809,18 +770,16 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			@Override
 			protected void doRun() {
 				section1.getContainedElements().add(actor1);
-				actor2.getReferences().add(((TestElement) project2.getModelElement(useCaseId)));
+				actor2.getReferences().add((TestElement) project2.getModelElement(useCaseId));
 
 			}
 		}.run(false);
 
-		List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
-		assertEquals(conflicts.size(), 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -844,7 +803,7 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		AbstractOperation set = myCheckAndGetOperation(MultiReferenceSetOperation.class);
+		final AbstractOperation set = myCheckAndGetOperation(MultiReferenceSetOperation.class);
 
 		new EMFStoreCommand() {
 			@Override
@@ -853,7 +812,7 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		AbstractOperation add = myCheckAndGetOperation(MultiReferenceOperation.class);
+		final AbstractOperation add = myCheckAndGetOperation(MultiReferenceOperation.class);
 
 		assertEquals(false, doConflict(set, add));
 		assertEquals(false, doConflict(add, set));
@@ -888,7 +847,7 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		AbstractOperation remove = myCheckAndGetOperation(MultiReferenceOperation.class);
+		final AbstractOperation remove = myCheckAndGetOperation(MultiReferenceOperation.class);
 
 		new EMFStoreCommand() {
 			@Override
@@ -897,7 +856,7 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		AbstractOperation set = myCheckAndGetOperation(MultiReferenceSetOperation.class);
+		final AbstractOperation set = myCheckAndGetOperation(MultiReferenceSetOperation.class);
 
 		assertEquals(false, doConflict(set, remove));
 		assertEquals(false, doConflict(remove, set));
@@ -922,7 +881,7 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		AbstractOperation remove = myCheckAndGetOperation(MultiReferenceOperation.class);
+		final AbstractOperation remove = myCheckAndGetOperation(MultiReferenceOperation.class);
 
 		new EMFStoreCommand() {
 			@Override
@@ -933,7 +892,7 @@ public class ConflictDetectionReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		AbstractOperation set = myCheckAndGetOperation(MultiReferenceSetOperation.class);
+		final AbstractOperation set = myCheckAndGetOperation(MultiReferenceSetOperation.class);
 
 		assertEquals(true, doConflict(set, remove));
 		assertEquals(true, doConflict(remove, set));

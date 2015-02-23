@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  * Resolved AC User</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AuthenticationInformationImpl extends EObjectImpl implements AuthenticationInformation {

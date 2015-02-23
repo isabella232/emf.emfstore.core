@@ -32,8 +32,8 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
@@ -128,19 +128,19 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		getProgressMonitor().worked(10);
 		getProgressMonitor().subTask(Messages.CommitController_GatheringChanges);
 
-		final ChangePackage changePackage = getProjectSpace().getLocalChangePackage();
+		final AbstractChangePackage localChangePackage = getProjectSpace().getLocalChangePackage();
 
-		setLogMessage(logMessage, changePackage);
+		setLogMessage(logMessage, localChangePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.inspectChanges(getProjectSpace().toAPI(), changePackage.toAPI(), getProgressMonitor());
+			.inspectChanges(getProjectSpace().toAPI(), localChangePackage.toAPI(), getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
-			getProjectSpace().getProject(), changePackage);
+			getProjectSpace().getProject(), localChangePackage);
 
 		getProgressMonitor().subTask(Messages.CommitController_PresentingChanges);
 		if (!callback.inspectChanges(getProjectSpace().toAPI(),
-			changePackage.toAPI(),
+			localChangePackage.toAPI(),
 			idToEObjectMapping.toAPI())
 			|| getProgressMonitor().isCanceled()) {
 
@@ -160,14 +160,14 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		if (updatePerformed) {
 			getProgressMonitor().subTask("Presenting Changes"); //$NON-NLS-1$
 			if (!callback.inspectChanges(getProjectSpace().toAPI(),
-				changePackage.toAPI(),
+				localChangePackage.toAPI(),
 				idToEObjectMapping.toAPI())
 				|| getProgressMonitor().isCanceled()) {
 				return getProjectSpace().getBaseVersion();
 			}
 		}
 
-		final PrimaryVersionSpec newBaseVersion = performCommit(branch, changePackage);
+		final PrimaryVersionSpec newBaseVersion = performCommit(branch, localChangePackage);
 
 		// TODO reimplement with ObserverBus and think about subtasks for commit
 		getProgressMonitor().worked(35);
@@ -185,7 +185,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				getProjectSpace().setBaseVersion(newBaseVersion);
-				getProjectSpace().getOperations().clear();
+				getProjectSpace().getLocalChangePackage().clear();
 				getProjectSpace().setMergedVersion(null);
 				getProjectSpace().updateDirtyState();
 				return null;
@@ -217,8 +217,9 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		}
 	}
 
-	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final ChangePackage changePackage)
+	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final AbstractChangePackage changePackage)
 		throws ESException {
+
 		// Branching case: branch specifier added
 		final PrimaryVersionSpec newBaseVersion = new UnknownEMFStoreWorkloadCommand<PrimaryVersionSpec>(
 			getProgressMonitor()) {
@@ -237,14 +238,14 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		return newBaseVersion;
 	}
 
-	private void setLogMessage(final String logMessage, final ChangePackage changePackage) {
+	private void setLogMessage(final String logMessage, final AbstractChangePackage changePackage) {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				final LogMessage logMessageObject = VersioningFactory.eINSTANCE.createLogMessage();
-				logMessageObject.setMessage(logMessage);
-				logMessageObject.setClientDate(new Date());
-				logMessageObject.setAuthor(getProjectSpace().getUsersession().getUsername());
-				changePackage.setLogMessage(logMessageObject);
+				final LogMessage logMsg = VersioningFactory.eINSTANCE.createLogMessage();
+				logMsg.setMessage(logMessage);
+				logMsg.setClientDate(new Date());
+				logMsg.setAuthor(getProjectSpace().getUsersession().getUsername());
+				changePackage.setLogMessage(logMsg);
 				return null;
 			}
 		});

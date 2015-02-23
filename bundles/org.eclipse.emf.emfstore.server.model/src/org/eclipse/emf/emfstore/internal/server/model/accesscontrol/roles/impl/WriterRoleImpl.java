@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Writer
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Writer Role</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class WriterRoleImpl extends RoleImpl implements WriterRole {

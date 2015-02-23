@@ -36,13 +36,13 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	public static EventsFactory init() {
 		try
 		{
-			final EventsFactory theEventsFactory = (EventsFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/events"); //$NON-NLS-1$
+			EventsFactory theEventsFactory = (EventsFactory) EPackage.Registry.INSTANCE
+				.getEFactory(EventsPackage.eNS_URI);
 			if (theEventsFactory != null)
 			{
 				return theEventsFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -82,7 +82,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 * @generated
 	 */
 	public Event createEvent() {
-		final EventImpl event = new EventImpl();
+		EventImpl event = new EventImpl();
 		return event;
 	}
 

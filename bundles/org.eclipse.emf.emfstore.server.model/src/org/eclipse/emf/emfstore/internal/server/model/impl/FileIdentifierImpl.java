@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
  * @implements Serializable <!-- end-user-doc -->
  *             <p>
  *             </p>
- * 
+ *
  * @generated
  */
 public class FileIdentifierImpl extends IdentifiableElementImpl implements FileIdentifier, Serializable {

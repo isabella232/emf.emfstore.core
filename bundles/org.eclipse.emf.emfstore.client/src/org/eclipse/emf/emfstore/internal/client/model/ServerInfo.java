@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * 
  * @extends APIDelegate<ESServerImpl>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  *          Alias</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo()
  * @model
  * @generated

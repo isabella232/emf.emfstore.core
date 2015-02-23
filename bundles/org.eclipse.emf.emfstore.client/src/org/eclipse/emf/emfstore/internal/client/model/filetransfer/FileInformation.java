@@ -27,12 +27,12 @@ public class FileInformation {
 	/**
 	 * The id of the file for which this information was created.
 	 */
-	private FileIdentifier fileId;
+	private final FileIdentifier fileId;
 
 	/**
 	 * The transfer manager associated to the file (and thus also the project space to which the file belongs).
 	 */
-	private FileTransferManager transferManager;
+	private final FileTransferManager transferManager;
 
 	/**
 	 * Default constructor. Only to be called by a transfer manager.

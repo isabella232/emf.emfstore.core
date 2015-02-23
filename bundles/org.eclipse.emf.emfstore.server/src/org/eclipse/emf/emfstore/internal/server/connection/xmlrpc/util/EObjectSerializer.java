@@ -16,10 +16,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.ws.commons.util.Base64;
 import org.apache.ws.commons.util.Base64.Encoder;
 import org.apache.ws.commons.util.Base64.EncoderOutputStream;
@@ -38,6 +40,10 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 
@@ -49,11 +55,14 @@ import org.xml.sax.SAXException;
  */
 public class EObjectSerializer extends TypeSerializerImpl {
 
+	private static final String SELF_CONTAINMENT_CHECK_OPTION = "SelfContainmentCheck"; //$NON-NLS-1$
+	private static final String HREF_CHECK_OPTION = "HrefCheck"; //$NON-NLS-1$
+	private static final String SERIALIZATION_OPTIONS_EXT = "org.eclipse.emf.emfstore.common.model.serializationOptions"; //$NON-NLS-1$
 	/**
 	 * EObject Tag for parsing.
 	 */
-	public static final String EOBJECT_TAG = "EObject";
-	private static final String EX_EOBJECT_TAG = "ex:" + EOBJECT_TAG;
+	public static final String EOBJECT_TAG = "EObject"; //$NON-NLS-1$
+	private static final String EX_EOBJECT_TAG = "ex:" + EOBJECT_TAG; //$NON-NLS-1$
 	private static boolean hrefCheckEnabled;
 	private static boolean containmentCheckEnabled;
 	private static boolean serializationOptionsInitialized;
@@ -61,35 +70,31 @@ public class EObjectSerializer extends TypeSerializerImpl {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void write(ContentHandler pHandler, Object pObject) throws SAXException {
+	public void write(ContentHandler contentHandler, Object pObject) throws SAXException {
 		initSerializationOptions();
-		pHandler.startElement("", VALUE_TAG, VALUE_TAG, ZERO_ATTRIBUTES);
-		pHandler.startElement("", EOBJECT_TAG, EX_EOBJECT_TAG, ZERO_ATTRIBUTES);
-		char[] buffer = new char[1024];
-		Encoder encoder = new Base64.SAXEncoder(buffer, 0, null, pHandler);
+		contentHandler.startElement(StringUtils.EMPTY, VALUE_TAG, VALUE_TAG, ZERO_ATTRIBUTES);
+		contentHandler.startElement(StringUtils.EMPTY, EOBJECT_TAG, EX_EOBJECT_TAG, ZERO_ATTRIBUTES);
+		final char[] buffer = new char[1024];
+		final Encoder encoder = new Base64.SAXEncoder(buffer, 0, null, contentHandler);
 		try {
 			URIConverter.WriteableOutputStream uws = null;
-			OutputStream ostream = new EncoderOutputStream(encoder);
-			BufferedOutputStream bos = new BufferedOutputStream(ostream);
+			final OutputStream ostream = new EncoderOutputStream(encoder);
+			final BufferedOutputStream bos = new BufferedOutputStream(ostream);
 			try {
 				EObject eObject = (EObject) pObject;
 				XMIResource resource = (XMIResource) eObject.eResource();
 
-				if ((eObject instanceof ChangePackage || eObject instanceof IdEObjectCollection) && resource != null) {
-					OutputStreamWriter writer = null;
-					try {
-						writer = new OutputStreamWriter(bos, CommonUtil.getEncoding());
-						uws = new URIConverter.WriteableOutputStream(writer, CommonUtil.getEncoding());
-						Resource res = eObject.eResource();
-						checkResource(res);
-						res.save(uws, ModelUtil.getResourceSaveOptions());
-					} finally {
-						if (writer != null) {
-							writer.close();
-						}
-					}
+				if (eObject instanceof FileBasedChangePackage) {
+					// TODO LCP
+					final ChangePackage changePackage = toInMemoryChangePackage(FileBasedChangePackage.class
+						.cast(eObject));
+					eObject = changePackage;
+				}
+				// uws = writeDirectly(bos, changePackage);
+				if (eObject instanceof IdEObjectCollection && resource != null) {
+					uws = writeDirectly(bos, eObject);
 				} else {
-					resource = (XMIResource) (new ResourceSetImpl()).createResource(ModelUtil.VIRTUAL_URI);
+					resource = (XMIResource) new ResourceSetImpl().createResource(ModelUtil.VIRTUAL_URI);
 					((ResourceImpl) resource).setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
 					EObject copy;
 
@@ -100,27 +105,21 @@ public class EObjectSerializer extends TypeSerializerImpl {
 					}
 
 					if (copy instanceof IdEObjectCollection) {
-						IdEObjectCollection collection = ((IdEObjectCollection) eObject);
-						for (EObject element : collection.getAllModelElements()) {
-							if (ModelUtil.isIgnoredDatatype(element)) {
-								continue;
-							}
-							ModelElementId elementId = collection.getModelElementId(element);
-							resource.setID(element, elementId.getId());
-						}
+						final IdEObjectCollection collection = (IdEObjectCollection) eObject;
+						setIDsOnResource(resource, collection);
 					}
 
 					resource.getContents().add(copy);
-					StringWriter writer = new StringWriter();
+					final StringWriter writer = new StringWriter();
 					uws = new URIConverter.WriteableOutputStream(writer, CommonUtil.getEncoding());
 					// save string into Stringwriter
 					checkResource(resource);
 					resource.save(uws, ModelUtil.getResourceSaveOptions());
-					String string = writer.toString();
+					final String string = writer.toString();
 					hrefCheck(string);
 					bos.write(string.getBytes(CommonUtil.getEncoding()));
 				}
-			} catch (SerializationException e) {
+			} catch (final SerializationException e) {
 				throw new SAXException(e);
 			} finally {
 				bos.close();
@@ -128,33 +127,82 @@ public class EObjectSerializer extends TypeSerializerImpl {
 					uws.close();
 				}
 			}
-		} catch (Base64.SAXIOException e) {
+		} catch (final Base64.SAXIOException e) {
 			throw e.getSAXException();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new SAXException(e);
 		}
-		pHandler.endElement("", EOBJECT_TAG, EX_EOBJECT_TAG);
-		pHandler.endElement("", VALUE_TAG, VALUE_TAG);
+		contentHandler.endElement(StringUtils.EMPTY, EOBJECT_TAG, EX_EOBJECT_TAG);
+		contentHandler.endElement(StringUtils.EMPTY, VALUE_TAG, VALUE_TAG);
 	}
 
-	private void checkResource(Resource resource) throws SerializationException {
+	private void setIDsOnResource(XMIResource resource, final IdEObjectCollection collection) {
+		for (final EObject element : collection.getAllModelElements()) {
+			if (ModelUtil.isIgnoredDatatype(element)) {
+				continue;
+			}
+			final ModelElementId elementId = collection.getModelElementId(element);
+			resource.setID(element, elementId.getId());
+		}
+	}
+
+	/**
+	 * @param cast
+	 * @return
+	 */
+	private ChangePackage toInMemoryChangePackage(FileBasedChangePackage fileBasedChangePackage) {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operationsHandle = fileBasedChangePackage.operations();
+		try {
+			for (final AbstractOperation operation : operationsHandle.iterable()) {
+				changePackage.add(operation);
+			}
+		} finally {
+			operationsHandle.close();
+		}
+
+		changePackage.setLogMessage(fileBasedChangePackage.getLogMessage());
+
+		return changePackage;
+	}
+
+	private static URIConverter.WriteableOutputStream writeDirectly(final BufferedOutputStream bufferedOutputStream,
+		final EObject eObject)
+		throws UnsupportedEncodingException, SerializationException, IOException {
+		URIConverter.WriteableOutputStream uws;
+		OutputStreamWriter writer = null;
+		try {
+			writer = new OutputStreamWriter(bufferedOutputStream, CommonUtil.getEncoding());
+			uws = new URIConverter.WriteableOutputStream(writer, CommonUtil.getEncoding());
+			final Resource res = eObject.eResource();
+			checkResource(res);
+			res.save(uws, ModelUtil.getResourceSaveOptions());
+		} finally {
+			if (writer != null) {
+				writer.close();
+			}
+		}
+		return uws;
+	}
+
+	private static void checkResource(Resource resource) throws SerializationException {
 		if (!containmentCheckEnabled) {
 			return;
 		}
 
 		if (resource.getContents().size() != 1) {
-			throw new SerializationException("Resource contains more or less than one EObject!");
+			throw new SerializationException(Messages.EObjectSerializer_UnexpectedNumberOfEObjects);
 		}
-		EObject root = resource.getContents().get(0);
-		Set<EObject> allChildEObjects = CommonUtil.getNonTransientContents(root);
-		Set<EObject> allEObjects = new LinkedHashSet<EObject>(allChildEObjects);
+		final EObject root = resource.getContents().get(0);
+		final Set<EObject> allChildEObjects = CommonUtil.getNonTransientContents(root);
+		final Set<EObject> allEObjects = new LinkedHashSet<EObject>(allChildEObjects);
 		allEObjects.add(root);
-		for (EObject eObject : allEObjects) {
+		for (final EObject eObject : allEObjects) {
 			if (resource != eObject.eResource()) {
-				throw new SerializationException("Resource is not self-contained!");
+				throw new SerializationException(Messages.EObjectSerializer_NonSelfContainedResource);
 			}
 			if (eObject.eIsProxy()) {
-				throw new SerializationException("Serialization failed due to unresolved proxy detection.");
+				throw new SerializationException(Messages.EObjectSerializer_UnresolvedProxy);
 			}
 		}
 	}
@@ -163,16 +211,16 @@ public class EObjectSerializer extends TypeSerializerImpl {
 		if (!hrefCheckEnabled) {
 			return;
 		}
-		char[] needle = "href".toCharArray();
+		final char[] needle = "href".toCharArray(); //$NON-NLS-1$
 		int pointer = 0;
 		boolean insideQuotes = false;
-		for (char character : result.toCharArray()) {
+		for (final char character : result.toCharArray()) {
 			if (character == '"') {
 				insideQuotes = !insideQuotes;
 			}
 			if (!insideQuotes && character == needle[pointer]) {
 				if (++pointer == needle.length) {
-					throw new SerializationException("Serialization failed due to href detection.");
+					throw new SerializationException(Messages.EObjectSerializer_HrefDetectionFailed);
 				}
 			} else {
 				pointer = 0;
@@ -188,12 +236,12 @@ public class EObjectSerializer extends TypeSerializerImpl {
 		if (serializationOptionsInitialized) {
 			return;
 		}
-		ESExtensionElement element = new ESExtensionPoint("org.eclipse.emf.emfstore.common.model.serializationOptions")
-			.getFirst();
+		final ESExtensionElement element = new ESExtensionPoint(
+			SERIALIZATION_OPTIONS_EXT).getFirst();
 
 		if (element != null) {
-			hrefCheckEnabled = element.getBoolean("HrefCheck");
-			containmentCheckEnabled = element.getBoolean("SelfContainmentCheck");
+			hrefCheckEnabled = element.getBoolean(HREF_CHECK_OPTION);
+			containmentCheckEnabled = element.getBoolean(SELF_CONTAINMENT_CHECK_OPTION);
 		}
 
 		serializationOptionsInitialized = true;

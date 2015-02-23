@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url.provider;
@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl} object.
  * <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -41,7 +41,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerUrlItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,7 +69,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This adds a property descriptor for the Host Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addHostNamePropertyDescriptor(Object object) {
@@ -93,7 +93,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * This adds a property descriptor for the Port feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPortPropertyDescriptor(Object object) {
@@ -115,7 +115,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns ServerUrl.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -143,7 +143,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

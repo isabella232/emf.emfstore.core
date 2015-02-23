@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -32,7 +32,7 @@ import org.junit.Test;
 
 /**
  * Tests canonization of composite operations.
- * 
+ *
  * @author chodnick
  */
 public class CompositeTest extends ESTest {
@@ -52,7 +52,7 @@ public class CompositeTest extends ESTest {
 
 	/**
 	 * Tests canonization of empty composite operations.
-	 * 
+	 *
 	 * @throws InvalidHandleException if an error occurrs
 	 */
 	@Test
@@ -71,7 +71,7 @@ public class CompositeTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(operations.size(), 1);
 
@@ -88,7 +88,7 @@ public class CompositeTest extends ESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes, resulting in a noop.
-	 * 
+	 *
 	 * @throws InvalidHandleException if error occurs
 	 */
 	@Test
@@ -131,7 +131,7 @@ public class CompositeTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(operations.size(), 1);
 
 		new EMFStoreCommand() {
@@ -148,7 +148,7 @@ public class CompositeTest extends ESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes, resulting in a noop.
-	 * 
+	 *
 	 * @throws InvalidHandleException if error occurs
 	 */
 	@Test
@@ -194,7 +194,7 @@ public class CompositeTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(operations.size(), 1);
 
 		new EMFStoreCommand() {
@@ -211,7 +211,7 @@ public class CompositeTest extends ESTest {
 
 	/**
 	 * Tests canonization for composite ops, where main operation might be canonized away.
-	 * 
+	 *
 	 * @throws InvalidHandleException if error occurs
 	 */
 	@Test
@@ -240,7 +240,7 @@ public class CompositeTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(operations.size(), 1);
 		final CompositeOperation comp = (CompositeOperation) operations.get(0);
 
@@ -259,7 +259,7 @@ public class CompositeTest extends ESTest {
 
 	/**
 	 * Tests canonization for composite ops, where main operation might be canonized away.
-	 * 
+	 *
 	 * @throws InvalidHandleException if error occurs
 	 */
 	@Test
@@ -289,7 +289,7 @@ public class CompositeTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(operations.size(), 1);
 		final CompositeOperation comp = (CompositeOperation) operations.get(0);
 
@@ -309,7 +309,7 @@ public class CompositeTest extends ESTest {
 
 	/**
 	 * Tests canonization for composite ops, where main operation might be canonized away.
-	 * 
+	 *
 	 * @throws InvalidHandleException if error occurs
 	 */
 	@Test
@@ -339,7 +339,7 @@ public class CompositeTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(operations.size(), 1);
 		final CompositeOperation comp = (CompositeOperation) operations.get(0);
 		new EMFStoreCommand() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl;
@@ -32,22 +32,20 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Server Space</b></em>'.
- * h
- * 
- * @extends org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACRepository
- *          <!-- end-user-doc -->
- *          <p>
- *          The following features are implemented:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getOpenSessions <em>Open
- *          Sessions </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getUsers <em>Users</em>}</li>
- *          </ul>
- *          </p>
- * 
+ *
+ *
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getOpenSessions <em>Open Sessions
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getUsers <em>Users</em>}</li>
+ * </ul>
+ * </p>
+ *
  * @generated
  */
 public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
@@ -286,9 +284,9 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @throws IOException
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public void save() throws IOException {
@@ -300,7 +298,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public void setResource(Resource resource) {
@@ -309,7 +307,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACUserDAO#add(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser)
 	 */
 	public void add(ACUser user) {
@@ -318,7 +316,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACUserDAO#remove(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser)
 	 */
 	public void remove(ACUser user) {
@@ -327,7 +325,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACGroupDAO#add(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup)
 	 */
 	public void add(ACGroup group) {
@@ -336,7 +334,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACGroupDAO#remove(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup)
 	 */
 	public void remove(ACGroup group) {
@@ -345,7 +343,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ProjectDAO#add(org.eclipse.emf.emfstore.internal.server.model.ProjectHistory)
 	 */
 	public void add(ProjectHistory history) {
@@ -354,7 +352,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ProjectDAO#remove(org.eclipse.emf.emfstore.internal.server.model.ProjectHistory)
 	 */
 	public void remove(ProjectHistory history) {

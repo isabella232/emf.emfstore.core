@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * <em>Project Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ServerProjectEventImpl extends ServerEventImpl implements ServerProjectEvent {

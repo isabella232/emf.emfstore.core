@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.provider;
@@ -37,15 +37,15 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.util.Accessc
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapterFactory implements
-	ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
@@ -53,7 +53,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -62,7 +62,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}. <!--
 	 * begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -70,7 +70,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AccesscontrolItemProviderAdapterFactory() {
@@ -86,7 +86,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser} instances.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ACUserItemProvider acUserItemProvider;
@@ -94,7 +94,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit} instances.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ACOrgUnitItemProvider acOrgUnitItemProvider;
@@ -120,7 +120,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup} instances.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ACGroupItemProvider acGroupItemProvider;
@@ -146,7 +146,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId} instances.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ACOrgUnitIdItemProvider acOrgUnitIdItemProvider;
@@ -172,7 +172,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -190,7 +190,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected OrgUnitPropertyItemProvider orgUnitPropertyItemProvider;
@@ -199,7 +199,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * This creates an adapter for a
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty} . <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -215,7 +215,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This returns the root adapter factory that contains this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
@@ -225,7 +225,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This sets the composed adapter factory that contains this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
@@ -234,7 +234,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -245,7 +245,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -255,15 +255,15 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type))
 		{
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
+			final Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
 			{
 				return adapter;
 			}
@@ -275,7 +275,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This adds a listener.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void addListener(INotifyChangedListener notifyChangedListener) {
@@ -285,7 +285,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This removes a listener.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
@@ -296,7 +296,7 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
 	 * end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void fireNotifyChanged(Notification notification) {
@@ -311,20 +311,25 @@ public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapte
 	/**
 	 * This disposes all of the item providers created by this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void dispose() {
-		if (acUserItemProvider != null)
+		if (acUserItemProvider != null) {
 			acUserItemProvider.dispose();
-		if (acOrgUnitItemProvider != null)
+		}
+		if (acOrgUnitItemProvider != null) {
 			acOrgUnitItemProvider.dispose();
-		if (acGroupItemProvider != null)
+		}
+		if (acGroupItemProvider != null) {
 			acGroupItemProvider.dispose();
-		if (acOrgUnitIdItemProvider != null)
+		}
+		if (acOrgUnitIdItemProvider != null) {
 			acOrgUnitIdItemProvider.dispose();
-		if (orgUnitPropertyItemProvider != null)
+		}
+		if (orgUnitPropertyItemProvider != null) {
 			orgUnitPropertyItemProvider.dispose();
+		}
 	}
 
 }

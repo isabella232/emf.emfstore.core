@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -27,8 +27,8 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.CommitDialog;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAbstractChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessageFactory;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
@@ -44,10 +44,10 @@ import org.eclipse.swt.widgets.Shell;
  * able to confirm the commit. If no changes have been made by the user a
  * information dialog is presented that states that there are no pending changes
  * to be committed.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  */
 public class UICommitProjectController extends
 	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
@@ -58,7 +58,7 @@ public class UICommitProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell that will be used during commit
 	 * @param localProject
@@ -71,9 +71,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#noLocalChanges(org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
 	public void noLocalChanges(ESLocalProject localProject) {
@@ -88,9 +88,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#baseVersionOutOfDate(ESLocalProject,
 	 *      IProgressMonitor)
 	 */
@@ -122,22 +122,22 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage,
 	 *      org.eclipse.emf.emfstore.common.model.ESModelElementIdToEObjectMapping)
 	 */
 	public boolean inspectChanges(
 		ESLocalProject localProject,
-		ESChangePackage changePackage,
+		final ESChangePackage changePackage,
 		ESModelElementIdToEObjectMapping idToEObjectMapping) {
 
-		final ChangePackage internalChangePackage = ((ESChangePackageImpl) changePackage).toInternalAPI();
+		// final ChangePackage internalChangePackage = ((ESChangePackageImpl) op).toInternalAPI();
 		final ProjectSpace projectSpace = ((ESLocalProjectImpl) localProject).toInternalAPI();
 
-		if (internalChangePackage.getOperations().isEmpty()) {
+		if (changePackage.isEmpty()) {
 			RunInUI.run(new Callable<Void>() {
 				public Void call() throws Exception {
 					MessageDialog
@@ -155,7 +155,7 @@ public class UICommitProjectController extends
 
 		final CommitDialog commitDialog = new CommitDialog(
 			getShell(),
-			internalChangePackage,
+			ESAbstractChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 			projectSpace,
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
 
@@ -184,9 +184,11 @@ public class UICommitProjectController extends
 						projectSpace.getOldLogMessages().remove(0);
 					}
 
-					internalChangePackage.setLogMessage(
-						LogMessageFactory.INSTANCE.createLogMessage(commitDialog.getLogText(),
-							projectSpace.getUsersession().getUsername()));
+					final LogMessage logMessage = LogMessageFactory.INSTANCE.createLogMessage(
+						commitDialog.getLogText(),
+						projectSpace.getUsersession().getUsername()
+						);
+					changePackage.setLogMessage(logMessage.toAPI());
 					return null;
 				}
 			});
@@ -198,9 +200,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

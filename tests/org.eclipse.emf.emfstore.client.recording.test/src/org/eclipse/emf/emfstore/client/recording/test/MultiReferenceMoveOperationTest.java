@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * koegel
+ * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
@@ -44,8 +44,6 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 	/**
 	 * Change a multi reference and check the generated operation.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void makeMultiReferenceMove() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -90,7 +88,7 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -120,8 +118,6 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 	/**
 	 * Change a multi reference and check the generated operation.
 	 * 
-	 * @throws UnsupportedOperationException on test fail
-	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void reverseMultiReferenceMove() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -165,7 +161,7 @@ public class MultiReferenceMoveOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);

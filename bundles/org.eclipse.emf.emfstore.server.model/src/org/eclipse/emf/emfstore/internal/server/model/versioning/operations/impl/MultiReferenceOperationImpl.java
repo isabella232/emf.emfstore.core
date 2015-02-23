@@ -56,7 +56,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>Referenced Model Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiReferenceOperationImpl extends ReferenceOperationImpl implements MultiReferenceOperation {
@@ -146,12 +146,11 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 * @generated
 	 */
 	public void setAdd(boolean newAdd) {
-		final boolean oldAdd = add;
+		boolean oldAdd = add;
 		add = newAdd;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.MULTI_REFERENCE_OPERATION__ADD,
 				oldAdd, add));
-		}
 	}
 
 	/**
@@ -169,12 +168,11 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 * @generated
 	 */
 	public void setIndex(int newIndex) {
-		final int oldIndex = index;
+		int oldIndex = index;
 		index = newIndex;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.MULTI_REFERENCE_OPERATION__INDEX,
 				oldIndex, index));
-		}
 	}
 
 	/**
@@ -297,11 +295,10 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (add: "); //$NON-NLS-1$
 		result.append(add);
 		result.append(", index: "); //$NON-NLS-1$

@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class SemanticCompositeOperationImpl extends CompositeOperationImpl implements

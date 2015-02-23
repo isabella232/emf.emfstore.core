@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
@@ -115,11 +115,10 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		final String oldName = name;
+		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.BRANCH_INFO__NAME, oldName, name));
-		}
 	}
 
 	/**
@@ -130,11 +129,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	public PrimaryVersionSpec getHead() {
 		if (head != null && head.eIsProxy())
 		{
-			final InternalEObject oldHead = (InternalEObject) head;
+			InternalEObject oldHead = (InternalEObject) head;
 			head = (PrimaryVersionSpec) eResolveProxy(oldHead);
 			if (head != oldHead)
 			{
-				final InternalEObject newHead = (InternalEObject) head;
+				InternalEObject newHead = (InternalEObject) head;
 				NotificationChain msgs = oldHead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.BRANCH_INFO__HEAD, null, null);
 				if (newHead.eInternalContainer() == null)
@@ -142,13 +141,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 					msgs = newHead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__HEAD,
 						null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VersioningPackage.BRANCH_INFO__HEAD,
 						oldHead, head));
-				}
 			}
 		}
 		return head;
@@ -169,17 +166,16 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 * @generated
 	 */
 	public NotificationChain basicSetHead(PrimaryVersionSpec newHead, NotificationChain msgs) {
-		final PrimaryVersionSpec oldHead = head;
+		PrimaryVersionSpec oldHead = head;
 		head = newHead;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.BRANCH_INFO__HEAD, oldHead, newHead);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -193,22 +189,18 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 		if (newHead != head)
 		{
 			NotificationChain msgs = null;
-			if (head != null) {
+			if (head != null)
 				msgs = ((InternalEObject) head).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.BRANCH_INFO__HEAD, null, msgs);
-			}
-			if (newHead != null) {
+			if (newHead != null)
 				msgs = ((InternalEObject) newHead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.BRANCH_INFO__HEAD, null, msgs);
-			}
 			msgs = basicSetHead(newHead, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.BRANCH_INFO__HEAD, newHead, newHead));
-		}
 	}
 
 	/**
@@ -219,11 +211,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	public PrimaryVersionSpec getSource() {
 		if (source != null && source.eIsProxy())
 		{
-			final InternalEObject oldSource = (InternalEObject) source;
+			InternalEObject oldSource = (InternalEObject) source;
 			source = (PrimaryVersionSpec) eResolveProxy(oldSource);
 			if (source != oldSource)
 			{
-				final InternalEObject newSource = (InternalEObject) source;
+				InternalEObject newSource = (InternalEObject) source;
 				NotificationChain msgs = oldSource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.BRANCH_INFO__SOURCE, null, null);
 				if (newSource.eInternalContainer() == null)
@@ -231,13 +223,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 					msgs = newSource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__SOURCE,
 						null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VersioningPackage.BRANCH_INFO__SOURCE,
 						oldSource, source));
-				}
 			}
 		}
 		return source;
@@ -258,17 +248,16 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 * @generated
 	 */
 	public NotificationChain basicSetSource(PrimaryVersionSpec newSource, NotificationChain msgs) {
-		final PrimaryVersionSpec oldSource = source;
+		PrimaryVersionSpec oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.BRANCH_INFO__SOURCE, oldSource, newSource);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -282,23 +271,19 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 		if (newSource != source)
 		{
 			NotificationChain msgs = null;
-			if (source != null) {
+			if (source != null)
 				msgs = ((InternalEObject) source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.BRANCH_INFO__SOURCE, null, msgs);
-			}
-			if (newSource != null) {
+			if (newSource != null)
 				msgs = ((InternalEObject) newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.BRANCH_INFO__SOURCE, null, msgs);
-			}
 			msgs = basicSetSource(newSource, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.BRANCH_INFO__SOURCE, newSource,
 				newSource));
-		}
 	}
 
 	/**
@@ -330,14 +315,12 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 		case VersioningPackage.BRANCH_INFO__NAME:
 			return getName();
 		case VersioningPackage.BRANCH_INFO__HEAD:
-			if (resolve) {
+			if (resolve)
 				return getHead();
-			}
 			return basicGetHead();
 		case VersioningPackage.BRANCH_INFO__SOURCE:
-			if (resolve) {
+			if (resolve)
 				return getSource();
-			}
 			return basicGetSource();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -413,11 +396,10 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

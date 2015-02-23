@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.provider;
@@ -25,14 +25,14 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACOrgUnitIdItemProvider(AdapterFactory adapterFactory) {
@@ -42,7 +42,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -58,7 +58,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * This returns ACOrgUnitId.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -70,7 +70,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 		final String label = ((ACOrgUnitId) object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ACOrgUnitId_type") : //$NON-NLS-1$
-			getString("_UI_ACOrgUnitId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ACOrgUnitId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -99,7 +99,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -110,7 +110,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

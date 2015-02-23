@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -17,10 +17,10 @@ import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>History Info</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESHistoryInfo>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -44,7 +44,7 @@ import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
  *          Package</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo()
  * @model
  * @generated
@@ -58,7 +58,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Primary Spec</em>' containment reference.
 	 * @see #setPrimarySpec(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_PrimarySpec()
@@ -73,7 +73,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * <em>Primary Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Primary Spec</em>' containment reference.
 	 * @see #getPrimarySpec()
 	 * @generated
@@ -90,7 +90,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Next Spec</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_NextSpec()
 	 * @model containment="true" resolveProxies="true" required="true"
@@ -106,7 +106,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Previous Spec</em>' containment reference.
 	 * @see #setPreviousSpec(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_PreviousSpec()
@@ -121,7 +121,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * <em>Previous Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Previous Spec</em>' containment reference.
 	 * @see #getPreviousSpec()
 	 * @generated
@@ -138,7 +138,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Merged From</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_MergedFrom()
 	 * @model containment="true" resolveProxies="true" required="true"
@@ -156,7 +156,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Merged To</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_MergedTo()
 	 * @model containment="true" resolveProxies="true" required="true"
@@ -172,7 +172,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Log Message</em>' containment reference.
 	 * @see #setLogMessage(LogMessage)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_LogMessage()
@@ -187,7 +187,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Log Message</em>' containment reference.
 	 * @see #getLogMessage()
 	 * @generated
@@ -203,7 +203,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Tag Specs</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_TagSpecs()
 	 * @model containment="true" resolveProxies="true"
@@ -220,7 +220,7 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Version Properties</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_VersionProperties()
 	 * @model containment="true" resolveProxies="true"
@@ -236,14 +236,14 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Change Package</em>' containment reference.
-	 * @see #setChangePackage(ChangePackage)
+	 * @see #setChangePackage(AbstractChangePackage)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_ChangePackage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ChangePackage getChangePackage();
+	AbstractChangePackage getChangePackage();
 
 	/**
 	 * Sets the value of the '
@@ -251,11 +251,11 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * <em>Change Package</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Change Package</em>' containment reference.
 	 * @see #getChangePackage()
 	 * @generated
 	 */
-	void setChangePackage(ChangePackage value);
+	void setChangePackage(AbstractChangePackage value);
 
 } // HistoryInfo

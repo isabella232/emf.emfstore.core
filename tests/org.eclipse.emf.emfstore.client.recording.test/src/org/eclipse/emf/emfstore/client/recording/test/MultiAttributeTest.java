@@ -11,9 +11,11 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
@@ -177,7 +179,9 @@ public class MultiAttributeTest extends ESTest {
 			}
 		}.run(false);
 
-		AbstractOperation abstractOperation = getProjectSpace().getOperations().get(0);
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		AbstractOperation abstractOperation = operations.get(0);
 		assertTrue(abstractOperation instanceof MultiAttributeOperation);
 		MultiAttributeOperation ao = (MultiAttributeOperation) abstractOperation;
 		assertTrue(ao.getIndexes().size() == 1);
@@ -185,12 +189,12 @@ public class MultiAttributeTest extends ESTest {
 		assertTrue(ao.getReferencedValues().get(0).equals(FIRST));
 		assertTrue(ao.isAdd());
 
-		abstractOperation = getProjectSpace().getOperations().get(1);
+		abstractOperation = operations.get(1);
 		assertTrue(abstractOperation instanceof MultiAttributeOperation);
 		ao = (MultiAttributeOperation) abstractOperation;
-		assertTrue(ao.getIndexes().size() == 2);
-		assertTrue(ao.getIndexes().get(0) == 1);
-		assertTrue(ao.getIndexes().get(1) == 2);
+		assertEquals(2, ao.getIndexes().size());
+		assertEquals(1, ao.getIndexes().get(0).intValue());
+		assertEquals(2, ao.getIndexes().get(1).intValue());
 		assertTrue(ao.getReferencedValues().get(0).equals(SECOND));
 		assertTrue(ao.getReferencedValues().get(1).equals(THIRD));
 		assertTrue(ao.isAdd());
@@ -215,8 +219,10 @@ public class MultiAttributeTest extends ESTest {
 			}
 		}.run(false);
 
-		assertTrue(getProjectSpace().getOperations().size() == 1);
-		final AbstractOperation abstractOperation = getProjectSpace().getOperations().get(0);
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		assertEquals(1, operations.size());
+		final AbstractOperation abstractOperation = operations.get(0);
 		assertTrue(abstractOperation instanceof MultiAttributeOperation);
 		final MultiAttributeOperation ao = (MultiAttributeOperation) abstractOperation;
 		assertTrue(ao.getIndexes().get(0) == 1);
@@ -255,10 +261,11 @@ public class MultiAttributeTest extends ESTest {
 			}
 		}.run(false);
 
+		final List<AbstractOperation> operations = forceGetOperations();
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				final AbstractOperation ao = getProjectSpace().getOperations().get(0).reverse();
+				final AbstractOperation ao = operations.get(0).reverse();
 				ao.apply(getProject());
 			}
 		}.run(false);

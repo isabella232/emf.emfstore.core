@@ -45,7 +45,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>Referenced Values</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiAttributeOperationImpl extends FeatureOperationImpl implements MultiAttributeOperation {
@@ -124,12 +124,11 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 * @generated
 	 */
 	public void setAdd(boolean newAdd) {
-		final boolean oldAdd = add;
+		boolean oldAdd = add;
 		add = newAdd;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.MULTI_ATTRIBUTE_OPERATION__ADD,
 				oldAdd, add));
-		}
 	}
 
 	/**
@@ -252,11 +251,10 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (add: "); //$NON-NLS-1$
 		result.append(add);
 		result.append(", indexes: "); //$NON-NLS-1$

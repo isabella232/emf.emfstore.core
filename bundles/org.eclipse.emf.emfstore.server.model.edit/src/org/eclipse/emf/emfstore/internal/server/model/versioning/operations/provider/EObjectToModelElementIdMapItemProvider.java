@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 /**
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -38,7 +38,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EObjectToModelElementIdMapItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,17 +67,18 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * This adds a property descriptor for the Key feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", "_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY,
 				true,
 				false,
@@ -90,17 +91,18 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	/**
 	 * This adds a property descriptor for the Value feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EObjectToModelElementIdMap_value_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature", "_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE,
 				true,
 				false,
@@ -114,7 +116,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * This returns EObjectToModelElementIdMap.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -126,7 +128,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +142,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +155,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +166,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

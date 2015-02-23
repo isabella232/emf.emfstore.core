@@ -85,12 +85,12 @@ public class ImportProjectHistoryController extends ServerCall<Void> implements 
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void execute(File file, IProgressMonitor progressMonitor) throws IOException {
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
-		Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
-		EList<EObject> directContents = resource.getContents();
+		final ResourceSetImpl resourceSet = new ResourceSetImpl();
+		final Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
+		final EList<EObject> directContents = resource.getContents();
 
 		// sanity check
-		if (directContents.size() != 1 && (!(directContents.get(0) instanceof ProjectHistory))) {
+		if (directContents.size() != 1 && !(directContents.get(0) instanceof ProjectHistory)) {
 			throw new IOException("File is corrupt, does not contain a ProjectHistory.");
 		}
 

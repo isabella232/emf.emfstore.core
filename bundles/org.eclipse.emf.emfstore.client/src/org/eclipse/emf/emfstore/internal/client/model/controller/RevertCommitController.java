@@ -1,11 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -19,15 +19,18 @@ import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
+import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Controller that forces a revert of version specifier.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -39,7 +42,7 @@ public class RevertCommitController extends ServerCall<Void> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} containing the project upon which to revert a commit
 	 * @param versionSpec
@@ -71,20 +74,34 @@ public class RevertCommitController extends ServerCall<Void> {
 			projectSpace.getUsersession().toAPI(),
 			getProgressMonitor());
 
-		final List<ChangePackage> changes = revertSpace.toInternalAPI().getChanges(
+		// TODO: LCP
+		final List<AbstractChangePackage> changes = revertSpace.toInternalAPI().getChanges(
 			baseVersion,
 			headRevert ? localHead : ModelUtil.clone(baseVersion));
 
 		Collections.reverse(changes);
 
-		for (final ChangePackage changePackage : changes) {
-			changePackage.reverse().apply(revertSpace.toInternalAPI().getProject(), true);
+		final Project project = revertSpace.toInternalAPI().getProject();
+
+		for (final AbstractChangePackage changePackage : changes) {
+			final ESCloseableIterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
+			try {
+				for (final AbstractOperation reversedOperation : reversedOperations.iterable()) {
+					try {
+						reversedOperation.reverse().apply(project);
+					} catch (final IllegalStateException e) {
+						// ignore all non-applied operations
+					}
+				}
+			} finally {
+				reversedOperations.close();
+			}
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override

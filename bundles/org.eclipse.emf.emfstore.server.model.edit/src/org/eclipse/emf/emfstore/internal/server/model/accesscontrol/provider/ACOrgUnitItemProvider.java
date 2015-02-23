@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.provider;
@@ -31,14 +31,14 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACOrgUnitItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +48,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,12 +68,12 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ACOrgUnit_name_feature"), //$NON-NLS-1$
@@ -90,12 +90,12 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Roles feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addRolesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ACOrgUnit_roles_feature"), //$NON-NLS-1$
@@ -112,24 +112,24 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Description feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ACOrgUnit_description_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ACOrgUnit_type"), //$NON-NLS-1$
-				AccesscontrolPackage.Literals.AC_ORG_UNIT__DESCRIPTION,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_description_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					AccesscontrolPackage.Literals.AC_ORG_UNIT__DESCRIPTION,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -152,7 +152,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -166,7 +166,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This returns ACOrgUnit.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -178,7 +178,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 		final String label = ((ACOrgUnit) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ACOrgUnit_type") : //$NON-NLS-1$
-			getString("_UI_ACOrgUnit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ACOrgUnit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -218,7 +218,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -226,7 +226,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(AccesscontrolPackage.Literals.AC_ORG_UNIT__PROPERTIES,
 				AccesscontrolFactory.eINSTANCE.createOrgUnitProperty()));
 	}
@@ -234,7 +234,7 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

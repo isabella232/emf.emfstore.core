@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- * chodnick
+ * chodnick - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
@@ -15,7 +15,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
@@ -25,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsFactory;
@@ -33,7 +33,7 @@ import org.junit.Test;
 
 /**
  * Tests conflict detection behaviour on attributes.
- * 
+ *
  * @author chodnick
  */
 public class ConflictDetectionAttributeTest extends ConflictDetectionTest {
@@ -70,14 +70,13 @@ public class ConflictDetectionAttributeTest extends ConflictDetectionTest {
 		Update.testElement(TestElementFeatures.name(), actor1, CHANGE_1);
 		Update.testElement(TestElementFeatures.name(), actor2, CHANGE_2);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(conflicts.size(), 1);
 
+		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
 	}
 
 	/**
@@ -116,14 +115,15 @@ public class ConflictDetectionAttributeTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-		// should not conflict, the same change happens on both sides
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		final ConflictBucket bucket = conflicts.get(0);
+
 		assertEquals(1, conflicts.size());
-
+		assertEquals(1, bucket.getMyOperations().size());
+		assertEquals(1, bucket.getTheirOperations().size());
 	}
 
 	/**
@@ -150,14 +150,11 @@ public class ConflictDetectionAttributeTest extends ConflictDetectionTest {
 		Update.testElement(TestElementFeatures.name(), actor1, CHANGE_1);
 		Update.testElement(TestElementFeatures.description(), actor2, UNRELATED_CHANGE);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = ps2.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(ps2);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-		assertEquals(getConflicts(ops1, ops2).size(), getConflicts(ops2, ops1).size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(conflicts.size(), 0);
-
 	}
 
 	private static final String OLDE_VALUE = "oldeValue"; //$NON-NLS-1$

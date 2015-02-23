@@ -45,7 +45,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * Alias</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
@@ -189,10 +189,11 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -210,10 +211,11 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public void setUrl(String newUrl) {
-		String oldUrl = url;
+		final String oldUrl = url;
 		url = newUrl;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__URL, oldUrl, url));
+		}
 	}
 
 	/**
@@ -231,10 +233,11 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public void setPort(int newPort) {
-		int oldPort = port;
+		final int oldPort = port;
 		port = newPort;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__PORT, oldPort, port));
+		}
 	}
 
 	/**
@@ -259,13 +262,14 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	public Usersession getLastUsersession() {
 		if (lastUsersession != null && lastUsersession.eIsProxy())
 		{
-			InternalEObject oldLastUsersession = (InternalEObject) lastUsersession;
+			final InternalEObject oldLastUsersession = (InternalEObject) lastUsersession;
 			lastUsersession = (Usersession) eResolveProxy(oldLastUsersession);
 			if (lastUsersession != oldLastUsersession)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ModelPackage.SERVER_INFO__LAST_USERSESSION, oldLastUsersession, lastUsersession));
+				}
 			}
 		}
 		return lastUsersession;
@@ -286,11 +290,12 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public void setLastUsersession(Usersession newLastUsersession) {
-		Usersession oldLastUsersession = lastUsersession;
+		final Usersession oldLastUsersession = lastUsersession;
 		lastUsersession = newLastUsersession;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__LAST_USERSESSION,
 				oldLastUsersession, lastUsersession));
+		}
 	}
 
 	/**
@@ -308,11 +313,12 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public void setCertificateAlias(String newCertificateAlias) {
-		String oldCertificateAlias = certificateAlias;
+		final String oldCertificateAlias = certificateAlias;
 		certificateAlias = newCertificateAlias;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__CERTIFICATE_ALIAS,
 				oldCertificateAlias, certificateAlias));
+		}
 	}
 
 	/**
@@ -348,8 +354,9 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			return getProjectInfos();
 		case ModelPackage.SERVER_INFO__LAST_USERSESSION:
-			if (resolve)
+			if (resolve) {
 				return getLastUsersession();
+			}
 			return basicGetLastUsersession();
 		case ModelPackage.SERVER_INFO__CERTIFICATE_ALIAS:
 			return getCertificateAlias();
@@ -454,10 +461,11 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", url: "); //$NON-NLS-1$
