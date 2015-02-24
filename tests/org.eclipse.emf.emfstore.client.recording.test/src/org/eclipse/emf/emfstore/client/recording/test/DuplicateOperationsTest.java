@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -29,7 +29,6 @@ import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.controller.UpdateController;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
-import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
@@ -43,7 +42,7 @@ import org.junit.Test;
 
 /**
  * @author emueller
- * 
+ *
  */
 public class DuplicateOperationsTest extends ESTest {
 
@@ -163,10 +162,10 @@ public class DuplicateOperationsTest extends ESTest {
 		final ChangePackage cp = createChangePackage(a, b);
 		final ChangePackage localCP = createChangePackage(
 			ModelUtil.clone(a), ModelUtil.clone(b));
-		final List<ChangePackage> incoming = new ArrayList<ChangePackage>();
-		incoming.add(cp);
+		final List<ESChangePackage> incoming = new ArrayList<ESChangePackage>();
+		incoming.add(cp.toAPI());
 		final int delta = updateController.removeFromChangePackages(
-			APIUtil.mapToAPI(ESChangePackage.class, incoming),
+			incoming,
 			localCP.toAPI());
 		assertEquals(1, delta);
 		assertEquals(0, localCP.getOperations().size());
@@ -183,14 +182,14 @@ public class DuplicateOperationsTest extends ESTest {
 		final ChangePackage cp2 = createChangePackage(c);
 		final ChangePackage localCP = createChangePackage(
 			ModelUtil.clone(a), ModelUtil.clone(b));
-		final List<ChangePackage> incoming = new ArrayList<ChangePackage>();
-		incoming.add(cp);
-		incoming.add(cp2);
+		final List<ESChangePackage> incoming = new ArrayList<ESChangePackage>();
+		incoming.add(cp.toAPI());
+		incoming.add(cp2.toAPI());
 		final int delta = updateController.removeFromChangePackages(
-			APIUtil.mapToAPI(ESChangePackage.class, incoming),
+			incoming,
 			localCP);
 		assertEquals(1, delta);
-		assertEquals(0, localCP.getOperations().size());
+		assertEquals(0, localCP.size());
 		assertEquals(1, incoming.size());
 	}
 
