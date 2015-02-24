@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -55,14 +55,14 @@ import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
 
 /**
  * This subinterface implements all version related functionality.
- * 
+ *
  * @author wesendon
  */
 public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface
 	 *            parent interface
 	 * @throws FatalESException
@@ -75,13 +75,13 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	/**
 	 * Resolves a versionSpec and delivers the corresponding primary
 	 * versionSpec.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param versionSpec
 	 *            versionSpec
 	 * @return primary versionSpec
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if the project ID is invalid
 	 * @throws ESException
@@ -236,7 +236,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Create a new version.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session being used to create a new version
 	 * @param projectId
@@ -304,8 +304,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				if (targetBranch.getBranch().equals(VersionSpec.GLOBAL)) {
 					throw new InvalidVersionSpecException(
 						Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-							+ VersionSpec.GLOBAL +
-							Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+						+ VersionSpec.GLOBAL +
+						Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 				}
 				// when branch does NOT exist, create new branch
 				newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
@@ -351,14 +351,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 			ModelUtil.logInfo(
 				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-					(System.currentTimeMillis() - currentTimeMillis));
+				(System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-		throws StorageException {
+			throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {
@@ -473,7 +473,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns all branches for the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @return a list containing information about each branch
@@ -493,7 +493,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Deletes projectstate from last revision depending on persistence policy.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param previousHeadVersion
@@ -523,7 +523,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns all changes within the specified version range for a given project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @param source
@@ -531,7 +531,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @param target
 	 *            the target version (inclusive)
 	 * @return a list of change packages containing all the changes for the specified version range
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if an invalid version has been specified
 	 * @throws ESException
@@ -583,8 +583,12 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 					final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
 					final Iterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
+					final ArrayList<AbstractOperation> arrayList = new ArrayList<AbstractOperation>();
+					for (final AbstractOperation op : reversedOperations) {
+						arrayList.add(op);
+					}
 
-					for (final AbstractOperation reversedOperation : reversedOperations) {
+					for (final AbstractOperation reversedOperation : arrayList) {
 						changePackageReverse.add(reversedOperation);
 					}
 
@@ -605,7 +609,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the specified version of a project.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param versionSpec
@@ -623,7 +627,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * Returns a list of versions starting from source and ending with target.
 	 * This method returns the version always in an ascanding order. So if you
 	 * need it ordered differently you have to reverse the list.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param source
@@ -684,7 +688,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * Helper method which retrieves the next version in the history tree. This
 	 * method must be used in reversed order. With the introduction of branches, the versions are organized in a tree
 	 * structure. Therefore, next versions are always searched for walking up the tree.
-	 * 
+	 *
 	 * @param currentVersion
 	 *            current version
 	 * @return version

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESPersistentChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
@@ -42,6 +43,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	private final String operationsFilePath;
 	private ESLogMessage logMessage;
 	private boolean needsInit;
+	private ESChangePackage apiImpl;
 
 	public PersistentChangePackage(String operationsFilePath) {
 		this.operationsFilePath = operationsFilePath;
@@ -83,46 +85,8 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 	}
 
-	// public void removeOperation()
-	// throws ESException {
-	//
-	// int i;
-	// final VTDGen vg = new VTDGen();
-	// final AutoPilot ap = new AutoPilot();
-	// try {
-	// ap.selectXPath("//operations/*[last()]");
-	// } catch (final XPathParseException e) {
-	// throw new ESException(e);
-	// }
-	// final XMLModifier xm = new XMLModifier();
-	//
-	// if (vg.parseFile(operationsFilePath, true)) {
-	// final VTDNav vn = vg.getNav();
-	// ap.bind(vn);
-	// try {
-	// xm.bind(vn);
-	// while ((i = ap.evalXPath()) != -1)
-	// {
-	// // remove the cursor element in the embedded VTDNav object
-	// xm.remove();
-	// }
-	// xm.output(operationsFilePath);
-	// } catch (final ModifyException e) {
-	// throw new ESException(e);
-	// } catch (final XPathEvalException e) {
-	// throw new ESException(e);
-	// } catch (final NavException e) {
-	// throw new ESException(e);
-	// } catch (final TranscodeException e) {
-	// throw new ESException(e);
-	// } catch (final IOException e) {
-	// throw new ESException(e);
-	// }
-	//
-	// }
-	// }
-
 	public void addAll(List<? extends AbstractOperation> ops) {
+		// TODO: LCP - file is reopened for each op
 		for (final AbstractOperation op : ops) {
 			add(op);
 		}
@@ -270,18 +234,19 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	}
 
 	public void clear() {
-		RandomAccessFile raf;
+		RandomAccessFile raf = null;
 		try {
 			raf = new RandomAccessFile(operationsFilePath, "rw"); //$NON-NLS-1$
 			raf.seek(0);
 			final String emptyCp = XML_HEADER + CHANGE_PACKAGE_START + CHANGE_PACKAGE_END;
 			raf.write(emptyCp.getBytes());
 			raf.setLength(emptyCp.length());
-			raf.close();
 		} catch (final FileNotFoundException ex) {
 			throw new RuntimeException(ex);
 		} catch (final IOException ex) {
 			throw new RuntimeException(ex);
+		} finally {
+			IOUtils.closeQuietly(raf);
 		}
 	}
 
@@ -383,8 +348,11 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
 	public Iterable<AbstractOperation> reversedOperations() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Iterable<AbstractOperation>() {
+			public Iterator<AbstractOperation> iterator() {
+				return PersistentChangePackage.this.reverseIterator();
+			}
+		};
 	}
 
 	/**
@@ -393,8 +361,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return count();
 	}
 
 	/**
@@ -403,8 +370,10 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESChangePackage toAPI() {
-		// TODO Auto-generated method stub
-		return null;
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
 	}
 
 	/**
@@ -413,7 +382,6 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESChangePackage createAPI() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ESPersistentChangePackageImpl(this);
 	}
 }

@@ -14,7 +14,6 @@ import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.nullP
 import static org.junit.Assert.fail;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
-import org.eclipse.emf.emfstore.client.test.common.dsl.Delete;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
@@ -95,12 +94,13 @@ public abstract class TransmissionTests extends ESTestWithLoggedInUser {
 	@Override
 	@After
 	public void after() {
-		try {
-			Delete.user(getServer(), user1);
-			Delete.user(getServer(), user2);
-		} catch (final ESException ex) {
-			fail(ex.getMessage());
-		}
+		super.after();
+		// try {
+		// Delete.user(getServer(), user1);
+		// Delete.user(getServer(), user2);
+		// } catch (final ESException ex) {
+		// fail(ex.getMessage());
+		// }
 	}
 
 	public ProjectSpace getProjectSpace1() {
