@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -54,11 +54,11 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Container</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESLocalProjectImpl>
  *          <!-- end-user-doc
  *          -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -96,7 +96,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *          <em>Changed Shared Properties</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace()
  * @model
  * @generated
@@ -105,7 +105,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * ID of the runnable change context option.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	String RUNNABLE_CONTEXT_ID = "org.eclipse.emf.emfstore.client.runnableChangeContext"; //$NON-NLS-1$
@@ -118,7 +118,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * This may be used to provide a context while applying operations on a
 	 * {@link org.eclipse.emf.emfstore.client.ESLocalProject}.
 	 * </p>
-	 * 
+	 *
 	 * @param runnableContext
 	 *            the runnable context to be set
 	 */
@@ -129,14 +129,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * EMFStore upon a commit. As long as the file is not yet committed, it can
 	 * be removed by first retrieving the {@link FileInformation} via {@link #getFileInfo(FileIdentifier)} and then
 	 * remove it via {@link FileInformation#cancelPendingUpload()}.
-	 * 
+	 *
 	 * @param file
 	 *            to be added to the project space
 	 * @return The file identifier the file was assigned to. This identifier can
 	 *         be used to retrieve the file later on
 	 * @throws FileTransferException
 	 *             if any error occurs
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	FileIdentifier addFile(File file) throws FileTransferException;
@@ -146,7 +146,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * EMFStore upon a commit. As long as the file is not yet committed, it can
 	 * be removed by first retrieving the {@link FileInformation} via {@link #getFileInfo(FileIdentifier)} and then
 	 * remove it via {@link FileInformation#cancelPendingUpload()}.
-	 * 
+	 *
 	 * @param file
 	 *            to be added to the project space
 	 * @param fileIdentifier
@@ -155,60 +155,60 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 *         be used to retrieve the file later on
 	 * @throws FileTransferException
 	 *             if any error occurs
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	FileIdentifier addFile(File file, String fileIdentifier) throws FileTransferException;
 
 	/**
 	 * Adds a list of operations to this project space.
-	 * 
+	 *
 	 * @param operations
 	 *            the list of operations to be added
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void addOperations(List<? extends AbstractOperation> operations);
 
 	/**
 	 * Adds a tag to the specified version of this project.
-	 * 
+	 *
 	 * @param versionSpec
 	 *            the versionSpec
 	 * @param tag
 	 *            the tag
 	 * @throws ESException
 	 *             if exception occurs on the server
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void addTag(PrimaryVersionSpec versionSpec, TagVersionSpec tag) throws ESException;
 
 	/**
 	 * Begin a composite operation on the projectSpace.
-	 * 
+	 *
 	 * @return a handle to abort or complete the operation
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	CompositeOperationHandle beginCompositeOperation();
 
 	/**
 	 * Commits all pending changes of the project space.
-	 * 
+	 *
 	 * @param monitor
 	 *            a progress monitor that may be used during the commit to indicate the progress
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case the commit went wrong
-	 * 
+	 *
 	 * @return the current version specification
 	 **/
 	PrimaryVersionSpec commit(IProgressMonitor monitor) throws ESException;
 
 	/**
 	 * Commits all pending changes of the project space.
-	 * 
+	 *
 	 * @param logMessage
 	 *            a log message describing the changes to be committed
 	 * @param callback
@@ -217,12 +217,12 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @param monitor
 	 *            an optional progress monitor to be used while the commit is in
 	 *            progress, may be <code>null</code>
-	 * 
+	 *
 	 * @return the current version specification
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case the commit went wrong
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	PrimaryVersionSpec commit(String logMessage, ESCommitCallback callback, IProgressMonitor monitor)
@@ -232,8 +232,8 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * This method allows to commit changes to a new branch. It works very
 	 * similar to {@link #commit(IProgressMonitor)} with the addition of a Branch specifier.
 	 * Once the branch is created use {@link #commit(IProgressMonitor)} for further commits.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param branch
 	 *            branch specifier
 	 * @param logMessage
@@ -252,7 +252,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	/**
 	 * Allows to merge a version from another branch into the current
 	 * project space.
-	 * 
+	 *
 	 * @param branchSpec
 	 *            the version which is supposed to be merged
 	 * @param conflictResolver
@@ -267,7 +267,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Merges the resolved conflict sets.
-	 * 
+	 *
 	 * @param conflictSet
 	 *            a set containing the conflicts
 	 * @param myChangePackages
@@ -275,17 +275,17 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @param theirChangePackages
 	 *            a list of containing the incoming change packages
 	 * @return a merge change package
-	 * 
+	 *
 	 * @throws ChangeConflictException in case the conflicts can not be resolved
 	 */
 	ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<ESChangePackage> myChangePackages, List<ESChangePackage> theirChangePackages)
-		throws ChangeConflictException;
+			throws ChangeConflictException;
 
 	/**
 	 * Returns a list of branches of the current project. Every call triggers a
 	 * server call.
-	 * 
+	 *
 	 * @return list of {@link BranchInfo}
 	 * @throws ESException
 	 *             in case of an exception
@@ -294,52 +294,52 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Export all local changes to a file.
-	 * 
+	 *
 	 * @param file
 	 *            the file being exported to
 	 * @throws IOException
 	 *             if writing to the given file fails
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void exportLocalChanges(File file) throws IOException;
 
 	/**
 	 * Export all local changes to a file.
-	 * 
+	 *
 	 * @param file
 	 *            the file being exported to
 	 * @param progressMonitor
 	 *            the progress monitor that should be used while exporting
 	 * @throws IOException
 	 *             if writing to the given file fails
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void exportLocalChanges(File file, IProgressMonitor progressMonitor) throws IOException;
 
 	/**
 	 * Export a project to the given file.
-	 * 
+	 *
 	 * @param file
 	 *            the file being exported to
 	 * @throws IOException
 	 *             if writing to the given file fails
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void exportProject(File file) throws IOException;
 
 	/**
 	 * Export a project to the given file.
-	 * 
+	 *
 	 * @param file
 	 *            the file being exported to
 	 * @param progressMonitor
 	 *            the progress monitor that should be used during the export
 	 * @throws IOException
 	 *             if writing to the given file fails
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void exportProject(File file, IProgressMonitor progressMonitor) throws IOException;
@@ -352,7 +352,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Base Version</em>' containment reference.
 	 * @see #setBaseVersion(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_BaseVersion()
@@ -372,7 +372,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Changed Shared Properties</em>' reference
 	 *         list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ChangedSharedProperties()
@@ -391,7 +391,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Workspace</em>' container reference.
 	 * @see #setWorkspace(Workspace)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Workspace()
@@ -406,7 +406,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Workspace</em>}' container reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Workspace</em>' container reference.
 	 * @see #getWorkspace()
 	 * @generated
@@ -421,7 +421,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Local Change Package</em>' containment reference.
 	 * @see #setLocalChangePackage(ChangePackage)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_LocalChangePackage()
@@ -433,11 +433,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	// TODO: LCP
 	ESChangePackage changePackage();
 
+	// TODO: LCP
+	ESChangePackage changePackage(boolean canonize);
+
 	/**
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage
 	 * <em>Local Change Package</em>}' containment reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Local Change Package</em>'
 	 *            containment reference.
@@ -454,7 +457,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Merged Version</em>' containment reference.
 	 * @see #setMergedVersion(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_MergedVersion()
@@ -468,7 +471,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Merged Version</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Merged Version</em>' containment reference.
 	 * @see #getMergedVersion()
 	 * @generated
@@ -498,14 +501,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * object which can be queried for the status of the download. Once the
 	 * download is finished ( status.isFinished() ), the file can be retrieved
 	 * from this status object by calling status.getTransferredFile().
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            file identifier string.
 	 * @return a status object that can be used to retrieve various information
 	 *         about the file.
 	 * @throws FileTransferException
 	 *             if any error occurs retrieving the files
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	FileDownloadStatus getFile(FileIdentifier fileIdentifier) throws FileTransferException;
@@ -518,22 +521,22 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * FileInformation class is basically a facade to keep the interface in the
 	 * project space small (only getFileInfo) while still providing a rich
 	 * interface for files.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the file identifier for which to get the information
 	 * @return the information for that identifier.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	FileInformation getFileInfo(FileIdentifier fileIdentifier);
 
 	/**
 	 * Gets a list of history infos.
-	 * 
+	 *
 	 * @param query
 	 *            the query to be performed in order to fetch the history
 	 *            information
-	 * 
+	 *
 	 * @see Workspace
 	 * @return a list of history infos
 	 * @throws ESException
@@ -550,7 +553,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Last Updated</em>' attribute.
 	 * @see #setLastUpdated(Date)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_LastUpdated()
@@ -561,11 +564,11 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Gathers all local operations and canonizes them.
-	 * 
+	 *
 	 * @param canonized
 	 *            true if the operations should be canonized
 	 * @return the list of operations
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	ChangePackage getLocalChangePackage(boolean canonized);
@@ -579,7 +582,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Old Log Messages</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_OldLogMessages()
 	 * @model
@@ -589,7 +592,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Get the {@link OperationManager} for this {@link ProjectSpace}.
-	 * 
+	 *
 	 * @return the operation manager
 	 * @generated NOT
 	 */
@@ -598,7 +601,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	/**
 	 * Return the list of operations that have already been performed on the
 	 * project space.
-	 * 
+	 *
 	 * @return a list of operations
 	 * @generated NOT
 	 */
@@ -614,7 +617,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project</em>' containment reference.
 	 * @see #setProject(Project)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Project()
@@ -631,7 +634,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Description</em>' attribute.
 	 * @see #setProjectDescription(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ProjectDescription()
@@ -648,7 +651,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Id</em>' containment reference.
 	 * @see #setProjectId(ProjectId)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ProjectId()
@@ -659,9 +662,9 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Get a project info for the project space.
-	 * 
+	 *
 	 * @return a project info
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	ProjectInfo getProjectInfo();
@@ -674,7 +677,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Name</em>' attribute.
 	 * @see #setProjectName(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ProjectName()
@@ -693,7 +696,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * If the meaning of the '<em>Properties</em>' map isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Properties</em>' containment reference
 	 *         list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Properties()
@@ -704,7 +707,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Get the {@link PropertyManager} for this {@link ProjectSpace}.
-	 * 
+	 *
 	 * @return the property manager
 	 * @generated NOT
 	 */
@@ -718,7 +721,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Usersession</em>' reference.
 	 * @see #setUsersession(Usersession)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Usersession()
@@ -737,7 +740,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Waiting Uploads</em>' containment reference
 	 *         list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_WaitingUploads()
@@ -748,7 +751,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Import changes from a file.
-	 * 
+	 *
 	 * @param fileName
 	 *            the file name to import from
 	 * @throws IOException
@@ -759,14 +762,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Initialize the project space and its resources.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void init();
 
 	/**
 	 * Initialize the resources of the project space.
-	 * 
+	 *
 	 * @param resourceSet
 	 *            the resource set the project space should use
 	 * @generated NOT
@@ -775,12 +778,12 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Deletes the project space.
-	 * 
+	 *
 	 * @param monitor
 	 *            a progress monitor that may be used during the delete to indicate the progress
-	 * 
+	 *
 	 * @generated NOT
-	 * 
+	 *
 	 * @throws IOException
 	 *             in case the project space could not be deleted
 	 */
@@ -788,16 +791,16 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Returns the resource set of the ProjectSpace.
-	 * 
+	 *
 	 * @return resource set of the ProjectSpace
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	ResourceSet getResourceSet();
 
 	/**
 	 * Sets the resource set of the project space.
-	 * 
+	 *
 	 * @param resourceSet
 	 *            the resource set to be used by this project space
 	 */
@@ -811,7 +814,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Dirty</em>' attribute.
 	 * @see #setDirty(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Dirty()
@@ -822,9 +825,9 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Shows whether projectSpace is transient.
-	 * 
+	 *
 	 * @return true, if transient.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	boolean isTransient();
@@ -832,11 +835,11 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	/**
 	 * Determines whether the project is up to date, that is, whether the base
 	 * revision and the head revision are equal.
-	 * 
+	 *
 	 * @return true, if the project is up to date, false otherwise
 	 * @throws ESException
 	 *             if the head revision can not be resolved
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	boolean isUpdated() throws ESException;
@@ -845,28 +848,28 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * Will make the projectSpace transient, it will not make its content or
 	 * changes persistent. Can only be called before the resources or the
 	 * project space have been initialized.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void makeTransient();
 
 	/**
 	 * Removes a tag to the specified version of this project.
-	 * 
+	 *
 	 * @param versionSpec
 	 *            the versionSpec
 	 * @param tag
 	 *            the tag
 	 * @throws ESException
 	 *             if exception occurs on the server
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void removeTag(PrimaryVersionSpec versionSpec, TagVersionSpec tag) throws ESException;
 
 	/**
 	 * Resolve the url to a model element.
-	 * 
+	 *
 	 * @param modelElementUrlFragment
 	 *            the url
 	 * @return the model element
@@ -878,12 +881,12 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * <!-- begin-user-doc --> Resolve a version spec to a primary version spec.
-	 * 
+	 *
 	 * @param versionSpec
 	 *            the spec to resolve
 	 * @param monitor
 	 *            a progress monitor that may be used during resolving the version to indicate the progress
-	 * 
+	 *
 	 * @return the primary version specifier <!-- end-user-doc -->
 	 * @throws ESException
 	 *             if resolving fails
@@ -895,7 +898,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	/**
 	 * Revert all local changes in the project space. Returns the state of the
 	 * project to that of the project space base version.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void revert();
@@ -905,7 +908,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Base Version</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Base Version</em>' containment reference.
 	 * @see #getBaseVersion()
 	 * @generated
@@ -920,7 +923,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Resource Count</em>' attribute.
 	 * @see #setResourceCount(int)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ResourceCount()
@@ -934,7 +937,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Resource Count</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Resource Count</em>' attribute.
 	 * @see #getResourceCount()
 	 * @generated
@@ -945,7 +948,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#isDirty <em>Dirty</em>}
 	 * ' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Dirty</em>' attribute.
 	 * @see #isDirty()
 	 * @generated
@@ -957,7 +960,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Last Updated</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Last Updated</em>' attribute.
 	 * @see #getLastUpdated()
 	 * @generated
@@ -969,7 +972,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project</em>' containment reference.
 	 * @see #getProject()
 	 * @generated
@@ -981,7 +984,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Description</em>' attribute.
 	 * @see #getProjectDescription()
 	 * @generated
@@ -993,7 +996,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Id</em>' containment reference.
 	 * @see #getProjectId()
 	 * @generated
@@ -1005,7 +1008,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Name</em>' attribute.
 	 * @see #getProjectName()
 	 * @generated
@@ -1014,7 +1017,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Sets a new OrgUnitProperty for the current user.
-	 * 
+	 *
 	 * @param property
 	 *            the new property
 	 * @generated NOT
@@ -1026,7 +1029,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Usersession</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Usersession</em>' reference.
 	 * @see #getUsersession()
 	 * @generated
@@ -1035,9 +1038,9 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Shares this project space.
-	 * 
+	 *
 	 * @return the project info of the created project
-	 * 
+	 *
 	 * @throws ESException
 	 *             if an error occurs during the sharing of the project
 	 */
@@ -1045,14 +1048,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Shares this project space.
-	 * 
+	 *
 	 * @param session
 	 *            the {@link Usersession} that should be used for sharing the
 	 *            project
 	 * @param monitor
 	 *            an instance of an {@link IProgressMonitor}
 	 * @return the project info of the remote project
-	 * 
+	 *
 	 * @throws ESException
 	 *             if an error occurs during the sharing of the project
 	 */
@@ -1060,34 +1063,34 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Transmit the OrgUnitproperties to the server.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void transmitProperties();
 
 	/**
 	 * Undo the last operation of the projectSpace.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void undoLastOperation();
 
 	/**
 	 * Undo the last operation <em>n</em> operations of the projectSpace.
-	 * 
+	 *
 	 * @param nrOperations
 	 *            the number of operations to be undone
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void undoLastOperations(int nrOperations);
 
 	/**
 	 * <!-- begin-user-doc --> Update the project to the head version.
-	 * 
+	 *
 	 * @param monitor
 	 *            a progress monitor that may be used during update to indicate progress
-	 * 
+	 *
 	 * @return the new base version
 	 * @throws ESException
 	 *             if update fails <!-- end-user-doc -->
@@ -1098,7 +1101,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * <!-- begin-user-doc --> Update the project to the given version.
-	 * 
+	 *
 	 * @param version
 	 *            the version to update to
 	 * @return the new base version
@@ -1111,7 +1114,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Update the workspace to the given revision.
-	 * 
+	 *
 	 * @param version
 	 *            the {@link VersionSpec} to update to
 	 * @param callback
@@ -1120,10 +1123,10 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @param progress
 	 *            an {@link IProgressMonitor} instance
 	 * @return the current version specifier
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case the update went wrong
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	PrimaryVersionSpec update(VersionSpec version, ESUpdateCallback callback, IProgressMonitor progress)
@@ -1131,25 +1134,25 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 
 	/**
 	 * Determine if the project space has unsaved changes to any element in the project.
-	 * 
+	 *
 	 * @return true if there is unsaved changes.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	boolean hasUnsavedChanges();
 
 	/**
 	 * Saves the project space.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void save();
 
 	/**
 	 * Whether this project space has been shared.
-	 * 
+	 *
 	 * @return true, if the project space has been shared, false otherwise
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	boolean isShared();

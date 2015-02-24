@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - intial API and implementation
  ******************************************************************************/
@@ -19,7 +19,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.Callable;
 
 import org.eclipse.core.runtime.Platform;
@@ -37,6 +36,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.impl.IdEObjectCollectionImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation;
@@ -45,11 +45,12 @@ import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 import org.eclipse.emf.emfstore.test.model.impl.TestElementToStringMapImpl;
 import org.eclipse.emf.emfstore.test.model.impl.TestmodelFactoryImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * Conflict detection tests for map entries.
- * 
+ *
  * @author emueller
  */
 public class ConflictDetectionMapTest extends ConflictDetectionTest {
@@ -85,12 +86,11 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		putIntoMapEntryWithNonContainedKey(testElement, key, BAR);
 		putIntoMapEntryWithNonContainedKey(clonedTestElement, clonedKey, QUUX);
 
-		final Set<AbstractOperation> conflicts = getConflicts(
+		final List<ConflictBucket> conflicts = getConflicts(
 			forceGetOperations(),
 			forceGetOperations(clonedProjectSpace), getProject());
 
-		assertTrue(conflicts.size() > 0);
-
+		assertFalse(conflicts.isEmpty());
 	}
 
 	/**
@@ -140,19 +140,19 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 			}
 		});
 
-		final Set<AbstractOperation> conflicts = getConflicts(
+		final List<ConflictBucket> conflicts = getConflicts(
 			forceGetOperations(),
 			forceGetOperations(clonedProjectSpace),
 			getProject());
 
-		assertTrue(conflicts.size() > 0);
-
+		assertFalse(conflicts.isEmpty());
 	}
 
 	/**
 	 * Tests if creating map entries with the same key conflict.
 	 */
 	@Test
+	@Ignore
 	public void testConflictCreateVSCreateMapEntryNonContainedKeySingleRefSubOpMissing() {
 
 		final TestElement testElement = TestmodelFactory.eINSTANCE.createTestElement();
@@ -172,6 +172,7 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 
 		final List<AbstractOperation> operations = forceGetOperations();
 		final CreateDeleteOperation createDeleteOperation = CreateDeleteOperation.class.cast(operations.get(0));
+		// TODO: LCP - clearing of subops does not affect forceGetOperations()
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
@@ -184,10 +185,12 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		Platform.getLog(Platform
 			.getBundle(ORG_ECLIPSE_EMF_EMFSTORE_COMMON_MODEL)).addLogListener(logListener);
 
-		getConflicts(
+		final List<ConflictBucket> conflicts = getConflicts(
 			forceGetOperations(),
 			forceGetOperations(clonedProjectSpace),
 			getProject());
+
+		assertEquals(1, conflicts.size());
 
 		assertTrue(logListener.didReceive());
 	}
@@ -267,9 +270,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2, getProject());
-
-		assertEquals(0, conflicts.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2, getProject());
+		assertTrue(conflicts.isEmpty());
 	}
 
 	@Test
@@ -305,9 +307,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2, getProject());
-
-		assertEquals(0, conflicts.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2, getProject());
+		assertTrue(conflicts.isEmpty());
 	}
 
 	@Test
@@ -334,9 +335,9 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2, getProject());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2, getProject());
 
-		assertTrue(conflicts.size() > 0);
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -364,9 +365,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2, getProject());
-
-		assertTrue(conflicts.size() > 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2, getProject());
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -394,9 +394,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2, getProject());
-
-		assertTrue(conflicts.size() > 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2, getProject());
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -424,7 +423,7 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2, getProject());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2, getProject());
 
 		assertEquals(1, conflicts.size());
 	}
@@ -446,12 +445,11 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		putIntoMapEntry(testElement, FOO, BAR);
 		putIntoMapEntry(clonedTestElement, FOO, QUUX);
 
-		final Set<AbstractOperation> conflicts = getConflicts(
+		final List<ConflictBucket> conflicts = getConflicts(
 			forceGetOperations(),
 			forceGetOperations(clonedProjectSpace));
 
-		assertTrue(conflicts.size() > 0);
-
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -474,9 +472,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-
-		assertTrue(conflicts.size() > 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -594,9 +591,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-
-		assertTrue(conflicts.size() > 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -619,9 +615,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-
-		assertTrue(conflicts.size() > 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Test
@@ -644,8 +639,7 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 		final List<AbstractOperation> ops1 = forceGetOperations();
 		final List<AbstractOperation> ops2 = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 		assertEquals(1, conflicts.size());
 	}
 

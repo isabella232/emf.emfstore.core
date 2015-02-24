@@ -5,16 +5,15 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
@@ -33,14 +32,14 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Abstract super class for operation tests, contains setup.
- * 
+ *
  * @author chodnick
  */
 public abstract class ConflictDetectionTest extends ESTest {
 
 	/**
 	 * Convenience method for conflict detection.
-	 * 
+	 *
 	 * @param opA operation
 	 * @param opB operation
 	 * @return boolean
@@ -59,7 +58,7 @@ public abstract class ConflictDetectionTest extends ESTest {
 		return conflictSet.getConflictBuckets().size() > 0;
 	}
 
-	public Set<AbstractOperation> getConflicts(final List<AbstractOperation> ops1, final List<AbstractOperation> ops2,
+	public List<ConflictBucket> getConflicts(final List<AbstractOperation> ops1, final List<AbstractOperation> ops2,
 		Project project) {
 
 		final ChangePackage changePackage1 = VersioningFactory.eINSTANCE.createChangePackage();
@@ -77,15 +76,11 @@ public abstract class ConflictDetectionTest extends ESTest {
 			APIUtil.mapToAPI(ESChangePackage.class, Arrays.asList(changePackage1)),
 			APIUtil.mapToAPI(ESChangePackage.class, Arrays.asList(changePackage2)),
 			project);
-		final LinkedHashSet<AbstractOperation> result = new LinkedHashSet<AbstractOperation>();
-		for (final ConflictBucket conflictBucket : conflicts.getConflictBuckets()) {
-			final Set<AbstractOperation> myOperations = conflictBucket.getMyOperations();
-			result.addAll(myOperations);
-		}
-		return result;
+
+		return new ArrayList<ConflictBucket>(conflicts.getConflictBuckets());
 	}
 
-	public Set<AbstractOperation> getConflicts(List<AbstractOperation> ops1, List<AbstractOperation> ops2) {
+	public List<ConflictBucket> getConflicts(List<AbstractOperation> ops1, List<AbstractOperation> ops2) {
 		return getConflicts(ops1, ops2, ModelFactory.eINSTANCE.createProject());
 	}
 

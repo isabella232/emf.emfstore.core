@@ -512,6 +512,25 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		return changePackage;
 	}
 
+	public ESChangePackage changePackage(boolean canonize) {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		// copy operations from ProjectSpace
+		for (final AbstractOperation abstractOperation : changePackage().operations()) {
+			final AbstractOperation copy = ModelUtil.clone(abstractOperation);
+			changePackage.add(copy);
+		}
+		final LogMessage logMessage = VersioningFactory.eINSTANCE.createLogMessage();
+		if (getUsersession() != null) {
+			logMessage.setAuthor(getUsersession().getUsername());
+		}
+		else {
+			logMessage.setAuthor(Messages.ProjectSpaceBase_Unknown_Author);
+		}
+		logMessage.setClientDate(new Date());
+		changePackage.setLogMessage(logMessage);
+		return changePackage;
+	}
+
 	/**
 	 * Get the current notification recorder.
 	 *

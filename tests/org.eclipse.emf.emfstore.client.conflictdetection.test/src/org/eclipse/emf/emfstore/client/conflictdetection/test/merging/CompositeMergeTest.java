@@ -5,11 +5,12 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test.merging;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.apache.commons.lang.StringUtils;
@@ -144,17 +145,18 @@ public class CompositeMergeTest extends MergeTest {
 			}
 		}.run(false);
 
+		assertFalse(getProjectSpace().changePackage().isEmpty());
+
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
 				final CompositeOperationHandle handle = mc.getTheirProjectSpace().beginCompositeOperation();
-
 				mc.getTheirItem(element).setReference(mc.getTheirItem(link2));
-
 				end(handle, mc.getTheirId(element));
 			}
-
 		}.run(false);
+
+		assertFalse(getProjectSpace().changePackage().isEmpty());
 
 		mc.hasConflict(CompositeConflict.class)
 			// my

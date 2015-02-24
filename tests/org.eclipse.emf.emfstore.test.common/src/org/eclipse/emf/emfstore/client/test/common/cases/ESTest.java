@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -44,9 +44,9 @@ import org.junit.Before;
 
 /**
  * Common base class for all EMFStore tests.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class ESTest {
 
@@ -61,7 +61,7 @@ public abstract class ESTest {
 
 	/**
 	 * Clones a {@link ProjectSpace} including the project.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be cloned
 	 * @return the cloned project space
@@ -106,16 +106,17 @@ public abstract class ESTest {
 
 	/**
 	 * Convenience to get an operation by type.
-	 * 
+	 *
 	 * @param clazz class of operation
 	 * @return operation
 	 */
 	protected AbstractOperation checkAndGetOperation(Class<? extends AbstractOperation> clazz) {
-		assertEquals(1, getProjectSpace().getOperations().size());
-		assertTrue(clazz.isInstance(getProjectSpace().getOperations().get(0)));
-		final AbstractOperation operation = getProjectSpace().getOperations().get(0);
+		final List<AbstractOperation> operations = forceGetOperations();
+		assertEquals(1, operations.size());
+		assertTrue(clazz.isInstance(operations.get(0)));
+		final AbstractOperation operation = operations.get(0);
 		clearOperations();
-		assertEquals(getProjectSpace().getOperations().size(), 0);
+		assertEquals(forceGetOperations().size(), 0);
 		return operation;
 	}
 

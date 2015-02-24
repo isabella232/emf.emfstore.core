@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick - initial API and implementatin
  * Edgar Mueller - refactorings to reduce code duplication
@@ -13,10 +13,10 @@
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,13 +27,15 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
 /**
  * Tests conflict detection behaviour on attributes.
- * 
+ *
  * @author chodnick
  */
 public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
@@ -69,13 +71,13 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
 			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+			.size());
 		// same operations going on in both working copies, no conflicts expected
 		assertEquals(1, conflicts.size());
 
@@ -122,12 +124,13 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(1, conflictBucket.getTheirOperations().size());
 		// same operations going on in both working copies, no conflicts expected
 		assertEquals(1, conflicts.size());
 
@@ -164,13 +167,14 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops = forceGetOperations();
+		final List<AbstractOperation> clonedOps = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops, clonedOps);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(1, conflictBucket.getTheirOperations().size());
+
 		// obviously an index-integrity conflict
 		assertEquals(conflicts.size(), 1);
 
@@ -205,16 +209,15 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 		assertEquals(conflicts.size(), 1);
-
 	}
 
 	/**
@@ -247,16 +250,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
 
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 		assertEquals(conflicts.size(), 1);
-
 	}
 
 	/**
@@ -289,16 +292,17 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 
 		assertEquals(conflicts.size(), 1);
-
 	}
 
 	/**
@@ -314,24 +318,29 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 		final ProjectSpace clonedProjectSpace = cloneProjectSpace(getProjectSpace());
 		final Project clonedProject = clonedProjectSpace.getProject();
 
-		final TestElement actor1 = (TestElement) getProject().getModelElement(actorId);
-		final TestElement actor2 = (TestElement) clonedProject.getModelElement(actorId);
+		assertTrue(ModelUtil.areEqual(getProject(), clonedProject));
+		assertTrue(clonedProjectSpace.changePackage().isEmpty());
 
-		final TestElement section1 = (TestElement) getProject().getModelElement(sectionId);
-		final TestElement section2 = (TestElement) clonedProject.getModelElement(sectionId);
-		final TestElement otherSection2 = (TestElement) clonedProject.getModelElement(otherSectionId);
+		final TestElement actor = (TestElement) getProject().getModelElement(actorId);
+		final TestElement clonedActor = (TestElement) clonedProject.getModelElement(actorId);
 
-		setTestElement(actor1, section1);
-		setTestElement(actor2, section2);
-		setTestElement(actor2, otherSection2);
+		final TestElement section = (TestElement) getProject().getModelElement(sectionId);
+		final TestElement clonedSection = (TestElement) clonedProject.getModelElement(sectionId);
+		final TestElement clonedOtherSection = (TestElement) clonedProject.getModelElement(otherSectionId);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		setTestElement(actor, section);
+		setTestElement(clonedActor, clonedSection);
+		setTestElement(clonedActor, clonedOtherSection);
+
+		final List<AbstractOperation> ops = forceGetOperations();
+		final List<AbstractOperation> clonedProjectSpaceOps = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops, clonedProjectSpaceOps);
+
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 
 		assertEquals(conflicts.size(), 1);
 	}
@@ -349,34 +358,29 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 		final ProjectSpace clonedProjectSpace = cloneProjectSpace(getProjectSpace());
 		final Project clonedProject = clonedProjectSpace.getProject();
 
-		final TestElement actor1 = (TestElement) getProject().getModelElement(actorId);
-		final TestElement actor2 = (TestElement) clonedProject.getModelElement(actorId);
+		final TestElement actor = (TestElement) getProject().getModelElement(actorId);
+		final TestElement clonedActor = (TestElement) clonedProject.getModelElement(actorId);
 
-		final TestElement section1 = (TestElement) getProject().getModelElement(sectionId);
-		final TestElement section2 = (TestElement) clonedProject.getModelElement(sectionId);
-		final TestElement otherSection2 = (TestElement) clonedProject.getModelElement(otherSectionId);
+		final TestElement section = (TestElement) getProject().getModelElement(sectionId);
+		final TestElement clonedSection = (TestElement) clonedProject.getModelElement(sectionId);
+		final TestElement clonedOtherSection = (TestElement) clonedProject.getModelElement(otherSectionId);
 
 		new EMFStoreCommand() {
-
 			@Override
 			protected void doRun() {
-				actor1.setContainer(section1);
-				actor2.setContainer(section2);
-				otherSection2.getContainedElements().add(actor2);
-
+				actor.setContainer(section);
+				clonedActor.setContainer(clonedSection);
+				clonedOtherSection.getContainedElements().add(clonedActor);
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops = forceGetOperations();
+		final List<AbstractOperation> clonedOps = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops, clonedOps);
 
 		assertEquals(conflicts.size(), 1);
-
 	}
 
 	/**
@@ -406,13 +410,15 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 				section2.getContainedElements().remove(actor2);
 			}
 		}.run(false);
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 
 		assertEquals(conflicts.size(), 1);
 
@@ -449,16 +455,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 
 		assertEquals(conflicts.size(), 1);
-
 	}
 
 	/**
@@ -492,13 +498,14 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// hard conflict between add and remove, serialization matters
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
 
 		assertEquals(conflicts.size(), 1);
 
@@ -537,16 +544,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// no hard conflict
-		final Set<AbstractOperation> hardConflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(1, conflictBucket.getTheirOperations().size());
 
-		assertEquals(1, hardConflicts.size());
-
+		assertEquals(conflicts.size(), 1);
 	}
 
 	/**
@@ -578,16 +585,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// no index conflict
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
-
-		assertEquals(conflicts.size(), 0);
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -625,15 +628,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// a hard conflict, though. serialization matters
-		final Set<AbstractOperation> hardConflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(), getConflicts(oclonedProjectSpace, ops1)
-			.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(1, conflictBucket.getTheirOperations().size());
 
-		assertEquals(hardConflicts.size(), 1);
+		assertEquals(conflicts.size(), 1);
 
 	}
 
@@ -670,19 +674,17 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		});
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
-
-		// no index conflict
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// index conflict arises: if the add happens before the move, the move will work
 		// if it does after the move, the move could be ineffective
-		assertEquals(conflicts.size(), 1);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
 
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
+		assertEquals(conflicts.size(), 1);
 	}
 
 	/**
@@ -716,18 +718,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
-
-		// no index conflict
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
-
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 		// index conflict arises: if the add happens before the move, the move will work
 		// if it does after the move, the move could be ineffective
-		assertEquals(1, conflicts.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
+
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(2, conflictBucket.getTheirOperations().size());
+		assertEquals(conflicts.size(), 1);
 	}
 
 	/**
@@ -764,18 +764,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
-
-		// no index conflict
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
 		// an index conflict arises: result depends on which move comes last
-		assertEquals(conflicts.size(), 1);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		final ConflictBucket conflictBucket = conflicts.get(0);
 
+		assertEquals(1, conflictBucket.getMyOperations().size());
+		assertEquals(1, conflictBucket.getTheirOperations().size());
+		assertEquals(conflicts.size(), 1);
 	}
 
 	/**
@@ -811,14 +809,11 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
-		assertEquals(conflicts.size(), 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -853,15 +848,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict (the change happens at the boundary)
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -898,16 +890,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict (outcome does not depend on serialization)
-		assertEquals(conflicts.size(), 0);
-
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -942,16 +930,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict (outcome does not depend on serialization)
-		assertEquals(conflicts.size(), 0);
-
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -984,15 +968,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict (outcome does not depend on serialization)
-		assertEquals(0, conflicts.size());
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -1030,15 +1011,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -1076,15 +1054,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -1123,16 +1098,11 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
-		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
-
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -1170,16 +1140,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
-
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -1219,16 +1185,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
-
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -1266,15 +1228,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -1312,15 +1271,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -1357,15 +1313,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -1403,15 +1356,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
+		assertTrue(conflicts.isEmpty());
 
 	}
 
@@ -1451,16 +1401,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
-		assertEquals(conflicts.size(), 0);
-
+		assertTrue(conflicts.isEmpty());
 	}
 
 	/**
@@ -1498,16 +1444,12 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 				section2.getContainedElements().move(1, anotherDummy2);
 			}
 		}.run(false);
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops = forceGetOperations();
+		final List<AbstractOperation> clonedOps = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops, clonedOps);
 		// no index-integrity conflict: result independent of serialization
 		assertEquals(conflicts.size(), 0);
-
 	}
 
 	/**
@@ -1535,23 +1477,20 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 		final Project clonedProject = clonedProjectSpace.getProject();
 
 		final TestElement anotherDummy2 = (TestElement) clonedProject.getModelElement(anotherDummyId);
-		final TestElement section2 = (TestElement) clonedProject.getModelElement(sectionId);
+		final TestElement clonedSection = (TestElement) clonedProject.getModelElement(sectionId);
 
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
 				section.getContainedElements().move(2, actor);
-				section2.getContainedElements().move(0, anotherDummy2);
+				clonedSection.getContainedElements().move(0, anotherDummy2);
 			}
 		}.run(false);
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> oclonedProjectSpace = clonedProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> oclonedProjectSpace = forceGetOperations(clonedProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, oclonedProjectSpace);
-		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
-			getConflicts(oclonedProjectSpace, ops1)
-				.size());
+		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		// no index-integrity conflict: result independent of serialization
 		assertEquals(0, conflicts.size());
 
@@ -1564,7 +1503,7 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 
 	/**
 	 * Creates the test element and adds it to the project.
-	 * 
+	 *
 	 * @param name
 	 *            the name of the test element
 	 * @return the ID of the created test element as assigned by the project
@@ -1575,15 +1514,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 	}
 
 	private ModelElementId addToProject(final EObject eObject, final boolean shouldClearOperations) {
-		return RunESCommand.runWithResult(new Callable<ModelElementId>() {
+		final ModelElementId id = RunESCommand.runWithResult(new Callable<ModelElementId>() {
 			public ModelElementId call() throws Exception {
 				getProject().addModelElement(eObject);
-				if (shouldClearOperations) {
-					clearOperations();
-				}
 				return getProject().getModelElementId(eObject);
 			}
 		});
+		if (shouldClearOperations) {
+			clearOperations();
+		}
+		return id;
 	}
 
 	private ModelElementId createTestElement() {
@@ -1622,15 +1562,16 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 
 	private void setTestElement(final TestElement actor, final TestElement leafSection,
 		final boolean shouldClearOperation) {
+
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				actor.setContainer(leafSection);
-				if (shouldClearOperation) {
-					clearOperations();
-				}
 				return null;
 			}
 		});
+		if (shouldClearOperation) {
+			clearOperations();
+		}
 	}
 
 }

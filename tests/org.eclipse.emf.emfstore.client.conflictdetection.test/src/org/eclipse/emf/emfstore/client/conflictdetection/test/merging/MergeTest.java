@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -29,18 +29,16 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.DecisionManager;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
-import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Helper super class for merge tests.
- * 
+ *
  * @author wesendon
  */
 public class MergeTest extends ESTest {
@@ -49,7 +47,7 @@ public class MergeTest extends ESTest {
 
 	/**
 	 * Default Constructor.
-	 * 
+	 *
 	 * @return case helper
 	 */
 	public MergeCase newMergeCase() {
@@ -85,7 +83,7 @@ public class MergeTest extends ESTest {
 
 	/**
 	 * Helper class for merge tests. It manages the two projectspaces and offers covenience methods.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	public class MergeCase {
@@ -162,13 +160,12 @@ public class MergeTest extends ESTest {
 
 		public DecisionManager execute() {
 			ensureCopy();
-			final List<ChangePackage> myChangePackages = Arrays.asList(getProjectSpace().getLocalChangePackage(true));
-			final List<ChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace().getLocalChangePackage(
-				true));
+			final List<ESChangePackage> myChangePackages = Arrays.asList(getProjectSpace().changePackage(true));
+			final List<ESChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace().changePackage(true));
 
 			final ChangeConflictSet changeConflictSet = new ConflictDetector().calculateConflicts(
-				APIUtil.mapToAPI(ESChangePackage.class, myChangePackages),
-				APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages),
+				myChangePackages,
+				theirChangePackages,
 				getProject());
 
 			final DecisionManager manager = new DecisionManager(getProject(), changeConflictSet, false);
