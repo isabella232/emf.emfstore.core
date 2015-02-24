@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
+import org.eclipse.emf.emfstore.client.conflictdetection.test.merging.AllMergeTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -26,7 +27,8 @@ import org.junit.runners.Suite;
 	ConflictDetectionMapTest.class,
 	ConflictDetectionReferenceTest.class,
 	ConflictDetectionDeleteTest.class,
-	ConflictDetectionMultiReferenceTest.class
+	ConflictDetectionMultiReferenceTest.class,
+	AllMergeTests.class
 })
 public class AllConflictDetectionTests {
 
