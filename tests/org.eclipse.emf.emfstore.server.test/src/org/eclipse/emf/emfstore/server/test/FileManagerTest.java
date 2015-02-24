@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * mkoegel
  ******************************************************************************/
@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.server.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,25 +21,45 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.eclipse.emf.emfstore.client.exceptions.ESServerStartFailedException;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
+import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileDownloadStatus;
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileDownloadStatus.Status;
 import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  * Tests the file manager.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 public class FileManagerTest extends TransmissionTests {
 
 	private File file;
+
+	@BeforeClass
+	public static void beforeClass() {
+		try {
+			ServerUtil.startServer();
+		} catch (final IllegalArgumentException ex) {
+			fail(ex.getMessage());
+		} catch (final ESServerStartFailedException ex) {
+			fail(ex.getMessage());
+		}
+	}
+
+	@AfterClass
+	public static void afterClass() {
+		ServerUtil.stopServer();
+	}
 
 	@After
 	@Override
