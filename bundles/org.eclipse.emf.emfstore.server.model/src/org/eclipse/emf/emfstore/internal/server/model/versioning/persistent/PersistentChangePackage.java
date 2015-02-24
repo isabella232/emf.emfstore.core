@@ -274,7 +274,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 		try {
 			raf = new RandomAccessFile(operationsFilePath, "rw"); //$NON-NLS-1$
 			raf.seek(0);
-			final String emptyCp = XML_HEADER + CHANGE_PACKAGE_START;
+			final String emptyCp = XML_HEADER + CHANGE_PACKAGE_START + CHANGE_PACKAGE_END;
 			raf.write(emptyCp.getBytes());
 			raf.setLength(emptyCp.length());
 			raf.close();

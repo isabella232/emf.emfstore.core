@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -34,14 +34,14 @@ import org.junit.Test;
 
 /**
  * Tests operations in n:n topologies.
- * 
+ *
  * @author chodnick
  */
 public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Add to an empty annotation.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -58,7 +58,7 @@ public class TopologyNtoNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, mileStone);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -93,7 +93,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Add many to an empty annotation.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -114,7 +114,7 @@ public class TopologyNtoNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, Arrays.asList(stones));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -150,7 +150,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Add to a non-empty annotation.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -171,7 +171,7 @@ public class TopologyNtoNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, mileStone);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -206,7 +206,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Add many to an nonempty annotation.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -231,7 +231,7 @@ public class TopologyNtoNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, Arrays.asList(stones));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -268,7 +268,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Remove an element to empty annotations.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -286,7 +286,7 @@ public class TopologyNtoNTest extends ESTest {
 
 		Delete.fromNonContainedNToM(useCase, mileStone);
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		assertTrue(operations.get(0) instanceof CompositeOperation);
 
@@ -318,7 +318,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Remove an element and leave non-empty annotations.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -340,7 +340,7 @@ public class TopologyNtoNTest extends ESTest {
 
 		Delete.fromNonContainedNToM(useCase, mileStone);
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		assertTrue(operations.get(0) instanceof CompositeOperation);
@@ -373,7 +373,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Remove some element and leave empty annotations.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -399,7 +399,7 @@ public class TopologyNtoNTest extends ESTest {
 		// if you use clear instead of explicit removal, op.getIndex() will be -1
 		// useCase.getNonContained_NToM().clear();
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -444,7 +444,7 @@ public class TopologyNtoNTest extends ESTest {
 
 	/**
 	 * Remove some element and leave non-empty annotations.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -473,7 +473,7 @@ public class TopologyNtoNTest extends ESTest {
 		// if you use clear instead of explicit removal, op.getIndex() will be -1
 		// useCase.getNonContained_NToM().clear();
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
