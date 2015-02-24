@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -32,20 +32,21 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * The controller responsible for performing a commit.
- * 
+ *
  * @author wesendon
  */
 public class CommitController extends ServerCall<PrimaryVersionSpec> {
@@ -56,7 +57,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space whose pending changes should be commited
 	 * @param logMessage
@@ -75,7 +76,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Branching Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space whose pending changes should be committed
 	 * @param branch
@@ -135,7 +136,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		setLogMessage(logMessage, changePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.inspectChanges(getProjectSpace().toAPI(), changePackage, getProgressMonitor());
+		.inspectChanges(getProjectSpace().toAPI(), changePackage, getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), changePackage);
@@ -195,7 +196,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		});
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
+		.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
 		return newBaseVersion;
 	}
@@ -221,6 +222,14 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final ESChangePackage changePackage)
 		throws ESException {
+
+		final ChangePackage internalChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		final Iterable<AbstractOperation> operations = changePackage.operations();
+		for (final AbstractOperation operation : operations) {
+			internalChangePackage.add(operation);
+		}
+		// internalChangePackage.setLogMessage(changePackage.getCommitMessage());
+
 		// Branching case: branch specifier added
 		final PrimaryVersionSpec newBaseVersion = new UnknownEMFStoreWorkloadCommand<PrimaryVersionSpec>(
 			getProgressMonitor()) {
@@ -230,7 +239,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 					getUsersession().getSessionId(),
 					getProjectSpace().getProjectId(),
 					getProjectSpace().getBaseVersion(),
-					ESChangePackageImpl.class.cast(changePackage).toInternalAPI(),
+					internalChangePackage,
 					branch,
 					getProjectSpace().getMergedVersion(),
 					ESLogMessageImpl.class.cast(changePackage.getCommitMessage()).toInternalAPI());

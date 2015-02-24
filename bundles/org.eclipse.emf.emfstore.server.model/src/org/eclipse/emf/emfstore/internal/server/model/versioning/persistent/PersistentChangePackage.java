@@ -34,16 +34,26 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ESChangePackage {
 
 	private static final String NEWLINE = "\n"; //$NON-NLS-1$
-	private static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + NEWLINE; //$NON-NLS-1$
+	private static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + NEWLINE + "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>" + NEWLINE; //$NON-NLS-1$ //$NON-NLS-2$
 	private static final String CHANGE_PACKAGE_START = "<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning=\"http://eclipse.org/emf/emfstore/server/model/versioning\" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations=\"http://eclipse.org/emf/emfstore/server/model/versioning/operations\">" //$NON-NLS-1$
 		+ NEWLINE;
 	private static final String CHANGE_PACKAGE_END = "</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>"; //$NON-NLS-1$
 	private static final String VIRTUAL_RESOURCE_URI = "VIRTUAL"; //$NON-NLS-1$
 	private final String operationsFilePath;
 	private ESLogMessage logMessage;
+	private boolean needsInit;
 
 	public PersistentChangePackage(String operationsFilePath) {
 		this.operationsFilePath = operationsFilePath;
+	}
+
+	/**
+	 * @param fileString
+	 * @param b
+	 */
+	public PersistentChangePackage(String fileString, boolean b) {
+		operationsFilePath = fileString;
+		needsInit = b;
 	}
 
 	public int count() {
@@ -129,7 +139,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		RandomAccessFile raf = null;
 		try {
-			outputStream.write(OperationEmitter.OPERATIONS_START_TAG.getBytes());
+			outputStream.write((OperationEmitter.OPERATIONS_START_TAG + NEWLINE).getBytes());
 
 			final Map<Object, Object> options = new LinkedHashMap<Object, Object>();
 			options.put(XMLResource.OPTION_DECLARE_XML, Boolean.FALSE);
@@ -139,9 +149,9 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 			outputStream.write((OperationEmitter.OPERATIONS_END_TAG + NEWLINE).getBytes());
 
 			final File file = new File(operationsFilePath);
-			final boolean exists = file.exists();
 
-			if (!exists) {
+			if (needsInit) {
+				needsInit = false;
 				final FileWriter w = new FileWriter(file);
 				w.write(XML_HEADER + CHANGE_PACKAGE_START);
 				w.write(CHANGE_PACKAGE_END);
@@ -351,8 +361,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
 	 */
 	public ESLogMessage getCommitMessage() {
-		// TODO Auto-generated method stub
-		return null;
+		return getLogMessage();
 	}
 
 	/**

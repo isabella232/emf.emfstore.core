@@ -18,6 +18,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 
 class OperationEmitter {
 
+	private static final String NEWLINE = "\n"; //$NON-NLS-1$
 	public static final String OPERATIONS_START_TAG = "<operations>"; //$NON-NLS-1$
 	public static final String OPERATIONS_END_TAG = "</operations>"; //$NON-NLS-1$
 	private static final String VIRTUAL_RESOURCE_URI = "virtualResource.xmi"; //$NON-NLS-1$
