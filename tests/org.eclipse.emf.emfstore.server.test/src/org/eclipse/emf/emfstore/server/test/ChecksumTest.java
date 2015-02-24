@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.test;
@@ -14,7 +14,6 @@ import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.addEl
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.checkout;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.cloneProject;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.computeChecksum;
-import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.getOperationSize;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.removeModelElement;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.revert;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.share;
@@ -161,6 +160,8 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		final TestElement testElement = Create.testElement();
 		share(getUsersession(), addElement(getLocalProject(), testElement));
 
+		assertEquals(0, forceGetOperations().size());
+
 		Update.testElement(TestElementFeatures.name(),
 			testElement, A);
 
@@ -176,7 +177,7 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		// FIXME: ugly
 		assertEquals(1,
-			((ESLocalProjectImpl) getLocalProject()).toInternalAPI().getOperations().size());
+			forceGetOperations().size());
 
 		// re-checkout should be triggered
 		final ESPrimaryVersionSpec commit = commitWithoutCommand(getLocalProject());
@@ -211,7 +212,7 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		commitWithoutCommand(getLocalProject());
 
-		assertEquals(0, getOperationSize(getLocalProject()));
+		assertEquals(0, forceGetOperations().size());
 
 		addElement(checkout,
 			Update.testElement(TestElementFeatures.name(),
@@ -220,8 +221,8 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		update(checkout);
 		commitWithoutCommand(checkout);
 
-		assertEquals(0, getOperationSize(checkout));
-		assertEquals(0, getOperationSize(getLocalProject()));
+		assertEquals(0, forceGetOperations(ESLocalProjectImpl.class.cast(checkout).toInternalAPI()).size());
+		assertEquals(0, forceGetOperations().size());
 
 		Update.testElement(TestElementFeatures.name(),
 			testElement, BOOL);
@@ -232,12 +233,12 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		startRecording(getLocalProject());
 
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 
 		// cancel should be triggered via exception
 		update(getLocalProject(), new MyUpdateCallback());
 
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 	}
 
 	@Test(expected = ESException.class)
@@ -351,11 +352,11 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		Update.testElement(TestElementFeatures.name(), testElement, C);
 		startRecording(getLocalProject());
 
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 
 		// autocorrect should be triggered, will fail
 		update(getLocalProject());
-		assertEquals(1, getOperationSize(getLocalProject()));
+		assertEquals(1, forceGetOperations().size());
 	}
 
 	private class MyCommitCallback implements ESCommitCallback {

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -99,18 +99,9 @@ public class ProjectUtil {
 		return localProject;
 	}
 
-	public static int getOperationSize(ESLocalProject localProject) {
-		final ESLocalProjectImpl cast = ESLocalProjectImpl.class.cast(localProject);
-		return RunESCommand.runWithResult(new Callable<Integer>() {
-			public Integer call() throws Exception {
-				return cast.toInternalAPI().getOperations().size();
-			}
-		});
-	}
-
 	public static void deleteRemoteProjects(ESServer server, ESUsersession usersession) throws IOException,
-		FatalESException,
-		ESException {
+	FatalESException,
+	ESException {
 		for (final ESRemoteProject project : server.getRemoteProjects(usersession)) {
 			project.delete(usersession, new NullProgressMonitor());
 		}
@@ -250,7 +241,7 @@ public class ProjectUtil {
 
 	public static ESLocalProject tag(ESLocalProject localProject, ESPrimaryVersionSpec versionSpec, String branchName,
 		String tag)
-		throws ESException {
+			throws ESException {
 		final ESTagVersionSpec tagVersionSpec = CreateAPI.tagVersionSpec(branchName, tag);
 		localProject.addTag(versionSpec, tagVersionSpec, nullProgressMonitor());
 		return localProject;
@@ -258,7 +249,7 @@ public class ProjectUtil {
 
 	/**
 	 * Shares the given project and returns it.
-	 * 
+	 *
 	 * @param session
 	 *            the session that is used to share the project
 	 * @param localProject
