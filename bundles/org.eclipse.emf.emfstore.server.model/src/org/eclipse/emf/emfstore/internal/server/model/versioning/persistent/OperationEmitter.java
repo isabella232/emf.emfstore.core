@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
 
 class OperationEmitter {
 
@@ -25,11 +26,11 @@ class OperationEmitter {
 	private static final long NEWLINE_LENGTH = System.getProperty("line.separator").getBytes().length;
 
 	boolean withinOperationsElement;
-	private final boolean isForwardDirection;
+	private final Direction direction;
 	private long offset;
 
-	public OperationEmitter(boolean isForwardDirection) {
-		this.isForwardDirection = isForwardDirection;
+	public OperationEmitter(Direction direction) {
+		this.direction = direction;
 		offset = 0;
 	}
 
@@ -41,8 +42,9 @@ class OperationEmitter {
 		final List<String> readLines = new ArrayList<String>();
 		withinOperationsElement = false;
 		String line;
-		while ((line = reader.readLine()) != null && !line.contains(getClosingTag(isForwardDirection))) {
-			if (line.contains(getOpeningTag(isForwardDirection))) {
+		final boolean isForwardDir = direction == Direction.Forward;
+		while ((line = reader.readLine()) != null && !line.contains(getClosingTag(isForwardDir))) {
+			if (line.contains(getOpeningTag(isForwardDir))) {
 				withinOperationsElement = true;
 			} else if (withinOperationsElement) {
 				readLines.add(line);
@@ -55,7 +57,7 @@ class OperationEmitter {
 			offset += line.getBytes().length;
 		}
 		if (withinOperationsElement == false && !readLines.isEmpty()) {
-			if (!isForwardDirection) {
+			if (direction == Direction.Backward) {
 				Collections.reverse(readLines);
 			}
 			return deserialize(StringUtils.join(readLines, ""));

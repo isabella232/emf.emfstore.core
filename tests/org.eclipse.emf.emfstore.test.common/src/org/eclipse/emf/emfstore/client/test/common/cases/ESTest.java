@@ -38,6 +38,7 @@ import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
@@ -161,10 +162,14 @@ public abstract class ESTest {
 
 	public List<AbstractOperation> forceGetOperations(ProjectSpace projectSpace) {
 		final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
-		final Iterable<AbstractOperation> iterator = projectSpace.changePackage().operations();
+		final CloseableIterable<AbstractOperation> operations = projectSpace.changePackage().operations();
 
-		for (final AbstractOperation operation : iterator) {
-			ops.add(operation);
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				ops.add(operation);
+			}
+		} finally {
+			operations.close();
 		}
 
 		return ops;

@@ -40,6 +40,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -136,7 +137,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		setLogMessage(logMessage, changePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-		.inspectChanges(getProjectSpace().toAPI(), changePackage, getProgressMonitor());
+			.inspectChanges(getProjectSpace().toAPI(), changePackage, getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), changePackage);
@@ -196,7 +197,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		});
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-		.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
+			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
 		return newBaseVersion;
 	}
@@ -224,9 +225,13 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		throws ESException {
 
 		final ChangePackage internalChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		final Iterable<AbstractOperation> operations = changePackage.operations();
-		for (final AbstractOperation operation : operations) {
-			internalChangePackage.add(operation);
+		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				internalChangePackage.add(operation);
+			}
+		} finally {
+			operations.close();
 		}
 		// internalChangePackage.setLogMessage(changePackage.getCommitMessage());
 

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -16,22 +16,23 @@ import java.util.List;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.PersistentChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * Mapping between {@link ESChangePackage} and {@link ChangePackage}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage> implements
 	ESChangePackage {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param changePackage
 	 *            the delegate
 	 */
@@ -40,9 +41,9 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
 	 */
 	public ESLogMessage getCommitMessage() {
@@ -50,9 +51,9 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setCommitMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
 	public void setCommitMessage(ESLogMessage logMessage) {
@@ -61,7 +62,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#addAll(java.util.List)
 	 */
 	// TODO LCP - api type
@@ -71,7 +72,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public void add(AbstractOperation op) {
@@ -81,7 +82,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#clear()
 	 */
 	public void clear() {
@@ -91,7 +92,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#isEmpty()
 	 */
 	public boolean isEmpty() {
@@ -101,7 +102,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
 	public List<AbstractOperation> removeFromEnd(int n) {
@@ -111,17 +112,16 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public Iterable<AbstractOperation> operations() {
-		// TODO Auto-generated method stub
-		return null;
+	public CloseableIterable<AbstractOperation> operations() {
+		return toInternalAPI().operations();
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#save()
 	 */
 	public void save() {
@@ -131,7 +131,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
 	public int size() {
@@ -141,12 +141,10 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public Iterable<AbstractOperation> reversedOperations() {
-		// TODO Auto-generated method stub
-		return null;
+	public CloseableIterable<AbstractOperation> reversedOperations() {
+		return toInternalAPI().reversedOperations();
 	}
-
 }

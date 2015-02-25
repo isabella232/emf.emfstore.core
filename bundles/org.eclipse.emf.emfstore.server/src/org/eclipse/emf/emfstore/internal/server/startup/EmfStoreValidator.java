@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -35,11 +35,12 @@ import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 
 /**
  * Validates the serverspace in three different ways. First it resolves all proxies, then checks whether all ME have ids
  * and it is checked whether the changes generate the corret projectstate.
- * 
+ *
  * @author wesendon
  */
 public class EmfStoreValidator {
@@ -54,7 +55,7 @@ public class EmfStoreValidator {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param serverSpace serverspace
 	 */
 	public EmfStoreValidator(ServerSpace serverSpace) {
@@ -85,7 +86,7 @@ public class EmfStoreValidator {
 	/**
 	 * Runs the validation. You can configure the validation by a bitmask, therefore use the value: {@link #RESOLVEALL},
 	 * {@link #MODELELEMENTID} and {@link #PROJECTGENERATION}.
-	 * 
+	 *
 	 * @param options options
 	 * @param throwException allows you to prevent that an exception is thrown if validation failes
 	 * @throws FatalESException in case of failure
@@ -111,7 +112,7 @@ public class EmfStoreValidator {
 	/**
 	 * Runs the validation. You can configure the validation by a bitmask, therefore use the value: {@link #RESOLVEALL},
 	 * {@link #MODELELEMENTID} and {@link #PROJECTGENERATION}.
-	 * 
+	 *
 	 * @param options options
 	 * @throws FatalESException in case of failure
 	 */
@@ -169,16 +170,21 @@ public class EmfStoreValidator {
 					projectHistory.getProjectId().getId()));
 			for (final Version version : projectHistory.getVersions()) {
 				if (version.getChanges() != null) {
-					for (final AbstractOperation abstractOperation : version.getChanges().operations()) {
-						if (!(abstractOperation instanceof CompositeOperation)
-							&& (abstractOperation.getModelElementId() == null
-							|| abstractOperation.getModelElementId().getId() == null)) {
-							errors.add(
-								MessageFormat.format(
-									Messages.EmfStoreValidator_ChangeOperation_Has_No_ModelElementId,
-									projectHistory.getProjectId(),
-									version.getPrimarySpec().getIdentifier()));
+					final CloseableIterable<AbstractOperation> operations = version.getChanges().operations();
+					try {
+						for (final AbstractOperation abstractOperation : operations.iterable()) {
+							if (!(abstractOperation instanceof CompositeOperation)
+								&& (abstractOperation.getModelElementId() == null
+								|| abstractOperation.getModelElementId().getId() == null)) {
+								errors.add(
+									MessageFormat.format(
+										Messages.EmfStoreValidator_ChangeOperation_Has_No_ModelElementId,
+										projectHistory.getProjectId(),
+										version.getPrimarySpec().getIdentifier()));
+							}
 						}
+					} finally {
+						operations.close();
 					}
 				}
 				if (version.getProjectState() != null) {
@@ -203,7 +209,7 @@ public class EmfStoreValidator {
 	/**
 	 * Note: This validation has been deactivated since the introduction of branch support. With branches this can't be
 	 * done efficiently anymore, we have to discuss alternatives.
-	 * 
+	 *
 	 * {@value #PROJECTGENERATION}.
 	 */
 	@SuppressWarnings("unused")
@@ -250,7 +256,7 @@ public class EmfStoreValidator {
 
 	/**
 	 * Allows to exclude projects from validation aside from {@link #RESOLVEALL}.
-	 * 
+	 *
 	 * @param excludedProjects list of project id as string
 	 */
 	public void setExcludedProjects(List<String> excludedProjects) {

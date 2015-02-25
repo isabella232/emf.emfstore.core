@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -19,11 +19,12 @@ import java.util.Set;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Detects conflicts between operation.
- * 
+ *
  * @author koegel
  */
 public class ConflictDetector {
@@ -36,7 +37,7 @@ public class ConflictDetector {
 
 	/**
 	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ESChangePackage}s.
-	 * 
+	 *
 	 * @param myChangePackages
 	 *            a list of {@link ESChangePackage}s
 	 * @param theirChangePackages
@@ -56,7 +57,7 @@ public class ConflictDetector {
 
 	/**
 	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ESChangePackage}s.
-	 * 
+	 *
 	 * @param myChangePackages
 	 *            a list of {@link ESChangePackage}s
 	 * @param theirChangePackages
@@ -80,7 +81,7 @@ public class ConflictDetector {
 
 	/**
 	 * Calculate a set of conflict candidate buckets from a list of my and their change packages.
-	 * 
+	 *
 	 * @param myChangePackages their operations in a list of change packages
 	 * @param theirChangePackages their operations in a list of change packages
 	 * @return a set of buckets with potentially conflicting operations
@@ -118,8 +119,13 @@ public class ConflictDetector {
 	private List<AbstractOperation> flattenChangepackages(List<ESChangePackage> changePackages) {
 		final List<AbstractOperation> operations = new ArrayList<AbstractOperation>();
 		for (final ESChangePackage cp : changePackages) {
-			for (final AbstractOperation operation : cp.operations()) {
-				operations.add(operation);
+			final CloseableIterable<AbstractOperation> changePackageOperations = cp.operations();
+			try {
+				for (final AbstractOperation operation : changePackageOperations.iterable()) {
+					operations.add(operation);
+				}
+			} finally {
+				changePackageOperations.close();
 			}
 		}
 		return operations;
@@ -128,7 +134,7 @@ public class ConflictDetector {
 	/**
 	 * Calculate a set of conflict buckets from an existing set of conflict candidate buckets. the resulting set may be
 	 * empty.
-	 * 
+	 *
 	 * @param conflictBucketsCandidateSet a set of conflict candidate buckets
 	 * @param notInvolvedInConflict all my operations that are not involved in a conflict are collected in this
 	 *            transient parameter set

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -36,12 +36,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.storage.XMIServerURIConverter;
 import org.eclipse.emf.emfstore.server.ESServerURIUtil;
 
 /**
  * Helper for creating resources etc.
- * 
+ *
  * @author wesendon
  */
 // TODO: internal
@@ -51,7 +52,7 @@ public class ResourceHelper {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param serverSpace
 	 *            serverspace
 	 * @throws FatalESException
@@ -63,7 +64,7 @@ public class ResourceHelper {
 
 	/**
 	 * Creates a resource for project history.
-	 * 
+	 *
 	 * @param projectHistory
 	 *            project history
 	 * @throws FatalESException
@@ -76,7 +77,7 @@ public class ResourceHelper {
 
 	/**
 	 * Creates a resource for a new version.
-	 * 
+	 *
 	 * @param version
 	 *            version
 	 * @param projectId
@@ -91,7 +92,7 @@ public class ResourceHelper {
 
 	/**
 	 * Creates a resource for a new project.
-	 * 
+	 *
 	 * @param project
 	 *            project
 	 * @param projectId
@@ -109,7 +110,7 @@ public class ResourceHelper {
 
 	/**
 	 * Creates a resource for a changepackage.
-	 * 
+	 *
 	 * @param changePackage
 	 *            changepackage
 	 * @param versionId
@@ -123,25 +124,30 @@ public class ResourceHelper {
 		ProjectId projectId) throws FatalESException {
 		final URI changePackageURI = ESServerURIUtil.createChangePackageURI(projectId, versionId);
 		final List<Map.Entry<EObject, ModelElementId>> ignoredDatatypes = new ArrayList<Map.Entry<EObject, ModelElementId>>();
+		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
 
-		for (final AbstractOperation op : changePackage.operations()) {
-			if (op instanceof CreateDeleteOperation) {
-				final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) op;
+		try {
+			for (final AbstractOperation op : operations.iterable()) {
+				if (op instanceof CreateDeleteOperation) {
+					final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) op;
 
-				for (final Map.Entry<EObject, ModelElementId> e : ((CreateDeleteOperationImpl) createDeleteOp)
-					.getEObjectToIdMap().entrySet()) {
+					for (final Map.Entry<EObject, ModelElementId> e : ((CreateDeleteOperationImpl) createDeleteOp)
+						.getEObjectToIdMap().entrySet()) {
 
-					final EObject modelElement = e.getKey();
+						final EObject modelElement = e.getKey();
 
-					if (ModelUtil.isIgnoredDatatype(modelElement)) {
-						ignoredDatatypes.add(e);
-						continue;
+						if (ModelUtil.isIgnoredDatatype(modelElement)) {
+							ignoredDatatypes.add(e);
+							continue;
+						}
 					}
-				}
 
-				// remove types to be ignored from mapping
-				createDeleteOp.getEObjectToIdMap().removeAll(ignoredDatatypes);
+					// remove types to be ignored from mapping
+					createDeleteOp.getEObjectToIdMap().removeAll(ignoredDatatypes);
+				}
 			}
+		} finally {
+			operations.close();
 		}
 
 		saveInResource(changePackage, changePackageURI);
@@ -150,7 +156,7 @@ public class ResourceHelper {
 	/**
 	 * Deletes a projectstate. The {@link Resource} the project is contained in
 	 * will be unloaded as well as deleted.
-	 * 
+	 *
 	 * @param version
 	 *            the version to be deleted
 	 * @param projectId
@@ -170,7 +176,7 @@ public class ResourceHelper {
 	 * referred as x - describes the size of an interval between projectstates.
 	 * It's needed to determine whether a projectstate should be saved or be
 	 * backuped.
-	 * 
+	 *
 	 * @see ServerConfiguration#PROJECTSTATE_VERSION_PERSISTENCE_EVERYXVERSIONS_X
 	 * @param policy
 	 *            policy name from server configuration
@@ -201,7 +207,7 @@ public class ResourceHelper {
 
 	/**
 	 * Returns the file path to a given project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the project id
 	 * @return file path
@@ -236,7 +242,7 @@ public class ResourceHelper {
 	/**
 	 * Saves the given EObject and sets the IDs on the eObject's resource for
 	 * all model elements contained in the given project.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject to be saved
 	 * @param project
@@ -261,7 +267,7 @@ public class ResourceHelper {
 
 	/**
 	 * Saves an eObject.
-	 * 
+	 *
 	 * @param object
 	 *            the object
 	 * @throws FatalESException
@@ -279,7 +285,7 @@ public class ResourceHelper {
 
 	/**
 	 * Saves all modified resources in the serverspace's resource set.
-	 * 
+	 *
 	 * @throws FatalESException
 	 *             in case of failure
 	 */

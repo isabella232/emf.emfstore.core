@@ -1,13 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.test;
 
@@ -53,7 +53,7 @@ import org.junit.Test;
 
 /**
  * This test calls the servermethods with null arguments.
- * 
+ *
  * @author wesendon
  */
 public class InvalidArgumentsTest {
@@ -165,7 +165,7 @@ public class InvalidArgumentsTest {
 		try {
 			testAllInvalidCombinations(connectionManager.getClass().getMethod("createVersion", //$NON-NLS-1$
 				new Class[] { SessionId.class, ProjectId.class, PrimaryVersionSpec.class, ChangePackage.class,
-					BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
+				BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
 		} catch (final SecurityException e) {
 			throw new ESException(e);
 		} catch (final NoSuchMethodException e) {

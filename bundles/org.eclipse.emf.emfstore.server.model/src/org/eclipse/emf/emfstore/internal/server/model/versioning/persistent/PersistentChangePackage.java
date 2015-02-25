@@ -9,7 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESPersistentChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
@@ -143,84 +143,6 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 		}
 	}
 
-	public Iterator<AbstractOperation> reverseIterator() {
-		final ReversedLinesFileReader[] r = new ReversedLinesFileReader[1];
-		try {
-			r[0] = new ReversedLinesFileReader(new File(operationsFilePath));
-		} catch (final IOException ex1) {
-			ex1.printStackTrace();
-		}
-
-		return new Iterator<AbstractOperation>() {
-			AbstractOperation operation;
-			final OperationEmitter operationEmitter = new OperationEmitter(false);
-
-			public boolean hasNext() {
-				try {
-					operation = operationEmitter.tryEmit(ReadLineCapable.INSTANCE.create(r[0]));
-					final boolean hasNext = operation != null;
-					if (!hasNext) {
-						r[0].close();
-					}
-					return hasNext;
-				} catch (final IOException ex) {
-					// replace operations file
-					ex.printStackTrace();
-				}
-
-				IOUtils.closeQuietly(r[0]);
-				return false;
-			}
-
-			public AbstractOperation next() {
-				return operation.reverse();
-			}
-
-			public void remove() {
-				throw new UnsupportedOperationException();
-			}
-		};
-	}
-
-	public Iterator<AbstractOperation> iterator() {
-		final BufferedReader[] r = new BufferedReader[1];
-		try {
-			r[0] = new BufferedReader(new FileReader(new File(operationsFilePath)));
-		} catch (final IOException ex1) {
-			ex1.printStackTrace();
-		}
-
-		return new Iterator<AbstractOperation>() {
-			AbstractOperation operation;
-			final OperationEmitter operationEmitter = new OperationEmitter(true);
-
-			public boolean hasNext() {
-				try {
-					operation = operationEmitter.tryEmit(ReadLineCapable.INSTANCE.create(r[0]));
-					final boolean hasNext = operation != null;
-					if (!hasNext) {
-						r[0].close();
-					}
-					return hasNext;
-				} catch (final IOException ex) {
-					// replace operations file
-					ex.printStackTrace();
-				}
-
-				IOUtils.closeQuietly(r[0]);
-				return false;
-			}
-
-			public AbstractOperation next() {
-				return operation;
-			}
-
-			public void remove() {
-				throw new UnsupportedOperationException();
-			}
-		};
-	}
-
 	public ESLogMessage getLogMessage() {
 		return logMessage;
 	}
@@ -246,7 +168,13 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 		} catch (final IOException ex) {
 			throw new RuntimeException(ex);
 		} finally {
-			IOUtils.closeQuietly(raf);
+			if (raf != null) {
+				try {
+					raf.close();
+				} catch (final IOException ex) {
+					ex.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -259,8 +187,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 
 		try {
 			r = new ReversedLinesFileReader(new File(operationsFilePath));
-			final String s;
-			final OperationEmitter operationEmitter = new OperationEmitter(false);
+			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Backward);
 			AbstractOperation op;
 			final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
 			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(r);
@@ -269,7 +196,6 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 				counter -= 1;
 			}
 			// TODO: reuse readlinecapable?
-			r.close();
 
 			final long offset = operationEmitter.getOffset();
 
@@ -295,23 +221,23 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	}
 
 	public boolean isEmpty() {
-		BufferedReader r = null;
+		BufferedReader reader = null;
 		try {
 			final File file = new File(operationsFilePath);
 			if (!file.exists()) {
 				return true;
 			}
 			// TODO: move reader into operationemitter
-			r = new BufferedReader(new FileReader(file));
-			final OperationEmitter operationEmitter = new OperationEmitter(true);
-			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(r);
+			reader = new BufferedReader(new FileReader(file));
+			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Forward);
+			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(reader);
 			return operationEmitter.tryEmit(create) == null;
 		} catch (final IOException ex) {
 			throw new RuntimeException(ex);
 		} finally {
 			try {
-				if (r != null) {
-					r.close();
+				if (reader != null) {
+					reader.close();
 				}
 			} catch (final IOException ex) {
 				// TODO Auto-generated catch block
@@ -334,12 +260,8 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public Iterable<AbstractOperation> operations() {
-		return new Iterable<AbstractOperation>() {
-			public Iterator<AbstractOperation> iterator() {
-				return PersistentChangePackage.this.iterator();
-			}
-		};
+	public CloseableIterable<AbstractOperation> operations() {
+		return new FileBasedOperationIterable(operationsFilePath, Direction.Forward);
 	}
 
 	/**
@@ -347,12 +269,8 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public Iterable<AbstractOperation> reversedOperations() {
-		return new Iterable<AbstractOperation>() {
-			public Iterator<AbstractOperation> iterator() {
-				return PersistentChangePackage.this.reverseIterator();
-			}
-		};
+	public CloseableIterable<AbstractOperation> reversedOperations() {
+		return new FileBasedOperationIterable(operationsFilePath, Direction.Backward);
 	}
 
 	/**

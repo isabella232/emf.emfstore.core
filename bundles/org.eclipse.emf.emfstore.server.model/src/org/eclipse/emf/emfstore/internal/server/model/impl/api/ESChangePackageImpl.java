@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
@@ -109,7 +110,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public Iterable<AbstractOperation> operations() {
+	public CloseableIterable<AbstractOperation> operations() {
 		return toInternalAPI().operations();
 	}
 
@@ -131,7 +132,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public Iterable<AbstractOperation> reversedOperations() {
+	public CloseableIterable<AbstractOperation> reversedOperations() {
 		return toInternalAPI().reversedOperations();
 	}
 

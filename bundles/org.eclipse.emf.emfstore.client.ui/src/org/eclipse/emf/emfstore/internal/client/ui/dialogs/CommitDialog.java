@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Shterev, Hodaie - initial API and implementation
  ******************************************************************************/
@@ -30,6 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
@@ -53,7 +54,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * This class shows a ChangesTreeComposite and a Text control to enter commit
  * message.
- * 
+ *
  * @author Hodaie
  * @author Shterev
  */
@@ -73,7 +74,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            shell
 	 * @param localChangePackage
@@ -110,9 +111,9 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.EMFStoreTitleAreaDialog#configureShell(org.eclipse.swt.widgets.Shell)
 	 */
 	@Override
@@ -138,7 +139,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		String projectName = StringUtils.EMPTY;
 		if (activeProjectSpace.getProjectName() != null
 			&& activeProjectSpace.getProjectName().length() > 0) {
-			projectName = Messages.CommitDialog_OfProject + "\"" + activeProjectSpace.getProjectName() + "\" "; //$NON-NLS-1$//$NON-NLS-2$ 
+			projectName = Messages.CommitDialog_OfProject + "\"" + activeProjectSpace.getProjectName() + "\" "; //$NON-NLS-1$//$NON-NLS-2$
 		}
 		setTitle(Messages.CommitDialog_CommitLocalChanges + projectName + Messages.CommitDialog_ToServer);
 		setMessage(Messages.CommitDialog_NumberOfCompositeChanges
@@ -187,8 +188,13 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		// TODO: LCP - fully loading change packages to display them..
 		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
 
-		for (final AbstractOperation operation : changes.operations()) {
-			cp.getOperations().add(operation);
+		final CloseableIterable<AbstractOperation> operations = changes.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				cp.getOperations().add(operation);
+			}
+		} finally {
+			operations.close();
 		}
 
 		changePackages.add(cp);
@@ -204,7 +210,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * Returns the active project space.
-	 * 
+	 *
 	 * @return the active project space
 	 */
 	public ProjectSpace getActiveProjectSpace() {
@@ -262,7 +268,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * handles the pressing of Ctrl+ENTER: OKpressed() is called. {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent e) {
@@ -273,7 +279,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * does nothing. {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.swt.events.KeyListener#keyReleased(org.eclipse.swt.events.KeyEvent)
 	 */
 	public void keyReleased(KeyEvent e) {
@@ -282,7 +288,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override

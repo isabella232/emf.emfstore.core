@@ -25,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.SerializationExceptio
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.test.model.TestElement;
@@ -62,20 +63,30 @@ public class ProjectTest extends ESTest {
 		assertTrue(getProject().contains(baz));
 
 		final ESChangePackage changePackage = getProjectSpace().changePackage();
-		final Iterable<AbstractOperation> operations = changePackage.operations();
 		final ChangePackage localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
 
-		for (final AbstractOperation abstractOperation : operations) {
-			localChangePackage.getOperations().add(abstractOperation);
+		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+
+		try {
+			for (final AbstractOperation abstractOperation : operations.iterable()) {
+				localChangePackage.getOperations().add(abstractOperation);
+			}
+		} finally {
+			operations.close();
 		}
-		final Iterable<AbstractOperation> reversedOperations = localChangePackage.reversedOperations();
+
+		final CloseableIterable<AbstractOperation> reversedOperations = localChangePackage.reversedOperations();
 
 		final ProjectSpaceBase ps = (ProjectSpaceBase) getProjectSpace();
 
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
-				ps.applyOperations(reversedOperations, false);
+				try {
+					ps.applyOperations(reversedOperations.iterable(), false);
+				} finally {
+					reversedOperations.close();
+				}
 			}
 		});
 

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -39,12 +39,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Controller class for updating a project space.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -55,7 +56,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be updated
 	 * @param version
@@ -87,9 +88,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override
@@ -122,8 +123,13 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		final ESChangePackage changePackage = getProjectSpace().changePackage();
 		ESChangePackage copiedLocalChangedPackage = VersioningFactory.eINSTANCE.createChangePackage();
-		for (final AbstractOperation operation : changePackage.operations()) {
-			copiedLocalChangedPackage.add(operation);
+		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				copiedLocalChangedPackage.add(operation);
+			}
+		} finally {
+			operations.close();
 		}
 
 		// build a mapping including deleted and create model elements in local and incoming change packages
@@ -237,7 +243,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate change packages from the change package.
-	 * 
+	 *
 	 * @param incomingChanges incoming change packages
 	 * @param localChanges local change package
 	 * @return baseVersionDelta
@@ -262,16 +268,16 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate operations.
-	 * 
+	 *
 	 * @param incomingChanges incoming change package
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed
 	 */
 	public boolean removeDuplicateOperations(ESChangePackage incomingChanges, ESChangePackage localChanges) {
 
-		final Iterator<AbstractOperation> localOperationsIterator = localChanges.operations().iterator();
-		final Iterable<AbstractOperation> incomingOps = incomingChanges.operations();
-		final Iterator<AbstractOperation> incomingOpsIterator = incomingChanges.operations().iterator();
+		final CloseableIterable<AbstractOperation> localOperations = localChanges.operations();
+		final CloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
+
 		final int incomingOpsSize = incomingChanges.size();
 		int incomingIdx = 0;
 		boolean operationMatchingStarted = false;
@@ -280,34 +286,40 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			return false;
 		}
 
-		while (localOperationsIterator.hasNext()) {
+		try {
+			final Iterator<AbstractOperation> incomingOpsIterator = incomingOps.iterable().iterator();
+			for (final AbstractOperation localOp : localOperations.iterable()) {
+				if (incomingIdx == incomingOpsSize) {
+					// incoming change package is fully consumed, continue with next change package
+					return true;
+				}
+
+				final AbstractOperation incomingOp = incomingOpsIterator.next();
+				incomingIdx += 1;
+				if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
+					// TODO: LCP - not supported currently
+					// localOperationsIterator.remove();
+					operationMatchingStarted = true;
+				} else {
+					if (operationMatchingStarted) {
+						ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
+						throw new IllegalStateException("Incoming operations only partly match with local."); //$NON-NLS-1$
+					}
+					// first operation of incoming change package does not match
+					return false;
+				}
+			}
+
+			// all incoming and local changes have been consumed
 			if (incomingIdx == incomingOpsSize) {
-				// incoming change package is fully consumed, continue with next change package
 				return true;
 			}
-
-			final AbstractOperation localOp = localOperationsIterator.next();
-			final AbstractOperation incomingOp = incomingOpsIterator.next();
-			incomingIdx += 1;
-			if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
-				localOperationsIterator.remove();
-				operationMatchingStarted = true;
-			} else {
-				if (operationMatchingStarted) {
-					ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
-					throw new IllegalStateException("Incoming operations only partly match with local."); //$NON-NLS-1$
-				}
-				// first operation of incoming change package does not match
-				return false;
-			}
+			ModelUtil.logError(Messages.UpdateController_IncomingOperationsNotFullyConsumed);
+			throw new IllegalStateException("Incoming operations are not fully consumed."); //$NON-NLS-1$
+		} finally {
+			localOperations.close();
+			incomingOps.close();
 		}
-
-		// all incoming and local changes have been consumed
-		if (incomingIdx == incomingOpsSize) {
-			return true;
-		}
-		ModelUtil.logError(Messages.UpdateController_IncomingOperationsNotFullyConsumed);
-		throw new IllegalStateException("Incoming operations are not fully consumed."); //$NON-NLS-1$
 	}
 
 }

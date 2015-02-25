@@ -39,6 +39,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.InMemoryOperationIterable;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
@@ -483,8 +485,13 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	public static int countLeafOperations(List<ChangePackage> changePackages) {
 		int count = 0;
 		for (final ChangePackage changePackage : changePackages) {
-			for (final AbstractOperation operation : changePackage.operations()) {
-				count += countLeafOperations(operation);
+			final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+			try {
+				for (final AbstractOperation operation : operations.iterable()) {
+					count += countLeafOperations(operation);
+				}
+			} finally {
+				operations.close();
 			}
 		}
 		return count;
@@ -561,8 +568,8 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public Iterable<AbstractOperation> operations() {
-		return getOperations();
+	public CloseableIterable<AbstractOperation> operations() {
+		return new InMemoryOperationIterable(getOperations());
 	}
 
 	/**
@@ -655,8 +662,8 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public Iterable<AbstractOperation> reversedOperations() {
-		return reverse().getOperations();
+	public CloseableIterable<AbstractOperation> reversedOperations() {
+		return new InMemoryOperationIterable(reverse().getOperations());
 	}
 
 	/**

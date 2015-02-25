@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  * Maximilian Koegel
@@ -29,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
@@ -43,7 +44,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param mapping
 	 *            an initial mapping from {EObject}s to their {@link ModelElementId}s
 	 */
@@ -54,7 +55,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param mapping
 	 *            an initial mapping from {EObject}s to their {@link ModelElementId}s
 	 * @param changePackages
@@ -71,7 +72,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param mapping
 	 *            an initial mapping from {EObject}s to their
 	 *            {@link org.eclipse.emf.emfstore.common.model.ESModelElementId ESModelElementId}s
@@ -89,7 +90,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param project the project which contains the initial mapping from {EObject}s to their
 	 *            {@link org.eclipse.emf.emfstore.common.model.ESModelElementId ESModelElementId}s
 	 * @param changePackage a {@link ChangePackage}s whose involved model elements should
@@ -103,7 +104,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	/**
 	 * Adds all model elements that are involved in operations contained in the {@link ChangePackage} and their
 	 * respective IDs into the mapping.
-	 * 
+	 *
 	 * @param changePackages
 	 *            the {@link ChangePackage ChangePackages} whose model elements should be added to the mapping
 	 */
@@ -116,17 +117,22 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	/**
 	 * Adds all model elements that are involved in operations contained in the {@link ChangePackage} and their
 	 * respective IDs into the mapping.
-	 * 
+	 *
 	 * @param changePackage
 	 *            the {@link ChangePackage} whose model elements should be added to the mapping
 	 */
 	public void put(ESChangePackage changePackage) {
-		put(changePackage.operations());
+		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			put(operations.iterable());
+		} finally {
+			operations.close();
+		}
 	}
 
 	/**
 	 * Put the given elements from the operations to the mapping.
-	 * 
+	 *
 	 * @param operations the operations
 	 */
 	public void put(Iterable<AbstractOperation> operations) {
@@ -163,9 +169,9 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESIdToEObjectMapping#get(java.lang.Object)
 	 */
 	public EObject get(ModelElementId modelElementId) {
@@ -180,9 +186,9 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 */
 	public ESModelElementIdToEObjectMappingImpl toAPI() {
 
@@ -194,9 +200,9 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 */
 	public ESModelElementIdToEObjectMappingImpl createAPI() {
 		return new ESModelElementIdToEObjectMappingImpl(this);

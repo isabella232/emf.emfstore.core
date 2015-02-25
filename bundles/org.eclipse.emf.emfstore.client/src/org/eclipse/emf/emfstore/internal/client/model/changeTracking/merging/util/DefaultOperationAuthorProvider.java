@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -16,13 +16,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Provides the author for an operation based on the usersession of the containing change package.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 public class DefaultOperationAuthorProvider implements OperationAuthorProvider {
 
@@ -31,7 +32,7 @@ public class DefaultOperationAuthorProvider implements OperationAuthorProvider {
 
 	/**
 	 * Default Constructor.
-	 * 
+	 *
 	 * @param leftChanges a
 	 *            list of change packages
 	 * @param rightChanges
@@ -55,15 +56,20 @@ public class DefaultOperationAuthorProvider implements OperationAuthorProvider {
 	private void scanIntoAuthorMap(ESChangePackage changePackage) {
 		if (changePackage.getCommitMessage() != null && changePackage.getCommitMessage().getAuthor() != null) {
 			final String author = changePackage.getCommitMessage().getAuthor();
-			for (final AbstractOperation operation : changePackage.operations()) {
-				operationAuthorMap.put(operation.getIdentifier(), author);
+			final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+			try {
+				for (final AbstractOperation operation : operations.iterable()) {
+					operationAuthorMap.put(operation.getIdentifier(), author);
+				}
+			} finally {
+				operations.close();
 			}
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.OperationAuthorProvider#getAuthor(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public String getAuthor(AbstractOperation operation) {

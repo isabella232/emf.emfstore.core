@@ -50,6 +50,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
 
@@ -582,10 +583,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				for (final ChangePackage changePackage : result) {
 
 					final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
-					final Iterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
+					final CloseableIterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
 					final ArrayList<AbstractOperation> arrayList = new ArrayList<AbstractOperation>();
-					for (final AbstractOperation op : reversedOperations) {
-						arrayList.add(op);
+					try {
+						for (final AbstractOperation op : reversedOperations.iterable()) {
+							arrayList.add(op);
+						}
+					} finally {
+						reversedOperations.close();
 					}
 
 					for (final AbstractOperation reversedOperation : arrayList) {

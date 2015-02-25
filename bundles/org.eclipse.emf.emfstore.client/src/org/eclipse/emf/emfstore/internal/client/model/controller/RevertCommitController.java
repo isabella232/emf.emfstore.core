@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
-// * Contributors:
+ * // * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.controller;
@@ -24,12 +24,13 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Controller that forces a revert of version specifier.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -41,7 +42,7 @@ public class RevertCommitController extends ServerCall<Void> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} containing the project upon which to revert a commit
 	 * @param versionSpec
@@ -83,19 +84,24 @@ public class RevertCommitController extends ServerCall<Void> {
 		final Project project = revertSpace.toInternalAPI().getProject();
 
 		for (final ESChangePackage changePackage : changes) {
-			for (final AbstractOperation reversedOperation : changePackage.reversedOperations()) {
-				try {
-					reversedOperation.apply(project);
-				} catch (final IllegalStateException e) {
-					// ignore all non-applied operations
+			final CloseableIterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
+			try {
+				for (final AbstractOperation reversedOperation : reversedOperations.iterable()) {
+					try {
+						reversedOperation.apply(project);
+					} catch (final IllegalStateException e) {
+						// ignore all non-applied operations
+					}
 				}
+			} finally {
+				reversedOperations.close();
 			}
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override
