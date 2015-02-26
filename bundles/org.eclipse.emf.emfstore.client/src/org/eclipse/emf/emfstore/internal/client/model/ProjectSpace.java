@@ -280,7 +280,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 */
 	ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<ESChangePackage> myChangePackages, List<ESChangePackage> theirChangePackages)
-			throws ChangeConflictException;
+		throws ChangeConflictException;
 
 	/**
 	 * Returns a list of branches of the current project. Every call triggers a
@@ -430,10 +430,19 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 */
 	ChangePackage getLocalChangePackageOLD();
 
-	// TODO: LCP
+	// TODO: LCP- return type should be internal..
 	ESChangePackage changePackage();
 
-	// TODO: LCP
+	/**
+	 * Gathers all local operations and canonizes them.
+	 *
+	 * @param canonize
+	 *            true if the operations should be canonized
+	 * @return the list of operations
+	 *
+	 * @generated NOT
+	 */
+	// TODO: LCP - returned value is an in-memory representation currently
 	ESChangePackage changePackage(boolean canonize);
 
 	/**
@@ -563,17 +572,6 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	Date getLastUpdated();
 
 	/**
-	 * Gathers all local operations and canonizes them.
-	 *
-	 * @param canonized
-	 *            true if the operations should be canonized
-	 * @return the list of operations
-	 *
-	 * @generated NOT
-	 */
-	ChangePackage getLocalChangePackage(boolean canonized);
-
-	/**
 	 * Returns the value of the '<em><b>Old Log Messages</b></em>' attribute
 	 * list. The list contents are of type {@link java.lang.String}. <!--
 	 * begin-user-doc -->
@@ -597,17 +595,6 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @generated NOT
 	 */
 	OperationManager getOperationManager();
-
-	/**
-	 * Return the list of operations that have already been performed on the
-	 * project space.
-	 *
-	 * @return a list of operations
-	 * @generated NOT
-	 */
-	// TODO: LCP
-	@Deprecated
-	List<AbstractOperation> getOperations();
 
 	/**
 	 * Returns the value of the '<em><b>Project</b></em>' containment reference.

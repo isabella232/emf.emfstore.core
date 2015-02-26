@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -21,13 +21,15 @@ import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
 /**
  * Test creating an deleting elements.
- * 
+ *
  * @author koegel
  */
 public class RecordingPerformanceTest extends ESTest {
@@ -136,8 +138,15 @@ public class RecordingPerformanceTest extends ESTest {
 		allStopWatch.stop();
 		assertEquals(ITERATIONS, getProject().getModelElements().size());
 		assertEquals(ITERATIONS * COUNT + ITERATIONS, getProject().getAllModelElements().size());
-		for (final AbstractOperation operation : getProjectSpace().getOperations()) {
-			operation.apply(project2);
+		final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+		try {
+			for (final ESOperation operation : operations.iterable()) {
+				ESOperationImpl.class.cast(operation)
+					.toInternalAPI()
+					.apply(project2);
+			}
+		} finally {
+			operations.close();
 		}
 		assertEquals(true, ModelUtil.areEqual(getProject(), project2));
 	}

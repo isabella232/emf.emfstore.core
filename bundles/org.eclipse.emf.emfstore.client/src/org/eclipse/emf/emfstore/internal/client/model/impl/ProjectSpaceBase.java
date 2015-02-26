@@ -123,7 +123,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  *
  */
 public abstract class ProjectSpaceBase extends IdentifiableElementImpl
-	implements ProjectSpace, ESLoginObserver, ESDisposable {
+implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private ESLocalProjectImpl esLocalProjectImpl;
 
@@ -289,7 +289,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<ESChangePackage> incomingChangePackages,
 		IProgressMonitor progressMonitor)
-		throws ESException {
+			throws ESException {
 
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 
@@ -518,31 +518,11 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage()
+	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#changePackage(boolean)
 	 */
-	// TODO: LCP
-	@Deprecated
-	public ChangePackage getLocalChangePackage(boolean canonize) {
-		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		// copy operations from ProjectSpace
-		for (final AbstractOperation abstractOperation : getOperations()) {
-			final AbstractOperation copy = ModelUtil.clone(abstractOperation);
-			changePackage.getOperations().add(copy);
-		}
-		final LogMessage logMessage = VersioningFactory.eINSTANCE.createLogMessage();
-		if (getUsersession() != null) {
-			logMessage.setAuthor(getUsersession().getUsername());
-		}
-		else {
-			logMessage.setAuthor(Messages.ProjectSpaceBase_Unknown_Author);
-		}
-		logMessage.setClientDate(new Date());
-		changePackage.setLogMessage(logMessage);
-		return changePackage;
-	}
-
 	public ESChangePackage changePackage(boolean canonize) {
 		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
 		// copy operations from ProjectSpace
@@ -585,22 +565,6 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public OperationManager getOperationManager() {
 		return operationManager;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getOperations()
-	 */
-	@Deprecated
-	public List<AbstractOperation> getOperations() {
-
-		// if (localChangePackage == null) {
-		// setLocalChangePackage(VersioningFactory.eINSTANCE.createChangePackage());
-		// localChangePackage = getLocalChangePackage();
-		// }
-		// TODO:
-		return new ArrayList<AbstractOperation>();
 	}
 
 	/**
@@ -745,7 +709,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.inverseCrossReferenceCache") //$NON-NLS-1$
-			.getExtensionElements()) {
+		.getExtensionElements()) {
 			useCrossReferenceAdapter &= element.getBoolean("activated"); //$NON-NLS-1$
 		}
 
@@ -963,7 +927,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-		throws ESException {
+			throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -1009,7 +973,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<ESChangePackage> myChangePackages, List<ESChangePackage> theirChangePackages)
-		throws ChangeConflictException {
+			throws ChangeConflictException {
 
 		final Set<AbstractOperation> accceptedMineSet = new LinkedHashSet<AbstractOperation>();
 		final Set<AbstractOperation> rejectedTheirsSet = new LinkedHashSet<AbstractOperation>();
@@ -1306,10 +1270,10 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		while (iterator.hasNext()) {
 			try {
 				ESWorkspaceProviderImpl
-					.getInstance()
-					.getConnectionManager()
-					.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
-						getProjectId());
+				.getInstance()
+				.getConnectionManager()
+				.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
+					getProjectId());
 				iterator.remove();
 			} catch (final ESException e) {
 				WorkspaceUtil.logException(Messages.ProjectSpaceBase_Transmission_Of_Properties_Failed, e);
@@ -1448,7 +1412,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void notifyPreRevertMyChanges(final ESChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.preRevertMyChanges(toAPI(), changePackage);
+		.preRevertMyChanges(toAPI(), changePackage);
 	}
 
 	private void notifyPostRevertMyChanges() {
@@ -1458,13 +1422,13 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	private void notifyPostApplyTheirChanges(List<ESChangePackage> theirChangePackages) {
 		// TODO ASYNC review this cancel
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.postApplyTheirChanges(toAPI(), theirChangePackages);
+		.postApplyTheirChanges(toAPI(), theirChangePackages);
 	}
 
 	private void notifyPostApplyMergedChanges(ESChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.postApplyMergedChanges(
-				toAPI(), changePackage);
+		.postApplyMergedChanges(
+			toAPI(), changePackage);
 	}
 
 	/**

@@ -296,7 +296,7 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 			}
 		});
 		
-		System.out.println("Number of changes: " + projectSpace.getOperations().size());
+//		System.out.println("Number of changes: " + projectSpace.getOperations().size());
 	}
 
 	public void changeModel(final ProjectSpace prjSpace, final int nrOfChanges) {
@@ -324,6 +324,6 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 			}
 		});
 		System.out.println("Changed model: " + (System.currentTimeMillis() - time) / 1000.0 + "sec");
-		System.out.println("Number of changes: " + prjSpace.getOperations().size());
+//		System.out.println("Number of changes: " + prjSpace.getOperations().size());
 	}
 }

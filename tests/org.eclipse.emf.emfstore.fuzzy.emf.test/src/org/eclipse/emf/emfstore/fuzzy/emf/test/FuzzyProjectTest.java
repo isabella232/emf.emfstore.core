@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * JulianSommerfeldt
  ******************************************************************************/
@@ -27,11 +27,11 @@ import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
-import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Options;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Util;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -50,9 +50,9 @@ import org.junit.runner.RunWith;
 
 /**
  * Abstract super class for tests handling EMFStore projects.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 @RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
@@ -117,8 +117,8 @@ public abstract class FuzzyProjectTest {
 	public void clearOperations() {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
+				getProjectSpace().changePackage().clear();
 				getProjectSpace().getOperationManager().clearOperations();
-				getProjectSpace().getOperations().clear();
 				return null;
 			}
 		});
@@ -154,7 +154,7 @@ public abstract class FuzzyProjectTest {
 	/**
 	 * Constructs a new {@link ESModelMutatorConfiguration} based on the existing
 	 * one and the given project.
-	 * 
+	 *
 	 * @param project
 	 *            The root object of the {@link ESModelMutatorConfiguration}.
 	 * @return The new {@link ESModelMutatorConfiguration}.
@@ -167,7 +167,7 @@ public abstract class FuzzyProjectTest {
 	/**
 	 * Constructs a new {@link ESModelMutatorConfiguration} based on the given {@link ESMutateUtil} and the given
 	 * project.
-	 * 
+	 *
 	 * @param project
 	 *            The root object of the {@link ESModelMutatorConfiguration}.
 	 * @param util
@@ -189,7 +189,7 @@ public abstract class FuzzyProjectTest {
 
 	/**
 	 * Can be overridden by subclasses to modify behavior. Default is <code>true</code>.
-	 * 
+	 *
 	 * @return Should this class handle/provide also a copy of the projectSpace?
 	 */
 	public boolean projectSpaceCopyNeeded() {
@@ -198,7 +198,7 @@ public abstract class FuzzyProjectTest {
 
 	/**
 	 * Notify that a test has failed. Saves the projects for later comparison.
-	 * 
+	 *
 	 * @param project1
 	 *            The first {@link Project}.
 	 * @param project2
@@ -210,7 +210,7 @@ public abstract class FuzzyProjectTest {
 
 	/**
 	 * Notify that a test has failed. Saves the projects for later comparison.
-	 * 
+	 *
 	 * @param project1
 	 *            The first {@link Project}.
 	 * @param project2
@@ -225,7 +225,7 @@ public abstract class FuzzyProjectTest {
 
 	/**
 	 * Saves the projects for e.g. later comparison.
-	 * 
+	 *
 	 * @param project1
 	 *            The first {@link Project}.
 	 * @param project2
@@ -258,7 +258,7 @@ public abstract class FuzzyProjectTest {
 
 	/**
 	 * Compare two projects but ignore the order of the elements.
-	 * 
+	 *
 	 * @param project1
 	 *            The first {@link Project}.
 	 * @param project2
@@ -270,7 +270,7 @@ public abstract class FuzzyProjectTest {
 
 	/**
 	 * Compare two projects but ignore the order of the elements.
-	 * 
+	 *
 	 * @param project1
 	 *            The first {@link Project}.
 	 * @param project2

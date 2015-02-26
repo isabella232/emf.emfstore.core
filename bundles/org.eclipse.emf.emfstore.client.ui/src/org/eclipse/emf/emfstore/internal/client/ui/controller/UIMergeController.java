@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UIController used to merge other branches into the current projectspace.
- * 
+ *
  * @author wesendon
  */
 public class UIMergeController extends AbstractEMFStoreUIController<Void> {
@@ -41,7 +41,7 @@ public class UIMergeController extends AbstractEMFStoreUIController<Void> {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            active shell
 	 * @param localProject
@@ -55,12 +55,12 @@ public class UIMergeController extends AbstractEMFStoreUIController<Void> {
 
 	@Override
 	public Void doRun(IProgressMonitor monitor) throws ESException {
-		if (!projectSpace.getOperations().isEmpty()) {
+		if (!projectSpace.changePackage().isEmpty()) {
 			MessageDialog
-				.openError(
-					getShell(),
-					Messages.UIMergeController_MergeNotApplicable_Title,
-					Messages.UIMergeController_MergeNotApplicable_Message);
+			.openError(
+				getShell(),
+				Messages.UIMergeController_MergeNotApplicable_Title,
+				Messages.UIMergeController_MergeNotApplicable_Message);
 			return null;
 		}
 

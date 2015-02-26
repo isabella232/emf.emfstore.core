@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
@@ -46,7 +46,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESHistoryInfoImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -57,9 +57,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.util.HistoryQueryBuilder;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
 import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
@@ -98,12 +100,12 @@ import org.eclipse.ui.part.ViewPart;
 
 /**
  * This eclipse views displays the version history of EMFStore.
- * 
+ *
  * @author wesendon
  * @author Aumann
  * @author Hodaie
  * @author Shterev
- * 
+ *
  */
 // TODO: review setInput methods
 public class HistoryBrowserView extends ViewPart implements ProjectSpaceContainer {
@@ -393,20 +395,30 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		if (projectSpace != null) {
 			// TODO: add a feature "hide local revision"
 			final HistoryInfo localHistoryInfo = VersioningFactory.eINSTANCE.createHistoryInfo();
-			final ChangePackage changePackage = projectSpace.getLocalChangePackage(false);
+			final ESChangePackage changePackage = projectSpace.changePackage(false);
 			// filter for modelelement, do additional sanity check as the
 			// project space could've been also selected
 			if (modelElement != null && projectSpace.getProject().contains(modelElement)) {
 				final Set<AbstractOperation> operationsToRemove = new LinkedHashSet<AbstractOperation>();
-				for (final AbstractOperation ao : changePackage.getOperations()) {
-					if (!ao.getAllInvolvedModelElements().contains(
-						ModelUtil.getProject(modelElement).getModelElementId(modelElement))) {
-						operationsToRemove.add(ao);
+				final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+				try {
+					for (final ESOperation operation : operations.iterable()) {
+
+						final AbstractOperation ao = ESOperationImpl.class.cast(operation).toInternalAPI();
+
+						if (!ao.getAllInvolvedModelElements().contains(
+							ModelUtil.getProject(modelElement).getModelElementId(modelElement))) {
+							operationsToRemove.add(ao);
+						}
 					}
+				} finally {
+					operations.close();
 				}
-				changePackage.getOperations().removeAll(operationsToRemove);
+				// TODO: LCP - bummer..
+				// changePackage.getOperations().removeAll(operationsToRemove);
 			}
-			localHistoryInfo.setChangePackage(changePackage);
+			// TODO: LCP
+			// localHistoryInfo.setChangePackage(changePackage);
 			final PrimaryVersionSpec versionSpec = VersioningFactory.eINSTANCE.createPrimaryVersionSpec();
 			versionSpec.setIdentifier(-1);
 			localHistoryInfo.setPrimarySpec(versionSpec);
@@ -436,7 +448,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Displays the history for the given input.
-	 * 
+	 *
 	 * @param input eobject in projectspace or projectspace itself
 	 */
 	public void setInput(EObject input) {
@@ -460,7 +472,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Sets a {@link ESLocalProject} as an input for the view. The history for the input will be shown.
-	 * 
+	 *
 	 * @param localProject the project to show the history for.
 	 */
 	public void setInput(ESLocalProject localProject) {
@@ -546,9 +558,9 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * ====================================================================
-	 * 
+	 *
 	 * TOOLBAR.
-	 * 
+	 *
 	 * ====================================================================
 	 */
 
@@ -774,7 +786,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Expand/Collapse action.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class ExpandCollapseAction extends Action {
@@ -806,7 +818,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	/**
 	 * Treeviewer that provides a model element selection for selected
 	 * operations and mode element ids.
-	 * 
+	 *
 	 * @author koegel
 	 */
 	private final class TreeViewerWithModelElementSelectionProvider extends TreeViewer {
@@ -821,7 +833,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.jface.viewers.AbstractTreeViewer#getSelection()
 		 */
 		@Override
