@@ -9,11 +9,12 @@
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+package org.eclipse.emf.emfstore.server.model;
 
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**

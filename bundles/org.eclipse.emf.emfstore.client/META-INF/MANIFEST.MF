@@ -109,4 +109,5 @@ Export-Package: org.eclipse.emf.emfstore.client;version="1.4.1",
    org.eclipse.emf.ecp.emfstore.ui.e3",
  org.eclipse.emf.emfstore.internal.client.properties;version="1.4.1";x-friends:="org.eclipse.emf.emfstore.client.test",
  org.eclipse.emf.emfstore.internal.client.provider;version="1.0.2";x-internal:=true,
- org.eclipse.emf.emfstore.internal.client.startup;version="1.0.2";x-internal:=true
+ org.eclipse.emf.emfstore.internal.client.startup;version="1.0.2";x-internal:=true,
+ org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;version="1.4.1"

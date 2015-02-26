@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESPersistentChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -302,4 +302,5 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	public ESChangePackage createAPI() {
 		return new ESPersistentChangePackageImpl(this);
 	}
+
 }

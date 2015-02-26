@@ -14,8 +14,8 @@ package org.eclipse.emf.emfstore.server.model;
 
 import java.util.List;
 
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 
 /**
  * Represents a change package.

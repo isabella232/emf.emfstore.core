@@ -94,6 +94,7 @@ import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
@@ -105,7 +106,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.PersistentChangePackage;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -120,7 +120,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *
  */
 public abstract class ProjectSpaceBase extends IdentifiableElementImpl
-	implements ProjectSpace, ESLoginObserver, ESDisposable {
+implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private ESLocalProjectImpl esLocalProjectImpl;
 
@@ -278,7 +278,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<ESChangePackage> incomingChangePackages,
 		IProgressMonitor progressMonitor)
-		throws ESException {
+			throws ESException {
 
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 
@@ -733,7 +733,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.inverseCrossReferenceCache") //$NON-NLS-1$
-			.getExtensionElements()) {
+		.getExtensionElements()) {
 			useCrossReferenceAdapter &= element.getBoolean("activated"); //$NON-NLS-1$
 		}
 
@@ -951,7 +951,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-		throws ESException {
+			throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -997,7 +997,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<ESChangePackage> myChangePackages, List<ESChangePackage> theirChangePackages)
-		throws ChangeConflictException {
+			throws ChangeConflictException {
 
 		final Set<AbstractOperation> accceptedMineSet = new LinkedHashSet<AbstractOperation>();
 		final Set<AbstractOperation> rejectedTheirsSet = new LinkedHashSet<AbstractOperation>();
@@ -1288,10 +1288,10 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		while (iterator.hasNext()) {
 			try {
 				ESWorkspaceProviderImpl
-					.getInstance()
-					.getConnectionManager()
-					.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
-						getProjectId());
+				.getInstance()
+				.getConnectionManager()
+				.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
+					getProjectId());
 				iterator.remove();
 			} catch (final ESException e) {
 				WorkspaceUtil.logException(Messages.ProjectSpaceBase_Transmission_Of_Properties_Failed, e);
@@ -1428,7 +1428,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void notifyPreRevertMyChanges(final ESChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.preRevertMyChanges(toAPI(), changePackage);
+		.preRevertMyChanges(toAPI(), changePackage);
 	}
 
 	private void notifyPostRevertMyChanges() {
@@ -1438,13 +1438,13 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	private void notifyPostApplyTheirChanges(List<ESChangePackage> theirChangePackages) {
 		// TODO ASYNC review this cancel
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.postApplyTheirChanges(toAPI(), theirChangePackages);
+		.postApplyTheirChanges(toAPI(), theirChangePackages);
 	}
 
 	private void notifyPostApplyMergedChanges(ESChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.postApplyMergedChanges(
-				toAPI(), changePackage);
+		.postApplyMergedChanges(
+			toAPI(), changePackage);
 	}
 
 	/**
@@ -1481,6 +1481,11 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	public ESChangePackage changePackage() {
 		return vdtOps;
+	}
+
+	public void setPersistentChangePackage(PersistentChangePackage changePackage) {
+		vdtOps = changePackage;
+
 	}
 
 	private PersistentChangePackage vdtOps;

@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
 
 import java.util.Iterator;
 
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**

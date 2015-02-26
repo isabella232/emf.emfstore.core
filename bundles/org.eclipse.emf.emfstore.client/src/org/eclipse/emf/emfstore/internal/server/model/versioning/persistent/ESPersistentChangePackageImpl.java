@@ -9,15 +9,14 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.impl.api;
+package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
 
 import java.util.List;
 
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.PersistentChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
@@ -28,7 +27,7 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  *
  */
 public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage> implements
-	ESChangePackage {
+ESChangePackage {
 
 	/**
 	 * Constructor.

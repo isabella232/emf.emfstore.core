@@ -85,7 +85,7 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 	}
 
 	public void remove() {
-		throw new UnsupportedOperationException();
+
 	}
 
 	public void close() {

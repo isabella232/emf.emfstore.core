@@ -11,8 +11,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
+import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
@@ -76,8 +75,8 @@ class OperationEmitter {
 	}
 
 	private AbstractOperation deserialize(final String string) throws IOException {
-		final ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.setResourceFactoryRegistry(new ResourceFactoryRegistry());
+		// final ResourceSet resourceSet = new ResourceSetImpl();e
+		final ResourceSet resourceSet = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace().getResourceSet();
 		final Resource resource = resourceSet.createResource(URI.createURI(VIRTUAL_RESOURCE_URI));
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		outputStream.write(string.getBytes());

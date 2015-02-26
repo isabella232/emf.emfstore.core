@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -205,6 +205,7 @@ public class ServerInterfaceTest extends ESTestWithLoggedInUser {
 	@Test
 	public void testERegisterEPackage() throws ESException {
 
+		final Object pckg = EPackage.Registry.INSTANCE.get(TestmodelPackage.eNS_URI);
 		EPackage.Registry.INSTANCE.remove(TestmodelPackage.eNS_URI);
 		assertNull(EPackage.Registry.INSTANCE.getEPackage(TestmodelPackage.eNS_URI));
 
@@ -213,6 +214,8 @@ public class ServerInterfaceTest extends ESTestWithLoggedInUser {
 		final ESSessionIdImpl sessionId = ESSessionIdImpl.class.cast(getSuperUsersession().getSessionId());
 		connectionManager.registerEPackage(sessionId.toInternalAPI(), testmodelPackage);
 		assertNotNull(EPackage.Registry.INSTANCE.getEPackage(TestmodelPackage.eNS_URI));
+
+		EPackage.Registry.INSTANCE.put(TestmodelPackage.eNS_URI, pckg);
 	}
 
 	@Test

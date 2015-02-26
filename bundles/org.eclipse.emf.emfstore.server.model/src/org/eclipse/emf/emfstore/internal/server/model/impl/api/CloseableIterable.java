@@ -9,7 +9,7 @@
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 
 /**
  * @author Edgar

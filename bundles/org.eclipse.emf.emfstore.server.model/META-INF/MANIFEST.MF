@@ -100,7 +100,6 @@ Export-Package: org.eclipse.emf.emfstore.internal.server.model;version="1.4.1";
    org.eclipse.emf.emfstore.client.recording.test,
    org.eclipse.emf.emfstore.test.common,
    org.eclipse.emf.emfstore.client.changetracking.test",
- org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;version="1.4.1",
  org.eclipse.emf.emfstore.internal.server.model.versioning.util;version="1.4.1";
   x-friends:="org.eclipse.emf.emfstore.server,
    org.eclipse.emf.emfstore.client.test,

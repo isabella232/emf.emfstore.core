@@ -11,17 +11,21 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
 import org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException;
 import org.eclipse.emf.emfstore.client.observer.ESUpdateObserver;
+import org.eclipse.emf.emfstore.client.util.ESClientURIUtil;
 import org.eclipse.emf.emfstore.internal.client.common.UnknownEMFStoreWorkloadCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
@@ -33,13 +37,14 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflict
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.PersistentChangePackage;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
@@ -116,7 +121,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		final List<ESChangePackage> incomingChanges = getIncomingChanges(resolvedVersion);
 
-		checkAndRemoveDuplicateOperations(incomingChanges, getProjectSpace().changePackage());
+		checkAndRemoveDuplicateOperations(incomingChanges);
 
 		// TODO: LCP - getLocalChangePackage actually causes copy
 		final ESChangePackage localChanges2 = getProjectSpace().getLocalChangePackage(false);
@@ -219,10 +224,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			Collections.singletonList(localChanges), changes, idToEObjectMapping);
 	}
 
-	private void checkAndRemoveDuplicateOperations(List<ESChangePackage> incomingChanges,
-		ESChangePackage localChanges) {
+	private void checkAndRemoveDuplicateOperations(List<ESChangePackage> incomingChanges) {
 
-		final int baseVersionDelta = removeFromChangePackages(incomingChanges, localChanges);
+		final int baseVersionDelta = removeFromChangePackages(incomingChanges);
 
 		if (baseVersionDelta == 0) {
 			return;
@@ -248,13 +252,14 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	 * @param localChanges local change package
 	 * @return baseVersionDelta
 	 */
-	public int removeFromChangePackages(List<ESChangePackage> incomingChanges, ESChangePackage localChanges) {
+	public int removeFromChangePackages(List<ESChangePackage> incomingChanges) {
 		final Iterator<ESChangePackage> incomingChangesIterator = incomingChanges.iterator();
 		int baseVersionDelta = 0;
 
 		while (incomingChangesIterator.hasNext()) {
 			final ESChangePackage incomingChangePackage = incomingChangesIterator.next();
-			final boolean hasBeenConsumed = removeDuplicateOperations(incomingChangePackage, localChanges);
+			final boolean hasBeenConsumed = removeDuplicateOperations(incomingChangePackage, getProjectSpace()
+				.changePackage());
 			if (hasBeenConsumed) {
 				baseVersionDelta += 1;
 				incomingChangesIterator.remove();
@@ -275,21 +280,37 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	 */
 	public boolean removeDuplicateOperations(ESChangePackage incomingChanges, ESChangePackage localChanges) {
 
-		final CloseableIterable<AbstractOperation> localOperations = localChanges.operations();
-		final CloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
-
-		final int incomingOpsSize = incomingChanges.size();
-		int incomingIdx = 0;
-		boolean operationMatchingStarted = false;
-
 		if (localChanges.size() == 0) {
 			return false;
 		}
 
+		File tempFile = null;
 		try {
-			final Iterator<AbstractOperation> incomingOpsIterator = incomingOps.iterable().iterator();
-			for (final AbstractOperation localOp : localOperations.iterable()) {
+			tempFile = File.createTempFile("ops", "eoc");
+		} catch (final IOException ex) {
+			ex.printStackTrace();
+		}
+		final PersistentChangePackage tempChangePackage = new PersistentChangePackage(tempFile.getAbsolutePath());
+		final CloseableIterable<AbstractOperation> localOperations = localChanges.operations();
+		final Iterator<AbstractOperation> localOperationsIterator = localOperations.iterable().iterator();
+		// final Iterable<AbstractOperation> incomingOps = incomingChanges.operations().iterable();
+		final CloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
+		final Iterator<AbstractOperation> incomingOpsIterator = incomingOps.iterable().iterator();
+		final int incomingOpsSize = incomingChanges.size();
+		int incomingIdx = 0;
+		boolean operationMatchingStarted = false;
+
+		try {
+			while (localOperationsIterator.hasNext()) {
+				final AbstractOperation localOp = localOperationsIterator.next();
 				if (incomingIdx == incomingOpsSize) {
+					tempChangePackage.add(localOp);
+					while (localOperationsIterator.hasNext()) {
+						// add all remaining local ops
+						final AbstractOperation next = localOperationsIterator.next();
+						tempChangePackage.add(next);
+					}
+
 					// incoming change package is fully consumed, continue with next change package
 					return true;
 				}
@@ -297,10 +318,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				final AbstractOperation incomingOp = incomingOpsIterator.next();
 				incomingIdx += 1;
 				if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
-					// TODO: LCP - not supported currently
-					// localOperationsIterator.remove();
 					operationMatchingStarted = true;
 				} else {
+					tempChangePackage.add(localOp);
 					if (operationMatchingStarted) {
 						ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
 						throw new IllegalStateException("Incoming operations only partly match with local."); //$NON-NLS-1$
@@ -319,7 +339,32 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		} finally {
 			localOperations.close();
 			incomingOps.close();
+			if (incomingIdx == incomingOpsSize) {
+				final URI operationsURI = ESClientURIUtil.createOperationsURI(getProjectSpace());
+				final URI normalizedOperationUri = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
+					.getResourceSet().getURIConverter().normalize(operationsURI);
+				final String operationFileString = normalizedOperationUri.toFileString();
+				final File operationFile = new File(operationFileString);
+				final boolean delete = operationFile.delete();
+				try {
+					if (!delete) {
+						System.out.println();
+					}
+					moveAndOverwrite(tempFile, operationFile);
+					((ProjectSpaceBase) getProjectSpace()).setPersistentChangePackage(new PersistentChangePackage(
+						operationFile.getAbsolutePath()));
+				} catch (final IOException ex) {
+					ex.printStackTrace();
+				}
+			}
 		}
 	}
 
+	public static void moveAndOverwrite(File source, File dest) throws IOException {
+		// Backup the src
+		FileUtils.copyFile(source, dest);
+		if (!source.delete()) {
+			throw new IOException("Failed to delete " + source.getName());
+		}
+	}
 }
