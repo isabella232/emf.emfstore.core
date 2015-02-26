@@ -25,13 +25,14 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.ui.Activator;
 import org.eclipse.emf.emfstore.internal.client.ui.views.changes.TabbedChangesComposite;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -188,10 +189,11 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		// TODO: LCP - fully loading change packages to display them..
 		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
 
-		final CloseableIterable<AbstractOperation> operations = changes.operations();
+		final ESCloseableIterable<ESOperation> operations = changes.operations();
 		try {
-			for (final AbstractOperation operation : operations.iterable()) {
-				cp.getOperations().add(operation);
+			for (final ESOperation operation : operations.iterable()) {
+				cp.getOperations().add(
+					ESOperationImpl.class.cast(operation).toInternalAPI());
 			}
 		} finally {
 			operations.close();
@@ -222,7 +224,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
 			.align(SWT.FILL, SWT.TOP).hint(1, 45).applyTo(txtLogMsg);
 		String logMsg = StringUtils.EMPTY;
-		final LogMessage logMessage = ESLogMessageImpl.class.cast(changes.getCommitMessage()).toInternalAPI();
+		final LogMessage logMessage = ESLogMessageImpl.class.cast(changes.getLogMessage()).toInternalAPI();
 
 		if (oldLogMessages.size() == 0) {
 			// on first commit, use log message of change package

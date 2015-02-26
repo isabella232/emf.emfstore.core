@@ -13,15 +13,16 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
 
 import java.util.Iterator;
 
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
- * @author Edgar
- * @since 1.4
+ * @author emueller
+ * @since 1.5
  *
  */
-public class FileBasedOperationIterable implements CloseableIterable<AbstractOperation> {
+// TODO: javadoc
+public class FileBasedOperationIterable implements ESCloseableIterable<ESOperation> {
 
 	enum Direction {
 		Forward,
@@ -42,10 +43,10 @@ public class FileBasedOperationIterable implements CloseableIterable<AbstractOpe
 	 *
 	 * @see java.lang.Iterable#iterator()
 	 */
-	public Iterable<AbstractOperation> iterable() {
+	public Iterable<ESOperation> iterable() {
 		operationIterator = new OperationIterator(operationsFilePath, direction);
-		return new Iterable<AbstractOperation>() {
-			public Iterator<AbstractOperation> iterator() {
+		return new Iterable<ESOperation>() {
+			public Iterator<ESOperation> iterator() {
 				return operationIterator;
 			}
 		};
@@ -54,7 +55,7 @@ public class FileBasedOperationIterable implements CloseableIterable<AbstractOpe
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable#close()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.ESCloseableIterable#close()
 	 */
 	public void close() {
 		if (operationIterator != null) {

@@ -13,21 +13,25 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
 
 import java.util.List;
 
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
- * Mapping between {@link ESChangePackage} and {@link ChangePackage}.
+ * Mapping between {@link ESChangePackage} and {@link PersistentChangePackage}.
  *
  * @author emueller
  *
+ * @since 1.5
+ *
  */
-public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage> implements
-ESChangePackage {
+public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage>
+	implements ESChangePackage {
 
 	/**
 	 * Constructor.
@@ -43,19 +47,9 @@ ESChangePackage {
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
-	public ESLogMessage getCommitMessage() {
-		return toInternalAPI().getCommitMessage();
-	}
-
-	/**
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setCommitMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
-	 */
-	public void setCommitMessage(ESLogMessage logMessage) {
+	public void setLogMessage(ESLogMessage logMessage) {
 		toInternalAPI().setCommitMessage(logMessage);
 	}
 
@@ -64,19 +58,19 @@ ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#addAll(java.util.List)
 	 */
-	// TODO LCP - api type
-	public void addAll(List<? extends AbstractOperation> ops) {
-		toInternalAPI().addAll(ops);
+	public void addAll(List<ESOperation> ops) {
+		final List<AbstractOperation> internalOps = APIUtil.toInternal(ops);
+		toInternalAPI().addAll(internalOps);
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
 	 */
-	public void add(AbstractOperation op) {
-		// TODO Auto-generated method stub
-
+	public void add(ESOperation op) {
+		toInternalAPI().add(ESOperationImpl.class.cast(op).toInternalAPI());
 	}
 
 	/**
@@ -104,9 +98,8 @@ ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
-	public List<AbstractOperation> removeFromEnd(int n) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ESOperation> removeFromEnd(int n) {
+		return toInternalAPI().removeFromEnd(n);
 	}
 
 	/**
@@ -114,18 +107,8 @@ ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public CloseableIterable<AbstractOperation> operations() {
+	public ESCloseableIterable<ESOperation> operations() {
 		return toInternalAPI().operations();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#save()
-	 */
-	public void save() {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -134,8 +117,7 @@ ESChangePackage {
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return toInternalAPI().size();
 	}
 
 	/**
@@ -143,7 +125,17 @@ ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public CloseableIterable<AbstractOperation> reversedOperations() {
+	public ESCloseableIterable<ESOperation> reversedOperations() {
 		return toInternalAPI().reversedOperations();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
+	 */
+	public ESLogMessage getLogMessage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

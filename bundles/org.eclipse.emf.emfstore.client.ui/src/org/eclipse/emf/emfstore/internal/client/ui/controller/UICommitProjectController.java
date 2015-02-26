@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -42,21 +42,21 @@ import org.eclipse.swt.widgets.Shell;
  * able to confirm the commit. If no changes have been made by the user a
  * information dialog is presented that states that there are no pending changes
  * to be committed.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  */
 public class UICommitProjectController extends
-	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
-	ESCommitCallback {
+AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
+ESCommitCallback {
 
 	private final ESLocalProject localProject;
 	private int dialogReturnValue;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell that will be used during commit
 	 * @param localProject
@@ -69,9 +69,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#noLocalChanges(org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
 	public void noLocalChanges(ESLocalProject localProject) {
@@ -86,9 +86,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#baseVersionOutOfDate(ESLocalProject,
 	 *      IProgressMonitor)
 	 */
@@ -108,7 +108,7 @@ public class UICommitProjectController extends
 			final ESPrimaryVersionSpec baseVersion = UICommitProjectController.this.localProject.getBaseVersion();
 			final int baseVersionIdentifier = baseVersion.getIdentifier();
 			final ESPrimaryVersionSpec version = new UIUpdateProjectController(getShell(), projectSpace)
-				.executeSub(progressMonitor);
+			.executeSub(progressMonitor);
 
 			// base version identifer may change due to update's recovery
 			if (version.equals(baseVersion) || version.getIdentifier() == baseVersionIdentifier) {
@@ -120,9 +120,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage,
 	 *      org.eclipse.emf.emfstore.common.model.ESModelElementIdToEObjectMapping)
@@ -139,11 +139,11 @@ public class UICommitProjectController extends
 			RunInUI.run(new Callable<Void>() {
 				public Void call() throws Exception {
 					MessageDialog
-						.openInformation(
-							getShell(), "No local changes", //$NON-NLS-1$
-							Messages.UICommitProjectController_NoPendingChanges_0
-								+ Messages.UICommitProjectController_NoPendingChanges_1
-								+ Messages.UICommitProjectController_NoPendingChanges_2);
+					.openInformation(
+						getShell(), "No local changes", //$NON-NLS-1$
+						Messages.UICommitProjectController_NoPendingChanges_0
+						+ Messages.UICommitProjectController_NoPendingChanges_1
+						+ Messages.UICommitProjectController_NoPendingChanges_2);
 					return null;
 				}
 			});
@@ -182,7 +182,7 @@ public class UICommitProjectController extends
 						projectSpace.getOldLogMessages().remove(0);
 					}
 
-					changePackage.setCommitMessage(
+					changePackage.setLogMessage(
 						LogMessageFactory.INSTANCE.createLogMessage(
 							commitDialog.getLogText(),
 							projectSpace.getUsersession().getUsername()
@@ -199,9 +199,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
@@ -228,10 +228,10 @@ public class UICommitProjectController extends
 							getShell(),
 							Messages.UICommitProjectController_CommitFailed,
 							MessageFormat
-								.format(
-									Messages.UICommitProjectController_ErrorDuringCommit,
-									e.getCause().getMessage(),
-									e.getCause().getClass().getSimpleName()));
+							.format(
+								Messages.UICommitProjectController_ErrorDuringCommit,
+								e.getCause().getMessage(),
+								e.getCause().getClass().getSimpleName()));
 					}
 				});
 			} else {

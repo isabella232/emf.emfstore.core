@@ -18,7 +18,7 @@ import org.apache.commons.io.input.ReversedLinesFileReader;
 
 /**
  * @author Edgar
- * @since 1.4
+ * @since 1.5
  *
  */
 public interface ReadLineCapable {

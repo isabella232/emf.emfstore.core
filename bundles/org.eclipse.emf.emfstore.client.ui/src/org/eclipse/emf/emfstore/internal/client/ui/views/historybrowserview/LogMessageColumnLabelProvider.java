@@ -5,13 +5,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * shterev
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
 
 import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMLabelProvider;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.jface.viewers.TreeNode;
@@ -19,7 +20,7 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * Column LabelProvider to show info from the log message, such as commiter, date, etc.
- * 
+ *
  * @author shterev
  */
 public class LogMessageColumnLabelProvider extends SCMLabelProvider {
@@ -48,7 +49,8 @@ public class LogMessageColumnLabelProvider extends SCMLabelProvider {
 			} else if (historyInfo.getLogMessage() != null) {
 				logMessage = historyInfo.getLogMessage();
 			} else if (historyInfo.getChangePackage() != null && historyInfo.getChangePackage().getLogMessage() != null) {
-				logMessage = historyInfo.getChangePackage().getLogMessage();
+				logMessage = ESLogMessageImpl.class.cast(historyInfo.getChangePackage().getLogMessage())
+					.toInternalAPI();
 			}
 			if (logMessage != null) {
 				builder.append(logMessage.getMessage());

@@ -15,9 +15,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Provides the author for an operation based on the usersession of the containing change package.
@@ -54,12 +57,18 @@ public class DefaultOperationAuthorProvider implements OperationAuthorProvider {
 	}
 
 	private void scanIntoAuthorMap(ESChangePackage changePackage) {
-		if (changePackage.getCommitMessage() != null && changePackage.getCommitMessage().getAuthor() != null) {
-			final String author = changePackage.getCommitMessage().getAuthor();
-			final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+
+		if (changePackage.getLogMessage() == null) {
+			return;
+		}
+
+		final LogMessage logMessage = ESLogMessageImpl.class.cast(changePackage.getLogMessage()).toInternalAPI();
+		if (logMessage.getAuthor() != null) {
+			final String author = logMessage.getAuthor();
+			final ESCloseableIterable<ESOperation> operations = changePackage.operations();
 			try {
-				for (final AbstractOperation operation : operations.iterable()) {
-					operationAuthorMap.put(operation.getIdentifier(), author);
+				for (final ESOperation operation : operations.iterable()) {
+					operationAuthorMap.put(operation.getId(), author);
 				}
 			} finally {
 				operations.close();

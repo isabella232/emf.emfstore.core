@@ -22,12 +22,12 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
@@ -65,17 +65,17 @@ public class ProjectTest extends ESTest {
 		final ESChangePackage changePackage = getProjectSpace().changePackage();
 		final ChangePackage localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
 
-		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
 
 		try {
-			for (final AbstractOperation abstractOperation : operations.iterable()) {
-				localChangePackage.getOperations().add(abstractOperation);
+			for (final ESOperation abstractOperation : operations.iterable()) {
+				localChangePackage.add(abstractOperation);
 			}
 		} finally {
 			operations.close();
 		}
 
-		final CloseableIterable<AbstractOperation> reversedOperations = localChangePackage.reversedOperations();
+		final ESCloseableIterable<ESOperation> reversedOperations = localChangePackage.reversedOperations();
 
 		final ProjectSpaceBase ps = (ProjectSpaceBase) getProjectSpace();
 

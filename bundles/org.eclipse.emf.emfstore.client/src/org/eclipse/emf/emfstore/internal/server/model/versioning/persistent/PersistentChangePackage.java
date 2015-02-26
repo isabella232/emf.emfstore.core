@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2015 EclipseSource Muenchen GmbH and others.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Edgar Mueller - initial API and implementation
+ ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
 
 import java.io.BufferedReader;
@@ -22,17 +33,17 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
-// TODO: iterator
 /**
- * @since 1.4
+ * @since 1.5
  */
-public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ESChangePackage {
+public class PersistentChangePackage implements APIDelegate<ESChangePackage> {
 
 	private static final String NEWLINE = "\n"; //$NON-NLS-1$
 	private static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + NEWLINE + "<xmi:XMI xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\"/>" + NEWLINE; //$NON-NLS-1$ //$NON-NLS-2$
@@ -181,7 +192,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	/**
 	 *
 	 */
-	public List<AbstractOperation> removeFromEnd(int n) {
+	public List<ESOperation> removeFromEnd(int n) {
 		ReversedLinesFileReader r = null;
 		int counter = n;
 
@@ -189,10 +200,10 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 			r = new ReversedLinesFileReader(new File(operationsFilePath));
 			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Backward);
 			AbstractOperation op;
-			final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
+			final List<ESOperation> ops = new ArrayList<ESOperation>();
 			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(r);
 			while (counter > 0 && (op = operationEmitter.tryEmit(create)) != null) {
-				ops.add(op);
+				ops.add(op.toAPI());
 				counter -= 1;
 			}
 			// TODO: reuse readlinecapable?
@@ -255,12 +266,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 		return getLogMessage();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
-	 */
-	public CloseableIterable<AbstractOperation> operations() {
+	public ESCloseableIterable<ESOperation> operations() {
 		return new FileBasedOperationIterable(operationsFilePath, Direction.Forward);
 	}
 
@@ -269,7 +275,7 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public CloseableIterable<AbstractOperation> reversedOperations() {
+	public ESCloseableIterable<ESOperation> reversedOperations() {
 		return new FileBasedOperationIterable(operationsFilePath, Direction.Backward);
 	}
 

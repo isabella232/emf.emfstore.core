@@ -32,15 +32,17 @@ import org.eclipse.emf.emfstore.internal.client.model.controller.UpdateControlle
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsFactory;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.junit.Test;
 
 import com.google.common.collect.Iterables;
@@ -88,15 +90,18 @@ public class DuplicateOperationsTest extends ESTest {
 	@Test
 	public void testConflictingChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
-		// final AbstractOperation a = createOperation(A);
-		// final AbstractOperation b = createOperation(B);
 
 		Add.toProject(getLocalProject(), Create.testElement());
 		Add.toProject(getLocalProject(), Create.testElement());
 
 		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
-		for (final AbstractOperation operation : getProjectSpace().changePackage().operations().iterable()) {
-			cp.getOperations().add(operation);
+		final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+		try {
+			for (final ESOperation operation : operations.iterable()) {
+				cp.add(operation);
+			}
+		} finally {
+			operations.close();
 		}
 
 		final boolean hasBeenRemoved = updateController
@@ -109,20 +114,20 @@ public class DuplicateOperationsTest extends ESTest {
 	public void testConflictingChangePackageWithMoreOpsThanLocal() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 
-		Add.toProject(getLocalProject(), Create.testElement("foo"));
-		Add.toProject(getLocalProject(), Create.testElement("bar"));
-		Add.toProject(getLocalProject(), Create.testElement("baz"));
+		Add.toProject(getLocalProject(), Create.testElement("foo")); //$NON-NLS-1$
+		Add.toProject(getLocalProject(), Create.testElement("bar")); //$NON-NLS-1$
+		Add.toProject(getLocalProject(), Create.testElement("baz")); //$NON-NLS-1$
 
 		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
-		final CloseableIterable<AbstractOperation> operations = getProjectSpace().changePackage().operations();
-		final Iterable<AbstractOperation> operationIterable = operations.iterable();
-		final AbstractOperation firstOp = Iterables.get(operationIterable, 0);
-		final AbstractOperation secondOp = Iterables.get(operationIterable, 0);
-		cp.add(ModelUtil.clone(firstOp));
-		cp.add(ModelUtil.clone(secondOp));
+		final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+		final Iterable<ESOperation> operationIterable = operations.iterable();
+		final ESOperation firstOp = Iterables.get(operationIterable, 0);
+		final ESOperation secondOp = Iterables.get(operationIterable, 0);
+		cp.getOperations().add(ModelUtil.clone(ESOperationImpl.class.cast(firstOp).toInternalAPI()));
+		cp.getOperations().add(ModelUtil.clone(ESOperationImpl.class.cast(secondOp).toInternalAPI()));
 		operations.close();
 
-		final Iterable<AbstractOperation> iterable = getProjectSpace().changePackage().operations().iterable();
+		final Iterable<ESOperation> iterable = getProjectSpace().changePackage().operations().iterable();
 
 		final List<ESChangePackage> incoming = new ArrayList<ESChangePackage>();
 		incoming.add(cp.toAPI());
@@ -187,11 +192,14 @@ public class DuplicateOperationsTest extends ESTest {
 		Add.toProject(getLocalProject(), Create.testElement());
 
 		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		final CloseableIterable<AbstractOperation> operations = getProjectSpace().changePackage().operations();
-		for (final AbstractOperation op : operations.iterable()) {
-			changePackage.getOperations().add(op);
+		final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+		try {
+			for (final ESOperation op : operations.iterable()) {
+				changePackage.add(op);
+			}
+		} finally {
+			operations.close();
 		}
-		operations.close();
 
 		final List<ESChangePackage> incoming = new ArrayList<ESChangePackage>();
 		incoming.add(changePackage.toAPI());
@@ -209,14 +217,14 @@ public class DuplicateOperationsTest extends ESTest {
 		Add.toProject(getLocalProject(), Create.testElement());
 
 		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
-		final CloseableIterable<AbstractOperation> operations = getProjectSpace().changePackage().operations();
-		final Iterable<AbstractOperation> iterable = operations.iterable();
-		final AbstractOperation firstOp = Iterables.get(iterable, 0);
-		final AbstractOperation secondOp = Iterables.get(iterable, 0);
-		final AbstractOperation thirdOp = createOperation("fooOp");
+		final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+		final Iterable<ESOperation> iterable = operations.iterable();
+		final ESOperation firstOp = Iterables.get(iterable, 0);
+		final ESOperation secondOp = Iterables.get(iterable, 0);
+		final AbstractOperation thirdOp = createOperation("fooOp"); //$NON-NLS-1$
 		operations.close();
-		cp.getOperations().add(firstOp);
-		cp.getOperations().add(secondOp);
+		cp.add(firstOp);
+		cp.add(secondOp);
 
 		final ChangePackage cp2 = VersioningFactory.eINSTANCE.createChangePackage();
 		cp2.getOperations().add(thirdOp);

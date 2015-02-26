@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -48,13 +48,13 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * UIController for branch creation. Slightly modified copy of the commit
  * controller
- * 
+ *
  * @author wesendon
- * 
+ *
  */
 public class UICreateBranchController extends
-	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
-	ESCommitCallback {
+AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
+ESCommitCallback {
 
 	private final ProjectSpace projectSpace;
 	private int dialogReturnValue;
@@ -62,7 +62,7 @@ public class UICreateBranchController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the
 	 *            creation of the branch
@@ -75,7 +75,7 @@ public class UICreateBranchController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the
 	 *            creation of the branch
@@ -93,9 +93,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#noLocalChanges(ESLocalProject)
 	 */
 	public void noLocalChanges(ESLocalProject projectSpace) {
@@ -109,9 +109,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#baseVersionOutOfDate(ESLocalProject,
 	 *      IProgressMonitor)
 	 */
@@ -130,7 +130,7 @@ public class UICreateBranchController extends
 						.getBaseVersion().toAPI();
 					final ESPrimaryVersionSpec version = new UIUpdateProjectController(
 						getShell(), projectSpace)
-						.executeSub(progressMonitor);
+					.executeSub(progressMonitor);
 					if (version.equals(baseVersion)) {
 						return false;
 					}
@@ -142,9 +142,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#inspectChanges(ESLocalProject, ESChangePackage,
 	 *      ESModelElementIdToEObjectMapping)
 	 */
@@ -175,7 +175,7 @@ public class UICreateBranchController extends
 						.getUsersession().getUsername());
 					logMessage.setClientDate(new Date());
 					logMessage.setMessage(commitDialog.getLogText());
-					changePackage.setCommitMessage(logMessage.toAPI());
+					changePackage.setLogMessage(logMessage.toAPI());
 					return null;
 				}
 			});
@@ -186,9 +186,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.controller.AbstractEMFStoreUIController#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

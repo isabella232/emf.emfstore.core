@@ -5,8 +5,8 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * // * Contributors:
+ *
+ * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.controller;
@@ -21,12 +21,13 @@ import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCa
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Controller that forces a revert of version specifier.
@@ -84,11 +85,13 @@ public class RevertCommitController extends ServerCall<Void> {
 		final Project project = revertSpace.toInternalAPI().getProject();
 
 		for (final ESChangePackage changePackage : changes) {
-			final CloseableIterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
+			final ESCloseableIterable<ESOperation> reversedOperations = changePackage.reversedOperations();
 			try {
-				for (final AbstractOperation reversedOperation : reversedOperations.iterable()) {
+				for (final ESOperation reversedOperation : reversedOperations.iterable()) {
 					try {
-						reversedOperation.apply(project);
+						ESOperationImpl.class.cast(reversedOperation)
+						.toInternalAPI()
+						.apply(project);
 					} catch (final IllegalStateException e) {
 						// ignore all non-applied operations
 					}

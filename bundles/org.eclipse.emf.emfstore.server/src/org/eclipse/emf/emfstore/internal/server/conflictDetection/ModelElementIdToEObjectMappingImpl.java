@@ -25,12 +25,14 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMap
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * @author emueller
@@ -122,9 +124,12 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 *            the {@link ChangePackage} whose model elements should be added to the mapping
 	 */
 	public void put(ESChangePackage changePackage) {
-		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
 		try {
-			put(operations.iterable());
+			for (final ESOperation operation : operations.iterable()) {
+				final AbstractOperation op = ESOperationImpl.class.cast(operation).toInternalAPI();
+				scanOperationIntoMapping(op);
+			}
 		} finally {
 			operations.close();
 		}

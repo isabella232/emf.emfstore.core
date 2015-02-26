@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -60,6 +60,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionCh
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
 import org.eclipse.emf.emfstore.internal.common.model.util.SettingWithReferencedElement;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
@@ -70,11 +71,12 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
  * Tracks changes on any given {@link IdEObjectCollection}.
- * 
+ *
  * @author koegel
  * @author emueller
  */
@@ -107,7 +109,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpaceBase} the recorder should be attached to
 	 */
@@ -126,7 +128,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Clears the operations list.
-	 * 
+	 *
 	 * @return the list of cleared operations
 	 */
 	public List<AbstractOperation> clearOperations() {
@@ -137,7 +139,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Returns the configuration options for the operation recorder.
-	 * 
+	 *
 	 * @return the operation recorder configuration options
 	 */
 	public OperationRecorderConfig getConfig() {
@@ -146,7 +148,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Returns the collection the operation recorder is operation on.
-	 * 
+	 *
 	 * @return the collection the operation recorder is operation on
 	 */
 	public IdEObjectCollection getCollection() {
@@ -154,9 +156,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#modelElementAdded(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -311,7 +313,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Adds an operation recorder observer.
-	 * 
+	 *
 	 * @param observer
 	 *            the observer to be added
 	 */
@@ -321,7 +323,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Removes an operation recorder observer.
-	 * 
+	 *
 	 * @param observer
 	 *            the observer to be removed
 	 */
@@ -332,7 +334,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	/**
 	 * Starts change recording on this workspace, resumes previous recordings if
 	 * there are any.
-	 * 
+	 *
 	 */
 	public void startChangeRecording() {
 		if (notificationRecorder == null) {
@@ -344,7 +346,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	/**
 	 * Stops current recording of changes and adds recorded changes to this
 	 * project spaces changes.
-	 * 
+	 *
 	 */
 	public void stopChangeRecording() {
 		isRecording = false;
@@ -380,7 +382,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Returns the notification recorder of the project space.
-	 * 
+	 *
 	 * @return the notification recorder
 	 */
 	public NotificationRecorder getNotificationRecorder() {
@@ -389,7 +391,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Create a CreateDeleteOperation.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element to delete or create
 	 * @param delete
@@ -434,9 +436,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#modelElementRemoved(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -466,7 +468,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandCompleted(org.eclipse.emf.common.command.Command)
 	 */
 	public void commandCompleted(Command command) {
@@ -475,7 +477,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Called to notify listener about the successful completion of the given command.
-	 * 
+	 *
 	 * @param command
 	 *            the completed command
 	 * @param isNestedCommand
@@ -607,7 +609,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Returns all elements that are not contained in {@code allElements}.
-	 * 
+	 *
 	 * @param elements
 	 *            the set of elements whose containment in {@code allElements} should be checked
 	 * @param allElements
@@ -818,9 +820,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandFailed(org.eclipse.emf.common.command.Command,
 	 *      java.lang.Exception)
 	 */
@@ -847,7 +849,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandStarted(org.eclipse.emf.common.command.Command)
 	 */
 	public void commandStarted(Command command) {
@@ -857,7 +859,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Returns the composite operation.
-	 * 
+	 *
 	 * @return the composite operation
 	 */
 	public CompositeOperation getCompositeOperation() {
@@ -866,7 +868,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Begins a composite operation.
-	 * 
+	 *
 	 * @return the handle to the newly created composite operation
 	 */
 	public CompositeOperationHandle beginCompositeOperation() {
@@ -884,7 +886,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Replace and complete the current composite operation.
-	 * 
+	 *
 	 * @param semanticCompositeOperation
 	 *            the semantic operation that replaces the composite operation
 	 */
@@ -906,8 +908,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * Aborts the current composite operation.
 	 */
 	public void abortCompositeOperation() {
+		final ESOperation reversedCompositeOperation = new ESOperationImpl(compositeOperation.reverse());
 		projectSpace.applyOperations(
-			Collections.singletonList(compositeOperation.reverse()), false);
+			Collections.singletonList(reversedCompositeOperation), false);
 
 		removedElementsCache.clear();
 		notificationRecorder.stopRecording();
@@ -917,9 +920,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#notify(org.eclipse.emf.common.notify.Notification,
 	 *      org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection, org.eclipse.emf.ecore.EObject)
 	 */
@@ -978,9 +981,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#collectionDeleted(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void collectionDeleted(IdEObjectCollection collection) {
@@ -991,7 +994,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Returns the project space this operation recorder is attached to.
-	 * 
+	 *
 	 * @return the project space this operation recorder is attached to
 	 */
 	public ProjectSpace getProjectSpace() {
@@ -1000,7 +1003,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -1010,7 +1013,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -1020,7 +1023,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#updateCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -1030,7 +1033,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESShareObserver#shareDone(org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
 	public void shareDone(ESLocalProject localProject) {
@@ -1039,7 +1042,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#commitCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
@@ -1056,7 +1059,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	/**
 	 * Whether the operation recorder considers a command is being run.
-	 * 
+	 *
 	 * @return <code>true</code> if a command is being run, <code>false</code> otherwise
 	 */
 	public boolean isCommandRunning() {
@@ -1067,7 +1070,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * Helper class to capture a setting a all elements that need to be
 	 * removed from the feature in case the feature represents a many reference.
 	 * Otherwise the collection of elements to be removed remains empty.
-	 * 
+	 *
 	 */
 	class SettingWithElementsToRemove {
 
@@ -1083,7 +1086,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 		/**
 		 * Constructor for non-many references.
-		 * 
+		 *
 		 * @param setting
 		 *            a setting consisting of an {@link EObject} and a non-many reference
 		 */
@@ -1093,7 +1096,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 		/**
 		 * Constructor for many references.
-		 * 
+		 *
 		 * @param setting
 		 *            a setting consisting of an {@link EObject} and a many reference
 		 * @param elementsToRemove
@@ -1106,7 +1109,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 		/**
 		 * Returns the {@link Setting}.
-		 * 
+		 *
 		 * @return the setting
 		 */
 		public Setting getSetting() {
@@ -1115,7 +1118,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 		/**
 		 * Returns the elements to be removed in case the feature within in the setting is a many reference.
-		 * 
+		 *
 		 * @return the elements to be removed. In case the feature of the setting is non-many, the set
 		 *         will be empty
 		 */

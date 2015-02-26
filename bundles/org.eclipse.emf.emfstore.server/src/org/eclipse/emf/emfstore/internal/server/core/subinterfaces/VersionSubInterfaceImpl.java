@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
@@ -50,9 +50,10 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * This subinterface implements all version related functionality.
@@ -583,24 +584,26 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				for (final ChangePackage changePackage : result) {
 
 					final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
-					final CloseableIterable<AbstractOperation> reversedOperations = changePackage.reversedOperations();
-					final ArrayList<AbstractOperation> arrayList = new ArrayList<AbstractOperation>();
+					final ESCloseableIterable<ESOperation> reversedOperations = changePackage.reversedOperations();
+					final ArrayList<ESOperation> copiedReversedOperations = new ArrayList<ESOperation>();
 					try {
-						for (final AbstractOperation op : reversedOperations.iterable()) {
-							arrayList.add(op);
+						for (final ESOperation op : reversedOperations.iterable()) {
+							copiedReversedOperations.add(op);
 						}
 					} finally {
 						reversedOperations.close();
 					}
 
-					for (final AbstractOperation reversedOperation : arrayList) {
+					for (final ESOperation reversedOperation : copiedReversedOperations) {
 						changePackageReverse.add(reversedOperation);
 					}
 
 					// copy again log message
 					// reverse() created a new change package without copying
 					// existent attributes
-					changePackageReverse.setLogMessage(ModelUtil.clone(changePackage.getLogMessage()));
+					changePackageReverse.setLogMessage(ModelUtil.clone(
+						ESLogMessageImpl.class.cast(
+							changePackage.getLogMessage()).toInternalAPI()));
 					resultReverse.add(changePackageReverse);
 				}
 

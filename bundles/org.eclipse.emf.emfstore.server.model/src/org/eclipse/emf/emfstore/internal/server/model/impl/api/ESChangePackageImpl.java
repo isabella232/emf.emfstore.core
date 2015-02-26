@@ -8,6 +8,7 @@
  *
  * Contributors:
  * Edgar Mueller - initial API and implementation
+ * Edgar Mueller - Bug 460275 - Support lazy loading of local change package
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 
@@ -15,9 +16,10 @@ import java.util.List;
 
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Mapping between {@link ESChangePackage} and {@link ChangePackage}.
@@ -41,19 +43,19 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
-	public ESLogMessage getCommitMessage() {
-		return toInternalAPI().getLogMessage().toAPI();
+	public ESLogMessage getLogMessage() {
+		return toInternalAPI().getLogMessage();
 	}
 
 	/**
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setCommitMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
-	public void setCommitMessage(ESLogMessage logMessage) {
+	public void setLogMessage(ESLogMessage logMessage) {
 		final ESLogMessageImpl logMessageImpl = (ESLogMessageImpl) logMessage;
 		toInternalAPI().setLogMessage(logMessageImpl.toInternalAPI());
 	}
@@ -63,17 +65,17 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#addAll(java.util.List)
 	 */
-	// TODO LCP - api type
-	public void addAll(List<? extends AbstractOperation> ops) {
+	public void addAll(List<ESOperation> ops) {
 		toInternalAPI().addAll(ops);
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
 	 */
-	public void add(AbstractOperation op) {
+	public void add(ESOperation op) {
 		toInternalAPI().add(op);
 	}
 
@@ -100,7 +102,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
-	public List<AbstractOperation> removeFromEnd(int n) {
+	public List<ESOperation> removeFromEnd(int n) {
 		return toInternalAPI().removeFromEnd(n);
 	}
 
@@ -109,12 +111,8 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public CloseableIterable<AbstractOperation> operations() {
+	public ESCloseableIterable<ESOperation> operations() {
 		return toInternalAPI().operations();
-	}
-
-	public void save() {
-
 	}
 
 	/**
@@ -131,8 +129,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public CloseableIterable<AbstractOperation> reversedOperations() {
+	public ESCloseableIterable<ESOperation> reversedOperations() {
 		return toInternalAPI().reversedOperations();
 	}
-
 }

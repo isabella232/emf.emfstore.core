@@ -20,13 +20,15 @@ import java.util.Iterator;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
- * @author Edgar
- * @since 1.4
+ * @author emueller
+ * @since 1.5
  *
  */
-public class OperationIterator implements Iterator<AbstractOperation> {
+// TODO: javadoc
+public class OperationIterator implements Iterator<ESOperation> {
 
 	private AbstractOperation operation;
 	private OperationEmitter operationEmitter;
@@ -80,8 +82,8 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 		return false;
 	}
 
-	public AbstractOperation next() {
-		return operation;
+	public ESOperation next() {
+		return operation.toAPI();
 	}
 
 	public void remove() {

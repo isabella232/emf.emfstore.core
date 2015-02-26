@@ -18,9 +18,11 @@ import java.util.Set;
 
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Detects conflicts between operation.
@@ -118,11 +120,12 @@ public class ConflictDetector {
 	// TODO: LCP, List return type
 	private List<AbstractOperation> flattenChangepackages(List<ESChangePackage> changePackages) {
 		final List<AbstractOperation> operations = new ArrayList<AbstractOperation>();
-		for (final ESChangePackage cp : changePackages) {
-			final CloseableIterable<AbstractOperation> changePackageOperations = cp.operations();
+		for (final ESChangePackage changePackage : changePackages) {
+			final ESCloseableIterable<ESOperation> changePackageOperations = changePackage.operations();
 			try {
-				for (final AbstractOperation operation : changePackageOperations.iterable()) {
-					operations.add(operation);
+				for (final ESOperation operation : changePackageOperations.iterable()) {
+					operations.add(
+						ESOperationImpl.class.cast(operation).toInternalAPI());
 				}
 			} finally {
 				changePackageOperations.close();

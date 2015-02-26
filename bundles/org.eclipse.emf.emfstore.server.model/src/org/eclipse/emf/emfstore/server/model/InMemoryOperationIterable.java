@@ -7,41 +7,56 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.model;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
- * @author Edgar
- * @since 1.4
+ * In-memory representation of an {@link ESCloseableIterable} for operations.
+ * Calling {@code close} has no effect.
+ *
+ * @author emueller
+ * @since 1.5
  *
  */
-public class InMemoryOperationIterable implements CloseableIterable<AbstractOperation> {
+public class InMemoryOperationIterable implements ESCloseableIterable<ESOperation> {
 
-	private final List<AbstractOperation> operations;
+	private final List<ESOperation> operations;
 
-	public InMemoryOperationIterable(List<AbstractOperation> operations) {
+	/**
+	 * Defaults constructor.
+	 *
+	 * @param operations
+	 *            the in-memory representation of the operations
+	 */
+	public InMemoryOperationIterable(List<ESOperation> operations) {
 		this.operations = operations;
 	}
 
-	public Iterable<AbstractOperation> iterable() {
-		return new Iterable<AbstractOperation>() {
-			public Iterator<AbstractOperation> iterator() {
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.ESCloseableIterable#iterable()
+	 */
+	public Iterable<ESOperation> iterable() {
+		return new Iterable<ESOperation>() {
+			public Iterator<ESOperation> iterator() {
 				return operations.iterator();
 			}
 		};
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.CloseableIterable#close()
+	 * @see org.eclipse.emf.emfstore.server.ESCloseableIterable#close()
 	 */
 	public void close() {
 		// nothing to do

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Shterev
  ******************************************************************************/
@@ -27,6 +27,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVi
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -44,12 +45,12 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Label provider for the SCM views.
- * 
+ *
  * @author Shterev
  */
 public class SCMLabelProvider extends ColumnLabelProvider {
 
-	final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
+	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
 
 	private static final String ELEMENT_NOT_FOUND = "There is no sufficient information to display this element";
 	/**
@@ -72,7 +73,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param project
 	 *            the project that is used to resolve revision numbers
 	 */
@@ -142,7 +143,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("Change Package");
 		if (changePackage.getLogMessage() != null) {
-			final LogMessage logMessage = changePackage.getLogMessage();
+			final LogMessage logMessage = ESLogMessageImpl.class.cast(changePackage.getLogMessage()).toInternalAPI();
 			builder.append(" ["); //$NON-NLS-1$
 			builder.append(logMessage.getAuthor());
 			final Date clientDate = logMessage.getClientDate();
@@ -160,7 +161,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	 * Gets the text for a history info. This may be overridden by subclasses to
 	 * change the behavior (e.g. if info should be distributed across multiply
 	 * label providers)
-	 * 
+	 *
 	 * @param historyInfo
 	 *            The historInfo the text is retrieved for.
 	 * @return The text for the given historyInfo.
@@ -196,7 +197,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 			logMessage = historyInfo.getLogMessage();
 		} else if (historyInfo.getChangePackage() != null
 			&& historyInfo.getChangePackage().getLogMessage() != null) {
-			logMessage = historyInfo.getChangePackage().getLogMessage();
+			logMessage = ESLogMessageImpl.class.cast(historyInfo.getChangePackage().getLogMessage()).toInternalAPI();
 		}
 		if (logMessage != null) {
 			builder.append(" ["); //$NON-NLS-1$
@@ -350,9 +351,9 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
 	 */
 	@Override
@@ -376,7 +377,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	/**
 	 * Sets the project that is used to resolve revision numbers that are
 	 * possibly used within the labels.
-	 * 
+	 *
 	 * @param newProject
 	 *            the project to be set
 	 */

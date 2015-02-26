@@ -25,12 +25,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty;
@@ -40,7 +40,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.server.model.InMemoryOperationIterable;
 
 /**
@@ -175,9 +177,11 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @generated
+	 * @return the log messages
+	 *
+	 * @generated NOT
 	 */
-	public LogMessage getLogMessage() {
+	public ESLogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy())
 		{
 			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
@@ -201,11 +205,14 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 				}
 			}
 		}
-		return logMessage;
+		if (logMessage != null) {
+			return logMessage.toAPI();
+		}
+
+		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 */
@@ -439,22 +446,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return super.eIsSet(featureID);
 	}
 
-	public List<AbstractOperation> getCopyOfOperations() {
-		final List<AbstractOperation> copiedOperations = new ArrayList<AbstractOperation>();
-		for (final AbstractOperation operation : getOperations()) {
-			copiedOperations.add(ModelUtil.clone(operation));
-		}
-		return copiedOperations;
-	}
-
-	public List<AbstractOperation> getLeafOperations() {
-		final List<AbstractOperation> leafOperations = new ArrayList<AbstractOperation>();
-		for (final AbstractOperation operation : getOperations()) {
-			leafOperations.addAll(operation.getLeafOperations());
-		}
-		return leafOperations;
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -468,16 +459,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return result;
 	}
 
-	public List<AbstractOperation> getTouchingOperations(ModelElementId modelElementId) {
-		final ArrayList<AbstractOperation> result = new ArrayList<AbstractOperation>();
-		for (final AbstractOperation operation : getOperations()) {
-			if (operation.getAllInvolvedModelElements().contains(modelElementId)) {
-				result.add(operation);
-			}
-		}
-		return result;
-	}
-
 	public int getSize() {
 		return countLeafOperations(getOperations());
 	}
@@ -485,10 +466,12 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	public static int countLeafOperations(List<ChangePackage> changePackages) {
 		int count = 0;
 		for (final ChangePackage changePackage : changePackages) {
-			final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+			final ESCloseableIterable<ESOperation> operations = changePackage.operations();
 			try {
-				for (final AbstractOperation operation : operations.iterable()) {
-					count += countLeafOperations(operation);
+				for (final ESOperation operation : operations.iterable()) {
+					count += countLeafOperations(
+						ESOperationImpl.class.cast(
+							operation).toInternalAPI());
 				}
 			} finally {
 				operations.close();
@@ -568,26 +551,34 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	public CloseableIterable<AbstractOperation> operations() {
-		return new InMemoryOperationIterable(getOperations());
+	public ESCloseableIterable<ESOperation> operations() {
+		return new InMemoryOperationIterable(
+			APIUtil.toExternal(getOperations()));
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#addAll(java.util.List)
 	 */
-	public void addAll(List<? extends AbstractOperation> ops) {
-		getOperations().addAll(ops);
+	public void addAll(List<ESOperation> ops) {
+		final List<AbstractOperation> operations = new ArrayList<AbstractOperation>();
+		for (final ESOperation op : ops) {
+			final AbstractOperation operation = ((ESOperationImpl) op).toInternalAPI();
+			operations.add(operation);
+		}
+		getOperations().addAll(operations);
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
 	 */
-	public void add(AbstractOperation op) {
-		getOperations().add(op);
+	public void add(ESOperation op) {
+		getOperations().add(((ESOperationImpl) op).toInternalAPI());
 	}
 
 	/**
@@ -613,11 +604,11 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#removeFromEnd(int)
 	 */
-	public List<AbstractOperation> removeFromEnd(int n) {
-		final List<AbstractOperation> removedOperations = new ArrayList<AbstractOperation>();
+	public List<ESOperation> removeFromEnd(int n) {
+		final List<ESOperation> removedOperations = new ArrayList<ESOperation>();
 		for (int i = 0; i < n; i++) {
 			final AbstractOperation removedOperation = getOperations().remove(size() - 1);
-			removedOperations.add(removedOperation);
+			removedOperations.add(new ESOperationImpl(removedOperation));
 		}
 		return removedOperations;
 	}
@@ -632,28 +623,14 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getCommitMessage()
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 *
 	 * @generated NOT
 	 */
-	public ESLogMessage getCommitMessage() {
-		final LogMessage logMsg = getLogMessage();
-		if (logMsg != null) {
-			return logMsg.toAPI();
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setCommitMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
-	 *
-	 * @generated NOT
-	 */
-	public void setCommitMessage(ESLogMessage logMessage) {
+	public void setLogMessage(ESLogMessage logMessage) {
 		setLogMessage(ESLogMessageImpl.class.cast(logMessage).toInternalAPI());
 	}
 
@@ -662,8 +639,9 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
 	 */
-	public CloseableIterable<AbstractOperation> reversedOperations() {
-		return new InMemoryOperationIterable(reverse().getOperations());
+	public ESCloseableIterable<ESOperation> reversedOperations() {
+		final List<AbstractOperation> operations = reverse().getOperations();
+		return new InMemoryOperationIterable(APIUtil.toExternal(operations));
 	}
 
 	/**

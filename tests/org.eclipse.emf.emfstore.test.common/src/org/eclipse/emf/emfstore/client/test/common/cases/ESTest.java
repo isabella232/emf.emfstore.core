@@ -36,10 +36,12 @@ import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImp
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithResult;
 import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.junit.After;
 import org.junit.Before;
 
@@ -162,11 +164,12 @@ public abstract class ESTest {
 
 	public List<AbstractOperation> forceGetOperations(ProjectSpace projectSpace) {
 		final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
-		final CloseableIterable<AbstractOperation> operations = projectSpace.changePackage().operations();
+		final ESCloseableIterable<ESOperation> operations = projectSpace.changePackage().operations();
 
 		try {
-			for (final AbstractOperation operation : operations.iterable()) {
-				ops.add(operation);
+			for (final ESOperation operation : operations.iterable()) {
+				ops.add(
+					ESOperationImpl.class.cast(operation).toInternalAPI());
 			}
 		} finally {
 			operations.close();

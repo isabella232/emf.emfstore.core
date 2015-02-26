@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * A controller for importing changes which then will be applied upon
@@ -65,7 +65,7 @@ public class ImportChangesController implements IExportImportController {
 	 */
 	public String[] getFilteredNames() {
 		return new String[] { "EMFStore change package (" + ExportImportDataUnits.Change.getExtension() + ")",
-		"All Files (*.*)" };
+			"All Files (*.*)" };
 	}
 
 	/**
@@ -108,12 +108,7 @@ public class ImportChangesController implements IExportImportController {
 
 		final ChangePackage changePackage = (ChangePackage) directContents.get(0);
 
-		// / TODO
-		// if (!projectSpace.isInitialized()) {
-		// projectSpace.init();
-		// }
-
-		final CloseableIterable<AbstractOperation> operations = changePackage.operations();
+		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
 		try {
 			projectSpace.applyOperations(operations.iterable(), true);
 		} finally {

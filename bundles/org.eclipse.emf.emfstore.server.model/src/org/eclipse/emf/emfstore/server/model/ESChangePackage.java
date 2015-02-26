@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -9,13 +9,13 @@
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  * Edgar Mueller - API annotations
+ * Edgar Mueller - Bug 460275 - Support lazy loading of local change package
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.model;
 
 import java.util.List;
 
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
  * Represents a change package.
@@ -35,7 +35,7 @@ public interface ESChangePackage {
 	 *
 	 * @return the log message as entered by the user
 	 */
-	ESLogMessage getCommitMessage();
+	ESLogMessage getLogMessage();
 
 	/**
 	 * Sets the log message of this change package.
@@ -43,32 +43,82 @@ public interface ESChangePackage {
 	 * @param logMessage
 	 *            the log message to be set
 	 */
-	void setCommitMessage(ESLogMessage logMessage);
+	void setLogMessage(ESLogMessage logMessage);
 
-	void addAll(List<? extends AbstractOperation> ops);
+	/**
+	 * Adds a list of operations to this change package.
+	 *
+	 * @param ops
+	 *            the operations to be added
+	 *
+	 * @since 1.5
+	 */
+	void addAll(List<ESOperation> ops);
 
-	void add(AbstractOperation op);
+	/**
+	 * Add a single a operation to this change package.
+	 *
+	 * @param operation
+	 *            the operation to be added
+	 *
+	 * @since 1.5
+	 */
+	void add(ESOperation operation);
 
+	/**
+	 * Clears all operations from this change package.
+	 *
+	 * @since 1.5
+	 */
 	void clear();
 
+	/**
+	 * Whether this change package contains any operations.
+	 *
+	 * @return {@code true}, if this change package contains no operations, {@code false} otherwise
+	 *
+	 * @since 1.5
+	 */
 	boolean isEmpty();
 
-	List<AbstractOperation> removeFromEnd(int n);
-
 	/**
-	 * @return
-	 */
-	CloseableIterable<AbstractOperation> operations();
-
-	CloseableIterable<AbstractOperation> reversedOperations();
-
-	/**
+	 * Removes the given number of operations from this change package beginning at the
+	 * end.
 	 *
+	 * @param howMany
+	 *            the number of operations to be removed
+	 * @return the list of removed operations
+	 *
+	 * @since 1.5
 	 */
-	// TODO: check whether we need this method
-	// void save();
+	List<ESOperation> removeFromEnd(int howMany);
 
 	/**
+	 * Returns an {@link ESCloseableIterable} that iterates over all operations
+	 * of this change package. <br>
+	 * You <strong>MUST</strong> call {@code close} on the returned {@link ESCloseableIterable}.
+	 *
+	 * @return an {@link ESCloseableIterable} that enables iterating over all operations.
+	 *
+	 * @since 1.5
+	 */
+	ESCloseableIterable<ESOperation> operations();
+
+	/**
+	 * Returns the operations of this change package in the reversed order.
+	 * Note that you must call {@code close()} on the returned {@link ESCloseableIterable}.
+	 *
+	 * @return the operations in reversed order
+	 * @since 1.5
+	 */
+	ESCloseableIterable<ESOperation> reversedOperations();
+
+	/**
+	 * Returns the number of operations this change package contains.
+	 *
+	 * @return the number of operations within this change package
+	 *
+	 * @since 1.5
 	 *
 	 */
 	int size();

@@ -32,10 +32,10 @@ import org.eclipse.emf.emfstore.internal.common.model.util.SerializationExceptio
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
+import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Validates the serverspace in three different ways. First it resolves all proxies, then checks whether all ME have ids
@@ -170,9 +170,9 @@ public class EmfStoreValidator {
 					projectHistory.getProjectId().getId()));
 			for (final Version version : projectHistory.getVersions()) {
 				if (version.getChanges() != null) {
-					final CloseableIterable<AbstractOperation> operations = version.getChanges().operations();
+					final ESCloseableIterable<ESOperation> operations = version.getChanges().operations();
 					try {
-						for (final AbstractOperation abstractOperation : operations.iterable()) {
+						for (final ESOperation abstractOperation : operations.iterable()) {
 							if (!(abstractOperation instanceof CompositeOperation)
 								&& (abstractOperation.getModelElementId() == null
 								|| abstractOperation.getModelElementId().getId() == null)) {
