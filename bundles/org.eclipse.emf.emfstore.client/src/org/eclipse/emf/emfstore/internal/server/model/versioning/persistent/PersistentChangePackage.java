@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.CloseableIterable;
@@ -98,12 +97,9 @@ public class PersistentChangePackage implements APIDelegate<ESChangePackage>, ES
 		final ResourceSet rs = new ResourceSetImpl();
 		rs.setResourceFactoryRegistry(new ResourceFactoryRegistry());
 		final Resource resource = rs.createResource(URI.createURI(VIRTUAL_RESOURCE_URI));
-		new EMFStoreCommand() {
-			@Override
-			protected void doRun() {
-				resource.getContents().add(op);
-			}
-		}.run(false);
+
+		resource.getContents().add(op);
+
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		RandomAccessFile raf = null;
 		try {

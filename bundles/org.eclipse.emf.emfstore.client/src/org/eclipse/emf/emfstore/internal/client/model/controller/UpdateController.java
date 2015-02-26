@@ -31,6 +31,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
@@ -157,9 +158,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		}
 
 		ESWorkspaceProviderImpl
-			.getObserverBus()
-			.notify(ESUpdateObserver.class, true)
-			.inspectChanges(getProjectSpace().toAPI(), incomingChanges, getProgressMonitor());
+		.getObserverBus()
+		.notify(ESUpdateObserver.class, true)
+		.inspectChanges(getProjectSpace().toAPI(), incomingChanges, getProgressMonitor());
 
 		if (getProjectSpace().changePackage().size() > 0) {
 			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
@@ -185,7 +186,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			getProgressMonitor(), true);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
-			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
+		.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
 
 		return getProjectSpace().getBaseVersion();
 	}
@@ -238,7 +239,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		ModelUtil.logError(MessageFormat
 			.format(
 				Messages.UpdateController_ChangePackagesRemoved
-					+ Messages.UpdateController_PullingUpBaseVersion,
+				+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 		save(getProjectSpace(), Messages.UpdateController_ProjectSpace_SaveFailed);
 		// TODO: LCP - if localChanges is a PersistentChangePackage, saving should always occur automatically
@@ -304,7 +305,15 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			while (localOperationsIterator.hasNext()) {
 				final AbstractOperation localOp = localOperationsIterator.next();
 				if (incomingIdx == incomingOpsSize) {
-					tempChangePackage.add(localOp);
+					new EMFStoreCommand() {
+
+						@Override
+						protected void doRun() {
+							// TODO Auto-generated method stub
+
+							tempChangePackage.add(localOp);
+						}
+					}.run(false);
 					while (localOperationsIterator.hasNext()) {
 						// add all remaining local ops
 						final AbstractOperation next = localOperationsIterator.next();
