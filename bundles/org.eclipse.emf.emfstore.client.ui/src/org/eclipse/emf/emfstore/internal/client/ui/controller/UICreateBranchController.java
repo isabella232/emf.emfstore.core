@@ -53,8 +53,8 @@ import org.eclipse.swt.widgets.Shell;
  *
  */
 public class UICreateBranchController extends
-AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
-ESCommitCallback {
+	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
+	ESCommitCallback {
 
 	private final ProjectSpace projectSpace;
 	private int dialogReturnValue;
@@ -130,7 +130,7 @@ ESCommitCallback {
 						.getBaseVersion().toAPI();
 					final ESPrimaryVersionSpec version = new UIUpdateProjectController(
 						getShell(), projectSpace)
-					.executeSub(progressMonitor);
+						.executeSub(progressMonitor);
 					if (version.equals(baseVersion)) {
 						return false;
 					}
@@ -175,7 +175,7 @@ ESCommitCallback {
 						.getUsersession().getUsername());
 					logMessage.setClientDate(new Date());
 					logMessage.setMessage(commitDialog.getLogText());
-					changePackage.setLogMessage(logMessage.toAPI());
+					changePackage.setLogMessage(logMessage);
 					return null;
 				}
 			});

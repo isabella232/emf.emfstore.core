@@ -48,8 +48,8 @@ import org.eclipse.swt.widgets.Shell;
  *
  */
 public class UICommitProjectController extends
-AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
-ESCommitCallback {
+	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
+	ESCommitCallback {
 
 	private final ESLocalProject localProject;
 	private int dialogReturnValue;
@@ -108,7 +108,7 @@ ESCommitCallback {
 			final ESPrimaryVersionSpec baseVersion = UICommitProjectController.this.localProject.getBaseVersion();
 			final int baseVersionIdentifier = baseVersion.getIdentifier();
 			final ESPrimaryVersionSpec version = new UIUpdateProjectController(getShell(), projectSpace)
-			.executeSub(progressMonitor);
+				.executeSub(progressMonitor);
 
 			// base version identifer may change due to update's recovery
 			if (version.equals(baseVersion) || version.getIdentifier() == baseVersionIdentifier) {
@@ -139,11 +139,11 @@ ESCommitCallback {
 			RunInUI.run(new Callable<Void>() {
 				public Void call() throws Exception {
 					MessageDialog
-					.openInformation(
-						getShell(), "No local changes", //$NON-NLS-1$
-						Messages.UICommitProjectController_NoPendingChanges_0
-						+ Messages.UICommitProjectController_NoPendingChanges_1
-						+ Messages.UICommitProjectController_NoPendingChanges_2);
+						.openInformation(
+							getShell(), "No local changes", //$NON-NLS-1$
+							Messages.UICommitProjectController_NoPendingChanges_0
+								+ Messages.UICommitProjectController_NoPendingChanges_1
+								+ Messages.UICommitProjectController_NoPendingChanges_2);
 					return null;
 				}
 			});
@@ -186,7 +186,7 @@ ESCommitCallback {
 						LogMessageFactory.INSTANCE.createLogMessage(
 							commitDialog.getLogText(),
 							projectSpace.getUsersession().getUsername()
-							).toAPI()
+							)
 						);
 					return null;
 				}
@@ -228,10 +228,10 @@ ESCommitCallback {
 							getShell(),
 							Messages.UICommitProjectController_CommitFailed,
 							MessageFormat
-							.format(
-								Messages.UICommitProjectController_ErrorDuringCommit,
-								e.getCause().getMessage(),
-								e.getCause().getClass().getSimpleName()));
+								.format(
+									Messages.UICommitProjectController_ErrorDuringCommit,
+									e.getCause().getMessage(),
+									e.getCause().getClass().getSimpleName()));
 					}
 				});
 			} else {
