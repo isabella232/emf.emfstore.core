@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -13,15 +13,14 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Log Message</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESLogMessage>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -33,12 +32,12 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  *          Date</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getLogMessage()
  * @model
  * @generated
  */
-public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
+public interface LogMessage extends EObject, ESLogMessage {
 	/**
 	 * Returns the value of the '<em><b>Message</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -47,7 +46,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Message</em>' attribute.
 	 * @see #setMessage(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getLogMessage_Message()
@@ -60,7 +59,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getMessage
 	 * <em>Message</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Message</em>' attribute.
 	 * @see #getMessage()
@@ -76,7 +75,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Author</em>' attribute.
 	 * @see #setAuthor(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getLogMessage_Author()
@@ -89,7 +88,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getAuthor
 	 * <em>Author</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Author</em>' attribute.
 	 * @see #getAuthor()
@@ -104,7 +103,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * If the meaning of the '<em>Date</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Date</em>' attribute.
 	 * @see #setDate(Date)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getLogMessage_Date()
@@ -117,7 +116,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getDate
 	 * <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Date</em>' attribute.
 	 * @see #getDate()
 	 * @generated
@@ -132,7 +131,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Client Date</em>' attribute.
 	 * @see #setClientDate(Date)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getLogMessage_ClientDate()
@@ -146,7 +145,7 @@ public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	 * <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Client Date</em>' attribute.
 	 * @see #getClientDate()
 	 * @generated

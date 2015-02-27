@@ -12,9 +12,8 @@
 package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
 
 import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMLabelProvider;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
+import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 import org.eclipse.jface.viewers.TreeNode;
 import org.eclipse.swt.graphics.Image;
 
@@ -41,7 +40,7 @@ public class LogMessageColumnLabelProvider extends SCMLabelProvider {
 			final String toolTipText = super.getToolTipText(element);
 			return toolTipText;
 		} else if (element instanceof HistoryInfo) {
-			LogMessage logMessage = null;
+			ESLogMessage logMessage = null;
 			final HistoryInfo historyInfo = (HistoryInfo) element;
 			final StringBuilder builder = new StringBuilder();
 			if (historyInfo.getPrimarySpec() != null && historyInfo.getPrimarySpec().getIdentifier() == -1) {
@@ -49,8 +48,7 @@ public class LogMessageColumnLabelProvider extends SCMLabelProvider {
 			} else if (historyInfo.getLogMessage() != null) {
 				logMessage = historyInfo.getLogMessage();
 			} else if (historyInfo.getChangePackage() != null && historyInfo.getChangePackage().getLogMessage() != null) {
-				logMessage = ESLogMessageImpl.class.cast(historyInfo.getChangePackage().getLogMessage())
-					.toInternalAPI();
+				logMessage = historyInfo.getChangePackage().getLogMessage();
 			}
 			if (logMessage != null) {
 				builder.append(logMessage.getMessage());

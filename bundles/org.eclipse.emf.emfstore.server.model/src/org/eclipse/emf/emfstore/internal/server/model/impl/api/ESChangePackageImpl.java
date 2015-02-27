@@ -56,8 +56,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
 	public void setLogMessage(ESLogMessage logMessage) {
-		final ESLogMessageImpl logMessageImpl = (ESLogMessageImpl) logMessage;
-		toInternalAPI().setLogMessage(logMessageImpl.toInternalAPI());
+		toInternalAPI().setLogMessage(logMessage);
 	}
 
 	/**

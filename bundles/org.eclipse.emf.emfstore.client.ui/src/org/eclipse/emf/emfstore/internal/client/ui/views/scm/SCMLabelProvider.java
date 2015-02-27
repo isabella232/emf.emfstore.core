@@ -27,14 +27,13 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVi
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationId;
+import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.SWT;
@@ -143,7 +142,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("Change Package");
 		if (changePackage.getLogMessage() != null) {
-			final LogMessage logMessage = ESLogMessageImpl.class.cast(changePackage.getLogMessage()).toInternalAPI();
+			final ESLogMessage logMessage = changePackage.getLogMessage();
 			builder.append(" ["); //$NON-NLS-1$
 			builder.append(logMessage.getAuthor());
 			final Date clientDate = logMessage.getClientDate();
@@ -191,13 +190,13 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		builder.append(baseVersion);
 		builder.append("Version ");
 		builder.append(historyInfo.getPrimarySpec().getIdentifier());
-		LogMessage logMessage = null;
+		ESLogMessage logMessage = null;
 
 		if (historyInfo.getLogMessage() != null) {
 			logMessage = historyInfo.getLogMessage();
 		} else if (historyInfo.getChangePackage() != null
 			&& historyInfo.getChangePackage().getLogMessage() != null) {
-			logMessage = ESLogMessageImpl.class.cast(historyInfo.getChangePackage().getLogMessage()).toInternalAPI();
+			logMessage = historyInfo.getChangePackage().getLogMessage();
 		}
 		if (logMessage != null) {
 			builder.append(" ["); //$NON-NLS-1$

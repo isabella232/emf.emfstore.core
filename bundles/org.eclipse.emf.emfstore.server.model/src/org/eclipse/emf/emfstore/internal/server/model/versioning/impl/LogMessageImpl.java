@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
@@ -33,20 +32,15 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * Date</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
-	 * @generated NOT
-	 */
-	private ESLogMessageImpl apiImpl;
-
-	/**
 	 * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getAuthor()
 	 * @generated
 	 * @ordered
@@ -56,7 +50,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getAuthor()
 	 * @generated
 	 * @ordered
@@ -66,7 +60,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -76,7 +70,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -86,7 +80,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -96,7 +90,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -106,7 +100,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The default value of the '{@link #getClientDate() <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getClientDate()
 	 * @generated
 	 * @ordered
@@ -116,7 +110,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getClientDate() <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getClientDate()
 	 * @generated
 	 * @ordered
@@ -125,7 +119,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected LogMessageImpl() {
@@ -134,7 +128,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -144,7 +138,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getMessage() {
@@ -153,7 +147,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMessage(String newMessage) {
@@ -167,7 +161,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getAuthor() {
@@ -176,7 +170,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAuthor(String newAuthor) {
@@ -190,7 +184,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getDate() {
@@ -199,7 +193,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDate(Date newDate) {
@@ -212,7 +206,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getClientDate() {
@@ -221,7 +215,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setClientDate(Date newClientDate) {
@@ -235,7 +229,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -256,7 +250,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -281,7 +275,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -306,7 +300,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -327,7 +321,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -347,34 +341,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 		result.append(clientDate);
 		result.append(')');
 		return result.toString();
-	}
-
-	/**
-	 * 
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
-	 * @generated NOT
-	 */
-	public ESLogMessageImpl toAPI() {
-		if (apiImpl == null) {
-			apiImpl = createAPI();
-		}
-
-		return apiImpl;
-	}
-
-	/**
-	 * 
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
-	 * @generated NOT
-	 */
-	public ESLogMessageImpl createAPI() {
-		return new ESLogMessageImpl(this);
 	}
 
 } // LogMessageImpl

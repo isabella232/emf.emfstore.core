@@ -123,7 +123,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  *
  */
 public abstract class ProjectSpaceBase extends IdentifiableElementImpl
-implements ProjectSpace, ESLoginObserver, ESDisposable {
+	implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private ESLocalProjectImpl esLocalProjectImpl;
 
@@ -289,7 +289,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<ESChangePackage> incomingChangePackages,
 		IProgressMonitor progressMonitor)
-			throws ESException {
+		throws ESException {
 
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 
@@ -709,7 +709,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.inverseCrossReferenceCache") //$NON-NLS-1$
-		.getExtensionElements()) {
+			.getExtensionElements()) {
 			useCrossReferenceAdapter &= element.getBoolean("activated"); //$NON-NLS-1$
 		}
 
@@ -927,7 +927,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -973,7 +973,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	 */
 	public ChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<ESChangePackage> myChangePackages, List<ESChangePackage> theirChangePackages)
-			throws ChangeConflictException {
+		throws ChangeConflictException {
 
 		final Set<AbstractOperation> accceptedMineSet = new LinkedHashSet<AbstractOperation>();
 		final Set<AbstractOperation> rejectedTheirsSet = new LinkedHashSet<AbstractOperation>();
@@ -1270,10 +1270,10 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 		while (iterator.hasNext()) {
 			try {
 				ESWorkspaceProviderImpl
-				.getInstance()
-				.getConnectionManager()
-				.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
-					getProjectId());
+					.getInstance()
+					.getConnectionManager()
+					.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
+						getProjectId());
 				iterator.remove();
 			} catch (final ESException e) {
 				WorkspaceUtil.logException(Messages.ProjectSpaceBase_Transmission_Of_Properties_Failed, e);
@@ -1412,7 +1412,7 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 
 	private void notifyPreRevertMyChanges(final ESChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-		.preRevertMyChanges(toAPI(), changePackage);
+			.preRevertMyChanges(toAPI(), changePackage);
 	}
 
 	private void notifyPostRevertMyChanges() {
@@ -1422,13 +1422,13 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	private void notifyPostApplyTheirChanges(List<ESChangePackage> theirChangePackages) {
 		// TODO ASYNC review this cancel
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-		.postApplyTheirChanges(toAPI(), theirChangePackages);
+			.postApplyTheirChanges(toAPI(), theirChangePackages);
 	}
 
 	private void notifyPostApplyMergedChanges(ESChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-		.postApplyMergedChanges(
-			toAPI(), changePackage);
+			.postApplyMergedChanges(
+				toAPI(), changePackage);
 	}
 
 	/**
@@ -1464,6 +1464,9 @@ implements ProjectSpace, ESLoginObserver, ESDisposable {
 	}
 
 	public ESChangePackage changePackage() {
+		if (persistentChangePackage == null) {
+			return null;
+		}
 		return new ESPersistentChangePackageImpl(persistentChangePackage);
 	}
 

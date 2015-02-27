@@ -32,7 +32,6 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
@@ -138,7 +137,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		setLogMessage(logMessage, localChangePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.inspectChanges(getProjectSpace().toAPI(), localChangePackage, getProgressMonitor());
+		.inspectChanges(getProjectSpace().toAPI(), localChangePackage, getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), localChangePackage);
@@ -198,7 +197,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		});
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
+		.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
 		return newBaseVersion;
 	}
@@ -249,7 +248,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 					internalChangePackage,
 					branch,
 					getProjectSpace().getMergedVersion(),
-					ESLogMessageImpl.class.cast(changePackage.getLogMessage()).toInternalAPI());
+					(LogMessage) changePackage.getLogMessage());
 			}
 		}.execute();
 		return newBaseVersion;
@@ -262,7 +261,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 				logMsg.setMessage(logMessage);
 				logMsg.setClientDate(new Date());
 				logMsg.setAuthor(getProjectSpace().getUsersession().getUsername());
-				changePackage.setLogMessage(logMsg.toAPI());
+				changePackage.setLogMessage(logMsg);
 				return null;
 			}
 		});

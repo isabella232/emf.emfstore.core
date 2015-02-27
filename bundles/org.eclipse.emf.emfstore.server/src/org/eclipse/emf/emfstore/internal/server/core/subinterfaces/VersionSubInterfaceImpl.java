@@ -35,7 +35,6 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
@@ -306,8 +305,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				if (targetBranch.getBranch().equals(VersionSpec.GLOBAL)) {
 					throw new InvalidVersionSpecException(
 						Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-						+ VersionSpec.GLOBAL +
-						Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+							+ VersionSpec.GLOBAL +
+							Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 				}
 				// when branch does NOT exist, create new branch
 				newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
@@ -353,14 +352,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 			ModelUtil.logInfo(
 				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-				(System.currentTimeMillis() - currentTimeMillis));
+					(System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-			throws StorageException {
+		throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {
@@ -602,8 +601,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 					// reverse() created a new change package without copying
 					// existent attributes
 					changePackageReverse.setLogMessage(ModelUtil.clone(
-						ESLogMessageImpl.class.cast(
-							changePackage.getLogMessage()).toInternalAPI()));
+						(LogMessage) changePackage.getLogMessage()));
 					resultReverse.add(changePackageReverse);
 				}
 

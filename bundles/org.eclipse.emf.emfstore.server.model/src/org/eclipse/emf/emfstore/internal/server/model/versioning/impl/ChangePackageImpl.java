@@ -29,7 +29,6 @@ import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -206,7 +205,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 			}
 		}
 		if (logMessage != null) {
-			return logMessage.toAPI();
+			return logMessage;
 		}
 
 		return null;
@@ -631,7 +630,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 * @generated NOT
 	 */
 	public void setLogMessage(ESLogMessage logMessage) {
-		setLogMessage(ESLogMessageImpl.class.cast(logMessage).toInternalAPI());
+		setLogMessage(logMessage);
 	}
 
 	/**

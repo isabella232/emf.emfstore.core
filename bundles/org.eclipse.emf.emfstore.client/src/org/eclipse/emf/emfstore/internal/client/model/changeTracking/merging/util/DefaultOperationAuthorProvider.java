@@ -15,11 +15,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
@@ -62,7 +61,7 @@ public class DefaultOperationAuthorProvider implements OperationAuthorProvider {
 			return;
 		}
 
-		final LogMessage logMessage = ESLogMessageImpl.class.cast(changePackage.getLogMessage()).toInternalAPI();
+		final ESLogMessage logMessage = changePackage.getLogMessage();
 		if (logMessage.getAuthor() != null) {
 			final String author = logMessage.getAuthor();
 			final ESCloseableIterable<ESOperation> operations = changePackage.operations();
