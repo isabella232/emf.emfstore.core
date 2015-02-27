@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  *
  */
 public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage>
-	implements ESChangePackage {
+implements ESChangePackage {
 
 	/**
 	 * Constructor.
@@ -79,8 +79,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#clear()
 	 */
 	public void clear() {
-		// TODO Auto-generated method stub
-
+		toInternalAPI().clear();
 	}
 
 	/**
@@ -89,8 +88,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#isEmpty()
 	 */
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return toInternalAPI().isEmpty();
 	}
 
 	/**
@@ -135,7 +133,6 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
 	public ESLogMessage getLogMessage() {
-		// TODO Auto-generated method stub
-		return null;
+		return toInternalAPI().getLogMessage();
 	}
 }
