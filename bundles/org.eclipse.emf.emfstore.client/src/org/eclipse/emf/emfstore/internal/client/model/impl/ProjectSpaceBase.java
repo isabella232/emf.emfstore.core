@@ -1001,7 +1001,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 					} else if (accceptedMineSet.contains(myOperation)) {
 						acceptedMineList.add(myOperation);
 					}
-					accceptedMineSet.remove(myOp);
+					accceptedMineSet.remove(myOperation);
 
 				}
 			} finally {
@@ -1036,6 +1036,8 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		mergeResult.addAll(acceptedMineList);
 		final ChangePackage result = VersioningFactory.eINSTANCE.createChangePackage();
+
+		// dup op in mergeResult
 		result.getOperations().addAll(mergeResult);
 
 		return result;
