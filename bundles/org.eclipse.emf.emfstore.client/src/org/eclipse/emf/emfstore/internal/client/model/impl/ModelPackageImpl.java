@@ -861,7 +861,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			"workspace", null, 0, 1, ProjectSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getProjectSpace_LocalChangePackage(),
-			theVersioningPackage.getChangePackage(),
+			theVersioningPackage.getAbstractChangePackage(),
 			null,
 			"localChangePackage", null, 0, 1, ProjectSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(

@@ -432,6 +432,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
+			(ModelPackage.Literals.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE,
+				VersioningFactory.eINSTANCE.createFileBasedChangePackage()));
+
+		newChildDescriptors.add
+			(createChildParameter
 			(ModelPackage.Literals.PROJECT_SPACE__MERGED_VERSION,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}

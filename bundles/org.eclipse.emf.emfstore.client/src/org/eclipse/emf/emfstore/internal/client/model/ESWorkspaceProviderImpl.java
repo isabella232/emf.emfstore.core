@@ -80,7 +80,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author jfaltermeier
  */
 public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCommitObserver, ESUpdateObserver,
-ESShareObserver, ESCheckoutObserver, ESDisposable {
+	ESShareObserver, ESCheckoutObserver, ESDisposable {
 
 	/**
 	 * This thread local variable stores the ESWorkspaceProviderImpl associated with this thread.
@@ -520,7 +520,7 @@ ESShareObserver, ESCheckoutObserver, ESDisposable {
 			try {
 				element.getClass("class", ESWorkspaceInitObserver.class).workspaceInitComplete( //$NON-NLS-1$
 					currentWorkspace
-					.toAPI());
+						.toAPI());
 			} catch (final ESExtensionPointException e) {
 				WorkspaceUtil.logException(e.getMessage(), e);
 			}
@@ -570,8 +570,8 @@ ESShareObserver, ESCheckoutObserver, ESDisposable {
 	private ESEditingDomainProvider getDomainProvider() {
 		// TODO EXPT PRIO
 		return new ESExtensionPoint("org.eclipse.emf.emfstore.client.editingDomainProvider") //$NON-NLS-1$
-		.getClass("class", //$NON-NLS-1$
-			ESEditingDomainProvider.class);
+			.getClass("class", //$NON-NLS-1$
+				ESEditingDomainProvider.class);
 	}
 
 	private Workspace createNewWorkspace(ResourceSet resourceSet, URI fileURI) {
@@ -601,7 +601,7 @@ ESShareObserver, ESCheckoutObserver, ESDisposable {
 		} catch (final IOException e) {
 			WorkspaceUtil.logException(
 				Messages.ESWorkspaceProviderImpl_Create_Workspace_Failed
-				+ Configuration.getFileInfo().getWorkspaceDirectory(), e);
+					+ Configuration.getFileInfo().getWorkspaceDirectory(), e);
 		}
 		return workspace;
 	}

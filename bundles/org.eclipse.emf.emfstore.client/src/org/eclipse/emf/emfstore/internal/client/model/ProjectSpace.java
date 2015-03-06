@@ -42,6 +42,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
 import org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
@@ -423,12 +424,24 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <!-- end-user-doc -->
 	 * 
 	 * @return the value of the '<em>Local Change Package</em>' containment reference.
-	 * @see #setLocalChangePackage(ChangePackage)
+	 * @see #setLocalChangePackage(AbstractChangePackage)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_LocalChangePackage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ChangePackage getLocalChangePackage();
+	AbstractChangePackage getLocalChangePackage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage
+	 * <em>Local Change Package</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param value the new value of the '<em>Local Change Package</em>' containment reference.
+	 * @see #getLocalChangePackage()
+	 * @generated
+	 */
+	void setLocalChangePackage(AbstractChangePackage value);
 
 	// TODO: LCP- return type should be internal..
 	ESChangePackage changePackage();
@@ -444,19 +457,6 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 */
 	// TODO: LCP - returned value is an in-memory representation currently
 	ESChangePackage changePackage(boolean canonize);
-
-	/**
-	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage
-	 * <em>Local Change Package</em>}' containment reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Local Change Package</em>'
-	 *            containment reference.
-	 * @see #getLocalChangePackage()
-	 * @generated
-	 */
-	void setLocalChangePackage(ChangePackage value);
 
 	/**
 	 * Returns the value of the '<em><b>Merged Version</b></em>' containment reference.

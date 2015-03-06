@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 
 /**
@@ -271,7 +271,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected ChangePackage localChangePackage;
+	protected AbstractChangePackage localChangePackage;
 
 	/**
 	 * The cached value of the '{@link #getMergedVersion() <em>Merged Version</em>}' containment reference.
@@ -638,7 +638,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			setWorkspace((Workspace) newValue);
 			return;
 		case ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE:
-			setLocalChangePackage((ChangePackage) newValue);
+			setLocalChangePackage((AbstractChangePackage) newValue);
 			return;
 		case ModelPackage.PROJECT_SPACE__MERGED_VERSION:
 			setMergedVersion((PrimaryVersionSpec) newValue);
@@ -709,7 +709,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			setWorkspace((Workspace) null);
 			return;
 		case ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE:
-			setLocalChangePackage((ChangePackage) null);
+			setLocalChangePackage((AbstractChangePackage) null);
 			return;
 		case ModelPackage.PROJECT_SPACE__MERGED_VERSION:
 			setMergedVersion((PrimaryVersionSpec) null);
@@ -1123,12 +1123,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 * 
 	 * @generated
 	 */
-	public ChangePackage getLocalChangePackage()
+	public AbstractChangePackage getLocalChangePackage()
 	{
 		if (localChangePackage != null && localChangePackage.eIsProxy())
 		{
 			InternalEObject oldLocalChangePackage = (InternalEObject) localChangePackage;
-			localChangePackage = (ChangePackage) eResolveProxy(oldLocalChangePackage);
+			localChangePackage = (AbstractChangePackage) eResolveProxy(oldLocalChangePackage);
 			if (localChangePackage != oldLocalChangePackage)
 			{
 				InternalEObject newLocalChangePackage = (InternalEObject) localChangePackage;
@@ -1155,7 +1155,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 * 
 	 * @generated
 	 */
-	public ChangePackage basicGetLocalChangePackage() {
+	public AbstractChangePackage basicGetLocalChangePackage() {
 		return localChangePackage;
 	}
 
@@ -1165,8 +1165,10 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLocalChangePackage(ChangePackage newLocalChangePackage, NotificationChain msgs) {
-		ChangePackage oldLocalChangePackage = localChangePackage;
+	public NotificationChain basicSetLocalChangePackage(AbstractChangePackage newLocalChangePackage,
+		NotificationChain msgs)
+	{
+		AbstractChangePackage oldLocalChangePackage = localChangePackage;
 		localChangePackage = newLocalChangePackage;
 		if (eNotificationRequired())
 		{
@@ -1186,7 +1188,8 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 * 
 	 * @generated
 	 */
-	public void setLocalChangePackage(ChangePackage newLocalChangePackage) {
+	public void setLocalChangePackage(AbstractChangePackage newLocalChangePackage)
+	{
 		if (newLocalChangePackage != localChangePackage)
 		{
 			NotificationChain msgs = null;
