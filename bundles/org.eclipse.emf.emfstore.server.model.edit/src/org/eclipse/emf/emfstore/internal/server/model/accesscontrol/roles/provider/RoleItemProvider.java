@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  * @generated
  */
 public class RoleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -70,7 +70,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addProjectsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Role_projects_feature"), //$NON-NLS-1$

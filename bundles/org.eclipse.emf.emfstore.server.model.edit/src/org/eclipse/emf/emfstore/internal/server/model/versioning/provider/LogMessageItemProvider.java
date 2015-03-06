@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class LogMessageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,8 +76,8 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_message_feature"), //$NON-NLS-1$
@@ -100,7 +100,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_date_feature"), //$NON-NLS-1$
@@ -122,19 +122,19 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addClientDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_clientDate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LogMessage_clientDate_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -145,8 +145,8 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addAuthorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_author_feature"), //$NON-NLS-1$
@@ -183,7 +183,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = ((LogMessage) object).getAuthor();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LogMessage_type") : //$NON-NLS-1$
-				getString("_UI_LogMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_LogMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

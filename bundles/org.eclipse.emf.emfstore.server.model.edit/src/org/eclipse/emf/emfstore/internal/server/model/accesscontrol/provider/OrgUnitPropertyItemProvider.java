@@ -77,20 +77,20 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_OrgUnitProperty_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OrgUnitProperty_name_feature", "_UI_OrgUnitProperty_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__NAME,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__NAME,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -101,20 +101,20 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_OrgUnitProperty_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OrgUnitProperty_value_feature", "_UI_OrgUnitProperty_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__VALUE,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__VALUE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 		final String label = ((OrgUnitProperty) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OrgUnitProperty_type") : //$NON-NLS-1$
-				getString("_UI_OrgUnitProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_OrgUnitProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class OrgUnitPropertyItemProvider extends ItemProviderAdapter implements 
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(AccesscontrolPackage.Literals.ORG_UNIT_PROPERTY__PROJECT,
 				ModelFactory.eINSTANCE.createProjectId()));
 	}

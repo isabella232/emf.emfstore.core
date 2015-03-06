@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * @generated
  */
 public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,20 +76,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ModelElementUrlFragment_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ModelElementUrlFragment_name_feature", "_UI_ModelElementUrlFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__NAME,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__NAME,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -147,7 +147,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = ((ModelElementUrlFragment) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ModelElementUrlFragment_type") : //$NON-NLS-1$
-				getString("_UI_ModelElementUrlFragment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_ModelElementUrlFragment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -186,7 +186,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID,
 				ModelFactory.eINSTANCE.createModelElementId()));
 	}

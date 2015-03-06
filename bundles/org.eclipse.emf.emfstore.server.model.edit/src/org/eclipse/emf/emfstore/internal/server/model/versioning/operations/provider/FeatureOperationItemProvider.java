@@ -23,9 +23,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Feat
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class FeatureOperationItemProvider extends AbstractOperationItemProvider {
@@ -85,6 +87,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * This adds a property descriptor for the Unset feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addUnsetPropertyDescriptor(Object object)
@@ -110,6 +113,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * This returns FeatureOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -121,6 +125,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -136,6 +141,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

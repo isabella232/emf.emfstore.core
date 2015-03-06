@@ -23,8 +23,10 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
@@ -84,6 +86,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This adds a property descriptor for the Project State Checksum feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addProjectStateChecksumPropertyDescriptor(Object object)
@@ -109,6 +112,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns PrimaryVersionSpec.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,6 +124,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -135,6 +140,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

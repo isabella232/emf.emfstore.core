@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
  * @generated
  */
 public class EventItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -74,7 +74,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addTimestampPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Event_timestamp_feature"), //$NON-NLS-1$
@@ -112,7 +112,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Event_type") : //$NON-NLS-1$
-				getString("_UI_Event_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Event_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

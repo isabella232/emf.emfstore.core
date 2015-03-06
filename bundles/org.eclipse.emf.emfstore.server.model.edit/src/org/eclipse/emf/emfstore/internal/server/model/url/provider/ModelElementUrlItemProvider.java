@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * @generated
  */
 public class ModelElementUrlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -156,17 +156,17 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__SERVER_URL,
 				UrlFactory.eINSTANCE.createServerUrl()));
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__PROJECT_URL_FRAGMENT,
 				UrlFactory.eINSTANCE.createProjectUrlFragment()));
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__MODEL_ELEMENT_URL_FRAGMENT,
 				UrlFactory.eINSTANCE.createModelElementUrlFragment()));
 	}

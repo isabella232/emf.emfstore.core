@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * @generated
  */
 public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,8 +76,8 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_name_feature"), //$NON-NLS-1$
@@ -99,20 +99,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_description_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_description_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					ModelPackage.Literals.PROJECT_INFO__DESCRIPTION,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				ModelPackage.Literals.PROJECT_INFO__DESCRIPTION,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -123,19 +123,19 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addProjectIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_projectId_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					ModelPackage.Literals.PROJECT_INFO__PROJECT_ID,
-					true,
-					false,
-					true,
-					null,
-					null,
-					null));
+				ModelPackage.Literals.PROJECT_INFO__PROJECT_ID,
+				true,
+				false,
+				true,
+				null,
+				null,
+				null));
 	}
 
 	/**
@@ -146,19 +146,19 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_version_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					ModelPackage.Literals.PROJECT_INFO__VERSION,
-					true,
-					false,
-					true,
-					null,
-					null,
-					null));
+				ModelPackage.Literals.PROJECT_INFO__VERSION,
+				true,
+				false,
+				true,
+				null,
+				null,
+				null));
 	}
 
 	/**

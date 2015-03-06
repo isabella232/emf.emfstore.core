@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class VersionPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -75,20 +75,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_VersionProperty_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_VersionProperty_name_feature", "_UI_VersionProperty_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					VersioningPackage.Literals.VERSION_PROPERTY__NAME,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				VersioningPackage.Literals.VERSION_PROPERTY__NAME,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -99,20 +99,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_VersionProperty_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_VersionProperty_value_feature", "_UI_VersionProperty_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					VersioningPackage.Literals.VERSION_PROPERTY__VALUE,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				VersioningPackage.Literals.VERSION_PROPERTY__VALUE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -139,7 +139,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = ((VersionProperty) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_VersionProperty_type") : //$NON-NLS-1$
-				getString("_UI_VersionProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_VersionProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

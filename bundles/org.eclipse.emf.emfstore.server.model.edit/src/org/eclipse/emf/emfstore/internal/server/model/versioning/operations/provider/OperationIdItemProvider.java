@@ -22,9 +22,11 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationId;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationId} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationId} object.
  * <!-- begin-user-doc --> <!--
  * end-user-doc -->
+ * 
  * @generated
  */
 public class OperationIdItemProvider extends UniqueIdentifierItemProvider {
@@ -69,6 +71,7 @@ public class OperationIdItemProvider extends UniqueIdentifierItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -84,6 +87,7 @@ public class OperationIdItemProvider extends UniqueIdentifierItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

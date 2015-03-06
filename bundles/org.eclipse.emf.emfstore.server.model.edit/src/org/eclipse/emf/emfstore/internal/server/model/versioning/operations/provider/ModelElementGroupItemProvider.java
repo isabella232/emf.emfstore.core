@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * @generated
  */
 public class ModelElementGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,20 +76,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ModelElementGroup_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature", "_UI_ModelElementGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -115,20 +115,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addModelElementsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ModelElementGroup_modelElements_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature", "_UI_ModelElementGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS,
-					true,
-					false,
-					true,
-					null,
-					null,
-					null));
+				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS,
+				true,
+				false,
+				true,
+				null,
+				null,
+				null));
 	}
 
 	/**

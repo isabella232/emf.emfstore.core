@@ -67,6 +67,7 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -82,6 +83,7 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

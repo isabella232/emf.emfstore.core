@@ -29,9 +29,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class CompositeOperationItemProvider extends AbstractOperationItemProvider {
@@ -144,6 +146,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This adds a property descriptor for the Composite Description feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addCompositeDescriptionPropertyDescriptor(Object object) {
@@ -193,6 +196,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -207,6 +211,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -254,6 +259,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

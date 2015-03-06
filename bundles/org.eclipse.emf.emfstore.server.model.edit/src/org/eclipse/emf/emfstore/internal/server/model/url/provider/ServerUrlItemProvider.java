@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * @generated
  */
 public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -74,8 +74,8 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addHostNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerUrl_hostName_feature"), //$NON-NLS-1$
@@ -98,7 +98,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addPortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerUrl_port_feature"), //$NON-NLS-1$
@@ -135,7 +135,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = ((ServerUrl) object).getHostName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ServerUrl_type") : //$NON-NLS-1$
-				getString("_UI_ServerUrl_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_ServerUrl_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

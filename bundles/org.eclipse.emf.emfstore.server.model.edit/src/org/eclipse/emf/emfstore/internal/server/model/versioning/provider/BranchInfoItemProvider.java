@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class BranchInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,7 +76,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-		(createItemPropertyDescriptor
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_BranchInfo_name_feature"), //$NON-NLS-1$
@@ -145,7 +145,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = ((BranchInfo) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BranchInfo_type") : //$NON-NLS-1$
-				getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -185,12 +185,12 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(VersioningPackage.Literals.BRANCH_INFO__HEAD,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-		(createChildParameter
+			(createChildParameter
 			(VersioningPackage.Literals.BRANCH_INFO__SOURCE,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}
@@ -208,7 +208,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
 		final boolean qualify =
 			childFeature == VersioningPackage.Literals.BRANCH_INFO__HEAD ||
-			childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
+				childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
 
 		if (qualify)
 		{

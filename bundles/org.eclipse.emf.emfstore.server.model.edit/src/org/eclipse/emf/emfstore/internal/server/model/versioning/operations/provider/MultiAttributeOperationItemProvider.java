@@ -63,6 +63,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This adds a property descriptor for the Add feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addAddPropertyDescriptor(Object object) {
@@ -135,6 +136,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This returns MultiAttributeOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,6 +148,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -161,6 +164,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

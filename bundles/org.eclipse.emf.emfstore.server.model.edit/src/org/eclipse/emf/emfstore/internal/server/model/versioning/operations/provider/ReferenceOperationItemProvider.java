@@ -23,9 +23,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ReferenceOperationItemProvider extends FeatureOperationItemProvider {
@@ -85,6 +87,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	/**
 	 * This adds a property descriptor for the Opposite Feature Name feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addOppositeFeatureNamePropertyDescriptor(Object object) {
@@ -147,6 +150,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -162,6 +166,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

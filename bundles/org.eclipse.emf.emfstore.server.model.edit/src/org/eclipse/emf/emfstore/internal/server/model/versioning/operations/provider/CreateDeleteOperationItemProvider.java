@@ -40,9 +40,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class CreateDeleteOperationItemProvider extends AbstractOperationItemProvider {
@@ -102,6 +104,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,6 +121,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -225,6 +229,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

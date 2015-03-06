@@ -135,6 +135,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * This returns MultiAttributeSetOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,6 +147,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -161,6 +163,7 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

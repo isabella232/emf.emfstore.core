@@ -23,8 +23,10 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
@@ -59,6 +61,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This adds a property descriptor for the Date feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
@@ -83,6 +86,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns DateVersionSpec.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -94,6 +98,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -109,6 +114,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

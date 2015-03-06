@@ -23,9 +23,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Attr
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation} object.
+ * This is the item provider adapter for a
+ * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class AttributeOperationItemProvider extends FeatureOperationItemProvider {
@@ -167,6 +169,7 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

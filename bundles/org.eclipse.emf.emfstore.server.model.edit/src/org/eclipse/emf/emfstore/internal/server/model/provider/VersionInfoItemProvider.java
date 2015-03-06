@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.VersionInfo;
  * @generated
  */
 public class VersionInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -72,20 +72,20 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	 */
 	protected void addEmfStoreVersionStringPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add
-		(createItemPropertyDescriptor
+			.add
+			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_VersionInfo_emfStoreVersionString_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_VersionInfo_emfStoreVersionString_feature", "_UI_VersionInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-					ModelPackage.Literals.VERSION_INFO__EMF_STORE_VERSION_STRING,
-					true,
-					false,
-					false,
-					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-					null,
-					null));
+				ModelPackage.Literals.VERSION_INFO__EMF_STORE_VERSION_STRING,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -111,7 +111,7 @@ ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 		final String label = ((VersionInfo) object).getEmfStoreVersionString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_VersionInfo_type") : //$NON-NLS-1$
-				getString("_UI_VersionInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_VersionInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

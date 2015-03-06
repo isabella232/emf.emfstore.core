@@ -111,6 +111,7 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	/**
 	 * This adds a property descriptor for the Referenced Model Element Id feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addReferencedModelElementIdPropertyDescriptor(Object object) {
@@ -169,6 +170,7 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
