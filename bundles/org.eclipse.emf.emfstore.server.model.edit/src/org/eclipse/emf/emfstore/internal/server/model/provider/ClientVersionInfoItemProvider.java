@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
  * @generated
  */
 public class ClientVersionInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -73,52 +73,52 @@ public class ClientVersionInfoItemProvider extends ItemProviderAdapter implement
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ClientVersionInfo_version_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClientVersionInfo_version_feature", "_UI_ClientVersionInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.CLIENT_VERSION_INFO__VERSION,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.CLIENT_VERSION_INFO__VERSION,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ClientVersionInfo_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ClientVersionInfo_name_feature", "_UI_ClientVersionInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.CLIENT_VERSION_INFO__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.CLIENT_VERSION_INFO__NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns ClientVersionInfo.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -130,7 +130,7 @@ public class ClientVersionInfoItemProvider extends ItemProviderAdapter implement
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class ClientVersionInfoItemProvider extends ItemProviderAdapter implement
 		final String label = ((ClientVersionInfo) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ClientVersionInfo_type") : //$NON-NLS-1$
-			getString("_UI_ClientVersionInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ClientVersionInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class ClientVersionInfoItemProvider extends ItemProviderAdapter implement
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

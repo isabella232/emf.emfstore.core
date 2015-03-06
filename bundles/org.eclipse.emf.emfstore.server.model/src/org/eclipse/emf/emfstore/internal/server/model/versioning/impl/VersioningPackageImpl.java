@@ -948,6 +948,17 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getFileBasedChangePackage_FilePath()
+	{
+		return (EAttribute) fileBasedChangePackageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -1065,6 +1076,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		abstractChangePackageEClass = createEClass(ABSTRACT_CHANGE_PACKAGE);
 
 		fileBasedChangePackageEClass = createEClass(FILE_BASED_CHANGE_PACKAGE);
+		createEAttribute(fileBasedChangePackageEClass, FILE_BASED_CHANGE_PACKAGE__FILE_PATH);
 	}
 
 	/**
@@ -1404,6 +1416,10 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 		initEClass(fileBasedChangePackageEClass, FileBasedChangePackage.class,
 			"FileBasedChangePackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getFileBasedChangePackage_FilePath(),
+			ecorePackage.getEString(),
+			"filePath", null, 0, 1, FileBasedChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // VersioningPackageImpl

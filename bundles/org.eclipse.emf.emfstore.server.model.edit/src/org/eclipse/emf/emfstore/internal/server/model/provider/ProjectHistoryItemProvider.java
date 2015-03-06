@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
  * @generated
  */
 public class ProjectHistoryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -76,20 +76,20 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 */
 	protected void addProjectNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectHistory_projectName_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectName_feature", "_UI_ProjectHistory_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.PROJECT_HISTORY__PROJECT_NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.PROJECT_HISTORY__PROJECT_NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -100,20 +100,20 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 */
 	protected void addProjectDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectHistory_projectDescription_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectDescription_feature", "_UI_ProjectHistory_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.PROJECT_HISTORY__PROJECT_DESCRIPTION,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.PROJECT_HISTORY__PROJECT_DESCRIPTION,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,7 +154,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 * This returns ProjectHistory.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -166,7 +166,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -174,7 +174,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 		final String label = ((ProjectHistory) object).getProjectName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProjectHistory_type") : //$NON-NLS-1$
-			getString("_UI_ProjectHistory_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ProjectHistory_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -217,22 +217,22 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.PROJECT_HISTORY__PROJECT_ID,
 				ModelFactory.eINSTANCE.createProjectId()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.PROJECT_HISTORY__VERSIONS,
 				VersioningFactory.eINSTANCE.createVersion()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.PROJECT_HISTORY__SHARED_PROPERTIES,
 				org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.createEMFStoreProperty()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.PROJECT_HISTORY__BRANCHES,
 				VersioningFactory.eINSTANCE.createBranchInfo()));
 	}

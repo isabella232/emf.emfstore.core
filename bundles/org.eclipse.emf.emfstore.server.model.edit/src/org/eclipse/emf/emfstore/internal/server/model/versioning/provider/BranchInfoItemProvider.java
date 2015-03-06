@@ -35,11 +35,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo}
  * object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BranchInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -71,12 +71,12 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_BranchInfo_name_feature"), //$NON-NLS-1$
@@ -95,7 +95,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -137,7 +137,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 		final String label = ((BranchInfo) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BranchInfo_type") : //$NON-NLS-1$
-			getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -185,12 +185,12 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.BRANCH_INFO__HEAD,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.BRANCH_INFO__SOURCE,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}
@@ -208,7 +208,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 
 		final boolean qualify =
 			childFeature == VersioningPackage.Literals.BRANCH_INFO__HEAD ||
-				childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
+			childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
 
 		if (qualify)
 		{

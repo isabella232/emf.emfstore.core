@@ -139,7 +139,9 @@
             ecoreFeature="ecore:EReference server.ecore#//versioning/PagedUpdateVersionSpec/baseVersionSpec"/>
       </genClasses>
       <genClasses image="false" ecoreClass="server.ecore#//versioning/AbstractChangePackage"/>
-      <genClasses ecoreClass="server.ecore#//versioning/FileBasedChangePackage"/>
+      <genClasses ecoreClass="server.ecore#//versioning/FileBasedChangePackage">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/FileBasedChangePackage/filePath"/>
+      </genClasses>
       <nestedGenPackages prefix="Operations" basePackage="org.eclipse.emf.emfstore.internal.server.model.versioning"
           disposableProviderFactory="true" ecorePackage="server.ecore#//versioning/operations">
         <genEnums typeSafeEnumCompatible="false" ecoreEnum="server.ecore#//versioning/operations/ContainmentType">

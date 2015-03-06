@@ -1115,6 +1115,16 @@ public interface VersioningPackage extends EPackage {
 	int FILE_BASED_CHANGE_PACKAGE = 19;
 
 	/**
+	 * The feature id for the '<em><b>File Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_BASED_CHANGE_PACKAGE__FILE_PATH = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>File Based Change Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1122,7 +1132,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_BASED_CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 0;
+	int FILE_BASED_CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '
@@ -1978,6 +1988,20 @@ public interface VersioningPackage extends EPackage {
 	EClass getFileBasedChangePackage();
 
 	/**
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getFilePath
+	 * <em>File Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>File Path</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getFilePath()
+	 * @see #getFileBasedChangePackage()
+	 * @generated
+	 */
+	EAttribute getFileBasedChangePackage_FilePath();
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -2670,6 +2694,15 @@ public interface VersioningPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FILE_BASED_CHANGE_PACKAGE = eINSTANCE.getFileBasedChangePackage();
+
+		/**
+		 * The meta object literal for the '<em><b>File Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute FILE_BASED_CHANGE_PACKAGE__FILE_PATH = eINSTANCE.getFileBasedChangePackage_FilePath();
 
 	}
 

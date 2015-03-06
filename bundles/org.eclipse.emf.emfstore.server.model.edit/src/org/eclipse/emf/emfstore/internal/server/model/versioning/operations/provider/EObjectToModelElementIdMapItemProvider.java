@@ -30,11 +30,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 /**
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -67,25 +67,25 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * This adds a property descriptor for the Key feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", "_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+					OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
@@ -96,27 +96,27 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EObjectToModelElementIdMap_value_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature", "_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+					OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns EObjectToModelElementIdMap.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

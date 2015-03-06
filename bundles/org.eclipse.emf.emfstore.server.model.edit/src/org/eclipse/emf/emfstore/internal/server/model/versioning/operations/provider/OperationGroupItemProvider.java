@@ -34,11 +34,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationGroup} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OperationGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -82,25 +82,25 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_OperationGroup_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OperationGroup_name_feature", "_UI_OperationGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				OperationsPackage.Literals.OPERATION_GROUP__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					OperationsPackage.Literals.OPERATION_GROUP__NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -111,20 +111,20 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 */
 	protected void addOperationsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_OperationGroup_operations_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OperationGroup_operations_feature", "_UI_OperationGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				OperationsPackage.Literals.OPERATION_GROUP__OPERATIONS,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+					OperationsPackage.Literals.OPERATION_GROUP__OPERATIONS,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	// BEGIN OF CUSTOM CODE
@@ -160,7 +160,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

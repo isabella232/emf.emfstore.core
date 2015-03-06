@@ -34,11 +34,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EventItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -74,7 +74,7 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 	 */
 	protected void addTimestampPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Event_timestamp_feature"), //$NON-NLS-1$
@@ -91,7 +91,7 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 	/**
 	 * This returns Event.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Event_type") : //$NON-NLS-1$
-			getString("_UI_Event_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_Event_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class EventItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

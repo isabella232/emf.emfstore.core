@@ -179,7 +179,9 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AbstractChangePackage" abstract="true"
         interface="true"/>
-    <eClassifiers xsi:type="ecore:EClass" name="FileBasedChangePackage" eSuperTypes="#//versioning/AbstractChangePackage"/>
+    <eClassifiers xsi:type="ecore:EClass" name="FileBasedChangePackage" eSuperTypes="#//versioning/AbstractChangePackage">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
     <eSubpackages name="operations" nsURI="http://eclipse.org/emf/emfstore/server/model/versioning/operations"
         nsPrefix="org.eclipse.emf.emfstore.internal.server.model.versioning.operations">
       <eClassifiers xsi:type="ecore:EClass" name="AbstractOperation" abstract="true"

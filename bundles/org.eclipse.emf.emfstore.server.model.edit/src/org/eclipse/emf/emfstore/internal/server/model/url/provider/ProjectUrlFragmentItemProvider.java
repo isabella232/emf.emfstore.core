@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.url.ProjectUrlFragment}
  * object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -71,25 +71,25 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectUrlFragment_name_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProjectUrlFragment_name_feature", "_UI_ProjectUrlFragment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UrlPackage.Literals.PROJECT_URL_FRAGMENT__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					UrlPackage.Literals.PROJECT_URL_FRAGMENT__NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 * This returns ProjectUrlFragment.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -147,7 +147,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 		final String label = ((ProjectUrlFragment) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProjectUrlFragment_type") : //$NON-NLS-1$
-			getString("_UI_ProjectUrlFragment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ProjectUrlFragment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.PROJECT_URL_FRAGMENT__PROJECT_ID,
 				ModelFactory.eINSTANCE.createProjectId()));
 	}

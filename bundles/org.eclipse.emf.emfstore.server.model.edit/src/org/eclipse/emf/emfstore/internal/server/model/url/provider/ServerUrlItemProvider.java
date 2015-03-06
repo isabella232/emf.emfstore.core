@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * @generated
  */
 public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -74,8 +74,8 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	protected void addHostNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerUrl_hostName_feature"), //$NON-NLS-1$
@@ -93,12 +93,12 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * This adds a property descriptor for the Port feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerUrl_port_feature"), //$NON-NLS-1$
@@ -115,7 +115,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns ServerUrl.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -135,7 +135,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 		final String label = ((ServerUrl) object).getHostName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ServerUrl_type") : //$NON-NLS-1$
-			getString("_UI_ServerUrl_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_ServerUrl_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

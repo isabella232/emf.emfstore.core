@@ -33,11 +33,11 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AuthenticationInformationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -69,7 +69,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -85,7 +85,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -100,7 +100,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	 * This returns AuthenticationInformation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -125,7 +125,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,12 +154,12 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.AUTHENTICATION_INFORMATION__SESSION_ID,
 				ModelFactory.eINSTANCE.createSessionId()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER,
 				AccesscontrolFactory.eINSTANCE.createACUser()));
 	}

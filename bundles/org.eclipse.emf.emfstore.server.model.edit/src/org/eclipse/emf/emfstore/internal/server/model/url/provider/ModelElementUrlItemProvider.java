@@ -33,11 +33,11 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrl}
  * object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ModelElementUrlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -69,7 +69,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -86,7 +86,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -101,7 +101,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	 * This returns ModelElementUrl.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -126,7 +126,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,17 +156,17 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__SERVER_URL,
 				UrlFactory.eINSTANCE.createServerUrl()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__PROJECT_URL_FRAGMENT,
 				UrlFactory.eINSTANCE.createProjectUrlFragment()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__MODEL_ELEMENT_URL_FRAGMENT,
 				UrlFactory.eINSTANCE.createModelElementUrlFragment()));
 	}
