@@ -25,24 +25,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
-import org.eclipse.emf.emfstore.server.model.InMemoryOperationIterable;
+
+import com.google.common.collect.Lists;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Change Package</b></em>'. <!-- end-user-doc
@@ -75,9 +74,19 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	private ESChangePackageImpl apiImpl;
 
 	/**
+	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @see #getLogMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected LogMessage logMessage;
+
+	/**
 	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOperations()
 	 * @generated
 	 * @ordered
@@ -87,22 +96,12 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEvents()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<Event> events;
-
-	/**
-	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getLogMessage()
-	 * @generated
-	 * @ordered
-	 */
-	protected LogMessage logMessage;
 
 	/**
 	 * The cached value of the '{@link #getVersionProperties()
@@ -117,7 +116,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ChangePackageImpl() {
@@ -126,7 +125,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -161,7 +160,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Event> getEvents() {
@@ -176,9 +175,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @return the log messages
-	 *
-	 * @generated NOT
+	 * @generated
 	 */
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy())
@@ -204,14 +201,11 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 				}
 			}
 		}
-		if (logMessage != null) {
-			return logMessage;
-		}
-
-		return null;
+		return logMessage;
 	}
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 */
@@ -221,51 +215,56 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
-		LogMessage oldLogMessage = logMessage;
+		final LogMessage oldLogMessage = logMessage;
 		logMessage = newLogMessage;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, oldLogMessage, newLogMessage);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage)
 		{
 			NotificationChain msgs = null;
-			if (logMessage != null)
+			if (logMessage != null) {
 				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
-			if (newLogMessage != null)
+			}
+			if (newLogMessage != null) {
 				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
+			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE,
 				newLogMessage, newLogMessage));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<VersionProperty> getVersionProperties() {
@@ -278,6 +277,22 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	}
 
 	// begin of custom code
+	/**
+	 * <!-- begin-user-doc --> Reverse the change package. That applying the
+	 * change package and the reversed change package to a project is a nop.
+	 *
+	 * @return the reversed change package <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ChangePackage reverse() {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		// reverse subOperations and add in reverse order
+		final EList<AbstractOperation> copiedSubOperations = changePackage.getOperations();
+		for (final AbstractOperation abstractOperation : getOperations()) {
+			copiedSubOperations.add(0, abstractOperation.reverse());
+		}
+		return changePackage;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -320,19 +335,19 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	// end of custom code
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID)
 		{
+		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
+			return basicSetLogMessage(null, msgs);
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 			return ((InternalEList<?>) getOperations()).basicRemove(otherEnd, msgs);
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
 			return ((InternalEList<?>) getEvents()).basicRemove(otherEnd, msgs);
-		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
-			return basicSetLogMessage(null, msgs);
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			return ((InternalEList<?>) getVersionProperties()).basicRemove(otherEnd, msgs);
 		}
@@ -343,21 +358,22 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID)
 		{
+		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
+			if (resolve) {
+				return getLogMessage();
+			}
+			return basicGetLogMessage();
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 			return getOperations();
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
 			return getEvents();
-		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
-			if (resolve)
-				return getLogMessage();
-			return basicGetLogMessage();
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			return getVersionProperties();
 		}
@@ -366,7 +382,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -374,6 +390,9 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID)
 		{
+		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
+			setLogMessage((LogMessage) newValue);
+			return;
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 			getOperations().clear();
 			getOperations().addAll((Collection<? extends AbstractOperation>) newValue);
@@ -381,9 +400,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
 			getEvents().clear();
 			getEvents().addAll((Collection<? extends Event>) newValue);
-			return;
-		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
-			setLogMessage((LogMessage) newValue);
 			return;
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			getVersionProperties().clear();
@@ -395,21 +411,21 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID)
 		{
+		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
+			setLogMessage((LogMessage) null);
+			return;
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 			getOperations().clear();
 			return;
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
 			getEvents().clear();
-			return;
-		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
-			setLogMessage((LogMessage) null);
 			return;
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			getVersionProperties().clear();
@@ -420,23 +436,47 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID)
 		{
+		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
+			return logMessage != null;
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 			return operations != null && !operations.isEmpty();
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
 			return events != null && !events.isEmpty();
-		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
-			return logMessage != null;
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			return versionProperties != null && !versionProperties.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getCopyOfOperations()
+	 */
+	public List<AbstractOperation> getCopyOfOperations() {
+		final List<AbstractOperation> copiedOperations = new ArrayList<AbstractOperation>();
+		for (final AbstractOperation operation : getOperations()) {
+			copiedOperations.add(ModelUtil.clone(operation));
+		}
+		return copiedOperations;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public List<AbstractOperation> getLeafOperations() {
+		final List<AbstractOperation> leafOperations = new ArrayList<AbstractOperation>();
+		for (final AbstractOperation operation : getOperations()) {
+			leafOperations.addAll(operation.getLeafOperations());
+		}
+		return leafOperations;
 	}
 
 	/**
@@ -452,6 +492,16 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return result;
 	}
 
+	public List<AbstractOperation> getTouchingOperations(ModelElementId modelElementId) {
+		final ArrayList<AbstractOperation> result = new ArrayList<AbstractOperation>();
+		for (final AbstractOperation operation : getOperations()) {
+			if (operation.getAllInvolvedModelElements().contains(modelElementId)) {
+				result.add(operation);
+			}
+		}
+		return result;
+	}
+
 	public int getSize() {
 		return countLeafOperations(getOperations());
 	}
@@ -459,41 +509,16 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	public static int countLeafOperations(List<ChangePackage> changePackages) {
 		int count = 0;
 		for (final ChangePackage changePackage : changePackages) {
-			final ESCloseableIterable<ESOperation> operations = changePackage.operations();
-			try {
-				for (final ESOperation operation : operations.iterable()) {
-					count += countLeafOperations(
-						ESOperationImpl.class.cast(
-							operation).toInternalAPI());
-				}
-			} finally {
-				operations.close();
-			}
+			count += countLeafOperations(changePackage.getOperations());
 		}
 		return count;
 	}
 
-	public static int countLeafOperations(AbstractOperation operation) {
-		if (operation instanceof CompositeOperation) {
-			return sizeOfCompositeOperation((CompositeOperation) operation);
-		}
-		return 1;
-	}
-
-	public static int countLeafOperations(Iterable<AbstractOperation> operations) {
-		int count = 0;
-		for (final AbstractOperation abstractOperation : operations) {
-			count += countLeafOperations(abstractOperation);
-		}
-		return count;
-	}
-
-	private static int sizeOfCompositeOperation(CompositeOperation compositeOperation) {
+	public static int countLeafOperations(Collection<AbstractOperation> operations) {
 		int ret = 0;
-		final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
-		for (final AbstractOperation abstractOperation : subOperations) {
-			if (abstractOperation instanceof CompositeOperation) {
-				ret = ret + sizeOfCompositeOperation((CompositeOperation) abstractOperation);
+		for (final AbstractOperation operation : operations) {
+			if (operation instanceof CompositeOperation) {
+				ret = ret + getSize((CompositeOperation) operation);
 			} else {
 				ret++;
 			}
@@ -501,13 +526,26 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return ret;
 	}
 
-	// public static int countOperations(List<ChangePackage> changePackages) {
-	// int count = 0;
-	// for (final ChangePackage changePackage : changePackages) {
-	// count += changePackage.getOperations().size();
-	// }
-	// return count;
-	// }
+	private static int getSize(CompositeOperation compositeOperation) {
+		int ret = 0;
+		final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
+		for (final AbstractOperation abstractOperation : subOperations) {
+			if (abstractOperation instanceof CompositeOperation) {
+				ret = ret + getSize((CompositeOperation) abstractOperation);
+			} else {
+				ret++;
+			}
+		}
+		return ret;
+	}
+
+	public static int countOperations(List<ChangePackage> changePackages) {
+		int count = 0;
+		for (final ChangePackage changePackage : changePackages) {
+			count += changePackage.getOperations().size();
+		}
+		return count;
+	}
 
 	/**
 	 *
@@ -539,54 +577,73 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	}
 
 	/**
-	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
-	public ESCloseableIterable<ESOperation> operations() {
-		return new InMemoryOperationIterable(
-			APIUtil.toExternal(getOperations()));
+	public void add(AbstractOperation operation) {
+		getOperations().add(operation);
 	}
 
 	/**
-	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#addAll(java.util.List)
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#addAll(java.util.List)
 	 */
-	public void addAll(List<ESOperation> ops) {
-		final List<AbstractOperation> operations = new ArrayList<AbstractOperation>();
-		for (final ESOperation op : ops) {
-			final AbstractOperation operation = ((ESOperationImpl) op).toInternalAPI();
-			operations.add(operation);
-		}
+	public void addAll(List<AbstractOperation> operations) {
 		getOperations().addAll(operations);
 	}
 
 	/**
-	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#size()
 	 */
-	public void add(ESOperation op) {
-		getOperations().add(((ESOperationImpl) op).toInternalAPI());
+	public int size() {
+		// TODO: return leaf ops?
+		return getOperations().size();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#clear()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#operations()
 	 */
-	public void clear() {
-		getOperations().clear();
+	public ESCloseableIterable<AbstractOperation> operations() {
+		return new ESCloseableIterable<AbstractOperation>() {
+
+			public void close() {
+				// nothing to do
+			}
+
+			public Iterable<AbstractOperation> iterable() {
+				return getOperations();
+			}
+		};
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#isEmpty()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reversedOperations()
+	 */
+	public ESCloseableIterable<AbstractOperation> reversedOperations() {
+		return new ESCloseableIterable<AbstractOperation>() {
+
+			public void close() {
+				// nothing to do
+			}
+
+			public Iterable<AbstractOperation> iterable() {
+				return Lists.reverse(getOperations());
+			}
+		};
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#isEmpty()
 	 */
 	public boolean isEmpty() {
 		return getOperations().isEmpty();
@@ -595,13 +652,14 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#removeFromEnd(int)
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#removeAtEnd(int)
 	 */
-	public List<ESOperation> removeFromEnd(int n) {
-		final List<ESOperation> removedOperations = new ArrayList<ESOperation>();
+	public List<AbstractOperation> removeAtEnd(int n) {
+		final List<AbstractOperation> removedOperations = new ArrayList<AbstractOperation>();
 		for (int i = 0; i < n; i++) {
-			final AbstractOperation removedOperation = getOperations().remove(size() - 1);
-			removedOperations.add(new ESOperationImpl(removedOperation));
+			final int size = getOperations().size();
+			removedOperations.add(getOperations().get(size - 1));
+			getOperations().remove(size - 1);
 		}
 		return removedOperations;
 	}
@@ -609,49 +667,29 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#size()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#clear()
 	 */
-	public int size() {
-		return getOperations().size();
-	}
-
-	/**
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
-	 *
-	 * @generated NOT
-	 */
-	public void setLogMessage(ESLogMessage logMessage) {
-		setLogMessage(logMessage);
+	public void clear() {
+		getOperations().clear();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage)
 	 */
-	public ESCloseableIterable<ESOperation> reversedOperations() {
-		final List<AbstractOperation> operations = reverse().getOperations();
-		return new InMemoryOperationIterable(APIUtil.toExternal(operations));
+	public void attachToProjectSpace(HasChangePackage changePackageHolder) {
+		changePackageHolder.setChangePackage(this);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> Reverse the change package. That applying the
-	 * change package and the reversed change package to a project is a nop.
-	 *
-	 * @return the reversed change package <!-- end-user-doc -->
-	 * @generated NOT
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#leafSize()
 	 */
-	private ChangePackage reverse() {
-		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		// reverse subOperations and add in reverse order
-		final EList<AbstractOperation> copiedSubOperations = changePackage.getOperations();
-		for (final AbstractOperation abstractOperation : getOperations()) {
-			copiedSubOperations.add(0, abstractOperation.reverse());
-		}
-		return changePackage;
+	public int leafSize() {
+		// TODO: review getSize, leafSize
+		return getSize();
 	}
 
 } // ChangePackageImpl

@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * A controller for importing changes which then will be applied upon
@@ -102,13 +102,13 @@ public class ImportChangesController implements IExportImportController {
 		final EList<EObject> directContents = resource.getContents();
 
 		// sanity check
-		if (directContents.size() != 1 && !(directContents.get(0) instanceof ChangePackage)) {
+		if (directContents.size() != 1 && !(directContents.get(0) instanceof AbstractChangePackage)) {
 			throw new IOException("File is corrupt, does not contain changes.");
 		}
 
-		final ChangePackage changePackage = (ChangePackage) directContents.get(0);
+		final AbstractChangePackage changePackage = (AbstractChangePackage) directContents.get(0);
 
-		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 		try {
 			projectSpace.applyOperations(operations.iterable(), true);
 		} finally {

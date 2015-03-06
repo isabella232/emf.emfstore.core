@@ -77,7 +77,7 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 		final List<ConflictBucket> conflicts = getConflicts(ops1, oclonedProjectSpace);
 		assertEquals(getConflicts(ops1, oclonedProjectSpace).size(),
 			getConflicts(oclonedProjectSpace, ops1)
-			.size());
+				.size());
 		// same operations going on in both working copies, no conflicts expected
 		assertEquals(1, conflicts.size());
 
@@ -319,7 +319,7 @@ public class ConflictDetectionMultiReferenceTest extends ConflictDetectionTest {
 		final Project clonedProject = clonedProjectSpace.getProject();
 
 		assertTrue(ModelUtil.areEqual(getProject(), clonedProject));
-		assertTrue(clonedProjectSpace.changePackage().isEmpty());
+		assertTrue(clonedProjectSpace.getLocalChangePackage().isEmpty());
 
 		final TestElement actor = (TestElement) getProject().getModelElement(actorId);
 		final TestElement clonedActor = (TestElement) clonedProject.getModelElement(actorId);

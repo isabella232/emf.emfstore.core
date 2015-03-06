@@ -25,14 +25,11 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMap
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * @author emueller
@@ -61,14 +58,14 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * @param mapping
 	 *            an initial mapping from {EObject}s to their {@link ModelElementId}s
 	 * @param changePackages
-	 *            a list of {@link ChangePackage}s whose involved model elements should
+	 *            a list of {@link AbstractChangePackage}s whose involved model elements should
 	 *            be added to the mapping
 	 */
 	public ModelElementIdToEObjectMappingImpl(ModelElementIdToEObjectMapping mapping,
-		List<ESChangePackage> changePackages) {
+		List<AbstractChangePackage> changePackages) {
 		this(mapping);
-		for (final ESChangePackage changePackage : changePackages) {
-			this.put(changePackage);
+		for (final AbstractChangePackage changePackage : changePackages) {
+			put(changePackage);
 		}
 	}
 
@@ -95,40 +92,39 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 *
 	 * @param project the project which contains the initial mapping from {EObject}s to their
 	 *            {@link org.eclipse.emf.emfstore.common.model.ESModelElementId ESModelElementId}s
-	 * @param changePackage a {@link ChangePackage}s whose involved model elements should
+	 * @param changePackage a {@link AbstractChangePackage}s whose involved model elements should
 	 *            be added to the mapping
 	 */
-	public ModelElementIdToEObjectMappingImpl(Project project, ESChangePackage changePackage) {
+	public ModelElementIdToEObjectMappingImpl(Project project, AbstractChangePackage changePackage) {
 		this(project);
 		this.put(changePackage);
 	}
 
 	/**
-	 * Adds all model elements that are involved in operations contained in the {@link ChangePackage} and their
+	 * Adds all model elements that are involved in operations contained in the {@link AbstractChangePackage} and their
 	 * respective IDs into the mapping.
 	 *
 	 * @param changePackages
-	 *            the {@link ChangePackage ChangePackages} whose model elements should be added to the mapping
+	 *            the {@link AbstractChangePackage} whose model elements should be added to the mapping
 	 */
-	public void put(List<ESChangePackage> changePackages) {
-		for (final ESChangePackage changePackage : changePackages) {
+	public void put(List<AbstractChangePackage> changePackages) {
+		for (final AbstractChangePackage changePackage : changePackages) {
 			put(changePackage);
 		}
 	}
 
 	/**
-	 * Adds all model elements that are involved in operations contained in the {@link ChangePackage} and their
+	 * Adds all model elements that are involved in operations contained in the {@link AbstractChangePackage} and their
 	 * respective IDs into the mapping.
 	 *
 	 * @param changePackage
-	 *            the {@link ChangePackage} whose model elements should be added to the mapping
+	 *            the {@link AbstractChangePackage} whose model elements should be added to the mapping
 	 */
-	public void put(ESChangePackage changePackage) {
-		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+	public void put(AbstractChangePackage changePackage) {
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 		try {
-			for (final ESOperation operation : operations.iterable()) {
-				final AbstractOperation op = ESOperationImpl.class.cast(operation).toInternalAPI();
-				scanOperationIntoMapping(op);
+			for (final AbstractOperation operation : operations.iterable()) {
+				scanOperationIntoMapping(operation);
 			}
 		} finally {
 			operations.close();

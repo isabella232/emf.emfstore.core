@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Aleksander Shterev, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMContentProvider;
 import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMLabelProvider;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.TabItem;
 /**
  * A composite that contains multiple tabs displaying the operation from a
  * different view - e.g. grouped by model element, or ungrouped.
- * 
+ *
  * @author Shterev
  * @author emueller
  */
@@ -44,7 +44,7 @@ public class TabbedChangesComposite extends Composite {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the composite's parent
 	 * @param style
@@ -59,7 +59,8 @@ public class TabbedChangesComposite extends Composite {
 	 * @param showRootNodes
 	 *            whether to show root nodes
 	 */
-	public TabbedChangesComposite(Composite parent, int style, List<ChangePackage> changePackages, Project project,
+	public TabbedChangesComposite(Composite parent, int style, List<AbstractChangePackage> changePackages,
+		Project project,
 		ModelElementIdToEObjectMapping idToEObjectMapping, boolean showRootNodes) {
 		super(parent, style);
 		createComposite(style, project, idToEObjectMapping, showRootNodes);
@@ -68,7 +69,7 @@ public class TabbedChangesComposite extends Composite {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the composite's parent
 	 * @param style
@@ -98,7 +99,7 @@ public class TabbedChangesComposite extends Composite {
 		setLayout(new GridLayout());
 		folder = new TabFolder(this, style);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL)
-			.grab(true, true).applyTo(folder);
+		.grab(true, true).applyTo(folder);
 
 		tabComposite = new Composite(folder, SWT.NONE);
 		GridLayoutFactory.fillDefaults().applyTo(tabComposite);
@@ -106,14 +107,14 @@ public class TabbedChangesComposite extends Composite {
 		tabTreeViewer = new TreeViewer(tabComposite, SWT.H_SCROLL
 			| SWT.V_SCROLL);
 		GridDataFactory.fillDefaults().grab(true, true)
-			.applyTo(tabTreeViewer.getControl());
+		.applyTo(tabTreeViewer.getControl());
 
 		contentProvider = new SCMContentProvider(idToEObjectMapping);
 		contentProvider.setShowRootNodes(showRootNodes);
 		final SCMLabelProvider detailedLabelProvider = new SCMLabelProvider(project);
 		detailedLabelProvider
-			.setChangePackageVisualizationHelper(new ChangePackageVisualizationHelper(
-				idToEObjectMapping));
+		.setChangePackageVisualizationHelper(new ChangePackageVisualizationHelper(
+			idToEObjectMapping));
 		tabTreeViewer.setContentProvider(contentProvider);
 		tabTreeViewer.setLabelProvider(detailedLabelProvider);
 		tabTreeViewer.expandToLevel(1);

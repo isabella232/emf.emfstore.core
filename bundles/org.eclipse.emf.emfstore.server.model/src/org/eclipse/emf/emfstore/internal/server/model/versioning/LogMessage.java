@@ -13,12 +13,13 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
 import java.util.Date;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Log Message</b></em>'.
  *
- * @extends ESLogMessage
+ * @extends APIDelegate<ESLogMessage>
  *          <!-- end-user-doc -->
  *
  *          <p>
@@ -37,7 +38,7 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  * @model
  * @generated
  */
-public interface LogMessage extends EObject, ESLogMessage {
+public interface LogMessage extends EObject, APIDelegate<ESLogMessage> {
 	/**
 	 * Returns the value of the '<em><b>Message</b></em>' attribute. <!--
 	 * begin-user-doc -->

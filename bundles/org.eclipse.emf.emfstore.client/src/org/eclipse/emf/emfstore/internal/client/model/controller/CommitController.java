@@ -28,22 +28,22 @@ import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCa
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * The controller responsible for performing a commit.
@@ -132,19 +132,19 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		getProgressMonitor().worked(10);
 		getProgressMonitor().subTask(Messages.CommitController_GatheringChanges);
 
-		final ESChangePackage localChangePackage = getProjectSpace().changePackage();
+		final AbstractChangePackage localChangePackage = getProjectSpace().getLocalChangePackage();
 
 		setLogMessage(logMessage, localChangePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.inspectChanges(getProjectSpace().toAPI(), localChangePackage, getProgressMonitor());
+		.inspectChanges(getProjectSpace().toAPI(), localChangePackage.toAPI(), getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), localChangePackage);
 
 		getProgressMonitor().subTask(Messages.CommitController_PresentingChanges);
 		if (!callback.inspectChanges(getProjectSpace().toAPI(),
-			localChangePackage,
+			localChangePackage.toAPI(),
 			idToEObjectMapping.toAPI())
 			|| getProgressMonitor().isCanceled()) {
 
@@ -164,7 +164,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		if (updatePerformed) {
 			getProgressMonitor().subTask("Presenting Changes"); //$NON-NLS-1$
 			if (!callback.inspectChanges(getProjectSpace().toAPI(),
-				localChangePackage,
+				localChangePackage.toAPI(),
 				idToEObjectMapping.toAPI())
 				|| getProgressMonitor().isCanceled()) {
 				return getProjectSpace().getBaseVersion();
@@ -189,7 +189,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				getProjectSpace().setBaseVersion(newBaseVersion);
-				getProjectSpace().changePackage().clear();
+				getProjectSpace().getLocalChangePackage().clear();
 				getProjectSpace().setMergedVersion(null);
 				getProjectSpace().updateDirtyState();
 				return null;
@@ -197,7 +197,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		});
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
+		.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
 		return newBaseVersion;
 	}
@@ -221,16 +221,16 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		}
 	}
 
-	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final ESChangePackage changePackage)
+	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final AbstractChangePackage changePackage)
 		throws ESException {
 
-		// TODO: LCP - operations are fully copied and held in memory here
-		final ChangePackage internalChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+		final FileBasedChangePackage internalChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		internalChangePackage.initialize(
+			FileUtil.createLocationForTemporaryChangePackage());
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 		try {
-			for (final ESOperation operation : operations.iterable()) {
-				internalChangePackage.getOperations().add(
-					ESOperationImpl.class.cast(operation).toInternalAPI());
+			for (final AbstractOperation operation : operations.iterable()) {
+				internalChangePackage.add(operation);
 			}
 		} finally {
 			operations.close();
@@ -248,13 +248,13 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 					internalChangePackage,
 					branch,
 					getProjectSpace().getMergedVersion(),
-					(LogMessage) changePackage.getLogMessage());
+					changePackage.getLogMessage());
 			}
 		}.execute();
 		return newBaseVersion;
 	}
 
-	private void setLogMessage(final String logMessage, final ESChangePackage changePackage) {
+	private void setLogMessage(final String logMessage, final AbstractChangePackage changePackage) {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				final LogMessage logMsg = VersioningFactory.eINSTANCE.createLogMessage();

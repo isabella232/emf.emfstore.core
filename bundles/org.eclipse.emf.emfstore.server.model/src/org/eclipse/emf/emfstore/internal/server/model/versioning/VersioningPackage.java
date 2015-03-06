@@ -296,6 +296,16 @@ public interface VersioningPackage extends EPackage {
 	int ABSTRACT_CHANGE_PACKAGE = 18;
 
 	/**
+	 * The feature id for the '<em><b>Log Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE = 0;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Change Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -303,7 +313,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT = 0;
+	int ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '
@@ -317,6 +327,15 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 */
 	int CHANGE_PACKAGE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Log Message</b></em>' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE__LOG_MESSAGE = ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -337,22 +356,13 @@ public interface VersioningPackage extends EPackage {
 	int CHANGE_PACKAGE__EVENTS = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Log Message</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int CHANGE_PACKAGE__LOG_MESSAGE = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Version Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE__VERSION_PROPERTIES = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 3;
+	int CHANGE_PACKAGE__VERSION_PROPERTIES = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Change Package</em>' class.
@@ -361,7 +371,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 4;
+	int CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '
@@ -1115,6 +1125,16 @@ public interface VersioningPackage extends EPackage {
 	int FILE_BASED_CHANGE_PACKAGE = 19;
 
 	/**
+	 * The feature id for the '<em><b>Log Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_BASED_CHANGE_PACKAGE__LOG_MESSAGE = ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE;
+
+	/**
 	 * The feature id for the '<em><b>File Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1125,6 +1145,16 @@ public interface VersioningPackage extends EPackage {
 	int FILE_BASED_CHANGE_PACKAGE__FILE_PATH = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Operation Proxies</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>File Based Change Package</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1132,7 +1162,40 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_BASED_CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 1;
+	int FILE_BASED_CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl
+	 * <em>Operation Proxy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getOperationProxy()
+	 * @generated
+	 */
+	int OPERATION_PROXY = 20;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_PROXY__LABEL = 0;
+
+	/**
+	 * The number of structural features of the '<em>Operation Proxy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_PROXY_FEATURE_COUNT = 1;
 
 	/**
 	 * Returns the meta object for class '
@@ -1339,19 +1402,6 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getChangePackage_Events();
-
-	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getLogMessage
-	 * <em>Log Message</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the containment reference '<em>Log Message</em>'.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getLogMessage()
-	 * @see #getChangePackage()
-	 * @generated
-	 */
-	EReference getChangePackage_LogMessage();
 
 	/**
 	 * Returns the meta object for the containment reference list '
@@ -1975,6 +2025,20 @@ public interface VersioningPackage extends EPackage {
 	EClass getAbstractChangePackage();
 
 	/**
+	 * Returns the meta object for the containment reference '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#getLogMessage
+	 * <em>Log Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the containment reference '<em>Log Message</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#getLogMessage()
+	 * @see #getAbstractChangePackage()
+	 * @generated
+	 */
+	EReference getAbstractChangePackage_LogMessage();
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
 	 * <em>File Based Change Package</em>}'.
@@ -2000,6 +2064,45 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFileBasedChangePackage_FilePath();
+
+	/**
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getOperationProxies
+	 * <em>Operation Proxies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the containment reference list '<em>Operation Proxies</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getOperationProxies()
+	 * @see #getFileBasedChangePackage()
+	 * @generated
+	 */
+	EReference getFileBasedChangePackage_OperationProxies();
+
+	/**
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy <em>Operation Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Operation Proxy</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy
+	 * @generated
+	 */
+	EClass getOperationProxy();
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getLabel()
+	 * @see #getOperationProxy()
+	 * @generated
+	 */
+	EAttribute getOperationProxy_Label();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -2192,15 +2295,6 @@ public interface VersioningPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CHANGE_PACKAGE__EVENTS = eINSTANCE.getChangePackage_Events();
-
-		/**
-		 * The meta object literal for the '<em><b>Log Message</b></em>' containment reference feature.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		EReference CHANGE_PACKAGE__LOG_MESSAGE = eINSTANCE.getChangePackage_LogMessage();
 
 		/**
 		 * The meta object literal for the '<em><b>Version Properties</b></em>' containment reference list feature.
@@ -2683,6 +2777,15 @@ public interface VersioningPackage extends EPackage {
 		EClass ABSTRACT_CHANGE_PACKAGE = eINSTANCE.getAbstractChangePackage();
 
 		/**
+		 * The meta object literal for the '<em><b>Log Message</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE = eINSTANCE.getAbstractChangePackage_LogMessage();
+
+		/**
 		 * The meta object literal for the '
 		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl
 		 * <em>File Based Change Package</em>}' class.
@@ -2703,6 +2806,38 @@ public interface VersioningPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FILE_BASED_CHANGE_PACKAGE__FILE_PATH = eINSTANCE.getFileBasedChangePackage_FilePath();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation Proxies</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EReference FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES = eINSTANCE
+			.getFileBasedChangePackage_OperationProxies();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl
+		 * <em>Operation Proxy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getOperationProxy()
+		 * @generated
+		 */
+		EClass OPERATION_PROXY = eINSTANCE.getOperationProxy();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute OPERATION_PROXY__LABEL = eINSTANCE.getOperationProxy_Label();
 
 	}
 

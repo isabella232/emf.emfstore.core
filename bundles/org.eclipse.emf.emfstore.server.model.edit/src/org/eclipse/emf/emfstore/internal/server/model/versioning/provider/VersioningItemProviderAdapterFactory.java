@@ -533,6 +533,34 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	protected OperationProxyItemProvider operationProxyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperationProxyAdapter()
+	{
+		if (operationProxyItemProvider == null)
+		{
+			operationProxyItemProvider = new OperationProxyItemProvider(this);
+		}
+
+		return operationProxyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -669,6 +697,8 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 			pagedUpdateVersionSpecItemProvider.dispose();
 		if (fileBasedChangePackageItemProvider != null)
 			fileBasedChangePackageItemProvider.dispose();
+		if (operationProxyItemProvider != null)
+			operationProxyItemProvider.dispose();
 	}
 
 }

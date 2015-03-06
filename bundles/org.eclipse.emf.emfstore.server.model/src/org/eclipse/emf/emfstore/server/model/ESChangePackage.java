@@ -111,7 +111,8 @@ public interface ESChangePackage {
 	 * @return the operations in reversed order
 	 * @since 1.5
 	 */
-	ESCloseableIterable<ESOperation> reversedOperations();
+	// ESCloseableIterable<ESOperation> reversedOperations();
+	ESChangePackage reverse();
 
 	/**
 	 * Returns the number of operations this change package contains.
@@ -122,4 +123,5 @@ public interface ESChangePackage {
 	 *
 	 */
 	int size();
+
 }

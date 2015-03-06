@@ -45,8 +45,8 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecExc
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -156,7 +156,7 @@ public class ServerInterfaceTest extends ESTestWithLoggedInUser {
 				project,
 				Create.testElement()));
 
-		final List<ChangePackage> changes = connectionManager.getChanges(
+		final List<AbstractChangePackage> changes = connectionManager.getChanges(
 			toInternal(Usersession.class, getUsersession()).getSessionId(),
 			toInternal(ProjectSpace.class, localProject).getProjectId(),
 			Create.primaryVersionSpec(0),

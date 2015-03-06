@@ -9,30 +9,36 @@
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+package org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent;
 
 import java.util.Iterator;
 
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
+ * Enables to iterate through all operations that are saved within an underlying
+ * operations file.<br>
+ * <strong>NOTE</strong>: Callers must call {@code close} when they are finished.
+ *
  * @author emueller
  * @since 1.5
  *
  */
-// TODO: javadoc
-public class FileBasedOperationIterable implements ESCloseableIterable<ESOperation> {
-
-	enum Direction {
-		Forward,
-		Backward
-	}
+public class FileBasedOperationIterable implements ESCloseableIterable<AbstractOperation> {
 
 	private OperationIterator operationIterator;
 	private final String operationsFilePath;
 	private final Direction direction;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param operationsFilePath
+	 *            the absolute path to the underlying operations file
+	 * @param direction
+	 *            the read {@link Direction}
+	 */
 	public FileBasedOperationIterable(String operationsFilePath, Direction direction) {
 		this.operationsFilePath = operationsFilePath;
 		this.direction = direction;
@@ -43,19 +49,20 @@ public class FileBasedOperationIterable implements ESCloseableIterable<ESOperati
 	 *
 	 * @see java.lang.Iterable#iterator()
 	 */
-	public Iterable<ESOperation> iterable() {
+	public Iterable<AbstractOperation> iterable() {
 		operationIterator = new OperationIterator(operationsFilePath, direction);
-		return new Iterable<ESOperation>() {
-			public Iterator<ESOperation> iterator() {
+		return new Iterable<AbstractOperation>() {
+			public Iterator<AbstractOperation> iterator() {
 				return operationIterator;
 			}
 		};
 	}
 
 	/**
-	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.ESCloseableIterable#close()
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.ESCloseableIterable#close()
 	 */
 	public void close() {
 		if (operationIterator != null) {

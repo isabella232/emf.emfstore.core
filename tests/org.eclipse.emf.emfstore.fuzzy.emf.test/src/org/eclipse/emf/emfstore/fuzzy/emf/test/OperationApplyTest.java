@@ -17,9 +17,9 @@ import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -50,7 +50,7 @@ public class OperationApplyTest extends FuzzyProjectTest {
 		}.run(false);
 
 		final ProjectSpace copyProjectSpace = getCopyProjectSpace();
-		final ESCloseableIterable<ESOperation> operations = projectSpace.changePackage().operations();
+		final ESCloseableIterable<AbstractOperation> operations = projectSpace.getLocalChangePackage().operations();
 		try {
 			new EMFStoreCommand() {
 				@Override

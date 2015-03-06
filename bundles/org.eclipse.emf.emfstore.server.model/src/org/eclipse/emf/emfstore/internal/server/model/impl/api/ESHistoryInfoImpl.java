@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
@@ -99,7 +100,11 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getLogMessage()
 	 */
 	public ESLogMessage getLogMessage() {
-		return toInternalAPI().getLogMessage();
+		final LogMessage logMessage = toInternalAPI().getLogMessage();
+		if (logMessage == null) {
+			return null;
+		}
+		return logMessage.toAPI();
 	}
 
 	/**

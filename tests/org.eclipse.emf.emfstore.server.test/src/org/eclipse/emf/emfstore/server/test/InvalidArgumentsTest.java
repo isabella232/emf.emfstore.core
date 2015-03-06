@@ -37,6 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -114,8 +115,6 @@ public class InvalidArgumentsTest {
 			VersioningFactory.eINSTANCE.createLogMessage());
 		arguments.put(Project.class,
 			org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.createProject());
-		arguments.put(ChangePackage.class,
-			VersioningFactory.eINSTANCE.createChangePackage());
 		arguments.put(HistoryQuery.class,
 			VersioningFactory.eINSTANCE.createPathQuery());
 		arguments.put(ChangePackage.class,
@@ -164,7 +163,7 @@ public class InvalidArgumentsTest {
 	public void createVersionTest() throws ESException {
 		try {
 			testAllInvalidCombinations(connectionManager.getClass().getMethod("createVersion", //$NON-NLS-1$
-				new Class[] { SessionId.class, ProjectId.class, PrimaryVersionSpec.class, ChangePackage.class,
+				new Class[] { SessionId.class, ProjectId.class, PrimaryVersionSpec.class, AbstractChangePackage.class,
 				BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
 		} catch (final SecurityException e) {
 			throw new ESException(e);

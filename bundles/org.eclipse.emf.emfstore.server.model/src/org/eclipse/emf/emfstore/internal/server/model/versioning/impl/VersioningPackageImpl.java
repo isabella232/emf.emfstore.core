@@ -35,6 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -203,6 +204,14 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * @generated
 	 */
 	private EClass fileBasedChangePackageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass operationProxyEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -472,17 +481,8 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * 
 	 * @generated
 	 */
-	public EReference getChangePackage_LogMessage() {
-		return (EReference) changePackageEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
 	public EReference getChangePackage_VersionProperties() {
-		return (EReference) changePackageEClass.getEStructuralFeatures().get(3);
+		return (EReference) changePackageEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -942,6 +942,17 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * 
 	 * @generated
 	 */
+	public EReference getAbstractChangePackage_LogMessage()
+	{
+		return (EReference) abstractChangePackageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public EClass getFileBasedChangePackage()
 	{
 		return fileBasedChangePackageEClass;
@@ -956,6 +967,39 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	public EAttribute getFileBasedChangePackage_FilePath()
 	{
 		return (EAttribute) fileBasedChangePackageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EReference getFileBasedChangePackage_OperationProxies()
+	{
+		return (EReference) fileBasedChangePackageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getOperationProxy()
+	{
+		return operationProxyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EAttribute getOperationProxy_Label()
+	{
+		return (EAttribute) operationProxyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1010,7 +1054,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		changePackageEClass = createEClass(CHANGE_PACKAGE);
 		createEReference(changePackageEClass, CHANGE_PACKAGE__OPERATIONS);
 		createEReference(changePackageEClass, CHANGE_PACKAGE__EVENTS);
-		createEReference(changePackageEClass, CHANGE_PACKAGE__LOG_MESSAGE);
 		createEReference(changePackageEClass, CHANGE_PACKAGE__VERSION_PROPERTIES);
 
 		historyInfoEClass = createEClass(HISTORY_INFO);
@@ -1074,9 +1117,14 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		createEReference(pagedUpdateVersionSpecEClass, PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC);
 
 		abstractChangePackageEClass = createEClass(ABSTRACT_CHANGE_PACKAGE);
+		createEReference(abstractChangePackageEClass, ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE);
 
 		fileBasedChangePackageEClass = createEClass(FILE_BASED_CHANGE_PACKAGE);
 		createEAttribute(fileBasedChangePackageEClass, FILE_BASED_CHANGE_PACKAGE__FILE_PATH);
+		createEReference(fileBasedChangePackageEClass, FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES);
+
+		operationProxyEClass = createEClass(OPERATION_PROXY);
+		createEAttribute(operationProxyEClass, OPERATION_PROXY__LABEL);
 	}
 
 	/**
@@ -1195,11 +1243,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 			theEventsPackage.getEvent(),
 			null,
 			"events", null, 0, -1, ChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getChangePackage_LogMessage(),
-			this.getLogMessage(),
-			null,
-			"logMessage", null, 0, 1, ChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getChangePackage_VersionProperties(),
 			this.getVersionProperty(),
@@ -1413,6 +1456,11 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 		initEClass(abstractChangePackageEClass, AbstractChangePackage.class,
 			"AbstractChangePackage", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+			getAbstractChangePackage_LogMessage(),
+			this.getLogMessage(),
+			null,
+			"logMessage", null, 0, 1, AbstractChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(fileBasedChangePackageEClass, FileBasedChangePackage.class,
 			"FileBasedChangePackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1420,6 +1468,18 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 			getFileBasedChangePackage_FilePath(),
 			ecorePackage.getEString(),
 			"filePath", null, 0, 1, FileBasedChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getFileBasedChangePackage_OperationProxies(),
+			this.getOperationProxy(),
+			null,
+			"operationProxies", null, 0, -1, FileBasedChangePackage.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(operationProxyEClass, OperationProxy.class,
+			"OperationProxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getOperationProxy_Label(),
+			ecorePackage.getEString(),
+			"label", null, 0, 1, OperationProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // VersioningPackageImpl

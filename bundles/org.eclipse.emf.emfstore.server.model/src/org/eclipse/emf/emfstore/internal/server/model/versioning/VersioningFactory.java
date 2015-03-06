@@ -192,6 +192,16 @@ public interface VersioningFactory extends EFactory {
 	FileBasedChangePackage createFileBasedChangePackage();
 
 	/**
+	 * Returns a new object of class '<em>Operation Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Operation Proxy</em>'.
+	 * @generated
+	 */
+	OperationProxy createOperationProxy();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

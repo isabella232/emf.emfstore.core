@@ -60,7 +60,6 @@ import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionCh
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
 import org.eclipse.emf.emfstore.internal.common.model.util.SettingWithReferencedElement;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
@@ -71,7 +70,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
@@ -81,7 +79,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  */
 public class OperationRecorder implements ESCommandObserver, ESCommitObserver, ESUpdateObserver, ESShareObserver,
-	IdEObjectCollectionChangeObserver {
+IdEObjectCollectionChangeObserver {
 
 	/**
 	 * Name of unknown creator.
@@ -515,7 +513,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		if (config.isDenyAddCutElementsToModelElements() && cutElements.size() != 0) {
 			throw new IllegalStateException(
 				Messages.OperationRecorder_CutElementsPresent_0
-					+ Messages.OperationRecorder_CutElementsPresent_1);
+				+ Messages.OperationRecorder_CutElementsPresent_1);
 		}
 
 		for (final EObject eObject : new ArrayList<EObject>(cutElements)) {
@@ -568,9 +566,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 				if (reference.isMany()) {
 					@SuppressWarnings("unchecked")
 					final Set<EObject> referencesToRemove =
-						filterAllNonContained(
-							(List<EObject>) modelElement.eGet(reference),
-							allEObjects);
+					filterAllNonContained(
+						(List<EObject>) modelElement.eGet(reference),
+						allEObjects);
 					if (referencesToRemove.size() > 0) {
 						settingsToUnset.add(
 							new SettingWithElementsToRemove(
@@ -599,7 +597,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 			if (feature.isMany()) {
 				@SuppressWarnings("unchecked")
 				final List<EObject> referencedElements =
-					(List<EObject>) setting.getEObject().eGet(feature);
+				(List<EObject>) setting.getEObject().eGet(feature);
 				referencedElements.removeAll(referencesToRemove);
 			} else {
 				setting.getEObject().eSet(feature, null);
@@ -908,7 +906,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * Aborts the current composite operation.
 	 */
 	public void abortCompositeOperation() {
-		final ESOperation reversedCompositeOperation = new ESOperationImpl(compositeOperation.reverse());
+		final AbstractOperation reversedCompositeOperation = compositeOperation.reverse();
 		projectSpace.applyOperations(
 			Collections.singletonList(reversedCompositeOperation), false);
 

@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
 
 import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMLabelProvider;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.jface.viewers.TreeNode;
 import org.eclipse.swt.graphics.Image;
 
@@ -40,7 +40,7 @@ public class LogMessageColumnLabelProvider extends SCMLabelProvider {
 			final String toolTipText = super.getToolTipText(element);
 			return toolTipText;
 		} else if (element instanceof HistoryInfo) {
-			ESLogMessage logMessage = null;
+			LogMessage logMessage = null;
 			final HistoryInfo historyInfo = (HistoryInfo) element;
 			final StringBuilder builder = new StringBuilder();
 			if (historyInfo.getPrimarySpec() != null && historyInfo.getPrimarySpec().getIdentifier() == -1) {

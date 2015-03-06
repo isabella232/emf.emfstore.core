@@ -31,6 +31,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI.WithException;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.BranchSelectionDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.CommitDialog;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -157,7 +158,7 @@ public class UICreateBranchController extends
 		final ESLocalProjectImpl localProjectImpl = (ESLocalProjectImpl) localProject;
 
 		final CommitDialog commitDialog = new CommitDialog(getShell(),
-			changePackage,
+			ESChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 			localProjectImpl.toInternalAPI(),
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
 
@@ -175,7 +176,7 @@ public class UICreateBranchController extends
 						.getUsersession().getUsername());
 					logMessage.setClientDate(new Date());
 					logMessage.setMessage(commitDialog.getLogText());
-					changePackage.setLogMessage(logMessage);
+					changePackage.setLogMessage(logMessage.toAPI());
 					return null;
 				}
 			});

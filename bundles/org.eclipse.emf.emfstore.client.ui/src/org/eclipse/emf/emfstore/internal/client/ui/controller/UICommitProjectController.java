@@ -27,6 +27,8 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.CommitDialog;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessageFactory;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
@@ -153,7 +155,7 @@ public class UICommitProjectController extends
 
 		final CommitDialog commitDialog = new CommitDialog(
 			getShell(),
-			changePackage,
+			ESChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 			projectSpace,
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
 
@@ -182,12 +184,11 @@ public class UICommitProjectController extends
 						projectSpace.getOldLogMessages().remove(0);
 					}
 
-					changePackage.setLogMessage(
-						LogMessageFactory.INSTANCE.createLogMessage(
-							commitDialog.getLogText(),
-							projectSpace.getUsersession().getUsername()
-							)
+					final LogMessage logMessage = LogMessageFactory.INSTANCE.createLogMessage(
+						commitDialog.getLogText(),
+						projectSpace.getUsersession().getUsername()
 						);
+					changePackage.setLogMessage(logMessage.toAPI());
 					return null;
 				}
 			});

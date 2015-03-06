@@ -89,7 +89,7 @@ public class ProjectUtil {
 
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				projectSpace.changePackage().clear();
+				projectSpace.getLocalChangePackage().clear();
 				projectSpace.getOperationManager().clearOperations();
 				return null;
 			}
@@ -99,8 +99,8 @@ public class ProjectUtil {
 	}
 
 	public static void deleteRemoteProjects(ESServer server, ESUsersession usersession) throws IOException,
-		FatalESException,
-		ESException {
+	FatalESException,
+	ESException {
 		for (final ESRemoteProject project : server.getRemoteProjects(usersession)) {
 			project.delete(usersession, new NullProgressMonitor());
 		}
@@ -240,7 +240,7 @@ public class ProjectUtil {
 
 	public static ESLocalProject tag(ESLocalProject localProject, ESPrimaryVersionSpec versionSpec, String branchName,
 		String tag)
-		throws ESException {
+			throws ESException {
 		final ESTagVersionSpec tagVersionSpec = CreateAPI.tagVersionSpec(branchName, tag);
 		localProject.addTag(versionSpec, tagVersionSpec, nullProgressMonitor());
 		return localProject;

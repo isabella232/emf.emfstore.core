@@ -19,7 +19,6 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * A {@link Runnable} implementation that applies a given list of operations
@@ -31,7 +30,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
 public class ApplyOperationsAndRecordRunnable implements Runnable {
 
 	private final ProjectSpaceBase projectSpace;
-	private final Iterable<ESOperation> operations;
+	private final Iterable<AbstractOperation> operations;
 
 	/**
 	 * Constructor.
@@ -43,7 +42,7 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 	 */
 	public ApplyOperationsAndRecordRunnable(
 		ProjectSpaceBase projectSpaceBase,
-		Iterable<ESOperation> operations) {
+		Iterable<AbstractOperation> operations) {
 
 		projectSpace = projectSpaceBase;
 		this.operations = operations;
@@ -58,7 +57,7 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				for (final ESOperation operation : operations) {
+				for (final AbstractOperation operation : operations) {
 					try {
 						applyOperation(operation);
 						// BEGIN SUPRESS CATCH EXCEPTION
@@ -72,7 +71,7 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 		}.run(false);
 	}
 
-	private void applyOperation(final ESOperation operation) {
+	private void applyOperation(final AbstractOperation operation) {
 		projectSpace.getOperationManager().commandStarted(null);
 		final AbstractOperation internalOp = ESOperationImpl.class.cast(operation).toInternalAPI();
 

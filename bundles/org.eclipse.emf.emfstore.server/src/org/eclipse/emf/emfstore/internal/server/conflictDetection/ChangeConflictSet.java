@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  * Maximilian Koegel - Conflict Detection refactorings
@@ -18,14 +18,14 @@ import java.util.Set;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESConflictSet;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * The actual implementation of an {@link ESConflictSetImpl} containing
  * the changes that caused the conflict.
- * 
+ *
  * @author wesendon
  * @author emueller
  * @author mkoegel
@@ -36,28 +36,28 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	private ESConflictSetImpl apiImpl;
 	private final Set<ConflictBucket> conflictBuckets;
 	private final Set<AbstractOperation> notInvolvedInConflict;
-	private final List<ESChangePackage> leftChanges;
-	private final List<ESChangePackage> rightChanges;
+	private final List<AbstractChangePackage> leftChanges;
+	private final List<AbstractChangePackage> rightChanges;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param conflictBuckets
 	 *            a set of conflict candidates
 	 * @param notInvolvedInConflict
 	 *            a set of operations not involved in any conflict
 	 * @param idToEObjectMapping
 	 *            a mapping from IDs to EObjects and vice versa.<br/>
-	 *            Contains all IDs of model elements involved in the {@link ESChangePackage}s
+	 *            Contains all IDs of model elements involved in the {@link AbstractChangePackage}s
 	 *            as well as those contained by the project in the ProjectSpace
 	 * @param leftChanges
-	 *            a list of {@link ESChangePackage}s representing one side of the conflict
+	 *            a list of {@link AbstractChangePackage}s representing one side of the conflict
 	 * @param rightChanges
-	 *            a list of {@link ESChangePackage}s representing the other side of the conflict
+	 *            a list of {@link AbstractChangePackage}s representing the other side of the conflict
 	 */
 	public ChangeConflictSet(Set<ConflictBucket> conflictBuckets, Set<AbstractOperation> notInvolvedInConflict,
-		ModelElementIdToEObjectMapping idToEObjectMapping, List<ESChangePackage> leftChanges,
-		List<ESChangePackage> rightChanges) {
+		ModelElementIdToEObjectMapping idToEObjectMapping, List<AbstractChangePackage> leftChanges,
+		List<AbstractChangePackage> rightChanges) {
 
 		this.conflictBuckets = conflictBuckets;
 		this.notInvolvedInConflict = notInvolvedInConflict;
@@ -68,9 +68,9 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 
 	/**
 	 * Returns the mapping from IDs to EObjects and vice versa.<br/>
-	 * The mapping contains all IDs of model elements involved in the {@link ESChangePackage}s
+	 * The mapping contains all IDs of model elements involved in the {@link AbstractChangePackage}s
 	 * as well as those contained by the project in the ProjectSpace
-	 * 
+	 *
 	 * @return the mapping from IDs to EObjects and vice versa
 	 */
 	public ModelElementIdToEObjectMapping getIdToEObjectMapping() {
@@ -78,9 +78,9 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESConflictSet toAPI() {
@@ -91,9 +91,9 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESConflictSetImpl createAPI() {
@@ -102,7 +102,7 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 
 	/**
 	 * Returns a set of operations not involved in any conflict.
-	 * 
+	 *
 	 * @return a set of operations not involved in any conflict
 	 */
 	public Set<AbstractOperation> getNotInvolvedInConflict() {
@@ -111,7 +111,7 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 
 	/**
 	 * Returns a set of conflict candidates.
-	 * 
+	 *
 	 * @return a set of conflict candidates
 	 */
 	public Set<ConflictBucket> getConflictBuckets() {
@@ -119,20 +119,20 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	}
 
 	/**
-	 * Returns a list of {@link ESChangePackage}s representing one side of the conflict.
-	 * 
-	 * @return a list of {@link ESChangePackage}s representing one side of the conflict
+	 * Returns a list of {@link AbstractChangePackage}s representing one side of the conflict.
+	 *
+	 * @return a list of {@link AbstractChangePackage}s representing one side of the conflict
 	 */
-	public List<ESChangePackage> getLeftChanges() {
+	public List<AbstractChangePackage> getLeftChanges() {
 		return leftChanges;
 	}
 
 	/**
-	 * Returns a list of {@link ESChangePackage}s representing the other side of the conflict.
-	 * 
-	 * @return a list of {@link ESChangePackage}s representing the other side of the conflict
+	 * Returns a list of {@link AbstractChangePackage}s representing the other side of the conflict.
+	 *
+	 * @return a list of {@link AbstractChangePackage}s representing the other side of the conflict
 	 */
-	public List<ESChangePackage> getRightChanges() {
+	public List<AbstractChangePackage> getRightChanges() {
 		return rightChanges;
 	}
 }

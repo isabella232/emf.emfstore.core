@@ -96,7 +96,7 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected VersioningSwitch<Adapter> modelSwitch = new VersioningSwitch<Adapter>()
-		{
+	{
 		@Override
 		public Adapter caseTagVersionSpec(TagVersionSpec object)
 		{
@@ -222,362 +222,366 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 		{
 			return createEObjectAdapter();
 		}
-		};
+	};
 
-		/**
-		 * Creates an adapter for the <code>target</code>.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 *
-		 * @param target the object to adapt.
-		 * @return the adapter for the <code>target</code>.
-		 * @generated
-		 */
-		@Override
-		public Adapter createAdapter(Notifier target) {
-			return modelSwitch.doSwitch((EObject) target);
-		}
+	/**
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @param target the object to adapt.
+	 * @return the adapter for the <code>target</code>.
+	 * @generated
+	 */
+	@Override
+	public Adapter createAdapter(Notifier target) {
+		return modelSwitch.doSwitch((EObject) target);
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec <em>Tag Version Spec</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec
-		 * @generated
-		 */
-		public Adapter createTagVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec <em>Tag Version Spec</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec
+	 * @generated
+	 */
+	public Adapter createTagVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec <em>Date Version Spec</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec
-		 * @generated
-		 */
-		public Adapter createDateVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec <em>Date Version Spec</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec
+	 * @generated
+	 */
+	public Adapter createDateVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec
-		 * <em>Primary Version Spec</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec
-		 * @generated
-		 */
-		public Adapter createPrimaryVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec
+	 * <em>Primary Version Spec</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec
+	 * @generated
+	 */
+	public Adapter createPrimaryVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec <em>Version Spec</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec
-		 * @generated
-		 */
-		public Adapter createVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec <em>Version Spec</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec
+	 * @generated
+	 */
+	public Adapter createVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage <em>Log Message</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage
-		 * @generated
-		 */
-		public Adapter createLogMessageAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage <em>Log Message</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage
+	 * @generated
+	 */
+	public Adapter createLogMessageAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage <em>Change Package</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage
-		 * @generated
-		 */
-		public Adapter createChangePackageAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage <em>Change Package</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage
+	 * @generated
+	 */
+	public Adapter createChangePackageAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo <em>History Info</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo
-		 * @generated
-		 */
-		public Adapter createHistoryInfoAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo <em>History Info</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo
+	 * @generated
+	 */
+	public Adapter createHistoryInfoAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery <em>History Query</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery
-		 * @generated
-		 */
-		public Adapter createHistoryQueryAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery <em>History Query</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery
+	 * @generated
+	 */
+	public Adapter createHistoryQueryAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.RangeQuery <em>Range Query</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.RangeQuery
-		 * @generated
-		 */
-		public Adapter createRangeQueryAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.RangeQuery <em>Range Query</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.RangeQuery
+	 * @generated
+	 */
+	public Adapter createRangeQueryAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery <em>Path Query</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery
-		 * @generated
-		 */
-		public Adapter createPathQueryAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery <em>Path Query</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery
+	 * @generated
+	 */
+	public Adapter createPathQueryAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery <em>Model Element Query</em>}
-		 * '.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery
-		 * @generated
-		 */
-		public Adapter createModelElementQueryAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery <em>Model Element Query</em>}
+	 * '.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery
+	 * @generated
+	 */
+	public Adapter createModelElementQueryAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version
-		 * <em>Version</em>}'. <!-- begin-user-doc --> This default implementation
-		 * returns null so that we can easily ignore cases; it's useful to ignore a
-		 * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-		 * -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version
-		 * @generated
-		 */
-		public Adapter createVersionAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version
+	 * <em>Version</em>}'. <!-- begin-user-doc --> This default implementation
+	 * returns null so that we can easily ignore cases; it's useful to ignore a
+	 * case when inheritance will catch all the cases anyway. <!-- end-user-doc
+	 * -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version
+	 * @generated
+	 */
+	public Adapter createVersionAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec <em>Head Version Spec</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec
-		 * @generated
-		 */
-		public Adapter createHeadVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec <em>Head Version Spec</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec
+	 * @generated
+	 */
+	public Adapter createHeadVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty <em>Version Property</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty
-		 * @generated
-		 */
-		public Adapter createVersionPropertyAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty <em>Version Property</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty
+	 * @generated
+	 */
+	public Adapter createVersionPropertyAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec <em>Branch Version Spec</em>}
-		 * '.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec
-		 * @generated
-		 */
-		public Adapter createBranchVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec <em>Branch Version Spec</em>}
+	 * '.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec
+	 * @generated
+	 */
+	public Adapter createBranchVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo <em>Branch Info</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo
-		 * @generated
-		 */
-		public Adapter createBranchInfoAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo <em>Branch Info</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo
+	 * @generated
+	 */
+	public Adapter createBranchInfoAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec
-		 * <em>Ancestor Version Spec</em>}'.
-		 * <!-- begin-user-doc --> This default
-		 * implementation returns null so that we can easily ignore cases; it's
-		 * useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec
-		 * @generated
-		 */
-		public Adapter createAncestorVersionSpecAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec
+	 * <em>Ancestor Version Spec</em>}'.
+	 * <!-- begin-user-doc --> This default
+	 * implementation returns null so that we can easily ignore cases; it's
+	 * useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec
+	 * @generated
+	 */
+	public Adapter createAncestorVersionSpecAdapter() {
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec
-		 * <em>Paged Update Version Spec</em>}'.
-		 * <!-- begin-user-doc -->
-		 * This default implementation returns null so that we can easily ignore cases;
-		 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec
-		 * @generated
-		 */
-		public Adapter createPagedUpdateVersionSpecAdapter()
-		{
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec
+	 * <em>Paged Update Version Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec
+	 * @generated
+	 */
+	public Adapter createPagedUpdateVersionSpecAdapter()
+	{
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
-		 * <em>Abstract Change Package</em>}'.
-		 * <!-- begin-user-doc -->
-		 * This default implementation returns null so that we can easily ignore cases;
-		 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
-		 * @generated
-		 */
-		public Adapter createAbstractChangePackageAdapter()
-		{
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * <em>Abstract Change Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * @generated
+	 */
+	public Adapter createAbstractChangePackageAdapter()
+	{
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for an object of class '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
-		 * <em>File Based Change Package</em>}'.
-		 * <!-- begin-user-doc -->
-		 * This default implementation returns null so that we can easily ignore cases;
-		 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-		 * <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
-		 * @generated
-		 */
-		public Adapter createFileBasedChangePackageAdapter()
-		{
-			return null;
-		}
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
+	 * <em>File Based Change Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
+	 * @generated
+	 */
+	public Adapter createFileBasedChangePackageAdapter()
+	{
+		return null;
+	}
 
-		/**
-		 * Creates a new adapter for the default case.
-		 * <!-- begin-user-doc --> This
-		 * default implementation returns null. <!-- end-user-doc -->
-		 *
-		 * @return the new adapter.
-		 * @generated
-		 */
-		public Adapter createEObjectAdapter() {
-			return null;
-		}
+	/**
+	 * Creates a new adapter for the default case.
+	 * <!-- begin-user-doc --> This
+	 * default implementation returns null. <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @generated
+	 */
+	public Adapter createEObjectAdapter() {
+		return null;
+	}
+
+	public Adapter createOperationProxyAdapter() {
+		return null;
+	}
 
 } // VersioningAdapterFactory

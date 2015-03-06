@@ -64,10 +64,10 @@ public class CompositeMergeTest extends MergeTest {
 		}.run(false);
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(CompositeOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(AttributeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(CompositeOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(AttributeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test
@@ -96,10 +96,10 @@ public class CompositeMergeTest extends MergeTest {
 		}.run(false);
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(AttributeOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(AttributeOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test
@@ -145,7 +145,7 @@ public class CompositeMergeTest extends MergeTest {
 			}
 		}.run(false);
 
-		assertFalse(getProjectSpace().changePackage().isEmpty());
+		assertFalse(getProjectSpace().getLocalChangePackage().isEmpty());
 
 		new EMFStoreCommand() {
 			@Override
@@ -156,13 +156,13 @@ public class CompositeMergeTest extends MergeTest {
 			}
 		}.run(false);
 
-		assertFalse(getProjectSpace().changePackage().isEmpty());
+		assertFalse(getProjectSpace().getLocalChangePackage().isEmpty());
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(SingleReferenceOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(SingleReferenceOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test
@@ -195,10 +195,10 @@ public class CompositeMergeTest extends MergeTest {
 		}.run(false);
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(SingleReferenceOperation.class).myOtherContains(AttributeOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(SingleReferenceOperation.class).myOtherContains(AttributeOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test
@@ -229,10 +229,10 @@ public class CompositeMergeTest extends MergeTest {
 		}.run(false);
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(CompositeOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(CompositeOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test
@@ -265,10 +265,10 @@ public class CompositeMergeTest extends MergeTest {
 		}.run(false);
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(CompositeOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(CompositeOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test
@@ -303,10 +303,10 @@ public class CompositeMergeTest extends MergeTest {
 		}.run(false);
 
 		mc.hasConflict(CompositeConflict.class)
-			// my
-			.myIs(CompositeOperation.class).andNoOtherMyOps()
-			// theirs
-			.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
+		// my
+		.myIs(CompositeOperation.class).andNoOtherMyOps()
+		// theirs
+		.theirsIs(CompositeOperation.class).andNoOtherTheirOps();
 	}
 
 	@Test

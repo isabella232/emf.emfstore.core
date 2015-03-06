@@ -36,7 +36,7 @@ public final class CreateAPI {
 	}
 
 	public static ESLogMessage logMessage() {
-		return Create.logMessage();
+		return Create.logMessage().toAPI();
 	}
 
 	public static ESBranchVersionSpec branchVersionSpec(String branch) {

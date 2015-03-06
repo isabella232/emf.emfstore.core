@@ -33,8 +33,8 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Helper super class for merge tests.
@@ -160,8 +160,10 @@ public class MergeTest extends ESTest {
 
 		public DecisionManager execute() {
 			ensureCopy();
-			final List<ESChangePackage> myChangePackages = Arrays.asList(getProjectSpace().changePackage(true));
-			final List<ESChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace().changePackage(true));
+			final List<AbstractChangePackage> myChangePackages = Arrays.asList(getProjectSpace().getLocalChangePackage(
+				true));
+			final List<AbstractChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace()
+				.getLocalChangePackage(true));
 
 			final ChangeConflictSet changeConflictSet = new ConflictDetector().calculateConflicts(
 				myChangePackages,

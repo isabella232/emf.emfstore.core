@@ -47,6 +47,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESHistoryInfoImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -59,9 +60,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Comp
 import org.eclipse.emf.emfstore.internal.server.model.versioning.util.HistoryQueryBuilder;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
 import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
@@ -395,14 +394,14 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		if (projectSpace != null) {
 			// TODO: add a feature "hide local revision"
 			final HistoryInfo localHistoryInfo = VersioningFactory.eINSTANCE.createHistoryInfo();
-			final ESChangePackage changePackage = projectSpace.changePackage(false);
+			final AbstractChangePackage changePackage = projectSpace.getLocalChangePackage(false);
 			// filter for modelelement, do additional sanity check as the
 			// project space could've been also selected
 			if (modelElement != null && projectSpace.getProject().contains(modelElement)) {
 				final Set<AbstractOperation> operationsToRemove = new LinkedHashSet<AbstractOperation>();
-				final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+				final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 				try {
-					for (final ESOperation operation : operations.iterable()) {
+					for (final AbstractOperation operation : operations.iterable()) {
 
 						final AbstractOperation ao = ESOperationImpl.class.cast(operation).toInternalAPI();
 
@@ -430,10 +429,10 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	private void resetProviders(List<HistoryInfo> infos) {
 		// TODO: LCP
-		final ArrayList<ESChangePackage> cps = new ArrayList<ESChangePackage>();
+		final ArrayList<AbstractChangePackage> cps = new ArrayList<AbstractChangePackage>();
 		for (final HistoryInfo info : infos) {
 			if (info.getChangePackage() != null) {
-				cps.add(info.getChangePackage().toAPI());
+				cps.add(info.getChangePackage());
 			}
 		}
 

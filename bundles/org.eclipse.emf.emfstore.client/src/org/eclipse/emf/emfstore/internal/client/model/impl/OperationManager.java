@@ -26,7 +26,6 @@ import org.eclipse.emf.emfstore.internal.client.observers.OperationObserver;
 import org.eclipse.emf.emfstore.internal.common.ESDisposable;
 import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
 import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
 
@@ -151,8 +150,8 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 *            the semantic operation that replaces the composite operation
 	 */
 	public void endCompositeOperation(SemanticCompositeOperation semanticCompositeOperation) {
-		projectSpace.changePackage().removeFromEnd(1);
-		projectSpace.changePackage().add(new ESOperationImpl(semanticCompositeOperation));
+		projectSpace.getLocalChangePackage().removeAtEnd(1);
+		projectSpace.getLocalChangePackage().add(semanticCompositeOperation);
 		endCompositeOperation();
 	}
 

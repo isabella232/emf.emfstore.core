@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESHistoryInfoImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -64,7 +65,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getPrimarySpec() <em>Primary Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrimarySpec()
 	 * @generated
 	 * @ordered
@@ -79,7 +80,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getNextSpec() <em>Next Spec</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNextSpec()
 	 * @generated
 	 * @ordered
@@ -90,7 +91,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getPreviousSpec() <em>Previous Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPreviousSpec()
 	 * @generated
 	 * @ordered
@@ -100,7 +101,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getMergedFrom() <em>Merged From</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedFrom()
 	 * @generated
 	 * @ordered
@@ -110,7 +111,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getMergedTo() <em>Merged To</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedTo()
 	 * @generated
 	 * @ordered
@@ -120,7 +121,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLogMessage()
 	 * @generated
 	 * @ordered
@@ -130,7 +131,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getTagSpecs() <em>Tag Specs</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTagSpecs()
 	 * @generated
 	 * @ordered
@@ -141,7 +142,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getVersionProperties()
 	 * <em>Version Properties</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getVersionProperties()
 	 * @generated
 	 * @ordered
@@ -152,16 +153,16 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getChangePackage() <em>Change Package</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getChangePackage()
 	 * @generated
 	 * @ordered
 	 */
-	protected ChangePackage changePackage;
+	protected AbstractChangePackage changePackage;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected HistoryInfoImpl() {
@@ -170,7 +171,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -181,18 +182,18 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getPrimarySpec()
 	{
 		if (primarySpec != null && primarySpec.eIsProxy())
 		{
-			InternalEObject oldPrimarySpec = (InternalEObject) primarySpec;
+			final InternalEObject oldPrimarySpec = (InternalEObject) primarySpec;
 			primarySpec = (PrimaryVersionSpec) eResolveProxy(oldPrimarySpec);
 			if (primarySpec != oldPrimarySpec)
 			{
-				InternalEObject newPrimarySpec = (InternalEObject) primarySpec;
+				final InternalEObject newPrimarySpec = (InternalEObject) primarySpec;
 				NotificationChain msgs = oldPrimarySpec.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__PRIMARY_SPEC, null, null);
 				if (newPrimarySpec.eInternalContainer() == null)
@@ -200,11 +201,13 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 					msgs = newPrimarySpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.HISTORY_INFO__PRIMARY_SPEC, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.HISTORY_INFO__PRIMARY_SPEC, oldPrimarySpec, primarySpec));
+				}
 			}
 		}
 		return primarySpec;
@@ -213,7 +216,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetPrimarySpec()
@@ -224,21 +227,22 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPrimarySpec(PrimaryVersionSpec newPrimarySpec, NotificationChain msgs)
 	{
-		PrimaryVersionSpec oldPrimarySpec = primarySpec;
+		final PrimaryVersionSpec oldPrimarySpec = primarySpec;
 		primarySpec = newPrimarySpec;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.HISTORY_INFO__PRIMARY_SPEC, oldPrimarySpec, newPrimarySpec);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -246,7 +250,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPrimarySpec(PrimaryVersionSpec newPrimarySpec)
@@ -254,24 +258,28 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 		if (newPrimarySpec != primarySpec)
 		{
 			NotificationChain msgs = null;
-			if (primarySpec != null)
+			if (primarySpec != null) {
 				msgs = ((InternalEObject) primarySpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__PRIMARY_SPEC, null, msgs);
-			if (newPrimarySpec != null)
+			}
+			if (newPrimarySpec != null) {
 				msgs = ((InternalEObject) newPrimarySpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__PRIMARY_SPEC, null, msgs);
+			}
 			msgs = basicSetPrimarySpec(newPrimarySpec, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.HISTORY_INFO__PRIMARY_SPEC,
 				newPrimarySpec, newPrimarySpec));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<PrimaryVersionSpec> getNextSpec() {
@@ -285,17 +293,17 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getPreviousSpec() {
 		if (previousSpec != null && previousSpec.eIsProxy())
 		{
-			InternalEObject oldPreviousSpec = (InternalEObject) previousSpec;
+			final InternalEObject oldPreviousSpec = (InternalEObject) previousSpec;
 			previousSpec = (PrimaryVersionSpec) eResolveProxy(oldPreviousSpec);
 			if (previousSpec != oldPreviousSpec)
 			{
-				InternalEObject newPreviousSpec = (InternalEObject) previousSpec;
+				final InternalEObject newPreviousSpec = (InternalEObject) previousSpec;
 				NotificationChain msgs = oldPreviousSpec.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC, null, null);
 				if (newPreviousSpec.eInternalContainer() == null)
@@ -303,11 +311,13 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 					msgs = newPreviousSpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC, oldPreviousSpec, previousSpec));
+				}
 			}
 		}
 		return previousSpec;
@@ -315,7 +325,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetPreviousSpec() {
@@ -324,51 +334,56 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPreviousSpec(PrimaryVersionSpec newPreviousSpec, NotificationChain msgs) {
-		PrimaryVersionSpec oldPreviousSpec = previousSpec;
+		final PrimaryVersionSpec oldPreviousSpec = previousSpec;
 		previousSpec = newPreviousSpec;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC, oldPreviousSpec, newPreviousSpec);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPreviousSpec(PrimaryVersionSpec newPreviousSpec) {
 		if (newPreviousSpec != previousSpec)
 		{
 			NotificationChain msgs = null;
-			if (previousSpec != null)
+			if (previousSpec != null) {
 				msgs = ((InternalEObject) previousSpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC, null, msgs);
-			if (newPreviousSpec != null)
+			}
+			if (newPreviousSpec != null) {
 				msgs = ((InternalEObject) newPreviousSpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC, null, msgs);
+			}
 			msgs = basicSetPreviousSpec(newPreviousSpec, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC,
 				newPreviousSpec, newPreviousSpec));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<PrimaryVersionSpec> getMergedFrom() {
@@ -382,7 +397,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<PrimaryVersionSpec> getMergedTo() {
@@ -396,17 +411,17 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy())
 		{
-			InternalEObject oldLogMessage = (InternalEObject) logMessage;
+			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
 			logMessage = (LogMessage) eResolveProxy(oldLogMessage);
 			if (logMessage != oldLogMessage)
 			{
-				InternalEObject newLogMessage = (InternalEObject) logMessage;
+				final InternalEObject newLogMessage = (InternalEObject) logMessage;
 				NotificationChain msgs = oldLogMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__LOG_MESSAGE, null, null);
 				if (newLogMessage.eInternalContainer() == null)
@@ -414,11 +429,13 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 					msgs = newLogMessage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.HISTORY_INFO__LOG_MESSAGE, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.HISTORY_INFO__LOG_MESSAGE, oldLogMessage, logMessage));
+				}
 			}
 		}
 		return logMessage;
@@ -426,7 +443,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage basicGetLogMessage() {
@@ -435,51 +452,56 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
-		LogMessage oldLogMessage = logMessage;
+		final LogMessage oldLogMessage = logMessage;
 		logMessage = newLogMessage;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.HISTORY_INFO__LOG_MESSAGE, oldLogMessage, newLogMessage);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage)
 		{
 			NotificationChain msgs = null;
-			if (logMessage != null)
+			if (logMessage != null) {
 				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__LOG_MESSAGE, null, msgs);
-			if (newLogMessage != null)
+			}
+			if (newLogMessage != null) {
 				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__LOG_MESSAGE, null, msgs);
+			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.HISTORY_INFO__LOG_MESSAGE,
 				newLogMessage, newLogMessage));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TagVersionSpec> getTagSpecs() {
@@ -493,7 +515,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<VersionProperty> getVersionProperties() {
@@ -507,17 +529,17 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public ChangePackage getChangePackage() {
+	public AbstractChangePackage getChangePackage() {
 		if (changePackage != null && changePackage.eIsProxy())
 		{
-			InternalEObject oldChangePackage = (InternalEObject) changePackage;
+			final InternalEObject oldChangePackage = (InternalEObject) changePackage;
 			changePackage = (ChangePackage) eResolveProxy(oldChangePackage);
 			if (changePackage != oldChangePackage)
 			{
-				InternalEObject newChangePackage = (InternalEObject) changePackage;
+				final InternalEObject newChangePackage = (InternalEObject) changePackage;
 				NotificationChain msgs = oldChangePackage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE, null, null);
 				if (newChangePackage.eInternalContainer() == null)
@@ -525,11 +547,13 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 					msgs = newChangePackage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE, oldChangePackage, changePackage));
+				}
 			}
 		}
 		return changePackage;
@@ -537,60 +561,65 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public ChangePackage basicGetChangePackage() {
+	public AbstractChangePackage basicGetChangePackage() {
 		return changePackage;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public NotificationChain basicSetChangePackage(ChangePackage newChangePackage, NotificationChain msgs) {
-		ChangePackage oldChangePackage = changePackage;
+	public NotificationChain basicSetChangePackage(AbstractChangePackage newChangePackage, NotificationChain msgs) {
+		final AbstractChangePackage oldChangePackage = changePackage;
 		changePackage = newChangePackage;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE, oldChangePackage, newChangePackage);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public void setChangePackage(ChangePackage newChangePackage) {
+	public void setChangePackage(AbstractChangePackage newChangePackage) {
 		if (newChangePackage != changePackage)
 		{
 			NotificationChain msgs = null;
-			if (changePackage != null)
+			if (changePackage != null) {
 				msgs = ((InternalEObject) changePackage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE, null, msgs);
-			if (newChangePackage != null)
+			}
+			if (newChangePackage != null) {
 				msgs = ((InternalEObject) newChangePackage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE, null, msgs);
+			}
 			msgs = basicSetChangePackage(newChangePackage, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE,
 				newChangePackage, newChangePackage));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -621,7 +650,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -629,30 +658,34 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 		switch (featureID)
 		{
 		case VersioningPackage.HISTORY_INFO__PRIMARY_SPEC:
-			if (resolve)
+			if (resolve) {
 				return getPrimarySpec();
+			}
 			return basicGetPrimarySpec();
 		case VersioningPackage.HISTORY_INFO__NEXT_SPEC:
 			return getNextSpec();
 		case VersioningPackage.HISTORY_INFO__PREVIOUS_SPEC:
-			if (resolve)
+			if (resolve) {
 				return getPreviousSpec();
+			}
 			return basicGetPreviousSpec();
 		case VersioningPackage.HISTORY_INFO__MERGED_FROM:
 			return getMergedFrom();
 		case VersioningPackage.HISTORY_INFO__MERGED_TO:
 			return getMergedTo();
 		case VersioningPackage.HISTORY_INFO__LOG_MESSAGE:
-			if (resolve)
+			if (resolve) {
 				return getLogMessage();
+			}
 			return basicGetLogMessage();
 		case VersioningPackage.HISTORY_INFO__TAG_SPECS:
 			return getTagSpecs();
 		case VersioningPackage.HISTORY_INFO__VERSION_PROPERTIES:
 			return getVersionProperties();
 		case VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE:
-			if (resolve)
+			if (resolve) {
 				return getChangePackage();
+			}
 			return basicGetChangePackage();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -660,7 +693,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -706,7 +739,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -746,7 +779,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -776,11 +809,11 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESHistoryInfoImpl toAPI() {
@@ -793,11 +826,11 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESHistoryInfoImpl createAPI() {

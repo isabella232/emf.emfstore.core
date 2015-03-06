@@ -25,13 +25,13 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.ui.Activator;
 import org.eclipse.emf.emfstore.internal.client.ui.views.changes.TabbedChangesComposite;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -59,12 +59,12 @@ import org.eclipse.swt.widgets.Text;
  * @author Shterev
  */
 public class CommitDialog extends EMFStoreTitleAreaDialog implements
-KeyListener {
+	KeyListener {
 
 	private static final String COMMITDIALOG_TRAY_EXTENSION_POINT = "org.eclipse.emf.emfstore.client.ui.commitdialog.tray"; //$NON-NLS-1$
 	private Text txtLogMsg;
 	private String logMsg = StringUtils.EMPTY;
-	private final ESChangePackage changes;
+	private final AbstractChangePackage changes;
 	private EList<String> oldLogMessages;
 	private final ProjectSpace activeProjectSpace;
 	private final Map<String, CommitDialogTray> trays;
@@ -78,14 +78,14 @@ KeyListener {
 	 * @param parentShell
 	 *            shell
 	 * @param localChangePackage
-	 *            the local {@link ESChangePackage} to be displayed
+	 *            the local {@link AbstractChangePackage} to be displayed
 	 * @param activeProjectSpace
 	 *            ProjectSpace that will be committed
 	 * @param idToEObjectMapping
 	 *            a mapping between ModelElementIds and EObjects. This is needed
 	 *            correctly infer information about deleted model elements
 	 */
-	public CommitDialog(Shell parentShell, ESChangePackage localChangePackage, ProjectSpace activeProjectSpace,
+	public CommitDialog(Shell parentShell, AbstractChangePackage localChangePackage, ProjectSpace activeProjectSpace,
 		ModelElementIdToEObjectMapping idToEObjectMapping) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE);
@@ -97,7 +97,7 @@ KeyListener {
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			COMMITDIALOG_TRAY_EXTENSION_POINT, true)
-		.getExtensionElements()) {
+			.getExtensionElements()) {
 			try {
 				final CommitDialogTray tray = element.getClass("class", //$NON-NLS-1$
 					CommitDialogTray.class);
@@ -159,7 +159,7 @@ KeyListener {
 		oldLabel.setText(Messages.CommitDialog_PreviousMessage);
 		final Combo oldMsg = new Combo(contents, SWT.READ_ONLY);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.TOP)
-		.grab(true, false).applyTo(oldMsg);
+			.grab(true, false).applyTo(oldMsg);
 
 		final ArrayList<String> oldLogMessagesCopy = new ArrayList<String>();
 		oldLogMessagesCopy.addAll(oldLogMessages);
@@ -182,17 +182,16 @@ KeyListener {
 		}
 
 		// ChangesTree
-		final ArrayList<ChangePackage> changePackages = new ArrayList<ChangePackage>();
+		final ArrayList<AbstractChangePackage> changePackages = new ArrayList<AbstractChangePackage>();
 		// changePackages.add(changes);
 
-		// TODO: LCP - fully loading change packages to display them..
-		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
-
-		final ESCloseableIterable<ESOperation> operations = changes.operations();
+		// TODO LCP: fully loading change packages to display them..
+		final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		cp.initialize(FileUtil.createLocationForTemporaryChangePackage());
+		final ESCloseableIterable<AbstractOperation> operations = changes.operations();
 		try {
-			for (final ESOperation operation : operations.iterable()) {
-				cp.getOperations().add(
-					ESOperationImpl.class.cast(operation).toInternalAPI());
+			for (final AbstractOperation operation : operations.iterable()) {
+				cp.add(operation);
 			}
 		} finally {
 			operations.close();
@@ -202,9 +201,9 @@ KeyListener {
 
 		final TabbedChangesComposite changesComposite = new TabbedChangesComposite(
 			contents, SWT.BORDER, changePackages, getActiveProjectSpace()
-			.getProject(), idToEObjectMapping, true);
+				.getProject(), idToEObjectMapping, true);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL)
-		.grab(true, true).span(2, 1).applyTo(changesComposite);
+			.grab(true, true).span(2, 1).applyTo(changesComposite);
 
 		return contents;
 	}
@@ -221,9 +220,9 @@ KeyListener {
 	private void createLogMessageText(Composite contents) {
 		txtLogMsg = new Text(contents, SWT.MULTI | SWT.LEAD | SWT.BORDER);
 		GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
-		.align(SWT.FILL, SWT.TOP).hint(1, 45).applyTo(txtLogMsg);
+			.align(SWT.FILL, SWT.TOP).hint(1, 45).applyTo(txtLogMsg);
 		String logMsg = StringUtils.EMPTY;
-		final ESLogMessage logMessage = changes.getLogMessage();
+		final LogMessage logMessage = changes.getLogMessage();
 
 		if (oldLogMessages.size() == 0) {
 			// on first commit, use log message of change package
@@ -297,34 +296,34 @@ KeyListener {
 		// final String notifyUsers = "Notify users";
 		for (final ESExtensionElement c : new ESExtensionPoint(
 			COMMITDIALOG_TRAY_EXTENSION_POINT)
-		.getExtensionElements()) {
+			.getExtensionElements()) {
 			final String name = c.getAttribute("name"); //$NON-NLS-1$
 			final CommitDialogTray tray = trays.get(name);
 			if (tray != null) {
 				final Button notificationsButton = createButton(parent, 2138,
 					name + " >>", false); //$NON-NLS-1$
 				notificationsButton
-				.addSelectionListener(new SelectionAdapter() {
-					private boolean isOpen;
+					.addSelectionListener(new SelectionAdapter() {
+						private boolean isOpen;
 
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						if (!isOpen) {
-							openTray(tray);
-							notificationsButton.setText(name + " <<"); //$NON-NLS-1$
-							final Rectangle bounds = getShell().getBounds();
-							bounds.x -= 100;
-							getShell().setBounds(bounds);
-						} else {
-							closeTray();
-							notificationsButton.setText(name + " >>"); //$NON-NLS-1$
-							final Rectangle bounds = getShell().getBounds();
-							bounds.x += 100;
-							getShell().setBounds(bounds);
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							if (!isOpen) {
+								openTray(tray);
+								notificationsButton.setText(name + " <<"); //$NON-NLS-1$
+								final Rectangle bounds = getShell().getBounds();
+								bounds.x -= 100;
+								getShell().setBounds(bounds);
+							} else {
+								closeTray();
+								notificationsButton.setText(name + " >>"); //$NON-NLS-1$
+								final Rectangle bounds = getShell().getBounds();
+								bounds.x += 100;
+								getShell().setBounds(bounds);
+							}
+							isOpen = !isOpen;
 						}
-						isOpen = !isOpen;
-					}
-				});
+					});
 			}
 		}
 		super.createButtonsForButtonBar(parent);

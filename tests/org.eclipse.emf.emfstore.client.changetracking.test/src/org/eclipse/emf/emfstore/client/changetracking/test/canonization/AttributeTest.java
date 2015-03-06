@@ -1033,7 +1033,7 @@ public class AttributeTest extends ComparingESTest {
 		}.run(false);
 		clearOperations();
 
-		assertTrue(getProjectSpace().changePackage().isEmpty());
+		assertTrue(getProjectSpace().getLocalChangePackage().isEmpty());
 		assertTrue(forceGetOperations().isEmpty());
 		final Project originalProject = ModelUtil.clone(getProject());
 

@@ -18,11 +18,9 @@ import java.util.Set;
 
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Detects conflicts between operation.
@@ -38,18 +36,19 @@ public class ConflictDetector {
 	}
 
 	/**
-	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ESChangePackage}s.
+	 * Calculates a {@link ChangeConflictSet} based on opposing {@link AbstractChangePackage}s.
 	 *
 	 * @param myChangePackages
-	 *            a list of {@link ESChangePackage}s
+	 *            a list of {@link AbstractChangePackage}s
 	 * @param theirChangePackages
-	 *            a other list of {@link ESChangePackage}s
+	 *            a other list of {@link AbstractChangePackage}s
 	 * @param project
 	 *            the project for which calculate conflicts
 	 * @return a {@link ChangeConflictSet}
 	 */
-	public ChangeConflictSet calculateConflicts(List<ESChangePackage> myChangePackages,
-		List<ESChangePackage> theirChangePackages, Project project) {
+	public ChangeConflictSet calculateConflicts(List<AbstractChangePackage> myChangePackages,
+		List<AbstractChangePackage> theirChangePackages, Project project) {
+
 		final ModelElementIdToEObjectMappingImpl idToEObjectMappingImpl = new ModelElementIdToEObjectMappingImpl(
 			project,
 			myChangePackages);
@@ -58,18 +57,18 @@ public class ConflictDetector {
 	}
 
 	/**
-	 * Calculates a {@link ChangeConflictSet} based on opposing {@link ESChangePackage}s.
+	 * Calculates a {@link ChangeConflictSet} based on opposing {@link AbstractChangePackage}s.
 	 *
 	 * @param myChangePackages
-	 *            a list of {@link ESChangePackage}s
+	 *            a list of {@link AbstractChangePackage}s
 	 * @param theirChangePackages
-	 *            a other list of {@link ESChangePackage}s
+	 *            a other list of {@link AbstractChangePackage}s
 	 * @param idToEObjectMapping
 	 *            a mapping that is used to resolve model elements while calculating conflicts
 	 * @return a {@link ChangeConflictSet}
 	 */
-	public ChangeConflictSet calculateConflicts(List<ESChangePackage> myChangePackages,
-		List<ESChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
+	public ChangeConflictSet calculateConflicts(List<AbstractChangePackage> myChangePackages,
+		List<AbstractChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
 
 		final Set<ConflictBucketCandidate> conflictCandidateBuckets = calculateConflictCandidateBuckets(
 			myChangePackages,
@@ -88,8 +87,9 @@ public class ConflictDetector {
 	 * @param theirChangePackages their operations in a list of change packages
 	 * @return a set of buckets with potentially conflicting operations
 	 */
-	private Set<ConflictBucketCandidate> calculateConflictCandidateBuckets(List<ESChangePackage> myChangePackages,
-		List<ESChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
+	private Set<ConflictBucketCandidate> calculateConflictCandidateBuckets(
+		List<AbstractChangePackage> myChangePackages,
+		List<AbstractChangePackage> theirChangePackages, ModelElementIdToEObjectMapping idToEObjectMapping) {
 
 		final Iterable<AbstractOperation> myOperations = flattenChangepackages(myChangePackages);
 		final Iterable<AbstractOperation> theirOperations = flattenChangepackages(theirChangePackages);
@@ -118,14 +118,13 @@ public class ConflictDetector {
 	}
 
 	// TODO: LCP, List return type
-	private List<AbstractOperation> flattenChangepackages(List<ESChangePackage> changePackages) {
+	private List<AbstractOperation> flattenChangepackages(List<AbstractChangePackage> changePackages) {
 		final List<AbstractOperation> operations = new ArrayList<AbstractOperation>();
-		for (final ESChangePackage changePackage : changePackages) {
-			final ESCloseableIterable<ESOperation> changePackageOperations = changePackage.operations();
+		for (final AbstractChangePackage changePackage : changePackages) {
+			final ESCloseableIterable<AbstractOperation> changePackageOperations = changePackage.operations();
 			try {
-				for (final ESOperation operation : changePackageOperations.iterable()) {
-					operations.add(
-						ESOperationImpl.class.cast(operation).toInternalAPI());
+				for (final AbstractOperation operation : changePackageOperations.iterable()) {
+					operations.add(operation);
 				}
 			} finally {
 				changePackageOperations.close();

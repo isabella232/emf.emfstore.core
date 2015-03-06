@@ -25,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -119,6 +120,8 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 			return createPagedUpdateVersionSpec();
 		case VersioningPackage.FILE_BASED_CHANGE_PACKAGE:
 			return createFileBasedChangePackage();
+		case VersioningPackage.OPERATION_PROXY:
+			return createOperationProxy();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -297,6 +300,18 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	{
 		FileBasedChangePackageImpl fileBasedChangePackage = new FileBasedChangePackageImpl();
 		return fileBasedChangePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public OperationProxy createOperationProxy()
+	{
+		OperationProxyImpl operationProxy = new OperationProxyImpl();
+		return operationProxy;
 	}
 
 	/**

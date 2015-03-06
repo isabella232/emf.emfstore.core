@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,9 +7,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+package org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,35 +18,39 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.apache.commons.io.input.ReversedLinesFileReader;
+import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
+ * A file-based iterator for {@link AbstractOperation}s.
+ *
  * @author emueller
  * @since 1.5
  *
  */
-// TODO: javadoc
-public class OperationIterator implements Iterator<ESOperation> {
+public class OperationIterator implements Iterator<AbstractOperation> {
 
 	private AbstractOperation operation;
 	private OperationEmitter operationEmitter;
-	private ReadLineCapable reader = null;
+	private ReadLineCapable reader;
 	private boolean isInitialized;
 	private final String operationsFilePath;
 	private final Direction direction;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param operationsFilePath
+	 *            the absolute path to the operations file
+	 * @param direction
+	 *            the reading {@link Direction}
+	 */
 	public OperationIterator(String operationsFilePath, Direction direction) {
 		this.operationsFilePath = operationsFilePath;
 		this.direction = direction;
 		init();
 	}
 
-	/**
-	 * @param operationsFilePath
-	 * @param isForwardDirection2
-	 */
 	private void init() {
 		operationEmitter = new OperationEmitter(direction);
 		try {
@@ -63,6 +67,12 @@ public class OperationIterator implements Iterator<ESOperation> {
 		isInitialized = true;
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see java.util.Iterator#hasNext()
+	 */
 	public boolean hasNext() {
 		if (!isInitialized) {
 			init();
@@ -82,18 +92,34 @@ public class OperationIterator implements Iterator<ESOperation> {
 		return false;
 	}
 
-	public ESOperation next() {
-		return operation.toAPI();
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see java.util.Iterator#next()
+	 */
+	public AbstractOperation next() {
+		return operation;
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see java.util.Iterator#remove()
+	 */
 	public void remove() {
-
+		throw new NotImplementedException();
 	}
 
+	/**
+	 * Closes the underlying operations file.
+	 */
 	public void close() {
 		try {
 			reader.close();
 		} catch (final IOException ex) {
+			// TODO
 			ex.printStackTrace();
 		}
 	}

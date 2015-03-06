@@ -20,6 +20,7 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
+import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.EMFStoreController;
@@ -35,11 +36,12 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec;
@@ -49,10 +51,10 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * This subinterface implements all version related functionality.
@@ -257,7 +259,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 */
 	@EmfStoreMethod(MethodId.CREATEVERSION)
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
+		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException {
 
 		final ACUser user = getAuthorizationControl().resolveUser(sessionId);
@@ -305,8 +307,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				if (targetBranch.getBranch().equals(VersionSpec.GLOBAL)) {
 					throw new InvalidVersionSpecException(
 						Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-							+ VersionSpec.GLOBAL +
-							Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+						+ VersionSpec.GLOBAL +
+						Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 				}
 				// when branch does NOT exist, create new branch
 				newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
@@ -352,14 +354,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 			ModelUtil.logInfo(
 				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-					(System.currentTimeMillis() - currentTimeMillis));
+				(System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-		throws StorageException {
+			throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {
@@ -383,7 +385,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @param newProjectState
 	 * @throws FatalESException
 	 */
-	private void trySave(ProjectId projectId, ChangePackage changePackage, final ProjectHistory projectHistory,
+	private void trySave(ProjectId projectId, AbstractChangePackage changePackage, final ProjectHistory projectHistory,
 		Version newVersion, final Project newProjectState) throws FatalESException {
 		getResourceHelper().createResourceForProject(newProjectState,
 			newVersion.getPrimarySpec(), projectHistory.getProjectId());
@@ -539,7 +541,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 *             in case of failure
 	 */
 	@EmfStoreMethod(MethodId.GETCHANGES)
-	public List<ChangePackage> getChanges(ProjectId projectId, VersionSpec source, VersionSpec target)
+	public List<AbstractChangePackage> getChanges(ProjectId projectId, VersionSpec source, VersionSpec target)
 		throws InvalidVersionSpecException, ESException {
 
 		sanityCheckObjects(projectId, source, target);
@@ -547,7 +549,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final PrimaryVersionSpec resolvedTarget = resolveVersionSpec(projectId, target);
 		// if target and source are equal return empty list
 		if (resolvedSource.getIdentifier() == resolvedTarget.getIdentifier()) {
-			return new ArrayList<ChangePackage>();
+			return new ArrayList<AbstractChangePackage>();
 		}
 
 		synchronized (getMonitor()) {
@@ -567,9 +569,9 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				versions.remove(0);
 			}
 
-			List<ChangePackage> result = new ArrayList<ChangePackage>();
+			List<AbstractChangePackage> result = new ArrayList<AbstractChangePackage>();
 			for (final Version version : versions) {
-				final ChangePackage changes = version.getChanges();
+				final AbstractChangePackage changes = version.getChanges();
 				if (changes != null) {
 					changes.setLogMessage(ModelUtil.clone(version.getLogMessage()));
 					result.add(changes);
@@ -579,21 +581,25 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			// if source is after target in time
 			if (!updateForward) {
 				// reverse list and change packages
-				final List<ChangePackage> resultReverse = new ArrayList<ChangePackage>();
-				for (final ChangePackage changePackage : result) {
+				final List<AbstractChangePackage> resultReverse = new ArrayList<AbstractChangePackage>();
+				for (final AbstractChangePackage changePackage : result) {
 
-					final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
-					final ESCloseableIterable<ESOperation> reversedOperations = changePackage.reversedOperations();
-					final ArrayList<ESOperation> copiedReversedOperations = new ArrayList<ESOperation>();
+					// final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
+					final FileBasedChangePackage changePackageReverse = VersioningFactory.eINSTANCE
+						.createFileBasedChangePackage();
+					changePackageReverse.initialize(FileUtil.createLocationForTemporaryChangePackage());
+					final ESCloseableIterable<AbstractOperation> reversedOperations = changePackage
+						.reversedOperations();
+					final ArrayList<AbstractOperation> copiedReversedOperations = new ArrayList<AbstractOperation>();
 					try {
-						for (final ESOperation op : reversedOperations.iterable()) {
+						for (final AbstractOperation op : reversedOperations.iterable()) {
 							copiedReversedOperations.add(op);
 						}
 					} finally {
 						reversedOperations.close();
 					}
 
-					for (final ESOperation reversedOperation : copiedReversedOperations) {
+					for (final AbstractOperation reversedOperation : copiedReversedOperations) {
 						changePackageReverse.add(reversedOperation);
 					}
 
@@ -722,7 +728,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 		int i = resolvedSpec.getIdentifier();
 
-		ChangePackage cp = projectHistory.getVersions().get(i).getChanges();
+		AbstractChangePackage cp = projectHistory.getVersions().get(i).getChanges();
 
 		if (i == projectHistory.getVersions().size() - 1) {
 			return projectHistory.getVersions().get(i).getPrimarySpec();
@@ -733,17 +739,17 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		} while (cp == null && i < projectHistory.getVersions().size());
 
 		// pull at least one change package
-		if (cp.getSize() > maxChanges) {
-			maxChanges = cp.getSize();
+		if (cp.leafSize() > maxChanges) {
+			maxChanges = cp.leafSize();
 		}
 
 		while (changes < maxChanges && i < projectHistory.getVersions().size()) {
 			resolvedSpec = projectHistory.getVersions().get(i).getPrimarySpec();
 			final Version version = projectHistory.getVersions().get(i);
-			final ChangePackage changePackage = version.getChanges();
+			final AbstractChangePackage changePackage = version.getChanges();
 
 			if (changePackage != null) {
-				final int size = changePackage.getSize();
+				final int size = changePackage.leafSize();
 				if (changes + size >= maxChanges) {
 					resolvedSpec = projectHistory.getVersions().get(i).getPrimarySpec();
 					break;

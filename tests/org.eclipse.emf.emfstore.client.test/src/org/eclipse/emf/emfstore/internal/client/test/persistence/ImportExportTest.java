@@ -53,18 +53,18 @@ public class ImportExportTest extends ESTest {
 		final ProjectSpace clonedProjectSpace = ModelUtil.clone(getProjectSpace());
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
-		assertTrue(getProjectSpace().changePackage().size() > 0);
+		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
 
 		// TODO: assert file extension is correct
 
 		temp = File.createTempFile("changes", ExportImportDataUnits.Change.getExtension());
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Export.getExportChangesController(getProjectSpace()));
+			.execute(ExportImportControllerFactory.Export.getExportChangesController(getProjectSpace()));
 
 		// TODO: assert file was written
 
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Import.getImportChangesController(clonedProjectSpace));
+			.execute(ExportImportControllerFactory.Import.getImportChangesController(clonedProjectSpace));
 
 		assertTrue(ModelUtil.areEqual(getProjectSpace().getProject(), clonedProjectSpace.getProject()));
 	}
@@ -73,18 +73,18 @@ public class ImportExportTest extends ESTest {
 	public void testExportImportProjectController() throws IOException {
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
-		assertTrue(getProjectSpace().changePackage().size() > 0);
+		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
 
 		// TODO: assert file extension is correct
 
 		temp = File.createTempFile("project", ExportImportDataUnits.Project.getExtension());
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Export.getExportProjectController(getProjectSpace()));
+			.execute(ExportImportControllerFactory.Export.getExportProjectController(getProjectSpace()));
 
 		// TODO: assert file was written
 
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Import.getImportProjectController("importedProject"));
+			.execute(ExportImportControllerFactory.Import.getImportProjectController("importedProject"));
 
 		ProjectSpace newProjectSpace = null;
 
@@ -102,12 +102,12 @@ public class ImportExportTest extends ESTest {
 	public void testDuplicateImportOfProjectSpace() throws IOException {
 		temp = File.createTempFile("projectSpace", ExportImportDataUnits.ProjectSpace.getExtension());
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Export.getExportProjectSpaceController(getProjectSpace()));
+			.execute(ExportImportControllerFactory.Export.getExportProjectSpaceController(getProjectSpace()));
 
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Import.getImportProjectSpaceController());
+			.execute(ExportImportControllerFactory.Import.getImportProjectSpaceController());
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Import.getImportProjectSpaceController());
+			.execute(ExportImportControllerFactory.Import.getImportProjectSpaceController());
 
 		assertEquals(3, ESWorkspaceProviderImpl.getInstance().getWorkspace().getLocalProjects().size());
 		final ProjectSpace projectSpace = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
@@ -121,19 +121,19 @@ public class ImportExportTest extends ESTest {
 	public void testExportImportProjectSpaceController() throws IOException {
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
-		assertTrue(getProjectSpace().changePackage().size() > 0);
+		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
 
 		// TODO: assert file extension is correct
 
 		temp = File.createTempFile("projectSpace", ExportImportDataUnits.ProjectSpace.getExtension());
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Export.getExportProjectSpaceController(getProjectSpace()));
+			.execute(ExportImportControllerFactory.Export.getExportProjectSpaceController(getProjectSpace()));
 
 		// TODO: assert file was written
 		assertEquals(1, ESWorkspaceProviderImpl.getInstance().getWorkspace().getLocalProjects().size());
 
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-		.execute(ExportImportControllerFactory.Import.getImportProjectSpaceController());
+			.execute(ExportImportControllerFactory.Import.getImportProjectSpaceController());
 
 		assertEquals(2, ESWorkspaceProviderImpl.getInstance().getWorkspace().getLocalProjects().size());
 

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * MaximilianKoegel
  ******************************************************************************/
@@ -27,9 +27,9 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 /**
  * An EMF store is responsible for storing projects, change management on
  * projects and for persisting projects.
- * 
+ *
  * @author Maximilian Koegel
  * @generated NOT
  */
@@ -60,7 +60,7 @@ public interface EMFStore extends EMFStoreInterface {
 	/**
 	 * Get a list of projects the user of the session id can access. The server
 	 * should is determined by the session id.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @return a list of project infos for the projects the user can access
@@ -74,7 +74,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 * Gets a project in a certain revision from the server. Depending on your
 	 * persistence properties, this method can become expensive because it has
 	 * to recalculate the requested project state.
-	 * 
+	 *
 	 * @see ServerConfiguration#PROJECTSTATE_VERSION_PERSISTENCE
 	 * @param sessionId
 	 *            the session id for authentication
@@ -91,7 +91,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Create a new version on the server of the given project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @param projectId
@@ -118,12 +118,12 @@ public interface EMFStore extends EMFStoreInterface {
 	 * @generated NOT
 	 */
 	PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId, PrimaryVersionSpec baseVersionSpec,
-		ChangePackage changePackage, BranchVersionSpec targetBranch, PrimaryVersionSpec sourceVersion,
+		AbstractChangePackage changePackage, BranchVersionSpec targetBranch, PrimaryVersionSpec sourceVersion,
 		LogMessage logMessage) throws ESException, InvalidVersionSpecException;
 
 	/**
 	 * Resolve a version specified to a primary version specifier.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @param versionSpec
@@ -140,7 +140,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Get changes from the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @param projectId
@@ -155,12 +155,13 @@ public interface EMFStore extends EMFStoreInterface {
 	 *             if any error in the EmfStore occurs
 	 * @generated NOT
 	 */
-	List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source, VersionSpec target)
+	List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+		VersionSpec target)
 		throws ESException;
 
 	/**
 	 * Lista all branches of the given project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @param projectId
@@ -174,7 +175,7 @@ public interface EMFStore extends EMFStoreInterface {
 	/**
 	 * Get history information from the server. The list returned will describe
 	 * the versions as request through {@link HistoryQuery}.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id
 	 * @param projectId
@@ -191,7 +192,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Adds a tag to a version of the specified project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id
 	 * @param projectId
@@ -208,7 +209,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Removes a tag to a version of the specified project.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id
 	 * @param projectId
@@ -225,7 +226,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Create a new project on the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @param name
@@ -245,7 +246,7 @@ public interface EMFStore extends EMFStoreInterface {
 	/**
 	 * Create a new project on the server. This createProject method allows to
 	 * create a project on the server with initial projectstate (share project).
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id for authentication
 	 * @param name
@@ -267,7 +268,7 @@ public interface EMFStore extends EMFStoreInterface {
 	/**
 	 * Deletes a project on the server. It's possible to delete the project from
 	 * the containment tree and if wanted to deleted the related files too.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session id
 	 * @param projectId
@@ -284,7 +285,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 * Also roles from groups are aggregated and added to the user. To resolve
 	 * other user than the requesting user himself, the user has to have admin
 	 * access rights. If id is null, the requesting user will be resolved.
-	 * 
+	 *
 	 * @param sessionId
 	 *            session id
 	 * @param id
@@ -300,7 +301,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 * such as version, projecstate etc will be devided in several files on the
 	 * server file system. The server will try to use the specified project id,
 	 * if it already exists a new id is generated.
-	 * 
+	 *
 	 * @param sessionId
 	 *            sessionid
 	 * @param projectHistory
@@ -314,7 +315,7 @@ public interface EMFStore extends EMFStoreInterface {
 	/**
 	 * Exports a given project history from the server. Caution if you try to
 	 * export big projects from the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            session id
 	 * @param projectId
@@ -327,7 +328,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Uploads a file chunk to the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            session id
 	 * @param projectId
@@ -343,7 +344,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Downloads a file chunk from the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            session id
 	 * @param projectId
@@ -374,7 +375,7 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Store EMFProperties on the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            sessionId
 	 * @param property
@@ -391,28 +392,28 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Get stored EMFStoreProperties from the server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            sessionId
 	 * @param projectId
 	 *            the projct id
-	 * 
+	 *
 	 * @return list of EMFStoreProperties
-	 * 
+	 *
 	 * @throws ESException
 	 *             if any error occurs in the EmfStore
-	 * 
+	 *
 	 * **/
 	List<EMFStoreProperty> getEMFProperties(SessionId sessionId, ProjectId projectId) throws ESException;
 
 	/**
 	 * Register a new EPackage.
-	 * 
+	 *
 	 * @param sessionId
 	 *            session id
 	 * @param pkg
 	 *            the EPackage to be registered
-	 * 
+	 *
 	 * @throws ESException
 	 *             if any error occurs in the EmfStore
 	 */
@@ -420,12 +421,12 @@ public interface EMFStore extends EMFStoreInterface {
 
 	/**
 	 * Returns the version of the EMFStore server.
-	 * 
+	 *
 	 * @param sessionId
 	 *            a session ID
-	 * 
+	 *
 	 * @return the version of the EMFStore server
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
@@ -23,22 +23,21 @@ import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
-import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
 /**
  * @author emueller
- * 
+ *
  */
 public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 
@@ -61,8 +60,8 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 		});
 		final ModelElementId modelElementId = getProject().getModelElementId(testElement);
 
-		final ChangePackage myChangePackage = Create.changePackage();
-		final ChangePackage theirChangePackage = Create.changePackage();
+		final AbstractChangePackage myChangePackage = Create.changePackage();
+		final AbstractChangePackage theirChangePackage = Create.changePackage();
 
 		final AttributeOperation myAttributeOp = Create.attributeOp();
 		myAttributeOp.setOldValue(FOO);
@@ -76,16 +75,16 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 		theirAttributeOp.setFeatureName(NAME);
 		theirAttributeOp.setModelElementId(ModelUtil.clone(modelElementId));
 
-		myChangePackage.getOperations().add(myAttributeOp);
-		theirChangePackage.getOperations().add(theirAttributeOp);
+		myChangePackage.add(myAttributeOp);
+		theirChangePackage.add(theirAttributeOp);
 
-		final List<ChangePackage> myChangePackages = Arrays.asList(myChangePackage);
-		final List<ChangePackage> theirChangePackages = Arrays.asList(theirChangePackage);
+		final List<AbstractChangePackage> myChangePackages = Arrays.asList(myChangePackage);
+		final List<AbstractChangePackage> theirChangePackages = Arrays.asList(theirChangePackage);
 
 		final ConflictDetector conflictDetector = new ConflictDetector();
 		final ChangeConflictSet conflictSet = conflictDetector.calculateConflicts(
-			APIUtil.mapToAPI(ESChangePackage.class, myChangePackages),
-			APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages),
+			myChangePackages,
+			theirChangePackages,
 			getProject());
 		final ConflictBucket next = conflictSet.getConflictBuckets().iterator().next();
 
@@ -104,11 +103,26 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 
 		// myChangePackage.getOperations().add(generatedAttributeOp);
 
-		final ChangePackage mergeResolvedConflicts = getProjectSpace().mergeResolvedConflicts(
+		final AbstractChangePackage mergeResolvedConflicts = getProjectSpace().mergeResolvedConflicts(
 			conflictSet,
-			APIUtil.mapToAPI(ESChangePackage.class, myChangePackages),
-			APIUtil.mapToAPI(ESChangePackage.class, theirChangePackages));
-		assertTrue(mergeResolvedConflicts.getOperations().contains(generatedAttributeOp));
+			myChangePackages,
+			theirChangePackages);
+
+		assertTrue(containsOperations(mergeResolvedConflicts, generatedAttributeOp));
 	}
 
+	private static boolean containsOperations(AbstractChangePackage changePackage, AbstractOperation operation) {
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			for (final AbstractOperation op : operations.iterable()) {
+				if (op.equals(operation)) {
+					return true;
+				}
+			}
+		} finally {
+			operations.close();
+		}
+
+		return false;
+	}
 }

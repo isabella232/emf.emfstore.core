@@ -21,9 +21,8 @@ import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
@@ -138,12 +137,11 @@ public class RecordingPerformanceTest extends ESTest {
 		allStopWatch.stop();
 		assertEquals(ITERATIONS, getProject().getModelElements().size());
 		assertEquals(ITERATIONS * COUNT + ITERATIONS, getProject().getAllModelElements().size());
-		final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
 		try {
-			for (final ESOperation operation : operations.iterable()) {
-				ESOperationImpl.class.cast(operation)
-					.toInternalAPI()
-					.apply(project2);
+			for (final AbstractOperation operation : operations.iterable()) {
+				operation.apply(project2);
 			}
 		} finally {
 			operations.close();

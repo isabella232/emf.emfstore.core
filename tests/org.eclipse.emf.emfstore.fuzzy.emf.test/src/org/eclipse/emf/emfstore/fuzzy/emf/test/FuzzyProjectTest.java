@@ -70,7 +70,7 @@ public abstract class FuzzyProjectTest {
 		{
 			put(ESEMFDataProvider.MUTATOR_EDITINGDOMAIN,
 				((ESWorkspaceProviderImpl) ESWorkspaceProvider.INSTANCE)
-					.getEditingDomain());
+				.getEditingDomain());
 		}
 	};
 
@@ -117,7 +117,7 @@ public abstract class FuzzyProjectTest {
 	public void clearOperations() {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				getProjectSpace().changePackage().clear();
+				getProjectSpace().getLocalChangePackage().clear();
 				getProjectSpace().getOperationManager().clearOperations();
 				return null;
 			}

@@ -1,4 +1,15 @@
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+/*******************************************************************************
+ * Copyright (c) 2015 EclipseSource Muenchen GmbH and others.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Edgar Mueller - initial API and implementation
+ ******************************************************************************/
+package org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -14,29 +25,51 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.persistent.FileBasedOperationIterable.Direction;
 
-class OperationEmitter {
+/**
+ * Type for emitting {@link AbstractOperation}s when given an {@link ReadLineCapable} type.
+ *
+ * @author emueller
+ *
+ */
+public class OperationEmitter {
 
-	private static final String NEWLINE = "\n"; //$NON-NLS-1$
-	public static final String OPERATIONS_START_TAG = "<operations>"; //$NON-NLS-1$
-	public static final String OPERATIONS_END_TAG = "</operations>"; //$NON-NLS-1$
-	private static final String VIRTUAL_RESOURCE_URI = "virtualResource.xmi"; //$NON-NLS-1$
-	private static final long NEWLINE_LENGTH = System.getProperty("line.separator").getBytes().length;
+	private static final long NEWLINE_LENGTH = System.getProperty("line.separator").getBytes().length; //$NON-NLS-1$
 
-	boolean withinOperationsElement;
+	private boolean withinOperationsElement;
 	private final Direction direction;
 	private long offset;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param direction
+	 *            the {@link Direction} that is used for reading
+	 */
 	public OperationEmitter(Direction direction) {
 		this.direction = direction;
 		offset = 0;
 	}
 
+	/**
+	 * Returns the current offset.
+	 *
+	 * @return the current offset
+	 */
 	public long getOffset() {
 		return offset;
 	}
 
+	/**
+	 * Given a reader, tries to parse an operation and emit it is,
+	 * if parsing has been successful.
+	 *
+	 * @param reader
+	 *            the reader that is used to de-serialize operations
+	 * @return the successfully parsed operation
+	 * @throws IOException
+	 *             in case reading from the {@link ReadLineCapable} fails
+	 */
 	public AbstractOperation tryEmit(ReadLineCapable reader) throws IOException {
 		final List<String> readLines = new ArrayList<String>();
 		withinOperationsElement = false;
@@ -55,28 +88,27 @@ class OperationEmitter {
 			withinOperationsElement = false;
 			offset += line.getBytes().length;
 		}
-		if (withinOperationsElement == false && !readLines.isEmpty()) {
+		if (!withinOperationsElement && !readLines.isEmpty()) {
 			if (direction == Direction.Backward) {
 				Collections.reverse(readLines);
 			}
-			return deserialize(StringUtils.join(readLines, ""));
+			return deserialize(StringUtils.join(readLines, StringUtils.EMPTY));
 		}
 
 		return null;
 	}
 
-	// TODO: replace with enums?
 	private String getClosingTag(boolean isForward) {
-		return isForward ? OPERATIONS_END_TAG : OPERATIONS_START_TAG;
+		return isForward ? XmlTags.OPERATIONS_END_TAG : XmlTags.OPERATIONS_START_TAG;
 	}
 
 	private String getOpeningTag(boolean isForward) {
-		return isForward ? OPERATIONS_START_TAG : OPERATIONS_END_TAG;
+		return isForward ? XmlTags.OPERATIONS_START_TAG : XmlTags.OPERATIONS_END_TAG;
 	}
 
 	private AbstractOperation deserialize(final String string) throws IOException {
 		final ResourceSet resourceSet = new ResourceSetImpl();
-		final Resource resource = resourceSet.createResource(URI.createURI(VIRTUAL_RESOURCE_URI));
+		final Resource resource = resourceSet.createResource(URI.createURI("virtualResource.xmi")); //$NON-NLS-1$
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		outputStream.write(string.getBytes());
 		final ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());

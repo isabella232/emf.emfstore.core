@@ -282,4 +282,16 @@ public final class FileUtil {
 			throw new IOException(Messages.FileUtil_DeleteFaild + source.getName());
 		}
 	}
+
+	public static String createLocationForTemporaryChangePackage() {
+		File tempFile;
+		try {
+			tempFile = File.createTempFile("temp-", ".eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+			tempFile.deleteOnExit();
+			return tempFile.getAbsolutePath();
+		} catch (final IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
 }

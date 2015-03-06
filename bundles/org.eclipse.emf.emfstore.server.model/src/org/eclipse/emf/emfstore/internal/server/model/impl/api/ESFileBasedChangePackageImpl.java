@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -9,29 +9,33 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 
 import java.util.List;
 
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 import org.eclipse.emf.emfstore.server.model.ESOperation;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+
 /**
- * Mapping between {@link ESChangePackage} and {@link PersistentChangePackage}.
+ * Mapping between {@link ESChangePackage} and {@link FileBasedChangePackage}.
  *
  * @author emueller
  *
  * @since 1.5
  *
  */
-public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage>
-	implements ESChangePackage {
+public class ESFileBasedChangePackageImpl extends AbstractAPIImpl<ESChangePackage, FileBasedChangePackage>
+implements ESChangePackage {
 
 	/**
 	 * Constructor.
@@ -39,7 +43,7 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @param changePackage
 	 *            the delegate
 	 */
-	public ESPersistentChangePackageImpl(PersistentChangePackage changePackage) {
+	public ESFileBasedChangePackageImpl(FileBasedChangePackage changePackage) {
 		super(changePackage);
 	}
 
@@ -50,7 +54,8 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
 	public void setLogMessage(ESLogMessage logMessage) {
-		toInternalAPI().setCommitMessage(logMessage);
+		final LogMessage logMsg = ESLogMessageImpl.class.cast(logMessage).toInternalAPI();
+		toInternalAPI().setLogMessage(logMsg);
 	}
 
 	/**
@@ -97,7 +102,8 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
 	public List<ESOperation> removeFromEnd(int n) {
-		return toInternalAPI().removeFromEnd(n);
+		final List<AbstractOperation> removedOperations = toInternalAPI().removeAtEnd(n);
+		return APIUtil.toExternal(removedOperations);
 	}
 
 	/**
@@ -106,7 +112,23 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
 	public ESCloseableIterable<ESOperation> operations() {
-		return toInternalAPI().operations();
+		final ESCloseableIterable<AbstractOperation> operations = toInternalAPI().operations();
+		return new ESCloseableIterable<ESOperation>() {
+
+			public void close() {
+				operations.close();
+			}
+
+			public Iterable<ESOperation> iterable() {
+				final Function<AbstractOperation, ESOperation> toESOperation = new Function<AbstractOperation, ESOperation>() {
+					public ESOperation apply(AbstractOperation arg0) {
+						return new ESOperationImpl(arg0);
+					}
+				};
+				final Iterable<AbstractOperation> iterable = operations.iterable();
+				return Iterables.transform(iterable, toESOperation);
+			}
+		};
 	}
 
 	/**
@@ -121,10 +143,11 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reverse()
 	 */
-	public ESCloseableIterable<ESOperation> reversedOperations() {
-		return toInternalAPI().reversedOperations();
+	public ESChangePackage reverse() {
+		final FileBasedChangePackage reversedChangePackage = toInternalAPI();
+		return reversedChangePackage.toAPI();
 	}
 
 	/**
@@ -133,6 +156,10 @@ public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePacka
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
 	public ESLogMessage getLogMessage() {
-		return toInternalAPI().getLogMessage();
+		final LogMessage logMessage = toInternalAPI().getLogMessage();
+		if (logMessage == null) {
+			return null;
+		}
+		return logMessage.toAPI();
 	}
 }

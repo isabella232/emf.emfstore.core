@@ -30,8 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
@@ -40,7 +39,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl
 import org.eclipse.emf.emfstore.internal.server.storage.XMIServerURIConverter;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.ESServerURIUtil;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Helper for creating resources etc.
@@ -122,19 +120,17 @@ public class ResourceHelper {
 	 * @throws FatalESException
 	 *             if saving fails
 	 */
-	public void createResourceForChangePackage(ChangePackage changePackage, PrimaryVersionSpec versionId,
+	public void createResourceForChangePackage(AbstractChangePackage changePackage, PrimaryVersionSpec versionId,
 		ProjectId projectId) throws FatalESException {
 		final URI changePackageURI = ESServerURIUtil.createChangePackageURI(projectId, versionId);
 		final List<Map.Entry<EObject, ModelElementId>> ignoredDatatypes = new ArrayList<Map.Entry<EObject, ModelElementId>>();
-		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 
 		try {
-			for (final ESOperation operation : operations.iterable()) {
+			for (final AbstractOperation operation : operations.iterable()) {
 
-				final AbstractOperation op = ESOperationImpl.class.cast(operation).toInternalAPI();
-
-				if (op instanceof CreateDeleteOperation) {
-					final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) op;
+				if (operation instanceof CreateDeleteOperation) {
+					final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) operation;
 
 					for (final Map.Entry<EObject, ModelElementId> e : ((CreateDeleteOperationImpl) createDeleteOp)
 						.getEObjectToIdMap().entrySet()) {
@@ -159,7 +155,7 @@ public class ResourceHelper {
 	}
 
 	/**
-	 * Deletes a projectstate. The {@link Resource} the project is contained in
+	 * Deletes a project state. The {@link Resource} the project is contained in
 	 * will be unloaded as well as deleted.
 	 *
 	 * @param version
@@ -178,8 +174,8 @@ public class ResourceHelper {
 
 	/**
 	 * Gets and checks a number from a given server property. This number -
-	 * referred as x - describes the size of an interval between projectstates.
-	 * It's needed to determine whether a projectstate should be saved or be
+	 * referred as x - describes the size of an interval between project states.
+	 * It's needed to determine whether a project state should be saved or be
 	 * backuped.
 	 *
 	 * @see ServerConfiguration#PROJECTSTATE_VERSION_PERSISTENCE_EVERYXVERSIONS_X

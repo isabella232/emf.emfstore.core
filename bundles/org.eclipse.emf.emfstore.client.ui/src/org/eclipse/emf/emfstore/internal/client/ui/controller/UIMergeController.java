@@ -55,12 +55,12 @@ public class UIMergeController extends AbstractEMFStoreUIController<Void> {
 
 	@Override
 	public Void doRun(IProgressMonitor monitor) throws ESException {
-		if (!projectSpace.changePackage().isEmpty()) {
+		if (!projectSpace.getLocalChangePackage().isEmpty()) {
 			MessageDialog
-			.openError(
-				getShell(),
-				Messages.UIMergeController_MergeNotApplicable_Title,
-				Messages.UIMergeController_MergeNotApplicable_Message);
+				.openError(
+					getShell(),
+					Messages.UIMergeController_MergeNotApplicable_Title,
+					Messages.UIMergeController_MergeNotApplicable_Message);
 			return null;
 		}
 

@@ -12,10 +12,15 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.ESLogMessage;
@@ -46,7 +51,10 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
 	public ESLogMessage getLogMessage() {
-		return toInternalAPI().getLogMessage();
+		if (toInternalAPI().getLogMessage() == null) {
+			return null;
+		}
+		return toInternalAPI().getLogMessage().toAPI();
 	}
 
 	/**
@@ -56,7 +64,8 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
 	public void setLogMessage(ESLogMessage logMessage) {
-		toInternalAPI().setLogMessage(logMessage);
+		final LogMessage logMsg = ESLogMessageImpl.class.cast(logMessage).toInternalAPI();
+		toInternalAPI().setLogMessage(logMsg);
 	}
 
 	/**
@@ -65,7 +74,8 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#addAll(java.util.List)
 	 */
 	public void addAll(List<ESOperation> ops) {
-		toInternalAPI().addAll(ops);
+		final List<AbstractOperation> operations = APIUtil.toInternal(ops);
+		toInternalAPI().getOperations().addAll(operations);
 	}
 
 	/**
@@ -75,7 +85,8 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
 	 */
 	public void add(ESOperation op) {
-		toInternalAPI().add(op);
+		final AbstractOperation operation = ESOperationImpl.class.cast(op).toInternalAPI();
+		toInternalAPI().getOperations().add(operation);
 	}
 
 	/**
@@ -84,7 +95,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#clear()
 	 */
 	public void clear() {
-		toInternalAPI().clear();
+		toInternalAPI().getOperations().clear();
 	}
 
 	/**
@@ -93,7 +104,7 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#isEmpty()
 	 */
 	public boolean isEmpty() {
-		return toInternalAPI().isEmpty();
+		return toInternalAPI().getOperations().isEmpty();
 	}
 
 	/**
@@ -102,7 +113,14 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
 	public List<ESOperation> removeFromEnd(int n) {
-		return toInternalAPI().removeFromEnd(n);
+		final List<ESOperation> collectedOperations = new ArrayList<ESOperation>();
+		for (int i = 0; i < n; i++) {
+			final int size = toInternalAPI().getOperations().size();
+			final AbstractOperation operation = toInternalAPI().getOperations().get(size - 1);
+			collectedOperations.add(operation.toAPI());
+			toInternalAPI().getOperations().remove(size - 1);
+		}
+		return collectedOperations;
 	}
 
 	/**
@@ -111,7 +129,17 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
 	public ESCloseableIterable<ESOperation> operations() {
-		return toInternalAPI().operations();
+		return new ESCloseableIterable<ESOperation>() {
+
+			public void close() {
+				// nothing to do
+			}
+
+			public Iterable<ESOperation> iterable() {
+				final EList<AbstractOperation> operations = toInternalAPI().getOperations();
+				return APIUtil.toExternal(operations);
+			}
+		};
 	}
 
 	/**
@@ -120,15 +148,16 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
 	public int size() {
-		return toInternalAPI().size();
+		return toInternalAPI().getSize();
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reversedOperations()
+	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reverse()
 	 */
-	public ESCloseableIterable<ESOperation> reversedOperations() {
-		return toInternalAPI().reversedOperations();
+	public ESChangePackage reverse() {
+		return toInternalAPI().reverse().toAPI();
 	}
 }

@@ -16,8 +16,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
+import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Log Message</b></em>'. <!-- end-user-doc -->
@@ -36,6 +38,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class LogMessageImpl extends EObjectImpl implements LogMessage {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESLogMessage apiImpl;
 
 	/**
 	 * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
@@ -336,6 +343,27 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 		result.append(clientDate);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 */
+	public ESLogMessage toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 */
+	public ESLogMessage createAPI() {
+		return new ESLogMessageImpl(this);
 	}
 
 } // LogMessageImpl

@@ -18,8 +18,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.util.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 
 /**
  * Exports pending changes on a given {@link ProjectSpace}.
@@ -45,7 +44,7 @@ public class ExportChangesController extends ProjectSpaceBasedExportController {
 	 */
 	public String[] getFilteredNames() {
 		return new String[] { "EMFStore change package (" + ExportImportDataUnits.Change.getExtension() + ")",
-			"All Files (*.*)" };
+		"All Files (*.*)" };
 	}
 
 	/**
@@ -102,11 +101,10 @@ public class ExportChangesController extends ProjectSpaceBasedExportController {
 			file = new File(file.getAbsoluteFile() + ExportImportDataUnits.Change.getExtension());
 		}
 
-		// TODO: LCP - cast, we know that it is an in-memory CP
-		final ESChangePackage changePackage = getProjectSpace().changePackage(false);
+		final AbstractChangePackage changePackage = getProjectSpace().getLocalChangePackage(false);
 		ResourceHelper.putElementIntoNewResourceWithProject(
 			file.getAbsolutePath(),
-			ESChangePackageImpl.class.cast(changePackage).toInternalAPI(),
+			changePackage,
 			getProjectSpace().getProject());
 	}
 

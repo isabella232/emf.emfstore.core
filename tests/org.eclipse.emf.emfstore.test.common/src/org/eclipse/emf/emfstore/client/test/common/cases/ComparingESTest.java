@@ -25,8 +25,8 @@ import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceBase;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.junit.After;
 import org.junit.Before;
 
@@ -73,15 +73,15 @@ public class ComparingESTest extends ESTest {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				if (isCompareAtEnd) {
-					final ESCloseableIterable<ESOperation> operations =
-						getProjectSpace().changePackage().operations();
+					final ESCloseableIterable<AbstractOperation> operations =
+						getProjectSpace().getLocalChangePackage().operations();
 					try {
 						clonedProjectSpace.applyOperations(operations.iterable(), false);
 					} finally {
 						operations.close();
 					}
 				}
-				getProjectSpace().changePackage().clear();
+				getProjectSpace().getLocalChangePackage().clear();
 				return null;
 			}
 		});
@@ -98,7 +98,8 @@ public class ComparingESTest extends ESTest {
 		String clonedProjectString = StringUtils.EMPTY;
 
 		if (isCompareAtEnd) {
-			final ESCloseableIterable<ESOperation> operations = getProjectSpace().changePackage().operations();
+			final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+				.operations();
 			try {
 				clonedProjectSpace.applyOperations(operations.iterable(), true);
 			} finally {

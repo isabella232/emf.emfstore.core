@@ -15,11 +15,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * Provides the author for an operation based on the usersession of the containing change package.
@@ -41,33 +40,33 @@ public class DefaultOperationAuthorProvider implements OperationAuthorProvider {
 	 *            another list of change packages
 	 */
 	public DefaultOperationAuthorProvider(
-		List<ESChangePackage> leftChanges,
-		List<ESChangePackage> rightChanges) {
+		List<AbstractChangePackage> leftChanges,
+		List<AbstractChangePackage> rightChanges) {
 
 		operationAuthorMap = new LinkedHashMap<String, String>();
 
-		for (final ESChangePackage changePackage : leftChanges) {
+		for (final AbstractChangePackage changePackage : leftChanges) {
 			scanIntoAuthorMap(changePackage);
 		}
-		for (final ESChangePackage changePackage : rightChanges) {
+		for (final AbstractChangePackage changePackage : rightChanges) {
 			scanIntoAuthorMap(changePackage);
 		}
 
 	}
 
-	private void scanIntoAuthorMap(ESChangePackage changePackage) {
+	private void scanIntoAuthorMap(AbstractChangePackage changePackage) {
 
 		if (changePackage.getLogMessage() == null) {
 			return;
 		}
 
-		final ESLogMessage logMessage = changePackage.getLogMessage();
+		final LogMessage logMessage = changePackage.getLogMessage();
 		if (logMessage.getAuthor() != null) {
 			final String author = logMessage.getAuthor();
-			final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+			final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 			try {
-				for (final ESOperation operation : operations.iterable()) {
-					operationAuthorMap.put(operation.getId(), author);
+				for (final AbstractOperation operation : operations.iterable()) {
+					operationAuthorMap.put(operation.getIdentifier(), author);
 				}
 			} finally {
 				operations.close();

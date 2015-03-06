@@ -17,7 +17,6 @@ import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 
 /**
  * A {@link Runnable} implementation that applies a given list of operations
@@ -29,7 +28,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
 public class ApplyOperationsRunnable implements Runnable {
 
 	private final ProjectSpaceBase projectSpace;
-	private final Iterable<ESOperation> operations;
+	private final Iterable<AbstractOperation> operations;
 	private final boolean addOperations;
 
 	/**
@@ -42,7 +41,7 @@ public class ApplyOperationsRunnable implements Runnable {
 	 * @param addOperations
 	 *            whether the operations should be added to the project space
 	 */
-	public ApplyOperationsRunnable(ProjectSpaceBase projectSpaceBase, Iterable<ESOperation> operations,
+	public ApplyOperationsRunnable(ProjectSpaceBase projectSpaceBase, Iterable<AbstractOperation> operations,
 		boolean addOperations) {
 		projectSpace = projectSpaceBase;
 		this.operations = operations;
@@ -60,7 +59,7 @@ public class ApplyOperationsRunnable implements Runnable {
 			protected void doRun() {
 				projectSpace.stopChangeRecording();
 				try {
-					for (final ESOperation operation : operations) {
+					for (final AbstractOperation operation : operations) {
 						final AbstractOperation internalOp = ESOperationImpl.class.cast(operation).toInternalAPI();
 						try {
 							internalOp.apply(projectSpace.getProject());

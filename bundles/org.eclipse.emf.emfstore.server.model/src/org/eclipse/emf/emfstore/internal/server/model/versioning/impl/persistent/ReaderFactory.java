@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,9 +7,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.model.versioning.persistent;
+package org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,21 +17,20 @@ import java.io.IOException;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 
 /**
- * @author Edgar
- * @since 1.5
+ * Factory for creating types that are {@link ReadLineCapable}.
+ *
+ * @author emueller
  *
  */
-public interface ReadLineCapable {
+public class ReaderFactory {
 
-	String readLine() throws IOException;
-
-	void close() throws IOException;
-
-	ReadLineFactory INSTANCE = new ReadLineFactory();
-}
-
-class ReadLineFactory {
-
+	/**
+	 * Creates a {@link ReadLineCapable} type that is backed by a {@link BufferedReader}.
+	 *
+	 * @param reader
+	 *            the {@link BufferedReader} to be wrapped
+	 * @return a {@link ReadLineCapable} type
+	 */
 	public ReadLineCapable create(final BufferedReader reader) {
 		return new ReadLineCapable() {
 			public String readLine() throws IOException {
@@ -44,6 +43,13 @@ class ReadLineFactory {
 		};
 	}
 
+	/**
+	 * Creates a {@link ReadLineCapable} type that is backed by a {@link ReversedLinesFileReader}.
+	 *
+	 * @param reversedReader
+	 *            the {@link ReversedLinesFileReader} to be wrapped
+	 * @return a {@link ReadLineCapable} type
+	 */
 	public ReadLineCapable create(final ReversedLinesFileReader reversedReader) {
 		return new ReadLineCapable() {
 			public String readLine() throws IOException {
@@ -55,5 +61,4 @@ class ReadLineFactory {
 			}
 		};
 	}
-
 }

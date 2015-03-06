@@ -22,12 +22,12 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
-import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
@@ -62,20 +62,20 @@ public class ProjectTest extends ESTest {
 		assertTrue(!getProject().contains(bar));
 		assertTrue(getProject().contains(baz));
 
-		final ESChangePackage changePackage = getProjectSpace().changePackage();
+		final AbstractChangePackage changePackage = getProjectSpace().getLocalChangePackage();
 		final ChangePackage localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
 
-		final ESCloseableIterable<ESOperation> operations = changePackage.operations();
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 
 		try {
-			for (final ESOperation abstractOperation : operations.iterable()) {
+			for (final AbstractOperation abstractOperation : operations.iterable()) {
 				localChangePackage.add(abstractOperation);
 			}
 		} finally {
 			operations.close();
 		}
 
-		final ESCloseableIterable<ESOperation> reversedOperations = localChangePackage.reversedOperations();
+		final ESCloseableIterable<AbstractOperation> reversedOperations = localChangePackage.reversedOperations();
 
 		final ProjectSpaceBase ps = (ProjectSpaceBase) getProjectSpace();
 

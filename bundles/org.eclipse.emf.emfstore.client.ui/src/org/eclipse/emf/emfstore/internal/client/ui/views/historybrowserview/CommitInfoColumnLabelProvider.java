@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 
 /**
@@ -27,7 +27,7 @@ public class CommitInfoColumnLabelProvider extends ColumnLabelProvider {
 	public String getText(Object element) {
 		if (element instanceof HistoryInfo) {
 			final HistoryInfo historyInfo = (HistoryInfo) element;
-			ESLogMessage logMessage = null;
+			LogMessage logMessage = null;
 			final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
 			final StringBuilder builder = new StringBuilder();
 			if (historyInfo.getLogMessage() != null) {

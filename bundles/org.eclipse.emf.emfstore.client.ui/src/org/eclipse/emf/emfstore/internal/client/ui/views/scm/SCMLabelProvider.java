@@ -27,13 +27,14 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVi
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationId;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.SWT;
@@ -138,11 +139,11 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		return ret;
 	}
 
-	private String getText(ChangePackage changePackage) {
+	private String getText(AbstractChangePackage changePackage) {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("Change Package");
 		if (changePackage.getLogMessage() != null) {
-			final ESLogMessage logMessage = changePackage.getLogMessage();
+			final LogMessage logMessage = changePackage.getLogMessage();
 			builder.append(" ["); //$NON-NLS-1$
 			builder.append(logMessage.getAuthor());
 			final Date clientDate = logMessage.getClientDate();
@@ -190,7 +191,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		builder.append(baseVersion);
 		builder.append("Version ");
 		builder.append(historyInfo.getPrimarySpec().getIdentifier());
-		ESLogMessage logMessage = null;
+		LogMessage logMessage = null;
 
 		if (historyInfo.getLogMessage() != null) {
 			logMessage = historyInfo.getLogMessage();

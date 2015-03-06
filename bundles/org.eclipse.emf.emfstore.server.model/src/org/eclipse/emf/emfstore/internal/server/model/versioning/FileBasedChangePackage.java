@@ -10,24 +10,33 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>File Based Change Package</b></em>'.
- * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getFilePath <em>File Path
- * </em>}</li>
- * </ul>
- * </p>
+ * @extends APIDelegate<ESChangePackage>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getFilePath <em>
+ *          File Path</em>}</li>
+ *          <li>
+ *          {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getOperationProxies
+ *          <em>Operation Proxies</em>}</li>
+ *          </ul>
+ *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getFileBasedChangePackage()
  * @model
  * @generated
  */
-public interface FileBasedChangePackage extends AbstractChangePackage
+public interface FileBasedChangePackage extends AbstractChangePackage, APIDelegate<ESChangePackage>
 {
 
 	/**
@@ -38,7 +47,7 @@ public interface FileBasedChangePackage extends AbstractChangePackage
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>File Path</em>' attribute.
 	 * @see #setFilePath(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getFileBasedChangePackage_FilePath()
@@ -53,10 +62,43 @@ public interface FileBasedChangePackage extends AbstractChangePackage
 	 * <em>File Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>File Path</em>' attribute.
 	 * @see #getFilePath()
 	 * @generated
 	 */
 	void setFilePath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Operation Proxies</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Operation Proxies</em>' containment reference list isn't clear, there really should be
+	 * more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the value of the '<em>Operation Proxies</em>' containment reference list.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getFileBasedChangePackage_OperationProxies()
+	 * @model containment="true" resolveProxies="true" transient="true"
+	 * @generated
+	 */
+	EList<OperationProxy> getOperationProxies();
+
+	/**
+	 * Initializes this change package.
+	 *
+	 * @generated NOT
+	 */
+	void initialize(String filePath);
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reverse()
+	 */
+	FileBasedChangePackage reverse();
+
 } // FileBasedChangePackage

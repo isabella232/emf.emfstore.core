@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -56,7 +56,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
@@ -68,7 +68,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
  * DecisionManager is the controller for the merge dialog and therefore it's
  * main component. It calculates the conflicts from incoming changes and can
  * execute resolved conflicts.
- * 
+ *
  * @author wesendon
  */
 public class DecisionManager {
@@ -87,7 +87,7 @@ public class DecisionManager {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param project
 	 *            the related project
 	 * @param changeConflict
@@ -184,21 +184,21 @@ public class DecisionManager {
 				conflict = new ReferenceConflict(
 					MultiReferenceOperation.class.cast(
 						CompositeOperation.class.cast(my).getMainOperation()),
-					MultiReferenceOperation.class.cast(
-						CompositeOperation.class.cast(their).getMainOperation()),
-					conf, this);
+						MultiReferenceOperation.class.cast(
+							CompositeOperation.class.cast(their).getMainOperation()),
+							conf, this);
 			} else if (isCompositeMultiRef(my) && isMultiRef(their)) {
 				conflict = new ReferenceConflict(
 					MultiReferenceOperation.class.cast(
 						CompositeOperation.class.cast(my).getMainOperation()),
-					MultiReferenceOperation.class.cast(their),
-					conf, this);
+						MultiReferenceOperation.class.cast(their),
+						conf, this);
 			} else if (isMultiRef(my) && isCompositeMultiRef(their)) {
 				conflict = new ReferenceConflict(
 					MultiReferenceOperation.class.cast(my),
 					MultiReferenceOperation.class.cast(
 						CompositeOperation.class.cast(their).getMainOperation()),
-					conf, this);
+						conf, this);
 
 				// left: CM, right: CS
 				// left: CM, right: S
@@ -207,23 +207,23 @@ public class DecisionManager {
 				conflict = new ReferenceConflict(
 					MultiReferenceOperation.class.cast(
 						CompositeOperation.class.cast(my).getMainOperation()),
-					SingleReferenceOperation.class.cast(
-						CompositeOperation.class.cast(their).getMainOperation()),
-					conf, this);
+						SingleReferenceOperation.class.cast(
+							CompositeOperation.class.cast(their).getMainOperation()),
+							conf, this);
 
 			} else if (isCompositeMultiRef(my) && isSingleRef(their)) {
 				conflict = new ReferenceConflict(
 					MultiReferenceOperation.class.cast(
 						CompositeOperation.class.cast(my).getMainOperation()),
-					SingleReferenceOperation.class.cast(their),
-					conf, this);
+						SingleReferenceOperation.class.cast(their),
+						conf, this);
 
 			} else if (isMultiRef(my) && isCompositeSingleRef(their)) {
 				conflict = new ReferenceConflict(
 					MultiReferenceOperation.class.cast(my),
 					SingleReferenceOperation.class.cast(
 						CompositeOperation.class.cast(their).getMainOperation()),
-					conf, this);
+						conf, this);
 
 				// left: CS, right: CM
 				// left: S, right: CM
@@ -232,21 +232,21 @@ public class DecisionManager {
 				conflict = new ReferenceConflict(
 					SingleReferenceOperation.class.cast(
 						CompositeOperation.class.cast(my).getMainOperation()),
-					MultiReferenceOperation.class.cast(
-						CompositeOperation.class.cast(their).getMainOperation()),
-					conf, this);
+						MultiReferenceOperation.class.cast(
+							CompositeOperation.class.cast(their).getMainOperation()),
+							conf, this);
 			} else if (isSingleRef(my) && isCompositeMultiRef(their)) {
 				conflict = new ReferenceConflict(
 					SingleReferenceOperation.class.cast(my),
 					MultiReferenceOperation.class.cast(
 						CompositeOperation.class.cast(their).getMainOperation()),
-					conf, this);
+						conf, this);
 			} else if (isCompositeSingleRef(my) && isMultiRef(their)) {
 				conflict = new ReferenceConflict(
 					SingleReferenceOperation.class.cast(
 						CompositeOperation.class.cast(my).getMainOperation()),
-					MultiReferenceOperation.class.cast(their),
-					conf, this);
+						MultiReferenceOperation.class.cast(their),
+						conf, this);
 
 			} else if (isMultiRef(my) && isMultiRefSet(their) || isMultiRef(their) && isMultiRefSet(my)) {
 				conflict = createMultiRefMultiSet(conf);
@@ -288,9 +288,9 @@ public class DecisionManager {
 			} else {
 				unvisualizedConflicts.add(conf);
 				WorkspaceUtil
-					.log(
-						Messages.DecisionManager_No_ConflictRule_Applicable,
-						IStatus.WARNING);
+				.log(
+					Messages.DecisionManager_No_ConflictRule_Applicable,
+					IStatus.WARNING);
 			}
 		}
 	}
@@ -404,7 +404,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the conflicts.
-	 * 
+	 *
 	 * @return list of conflicts.
 	 */
 	public ArrayList<VisualConflict> getConflicts() {
@@ -413,7 +413,7 @@ public class DecisionManager {
 
 	/**
 	 * Checks whether all conflicts are resolved.
-	 * 
+	 *
 	 * @return true if all are resolved
 	 */
 	public boolean isResolved() {
@@ -445,7 +445,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the conflictdetector.
-	 * 
+	 *
 	 * @return conflictdetector
 	 */
 	public ConflictDetector getConflictDetector() {
@@ -454,7 +454,7 @@ public class DecisionManager {
 
 	/**
 	 * Flat whether branches are merged opposed to versions on the same branch.
-	 * 
+	 *
 	 * @return true, if branches
 	 */
 	public boolean isBranchMerge() {
@@ -463,7 +463,7 @@ public class DecisionManager {
 
 	/**
 	 * Get the Name of an model element by modelelement id.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            id of element
 	 * @return name as string
@@ -474,7 +474,7 @@ public class DecisionManager {
 
 	/**
 	 * Get the Name of an model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            element
 	 * @return name as string
@@ -486,7 +486,7 @@ public class DecisionManager {
 	/**
 	 * Returns the model element. Therefore the project as well as creation and
 	 * deletion operations are searched.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the id of an element
 	 * @return the model element with the given ID or <code>null</code> if no such model element has been found
@@ -498,57 +498,33 @@ public class DecisionManager {
 	/**
 	 * Returns the name of the author for a operation in list of their
 	 * operations.
-	 * 
+	 *
 	 * @param theirOperation
 	 *            operation
 	 * @return name as string or empty string
 	 */
 	public String getAuthorForOperation(AbstractOperation theirOperation) {
-		// TODO: review
+
 		EObject container = theirOperation;
-		while (!(container instanceof ChangePackage)) {
+		while (!AbstractChangePackage.class.isInstance(container)) {
 			container = container.eContainer();
 		}
 
-		final ChangePackage cp = (ChangePackage) container;
+		final AbstractChangePackage changePackage = (AbstractChangePackage) container;
 
 		// ME: I don't think this will be ever the case
-		if (cp.getLogMessage() == null || cp.getLogMessage().getAuthor() == null) {
+		if (changePackage.getLogMessage() == null || changePackage.getLogMessage().getAuthor() == null) {
 			return StringUtils.EMPTY;
 		}
 
-		return cp.getLogMessage().getAuthor();
-		// theirOperation.
-		// for (ChangePackage cp : theirChangePackages) {
-		// for (AbstractOperation op : cp.getOperations()) {
-		// List<AbstractOperation> tmpList = new ArrayList<AbstractOperation>();
-		// if (op instanceof CompositeOperation) {
-		// tmpList.add(op);
-		// tmpList.addAll(((CompositeOperation) op).getSubOperations());
-		// } else {
-		// tmpList.add(op);
-		// }
-		// for (AbstractOperation ao : tmpList) {
-		// if (ao.equals(theirOperation)) {
-		// LogMessage log = cp.getLogMessage();
-		// if (log == null) {
-		// return "";
-		// }
-		// return (log.getAuthor() == null) ? "" : log.getAuthor();
-		//
-		// }
-		// }
-		// }
-		// }
-		// MKCD
-		// return StringUtils.EMPTY;
+		return changePackage.getLogMessage().getAuthor();
 	}
 
 	private Integer myLeafOperationCount;
 
 	/**
 	 * Count my leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countMyLeafOperations() {
@@ -580,7 +556,7 @@ public class DecisionManager {
 
 	/**
 	 * Count their leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countTheirLeafOperations() {
@@ -594,7 +570,7 @@ public class DecisionManager {
 
 	/**
 	 * Count my leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countMyOperations() {
@@ -608,7 +584,7 @@ public class DecisionManager {
 
 	/**
 	 * Count their leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countTheirOperations() {
@@ -620,7 +596,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the mapping that is used to resolve model elements correctly.
-	 * 
+	 *
 	 * @return the ID to {@link EObject} mapping
 	 */
 	public ModelElementIdToEObjectMapping getIdToEObjectMapping() {
@@ -629,7 +605,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the project on which the decision manager is working on.
-	 * 
+	 *
 	 * @return the project associated with this decision manager
 	 */
 	public Project getProject() {

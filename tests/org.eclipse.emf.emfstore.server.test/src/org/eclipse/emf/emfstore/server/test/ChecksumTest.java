@@ -118,7 +118,7 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		clearOperations();
 
-		assertTrue(getProjectSpace().changePackage().isEmpty());
+		assertTrue(getProjectSpace().getLocalChangePackage().isEmpty());
 
 		final ProjectSpace clonedProjectSpace = cloneProjectSpace(getProjectSpace());
 		final ModelElementId attributeId = getProject().getModelElementId(attribute);
@@ -133,10 +133,6 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 		assertTrue(createDeleteOperation.isDelete());
 
 		revert(getLocalProject());
-
-		final String eObjectToString = ModelUtil.eObjectToString(getProject(), ModelUtil.getResourceSaveOptions());
-		final String eObjectToString2 = ModelUtil.eObjectToString(clonedProjectSpace.getProject(),
-			ModelUtil.getResourceSaveOptions());
 
 		assertTrue(ModelUtil.areEqual(getProject(), clonedProjectSpace.getProject()));
 		final long checksumAfterRevert = computeChecksum(getLocalProject());
