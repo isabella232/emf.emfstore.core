@@ -65,7 +65,8 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
+		if (itemPropertyDescriptors == null)
+		{
 			super.getPropertyDescriptors(object);
 
 			addProjectNamePropertyDescriptor(object);
@@ -251,7 +252,6 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * This adds a property descriptor for the Changed Shared Properties feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addChangedSharedPropertiesPropertyDescriptor(Object object) {
@@ -277,7 +277,6 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -298,7 +297,6 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -442,15 +440,14 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		final Object childFeature = feature;
-		final Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-		final boolean qualify =
+		boolean qualify =
 			childFeature == ModelPackage.Literals.PROJECT_SPACE__BASE_VERSION ||
 				childFeature == ModelPackage.Literals.PROJECT_SPACE__MERGED_VERSION;
 

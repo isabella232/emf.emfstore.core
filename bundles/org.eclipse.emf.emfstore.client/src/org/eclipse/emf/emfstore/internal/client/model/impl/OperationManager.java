@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
  * @author emueller
  */
 public class OperationManager implements OperationRecorderListener, ESDisposable, ESCommandObserver,
-IdEObjectCollectionChangeObserver {
+	IdEObjectCollectionChangeObserver {
 
 	private final OperationRecorder operationRecorder;
 	private final ProjectSpace projectSpace;
@@ -63,8 +63,8 @@ IdEObjectCollectionChangeObserver {
 			Configuration.getClientBehavior().isCutOffIncomingCrossReferencesActivated());
 		// usage of commands is not forced by default
 		operationRecorder.getConfig()
-		.setForceCommands(
-			Configuration.getClientBehavior().isForceCommandsActived());
+			.setForceCommands(
+				Configuration.getClientBehavior().isForceCommandsActived());
 		// cut elements are added automatically as regular model elements by default
 		operationRecorder.getConfig().setDenyAddCutElementsToModelElements(
 			Configuration.getClientBehavior().isDenyAddCutElementsToModelElementsFeatureActived());
@@ -86,8 +86,8 @@ IdEObjectCollectionChangeObserver {
 	 */
 	public void addOperationObserver(OperationObserver operationObserver) {
 		ESWorkspaceProviderImpl
-		.getObserverBus()
-		.register(operationObserver);
+			.getObserverBus()
+			.register(operationObserver);
 	}
 
 	/**
@@ -98,8 +98,8 @@ IdEObjectCollectionChangeObserver {
 	 */
 	public void removeOperationListener(OperationObserver operationObserver) {
 		ESWorkspaceProviderImpl
-		.getObserverBus()
-		.unregister(operationObserver);
+			.getObserverBus()
+			.unregister(operationObserver);
 	}
 
 	/**
@@ -110,9 +110,9 @@ IdEObjectCollectionChangeObserver {
 	 */
 	public void notifyOperationUndone(AbstractOperation operation) {
 		ESWorkspaceProviderImpl
-		.getObserverBus()
-		.notify(OperationObserver.class)
-		.operationUndone(operation);
+			.getObserverBus()
+			.notify(OperationObserver.class)
+			.operationUndone(operation);
 	}
 
 	/**
@@ -123,9 +123,9 @@ IdEObjectCollectionChangeObserver {
 	 */
 	void notifyOperationExecuted(AbstractOperation operation) {
 		ESWorkspaceProviderImpl
-		.getObserverBus()
-		.notify(OperationObserver.class)
-		.operationExecuted(operation);
+			.getObserverBus()
+			.notify(OperationObserver.class)
+			.operationExecuted(operation);
 	}
 
 	/**

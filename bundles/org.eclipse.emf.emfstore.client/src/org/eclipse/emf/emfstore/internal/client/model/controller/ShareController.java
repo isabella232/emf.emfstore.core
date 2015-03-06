@@ -119,7 +119,7 @@ public class ShareController extends ServerCall<ProjectInfo> {
 
 		getProgressMonitor().done();
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESShareObserver.class)
-		.shareDone(getProjectSpace().toAPI());
+			.shareDone(getProjectSpace().toAPI());
 		return projectInfo;
 	}
 
@@ -135,9 +135,9 @@ public class ShareController extends ServerCall<ProjectInfo> {
 						getProjectSpace().getProjectName() == null ? MessageFormat.format(
 							Messages.ShareController_Project_At, new Date())
 							: getProjectSpace().getProjectName(),
-							StringUtils.EMPTY,
-							logMessage,
-							getProjectSpace().getProject());
+						StringUtils.EMPTY,
+						logMessage,
+						getProjectSpace().getProject());
 			}
 		}.execute();
 	}

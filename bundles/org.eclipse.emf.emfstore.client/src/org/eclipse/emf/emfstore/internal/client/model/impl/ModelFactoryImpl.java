@@ -40,13 +40,12 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public static ModelFactory init() {
 		try
 		{
-			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
-				.getEFactory(ModelPackage.eNS_URI);
+			ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE.getEFactory(ModelPackage.eNS_URI);
 			if (theModelFactory != null)
 			{
 				return theModelFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -94,7 +93,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public Workspace createWorkspace() {
-		final WorkspaceImpl workspace = new WorkspaceImpl();
+		WorkspaceImpl workspace = new WorkspaceImpl();
 		return workspace;
 	}
 
@@ -104,7 +103,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ServerInfo createServerInfo() {
-		final ServerInfoImpl serverInfo = new ServerInfoImpl();
+		ServerInfoImpl serverInfo = new ServerInfoImpl();
 		return serverInfo;
 	}
 
@@ -114,7 +113,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public Usersession createUsersession() {
-		final UsersessionImpl usersession = new UsersessionImpl();
+		UsersessionImpl usersession = new UsersessionImpl();
 		return usersession;
 	}
 
@@ -124,7 +123,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ProjectSpace createProjectSpace() {
-		final ProjectSpaceImpl projectSpace = new ProjectSpaceImpl();
+		ProjectSpaceImpl projectSpace = new ProjectSpaceImpl();
 		return projectSpace;
 	}
 
@@ -134,7 +133,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public PendingFileTransfer createPendingFileTransfer() {
-		final PendingFileTransferImpl pendingFileTransfer = new PendingFileTransferImpl();
+		PendingFileTransferImpl pendingFileTransfer = new PendingFileTransferImpl();
 		return pendingFileTransfer;
 	}
 

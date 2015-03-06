@@ -87,7 +87,7 @@ public class ModelSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -106,46 +106,40 @@ public class ModelSwitch<T> {
 		switch (classifierID)
 		{
 		case ModelPackage.WORKSPACE: {
-			final Workspace workspace = (Workspace) theEObject;
+			Workspace workspace = (Workspace) theEObject;
 			T result = caseWorkspace(workspace);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.SERVER_INFO: {
-			final ServerInfo serverInfo = (ServerInfo) theEObject;
+			ServerInfo serverInfo = (ServerInfo) theEObject;
 			T result = caseServerInfo(serverInfo);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.USERSESSION: {
-			final Usersession usersession = (Usersession) theEObject;
+			Usersession usersession = (Usersession) theEObject;
 			T result = caseUsersession(usersession);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.PROJECT_SPACE: {
-			final ProjectSpace projectSpace = (ProjectSpace) theEObject;
+			ProjectSpace projectSpace = (ProjectSpace) theEObject;
 			T result = caseProjectSpace(projectSpace);
-			if (result == null) {
+			if (result == null)
 				result = caseIdentifiableElement(projectSpace);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.PENDING_FILE_TRANSFER: {
-			final PendingFileTransfer pendingFileTransfer = (PendingFileTransfer) theEObject;
+			PendingFileTransfer pendingFileTransfer = (PendingFileTransfer) theEObject;
 			T result = casePendingFileTransfer(pendingFileTransfer);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:

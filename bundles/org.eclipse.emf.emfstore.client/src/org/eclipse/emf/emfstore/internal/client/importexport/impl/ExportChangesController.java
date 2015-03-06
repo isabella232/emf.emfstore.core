@@ -45,7 +45,7 @@ public class ExportChangesController extends ProjectSpaceBasedExportController {
 	 */
 	public String[] getFilteredNames() {
 		return new String[] { "EMFStore change package (" + ExportImportDataUnits.Change.getExtension() + ")",
-		"All Files (*.*)" };
+			"All Files (*.*)" };
 	}
 
 	/**

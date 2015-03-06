@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * @implements IAdaptable
  * @extends APIDelegate<ESWorkspaceImpl>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -47,7 +47,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getUsersessions <em>Usersessions</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace()
  * @model
  * @generated

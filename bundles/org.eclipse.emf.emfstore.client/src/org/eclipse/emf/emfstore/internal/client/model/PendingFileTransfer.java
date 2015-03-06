@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Pending File Transfer</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * File Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer()
  * @model
  * @generated

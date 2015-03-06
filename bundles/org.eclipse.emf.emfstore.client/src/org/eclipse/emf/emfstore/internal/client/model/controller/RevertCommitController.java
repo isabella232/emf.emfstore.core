@@ -90,8 +90,8 @@ public class RevertCommitController extends ServerCall<Void> {
 				for (final ESOperation reversedOperation : reversedOperations.iterable()) {
 					try {
 						ESOperationImpl.class.cast(reversedOperation)
-						.toInternalAPI()
-						.apply(project);
+							.toInternalAPI()
+							.apply(project);
 					} catch (final IllegalStateException e) {
 						// ignore all non-applied operations
 					}

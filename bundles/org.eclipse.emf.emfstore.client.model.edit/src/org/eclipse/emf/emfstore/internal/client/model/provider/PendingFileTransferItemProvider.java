@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -31,18 +32,15 @@ import org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer}
- * object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PendingFileTransferItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public PendingFileTransferItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +50,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -73,7 +70,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the File Version feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addFileVersionPropertyDescriptor(Object object) {
@@ -97,7 +93,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the Chunk Number feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addChunkNumberPropertyDescriptor(Object object) {
@@ -121,7 +116,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the Upload feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addUploadPropertyDescriptor(Object object) {
@@ -145,7 +139,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the File Name feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addFileNamePropertyDescriptor(Object object) {
@@ -196,7 +189,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -211,7 +203,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -225,7 +216,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This returns PendingFileTransfer.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -236,12 +226,11 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((PendingFileTransfer) object).getFileName();
+		String label = ((PendingFileTransfer) object).getFileName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PendingFileTransfer_type") : //$NON-NLS-1$
 			getString("_UI_PendingFileTransfer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -278,7 +267,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -294,7 +282,6 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

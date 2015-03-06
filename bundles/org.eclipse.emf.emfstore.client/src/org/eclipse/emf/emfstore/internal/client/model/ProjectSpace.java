@@ -352,7 +352,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Base Version</em>' containment reference.
 	 * @see #setBaseVersion(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_BaseVersion()
@@ -391,7 +391,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Workspace</em>' container reference.
 	 * @see #setWorkspace(Workspace)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Workspace()
@@ -406,7 +406,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Workspace</em>}' container reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Workspace</em>' container reference.
 	 * @see #getWorkspace()
 	 * @generated
@@ -421,14 +421,14 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Local Change Package</em>' containment reference.
 	 * @see #setLocalChangePackage(ChangePackage)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_LocalChangePackage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ChangePackage getLocalChangePackageOLD();
+	ChangePackage getLocalChangePackage();
 
 	// TODO: LCP- return type should be internal..
 	ESChangePackage changePackage();
@@ -466,7 +466,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Merged Version</em>' containment reference.
 	 * @see #setMergedVersion(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_MergedVersion()
@@ -480,7 +480,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Merged Version</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Merged Version</em>' containment reference.
 	 * @see #getMergedVersion()
 	 * @generated
@@ -604,7 +604,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Project</em>' containment reference.
 	 * @see #setProject(Project)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_Project()
@@ -621,7 +621,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Project Description</em>' attribute.
 	 * @see #setProjectDescription(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ProjectDescription()
@@ -638,7 +638,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Project Id</em>' containment reference.
 	 * @see #setProjectId(ProjectId)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getProjectSpace_ProjectId()
@@ -895,7 +895,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Base Version</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Base Version</em>' containment reference.
 	 * @see #getBaseVersion()
 	 * @generated
@@ -924,7 +924,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Resource Count</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Resource Count</em>' attribute.
 	 * @see #getResourceCount()
 	 * @generated
@@ -935,7 +935,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#isDirty <em>Dirty</em>}
 	 * ' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Dirty</em>' attribute.
 	 * @see #isDirty()
 	 * @generated
@@ -947,7 +947,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Last Updated</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Last Updated</em>' attribute.
 	 * @see #getLastUpdated()
 	 * @generated
@@ -959,7 +959,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Project</em>' containment reference.
 	 * @see #getProject()
 	 * @generated
@@ -971,7 +971,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Project Description</em>' attribute.
 	 * @see #getProjectDescription()
 	 * @generated
@@ -983,7 +983,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Project Id</em>' containment reference.
 	 * @see #getProjectId()
 	 * @generated
@@ -995,7 +995,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Project Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Project Name</em>' attribute.
 	 * @see #getProjectName()
 	 * @generated
@@ -1016,7 +1016,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <em>Usersession</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Usersession</em>' reference.
 	 * @see #getUsersession()
 	 * @generated

@@ -59,7 +59,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * Properties</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class UsersessionImpl extends EObjectImpl implements Usersession {

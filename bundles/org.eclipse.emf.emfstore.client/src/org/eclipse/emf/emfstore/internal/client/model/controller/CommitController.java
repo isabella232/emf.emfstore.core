@@ -137,7 +137,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		setLogMessage(logMessage, localChangePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-		.inspectChanges(getProjectSpace().toAPI(), localChangePackage, getProgressMonitor());
+			.inspectChanges(getProjectSpace().toAPI(), localChangePackage, getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), localChangePackage);
@@ -197,7 +197,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		});
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-		.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
+			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
 		return newBaseVersion;
 	}

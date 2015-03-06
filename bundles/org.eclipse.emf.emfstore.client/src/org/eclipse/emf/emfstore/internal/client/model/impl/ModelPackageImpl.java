@@ -113,12 +113,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public static ModelPackage init() {
-		if (isInited) {
+		if (isInited)
 			return (ModelPackage) EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI);
-		}
 
 		// Obtain or create and register package
-		final ModelPackageImpl theModelPackage = (ModelPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE
+		ModelPackageImpl theModelPackage = (ModelPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE
 			.get(eNS_URI)
 			: new ModelPackageImpl());
 
@@ -608,9 +607,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) {
+		if (isCreated)
 			return;
-		}
 		isCreated = true;
 
 		// Create classes and their features
@@ -681,9 +679,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) {
+		if (isInitialized)
 			return;
-		}
 		isInitialized = true;
 
 		// Initialize package
@@ -692,13 +689,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		final org.eclipse.emf.emfstore.internal.common.model.ModelPackage theModelPackage_2 = (org.eclipse.emf.emfstore.internal.common.model.ModelPackage) EPackage.Registry.INSTANCE
+		org.eclipse.emf.emfstore.internal.common.model.ModelPackage theModelPackage_2 = (org.eclipse.emf.emfstore.internal.common.model.ModelPackage) EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eNS_URI);
-		final org.eclipse.emf.emfstore.internal.server.model.ModelPackage theModelPackage_1 = (org.eclipse.emf.emfstore.internal.server.model.ModelPackage) EPackage.Registry.INSTANCE
+		org.eclipse.emf.emfstore.internal.server.model.ModelPackage theModelPackage_1 = (org.eclipse.emf.emfstore.internal.server.model.ModelPackage) EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI);
-		final AccesscontrolPackage theAccesscontrolPackage = (AccesscontrolPackage) EPackage.Registry.INSTANCE
+		AccesscontrolPackage theAccesscontrolPackage = (AccesscontrolPackage) EPackage.Registry.INSTANCE
 			.getEPackage(AccesscontrolPackage.eNS_URI);
-		final VersioningPackage theVersioningPackage = (VersioningPackage) EPackage.Registry.INSTANCE
+		VersioningPackage theVersioningPackage = (VersioningPackage) EPackage.Registry.INSTANCE
 			.getEPackage(VersioningPackage.eNS_URI);
 
 		// Create type parameters
@@ -713,18 +710,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			"Workspace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(
 			getWorkspace_ProjectSpaces(),
-			getProjectSpace(),
-			getProjectSpace_Workspace(),
+			this.getProjectSpace(),
+			this.getProjectSpace_Workspace(),
 			"projectSpaces", null, 0, -1, Workspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getWorkspace_ProjectSpaces().getEKeys().add(theModelPackage_2.getIdentifiableElement_Identifier());
 		initEReference(
 			getWorkspace_ServerInfos(),
-			getServerInfo(),
+			this.getServerInfo(),
 			null,
 			"serverInfos", null, 0, -1, Workspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getWorkspace_Usersessions(),
-			getUsersession(),
+			this.getUsersession(),
 			null,
 			"usersessions", null, 0, -1, Workspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -749,7 +746,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			"projectInfos", null, 0, -1, ServerInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getServerInfo_LastUsersession(),
-			getUsersession(),
+			this.getUsersession(),
 			null,
 			"lastUsersession", null, 0, 1, ServerInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
@@ -778,7 +775,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			"persistentPassword", null, 0, 1, Usersession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getUsersession_ServerInfo(),
-			getServerInfo(),
+			this.getServerInfo(),
 			null,
 			"serverInfo", null, 0, 1, Usersession.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
@@ -818,7 +815,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			"projectDescription", null, 1, 1, ProjectSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getProjectSpace_Usersession(),
-			getUsersession(),
+			this.getUsersession(),
 			null,
 			"usersession", null, 0, 1, ProjectSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
@@ -859,8 +856,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			"changedSharedProperties", null, 0, -1, ProjectSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getProjectSpace_Workspace(),
-			getWorkspace(),
-			getWorkspace_ProjectSpaces(),
+			this.getWorkspace(),
+			this.getWorkspace_ProjectSpaces(),
 			"workspace", null, 0, 1, ProjectSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getProjectSpace_LocalChangePackage(),

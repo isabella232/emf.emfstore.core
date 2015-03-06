@@ -45,7 +45,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * Alias</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ServerInfoImpl extends EObjectImpl implements ServerInfo {

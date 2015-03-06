@@ -158,9 +158,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		}
 
 		ESWorkspaceProviderImpl
-		.getObserverBus()
-		.notify(ESUpdateObserver.class, true)
-		.inspectChanges(getProjectSpace().toAPI(), incomingChanges, getProgressMonitor());
+			.getObserverBus()
+			.notify(ESUpdateObserver.class, true)
+			.inspectChanges(getProjectSpace().toAPI(), incomingChanges, getProgressMonitor());
 
 		if (getProjectSpace().changePackage().size() > 0) {
 			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
@@ -186,7 +186,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			getProgressMonitor(), true);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
-		.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
+			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
 
 		return getProjectSpace().getBaseVersion();
 	}
@@ -229,7 +229,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		ModelUtil.logError(MessageFormat
 			.format(
 				Messages.UpdateController_ChangePackagesRemoved
-				+ Messages.UpdateController_PullingUpBaseVersion,
+					+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 	}
 

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.provider;
@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.client.model.Usersession} object.
  * <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class UsersessionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -80,19 +80,19 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addUsernamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_username_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Usersession_username_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.USERSESSION__USERNAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.USERSESSION__USERNAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -103,19 +103,19 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addPasswordPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_password_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Usersession_password_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.USERSESSION__PASSWORD,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.USERSESSION__PASSWORD,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -126,43 +126,43 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addSessionIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_sessionId_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Usersession_sessionId_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.USERSESSION__SESSION_ID,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+					ModelPackage.Literals.USERSESSION__SESSION_ID,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Persistent Password feature. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPersistentPasswordPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_persistentPassword_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Usersession_persistentPassword_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.USERSESSION__PERSISTENT_PASSWORD,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.USERSESSION__PERSISTENT_PASSWORD,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -173,20 +173,20 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addServerInfoPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_serverInfo_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Usersession_serverInfo_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.USERSESSION__SERVER_INFO,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+					ModelPackage.Literals.USERSESSION__SERVER_INFO,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
@@ -197,20 +197,20 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addSavePasswordPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_savePassword_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Usersession_savePassword_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				ModelPackage.Literals.USERSESSION__SAVE_PASSWORD,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+					ModelPackage.Literals.USERSESSION__SAVE_PASSWORD,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 
 	/**
 	 * This returns the label text for the adapted class.
-	 * 
+	 *
 	 * @param object the object to provide the label for
 	 * @return the label <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated NOT
@@ -275,7 +275,7 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
 	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -310,12 +310,12 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.USERSESSION__AC_USER,
 				AccesscontrolFactory.eINSTANCE.createACUser()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.USERSESSION__CHANGED_PROPERTIES,
 				AccesscontrolFactory.eINSTANCE.createOrgUnitProperty()));
 	}

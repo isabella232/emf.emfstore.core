@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  *
  */
 public class ESPersistentChangePackageImpl extends AbstractAPIImpl<ESChangePackage, PersistentChangePackage>
-implements ESChangePackage {
+	implements ESChangePackage {
 
 	/**
 	 * Constructor.

@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * Preliminary File Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PendingFileTransferImpl extends EObjectImpl implements PendingFileTransfer {
