@@ -44,6 +44,7 @@ public class LoginService {
 	private final ESOrgUnitResolver orgUnitResolver;
 	private final ESOrgUnitProvider orgUnitProvider;
 	private final ESAuthenticationControlType authenticationControlType;
+	private ESUserVerifier userVerifier;
 
 	/**
 	 * Constructor.
@@ -69,13 +70,16 @@ public class LoginService {
 		this.orgUnitResolver = orgUnitResolver;
 	}
 
+	// TODO: init called every time
 	private ESUserVerifier initUserVerifierService() {
 
 		try {
 			// if any extension point has been registered, use it
 			if (new ESExtensionPoint(USER_VERIFIER_EXTENSION_ID, true).size() > 0) {
-				return new ESExtensionPoint(USER_VERIFIER_EXTENSION_ID, true).getClass(
+				final ESUserVerifier verifier = new ESExtensionPoint(USER_VERIFIER_EXTENSION_ID, true).getClass(
 					"providerClass", ESUserVerifier.class); //$NON-NLS-1$
+				verifier.init(orgUnitProvider);
+				return verifier;
 			}
 
 			return ESUserVerifierFactory.getInstance().createUserVerifier(
@@ -109,7 +113,7 @@ public class LoginService {
 			throws AccessControlException {
 
 		synchronized (MonitorProvider.getInstance().getMonitor(MONITOR_NAME)) {
-			final ESAuthenticationInformation authInfo = initUserVerifierService().verifyUser(
+			final ESAuthenticationInformation authInfo = getUserVerifierService().verifyUser(
 				username,
 				password,
 				clientVersionInfo);
@@ -126,6 +130,16 @@ public class LoginService {
 			authenticationInformation.setResolvedACUser(resolvedUser);
 			return authInfo;
 		}
+	}
+
+	/**
+	 * @return
+	 */
+	private ESUserVerifier getUserVerifierService() {
+		if (userVerifier == null) {
+			userVerifier = initUserVerifierService();
+		}
+		return userVerifier;
 	}
 
 	/**

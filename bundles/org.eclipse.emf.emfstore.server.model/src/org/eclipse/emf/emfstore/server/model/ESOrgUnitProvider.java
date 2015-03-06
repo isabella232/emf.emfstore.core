@@ -14,6 +14,8 @@ package org.eclipse.emf.emfstore.server.model;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
+
 /**
  * Provides access to known users and groups of EMFStore.
  *
@@ -43,4 +45,9 @@ public interface ESOrgUnitProvider {
 	 * @return a list of all known {@link ESProjectHistory ESProjectHistories}
 	 */
 	List<ESProjectHistory> getProjects();
+
+	/**
+	 * @param serverSpace
+	 */
+	void init(ACDAOFacade daoFacade);
 }

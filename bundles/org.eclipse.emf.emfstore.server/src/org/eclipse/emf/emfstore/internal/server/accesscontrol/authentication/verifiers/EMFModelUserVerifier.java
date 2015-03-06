@@ -61,4 +61,14 @@ public class EMFModelUserVerifier extends UserVerifier {
 
 		return userPassword.equals(password);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType,
+	 *      org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+
+	}
 }

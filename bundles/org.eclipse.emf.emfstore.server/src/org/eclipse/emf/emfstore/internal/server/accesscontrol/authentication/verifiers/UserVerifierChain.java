@@ -64,4 +64,15 @@ public class UserVerifierChain extends UserVerifier {
 		}
 		return false;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType,
+	 *      org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+		// TODO Auto-generated method stub
+
+	}
 }

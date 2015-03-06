@@ -14,11 +14,13 @@ package org.eclipse.emf.emfstore.server.auth;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.Sessions;
 import org.eclipse.emf.emfstore.internal.server.core.MethodInvocation;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.server.model.ESGlobalProjectId;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitId;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 import org.eclipse.emf.emfstore.server.model.ESSessionId;
 
 /**
@@ -51,7 +53,7 @@ public interface ESAuthorizationService {
 	 */
 	boolean checkProjectAdminAccess(ESSessionId sessionId, ESGlobalProjectId projectId,
 		ESProjectAdminPrivileges privileg)
-		throws AccessControlException;
+			throws AccessControlException;
 
 	/**
 	 * Check if the session is valid for admin access to the given organizational unit.
@@ -84,7 +86,7 @@ public interface ESAuthorizationService {
 	 */
 	boolean checkProjectAdminAccessForOrgUnit(ESSessionId sessionId, ESOrgUnitId orgUnitId,
 		Set<ESGlobalProjectId> projectIds)
-			throws AccessControlException;
+		throws AccessControlException;
 
 	/**
 	 * Check if the session is valid for admin access to the given project.
@@ -136,6 +138,13 @@ public interface ESAuthorizationService {
 	 */
 	// TODO:
 	void checkAccess(MethodInvocation methodInvocation) throws AccessControlException;
+
+	/**
+	 * @param sessions
+	 * @param orgUnitResolverServive
+	 * @param orgUnitProvider
+	 */
+	void init(Sessions sessions, ESOrgUnitResolver orgUnitResolverServive, ESOrgUnitProvider orgUnitProvider);
 
 	/**
 	 * This method looks up the session id on the server and returns the relating user. Please notice that the returned

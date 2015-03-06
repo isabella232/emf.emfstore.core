@@ -41,11 +41,7 @@ import org.eclipse.emf.emfstore.server.model.ESUser;
  */
 public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 
-	private final ESOrgUnitProvider orgUnitProvider;
-
-	public DefaultESOrgUnitResolverService(ESOrgUnitProvider orgUnitProvider) {
-		this.orgUnitProvider = orgUnitProvider;
-	}
+	private ESOrgUnitProvider orgUnitProvider;
 
 	public List<ESRole> getRolesFromGroups(ESOrgUnit orgUnit) {
 		final ArrayList<ESRole> roles = new ArrayList<ESRole>();
@@ -150,5 +146,14 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 
 			return groups;
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#init(org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+		this.orgUnitProvider = orgUnitProvider;
 	}
 }

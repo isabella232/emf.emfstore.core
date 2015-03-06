@@ -28,14 +28,7 @@ import org.eclipse.emf.emfstore.server.model.ESUser;
  */
 public class ESOrgUnitProviderImpl implements ESOrgUnitProvider {
 
-	private final ACDAOFacade daoFacade;
-
-	/**
-	 * @param daoFacade
-	 */
-	public ESOrgUnitProviderImpl(ACDAOFacade daoFacade) {
-		this.daoFacade = daoFacade;
-	}
+	private ACDAOFacade daoFacade;
 
 	public Set<ESUser> getUsers() {
 		return new LinkedHashSet<ESUser>(
@@ -59,6 +52,15 @@ public class ESOrgUnitProviderImpl implements ESOrgUnitProvider {
 	 */
 	public List<ESProjectHistory> getProjects() {
 		return APIUtil.toExternal(daoFacade.getProjects());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider#init(org.eclipse.emf.emfstore.internal.server.model.ServerSpace)
+	 */
+	public void init(ACDAOFacade daoFacade) {
+		this.daoFacade = daoFacade;
 	}
 
 }

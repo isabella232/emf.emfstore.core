@@ -14,6 +14,7 @@ package org.eclipse.emf.emfstore.server.auth;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
  * Controller for the Authentication of users.
@@ -41,5 +42,10 @@ public interface ESUserVerifier {
 	ESAuthenticationInformation verifyUser(String username, String password,
 		ESClientVersionInfo clientVersionInfo)
 		throws AccessControlException;
+
+	/**
+	 * @param orgUnitProvider
+	 */
+	void init(ESOrgUnitProvider orgUnitProvider);
 
 }

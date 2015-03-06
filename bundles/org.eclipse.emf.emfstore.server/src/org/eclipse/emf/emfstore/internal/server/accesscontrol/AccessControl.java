@@ -90,51 +90,79 @@ public class AccessControl {
 	 * @return
 	 */
 	private ESAuthorizationService initAuthorizationService() {
+		ESAuthorizationService authorizationService;
 		try {
-			if (new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size() > 0) {
-				return new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).getClass(
-					"authorizationServiceClass", ESAuthorizationService.class); //$NON-NLS-1$
+			final int size = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size();
+			if (size == 1) {
+				authorizationService = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true)
+					.getClass("authorizationServiceClass", ESAuthorizationService.class); //$NON-NLS-1$
+			} else if (size > 1) {
+				throw new RuntimeException("Multiple extensions for "
+					+ "org.eclipse.emf.emfstore.server.accessControl.authorizationServiceClass discovered."
+					+ "Only one allowed.");
+			} else {
+				authorizationService = new DefaultESAuthorizationService();
 			}
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom authorization class not be initialized";
 			ModelUtil.logException(message, e);
-			return null;
+			authorizationService = new DefaultESAuthorizationService();
 		}
 
-		return new DefaultESAuthorizationService(
+		authorizationService.init(
 			sessions,
 			getOrgUnitResolverServive(),
 			orgUnitProvider);
+
+		return authorizationService;
 	}
 
 	private ESOrgUnitResolver initOrgUnitResolverService() {
+		ESOrgUnitResolver resolver;
 		try {
-			if (new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size() > 0) {
-				return new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).getClass(
+			final int size = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size();
+			if (size == 1) {
+				resolver = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).getClass(
 					"orgUnitResolverServiceClass", ESOrgUnitResolver.class); //$NON-NLS-1$
+			} else if (size > 1) {
+				throw new RuntimeException("Multiple extensions for "
+					+ "org.eclipse.emf.emfstore.server.accessControl.orgUnitResolverServiceClass discovered."
+					+ "Only one allowed.");
+			} else {
+				resolver = new DefaultESOrgUnitResolverService();
 			}
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom org unit resolver class not be initialized";
 			ModelUtil.logException(message, e);
-			return null;
+			resolver = new DefaultESOrgUnitResolverService();
 		}
 
-		return new DefaultESOrgUnitResolverService(orgUnitProvider);
+		resolver.init(orgUnitProvider);
+		return resolver;
 	}
 
 	private ESOrgUnitProvider initOrgUnitProviderService() {
+		ESOrgUnitProvider orgUnitProvider;
 		try {
-			if (new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size() > 0) {
-				return new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).getClass(
+			final int size = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).size();
+			if (size == 1) {
+				orgUnitProvider = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, true).getClass(
 					"orgUnitProviderClass", ESOrgUnitProvider.class); //$NON-NLS-1$
+			} else if (size > 1) {
+				throw new RuntimeException("Multiple extensions for "
+					+ "org.eclipse.emf.emfstore.server.accessControl.orgUnitProviderClass discovered."
+					+ "Only one allowed.");
+			} else {
+				orgUnitProvider = new ESOrgUnitProviderImpl();
 			}
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom org unit provider class not be initialized";
 			ModelUtil.logException(message, e);
-			return null;
+			orgUnitProvider = new ESOrgUnitProviderImpl();
 		}
 
-		return new ESOrgUnitProviderImpl(serverSpace);
+		orgUnitProvider.init(serverSpace);
+		return orgUnitProvider;
 	}
 
 	/**

@@ -58,7 +58,8 @@ public class SimplePropertyFileUserVerifier extends UserVerifier {
 	 *            path to file
 	 * @throws FatalESException in case of failure
 	 */
-	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String propertyFilePath) throws FatalESException {
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String propertyFilePath)
+		throws FatalESException {
 		this(orgUnitProvider, propertyFilePath, Hash.NONE);
 	}
 
@@ -150,5 +151,16 @@ public class SimplePropertyFileUserVerifier extends UserVerifier {
 		}
 
 		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType,
+	 *      org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+		// TODO Auto-generated method stub
+
 	}
 }

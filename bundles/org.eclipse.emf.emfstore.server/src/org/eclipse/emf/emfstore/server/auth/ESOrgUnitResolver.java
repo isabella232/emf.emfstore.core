@@ -18,6 +18,7 @@ import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 import org.eclipse.emf.emfstore.server.model.ESGroup;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitId;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 import org.eclipse.emf.emfstore.server.model.ESRole;
 import org.eclipse.emf.emfstore.server.model.ESUser;
 
@@ -44,4 +45,9 @@ public interface ESOrgUnitResolver {
 	 * @return
 	 */
 	ESUser copyAndResolveUser(ESUser api);
+
+	/**
+	 * @param orgUnitProvider
+	 */
+	void init(ESOrgUnitProvider orgUnitProvider);
 }

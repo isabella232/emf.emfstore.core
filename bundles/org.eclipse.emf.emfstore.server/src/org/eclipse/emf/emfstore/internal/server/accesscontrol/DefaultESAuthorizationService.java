@@ -64,27 +64,9 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	}
 
 	private EnumMap<MethodId, AccessLevel> accessMap;
-	private final Sessions sessions;
-	private final ESOrgUnitResolver orgUnitResolver;
-	private final ESOrgUnitProvider orgUnitProvider;
-
-	/**
-	 * Constructor.
-	 *
-	 * @param sessions
-	 *
-	 * @param orgUnitResolver
-	 *            an {@link ESOrgUnitResolver} to resolve the roles and groups of an organizational unit
-	 * @param orgUnitProvider
-	 */
-	public DefaultESAuthorizationService(
-		Sessions sessions,
-		ESOrgUnitResolver orgUnitResolver,
-		ESOrgUnitProvider orgUnitProvider) {
-		this.sessions = sessions;
-		this.orgUnitResolver = orgUnitResolver;
-		this.orgUnitProvider = orgUnitProvider;
-	}
+	private Sessions sessions;
+	private ESOrgUnitResolver orgUnitResolver;
+	private ESOrgUnitProvider orgUnitProvider;
 
 	private void initAccessMap() {
 		if (accessMap != null) {
@@ -273,7 +255,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	 */
 	public boolean checkProjectAdminAccessForOrgUnit(ESSessionId sessionId, ESOrgUnitId orgUnitId,
 		Set<ESGlobalProjectId> projectIds)
-		throws AccessControlException {
+			throws AccessControlException {
 
 		cleanupPARole(orgUnitId);
 		final ACUser user = sessions.getUser(sessionId);
@@ -316,7 +298,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	// TODO: second parameter is optional
 	public boolean checkProjectAdminAccess(ESSessionId sessionId, ESGlobalProjectId projectId,
 		ESProjectAdminPrivileges privileg)
-			throws AccessControlException {
+		throws AccessControlException {
 		sessions.isValid(sessionId);
 
 		final ACUser user = sessions.getUser(sessionId);
@@ -478,14 +460,14 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 			checkReadAccess(
 				op.getSessionId().toAPI(),
 				projectId == null ? null : projectId.toAPI(),
-					null);
+				null);
 			break;
 		case PROJECT_WRITE:
 			projectId = getProjectIdFromParameters(op);
 			checkWriteAccess(
 				op.getSessionId().toAPI(),
 				projectId == null ? null : projectId.toAPI(),
-				null);
+					null);
 			break;
 		case PROJECT_ADMIN:
 			projectId = getProjectIdFromParameters(op);
@@ -594,5 +576,18 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 			}
 			throw new AccessControlException(Messages.AccessControlImpl_Given_OrgUnit_Does_Not_Exist);
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESAuthorizationService#init(org.eclipse.emf.emfstore.internal.server.accesscontrol.Sessions,
+	 *      org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver,
+	 *      org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(Sessions sessions, ESOrgUnitResolver orgUnitResolverServive, ESOrgUnitProvider orgUnitProvider) {
+		this.sessions = sessions;
+		orgUnitResolver = orgUnitResolver;
+		this.orgUnitProvider = orgUnitProvider;
 	}
 }
