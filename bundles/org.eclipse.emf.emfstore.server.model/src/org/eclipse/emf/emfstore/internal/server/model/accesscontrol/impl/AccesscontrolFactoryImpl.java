@@ -40,13 +40,13 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	public static AccesscontrolFactory init() {
 		try
 		{
-			final AccesscontrolFactory theAccesscontrolFactory = (AccesscontrolFactory) EPackage.Registry.INSTANCE
+			AccesscontrolFactory theAccesscontrolFactory = (AccesscontrolFactory) EPackage.Registry.INSTANCE
 				.getEFactory(AccesscontrolPackage.eNS_URI);
 			if (theAccesscontrolFactory != null)
 			{
 				return theAccesscontrolFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -94,7 +94,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACUser createACUser() {
-		final ACUserImpl acUser = new ACUserImpl();
+		ACUserImpl acUser = new ACUserImpl();
 		return acUser;
 	}
 
@@ -104,7 +104,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACOrgUnit createACOrgUnit() {
-		final ACOrgUnitImpl acOrgUnit = new ACOrgUnitImpl();
+		ACOrgUnitImpl acOrgUnit = new ACOrgUnitImpl();
 		return acOrgUnit;
 	}
 
@@ -114,7 +114,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACGroup createACGroup() {
-		final ACGroupImpl acGroup = new ACGroupImpl();
+		ACGroupImpl acGroup = new ACGroupImpl();
 		return acGroup;
 	}
 
@@ -124,7 +124,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public ACOrgUnitId createACOrgUnitId() {
-		final ACOrgUnitIdImpl acOrgUnitId = new ACOrgUnitIdImpl();
+		ACOrgUnitIdImpl acOrgUnitId = new ACOrgUnitIdImpl();
 		return acOrgUnitId;
 	}
 
@@ -134,7 +134,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 * @generated
 	 */
 	public OrgUnitProperty createOrgUnitProperty() {
-		final OrgUnitPropertyImpl orgUnitProperty = new OrgUnitPropertyImpl();
+		OrgUnitPropertyImpl orgUnitProperty = new OrgUnitPropertyImpl();
 		return orgUnitProperty;
 	}
 

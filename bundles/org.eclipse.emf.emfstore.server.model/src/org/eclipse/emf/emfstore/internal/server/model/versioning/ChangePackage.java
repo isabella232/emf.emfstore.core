@@ -13,19 +13,18 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
-import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Change Package</b></em>'.
  *
  * @extends APIDelegate<ESChangePackage>
+ * @extends ESChangePackage
  *          <!-- end-user-doc -->
  *
  *          <p>
@@ -46,7 +45,7 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  * @model
  * @generated
  */
-public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ESChangePackage {
+public interface ChangePackage extends AbstractChangePackage, APIDelegate<ESChangePackage>, ESChangePackage {
 
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
@@ -54,7 +53,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ES
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Operations</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_Operations()
 	 * @model containment="true" resolveProxies="true"
@@ -71,7 +70,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ES
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_Events()
 	 * @model containment="true" resolveProxies="true"
@@ -87,15 +86,14 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ES
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Log Message</em>' containment reference.
 	 * @see #setLogMessage(LogMessage)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_LogMessage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	// TODO: FIXME wrong return type, but must keep API compatibility
-	ESLogMessage getLogMessage();
+	LogMessage getLogMessage();
 
 	/**
 	 * Sets the value of the '
@@ -103,7 +101,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ES
 	 * <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Log Message</em>' containment reference.
 	 * @see #getLogMessage()
 	 * @generated
@@ -119,7 +117,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage>, ES
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Version Properties</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_VersionProperties()
 	 * @model containment="true" resolveProxies="true"

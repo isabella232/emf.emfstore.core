@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  * The following features are implemented:
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getOpenSessions <em>Open Sessions
  * </em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getUsers <em>Users</em>}</li>
@@ -52,7 +52,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	/**
 	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getGroups()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	/**
 	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getProjects()
 	 * @generated
 	 * @ordered
@@ -73,7 +73,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 * The cached value of the '{@link #getOpenSessions() <em>Open Sessions</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getOpenSessions()
 	 * @generated
 	 * @ordered
@@ -83,7 +83,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	/**
 	 * The cached value of the '{@link #getUsers() <em>Users</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getUsers()
 	 * @generated
 	 * @ordered
@@ -94,7 +94,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected ServerSpaceImpl() {
@@ -103,7 +103,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EList<ACGroup> getGroups() {
@@ -127,7 +127,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EList<ProjectHistory> getProjects() {
@@ -141,7 +141,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EList<SessionId> getOpenSessions() {
@@ -155,7 +155,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EList<ACUser> getUsers() {
@@ -168,7 +168,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -187,7 +187,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -238,7 +238,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -263,7 +263,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

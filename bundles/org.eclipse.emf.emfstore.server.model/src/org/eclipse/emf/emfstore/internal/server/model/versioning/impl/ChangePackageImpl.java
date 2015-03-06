@@ -77,7 +77,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOperations()
 	 * @generated
 	 * @ordered
@@ -87,7 +87,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEvents()
 	 * @generated
 	 * @ordered
@@ -97,7 +97,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLogMessage()
 	 * @generated
 	 * @ordered
@@ -117,7 +117,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ChangePackageImpl() {
@@ -126,7 +126,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -161,7 +161,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Event> getEvents() {
@@ -180,7 +180,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated NOT
 	 */
-	public ESLogMessage getLogMessage() {
+	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy())
 		{
 			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
@@ -221,51 +221,56 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
-		LogMessage oldLogMessage = logMessage;
+		final LogMessage oldLogMessage = logMessage;
 		logMessage = newLogMessage;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, oldLogMessage, newLogMessage);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage)
 		{
 			NotificationChain msgs = null;
-			if (logMessage != null)
+			if (logMessage != null) {
 				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
-			if (newLogMessage != null)
+			}
+			if (newLogMessage != null) {
 				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
+			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE,
 				newLogMessage, newLogMessage));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<VersionProperty> getVersionProperties() {
@@ -320,7 +325,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	// end of custom code
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -343,7 +348,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -355,8 +360,9 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
 			return getEvents();
 		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
-			if (resolve)
+			if (resolve) {
 				return getLogMessage();
+			}
 			return basicGetLogMessage();
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			return getVersionProperties();
@@ -366,7 +372,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -395,7 +401,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -420,7 +426,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

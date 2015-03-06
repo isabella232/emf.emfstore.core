@@ -31,7 +31,7 @@ public class SessionIdImpl extends UniqueIdentifierImpl implements SessionId {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected SessionIdImpl() {
@@ -40,7 +40,7 @@ public class SessionIdImpl extends UniqueIdentifierImpl implements SessionId {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

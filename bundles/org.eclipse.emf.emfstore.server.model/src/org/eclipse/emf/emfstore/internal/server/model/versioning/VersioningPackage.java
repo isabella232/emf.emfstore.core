@@ -284,6 +284,29 @@ public interface VersioningPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * <em>Abstract Change Package</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getAbstractChangePackage()
+	 * @generated
+	 */
+	int ABSTRACT_CHANGE_PACKAGE = 18;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Change Package</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageImpl <em>Change Package</em>}'
 	 * class.
 	 * <!-- begin-user-doc --> <!--
@@ -302,7 +325,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE__OPERATIONS = 0;
+	int CHANGE_PACKAGE__OPERATIONS = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -311,7 +334,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE__EVENTS = 1;
+	int CHANGE_PACKAGE__EVENTS = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Log Message</b></em>' containment reference.
@@ -320,7 +343,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE__LOG_MESSAGE = 2;
+	int CHANGE_PACKAGE__LOG_MESSAGE = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Version Properties</b></em>' containment reference list.
@@ -329,7 +352,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE__VERSION_PROPERTIES = 3;
+	int CHANGE_PACKAGE__VERSION_PROPERTIES = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Change Package</em>' class.
@@ -338,7 +361,7 @@ public interface VersioningPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PACKAGE_FEATURE_COUNT = 4;
+	int CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '
@@ -1077,6 +1100,29 @@ public interface VersioningPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAGED_UPDATE_VERSION_SPEC_FEATURE_COUNT = VERSION_SPEC_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl
+	 * <em>File Based Change Package</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getFileBasedChangePackage()
+	 * @generated
+	 */
+	int FILE_BASED_CHANGE_PACKAGE = 19;
+
+	/**
+	 * The number of structural features of the '<em>File Based Change Package</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_BASED_CHANGE_PACKAGE_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '
@@ -1906,6 +1952,32 @@ public interface VersioningPackage extends EPackage {
 	EReference getPagedUpdateVersionSpec_BaseVersionSpec();
 
 	/**
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * <em>Abstract Change Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>Abstract Change Package</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * @generated
+	 */
+	EClass getAbstractChangePackage();
+
+	/**
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
+	 * <em>File Based Change Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class '<em>File Based Change Package</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
+	 * @generated
+	 */
+	EClass getFileBasedChangePackage();
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -2572,6 +2644,32 @@ public interface VersioningPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC = eINSTANCE.getPagedUpdateVersionSpec_BaseVersionSpec();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+		 * <em>Abstract Change Package</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getAbstractChangePackage()
+		 * @generated
+		 */
+		EClass ABSTRACT_CHANGE_PACKAGE = eINSTANCE.getAbstractChangePackage();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl
+		 * <em>File Based Change Package</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getFileBasedChangePackage()
+		 * @generated
+		 */
+		EClass FILE_BASED_CHANGE_PACKAGE = eINSTANCE.getFileBasedChangePackage();
 
 	}
 

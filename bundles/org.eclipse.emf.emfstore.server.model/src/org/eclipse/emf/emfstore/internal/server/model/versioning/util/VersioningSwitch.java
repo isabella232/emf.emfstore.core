@@ -14,11 +14,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -158,6 +160,8 @@ public class VersioningSwitch<T> {
 			ChangePackage changePackage = (ChangePackage) theEObject;
 			T result = caseChangePackage(changePackage);
 			if (result == null)
+				result = caseAbstractChangePackage(changePackage);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -257,6 +261,22 @@ public class VersioningSwitch<T> {
 			T result = casePagedUpdateVersionSpec(pagedUpdateVersionSpec);
 			if (result == null)
 				result = caseVersionSpec(pagedUpdateVersionSpec);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case VersioningPackage.ABSTRACT_CHANGE_PACKAGE: {
+			AbstractChangePackage abstractChangePackage = (AbstractChangePackage) theEObject;
+			T result = caseAbstractChangePackage(abstractChangePackage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case VersioningPackage.FILE_BASED_CHANGE_PACKAGE: {
+			FileBasedChangePackage fileBasedChangePackage = (FileBasedChangePackage) theEObject;
+			T result = caseFileBasedChangePackage(fileBasedChangePackage);
+			if (result == null)
+				result = caseAbstractChangePackage(fileBasedChangePackage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -551,6 +571,40 @@ public class VersioningSwitch<T> {
 	 * @generated
 	 */
 	public T casePagedUpdateVersionSpec(PagedUpdateVersionSpec object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Change Package</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Change Package</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractChangePackage(AbstractChangePackage object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>File Based Change Package</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>File Based Change Package</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFileBasedChangePackage(FileBasedChangePackage object)
 	{
 		return null;
 	}

@@ -20,6 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -116,6 +117,8 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 			return createAncestorVersionSpec();
 		case VersioningPackage.PAGED_UPDATE_VERSION_SPEC:
 			return createPagedUpdateVersionSpec();
+		case VersioningPackage.FILE_BASED_CHANGE_PACKAGE:
+			return createFileBasedChangePackage();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -282,6 +285,18 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	{
 		PagedUpdateVersionSpecImpl pagedUpdateVersionSpec = new PagedUpdateVersionSpecImpl();
 		return pagedUpdateVersionSpec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public FileBasedChangePackage createFileBasedChangePackage()
+	{
+		FileBasedChangePackageImpl fileBasedChangePackage = new FileBasedChangePackageImpl();
+		return fileBasedChangePackage;
 	}
 
 	/**

@@ -182,6 +182,16 @@ public interface VersioningFactory extends EFactory {
 	PagedUpdateVersionSpec createPagedUpdateVersionSpec();
 
 	/**
+	 * Returns a new object of class '<em>File Based Change Package</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>File Based Change Package</em>'.
+	 * @generated
+	 */
+	FileBasedChangePackage createFileBasedChangePackage();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

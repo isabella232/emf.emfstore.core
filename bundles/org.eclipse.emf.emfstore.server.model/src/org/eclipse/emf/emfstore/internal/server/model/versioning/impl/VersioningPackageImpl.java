@@ -23,11 +23,13 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.impl.R
 import org.eclipse.emf.emfstore.internal.server.model.impl.ModelPackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
 import org.eclipse.emf.emfstore.internal.server.model.url.impl.UrlPackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -185,6 +187,22 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * @generated
 	 */
 	private EClass pagedUpdateVersionSpecEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass abstractChangePackageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass fileBasedChangePackageEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -908,6 +926,28 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getAbstractChangePackage()
+	{
+		return abstractChangePackageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public EClass getFileBasedChangePackage()
+	{
+		return fileBasedChangePackageEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
@@ -1021,6 +1061,10 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		pagedUpdateVersionSpecEClass = createEClass(PAGED_UPDATE_VERSION_SPEC);
 		createEAttribute(pagedUpdateVersionSpecEClass, PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES);
 		createEReference(pagedUpdateVersionSpecEClass, PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC);
+
+		abstractChangePackageEClass = createEClass(ABSTRACT_CHANGE_PACKAGE);
+
+		fileBasedChangePackageEClass = createEClass(FILE_BASED_CHANGE_PACKAGE);
 	}
 
 	/**
@@ -1065,6 +1109,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		tagVersionSpecEClass.getESuperTypes().add(this.getVersionSpec());
 		dateVersionSpecEClass.getESuperTypes().add(this.getVersionSpec());
 		primaryVersionSpecEClass.getESuperTypes().add(this.getVersionSpec());
+		changePackageEClass.getESuperTypes().add(this.getAbstractChangePackage());
 		rangeQueryEClass.getESuperTypes().add(this.getHistoryQuery());
 		pathQueryEClass.getESuperTypes().add(this.getHistoryQuery());
 		modelElementQueryEClass.getESuperTypes().add(this.getRangeQuery());
@@ -1072,6 +1117,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		branchVersionSpecEClass.getESuperTypes().add(this.getVersionSpec());
 		ancestorVersionSpecEClass.getESuperTypes().add(this.getVersionSpec());
 		pagedUpdateVersionSpecEClass.getESuperTypes().add(this.getVersionSpec());
+		fileBasedChangePackageEClass.getESuperTypes().add(this.getAbstractChangePackage());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(tagVersionSpecEClass, TagVersionSpec.class,
@@ -1352,6 +1398,12 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 			this.getPrimaryVersionSpec(),
 			null,
 			"baseVersionSpec", null, 0, 1, PagedUpdateVersionSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(abstractChangePackageEClass, AbstractChangePackage.class,
+			"AbstractChangePackage", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(fileBasedChangePackageEClass, FileBasedChangePackage.class,
+			"FileBasedChangePackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 	}
 
 } // VersioningPackageImpl

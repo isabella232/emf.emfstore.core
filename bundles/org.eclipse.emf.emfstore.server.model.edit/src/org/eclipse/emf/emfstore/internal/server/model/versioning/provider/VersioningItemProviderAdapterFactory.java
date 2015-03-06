@@ -461,6 +461,31 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FileBasedChangePackageItemProvider fileBasedChangePackageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFileBasedChangePackageAdapter()
+	{
+		if (fileBasedChangePackageItemProvider == null)
+		{
+			fileBasedChangePackageItemProvider = new FileBasedChangePackageItemProvider(this);
+		}
+
+		return fileBasedChangePackageItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -590,6 +615,8 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 			ancestorVersionSpecItemProvider.dispose();
 		if (pagedUpdateVersionSpecItemProvider != null)
 			pagedUpdateVersionSpecItemProvider.dispose();
+		if (fileBasedChangePackageItemProvider != null)
+			fileBasedChangePackageItemProvider.dispose();
 	}
 
 }
