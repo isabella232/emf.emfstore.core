@@ -23,11 +23,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ReferenceOperationItemProvider extends FeatureOperationItemProvider {
@@ -67,13 +65,14 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addBidirectionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ReferenceOperation_bidirectional_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_bidirectional_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_bidirectional_feature", "_UI_ReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.REFERENCE_OPERATION__BIDIRECTIONAL,
 				true,
 				false,
@@ -86,17 +85,17 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	/**
 	 * This adds a property descriptor for the Opposite Feature Name feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addOppositeFeatureNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ReferenceOperation_oppositeFeatureName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_oppositeFeatureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_oppositeFeatureName_feature", "_UI_ReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME,
 				true,
 				false,
@@ -113,13 +112,14 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addContainmentTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ReferenceOperation_containmentType_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_containmentType_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_containmentType_feature", "_UI_ReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.REFERENCE_OPERATION__CONTAINMENT_TYPE,
 				true,
 				false,
@@ -147,12 +147,11 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((ReferenceOperation) object).getFeatureName();
+		String label = ((ReferenceOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ReferenceOperation_type") : //$NON-NLS-1$
 			getString("_UI_ReferenceOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -163,7 +162,6 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

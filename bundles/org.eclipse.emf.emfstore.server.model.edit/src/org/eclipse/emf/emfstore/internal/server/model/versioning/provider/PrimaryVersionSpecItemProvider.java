@@ -23,10 +23,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
@@ -65,13 +63,14 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * @generated
 	 */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PrimaryVersionSpec_identifier_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_identifier_feature", "_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				VersioningPackage.Literals.PRIMARY_VERSION_SPEC__IDENTIFIER,
 				true,
 				false,
@@ -85,18 +84,18 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This adds a property descriptor for the Project State Checksum feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addProjectStateChecksumPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PrimaryVersionSpec_projectStateChecksum_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_projectStateChecksum_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_projectStateChecksum_feature", "_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				VersioningPackage.Literals.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM,
 				true,
 				false,
@@ -110,7 +109,6 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns PrimaryVersionSpec.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -122,12 +120,11 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((PrimaryVersionSpec) object).getBranch();
+		String label = ((PrimaryVersionSpec) object).getBranch();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PrimaryVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_PrimaryVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -138,7 +135,6 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

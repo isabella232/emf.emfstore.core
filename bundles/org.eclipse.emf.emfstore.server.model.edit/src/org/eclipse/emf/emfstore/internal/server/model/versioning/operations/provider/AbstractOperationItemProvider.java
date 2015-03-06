@@ -29,11 +29,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AbstractOperationItemProvider extends IdentifiableElementItemProvider {
@@ -108,13 +106,14 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * @generated
 	 */
 	protected void addModelElementIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_AbstractOperation_modelElementId_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_AbstractOperation_modelElementId_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_AbstractOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_AbstractOperation_modelElementId_feature", "_UI_AbstractOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.ABSTRACT_OPERATION__MODEL_ELEMENT_ID,
 				true,
 				false,
@@ -131,13 +130,14 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * @generated
 	 */
 	protected void addAcceptedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_AbstractOperation_accepted_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_AbstractOperation_accepted_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_AbstractOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_AbstractOperation_accepted_feature", "_UI_AbstractOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.ABSTRACT_OPERATION__ACCEPTED,
 				true,
 				false,
@@ -154,13 +154,14 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * @generated
 	 */
 	protected void addClientDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_AbstractOperation_clientDate_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_AbstractOperation_clientDate_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_AbstractOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_AbstractOperation_clientDate_feature", "_UI_AbstractOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.ABSTRACT_OPERATION__CLIENT_DATE,
 				true,
 				false,
@@ -174,7 +175,6 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * This returns AbstractOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -186,12 +186,11 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((AbstractOperation) object).getIdentifier();
+		String label = ((AbstractOperation) object).getIdentifier();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AbstractOperation_type") : //$NON-NLS-1$
 			getString("_UI_AbstractOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -202,7 +201,6 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url.provider;
@@ -37,11 +37,11 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * @generated
  */
 public class ModelElementUrlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementUrlItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -148,7 +148,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,17 +156,17 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__SERVER_URL,
 				UrlFactory.eINSTANCE.createServerUrl()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__PROJECT_URL_FRAGMENT,
 				UrlFactory.eINSTANCE.createProjectUrlFragment()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(UrlPackage.Literals.MODEL_ELEMENT_URL__MODEL_ELEMENT_URL_FRAGMENT,
 				UrlFactory.eINSTANCE.createModelElementUrlFragment()));
 	}
@@ -174,7 +174,7 @@ public class ModelElementUrlItemProvider extends ItemProviderAdapter implements 
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

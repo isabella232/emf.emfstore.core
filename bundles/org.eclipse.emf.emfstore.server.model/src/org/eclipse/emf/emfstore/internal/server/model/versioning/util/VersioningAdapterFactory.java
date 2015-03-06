@@ -138,13 +138,13 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseHistoryQuery(@SuppressWarnings("rawtypes") HistoryQuery object)
+		public Adapter caseHistoryQuery(HistoryQuery object)
 		{
 			return createHistoryQueryAdapter();
 		}
 
 		@Override
-		public Adapter caseRangeQuery(@SuppressWarnings("rawtypes") RangeQuery object)
+		public Adapter caseRangeQuery(RangeQuery object)
 		{
 			return createRangeQueryAdapter();
 		}

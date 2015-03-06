@@ -55,7 +55,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <em>Reversed</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CompositeOperationImpl extends AbstractOperationImpl implements CompositeOperation {
@@ -212,14 +212,13 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	public AbstractOperation getMainOperation() {
 		if (mainOperation != null && mainOperation.eIsProxy())
 		{
-			final InternalEObject oldMainOperation = (InternalEObject) mainOperation;
+			InternalEObject oldMainOperation = (InternalEObject) mainOperation;
 			mainOperation = (AbstractOperation) eResolveProxy(oldMainOperation);
 			if (mainOperation != oldMainOperation)
 			{
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION, oldMainOperation, mainOperation));
-				}
 			}
 		}
 		return mainOperation;
@@ -240,12 +239,11 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * @generated
 	 */
 	public void setMainOperation(AbstractOperation newMainOperation) {
-		final AbstractOperation oldMainOperation = mainOperation;
+		AbstractOperation oldMainOperation = mainOperation;
 		mainOperation = newMainOperation;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION, oldMainOperation, mainOperation));
-		}
 	}
 
 	/**
@@ -263,12 +261,11 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * @generated
 	 */
 	public void setCompositeName(String newCompositeName) {
-		final String oldCompositeName = compositeName;
+		String oldCompositeName = compositeName;
 		compositeName = newCompositeName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME, oldCompositeName, compositeName));
-		}
 	}
 
 	/**
@@ -286,13 +283,12 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * @generated
 	 */
 	public void setCompositeDescription(String newCompositeDescription) {
-		final String oldCompositeDescription = compositeDescription;
+		String oldCompositeDescription = compositeDescription;
 		compositeDescription = newCompositeDescription;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION, oldCompositeDescription,
 				compositeDescription));
-		}
 	}
 
 	/**
@@ -310,12 +306,11 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * @generated
 	 */
 	public void setReversed(boolean newReversed) {
-		final boolean oldReversed = reversed;
+		boolean oldReversed = reversed;
 		reversed = newReversed;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.COMPOSITE_OPERATION__REVERSED,
 				oldReversed, reversed));
-		}
 	}
 
 	// begin of custom code
@@ -358,9 +353,8 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 		case OperationsPackage.COMPOSITE_OPERATION__SUB_OPERATIONS:
 			return getSubOperations();
 		case OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION:
-			if (resolve) {
+			if (resolve)
 				return getMainOperation();
-			}
 			return basicGetMainOperation();
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME:
 			return getCompositeName();
@@ -462,11 +456,10 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (compositeName: "); //$NON-NLS-1$
 		result.append(compositeName);
 		result.append(", compositeDescription: "); //$NON-NLS-1$

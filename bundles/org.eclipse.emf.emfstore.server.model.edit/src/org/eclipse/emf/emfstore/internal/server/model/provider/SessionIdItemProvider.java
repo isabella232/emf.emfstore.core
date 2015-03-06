@@ -56,7 +56,6 @@ public class SessionIdItemProvider extends UniqueIdentifierItemProvider {
 	/**
 	 * This returns SessionId.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,12 +67,11 @@ public class SessionIdItemProvider extends UniqueIdentifierItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((SessionId) object).getId();
+		String label = ((SessionId) object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_SessionId_type") : //$NON-NLS-1$
 			getString("_UI_SessionId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -84,7 +82,6 @@ public class SessionIdItemProvider extends UniqueIdentifierItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.provider;
@@ -32,15 +32,15 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo} object.
  * <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectInfoItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,8 +76,8 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_name_feature"), //$NON-NLS-1$
@@ -94,76 +94,77 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Description feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_description_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ProjectInfo_type"), //$NON-NLS-1$
-				ModelPackage.Literals.PROJECT_INFO__DESCRIPTION,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_description_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					ModelPackage.Literals.PROJECT_INFO__DESCRIPTION,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Project Id feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addProjectIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_projectId_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ProjectInfo_type"), //$NON-NLS-1$
-				ModelPackage.Literals.PROJECT_INFO__PROJECT_ID,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					ModelPackage.Literals.PROJECT_INFO__PROJECT_ID,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Version feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_version_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ProjectInfo_type"), //$NON-NLS-1$
-				ModelPackage.Literals.PROJECT_INFO__VERSION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					ModelPackage.Literals.PROJECT_INFO__VERSION,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns ProjectInfo.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -174,7 +175,7 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	// begin of custom code
 	/**
 	 * This returns the label text for the adapted class.
-	 * 
+	 *
 	 * @param object
 	 *            the object the label is based upon.
 	 * @return the label for the object
@@ -220,7 +221,7 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,7 +232,7 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

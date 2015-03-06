@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Authentication Information</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  * User</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getAuthenticationInformation()
  * @model
  * @generated

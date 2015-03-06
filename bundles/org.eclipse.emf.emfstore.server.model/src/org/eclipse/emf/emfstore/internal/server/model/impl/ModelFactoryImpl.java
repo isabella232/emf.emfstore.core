@@ -44,13 +44,12 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public static ModelFactory init() {
 		try
 		{
-			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model"); //$NON-NLS-1$
+			ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE.getEFactory(ModelPackage.eNS_URI);
 			if (theModelFactory != null)
 			{
 				return theModelFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -106,7 +105,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ProjectHistory createProjectHistory() {
-		final ProjectHistoryImpl projectHistory = new ProjectHistoryImpl();
+		ProjectHistoryImpl projectHistory = new ProjectHistoryImpl();
 		return projectHistory;
 	}
 
@@ -116,7 +115,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ProjectInfo createProjectInfo() {
-		final ProjectInfoImpl projectInfo = new ProjectInfoImpl();
+		ProjectInfoImpl projectInfo = new ProjectInfoImpl();
 		return projectInfo;
 	}
 
@@ -126,7 +125,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public SessionId createSessionId() {
-		final SessionIdImpl sessionId = new SessionIdImpl();
+		SessionIdImpl sessionId = new SessionIdImpl();
 		return sessionId;
 	}
 
@@ -136,7 +135,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ServerSpace createServerSpace() {
-		final ServerSpaceImpl serverSpace = new ServerSpaceImpl();
+		ServerSpaceImpl serverSpace = new ServerSpaceImpl();
 		return serverSpace;
 	}
 
@@ -146,7 +145,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ProjectId createProjectId() {
-		final ProjectIdImpl projectId = new ProjectIdImpl();
+		ProjectIdImpl projectId = new ProjectIdImpl();
 		return projectId;
 	}
 
@@ -156,7 +155,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public VersionInfo createVersionInfo() {
-		final VersionInfoImpl versionInfo = new VersionInfoImpl();
+		VersionInfoImpl versionInfo = new VersionInfoImpl();
 		return versionInfo;
 	}
 
@@ -166,7 +165,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ClientVersionInfo createClientVersionInfo() {
-		final ClientVersionInfoImpl clientVersionInfo = new ClientVersionInfoImpl();
+		ClientVersionInfoImpl clientVersionInfo = new ClientVersionInfoImpl();
 		return clientVersionInfo;
 	}
 
@@ -176,7 +175,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public FileIdentifier createFileIdentifier() {
-		final FileIdentifierImpl fileIdentifier = new FileIdentifierImpl();
+		FileIdentifierImpl fileIdentifier = new FileIdentifierImpl();
 		return fileIdentifier;
 	}
 
@@ -186,7 +185,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public AuthenticationInformation createAuthenticationInformation() {
-		final AuthenticationInformationImpl authenticationInformation = new AuthenticationInformationImpl();
+		AuthenticationInformationImpl authenticationInformation = new AuthenticationInformationImpl();
 		return authenticationInformation;
 	}
 

@@ -23,11 +23,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Feat
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class FeatureOperationItemProvider extends AbstractOperationItemProvider {
@@ -66,13 +64,14 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * @generated
 	 */
 	protected void addFeatureNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_FeatureOperation_featureName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_featureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_FeatureOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_FeatureOperation_featureName_feature", "_UI_FeatureOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.FEATURE_OPERATION__FEATURE_NAME,
 				true,
 				false,
@@ -86,18 +85,18 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * This adds a property descriptor for the Unset feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addUnsetPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_FeatureOperation_unset_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_unset_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_FeatureOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_FeatureOperation_unset_feature", "_UI_FeatureOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.FEATURE_OPERATION__UNSET,
 				true,
 				false,
@@ -111,7 +110,6 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * This returns FeatureOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -123,12 +121,11 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((FeatureOperation) object).getFeatureName();
+		String label = ((FeatureOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_FeatureOperation_type") : //$NON-NLS-1$
 			getString("_UI_FeatureOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -139,7 +136,6 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

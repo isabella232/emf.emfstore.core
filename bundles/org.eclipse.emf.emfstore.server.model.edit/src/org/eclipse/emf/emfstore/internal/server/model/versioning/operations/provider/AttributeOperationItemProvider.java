@@ -23,11 +23,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Attr
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AttributeOperationItemProvider extends FeatureOperationItemProvider {
@@ -66,13 +64,14 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_AttributeOperation_oldValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_AttributeOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_AttributeOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_AttributeOperation_oldValue_feature", "_UI_AttributeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.ATTRIBUTE_OPERATION__OLD_VALUE,
 				true,
 				false,
@@ -89,13 +88,14 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_AttributeOperation_newValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_AttributeOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_AttributeOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_AttributeOperation_newValue_feature", "_UI_AttributeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.ATTRIBUTE_OPERATION__NEW_VALUE,
 				true,
 				false,
@@ -167,7 +167,6 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

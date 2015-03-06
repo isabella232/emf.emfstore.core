@@ -66,13 +66,14 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeSetOperation_index_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_index_feature", "_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__INDEX,
 				true,
 				false,
@@ -89,13 +90,14 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeSetOperation_oldValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_oldValue_feature", "_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__OLD_VALUE,
 				true,
 				false,
@@ -112,13 +114,14 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeSetOperation_newValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeSetOperation_newValue_feature", "_UI_MultiAttributeSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_SET_OPERATION__NEW_VALUE,
 				true,
 				false,
@@ -132,7 +135,6 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * This returns MultiAttributeSetOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,12 +146,11 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((MultiAttributeSetOperation) object).getFeatureName();
+		String label = ((MultiAttributeSetOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MultiAttributeSetOperation_type") : //$NON-NLS-1$
 			getString("_UI_MultiAttributeSetOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -160,7 +161,6 @@ public class MultiAttributeSetOperationItemProvider extends FeatureOperationItem
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

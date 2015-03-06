@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Single Reference Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getSingleReferenceOperation()
  * @model
  * @generated

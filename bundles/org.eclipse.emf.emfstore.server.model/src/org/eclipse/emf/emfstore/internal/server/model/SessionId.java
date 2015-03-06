@@ -19,8 +19,8 @@ import org.eclipse.emf.emfstore.server.model.ESSessionId;
  * 
  * @extends APIDelegate<ESSessionId>
  *          <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getSessionId()
  * @model
  * @generated

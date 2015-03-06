@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Reader Role</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ReaderRoleImpl extends RoleImpl implements ReaderRole {

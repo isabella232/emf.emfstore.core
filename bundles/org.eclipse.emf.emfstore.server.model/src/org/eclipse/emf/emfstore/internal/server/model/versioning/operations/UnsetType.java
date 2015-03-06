@@ -145,7 +145,7 @@ public enum UnsetType implements Enumerator
 	{
 		for (int i = 0; i < VALUES_ARRAY.length; ++i)
 		{
-			final UnsetType result = VALUES_ARRAY[i];
+			UnsetType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal))
 			{
 				return result;
@@ -165,7 +165,7 @@ public enum UnsetType implements Enumerator
 	{
 		for (int i = 0; i < VALUES_ARRAY.length; ++i)
 		{
-			final UnsetType result = VALUES_ARRAY[i];
+			UnsetType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name))
 			{
 				return result;

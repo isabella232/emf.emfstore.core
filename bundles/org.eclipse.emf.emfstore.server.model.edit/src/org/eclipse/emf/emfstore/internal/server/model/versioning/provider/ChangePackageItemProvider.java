@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -40,11 +40,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * @generated
  */
 public class ChangePackageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ChangePackageItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +54,7 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -155,7 +155,7 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -163,72 +163,72 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createCompositeOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createCreateDeleteOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createAttributeOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiAttributeOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiAttributeSetOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiAttributeMoveOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createSingleReferenceOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiReferenceSetOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiReferenceOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
 				OperationsFactory.eINSTANCE.createMultiReferenceMoveOperation()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
 				EventsFactory.eINSTANCE.createEvent()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
 				ServerFactory.eINSTANCE.createProjectUpdatedEvent()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__LOG_MESSAGE,
 				VersioningFactory.eINSTANCE.createLogMessage()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__VERSION_PROPERTIES,
 				VersioningFactory.eINSTANCE.createVersionProperty()));
 	}
@@ -236,7 +236,7 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

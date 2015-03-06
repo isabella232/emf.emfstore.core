@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <em>Base Version Spec</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements PagedUpdateVersionSpec
@@ -119,12 +119,11 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 */
 	public void setMaxChanges(int newMaxChanges)
 	{
-		final int oldMaxChanges = maxChanges;
+		int oldMaxChanges = maxChanges;
 		maxChanges = newMaxChanges;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES, oldMaxChanges, maxChanges));
-		}
 	}
 
 	/**
@@ -137,11 +136,11 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	{
 		if (baseVersionSpec != null && baseVersionSpec.eIsProxy())
 		{
-			final InternalEObject oldBaseVersionSpec = (InternalEObject) baseVersionSpec;
+			InternalEObject oldBaseVersionSpec = (InternalEObject) baseVersionSpec;
 			baseVersionSpec = (PrimaryVersionSpec) eResolveProxy(oldBaseVersionSpec);
 			if (baseVersionSpec != oldBaseVersionSpec)
 			{
-				final InternalEObject newBaseVersionSpec = (InternalEObject) baseVersionSpec;
+				InternalEObject newBaseVersionSpec = (InternalEObject) baseVersionSpec;
 				NotificationChain msgs = oldBaseVersionSpec.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, null);
 				if (newBaseVersionSpec.eInternalContainer() == null)
@@ -149,14 +148,12 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 					msgs = newBaseVersionSpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, oldBaseVersionSpec,
 						baseVersionSpec));
-				}
 			}
 		}
 		return baseVersionSpec;
@@ -181,17 +178,16 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 */
 	public NotificationChain basicSetBaseVersionSpec(PrimaryVersionSpec newBaseVersionSpec, NotificationChain msgs)
 	{
-		final PrimaryVersionSpec oldBaseVersionSpec = baseVersionSpec;
+		PrimaryVersionSpec oldBaseVersionSpec = baseVersionSpec;
 		baseVersionSpec = newBaseVersionSpec;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, oldBaseVersionSpec, newBaseVersionSpec);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -207,23 +203,19 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 		if (newBaseVersionSpec != baseVersionSpec)
 		{
 			NotificationChain msgs = null;
-			if (baseVersionSpec != null) {
+			if (baseVersionSpec != null)
 				msgs = ((InternalEObject) baseVersionSpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, msgs);
-			}
-			if (newBaseVersionSpec != null) {
+			if (newBaseVersionSpec != null)
 				msgs = ((InternalEObject) newBaseVersionSpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, msgs);
-			}
 			msgs = basicSetBaseVersionSpec(newBaseVersionSpec, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, newBaseVersionSpec, newBaseVersionSpec));
-		}
 	}
 
 	/**
@@ -257,9 +249,8 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 		case VersioningPackage.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES:
 			return getMaxChanges();
 		case VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC:
-			if (resolve) {
+			if (resolve)
 				return getBaseVersionSpec();
-			}
 			return basicGetBaseVersionSpec();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -335,11 +326,10 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	@Override
 	public String toString()
 	{
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (maxChanges: "); //$NON-NLS-1$
 		result.append(maxChanges);
 		result.append(')');

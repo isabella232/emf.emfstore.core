@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -39,11 +39,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class BranchInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BranchInfoItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_BranchInfo_name_feature"), //$NON-NLS-1$
@@ -125,7 +125,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This returns BranchInfo.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 		final String label = ((BranchInfo) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BranchInfo_type") : //$NON-NLS-1$
-			getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -185,12 +185,12 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.BRANCH_INFO__HEAD,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.BRANCH_INFO__SOURCE,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}
@@ -198,7 +198,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 
 		final boolean qualify =
 			childFeature == VersioningPackage.Literals.BRANCH_INFO__HEAD ||
-				childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
+			childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
 
 		if (qualify)
 		{
@@ -221,7 +221,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

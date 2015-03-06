@@ -63,17 +63,17 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This adds a property descriptor for the Add feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addAddPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeOperation_add_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_add_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_add_feature", "_UI_MultiAttributeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__ADD,
 				true,
 				false,
@@ -90,13 +90,14 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * @generated
 	 */
 	protected void addIndexesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeOperation_indexes_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_indexes_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_indexes_feature", "_UI_MultiAttributeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__INDEXES,
 				true,
 				false,
@@ -113,13 +114,14 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * @generated
 	 */
 	protected void addReferencedValuesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiAttributeOperation_referencedValues_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_referencedValues_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_referencedValues_feature", "_UI_MultiAttributeOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__REFERENCED_VALUES,
 				true,
 				false,
@@ -133,7 +135,6 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This returns MultiAttributeOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,12 +146,11 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((MultiAttributeOperation) object).getFeatureName();
+		String label = ((MultiAttributeOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MultiAttributeOperation_type") : //$NON-NLS-1$
 			getString("_UI_MultiAttributeOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -161,7 +161,6 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

@@ -23,10 +23,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
@@ -61,7 +59,6 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,7 +74,6 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,7 +88,6 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns AncestorVersionSpec.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -104,12 +99,11 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((AncestorVersionSpec) object).getBranch();
+		String label = ((AncestorVersionSpec) object).getBranch();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AncestorVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_AncestorVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -120,7 +114,6 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -167,10 +160,10 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		final Object childFeature = feature;
-		final Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-		final boolean qualify =
+		boolean qualify =
 			childFeature == VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__TARGET ||
 				childFeature == VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__SOURCE;
 

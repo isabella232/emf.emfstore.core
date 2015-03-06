@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * Model Element Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelElementUrlFragment {
@@ -101,12 +101,11 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 * @generated
 	 */
 	public void setName(String newName) {
-		final String oldName = name;
+		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME, oldName,
 				name));
-		}
 	}
 
 	/**
@@ -117,11 +116,11 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	public ModelElementId getModelElementId() {
 		if (modelElementId != null && modelElementId.eIsProxy())
 		{
-			final InternalEObject oldModelElementId = (InternalEObject) modelElementId;
+			InternalEObject oldModelElementId = (InternalEObject) modelElementId;
 			modelElementId = (ModelElementId) eResolveProxy(oldModelElementId);
 			if (modelElementId != oldModelElementId)
 			{
-				final InternalEObject newModelElementId = (InternalEObject) modelElementId;
+				InternalEObject newModelElementId = (InternalEObject) modelElementId;
 				NotificationChain msgs = oldModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, null);
 				if (newModelElementId.eInternalContainer() == null)
@@ -129,13 +128,11 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 					msgs = newModelElementId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, oldModelElementId, modelElementId));
-				}
 			}
 		}
 		return modelElementId;
@@ -156,17 +153,16 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 * @generated
 	 */
 	public NotificationChain basicSetModelElementId(ModelElementId newModelElementId, NotificationChain msgs) {
-		final ModelElementId oldModelElementId = modelElementId;
+		ModelElementId oldModelElementId = modelElementId;
 		modelElementId = newModelElementId;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, oldModelElementId, newModelElementId);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -180,23 +176,19 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 		if (newModelElementId != modelElementId)
 		{
 			NotificationChain msgs = null;
-			if (modelElementId != null) {
+			if (modelElementId != null)
 				msgs = ((InternalEObject) modelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
-			}
-			if (newModelElementId != null) {
+			if (newModelElementId != null)
 				msgs = ((InternalEObject) newModelElementId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
-			}
 			msgs = basicSetModelElementId(newModelElementId, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, newModelElementId, newModelElementId));
-		}
 	}
 
 	/**
@@ -226,9 +218,8 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME:
 			return getName();
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID:
-			if (resolve) {
+			if (resolve)
 				return getModelElementId();
-			}
 			return basicGetModelElementId();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -296,11 +287,10 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

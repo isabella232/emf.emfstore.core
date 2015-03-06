@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVersionSpec {

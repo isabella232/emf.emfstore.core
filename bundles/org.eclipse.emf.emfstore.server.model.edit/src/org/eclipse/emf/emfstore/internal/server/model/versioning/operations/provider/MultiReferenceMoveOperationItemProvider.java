@@ -67,13 +67,14 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addOldIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiReferenceMoveOperation_oldIndex_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_oldIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_oldIndex_feature", "_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__OLD_INDEX,
 				true,
 				false,
@@ -90,13 +91,14 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addNewIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiReferenceMoveOperation_newIndex_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_newIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_newIndex_feature", "_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__NEW_INDEX,
 				true,
 				false,
@@ -109,18 +111,17 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	/**
 	 * This adds a property descriptor for the Referenced Model Element Id feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addReferencedModelElementIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiReferenceMoveOperation_referencedModelElementId_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
-					"_UI_MultiReferenceMoveOperation_referencedModelElementId_feature", //$NON-NLS-1$
-					"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_referencedModelElementId_feature", "_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
 				true,
 				false,
@@ -168,7 +169,6 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

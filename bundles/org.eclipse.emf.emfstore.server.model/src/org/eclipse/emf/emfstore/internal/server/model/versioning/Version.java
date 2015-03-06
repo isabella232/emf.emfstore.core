@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Version</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  * Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion()
  * @model
  * @generated

@@ -19,10 +19,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class BranchVersionSpecItemProvider extends VersionSpecItemProvider {
@@ -56,7 +54,6 @@ public class BranchVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns BranchVersionSpec.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,12 +65,11 @@ public class BranchVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((BranchVersionSpec) object).getBranch();
+		String label = ((BranchVersionSpec) object).getBranch();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BranchVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_BranchVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -84,7 +80,6 @@ public class BranchVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

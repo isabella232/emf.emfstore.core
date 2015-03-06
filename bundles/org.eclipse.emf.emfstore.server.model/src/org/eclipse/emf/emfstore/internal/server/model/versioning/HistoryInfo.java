@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
  * 
  * @extends APIDelegate<ESHistoryInfo>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -44,7 +44,7 @@ import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
  *          Package</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo()
  * @model
  * @generated

@@ -81,7 +81,7 @@ public class UrlSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -100,35 +100,31 @@ public class UrlSwitch<T> {
 		switch (classifierID)
 		{
 		case UrlPackage.SERVER_URL: {
-			final ServerUrl serverUrl = (ServerUrl) theEObject;
+			ServerUrl serverUrl = (ServerUrl) theEObject;
 			T result = caseServerUrl(serverUrl);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case UrlPackage.PROJECT_URL_FRAGMENT: {
-			final ProjectUrlFragment projectUrlFragment = (ProjectUrlFragment) theEObject;
+			ProjectUrlFragment projectUrlFragment = (ProjectUrlFragment) theEObject;
 			T result = caseProjectUrlFragment(projectUrlFragment);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT: {
-			final ModelElementUrlFragment modelElementUrlFragment = (ModelElementUrlFragment) theEObject;
+			ModelElementUrlFragment modelElementUrlFragment = (ModelElementUrlFragment) theEObject;
 			T result = caseModelElementUrlFragment(modelElementUrlFragment);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case UrlPackage.MODEL_ELEMENT_URL: {
-			final ModelElementUrl modelElementUrl = (ModelElementUrl) theEObject;
+			ModelElementUrl modelElementUrl = (ModelElementUrl) theEObject;
 			T result = caseModelElementUrl(modelElementUrl);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:

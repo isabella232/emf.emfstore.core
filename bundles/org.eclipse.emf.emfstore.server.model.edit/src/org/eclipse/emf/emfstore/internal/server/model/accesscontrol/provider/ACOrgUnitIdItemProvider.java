@@ -22,10 +22,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
@@ -70,12 +68,11 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((ACOrgUnitId) object).getId();
+		String label = ((ACOrgUnitId) object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ACOrgUnitId_type") : //$NON-NLS-1$
 			getString("_UI_ACOrgUnitId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -86,7 +83,6 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

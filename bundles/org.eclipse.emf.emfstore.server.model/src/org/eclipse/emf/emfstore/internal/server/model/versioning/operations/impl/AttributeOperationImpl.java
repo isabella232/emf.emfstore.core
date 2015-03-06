@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AttributeOperationImpl extends FeatureOperationImpl implements AttributeOperation {
@@ -115,12 +115,11 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 * @generated
 	 */
 	public void setOldValue(Object newOldValue) {
-		final Object oldOldValue = oldValue;
+		Object oldOldValue = oldValue;
 		oldValue = newOldValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.ATTRIBUTE_OPERATION__OLD_VALUE,
 				oldOldValue, oldValue));
-		}
 	}
 
 	/**
@@ -138,12 +137,11 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 * @generated
 	 */
 	public void setNewValue(Object newNewValue) {
-		final Object oldNewValue = newValue;
+		Object oldNewValue = newValue;
 		newValue = newNewValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.ATTRIBUTE_OPERATION__NEW_VALUE,
 				oldNewValue, newValue));
-		}
 	}
 
 	/**
@@ -225,11 +223,10 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (oldValue: "); //$NON-NLS-1$
 		result.append(oldValue);
 		result.append(", newValue: "); //$NON-NLS-1$

@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {

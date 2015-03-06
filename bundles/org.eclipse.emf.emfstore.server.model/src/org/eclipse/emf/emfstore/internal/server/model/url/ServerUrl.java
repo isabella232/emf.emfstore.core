@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Server Url</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getPort <em>Port</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getServerUrl()
  * @model
  * @generated

@@ -40,11 +40,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CreateDeleteOperationItemProvider extends AbstractOperationItemProvider {
@@ -82,13 +80,14 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * @generated
 	 */
 	protected void addDeletePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_CreateDeleteOperation_delete_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_CreateDeleteOperation_delete_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_CreateDeleteOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_CreateDeleteOperation_delete_feature", "_UI_CreateDeleteOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.CREATE_DELETE_OPERATION__DELETE,
 				true,
 				false,
@@ -103,7 +102,6 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,7 +118,6 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -205,7 +202,8 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 				description = Messages.CreateDeleteOperationItemProvider_Text_Created + elementClassAndName;
 			}
 			if (childrenCount > 0) {
-				description += Messages.CreateDeleteOperationItemProvider_Text_Including + childrenCount + Messages.CreateDeleteOperationItemProvider_Text_Siblings;
+				description += Messages.CreateDeleteOperationItemProvider_Text_Including + childrenCount
+					+ Messages.CreateDeleteOperationItemProvider_Text_Siblings;
 			}
 
 			final EList<ReferenceOperation> subOperations = op.getSubOperations();
@@ -213,7 +211,8 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 			if (op.isDelete() && subOperationCount > 0) {
 				final ReferenceOperation referenceOperation = subOperations.get(subOperationCount - 1);
 				if (referenceOperation.getContainmentType().equals(ContainmentType.CONTAINMENT)) {
-					description += Messages.CreateDeleteOperationItemProvider_Text_From + getModelElementClassAndName(referenceOperation.getModelElementId());
+					description += Messages.CreateDeleteOperationItemProvider_Text_From
+						+ getModelElementClassAndName(referenceOperation.getModelElementId());
 				}
 			}
 			return description;
@@ -226,7 +225,6 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -588,10 +586,10 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		final Object childFeature = feature;
-		final Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-		final boolean qualify =
+		boolean qualify =
 			childFeature == OperationsPackage.Literals.CREATE_DELETE_OPERATION__MODEL_ELEMENT ||
 				childFeature == OperationsPackage.Literals.CREATE_DELETE_OPERATION__SUB_OPERATIONS ||
 				childFeature == OperationsPackage.Literals.CREATE_DELETE_OPERATION__EOBJECT_TO_ID_MAP;

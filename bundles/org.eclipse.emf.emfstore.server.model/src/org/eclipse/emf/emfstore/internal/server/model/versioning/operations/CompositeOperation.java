@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Composite Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * Reversed</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCompositeOperation()
  * @model
  * @generated

@@ -54,13 +54,13 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public static OperationsFactory init() {
 		try
 		{
-			final OperationsFactory theOperationsFactory = (OperationsFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/operations"); //$NON-NLS-1$
+			OperationsFactory theOperationsFactory = (OperationsFactory) EPackage.Registry.INSTANCE
+				.getEFactory(OperationsPackage.eNS_URI);
 			if (theOperationsFactory != null)
 			{
 				return theOperationsFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -162,7 +162,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public CompositeOperation createCompositeOperation() {
-		final CompositeOperationImpl compositeOperation = new CompositeOperationImpl();
+		CompositeOperationImpl compositeOperation = new CompositeOperationImpl();
 		return compositeOperation;
 	}
 
@@ -172,7 +172,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public CreateDeleteOperation createCreateDeleteOperation() {
-		final CreateDeleteOperationImpl createDeleteOperation = new CreateDeleteOperationImpl();
+		CreateDeleteOperationImpl createDeleteOperation = new CreateDeleteOperationImpl();
 		return createDeleteOperation;
 	}
 
@@ -182,7 +182,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public AttributeOperation createAttributeOperation() {
-		final AttributeOperationImpl attributeOperation = new AttributeOperationImpl();
+		AttributeOperationImpl attributeOperation = new AttributeOperationImpl();
 		return attributeOperation;
 	}
 
@@ -192,7 +192,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public MultiAttributeOperation createMultiAttributeOperation() {
-		final MultiAttributeOperationImpl multiAttributeOperation = new MultiAttributeOperationImpl();
+		MultiAttributeOperationImpl multiAttributeOperation = new MultiAttributeOperationImpl();
 		return multiAttributeOperation;
 	}
 
@@ -202,7 +202,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public MultiAttributeSetOperation createMultiAttributeSetOperation() {
-		final MultiAttributeSetOperationImpl multiAttributeSetOperation = new MultiAttributeSetOperationImpl();
+		MultiAttributeSetOperationImpl multiAttributeSetOperation = new MultiAttributeSetOperationImpl();
 		return multiAttributeSetOperation;
 	}
 
@@ -212,7 +212,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public MultiAttributeMoveOperation createMultiAttributeMoveOperation() {
-		final MultiAttributeMoveOperationImpl multiAttributeMoveOperation = new MultiAttributeMoveOperationImpl();
+		MultiAttributeMoveOperationImpl multiAttributeMoveOperation = new MultiAttributeMoveOperationImpl();
 		return multiAttributeMoveOperation;
 	}
 
@@ -222,7 +222,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public SingleReferenceOperation createSingleReferenceOperation() {
-		final SingleReferenceOperationImpl singleReferenceOperation = new SingleReferenceOperationImpl();
+		SingleReferenceOperationImpl singleReferenceOperation = new SingleReferenceOperationImpl();
 		return singleReferenceOperation;
 	}
 
@@ -232,7 +232,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public MultiReferenceOperation createMultiReferenceOperation() {
-		final MultiReferenceOperationImpl multiReferenceOperation = new MultiReferenceOperationImpl();
+		MultiReferenceOperationImpl multiReferenceOperation = new MultiReferenceOperationImpl();
 		return multiReferenceOperation;
 	}
 
@@ -242,7 +242,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public MultiReferenceSetOperation createMultiReferenceSetOperation() {
-		final MultiReferenceSetOperationImpl multiReferenceSetOperation = new MultiReferenceSetOperationImpl();
+		MultiReferenceSetOperationImpl multiReferenceSetOperation = new MultiReferenceSetOperationImpl();
 		return multiReferenceSetOperation;
 	}
 
@@ -252,7 +252,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public MultiReferenceMoveOperation createMultiReferenceMoveOperation() {
-		final MultiReferenceMoveOperationImpl multiReferenceMoveOperation = new MultiReferenceMoveOperationImpl();
+		MultiReferenceMoveOperationImpl multiReferenceMoveOperation = new MultiReferenceMoveOperationImpl();
 		return multiReferenceMoveOperation;
 	}
 
@@ -262,7 +262,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public OperationId createOperationId() {
-		final OperationIdImpl operationId = new OperationIdImpl();
+		OperationIdImpl operationId = new OperationIdImpl();
 		return operationId;
 	}
 
@@ -272,7 +272,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public OperationGroup createOperationGroup() {
-		final OperationGroupImpl operationGroup = new OperationGroupImpl();
+		OperationGroupImpl operationGroup = new OperationGroupImpl();
 		return operationGroup;
 	}
 
@@ -282,7 +282,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public ModelElementGroup createModelElementGroup() {
-		final ModelElementGroupImpl modelElementGroup = new ModelElementGroupImpl();
+		ModelElementGroupImpl modelElementGroup = new ModelElementGroupImpl();
 		return modelElementGroup;
 	}
 
@@ -292,7 +292,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public Map.Entry<EObject, ModelElementId> createEObjectToModelElementIdMap() {
-		final EObjectToModelElementIdMapImpl eObjectToModelElementIdMap = new EObjectToModelElementIdMapImpl();
+		EObjectToModelElementIdMapImpl eObjectToModelElementIdMap = new EObjectToModelElementIdMapImpl();
 		return eObjectToModelElementIdMap;
 	}
 
@@ -302,12 +302,10 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public ContainmentType createContainmentTypeFromString(EDataType eDataType, String initialValue) {
-		final ContainmentType result = ContainmentType.get(initialValue);
+		ContainmentType result = ContainmentType.get(initialValue);
 		if (result == null)
-		{
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" //$NON-NLS-1$ //$NON-NLS-2$
-				+ eDataType.getName() + "'"); //$NON-NLS-1$
-		}
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		return result;
 	}
 
@@ -328,11 +326,10 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 */
 	public UnsetType createUnsetTypeFromString(EDataType eDataType, String initialValue)
 	{
-		final UnsetType result = UnsetType.get(initialValue);
-		if (result == null) {
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" //$NON-NLS-1$ //$NON-NLS-2$
-				+ eDataType.getName() + "'"); //$NON-NLS-1$
-		}
+		UnsetType result = UnsetType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		return result;
 	}
 

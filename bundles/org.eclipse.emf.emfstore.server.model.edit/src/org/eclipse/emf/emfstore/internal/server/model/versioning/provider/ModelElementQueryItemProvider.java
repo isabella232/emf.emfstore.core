@@ -23,10 +23,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQue
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
@@ -61,7 +59,6 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,7 +73,6 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,7 +87,6 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	 * This returns ModelElementQuery.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -103,12 +98,11 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final ModelElementQuery modelElementQuery = (ModelElementQuery) object;
+		ModelElementQuery modelElementQuery = (ModelElementQuery) object;
 		return getString("_UI_ModelElementQuery_type") + " " + modelElementQuery.isIncludeChangePackages(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -117,7 +111,6 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

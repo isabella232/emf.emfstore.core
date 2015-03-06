@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Event</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ServerEventImpl extends EventImpl implements ServerEvent {

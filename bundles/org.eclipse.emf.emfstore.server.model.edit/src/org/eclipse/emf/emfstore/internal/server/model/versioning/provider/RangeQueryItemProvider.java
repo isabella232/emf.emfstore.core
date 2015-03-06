@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -33,7 +33,7 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public RangeQueryItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -63,99 +63,101 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	/**
 	 * This adds a property descriptor for the Upper Limit feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addUpperLimitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RangeQuery_upperLimit_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_upperLimit_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_RangeQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.RANGE_QUERY__UPPER_LIMIT,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_upperLimit_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.RANGE_QUERY__UPPER_LIMIT,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Lower Limit feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addLowerLimitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RangeQuery_lowerLimit_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_lowerLimit_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_RangeQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.RANGE_QUERY__LOWER_LIMIT,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_lowerLimit_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.RANGE_QUERY__LOWER_LIMIT,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Include Incoming feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIncludeIncomingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RangeQuery_includeIncoming_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeIncoming_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_RangeQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.RANGE_QUERY__INCLUDE_INCOMING,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeIncoming_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.RANGE_QUERY__INCLUDE_INCOMING,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Include Outgoing feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIncludeOutgoingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RangeQuery_includeOutgoing_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeOutgoing_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_RangeQuery_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.RANGE_QUERY__INCLUDE_OUTGOING,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeOutgoing_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.RANGE_QUERY__INCLUDE_OUTGOING,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This returns RangeQuery.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -204,7 +206,7 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

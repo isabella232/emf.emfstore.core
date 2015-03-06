@@ -18,11 +18,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole} object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProjectAdminRoleItemProvider extends RoleItemProvider {
@@ -56,7 +54,6 @@ public class ProjectAdminRoleItemProvider extends RoleItemProvider {
 	 * This returns ProjectAdminRole.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,7 +65,6 @@ public class ProjectAdminRoleItemProvider extends RoleItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,7 +77,6 @@ public class ProjectAdminRoleItemProvider extends RoleItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

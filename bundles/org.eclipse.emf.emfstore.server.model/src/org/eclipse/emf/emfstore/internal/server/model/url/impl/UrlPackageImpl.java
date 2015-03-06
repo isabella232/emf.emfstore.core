@@ -383,43 +383,59 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(serverUrlEClass, ServerUrl.class, "ServerUrl", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getServerUrl_HostName(), ecorePackage.getEString(), "hostName", null, 0, 1, ServerUrl.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServerUrl_Port(), ecorePackage.getEInt(), "port", null, 0, 1, ServerUrl.class, !IS_TRANSIENT, //$NON-NLS-1$
-			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(serverUrlEClass, ServerUrl.class,
+			"ServerUrl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getServerUrl_HostName(),
+			ecorePackage.getEString(),
+			"hostName", null, 0, 1, ServerUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getServerUrl_Port(),
+			ecorePackage.getEInt(),
+			"port", null, 0, 1, ServerUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(projectUrlFragmentEClass, ProjectUrlFragment.class, "ProjectUrlFragment", !IS_ABSTRACT, //$NON-NLS-1$
-			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProjectUrlFragment_Name(), ecorePackage.getEString(), "name", null, 0, 1, //$NON-NLS-1$
-			ProjectUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getProjectUrlFragment_ProjectId(), theModelPackage_1.getProjectId(), null, "projectId", null, 0, //$NON-NLS-1$
-			1, ProjectUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(projectUrlFragmentEClass, ProjectUrlFragment.class,
+			"ProjectUrlFragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getProjectUrlFragment_Name(),
+			ecorePackage.getEString(),
+			"name", null, 0, 1, ProjectUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getProjectUrlFragment_ProjectId(),
+			theModelPackage_1.getProjectId(),
+			null,
+			"projectId", null, 0, 1, ProjectUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getProjectUrlFragment_ProjectId().getEKeys().add(theModelPackage.getUniqueIdentifier_Id());
 
-		initEClass(modelElementUrlFragmentEClass, ModelElementUrlFragment.class, "ModelElementUrlFragment", //$NON-NLS-1$
-			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModelElementUrlFragment_Name(), ecorePackage.getEString(), "name", null, 0, 1, //$NON-NLS-1$
-			ModelElementUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelElementUrlFragment_ModelElementId(), theModelPackage.getModelElementId(), null,
-			"modelElementId", null, 0, 1, ModelElementUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(modelElementUrlFragmentEClass, ModelElementUrlFragment.class,
+			"ModelElementUrlFragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getModelElementUrlFragment_Name(),
+			ecorePackage.getEString(),
+			"name", null, 0, 1, ModelElementUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getModelElementUrlFragment_ModelElementId(),
+			theModelPackage.getModelElementId(),
+			null,
+			"modelElementId", null, 0, 1, ModelElementUrlFragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(modelElementUrlEClass, ModelElementUrl.class, "ModelElementUrl", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModelElementUrl_ServerUrl(), this.getServerUrl(), null, "serverUrl", null, 0, 1, //$NON-NLS-1$
-			ModelElementUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelElementUrl_ProjectUrlFragment(), this.getProjectUrlFragment(), null,
-			"projectUrlFragment", null, 0, 1, ModelElementUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelElementUrl_ModelElementUrlFragment(), this.getModelElementUrlFragment(), null,
-			"modelElementUrlFragment", null, 0, 1, ModelElementUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(modelElementUrlEClass, ModelElementUrl.class,
+			"ModelElementUrl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+			getModelElementUrl_ServerUrl(),
+			this.getServerUrl(),
+			null,
+			"serverUrl", null, 0, 1, ModelElementUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getModelElementUrl_ProjectUrlFragment(),
+			this.getProjectUrlFragment(),
+			null,
+			"projectUrlFragment", null, 0, 1, ModelElementUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getModelElementUrl_ModelElementUrlFragment(),
+			this.getModelElementUrlFragment(),
+			null,
+			"modelElementUrlFragment", null, 0, 1, ModelElementUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // UrlPackageImpl

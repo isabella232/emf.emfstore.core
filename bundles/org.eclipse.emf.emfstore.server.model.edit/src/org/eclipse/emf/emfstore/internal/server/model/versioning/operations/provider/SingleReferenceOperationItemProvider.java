@@ -65,13 +65,14 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_SingleReferenceOperation_oldValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_oldValue_feature", "_UI_SingleReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__OLD_VALUE,
 				true,
 				false,
@@ -88,13 +89,14 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_SingleReferenceOperation_newValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_newValue_feature", "_UI_SingleReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__NEW_VALUE,
 				true,
 				false,
@@ -170,7 +172,6 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

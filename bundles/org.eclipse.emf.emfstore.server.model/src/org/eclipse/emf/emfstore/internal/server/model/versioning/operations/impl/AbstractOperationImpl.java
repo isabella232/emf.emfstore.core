@@ -46,7 +46,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * <em>Client Date</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractOperationImpl extends IdentifiableElementImpl implements AbstractOperation {
@@ -140,11 +140,11 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	public ModelElementId getModelElementId() {
 		if (modelElementId != null && modelElementId.eIsProxy())
 		{
-			final InternalEObject oldModelElementId = (InternalEObject) modelElementId;
+			InternalEObject oldModelElementId = (InternalEObject) modelElementId;
 			modelElementId = (ModelElementId) eResolveProxy(oldModelElementId);
 			if (modelElementId != oldModelElementId)
 			{
-				final InternalEObject newModelElementId = (InternalEObject) modelElementId;
+				InternalEObject newModelElementId = (InternalEObject) modelElementId;
 				NotificationChain msgs = oldModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, null, null);
 				if (newModelElementId.eInternalContainer() == null)
@@ -152,13 +152,11 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 					msgs = newModelElementId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, oldModelElementId, modelElementId));
-				}
 			}
 		}
 		return modelElementId;
@@ -179,17 +177,16 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 * @generated
 	 */
 	public NotificationChain basicSetModelElementId(ModelElementId newModelElementId, NotificationChain msgs) {
-		final ModelElementId oldModelElementId = modelElementId;
+		ModelElementId oldModelElementId = modelElementId;
 		modelElementId = newModelElementId;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, oldModelElementId, newModelElementId);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -203,23 +200,19 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 		if (newModelElementId != modelElementId)
 		{
 			NotificationChain msgs = null;
-			if (modelElementId != null) {
+			if (modelElementId != null)
 				msgs = ((InternalEObject) modelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, null, msgs);
-			}
-			if (newModelElementId != null) {
+			if (newModelElementId != null)
 				msgs = ((InternalEObject) newModelElementId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, null, msgs);
-			}
 			msgs = basicSetModelElementId(newModelElementId, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, newModelElementId, newModelElementId));
-		}
 	}
 
 	/**
@@ -237,12 +230,11 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 * @generated
 	 */
 	public void setAccepted(boolean newAccepted) {
-		final boolean oldAccepted = accepted;
+		boolean oldAccepted = accepted;
 		accepted = newAccepted;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.ABSTRACT_OPERATION__ACCEPTED,
 				oldAccepted, accepted));
-		}
 	}
 
 	/**
@@ -260,12 +252,11 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 * @generated
 	 */
 	public void setClientDate(Date newClientDate) {
-		final Date oldClientDate = clientDate;
+		Date oldClientDate = clientDate;
 		clientDate = newClientDate;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.ABSTRACT_OPERATION__CLIENT_DATE,
 				oldClientDate, clientDate));
-		}
 	}
 
 	/**
@@ -316,9 +307,8 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 		switch (featureID)
 		{
 		case OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID:
-			if (resolve) {
+			if (resolve)
 				return getModelElementId();
-			}
 			return basicGetModelElementId();
 		case OperationsPackage.ABSTRACT_OPERATION__ACCEPTED:
 			return isAccepted();
@@ -398,11 +388,10 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (accepted: "); //$NON-NLS-1$
 		result.append(accepted);
 		result.append(", clientDate: "); //$NON-NLS-1$

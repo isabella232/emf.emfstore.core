@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
@@ -150,12 +150,11 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 * @generated
 	 */
 	public void setFirstName(String newFirstName) {
-		final String oldFirstName = firstName;
+		String oldFirstName = firstName;
 		firstName = newFirstName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_USER__FIRST_NAME,
 				oldFirstName, firstName));
-		}
 	}
 
 	/**
@@ -173,12 +172,11 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 * @generated
 	 */
 	public void setLastName(String newLastName) {
-		final String oldLastName = lastName;
+		String oldLastName = lastName;
 		lastName = newLastName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_USER__LAST_NAME, oldLastName,
 				lastName));
-		}
 	}
 
 	/**
@@ -214,12 +212,11 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 */
 	public void setPassword(String newPassword)
 	{
-		final String oldPassword = password;
+		String oldPassword = password;
 		password = newPassword;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_USER__PASSWORD, oldPassword,
 				password));
-		}
 	}
 
 	/**
@@ -338,11 +335,10 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (firstName: "); //$NON-NLS-1$
 		result.append(firstName);
 		result.append(", lastName: "); //$NON-NLS-1$

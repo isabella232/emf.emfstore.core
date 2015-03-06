@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -41,11 +41,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public HistoryInfoItemProvider(AdapterFactory adapterFactory) {
@@ -71,7 +71,7 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -88,24 +88,25 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Log Message feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addLogMessagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_HistoryInfo_logMessage_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_HistoryInfo_logMessage_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_HistoryInfo_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.HISTORY_INFO__LOG_MESSAGE,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_HistoryInfo_logMessage_feature", "_UI_HistoryInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.HISTORY_INFO__LOG_MESSAGE,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
@@ -204,7 +205,7 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -212,42 +213,42 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__PRIMARY_SPEC,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__NEXT_SPEC,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__PREVIOUS_SPEC,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__MERGED_FROM,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__MERGED_TO,
 				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__TAG_SPECS,
 				VersioningFactory.eINSTANCE.createTagVersionSpec()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__VERSION_PROPERTIES,
 				VersioningFactory.eINSTANCE.createVersionProperty()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(VersioningPackage.Literals.HISTORY_INFO__CHANGE_PACKAGE,
 				VersioningFactory.eINSTANCE.createChangePackage()));
 	}
@@ -255,7 +256,7 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -265,10 +266,10 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 
 		final boolean qualify =
 			childFeature == VersioningPackage.Literals.HISTORY_INFO__PRIMARY_SPEC ||
-				childFeature == VersioningPackage.Literals.HISTORY_INFO__NEXT_SPEC ||
-				childFeature == VersioningPackage.Literals.HISTORY_INFO__PREVIOUS_SPEC ||
-				childFeature == VersioningPackage.Literals.HISTORY_INFO__MERGED_FROM ||
-				childFeature == VersioningPackage.Literals.HISTORY_INFO__MERGED_TO;
+			childFeature == VersioningPackage.Literals.HISTORY_INFO__NEXT_SPEC ||
+			childFeature == VersioningPackage.Literals.HISTORY_INFO__PREVIOUS_SPEC ||
+			childFeature == VersioningPackage.Literals.HISTORY_INFO__MERGED_FROM ||
+			childFeature == VersioningPackage.Literals.HISTORY_INFO__MERGED_TO;
 
 		if (qualify)
 		{
@@ -281,7 +282,7 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

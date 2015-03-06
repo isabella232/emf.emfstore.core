@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Url Fragment</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ProjectUrlFragment#getProjectId <em>Project Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getProjectUrlFragment()
  * @model
  * @generated

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -37,11 +37,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class LogMessageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessageItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -71,13 +71,13 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This adds a property descriptor for the Message feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_message_feature"), //$NON-NLS-1$
@@ -100,7 +100,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_date_feature"), //$NON-NLS-1$
@@ -117,36 +117,36 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This adds a property descriptor for the Client Date feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addClientDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_clientDate_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_clientDate_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_LogMessage_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_LogMessage_clientDate_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Author feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addAuthorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_author_feature"), //$NON-NLS-1$
@@ -163,7 +163,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * This returns LogMessage.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -183,7 +183,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 		final String label = ((LogMessage) object).getAuthor();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LogMessage_type") : //$NON-NLS-1$
-			getString("_UI_LogMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_LogMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -214,7 +214,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -225,7 +225,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

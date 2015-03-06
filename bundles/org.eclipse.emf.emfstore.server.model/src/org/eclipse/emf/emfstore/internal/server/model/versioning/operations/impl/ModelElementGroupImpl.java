@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <em>Model Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ModelElementGroupImpl extends EObjectImpl implements ModelElementGroup {
@@ -104,12 +104,11 @@ public class ModelElementGroupImpl extends EObjectImpl implements ModelElementGr
 	 * @generated
 	 */
 	public void setName(String newName) {
-		final String oldName = name;
+		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.MODEL_ELEMENT_GROUP__NAME, oldName,
 				name));
-		}
 	}
 
 	/**
@@ -207,11 +206,10 @@ public class ModelElementGroupImpl extends EObjectImpl implements ModelElementGr
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

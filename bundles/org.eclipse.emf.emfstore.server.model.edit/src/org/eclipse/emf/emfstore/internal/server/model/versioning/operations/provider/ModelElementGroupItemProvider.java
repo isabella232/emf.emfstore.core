@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -38,11 +38,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * @generated
  */
 public class ModelElementGroupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementGroupItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -75,25 +75,26 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ModelElementGroup_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ModelElementGroup_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature", "_UI_ModelElementGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildren(java.lang.Object)
 	 */
@@ -109,30 +110,31 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	/**
 	 * This adds a property descriptor for the Model Elements feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addModelElementsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		itemPropertyDescriptors
+		.add
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ModelElementGroup_modelElements_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ModelElementGroup_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature", "_UI_ModelElementGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null));
 	}
 
 	/**
 	 * {@inheritDoc} This returns ModelElementGroup.gif. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -143,7 +145,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	/**
 	 * {@inheritDoc} This returns the label text for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -180,7 +182,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -191,7 +193,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

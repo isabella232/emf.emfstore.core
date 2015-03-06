@@ -23,10 +23,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery}
- * object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PathQueryItemProvider extends HistoryQueryItemProvider {
@@ -61,7 +59,6 @@ public class PathQueryItemProvider extends HistoryQueryItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,7 +73,6 @@ public class PathQueryItemProvider extends HistoryQueryItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -90,7 +86,6 @@ public class PathQueryItemProvider extends HistoryQueryItemProvider {
 	/**
 	 * This returns PathQuery.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,12 +97,11 @@ public class PathQueryItemProvider extends HistoryQueryItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final PathQuery pathQuery = (PathQuery) object;
+		PathQuery pathQuery = (PathQuery) object;
 		return getString("_UI_PathQuery_type") + " " + pathQuery.isIncludeChangePackages(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -116,7 +110,6 @@ public class PathQueryItemProvider extends HistoryQueryItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

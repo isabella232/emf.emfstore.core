@@ -95,7 +95,7 @@ public class VersioningSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -114,182 +114,151 @@ public class VersioningSwitch<T> {
 		switch (classifierID)
 		{
 		case VersioningPackage.TAG_VERSION_SPEC: {
-			final TagVersionSpec tagVersionSpec = (TagVersionSpec) theEObject;
+			TagVersionSpec tagVersionSpec = (TagVersionSpec) theEObject;
 			T result = caseTagVersionSpec(tagVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(tagVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.DATE_VERSION_SPEC: {
-			final DateVersionSpec dateVersionSpec = (DateVersionSpec) theEObject;
+			DateVersionSpec dateVersionSpec = (DateVersionSpec) theEObject;
 			T result = caseDateVersionSpec(dateVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(dateVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.PRIMARY_VERSION_SPEC: {
-			final PrimaryVersionSpec primaryVersionSpec = (PrimaryVersionSpec) theEObject;
+			PrimaryVersionSpec primaryVersionSpec = (PrimaryVersionSpec) theEObject;
 			T result = casePrimaryVersionSpec(primaryVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(primaryVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.VERSION_SPEC: {
-			final VersionSpec versionSpec = (VersionSpec) theEObject;
+			VersionSpec versionSpec = (VersionSpec) theEObject;
 			T result = caseVersionSpec(versionSpec);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.LOG_MESSAGE: {
-			final LogMessage logMessage = (LogMessage) theEObject;
+			LogMessage logMessage = (LogMessage) theEObject;
 			T result = caseLogMessage(logMessage);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.CHANGE_PACKAGE: {
-			final ChangePackage changePackage = (ChangePackage) theEObject;
+			ChangePackage changePackage = (ChangePackage) theEObject;
 			T result = caseChangePackage(changePackage);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.HISTORY_INFO: {
-			final HistoryInfo historyInfo = (HistoryInfo) theEObject;
+			HistoryInfo historyInfo = (HistoryInfo) theEObject;
 			T result = caseHistoryInfo(historyInfo);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.HISTORY_QUERY: {
-			@SuppressWarnings("rawtypes")
-			final HistoryQuery historyQuery = (HistoryQuery) theEObject;
+			HistoryQuery historyQuery = (HistoryQuery) theEObject;
 			T result = caseHistoryQuery(historyQuery);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.RANGE_QUERY: {
-			@SuppressWarnings("rawtypes")
-			final RangeQuery rangeQuery = (RangeQuery) theEObject;
+			RangeQuery rangeQuery = (RangeQuery) theEObject;
 			T result = caseRangeQuery(rangeQuery);
-			if (result == null) {
+			if (result == null)
 				result = caseHistoryQuery(rangeQuery);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.PATH_QUERY: {
-			final PathQuery pathQuery = (PathQuery) theEObject;
+			PathQuery pathQuery = (PathQuery) theEObject;
 			T result = casePathQuery(pathQuery);
-			if (result == null) {
+			if (result == null)
 				result = caseHistoryQuery(pathQuery);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.MODEL_ELEMENT_QUERY: {
-			final ModelElementQuery modelElementQuery = (ModelElementQuery) theEObject;
+			ModelElementQuery modelElementQuery = (ModelElementQuery) theEObject;
 			T result = caseModelElementQuery(modelElementQuery);
-			if (result == null) {
+			if (result == null)
 				result = caseRangeQuery(modelElementQuery);
-			}
-			if (result == null) {
+			if (result == null)
 				result = caseHistoryQuery(modelElementQuery);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.VERSION: {
-			final Version version = (Version) theEObject;
+			Version version = (Version) theEObject;
 			T result = caseVersion(version);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.HEAD_VERSION_SPEC: {
-			final HeadVersionSpec headVersionSpec = (HeadVersionSpec) theEObject;
+			HeadVersionSpec headVersionSpec = (HeadVersionSpec) theEObject;
 			T result = caseHeadVersionSpec(headVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(headVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.VERSION_PROPERTY: {
-			final VersionProperty versionProperty = (VersionProperty) theEObject;
+			VersionProperty versionProperty = (VersionProperty) theEObject;
 			T result = caseVersionProperty(versionProperty);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.BRANCH_VERSION_SPEC: {
-			final BranchVersionSpec branchVersionSpec = (BranchVersionSpec) theEObject;
+			BranchVersionSpec branchVersionSpec = (BranchVersionSpec) theEObject;
 			T result = caseBranchVersionSpec(branchVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(branchVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.BRANCH_INFO: {
-			final BranchInfo branchInfo = (BranchInfo) theEObject;
+			BranchInfo branchInfo = (BranchInfo) theEObject;
 			T result = caseBranchInfo(branchInfo);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.ANCESTOR_VERSION_SPEC: {
-			final AncestorVersionSpec ancestorVersionSpec = (AncestorVersionSpec) theEObject;
+			AncestorVersionSpec ancestorVersionSpec = (AncestorVersionSpec) theEObject;
 			T result = caseAncestorVersionSpec(ancestorVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(ancestorVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case VersioningPackage.PAGED_UPDATE_VERSION_SPEC: {
-			final PagedUpdateVersionSpec pagedUpdateVersionSpec = (PagedUpdateVersionSpec) theEObject;
+			PagedUpdateVersionSpec pagedUpdateVersionSpec = (PagedUpdateVersionSpec) theEObject;
 			T result = casePagedUpdateVersionSpec(pagedUpdateVersionSpec);
-			if (result == null) {
+			if (result == null)
 				result = caseVersionSpec(pagedUpdateVersionSpec);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:
@@ -421,7 +390,7 @@ public class VersioningSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseHistoryQuery(@SuppressWarnings("rawtypes") HistoryQuery object) {
+	public T caseHistoryQuery(HistoryQuery object) {
 		return null;
 	}
 
@@ -437,7 +406,7 @@ public class VersioningSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRangeQuery(@SuppressWarnings("rawtypes") RangeQuery object) {
+	public T caseRangeQuery(RangeQuery object) {
 		return null;
 	}
 

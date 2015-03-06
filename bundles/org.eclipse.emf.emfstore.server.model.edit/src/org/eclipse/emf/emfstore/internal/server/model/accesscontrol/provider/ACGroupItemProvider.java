@@ -21,10 +21,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup}
- * object.
+ * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ACGroupItemProvider extends ACOrgUnitItemProvider {
@@ -80,7 +78,6 @@ public class ACGroupItemProvider extends ACOrgUnitItemProvider {
 	/**
 	 * This returns ACGroup.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,12 +89,11 @@ public class ACGroupItemProvider extends ACOrgUnitItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((ACGroup) object).getName();
+		String label = ((ACGroup) object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ACGroup_type") : //$NON-NLS-1$
 			getString("_UI_ACGroup_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -108,7 +104,6 @@ public class ACGroupItemProvider extends ACOrgUnitItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

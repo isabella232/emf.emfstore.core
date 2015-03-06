@@ -169,11 +169,11 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	public ProjectId getProjectId() {
 		if (projectId != null && projectId.eIsProxy())
 		{
-			final InternalEObject oldProjectId = (InternalEObject) projectId;
+			InternalEObject oldProjectId = (InternalEObject) projectId;
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId)
 			{
-				final InternalEObject newProjectId = (InternalEObject) projectId;
+				InternalEObject newProjectId = (InternalEObject) projectId;
 				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null)
@@ -181,13 +181,11 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.PROJECT_HISTORY__PROJECT_ID,
 						oldProjectId, projectId));
-				}
 			}
 		}
 		return projectId;
@@ -208,17 +206,16 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * @generated
 	 */
 	public NotificationChain basicSetProjectId(ProjectId newProjectId, NotificationChain msgs) {
-		final ProjectId oldProjectId = projectId;
+		ProjectId oldProjectId = projectId;
 		projectId = newProjectId;
 		if (eNotificationRequired())
 		{
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ModelPackage.PROJECT_HISTORY__PROJECT_ID, oldProjectId, newProjectId);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -232,23 +229,19 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 		if (newProjectId != projectId)
 		{
 			NotificationChain msgs = null;
-			if (projectId != null) {
+			if (projectId != null)
 				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
-			}
-			if (newProjectId != null) {
+			if (newProjectId != null)
 				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
-			}
 			msgs = basicSetProjectId(newProjectId, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
 		}
-		else if (eNotificationRequired()) {
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROJECT_HISTORY__PROJECT_ID,
 				newProjectId, newProjectId));
-		}
 	}
 
 	/**
@@ -293,12 +286,11 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * @generated
 	 */
 	public void setProjectName(String newProjectName) {
-		final String oldProjectName = projectName;
+		String oldProjectName = projectName;
 		projectName = newProjectName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROJECT_HISTORY__PROJECT_NAME,
 				oldProjectName, projectName));
-		}
 	}
 
 	/**
@@ -316,12 +308,11 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * @generated
 	 */
 	public void setProjectDescription(String newProjectDescription) {
-		final String oldProjectDescription = projectDescription;
+		String oldProjectDescription = projectDescription;
 		projectDescription = newProjectDescription;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROJECT_HISTORY__PROJECT_DESCRIPTION,
 				oldProjectDescription, projectDescription));
-		}
 	}
 
 	/**
@@ -383,9 +374,8 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 		switch (featureID)
 		{
 		case ModelPackage.PROJECT_HISTORY__PROJECT_ID:
-			if (resolve) {
+			if (resolve)
 				return getProjectId();
-			}
 			return basicGetProjectId();
 		case ModelPackage.PROJECT_HISTORY__VERSIONS:
 			return getVersions();
@@ -500,11 +490,10 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (projectName: "); //$NON-NLS-1$
 		result.append(projectName);
 		result.append(", projectDescription: "); //$NON-NLS-1$

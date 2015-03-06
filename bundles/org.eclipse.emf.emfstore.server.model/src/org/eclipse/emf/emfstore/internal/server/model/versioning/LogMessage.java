@@ -18,7 +18,7 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Log Message</b></em>'.
  *
- * @extends APIDelegate<ESLogMessage>
+ * @extends ESLogMessage
  *          <!-- end-user-doc -->
  *
  *          <p>
@@ -116,7 +116,7 @@ public interface LogMessage extends EObject, ESLogMessage {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getDate
 	 * <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Date</em>' attribute.
 	 * @see #getDate()
 	 * @generated
@@ -145,7 +145,7 @@ public interface LogMessage extends EObject, ESLogMessage {
 	 * <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Client Date</em>' attribute.
 	 * @see #getClientDate()
 	 * @generated

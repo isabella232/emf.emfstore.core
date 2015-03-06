@@ -39,13 +39,12 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	public static RolesFactory init() {
 		try
 		{
-			final RolesFactory theRolesFactory = (RolesFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/roles"); //$NON-NLS-1$
+			RolesFactory theRolesFactory = (RolesFactory) EPackage.Registry.INSTANCE.getEFactory(RolesPackage.eNS_URI);
 			if (theRolesFactory != null)
 			{
 				return theRolesFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -91,7 +90,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public ReaderRole createReaderRole() {
-		final ReaderRoleImpl readerRole = new ReaderRoleImpl();
+		ReaderRoleImpl readerRole = new ReaderRoleImpl();
 		return readerRole;
 	}
 
@@ -101,7 +100,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public WriterRole createWriterRole() {
-		final WriterRoleImpl writerRole = new WriterRoleImpl();
+		WriterRoleImpl writerRole = new WriterRoleImpl();
 		return writerRole;
 	}
 
@@ -111,7 +110,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public ProjectAdminRole createProjectAdminRole() {
-		final ProjectAdminRoleImpl projectAdminRole = new ProjectAdminRoleImpl();
+		ProjectAdminRoleImpl projectAdminRole = new ProjectAdminRoleImpl();
 		return projectAdminRole;
 	}
 
@@ -121,7 +120,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public ServerAdmin createServerAdmin() {
-		final ServerAdminImpl serverAdmin = new ServerAdminImpl();
+		ServerAdminImpl serverAdmin = new ServerAdminImpl();
 		return serverAdmin;
 	}
 

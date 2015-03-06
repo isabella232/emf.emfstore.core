@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <em>Project State Checksum</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVersionSpec {
@@ -116,12 +116,11 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 * @generated
 	 */
 	public void setIdentifier(int newIdentifier) {
-		final int oldIdentifier = identifier;
+		int oldIdentifier = identifier;
 		identifier = newIdentifier;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.PRIMARY_VERSION_SPEC__IDENTIFIER,
 				oldIdentifier, identifier));
-		}
 	}
 
 	/**
@@ -141,13 +140,12 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 * @generated
 	 */
 	public void setProjectStateChecksum(long newProjectStateChecksum) {
-		final long oldProjectStateChecksum = projectStateChecksum;
+		long oldProjectStateChecksum = projectStateChecksum;
 		projectStateChecksum = newProjectStateChecksum;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM, oldProjectStateChecksum,
 				projectStateChecksum));
-		}
 	}
 
 	/**
@@ -229,11 +227,10 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (identifier: "); //$NON-NLS-1$
 		result.append(identifier);
 		result.append(", projectStateChecksum: "); //$NON-NLS-1$

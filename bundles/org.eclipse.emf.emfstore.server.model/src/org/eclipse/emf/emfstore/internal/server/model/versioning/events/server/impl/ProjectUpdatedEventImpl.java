@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * <em>New Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements ProjectUpdatedEvent {

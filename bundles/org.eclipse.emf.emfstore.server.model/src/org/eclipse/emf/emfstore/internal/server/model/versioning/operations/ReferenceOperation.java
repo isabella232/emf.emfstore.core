@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Reference Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * <em>Containment Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getReferenceOperation()
  * @model abstract="true"
  * @generated

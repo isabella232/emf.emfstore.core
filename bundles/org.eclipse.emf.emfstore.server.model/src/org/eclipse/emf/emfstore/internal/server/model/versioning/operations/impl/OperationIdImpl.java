@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Operation Id</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class OperationIdImpl extends UniqueIdentifierImpl implements OperationId {

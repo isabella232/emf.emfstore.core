@@ -78,7 +78,7 @@ public class EventsSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -97,11 +97,10 @@ public class EventsSwitch<T> {
 		switch (classifierID)
 		{
 		case EventsPackage.EVENT: {
-			final Event event = (Event) theEObject;
+			Event event = (Event) theEObject;
 			T result = caseEvent(event);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:

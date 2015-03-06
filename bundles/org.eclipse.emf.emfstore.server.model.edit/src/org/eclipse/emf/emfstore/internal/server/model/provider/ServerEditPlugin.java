@@ -18,7 +18,6 @@ import org.eclipse.emf.emfstore.internal.common.model.provider.CommonEditPlugin;
  * This is the central singleton for the Server edit plugin.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public final class ServerEditPlugin extends EMFPlugin {
@@ -41,7 +40,6 @@ public final class ServerEditPlugin extends EMFPlugin {
 	/**
 	 * Create the instance.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ServerEditPlugin() {
@@ -55,7 +53,6 @@ public final class ServerEditPlugin extends EMFPlugin {
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the singleton instance.
 	 * @generated
 	 */
@@ -68,7 +65,6 @@ public final class ServerEditPlugin extends EMFPlugin {
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @return the singleton instance.
 	 * @generated
 	 */
@@ -86,7 +82,6 @@ public final class ServerEditPlugin extends EMFPlugin {
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public Implementation() {

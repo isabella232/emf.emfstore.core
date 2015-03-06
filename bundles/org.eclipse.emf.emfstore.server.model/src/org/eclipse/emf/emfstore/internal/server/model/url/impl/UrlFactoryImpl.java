@@ -59,13 +59,12 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	public static UrlFactory init() {
 		try
 		{
-			final UrlFactory theUrlFactory = (UrlFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/url"); //$NON-NLS-1$
+			UrlFactory theUrlFactory = (UrlFactory) EPackage.Registry.INSTANCE.getEFactory(UrlPackage.eNS_URI);
 			if (theUrlFactory != null)
 			{
 				return theUrlFactory;
 			}
-		} catch (final Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -111,7 +110,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ServerUrl createServerUrl() {
-		final ServerUrlImpl serverUrl = new ServerUrlImpl();
+		ServerUrlImpl serverUrl = new ServerUrlImpl();
 		return serverUrl;
 	}
 
@@ -121,7 +120,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ProjectUrlFragment createProjectUrlFragment() {
-		final ProjectUrlFragmentImpl projectUrlFragment = new ProjectUrlFragmentImpl();
+		ProjectUrlFragmentImpl projectUrlFragment = new ProjectUrlFragmentImpl();
 		return projectUrlFragment;
 	}
 
@@ -131,7 +130,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ModelElementUrlFragment createModelElementUrlFragment() {
-		final ModelElementUrlFragmentImpl modelElementUrlFragment = new ModelElementUrlFragmentImpl();
+		ModelElementUrlFragmentImpl modelElementUrlFragment = new ModelElementUrlFragmentImpl();
 		return modelElementUrlFragment;
 	}
 
@@ -205,7 +204,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * @generated
 	 */
 	public ModelElementUrl createModelElementUrl() {
-		final ModelElementUrlImpl modelElementUrl = new ModelElementUrlImpl();
+		ModelElementUrlImpl modelElementUrl = new ModelElementUrlImpl();
 		return modelElementUrl;
 	}
 

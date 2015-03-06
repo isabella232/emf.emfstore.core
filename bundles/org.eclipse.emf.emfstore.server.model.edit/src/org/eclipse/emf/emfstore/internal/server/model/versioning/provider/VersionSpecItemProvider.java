@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -37,11 +37,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * @generated
  */
 public class VersionSpecItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersionSpecItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class VersionSpecItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,24 +68,24 @@ public class VersionSpecItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Branch feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addBranchPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+		(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_VersionSpec_branch_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_VersionSpec_branch_feature", //$NON-NLS-1$//$NON-NLS-2$
-					"_UI_VersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.VERSION_SPEC__BRANCH,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_VersionSpec_branch_feature", "_UI_VersionSpec_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					VersioningPackage.Literals.VERSION_SPEC__BRANCH,
+					true,
+					false,
+					false,
+					ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+					null,
+					null));
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class VersionSpecItemProvider extends ItemProviderAdapter implements IEdi
 		final String label = ((VersionSpec) object).getBranch();
 		return label == null || label.length() == 0 ?
 			getString("_UI_VersionSpec_type") : //$NON-NLS-1$
-			getString("_UI_VersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+				getString("_UI_VersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class VersionSpecItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class VersionSpecItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

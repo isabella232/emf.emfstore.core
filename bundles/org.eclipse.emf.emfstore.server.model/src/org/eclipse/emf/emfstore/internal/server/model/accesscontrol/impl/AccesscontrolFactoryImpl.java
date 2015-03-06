@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
@@ -41,7 +41,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 		try
 		{
 			final AccesscontrolFactory theAccesscontrolFactory = (AccesscontrolFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/accesscontrol"); //$NON-NLS-1$
+				.getEFactory(AccesscontrolPackage.eNS_URI);
 			if (theAccesscontrolFactory != null)
 			{
 				return theAccesscontrolFactory;

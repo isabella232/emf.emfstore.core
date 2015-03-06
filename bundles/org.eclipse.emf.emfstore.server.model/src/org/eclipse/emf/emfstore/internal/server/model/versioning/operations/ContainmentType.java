@@ -137,7 +137,7 @@ public enum ContainmentType implements Enumerator {
 	public static ContainmentType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i)
 		{
-			final ContainmentType result = VALUES_ARRAY[i];
+			ContainmentType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal))
 			{
 				return result;
@@ -155,7 +155,7 @@ public enum ContainmentType implements Enumerator {
 	public static ContainmentType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i)
 		{
-			final ContainmentType result = VALUES_ARRAY[i];
+			ContainmentType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name))
 			{
 				return result;

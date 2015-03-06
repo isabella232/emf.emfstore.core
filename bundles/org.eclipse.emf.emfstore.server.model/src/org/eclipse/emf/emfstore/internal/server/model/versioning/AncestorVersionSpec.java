@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec;
  * @extends APIDelegate<ESAncestorVersionSpec>
  *          <!--
  *          end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec;
  *          Source</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getAncestorVersionSpec()
  * @model
  * @generated

@@ -66,17 +66,17 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	 * This adds a property descriptor for the Add feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addAddPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiReferenceOperation_add_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_add_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_add_feature", "_UI_MultiReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__ADD,
 				true,
 				false,
@@ -93,13 +93,14 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiReferenceOperation_index_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_index_feature", "_UI_MultiReferenceOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__INDEX,
 				true,
 				false,
@@ -114,7 +115,6 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,7 +129,6 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -201,7 +200,6 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

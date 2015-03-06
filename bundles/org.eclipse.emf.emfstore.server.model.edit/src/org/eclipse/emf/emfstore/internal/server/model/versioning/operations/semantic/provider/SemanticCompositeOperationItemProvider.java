@@ -67,12 +67,11 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((SemanticCompositeOperation) object).getCompositeName();
+		String label = ((SemanticCompositeOperation) object).getCompositeName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_SemanticCompositeOperation_type") : //$NON-NLS-1$
 			getString("_UI_SemanticCompositeOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -83,7 +82,6 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

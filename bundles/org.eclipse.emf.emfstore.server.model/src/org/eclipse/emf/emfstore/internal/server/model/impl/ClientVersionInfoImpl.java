@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionInfo {
@@ -105,12 +105,11 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 * @generated
 	 */
 	public void setVersion(String newVersion) {
-		final String oldVersion = version;
+		String oldVersion = version;
 		version = newVersion;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__VERSION,
 				oldVersion, version));
-		}
 	}
 
 	/**
@@ -128,11 +127,10 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 * @generated
 	 */
 	public void setName(String newName) {
-		final String oldName = name;
+		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__NAME, oldName, name));
-		}
 	}
 
 	/**
@@ -214,11 +212,10 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (version: "); //$NON-NLS-1$
 		result.append(version);
 		result.append(", name: "); //$NON-NLS-1$

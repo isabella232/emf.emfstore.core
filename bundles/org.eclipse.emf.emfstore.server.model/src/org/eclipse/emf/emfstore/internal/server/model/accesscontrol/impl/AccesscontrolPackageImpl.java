@@ -120,12 +120,11 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * @generated
 	 */
 	public static AccesscontrolPackage init() {
-		if (isInited) {
+		if (isInited)
 			return (AccesscontrolPackage) EPackage.Registry.INSTANCE.getEPackage(AccesscontrolPackage.eNS_URI);
-		}
 
 		// Obtain or create and register package
-		final AccesscontrolPackageImpl theAccesscontrolPackage = (AccesscontrolPackageImpl) (EPackage.Registry.INSTANCE
+		AccesscontrolPackageImpl theAccesscontrolPackage = (AccesscontrolPackageImpl) (EPackage.Registry.INSTANCE
 			.get(eNS_URI) instanceof AccesscontrolPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
 			: new AccesscontrolPackageImpl());
 
@@ -135,30 +134,29 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 		ModelPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		final ModelPackageImpl theModelPackage_1 = (ModelPackageImpl) (EPackage.Registry.INSTANCE
+		ModelPackageImpl theModelPackage_1 = (ModelPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI)
 			: org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eINSTANCE);
-		final VersioningPackageImpl theVersioningPackage = (VersioningPackageImpl) (EPackage.Registry.INSTANCE
+		VersioningPackageImpl theVersioningPackage = (VersioningPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(VersioningPackage.eNS_URI) instanceof VersioningPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(VersioningPackage.eNS_URI) : VersioningPackage.eINSTANCE);
-		final OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl) (EPackage.Registry.INSTANCE
+		OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(OperationsPackage.eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(OperationsPackage.eNS_URI) : OperationsPackage.eINSTANCE);
-		final SemanticPackageImpl theSemanticPackage = (SemanticPackageImpl) (EPackage.Registry.INSTANCE
+		SemanticPackageImpl theSemanticPackage = (SemanticPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(SemanticPackage.eNS_URI) instanceof SemanticPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(SemanticPackage.eNS_URI) : SemanticPackage.eINSTANCE);
-		final EventsPackageImpl theEventsPackage = (EventsPackageImpl) (EPackage.Registry.INSTANCE
+		EventsPackageImpl theEventsPackage = (EventsPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(EventsPackage.eNS_URI) instanceof EventsPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(EventsPackage.eNS_URI) : EventsPackage.eINSTANCE);
-		final ServerPackageImpl theServerPackage = (ServerPackageImpl) (EPackage.Registry.INSTANCE
+		ServerPackageImpl theServerPackage = (ServerPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(ServerPackage.eNS_URI) instanceof ServerPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(ServerPackage.eNS_URI) : ServerPackage.eINSTANCE);
-		final RolesPackageImpl theRolesPackage = (RolesPackageImpl) (EPackage.Registry.INSTANCE
+		RolesPackageImpl theRolesPackage = (RolesPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(RolesPackage.eNS_URI) instanceof RolesPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
-		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
+		UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI)
 			: UrlPackage.eINSTANCE);
 
@@ -372,9 +370,8 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) {
+		if (isCreated)
 			return;
-		}
 		isCreated = true;
 
 		// Create classes and their features
@@ -416,9 +413,8 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) {
+		if (isInitialized)
 			return;
-		}
 		isInitialized = true;
 
 		// Initialize package
@@ -427,11 +423,9 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		final RolesPackage theRolesPackage = (RolesPackage) EPackage.Registry.INSTANCE
-			.getEPackage(RolesPackage.eNS_URI);
-		final ModelPackage theModelPackage = (ModelPackage) EPackage.Registry.INSTANCE
-			.getEPackage(ModelPackage.eNS_URI);
-		final org.eclipse.emf.emfstore.internal.server.model.ModelPackage theModelPackage_1 = (org.eclipse.emf.emfstore.internal.server.model.ModelPackage) EPackage.Registry.INSTANCE
+		RolesPackage theRolesPackage = (RolesPackage) EPackage.Registry.INSTANCE.getEPackage(RolesPackage.eNS_URI);
+		ModelPackage theModelPackage = (ModelPackage) EPackage.Registry.INSTANCE.getEPackage(ModelPackage.eNS_URI);
+		org.eclipse.emf.emfstore.internal.server.model.ModelPackage theModelPackage_1 = (org.eclipse.emf.emfstore.internal.server.model.ModelPackage) EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI);
 
 		// Add subpackages
@@ -442,58 +436,80 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		acUserEClass.getESuperTypes().add(getACOrgUnit());
+		acUserEClass.getESuperTypes().add(this.getACOrgUnit());
 		acOrgUnitEClass.getESuperTypes().add(theModelPackage.getIdentifiableElement());
-		acGroupEClass.getESuperTypes().add(getACOrgUnit());
+		acGroupEClass.getESuperTypes().add(this.getACOrgUnit());
 		acOrgUnitIdEClass.getESuperTypes().add(theModelPackage.getUniqueIdentifier());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(acUserEClass, ACUser.class, "ACUser", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getACUser_FirstName(), ecorePackage.getEString(), "firstName", null, 0, 1, ACUser.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getACUser_LastName(), ecorePackage.getEString(), "lastName", null, 0, 1, ACUser.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getACUser_EffectiveGroups(), getACGroup(), null, "effectiveGroups", null, 0, -1, //$NON-NLS-1$
-			ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getACUser_Password(), ecorePackage.getEString(), "password", null, 0, 1, ACUser.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(
+			getACUser_FirstName(),
+			ecorePackage.getEString(),
+			"firstName", null, 0, 1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getACUser_LastName(),
+			ecorePackage.getEString(),
+			"lastName", null, 0, 1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getACUser_EffectiveGroups(),
+			this.getACGroup(),
+			null,
+			"effectiveGroups", null, 0, -1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getACUser_Password(),
+			ecorePackage.getEString(),
+			"password", null, 0, 1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(acOrgUnitEClass, ACOrgUnit.class, "ACOrgUnit", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getACOrgUnit_Name(), ecorePackage.getEString(), "name", null, 1, 1, ACOrgUnit.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getACOrgUnit_Roles(), theRolesPackage.getRole(), null, "roles", null, 0, -1, ACOrgUnit.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getACOrgUnit_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
-			ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getACOrgUnit_Properties(), getOrgUnitProperty(), null, "properties", null, 0, -1, //$NON-NLS-1$
-			ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(acOrgUnitEClass, ACOrgUnit.class,
+			"ACOrgUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getACOrgUnit_Name(),
+			ecorePackage.getEString(),
+			"name", null, 1, 1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getACOrgUnit_Roles(),
+			theRolesPackage.getRole(),
+			null,
+			"roles", null, 0, -1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getACOrgUnit_Description(),
+			ecorePackage.getEString(),
+			"description", null, 0, 1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getACOrgUnit_Properties(),
+			this.getOrgUnitProperty(),
+			null,
+			"properties", null, 0, -1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		addEOperation(acOrgUnitEClass, getACOrgUnitId(), "getId", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEOperation(acOrgUnitEClass, this.getACOrgUnitId(), "getId", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(acGroupEClass, ACGroup.class, "ACGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getACGroup_Members(), getACOrgUnit(), null, "members", null, 0, -1, ACGroup.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
+		initEReference(
+			getACGroup_Members(),
+			this.getACOrgUnit(),
+			null,
+			"members", null, 0, -1, ACGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getACGroup_Members().getEKeys().add(theModelPackage.getIdentifiableElement_Identifier());
 
-		initEClass(acOrgUnitIdEClass, ACOrgUnitId.class, "ACOrgUnitId", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
+		initEClass(acOrgUnitIdEClass, ACOrgUnitId.class,
+			"ACOrgUnitId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(orgUnitPropertyEClass, OrgUnitProperty.class, "OrgUnitProperty", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOrgUnitProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, OrgUnitProperty.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrgUnitProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, //$NON-NLS-1$
-			OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getOrgUnitProperty_Project(), theModelPackage_1.getProjectId(), null, "project", null, 0, 1, //$NON-NLS-1$
-			OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(orgUnitPropertyEClass, OrgUnitProperty.class,
+			"OrgUnitProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getOrgUnitProperty_Name(),
+			ecorePackage.getEString(),
+			"name", null, 0, 1, OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getOrgUnitProperty_Value(),
+			ecorePackage.getEString(),
+			"value", null, 0, 1, OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getOrgUnitProperty_Project(),
+			theModelPackage_1.getProjectId(),
+			null,
+			"project", null, 0, 1, OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getOrgUnitProperty_Project().getEKeys().add(theModelPackage.getUniqueIdentifier_Id());
 	}
 

@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EventImpl extends EObjectImpl implements Event {
@@ -86,12 +86,11 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * @generated
 	 */
 	public void setTimestamp(Date newTimestamp) {
-		final Date oldTimestamp = timestamp;
+		Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EventsPackage.EVENT__TIMESTAMP, oldTimestamp,
 				timestamp));
-		}
 	}
 
 	/**
@@ -163,11 +162,10 @@ public class EventImpl extends EObjectImpl implements Event {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (timestamp: "); //$NON-NLS-1$
 		result.append(timestamp);
 		result.append(')');

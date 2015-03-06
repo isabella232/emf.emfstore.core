@@ -66,13 +66,14 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
+		itemPropertyDescriptors
+			.add
 			(createItemPropertyDescriptor
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MultiReferenceSetOperation_index_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceSetOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceSetOperation_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiReferenceSetOperation_index_feature", "_UI_MultiReferenceSetOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__INDEX,
 				true,
 				false,
@@ -87,7 +88,6 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,6 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,7 +117,6 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 * This returns MultiReferenceSetOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,12 +128,11 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((MultiReferenceSetOperation) object).getFeatureName();
+		String label = ((MultiReferenceSetOperation) object).getFeatureName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MultiReferenceSetOperation_type") : //$NON-NLS-1$
 			getString("_UI_MultiReferenceSetOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
@@ -146,7 +143,6 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -196,10 +192,10 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		final Object childFeature = feature;
-		final Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-		final boolean qualify =
+		boolean qualify =
 			childFeature == OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__OLD_VALUE ||
 				childFeature == OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__NEW_VALUE;
 

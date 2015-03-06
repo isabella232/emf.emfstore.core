@@ -81,7 +81,7 @@ public class SemanticSwitch<T> {
 		{
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ?
 			defaultCase(theEObject) :
 			doSwitch(eSuperTypes.get(0), theEObject);
@@ -100,20 +100,16 @@ public class SemanticSwitch<T> {
 		switch (classifierID)
 		{
 		case SemanticPackage.SEMANTIC_COMPOSITE_OPERATION: {
-			final SemanticCompositeOperation semanticCompositeOperation = (SemanticCompositeOperation) theEObject;
+			SemanticCompositeOperation semanticCompositeOperation = (SemanticCompositeOperation) theEObject;
 			T result = caseSemanticCompositeOperation(semanticCompositeOperation);
-			if (result == null) {
+			if (result == null)
 				result = caseCompositeOperation(semanticCompositeOperation);
-			}
-			if (result == null) {
+			if (result == null)
 				result = caseAbstractOperation(semanticCompositeOperation);
-			}
-			if (result == null) {
+			if (result == null)
 				result = caseIdentifiableElement(semanticCompositeOperation);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl;
@@ -32,29 +32,27 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Server Space</b></em>'.
- * h
- * 
- * @extends org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACRepository
- *          <!-- end-user-doc -->
- *          <p>
- *          The following features are implemented:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getOpenSessions <em>Open
- *          Sessions </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getUsers <em>Users</em>}</li>
- *          </ul>
- *          </p>
- * 
+ *
+ *
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getOpenSessions <em>Open Sessions
+ * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getUsers <em>Users</em>}</li>
+ * </ul>
+ * </p>
+ *
  * @generated
  */
 public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	/**
 	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGroups()
 	 * @generated
 	 * @ordered
@@ -64,7 +62,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	/**
 	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjects()
 	 * @generated
 	 * @ordered
@@ -75,7 +73,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 * The cached value of the '{@link #getOpenSessions() <em>Open Sessions</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOpenSessions()
 	 * @generated
 	 * @ordered
@@ -85,7 +83,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	/**
 	 * The cached value of the '{@link #getUsers() <em>Users</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUsers()
 	 * @generated
 	 * @ordered
@@ -96,7 +94,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ServerSpaceImpl() {
@@ -105,7 +103,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -115,7 +113,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ACGroup> getGroups() {
@@ -129,7 +127,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ProjectHistory> getProjects() {
@@ -143,7 +141,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<SessionId> getOpenSessions() {
@@ -157,7 +155,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ACUser> getUsers() {
@@ -170,7 +168,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -189,7 +187,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -210,7 +208,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -240,7 +238,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -265,7 +263,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -286,9 +284,9 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @throws IOException
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public void save() throws IOException {
@@ -300,7 +298,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public void setResource(Resource resource) {
@@ -309,7 +307,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACUserDAO#add(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser)
 	 */
 	public void add(ACUser user) {
@@ -318,7 +316,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACUserDAO#remove(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser)
 	 */
 	public void remove(ACUser user) {
@@ -327,7 +325,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACGroupDAO#add(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup)
 	 */
 	public void add(ACGroup group) {
@@ -336,7 +334,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACGroupDAO#remove(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup)
 	 */
 	public void remove(ACGroup group) {
@@ -345,7 +343,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ProjectDAO#add(org.eclipse.emf.emfstore.internal.server.model.ProjectHistory)
 	 */
 	public void add(ProjectHistory history) {
@@ -354,7 +352,7 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ProjectDAO#remove(org.eclipse.emf.emfstore.internal.server.model.ProjectHistory)
 	 */
 	public void remove(ProjectHistory history) {

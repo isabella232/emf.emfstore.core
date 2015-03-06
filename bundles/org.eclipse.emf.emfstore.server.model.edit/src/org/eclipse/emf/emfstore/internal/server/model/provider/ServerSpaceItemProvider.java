@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.provider;
@@ -33,15 +33,15 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace} object.
  * <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerSpaceItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +51,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -101,7 +101,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns ServerSpace.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +149,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,22 +157,22 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.SERVER_SPACE__GROUPS,
 				AccesscontrolFactory.eINSTANCE.createACGroup()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.SERVER_SPACE__PROJECTS,
 				ModelFactory.eINSTANCE.createProjectHistory()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.SERVER_SPACE__OPEN_SESSIONS,
 				ModelFactory.eINSTANCE.createSessionId()));
 
 		newChildDescriptors.add
-			(createChildParameter
+		(createChildParameter
 			(ModelPackage.Literals.SERVER_SPACE__USERS,
 				AccesscontrolFactory.eINSTANCE.createACUser()));
 	}
@@ -180,7 +180,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

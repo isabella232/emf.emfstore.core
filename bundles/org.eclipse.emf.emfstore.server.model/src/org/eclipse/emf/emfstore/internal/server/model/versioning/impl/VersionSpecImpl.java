@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionSpecImpl#getBranch <em>Branch</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec {
@@ -83,12 +83,11 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 * @generated
 	 */
 	public void setBranch(String newBranch) {
-		final String oldBranch = branch;
+		String oldBranch = branch;
 		branch = newBranch;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION_SPEC__BRANCH, oldBranch,
 				branch));
-		}
 	}
 
 	/**
@@ -160,11 +159,10 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (branch: "); //$NON-NLS-1$
 		result.append(branch);
 		result.append(')');
