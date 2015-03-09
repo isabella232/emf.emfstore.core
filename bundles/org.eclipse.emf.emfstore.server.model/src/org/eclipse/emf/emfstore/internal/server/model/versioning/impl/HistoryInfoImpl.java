@@ -731,7 +731,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 			getVersionProperties().addAll((Collection<? extends VersionProperty>) newValue);
 			return;
 		case VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE:
-			setChangePackage((ChangePackage) newValue);
+			setChangePackage((AbstractChangePackage) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

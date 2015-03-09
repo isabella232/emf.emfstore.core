@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.client.ESUsersession;
@@ -95,7 +96,6 @@ import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
@@ -109,6 +109,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -123,7 +125,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *
  */
 public abstract class ProjectSpaceBase extends IdentifiableElementImpl
-	implements ProjectSpace, ESLoginObserver, ESDisposable, HasChangePackage {
+implements ProjectSpace, ESLoginObserver, ESDisposable, HasChangePackage {
 
 	private ESLocalProjectImpl esLocalProjectImpl;
 
@@ -247,7 +249,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void applyChanges(PrimaryVersionSpec baseSpec, List<AbstractChangePackage> incomingChangePackages,
 		AbstractChangePackage myChanges, IProgressMonitor progressMonitor, boolean runChecksumCheckOnBaseSpec)
-			throws ESException {
+		throws ESException {
 
 		// revert local changes
 		notifyPreRevertMyChanges(getLocalChangePackage());
@@ -288,7 +290,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<AbstractChangePackage> incomingChangePackages,
 		IProgressMonitor progressMonitor)
-		throws ESException {
+			throws ESException {
 
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 
@@ -706,7 +708,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.inverseCrossReferenceCache") //$NON-NLS-1$
-			.getExtensionElements()) {
+		.getExtensionElements()) {
 			useCrossReferenceAdapter &= element.getBoolean("activated"); //$NON-NLS-1$
 		}
 
@@ -924,7 +926,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-		throws ESException {
+			throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -989,13 +991,22 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		for (final AbstractChangePackage locChangePackage : myChangePackages) {
 			final ESCloseableIterable<AbstractOperation> operations = locChangePackage.operations();
 			try {
-				for (final AbstractOperation myOp : operations.iterable()) {
-
-					final AbstractOperation myOperation = ESOperationImpl.class.cast(myOp).toInternalAPI();
-
-					if (conflictSet.getNotInvolvedInConflict().contains(myOperation)) {
+				for (final AbstractOperation myOperation : operations.iterable()) {
+					final Set<AbstractOperation> notInvolvedInConflict = conflictSet.getNotInvolvedInConflict();
+					final List<AbstractOperation> ops = new ArrayList<AbstractOperation>(notInvolvedInConflict);
+					// final AbstractOperation abstractOperation = ops.get(0);
+					// EcoreUtil.equals(abstractOperation, myOperation);
+					// if (abstractOperation instanceof CreateDeleteOperation) {
+					// final CreateDeleteOperation m = (CreateDeleteOperation) abstractOperation;
+					// final CreateDeleteOperation m2 = (CreateDeleteOperation) myOperation;
+					// final boolean equals = EcoreUtil.equals(m.getModelElement(), m2.getModelElement());
+					// final boolean equals2 = EcoreUtil.equals(m, m2);
+					//
+					// System.out.println(equals);
+					// }
+					if (containsOp(ops, myOperation)) {
 						acceptedMineList.add(myOperation);
-					} else if (accceptedMineSet.contains(myOperation)) {
+					} else if (containsOp(accceptedMineSet, myOperation)) {
 						acceptedMineList.add(myOperation);
 					}
 					accceptedMineSet.remove(myOperation);
@@ -1014,7 +1025,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 			try {
 				for (final AbstractOperation theirOperation : operations.iterable()) {
 
-					if (rejectedTheirsSet.contains(theirOperation)) {
+					if (containsOp(rejectedTheirsSet, theirOperation)) {
 						rejectedTheirsList.add(theirOperation);
 					}
 				}
@@ -1037,6 +1048,28 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		result.addAll(mergeResult);
 
 		return result;
+	}
+
+	// TODO LCP: do we elsewhere compare operations?
+	private static boolean containsOp(Collection<AbstractOperation> ops, AbstractOperation op) {
+		for (final AbstractOperation abstractOperation : ops) {
+			if (OperationUtil.isCreateDelete(abstractOperation) &&
+				OperationUtil.isCreateDelete(op)) {
+
+				final CreateDeleteOperation createDeleteOperation = CreateDeleteOperation.class.cast(abstractOperation);
+				final CreateDeleteOperation otherCreateDeleteOperation = CreateDeleteOperation.class.cast(op);
+
+				if (createDeleteOperation.getOperationId().equals(otherCreateDeleteOperation.getOperationId())
+					&& createDeleteOperation.getModelElementId().equals(otherCreateDeleteOperation.getModelElementId())) {
+					return true;
+				}
+
+			} else if (EcoreUtil.equals(abstractOperation, op)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -1268,10 +1301,10 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		while (iterator.hasNext()) {
 			try {
 				ESWorkspaceProviderImpl
-					.getInstance()
-					.getConnectionManager()
-					.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
-						getProjectId());
+				.getInstance()
+				.getConnectionManager()
+				.transmitProperty(getUsersession().getSessionId(), iterator.next(), getUsersession().getACUser(),
+					getProjectId());
 				iterator.remove();
 			} catch (final ESException e) {
 				WorkspaceUtil.logException(Messages.ProjectSpaceBase_Transmission_Of_Properties_Failed, e);
@@ -1309,8 +1342,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 			final Iterable<AbstractOperation> iterator = Collections.singletonList(reversedOperation);
 
 			applyOperations(iterator, false);
-			operationManager.notifyOperationUndone(
-				ESOperationImpl.class.cast(lastOperation).toInternalAPI());
+			operationManager.notifyOperationUndone(lastOperation);
 
 			// operations.remove(lastOperation);
 			undoLastOperations(--numberOfOperations);
@@ -1410,7 +1442,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void notifyPreRevertMyChanges(final AbstractChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.preRevertMyChanges(toAPI(), changePackage.toAPI());
+		.preRevertMyChanges(toAPI(), changePackage.toAPI());
 	}
 
 	private void notifyPostRevertMyChanges() {
@@ -1426,13 +1458,13 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		// TODO ASYNC review this cancel
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.postApplyTheirChanges(toAPI(), changePackages);
+		.postApplyTheirChanges(toAPI(), changePackages);
 	}
 
 	private void notifyPostApplyMergedChanges(AbstractChangePackage changePackage) {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESMergeObserver.class)
-			.postApplyMergedChanges(
-				toAPI(), changePackage.toAPI());
+		.postApplyMergedChanges(
+			toAPI(), changePackage.toAPI());
 	}
 
 	/**

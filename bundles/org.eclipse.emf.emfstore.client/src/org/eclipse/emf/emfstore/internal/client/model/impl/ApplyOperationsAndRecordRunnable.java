@@ -16,7 +16,6 @@ import org.eclipse.emf.emfstore.internal.client.model.CompositeOperationHandle;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.InvalidHandleException;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 
@@ -73,14 +72,13 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 
 	private void applyOperation(final AbstractOperation operation) {
 		projectSpace.getOperationManager().commandStarted(null);
-		final AbstractOperation internalOp = ESOperationImpl.class.cast(operation).toInternalAPI();
 
 		if (CompositeOperation.class.isInstance(operation)) {
 			final CompositeOperation compositeOperation = CompositeOperation.class.cast(operation);
 			final String compositeName = compositeOperation.getCompositeName();
 			final CompositeOperationHandle handle = projectSpace.getOperationManager()
 				.beginCompositeOperation();
-			internalOp.apply(projectSpace.getProject());
+			operation.apply(projectSpace.getProject());
 			try {
 				handle.end(compositeName, StringUtils.EMPTY, compositeOperation.getModelElementId());
 				projectSpace.getOperationManager().commandCompleted(null, true);
@@ -88,7 +86,7 @@ public class ApplyOperationsAndRecordRunnable implements Runnable {
 				WorkspaceUtil.logException(ex.getMessage(), ex);
 			}
 		} else {
-			internalOp.apply(projectSpace.getProject());
+			operation.apply(projectSpace.getProject());
 			projectSpace.getOperationManager().commandCompleted(null, true);
 		}
 	}

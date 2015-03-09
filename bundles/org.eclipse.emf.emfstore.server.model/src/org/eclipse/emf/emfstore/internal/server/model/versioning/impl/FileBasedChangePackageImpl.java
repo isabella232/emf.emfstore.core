@@ -578,15 +578,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#initialize()
-	 */
-	public void initialize() {
-		needsInit = true;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#size()
 	 */
 	public int size() {
@@ -763,6 +754,15 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	public void initialize(String filePath) {
 		setFilePath(filePath);
 		needsInit = false;
+		try {
+			final FileWriter writer = new FileWriter(filePath);
+			writer.write(XmlTags.XML_HEADER + XmlTags.CHANGE_PACKAGE_START);
+			writer.write(XmlTags.CHANGE_PACKAGE_END);
+			writer.close();
+		} catch (final IOException ex) {
+			// TODO LCP
+			ex.printStackTrace();
+		}
 	}
 
 	/**

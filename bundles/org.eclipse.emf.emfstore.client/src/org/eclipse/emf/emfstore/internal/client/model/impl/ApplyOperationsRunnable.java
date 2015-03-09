@@ -15,7 +15,6 @@ import java.util.Collections;
 
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
@@ -60,16 +59,15 @@ public class ApplyOperationsRunnable implements Runnable {
 				projectSpace.stopChangeRecording();
 				try {
 					for (final AbstractOperation operation : operations) {
-						final AbstractOperation internalOp = ESOperationImpl.class.cast(operation).toInternalAPI();
 						try {
-							internalOp.apply(projectSpace.getProject());
+							operation.apply(projectSpace.getProject());
 							// BEGIN SUPRESS CATCH EXCEPTION
 						} catch (final RuntimeException e) {
 							WorkspaceUtil.handleException(e);
 							// END SUPRESS CATCH EXCEPTION
 						}
 						if (addOperations) {
-							projectSpace.addOperations(Collections.singletonList(internalOp));
+							projectSpace.addOperations(Collections.singletonList(operation));
 						}
 					}
 				} finally {

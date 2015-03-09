@@ -115,8 +115,12 @@ public class ConnectionMock implements ConnectionManager {
 	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
 		VersionSpec target) throws ESException {
 		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getChanges(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(source), ModelUtil.clone(target)));
+		final List<AbstractChangePackage> changes = emfStore.getChanges(
+			ModelUtil.clone(sessionId),
+			ModelUtil.clone(projectId),
+			ModelUtil.clone(source),
+			ModelUtil.clone(target));
+		return ModelUtil.clone(changes);
 	}
 
 	public List<BranchInfo> getBranches(SessionId sessionId, ProjectId projectId) throws ESException {

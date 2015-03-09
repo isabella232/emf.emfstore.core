@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 
 /**
  * Type for emitting {@link AbstractOperation}s when given an {@link ReadLineCapable} type.
@@ -113,7 +114,11 @@ public class OperationEmitter {
 		outputStream.write(string.getBytes());
 		final ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
 		resource.load(inputStream, ModelUtil.getResourceLoadOptions());
-		return (AbstractOperation) resource.getContents().get(0);
+		final AbstractOperation operation = (AbstractOperation) resource.getContents().get(0);
+		if (operation instanceof CreateDeleteOperation) {
+			((CreateDeleteOperation) operation).getSubOperations();
+		}
+		return operation;
 
 	}
 }

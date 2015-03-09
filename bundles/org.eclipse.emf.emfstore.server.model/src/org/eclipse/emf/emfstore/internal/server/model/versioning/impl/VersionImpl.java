@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
@@ -118,7 +118,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getPrimarySpec() <em>Primary Spec</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrimarySpec()
 	 * @generated
 	 * @ordered
@@ -128,7 +128,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getTagSpecs() <em>Tag Specs</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTagSpecs()
 	 * @generated
 	 * @ordered
@@ -138,7 +138,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getNextVersion() <em>Next Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNextVersion()
 	 * @generated
 	 * @ordered
@@ -149,7 +149,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getPreviousVersion() <em>Previous Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getPreviousVersion()
 	 * @generated
 	 * @ordered
@@ -159,7 +159,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLogMessage()
 	 * @generated
 	 * @ordered
@@ -170,7 +170,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getAncestorVersion() <em>Ancestor Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getAncestorVersion()
 	 * @generated
 	 * @ordered
@@ -181,7 +181,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getBranchedVersions() <em>Branched Versions</em>}' reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getBranchedVersions()
 	 * @generated
 	 * @ordered
@@ -192,7 +192,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getMergedToVersion() <em>Merged To Version</em>}' reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedToVersion()
 	 * @generated
 	 * @ordered
@@ -203,7 +203,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * The cached value of the '{@link #getMergedFromVersion() <em>Merged From Version</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedFromVersion()
 	 * @generated
 	 * @ordered
@@ -212,7 +212,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected VersionImpl() {
@@ -221,7 +221,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,17 +231,17 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getPrimarySpec() {
 		if (primarySpec != null && primarySpec.eIsProxy())
 		{
-			InternalEObject oldPrimarySpec = (InternalEObject) primarySpec;
+			final InternalEObject oldPrimarySpec = (InternalEObject) primarySpec;
 			primarySpec = (PrimaryVersionSpec) eResolveProxy(oldPrimarySpec);
 			if (primarySpec != oldPrimarySpec)
 			{
-				InternalEObject newPrimarySpec = (InternalEObject) primarySpec;
+				final InternalEObject newPrimarySpec = (InternalEObject) primarySpec;
 				NotificationChain msgs = oldPrimarySpec.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.VERSION__PRIMARY_SPEC, null, null);
 				if (newPrimarySpec.eInternalContainer() == null)
@@ -249,11 +249,13 @@ public class VersionImpl extends EObjectImpl implements Version {
 					msgs = newPrimarySpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VersioningPackage.VERSION__PRIMARY_SPEC,
 						oldPrimarySpec, primarySpec));
+				}
 			}
 		}
 		return primarySpec;
@@ -261,7 +263,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetPrimarySpec() {
@@ -270,51 +272,56 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPrimarySpec(PrimaryVersionSpec newPrimarySpec, NotificationChain msgs) {
-		PrimaryVersionSpec oldPrimarySpec = primarySpec;
+		final PrimaryVersionSpec oldPrimarySpec = primarySpec;
 		primarySpec = newPrimarySpec;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.VERSION__PRIMARY_SPEC, oldPrimarySpec, newPrimarySpec);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPrimarySpec(PrimaryVersionSpec newPrimarySpec) {
 		if (newPrimarySpec != primarySpec)
 		{
 			NotificationChain msgs = null;
-			if (primarySpec != null)
+			if (primarySpec != null) {
 				msgs = ((InternalEObject) primarySpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
-			if (newPrimarySpec != null)
+			}
+			if (newPrimarySpec != null) {
 				msgs = ((InternalEObject) newPrimarySpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
+			}
 			msgs = basicSetPrimarySpec(newPrimarySpec, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__PRIMARY_SPEC,
 				newPrimarySpec, newPrimarySpec));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TagVersionSpec> getTagSpecs() {
@@ -328,19 +335,20 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version getNextVersion() {
 		if (nextVersion != null && nextVersion.eIsProxy())
 		{
-			InternalEObject oldNextVersion = (InternalEObject) nextVersion;
+			final InternalEObject oldNextVersion = (InternalEObject) nextVersion;
 			nextVersion = (Version) eResolveProxy(oldNextVersion);
 			if (nextVersion != oldNextVersion)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VersioningPackage.VERSION__NEXT_VERSION,
 						oldNextVersion, nextVersion));
+				}
 			}
 		}
 		return nextVersion;
@@ -348,7 +356,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version basicGetNextVersion() {
@@ -357,63 +365,69 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNextVersion(Version newNextVersion, NotificationChain msgs) {
-		Version oldNextVersion = nextVersion;
+		final Version oldNextVersion = nextVersion;
 		nextVersion = newNextVersion;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.VERSION__NEXT_VERSION, oldNextVersion, newNextVersion);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNextVersion(Version newNextVersion) {
 		if (newNextVersion != nextVersion)
 		{
 			NotificationChain msgs = null;
-			if (nextVersion != null)
+			if (nextVersion != null) {
 				msgs = ((InternalEObject) nextVersion).eInverseRemove(this,
 					VersioningPackage.VERSION__PREVIOUS_VERSION, Version.class, msgs);
-			if (newNextVersion != null)
+			}
+			if (newNextVersion != null) {
 				msgs = ((InternalEObject) newNextVersion).eInverseAdd(this,
 					VersioningPackage.VERSION__PREVIOUS_VERSION, Version.class, msgs);
+			}
 			msgs = basicSetNextVersion(newNextVersion, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__NEXT_VERSION,
 				newNextVersion, newNextVersion));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version getPreviousVersion() {
 		if (previousVersion != null && previousVersion.eIsProxy())
 		{
-			InternalEObject oldPreviousVersion = (InternalEObject) previousVersion;
+			final InternalEObject oldPreviousVersion = (InternalEObject) previousVersion;
 			previousVersion = (Version) eResolveProxy(oldPreviousVersion);
 			if (previousVersion != oldPreviousVersion)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.VERSION__PREVIOUS_VERSION, oldPreviousVersion, previousVersion));
+				}
 			}
 		}
 		return previousVersion;
@@ -421,7 +435,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version basicGetPreviousVersion() {
@@ -430,53 +444,58 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPreviousVersion(Version newPreviousVersion, NotificationChain msgs) {
-		Version oldPreviousVersion = previousVersion;
+		final Version oldPreviousVersion = previousVersion;
 		previousVersion = newPreviousVersion;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.VERSION__PREVIOUS_VERSION, oldPreviousVersion, newPreviousVersion);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPreviousVersion(Version newPreviousVersion) {
 		if (newPreviousVersion != previousVersion)
 		{
 			NotificationChain msgs = null;
-			if (previousVersion != null)
+			if (previousVersion != null) {
 				msgs = ((InternalEObject) previousVersion).eInverseRemove(this,
 					VersioningPackage.VERSION__NEXT_VERSION, Version.class, msgs);
-			if (newPreviousVersion != null)
+			}
+			if (newPreviousVersion != null) {
 				msgs = ((InternalEObject) newPreviousVersion).eInverseAdd(this,
 					VersioningPackage.VERSION__NEXT_VERSION, Version.class, msgs);
+			}
 			msgs = basicSetPreviousVersion(newPreviousVersion, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__PREVIOUS_VERSION,
 				newPreviousVersion, newPreviousVersion));
+		}
 	}
 
 	// begin of custom code
 	/**
 	 * Loads the XMI IDs from the given resource and returns them in a map
 	 * together with the object each ID belongs to.
-	 * 
+	 *
 	 * @param resource
 	 *            the resource from which to load the ID mappings
 	 * @return a map consisting of object/id mappings, if the resource doesn't
@@ -507,17 +526,17 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy())
 		{
-			InternalEObject oldLogMessage = (InternalEObject) logMessage;
+			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
 			logMessage = (LogMessage) eResolveProxy(oldLogMessage);
 			if (logMessage != oldLogMessage)
 			{
-				InternalEObject newLogMessage = (InternalEObject) logMessage;
+				final InternalEObject newLogMessage = (InternalEObject) logMessage;
 				NotificationChain msgs = oldLogMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.VERSION__LOG_MESSAGE, null, null);
 				if (newLogMessage.eInternalContainer() == null)
@@ -525,11 +544,13 @@ public class VersionImpl extends EObjectImpl implements Version {
 					msgs = newLogMessage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VersioningPackage.VERSION__LOG_MESSAGE,
 						oldLogMessage, logMessage));
+				}
 			}
 		}
 		return logMessage;
@@ -537,7 +558,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage basicGetLogMessage() {
@@ -546,63 +567,69 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
-		LogMessage oldLogMessage = logMessage;
+		final LogMessage oldLogMessage = logMessage;
 		logMessage = newLogMessage;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.VERSION__LOG_MESSAGE, oldLogMessage, newLogMessage);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage)
 		{
 			NotificationChain msgs = null;
-			if (logMessage != null)
+			if (logMessage != null) {
 				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
-			if (newLogMessage != null)
+			}
+			if (newLogMessage != null) {
 				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
+			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__LOG_MESSAGE,
 				newLogMessage, newLogMessage));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version getAncestorVersion() {
 		if (ancestorVersion != null && ancestorVersion.eIsProxy())
 		{
-			InternalEObject oldAncestorVersion = (InternalEObject) ancestorVersion;
+			final InternalEObject oldAncestorVersion = (InternalEObject) ancestorVersion;
 			ancestorVersion = (Version) eResolveProxy(oldAncestorVersion);
 			if (ancestorVersion != oldAncestorVersion)
 			{
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						VersioningPackage.VERSION__ANCESTOR_VERSION, oldAncestorVersion, ancestorVersion));
+				}
 			}
 		}
 		return ancestorVersion;
@@ -610,7 +637,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version basicGetAncestorVersion() {
@@ -619,51 +646,56 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetAncestorVersion(Version newAncestorVersion, NotificationChain msgs) {
-		Version oldAncestorVersion = ancestorVersion;
+		final Version oldAncestorVersion = ancestorVersion;
 		ancestorVersion = newAncestorVersion;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				VersioningPackage.VERSION__ANCESTOR_VERSION, oldAncestorVersion, newAncestorVersion);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAncestorVersion(Version newAncestorVersion) {
 		if (newAncestorVersion != ancestorVersion)
 		{
 			NotificationChain msgs = null;
-			if (ancestorVersion != null)
+			if (ancestorVersion != null) {
 				msgs = ((InternalEObject) ancestorVersion).eInverseRemove(this,
 					VersioningPackage.VERSION__BRANCHED_VERSIONS, Version.class, msgs);
-			if (newAncestorVersion != null)
+			}
+			if (newAncestorVersion != null) {
 				msgs = ((InternalEObject) newAncestorVersion).eInverseAdd(this,
 					VersioningPackage.VERSION__BRANCHED_VERSIONS, Version.class, msgs);
+			}
 			msgs = basicSetAncestorVersion(newAncestorVersion, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__ANCESTOR_VERSION,
 				newAncestorVersion, newAncestorVersion));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getBranchedVersions() {
@@ -677,7 +709,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getMergedToVersion() {
@@ -691,7 +723,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getMergedFromVersion() {
@@ -705,7 +737,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -714,19 +746,22 @@ public class VersionImpl extends EObjectImpl implements Version {
 		switch (featureID)
 		{
 		case VersioningPackage.VERSION__NEXT_VERSION:
-			if (nextVersion != null)
+			if (nextVersion != null) {
 				msgs = ((InternalEObject) nextVersion).eInverseRemove(this,
 					VersioningPackage.VERSION__PREVIOUS_VERSION, Version.class, msgs);
+			}
 			return basicSetNextVersion((Version) otherEnd, msgs);
 		case VersioningPackage.VERSION__PREVIOUS_VERSION:
-			if (previousVersion != null)
+			if (previousVersion != null) {
 				msgs = ((InternalEObject) previousVersion).eInverseRemove(this,
 					VersioningPackage.VERSION__NEXT_VERSION, Version.class, msgs);
+			}
 			return basicSetPreviousVersion((Version) otherEnd, msgs);
 		case VersioningPackage.VERSION__ANCESTOR_VERSION:
-			if (ancestorVersion != null)
+			if (ancestorVersion != null) {
 				msgs = ((InternalEObject) ancestorVersion).eInverseRemove(this,
 					VersioningPackage.VERSION__BRANCHED_VERSIONS, Version.class, msgs);
+			}
 			return basicSetAncestorVersion((Version) otherEnd, msgs);
 		case VersioningPackage.VERSION__BRANCHED_VERSIONS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getBranchedVersions()).basicAdd(otherEnd, msgs);
@@ -741,7 +776,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -772,7 +807,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -780,26 +815,31 @@ public class VersionImpl extends EObjectImpl implements Version {
 		switch (featureID)
 		{
 		case VersioningPackage.VERSION__PRIMARY_SPEC:
-			if (resolve)
+			if (resolve) {
 				return getPrimarySpec();
+			}
 			return basicGetPrimarySpec();
 		case VersioningPackage.VERSION__TAG_SPECS:
 			return getTagSpecs();
 		case VersioningPackage.VERSION__NEXT_VERSION:
-			if (resolve)
+			if (resolve) {
 				return getNextVersion();
+			}
 			return basicGetNextVersion();
 		case VersioningPackage.VERSION__PREVIOUS_VERSION:
-			if (resolve)
+			if (resolve) {
 				return getPreviousVersion();
+			}
 			return basicGetPreviousVersion();
 		case VersioningPackage.VERSION__LOG_MESSAGE:
-			if (resolve)
+			if (resolve) {
 				return getLogMessage();
+			}
 			return basicGetLogMessage();
 		case VersioningPackage.VERSION__ANCESTOR_VERSION:
-			if (resolve)
+			if (resolve) {
 				return getAncestorVersion();
+			}
 			return basicGetAncestorVersion();
 		case VersioningPackage.VERSION__BRANCHED_VERSIONS:
 			return getBranchedVersions();
@@ -813,7 +853,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -858,7 +898,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -898,7 +938,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -936,18 +976,18 @@ public class VersionImpl extends EObjectImpl implements Version {
 		return project;
 	}
 
-	public ChangePackage getChanges() {
+	public AbstractChangePackage getChanges() {
 		final Resource resource = getChangePackageResource();
 		if (resource == null || resource.getContents().size() < 1) {
 			return null;
 		}
-		final ChangePackage changePackage = (ChangePackage) resource.getContents().get(0);
+		final AbstractChangePackage changePackage = (AbstractChangePackage) resource.getContents().get(0);
 		return changePackage;
 	}
 
 	/**
 	 * Returns a resource containing the associated project state. If a resource is not in memory one will be loaded.
-	 * 
+	 *
 	 * @return the resource
 	 */
 	private Resource getProjectStateResource() {
@@ -999,7 +1039,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * Returns a resource containing the associated ChangePackage. If a resource is not in memory one will be loaded.
-	 * 
+	 *
 	 * @return the resource
 	 */
 	private Resource getChangePackageResource() {
@@ -1026,7 +1066,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * Loads a resource for the given URI.
-	 * 
+	 *
 	 * @param uri the URI
 	 * @return the loaded resource
 	 * @throws IOException - in case the resource could not be read.
@@ -1065,7 +1105,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * allows to retrieve the URI for the resource containing the project state associated with this version.
-	 * 
+	 *
 	 * @return the uri for the project state resource
 	 */
 	private URI getProjectURI() {
@@ -1075,7 +1115,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 
 	/**
 	 * allows to retrieve the URI for the resource containing the ChangePackege associated with this version.
-	 * 
+	 *
 	 * @return the uri for the ChangePackage resource
 	 */
 	private URI getChangePackageURI() {
@@ -1086,7 +1126,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 * allows to retrieve the Base-URI of this version, i.e. the URI of the resource
 	 * containing the version trimmed by its last segment.
-	 * 
+	 *
 	 * @return the base URI
 	 */
 	private URI getBaseURI() {
