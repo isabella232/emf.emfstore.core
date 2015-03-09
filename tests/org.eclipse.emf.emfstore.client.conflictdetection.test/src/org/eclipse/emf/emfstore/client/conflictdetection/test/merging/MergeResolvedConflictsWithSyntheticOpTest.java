@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
@@ -31,6 +32,8 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetect
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
@@ -111,11 +114,26 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 		assertTrue(containsOperations(mergeResolvedConflicts, generatedAttributeOp));
 	}
 
+	// TODO LCP: duplicate code, see ProjectSpace
 	private static boolean containsOperations(AbstractChangePackage changePackage, AbstractOperation operation) {
 		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 		try {
 			for (final AbstractOperation op : operations.iterable()) {
-				if (op.equals(operation)) {
+				if (OperationUtil.isCreateDelete(op) &&
+					OperationUtil.isCreateDelete(operation)) {
+
+					final CreateDeleteOperation createDeleteOperation = CreateDeleteOperation.class
+						.cast(op);
+					final CreateDeleteOperation otherCreateDeleteOperation = CreateDeleteOperation.class
+						.cast(operation);
+
+					if (createDeleteOperation.getOperationId().equals(otherCreateDeleteOperation.getOperationId())
+						&& createDeleteOperation.getModelElementId().equals(
+							otherCreateDeleteOperation.getModelElementId())) {
+						return true;
+					}
+
+				} else if (EcoreUtil.equals(op, operation)) {
 					return true;
 				}
 			}

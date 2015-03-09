@@ -506,8 +506,13 @@ public class DecisionManager {
 	public String getAuthorForOperation(AbstractOperation theirOperation) {
 
 		EObject container = theirOperation;
-		while (!AbstractChangePackage.class.isInstance(container)) {
+		while (!AbstractChangePackage.class.isInstance(container) && container != null) {
 			container = container.eContainer();
+		}
+
+		if (container == null) {
+			// TODO LCP
+			return StringUtils.EMPTY;
 		}
 
 		final AbstractChangePackage changePackage = (AbstractChangePackage) container;
