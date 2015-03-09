@@ -21,6 +21,8 @@ import org.apache.commons.io.input.ReversedLinesFileReader;
 import org.apache.commons.lang.NotImplementedException;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
+import com.google.common.base.Optional;
+
 /**
  * A file-based iterator for {@link AbstractOperation}s.
  *
@@ -30,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
  */
 public class OperationIterator implements Iterator<AbstractOperation> {
 
-	private AbstractOperation operation;
+	private Optional<AbstractOperation> operation;
 	private OperationEmitter operationEmitter;
 	private ReadLineCapable reader;
 	private boolean isInitialized;
@@ -79,7 +81,7 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 		}
 		try {
 			operation = operationEmitter.tryEmit(reader);
-			final boolean hasNext = operation != null;
+			final boolean hasNext = operation.isPresent();
 			if (!hasNext) {
 				close();
 			}
@@ -99,7 +101,10 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 	 * @see java.util.Iterator#next()
 	 */
 	public AbstractOperation next() {
-		return operation;
+		if (operation == null) {
+			hasNext();
+		}
+		return operation.get();
 	}
 
 	/**
@@ -117,7 +122,9 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 	 */
 	public void close() {
 		try {
-			reader.close();
+			if (reader != null) {
+				reader.close();
+			}
 		} catch (final IOException ex) {
 			// TODO
 			ex.printStackTrace();

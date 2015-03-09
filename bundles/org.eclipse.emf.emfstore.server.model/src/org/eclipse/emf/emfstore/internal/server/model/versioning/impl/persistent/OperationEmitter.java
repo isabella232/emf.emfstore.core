@@ -27,6 +27,8 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 
+import com.google.common.base.Optional;
+
 /**
  * Type for emitting {@link AbstractOperation}s when given an {@link ReadLineCapable} type.
  *
@@ -71,7 +73,7 @@ public class OperationEmitter {
 	 * @throws IOException
 	 *             in case reading from the {@link ReadLineCapable} fails
 	 */
-	public AbstractOperation tryEmit(ReadLineCapable reader) throws IOException {
+	public Optional<AbstractOperation> tryEmit(ReadLineCapable reader) throws IOException {
 		final List<String> readLines = new ArrayList<String>();
 		withinOperationsElement = false;
 		String line;
@@ -93,10 +95,11 @@ public class OperationEmitter {
 			if (direction == Direction.Backward) {
 				Collections.reverse(readLines);
 			}
-			return deserialize(StringUtils.join(readLines, StringUtils.EMPTY));
+			return Optional.of(
+				deserialize(StringUtils.join(readLines, StringUtils.EMPTY)));
 		}
 
-		return null;
+		return Optional.absent();
 	}
 
 	private String getClosingTag(boolean isForward) {

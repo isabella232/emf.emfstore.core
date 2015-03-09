@@ -56,8 +56,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ReadLineCapable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.XmlTags;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
+
+import com.google.common.base.Optional;
 
 /**
  * <!-- begin-user-doc -->
@@ -626,7 +629,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			reader = new BufferedReader(new FileReader(file));
 			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Forward);
 			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(reader);
-			return operationEmitter.tryEmit(create) == null;
+			return !operationEmitter.tryEmit(create).isPresent();
 		} catch (final IOException ex) {
 			throw new RuntimeException(ex);
 		} finally {
@@ -655,8 +658,10 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Backward);
 			AbstractOperation operation;
 			final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
-			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(reversedLinesFileReader);
-			while (counter > 0 && (operation = operationEmitter.tryEmit(create)) != null) {
+			final ReadLineCapable reader = ReadLineCapable.INSTANCE.create(reversedLinesFileReader);
+			final Optional<AbstractOperation> optionalOperation = operationEmitter.tryEmit(reader);
+			while (counter > 0 && optionalOperation.isPresent()) {
+				operation = optionalOperation.get();
 				ops.add(operation);
 				counter -= 1;
 			}
@@ -729,6 +734,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		final File thisFile = new File(getFilePath());
 		try {
 			FileUtil.moveAndOverwrite(thisFile, operationFile);
+			setFilePath(operationFileString);
 			changePackageHolder.setChangePackage(this);
 		} catch (final IOException ex) {
 			// TODO: LCP
@@ -742,8 +748,37 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#leafSize()
 	 */
 	public int leafSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		final ESCloseableIterable<AbstractOperation> operationHandle = operations();
+		try {
+			return countLeafOperations(operationHandle.iterable());
+		} finally {
+			operationHandle.close();
+		}
+	}
+
+	private static int getSize(CompositeOperation compositeOperation) {
+		int ret = 0;
+		final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
+		for (final AbstractOperation abstractOperation : subOperations) {
+			if (abstractOperation instanceof CompositeOperation) {
+				ret = ret + getSize((CompositeOperation) abstractOperation);
+			} else {
+				ret++;
+			}
+		}
+		return ret;
+	}
+
+	private static int countLeafOperations(Iterable<AbstractOperation> operations) {
+		int ret = 0;
+		for (final AbstractOperation operation : operations) {
+			if (operation instanceof CompositeOperation) {
+				ret = ret + getSize((CompositeOperation) operation);
+			} else {
+				ret++;
+			}
+		}
+		return ret;
 	}
 
 	/**

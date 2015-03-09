@@ -123,13 +123,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		checkAndRemoveDuplicateOperations(incomingChanges);
 
-		final AbstractChangePackage changePackage = getProjectSpace().getLocalChangePackage();
-
 		// TODO: LCP - operations are fully copied and held in memory
 		FileBasedChangePackage copiedLocalChangedPackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
 		copiedLocalChangedPackage.initialize(
 			FileUtil.createLocationForTemporaryChangePackage());
-		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
 		try {
 			for (final AbstractOperation operation : operations.iterable()) {
 				copiedLocalChangedPackage.add(operation);
@@ -167,12 +166,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		}
 
 		ESWorkspaceProviderImpl
-			.getObserverBus()
-			.notify(ESUpdateObserver.class, true)
-			.inspectChanges(
-				getProjectSpace().toAPI(),
-			incomingAPIChangePackages,
-			getProgressMonitor());
+		.getObserverBus()
+		.notify(ESUpdateObserver.class, true)
+		.inspectChanges(
+			getProjectSpace().toAPI(),
+				incomingAPIChangePackages,
+				getProgressMonitor());
 
 		if (!getProjectSpace().getLocalChangePackage().isEmpty()) {
 			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
@@ -208,7 +207,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			true);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
-			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
+		.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
 
 		return getProjectSpace().getBaseVersion();
 	}
@@ -251,7 +250,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		ModelUtil.logError(MessageFormat
 			.format(
 				Messages.UpdateController_ChangePackagesRemoved
-					+ Messages.UpdateController_PullingUpBaseVersion,
+				+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 	}
 

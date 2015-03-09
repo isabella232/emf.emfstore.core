@@ -158,6 +158,7 @@ public final class Create {
 		pagedUpdateVersionSpec.setBaseVersionSpec(
 			Create.primaryVersionSpec(baseVersion.getIdentifier(), TRUNK));
 		pagedUpdateVersionSpec.setBranch(TRUNK);
+		pagedUpdateVersionSpec.setMaxChanges(maxChanges);
 		return pagedUpdateVersionSpec;
 	}
 
