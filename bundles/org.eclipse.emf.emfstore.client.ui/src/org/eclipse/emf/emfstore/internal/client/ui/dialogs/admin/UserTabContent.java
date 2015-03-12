@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Gürcan Karakoc, Michael Deser - initial API and implementation
  * Maximilian Koegel - added delete user action
@@ -30,6 +30,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -45,13 +46,13 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * User tab content in the manage users dialog.
- * 
+ *
  * @author gurcankarakoc, deser
  */
 public class UserTabContent extends TabContent implements IPropertyChangeListener {
 
 	private static final String DELETE_ICON = "icons/delete.gif"; //$NON-NLS-1$
-	private static final String LOCK_ICON = "icons/lock.png"; //$NON-NLS-1$
+	private static final String KEY_ICON = "icons/lock.png"; //$NON-NLS-1$
 	private static final String USER_ICON = "icons/user.png"; //$NON-NLS-1$
 
 	/**
@@ -61,6 +62,16 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 
 		private ChangePasswordAction() {
 			super(Messages.UserTabContent_Change_Password);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.jface.action.Action#getImageDescriptor()
+		 */
+		@Override
+		public ImageDescriptor getImageDescriptor() {
+			return Activator.getImageDescriptor(KEY_ICON);
 		}
 
 		@Override
@@ -81,7 +92,7 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 				final InputDialog inputDialog = new InputDialog(
 					activeShell,
 					Messages.UserTabContent_Enter_New_Password_For_User
-						+ " '" + user.getName() + "'", //$NON-NLS-1$//$NON-NLS-2$ 
+					+ " '" + user.getName() + "'", //$NON-NLS-1$//$NON-NLS-2$
 					Messages.UserTabContent_Enter_New_Password,
 					StringUtils.EMPTY, null);
 
@@ -114,7 +125,7 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.TabContent#initActions()
 	 */
 	@Override
@@ -131,7 +142,6 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 		importOrgUnitAction.addPropertyChangeListener(this);
 
 		final Action changePassword = new ChangePasswordAction();
-		changePassword.setImageDescriptor(Activator.getImageDescriptor(LOCK_ICON));
 		changePassword.setToolTipText(Messages.UserTabContent_Change_Password);
 
 		final List<Action> actions = new ArrayList<Action>();
@@ -212,7 +222,7 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 
 	/**
 	 * Refresh the tableViewer after a property change. (Used e.g. after importing users via e.g. CSV.)
-	 * 
+	 *
 	 * @param event The event to deal with.
 	 */
 	public void propertyChange(PropertyChangeEvent event) {
