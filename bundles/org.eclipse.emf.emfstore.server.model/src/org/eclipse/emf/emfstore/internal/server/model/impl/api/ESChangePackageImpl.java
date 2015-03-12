@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
-import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
@@ -32,7 +31,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * @author emueller
  *
  */
-public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, ChangePackage> implements ESChangePackage {
+public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePackage> implements ESChangePackage {
 
 	/**
 	 * Constructor.
@@ -159,5 +158,15 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	 */
 	public ESChangePackage reverse() {
 		return toInternalAPI().reverse().toAPI();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAbstractChangePackageImpl#toInternalAPI()
+	 */
+	@Override
+	public ChangePackage toInternalAPI() {
+		return getChangePackage();
 	}
 }

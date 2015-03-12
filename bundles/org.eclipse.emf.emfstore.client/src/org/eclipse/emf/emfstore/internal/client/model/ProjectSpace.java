@@ -279,7 +279,7 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 */
 	AbstractChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<AbstractChangePackage> myChangePackages, List<AbstractChangePackage> theirChangePackages)
-			throws ChangeConflictException;
+		throws ChangeConflictException;
 
 	/**
 	 * Returns a list of branches of the current project. Every call triggers a
@@ -747,6 +747,8 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * @generated NOT
 	 */
 	void init();
+
+	void init(boolean initChangePackage);
 
 	/**
 	 * Initialize the resources of the project space.

@@ -14,7 +14,6 @@ package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 import java.util.List;
 
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
-import org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
@@ -34,7 +33,7 @@ import com.google.common.collect.Iterables;
  * @since 1.5
  *
  */
-public class ESFileBasedChangePackageImpl extends AbstractAPIImpl<ESChangePackage, FileBasedChangePackage>
+public class ESFileBasedChangePackageImpl extends ESAbstractChangePackageImpl<FileBasedChangePackage>
 implements ESChangePackage {
 
 	/**
@@ -161,5 +160,15 @@ implements ESChangePackage {
 			return null;
 		}
 		return logMessage.toAPI();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAbstractChangePackageImpl#toInternalAPI()
+	 */
+	@Override
+	public FileBasedChangePackage toInternalAPI() {
+		return getChangePackage();
 	}
 }

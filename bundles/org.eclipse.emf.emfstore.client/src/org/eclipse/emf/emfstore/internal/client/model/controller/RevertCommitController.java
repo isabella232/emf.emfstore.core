@@ -21,7 +21,6 @@ import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCa
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
@@ -89,9 +88,7 @@ public class RevertCommitController extends ServerCall<Void> {
 			try {
 				for (final AbstractOperation reversedOperation : reversedOperations.iterable()) {
 					try {
-						ESOperationImpl.class.cast(reversedOperation)
-						.toInternalAPI()
-						.apply(project);
+						reversedOperation.reverse().apply(project);
 					} catch (final IllegalStateException e) {
 						// ignore all non-applied operations
 					}

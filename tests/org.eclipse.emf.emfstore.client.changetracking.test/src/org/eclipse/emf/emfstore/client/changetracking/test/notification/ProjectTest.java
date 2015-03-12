@@ -90,6 +90,9 @@ public class ProjectTest extends ESTest {
 			}
 		});
 
+		final String eObjectToString = ModelUtil.eObjectToString(getProject());
+		final String eObjectToString2 = ModelUtil.eObjectToString(clonedProjectSpace.getProject());
+
 		assertTrue(ModelUtil.areEqual(getProject(), clonedProjectSpace.getProject()));
 	}
 }

@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI.WithException;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.BranchSelectionDialog;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.CommitDialog;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAbstractChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -54,8 +54,8 @@ import org.eclipse.swt.widgets.Shell;
  *
  */
 public class UICreateBranchController extends
-	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
-	ESCommitCallback {
+AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
+ESCommitCallback {
 
 	private final ProjectSpace projectSpace;
 	private int dialogReturnValue;
@@ -131,7 +131,7 @@ public class UICreateBranchController extends
 						.getBaseVersion().toAPI();
 					final ESPrimaryVersionSpec version = new UIUpdateProjectController(
 						getShell(), projectSpace)
-						.executeSub(progressMonitor);
+					.executeSub(progressMonitor);
 					if (version.equals(baseVersion)) {
 						return false;
 					}
@@ -158,7 +158,7 @@ public class UICreateBranchController extends
 		final ESLocalProjectImpl localProjectImpl = (ESLocalProjectImpl) localProject;
 
 		final CommitDialog commitDialog = new CommitDialog(getShell(),
-			ESChangePackageImpl.class.cast(changePackage).toInternalAPI(),
+			ESAbstractChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 			localProjectImpl.toInternalAPI(),
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
 
