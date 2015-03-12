@@ -52,7 +52,7 @@ import org.eclipse.ui.PlatformUI;
 public class UserTabContent extends TabContent implements IPropertyChangeListener {
 
 	private static final String DELETE_ICON = "icons/delete.gif"; //$NON-NLS-1$
-	private static final String KEY_ICON = "icons/lock.png"; //$NON-NLS-1$
+	private static final String KEY_ICON = "icons/key.png"; //$NON-NLS-1$
 	private static final String USER_ICON = "icons/user.png"; //$NON-NLS-1$
 
 	/**
@@ -66,7 +66,7 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.jface.action.Action#getImageDescriptor()
 		 */
 		@Override
@@ -92,7 +92,7 @@ public class UserTabContent extends TabContent implements IPropertyChangeListene
 				final InputDialog inputDialog = new InputDialog(
 					activeShell,
 					Messages.UserTabContent_Enter_New_Password_For_User
-					+ " '" + user.getName() + "'", //$NON-NLS-1$//$NON-NLS-2$
+						+ " '" + user.getName() + "'", //$NON-NLS-1$//$NON-NLS-2$
 					Messages.UserTabContent_Enter_New_Password,
 					StringUtils.EMPTY, null);
 
