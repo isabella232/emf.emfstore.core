@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.client.test.ui;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.ui.conflictdetection.BidirectionalConflictMergeTest;
 import org.eclipse.emf.emfstore.client.test.ui.controllers.AllUIControllerTests;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -25,8 +26,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	AllUIControllerTests.class
-// BidirectionalConflictMergeTest.class
+	AllUIControllerTests.class,
+	BidirectionalConflictMergeTest.class
 })
 public class AllUITests extends ESTestWithLoggedInUser {
 

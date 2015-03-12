@@ -26,6 +26,7 @@ import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
+import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.controller.UpdateController;
@@ -104,10 +105,15 @@ public class DuplicateOperationsTest extends ESTest {
 			operations.close();
 		}
 
-		final boolean hasBeenRemoved = updateController
-			.removeDuplicateOperations(cp, getProjectSpace().getLocalChangePackage());
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final boolean hasBeenRemoved = updateController
+					.removeDuplicateOperations(cp, getProjectSpace().getLocalChangePackage());
+				assertTrue(hasBeenRemoved);
+			}
+		});
 		assertEquals(0, getProjectSpace().getLocalChangePackage().size());
-		assertTrue(hasBeenRemoved);
 	}
 
 	@Test
@@ -128,15 +134,18 @@ public class DuplicateOperationsTest extends ESTest {
 		cp.getOperations().add(ModelUtil.clone(secondOp));
 		operations.close();
 
-		final Iterable<AbstractOperation> iterable = getProjectSpace().getLocalChangePackage().operations().iterable();
-
 		final List<ESChangePackage> incoming = new ArrayList<ESChangePackage>();
 		incoming.add(cp.toAPI());
 
-		final boolean hasBeenRemoved = updateController
-			.removeDuplicateOperations(cp, getProjectSpace().getLocalChangePackage());
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final boolean hasBeenRemoved = updateController
+					.removeDuplicateOperations(cp, getProjectSpace().getLocalChangePackage());
+				assertTrue(hasBeenRemoved);
+			}
+		});
 		assertEquals(1, getProjectSpace().getLocalChangePackage().size());
-		assertTrue(hasBeenRemoved);
 	}
 
 	@Test
@@ -205,8 +214,13 @@ public class DuplicateOperationsTest extends ESTest {
 
 		final List<AbstractChangePackage> incoming = new ArrayList<AbstractChangePackage>();
 		incoming.add(changePackage);
-		final int delta = updateController.removeFromChangePackages(incoming);
-		assertEquals(1, delta);
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final int delta = updateController.removeFromChangePackages(incoming);
+				assertEquals(1, delta);
+			}
+		});
 		assertEquals(0, getProjectSpace().getLocalChangePackage().size());
 		assertEquals(0, incoming.size());
 	}
@@ -236,10 +250,14 @@ public class DuplicateOperationsTest extends ESTest {
 		incoming.add(cp);
 		incoming.add(cp2);
 
-		final int delta = updateController.removeFromChangePackages(
-			incoming);
-
-		assertEquals(1, delta);
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final int delta = updateController.removeFromChangePackages(
+					incoming);
+				assertEquals(1, delta);
+			}
+		});
 		assertEquals(0, getProjectSpace().getLocalChangePackage().size());
 		assertEquals(1, incoming.size());
 	}

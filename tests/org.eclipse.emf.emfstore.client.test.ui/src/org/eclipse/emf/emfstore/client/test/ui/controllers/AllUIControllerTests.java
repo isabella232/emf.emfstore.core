@@ -21,26 +21,26 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	// NoLocalChangesCommitControllerTest.class,
-	// LocalProjectNeedsToBeUpdatedCommitControllerTest.class,
-	// UIAddTagControllerTest.class,
-	// UIAskForBranchCheckoutControllerTest.class,
-	// UIBranchControllersTest.class,
-	// UICheckoutControllerTest.class,
-	// UICreateRemoteProjectControllerTest.class,
-	// UIDeleteRemoteProjectControllerTest.class,
-	// UIMergeControllerTest.class,
+	NoLocalChangesCommitControllerTest.class,
+	LocalProjectNeedsToBeUpdatedCommitControllerTest.class,
+	UIAddTagControllerTest.class,
+	UIAskForBranchCheckoutControllerTest.class,
+	UIBranchControllersTest.class,
+	UICheckoutControllerTest.class,
+	UICreateRemoteProjectControllerTest.class,
+	UIDeleteRemoteProjectControllerTest.class,
+	UIMergeControllerTest.class,
 	UIRevertCommitControllerTest.class,
 	UIRevertCommitControllerTest2.class,
-	// UIServerControllerTest.class,
+	UIServerControllerTest.class,
 	UISessionControllerTest.class,
 	UIShareProjectControllerTest.class,
-// UIUpdateProjectControllerTest.class,
-// UIUpdateProjectToVersionControllerTest.class,
-// UIPagedUpdateProjectControllerTest.class,
-// UIShowHistoryControllerTest.class,
-// UIShowHistoryControllerForElementTest.class,
-// UIUndoLastOperationControllerTest.class
+	UIUpdateProjectControllerTest.class,
+	UIUpdateProjectToVersionControllerTest.class,
+	UIPagedUpdateProjectControllerTest.class,
+	UIShowHistoryControllerTest.class,
+	UIShowHistoryControllerForElementTest.class,
+	UIUndoLastOperationControllerTest.class
 })
 public class AllUIControllerTests {
 
