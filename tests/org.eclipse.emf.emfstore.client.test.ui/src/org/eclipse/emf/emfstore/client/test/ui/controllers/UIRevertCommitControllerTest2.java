@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -51,30 +51,31 @@ public class UIRevertCommitControllerTest2 extends AbstractUIControllerTestWithC
 		final ESPrimaryVersionSpec baseVersion = getLocalProject().getBaseVersion();
 
 		// update checkout
-		getCopy().update(getLocalProject().getBaseVersion(), updateCallback, monitor);
+		getCheckedoutCopy().update(getLocalProject().getBaseVersion(), updateCallback, monitor);
 
 		// delete player
 		deleteTournamentAndCommit();
 		assertEquals(1, getLocalProject().getModelElements().size());
 
 		// update checkout
-		getCopy().update(getLocalProject().getBaseVersion(), updateCallback, monitor);
-		assertEquals(1, getCopy().getModelElements().size());
+		getCheckedoutCopy().update(getLocalProject().getBaseVersion(), updateCallback, monitor);
+		assertEquals(1, getCheckedoutCopy().getModelElements().size());
 
 		// revert to version where tournament has been created
 		revertAndCommit(baseVersion);
 
 		// update checkout
-		getCopy().update(ESVersionSpec.FACTORY.createHEAD(), updateCallback, monitor);
-		assertEquals(2, getCopy().getModelElements().size());
-		final Tournament tournament = getCopy().getAllModelElementsByClass(Tournament.class).iterator().next();
+		getCheckedoutCopy().update(ESVersionSpec.FACTORY.createHEAD(), updateCallback, monitor);
+		assertEquals(2, getCheckedoutCopy().getModelElements().size());
+		final Tournament tournament = getCheckedoutCopy().getAllModelElementsByClass(Tournament.class).iterator()
+			.next();
 		assertEquals(new Integer(32), tournament.getPlayerPoints().values().iterator().next());
 
 		// revert again, should have no effect
 		revertAndCommit(baseVersion);
-		getCopy().update(ESVersionSpec.FACTORY.createHEAD(), updateCallback, monitor);
+		getCheckedoutCopy().update(ESVersionSpec.FACTORY.createHEAD(), updateCallback, monitor);
 
-		assertEquals(2, getCopy().getModelElements().size());
+		assertEquals(2, getCheckedoutCopy().getModelElements().size());
 	}
 
 	private void createPlayerAndTournamentAndCommit() {

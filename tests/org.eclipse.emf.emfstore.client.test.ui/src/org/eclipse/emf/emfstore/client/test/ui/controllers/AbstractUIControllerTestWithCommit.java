@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.ui.controllers;
@@ -199,10 +199,6 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		return localProjectArr[0];
 	}
 
-	public ESLocalProject getCopy() {
-		return getCheckedoutCopy();
-	}
-
 	protected ESPrimaryVersionSpec updateCopy() {
 		SWTBotPreferences.PLAYBACK_DELAY = 100;
 		didUpdate = false;
@@ -215,7 +211,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 			public void run() {
 				final UIUpdateProjectController updateProjectController = new UIUpdateProjectController(
 					getBot().getDisplay().getActiveShell(),
-					getCopy());
+					getCheckedoutCopy());
 				updateProjectController.execute();
 			}
 		});
@@ -240,7 +236,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		ESWorkspaceProviderImpl.getInstance();
 		ESWorkspaceProviderImpl.getObserverBus().unregister(updateObserver);
 
-		return getCopy().getBaseVersion();
+		return getCheckedoutCopy().getBaseVersion();
 	}
 
 	protected ESPrimaryVersionSpec updateToVersion() {
@@ -255,7 +251,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 			public void run() {
 				final UIUpdateProjectToVersionController updateProjectController = new UIUpdateProjectToVersionController(
 					getBot().getDisplay().getActiveShell(),
-					getCopy());
+					getCheckedoutCopy());
 				updateProjectController.execute();
 			}
 		});
@@ -284,7 +280,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		ESWorkspaceProviderImpl.getInstance();
 		ESWorkspaceProviderImpl.getObserverBus().unregister(updateObserver);
 
-		return getCopy().getBaseVersion();
+		return getCheckedoutCopy().getBaseVersion();
 	}
 
 	private ESUpdateObserver createUpdateObserver() {
@@ -307,7 +303,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 			public void run() {
 				final UIUpdateProjectController updateProjectController = new UIUpdateProjectController(
 					getBot().getDisplay().getActiveShell(),
-					getCopy());
+					getCheckedoutCopy());
 				updateProjectController.execute();
 			}
 		});
@@ -318,8 +314,8 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return getCopy().getBaseVersion().getIdentifier() ==
-				getLocalProject().getBaseVersion().getIdentifier() - 1;
+				return getCheckedoutCopy().getBaseVersion().getIdentifier() ==
+					getLocalProject().getBaseVersion().getIdentifier() - 1;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -337,8 +333,8 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return getCopy().getBaseVersion().getIdentifier() ==
-				getLocalProject().getBaseVersion().getIdentifier();
+				return getCheckedoutCopy().getBaseVersion().getIdentifier() ==
+					getLocalProject().getBaseVersion().getIdentifier();
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -348,6 +344,6 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 			}
 		}, timeout());
 
-		return getCopy().getBaseVersion();
+		return getCheckedoutCopy().getBaseVersion();
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,9 +15,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * Test Suite for running all UI controllers tests.
+ * Test suite for running all UI controllers tests.
  *
- * @author Edgar
+ * @author emueller
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

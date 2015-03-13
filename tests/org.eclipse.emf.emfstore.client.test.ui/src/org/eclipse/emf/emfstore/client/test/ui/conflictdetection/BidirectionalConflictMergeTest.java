@@ -78,7 +78,7 @@ public class BidirectionalConflictMergeTest extends AbstractUIControllerTestWith
 			getLocalProject().getModelElementId(testElement2));
 		commit();
 
-		changeContainer(getCopy(),
+		changeContainer(getCheckedoutCopy(),
 			getLocalProject().getModelElementId(child),
 			getLocalProject().getModelElementId(testElement3));
 
@@ -86,7 +86,7 @@ public class BidirectionalConflictMergeTest extends AbstractUIControllerTestWith
 			public void run() {
 				final UIUpdateProjectController updateProjectController = new UIUpdateProjectController(
 					getBot().getDisplay().getActiveShell(),
-					getCopy());
+					getCheckedoutCopy());
 				updateProjectController.execute();
 			}
 		});

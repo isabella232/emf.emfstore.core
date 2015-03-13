@@ -552,7 +552,30 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		} finally {
 			operationsHandle.close();
 		}
-		return null;
+		return reversedChangePackage;
+	}
+
+	public FileBasedChangePackage copy() {
+		final FileBasedChangePackage changePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		// TODO LCP: where should we put the file
+		try {
+			final File tempFile = File.createTempFile("temp-", ".eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+			tempFile.deleteOnExit();
+			changePackage.initialize(tempFile.getAbsolutePath());
+		} catch (final IOException ex) {
+			// TODO
+			ex.printStackTrace();
+		}
+		final ESCloseableIterable<AbstractOperation> operationsHandle = reversedOperations();
+		try {
+			final Iterable<AbstractOperation> operations = operationsHandle.iterable();
+			for (final AbstractOperation operation : operations) {
+				changePackage.add(operation);
+			}
+		} finally {
+			operationsHandle.close();
+		}
+		return changePackage;
 	}
 
 	public ESCloseableIterable<AbstractOperation> reversedOperations() {

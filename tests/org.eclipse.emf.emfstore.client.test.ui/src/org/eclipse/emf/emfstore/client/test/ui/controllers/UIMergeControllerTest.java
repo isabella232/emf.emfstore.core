@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -34,7 +34,7 @@ public class UIMergeControllerTest extends AbstractUIControllerTestWithCommitAnd
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
 				UIMergeController mergeController = null;
-				mergeController = new UIMergeController(getBot().getDisplay().getActiveShell(), getCopy());
+				mergeController = new UIMergeController(getBot().getDisplay().getActiveShell(), getCheckedoutCopy());
 				mergeController.execute();
 			}
 		});
@@ -47,7 +47,7 @@ public class UIMergeControllerTest extends AbstractUIControllerTestWithCommitAnd
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
 				for (final ESLocalProject project : ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects()) {
-					if (project == getCopy()) {
+					if (project == getCheckedoutCopy()) {
 						if (project.getModelElements().size() == 2) {
 							return true;
 						}
@@ -63,7 +63,7 @@ public class UIMergeControllerTest extends AbstractUIControllerTestWithCommitAnd
 			}
 		}, timeout());
 
-		assertEquals(2, getCopy().getModelElements().size());
+		assertEquals(2, getCheckedoutCopy().getModelElements().size());
 	}
 
 }

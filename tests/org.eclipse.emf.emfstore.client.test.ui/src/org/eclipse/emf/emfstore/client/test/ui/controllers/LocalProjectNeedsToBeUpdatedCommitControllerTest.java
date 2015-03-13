@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -36,7 +36,7 @@ public class LocalProjectNeedsToBeUpdatedCommitControllerTest extends AbstractUI
 
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
-				getCopy().getModelElements().add(BowlingFactory.eINSTANCE.createPlayer());
+				getCheckedoutCopy().getModelElements().add(BowlingFactory.eINSTANCE.createPlayer());
 				return null;
 			}
 		});
@@ -45,7 +45,7 @@ public class LocalProjectNeedsToBeUpdatedCommitControllerTest extends AbstractUI
 			public void run() {
 				ESUIControllerFactory.INSTANCE.commitProject(
 					getBot().getDisplay().getActiveShell(),
-					getCopy());
+					getCheckedoutCopy());
 			}
 		});
 
@@ -62,7 +62,7 @@ public class LocalProjectNeedsToBeUpdatedCommitControllerTest extends AbstractUI
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return getCopy().getBaseVersion().getIdentifier() == 3;
+				return getCheckedoutCopy().getBaseVersion().getIdentifier() == 3;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -72,7 +72,7 @@ public class LocalProjectNeedsToBeUpdatedCommitControllerTest extends AbstractUI
 			}
 		}, AllUITests.TIMEOUT);
 
-		assertEquals(3, getCopy().getAllModelElements().size());
+		assertEquals(3, getCheckedoutCopy().getAllModelElements().size());
 	}
 
 }
