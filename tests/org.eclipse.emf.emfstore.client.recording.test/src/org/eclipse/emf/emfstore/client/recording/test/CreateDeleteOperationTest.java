@@ -136,7 +136,7 @@ public class CreateDeleteOperationTest extends ESTest {
 	 */
 	@Test
 	public void createElementWithPostCreationObserverTest() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		useCase.setName(OLD_NAME);
@@ -180,7 +180,7 @@ public class CreateDeleteOperationTest extends ESTest {
 	 */
 	@Test
 	public void createElementwithCrossreferencesTest() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 		final TestElement useCase = Create.testElement();
 		new EMFStoreCommand() {
 			@Override
@@ -277,7 +277,7 @@ public class CreateDeleteOperationTest extends ESTest {
 	// BEGIN COMPLEX CODE
 	@Test
 	public void complexDeleteElementReverseTest() throws UnsupportedOperationException,
-		UnsupportedNotificationException, IOException {
+	UnsupportedNotificationException, IOException {
 		final TestElement section = Create.testElement();
 		final TestElement useCase = Create.testElement();
 		final TestElement oldTestElement = Create.testElement();
@@ -472,7 +472,7 @@ public class CreateDeleteOperationTest extends ESTest {
 		final Project loadedProject = ModelUtil.loadEObjectFromResource(
 			org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.getModelPackage().getProject(),
 			getProject()
-				.eResource().getURI(), false);
+			.eResource().getURI(), false);
 
 		assertTrue(ModelUtil.areEqual(loadedProject, getProject()));
 		assertTrue(loadedProject.contains(useCaseId));
@@ -488,7 +488,7 @@ public class CreateDeleteOperationTest extends ESTest {
 	 */
 	@Test
 	public void complexCreateTest() throws UnsupportedOperationException, UnsupportedNotificationException,
-		IOException {
+	IOException {
 		for (int i = 0; i < 10; i++) {
 			final TestElement createCompositeSection = Create.testElement();
 			createCompositeSection.setName(HELMUT + i);
@@ -762,7 +762,7 @@ public class CreateDeleteOperationTest extends ESTest {
 			ModelPackage.eINSTANCE.getProjectSpace(),
 			getProjectSpace().eResource().getURI(), false);
 		loadedProjectSpace.setResourceSet(getProjectSpace().getResourceSet());
-		loadedProjectSpace.init(true);
+		loadedProjectSpace.init();
 
 		// perform asserts with loaded project space
 		assertTrue(ModelUtil.areEqual(getProjectSpace().getProject(), loadedProjectSpace.getProject()));
@@ -1618,14 +1618,14 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(testElement2, referencedTestElement.getReference());
 
 		AdapterFactoryEditingDomain
-			.getEditingDomainFor(getProject())
-			.getCommandStack()
-			.execute(
-				RemoveCommand.create(
-					AdapterFactoryEditingDomain.getEditingDomainFor(getProject()),
-					getProject(),
-					org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_ModelElements(),
-					testElement2));
+		.getEditingDomainFor(getProject())
+		.getCommandStack()
+		.execute(
+			RemoveCommand.create(
+				AdapterFactoryEditingDomain.getEditingDomainFor(getProject()),
+				getProject(),
+				org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_ModelElements(),
+				testElement2));
 
 		assertTrue(getProject().contains(testElement1));
 		assertFalse(getProject().contains(testElement2));
