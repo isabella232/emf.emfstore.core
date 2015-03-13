@@ -566,7 +566,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			// TODO
 			ex.printStackTrace();
 		}
-		final ESCloseableIterable<AbstractOperation> operationsHandle = reversedOperations();
+		final ESCloseableIterable<AbstractOperation> operationsHandle = operations();
 		try {
 			final Iterable<AbstractOperation> operations = operationsHandle.iterable();
 			for (final AbstractOperation operation : operations) {
