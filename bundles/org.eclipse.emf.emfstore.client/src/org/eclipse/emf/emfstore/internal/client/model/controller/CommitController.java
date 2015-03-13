@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -28,26 +28,22 @@ import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCa
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
 
 /**
  * The controller responsible for performing a commit.
- *
+ * 
  * @author wesendon
  */
 public class CommitController extends ServerCall<PrimaryVersionSpec> {
@@ -58,7 +54,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 *
+	 * 
 	 * @param projectSpace
 	 *            the project space whose pending changes should be commited
 	 * @param logMessage
@@ -77,7 +73,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Branching Constructor.
-	 *
+	 * 
 	 * @param projectSpace
 	 *            the project space whose pending changes should be committed
 	 * @param branch
@@ -137,7 +133,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		setLogMessage(logMessage, localChangePackage);
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-		.inspectChanges(getProjectSpace().toAPI(), localChangePackage.toAPI(), getProgressMonitor());
+			.inspectChanges(getProjectSpace().toAPI(), localChangePackage.toAPI(), getProgressMonitor());
 
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), localChangePackage);
@@ -197,7 +193,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		});
 
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
-		.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
+			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
 		return newBaseVersion;
 	}
@@ -224,18 +220,6 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final AbstractChangePackage changePackage)
 		throws ESException {
 
-		final FileBasedChangePackage internalChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		internalChangePackage.initialize(
-			FileUtil.createLocationForTemporaryChangePackage());
-		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
-		try {
-			for (final AbstractOperation operation : operations.iterable()) {
-				internalChangePackage.add(operation);
-			}
-		} finally {
-			operations.close();
-		}
-
 		// Branching case: branch specifier added
 		final PrimaryVersionSpec newBaseVersion = new UnknownEMFStoreWorkloadCommand<PrimaryVersionSpec>(
 			getProgressMonitor()) {
@@ -245,7 +229,7 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 					getUsersession().getSessionId(),
 					getProjectSpace().getProjectId(),
 					getProjectSpace().getBaseVersion(),
-					internalChangePackage,
+					changePackage,
 					branch,
 					getProjectSpace().getMergedVersion(),
 					changePackage.getLogMessage());

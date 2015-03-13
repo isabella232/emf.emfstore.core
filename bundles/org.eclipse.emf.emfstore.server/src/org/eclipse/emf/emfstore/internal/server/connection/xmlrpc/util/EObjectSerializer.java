@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -49,7 +49,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Serializer for EObjects.
- *
+ * 
  * @author ovonwesen
  * @author emueller
  */
@@ -81,14 +81,17 @@ public class EObjectSerializer extends TypeSerializerImpl {
 			final OutputStream ostream = new EncoderOutputStream(encoder);
 			final BufferedOutputStream bos = new BufferedOutputStream(ostream);
 			try {
-				final EObject eObject = (EObject) pObject;
+				EObject eObject = (EObject) pObject;
 				XMIResource resource = (XMIResource) eObject.eResource();
 
-				if (eObject instanceof FileBasedChangePackage && resource != null) {
+				if (eObject instanceof FileBasedChangePackage) {
+					// TODO LCP
 					final ChangePackage changePackage = toInMemoryChangePackage(FileBasedChangePackage.class
 						.cast(eObject));
-					uws = writeDirectly(bos, changePackage);
-				} else if (eObject instanceof IdEObjectCollection && resource != null) {
+					eObject = changePackage;
+				}
+				// uws = writeDirectly(bos, changePackage);
+				if (eObject instanceof IdEObjectCollection && resource != null) {
 					uws = writeDirectly(bos, eObject);
 				} else {
 					resource = (XMIResource) new ResourceSetImpl().createResource(ModelUtil.VIRTUAL_URI);
@@ -165,7 +168,7 @@ public class EObjectSerializer extends TypeSerializerImpl {
 
 	private static URIConverter.WriteableOutputStream writeDirectly(final BufferedOutputStream bufferedOutputStream,
 		final EObject eObject)
-			throws UnsupportedEncodingException, SerializationException, IOException {
+		throws UnsupportedEncodingException, SerializationException, IOException {
 		URIConverter.WriteableOutputStream uws;
 		OutputStreamWriter writer = null;
 		try {
