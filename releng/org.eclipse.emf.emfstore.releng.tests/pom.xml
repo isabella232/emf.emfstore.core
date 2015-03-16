@@ -21,6 +21,7 @@
 		<module>../../tests/org.eclipse.emf.emfstore.test.model.edit</module>
 		<module>../../tests/org.eclipse.emf.emfstore.test.common</module>
 		<module>../../tests/org.eclipse.emf.emfstore.client.api.test</module>
+		<module>../../tests/org.eclipse.emf.emfstore.client.example.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.server.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.client.changetracking.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.client.recording.test</module>
