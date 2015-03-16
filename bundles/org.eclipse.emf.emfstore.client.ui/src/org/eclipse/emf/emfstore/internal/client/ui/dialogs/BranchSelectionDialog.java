@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -38,7 +38,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * Dialog for branch selection. Has subclasses which modify the dialog for
  * certain usecases, such as {@link Creation} and {@link CheckoutSelection}
- * 
+ *
  * @author wesendon
  */
 public class BranchSelectionDialog extends TitleAreaDialog {
@@ -59,7 +59,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Create the dialog.
-	 * 
+	 *
 	 * @param parentShell
 	 *            parent shell
 	 * @param branches
@@ -72,7 +72,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Create contents of the dialog.
-	 * 
+	 *
 	 * @param parent
 	 *            parent component
 	 * @return a control
@@ -109,6 +109,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 		});
 
 		getTableViewer().setInput(getBranches());
+		getTableViewer().getTable().select(0);
 
 		endOfInit();
 
@@ -133,7 +134,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns a {@link BranchInfo} as result or null for certain dialogs.
-	 * 
+	 *
 	 * @return {@link BranchInfo}
 	 */
 	public BranchInfo getResult() {
@@ -151,7 +152,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Hook to add additional components to the dialog.
-	 * 
+	 *
 	 * @param container
 	 *            parent
 	 */
@@ -160,7 +161,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Create contents of the button bar.
-	 * 
+	 *
 	 * @param parent
 	 *            parent
 	 */
@@ -186,7 +187,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns the branches.
-	 * 
+	 *
 	 * @return the branches
 	 */
 	protected java.util.List<BranchInfo> getBranches() {
@@ -195,7 +196,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns the table viewer.
-	 * 
+	 *
 	 * @return the table viewer
 	 */
 	protected TableViewer getTableViewer() {
@@ -204,7 +205,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Sets the table viewer.
-	 * 
+	 *
 	 * @param tableViewer
 	 *            the table viewer to be set
 	 */
@@ -214,7 +215,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Sets the result.
-	 * 
+	 *
 	 * @param result
 	 *            the result to be set
 	 */
@@ -224,15 +225,15 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Alternative version of this dialog for Checkout Selection.
-	 * 
+	 *
 	 * @author wesendon
-	 * 
+	 *
 	 */
 	public static class CheckoutSelection extends BranchSelectionDialog {
 
 		/**
 		 * Default constructor.
-		 * 
+		 *
 		 * @param parentShell
 		 *            parent
 		 * @param branches
@@ -256,9 +257,9 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 	 * Alternative version of this dialog for Branch Creation. In this version
 	 * branches can't be selected but are displayed in order to avoid duplicate
 	 * naming.
-	 * 
+	 *
 	 * @author wesendon
-	 * 
+	 *
 	 */
 	public static class Creation extends BranchSelectionDialog {
 
@@ -267,7 +268,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 		/**
 		 * Default constructor.
-		 * 
+		 *
 		 * @param parentShell
 		 *            parent
 		 * @param branches
@@ -287,7 +288,7 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 
 		/**
 		 * Returns the selected name for the branch.
-		 * 
+		 *
 		 * @return String
 		 */
 		public String getNewBranch() {
