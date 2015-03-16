@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -25,10 +25,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.emfstore.common.ESObserver;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
+import org.eclipse.emf.emfstore.internal.common.Activator;
+import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall.Result;
 
 /**
  * This is a universal observer bus. This class follows the publish/subscribe pattern, it is a central dispatcher for
@@ -42,48 +46,48 @@ import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
  * which then calls all registered observers.
  * The proxy can also be casted into {@link ObserverCall}, which allows to access all results by the different
  * observers.
- * 
- * 
+ *
+ *
  * Example code:
- * 
+ *
  * <pre>
  * // A is ESObserver
  * A a = new A() {
- * 
+ *
  * 	public void foo() {
  * 		System.out.println(&quot;A says: go!&quot;);
  * 	}
  * };
- * 
+ *
  * // B extends A and is ESObserver
  * B b = new B() {
- * 
+ *
  * 	public void say(String ja) {
  * 		System.out.println(&quot;B says: &quot; + ja);
  * 	}
- * 
+ *
  * 	public void foo() {
  * 		System.out.println(&quot;B says: h??&quot;);
  * 	}
  * };
- * 
+ *
  * // B is registered first
  * ObserverBus.register(b);
  * ObserverBus.register(a);
- * 
+ *
  * ObserverBus.notify(A.class).foo();
- * 
+ *
  * ObserverBus.notify(B.class).say(&quot;w00t&quot;);
- * 
+ *
  * // Output:
- * 
+ *
  * // B says: h??
  * // A says: go!
  * //
  * // B says: w00t
- * 
+ *
  * </pre>
- * 
+ *
  * @author wesendon
  */
 public class ObserverBus {
@@ -101,7 +105,7 @@ public class ObserverBus {
 
 	/**
 	 * This method allows you to notify all observers.
-	 * 
+	 *
 	 * @param <T> class of observer
 	 * @param clazz class of observer
 	 * @return call object
@@ -112,11 +116,11 @@ public class ObserverBus {
 
 	/**
 	 * This method allows you to notify all observers.
-	 * 
+	 *
 	 * @param <T> class of observer
 	 * @param clazz class of observer
 	 * @param prioritized sort observer after {@link ESPrioritizedObserver}
-	 * 
+	 *
 	 * @return call object
 	 */
 	public <T extends ESObserver> T notify(final Class<T> clazz, final boolean prioritized) {
@@ -128,7 +132,7 @@ public class ObserverBus {
 
 	/**
 	 * Registers an observer for all observer interfaces implemented by the object or its super classes.
-	 * 
+	 *
 	 * @param observer observer object
 	 */
 	public void register(final ESObserver observer) {
@@ -137,7 +141,7 @@ public class ObserverBus {
 
 	/**
 	 * Registers an observer for the specified observer interfaces.
-	 * 
+	 *
 	 * @param observer observer object
 	 * @param classes set of classes
 	 */
@@ -151,7 +155,7 @@ public class ObserverBus {
 
 	/**
 	 * Unregisters an observer for all observer interfaces implemented by the object or its super classes.
-	 * 
+	 *
 	 * @param observer observer object
 	 */
 	public void unregister(final ESObserver observer) {
@@ -160,7 +164,7 @@ public class ObserverBus {
 
 	/**
 	 * Unregisters an observer for the specified observer interfaces.
-	 * 
+	 *
 	 * @param observer observer object
 	 * @param classes set of classes
 	 */
@@ -203,12 +207,24 @@ public class ObserverBus {
 	private <T extends ESObserver> T createProxy(Class<T> clazz, boolean prioritized) {
 		final ProxyHandler handler = new ProxyHandler((Class<ESObserver>) clazz, prioritized);
 		return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[] { clazz, ObserverCall.class }, handler);
+	}
 
+	private static void logExceptions(List<Result> results) {
+		for (final Result result : results) {
+			final Throwable throwable = result.getException();
+			if (throwable != null) {
+				Activator.getDefault().getLog().log(
+					new Status(
+						IStatus.ERROR, "org.eclipse.emf.emfstore.common", //$NON-NLS-1$
+						throwable.getMessage(),
+						throwable));
+			}
+		}
 	}
 
 	/**
 	 * Proxyobserver which notifies all observers.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class ProxyHandler implements InvocationHandler, ObserverCall {
@@ -259,12 +275,13 @@ public class ObserverBus {
 			}
 
 			lastResults = notifiyObservers(observers, method, args);
+			logExceptions(lastResults);
 			return lastResults.get(0).getResultOrDefaultValue();
 		}
 
 		/**
 		 * Returns all observers that are not an instance of {@link ESPrioritizedObserver}.
-		 * 
+		 *
 		 * @param observers
 		 *            the list of observers to be filtered
 		 * @return a list of non prioritized observers
@@ -280,7 +297,7 @@ public class ObserverBus {
 		}
 
 		private Object accessObserverCall(Method method, Object[] args) throws IllegalArgumentException,
-			IllegalAccessException, InvocationTargetException {
+		IllegalAccessException, InvocationTargetException {
 			return method.invoke(this, args);
 
 		}
@@ -308,7 +325,7 @@ public class ObserverBus {
 
 	/**
 	 * Sorts Observers. Make sure they are {@link ESPrioritizedObserver}!!
-	 * 
+	 *
 	 * @param observers list of observers
 	 */
 	private void sortObservers(List<ESObserver> observers) {
@@ -364,11 +381,11 @@ public class ObserverBus {
 	public void collectionExtensionPoints() {
 		for (final ESExtensionElement outer : new ESExtensionPoint(
 			EXTENSION_POINT_ID, true)
-			.getExtensionElements()) {
+		.getExtensionElements()) {
 			try {
 				for (final ESExtensionElement inner : new ESExtensionPoint(outer.getAttribute("extensionPointName"), //$NON-NLS-1$
 					true)
-					.getExtensionElements()) {
+				.getExtensionElements()) {
 					register(inner.getClass(outer.getAttribute("observerAttributeName"), ESObserver.class)); //$NON-NLS-1$
 				}
 			} catch (final ESExtensionPointException e) {
