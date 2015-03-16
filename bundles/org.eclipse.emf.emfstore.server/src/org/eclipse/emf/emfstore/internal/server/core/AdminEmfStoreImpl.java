@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -49,7 +49,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Implementation of {@link AdminEmfStore} interface.
- * 
+ *
  * @author wesendon
  */
 // TODO: bring this interface in new subinterface structure and refactor it
@@ -59,7 +59,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param daoFacade
 	 *            provider facade for access control related DAOs
 	 * @param serverSpace
@@ -451,7 +451,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			if (!isServerAdmin && role.canAdministrate(projectId)) {
 				throw new AccessControlException(
 					Messages.AdminEmfStoreImpl_RemovePA_Violation_1
-						+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
+					+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
 			}
 
 			role.getProjects().remove(projectId);
@@ -596,9 +596,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public void deleteUser(SessionId sessionId, ACOrgUnitId userId) throws ESException {
 		checkForNulls(sessionId, userId);
 		getAuthorizationControl()
-			.checkProjectAdminAccessForOrgUnit(sessionId, userId);
+		.checkProjectAdminAccessForOrgUnit(sessionId, userId);
 		getAuthorizationControl()
-			.checkProjectAdminAccess(sessionId, null, PAPrivileges.DeleteOrgUnit);
+		.checkProjectAdminAccess(sessionId, null, PAPrivileges.DeleteOrgUnit);
 		for (final Iterator<ACUser> iter = daoFacade.getUsers().iterator(); iter.hasNext();) {
 			final ACUser user = iter.next();
 			final List<ACGroup> groups = getGroups(sessionId, userId);
@@ -629,9 +629,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#changeUser(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
@@ -639,6 +639,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public void changeUser(SessionId sessionId, ACOrgUnitId userId, String name, String password) throws ESException {
 
 		checkForNulls(sessionId, userId, name, password);
+
+		final ACOrgUnit orgUnit = getOrgUnit(userId);
+		final ACUser requestingUser = getAuthorizationControl().resolveUser(sessionId);
+
+		if (orgUnit.equals(requestingUser)) {
+			updateUser(userId, name, password);
+			return;
+		}
 
 		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccess(
 			sessionId, null, PAPrivileges.ChangeUserPassword);
@@ -762,7 +770,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface#initSubInterfaces()
 	 */
 	@Override
