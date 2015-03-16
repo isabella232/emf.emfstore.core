@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -18,16 +18,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
+import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * This class provides a way to indicate the progress of a command without knowing
  * the actual workload, i.e. the {@link IProgressMonitor} instance that is passed
  * to the run method is incremented every
- * 
+ *
  * @author emueller
- * 
+ *
  * @param <T> the return type of the command's run method
  */
 public abstract class UnknownEMFStoreWorkloadCommand<T> {
@@ -47,7 +49,7 @@ public abstract class UnknownEMFStoreWorkloadCommand<T> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param monitor
 	 *            the monitor that will be used to indicate that the command is in progress
 	 */
@@ -59,7 +61,7 @@ public abstract class UnknownEMFStoreWorkloadCommand<T> {
 
 	/**
 	 * Executes the command.
-	 * 
+	 *
 	 * @return the return value as determined by the run method
 	 * @throws ESException
 	 *             in case the command throws an exception
@@ -85,7 +87,11 @@ public abstract class UnknownEMFStoreWorkloadCommand<T> {
 				WorkspaceUtil.logException(e.getMessage(), e);
 				throw new ESException(Messages.UnknownEMFStoreWorkloadCommand_CommandInterrupted, e);
 			} catch (final ExecutionException e) {
-				WorkspaceUtil.logException(e.getMessage(), e);
+				if (AccessControlException.class.isInstance(e.getCause())) {
+					WorkspaceUtil.log(e.getCause().getMessage(), IStatus.WARNING);
+				} else {
+					WorkspaceUtil.logException(e.getMessage(), e);
+				}
 				if (e.getCause() instanceof ESException) {
 					throw (ESException) e.getCause();
 				}
@@ -104,7 +110,7 @@ public abstract class UnknownEMFStoreWorkloadCommand<T> {
 
 	/**
 	 * Returns how many ticks the command has incremented the monitor.
-	 * 
+	 *
 	 * @return amount of ticks that were incremented
 	 */
 	public int getWorked() {
@@ -113,7 +119,7 @@ public abstract class UnknownEMFStoreWorkloadCommand<T> {
 
 	/**
 	 * The actual behavior of the command that is meant to be implemented by clients.
-	 * 
+	 *
 	 * @param monitor
 	 *            a progress monitor that is used to indicate
 	 * @return an optional value of type <code>T</code>
