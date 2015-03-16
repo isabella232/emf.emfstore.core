@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller, Otto von Wesendonk - initial API and implementation
  * Johannes Faltermeier - adaptions for independent storage
@@ -74,7 +74,7 @@ import org.osgi.framework.Bundle;
 
 /**
  * Utility class for ModelElements.
- * 
+ *
  * @author koegel
  * @author emueller
  * @author ottovonwesen
@@ -111,7 +111,7 @@ public final class ModelUtil {
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.common.model.util.IResourceLogger#logError(java.lang.String)
 		 */
 		public void logError(String msg) {
@@ -141,7 +141,7 @@ public final class ModelUtil {
 
 	/**
 	 * Creates a ModelElementId object from a string.
-	 * 
+	 *
 	 * @param id
 	 *            as string
 	 * @return id as object
@@ -155,7 +155,7 @@ public final class ModelUtil {
 	/**
 	 * Compares two {@link IdEObjectCollection}s. Order of the model elements at root level
 	 * of a collection does not influence the outcome of this operations
-	 * 
+	 *
 	 * @param collectionA
 	 *            the first collection
 	 * @param collectionB
@@ -180,7 +180,7 @@ public final class ModelUtil {
 
 	/**
 	 * Copies the given EObject and converts it to a string.
-	 * 
+	 *
 	 * @param eObject
 	 *            the eObject to be serialized
 	 * @return the string representation of the <code>eObject</code>
@@ -193,7 +193,7 @@ public final class ModelUtil {
 
 	/**
 	 * Copies the given EObject and converts it to a string.
-	 * 
+	 *
 	 * @param eObject
 	 *            the eObject to be serialized
 	 * @param saveOptions
@@ -228,7 +228,7 @@ public final class ModelUtil {
 
 	/**
 	 * Converts the given {@link EObject} to a string.
-	 * 
+	 *
 	 * @param copy The copied {@link EObject}.
 	 * @param resource The resource for the {@link EObject}.
 	 * @return The string representing the {@link EObject}.
@@ -240,7 +240,7 @@ public final class ModelUtil {
 
 	/**
 	 * Converts the given {@link EObject} to a string.
-	 * 
+	 *
 	 * @param copy The copied {@link EObject}.
 	 * @param resource The resource for the {@link EObject}.
 	 * @param saveOptions define the format of the returned serialization.
@@ -268,11 +268,11 @@ public final class ModelUtil {
 
 	/**
 	 * Computes the checksum for a given string representing an {@link EObject}.
-	 * 
+	 *
 	 * @param eObjectString
 	 *            the string representing the {@link EObject}.
 	 * @return the computed checksum
-	 * 
+	 *
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
@@ -292,11 +292,11 @@ public final class ModelUtil {
 
 	/**
 	 * Computes the checksum for a given {@link EObject}.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject for which to compute a checksum
 	 * @return the computed checksum
-	 * 
+	 *
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
@@ -308,11 +308,11 @@ public final class ModelUtil {
 	 * Computes the checksum for a given {@link IdEObjectCollection}.
 	 * The checksum for a collection is independent of the order of the
 	 * collection's elements at the root level.
-	 * 
+	 *
 	 * @param collection
 	 *            the collection for which to compute a checksum
 	 * @return the computed checksum
-	 * 
+	 *
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
@@ -338,7 +338,7 @@ public final class ModelUtil {
 
 	/**
 	 * Returns the resource logger.
-	 * 
+	 *
 	 * @return the resource logger
 	 */
 	public static IResourceLogger getResourceLogger() {
@@ -347,7 +347,7 @@ public final class ModelUtil {
 
 	/**
 	 * Copies the given {@link IdEObjectCollection} and writes the IDs it contains into the given {@link XMIResource}.
-	 * 
+	 *
 	 * @param collection
 	 *            the collection to be copied
 	 * @param res
@@ -386,7 +386,7 @@ public final class ModelUtil {
 
 	/**
 	 * Determines whether the type of an EObject is an ignored one.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject which is to be checked
 	 * @return true, if the EObject will be ignored, false otherwise
@@ -412,7 +412,7 @@ public final class ModelUtil {
 	 * Delivers a map of options for loading resources. Especially {@link XMLResource#OPTION_DEFER_IDREF_RESOLUTION}
 	 * which speeds up loading
 	 * due to our id based resources.
-	 * 
+	 *
 	 * @return map of options for {@link XMIResource} or {@link XMLResource}.
 	 */
 	@SuppressWarnings("rawtypes")
@@ -426,13 +426,14 @@ public final class ModelUtil {
 			resourceLoadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, new HashMap());
 			resourceLoadOptions.put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
 			resourceLoadOptions.put(XMLResource.OPTION_ENCODING, CommonUtil.getEncoding());
+			resourceLoadOptions.put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
 		}
 		return resourceLoadOptions;
 	}
 
 	/**
 	 * Delivers a map of mandatory options for saving resources.
-	 * 
+	 *
 	 * @return map of options for {@link XMIResource} or {@link XMLResource}.
 	 */
 	public static synchronized Map<Object, Object> getResourceSaveOptions() {
@@ -445,6 +446,7 @@ public final class ModelUtil {
 			resourceSaveOptions.put(XMLResource.OPTION_ENCODING, CommonUtil.getEncoding());
 			resourceSaveOptions.put(XMLResource.OPTION_FLUSH_THRESHOLD, 100000);
 			resourceSaveOptions.put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
+			resourceSaveOptions.put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
 
 			final ESExtensionPoint extensionPoint = new ESExtensionPoint(DISCARD_DANGLING_HREF_ID);
 			final Boolean discardDanglingHREFs = extensionPoint.getBoolean("value", Boolean.FALSE); //$NON-NLS-1$
@@ -463,7 +465,7 @@ public final class ModelUtil {
 
 	/**
 	 * Delivers a map of options that is used while computing a checksum.
-	 * 
+	 *
 	 * @return map of options for {@link XMIResource} or {@link XMLResource}.
 	 */
 	public static synchronized Map<Object, Object> getChecksumSaveOptions() {
@@ -480,7 +482,7 @@ public final class ModelUtil {
 
 	/**
 	 * Saves a given resource and logs any warning and/or errors.
-	 * 
+	 *
 	 * @param resource
 	 *            the resource to be saved
 	 * @param logger
@@ -501,7 +503,7 @@ public final class ModelUtil {
 
 	/**
 	 * Loads a given resource and logs any warning and/or errors.
-	 * 
+	 *
 	 * @param resource
 	 *            the resource to be loaded
 	 * @param logger
@@ -559,7 +561,7 @@ public final class ModelUtil {
 	/**
 	 * Recursively goes through model and create a list of all non-Abstract
 	 * classes.
-	 * 
+	 *
 	 * @param ePackage
 	 *            the package to start with.
 	 * @return list of all non-Abstract model element classes in starting
@@ -586,7 +588,7 @@ public final class ModelUtil {
 	 * Recursively goes through package and returns a list of all EClasses
 	 * inheriting ModelElement (abstract classes and interfaces are also
 	 * include).
-	 * 
+	 *
 	 * @param ePackage
 	 *            starting package
 	 * @return a list of all EClasses inheriting ModelElement (inclusive
@@ -611,7 +613,7 @@ public final class ModelUtil {
 
 	/**
 	 * This will add a new entry to error log view of eclipse.
-	 * 
+	 *
 	 * @param message
 	 *            message
 	 * @param exception
@@ -631,7 +633,7 @@ public final class ModelUtil {
 
 	/**
 	 * Log an exception to the platform log. This will create a popup in the ui.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param exception
@@ -643,7 +645,7 @@ public final class ModelUtil {
 
 	/**
 	 * Log an exception to the platform log. This will create a popup in the ui.
-	 * 
+	 *
 	 * @param exception
 	 *            the exception
 	 */
@@ -653,7 +655,7 @@ public final class ModelUtil {
 
 	/**
 	 * Log a warning to the platform log. This will NOT create a popup in the UI.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param exception
@@ -665,7 +667,7 @@ public final class ModelUtil {
 
 	/**
 	 * Log a warning to the platform log. This will NOT create a popup in the UI.
-	 * 
+	 *
 	 * @param message
 	 *            the message being logged
 	 */
@@ -675,7 +677,7 @@ public final class ModelUtil {
 
 	/**
 	 * Log a error to the platform log. This will NOT create a popup in the UI.
-	 * 
+	 *
 	 * @param message
 	 *            the message being logged
 	 */
@@ -685,7 +687,7 @@ public final class ModelUtil {
 
 	/**
 	 * Log an exception to the platform log. This will create a popup in the ui.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 */
@@ -695,7 +697,7 @@ public final class ModelUtil {
 
 	/**
 	 * Clone any EObject.
-	 * 
+	 *
 	 * @param <T>
 	 *            the Eobject sub type
 	 * @param eObject
@@ -713,7 +715,7 @@ public final class ModelUtil {
 
 	/**
 	 * Clone a list of EObjects.
-	 * 
+	 *
 	 * @param <T>
 	 *            the EObject sub type the list consists of
 	 * @param list
@@ -732,7 +734,7 @@ public final class ModelUtil {
 
 	/**
 	 * Create a flat clone of the list, the list if cloned but ot its content.
-	 * 
+	 *
 	 * @param <T>
 	 *            the list type parameter
 	 * @param originalList
@@ -750,7 +752,7 @@ public final class ModelUtil {
 	/**
 	 * Load an EObject from a resource, the resource is supposed to contain only
 	 * one root object of the given EClass type. Type T must match EClass type.
-	 * 
+	 *
 	 * @param <T>
 	 *            Type of the EObject
 	 * @param eClass
@@ -850,7 +852,7 @@ public final class ModelUtil {
 
 	/**
 	 * Save a list of EObjects to the resource with the given URI.
-	 * 
+	 *
 	 * @param eObjects
 	 *            the EObjects to be saved
 	 * @param resourceURI
@@ -879,7 +881,7 @@ public final class ModelUtil {
 
 	/**
 	 * Save a list of EObjects to the resource with the given URI.
-	 * 
+	 *
 	 * @param eObjects
 	 *            the EObjects to be saved
 	 * @param resourceURI
@@ -895,7 +897,7 @@ public final class ModelUtil {
 	/**
 	 * Set all IDs contained in the project as XMI IDs for the model elements in
 	 * the project.
-	 * 
+	 *
 	 * @param project
 	 *            a project
 	 * @param xmiResource
@@ -910,7 +912,7 @@ public final class ModelUtil {
 
 	/**
 	 * Save an EObject to a resource.
-	 * 
+	 *
 	 * @param eObject
 	 *            the object
 	 * @param resourceURI
@@ -926,7 +928,7 @@ public final class ModelUtil {
 
 	/**
 	 * Deletes all resources from resourceSet, which string representation of URI starts with prefix.
-	 * 
+	 *
 	 * @param resourceSet resource set
 	 * @param prefix string prefix of the resource path
 	 * @throws IOException if deleting the resource fails
@@ -945,7 +947,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get Project that contains a model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @return the project or null if the element is not contained in a project.
@@ -958,7 +960,7 @@ public final class ModelUtil {
 
 	/**
 	 * Searches for the project and then looks for the modelelement id.
-	 * 
+	 *
 	 * @param modelElement me
 	 * @return id
 	 */
@@ -972,7 +974,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get the EContainer that contains the given model element and whose {@code eContainer} is {@code null}.
-	 * 
+	 *
 	 * @param parent
 	 *            the class of the parent
 	 * @param child
@@ -1010,7 +1012,7 @@ public final class ModelUtil {
 	 * which goes over an association class is displayed by a dedicated widget.
 	 * This widgets allows to trace transparently without seeing the association
 	 * class.
-	 * 
+	 *
 	 * @param eClazz
 	 *            the {@link EClass}
 	 * @return if it is an association
@@ -1024,7 +1026,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get all contained elements of a given element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @param includeTransientContainments
@@ -1038,7 +1040,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get all contained elements of a given element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @param includeTransientContainments
@@ -1057,7 +1059,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get all contained elements of a given resource.
-	 * 
+	 *
 	 * @param resource
 	 *            the resource
 	 * @param includeTransientContainments
@@ -1077,7 +1079,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get all contained elements of a given collection of model elements.
-	 * 
+	 *
 	 * @param modelElements
 	 *            a collection of elements
 	 * @param includeTransientContainments
@@ -1114,7 +1116,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get the container of an EObject.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @return the container
@@ -1132,7 +1134,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get all contained elements of a given element as a list.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @param includeTransientContainments
@@ -1160,7 +1162,7 @@ public final class ModelUtil {
 	/**
 	 * Delete the given incoming cross references to the given model element from any
 	 * other model element in the given project.
-	 * 
+	 *
 	 * @param inverseReferences a collection of inverse references
 	 * @param modelElement
 	 *            the model element
@@ -1192,7 +1194,7 @@ public final class ModelUtil {
 
 	/**
 	 * Delete all outgoing cross references of the given model element to any element in the given collection.
-	 * 
+	 *
 	 * @param collection the collection
 	 * @param modelElement
 	 *            the model element
@@ -1217,7 +1219,7 @@ public final class ModelUtil {
 
 	/**
 	 * Retrieve all outgoing connections from the model elements to other elements in the collection.
-	 * 
+	 *
 	 * @param collection the collection
 	 * @param modelElements the model elements
 	 * @return a List of references
@@ -1266,7 +1268,7 @@ public final class ModelUtil {
 	/**
 	 * Checks if the referenced elements is an element in the given collection which is not a singleton, not an ignored
 	 * data type and not already contained in the given set of elements.
-	 * 
+	 *
 	 * @param collection the collection
 	 * @param allModelElements the set of model elements
 	 * @param referencedElement the referenced element
@@ -1289,7 +1291,7 @@ public final class ModelUtil {
 
 	/**
 	 * Get the singleton instance for a given model element id.
-	 * 
+	 *
 	 * @param singletonId
 	 *            the id
 	 * @return the singleton instance
@@ -1310,11 +1312,11 @@ public final class ModelUtil {
 
 	/**
 	 * Get the singleton id for a singleton instance.
-	 * 
+	 *
 	 * @param singleton
 	 *            the singleton
 	 * @return the id
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#getSingletonModelElementId(org.eclipse.emf.ecore.EObject)
 	 */
 	public static ModelElementId getSingletonModelElementId(EObject singleton) {
@@ -1333,11 +1335,11 @@ public final class ModelUtil {
 
 	/**
 	 * Return whether the given eObject instance is a singelton.
-	 * 
+	 *
 	 * @param eObject
 	 *            the instance
 	 * @return true if it is a singleton
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#isSingleton(org.eclipse.emf.ecore.EObject)
 	 */
 	public static boolean isSingleton(EObject eObject) {
