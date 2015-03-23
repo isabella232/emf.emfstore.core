@@ -255,7 +255,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	 */
 	public boolean checkProjectAdminAccessForOrgUnit(ESSessionId sessionId, ESOrgUnitId orgUnitId,
 		Set<ESGlobalProjectId> projectIds)
-			throws AccessControlException {
+		throws AccessControlException {
 
 		cleanupPARole(orgUnitId);
 		final ACUser user = sessions.getUser(sessionId);
@@ -467,7 +467,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 			checkWriteAccess(
 				op.getSessionId().toAPI(),
 				projectId == null ? null : projectId.toAPI(),
-					null);
+				null);
 			break;
 		case PROJECT_ADMIN:
 			projectId = getProjectIdFromParameters(op);
@@ -549,7 +549,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 
 		final ACOrgUnitId orgUnitId = ESOrgUnitIdImpl.class.cast(esOrgUnitId).toInternalAPI();
 		final ACOrgUnit<?> orgUnit = getOrgUnit(orgUnitId);
-		final ESOrgUnit esOrgUnit = (ESOrgUnit) orgUnit.toAPI();
+		final ESOrgUnit esOrgUnit = orgUnit.toAPI();
 		final List<ESGroup> groups2 = orgUnitResolver.getGroups(esOrgUnit);
 		final List<ACGroup> groups = APIUtil.toInternal(groups2);
 		final ArrayList<Role> roles = new ArrayList<Role>();
@@ -587,7 +587,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	 */
 	public void init(Sessions sessions, ESOrgUnitResolver orgUnitResolverServive, ESOrgUnitProvider orgUnitProvider) {
 		this.sessions = sessions;
-		orgUnitResolver = orgUnitResolver;
+		orgUnitResolver = orgUnitResolverServive;
 		this.orgUnitProvider = orgUnitProvider;
 	}
 }

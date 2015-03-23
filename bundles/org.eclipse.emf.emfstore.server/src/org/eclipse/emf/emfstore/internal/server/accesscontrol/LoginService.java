@@ -11,6 +11,9 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.accesscontrol;
 
+import java.util.List;
+
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -38,8 +41,9 @@ import org.eclipse.emf.emfstore.server.model.ESSessionId;
  */
 public class LoginService {
 
+	private static final String USER_VERIFIER_SERVICE_CLASS = "userVerifierServiceClass"; //$NON-NLS-1$
 	private static final String MONITOR_NAME = "authentication"; //$NON-NLS-1$
-	private static final String USER_VERIFIER_EXTENSION_ID = "org.eclipse.emf.emfstore.server.userVerifier"; //$NON-NLS-1$
+	private static final String ACCESSCONTROL_EXTENSION_ID = "org.eclipse.emf.emfstore.server.accessControl"; //$NON-NLS-1$
 	private final Sessions sessions;
 	private final ESOrgUnitResolver orgUnitResolver;
 	private final ESOrgUnitProvider orgUnitProvider;
@@ -49,6 +53,8 @@ public class LoginService {
 	/**
 	 * Constructor.
 	 *
+	 * @param authenticationControlType
+	 *            the desired type authentication control type
 	 * @param sessions
 	 *            a {@link Sessions} map that will be updated in case an user successfully logins
 	 * @param orgUnitProvider
@@ -74,24 +80,26 @@ public class LoginService {
 	private ESUserVerifier initUserVerifierService() {
 
 		try {
-			// if any extension point has been registered, use it
-			if (new ESExtensionPoint(USER_VERIFIER_EXTENSION_ID, true).size() > 0) {
-				final ESUserVerifier verifier = new ESExtensionPoint(USER_VERIFIER_EXTENSION_ID, true).getClass(
-					"providerClass", ESUserVerifier.class); //$NON-NLS-1$
-				verifier.init(orgUnitProvider);
-				return verifier;
+			final ESExtensionPoint ext = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, false);
+			final List<ESExtensionElement> elements = ext.getExtensionElements();
+			ESUserVerifier verifier = null;
+			for (final ESExtensionElement el : elements) {
+				verifier = el.getClass(
+					USER_VERIFIER_SERVICE_CLASS, ESUserVerifier.class);
+				if (verifier != null) {
+					verifier.init(orgUnitProvider);
+					return verifier;
+				}
 			}
 
 			return ESUserVerifierFactory.getInstance().createUserVerifier(
 				authenticationControlType,
 				orgUnitProvider);
-		} catch (final ESExtensionPointException e) {
-			final String message = "Custom Access Control could not be initialized";
-			ModelUtil.logException(message, e);
+		} catch (final ESExtensionPointException ex) {
+			ModelUtil.logException(Messages.LoginService_CustomLoginServiceInitFailed, ex);
 			return null;
 		} catch (final FatalESException ex) {
-			final String message = "Custom Access Control could not be initialized";
-			ModelUtil.logException(message, ex);
+			ModelUtil.logException(Messages.LoginService_CustomLoginServiceInitFailed, ex);
 			return null;
 		}
 	}
