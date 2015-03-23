@@ -116,7 +116,7 @@ public class AccessControl {
 		ESAuthorizationService authorizationService;
 		try {
 			final List<ESAuthorizationService> services = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, false)
-				.getClasses(AUTHORIZATION_SERVICE_CLASS, ESAuthorizationService.class);
+			.getClasses(AUTHORIZATION_SERVICE_CLASS, ESAuthorizationService.class);
 			if (services.isEmpty()) {
 				authorizationService = new DefaultESAuthorizationService();
 			} else if (services.size() == 1) {
@@ -156,7 +156,7 @@ public class AccessControl {
 					MessageFormat.format(
 						Messages.AccessControl_MultipleExtensionsDiscovered,
 						ACCESSCONTROL_EXTENSION_ID + "." + ORG_UNIT_RESOLVER_SERVICE_CLASS //$NON-NLS-1$
-						));
+					));
 			}
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom org unit resolver class not be initialized"; //$NON-NLS-1$
@@ -201,6 +201,15 @@ public class AccessControl {
 	 */
 	public ESOrgUnitResolver getOrgUnitResolverServive() {
 		return orgUnitResolver;
+	}
+
+	/**
+	 * Returns the {@link ESOrgUnitProvider}.
+	 *
+	 * @return the {@link ESOrgUnitProvider} in use.
+	 */
+	public ESOrgUnitProvider getOrgUnitProviderService() {
+		return orgUnitProvider;
 	}
 
 	/**

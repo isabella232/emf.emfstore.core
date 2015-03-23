@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.model;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -47,7 +48,44 @@ public interface ESOrgUnitProvider {
 	List<ESProjectHistory> getProjects();
 
 	/**
-	 * @param serverSpace
+	 * Removes the given group.
+	 *
+	 * @param group the group to be removed
 	 */
+	void removeGroup(ESGroup group);
+
+	/**
+	 * Removes the given user.
+	 *
+	 * @param user the user to be removed
+	 */
+	void removeUser(ESUser user);
+
+	/**
+	 * Adds the given user.
+	 *
+	 * @param user the user to be added
+	 */
+	void addUser(ESUser user);
+
+	/**
+	 * Adds the given group.
+	 *
+	 * @param group the group to be added
+	 */
+	void addGroup(ESGroup group);
+
+	/**
+	 * Save the current state of the provider.
+	 *
+	 * @throws IOException in case saving fails
+	 */
+	void save() throws IOException;
+
+	/**
+	 *
+	 * @param daoFacade
+	 */
+	// TODO: FIXME
 	void init(ACDAOFacade daoFacade);
 }

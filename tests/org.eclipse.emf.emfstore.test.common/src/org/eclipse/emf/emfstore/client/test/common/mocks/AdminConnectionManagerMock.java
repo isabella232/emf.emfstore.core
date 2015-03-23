@@ -39,9 +39,9 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	public AdminConnectionManagerMock(ACDAOFacade daoFacade, AccessControl accessControl,
 		ServerSpace serverSpace)
-			throws FatalESException {
+		throws FatalESException {
 
-		adminEmfStore = new AdminEmfStoreImpl(daoFacade, serverSpace, accessControl);
+		adminEmfStore = new AdminEmfStoreImpl(serverSpace, accessControl);
 	}
 
 	public void initConnection(ServerInfo serverInfo, SessionId id) throws ConnectionException {

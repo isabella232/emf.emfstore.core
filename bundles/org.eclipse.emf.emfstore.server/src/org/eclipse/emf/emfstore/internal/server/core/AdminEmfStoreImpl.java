@@ -43,7 +43,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesFactory;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
-import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -58,8 +59,6 @@ import org.eclipse.emf.emfstore.server.model.ESUser;
 // TODO: bring this interface in new subinterface structure and refactor it
 public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements AdminEmfStore {
 
-	private final ACDAOFacade daoFacade;
-
 	/**
 	 * Default constructor.
 	 *
@@ -72,11 +71,10 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 * @throws FatalESException
 	 *             in case of failure
 	 */
-	public AdminEmfStoreImpl(ACDAOFacade daoFacade, ServerSpace serverSpace,
+	public AdminEmfStoreImpl(ServerSpace serverSpace,
 		AccessControl accessControl)
-		throws FatalESException {
+			throws FatalESException {
 		super(serverSpace, accessControl);
-		this.daoFacade = daoFacade;
 	}
 
 	/**
@@ -88,13 +86,29 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			sessionId.toAPI(),
 			null);
 		final List<ACGroup> result = new ArrayList<ACGroup>();
-		for (final ACGroup group : daoFacade.getGroups()) {
+		for (final ACGroup group : getGroups()) {
 			// quickfix
 			final ACGroup copy = ModelUtil.clone(group);
 			clearMembersFromGroup(copy);
 			result.add(copy);
 		}
 		return result;
+	}
+
+	private List<ACGroup> getGroups() {
+		final List<ACGroup> groups = new ArrayList<ACGroup>();
+		for (final ESGroup group : getAccessControl().getOrgUnitProviderService().getGroups()) {
+			groups.add((ACGroup) ESGroupImpl.class.cast(group).toInternalAPI());
+		}
+		return groups;
+	}
+
+	private List<ACUser> getUsers() {
+		final List<ACUser> users = new ArrayList<ACUser>();
+		for (final ESUser user : getAccessControl().getOrgUnitProviderService().getUsers()) {
+			users.add((ACUser) ESUserImpl.class.cast(user).toInternalAPI());
+		}
+		return users;
 	}
 
 	/**
@@ -107,7 +121,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			null);
 		final List<ACGroup> result = new ArrayList<ACGroup>();
 		final ACOrgUnit<?> orgUnit = getOrgUnit(orgUnitId);
-		for (final ACGroup group : daoFacade.getGroups()) {
+		for (final ACGroup group : getGroups()) {
 			if (group.getMembers().contains(orgUnit)) {
 				// quickfix
 				final ACGroup copy = ModelUtil.clone(group);
@@ -136,13 +150,13 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		final ACGroup acGroup = AccesscontrolFactory.eINSTANCE.createACGroup();
 		acGroup.setName(name);
 		acGroup.setDescription(StringUtils.EMPTY);
-		daoFacade.add(acGroup);
+		getAccessControl().getOrgUnitProviderService().addGroup(acGroup.toAPI());
 		save();
 		return ModelUtil.clone(acGroup.getId());
 	}
 
 	private boolean groupExists(String name) {
-		for (final ACGroup group : daoFacade.getGroups()) {
+		for (final ACGroup group : getGroups()) {
 			if (group.getName().equals(name)) {
 				return true;
 			}
@@ -197,14 +211,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 				member.getId().toAPI());
 		}
 
-		for (final Iterator<ACGroup> iter = daoFacade.getGroups().iterator(); iter.hasNext();) {
+		for (final Iterator<ACGroup> iter = getGroups().iterator(); iter.hasNext();) {
 			final ACGroup nextGroup = iter.next();
 			final List<ACGroup> groups = getGroups(sessionId, groupId);
 			if (nextGroup.getId().equals(groupId)) {
 				for (final ACGroup acGroup : groups) {
 					removeMember(sessionId, acGroup.getId(), nextGroup.getId());
 				}
-				daoFacade.remove(nextGroup);
+				getAccessControl().getOrgUnitProviderService().removeGroup(nextGroup.toAPI());
 				EcoreUtil.delete(nextGroup);
 				save();
 				return;
@@ -305,7 +319,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			projectId.toAPI());
 
 		final List<ACOrgUnit> result = new ArrayList<ACOrgUnit>();
-		for (final ACOrgUnit<ESUser> orgUnit : daoFacade.getUsers()) {
+		for (final ACOrgUnit<ESUser> orgUnit : getUsers()) {
 
 			final List<Role> roles = orgUnit.getRoles();
 			for (final Role role : roles) {
@@ -315,7 +329,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			}
 		}
 
-		for (final ACOrgUnit<ESGroup> orgUnit : daoFacade.getGroups()) {
+		for (final ACOrgUnit<ESGroup> orgUnit : getGroups()) {
 			final List<Role> roles = orgUnit.getRoles();
 			for (final Role role : roles) {
 				if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
@@ -504,7 +518,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			if (!isServerAdmin && role.canAdministrate(projectId)) {
 				throw new AccessControlException(
 					Messages.AdminEmfStoreImpl_RemovePA_Violation_1
-						+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
+					+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
 			}
 
 			role.getProjects().remove(projectId);
@@ -583,7 +597,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			sessionId.toAPI(),
 			null);
 		final List<ACUser> result = new ArrayList<ACUser>();
-		for (final ACUser user : daoFacade.getUsers()) {
+		for (final ACUser user : getUsers()) {
 			result.add(user);
 		}
 		return result;
@@ -598,10 +612,10 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			sessionId.toAPI(),
 			null);
 		final List<ACOrgUnit> result = new ArrayList<ACOrgUnit>();
-		for (final ACOrgUnit<ESUser> user : daoFacade.getUsers()) {
+		for (final ACOrgUnit<ESUser> user : getUsers()) {
 			result.add(ModelUtil.clone(user));
 		}
-		for (final ACOrgUnit<ESGroup> group : daoFacade.getGroups()) {
+		for (final ACOrgUnit<ESGroup> group : getGroups()) {
 			result.add(ModelUtil.clone(group));
 		}
 		// quickfix
@@ -644,13 +658,13 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		final ACUser acUser = AccesscontrolFactory.eINSTANCE.createACUser();
 		acUser.setName(name);
 		acUser.setDescription(StringUtils.EMPTY);
-		daoFacade.add(acUser);
+		getAccessControl().getOrgUnitProviderService().addUser(acUser.toAPI());
 		save();
 		return ModelUtil.clone(acUser.getId());
 	}
 
 	private boolean userExists(String name) {
-		for (final ACUser user : daoFacade.getUsers()) {
+		for (final ACUser user : getUsers()) {
 			if (user.getName().equals(name)) {
 				return true;
 			}
@@ -671,14 +685,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			sessionId.toAPI(),
 			null,
 			ESProjectAdminPrivileges.DeleteOrgUnit);
-		for (final Iterator<ACUser> iter = daoFacade.getUsers().iterator(); iter.hasNext();) {
+		for (final Iterator<ACUser> iter = getUsers().iterator(); iter.hasNext();) {
 			final ACUser user = iter.next();
 			final List<ACGroup> groups = getGroups(sessionId, userId);
 			if (user.getId().equals(userId)) {
 				for (final ACGroup acGroup : groups) {
 					removeMember(sessionId, acGroup.getId(), userId);
 				}
-				daoFacade.remove(user);
+				getAccessControl().getOrgUnitProviderService().removeUser(user.toAPI());
 				// TODO: move ecore delete into ServerSpace#deleteUser implementation
 				EcoreUtil.delete(user);
 				save();
@@ -791,7 +805,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	}
 
 	private ACGroup getGroup(ACOrgUnitId orgUnitId) throws ESException {
-		for (final ACGroup group : daoFacade.getGroups()) {
+		for (final ACGroup group : getGroups()) {
 			if (group.getId().equals(orgUnitId)) {
 				return group;
 			}
@@ -800,12 +814,12 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	}
 
 	private ACOrgUnit<?> getOrgUnit(ACOrgUnitId orgUnitId) throws ESException {
-		for (final ACOrgUnit<ESUser> unit : daoFacade.getUsers()) {
+		for (final ACOrgUnit<ESUser> unit : getUsers()) {
 			if (unit.getId().equals(orgUnitId)) {
 				return unit;
 			}
 		}
-		for (final ACOrgUnit<ESGroup> unit : daoFacade.getGroups()) {
+		for (final ACOrgUnit<ESGroup> unit : getGroups()) {
 			if (unit.getId().equals(orgUnitId)) {
 				return unit;
 			}
@@ -826,7 +840,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	private void save() throws ESException {
 		try {
-			daoFacade.save();
+			getAccessControl().getOrgUnitProviderService().save();
 		} catch (final IOException e) {
 			throw new StorageException(StorageException.NOSAVE, e);
 		} catch (final NullPointerException e) {

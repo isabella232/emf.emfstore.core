@@ -163,7 +163,7 @@ public class EMFStoreController implements IApplication, Runnable {
 		accessControl = initAccessControl(serverSpace);
 		// TODO: ugly
 		emfStore = EMFStoreImpl.createInterface(serverSpace, accessControl);
-		adminEmfStore = new AdminEmfStoreImpl(serverSpace, serverSpace, accessControl);
+		adminEmfStore = new AdminEmfStoreImpl(serverSpace, accessControl);
 
 		// copy keystore file to workspace if not existent
 		copyFileToWorkspace(ServerConfiguration.getServerKeyStorePath(), ServerConfiguration.SERVER_KEYSTORE_FILE,
@@ -238,19 +238,19 @@ public class EMFStoreController implements IApplication, Runnable {
 		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new
 			ILogListener() {
 
-				public void logging(IStatus status, String plugin) {
-					if (status.getSeverity() == IStatus.INFO) {
-						System.out.println(status.getMessage());
-					} else if (!status.isOK()) {
-						System.err.println(status.getMessage());
-						final Throwable exception = status.getException();
-						if (exception != null) {
-							exception.printStackTrace(System.err);
-						}
+			public void logging(IStatus status, String plugin) {
+				if (status.getSeverity() == IStatus.INFO) {
+					System.out.println(status.getMessage());
+				} else if (!status.isOK()) {
+					System.err.println(status.getMessage());
+					final Throwable exception = status.getException();
+					if (exception != null) {
+						exception.printStackTrace(System.err);
 					}
 				}
+			}
 
-			});
+		});
 	}
 
 	private void handleStartupListener() {
@@ -295,7 +295,7 @@ public class EMFStoreController implements IApplication, Runnable {
 					try {
 						FileUtil.copyFile(new URL("platform:/plugin/" //$NON-NLS-1$
 							+ element.getIConfigurationElement().getNamespaceIdentifier() + "/" + attribute) //$NON-NLS-1$
-							.openConnection().getInputStream(), targetFile);
+						.openConnection().getInputStream(), targetFile);
 						return;
 					} catch (final IOException e) {
 						ModelUtil.logWarning(
