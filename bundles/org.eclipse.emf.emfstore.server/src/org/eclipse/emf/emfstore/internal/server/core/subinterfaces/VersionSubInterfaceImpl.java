@@ -51,7 +51,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -268,7 +267,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 		// TODO LCP: File-baed change package should never arrive here in production mode
 		if (changePackage instanceof FileBasedChangePackage) {
-			changePackage = FileBasedChangePackageImpl.class.cast(changePackage).copy();
+			throw new IllegalStateException("FileBasedChangePackage must not be received by the server.");
+			// changePackage = FileBasedChangePackageImpl.class.cast(changePackage).copy();
 		}
 
 		synchronized (getMonitor()) {
@@ -314,8 +314,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				if (targetBranch.getBranch().equals(VersionSpec.GLOBAL)) {
 					throw new InvalidVersionSpecException(
 						Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-							+ VersionSpec.GLOBAL +
-							Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+						+ VersionSpec.GLOBAL +
+						Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 				}
 				// when branch does NOT exist, create new branch
 				newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
@@ -361,14 +361,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 			ModelUtil.logInfo(
 				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-					(System.currentTimeMillis() - currentTimeMillis));
+				(System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-		throws StorageException {
+			throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {
