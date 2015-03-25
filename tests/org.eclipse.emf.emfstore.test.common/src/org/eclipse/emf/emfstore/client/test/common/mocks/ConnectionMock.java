@@ -40,12 +40,17 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 public class ConnectionMock implements ConnectionManager {
@@ -96,13 +101,38 @@ public class ConnectionMock implements ConnectionManager {
 			ModelUtil.clone(versionSpec)));
 	}
 
-	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
-		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
+	public PrimaryVersionSpec createVersion(final SessionId sessionId, final ProjectId projectId,
+		final PrimaryVersionSpec baseVersionSpec, final AbstractChangePackage changePackage,
+		final BranchVersionSpec targetBranch,
+		final PrimaryVersionSpec sourceVersion, final LogMessage logMessage) throws ESException,
+		InvalidVersionSpecException {
+
+		AbstractChangePackage cp = changePackage;
 		checkSessionId(sessionId);
+
+		if (FileBasedChangePackage.class.isInstance(changePackage)) {
+			cp = toInMemoryChangePackage(FileBasedChangePackage.class.cast(changePackage));
+		}
+
 		return ModelUtil.clone(emfStore.createVersion(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(baseVersionSpec), ModelUtil.clone(changePackage), ModelUtil.clone(targetBranch),
+			ModelUtil.clone(baseVersionSpec), ModelUtil.clone(cp), ModelUtil.clone(targetBranch),
 			ModelUtil.clone(sourceVersion), ModelUtil.clone(logMessage)));
+	}
+
+	private static ChangePackage toInMemoryChangePackage(FileBasedChangePackage fileBasedChangePackage) {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operationsHandle = fileBasedChangePackage.operations();
+		try {
+			for (final AbstractOperation operation : operationsHandle.iterable()) {
+				changePackage.add(operation);
+			}
+		} finally {
+			operationsHandle.close();
+		}
+
+		changePackage.setLogMessage(fileBasedChangePackage.getLogMessage());
+
+		return changePackage;
 	}
 
 	public PrimaryVersionSpec resolveVersionSpec(SessionId sessionId, ProjectId projectId, VersionSpec versionSpec)
