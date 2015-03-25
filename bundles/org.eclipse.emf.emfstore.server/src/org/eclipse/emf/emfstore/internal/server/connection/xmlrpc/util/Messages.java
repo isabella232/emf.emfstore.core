@@ -19,6 +19,10 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.messages"; //$NON-NLS-1$
+	public static String EObjectDeserializer_NoFileBasedChangePackageAllowed;
+	public static String EObjectDeserializer_NoIdFound;
+	public static String EObjectDeserializer_ParsingFailed;
+	public static String EObjectDeserializer_ReadResultFailed;
 	public static String EObjectSerializer_HrefDetectionFailed;
 	public static String EObjectSerializer_NonSelfContainedResource;
 	public static String EObjectSerializer_UnexpectedNumberOfEObjects;

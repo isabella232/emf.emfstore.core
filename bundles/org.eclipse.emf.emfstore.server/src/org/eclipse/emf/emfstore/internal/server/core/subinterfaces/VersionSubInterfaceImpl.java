@@ -265,10 +265,9 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final ACUser user = getAuthorizationControl().resolveUser(sessionId);
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 
-		// TODO LCP: File-baed change package should never arrive here in production mode
+		// File-based change package should never arrive here in production mode
 		if (changePackage instanceof FileBasedChangePackage) {
-			throw new IllegalStateException("FileBasedChangePackage must not be received by the server.");
-			// changePackage = FileBasedChangePackageImpl.class.cast(changePackage).copy();
+			throw new IllegalStateException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed);
 		}
 
 		synchronized (getMonitor()) {
@@ -294,29 +293,15 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				baseVersion)).copy();
 			changePackage.apply(newProjectState);
 
-			// normal commit
-			if (targetBranch == null || baseVersion.getPrimarySpec().getBranch().equals(targetBranch.getBranch())) {
+			// regular commit
+			if (isRegularCommit(targetBranch, baseVersion)) {
 
-				// If branch is null or branch equals base branch, create new
-				// version for specific branch
-				if (!baseVersionSpec.equals(isHeadOfBranch(projectHistory, baseVersion.getPrimarySpec()))) {
-					throw new ESUpdateRequiredException();
-				}
-				newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
-				newVersion.setPreviousVersion(baseVersion);
-				baseBranch.setHead(ModelUtil.clone(newVersion.getPrimarySpec()));
+				newVersion = performRegularCommit(baseVersionSpec, logMessage, user, projectHistory, baseBranch,
+					baseVersion, newProjectState);
 
 				// case for new branch creation
-			} else if (getBranchInfo(projectHistory, targetBranch) == null) {
-				if (targetBranch.getBranch().equals(StringUtils.EMPTY)) {
-					throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_EmptyBranch_Not_Allowed);
-				}
-				if (targetBranch.getBranch().equals(VersionSpec.GLOBAL)) {
-					throw new InvalidVersionSpecException(
-						Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-						+ VersionSpec.GLOBAL +
-						Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
-				}
+			} else if (isNewBranchCommit(targetBranch, projectHistory)) {
+				checkNewBranchCommitPreRequisites(targetBranch.getBranch());
 				// when branch does NOT exist, create new branch
 				newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
 				newBranch = createNewBranch(projectHistory, baseVersion.getPrimarySpec(), newVersion.getPrimarySpec(),
@@ -366,6 +351,54 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		}
 	}
 
+	/**
+	 * @param targetBranch
+	 * @throws InvalidVersionSpecException
+	 */
+	private void checkNewBranchCommitPreRequisites(String targetBranchName) throws InvalidVersionSpecException {
+		if (targetBranchName.equals(StringUtils.EMPTY)) {
+			throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_EmptyBranch_Not_Allowed);
+		} else if (targetBranchName.equals(VersionSpec.GLOBAL)) {
+			throw new InvalidVersionSpecException(
+				Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
+				+ VersionSpec.GLOBAL +
+				Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+		}
+	}
+
+	private Version performRegularCommit(PrimaryVersionSpec baseVersionSpec, LogMessage logMessage, final ACUser user,
+		final ProjectHistory projectHistory, final BranchInfo baseBranch, final Version baseVersion,
+		final Project newProjectState) throws ESUpdateRequiredException, ESException {
+		Version newVersion;
+		// If branch is null or branch equals base branch, create new
+		// version for specific branch
+		if (!baseVersionSpec.equals(isHeadOfBranch(projectHistory, baseVersion.getPrimarySpec()))) {
+			throw new ESUpdateRequiredException();
+		}
+		newVersion = createVersion(projectHistory, newProjectState, logMessage, user, baseVersion);
+		newVersion.setPreviousVersion(baseVersion);
+		baseBranch.setHead(ModelUtil.clone(newVersion.getPrimarySpec()));
+		return newVersion;
+	}
+
+	/**
+	 * @param targetBranch
+	 * @param projectHistory
+	 * @return
+	 */
+	private boolean isNewBranchCommit(BranchVersionSpec targetBranch, final ProjectHistory projectHistory) {
+		return getBranchInfo(projectHistory, targetBranch) == null;
+	}
+
+	/**
+	 * @param targetBranch
+	 * @param baseVersion
+	 * @return
+	 */
+	private boolean isRegularCommit(BranchVersionSpec targetBranch, final Version baseVersion) {
+		return targetBranch == null || baseVersion.getPrimarySpec().getBranch().equals(targetBranch.getBranch());
+	}
+
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
 			throws StorageException {
@@ -380,7 +413,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			baseVersion.getBranchedVersions().remove(newVersion);
 			projectHistory.getBranches().remove(newBranch);
 		}
-		// TODO: delete obsolete project, changepackage and version files
+		// TODO: delete obsolete project, change package and version files
 		throw new StorageException(StorageException.NOSAVE, e);
 	}
 
@@ -614,7 +647,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 					// reverse() created a new change package without copying
 					// existent attributes
 					changePackageReverse.setLogMessage(ModelUtil.clone(
-						(LogMessage) changePackage.getLogMessage()));
+						changePackage.getLogMessage()));
 					resultReverse.add(changePackageReverse);
 				}
 
