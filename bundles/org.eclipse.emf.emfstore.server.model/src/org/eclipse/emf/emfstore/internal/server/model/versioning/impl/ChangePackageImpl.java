@@ -41,8 +41,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Comp
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -637,12 +635,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 			}
 
 			public Iterable<AbstractOperation> iterable() {
-				return Iterables.transform(Lists.reverse(getOperations()),
-					new Function<AbstractOperation, AbstractOperation>() {
-					public AbstractOperation apply(AbstractOperation operation) {
-						return operation.reverse();
-					}
-				});
+				return Lists.reverse(getOperations());
 			}
 		};
 	}
