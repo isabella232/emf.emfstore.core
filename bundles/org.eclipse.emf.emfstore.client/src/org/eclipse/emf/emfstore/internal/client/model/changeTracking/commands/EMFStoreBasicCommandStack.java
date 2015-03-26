@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.AbstractEMFStoreComma
 
 /**
  * Basic Command Stack for EMFStore. Allows tracking of command start and end.
- * 
+ *
  * @author koegel
  */
 public class EMFStoreBasicCommandStack extends BasicCommandStack implements ESCommandStack {
@@ -96,7 +96,7 @@ public class EMFStoreBasicCommandStack extends BasicCommandStack implements ESCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandStack#addCommandStackObserver(org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver)
 	 */
 	public void addCommandStackObserver(ESCommandObserver observer) {
@@ -105,7 +105,7 @@ public class EMFStoreBasicCommandStack extends BasicCommandStack implements ESCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandStack#removeCommandStackObserver(org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver)
 	 */
 	public void removeCommandStackObserver(ESCommandObserver observer) {

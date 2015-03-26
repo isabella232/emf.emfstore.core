@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jsommerfeldt
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
 
 /**
  * @author jsommerfeldt
- * 
+ *
  */
 public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, NotificationInfo> implements
 	ESNotificationInfo {
@@ -36,7 +36,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getStructuralFeature()
 	 */
 	public EStructuralFeature getStructuralFeature() {
@@ -45,7 +45,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isValid()
 	 */
 	public boolean isValid() {
@@ -54,7 +54,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getValidationMessage()
 	 */
 	public String getValidationMessage() {
@@ -63,7 +63,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isAttributeNotification()
 	 */
 	public boolean isAttributeNotification() {
@@ -72,7 +72,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isReferenceNotification()
 	 */
 	public boolean isReferenceNotification() {
@@ -81,7 +81,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getAttribute()
 	 */
 	public EAttribute getAttribute() {
@@ -90,7 +90,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getReference()
 	 */
 	public EReference getReference() {
@@ -99,7 +99,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isTransient()
 	 */
 	public boolean isTransient() {
@@ -108,7 +108,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isAddEvent()
 	 */
 	public boolean isAddEvent() {
@@ -117,7 +117,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isRemoveEvent()
 	 */
 	public boolean isRemoveEvent() {
@@ -126,7 +126,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isSetEvent()
 	 */
 	public boolean isSetEvent() {
@@ -135,7 +135,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isAddManyEvent()
 	 */
 	public boolean isAddManyEvent() {
@@ -144,7 +144,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isRemoveManyEvent()
 	 */
 	public boolean isRemoveManyEvent() {
@@ -153,7 +153,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isMoveEvent()
 	 */
 	public boolean isMoveEvent() {
@@ -162,7 +162,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#hasNext()
 	 */
 	public boolean hasNext() {
@@ -171,7 +171,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getEventType()
 	 */
 	public int getEventType() {
@@ -180,7 +180,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getFeature()
 	 */
 	public Object getFeature() {
@@ -189,7 +189,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getFeatureID(java.lang.Class)
 	 */
 	public int getFeatureID(Class<?> expectedClass) {
@@ -198,7 +198,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewBooleanValue()
 	 */
 	public boolean getNewBooleanValue() {
@@ -207,7 +207,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewByteValue()
 	 */
 	public byte getNewByteValue() {
@@ -216,7 +216,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewCharValue()
 	 */
 	public char getNewCharValue() {
@@ -225,7 +225,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewDoubleValue()
 	 */
 	public double getNewDoubleValue() {
@@ -234,7 +234,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewFloatValue()
 	 */
 	public float getNewFloatValue() {
@@ -243,7 +243,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewIntValue()
 	 */
 	public int getNewIntValue() {
@@ -252,7 +252,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewLongValue()
 	 */
 	public long getNewLongValue() {
@@ -261,7 +261,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewShortValue()
 	 */
 	public short getNewShortValue() {
@@ -270,7 +270,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewStringValue()
 	 */
 	public String getNewStringValue() {
@@ -279,7 +279,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewValue()
 	 */
 	public Object getNewValue() {
@@ -288,7 +288,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNewModelElementValue()
 	 */
 	public EObject getNewModelElementValue() {
@@ -297,7 +297,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNotifier()
 	 */
 	public Object getNotifier() {
@@ -306,7 +306,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldBooleanValue()
 	 */
 	public boolean getOldBooleanValue() {
@@ -315,7 +315,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldByteValue()
 	 */
 	public byte getOldByteValue() {
@@ -324,7 +324,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldCharValue()
 	 */
 	public char getOldCharValue() {
@@ -333,7 +333,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldDoubleValue()
 	 */
 	public double getOldDoubleValue() {
@@ -342,7 +342,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldFloatValue()
 	 */
 	public float getOldFloatValue() {
@@ -351,7 +351,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldIntValue()
 	 */
 	public int getOldIntValue() {
@@ -360,7 +360,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldLongValue()
 	 */
 	public long getOldLongValue() {
@@ -369,7 +369,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldShortValue()
 	 */
 	public short getOldShortValue() {
@@ -378,7 +378,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldStringValue()
 	 */
 	public String getOldStringValue() {
@@ -387,7 +387,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldValue()
 	 */
 	public Object getOldValue() {
@@ -396,7 +396,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getOldModelElementValue()
 	 */
 	public EObject getOldModelElementValue() {
@@ -405,7 +405,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getPosition()
 	 */
 	public int getPosition() {
@@ -414,7 +414,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isReset()
 	 */
 	public boolean isReset() {
@@ -423,7 +423,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#isTouch()
 	 */
 	public boolean isTouch() {
@@ -432,7 +432,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#wasSet()
 	 */
 	public boolean wasSet() {
@@ -441,7 +441,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNotifierModelElement()
 	 */
 	public EObject getNotifierModelElement() {
@@ -450,7 +450,7 @@ public class ESNotificationInfoImpl extends AbstractAPIImpl<ESNotificationInfo, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo#getNotificationType()
 	 */
 	public Class<? extends Notification> getNotificationType() {

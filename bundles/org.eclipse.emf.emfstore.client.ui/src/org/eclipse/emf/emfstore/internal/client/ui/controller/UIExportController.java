@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -30,17 +30,17 @@ import org.eclipse.swt.widgets.Shell;
  * <li>
  * the whole workspace.</li>
  * </ul>
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UIExportController {
 
-	private Shell shell;
+	private final Shell shell;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} to be used during an export
 	 */
@@ -54,7 +54,7 @@ public class UIExportController {
 
 	/**
 	 * Exports the history of a project.
-	 * 
+	 *
 	 * @param projectInfo
 	 *            the {@link ProjectInfo} that contains the information about the project whose history should get
 	 *            exported
@@ -66,7 +66,7 @@ public class UIExportController {
 
 	/**
 	 * Exports the history of a project.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} that contains the local changes that should get exported
 	 */
@@ -77,7 +77,7 @@ public class UIExportController {
 
 	/**
 	 * Exports a project.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} that contains the project that should get exported
 	 */
@@ -88,7 +88,7 @@ public class UIExportController {
 
 	/**
 	 * Exports the whole workspace.
-	 * 
+	 *
 	 */
 	public void exportWorkspace() {
 		new UIGenericExportImportController(getShell(),
@@ -97,7 +97,7 @@ public class UIExportController {
 
 	/**
 	 * Exports a {@link ProjectSpace}.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space that should get exported
 	 */

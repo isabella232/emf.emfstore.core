@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -18,25 +18,25 @@ import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithRe
 
 /**
  * Property tester to test if a project is Shared with a server already.
- * 
+ *
  * @author koegel
  */
 public class ProjectIsSharedTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
 	public boolean test(Object receiver, String property, Object[] args, final Object expectedValue) {
 		if (receiver instanceof ProjectSpace && expectedValue instanceof Boolean) {
 			final ProjectSpace projectSpace = (ProjectSpace) receiver;
-			EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
+			final EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
 				@Override
 				protected Boolean doRun() {
-					Usersession usersession = projectSpace.getUsersession();
-					Boolean isShared = new Boolean(usersession != null);
+					final Usersession usersession = projectSpace.getUsersession();
+					final Boolean isShared = new Boolean(usersession != null);
 					return isShared.equals(expectedValue);
 				}
 			};

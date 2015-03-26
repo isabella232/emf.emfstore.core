@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 /*******************************************************************************
@@ -70,7 +70,7 @@ public class PlotLane implements Serializable {
 
 	/**
 	 * Logical location of this lane within the graphing plane.
-	 * 
+	 *
 	 * @return location of this lane, 0 through the maximum number of lanes.
 	 */
 	public int getPosition() {
@@ -79,7 +79,7 @@ public class PlotLane implements Serializable {
 
 	/**
 	 * Sets the logical position of this lane. See {@link #getPosition()}.
-	 * 
+	 *
 	 * @param position The new position of this lane.
 	 */
 	public void setPosition(int position) {
@@ -95,7 +95,7 @@ public class PlotLane implements Serializable {
 
 	/**
 	 * Sets this lane's main color.
-	 * 
+	 *
 	 * @param color The lane's color.
 	 */
 	public void setSaturatedColor(Color color) {
@@ -111,7 +111,7 @@ public class PlotLane implements Serializable {
 
 	/**
 	 * Sets the light color of this lane {@link #getLightColor()}.
-	 * 
+	 *
 	 * @param lightColor The new light color f this commit.
 	 */
 	public void setLightColor(Color lightColor) {

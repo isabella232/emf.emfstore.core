@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config;
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.Root#getElements <em>Elements</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.Root#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,10 +35,11 @@ public interface Root extends EObject {
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getRoot_Elements()
 	 * @model containment="true"

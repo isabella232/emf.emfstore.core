@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -16,12 +16,12 @@ import java.util.Comparator;
 /**
  * A comparator for {@link ESExtensionElement}. This allows to sort the elements in the {@link ESExtensionPoint} in
  * order to represent priority of registered elements.
- * 
+ *
  * This comparator by default uses a field priority, which is expected to hold an priority number and then sort
  * by by this number.
- * 
+ *
  * @author wesendon
- * 
+ *
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public final class ESPriorityComparator implements Comparator<ESExtensionElement> {
@@ -38,7 +38,7 @@ public final class ESPriorityComparator implements Comparator<ESExtensionElement
 
 	/**
 	 * Constructor which allows to config the ordering.
-	 * 
+	 *
 	 * @param descending if true, priorities are sorted in descending order, ascending otherwise
 	 */
 	public ESPriorityComparator(final boolean descending) {
@@ -47,7 +47,7 @@ public final class ESPriorityComparator implements Comparator<ESExtensionElement
 
 	/**
 	 * Constructor allows to config fieldname and ordering.
-	 * 
+	 *
 	 * @param fieldname
 	 *            the attribute id of the priority field
 	 * @param descending
@@ -60,7 +60,7 @@ public final class ESPriorityComparator implements Comparator<ESExtensionElement
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	public int compare(ESExtensionElement element1, ESExtensionElement element2) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for deleting a local project.
- * 
+ *
  * @author emueller
  */
 public class UIDeleteProjectController extends AbstractEMFStoreUIController<Void> {
@@ -31,7 +31,7 @@ public class UIDeleteProjectController extends AbstractEMFStoreUIController<Void
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the shell that will be used during the deletion of the project
 	 * @param localProject
@@ -68,9 +68,9 @@ public class UIDeleteProjectController extends AbstractEMFStoreUIController<Void
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -40,7 +40,7 @@ import org.eclipse.swt.widgets.Listener;
 
 /**
  * Represents the main page of the merge wizard.
- * 
+ *
  * @author wesendon
  */
 public class MergeWizardPage extends WizardPage {
@@ -55,7 +55,7 @@ public class MergeWizardPage extends WizardPage {
 
 	/**
 	 * Default Constructor.
-	 * 
+	 *
 	 * @param decisionManager
 	 *            a decisionManager
 	 */
@@ -160,7 +160,7 @@ public class MergeWizardPage extends WizardPage {
 
 	/**
 	 * Listener for select all mine and all their buttons.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class SelectAllSelectionListener implements SelectionListener {
@@ -206,7 +206,7 @@ public class MergeWizardPage extends WizardPage {
 
 	/**
 	 * Small class which switches colors from row to row.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class ColorSwitcher {

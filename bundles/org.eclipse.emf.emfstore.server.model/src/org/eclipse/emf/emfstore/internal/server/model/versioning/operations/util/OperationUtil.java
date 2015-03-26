@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
 
 /**
  * Util method for change operations.
- * 
+ *
  * @author wesendon
  */
 public final class OperationUtil {
@@ -38,7 +38,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a composite operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -49,7 +49,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a composite operation and has a set main operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -62,7 +62,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a single reference composite.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -74,7 +74,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a multi reference composite.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -86,7 +86,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is singleref operation .
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -97,7 +97,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a multiref operation .
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -108,7 +108,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a multiref set operation .
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -119,7 +119,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is multimove operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -130,7 +130,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is attribute operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -141,7 +141,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is multi attribute operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -152,7 +152,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is multi attribute set operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -163,7 +163,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is multi attribute move operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -174,7 +174,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a creating operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -185,7 +185,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a deleting operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct
@@ -196,7 +196,7 @@ public final class OperationUtil {
 
 	/**
 	 * Checks whether given operation is a createDelete operation.
-	 * 
+	 *
 	 * @param operation
 	 *            operation
 	 * @return true if correct

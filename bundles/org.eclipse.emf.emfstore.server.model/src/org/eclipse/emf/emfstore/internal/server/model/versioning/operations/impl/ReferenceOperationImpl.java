@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * <em>Containment Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ReferenceOperationImpl extends FeatureOperationImpl implements ReferenceOperation {
@@ -43,7 +43,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * The default value of the '{@link #isBidirectional() <em>Bidirectional</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isBidirectional()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * The cached value of the '{@link #isBidirectional() <em>Bidirectional</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isBidirectional()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * The default value of the '{@link #getOppositeFeatureName() <em>Opposite Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getOppositeFeatureName()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * The cached value of the '{@link #getOppositeFeatureName() <em>Opposite Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getOppositeFeatureName()
 	 * @generated
 	 * @ordered
@@ -99,7 +99,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * The default value of the '{@link #getContainmentType() <em>Containment Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainmentType()
 	 * @generated
 	 * @ordered
@@ -110,7 +110,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 * The cached value of the '{@link #getContainmentType() <em>Containment Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainmentType()
 	 * @generated
 	 * @ordered
@@ -119,7 +119,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ReferenceOperationImpl() {
@@ -128,7 +128,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isBidirectional() {
@@ -147,7 +147,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setBidirectional(boolean newBidirectional) {
@@ -161,7 +161,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getOppositeFeatureName() {
@@ -170,7 +170,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOppositeFeatureName(String newOppositeFeatureName) {
@@ -185,7 +185,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ContainmentType getContainmentType() {
@@ -194,7 +194,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setContainmentType(ContainmentType newContainmentType) {
@@ -208,7 +208,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -227,7 +227,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -249,7 +249,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -271,7 +271,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -291,7 +291,7 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

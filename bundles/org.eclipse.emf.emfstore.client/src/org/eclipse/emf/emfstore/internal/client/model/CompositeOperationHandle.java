@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
 
 /**
  * A handle to control a composite operation during recording.
- * 
+ *
  * @author koegel
  */
 public class CompositeOperationHandle {
@@ -32,7 +32,7 @@ public class CompositeOperationHandle {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param operationRecorder
 	 *            the change tracker this composite is tracked on
 	 * @param compositeOperation
@@ -46,7 +46,7 @@ public class CompositeOperationHandle {
 
 	/**
 	 * Returns whether the handle is still valid.
-	 * 
+	 *
 	 * @return false if the composite operation is already completed or aborted.
 	 */
 	public boolean isValid() {
@@ -56,7 +56,7 @@ public class CompositeOperationHandle {
 	/**
 	 * Aborts a composite operation. The state before starting the composite
 	 * operation will be recovered.
-	 * 
+	 *
 	 * @throws InvalidHandleException
 	 *             if the handle is invalid
 	 */
@@ -80,7 +80,7 @@ public class CompositeOperationHandle {
 
 	/**
 	 * Completes a composite operation.
-	 * 
+	 *
 	 * @param name
 	 *            the name for the operation
 	 * @param description
@@ -104,7 +104,7 @@ public class CompositeOperationHandle {
 
 	/**
 	 * Completes a the given semantic composite operation.
-	 * 
+	 *
 	 * @param semanticCompositeOperation
 	 *            a semanticCompositeOperation that was executed and represents
 	 *            the composite

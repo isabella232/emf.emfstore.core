@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Server
 
 /**
  * Helper class for access control checks.
- * 
+ *
  * @author koegel
  */
 public class AccessControlHelper {
@@ -30,7 +30,7 @@ public class AccessControlHelper {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param usersession the user session that needs to be checked
 	 */
 	public AccessControlHelper(Usersession usersession) {
@@ -39,7 +39,7 @@ public class AccessControlHelper {
 
 	/**
 	 * Check if user has read access to given project id.
-	 * 
+	 *
 	 * @param projectId the project id
 	 * @throws AccessControlException if access is not permitted.
 	 */
@@ -54,7 +54,7 @@ public class AccessControlHelper {
 
 	/**
 	 * Check write access for the given project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @throws AccessControlException if access is denied
@@ -74,7 +74,7 @@ public class AccessControlHelper {
 
 	/**
 	 * Check project administrator access for the given project.
-	 * 
+	 *
 	 * @throws AccessControlException if access is denied.
 	 */
 	public void checkProjectAdminAccess() throws AccessControlException {
@@ -88,7 +88,7 @@ public class AccessControlHelper {
 
 	/**
 	 * Check project administrator access for the given project.
-	 * 
+	 *
 	 * @param projectId the project id
 	 * @throws AccessControlException if access is denied.
 	 */
@@ -103,7 +103,7 @@ public class AccessControlHelper {
 
 	/**
 	 * Check the server admin access.
-	 * 
+	 *
 	 * @throws AccessControlException if access is denied.
 	 */
 	public void checkServerAdminAccess() throws AccessControlException {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
  * Progress Monitor with output to System.out.
- * 
+ *
  * @author koegel
  */
 public final class ESSystemOutProgressMonitor implements IProgressMonitor {
@@ -27,7 +27,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#beginTask(java.lang.String, int)
 	 */
 	public void beginTask(String name, int totalWork) {
@@ -36,7 +36,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#done()
 	 */
 	public void done() {
@@ -45,7 +45,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#internalWorked(double)
 	 */
 	public void internalWorked(double work) {
@@ -54,7 +54,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#isCanceled()
 	 */
 	public boolean isCanceled() {
@@ -63,7 +63,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#setCanceled(boolean)
 	 */
 	public void setCanceled(boolean cancelled) {
@@ -72,7 +72,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#setTaskName(java.lang.String)
 	 */
 	public void setTaskName(String name) {
@@ -82,7 +82,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#subTask(java.lang.String)
 	 */
 	public void subTask(String name) {
@@ -92,7 +92,7 @@ public final class ESSystemOutProgressMonitor implements IProgressMonitor {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IProgressMonitor#worked(int)
 	 */
 	public void worked(int work) {

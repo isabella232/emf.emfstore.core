@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -16,16 +16,16 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
  * Mapping between {@link ESPrimaryVersionSpec} and {@link PrimaryVersionSpec}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersionSpec, PrimaryVersionSpec> implements
 	ESPrimaryVersionSpec {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param primaryVersionSpec
 	 *            the delegate
 	 */
@@ -34,9 +34,9 @@ public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersion
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec#getIdentifier()
 	 */
 	public int getIdentifier() {

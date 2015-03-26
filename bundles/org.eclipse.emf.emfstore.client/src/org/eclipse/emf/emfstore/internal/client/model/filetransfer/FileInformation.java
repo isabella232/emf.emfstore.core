@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jfinis
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
  * different aspects of the file wih the given identifier. If the file API is to be extended in the future, do this by
  * adding methods to this class instead of adding them to the project space directly. This way the (already huge)
  * interface of the ProjectSpace is kept slim.
- * 
+ *
  * @author jfinis
  */
 public class FileInformation {
@@ -27,16 +27,16 @@ public class FileInformation {
 	/**
 	 * The id of the file for which this information was created.
 	 */
-	private FileIdentifier fileId;
+	private final FileIdentifier fileId;
 
 	/**
 	 * The transfer manager associated to the file (and thus also the project space to which the file belongs).
 	 */
-	private FileTransferManager transferManager;
+	private final FileTransferManager transferManager;
 
 	/**
 	 * Default constructor. Only to be called by a transfer manager.
-	 * 
+	 *
 	 * @param fileId the file id for which to create information
 	 * @param transferManager the administering transfer manager
 	 */
@@ -48,7 +48,7 @@ public class FileInformation {
 	/**
 	 * Returns true if the file is cached locally. If this method returns true, the getFile method will succeed even if
 	 * no connection to the server exists.
-	 * 
+	 *
 	 * @return true, iff the file is cached locally
 	 */
 	public boolean isCached() {
@@ -60,7 +60,7 @@ public class FileInformation {
 	 * a file that waits in the cache for being uploaded to the EMF Store. The specialty about such a file is that it
 	 * can be removed, since it is not saved at the server yet. You can use the cancelPendingUpload() method to remove
 	 * such a file.
-	 * 
+	 *
 	 * @return iff this file is a pending upload
 	 */
 	public boolean isPendingUpload() {

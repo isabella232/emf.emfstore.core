@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 
 /**
  * Super class for all commands.
- * 
+ *
  * @author wesendon
  */
 public abstract class AbstractEMFStoreCommand extends AbstractCommand {
@@ -25,7 +25,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * Get the runtime exception that occurred during command execution. Returns null if there was no exception
-	 * 
+	 *
 	 * @return the exception or null
 	 */
 	public RuntimeException getRuntimeException() {
@@ -36,7 +36,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * Return whether the command should ignore exceptions during command execution.
-	 * 
+	 *
 	 * @return true, if exceptions should be ignored.
 	 */
 	public boolean shouldIgnoreExceptions() {
@@ -45,7 +45,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.command.AbstractCommand#canUndo()
 	 */
 	@Override
@@ -56,7 +56,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.command.Command#execute()
 	 */
 	public void execute() {
@@ -73,7 +73,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.command.AbstractCommand#prepare()
 	 */
 	@Override
@@ -84,7 +84,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.command.Command#redo()
 	 */
 	public void redo() {
@@ -98,7 +98,7 @@ public abstract class AbstractEMFStoreCommand extends AbstractCommand {
 
 	/**
 	 * Executes the command on the workspaces editing domain.
-	 * 
+	 *
 	 * @param ignoreExceptions
 	 *            should be set to {@code true} if any thrown exception in the execution of the command should be
 	 *            ignored

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -55,125 +55,125 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class VersioningPackageImpl extends EPackageImpl implements VersioningPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass tagVersionSpecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass dateVersionSpecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass primaryVersionSpecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass versionSpecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass logMessageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass changePackageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass historyInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass historyQueryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass rangeQueryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass pathQueryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass modelElementQueryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass versionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass headVersionSpecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass versionPropertyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass branchVersionSpecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass branchInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass ancestorVersionSpecEClass = null;
@@ -181,7 +181,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass pagedUpdateVersionSpecEClass = null;
@@ -194,7 +194,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
 	 * performs initialization of the package, or returns the registered package, if one already exists. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#eNS_URI
 	 * @see #init()
@@ -206,19 +206,19 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>
 	 * This method is used to initialize {@link VersioningPackage#eINSTANCE} when that field is accessed. Clients should
 	 * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -300,7 +300,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTagVersionSpec() {
@@ -309,7 +309,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTagVersionSpec_Name() {
@@ -318,7 +318,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getDateVersionSpec() {
@@ -327,7 +327,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getDateVersionSpec_Date() {
@@ -336,7 +336,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getPrimaryVersionSpec() {
@@ -345,7 +345,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getPrimaryVersionSpec_Identifier() {
@@ -355,7 +355,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getPrimaryVersionSpec_ProjectStateChecksum() {
@@ -364,7 +364,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getVersionSpec() {
@@ -373,7 +373,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getVersionSpec_Branch() {
@@ -382,7 +382,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getLogMessage() {
@@ -391,7 +391,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getLogMessage_Message() {
@@ -400,7 +400,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getLogMessage_Date() {
@@ -409,7 +409,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getLogMessage_ClientDate() {
@@ -418,7 +418,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getLogMessage_Author() {
@@ -427,7 +427,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getChangePackage() {
@@ -436,7 +436,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getChangePackage_Operations() {
@@ -445,7 +445,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getChangePackage_Events() {
@@ -454,7 +454,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getChangePackage_LogMessage() {
@@ -463,7 +463,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getChangePackage_VersionProperties() {
@@ -472,7 +472,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getHistoryInfo() {
@@ -482,7 +482,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_PrimarySpec()
@@ -492,7 +492,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_NextSpec() {
@@ -501,7 +501,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_PreviousSpec() {
@@ -510,7 +510,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_MergedFrom() {
@@ -519,7 +519,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_MergedTo() {
@@ -528,7 +528,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_LogMessage() {
@@ -537,7 +537,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_TagSpecs() {
@@ -546,7 +546,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_VersionProperties() {
@@ -555,7 +555,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryInfo_ChangePackage() {
@@ -564,7 +564,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getHistoryQuery() {
@@ -573,7 +573,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getHistoryQuery_Source() {
@@ -582,7 +582,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getHistoryQuery_IncludeChangePackages() {
@@ -591,7 +591,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getHistoryQuery_IncludeAllVersions() {
@@ -600,7 +600,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getRangeQuery() {
@@ -609,7 +609,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getRangeQuery_UpperLimit() {
@@ -618,7 +618,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getRangeQuery_LowerLimit() {
@@ -627,7 +627,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getRangeQuery_IncludeIncoming() {
@@ -636,7 +636,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getRangeQuery_IncludeOutgoing() {
@@ -645,7 +645,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getPathQuery() {
@@ -654,7 +654,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getPathQuery_Target() {
@@ -663,7 +663,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getModelElementQuery() {
@@ -672,7 +672,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getModelElementQuery_ModelElements() {
@@ -681,7 +681,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getVersion() {
@@ -690,7 +690,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_PrimarySpec() {
@@ -699,7 +699,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_TagSpecs() {
@@ -708,7 +708,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_NextVersion() {
@@ -717,7 +717,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_PreviousVersion() {
@@ -726,7 +726,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_LogMessage() {
@@ -735,7 +735,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_AncestorVersion() {
@@ -744,7 +744,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_BranchedVersions() {
@@ -753,7 +753,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_MergedToVersion() {
@@ -762,7 +762,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getVersion_MergedFromVersion() {
@@ -771,7 +771,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getHeadVersionSpec() {
@@ -780,7 +780,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getVersionProperty() {
@@ -789,7 +789,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getVersionProperty_Name() {
@@ -798,7 +798,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getVersionProperty_Value() {
@@ -807,7 +807,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getBranchVersionSpec() {
@@ -816,7 +816,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getBranchInfo() {
@@ -825,7 +825,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getBranchInfo_Name() {
@@ -834,7 +834,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getBranchInfo_Head() {
@@ -843,7 +843,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getBranchInfo_Source() {
@@ -852,7 +852,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getAncestorVersionSpec() {
@@ -861,7 +861,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getAncestorVersionSpec_Target() {
@@ -870,7 +870,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getAncestorVersionSpec_Source() {
@@ -880,7 +880,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getPagedUpdateVersionSpec()
@@ -891,7 +891,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getPagedUpdateVersionSpec_MaxChanges()
@@ -902,7 +902,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getPagedUpdateVersionSpec_BaseVersionSpec()
@@ -912,7 +912,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersioningFactory getVersioningFactory() {
@@ -921,7 +921,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -931,7 +931,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -1029,7 +1029,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -1038,7 +1038,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * Complete the initialization of the package and its meta-model. This
 	 * method is guarded to have no affect on any invocation but its first. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void initializePackageContents() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * shterevg
  ******************************************************************************/
@@ -16,14 +16,14 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
  * An item provider for all root elements of the unified model.
- * 
+ *
  * @author shterevg
  */
 public class RootElementItemProvider extends ItemProviderAdapter {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param adapterFactory the AdapterFactory
 	 */
 	public RootElementItemProvider(AdapterFactory adapterFactory) {

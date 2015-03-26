@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Jan Finis - initial API and implementation
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
  * This class manages the locally cached files for file transfers. A cache
  * manager instance is contained in every FileTransferManager. No other cache
  * managers should be created.
- * 
+ *
  * @author jfinis
  */
 public class FileTransferCacheManager {
@@ -69,7 +69,7 @@ public class FileTransferCacheManager {
 
 	/**
 	 * Default constructor for a specific project space.
-	 * 
+	 *
 	 * @param projectSpaceImpl
 	 *            the project space to which this cache belongs.
 	 */
@@ -82,7 +82,7 @@ public class FileTransferCacheManager {
 
 	/**
 	 * Returns the default file cache folder of a given projectspace.
-	 * 
+	 *
 	 * @param projectSpace the projectSpace
 	 * @return the name of the cache folder
 	 */
@@ -98,7 +98,7 @@ public class FileTransferCacheManager {
 	 * Returns true iff a file with this identifier is present in the cache.
 	 * After this method has returned true, it is guaranteed that the
 	 * getCachedFile method finds the file and does not throw an exception.
-	 * 
+	 *
 	 * @param identifier
 	 *            the identifier of the file
 	 * @return if the file is present in the cache
@@ -111,7 +111,7 @@ public class FileTransferCacheManager {
 	/**
 	 * Returns a cached file with a given identifier. If the file does not
 	 * exist, a FileTransferException is thrown.
-	 * 
+	 *
 	 * @param identifier
 	 *            the identifier of the file
 	 * @return the file
@@ -131,7 +131,7 @@ public class FileTransferCacheManager {
 	/**
 	 * Adds a file to the cache using a given id. If a file with the given id is
 	 * already in the cache, it is overwritten.
-	 * 
+	 *
 	 * @param input
 	 *            the file to be cached
 	 * @param id
@@ -150,7 +150,7 @@ public class FileTransferCacheManager {
 	/**
 	 * Creates a file in the temporary cache folder for a specified file id and
 	 * returns it. If the file already exists, it is deleted and newly created.
-	 * 
+	 *
 	 * @param id
 	 *            the file id for which to create a temporary file
 	 * @return the temporary file
@@ -177,7 +177,7 @@ public class FileTransferCacheManager {
 	 * transfer exception is thrown in the following cases: - The file does not
 	 * exist in the temporary folder - The file already exists in the cache folder -
 	 * The file cannot be moved to the cache folder (the rename operation fails)
-	 * 
+	 *
 	 * @param id
 	 *            the id of the file which is to be moved
 	 * @return the new location of the file after moving it
@@ -196,7 +196,7 @@ public class FileTransferCacheManager {
 	 * transfer exception is thrown in the following cases: - The file does not
 	 * exist in the temporary folder - The file already exists in the cache folder -
 	 * The file cannot be moved to the cache folder (the rename operation fails)
-	 * 
+	 *
 	 * @param id
 	 *            the id of the file which is to be moved
 	 * @param overwrite
@@ -232,7 +232,7 @@ public class FileTransferCacheManager {
 
 	/**
 	 * Builds a file from a cache folder and a file identifier.
-	 * 
+	 *
 	 * @param folder
 	 *            the base folder in which the file is
 	 * @param id
@@ -255,7 +255,7 @@ public class FileTransferCacheManager {
 	 * Removes a file from the cache. Does nothing if no such file is cached.
 	 * Returns true if the file was successfully deleted from cache, otherwise
 	 * false.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the identifier of the file to be removed
 	 * @return true iff the file was deleted successfully

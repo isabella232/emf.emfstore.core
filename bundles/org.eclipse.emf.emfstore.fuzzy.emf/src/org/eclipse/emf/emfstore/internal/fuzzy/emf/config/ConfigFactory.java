@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config;
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
+ * 
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage
  * @generated
  */
@@ -25,6 +26,7 @@ public interface ConfigFactory extends EFactory {
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	ConfigFactory eINSTANCE = org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.ConfigFactoryImpl.init();
@@ -33,6 +35,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>ESFuzzyTest Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>ESFuzzyTest Config</em>'.
 	 * @generated
 	 */
@@ -42,6 +45,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>ESFuzzyTest Run</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>ESFuzzyTest Run</em>'.
 	 * @generated
 	 */
@@ -51,6 +55,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>ESFuzzyTest Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>ESFuzzyTest Result</em>'.
 	 * @generated
 	 */
@@ -60,6 +65,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>ESFuzzyTest Diff</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>ESFuzzyTest Diff</em>'.
 	 * @generated
 	 */
@@ -69,6 +75,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>Diff Report</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Diff Report</em>'.
 	 * @generated
 	 */
@@ -78,6 +85,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Root</em>'.
 	 * @generated
 	 */
@@ -87,6 +95,7 @@ public interface ConfigFactory extends EFactory {
 	 * Returns a new object of class '<em>Mutator Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Mutator Config</em>'.
 	 * @generated
 	 */
@@ -96,9 +105,10 @@ public interface ConfigFactory extends EFactory {
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
 	ConfigPackage getConfigPackage();
 
-} //ConfigFactory
+} // ConfigFactory

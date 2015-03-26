@@ -1,14 +1,14 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller, Neil Mackenzie - initial API and implementation
- * 
+ *
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.common;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
  * associated with the ESWorkspaceProviderImpl class is obtained from the thread
  * that is REQUESTING the thread pool to execute behavior, and set upon the thread
  * in the pool which actually EXECUTES the behavior.
- * 
+ *
  */
 public class ScopedWorkspaceThreadPoolExecutor extends ThreadPoolExecutor {
 
@@ -46,9 +46,9 @@ public class ScopedWorkspaceThreadPoolExecutor extends ThreadPoolExecutor {
 	 * This overridden method ensures that the runnable is updated to have access threadlocal ESWorkspaceProviderImpl
 	 * from the requesting thread set as the threadlocal ESWorkspaceProviderImpl of the executing thread.
 	 * </p>
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.util.concurrent.ThreadPoolExecutor#execute(java.lang.Runnable)
 	 */
 	@Override

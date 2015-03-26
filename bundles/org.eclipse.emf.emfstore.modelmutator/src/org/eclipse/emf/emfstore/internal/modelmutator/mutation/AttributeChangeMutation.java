@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -33,9 +33,9 @@ import com.google.common.base.Predicate;
 
 /**
  * A mutation, which adds, deletes, or reorders an attribute value of an object.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  */
 public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttributeChangeMutation> implements
 	ESAttributeChangeMutation {
@@ -45,7 +45,7 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public AttributeChangeMutation(ESModelMutatorUtil util) {
@@ -55,7 +55,7 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
@@ -89,7 +89,7 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
@@ -98,9 +98,9 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override
@@ -192,7 +192,7 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 
 	/**
 	 * Creates a new value suitable to be set for the specified {@code eAttribute}.
-	 * 
+	 *
 	 * @param eAttribute The attribute to create a value for.
 	 * @return The created new value suitable for {@code eAttribute}.
 	 */
@@ -207,7 +207,7 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 
 	/**
 	 * Returns a random change mode.
-	 * 
+	 *
 	 * @return A random change mode.
 	 */
 	protected ESRandomChangeMode getRandomChangeMode() {
@@ -222,9 +222,9 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESAttributeChangeMutation#setNewValue(java.lang.Object)
 	 */
 	public ESAttributeChangeMutation setNewValue(Object newValue) {
@@ -233,9 +233,9 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESAttributeChangeMutation#setRandomChangeMode(org.eclipse.emf.emfstore.modelmutator.ESRandomChangeMode)
 	 */
 	public ESAttributeChangeMutation setRandomChangeMode(ESRandomChangeMode mode) {

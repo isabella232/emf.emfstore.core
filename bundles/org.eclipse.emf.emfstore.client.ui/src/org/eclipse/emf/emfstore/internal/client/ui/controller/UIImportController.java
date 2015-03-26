@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -27,9 +27,9 @@ import org.eclipse.swt.widgets.Shell;
  * </ul>
  * All import calls first open a file selection dialog that enables the user to select the
  * file for import.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UIImportController {
 
@@ -37,7 +37,7 @@ public class UIImportController {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell that is used during imports
 	 */
@@ -47,7 +47,7 @@ public class UIImportController {
 
 	/**
 	 * Imports a project history.
-	 * 
+	 *
 	 * @param projectInfo
 	 *            the project info instance the imported history should get attached to
 	 */
@@ -58,7 +58,7 @@ public class UIImportController {
 
 	/**
 	 * Imports a set of changes.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} the imported changes should get attached to
 	 */
@@ -69,7 +69,7 @@ public class UIImportController {
 
 	/**
 	 * Imports a project.
-	 * 
+	 *
 	 * @param projectName
 	 *            the name that will be assigned to the imported project
 	 */

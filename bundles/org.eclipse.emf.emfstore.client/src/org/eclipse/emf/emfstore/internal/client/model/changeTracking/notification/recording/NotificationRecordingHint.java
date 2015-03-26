@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -33,7 +33,7 @@ public final class NotificationRecordingHint {
 	public static final NotificationRecordingHint DEFAULT = new NotificationRecordingHint(
 		NotificationRecordingHint.HINT_NONE);
 
-	private int hint;
+	private final int hint;
 
 	private NotificationRecordingHint(int hint) {
 		this.hint = hint;
@@ -42,7 +42,7 @@ public final class NotificationRecordingHint {
 	/**
 	 * Returns whether a recording with this hint needs to be stopped manually, or will be stopped by recognition of the
 	 * end of a notification chain. This is usually true for the DELETE hint only.
-	 * 
+	 *
 	 * @return true if the recording needs to be stopped manually, because it spans multiple EMF notification chains
 	 */
 	public boolean needsManualStopOfRecording() {
@@ -51,7 +51,7 @@ public final class NotificationRecordingHint {
 
 	/**
 	 * Returns whether the notification recording represents a delete chain.
-	 * 
+	 *
 	 * @return true if recording is a delete chain, false otherwise.
 	 */
 	public boolean isDelete() {

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for checking out a project.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -49,7 +49,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param remoteProject
@@ -64,7 +64,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param remoteProject
@@ -81,7 +81,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param versionSpec
@@ -98,7 +98,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param versionSpec
@@ -118,7 +118,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param session
@@ -135,7 +135,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param session
@@ -155,7 +155,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param versionSpec
@@ -175,7 +175,7 @@ public class UICheckoutController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that will be used during checkout
 	 * @param remoteProject
@@ -198,9 +198,9 @@ public class UICheckoutController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

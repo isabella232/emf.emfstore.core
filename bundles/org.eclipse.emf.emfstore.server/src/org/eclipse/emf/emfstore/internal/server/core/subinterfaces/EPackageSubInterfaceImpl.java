@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Tobias Verhoeven
  * Maximilian Koegel
@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Subinterface for EPackage registration.
- * 
+ *
  * @author mkoegel
  * @author tverhoeven
  */
@@ -49,7 +49,7 @@ public class EPackageSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentInterface the parent interface
 	 * @throws FatalESException if init fails
 	 */
@@ -59,7 +59,7 @@ public class EPackageSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Register and store the given EPackage.
-	 * 
+	 *
 	 * @param ePackage
 	 *            the package to be registered
 	 * @throws ESException if registration storage fails

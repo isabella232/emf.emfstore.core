@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Connection manager for EMFStore that enables administrator capabilities.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlRpcClientManager> implements
@@ -224,7 +224,7 @@ public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlR
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#assignRole(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
 	 */
@@ -234,7 +234,7 @@ public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlR
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#addInitialParticipant(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)

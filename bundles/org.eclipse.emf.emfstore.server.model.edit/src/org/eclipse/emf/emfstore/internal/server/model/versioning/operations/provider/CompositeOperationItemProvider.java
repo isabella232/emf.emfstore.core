@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -33,14 +33,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CompositeOperationItemProvider extends AbstractOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public CompositeOperationItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +49,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider.AbstractOperationItemProvider#getChildren(java.lang.Object)
 	 */
@@ -78,7 +78,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This adds a property descriptor for the Main Operation feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMainOperationPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This adds a property descriptor for the Composite Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addCompositeNamePropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This adds a property descriptor for the Composite Description feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addCompositeDescriptionPropertyDescriptor(Object object) {
@@ -167,7 +167,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * This adds a property descriptor for the Reversed feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addReversedPropertyDescriptor(Object object) {
@@ -192,7 +192,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -207,7 +207,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -233,7 +233,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	/**
 	 * {@inheritDoc} This returns the label text for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -255,7 +255,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -280,7 +280,7 @@ public class CompositeOperationItemProvider extends AbstractOperationItemProvide
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

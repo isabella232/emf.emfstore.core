@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.util;
@@ -43,9 +43,9 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#rangeQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      int, int, boolean, boolean, boolean, boolean)
 	 */
@@ -68,9 +68,9 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#pathQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec, boolean, boolean)
 	 */
@@ -87,9 +87,9 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#modelElementQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      java.util.List, int, int, boolean, boolean)
 	 */
@@ -117,9 +117,9 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#modelElementQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.common.model.ESModelElementId, int, int, boolean, boolean)
 	 */

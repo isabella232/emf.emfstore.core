@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  * koegel
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.client.configuration.XMLRPC;
 
 /**
  * Represents the current Workspace Configuration.
- * 
+ *
  * @author koegel
  * @author wesendon
  */
@@ -36,7 +36,7 @@ public final class Configuration {
 
 	/**
 	 * Get the client behavior configuration.
-	 * 
+	 *
 	 * @return the configuration
 	 */
 	public static Behavior getClientBehavior() {
@@ -48,7 +48,7 @@ public final class Configuration {
 
 	/**
 	 * Get the file configuration.
-	 * 
+	 *
 	 * @return the configuration
 	 */
 	public static FileInfo getFileInfo() {
@@ -60,7 +60,7 @@ public final class Configuration {
 
 	/**
 	 * Get the version configuration.
-	 * 
+	 *
 	 * @return the configuration
 	 */
 	public static VersioningInfo getVersioningInfo() {
@@ -72,7 +72,7 @@ public final class Configuration {
 
 	/**
 	 * Get the XML RPC configuration.
-	 * 
+	 *
 	 * @return the configuration.
 	 */
 	public static XMLRPC getXMLRPC() {

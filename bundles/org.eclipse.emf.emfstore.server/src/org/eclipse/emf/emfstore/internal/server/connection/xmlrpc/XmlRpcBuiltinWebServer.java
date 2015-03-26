@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESServerInitException;
 
 /**
  * XML-RPC built-in web server for XML RPC connections.
- * 
+ *
  * @author wesendon
  */
 public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
@@ -43,7 +43,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 
 	/**
 	 * Starts the server.
-	 * 
+	 *
 	 * @throws ESServerInitException in case of failure
 	 */
 	public void initServer() throws ESServerInitException {
@@ -83,7 +83,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 
 	/**
 	 * Adds a handler to the webserver.
-	 * 
+	 *
 	 * @param handlerName handler name
 	 * @param clazz class of server interface
 	 * @throws ESServerInitException in case of failure
@@ -100,7 +100,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 
 	/**
 	 * Removes a handler from the Webserver.
-	 * 
+	 *
 	 * @param handlerName the handler's name
 	 * @return true, if other handler still available
 	 */
@@ -124,7 +124,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESXmlRpcWebServerProvider#setPort(int)
 	 */
 	public void setPort(int port) {
@@ -133,7 +133,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESXmlRpcWebServerProvider#getPort()
 	 */
 	public int getPort() {

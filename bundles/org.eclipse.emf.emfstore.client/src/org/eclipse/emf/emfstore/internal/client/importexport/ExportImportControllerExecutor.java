@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -20,18 +20,18 @@ import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 /**
  * Generic export/import controller whose main responsibility it is to actually
  * execute an {@link IExportImportController}.
- * 
+ *
  * @author emueller
  */
 public class ExportImportControllerExecutor {
 
-	private File file;
-	private IProgressMonitor monitor;
+	private final File file;
+	private final IProgressMonitor monitor;
 	private IOException importExportError;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param file
 	 *            the file that should be exported/imported
 	 * @param monitor
@@ -44,7 +44,7 @@ public class ExportImportControllerExecutor {
 
 	/**
 	 * Executes the given {@link IExportImportController}.
-	 * 
+	 *
 	 * @param controller
 	 *            the controller to be executed
 	 * @throws IOException
@@ -62,7 +62,7 @@ public class ExportImportControllerExecutor {
 				monitor.worked(10);
 				try {
 					controller.execute(file, monitor);
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					importExportError = e;
 				}
 				// / TODO

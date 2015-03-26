@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors: Max Hohenegger (bug 371196)
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.login;
@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Display;
 /**
  * An implementation of a session providers that uses a server selection and a login dialog
  * to authenticate users.
- * 
+ *
  * @author wesendon
  * @author emueller
  */
@@ -35,9 +35,9 @@ public class BasicUISessionProvider extends ESAbstractSessionProvider {
 	private ESServer selectedServerInfo;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.sessionprovider.ESAbstractSessionProvider#provideUsersession(org.eclipse.emf.emfstore.client.ESServer)
 	 */
 	@Override
@@ -71,7 +71,7 @@ public class BasicUISessionProvider extends ESAbstractSessionProvider {
 	/**
 	 * Extracted from {@link #provideUsersession(ESServer)} in order to allow overwriting.
 	 * This method logs in a given server.
-	 * 
+	 *
 	 * @param server
 	 *            the server from which a {@link ESUsersession} should be extracted
 	 * @return a logged in usersession. If none could be obtained the login dialog will open

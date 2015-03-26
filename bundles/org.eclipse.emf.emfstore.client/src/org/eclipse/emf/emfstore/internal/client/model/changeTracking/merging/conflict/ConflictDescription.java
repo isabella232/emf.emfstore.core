@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * Container for the conflict description. The description contains placeholder marked through surrounding [ ]. The
  * values for the placeholders are stored in a hashmap. This separation is done in order to support formated text. Use
  * {@link #getResolvedDescription()} in order to get a simple string.
- * 
+ *
  * @author wesendon
  */
 public class ConflictDescription {
@@ -36,7 +36,7 @@ public class ConflictDescription {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param description description
 	 */
 	public ConflictDescription(String description) {
@@ -46,7 +46,7 @@ public class ConflictDescription {
 
 	/**
 	 * Add a place holder.
-	 * 
+	 *
 	 * @param key key
 	 * @param value value
 	 */
@@ -59,7 +59,7 @@ public class ConflictDescription {
 
 	/**
 	 * Get description with placeholders unreplaced.
-	 * 
+	 *
 	 * @see #getResolvedDescription()
 	 * @return description
 	 */
@@ -69,7 +69,7 @@ public class ConflictDescription {
 
 	/**
 	 * Returns values for placeholders.
-	 * 
+	 *
 	 * @return map
 	 */
 	public Map<String, Object> getValues() {
@@ -78,7 +78,7 @@ public class ConflictDescription {
 
 	/**
 	 * Return name of image.
-	 * 
+	 *
 	 * @return name of image.
 	 */
 	public String getImage() {
@@ -87,7 +87,7 @@ public class ConflictDescription {
 
 	/**
 	 * Set image.
-	 * 
+	 *
 	 * @param name name of file
 	 */
 	public void setImage(String name) {
@@ -97,7 +97,7 @@ public class ConflictDescription {
 
 	/**
 	 * Set description.
-	 * 
+	 *
 	 * @param description text
 	 */
 	public void setDescription(String description) {
@@ -106,7 +106,7 @@ public class ConflictDescription {
 
 	/**
 	 * Resolves description, by replacing the placeholders with it's values.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getResolvedDescription() {
@@ -124,7 +124,7 @@ public class ConflictDescription {
 
 	/**
 	 * Sets the decisionManager.
-	 * 
+	 *
 	 * @param decisionManager manager.
 	 */
 	public void setDecisionManager(DecisionManager decisionManager) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl;
@@ -33,14 +33,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  * Resolved AC User</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AuthenticationInformationImpl extends EObjectImpl implements AuthenticationInformation {
 	/**
 	 * The cached value of the '{@link #getSessionId() <em>Session Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSessionId()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 	 * The cached value of the '{@link #getResolvedACUser() <em>Resolved AC User</em>}' containment reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getResolvedACUser()
 	 * @generated
 	 * @ordered
@@ -60,7 +60,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AuthenticationInformationImpl() {
@@ -69,7 +69,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -79,17 +79,17 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public SessionId getSessionId() {
 		if (sessionId != null && sessionId.eIsProxy())
 		{
-			InternalEObject oldSessionId = (InternalEObject) sessionId;
+			final InternalEObject oldSessionId = (InternalEObject) sessionId;
 			sessionId = (SessionId) eResolveProxy(oldSessionId);
 			if (sessionId != oldSessionId)
 			{
-				InternalEObject newSessionId = (InternalEObject) sessionId;
+				final InternalEObject newSessionId = (InternalEObject) sessionId;
 				NotificationChain msgs = oldSessionId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, null);
 				if (newSessionId.eInternalContainer() == null)
@@ -97,11 +97,13 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 					msgs = newSessionId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, oldSessionId, sessionId));
+				}
 			}
 		}
 		return sessionId;
@@ -109,7 +111,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public SessionId basicGetSessionId() {
@@ -118,61 +120,66 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetSessionId(SessionId newSessionId, NotificationChain msgs) {
-		SessionId oldSessionId = sessionId;
+		final SessionId oldSessionId = sessionId;
 		sessionId = newSessionId;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, oldSessionId, newSessionId);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSessionId(SessionId newSessionId) {
 		if (newSessionId != sessionId)
 		{
 			NotificationChain msgs = null;
-			if (sessionId != null)
+			if (sessionId != null) {
 				msgs = ((InternalEObject) sessionId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
-			if (newSessionId != null)
+			}
+			if (newSessionId != null) {
 				msgs = ((InternalEObject) newSessionId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
+			}
 			msgs = basicSetSessionId(newSessionId, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID,
 				newSessionId, newSessionId));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACUser getResolvedACUser() {
 		if (resolvedACUser != null && resolvedACUser.eIsProxy())
 		{
-			InternalEObject oldResolvedACUser = (InternalEObject) resolvedACUser;
+			final InternalEObject oldResolvedACUser = (InternalEObject) resolvedACUser;
 			resolvedACUser = (ACUser) eResolveProxy(oldResolvedACUser);
 			if (resolvedACUser != oldResolvedACUser)
 			{
-				InternalEObject newResolvedACUser = (InternalEObject) resolvedACUser;
+				final InternalEObject newResolvedACUser = (InternalEObject) resolvedACUser;
 				NotificationChain msgs = oldResolvedACUser.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, null);
 				if (newResolvedACUser.eInternalContainer() == null)
@@ -180,11 +187,13 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 					msgs = newResolvedACUser.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, oldResolvedACUser, resolvedACUser));
+				}
 			}
 		}
 		return resolvedACUser;
@@ -192,7 +201,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ACUser basicGetResolvedACUser() {
@@ -201,51 +210,56 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetResolvedACUser(ACUser newResolvedACUser, NotificationChain msgs) {
-		ACUser oldResolvedACUser = resolvedACUser;
+		final ACUser oldResolvedACUser = resolvedACUser;
 		resolvedACUser = newResolvedACUser;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, oldResolvedACUser, newResolvedACUser);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setResolvedACUser(ACUser newResolvedACUser) {
 		if (newResolvedACUser != resolvedACUser)
 		{
 			NotificationChain msgs = null;
-			if (resolvedACUser != null)
+			if (resolvedACUser != null) {
 				msgs = ((InternalEObject) resolvedACUser).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
-			if (newResolvedACUser != null)
+			}
+			if (newResolvedACUser != null) {
 				msgs = ((InternalEObject) newResolvedACUser).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
+			}
 			msgs = basicSetResolvedACUser(newResolvedACUser, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, newResolvedACUser, newResolvedACUser));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -262,7 +276,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -270,12 +284,14 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 		switch (featureID)
 		{
 		case ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID:
-			if (resolve)
+			if (resolve) {
 				return getSessionId();
+			}
 			return basicGetSessionId();
 		case ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER:
-			if (resolve)
+			if (resolve) {
 				return getResolvedACUser();
+			}
 			return basicGetResolvedACUser();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -283,7 +299,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -302,7 +318,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -321,7 +337,7 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

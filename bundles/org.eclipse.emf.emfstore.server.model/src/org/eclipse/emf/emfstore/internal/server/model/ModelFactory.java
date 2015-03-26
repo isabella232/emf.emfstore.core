@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage
  * @generated
  */
@@ -24,7 +24,7 @@ public interface ModelFactory extends EFactory {
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	ModelFactory eINSTANCE = org.eclipse.emf.emfstore.internal.server.model.impl.ModelFactoryImpl.init();
@@ -32,7 +32,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Project History</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Project History</em>'.
 	 * @generated
 	 */
@@ -41,7 +41,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Project Info</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Project Info</em>'.
 	 * @generated
 	 */
@@ -51,7 +51,7 @@ public interface ModelFactory extends EFactory {
 	 * Returns a new object of class '<em>Session Id</em>'.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Session Id</em>'.
 	 * @generated
 	 */
@@ -60,7 +60,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Server Space</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Server Space</em>'.
 	 * @generated
 	 */
@@ -70,7 +70,7 @@ public interface ModelFactory extends EFactory {
 	 * Returns a new object of class '<em>Project Id</em>'.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Project Id</em>'.
 	 * @generated
 	 */
@@ -79,7 +79,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Version Info</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Version Info</em>'.
 	 * @generated
 	 */
@@ -88,7 +88,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Client Version Info</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Client Version Info</em>'.
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>File Identifier</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>File Identifier</em>'.
 	 * @generated
 	 */
@@ -106,7 +106,7 @@ public interface ModelFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Authentication Information</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Authentication Information</em>'.
 	 * @generated
 	 */
@@ -116,7 +116,7 @@ public interface ModelFactory extends EFactory {
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

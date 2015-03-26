@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Florian Pirchner
  ******************************************************************************/
@@ -77,12 +77,12 @@ public class Application implements IApplication {
 
 			// create a new local project
 			// and share it with the server
-			ESLocalProject project1 = workspace.createLocalProject("projectNo1"); //$NON-NLS-1$
+			final ESLocalProject project1 = workspace.createLocalProject("projectNo1"); //$NON-NLS-1$
 			project1.shareProject(usersession, null);
 
 			// create a league
 			// and add 2 players to it
-			League league1 = BowlingFactory.eINSTANCE.createLeague();
+			final League league1 = BowlingFactory.eINSTANCE.createLeague();
 			league1.setName("league no. 1"); //$NON-NLS-1$
 			league1.getPlayers().add(createPlayer("no. 1")); //$NON-NLS-1$
 			league1.getPlayers().add(createPlayer("no. 2")); //$NON-NLS-1$
@@ -97,9 +97,9 @@ public class Application implements IApplication {
 			 * Now lets checkout the same project twice, modify the element and
 			 * commit the changes to the server.
 			 */
-			ESLocalProject project2 = project1.getRemoteProject().checkout("My checkout", //$NON-NLS-1$
+			final ESLocalProject project2 = project1.getRemoteProject().checkout("My checkout", //$NON-NLS-1$
 				usersession, new NullProgressMonitor());
-			League league2 = (League) project2.getModelElements().get(0);
+			final League league2 = (League) project2.getModelElements().get(0);
 			System.out.println(String.format("Project 2: League \"%s\" was checked out twice!", league1.getName())); //$NON-NLS-1$
 			league2.setName("league no. 1 - changed"); //$NON-NLS-1$
 			// now lets try to commit
@@ -128,7 +128,7 @@ public class Application implements IApplication {
 			try {
 				league2.setName("Uuups - conflicting change"); //$NON-NLS-1$
 				project2.commit(null, null, null);
-			} catch (ESException e) {
+			} catch (final ESException e) {
 				System.out.println("That was a conflict since league1#name was changed and commited earlier!"); //$NON-NLS-1$
 
 				/*
@@ -142,14 +142,14 @@ public class Application implements IApplication {
 			}
 
 			System.out.println("Client run completed."); //$NON-NLS-1$
-		} catch (ESException e) {
+		} catch (final ESException e) {
 			ModelUtil.logException(e);
 		}
 	}
 
 	/**
 	 * Creates a default workspace and deletes all remote projects.
-	 * 
+	 *
 	 * @throws ESException
 	 */
 	private void setupWorkspace() throws ESException {
@@ -158,10 +158,10 @@ public class Application implements IApplication {
 		usersession = new EMFStoreCommandWithResult<ESUsersession>() {
 			@Override
 			protected ESUsersession doRun() {
-				Usersession session = EMFStoreClientUtil.createUsersession();
+				final Usersession session = EMFStoreClientUtil.createUsersession();
 				try {
 					session.logIn();
-				} catch (ESException e) {
+				} catch (final ESException e) {
 					throw new RuntimeException(e);
 				}
 				return session.toAPI();
@@ -175,11 +175,11 @@ public class Application implements IApplication {
 			@Override
 			protected void doRun() {
 				try {
-					List<ESRemoteProject> projectList = usersession.getServer().getRemoteProjects();
-					for (ESRemoteProject projectInfo : projectList) {
+					final List<ESRemoteProject> projectList = usersession.getServer().getRemoteProjects();
+					for (final ESRemoteProject projectInfo : projectList) {
 						projectInfo.delete(usersession, new NullProgressMonitor());
 					}
-				} catch (ESException e) {
+				} catch (final ESException e) {
 					throw new RuntimeException(e);
 				}
 			}
@@ -188,12 +188,12 @@ public class Application implements IApplication {
 
 	/**
 	 * Creates a new instance of a player.
-	 * 
+	 *
 	 * @param name
 	 * @return
 	 */
 	private Player createPlayer(String name) {
-		Player player = BowlingFactory.eINSTANCE.createPlayer();
+		final Player player = BowlingFactory.eINSTANCE.createPlayer();
 		player.setName(String.format("Player %s", name)); //$NON-NLS-1$
 		return player;
 	}

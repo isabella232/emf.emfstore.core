@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.common.observer.ESPrioritizedObserver;
 
 /**
  * Label provider for merge.
- * 
+ *
  * @author ovonwesen
  */
 public interface MergeLabelProvider extends ESPrioritizedObserver {
@@ -27,16 +27,16 @@ public interface MergeLabelProvider extends ESPrioritizedObserver {
 	String ID = "org.eclipse.emf.emfstore.client.mergeLabelProvider"; //$NON-NLS-1$
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.observer.ESPrioritizedObserver#getPriority()
 	 */
 	int getPriority();
 
 	/**
 	 * Returns a textual description of the given model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element whose description is requested
 	 * @return a textual description for the given model element

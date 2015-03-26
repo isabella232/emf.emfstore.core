@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Attribute Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAttributeOperation()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface AttributeOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Old Value</em>' attribute.
 	 * @see #setOldValue(Object)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAttributeOperation_OldValue()
@@ -51,7 +51,7 @@ public interface AttributeOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation#getOldValue
 	 * <em>Old Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Old Value</em>' attribute.
 	 * @see #getOldValue()
@@ -67,7 +67,7 @@ public interface AttributeOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>New Value</em>' attribute.
 	 * @see #setNewValue(Object)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAttributeOperation_NewValue()
@@ -81,7 +81,7 @@ public interface AttributeOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation#getNewValue
 	 * <em>New Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>New Value</em>' attribute.
 	 * @see #getNewValue()

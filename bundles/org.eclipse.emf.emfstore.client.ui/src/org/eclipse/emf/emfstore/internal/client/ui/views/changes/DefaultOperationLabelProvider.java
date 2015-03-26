@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -20,9 +20,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Comp
 
 /**
  * Default label provider for operations.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class DefaultOperationLabelProvider implements OperationCustomLabelProvider {
 
@@ -43,9 +43,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getDescription(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public String getDescription(AbstractOperation operation) {
@@ -63,9 +63,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getImage(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public Object getImage(AbstractOperation operation) {
@@ -73,9 +73,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#canRender(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public CanRender canRender(AbstractOperation operation) {
@@ -83,9 +83,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getModelElementName(org.eclipse.emf.ecore.EObject)
 	 */
 	public String getModelElementName(EObject modelElement) {
@@ -110,9 +110,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ESDisposable#dispose()
 	 */
 	public void dispose() {
@@ -126,7 +126,7 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 
 	/**
 	 * Returns the label provider.
-	 * 
+	 *
 	 * @return the label provider
 	 */
 	protected AdapterFactoryLabelProvider getAdapterFactoryLabelProvider() {

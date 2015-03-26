@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs;
@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * Dialog for setting a tag.
- * 
+ *
  */
 public class CreateTagDialog extends BranchSelectionDialog {
 
@@ -33,7 +33,7 @@ public class CreateTagDialog extends BranchSelectionDialog {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell parent shell to display the dialog
 	 * @param branches list of branches
 	 */
@@ -76,7 +76,7 @@ public class CreateTagDialog extends BranchSelectionDialog {
 
 	/**
 	 * Returns the tag name entered by the user.
-	 * 
+	 *
 	 * @return the tag name
 	 */
 	public String getTagName() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Shterev
  * Hodaie
@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * This class shows a ChangesTreeComposite and a Text control to enter commit
  * message.
- * 
+ *
  * @author Hodaie
  * @author Shterev
  */
@@ -71,7 +71,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            shell
 	 * @param changes
@@ -108,9 +108,9 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.EMFStoreTitleAreaDialog#configureShell(org.eclipse.swt.widgets.Shell)
 	 */
 	@Override
@@ -124,7 +124,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * Returns the change package displayed by the commit dialog.
-	 * 
+	 *
 	 * @return the change package
 	 */
 	public ChangePackage getChangePackage() {
@@ -133,7 +133,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * Returns the active project space.
-	 * 
+	 *
 	 * @return the active project space
 	 */
 	public ProjectSpace getActiveProjectSpace() {
@@ -261,7 +261,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * handles the pressing of Ctrl+ENTER: OKpressed() is called. {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent e) {
@@ -272,7 +272,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * does nothing. {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.swt.events.KeyListener#keyReleased(org.eclipse.swt.events.KeyEvent)
 	 */
 	public void keyReleased(KeyEvent e) {
@@ -281,7 +281,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override

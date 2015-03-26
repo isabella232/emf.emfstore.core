@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -32,9 +32,9 @@ import com.google.common.base.Predicate;
 
 /**
  * A set of predicates used by mutations for selecting, filtering, checking objects and features.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  */
 public final class MutationPredicates {
 
@@ -172,7 +172,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} may take the given {@code eObject} as value.
-	 * 
+	 *
 	 * @param eObject The {@link EObject} to check.
 	 * @return <code>true</code> if it may take {@code eObject} as value, <code>false</code> otherwise.
 	 */
@@ -190,7 +190,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} has a compatible type to the given {@code feature}.
-	 * 
+	 *
 	 * @param feature The {@link EStructuralFeature} to check.
 	 * @return <code>true</code> if its type is compatible to the one of {@code feature}, <code>false</code> otherwise.
 	 */
@@ -216,7 +216,7 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} has a compatible type to any of the features' types of
 	 * the given {@code eClass}.
-	 * 
+	 *
 	 * @param eClass The {@link EClass} to check.
 	 * @return <code>true</code> if there is at least one feature in {@code eClass} having a compatible type,
 	 *         <code>false</code> otherwise.
@@ -232,7 +232,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} may be contained by the given {@code feature}.
-	 * 
+	 *
 	 * @param feature The {@link EStructuralFeature} to check.
 	 * @return <code>true</code> if it may be contained by {@code feature}, <code>false</code> otherwise.
 	 */
@@ -246,7 +246,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} may be contained by any of the given {@code references}.
-	 * 
+	 *
 	 * @param references The references to check.
 	 * @return <code>true</code> if there is at least one reference in {@code references}, which may contain it,
 	 *         <code>false</code> otherwise.
@@ -262,7 +262,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} is not the same as the given {@code eObject}.
-	 * 
+	 *
 	 * @param eObject The {@link EObject} to compare it to.
 	 * @return <code>true</code> if it is not the same, <code>false</code> otherwise.
 	 */
@@ -276,7 +276,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} is the child of the given {@code eObject}.
-	 * 
+	 *
 	 * @param eObject The {@link EObject} to check.
 	 * @return <code>true</code> if it is a child of {@code eObject}, <code>false</code> otherwise.
 	 */
@@ -290,7 +290,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} is the ancestor of a given {@code eObject}.
-	 * 
+	 *
 	 * @param eObject The {@link EObject} to check.
 	 * @return <code>true</code> if it is the ancestor of {@code eObject}, <code>false</code> otherwise.
 	 */
@@ -304,7 +304,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} is contained by the given {@code feature}.
-	 * 
+	 *
 	 * @param feature The {@link EStructuralFeature} to check.
 	 * @return <code>true</code> if it is contained by {@code feature}, <code>false</code> otherwise.
 	 */
@@ -318,7 +318,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link EObject} is contained by the given {@code eContainer}.
-	 * 
+	 *
 	 * @param eContainer The {@link EObject} to check.
 	 * @return <code>true</code> if it is contained by {@code eContainer}, <code>false</code> otherwise.
 	 */
@@ -417,7 +417,7 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link Object} is the container of an {@link EObject} that itself has at most the
 	 * given number of {@code maxNumberOfContainments}.
-	 * 
+	 *
 	 * @param maxNumberOfContainments The maximum number of containments to check.
 	 * @return <code>true</code> if it contains an {@link EObject} that itself has a less or equal number of
 	 *         containments than specified in {@code maxNumberOfContainments}, <code>false</code> otherwise.
@@ -435,7 +435,7 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link Object} is a list of {@link EObject EObjects} containing one EObject
 	 * that itself has at most the given number of {@code maxNumberOfContainments}.
-	 * 
+	 *
 	 * @param maxNumberOfContainments The maximum number of containments to check.
 	 * @return <code>true</code> if it is a list containing an {@link EObject} that itself has a less or equal number of
 	 *         containments than specified in {@code maxNumberOfContainments}, <code>false</code> otherwise.
@@ -454,7 +454,7 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link Object} is an {@link EObject} containing at most the given number of
 	 * {@code maxNumberOfContainments}.
-	 * 
+	 *
 	 * @param maxNumberOfContainments The maximum number of containments to check.
 	 * @return <code>true</code> if it is is an {@link EObject} containing a less or equal number of
 	 *         containments than specified in {@code maxNumberOfContainments}, <code>false</code> otherwise.
@@ -471,7 +471,7 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link EObject} contains at most the given number of
 	 * {@code maxNumberOfContainments}.
-	 * 
+	 *
 	 * @param maxNumberOfContainments The maximum number of containments to check.
 	 * @return <code>true</code> if it contains a less or equal number of containments than specified in
 	 *         {@code maxNumberOfContainments}, <code>false</code> otherwise.
@@ -486,7 +486,7 @@ public final class MutationPredicates {
 
 	/**
 	 * Predicate specifying whether an {@link Object} is a list with the given {@code size}.
-	 * 
+	 *
 	 * @param size The size to check.
 	 * @return <code>true</code> if it is a list of the given {@code size}, <code>false</code> otherwise.
 	 */

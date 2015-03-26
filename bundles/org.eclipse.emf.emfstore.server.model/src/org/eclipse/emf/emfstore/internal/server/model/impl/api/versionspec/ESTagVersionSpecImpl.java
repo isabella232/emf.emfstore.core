@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -16,16 +16,16 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec;
 
 /**
  * Mapping between {@link ESTagVersionSpec} and {@link TagVersionSpec}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, TagVersionSpec> implements
 	ESTagVersionSpec {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param tagVersion
 	 *            the delegate
 	 */
@@ -34,9 +34,9 @@ public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, Ta
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec#getName()
 	 */
 	public String getName() {

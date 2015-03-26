@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <em>Project State Checksum</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVersionSpec {
@@ -43,7 +43,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	/**
 	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIdentifier()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	/**
 	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIdentifier()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 * The default value of the '{@link #getProjectStateChecksum() <em>Project State Checksum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectStateChecksum()
 	 * @generated
 	 * @ordered
@@ -75,7 +75,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 * The cached value of the '{@link #getProjectStateChecksum() <em>Project State Checksum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectStateChecksum()
 	 * @generated
 	 * @ordered
@@ -84,7 +84,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PrimaryVersionSpecImpl() {
@@ -93,7 +93,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getIdentifier() {
@@ -112,7 +112,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIdentifier(int newIdentifier) {
@@ -127,7 +127,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public long getProjectStateChecksum() {
@@ -137,7 +137,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectStateChecksum(long newProjectStateChecksum) {
@@ -152,7 +152,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -169,7 +169,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -188,7 +188,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -207,7 +207,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -224,7 +224,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -243,11 +243,11 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -262,11 +262,11 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -275,9 +275,9 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	public int compareTo(PrimaryVersionSpec o) {
@@ -291,11 +291,11 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESPrimaryVersionSpecImpl toAPI() {
@@ -308,11 +308,11 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESPrimaryVersionSpecImpl createAPI() {

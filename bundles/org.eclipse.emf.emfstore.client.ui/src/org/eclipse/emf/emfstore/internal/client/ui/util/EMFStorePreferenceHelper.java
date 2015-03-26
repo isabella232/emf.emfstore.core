@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -19,9 +19,9 @@ import org.osgi.service.prefs.Preferences;
 
 /**
  * Simplifies setting and getting of preference key/value pairs.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public final class EMFStorePreferenceHelper {
 
@@ -33,7 +33,7 @@ public final class EMFStorePreferenceHelper {
 
 	/**
 	 * Retrieves a preference value for a specific key.
-	 * 
+	 *
 	 * @param key
 	 *            the key used to identify the preference
 	 * @param defaultValue
@@ -47,7 +47,7 @@ public final class EMFStorePreferenceHelper {
 
 	/**
 	 * Set the preference value for a specific key. Key and value must not equal <code>null</code>.
-	 * 
+	 *
 	 * @param key
 	 *            the key that is used to identify the given value
 	 * @param value

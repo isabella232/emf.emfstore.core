@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -29,9 +29,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * Utility class to retrieve meta model information.
- * 
+ *
  * @author koegel
- * 
+ *
  */
 // TODO: check whether loadFromResource and validation may be removed
 public final class CommonUtil {
@@ -49,7 +49,7 @@ public final class CommonUtil {
 	/**
 	 * Returns a containing reference of the <code>parent</code> that may contain the
 	 * given <code>containee</code>.
-	 * 
+	 *
 	 * @param containee
 	 *            the EObject that may be contained by the parent's reference, if any
 	 * @param parent The EObject to get the containment references from
@@ -79,7 +79,7 @@ public final class CommonUtil {
 
 	/**
 	 * Gives all registryEClasses which can be contained in a given EClass.
-	 * 
+	 *
 	 * @param eClass
 	 *            the EClass
 	 * @return all Classes which can be contained
@@ -100,7 +100,7 @@ public final class CommonUtil {
 	/**
 	 * Retrieve all EClasses from the ECore package registry that are subclasses of the given EClass. Does not include
 	 * abstract classes or interfaces.
-	 * 
+	 *
 	 * @param eClass the superClass of the subClasses to retrieve
 	 * @return a set of EClasses
 	 */
@@ -126,7 +126,7 @@ public final class CommonUtil {
 
 	/**
 	 * Retrieve all EClasses from the ECore package registry.
-	 * 
+	 *
 	 * @return a set of EClasses
 	 */
 	public static Set<EClass> getAllModelElementEClasses() {
@@ -158,7 +158,7 @@ public final class CommonUtil {
 
 	/**
 	 * Retrieve all EClasses from the ECore package that are model element subclasses.
-	 * 
+	 *
 	 * @param ePackage
 	 *            the package to get the classes from
 	 * @return a set of EClasses found in the given EPackage
@@ -179,7 +179,7 @@ public final class CommonUtil {
 
 	/**
 	 * Get the EContainer that contains the given model element and whose EContainer is null.
-	 * 
+	 *
 	 * @param <T> parent type
 	 * @param parent the Class of the parent
 	 * @param child the model element whose container should get returned
@@ -213,7 +213,7 @@ public final class CommonUtil {
 	 * Check an EObject and its containment tree whether it is self-contained. A containment tree is self contained if
 	 * it
 	 * does not have references to EObjects outside the tree.
-	 * 
+	 *
 	 * @param object
 	 *            the eObject that is checked whether it is self-contained
 	 * @return true if it is self-contained, false otherwise
@@ -225,7 +225,7 @@ public final class CommonUtil {
 	/**
 	 * Check an EObject and its containment tree whether it is self-contained.<br/>
 	 * A containment tree is self contained if it does not have references to EObjects outside the tree.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject that is checked whether it is self-contained
 	 * @param ignoreContainer
@@ -257,7 +257,7 @@ public final class CommonUtil {
 
 	/**
 	 * Get all contained EObjects not including transient containment features.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject whose non-transient contents should be retrieved
 	 * @return a set of contained elements not including root (the passed EObject itself)
@@ -325,7 +325,7 @@ public final class CommonUtil {
 	/**
 	 * Determines whether an EObject is a singleton object. All EObjects being children of ECorePackage are considered
 	 * as singletons.
-	 * 
+	 *
 	 * @param eObject
 	 *            the EObject that will be checked whether it is a singleton
 	 * @return true if it is a singleton, false otherwise
@@ -342,7 +342,7 @@ public final class CommonUtil {
 	 * Loads a Set of EObject from a given resource. Content which couldn't be loaded creates a error string which will
 	 * be added to the errorStrings list. After the return from the method to the caller the return value contains the
 	 * loaded EObjects.
-	 * 
+	 *
 	 * @param resource contains the items which should be loaded.
 	 * @param errorStrings contains all messages about items which couldn't be loaded by the method.
 	 * @return Set with the loaded an valid EObjects
@@ -389,7 +389,7 @@ public final class CommonUtil {
 	 * Loads a Set of EObject from a given resource. Content which couldn't be loaded creates a error string which will
 	 * be added to the errorStrings list. After the return from the method to the caller the return value contains the
 	 * loaded EObjects.
-	 * 
+	 *
 	 * @param resource contains the items which should be loaded.
 	 * @param errorStrings contains all messages about items which couldn't be loaded by the method.
 	 * @return Set with the loaded an valid EObjects
@@ -401,7 +401,7 @@ public final class CommonUtil {
 	/**
 	 * If we are running tests. In this case the workspace will be created in
 	 * USERHOME/.emfstore.test.
-	 * 
+	 *
 	 * @param testing
 	 *            the testing to set
 	 */
@@ -419,7 +419,7 @@ public final class CommonUtil {
 
 	/**
 	 * Returns the file encoding in use.
-	 * 
+	 *
 	 * @return the file encoding
 	 */
 	public static String getEncoding() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * pfeifferc
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * The {@link ProjectPropertiesSubInterfaceImpl} class is responsible for handling modifications of project properties.
- * 
+ *
  * @author pfeifferc
  */
 public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterface {
@@ -41,7 +41,7 @@ public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterf
 
 	/**
 	 * Adds a property to the specified {@link ACUser}.
-	 * 
+	 *
 	 * @param changedProperty the property that has been changed
 	 * @param recUser the specified {@link ACUser}
 	 * @param projectId the specified {@link ProjectId}
@@ -51,9 +51,9 @@ public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterf
 	public void transmitProperty(OrgUnitProperty changedProperty, ACUser recUser, ProjectId projectId)
 		throws ESException {
 		sanityCheckObjects(changedProperty, recUser, projectId);
-		EList<ACUser> users = getServerSpace().getUsers();
+		final EList<ACUser> users = getServerSpace().getUsers();
 		ACUser user = null;
-		for (ACUser serverUser : users) {
+		for (final ACUser serverUser : users) {
 			if (serverUser.getIdentifier().equals(recUser.getIdentifier())) {
 				user = serverUser;
 				break;
@@ -62,7 +62,7 @@ public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterf
 		if (user == null) {
 			throw new ESException(Messages.ProjectPropertiesSubInterfaceImpl_User_Does_Not_Exist);
 		}
-		for (OrgUnitProperty property : user.getProperties()) {
+		for (final OrgUnitProperty property : user.getProperties()) {
 			if (property.getName().equals(changedProperty.getName()) && isProjectEqual(property, changedProperty)) {
 				property.setValue(changedProperty.getValue());
 				save();
@@ -74,7 +74,7 @@ public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterf
 	}
 
 	private boolean isProjectEqual(OrgUnitProperty property, OrgUnitProperty changedProperty) {
-		if ((property.getProject() == null) && (changedProperty.getProject() == null)) {
+		if (property.getProject() == null && changedProperty.getProject() == null) {
 			return true;
 		}
 		if (property.getProject() == null) {
@@ -83,13 +83,13 @@ public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterf
 		if (changedProperty.getProject() == null) {
 			return false;
 		}
-		return (property.getProject().equals(changedProperty.getProject()));
+		return property.getProject().equals(changedProperty.getProject());
 	}
 
 	private void save() throws ESException {
 		try {
 			getServerSpace().save();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new ESException(Messages.ProjectPropertiesSubInterfaceImpl_Property_Not_Set);
 		}
 	}

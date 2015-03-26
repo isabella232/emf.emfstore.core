@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * shterev
  * emueller
@@ -40,7 +40,7 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * A helper class for the visualization of change packages.
- * 
+ *
  * @author koegel
  * @author shterev
  * @author emueller
@@ -59,7 +59,7 @@ public class ChangePackageVisualizationHelper {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param idToEObjectMapping
 	 *            the ID to EObject mapping that is holding the EObjects that are going to be visualized
 	 *            as part of the change packages
@@ -70,7 +70,7 @@ public class ChangePackageVisualizationHelper {
 
 	/**
 	 * Get the overlay image for an operation.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation
 	 * @return the ImageDescriptor
@@ -117,7 +117,7 @@ public class ChangePackageVisualizationHelper {
 
 	/**
 	 * Get an image for the operation.
-	 * 
+	 *
 	 * @param emfProvider
 	 *            the label provider
 	 * @param operation
@@ -154,7 +154,7 @@ public class ChangePackageVisualizationHelper {
 
 	/**
 	 * Returns a description for the given operation.
-	 * 
+	 *
 	 * @param op
 	 *            the operation to generate a description for
 	 * @return the description for the given operation
@@ -247,7 +247,7 @@ public class ChangePackageVisualizationHelper {
 
 	/**
 	 * Get a model element instance from the project for the given id.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the id
 	 * @return the model element instance

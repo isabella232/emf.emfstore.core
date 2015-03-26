@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
@@ -42,41 +42,41 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AccesscontrolPackageImpl extends EPackageImpl implements AccesscontrolPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass acUserEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass acOrgUnitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass acGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass acOrgUnitIdEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass orgUnitPropertyEClass = null;
@@ -89,7 +89,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
 	 * performs initialization of the package, or returns the registered package, if one already exists. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#eNS_URI
 	 * @see #init()
@@ -101,7 +101,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -113,7 +113,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * This method is used to initialize {@link AccesscontrolPackage#eINSTANCE} when that field is accessed. Clients
 	 * should not invoke it directly. Instead, they should simply access that field to obtain the package. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -194,7 +194,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getACUser() {
@@ -203,7 +203,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getACUser_FirstName() {
@@ -212,7 +212,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getACUser_LastName() {
@@ -221,7 +221,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getACUser_EffectiveGroups() {
@@ -231,7 +231,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getACUser_Password()
@@ -241,7 +241,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getACOrgUnit() {
@@ -250,7 +250,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getACOrgUnit_Name() {
@@ -259,7 +259,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getACOrgUnit_Roles() {
@@ -268,7 +268,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getACOrgUnit_Description() {
@@ -277,7 +277,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getACOrgUnit_Properties() {
@@ -286,7 +286,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getACGroup() {
@@ -295,7 +295,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getACGroup_Members() {
@@ -304,7 +304,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getACOrgUnitId() {
@@ -313,7 +313,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getOrgUnitProperty() {
@@ -322,7 +322,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getOrgUnitProperty_Name() {
@@ -331,7 +331,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getOrgUnitProperty_Value() {
@@ -340,7 +340,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getOrgUnitProperty_Project() {
@@ -349,7 +349,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AccesscontrolFactory getAccesscontrolFactory() {
@@ -358,7 +358,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -368,7 +368,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -403,7 +403,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -412,7 +412,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 * Complete the initialization of the package and its meta-model. This
 	 * method is guarded to have no affect on any invocation but its first. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void initializePackageContents() {

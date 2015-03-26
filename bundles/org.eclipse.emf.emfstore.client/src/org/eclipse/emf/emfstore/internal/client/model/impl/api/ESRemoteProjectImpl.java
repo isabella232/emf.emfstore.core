@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -63,7 +63,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
 
 /**
  * Represents a remote project that is located on a remote server.
- * 
+ *
  * @author wesendon
  * @author emueller
  */
@@ -77,7 +77,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            the server the remote project is located on
 	 * @param projectInfo
@@ -89,9 +89,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#getGlobalProjectId()
 	 */
 	public ESGlobalProjectId getGlobalProjectId() {
@@ -103,9 +103,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#getProjectName()
 	 */
 	public String getProjectName() {
@@ -117,9 +117,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#getBranches(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public List<ESBranchInfo> getBranches(IProgressMonitor monitor) throws ESException {
@@ -141,9 +141,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#getBranches(org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -159,9 +159,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#resolveVersionSpec(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -183,9 +183,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#resolveVersionSpec(org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -208,9 +208,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#getHistoryInfos(org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -234,9 +234,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#getHistoryInfos(org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -267,9 +267,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#addTag(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
@@ -299,9 +299,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESProject#removeTag(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
@@ -333,9 +333,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#checkout(java.lang.String,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -354,9 +354,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#checkout(java.lang.String,
 	 *      org.eclipse.emf.emfstore.client.ESUsersession, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -373,9 +373,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#fetch(java.lang.String,
 	 *      org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
@@ -424,9 +424,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#checkout(java.lang.String,
 	 *      org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
@@ -467,9 +467,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#delete(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void delete(final IProgressMonitor monitor) throws ESException {
@@ -485,9 +485,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#delete(org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -505,9 +505,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#getServer()
 	 */
 	public ESServerImpl getServer() {
@@ -520,9 +520,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESRemoteProject#getHeadVersion(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public ESPrimaryVersionSpec getHeadVersion(final IProgressMonitor monitor) throws ESException {
@@ -580,7 +580,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 
 	/**
 	 * Returns the project info of this remote project.
-	 * 
+	 *
 	 * @return the project info of this remote project
 	 */
 	public ProjectInfo getProjectInfo() {
@@ -589,7 +589,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 
 	/**
 	 * Returns the server info of this remote project.
-	 * 
+	 *
 	 * @return the server info of this remote project
 	 */
 	public ServerInfo getServerInfo() {

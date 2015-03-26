@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflict
 
 /**
  * Convenience super class for implementing {@link ConflictResolver}.
- * 
+ *
  * @author wesendon
  */
 public abstract class AbstractConflictResolver implements ConflictResolver {
@@ -25,7 +25,7 @@ public abstract class AbstractConflictResolver implements ConflictResolver {
 
 	/**
 	 * Default Constructor.
-	 * 
+	 *
 	 * @param isBranchMerge
 	 *            specifies whether two branches are merged oppossed to changes
 	 *            from the same branch.
@@ -35,9 +35,9 @@ public abstract class AbstractConflictResolver implements ConflictResolver {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.ConflictResolver#resolveConflicts(org.eclipse.emf.emfstore.internal.common.model.Project,
 	 *      org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet)
 	 */
@@ -89,7 +89,7 @@ public abstract class AbstractConflictResolver implements ConflictResolver {
 
 	/**
 	 * Conflict resolution should be implemented in this method.
-	 * 
+	 *
 	 * @param decisionManager
 	 *            initialized {@link DecisionManager}
 	 * @param changeConflictSet the conflict set to be resolved

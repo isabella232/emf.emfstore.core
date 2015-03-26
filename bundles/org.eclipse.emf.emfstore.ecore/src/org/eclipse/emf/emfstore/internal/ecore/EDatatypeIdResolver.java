@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -24,9 +24,9 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 
 /**
  * An implementation of a {@link ESSingletonIdResolver} that treats all {@link EDataType}s as singletons.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class EDatatypeIdResolver implements ESSingletonIdResolver {
 
@@ -95,7 +95,7 @@ public class EDatatypeIdResolver implements ESSingletonIdResolver {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @return the {@link ESModelElementId} of the the singleton object or <code>null</code> if the given
 	 *         {@link EObject} is not a singleton, is not an instance of {@link EDataType} or is <code>null</code>
 	 */

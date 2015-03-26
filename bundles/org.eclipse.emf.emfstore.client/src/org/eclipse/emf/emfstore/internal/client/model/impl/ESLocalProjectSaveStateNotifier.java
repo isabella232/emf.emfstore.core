@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -17,9 +17,9 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 
 /**
  * Notifies {@link ESLocalProjectSaveStateNotifier} about changes of the {@link ESLocalProject} save state.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 public class ESLocalProjectSaveStateNotifier implements IDEObjectCollectionDirtyStateListener {
 
@@ -27,7 +27,7 @@ public class ESLocalProjectSaveStateNotifier implements IDEObjectCollectionDirty
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param localProject the local project to notify for
 	 */
 	public ESLocalProjectSaveStateNotifier(ESLocalProject localProject) {
@@ -37,7 +37,7 @@ public class ESLocalProjectSaveStateNotifier implements IDEObjectCollectionDirty
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.impl.IDEObjectCollectionDirtyStateListener#notifyAboutDirtyStateChange()
 	 */
 	public void notifyAboutDirtyStateChange() {

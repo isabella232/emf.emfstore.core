@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  * koegel
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.common.model.impl.NotifiableIdEObjectCo
 
 /**
  * Notifies a about changes in its containment hierarchy.
- * 
+ *
  * @author koegel
  * @author emueller
  */
@@ -42,7 +42,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 	/**
 	 * Constructor. Attaches an Adapter to the given {@link Notifier} and forwards notifications to the given
 	 * NotifiableIdEObjectCollection, that reacts appropriately.
-	 * 
+	 *
 	 * @param notifiableCollection
 	 *            a NotifiableIdEObjectCollection
 	 * @param notifier
@@ -61,7 +61,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.util.EContentAdapter#addAdapter(org.eclipse.emf.common.notify.Notifier)
 	 */
 	@Override
@@ -94,7 +94,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.util.EContentAdapter#removeAdapter(org.eclipse.emf.common.notify.Notifier)
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 	/**
 	 * Checks whether the given {@link EObject} is within the collection.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the {@link EObject} whose containment should be checked
 	 * @return true, if the {@link EObject} is contained in the collection,
@@ -156,7 +156,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	@Override

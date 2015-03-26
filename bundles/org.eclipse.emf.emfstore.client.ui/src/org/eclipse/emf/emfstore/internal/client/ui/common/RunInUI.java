@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -19,9 +19,9 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Utility class for executing {@link Callable}s within the UI Thread.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public final class RunInUI {
 
@@ -38,12 +38,12 @@ public final class RunInUI {
 
 		/**
 		 * Executes the given callable and returns the result.
-		 * 
+		 *
 		 * @param callable
 		 *            the callable to be execued
 		 * @return the return value of the {@link Callable}
 		 * @throws ESException in case an error occurs during execution of the callable
-		 * 
+		 *
 		 * @param <T> the return type of the callable
 		 */
 		public static <T> T runWithResult(final Callable<T> callable) throws ESException {
@@ -65,7 +65,7 @@ public final class RunInUI {
 
 		/**
 		 * Executes the given callable and returns the result.
-		 * 
+		 *
 		 * @param callable
 		 *            the callable to be execued
 		 * @throws ESException in case an error occurs during execution of the callable
@@ -89,7 +89,7 @@ public final class RunInUI {
 
 	/**
 	 * Executes the given {@link Callable} and returns the result.
-	 * 
+	 *
 	 * @param callable
 	 *            the {@link Callable} to be executed
 	 */
@@ -115,11 +115,11 @@ public final class RunInUI {
 
 	/**
 	 * Executes the given callable and returns the result.
-	 * 
+	 *
 	 * @param callable
 	 *            the callable to be execued
 	 * @return the return value of the {@link Callable}
-	 * 
+	 *
 	 * @param <T> the return type of the callable
 	 */
 	public static <T> T runWithResult(final Callable<T> callable) {
@@ -148,9 +148,9 @@ public final class RunInUI {
 	/**
 	 * A simple wrapper for UI calls that has the same effect as calling {@link Display#syncExec(Runnable)} and is
 	 * only provided for aesthetic reasons.
-	 * 
+	 *
 	 * @author emueller
-	 * 
+	 *
 	 * @see RunInUIThreadWithResult
 	 */
 	private abstract class RunInUIThread extends RunInUIThreadWithResult<Void> {
@@ -160,9 +160,9 @@ public final class RunInUI {
 		}
 
 		/**
-		 * 
+		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI.RunInUIThreadWithResult#doRun()
 		 */
 		@Override
@@ -172,9 +172,9 @@ public final class RunInUI {
 	/**
 	 * A simple wrapper for UI calls that has the same effect as calling {@link Display#syncExec(Runnable)} but
 	 * can return a value.
-	 * 
+	 *
 	 * @author emueller
-	 * 
+	 *
 	 * @param <T> the return type of the wrapped call
 	 * @see RunInUIThread
 	 */
@@ -193,7 +193,7 @@ public final class RunInUI {
 
 		/**
 		 * Constructor.
-		 * 
+		 *
 		 * @param display
 		 *            the {@link Display} that will be used to execute the wrapped call
 		 */
@@ -203,9 +203,9 @@ public final class RunInUI {
 
 		/**
 		 * Executes the wrapper.
-		 * 
+		 *
 		 * @return the return value of the wrapped call
-		 * 
+		 *
 		 * @throws ESException
 		 *             in case an error occurs
 		 */
@@ -233,9 +233,9 @@ public final class RunInUI {
 
 		/**
 		 * Invokes the wrapped call and must be implemented by clients.
-		 * 
+		 *
 		 * @return an optional return value that may be returned by clients
-		 * 
+		 *
 		 * @throws ESException in case an error occurs
 		 */
 		public abstract T doRun() throws ESException;

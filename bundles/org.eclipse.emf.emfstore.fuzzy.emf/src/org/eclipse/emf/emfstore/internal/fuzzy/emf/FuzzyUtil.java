@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
@@ -32,9 +32,9 @@ import org.junit.runners.model.TestClass;
 /**
  * Utility class for different methods used in {@link org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider
  * EMFDataProvider} context.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 public final class FuzzyUtil {
 
@@ -98,7 +98,7 @@ public final class FuzzyUtil {
 
 	/**
 	 * Searches in the resource for a {@link TestConfig} fitting to the given {@link TestClass}.
-	 * 
+	 *
 	 * @param resource
 	 *            The resource where to search in.
 	 * @param testClass
@@ -125,7 +125,7 @@ public final class FuzzyUtil {
 
 	/**
 	 * Checks if a resource contains a {@link TestConfig}.
-	 * 
+	 *
 	 * @param resource
 	 *            The resource where to search in.
 	 * @param config
@@ -146,7 +146,7 @@ public final class FuzzyUtil {
 
 	/**
 	 * Checks if the resource exists.
-	 * 
+	 *
 	 * @param resource
 	 *            The {@link Resource} to check.
 	 * @return <code>true</code> if the resource exists, <code>false</code> otherwise.
@@ -158,7 +158,7 @@ public final class FuzzyUtil {
 
 	/**
 	 * Create a new {@link Resource}.
-	 * 
+	 *
 	 * @param fileNameURI
 	 *            The uri of the resource.
 	 * @return The newly created {@link Resource}.
@@ -170,7 +170,7 @@ public final class FuzzyUtil {
 	/**
 	 * Get a valid {@link TestResult} out of a {@link TestDiff}. Valid means non
 	 * null.
-	 * 
+	 *
 	 * @param diff
 	 *            The {@link TestDiff} containing the {@link TestResult}.
 	 * @return The valid {@link TestResult} of the {@link TestDiff}.
@@ -190,7 +190,7 @@ public final class FuzzyUtil {
 
 	/**
 	 * Get a property out of the properties file.
-	 * 
+	 *
 	 * @param key
 	 *            The key of the property.
 	 * @param defaultValue

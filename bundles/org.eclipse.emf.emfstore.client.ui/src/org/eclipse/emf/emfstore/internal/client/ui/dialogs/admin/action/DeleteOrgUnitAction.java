@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -35,9 +35,9 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * Action for deleting a {@link ACOrgUnit}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class DeleteOrgUnitAction extends Action {
 
@@ -47,7 +47,7 @@ public abstract class DeleteOrgUnitAction extends Action {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param title
 	 *            the action title
 	 * @param adminBroker
@@ -166,7 +166,7 @@ public abstract class DeleteOrgUnitAction extends Action {
 
 	/**
 	 * Returns the title of the confirmation dialog.
-	 * 
+	 *
 	 * @return the title of the confirmation dialog.
 	 */
 	protected String confirmationMessageTitle() {
@@ -175,7 +175,7 @@ public abstract class DeleteOrgUnitAction extends Action {
 
 	/**
 	 * Actually deletes the given {@link ACOrgUnit}.
-	 * 
+	 *
 	 * @param orgUnit
 	 *            the {@link ACOrgUnit} to be deleted
 	 * @throws AccessControlException
@@ -187,7 +187,7 @@ public abstract class DeleteOrgUnitAction extends Action {
 
 	/**
 	 * Returns the name of the {@link ACOrgUnit} to be deleted.
-	 * 
+	 *
 	 * @return the name of the {@link ACOrgUnit} to be deleted
 	 */
 	protected abstract String orgUnitName();

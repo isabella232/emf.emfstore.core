@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -19,26 +19,26 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 /**
  * Convenience class to separate operations that considered to be filtered
  * from the rest of a given input.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class FilteredOperationsResult {
 
-	private List<Object> nonFilteredContent;
-	private List<AbstractOperation> filteredOperations;
+	private final List<Object> nonFilteredContent;
+	private final List<AbstractOperation> filteredOperations;
 
 	/**
 	 * Constructor.
 	 */
 	public FilteredOperationsResult() {
-		this.nonFilteredContent = new ArrayList<Object>();
-		this.filteredOperations = new ArrayList<AbstractOperation>();
+		nonFilteredContent = new ArrayList<Object>();
+		filteredOperations = new ArrayList<AbstractOperation>();
 	}
 
 	/**
 	 * Adds an object that is classified as non-filtered.
-	 * 
+	 *
 	 * @param obj
 	 *            the object to be added
 	 */
@@ -48,7 +48,7 @@ public class FilteredOperationsResult {
 
 	/**
 	 * Adds an operation that is considered as filtered.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation to be added
 	 */
@@ -58,7 +58,7 @@ public class FilteredOperationsResult {
 
 	/**
 	 * Returns the non-filtered content.
-	 * 
+	 *
 	 * @return all non-filtered input
 	 */
 	public List<Object> getNonFiltered() {
@@ -67,7 +67,7 @@ public class FilteredOperationsResult {
 
 	/**
 	 * Returns all operations that are considered to have been filtered.
-	 * 
+	 *
 	 * @return all filtered operations
 	 */
 	public List<AbstractOperation> getFilteredOperations() {

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.EReference;
 
 /**
  * Basic extension of {@link FilteredAdapter} to print out the notifications.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 public class LoggingAdapter extends FilteredAdapter {
 
@@ -51,7 +51,7 @@ public class LoggingAdapter extends FilteredAdapter {
 
 	/**
 	 * Convert a {@link Notification} to a string.
-	 * 
+	 *
 	 * @param notification The {@link Notification} to convert.
 	 * @return The string representing the {@link Notification}.
 	 */

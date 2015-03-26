@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * shterev
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * Column LabelProvider to show info from the log message, such as commiter, date, etc.
- * 
+ *
  * @author shterev
  */
 public class LogMessageColumnLabelProvider extends SCMLabelProvider {

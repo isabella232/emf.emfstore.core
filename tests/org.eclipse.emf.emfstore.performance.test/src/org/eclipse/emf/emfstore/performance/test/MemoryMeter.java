@@ -1,7 +1,8 @@
 package org.eclipse.emf.emfstore.performance.test;
 
 /**
- * Class that measures memory, used during some operation(s) continuously and returns maximal value at the end.
+ * Class that measures memory, used during some operation(s) continuously and
+ * returns maximal value at the end.
  */
 public class MemoryMeter extends Thread {
 	/**
@@ -19,7 +20,8 @@ public class MemoryMeter extends Thread {
 		try {
 			while (!stop) {
 				if (active) {
-					long usedMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+					long usedMemory = Runtime.getRuntime().totalMemory()
+							- Runtime.getRuntime().freeMemory();
 					if (usedMemory > maxUsedMemory) {
 						maxUsedMemory = usedMemory;
 					}
@@ -37,7 +39,8 @@ public class MemoryMeter extends Thread {
 
 	public long stopMeasurements() {
 		active = false;
-		long usedMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+		long usedMemory = Runtime.getRuntime().totalMemory()
+				- Runtime.getRuntime().freeMemory();
 		long curMaxMemory = maxUsedMemory;
 		if (usedMemory > curMaxMemory) {
 			curMaxMemory = usedMemory;

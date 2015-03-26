@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Maximilian Koegel - initial API and implementation
  * Johannes Faltermeier - URI related refactorings
@@ -75,7 +75,7 @@ import org.eclipse.equinox.app.IApplicationContext;
 /**
  * The {@link EMFStoreController} is controlling startup and shutdown of the
  * EmfStore.
- * 
+ *
  * @author koegel
  * @author wesendonk
  * @author jfaltermeier
@@ -112,7 +112,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
 	 */
 	public synchronized Object start(IApplicationContext context) throws FatalESException {
@@ -124,7 +124,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Run the server.
-	 * 
+	 *
 	 * @param waitForTermination
 	 *            true if the server should force the calling thread to wait for
 	 *            its termination
@@ -414,7 +414,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Return the singleton instance of EmfStoreControler.
-	 * 
+	 *
 	 * @return the instance
 	 */
 	public static EMFStoreController getInstance() {
@@ -502,7 +502,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Shutdown EmfStore due to an fatal exception.
-	 * 
+	 *
 	 * @param exception
 	 *            the fatal exception that triggered the shutdown
 	 */
@@ -558,7 +558,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
@@ -571,7 +571,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Starts the server in a new thread.
-	 * 
+	 *
 	 * @return an controller for the running EMFStore
 	 * @throws FatalESException
 	 *             in case of failure
@@ -590,7 +590,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Returns the {@link ServerSpace}.
-	 * 
+	 *
 	 * @return the server space
 	 */
 	public ServerSpace getServerSpace() {
@@ -599,7 +599,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * Returns the {@link AccessControl} component of the EMFStore controller.
-	 * 
+	 *
 	 * @return the {@link AccessControl} component
 	 */
 	public AccessControl getAccessControl() {
@@ -608,7 +608,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.equinox.app.IApplication#stop()
 	 */
 	public void stop() {

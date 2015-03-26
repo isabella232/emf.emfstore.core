@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common;
@@ -40,7 +40,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
 	 */
 	// BEGIN SUPRESS CATCH EXCEPTION
@@ -52,9 +52,9 @@ public class Activator extends Plugin {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
 	// BEGIN SUPRESS CATCH EXCEPTION
@@ -67,7 +67,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * Returns the shared instance.
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
@@ -76,7 +76,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * Log an error.
-	 * 
+	 *
 	 * @param message the message
 	 * @param exception the causing exception
 	 * @param statusInt a status code
@@ -87,7 +87,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * Log an exception to the error log.
-	 * 
+	 *
 	 * @param message the message
 	 * @param exception the exception
 	 */
@@ -97,7 +97,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * Log a warning to the error log.
-	 * 
+	 *
 	 * @param message the message
 	 * @param exception the exception
 	 */

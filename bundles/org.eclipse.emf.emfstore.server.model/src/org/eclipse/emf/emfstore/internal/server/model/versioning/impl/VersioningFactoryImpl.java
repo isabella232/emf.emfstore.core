@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFactory {
@@ -45,7 +45,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static VersioningFactory init() {
@@ -68,7 +68,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersioningFactoryImpl() {
@@ -77,7 +77,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -123,7 +123,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TagVersionSpec createTagVersionSpec() {
@@ -133,7 +133,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public DateVersionSpec createDateVersionSpec() {
@@ -143,7 +143,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec createPrimaryVersionSpec() {
@@ -153,7 +153,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage createLogMessage() {
@@ -163,7 +163,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ChangePackage createChangePackage() {
@@ -173,7 +173,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public HistoryInfo createHistoryInfo() {
@@ -183,7 +183,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
@@ -194,7 +194,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PathQuery createPathQuery() {
@@ -204,7 +204,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementQuery createModelElementQuery() {
@@ -214,7 +214,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Version createVersion() {
@@ -224,7 +224,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public HeadVersionSpec createHeadVersionSpec() {
@@ -234,7 +234,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersionProperty createVersionProperty() {
@@ -244,7 +244,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BranchVersionSpec createBranchVersionSpec() {
@@ -254,7 +254,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BranchInfo createBranchInfo() {
@@ -264,7 +264,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AncestorVersionSpec createAncestorVersionSpec() {
@@ -275,7 +275,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PagedUpdateVersionSpec createPagedUpdateVersionSpec()
@@ -286,7 +286,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersioningPackage getVersioningPackage() {
@@ -295,7 +295,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

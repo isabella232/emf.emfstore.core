@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -30,9 +30,9 @@ import org.eclipse.swt.widgets.Text;
 /**
  * Dialog for creating a new {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit
  * ACOrgUnit}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class NewOrgUnitDialog extends Dialog {
 
@@ -42,7 +42,7 @@ public class NewOrgUnitDialog extends Dialog {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell
 	 * @param fieldNames
@@ -65,7 +65,7 @@ public class NewOrgUnitDialog extends Dialog {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#isResizable()
 	 */
 	@Override
@@ -115,7 +115,7 @@ public class NewOrgUnitDialog extends Dialog {
 
 	/**
 	 * Returns the field value.
-	 * 
+	 *
 	 * @param fieldName
 	 *            the name of the field whose value shold be retrieved.
 	 * @return the field's value

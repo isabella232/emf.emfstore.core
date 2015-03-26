@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - extracted into own class
@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 /**
  * User container that additionally is capable of performing an activity check
  * of the user being hold.
- * 
+ *
  * @author wesendonk
  */
 public class ACUserContainer {
@@ -31,7 +31,7 @@ public class ACUserContainer {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param acUser
 	 *            an user instance
 	 */
@@ -43,7 +43,7 @@ public class ACUserContainer {
 
 	/**
 	 * Returns the user and additionally performs a activity check of the user.
-	 * 
+	 *
 	 * @return the user
 	 * @throws AccessControlException
 	 *             in case the user hasn't been active
@@ -57,7 +57,7 @@ public class ACUserContainer {
 
 	/**
 	 * Returns the user instance that this container holds.
-	 * 
+	 *
 	 * @return the user instance
 	 */
 	public ACUser getRawUser() {

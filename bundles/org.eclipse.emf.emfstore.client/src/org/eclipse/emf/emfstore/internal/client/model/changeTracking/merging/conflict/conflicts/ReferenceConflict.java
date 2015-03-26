@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Maximilian Koegel, Edgar Mueller - bugfix 421361
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
 
 /**
  * Container for {@link MultiReferenceConflict} and {@link SingleReferenceConflict}.
- * 
+ *
  * @author wesendon
  */
 public class ReferenceConflict extends VisualConflict {
@@ -53,7 +53,7 @@ public class ReferenceConflict extends VisualConflict {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation
 	 * CompositeOperation}s while the left operation is a stand-alone {@link SingleReferenceOperation}</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param leftSingleRef
 	 *            a {@link SingleReferenceOperation}
 	 * @param rightSingleRef
@@ -89,7 +89,7 @@ public class ReferenceConflict extends VisualConflict {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation
 	 * CompositeOperation}s while the left operation is a stand-alone {@link MultiReferenceOperation}</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param leftMultiRef
 	 *            a {@link MultiReferenceOperation}
 	 * @param rightMultiRef
@@ -124,7 +124,7 @@ public class ReferenceConflict extends VisualConflict {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation
 	 * CompositeOperation}s while the left operation is a stand-alone {@link MultiReferenceOperation}</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param leftMultiRef
 	 *            a {@link SingleReferenceOperation}
 	 * @param rightSingleRef
@@ -160,7 +160,7 @@ public class ReferenceConflict extends VisualConflict {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation
 	 * CompositeOperation}s while the right operation is a stand-alone {@link MultiReferenceOperation}</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param leftSingleRef
 	 *            a {@link SingleReferenceOperation}
 	 * @param rightMultiRef

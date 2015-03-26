@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
 
 /**
  * Converts an EMF notification to an Operation.
- * 
+ *
  * @author chodnick
  */
 public final class NotificationToOperationConverter {
@@ -50,7 +50,7 @@ public final class NotificationToOperationConverter {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param project
 	 *            project
 	 */
@@ -61,7 +61,7 @@ public final class NotificationToOperationConverter {
 	/**
 	 * Converts given notification to an operation. May return null if the
 	 * notification signifies a no-op.
-	 * 
+	 *
 	 * @param n
 	 *            the notification to convert
 	 * @return the operation or null
@@ -217,7 +217,7 @@ public final class NotificationToOperationConverter {
 
 	/**
 	 * Creates a multi reference operation based on the given information.
-	 * 
+	 *
 	 * @param collection
 	 *            the collection the <code>modelElement</code> is contained in
 	 * @param modelElement
@@ -317,7 +317,7 @@ public final class NotificationToOperationConverter {
 
 	/**
 	 * Creates a single reference operation based on the given information.
-	 * 
+	 *
 	 * @param collection
 	 *            the collection the <code>modelElement</code> is contained in
 	 * @param oldReference

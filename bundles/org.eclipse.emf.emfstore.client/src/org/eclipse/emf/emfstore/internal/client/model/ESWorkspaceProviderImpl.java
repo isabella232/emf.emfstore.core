@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  * Johannes Faltermeier - EMFStore specific URI migration
@@ -74,7 +74,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * Controller for workspaces. Different threads can have a different instances associated with them.
  * This is useful in the situation common where the client is a webserver,
  * and different user sessions have different threads associated with them.
- * 
+ *
  * @author mkoegel
  * @author emueller
  * @author jfaltermeier
@@ -115,10 +115,10 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Constructor that creates an instance with a specific ID.
-	 * 
+	 *
 	 * @param id
 	 *            the workspace identifier for the instance
-	 * 
+	 *
 	 */
 	public ESWorkspaceProviderImpl(String id) {
 		this.id = id;
@@ -133,11 +133,11 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 * first ensures that the thread local ESWorkspaceProviderImpl is taken from the thread that called for
 	 * behavior to be run in the threadpool, and then set as the
 	 * threadlocal instance for the thread running in the behavior in the threadpool.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param runnable
 	 *            the {@link Runnable} to be executed in the context of the current workspace
-	 * 
+	 *
 	 * @return the updated {@link Runnable} that accordingly sets the workspace
 	 */
 	public static Runnable initRunnable(final Runnable runnable) {
@@ -168,7 +168,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 * This method retrieves the instance of ESWorkspaceProviderImpl associated with this thread.
 	 * If there is not yet an associated instance, and no default instance then an instance
 	 * is created and associated with the calling thread.
-	 * 
+	 *
 	 * @return the WorkspaceProvider for this thread
 	 */
 	public static ESWorkspaceProviderImpl getInstance() {
@@ -198,7 +198,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 * This method retrieves the workspace provider instance associated with the given ID.
 	 * If there is not yet an associated workspace with the given ID, then an instance
 	 * is created and associated with the calling thread.
-	 * 
+	 *
 	 * @param workspaceProviderId
 	 *            the workspace identifier, usually a session id
 	 * @return the WorkspaceProvider associated this workspaceIdentifier
@@ -222,7 +222,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Retrieve the editing domain.
-	 * 
+	 *
 	 * @return the workspace editing domain
 	 */
 	public EditingDomain getEditingDomain() {
@@ -234,7 +234,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Sets the EditingDomain.
-	 * 
+	 *
 	 * @param editingDomain
 	 *            new domain.
 	 */
@@ -243,9 +243,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ESDisposable#dispose()
 	 */
 	public void dispose() {
@@ -262,7 +262,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Whether the current workspace is disposed.
-	 * 
+	 *
 	 * @return {@code true} if the current workspace is disposed, {@code false} otherwise
 	 */
 	public boolean isDisposed() {
@@ -363,7 +363,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	/**
 	 * Get the admin connection manager. Return the admin connection manager for
 	 * this workspace.
-	 * 
+	 *
 	 * @return the connectionManager
 	 */
 	public AdminConnectionManager getAdminConnectionManager() {
@@ -372,7 +372,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Set the admin connection manager.
-	 * 
+	 *
 	 * @param adminConnectionManager
 	 *            the new {@link AdminConnectionManager} to be set
 	 */
@@ -382,7 +382,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Retrieve the project space for a model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @return the project space
@@ -406,7 +406,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Retrieve the project space for a project.
-	 * 
+	 *
 	 * @param project
 	 *            the project
 	 * @return the project space
@@ -425,7 +425,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Returns the {@link ObserverBus}.
-	 * 
+	 *
 	 * @return observer bus
 	 */
 	public static ObserverBus getObserverBus() {
@@ -434,7 +434,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Returns the {@link SessionManager}.
-	 * 
+	 *
 	 * @return session manager
 	 */
 	public SessionManager getSessionManager() {
@@ -444,7 +444,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Get the current workspace. There is always one current workspace.
-	 * 
+	 *
 	 * @return the workspace
 	 */
 	public ESWorkspaceImpl getWorkspace() {
@@ -457,7 +457,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Returns the internal workspace.
-	 * 
+	 *
 	 * @return the workspace
 	 */
 	public Workspace getInternalWorkspace() {
@@ -472,7 +472,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	/**
 	 * Get the connection manager. Return the connection manager for this
 	 * workspace.
-	 * 
+	 *
 	 * @return the connectionManager
 	 */
 	public ConnectionManager getConnectionManager() {
@@ -482,7 +482,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 
 	/**
 	 * Set the connectionmanager.
-	 * 
+	 *
 	 * @param manager
 	 *            connection manager.
 	 */
@@ -491,9 +491,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see ESWorkspaceProvider#setSessionProvider(ESAbstractSessionProvider)
 	 */
 	public void setSessionProvider(ESAbstractSessionProvider sessionProvider) {
@@ -530,7 +530,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	/**
 	 * Initialize the connection manager of the workspace. The connection
 	 * manager connects the workspace with EMFStore.
-	 * 
+	 *
 	 * @return the connection manager
 	 */
 	private ConnectionManager initConnectionManager() {
@@ -541,7 +541,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	/**
 	 * Initialize the connection manager of the workspace. The connection
 	 * manager connects the workspace with the emf store.
-	 * 
+	 *
 	 * @return the admin connection manager
 	 * @generated NOT
 	 */
@@ -671,9 +671,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCheckoutObserver#checkoutDone(org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
 	public void checkoutDone(ESLocalProject project) {
@@ -681,9 +681,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESShareObserver#shareDone(org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
 	public void shareDone(ESLocalProject localProject) {
@@ -691,9 +691,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -702,9 +702,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#updateCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -713,9 +713,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -724,9 +724,9 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#commitCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)

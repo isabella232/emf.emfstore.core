@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 
 /**
  * Mapping between {@link ESModelElementId} and {@link ModelElementId}.
- * 
+ *
  * @author emueller
  */
 public class ESModelElementIdImpl extends AbstractAPIImpl<ESModelElementIdImpl, ModelElementId> implements
@@ -25,7 +25,7 @@ public class ESModelElementIdImpl extends AbstractAPIImpl<ESModelElementIdImpl, 
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the {@link ModelElementId} to be wrapped
 	 */
@@ -35,7 +35,7 @@ public class ESModelElementIdImpl extends AbstractAPIImpl<ESModelElementIdImpl, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
 	public String getId() {
@@ -44,7 +44,7 @@ public class ESModelElementIdImpl extends AbstractAPIImpl<ESModelElementIdImpl, 
 
 	/**
 	 * Sets the ID.
-	 * 
+	 *
 	 * @param id
 	 *            the ID to be set
 	 */
@@ -54,7 +54,7 @@ public class ESModelElementIdImpl extends AbstractAPIImpl<ESModelElementIdImpl, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -67,7 +67,7 @@ public class ESModelElementIdImpl extends AbstractAPIImpl<ESModelElementIdImpl, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol;
@@ -14,10 +14,10 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC User</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESUser>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  *          </em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACUser()
  * @model
  * @generated
@@ -45,7 +45,7 @@ public interface ACUser extends ACOrgUnit {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACUser_FirstName()
@@ -59,7 +59,7 @@ public interface ACUser extends ACOrgUnit {
 	 * <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>First Name</em>' attribute.
 	 * @see #getFirstName()
 	 * @generated
@@ -74,7 +74,7 @@ public interface ACUser extends ACOrgUnit {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACUser_LastName()
@@ -87,7 +87,7 @@ public interface ACUser extends ACOrgUnit {
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser#getLastName
 	 * <em>Last Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Last Name</em>' attribute.
 	 * @see #getLastName()
@@ -105,7 +105,7 @@ public interface ACUser extends ACOrgUnit {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Effective Groups</em>' containment
 	 *         reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACUser_EffectiveGroups()
@@ -122,7 +122,7 @@ public interface ACUser extends ACOrgUnit {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACUser_Password()
@@ -136,7 +136,7 @@ public interface ACUser extends ACOrgUnit {
 	 * <em>Password</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Password</em>' attribute.
 	 * @see #getPassword()
 	 * @generated

@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -56,7 +56,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
  * Duplicate IDs</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfigImpl, MutatorConfig> implements
@@ -66,7 +66,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #getRootEClass() <em>Root EClass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getRootEClass()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #getMinObjectsCount() <em>Min Objects Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMinObjectsCount()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #getMinObjectsCount() <em>Min Objects Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMinObjectsCount()
 	 * @generated
 	 * @ordered
@@ -99,7 +99,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #isIgnoreAndLog() <em>Ignore And Log</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIgnoreAndLog()
 	 * @generated
 	 * @ordered
@@ -110,7 +110,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #isIgnoreAndLog() <em>Ignore And Log</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIgnoreAndLog()
 	 * @generated
 	 * @ordered
@@ -121,7 +121,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #isDoNotGenerateRoot() <em>Do Not Generate Root</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isDoNotGenerateRoot()
 	 * @generated
 	 * @ordered
@@ -132,7 +132,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #isDoNotGenerateRoot() <em>Do Not Generate Root</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isDoNotGenerateRoot()
 	 * @generated
 	 * @ordered
@@ -143,7 +143,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isUseEcoreUtilDelete()
 	 * @generated
 	 * @ordered
@@ -154,7 +154,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isUseEcoreUtilDelete()
 	 * @generated
 	 * @ordered
@@ -165,7 +165,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #getEClassesToIgnore() <em>EClasses To Ignore</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEClassesToIgnore()
 	 * @generated
 	 * @ordered
@@ -177,7 +177,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEStructuralFeaturesToIgnore()
 	 * @generated
 	 * @ordered
@@ -188,7 +188,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #getEPackages() <em>EPackages</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEPackages()
 	 * @generated
 	 * @ordered
@@ -199,7 +199,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #getMaxDeleteCount() <em>Max Delete Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMaxDeleteCount()
 	 * @generated
 	 * @ordered
@@ -210,7 +210,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #getMaxDeleteCount() <em>Max Delete Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMaxDeleteCount()
 	 * @generated
 	 * @ordered
@@ -221,7 +221,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #getMutationCount() <em>Mutation Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMutationCount()
 	 * @generated
 	 * @ordered
@@ -232,7 +232,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #getMutationCount() <em>Mutation Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMutationCount()
 	 * @generated
 	 * @ordered
@@ -243,7 +243,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The default value of the '{@link #isAllowDuplicateIDs() <em>Allow Duplicate IDs</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAllowDuplicateIDs()
 	 * @generated
 	 * @ordered
@@ -254,7 +254,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	 * The cached value of the '{@link #isAllowDuplicateIDs() <em>Allow Duplicate IDs</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAllowDuplicateIDs()
 	 * @generated
 	 * @ordered
@@ -264,7 +264,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MutatorConfigImpl() {
@@ -274,7 +274,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -285,7 +285,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getRootEClass() {
@@ -305,7 +305,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass basicGetRootEClass() {
@@ -315,7 +315,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setRootEClass(EClass newRootEClass) {
@@ -330,7 +330,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getMinObjectsCount() {
@@ -340,7 +340,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMinObjectsCount(int newMinObjectsCount) {
@@ -355,7 +355,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIgnoreAndLog() {
@@ -365,7 +365,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIgnoreAndLog(boolean newIgnoreAndLog) {
@@ -380,7 +380,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isDoNotGenerateRoot() {
@@ -390,7 +390,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDoNotGenerateRoot(boolean newDoNotGenerateRoot) {
@@ -405,7 +405,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isUseEcoreUtilDelete() {
@@ -415,7 +415,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setUseEcoreUtilDelete(boolean newUseEcoreUtilDelete) {
@@ -430,7 +430,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<EClass> getEClassesToIgnore() {
@@ -444,7 +444,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<EStructuralFeature> getEStructuralFeaturesToIgnore() {
@@ -458,7 +458,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<EPackage> getEPackages() {
@@ -472,7 +472,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Integer getMaxDeleteCount() {
@@ -482,7 +482,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMaxDeleteCount(Integer newMaxDeleteCount) {
@@ -497,7 +497,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getMutationCount() {
@@ -507,7 +507,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMutationCount(int newMutationCount) {
@@ -522,7 +522,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isAllowDuplicateIDs() {
@@ -532,7 +532,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAllowDuplicateIDs(boolean newAllowDuplicateIDs) {
@@ -547,7 +547,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -585,7 +585,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -635,7 +635,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -681,7 +681,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -717,7 +717,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -747,9 +747,9 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override

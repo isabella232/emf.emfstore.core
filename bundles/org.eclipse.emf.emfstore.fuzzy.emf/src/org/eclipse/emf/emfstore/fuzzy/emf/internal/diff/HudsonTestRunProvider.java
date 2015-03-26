@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial APi and implementation
  ******************************************************************************/
@@ -32,9 +32,9 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
 /**
  * An implementation of {@link TestRunProvider} to provide {@link TestRun}s
  * created by the CI-Server Hudson.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 public class HudsonTestRunProvider extends TestRunProvider {
 
@@ -95,7 +95,7 @@ public class HudsonTestRunProvider extends TestRunProvider {
 	/**
 	 * Standard constructor using the last build and the build before the last
 	 * build for reading testruns.
-	 * 
+	 *
 	 * @throws DocumentException
 	 *             If it cannot read the buildnumbers correctly from hudson.
 	 * @throws IOException
@@ -113,7 +113,7 @@ public class HudsonTestRunProvider extends TestRunProvider {
 
 	/**
 	 * Constructor using tow special numbers for testruns.
-	 * 
+	 *
 	 * @param firstBuildNumber
 	 *            The number of the first build (first from the last one
 	 *            backwards, so it is later than the second one).
@@ -138,7 +138,7 @@ public class HudsonTestRunProvider extends TestRunProvider {
 		final String port = FuzzyUtil.getProperty(PROP_HUDSON + PROP_PORT, null);
 		return FuzzyUtil
 			.getProperty(PROP_HUDSON + PROP_URL, "http://localhost") //$NON-NLS-1$
-			+ (port != null ? ":" + port : ""); // + "/"; //$NON-NLS-1$ //$NON-NLS-2$ 
+			+ (port != null ? ":" + port : ""); // + "/"; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	private static int getLastValidBuildNumber(int maxBuildNumber, String jobUrl)

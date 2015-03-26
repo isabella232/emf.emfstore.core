@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -18,16 +18,16 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESDateVersionSpec;
 
 /**
  * Mapping between {@link ESDateVersionSpecImpl} and {@link DateVersionSpec}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, DateVersionSpec> implements
 	ESDateVersionSpec {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param dateVersionSpec
 	 *            the delegate
 	 */
@@ -36,9 +36,9 @@ public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESDateVersionSpec#getDate()
 	 */
 	public Date getDate() {
@@ -49,7 +49,7 @@ public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, 
 	public boolean equals(Object object) {
 
 		if (object instanceof ESDateVersionSpecImpl) {
-			ESDateVersionSpecImpl dateVersionSpecImpl = (ESDateVersionSpecImpl) object;
+			final ESDateVersionSpecImpl dateVersionSpecImpl = (ESDateVersionSpecImpl) object;
 			return toInternalAPI().equals(dateVersionSpecImpl.toInternalAPI());
 		}
 

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.server.ESLocationProvider;
  * The default location provider offers profiles, which allows to have multiple workspaces within one root folder.
  * Allowing this isn't mandatory. It is encouraged to subclass this class when implementing an own location provider,
  * since it offers convenience methods. By convention, every path should end with an folder separator char.
- * 
+ *
  * @author wesendon
  */
 // TODO: split server/client configuration; discuss with Maximilian (see tickets)
@@ -35,7 +35,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 
 	/**
 	 * Get root folder.
-	 * 
+	 *
 	 * @return path as string
 	 */
 	protected String getRootDirectory() {
@@ -47,7 +47,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 	 * {@inheritDoc} By default this implementation stores all workspaces in a profile, which can be selected by the
 	 * {@link #getSelectedProfile()} method. If you want to use profiles, you should use or override
 	 * {@link #getSelectedProfile()}. If you don't want profiles override this method and just return your path.
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESLocationProvider#getWorkspaceDirectory()
 	 */
 	public String getWorkspaceDirectory() {
@@ -77,7 +77,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 	 * -profile=YourProfileName is checked, otherwise the profile names default, default_dev, default_internal and
 	 * default_test are used depending on the application's configuration. This method is called by
 	 * {@link #getWorkspaceDirectory()}.
-	 * 
+	 *
 	 * @return name of profile
 	 */
 	protected String getSelectedProfile() {
@@ -99,7 +99,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 
 	/**
 	 * Returns the backup directory.
-	 * 
+	 *
 	 * @return the full path of the backup directory
 	 */
 	public String getBackupDirectory() {
@@ -108,7 +108,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 
 	/**
 	 * Extracts parameter from application startup arguments. It uses following pattern: parameter+"="+valueOfParameter
-	 * 
+	 *
 	 * @param parameter name of parameter
 	 * @return value of parameter as string or null
 	 */
@@ -118,7 +118,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 
 	/**
 	 * Convenience method to add folders to a string path.
-	 * 
+	 *
 	 * @param path the path
 	 * @param folders folder to add
 	 * @return new path as string
@@ -139,7 +139,7 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 
 	/**
 	 * Return the user home folder.
-	 * 
+	 *
 	 * @return the full path as string
 	 */
 	protected static String getUserHome() {

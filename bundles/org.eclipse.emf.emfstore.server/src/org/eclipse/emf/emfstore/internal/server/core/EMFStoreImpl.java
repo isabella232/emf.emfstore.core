@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Andreas Boehlke - method representation
@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.server.observer.ESServerCallObserver;
 
 /**
  * This is the main implementation of {@link EMFStore}.
- * 
+ *
  * @author wesendon
  * @see EMFStore
  */
@@ -53,7 +53,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * Represents a method in a subinterface.
-	 * 
+	 *
 	 * @author boehlke
 	 */
 	private class SubInterfaceMethod {
@@ -85,7 +85,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param serverSpace
 	 *            the {@link ServerSpace}
 	 * @param authorizationControl
@@ -100,7 +100,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private Set<ESServerCallObserver> initServerCallObservers() {
 		final Set<ESServerCallObserver> result = new LinkedHashSet<ESServerCallObserver>();
@@ -143,9 +143,9 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
 	 */
 	public Object invoke(Object obj, final Method method, final Object[] args) throws ESException {
@@ -188,7 +188,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * Notify the observers with the given notifier.
-	 * 
+	 *
 	 * @param serverCallObserverNotifier the notifier
 	 */
 	private void notifyServerCallObservers(ServerCallObserverNotifier serverCallObserverNotifier) {
@@ -205,7 +205,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 	/**
 	 * creates a dynamic proxy backed by EmfStoreImpl.
-	 * 
+	 *
 	 * @param serverSpace the server space
 	 * @param accessControl an access control instance
 	 * @return an instance of emfstore

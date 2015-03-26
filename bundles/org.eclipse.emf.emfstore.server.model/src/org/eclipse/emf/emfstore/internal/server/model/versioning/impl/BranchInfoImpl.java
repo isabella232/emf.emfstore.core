@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
@@ -44,7 +44,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	/**
 	 * The cached value of the '{@link #getHead() <em>Head</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHead()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -83,7 +83,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected BranchInfoImpl() {
@@ -92,7 +92,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -102,7 +102,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -111,7 +111,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -124,7 +124,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getHead() {
@@ -156,7 +156,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetHead() {
@@ -165,7 +165,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetHead(PrimaryVersionSpec newHead, NotificationChain msgs) {
@@ -186,7 +186,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setHead(PrimaryVersionSpec newHead) {
@@ -213,7 +213,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getSource() {
@@ -245,7 +245,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetSource() {
@@ -254,7 +254,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetSource(PrimaryVersionSpec newSource, NotificationChain msgs) {
@@ -275,7 +275,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSource(PrimaryVersionSpec newSource) {
@@ -303,7 +303,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -320,7 +320,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -345,7 +345,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -367,7 +367,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -389,7 +389,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -408,7 +408,7 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -425,11 +425,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESBranchInfoImpl toAPI() {
@@ -442,11 +442,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESBranchInfoImpl createAPI() {

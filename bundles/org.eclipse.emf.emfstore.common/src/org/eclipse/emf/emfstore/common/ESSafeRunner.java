@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
@@ -16,9 +16,9 @@ import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 
 /**
  * Utility class to run {@link ESSafeRunnable}s.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 // If {@link CommonUtil#isTesting()} is true, a possible exception is thrown.
@@ -29,7 +29,7 @@ public final class ESSafeRunner {
 
 	/**
 	 * Runs a {@link ESSafeRunnable} and handles exceptions.
-	 * 
+	 *
 	 * @param code The {@link ESSafeRunnable} to execute.
 	 */
 	public static void run(final ESSafeRunnable code) {

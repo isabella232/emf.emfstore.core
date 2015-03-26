@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -18,9 +18,9 @@ import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
 
 /**
  * An observer interface for tracking changes upon an {@link IdEObjectCollection}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public interface IdEObjectCollectionChangeObserver extends ESObserver {
 
@@ -29,7 +29,7 @@ public interface IdEObjectCollectionChangeObserver extends ESObserver {
 	 * See {@link Notification} documentation for details on the notifications.
 	 * This method will be called even if the given notification results from an add
 	 * or remove of a model element of the project.
-	 * 
+	 *
 	 * @param notification
 	 *            the notification
 	 * @param collection
@@ -41,7 +41,7 @@ public interface IdEObjectCollectionChangeObserver extends ESObserver {
 
 	/**
 	 * Called when the {@code eObject} has been added to the {@code collection}.
-	 * 
+	 *
 	 * @param collection
 	 *            the {@link IdEObjectCollection} to which the {@code eObject} was added
 	 * @param eObject
@@ -52,10 +52,10 @@ public interface IdEObjectCollectionChangeObserver extends ESObserver {
 	/**
 	 * Called when the {@code eObject} and its siblings have been removed from
 	 * the {@code collection}.
-	 * 
+	 *
 	 * <b>NOTE</b>: Note that you will NOT receive a separate notification for each
 	 * sibling.
-	 * 
+	 *
 	 * @param collection
 	 *            the {@link IdEObjectCollection} to which the {@code eObject} was added
 	 * @param eObject
@@ -65,7 +65,7 @@ public interface IdEObjectCollectionChangeObserver extends ESObserver {
 
 	/**
 	 * If the {@link IdEObjectCollection} is deleted.
-	 * 
+	 *
 	 * @param collection the {@link IdEObjectCollection} that has been deleted
 	 */
 	void collectionDeleted(IdEObjectCollection collection);

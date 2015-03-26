@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser,karakoc
  ******************************************************************************/
@@ -16,7 +16,7 @@ package org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.acimport;
  * source on diagnosing an unwanted behavior, e.g. that no connection to a given
  * server could be established or a file, which should be imported was not in
  * the correct format.
- * 
+ *
  * @author deser, karakoc
  */
 public class CorruptedSourceException extends Exception {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -19,15 +19,15 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Filters notifications which come from datatypes that should be ignored.
- * 
+ *
  * @author emueller
  */
 public class IgnoreDatatypeFilter implements ESNotificationFilter {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.handler.ESNotificationFilter#check(org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo,
 	 *      org.eclipse.emf.emfstore.common.model.ESObjectContainer)
 	 */

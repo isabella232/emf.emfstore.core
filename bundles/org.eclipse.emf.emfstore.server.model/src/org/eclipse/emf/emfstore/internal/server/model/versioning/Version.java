@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Version</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  * Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion()
  * @model
  * @generated
@@ -51,7 +51,7 @@ public interface Version extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Primary Spec</em>' containment reference.
 	 * @see #setPrimarySpec(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_PrimarySpec()
@@ -65,7 +65,7 @@ public interface Version extends EObject {
 	 * <em>Primary Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Primary Spec</em>' containment reference.
 	 * @see #getPrimarySpec()
 	 * @generated
@@ -81,7 +81,7 @@ public interface Version extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Tag Specs</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_TagSpecs()
 	 * @model containment="true" resolveProxies="true"
@@ -100,7 +100,7 @@ public interface Version extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Next Version</em>' reference.
 	 * @see #setNextVersion(Version)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_NextVersion()
@@ -115,7 +115,7 @@ public interface Version extends EObject {
 	 * <em>Next Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Next Version</em>' reference.
 	 * @see #getNextVersion()
 	 * @generated
@@ -132,7 +132,7 @@ public interface Version extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Previous Version</em>' reference.
 	 * @see #setPreviousVersion(Version)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_PreviousVersion()
@@ -148,7 +148,7 @@ public interface Version extends EObject {
 	 * <em>Previous Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Previous Version</em>' reference.
 	 * @see #getPreviousVersion()
 	 * @generated
@@ -163,7 +163,7 @@ public interface Version extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Log Message</em>' containment reference.
 	 * @see #setLogMessage(LogMessage)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_LogMessage()
@@ -177,7 +177,7 @@ public interface Version extends EObject {
 	 * <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Log Message</em>' containment reference.
 	 * @see #getLogMessage()
 	 * @generated
@@ -195,7 +195,7 @@ public interface Version extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Ancestor Version</em>' reference.
 	 * @see #setAncestorVersion(Version)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_AncestorVersion()
@@ -211,7 +211,7 @@ public interface Version extends EObject {
 	 * <em>Ancestor Version</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Ancestor Version</em>' reference.
 	 * @see #getAncestorVersion()
 	 * @generated
@@ -230,7 +230,7 @@ public interface Version extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Branched Versions</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_BranchedVersions()
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getAncestorVersion
@@ -251,7 +251,7 @@ public interface Version extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Merged To Version</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_MergedToVersion()
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getMergedFromVersion
@@ -272,7 +272,7 @@ public interface Version extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Merged From Version</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion_MergedFromVersion()
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getMergedToVersion
@@ -283,14 +283,14 @@ public interface Version extends EObject {
 
 	/**
 	 * Allows to retrieve the ChangePackage associated with this version.
-	 * 
+	 *
 	 * @return the changes
 	 */
 	ChangePackage getChanges();
 
 	/**
 	 * Allows to retrieve the project state associated with this version.
-	 * 
+	 *
 	 * @return the project state
 	 */
 	Project getProjectState();
@@ -298,7 +298,7 @@ public interface Version extends EObject {
 	/**
 	 * Allows for setting the resource containing the changePackage the getChanges()-method is to return.
 	 * The resource will be removed from its resourceSet if it is contained in one.
-	 * 
+	 *
 	 * @param resource the new change resource
 	 */
 	void setChangeResource(Resource resource);
@@ -306,7 +306,7 @@ public interface Version extends EObject {
 	/**
 	 * Allows for setting the resource containing the project state the getProjectState()-method is to return.
 	 * The resource will be removed from its resourceSet if it is contained in one.
-	 * 
+	 *
 	 * @param resource the new project state resource
 	 */
 	void setProjectStateResource(Resource resource);

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Jonas Helming
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.jface.viewers.ILightweightLabelDecorator;
 
 /**
  * The decorator to show dirty state of an element shown in viewers.
- * 
+ *
  * @author Helming
  */
 public class ModelElementDirtyDecorator implements ILightweightLabelDecorator {
@@ -38,26 +38,26 @@ public class ModelElementDirtyDecorator implements ILightweightLabelDecorator {
 	private static ImageDescriptor descriptor;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.ILightweightLabelDecorator#decorate(java.lang.Object,
 	 *      org.eclipse.jface.viewers.IDecoration)
 	 */
 	public void decorate(Object element, IDecoration decoration) {
 		URL url = null;
-		boolean dirty = false;
+		final boolean dirty = false;
 		if (element instanceof EObject) {
-			EObject modelElement = (EObject) element;
-			Project project = ModelUtil.getProject(modelElement);
+			final EObject modelElement = (EObject) element;
+			final Project project = ModelUtil.getProject(modelElement);
 			if (project == null) {
 				return;
 			}
-			ProjectSpace projectSpace = ESWorkspaceProviderImpl.getProjectSpace(modelElement);
+			final ProjectSpace projectSpace = ESWorkspaceProviderImpl.getProjectSpace(modelElement);
 			if (projectSpace == null) {
 				return;
 			}
-			ModelElementId modelElementId = project.getModelElementId(modelElement);
+			final ModelElementId modelElementId = project.getModelElementId(modelElement);
 			if (modelElementId == null) {
 				return;
 			}
@@ -74,7 +74,7 @@ public class ModelElementDirtyDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse. jface.viewers.ILabelProviderListener)
 	 */
 	public void addListener(ILabelProviderListener listener) {
@@ -82,7 +82,7 @@ public class ModelElementDirtyDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
@@ -90,7 +90,7 @@ public class ModelElementDirtyDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * . {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang .Object, java.lang.String)
 	 */
 	public boolean isLabelProperty(Object element, String property) {
@@ -99,7 +99,7 @@ public class ModelElementDirtyDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * . {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse
 	 *      .jface.viewers.ILabelProviderListener)
 	 */

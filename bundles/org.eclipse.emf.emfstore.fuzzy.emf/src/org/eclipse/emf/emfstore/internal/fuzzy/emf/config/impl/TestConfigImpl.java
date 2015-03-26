@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -30,13 +30,14 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getSeed <em>Seed</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getCount <em>Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getTestClass <em>ESFuzzyTest Class</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getTestClass <em>ESFuzzyTest Class
+ * </em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getId <em>Id</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getMutatorConfig <em>Mutator Config
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, TestConfig> implements TestConfig {
@@ -45,7 +46,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The default value of the '{@link #getSeed() <em>Seed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSeed()
 	 * @generated
 	 * @ordered
@@ -56,7 +57,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The cached value of the '{@link #getSeed() <em>Seed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSeed()
 	 * @generated
 	 * @ordered
@@ -67,7 +68,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getCount()
 	 * @generated
 	 * @ordered
@@ -78,7 +79,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The cached value of the '{@link #getCount() <em>Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getCount()
 	 * @generated
 	 * @ordered
@@ -89,7 +90,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The cached value of the '{@link #getTestClass() <em>ESFuzzyTest Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTestClass()
 	 * @generated
 	 * @ordered
@@ -100,7 +101,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -111,7 +112,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -122,7 +123,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	 * The cached value of the '{@link #getMutatorConfig() <em>Mutator Config</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMutatorConfig()
 	 * @generated
 	 * @ordered
@@ -132,7 +133,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestConfigImpl() {
@@ -142,7 +143,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +154,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public long getSeed() {
@@ -163,7 +164,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSeed(long newSeed) {
@@ -177,7 +178,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getCount() {
@@ -187,7 +188,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setCount(int newCount) {
@@ -201,7 +202,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Class<?> getTestClass() {
@@ -211,7 +212,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTestClass(Class<?> newTestClass) {
@@ -226,7 +227,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getId() {
@@ -236,7 +237,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -250,7 +251,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MutatorConfig getMutatorConfig() {
@@ -260,7 +261,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetMutatorConfig(MutatorConfig newMutatorConfig, NotificationChain msgs) {
@@ -281,7 +282,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMutatorConfig(MutatorConfig newMutatorConfig) {
@@ -309,7 +310,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -324,7 +325,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -347,7 +348,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -375,7 +376,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -403,7 +404,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -426,7 +427,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -450,7 +451,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.AbstractAPIDeletegateImpl#createAPI()
 	 */
 	@Override

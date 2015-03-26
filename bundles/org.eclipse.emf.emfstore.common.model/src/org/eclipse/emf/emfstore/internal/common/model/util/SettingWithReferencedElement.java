@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * EdgarMueller
  ******************************************************************************/
@@ -16,17 +16,17 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 
 /**
  * Represents a Setting (EObject and Feature) and its referenced element.
- * 
+ *
  * @author Edgar Mueller
  */
 public class SettingWithReferencedElement {
 
-	private Setting setting;
-	private EObject referencedElement;
+	private final Setting setting;
+	private final EObject referencedElement;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param setting the setting
 	 * @param referencedElement the referenced element
 	 */
@@ -37,7 +37,7 @@ public class SettingWithReferencedElement {
 
 	/**
 	 * Get the referenced element.
-	 * 
+	 *
 	 * @return the element
 	 */
 	public EObject getReferencedElement() {
@@ -46,7 +46,7 @@ public class SettingWithReferencedElement {
 
 	/**
 	 * Get the setting.
-	 * 
+	 *
 	 * @return the setting
 	 */
 	public Setting getSetting() {

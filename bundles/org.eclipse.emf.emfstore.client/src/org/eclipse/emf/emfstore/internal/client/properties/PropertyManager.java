@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Franziska Haunolder, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -47,7 +47,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * Shared and local properties both have their own namespace meaning that a
  * shared property named <code>"foo"</code> has nothing in common with a local
  * property called <code>"foo"</code>.
- * 
+ *
  * @author haunolder
  * @author emueller
  **/
@@ -59,7 +59,7 @@ public final class PropertyManager {
 
 	/**
 	 * PropertyManager constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space that should get managed by the property
 	 *            manager
@@ -72,7 +72,7 @@ public final class PropertyManager {
 
 	/**
 	 * Set a local property. If the property already exists it will be updated.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the local property
 	 * @param value
@@ -96,7 +96,7 @@ public final class PropertyManager {
 	/**
 	 * Sets a local string property. If the property already exists it will be
 	 * updated.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the local property
 	 * @param value
@@ -111,7 +111,7 @@ public final class PropertyManager {
 
 	/**
 	 * Retrieves a local property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the local property
 	 * @return the local property
@@ -122,7 +122,7 @@ public final class PropertyManager {
 
 	/**
 	 * Retrieves a local string property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of a local string property
 	 * @return the string value if it exists, otherwise <code>null</code>
@@ -137,7 +137,7 @@ public final class PropertyManager {
 
 	/**
 	 * Sets the property with the given name to the given value.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the property to be set
 	 * @param value
@@ -149,12 +149,12 @@ public final class PropertyManager {
 
 	/**
 	 * Set a shared string property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the shared property
 	 * @param string
 	 *            the string value that should be set
-	 * 
+	 *
 	 **/
 	public void setSharedStringProperty(String propertyName, String string) {
 		final PropertyStringValue propertyValue = org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
@@ -165,12 +165,12 @@ public final class PropertyManager {
 
 	/**
 	 * Set a versioned shared string property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the shared property
 	 * @param string
 	 *            the string value that should be set
-	 * 
+	 *
 	 **/
 	public void setSharedVersionedStringProperty(String propertyName, String string) {
 		final PropertyStringValue propertyValue = org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
@@ -181,7 +181,7 @@ public final class PropertyManager {
 
 	/**
 	 * Set a shared property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the shared property
 	 * @param value
@@ -207,7 +207,7 @@ public final class PropertyManager {
 
 	/**
 	 * Set a shared property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the shared property
 	 * @param value
@@ -222,7 +222,7 @@ public final class PropertyManager {
 	 * given, i.e. the name of the property is first used to look it up within
 	 * the project space. If found, the value and version attributes are
 	 * updated, otherwise the property will be created.
-	 * 
+	 *
 	 * @param property
 	 *            the updated property
 	 */
@@ -246,7 +246,7 @@ public final class PropertyManager {
 
 	/**
 	 * Retrieves the shared property with the given name.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the shared property
 	 * @return value the actual value of the shared property
@@ -257,7 +257,7 @@ public final class PropertyManager {
 
 	/**
 	 * Retrieves a shared string property.
-	 * 
+	 *
 	 * @param propertyName
 	 *            of the shared property as String
 	 * @return the string value if it exists, otherwise <code>null</code>
@@ -274,7 +274,7 @@ public final class PropertyManager {
 	 * Transmit changed shared properties to the server. Clears the
 	 * changedSharedProperties List and fills shareProperties with the actual
 	 * properties from the server.
-	 * 
+	 *
 	 * @throws AccessControlException
 	 *             if the caller has no write access to the project space
 	 * @throws ESException
@@ -325,7 +325,7 @@ public final class PropertyManager {
 	/**
 	 * Filters a list of changed properties to find only those that have not
 	 * been rejected.
-	 * 
+	 *
 	 * @param changedProperties
 	 *            the list of changed properties
 	 * @param rejectedProperties
@@ -359,7 +359,7 @@ public final class PropertyManager {
 
 	/**
 	 * Creates a map based on the project properties of the given {@link EMFStorePropertyType}.
-	 * 
+	 *
 	 * @param type
 	 *            the {@link EMFStorePropertyType} of the properties that should
 	 *            be contained in the map
@@ -379,7 +379,7 @@ public final class PropertyManager {
 
 	/**
 	 * Creates a property with the given key and value.
-	 * 
+	 *
 	 * @param key
 	 *            the name of the property
 	 * @param value
@@ -402,7 +402,7 @@ public final class PropertyManager {
 	/**
 	 * Returns the property with the given name if it is contained in properties
 	 * map of the project space.
-	 * 
+	 *
 	 * @param propertyName
 	 *            the name of the property
 	 * @return the property or <code>null</code> if no such property has been

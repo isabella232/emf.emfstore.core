@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.example.merging;
@@ -74,7 +74,7 @@ public class Application implements IApplication {
 
 	/**
 	 * Simulates a client.
-	 * 
+	 *
 	 * @param server
 	 *            the server the client will interact with
 	 * @throws ESException in case any error occurs
@@ -157,9 +157,9 @@ public class Application implements IApplication {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.equinox.app.IApplication#stop()
 	 */
 	public void stop() {

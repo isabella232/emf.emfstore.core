@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -28,9 +28,9 @@ import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
 
 /**
  * A mutation, which adds a new object into the model.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  */
 public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMutation> implements ESAddObjectMutation {
 
@@ -38,7 +38,7 @@ public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMuta
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public AddObjectMutation(ESModelMutatorUtil util) {
@@ -48,7 +48,7 @@ public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMuta
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
@@ -62,9 +62,9 @@ public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMuta
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESAddObjectMutation#setEObjectToAdd(org.eclipse.emf.ecore.EObject)
 	 */
 	public AddObjectMutation setEObjectToAdd(EObject eObjectToAdd) {
@@ -73,9 +73,9 @@ public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMuta
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESAddObjectMutation#getEObjectToAdd()
 	 */
 	public EObject getEObjectToAdd() {
@@ -84,7 +84,7 @@ public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMuta
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
@@ -95,9 +95,9 @@ public class AddObjectMutation extends ContainmentChangeMutation<ESAddObjectMuta
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override

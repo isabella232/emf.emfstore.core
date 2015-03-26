@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -28,15 +28,15 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Exports the whole {@link Workspace}.
- * 
+ *
  * @author emueller
  */
 public class ExportWorkspaceController implements IExportImportController {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getLabel()
 	 */
 	public String getLabel() {
@@ -44,9 +44,9 @@ public class ExportWorkspaceController implements IExportImportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredNames()
 	 */
 	public String[] getFilteredNames() {
@@ -55,9 +55,9 @@ public class ExportWorkspaceController implements IExportImportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredExtensions()
 	 */
 	public String[] getFilteredExtensions() {
@@ -65,9 +65,9 @@ public class ExportWorkspaceController implements IExportImportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilename()
 	 */
 	public String getFilename() {
@@ -75,9 +75,9 @@ public class ExportWorkspaceController implements IExportImportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getParentFolderPropertyKey()
 	 */
 	public String getParentFolderPropertyKey() {
@@ -85,9 +85,9 @@ public class ExportWorkspaceController implements IExportImportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#execute(java.io.File,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -97,13 +97,13 @@ public class ExportWorkspaceController implements IExportImportController {
 			file = new File(file.getAbsoluteFile() + ExportImportDataUnits.Workspace.getExtension());
 		}
 
-		ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
-		Workspace copy = ModelUtil.clone(workspace.toInternalAPI());
+		final ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
+		final Workspace copy = ModelUtil.clone(workspace.toInternalAPI());
 
 		int i = 0;
 
-		for (ProjectSpace copiedProjectSpace : copy.getProjectSpaces()) {
-			Project orgProject = workspace.toInternalAPI().getProjectSpaces().get(i++).getProject();
+		for (final ProjectSpace copiedProjectSpace : copy.getProjectSpaces()) {
+			final Project orgProject = workspace.toInternalAPI().getProjectSpaces().get(i++).getProject();
 			copiedProjectSpace.setProject(ModelUtil.clone(orgProject));
 		}
 
@@ -111,9 +111,9 @@ public class ExportWorkspaceController implements IExportImportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#isExport()
 	 */
 	public boolean isExport() {

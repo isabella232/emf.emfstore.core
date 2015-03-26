@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -21,7 +21,7 @@ public interface NotifiableIdEObjectCollection extends IdEObjectCollection, IdEO
 
 	/**
 	 * Adds an {@link IdEObjectCollectionChangeObserver} to the collection.
-	 * 
+	 *
 	 * @param eObjectChangeObserver
 	 *            a change observer to be added
 	 */
@@ -29,7 +29,7 @@ public interface NotifiableIdEObjectCollection extends IdEObjectCollection, IdEO
 
 	/**
 	 * Remove an {@link IdEObjectCollectionChangeObserver} from the collection.
-	 * 
+	 *
 	 * @param eObjectChangeObserver
 	 *            a change observer to be removed
 	 */
@@ -37,7 +37,7 @@ public interface NotifiableIdEObjectCollection extends IdEObjectCollection, IdEO
 
 	/**
 	 * Returns the change notifier attached to this collection.
-	 * 
+	 *
 	 * @return an {@link EObjectChangeNotifier}
 	 */
 	EObjectChangeNotifier getChangeNotifier();

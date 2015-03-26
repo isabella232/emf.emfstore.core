@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -28,15 +28,15 @@ import org.eclipse.emf.emfstore.server.model.ESSessionId;
 
 /**
  * Mapping between {@link ESUsersession} and {@link Usersession}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Usersession> implements ESUsersession {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param usersession
 	 *            the delegate
 	 */
@@ -45,9 +45,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#getServer()
 	 */
 	public ESServer getServer() {
@@ -63,9 +63,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#getUsername()
 	 */
 	public String getUsername() {
@@ -77,9 +77,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#getPassword()
 	 */
 	public String getPassword() {
@@ -91,9 +91,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#isLoggedIn()
 	 */
 	public boolean isLoggedIn() {
@@ -101,9 +101,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#refresh()
 	 */
 	public void refresh() throws ESException {
@@ -116,9 +116,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#logout()
 	 */
 	public void logout() throws ESException {
@@ -132,7 +132,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * Returns the session ID.
-	 * 
+	 *
 	 * @return the session ID
 	 */
 	public ESSessionId getESSessionId() {
@@ -141,7 +141,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * Sets the user's name to be used by this session when logging in.
-	 * 
+	 *
 	 * @param name
 	 *            the name of the user
 	 */
@@ -156,7 +156,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * Sets the password to be used by this session when logging in.
-	 * 
+	 *
 	 * @param password
 	 *            the new password
 	 */
@@ -171,7 +171,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * Sets the server.
-	 * 
+	 *
 	 * @param server
 	 *            the server
 	 */
@@ -189,9 +189,9 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#getSessionId()
 	 */
 	public ESSessionId getSessionId() {
@@ -204,7 +204,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#setSavePassword(boolean)
 	 */
 	public void setSavePassword(boolean shouldSavePassword) {
@@ -213,7 +213,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#isSavePassword()
 	 */
 	public boolean isSavePassword() {
@@ -222,7 +222,7 @@ public class ESUsersessionImpl extends AbstractAPIImpl<ESUsersessionImpl, Userse
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESUsersession#delete()
 	 */
 	public void delete() throws ESException {

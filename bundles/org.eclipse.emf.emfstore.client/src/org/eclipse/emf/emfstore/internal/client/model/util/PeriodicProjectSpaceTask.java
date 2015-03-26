@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -19,9 +19,9 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 /**
  * Class that enables to decorate a {@link ProjectSpace} with a task
  * that gets executed periodically.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class PeriodicProjectSpaceTask extends TimerTask {
 
@@ -32,7 +32,7 @@ public abstract class PeriodicProjectSpaceTask extends TimerTask {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} that should get decorated
 	 * @param interval
@@ -63,7 +63,7 @@ public abstract class PeriodicProjectSpaceTask extends TimerTask {
 
 	/**
 	 * Returns the decorated {@link ProjectSpace}.
-	 * 
+	 *
 	 * @return the project space
 	 */
 	public ProjectSpace getProjectSpace() {
@@ -72,7 +72,7 @@ public abstract class PeriodicProjectSpaceTask extends TimerTask {
 
 	/**
 	 * Returns the interval in which the task is executed.
-	 * 
+	 *
 	 * @return the interval
 	 */
 	public long getInterval() {

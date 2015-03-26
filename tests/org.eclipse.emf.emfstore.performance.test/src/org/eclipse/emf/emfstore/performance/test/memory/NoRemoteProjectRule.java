@@ -30,7 +30,8 @@ public class NoRemoteProjectRule extends ExternalResource {
 	/**
 	 * Instantiates a new no remote project rule.
 	 * 
-	 * @param rule the EMFStore rule
+	 * @param rule
+	 *            the EMFStore rule
 	 */
 	public NoRemoteProjectRule(RunningEMFStoreRule rule) {
 		this.rule = rule;
@@ -54,7 +55,8 @@ public class NoRemoteProjectRule extends ExternalResource {
 		}
 	}
 
-	private void deleteRemoteProjects() throws IOException, FatalESException, ESException {
+	private void deleteRemoteProjects() throws IOException, FatalESException,
+			ESException {
 		for (ESRemoteProject project : rule.server().getRemoteProjects()) {
 			project.delete(rule.defaultSession(), new NullProgressMonitor());
 		}

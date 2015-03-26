@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.con
 
 /**
  * Class offering common methods for the merge dialog.
- * 
+ *
  * @author wesendon
  */
 // TODO: BRANCH some of this stuff is UI related and isn't supposed to be defined here.
@@ -71,7 +71,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Cuts a text to certain length and adds "..." at the end if needed.
-	 * 
+	 *
 	 * @param str
 	 *            text
 	 * @param length
@@ -99,7 +99,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Strips line breaking characters from text.
-	 * 
+	 *
 	 * @param text
 	 *            text
 	 * @return line of text
@@ -113,7 +113,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Get Option by is type.
-	 * 
+	 *
 	 * @param options
 	 *            list of options
 	 * @param type
@@ -131,7 +131,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Checks whether a conflict needs details.
-	 * 
+	 *
 	 * @param conflict
 	 *            conflict
 	 * @return true, if so
@@ -157,7 +157,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Returns conflict descriptions on basis of the {@link DescriptionProvider} .
-	 * 
+	 *
 	 * @param key
 	 *            key
 	 * @param isBranchMerge
@@ -175,7 +175,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Uses the object's toString method or returns unset string.
-	 * 
+	 *
 	 * @param obj
 	 *            obj to string
 	 * @param unset
@@ -188,7 +188,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Returns Class and Name of {@link EObject}.
-	 * 
+	 *
 	 * @param modelElement
 	 *            modelelement
 	 * @return string
@@ -202,7 +202,7 @@ public final class DecisionUtil {
 
 	/**
 	 * Returns name for an element by using {@link MergeLabelProvider}.
-	 * 
+	 *
 	 * @param modelElement
 	 *            specified element
 	 * @return name for element;

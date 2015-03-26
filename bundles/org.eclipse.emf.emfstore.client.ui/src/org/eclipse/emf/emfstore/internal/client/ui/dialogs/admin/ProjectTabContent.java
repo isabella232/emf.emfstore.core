@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * gurcankarakoc, deser, Maximilian koegel - initial API and implementation
  ******************************************************************************/
@@ -35,7 +35,7 @@ public class ProjectTabContent extends TabContent {
 
 	/**
 	 * Project Table Provider.
-	 * 
+	 *
 	 * @author koegel
 	 */
 	private final class ITableLabelProviderImplementation implements ITableLabelProvider {
@@ -74,7 +74,7 @@ public class ProjectTabContent extends TabContent {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.TabContent#initActions()
 	 */
 	@Override

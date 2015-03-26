@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Carl Peiffer, Jan Finis - initial API and implementation
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 
 /**
  * Abstract class for the file transfer job encapsulating methods used for downloads and uploads.
- * 
+ *
  * @author pfeifferc, jfinis
  */
 public abstract class FileTransferJob extends Job {
@@ -48,7 +48,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Constructor to be called by subclasses.
-	 * 
+	 *
 	 * @param transferManager the transfer manager handling the transfer job
 	 * @param fileInfo the transfer information of the job
 	 * @param name of the transfer job
@@ -64,7 +64,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Gets the attributes required for the file transfer.
-	 * 
+	 *
 	 * @throws FileTransferException if there are any null values in the attributes
 	 */
 	protected void getConnectionAttributes() throws FileTransferException {
@@ -127,7 +127,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the connection manager, handling the connection to the emf store.
-	 * 
+	 *
 	 * @return the connection manager
 	 */
 	protected ConnectionManager getConnectionManager() {
@@ -136,7 +136,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the transferred file.
-	 * 
+	 *
 	 * @return the file where the file transfer is stored
 	 */
 	protected File getFile() {
@@ -145,7 +145,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Sets the transferred file.
-	 * 
+	 *
 	 * @param file the file to store the transfer in
 	 */
 	protected void setFile(File file) {
@@ -154,7 +154,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the project id of the project to which the file transfer belongs.
-	 * 
+	 *
 	 * @return project id
 	 */
 	protected ProjectId getProjectId() {
@@ -163,7 +163,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the session id for the connection with the emf store.
-	 * 
+	 *
 	 * @return session id
 	 */
 	protected SessionId getSessionId() {
@@ -172,7 +172,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Whether the user canceled the transfer.
-	 * 
+	 *
 	 * @return true iff canceled
 	 */
 	protected boolean isCanceled() {
@@ -181,7 +181,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the project space which is associated with the file transfer.
-	 * 
+	 *
 	 * @return the associated project space
 	 */
 	protected ProjectSpaceBase getProjectSpace() {
@@ -190,7 +190,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the file transfer manager administering the file transfer.
-	 * 
+	 *
 	 * @return the file transfer manager
 	 */
 	protected FileTransferManager getTransferManager() {
@@ -199,7 +199,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the cache manager associated with the project space of this file transfer.
-	 * 
+	 *
 	 * @return the cache manager
 	 */
 	protected FileTransferCacheManager getCache() {
@@ -208,7 +208,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the file transfer information of this transfer.
-	 * 
+	 *
 	 * @return transfer information
 	 */
 	protected FileTransferInformation getFileInformation() {
@@ -217,7 +217,7 @@ public abstract class FileTransferJob extends Job {
 
 	/**
 	 * Returns the file identifier of this file transfer.
-	 * 
+	 *
 	 * @return the file identifier
 	 */
 	protected FileIdentifier getFileId() {
@@ -227,7 +227,7 @@ public abstract class FileTransferJob extends Job {
 	/**
 	 * Sets the exception for this transfer. Do this in case an exception occurs. This exception can later be retrieved
 	 * by get exception.
-	 * 
+	 *
 	 * @param exception the exception that occurred
 	 */
 	protected void setException(Exception exception) {

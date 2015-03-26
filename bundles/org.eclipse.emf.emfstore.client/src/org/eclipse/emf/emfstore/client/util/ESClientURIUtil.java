@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.server.ESServerURIUtil;
 
 /**
  * Helper class for EMFStore Client URIs and accessing segments.
- * 
+ *
  * @author jfaltermeier
  * @since 1.1
  */
@@ -80,7 +80,7 @@ public final class ESClientURIUtil {
 	 * Creates an EMFStore URI for addressing the client's workspace.
 	 * <p />
 	 * Example URI: emfstore://workspaces/<i>profile</i>/workspace
-	 * 
+	 *
 	 * @return the EMFStore URI
 	 */
 	public static URI createWorkspaceURI() {
@@ -91,7 +91,7 @@ public final class ESClientURIUtil {
 	 * Creates an EMFStore URI for addressing the project fragment of a projectspace.
 	 * <p />
 	 * Example URI: emfstore://workspaces/<i>profile</i>/projectspaces/<i>identifier</i>/project
-	 * 
+	 *
 	 * @param projectSpace the ProjectSpace
 	 * @return the EMFStore URI
 	 */
@@ -103,7 +103,7 @@ public final class ESClientURIUtil {
 	 * Creates an EMFStore URI for addressing the operations of a projectspace.
 	 * <p />
 	 * Example URI: emfstore://workspaces/<i>profile</i>/projectspaces/<i>identifier</i>/operations
-	 * 
+	 *
 	 * @param projectSpace the ProjectSpace
 	 * @return the EMFStore URI
 	 */
@@ -115,7 +115,7 @@ public final class ESClientURIUtil {
 	 * Creates an EMFStore URI for addressing the projectspace fragment of a project.
 	 * <p />
 	 * Example URI: emfstore://workspaces/<i>profile</i>/projectspaces/<i>identifier</i>/projectspace
-	 * 
+	 *
 	 * @param projectSpace the ProjectSpace
 	 * @return the EMFStore URI
 	 */

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * Tracks any reservation based an a opposite model element.
- * 
+ *
  * @author mkoegel
  * @author emueller
  */
@@ -27,7 +27,7 @@ public class OppositeReservationMap extends LinkedHashMapWithConflictBucketCandi
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param hasOpposites
 	 *            whether this reservation map has opposites at all
 	 */
@@ -50,7 +50,7 @@ public class OppositeReservationMap extends LinkedHashMapWithConflictBucketCandi
 
 	/**
 	 * Whether this reservation map has opposites at all.
-	 * 
+	 *
 	 * @return <code>true</code> if this reservation map has opposites, <code>false</code> otherwise
 	 */
 	public boolean hasOpposites() {
@@ -59,7 +59,7 @@ public class OppositeReservationMap extends LinkedHashMapWithConflictBucketCandi
 
 	/**
 	 * Returns the {@link ConflictBucketCandidate}s for a given opposite.
-	 * 
+	 *
 	 * @param oppositeModelElement
 	 *            the opposite model element
 	 * @return a set of {@link ConflictBucketCandidate}s

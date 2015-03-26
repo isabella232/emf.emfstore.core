@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -14,12 +14,12 @@ import org.eclipse.emf.emfstore.server.model.query.ESRangeQuery;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Range Query</b></em>'.
- * 
+ *
  * @param <T>
- * 
+ *
  * @extends ESRangeQueryImpl
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.server.model.query.ESRangeQuery;
  *          Include Outgoing</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getRangeQuery()
  * @model
  * @generated NOT
@@ -47,7 +47,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Upper Limit</em>' attribute.
 	 * @see #setUpperLimit(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getRangeQuery_UpperLimit()
@@ -61,7 +61,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * <em>Upper Limit</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Upper Limit</em>' attribute.
 	 * @see #getUpperLimit()
 	 * @generated
@@ -76,7 +76,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Lower Limit</em>' attribute.
 	 * @see #setLowerLimit(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getRangeQuery_LowerLimit()
@@ -90,7 +90,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * <em>Lower Limit</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Lower Limit</em>' attribute.
 	 * @see #getLowerLimit()
 	 * @generated
@@ -105,7 +105,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Include Incoming</em>' attribute.
 	 * @see #setIncludeIncoming(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getRangeQuery_IncludeIncoming()
@@ -120,7 +120,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * <em>Include Incoming</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Include Incoming</em>' attribute.
 	 * @see #isIncludeIncoming()
 	 * @generated
@@ -135,7 +135,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Include Outgoing</em>' attribute.
 	 * @see #setIncludeOutgoing(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getRangeQuery_IncludeOutgoing()
@@ -150,7 +150,7 @@ public interface RangeQuery<T extends ESRangeQuery<?>> extends HistoryQuery<T> {
 	 * <em>Include Outgoing</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Include Outgoing</em>' attribute.
 	 * @see #isIncludeOutgoing()
 	 * @generated

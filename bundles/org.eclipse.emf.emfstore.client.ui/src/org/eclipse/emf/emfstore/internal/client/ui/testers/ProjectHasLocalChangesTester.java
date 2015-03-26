@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.client.util.RunESCommand;
 
 /**
  * Property tester to test if a project space has local changes.
- * 
+ *
  * @author koegel
  * @author emueller
  */
@@ -27,7 +27,7 @@ public class ProjectHasLocalChangesTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
@@ -39,7 +39,7 @@ public class ProjectHasLocalChangesTester extends PropertyTester {
 
 			return RunESCommand.runWithResult(new Callable<Boolean>() {
 				public Boolean call() throws Exception {
-					Boolean hasLocalChanges = new Boolean(localProject.hasUncommitedChanges());
+					final Boolean hasLocalChanges = new Boolean(localProject.hasUncommitedChanges());
 					return hasLocalChanges.equals(expectedValue);
 				}
 			});

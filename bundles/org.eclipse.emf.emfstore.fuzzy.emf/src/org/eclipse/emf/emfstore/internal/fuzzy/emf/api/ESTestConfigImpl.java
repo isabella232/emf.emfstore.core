@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -18,16 +18,16 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 
 /**
  * The API implementation wrapper for {@link TestConfig}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESTestConfigImpl extends AbstractAPIImpl<ESTestConfigImpl, TestConfig>
 	implements ESTestConfig {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param testConfig
 	 *            the internal {@link TestConfig} instance to be wrapped
 	 */
@@ -37,7 +37,7 @@ public class ESTestConfigImpl extends AbstractAPIImpl<ESTestConfigImpl, TestConf
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESTestConfig#getId()
 	 */
 	public String getId() {
@@ -46,7 +46,7 @@ public class ESTestConfigImpl extends AbstractAPIImpl<ESTestConfigImpl, TestConf
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESTestConfig#getSeed()
 	 */
 	public long getSeed() {
@@ -55,7 +55,7 @@ public class ESTestConfigImpl extends AbstractAPIImpl<ESTestConfigImpl, TestConf
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESTestConfig#getCount()
 	 */
 	public int getCount() {
@@ -64,7 +64,7 @@ public class ESTestConfigImpl extends AbstractAPIImpl<ESTestConfigImpl, TestConf
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESTestConfig#getMutatorConfig()
 	 */
 	public ESMutatorConfig getMutatorConfig() {
@@ -73,7 +73,7 @@ public class ESTestConfigImpl extends AbstractAPIImpl<ESTestConfigImpl, TestConf
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESTestConfig#getTestClass()
 	 */
 	public Class<?> getTestClass() {

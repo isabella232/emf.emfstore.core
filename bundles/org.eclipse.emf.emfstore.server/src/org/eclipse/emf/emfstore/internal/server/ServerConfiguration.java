@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Maximilian Koegel - initial API and implementation
  * Johannes Faltermeier - adaptions for independent storage
@@ -32,7 +32,7 @@ import org.osgi.framework.Bundle;
 
 /**
  * Represents the current server configuration.
- * 
+ *
  * @author koegel
  * @author wesendon
  * @author jfaltermeier
@@ -89,7 +89,7 @@ public final class ServerConfiguration {
 	/**
 	 * Password of keystore, in which the certificate for rmi encryption and
 	 * password decryption is saved.
-	 * 
+	 *
 	 * @see #KEYSTORE_ALIAS
 	 */
 	public static final String KEYSTORE_PASSWORD = "emfstore.keystore.password"; //$NON-NLS-1$
@@ -101,7 +101,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Alias for certificate in keystore.
-	 * 
+	 *
 	 * @see #KEYSTORE_PASSWORD
 	 */
 	public static final String KEYSTORE_ALIAS = "emfstore.keystore.alias"; //$NON-NLS-1$
@@ -312,7 +312,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Return the configuration directory location.
-	 * 
+	 *
 	 * @return the dir path string
 	 */
 	public static String getConfDirectory() {
@@ -340,7 +340,7 @@ public final class ServerConfiguration {
 	/**
 	 * Whether the {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole
 	 * ProjectAdminRole} has the requested privilege.
-	 * 
+	 *
 	 * @param requestedPrivileg
 	 *            the privilege that is requested
 	 * @return {@code true}, if the
@@ -368,7 +368,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Return the configuration file location.
-	 * 
+	 *
 	 * @return the file path string
 	 */
 	public static String getConfFile() {
@@ -380,7 +380,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Return the server home directory location.
-	 * 
+	 *
 	 * @return the dir path string
 	 */
 	public static String getServerHome() {
@@ -399,7 +399,7 @@ public final class ServerConfiguration {
 	/**
 	 * Returns the registered {@link ESLocationProvider} or if not existent, the
 	 * {@link org.eclipse.emf.emfstore.internal.server.DefaultServerWorkspaceLocationProvider}.
-	 * 
+	 *
 	 * @return workspace location provider
 	 */
 	public static synchronized ESLocationProvider getLocationProvider() {
@@ -424,7 +424,7 @@ public final class ServerConfiguration {
 	/**
 	 * Gets startup parameter from {@link Platform#getApplicationArgs()} which
 	 * are in the form of -[parameterkey]=[parametervalue].
-	 * 
+	 *
 	 * @param parameter
 	 *            name of parameter key
 	 * @return parameter as string or null
@@ -440,7 +440,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Checks whether a parameter is set.
-	 * 
+	 *
 	 * @param parameter
 	 *            checks existence of parameter
 	 * @return boolean
@@ -456,7 +456,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Default filepath for spfv authentication.
-	 * 
+	 *
 	 * @return path as string
 	 */
 	public static String getDefaultSPFVFilePath() {
@@ -465,7 +465,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Gets the server's properties.
-	 * 
+	 *
 	 * @return properties
 	 */
 	public static synchronized Properties getProperties() {
@@ -478,7 +478,7 @@ public final class ServerConfiguration {
 	/**
 	 * This method calls {@link Properties#getProperty(String)} and splits the
 	 * resulting string, using {@link #MULTI_PROPERTY_SEPERATOR}.
-	 * 
+	 *
 	 * @param property
 	 *            property key
 	 * @return String array or null
@@ -491,7 +491,7 @@ public final class ServerConfiguration {
 	/**
 	 * This method calls {@link Properties#getProperty(String, String)} and
 	 * splits the resulting string, using {@link #MULTI_PROPERTY_SEPERATOR}.
-	 * 
+	 *
 	 * @param property
 	 *            property key
 	 * @param defaultValue
@@ -513,7 +513,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Sets the server's properties. All already contained properties will be set to the values before.
-	 * 
+	 *
 	 * @param prop
 	 *            properties
 	 */
@@ -523,7 +523,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Sets the servers properties.
-	 * 
+	 *
 	 * @param prop The properties to set.
 	 * @param keepExisting Keep already contained properties?
 	 */
@@ -537,7 +537,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Returns the path to the server's keystore.
-	 * 
+	 *
 	 * @return path to keystore
 	 */
 	public static String getServerKeyStorePath() {
@@ -547,7 +547,7 @@ public final class ServerConfiguration {
 	/**
 	 * Get the server version as in the org.eclipse.emf.emfstore.internal.server manifest
 	 * file.
-	 * 
+	 *
 	 * @return the server version number
 	 */
 	@SuppressWarnings("cast")
@@ -560,7 +560,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Determine if this is a release version or not.
-	 * 
+	 *
 	 * @return true if it is a release version
 	 */
 	public static boolean isReleaseVersion() {
@@ -569,7 +569,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Determines if this is an internal release or not.
-	 * 
+	 *
 	 * @return true if it an internal release
 	 */
 	public static boolean isInternalReleaseVersion() {
@@ -596,7 +596,7 @@ public final class ServerConfiguration {
 	 * commit has happened. If the server does compute a checksum it will be
 	 * sent back to the client who then can check whether there are any
 	 * differences between his and the server's project state.
-	 * 
+	 *
 	 * @return true, if the server does compute a checksum in case a commit has
 	 *         happened, false otherwise
 	 */
@@ -618,7 +618,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Returns the list of all {@link StartupListener}s.
-	 * 
+	 *
 	 * @return the List of all registered {@link StartupListener}.
 	 */
 	public static List<StartupListener> getStartupListeners() {
@@ -628,7 +628,7 @@ public final class ServerConfiguration {
 	/**
 	 * Adds a {@link StartupListener} to the list of {@link StartupListener} which gets notified on start of the
 	 * EMFStore.
-	 * 
+	 *
 	 * @param listener
 	 *            the {@link StartupListener} to add
 	 */
@@ -638,7 +638,7 @@ public final class ServerConfiguration {
 
 	/**
 	 * Returns the list of all {@link PostStartupListener}s.
-	 * 
+	 *
 	 * @return the List of all registered {@link PostStartupListener}.
 	 */
 	public static List<PostStartupListener> getPostStartupListeners() {
@@ -648,7 +648,7 @@ public final class ServerConfiguration {
 	/**
 	 * Adds a {@link PostStartupListener} to the list of {@link PostStartupListener} which gets notified on start of the
 	 * EMFStore.
-	 * 
+	 *
 	 * @param listener
 	 *            the {@link PostStartupListener} to add
 	 */

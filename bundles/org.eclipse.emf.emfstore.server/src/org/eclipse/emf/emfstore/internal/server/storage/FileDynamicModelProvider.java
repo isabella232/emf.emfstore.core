@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier
  ******************************************************************************/
@@ -27,19 +27,19 @@ import org.eclipse.emf.emfstore.server.ESDynamicModelProvider;
 
 /**
  * The default Dynamic Model Provider. Resolves dynamic models from file-system.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class FileDynamicModelProvider implements ESDynamicModelProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESDynamicModelProvider#getDynamicModels()
 	 */
 	public List<EPackage> getDynamicModels() {
-		File dir = new File(ServerConfiguration.getServerHome() + "dynamic-models");
+		final File dir = new File(ServerConfiguration.getServerHome() + "dynamic-models");
 		File[] files = null;
 
 		files = dir.listFiles(new FilenameFilter() {
@@ -53,12 +53,12 @@ public class FileDynamicModelProvider implements ESDynamicModelProvider {
 		if (files != null) {
 			result = new ArrayList<EPackage>(files.length);
 
-			for (File file : files) {
-				ResourceSet resourceSet = new ResourceSetImpl();
+			for (final File file : files) {
+				final ResourceSet resourceSet = new ResourceSetImpl();
 				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 					.put("ecore", new EcoreResourceFactoryImpl());
-				Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
-				EPackage model = (EPackage) resource.getContents().get(0);
+				final Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
+				final EPackage model = (EPackage) resource.getContents().get(0);
 				result.add(model);
 			}
 		} else {

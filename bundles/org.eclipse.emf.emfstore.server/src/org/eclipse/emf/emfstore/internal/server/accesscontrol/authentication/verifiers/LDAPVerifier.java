@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 
 /**
  * Verifies username/password using LDAP.
- * 
+ *
  * @author Wesendonk
  */
 public class LDAPVerifier extends AbstractAuthenticationControl {
@@ -45,7 +45,7 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param ldapUrl url, if url starts with ldaps:// SSL is used.
 	 * @param ldapBase base
 	 * @param searchDn dn
@@ -66,9 +66,9 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String)
 	 */
@@ -144,7 +144,7 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 		try {
 			results = dirContext.search(ldapBase, "(& (" + //$NON-NLS-1$
 				searchDn + "=" + username //$NON-NLS-1$
-				+ ") (objectclass=*))", //$NON-NLS-1$ 
+				+ ") (objectclass=*))", //$NON-NLS-1$
 				constraints);
 		} catch (final NamingException e) {
 			ModelUtil.logWarning(MessageFormat.format(

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -17,16 +17,16 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
  * Mapping between {@link ESAncestorVersionSpec} and {@link AncestorVersionSpec}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersionSpec, AncestorVersionSpec>
 	implements ESAncestorVersionSpec {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param ancestorVersion
 	 *            the delegate
 	 */
@@ -35,9 +35,9 @@ public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersi
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec#getTarget()
 	 */
 	public ESPrimaryVersionSpec getTarget() {
@@ -45,9 +45,9 @@ public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersi
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec#getSource()
 	 */
 	public ESPrimaryVersionSpec getSource() {
@@ -58,7 +58,7 @@ public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersi
 	public boolean equals(Object object) {
 
 		if (object instanceof ESAncestorVersionSpecImpl) {
-			ESAncestorVersionSpecImpl ancestorVersionSpecImpl = (ESAncestorVersionSpecImpl) object;
+			final ESAncestorVersionSpecImpl ancestorVersionSpecImpl = (ESAncestorVersionSpecImpl) object;
 			return toInternalAPI().equals(ancestorVersionSpecImpl.toInternalAPI());
 		}
 

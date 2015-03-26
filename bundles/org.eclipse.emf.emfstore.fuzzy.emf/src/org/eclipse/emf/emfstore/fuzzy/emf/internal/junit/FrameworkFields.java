@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -15,9 +15,9 @@ import org.junit.runners.model.FrameworkField;
 
 /**
  * Simple utility class to ease passing of framework fields.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public final class FrameworkFields {
 
@@ -38,7 +38,7 @@ public final class FrameworkFields {
 
 	/**
 	 * Creates a fresh instance.
-	 * 
+	 *
 	 * @return a fresh uninitialized {@link FrameworkFields} instance.
 	 */
 	public static FrameworkFields create() {
@@ -75,7 +75,7 @@ public final class FrameworkFields {
 
 	/**
 	 * Sets the data field.
-	 * 
+	 *
 	 * @param dataField
 	 *            the data field to be set
 	 * @return this {@link FrameworkFields} instance
@@ -87,7 +87,7 @@ public final class FrameworkFields {
 
 	/**
 	 * Sets the options field.
-	 * 
+	 *
 	 * @param optionsField
 	 *            the options field to be set
 	 * @return this {@link FrameworkFields} instance
@@ -99,7 +99,7 @@ public final class FrameworkFields {
 
 	/**
 	 * Sets the mutator field.
-	 * 
+	 *
 	 * @param mutatorField
 	 *            the mutator field to be set
 	 * @return this {@link FrameworkFields} instance
@@ -111,7 +111,7 @@ public final class FrameworkFields {
 
 	/**
 	 * Sets the util field.
-	 * 
+	 *
 	 * @param utilField
 	 *            the util field to be set
 	 * @return this {@link FrameworkFields} instance

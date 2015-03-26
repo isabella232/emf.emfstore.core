@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.login;
@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * A dialog showing a list of servers from which the user is able to select one.
- * 
+ *
  */
 public class ServerInfoSelectionDialog extends TitleAreaDialog {
 
@@ -44,7 +44,7 @@ public class ServerInfoSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Create the dialog.
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell
 	 * @param servers
@@ -63,9 +63,9 @@ public class ServerInfoSelectionDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class ServerInfoSelectionDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns the selected server.
-	 * 
+	 *
 	 * @return the selected server.
 	 */
 	public ESServer getResult() {
@@ -117,9 +117,9 @@ public class ServerInfoSelectionDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -135,9 +135,9 @@ public class ServerInfoSelectionDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
 	 */
 	@Override

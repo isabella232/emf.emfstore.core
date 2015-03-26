@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.events.impl;
@@ -28,14 +28,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EventImpl extends EObjectImpl implements Event {
 	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTimestamp()
 	 * @generated
 	 * @ordered
@@ -45,7 +45,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	/**
 	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTimestamp()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected EventImpl() {
@@ -63,7 +63,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -73,7 +73,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getTimestamp() {
@@ -82,7 +82,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTimestamp(Date newTimestamp) {
@@ -96,7 +96,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -143,7 +143,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -158,7 +158,7 @@ public class EventImpl extends EObjectImpl implements Event {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

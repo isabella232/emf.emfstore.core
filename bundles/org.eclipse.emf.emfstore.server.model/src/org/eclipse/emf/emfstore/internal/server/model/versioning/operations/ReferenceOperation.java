@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Reference Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * <em>Containment Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getReferenceOperation()
  * @model abstract="true"
  * @generated
@@ -41,7 +41,7 @@ public interface ReferenceOperation extends FeatureOperation {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Bidirectional</em>' attribute.
 	 * @see #setBidirectional(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getReferenceOperation_Bidirectional()
@@ -56,7 +56,7 @@ public interface ReferenceOperation extends FeatureOperation {
 	 * <em>Bidirectional</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Bidirectional</em>' attribute.
 	 * @see #isBidirectional()
 	 * @generated
@@ -71,7 +71,7 @@ public interface ReferenceOperation extends FeatureOperation {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Opposite Feature Name</em>' attribute.
 	 * @see #setOppositeFeatureName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getReferenceOperation_OppositeFeatureName()
@@ -86,7 +86,7 @@ public interface ReferenceOperation extends FeatureOperation {
 	 * <em>Opposite Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Opposite Feature Name</em>' attribute.
 	 * @see #getOppositeFeatureName()
 	 * @generated
@@ -103,7 +103,7 @@ public interface ReferenceOperation extends FeatureOperation {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Containment Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ContainmentType
 	 * @see #setContainmentType(ContainmentType)
@@ -119,7 +119,7 @@ public interface ReferenceOperation extends FeatureOperation {
 	 * <em>Containment Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Containment Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ContainmentType
 	 * @see #getContainmentType()

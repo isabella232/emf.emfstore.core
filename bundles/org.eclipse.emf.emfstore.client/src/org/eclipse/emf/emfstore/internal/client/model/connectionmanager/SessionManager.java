@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Handles session management during the execution of a {@link ServerCall}.
- * 
+ *
  * @author wesendon
  */
 public class SessionManager {
@@ -47,10 +47,10 @@ public class SessionManager {
 
 	/**
 	 * Executes the given {@link ServerCall}.
-	 * 
+	 *
 	 * @param <T>
 	 *            type of the result the server call is providing
-	 * 
+	 *
 	 * @param serverCall
 	 *            the server call to be executed
 	 * @throws ESException
@@ -71,7 +71,7 @@ public class SessionManager {
 	 * to true, the session object first tries to login itself. If the login fails,
 	 * the {@link SessionProvider} retrieved by {@link #getSessionProvider()} is asked to
 	 * login the session by calling {@link SessionProvider#loginSession(Usersession)}.
-	 * 
+	 *
 	 * @param usersession
 	 *            The user session to be logged
 	 * @param forceLogin
@@ -137,7 +137,7 @@ public class SessionManager {
 
 	/**
 	 * Sets the {@link ESAbstractSessionProvider} to be used by this session manager.
-	 * 
+	 *
 	 * @param sessionProvider
 	 *            the session provider to be used
 	 */
@@ -147,7 +147,7 @@ public class SessionManager {
 
 	/**
 	 * Returns the {@link ESAbstractSessionProvider} in use by this session manager.
-	 * 
+	 *
 	 * @return the session provider in use
 	 */
 	public ESAbstractSessionProvider getSessionProvider() {

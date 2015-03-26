@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -15,14 +15,14 @@ import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionCh
 
 /**
  * Command for notifying about changes of an EObject.
- * 
+ *
  * @author koegel
  */
 public interface EObjectChangeObserverNotificationCommand {
 
 	/**
 	 * Run the command on an {@link IdEObjectCollectionChangeObserver}.
-	 * 
+	 *
 	 * @param observer the observer
 	 */
 	void run(IdEObjectCollectionChangeObserver observer);

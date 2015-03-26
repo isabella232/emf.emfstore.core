@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server;
@@ -29,7 +29,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
 	 */
 	@Override
@@ -37,7 +37,7 @@ public class Activator extends Plugin {
 		try {
 			super.start(context);
 			// BEGIN SUPRESS CATCH EXCEPTION
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			throw new FatalESException("Plugin Bundle start failed!", e);
 		}
 		// END SUPRESS CATCH EXCEPTION
@@ -46,7 +46,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
@@ -55,7 +55,7 @@ public class Activator extends Plugin {
 		try {
 			super.stop(context);
 			// BEGIN SUPRESS CATCH EXCEPTION
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			throw new FatalESException("Plugin Bundle stop failed!", e);
 		}
 		// END SUPRESS CATCH EXCEPTION
@@ -63,7 +63,7 @@ public class Activator extends Plugin {
 
 	/**
 	 * Returns the shared instance.
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {

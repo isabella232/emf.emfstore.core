@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Eugen Neufeld - initial API and implementation
  * Edgar Mueller - API annotations
@@ -26,9 +26,9 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI Controller factory.
- * 
+ *
  * @author eneufeld
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */
@@ -41,7 +41,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Commits the changes of a project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project which changes are to be committed
 	 * @return the version spec of the commit
@@ -50,7 +50,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Creates a new branch.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project for which the branch shall be created
 	 * @return the version spec of the branch
@@ -59,7 +59,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Creates a new branch.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project for which the branch shall be created
 	 * @param branch the branch to be committed
@@ -69,7 +69,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Create a new local project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @return the project
 	 */
@@ -77,7 +77,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Create a new local project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param name the name of the project
 	 * @return the project
@@ -86,7 +86,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Create a new remote project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param usersession the session to be used to create the project
 	 * @return the project
@@ -95,7 +95,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Create a new remote project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param usersession the session to be used to create the project
 	 * @param projectName the name of the project
@@ -105,7 +105,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Deletes a local project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project to be deleted
 	 */
@@ -113,7 +113,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Deletes a remote project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param remoteProject the project to be deleted
 	 * @param usersession the session to be used to create the project
@@ -122,7 +122,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Login to the server.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param server the server to login to
 	 */
@@ -130,7 +130,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Log out a usersession.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param usersession the usersession to end
 	 */
@@ -138,7 +138,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Merge a branch into the project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project to merge
 	 */
@@ -146,7 +146,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Register a new {@link org.eclipse.emf.ecore.EPackage EPackage} at the server.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param server the server at which the package should be registered
 	 */
@@ -154,7 +154,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Remove a server from the workspace.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param server the server to remove
 	 */
@@ -162,7 +162,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Share a project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project to share
 	 */
@@ -170,7 +170,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Display the history view.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project for which the history is to be displayed
 	 */
@@ -178,7 +178,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Display the history view.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param eObject the eObject for which the history is to be displayed
 	 */
@@ -186,7 +186,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Update a project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project to update
 	 * @return the version spec of the updated project
@@ -195,7 +195,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Update a project.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project to update
 	 * @param version the version to update to
@@ -205,7 +205,7 @@ public interface ESUIControllerFactory {
 
 	/**
 	 * Update a project to a specific version.
-	 * 
+	 *
 	 * @param shell the parent {@link Shell} that should be used
 	 * @param project the project to update
 	 * @return the version spec of the updated project

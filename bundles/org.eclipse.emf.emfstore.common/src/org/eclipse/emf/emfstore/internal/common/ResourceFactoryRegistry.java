@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 /**
  * A Registry for EMFResources that will return itself as Factory and always provide an EMFStore Resource.
- * 
+ *
  * @author emueller
  */
 // TODO: internal
@@ -52,7 +52,7 @@ public class ResourceFactoryRegistry extends XMIResourceFactoryImpl implements R
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.Resource.Factory.Registry#getFactory(org.eclipse.emf.common.util.URI)
 	 */
 	public Factory getFactory(final URI uri) {
@@ -61,7 +61,7 @@ public class ResourceFactoryRegistry extends XMIResourceFactoryImpl implements R
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.Resource.Factory.Registry#getFactory(org.eclipse.emf.common.util.URI,
 	 *      java.lang.String)
 	 */
@@ -71,7 +71,7 @@ public class ResourceFactoryRegistry extends XMIResourceFactoryImpl implements R
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.Resource.Factory.Registry#getProtocolToFactoryMap()
 	 */
 	public Map<String, Object> getProtocolToFactoryMap() {
@@ -80,7 +80,7 @@ public class ResourceFactoryRegistry extends XMIResourceFactoryImpl implements R
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.Resource.Factory.Registry#getExtensionToFactoryMap()
 	 */
 	public Map<String, Object> getExtensionToFactoryMap() {
@@ -89,7 +89,7 @@ public class ResourceFactoryRegistry extends XMIResourceFactoryImpl implements R
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.Resource.Factory.Registry#getContentTypeToFactoryMap()
 	 */
 	public Map<String, Object> getContentTypeToFactoryMap() {

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -17,9 +17,9 @@ import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
 
 /**
  * Mapping between {@link ESHistoryQueryImpl} and {@link HistoryQuery}.
- * 
+ *
  * @author emueller
- * 
+ *
  * @param <U> a subtype of the API implementation class {@link ESHistoryQueryImpl}
  * @param <T> a subtype of the internal type {@link HistoryQuery}
  */
@@ -28,7 +28,7 @@ public abstract class ESHistoryQueryImpl<U extends ESHistoryQuery<?>, T extends 
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param historyQuery
 	 *            the delegate
 	 */

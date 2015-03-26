@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -46,7 +46,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for performing a paged update.
- * 
+ *
  * @author emueller
  */
 public class UIUpdateProjectController extends
@@ -67,7 +67,7 @@ public class UIUpdateProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the {@link Shell} that will be used during the update
 	 * @param localProject
@@ -82,7 +82,7 @@ public class UIUpdateProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the {@link Shell} that will be used during the update
 	 * @param localProject
@@ -100,7 +100,7 @@ public class UIUpdateProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the {@link Shell} that will be used during the update
 	 * @param localProject
@@ -126,9 +126,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback#noChangesOnServer()
 	 */
 	public void noChangesOnServer() {
@@ -144,9 +144,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback#conflictOccurred(org.eclipse.emf.emfstore.server.ESConflictSet,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -158,9 +158,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.emf.emfstore.common.model.ESModelElementIdToEObjectMapping)
 	 */
@@ -184,9 +184,9 @@ public class UIUpdateProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

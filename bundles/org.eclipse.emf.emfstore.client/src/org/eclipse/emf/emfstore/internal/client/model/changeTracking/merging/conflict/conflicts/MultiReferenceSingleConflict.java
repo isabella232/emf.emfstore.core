@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Maximilian Koegel, Edgar Mueller - bugfix 421361
@@ -41,7 +41,7 @@ public class MultiReferenceSingleConflict extends VisualConflict {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param conflictBucket the conflict
 	 * @param decisionManager
 	 *            decision manager
@@ -55,7 +55,7 @@ public class MultiReferenceSingleConflict extends VisualConflict {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param multiReferenceOp
 	 *            a {@link MultiReferenceOperation}
 	 * @param singleReferenceOp
@@ -72,7 +72,7 @@ public class MultiReferenceSingleConflict extends VisualConflict {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.VisualConflict.dialogs.merge.conflict.Conflict#initConflictDescription(org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.conflict.ConflictDescription)
 	 */
 	@Override
@@ -89,7 +89,7 @@ public class MultiReferenceSingleConflict extends VisualConflict {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.VisualConflict.dialogs.merge.conflict.Conflict#initConflictOptions(java.util.List)
 	 */
 	@Override

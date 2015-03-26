@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser,karakoc
  ******************************************************************************/
@@ -181,7 +181,7 @@ public class AcUserImportPageTwo extends WizardPage {
 	/**
 	 * Initializes the page, i.e. this method is not called at the time this class gets instantiated but later, when the
 	 * page is going to get displayed.
-	 * 
+	 *
 	 * @param src the selected ImportSource
 	 */
 	public void init(ImportSource src) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Model Element Group</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * <em>Model Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getModelElementGroup()
  * @model
  * @generated
@@ -40,7 +40,7 @@ public interface ModelElementGroup extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getModelElementGroup_Name()
@@ -54,7 +54,7 @@ public interface ModelElementGroup extends EObject {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ModelElementGroup#getName
 	 * <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -70,7 +70,7 @@ public interface ModelElementGroup extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Model Elements</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getModelElementGroup_ModelElements()
 	 * @model

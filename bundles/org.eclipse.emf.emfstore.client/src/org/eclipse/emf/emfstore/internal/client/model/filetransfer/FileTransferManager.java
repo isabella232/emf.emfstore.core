@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Jan Finis - initial API and implementation
  ******************************************************************************/
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
  * space has an associated FileTransferManager. All file-related request from
  * the project space are delegated to that manager. The manager provides methods
  * to add files, get files and retrieve additional information about files.
- * 
+ *
  * @author jfinis
  */
 public class FileTransferManager {
@@ -48,7 +48,7 @@ public class FileTransferManager {
 	/**
 	 * Constructor that creates a file transfer manager for a specific project
 	 * space. Only to be called in the init of a project space!
-	 * 
+	 *
 	 * @param projectSpaceImpl
 	 *            the project space to which this transfer manager belongs
 	 */
@@ -59,12 +59,12 @@ public class FileTransferManager {
 
 	/**
 	 * Adds a file to be transferred (uploaded).
-	 * 
+	 *
 	 * @param file
 	 *            the file to be transferred
-	 * 
+	 *
 	 * @return the {@link FileIdentifier} that associates the file with its ID
-	 * 
+	 *
 	 * @throws FileTransferException in case the {@code file} is either {@code null}, a directory
 	 *             or does not exist
 	 */
@@ -74,14 +74,14 @@ public class FileTransferManager {
 
 	/**
 	 * Adds a file to be transferred (uploaded).
-	 * 
+	 *
 	 * @param file
 	 *            the file to be transferred
 	 * @param id
 	 *            the ID that will be associated with the file being uploaded
-	 * 
+	 *
 	 * @return the {@link FileIdentifier} that associates the file with its ID
-	 * 
+	 *
 	 * @throws FileTransferException in case the {@code file} is either {@code null}, a directory
 	 *             or does not exist
 	 */
@@ -120,7 +120,7 @@ public class FileTransferManager {
 
 	/**
 	 * Adds a file to the queue of pending uploads.
-	 * 
+	 *
 	 * @param identifier
 	 */
 	private void addToCommitQueue(final FileIdentifier identifier) {
@@ -143,7 +143,7 @@ public class FileTransferManager {
 	/**
 	 * Uploads all files in the commit queue. Is called upon committing the
 	 * project space.
-	 * 
+	 *
 	 * @param progress
 	 *            progress monitor
 	 */
@@ -194,7 +194,7 @@ public class FileTransferManager {
 
 	/**
 	 * Returns the download status of the file that is associated with the given {@link FileIdentifier}.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the file identifier whose download status should be retrieved
 	 * @param isTriggeredByUI
@@ -204,7 +204,7 @@ public class FileTransferManager {
 	 *            set this to <code>true</code> in case you have files, which will be updated but keep the same
 	 *            identifier
 	 * @return the download status of the file
-	 * 
+	 *
 	 * @throws FileTransferException in case the given file identifier is {@code null}
 	 */
 	public FileDownloadStatus getFile(FileIdentifier fileIdentifier,
@@ -230,13 +230,13 @@ public class FileTransferManager {
 
 	/**
 	 * Returns the download status of the file that is associated with the given {@link FileIdentifier}.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the file identifier whose download status should be retrieved
 	 * @param isTriggeredByUI
 	 *            whether the download of the file has been triggered by the UI
 	 * @return the download status of the file
-	 * 
+	 *
 	 * @throws FileTransferException in case the given file identifier is {@code null}
 	 */
 	public FileDownloadStatus getFile(FileIdentifier fileIdentifier, boolean isTriggeredByUI)
@@ -247,7 +247,7 @@ public class FileTransferManager {
 	/**
 	 * Starts a download of a specific file. Returns a status object that can be
 	 * queried to check how far the download is.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the file to be downloaded
 	 * @param monitor
@@ -264,7 +264,7 @@ public class FileTransferManager {
 
 	/**
 	 * Returns the cache manager.
-	 * 
+	 *
 	 * @return the associated cache manager
 	 */
 	FileTransferCacheManager getCache() {
@@ -274,7 +274,7 @@ public class FileTransferManager {
 	/**
 	 * Gets the index of a waiting file upload in the upload queue or -1 if this
 	 * upload is not in the queue.
-	 * 
+	 *
 	 * @param fileId
 	 *            the index to be looked up in the queue
 	 * @return the index in the queue or -1
@@ -304,7 +304,7 @@ public class FileTransferManager {
 	/**
 	 * Removes a waiting upload from the queue. Throws a file transfer exception
 	 * if the file is not in the list.
-	 * 
+	 *
 	 * @param fileId
 	 *            the file to remove from the queue
 	 * @throws FileTransferException
@@ -326,7 +326,7 @@ public class FileTransferManager {
 
 	/**
 	 * Return if a specific file is in the pending upload queue.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the file to be looked up
 	 * @return true, if the file is in the queue
@@ -340,7 +340,7 @@ public class FileTransferManager {
 	 * queue and deleted from cache. If the file is not in the queue, nothing is
 	 * done. If it is in the queue but not in the cache, then it is only removed
 	 * from the queue.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the file to be canceled
 	 */
@@ -358,7 +358,7 @@ public class FileTransferManager {
 
 	/**
 	 * returns a file information object for a specific file identifier.
-	 * 
+	 *
 	 * @param fileIdentifier
 	 *            the identifier
 	 * @return the file information for that identifier
@@ -369,7 +369,7 @@ public class FileTransferManager {
 
 	/**
 	 * Returns the associated project space.
-	 * 
+	 *
 	 * @return the project to which this file transfer manager belongs to
 	 */
 	ProjectSpaceBase getProjectSpace() {

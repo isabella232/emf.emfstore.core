@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for removing a server from the workspace.
- * 
+ *
  * @author emueller
  */
 public class UIRemoveServerController extends
@@ -41,7 +41,7 @@ public class UIRemoveServerController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell that should be used during the delet
 	 * @param server
@@ -54,9 +54,9 @@ public class UIRemoveServerController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

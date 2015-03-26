@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -36,7 +36,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Manager for XML RPC server calls.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcClientManager {
@@ -49,7 +49,7 @@ public class XmlRpcClientManager {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param serverInterface name of interface
 	 */
 	public XmlRpcClientManager(String serverInterface) {
@@ -58,7 +58,7 @@ public class XmlRpcClientManager {
 
 	/**
 	 * Initializes the connection.
-	 * 
+	 *
 	 * @param serverInfo server info
 	 * @throws ConnectionException in case of failure
 	 */
@@ -108,7 +108,7 @@ public class XmlRpcClientManager {
 
 	/**
 	 * Executes a server call with return value.
-	 * 
+	 *
 	 * @param <T> return type
 	 * @param methodName method name
 	 * @param returnType return type
@@ -122,7 +122,7 @@ public class XmlRpcClientManager {
 
 	/**
 	 * Executes a server call with list return value.
-	 * 
+	 *
 	 * @param <T> return type
 	 * @param methodName method name
 	 * @param returnType list return type
@@ -146,7 +146,7 @@ public class XmlRpcClientManager {
 
 	/**
 	 * Executes a server call without return value.
-	 * 
+	 *
 	 * @param methodName method name
 	 * @param parameters parameters
 	 * @throws ESException in case of failure

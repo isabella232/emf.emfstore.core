@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project History</b></em>'. <!-- end-user-doc
  * -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -40,7 +40,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
  * <em>Branches</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see ModelPackage#getProjectHistory()
  * @model
  * @generated
@@ -54,7 +54,7 @@ public interface ProjectHistory extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Id</em>' containment reference.
 	 * @see #setProjectId(ProjectId)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectHistory_ProjectId()
@@ -68,7 +68,7 @@ public interface ProjectHistory extends EObject {
 	 * <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Id</em>' containment reference.
 	 * @see #getProjectId()
 	 * @generated
@@ -85,7 +85,7 @@ public interface ProjectHistory extends EObject {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Versions</em>' containment reference list.
 	 * @see ModelPackage#getProjectHistory_Versions()
 	 * @model containment="true" resolveProxies="true" required="true"
@@ -95,7 +95,7 @@ public interface ProjectHistory extends EObject {
 
 	/**
 	 * Returns the last version (the last element in the version list).
-	 * 
+	 *
 	 * @return the last version
 	 * @generated NOT
 	 */
@@ -109,7 +109,7 @@ public interface ProjectHistory extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Name</em>' attribute.
 	 * @see #setProjectName(String)
 	 * @see ModelPackage#getProjectHistory_ProjectName()
@@ -123,7 +123,7 @@ public interface ProjectHistory extends EObject {
 	 * <em>Project Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Name</em>' attribute.
 	 * @see #getProjectName()
 	 * @generated
@@ -138,7 +138,7 @@ public interface ProjectHistory extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Description</em>' attribute.
 	 * @see #setProjectDescription(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectHistory_ProjectDescription()
@@ -153,7 +153,7 @@ public interface ProjectHistory extends EObject {
 	 * <em>Project Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Description</em>' attribute.
 	 * @see #getProjectDescription()
 	 * @generated
@@ -171,7 +171,7 @@ public interface ProjectHistory extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Shared Properties</em>' containment
 	 *         reference list.
 	 * @see ModelPackage#getProjectHistory_SharedProperties()
@@ -190,7 +190,7 @@ public interface ProjectHistory extends EObject {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Branches</em>' containment reference list.
 	 * @see ModelPackage#getProjectHistory_Branches()
 	 * @model containment="true" resolveProxies="true"

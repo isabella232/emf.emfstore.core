@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -20,13 +20,13 @@ package org.eclipse.emf.emfstore.internal.common.api;
  * that delegates to the internal type by means of the {@link InternalAPIDelegator} interface, this class is responsible
  * for setting up the mapping from the API type to the internal one.
  * </p>
- * 
- * 
+ *
+ *
  * @author emueller
- * 
+ *
  * @param <INTERNAL> the internal API type to be mapped onto an API implementation class
  * @param <API> the interface available in the API
- * 
+ *
  * @see InternalAPIDelegator
  */
 public abstract class AbstractAPIImpl<API, INTERNAL extends APIDelegate<API>>
@@ -36,7 +36,7 @@ public abstract class AbstractAPIImpl<API, INTERNAL extends APIDelegate<API>>
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param internal
 	 *            the internal API to delegate to
 	 */
@@ -45,9 +45,9 @@ public abstract class AbstractAPIImpl<API, INTERNAL extends APIDelegate<API>>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.InternalAPIDelegator#toInternalAPI()
 	 */
 	public INTERNAL toInternalAPI() {
@@ -56,7 +56,7 @@ public abstract class AbstractAPIImpl<API, INTERNAL extends APIDelegate<API>>
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -69,7 +69,7 @@ public abstract class AbstractAPIImpl<API, INTERNAL extends APIDelegate<API>>
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

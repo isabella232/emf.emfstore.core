@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -23,19 +23,19 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The container does not specify how model elements are added or removed from the underlying collection of EObjects.
  * </p>
- * 
+ *
  * @author emueller
  * @author wesendon
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
- * 
+ *
  * @param <T> the ID type being used
  */
 public interface ESObjectContainer<T> {
 
 	/**
 	 * Returns the model element with the given {@link ESModelElementId}.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of the model element, that should be retrieved
 	 * @return the model element that has the given ID assigned to it within the container
@@ -44,7 +44,7 @@ public interface ESObjectContainer<T> {
 
 	/**
 	 * Retrieve the {@link ESModelElementId} of the given model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element for which to retrieve the ID for
 	 * @return the {@link ESModelElementId} of the given model element
@@ -54,7 +54,7 @@ public interface ESObjectContainer<T> {
 	/**
 	 * Returns all directly contained model element of the container, i.e. a
 	 * hierarchical representation of the model elements.
-	 * 
+	 *
 	 * @return a list containing the directly contained model elements within the container
 	 */
 	EList<EObject> getModelElements();
@@ -67,14 +67,14 @@ public interface ESObjectContainer<T> {
 	 * The returned set is not modifiable and will throw an {@link UnsupportedOperationException} in case trying to do
 	 * so.
 	 * </p>
-	 * 
+	 *
 	 * @return a set of all model elements contained in the collection
 	 */
 	Set<EObject> getAllModelElements();
 
 	/**
 	 * Checks whether the {@link EObject} with the given {@link ESModelElementId} is contained in the collection.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the model element ID of the EObject, which needs to be checked,
 	 *            whether it is contained in the collection
@@ -85,7 +85,7 @@ public interface ESObjectContainer<T> {
 
 	/**
 	 * Checks whether a given {@link EObject} is contained in the collection.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element to be checked, whether it is contained in the
 	 *            collection
@@ -95,13 +95,13 @@ public interface ESObjectContainer<T> {
 
 	/**
 	 * Retrieve a list of all model elements of a certain type in the collection.
-	 * 
+	 *
 	 * @param modelElementClass
 	 *            the {@link Class} of the model element(s) to be retrieved
 	 * @param includeSubclasses
 	 *            whether to also include all subclasses of the given {@link Class} in the list
 	 * @return a list of model elements of the given type
-	 * 
+	 *
 	 * @param <U>
 	 *            the type of the model element(s) to be retrieved
 	 */
@@ -109,7 +109,7 @@ public interface ESObjectContainer<T> {
 
 	/**
 	 * Retrieve a list of all model elements of a certain type in the collection.
-	 * 
+	 *
 	 * @param modelElementClass
 	 *            the {@link Class} of the model element(s) to be retrieved
 	 * @return a list of model elements of the given type

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
@@ -38,14 +38,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
  * Project</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -55,7 +55,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -65,7 +65,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -75,7 +75,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -85,7 +85,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * The cached value of the '{@link #getProject() <em>Project</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProject()
 	 * @generated
 	 * @ordered
@@ -94,7 +94,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected OrgUnitPropertyImpl() {
@@ -103,7 +103,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -122,7 +122,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -136,7 +136,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getValue() {
@@ -145,7 +145,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setValue(String newValue) {
@@ -159,7 +159,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId getProject() {
@@ -191,7 +191,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId basicGetProject() {
@@ -200,7 +200,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetProject(ProjectId newProject, NotificationChain msgs) {
@@ -221,7 +221,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProject(ProjectId newProject) {
@@ -249,7 +249,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -264,7 +264,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -286,7 +286,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -308,7 +308,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -330,7 +330,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -349,7 +349,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

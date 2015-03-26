@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * JulianSommerfeldt
  ******************************************************************************/
@@ -31,9 +31,9 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
 
 /**
  * Generates {@link TestDiff}s out of {@link TestRun}.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 public class DiffGenerator {
 
@@ -50,7 +50,7 @@ public class DiffGenerator {
 
 	/**
 	 * A {@link DiffGenerator} with using the diffPath.
-	 * 
+	 *
 	 * @param diffPath
 	 *            The path to the Diff file.
 	 */
@@ -60,7 +60,7 @@ public class DiffGenerator {
 
 	/**
 	 * A {@link DiffGenerator} using the diffResource.
-	 * 
+	 *
 	 * @param diffResource
 	 *            The resource to use for the diff.
 	 */
@@ -81,7 +81,7 @@ public class DiffGenerator {
 
 	/**
 	 * Create a diff from two {@link TestRun}s.
-	 * 
+	 *
 	 * @param firstRun
 	 *            The first {@link TestRun}.
 	 * @param secondRun

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Unset Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getUnsetType()
  * @model
  * @generated
@@ -33,7 +33,7 @@ public enum UnsetType implements Enumerator
 	 * The '<em><b>NONE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #NONE_VALUE
 	 * @generated
 	 * @ordered
@@ -44,7 +44,7 @@ public enum UnsetType implements Enumerator
 	 * The '<em><b>IS UNSET</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #IS_UNSET_VALUE
 	 * @generated
 	 * @ordered
@@ -55,7 +55,7 @@ public enum UnsetType implements Enumerator
 	 * The '<em><b>WAS UNSET</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #WAS_UNSET_VALUE
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public enum UnsetType implements Enumerator
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #NONE
 	 * @model literal=""
 	 * @generated
@@ -86,7 +86,7 @@ public enum UnsetType implements Enumerator
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #IS_UNSET
 	 * @model
 	 * @generated
@@ -102,7 +102,7 @@ public enum UnsetType implements Enumerator
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #WAS_UNSET
 	 * @model
 	 * @generated
@@ -114,7 +114,7 @@ public enum UnsetType implements Enumerator
 	 * An array of all the '<em><b>Unset Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static final UnsetType[] VALUES_ARRAY =
@@ -129,7 +129,7 @@ public enum UnsetType implements Enumerator
 	 * A public read-only list of all the '<em><b>Unset Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<UnsetType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -138,7 +138,7 @@ public enum UnsetType implements Enumerator
 	 * Returns the '<em><b>Unset Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static UnsetType get(String literal)
@@ -158,7 +158,7 @@ public enum UnsetType implements Enumerator
 	 * Returns the '<em><b>Unset Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static UnsetType getByName(String name)
@@ -178,7 +178,7 @@ public enum UnsetType implements Enumerator
 	 * Returns the '<em><b>Unset Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static UnsetType get(int value)
@@ -198,7 +198,7 @@ public enum UnsetType implements Enumerator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
@@ -206,7 +206,7 @@ public enum UnsetType implements Enumerator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
@@ -214,7 +214,7 @@ public enum UnsetType implements Enumerator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -223,7 +223,7 @@ public enum UnsetType implements Enumerator
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private UnsetType(int value, String name, String literal)
@@ -236,7 +236,7 @@ public enum UnsetType implements Enumerator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getValue()
@@ -247,7 +247,7 @@ public enum UnsetType implements Enumerator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName()
@@ -258,7 +258,7 @@ public enum UnsetType implements Enumerator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getLiteral()
@@ -270,7 +270,7 @@ public enum UnsetType implements Enumerator
 	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

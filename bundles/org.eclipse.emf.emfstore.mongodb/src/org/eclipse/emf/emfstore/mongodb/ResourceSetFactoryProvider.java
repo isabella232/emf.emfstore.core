@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -17,9 +17,9 @@ import org.eclipselabs.mongo.emf.ext.IResourceSetFactory;
 
 /**
  * Helper class for binding the resource set factory.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class ResourceSetFactoryProvider {
 
@@ -32,7 +32,7 @@ public class ResourceSetFactoryProvider {
 
 	/**
 	 * Returns the {@link IResourceSetFactory} or <code>null</code> if not binded.
-	 * 
+	 *
 	 * @return the resource set factory
 	 */
 	public static IResourceSetFactory getResourceSetFactory() {
@@ -41,7 +41,7 @@ public class ResourceSetFactoryProvider {
 
 	/**
 	 * Binds the resource set factory.
-	 * 
+	 *
 	 * @param resourceSetFactory the resource set factory
 	 */
 	void bindResourceSetFactory(IResourceSetFactory resourceSetFactory) {

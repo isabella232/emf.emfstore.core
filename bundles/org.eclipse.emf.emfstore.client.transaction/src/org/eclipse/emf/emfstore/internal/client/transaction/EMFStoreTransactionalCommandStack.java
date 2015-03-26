@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 /**
  * Command Stack with additional support for command listing.
- * 
+ *
  * @author koegel
  */
 public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransactionalCommandStackImpl implements
@@ -147,7 +147,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.transaction.impl.AbstractTransactionalCommandStack#basicExecute(org.eclipse.emf.common.command.Command)
 	 */
 	@Override
@@ -180,7 +180,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.transaction.impl.TransactionalCommandStackImpl#handleRollback(org.eclipse.emf.common.command.Command,
 	 *      org.eclipse.emf.transaction.RollbackException)
 	 */
@@ -204,7 +204,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandStack#addCommandStackObserver(org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver)
 	 */
 	public void addCommandStackObserver(ESCommandObserver observer) {
@@ -213,7 +213,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandStack#removeCommandStackObserver(org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver)
 	 */
 	public void removeCommandStackObserver(ESCommandObserver observer) {

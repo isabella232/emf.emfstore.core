@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Maximilian Koegel, Edgar Mueller - bugfix 421361
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
 
 /**
  * Conflict for two {@link SingleReferenceOperation}.
- * 
+ *
  * @author wesendon
  */
 public class SingleReferenceConflict extends VisualConflict {
@@ -42,7 +42,7 @@ public class SingleReferenceConflict extends VisualConflict {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param conflictBucket the conflict
 	 * @param decisionManager {@link DecisionManager}
 	 */
@@ -52,8 +52,8 @@ public class SingleReferenceConflict extends VisualConflict {
 
 	/**
 	 * Construct conflict from designated left and right operation.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param conflictBucket the conflict
 	 * @param leftOperation the left operation
 	 * @param rightOperation the right operation

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model.impl;
@@ -27,14 +27,14 @@ import org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier;
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.UniqueIdentifierImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class UniqueIdentifierImpl extends EObjectImpl implements UniqueIdentifier {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -44,7 +44,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	// begin of custom code
 	/**
 	 * Constructor. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected UniqueIdentifierImpl() {
@@ -66,7 +66,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getId() {
@@ -85,7 +85,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -98,7 +98,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,7 +157,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	// begin of custom code
 	/**
 	 * <!-- begin-user-doc --> Returns a string representation.
-	 * 
+	 *
 	 * @return the string <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -176,7 +176,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * Returns true if the two identifiers are identical. False in any other case.
-	 * 
+	 *
 	 * @param otherObject the other object
 	 * @return true if the two object are considered equal
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -196,7 +196,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

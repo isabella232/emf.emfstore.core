@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -24,10 +24,10 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Change Package</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESChangePackage>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *          Version Properties</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage()
  * @model
  * @generated
@@ -54,7 +54,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Operations</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_Operations()
 	 * @model containment="true" resolveProxies="true"
@@ -71,7 +71,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_Events()
 	 * @model containment="true" resolveProxies="true"
@@ -87,7 +87,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Log Message</em>' containment reference.
 	 * @see #setLogMessage(LogMessage)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_LogMessage()
@@ -102,7 +102,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Log Message</em>' containment reference.
 	 * @see #getLogMessage()
 	 * @generated
@@ -118,7 +118,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Version Properties</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_VersionProperties()
 	 * @model containment="true" resolveProxies="true"
@@ -128,7 +128,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 
 	/**
 	 * Apply all operations in the change package to the given project.
-	 * 
+	 *
 	 * @param project
 	 *            the project
 	 */
@@ -138,7 +138,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * Apply all operations in the change package to the given project.
 	 * Additional you can force the operations to be applied with illegal
 	 * operations being ignored.
-	 * 
+	 *
 	 * @param project
 	 *            the project
 	 * @param force
@@ -155,7 +155,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	/**
 	 * Reverse the change package. Applying a change package and then its
 	 * reversed change package does not change a project in effect.
-	 * 
+	 *
 	 * @return the reverse change package
 	 */
 	ChangePackage reverse();
@@ -169,14 +169,14 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * Get all leaf operations of a change package, decomposing all composite
 	 * operations. The effect of the leaf operations on a project is the same as
 	 * the effect of the root operations of this change package.
-	 * 
+	 *
 	 * @return a list of leaf operations.
 	 */
 	List<AbstractOperation> getLeafOperations();
 
 	/**
 	 * Returns all model elements that are involved in this change package.
-	 * 
+	 *
 	 * @return a set of model element ids
 	 */
 	Set<ModelElementId> getAllInvolvedModelElements();
@@ -184,7 +184,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	/**
 	 * Get all operations of a change package, that are touching the given model
 	 * element id
-	 * 
+	 *
 	 * @return a list of leaf operations.
 	 */
 	List<AbstractOperation> getTouchingOperations(ModelElementId modelElementId);
@@ -192,7 +192,7 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	/**
 	 * Counts the number of Leaf Operations within this change package. The
 	 * method will recursivly go thru all composite operations
-	 * 
+	 *
 	 * @return the number of Leaf Operations
 	 */
 	int getSize();

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel
  ******************************************************************************/
@@ -16,16 +16,16 @@ import org.eclipse.core.runtime.Status;
 
 /**
  * Implements a log for EMFStore Common.
- * 
+ *
  * @author koegel
- * 
+ *
  */
 // TODO: merge into activator
 public class LogAdapter implements ILog {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ILog#log(java.lang.String, java.lang.Exception, int)
 	 */
 	public void log(final String message, final Exception exception, final int statusInt) {
@@ -37,7 +37,7 @@ public class LogAdapter implements ILog {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ILog#logException(java.lang.String, java.lang.Exception)
 	 */
 	public void logException(final String message, final Exception exception) {
@@ -46,7 +46,7 @@ public class LogAdapter implements ILog {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ILog#logWarning(java.lang.String, java.lang.Exception)
 	 */
 	public void logWarning(final String message, final Exception exception) {

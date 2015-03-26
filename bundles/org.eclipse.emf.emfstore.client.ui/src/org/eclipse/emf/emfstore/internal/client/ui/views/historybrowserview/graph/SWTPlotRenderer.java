@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 /*******************************************************************************
@@ -91,7 +91,7 @@ public class SWTPlotRenderer extends AbstractPlotRenderer {
 
 	/**
 	 * Creates a new SWTPlotRenderer that can draw IPlotCommits for table/tree events.
-	 * 
+	 *
 	 * @param d The display for the renderer.
 	 */
 	public SWTPlotRenderer(final Display d) {
@@ -112,18 +112,18 @@ public class SWTPlotRenderer extends AbstractPlotRenderer {
 
 	/**
 	 * Paints a IPlotCommit into the cell determined by the given event.
-	 * 
+	 *
 	 * @param event The event triggering the painting.
 	 * @param representer The commit to paint.
 	 */
 	public void paint(final Event event, IPlotCommit representer) {
 		g = event.gc;
 
-		if (this.enableAntialias) {
+		if (enableAntialias) {
 			try {
 				g.setAntialias(SWT.ON);
-			} catch (SWTException e) {
-				this.enableAntialias = false;
+			} catch (final SWTException e) {
+				enableAntialias = false;
 			}
 		}
 
@@ -156,7 +156,7 @@ public class SWTPlotRenderer extends AbstractPlotRenderer {
 
 	/**
 	 * Draws a dot with the given parameters.
-	 * 
+	 *
 	 * @param outline The color for the outline of the dot.
 	 * @param fill The color used to fill the dot.
 	 * @param x The left most coordinate of the dot.
@@ -165,10 +165,10 @@ public class SWTPlotRenderer extends AbstractPlotRenderer {
 	 * @param h The height of the dot.
 	 */
 	protected void drawDot(final Color outline, final Color fill, final int x, final int y, final int w, final int h) {
-		int dotX = cellX + x + 2;
-		int dotY = cellY + y + 1;
-		int dotW = w - 2;
-		int dotH = h - 2;
+		final int dotX = cellX + x + 2;
+		final int dotY = cellY + y + 1;
+		final int dotW = w - 2;
+		final int dotH = h - 2;
 		g.setBackground(fill);
 		g.fillOval(dotX, dotY, dotW, dotH);
 		g.setForeground(outline);
@@ -250,8 +250,8 @@ public class SWTPlotRenderer extends AbstractPlotRenderer {
 		// if (isHead)
 		// g.setFont(CommitGraphTable.highlightFont());
 
-		Point textsz = g.stringExtent(txt);
-		int arc = textsz.y / 2;
+		final Point textsz = g.stringExtent(txt);
+		final int arc = textsz.y / 2;
 		final int texty = (y * 2 - textsz.y) / 2;
 
 		// Draw backgrounds

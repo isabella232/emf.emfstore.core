@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * hodaie
  ******************************************************************************/
@@ -16,14 +16,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 
 /**
  * Operation observers are added to a project space and informed whenever an operation is executed or undone.
- * 
+ *
  * @author hodaie
  */
 public interface OperationObserver extends ESObserver {
 
 	/**
 	 * Called when an {@link AbstractOperation} has been executed.
-	 * 
+	 *
 	 * @param operation
 	 *            the executed operation
 	 */
@@ -31,7 +31,7 @@ public interface OperationObserver extends ESObserver {
 
 	/**
 	 * Called when an {@link AbstractOperation} has been reversed.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation that has been reversed.<br/>
 	 *            <b>Note</b>: the given operation is not reserved. If you wish to get

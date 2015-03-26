@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -40,14 +40,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * <em>Referenced Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implements MultiAttributeMoveOperation {
 	/**
 	 * The default value of the '{@link #getOldIndex() <em>Old Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldIndex()
 	 * @generated
 	 * @ordered
@@ -57,7 +57,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	/**
 	 * The cached value of the '{@link #getOldIndex() <em>Old Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldIndex()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	/**
 	 * The default value of the '{@link #getNewIndex() <em>New Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewIndex()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	/**
 	 * The cached value of the '{@link #getNewIndex() <em>New Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewIndex()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 * The default value of the '{@link #getReferencedValue() <em>Referenced Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getReferencedValue()
 	 * @generated
 	 * @ordered
@@ -99,7 +99,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 * The cached value of the '{@link #getReferencedValue() <em>Referenced Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getReferencedValue()
 	 * @generated
 	 * @ordered
@@ -108,7 +108,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultiAttributeMoveOperationImpl() {
@@ -117,7 +117,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getOldIndex() {
@@ -136,7 +136,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldIndex(int newOldIndex) {
@@ -150,7 +150,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getNewIndex() {
@@ -159,7 +159,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewIndex(int newNewIndex) {
@@ -173,7 +173,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Object getReferencedValue() {
@@ -182,7 +182,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setReferencedValue(Object newReferencedValue) {
@@ -196,7 +196,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -215,7 +215,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -237,7 +237,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -259,7 +259,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -279,7 +279,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -300,9 +300,9 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void apply(IdEObjectCollection project) {

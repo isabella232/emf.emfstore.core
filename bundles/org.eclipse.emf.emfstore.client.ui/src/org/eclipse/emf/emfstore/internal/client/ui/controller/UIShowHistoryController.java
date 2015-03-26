@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -29,9 +29,9 @@ import org.eclipse.ui.PlatformUI;
 /**
  * UI controller responsible for opening up the history view.
  * The controller can be either given a project or a model element contained in a project.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UIShowHistoryController extends AbstractEMFStoreUIController<Void> {
 
@@ -42,7 +42,7 @@ public class UIShowHistoryController extends AbstractEMFStoreUIController<Void> 
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell}
 	 * @param modelElement
@@ -55,7 +55,7 @@ public class UIShowHistoryController extends AbstractEMFStoreUIController<Void> 
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell}
 	 * @param localProject
@@ -67,9 +67,9 @@ public class UIShowHistoryController extends AbstractEMFStoreUIController<Void> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

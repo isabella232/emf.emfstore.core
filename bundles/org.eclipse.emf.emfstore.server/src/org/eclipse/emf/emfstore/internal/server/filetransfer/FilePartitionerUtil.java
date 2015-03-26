@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * pfeifferc
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException
 
 /**
  * File transfer utility class.
- * 
+ *
  * @author pfeifferc
  */
 public final class FilePartitionerUtil {
@@ -40,29 +40,29 @@ public final class FilePartitionerUtil {
 
 	/**
 	 * Writes a file chunk to a file.
-	 * 
+	 *
 	 * @param file file to be written to
 	 * @param fileChunk file chunk
 	 * @throws FileTransferException if any error occurs writing to the file.
 	 */
 	public static synchronized void writeChunk(File file, FileChunk fileChunk) throws FileTransferException {
 		try {
-			RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rws");
+			final RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rws");
 			// skips to the position where the file chunk should be written
 			randomAccessFile.skipBytes(fileChunk.getChunkNumber() * CHUNK_SIZE);
 			randomAccessFile.write(fileChunk.getData());
 			// make sure everything is written instantly
 			randomAccessFile.close();
-		} catch (FileNotFoundException e) {
+		} catch (final FileNotFoundException e) {
 			throw new FileTransferException(COULD_NOT_FIND_THE_FILE, e);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new FileTransferException("Could not write to the file!", e);
 		}
 	}
 
 	/**
 	 * Reads a file chunk from a file.
-	 * 
+	 *
 	 * @param file to be read from
 	 * @param fileInformation containing file transfer attributes
 	 * @return fileChunk
@@ -75,10 +75,10 @@ public final class FilePartitionerUtil {
 		FileInputStream fileInputStream = null;
 		try {
 			fileInputStream = new FileInputStream(file);
-			int absoluteSize = fileInputStream.available();
+			final int absoluteSize = fileInputStream.available();
 			// start reading the chunk from the position specified by the chunk number and chunk size
 			fileInputStream.skip(fileInformation.getChunkNumber() * CHUNK_SIZE);
-			int remainingSize = fileInputStream.available();
+			final int remainingSize = fileInputStream.available();
 			// if the remaining size is chunk size or smaller, set end flag to true, which means this is the last chunk
 			if (remainingSize <= CHUNK_SIZE && remainingSize >= 0) {
 				end = true;
@@ -90,14 +90,14 @@ public final class FilePartitionerUtil {
 			fileInputStream.getChannel().close();
 			fileInformation.setFileSize(absoluteSize);
 			return new FileChunk(fileInformation, end, data);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new FileTransferException(COULD_NOT_READ_THE_FILE, e);
 		} finally {
 			try {
 				if (fileInputStream != null) {
 					fileInputStream.close();
 				}
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				throw new FileTransferException(COULD_NOT_CLOSE_THE_FILE, e);
 			}
 		}
@@ -105,7 +105,7 @@ public final class FilePartitionerUtil {
 
 	/**
 	 * Returns the number of chunks for a given file.
-	 * 
+	 *
 	 * @param file file
 	 * @return number of chunks
 	 * @throws FileTransferException if any error occurs obtaining the file handle.
@@ -115,16 +115,16 @@ public final class FilePartitionerUtil {
 		try {
 			fileInputStream = new FileInputStream(file);
 			return (int) Math.ceil(fileInputStream.available() / (float) CHUNK_SIZE);
-		} catch (FileNotFoundException e) {
+		} catch (final FileNotFoundException e) {
 			throw new FileTransferException(COULD_NOT_FIND_THE_FILE, e);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new FileTransferException(COULD_NOT_READ_THE_FILE, e);
 		} finally {
 			try {
 				if (fileInputStream != null) {
 					fileInputStream.close();
 				}
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				throw new FileTransferException(COULD_NOT_CLOSE_THE_FILE, e);
 			}
 		}
@@ -140,15 +140,15 @@ public final class FilePartitionerUtil {
 		try {
 			fileInputStream = new FileInputStream(file);
 			return fileInputStream.available();
-		} catch (FileNotFoundException e) {
+		} catch (final FileNotFoundException e) {
 			throw new FileTransferException(COULD_NOT_FIND_THE_FILE, e);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			throw new FileTransferException(COULD_NOT_READ_THE_FILE, e);
 		} finally {
 			if (fileInputStream != null) {
 				try {
 					fileInputStream.close();
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					throw new FileTransferException(COULD_NOT_CLOSE_THE_FILE, e);
 				}
 			}

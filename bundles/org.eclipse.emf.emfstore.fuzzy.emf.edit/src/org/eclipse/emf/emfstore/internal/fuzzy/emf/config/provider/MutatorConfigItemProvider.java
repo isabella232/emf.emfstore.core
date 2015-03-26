@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.provider;
@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MutatorConfigItemProvider
@@ -48,7 +48,7 @@ public class MutatorConfigItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MutatorConfigItemProvider(AdapterFactory adapterFactory)
@@ -60,7 +60,7 @@ public class MutatorConfigItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -89,7 +89,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Root EClass feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addRootEClassPropertyDescriptor(Object object)
@@ -115,7 +115,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Min Objects Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMinObjectsCountPropertyDescriptor(Object object)
@@ -141,7 +141,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Ignore And Log feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIgnoreAndLogPropertyDescriptor(Object object)
@@ -167,7 +167,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Do Not Generate Root feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDoNotGenerateRootPropertyDescriptor(Object object)
@@ -193,7 +193,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Use Ecore ESFuzzyUtil Delete feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addUseEcoreUtilDeletePropertyDescriptor(Object object)
@@ -219,7 +219,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EClasses To Ignore feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEClassesToIgnorePropertyDescriptor(Object object)
@@ -245,7 +245,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EStructural Features To Ignore feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEStructuralFeaturesToIgnorePropertyDescriptor(Object object)
@@ -271,7 +271,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EPackages feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEPackagesPropertyDescriptor(Object object)
@@ -297,7 +297,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Max Delete Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMaxDeleteCountPropertyDescriptor(Object object)
@@ -323,7 +323,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Mutation Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMutationCountPropertyDescriptor(Object object)
@@ -349,7 +349,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Allow Duplicate IDs feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addAllowDuplicateIDsPropertyDescriptor(Object object)
@@ -375,7 +375,7 @@ public class MutatorConfigItemProvider
 	 * This returns MutatorConfig.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -388,7 +388,7 @@ public class MutatorConfigItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -403,7 +403,7 @@ public class MutatorConfigItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -431,7 +431,7 @@ public class MutatorConfigItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -444,7 +444,7 @@ public class MutatorConfigItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -20,9 +20,9 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMap
 
 /**
  * Mapping between {@link ESModelElementIdToEObjectMapping} and {@link ModelElementIdToEObjectMapping}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESModelElementIdToEObjectMappingImpl
 	extends AbstractAPIImpl<ESModelElementIdToEObjectMappingImpl, ModelElementIdToEObjectMapping>
@@ -30,7 +30,7 @@ public class ESModelElementIdToEObjectMappingImpl
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param mapping
 	 *            the internal mapping
 	 */
@@ -39,9 +39,9 @@ public class ESModelElementIdToEObjectMappingImpl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESIdToEObjectMapping#get(java.lang.Object)
 	 */
 	public EObject get(ESModelElementId modelElementId) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -21,11 +21,11 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Abstract Operation</b></em>'.
- * 
+ *
  * @extends APIDelegate<org.eclipse.emf.emfstore.server.model.ESOperation>
  *          <!-- end-user-doc
  *          -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -40,7 +40,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *          <em>Client Date</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAbstractOperation()
  * @model abstract="true"
  * @generated
@@ -55,7 +55,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Model Element Id</em>' containment reference.
 	 * @see #setModelElementId(ModelElementId)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAbstractOperation_ModelElementId()
@@ -70,7 +70,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * <em>Model Element Id</em>}' containment reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Model Element Id</em>' containment reference.
 	 * @see #getModelElementId()
 	 * @generated
@@ -85,7 +85,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Accepted</em>' attribute.
 	 * @see #setAccepted(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAbstractOperation_Accepted()
@@ -99,7 +99,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#isAccepted
 	 * <em>Accepted</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Accepted</em>' attribute.
 	 * @see #isAccepted()
@@ -115,7 +115,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Client Date</em>' attribute.
 	 * @see #setClientDate(Date)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAbstractOperation_ClientDate()
@@ -130,7 +130,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Client Date</em>' attribute.
 	 * @see #getClientDate()
 	 * @generated
@@ -142,7 +142,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * silently fail if the operation can not be applied because the given
 	 * project can not support the operation (e.g. element is missing). To make
 	 * sure an operation can be applied you can use canApply().
-	 * 
+	 *
 	 * @param project
 	 *            the project
 	 */
@@ -152,21 +152,21 @@ public interface AbstractOperation extends IdentifiableElement,
 	 * Reverse the operation. The reversed operation is build such that applying
 	 * this operation and then the reversed operation to a project does not
 	 * change the project in total effect.
-	 * 
+	 *
 	 * @return the reversed operation
 	 */
 	AbstractOperation reverse();
 
 	/**
 	 * Get the operations id.
-	 * 
+	 *
 	 * @return the id
 	 */
 	OperationId getOperationId();
 
 	/**
 	 * Get all model elements that are involved in the operation.
-	 * 
+	 *
 	 * @return a set of model element ids
 	 */
 	Set<ModelElementId> getAllInvolvedModelElements();
@@ -174,7 +174,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	/**
 	 * Get all model elements that are involved in the operation other than the
 	 * element the operation is directly operating on.
-	 * 
+	 *
 	 * @return a set of model element ids
 	 */
 	Set<ModelElementId> getOtherInvolvedModelElements();
@@ -182,7 +182,7 @@ public interface AbstractOperation extends IdentifiableElement,
 	/**
 	 * Get all operations that are a leaf operation. In case this operation is
 	 * not containing any other operations it will return itself.
-	 * 
+	 *
 	 * @return a list of leaf operations
 	 */
 	List<AbstractOperation> getLeafOperations();

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  * Edgar Mueller - API annotations
@@ -17,16 +17,16 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * Interface for extension point. This is used to register new comparators for
  * the history browser.
- * 
+ *
  * @author groeber
  * @author jsommerfeldt
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  */
 public interface ESCompare {
 	/**
 	 * Compares two EObjects to each other.
-	 * 
+	 *
 	 * @param e1
 	 *            first EObject
 	 * @param e2

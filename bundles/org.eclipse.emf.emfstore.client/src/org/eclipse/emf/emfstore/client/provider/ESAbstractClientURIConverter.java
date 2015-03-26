@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -19,10 +19,10 @@ import org.eclipse.emf.emfstore.internal.common.EMFStoreURIHandler;
 /**
  * Abstract URIConverter for normalizing EMFStore URIs on client side. Delegates normalizing to specialized methods
  * which have to be implemented by extenders.
- * 
+ *
  * @author jfaltermeier
  * @since 1.1
- * 
+ *
  */
 public abstract class ESAbstractClientURIConverter extends ExtensibleURIConverterImpl {
 
@@ -82,7 +82,7 @@ public abstract class ESAbstractClientURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore workspace URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @return the normalized URI
 	 */
@@ -90,7 +90,7 @@ public abstract class ESAbstractClientURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore project URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @return the normalized URI
@@ -99,7 +99,7 @@ public abstract class ESAbstractClientURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore operations URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @return the normalized URI
@@ -108,7 +108,7 @@ public abstract class ESAbstractClientURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore projectspace URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @return the normalized URI

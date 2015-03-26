@@ -5,15 +5,15 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Reader Role</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage#getReaderRole()
  * @model
  * @generated

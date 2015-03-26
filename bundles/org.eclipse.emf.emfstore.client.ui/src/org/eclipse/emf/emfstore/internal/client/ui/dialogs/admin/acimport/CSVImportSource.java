@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * gurcankarakoc, deser - initial API and implementation
  ******************************************************************************/
@@ -198,9 +198,9 @@ public class CSVImportSource extends ImportSource {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.acimport.ImportSource#getMessage()
 	 */
 	@Override
@@ -209,9 +209,9 @@ public class CSVImportSource extends ImportSource {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
 	 */
 	public void dispose() {
@@ -219,9 +219,9 @@ public class CSVImportSource extends ImportSource {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object,
 	 *      java.lang.Object)
 	 */

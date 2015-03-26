@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -30,9 +30,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Crea
 /**
  * Utility class for determing filtered types and operations that
  * involve only such types.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public final class EClassFilter {
 
@@ -41,7 +41,7 @@ public final class EClassFilter {
 	 */
 	public static final EClassFilter INSTANCE = new EClassFilter();
 
-	private Set<EClass> filteredEClasses;
+	private final Set<EClass> filteredEClasses;
 	private String filterLabel;
 
 	private EClassFilter() {
@@ -51,14 +51,14 @@ public final class EClassFilter {
 
 	private void initFilteredEClasses() {
 
-		ESExtensionPoint extensionPoint = new ESExtensionPoint("org.eclipse.emf.emfstore.client.ui.filteredTypes");
+		final ESExtensionPoint extensionPoint = new ESExtensionPoint("org.eclipse.emf.emfstore.client.ui.filteredTypes");
 
 		if (extensionPoint.size() == 0) {
 			return;
 		}
 
-		for (ESExtensionElement element : extensionPoint.getExtensionElements()) {
-			ESClassFilter filter = element.getClass("filteredTypes", ESClassFilter.class);
+		for (final ESExtensionElement element : extensionPoint.getExtensionElements()) {
+			final ESClassFilter filter = element.getClass("filteredTypes", ESClassFilter.class);
 
 			if (filter != null) {
 				filteredEClasses.addAll(filter.getFilteredEClasses());
@@ -72,7 +72,7 @@ public final class EClassFilter {
 
 	/**
 	 * Whether any {@link EClass} has been marked as filtered at all.
-	 * 
+	 *
 	 * @return true, if at least one {@link EClass} should be filtered
 	 */
 	public boolean isEnabled() {
@@ -81,7 +81,7 @@ public final class EClassFilter {
 
 	/**
 	 * Whether the given {@link EClass} is considered as filtered.
-	 * 
+	 *
 	 * @param eClass
 	 *            the class to check
 	 * @return true, if the given {@link EClass} is considered as filtered
@@ -92,7 +92,7 @@ public final class EClassFilter {
 
 	/**
 	 * Whether the given operation only involves types that are considered to be filtered.
-	 * 
+	 *
 	 * @param idToEObjectMapping
 	 *            a mapping that is used to resolve the {@link EObject}s
 	 *            contained in the operation
@@ -104,8 +104,8 @@ public final class EClassFilter {
 		AbstractOperation operation) {
 
 		if (operation instanceof CompositeOperation) {
-			CompositeOperation composite = (CompositeOperation) operation;
-			for (AbstractOperation op : composite.getSubOperations()) {
+			final CompositeOperation composite = (CompositeOperation) operation;
+			for (final AbstractOperation op : composite.getSubOperations()) {
 				if (!involvesOnlyFilteredEClasses(idToEObjectMapping, op)) {
 					return false;
 				}
@@ -115,8 +115,8 @@ public final class EClassFilter {
 		}
 
 		if (isCreateDelete(operation)) {
-			CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) operation;
-			for (EObject modelElement : createDeleteOperation.getEObjectToIdMap().keySet()) {
+			final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) operation;
+			for (final EObject modelElement : createDeleteOperation.getEObjectToIdMap().keySet()) {
 				if (modelElement != null && !isFilteredEClass(modelElement.eClass())) {
 					return false;
 				} else if (modelElement == null) {
@@ -127,8 +127,8 @@ public final class EClassFilter {
 			return true;
 		}
 
-		ModelElementId id = operation.getModelElementId();
-		EObject modelElement = idToEObjectMapping.get(id);
+		final ModelElementId id = operation.getModelElementId();
+		final EObject modelElement = idToEObjectMapping.get(id);
 
 		if (modelElement == null) {
 			return false;
@@ -144,7 +144,7 @@ public final class EClassFilter {
 	/**
 	 * Returns the label that is used to group filtered types or operations that involve
 	 * only such types.
-	 * 
+	 *
 	 * @return the label used for grouping filtered types
 	 */
 	public String getFilterLabel() {

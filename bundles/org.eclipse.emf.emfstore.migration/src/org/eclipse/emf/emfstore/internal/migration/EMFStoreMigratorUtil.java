@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Controller for migrating models in EMFStore. Manages all registered migrators.
- * 
+ *
  * @author koegel
  */
 public final class EMFStoreMigratorUtil {
@@ -31,7 +31,7 @@ public final class EMFStoreMigratorUtil {
 
 	/**
 	 * Check if any migrators are registered.
-	 * 
+	 *
 	 * @return true, if migrators are available.
 	 */
 	public static boolean isMigratorAvailable() {
@@ -48,7 +48,7 @@ public final class EMFStoreMigratorUtil {
 
 	/**
 	 * Retrieve a migrator. Will default to the first loadable migrator if multiple migrators are available.
-	 * 
+	 *
 	 * @return the migrator
 	 * @throws EMFStoreMigrationException if no migrators are available or can be loaded.
 	 */

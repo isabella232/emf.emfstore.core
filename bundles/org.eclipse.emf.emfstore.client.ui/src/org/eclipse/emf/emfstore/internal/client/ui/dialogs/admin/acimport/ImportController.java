@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser,karakoc
  ******************************************************************************/
@@ -126,7 +126,7 @@ public class ImportController {
 
 	/**
 	 * Checks whether a group with the given name exists.
-	 * 
+	 *
 	 * @param groupName
 	 *            the name of a group
 	 * @return the {@link ACOrgUnitId} of the group with the matching name if the group exists, {@code null} otherwise
@@ -152,7 +152,7 @@ public class ImportController {
 
 	/**
 	 * Checks whether an user with the given name exists.
-	 * 
+	 *
 	 * @param userName
 	 *            the name of an user
 	 * @return the {@link ACOrgUnitId} of the user with the matching name if the user exists, {@code null} otherwise

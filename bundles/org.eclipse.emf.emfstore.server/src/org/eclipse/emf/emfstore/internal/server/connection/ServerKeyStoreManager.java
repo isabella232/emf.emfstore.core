@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.ServerKeyStoreExcepti
 /**
  * The ServerKeyStoreManager loads the keystore, which is needed for decryption of user passwords and for RMI
  * encryption.
- * 
+ *
  * @author wesendon
  */
 public final class ServerKeyStoreManager {
@@ -49,7 +49,7 @@ public final class ServerKeyStoreManager {
 
 	/**
 	 * Returns the instance of the ServerKeyStoreManager.
-	 * 
+	 *
 	 * @return an instance
 	 */
 	public static synchronized ServerKeyStoreManager getInstance() {
@@ -61,7 +61,7 @@ public final class ServerKeyStoreManager {
 
 	/**
 	 * Decrypts a password with the server's password.
-	 * 
+	 *
 	 * @param password encrypted password
 	 * @return decrypted password
 	 * @throws ServerKeyStoreException in case of failure
@@ -105,7 +105,7 @@ public final class ServerKeyStoreManager {
 
 	/**
 	 * Returns the keystore of the server.
-	 * 
+	 *
 	 * @return the server key store
 	 * @throws ServerKeyStoreException
 	 *             in case key store initialization fails
@@ -149,7 +149,7 @@ public final class ServerKeyStoreManager {
 
 	/**
 	 * Creates a {@link KeyManagerFactory} for the RMI encryption.
-	 * 
+	 *
 	 * @return KeyManagerFactory
 	 * @throws ServerKeyStoreException in case of failure
 	 */
@@ -183,7 +183,7 @@ public final class ServerKeyStoreManager {
 
 	/**
 	 * Returns the keystore password as a char array.
-	 * 
+	 *
 	 * @return the password
 	 */
 	public char[] getKeyStorePassword() {

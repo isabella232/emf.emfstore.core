@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier
  ******************************************************************************/
@@ -23,19 +23,19 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * This is the default resource set provider of EMFStore client which will be used if no extension is offered.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class ClientXMIResourceSetProvider implements ESResourceSetProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.ESResourceSetProvider#getResourceSet()
 	 */
 	public ResourceSet getResourceSet() {
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
+		final ResourceSetImpl resourceSet = new ResourceSetImpl();
 		resourceSet.setResourceFactoryRegistry(new ResourceFactoryRegistry());
 		resourceSet.setURIConverter(new XMIClientURIConverter());
 		resourceSet.setURIResourceMap(new LinkedHashMap<URI, Resource>());

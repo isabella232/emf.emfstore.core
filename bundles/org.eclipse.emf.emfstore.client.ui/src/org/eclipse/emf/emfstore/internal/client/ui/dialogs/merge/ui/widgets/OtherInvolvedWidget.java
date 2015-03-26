@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.ui.forms.widgets.TableWrapLayout;
 /**
  * This details widget shows other involved operations using default
  * representation.
- * 
+ *
  * @author wesendon
  */
 public class OtherInvolvedWidget extends Composite {
@@ -37,7 +37,7 @@ public class OtherInvolvedWidget extends Composite {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            parent
 	 * @param decisionManager
@@ -47,29 +47,29 @@ public class OtherInvolvedWidget extends Composite {
 	 */
 	public OtherInvolvedWidget(Composite parent, DecisionManager decisionManager, ConflictOption option) {
 		super(parent, SWT.None);
-		TableWrapLayout wrapLayout = new TableWrapLayout();
+		final TableWrapLayout wrapLayout = new TableWrapLayout();
 		wrapLayout.numColumns = COLUMNS;
 		wrapLayout.makeColumnsEqualWidth = true;
 		setLayout(wrapLayout);
 		setBackground(parent.getBackground());
 
-		Label label = new Label(this, SWT.NONE);
+		final Label label = new Label(this, SWT.NONE);
 		label.setText("Other Involved Changes: ");
 		label.setBackground(parent.getBackground());
-		TableWrapData wrapData = new TableWrapData();
+		final TableWrapData wrapData = new TableWrapData();
 		wrapData.colspan = COLUMNS;
 		label.setLayoutData(wrapData);
 
-		ChangePackageVisualizationHelper visualizationHelper = UIDecisionUtil
+		final ChangePackageVisualizationHelper visualizationHelper = UIDecisionUtil
 			.getChangePackageVisualizationHelper(decisionManager);
 
 		if (option.getOperations().size() <= MAX_OPS_SIZE) {
 
-			for (AbstractOperation ao : option.getOperations()) {
-				CLabel meLabel = new CLabel(this, SWT.WRAP);
+			for (final AbstractOperation ao : option.getOperations()) {
+				final CLabel meLabel = new CLabel(this, SWT.WRAP);
 				meLabel.setBackground(parent.getBackground());
 
-				Image image = visualizationHelper.getImage(UIDecisionUtil.getAdapterFactory(), ao);
+				final Image image = visualizationHelper.getImage(UIDecisionUtil.getAdapterFactory(), ao);
 
 				if (image != null) {
 					meLabel.setImage(image);
@@ -77,7 +77,7 @@ public class OtherInvolvedWidget extends Composite {
 				meLabel.setText(visualizationHelper.getDescription(ao));
 			}
 		} else {
-			CLabel meLabel = new CLabel(this, SWT.WRAP);
+			final CLabel meLabel = new CLabel(this, SWT.WRAP);
 			meLabel.setBackground(parent.getBackground());
 			meLabel.setText("More than " + MAX_OPS_SIZE + " other operations...");
 		}

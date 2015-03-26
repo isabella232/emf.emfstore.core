@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -55,7 +55,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * Package</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
@@ -64,7 +64,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getPrimarySpec() <em>Primary Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrimarySpec()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getNextSpec() <em>Next Spec</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNextSpec()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getPreviousSpec() <em>Previous Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPreviousSpec()
 	 * @generated
 	 * @ordered
@@ -100,7 +100,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getMergedFrom() <em>Merged From</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedFrom()
 	 * @generated
 	 * @ordered
@@ -110,7 +110,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getMergedTo() <em>Merged To</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMergedTo()
 	 * @generated
 	 * @ordered
@@ -120,7 +120,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLogMessage()
 	 * @generated
 	 * @ordered
@@ -130,7 +130,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * The cached value of the '{@link #getTagSpecs() <em>Tag Specs</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTagSpecs()
 	 * @generated
 	 * @ordered
@@ -141,7 +141,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getVersionProperties()
 	 * <em>Version Properties</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getVersionProperties()
 	 * @generated
 	 * @ordered
@@ -152,7 +152,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * The cached value of the '{@link #getChangePackage() <em>Change Package</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getChangePackage()
 	 * @generated
 	 * @ordered
@@ -161,7 +161,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected HistoryInfoImpl() {
@@ -170,7 +170,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -181,7 +181,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getPrimarySpec()
@@ -215,7 +215,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetPrimarySpec()
@@ -226,7 +226,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPrimarySpec(PrimaryVersionSpec newPrimarySpec, NotificationChain msgs)
@@ -249,7 +249,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPrimarySpec(PrimaryVersionSpec newPrimarySpec)
@@ -278,7 +278,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<PrimaryVersionSpec> getNextSpec() {
@@ -292,7 +292,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getPreviousSpec() {
@@ -324,7 +324,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetPreviousSpec() {
@@ -333,7 +333,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetPreviousSpec(PrimaryVersionSpec newPreviousSpec, NotificationChain msgs) {
@@ -354,7 +354,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPreviousSpec(PrimaryVersionSpec newPreviousSpec) {
@@ -382,7 +382,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<PrimaryVersionSpec> getMergedFrom() {
@@ -396,7 +396,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<PrimaryVersionSpec> getMergedTo() {
@@ -410,7 +410,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage getLogMessage() {
@@ -442,7 +442,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage basicGetLogMessage() {
@@ -451,7 +451,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
@@ -472,7 +472,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLogMessage(LogMessage newLogMessage) {
@@ -500,7 +500,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TagVersionSpec> getTagSpecs() {
@@ -514,7 +514,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<VersionProperty> getVersionProperties() {
@@ -528,7 +528,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ChangePackage getChangePackage() {
@@ -560,7 +560,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ChangePackage basicGetChangePackage() {
@@ -569,7 +569,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetChangePackage(ChangePackage newChangePackage, NotificationChain msgs) {
@@ -590,7 +590,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setChangePackage(ChangePackage newChangePackage) {
@@ -618,7 +618,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -649,7 +649,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -692,7 +692,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -738,7 +738,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -778,7 +778,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -808,11 +808,11 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESHistoryInfoImpl toAPI() {
@@ -825,11 +825,11 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESHistoryInfoImpl createAPI() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  * Edgar Mueller - API annotations
@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 /**
  * A wrapper type around {@link org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo NotificationInfo}
  * that adds some convenience methods.
- * 
+ *
  * @author jsommerfeldt
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */
@@ -270,7 +270,7 @@ public interface ESNotificationInfo {
 
 	/**
 	 * Returns the type of the {@link Notification}.
-	 * 
+	 *
 	 * @return a {@link Notification} type
 	 */
 	Class<? extends Notification> getNotificationType();

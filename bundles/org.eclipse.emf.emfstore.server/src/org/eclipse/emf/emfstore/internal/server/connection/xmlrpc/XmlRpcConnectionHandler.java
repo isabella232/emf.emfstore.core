@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESServerInitException;
 
 /**
  * Connection Handler for XML RPC EMFStore interface.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
@@ -43,9 +43,9 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler#init(org.eclipse.emf.emfstore.internal.server.EMFStoreInterface,
 	 *      org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl)
 	 */
@@ -59,7 +59,7 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 
 	/**
 	 * Returns EMFstore.
-	 * 
+	 *
 	 * @return the EMFStore
 	 */
 	public static EMFStore getEmfStore() {
@@ -68,7 +68,7 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 
 	/**
 	 * Returns AccessControl.
-	 * 
+	 *
 	 * @return access control
 	 */
 	public static AccessControl getAccessControl() {
@@ -76,9 +76,9 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler#stop()
 	 */
 	public void stop() {

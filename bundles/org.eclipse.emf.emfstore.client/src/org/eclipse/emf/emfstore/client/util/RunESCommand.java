@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -22,9 +22,9 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 /**
  * Utility class for automatically wrapping changes against a model element
  * in a command within an EMFStore project.
- * 
+ *
  * @author emueller
- * 
+ *
  **/
 public final class RunESCommand {
 
@@ -42,12 +42,12 @@ public final class RunESCommand {
 
 		/**
 		 * Executes the given @link Callable} and returns the result.
-		 * 
+		 *
 		 * @param callable
 		 *            the callable to be execued
 		 * @param exceptionType the type of the exception that might be thrown during execution
 		 * @return the return value of the Callable
-		 * 
+		 *
 		 * @param <E> Exception in case an error occurs during execution of the Callable
 		 * @param <T> the return type of the Callable
 		 * @throws E on execution failure
@@ -86,7 +86,7 @@ public final class RunESCommand {
 
 		/**
 		 * Executes the given {@link Callable} and returns the result.
-		 * 
+		 *
 		 * @param callable
 		 *            the callable to be executed
 		 * @param exceptionType the type of the exception
@@ -125,7 +125,7 @@ public final class RunESCommand {
 
 	/**
 	 * Executes the given {@link Callable} and returns the result.
-	 * 
+	 *
 	 * @param callable
 	 *            the callable to be executed
 	 */
@@ -147,11 +147,11 @@ public final class RunESCommand {
 
 	/**
 	 * Executes the given {@link Callable} and returns the result.
-	 * 
+	 *
 	 * @param callable
 	 *            the callable to be executed
 	 * @return the return value of the callable
-	 * 
+	 *
 	 * @param <T> the return type of the callable
 	 */
 	public static <T> T runWithResult(final Callable<T> callable) {

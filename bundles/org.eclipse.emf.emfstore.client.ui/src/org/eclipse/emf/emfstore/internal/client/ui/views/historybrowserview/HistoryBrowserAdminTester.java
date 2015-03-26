@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * shterev
  ******************************************************************************/
@@ -19,14 +19,14 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Tests if the user has admin permissions based on a HistoryInfo node.
- * 
+ *
  * @author shterev
  */
 public class HistoryBrowserAdminTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
@@ -37,7 +37,7 @@ public class HistoryBrowserAdminTester extends PropertyTester {
 			if (projectSpace == null) {
 				return false;
 			}
-			IsAdminTester tester = new IsAdminTester();
+			final IsAdminTester tester = new IsAdminTester();
 			return tester.test(projectSpace, property, args, expectedValue);
 		}
 		return false;

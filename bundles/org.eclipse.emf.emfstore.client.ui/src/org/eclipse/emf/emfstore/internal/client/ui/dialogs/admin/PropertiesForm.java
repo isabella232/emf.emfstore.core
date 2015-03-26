@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Hodaie
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.ui.forms.widgets.Form;
 
 /**
  * This is the right side of OrgUnitManagementGUI. It shows the properties of selected item.
- * 
+ *
  * @author Hodaie
  */
 public class PropertiesForm extends Form {
@@ -52,7 +52,7 @@ public class PropertiesForm extends Form {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent parent
 	 * @param style SWT style
 	 * @param adminBroker AdminBroker used to communicate with server
@@ -81,7 +81,7 @@ public class PropertiesForm extends Form {
 
 	/**
 	 * This is used from tab contents to set input of properties form.
-	 * 
+	 *
 	 * @param input input
 	 */
 	public void setInput(EObject input) {
@@ -135,7 +135,7 @@ public class PropertiesForm extends Form {
 	 * of groups tab one of participants of this project is deleted, then the table viewer on project properties must be
 	 * updated. Accordingly, if a group is open and one of its users is deleted, or if a user is open and one of its
 	 * groups is deleted.
-	 * 
+	 *
 	 * @return tableViewer on properties form.
 	 */
 	public TableViewer getTableViewer() {
@@ -147,7 +147,7 @@ public class PropertiesForm extends Form {
 	/**
 	 * This is used by tab contents upon deleting an OrgUnit. If current input is the same as deleted OrgUnit, the input
 	 * will be set to null.
-	 * 
+	 *
 	 * @return current input of properties form.
 	 */
 	public EObject getCurrentInput() {
@@ -157,7 +157,7 @@ public class PropertiesForm extends Form {
 	/**
 	 * This is a place holder for object being dragged. Actually we should have used the Transfer class to extract drag
 	 * source. But it is not guaranteed to work always.
-	 * 
+	 *
 	 * @param dragNDropObject object being drag and dropped
 	 */
 	public static void setDragNDropObject(EObject dragNDropObject) {
@@ -167,7 +167,7 @@ public class PropertiesForm extends Form {
 	/**
 	 * This is a place holder for object being dragged. Actually we should have used the Transfer class to extract drag
 	 * source. But it is not guaranteed to work always.
-	 * 
+	 *
 	 * @return object being drag and dropped
 	 */
 	public static EObject getDragNDropObject() {
@@ -178,7 +178,7 @@ public class PropertiesForm extends Form {
 	 * This is a string variable indicating from which tab drag and drop operation started. Drag and drop operations
 	 * starting from properties form do not need to indicate it, because they involve just a delete (removing some
 	 * element, e.g. a user from a group).
-	 * 
+	 *
 	 * @param dragSource drag source
 	 */
 	public static void setDragSource(String dragSource) {
@@ -187,7 +187,7 @@ public class PropertiesForm extends Form {
 
 	/**
 	 * This is used by drop adapter of properties form to find out from which tab DnD operation started.
-	 * 
+	 *
 	 * @return a string indicating drag source
 	 */
 	public static String getDragSource() {

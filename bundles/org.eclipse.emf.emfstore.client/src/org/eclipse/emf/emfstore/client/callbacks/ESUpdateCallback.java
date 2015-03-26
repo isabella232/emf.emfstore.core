@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  * Edgar Mueller - API annotations
@@ -22,17 +22,17 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Callback interface for updating a {@link ESLocalProject}.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  */
 public interface ESUpdateCallback {
 
 	/**
 	 * Called right before the changes get applied upon the project space.
-	 * 
+	 *
 	 * @param project
 	 *            the {@link ESLocalProject} being updated
 	 * @param changes
@@ -53,7 +53,7 @@ public interface ESUpdateCallback {
 
 	/**
 	 * Called when local and remote changes overlap.
-	 * 
+	 *
 	 * @param changeConflict
 	 *            the {@link org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl} containing
 	 *            the changes that led to the conflict

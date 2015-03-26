@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jfinis
  ******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException
 
 /**
  * Exception that is thrown when a transfer is canceled.
- * 
+ *
  * @author jfinis
  */
 public class TransferCanceledException extends FileTransferException {
@@ -32,7 +32,7 @@ public class TransferCanceledException extends FileTransferException {
 	/**
 	 * Stack trace is not filled, since a cancelled exception is no error that has to be debugged but a normal result.
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Throwable#fillInStackTrace()
 	 */
 	@Override

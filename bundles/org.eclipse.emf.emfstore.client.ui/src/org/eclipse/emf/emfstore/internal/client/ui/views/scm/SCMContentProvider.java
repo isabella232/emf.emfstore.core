@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Comp
 
 /**
  * Content provider for the SCM views.
- * 
+ *
  * @author emueller
  */
 public class SCMContentProvider extends AdapterFactoryContentProvider {
@@ -42,7 +42,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 */
 	public SCMContentProvider() {
 		super(new ComposedAdapterFactory(
@@ -65,7 +65,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * Sets the flag to reverse the order of the nodes. Default value is true -
 	 * i.e. the more recent operations are on top.
-	 * 
+	 *
 	 * @param reverseNodes
 	 *            the new value
 	 */
@@ -75,7 +75,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * Returns if the nodes should be reversed.
-	 * 
+	 *
 	 * @return true if the nodes should be reversed in order
 	 */
 	public boolean isReverseNodes() {
@@ -211,7 +211,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * Whether to show root nodes.
-	 * 
+	 *
 	 * @return true, if root nodes are shown, false otherwise
 	 */
 	public boolean isShowRootNodes() {
@@ -220,7 +220,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * Determines whether root nodes are shown.
-	 * 
+	 *
 	 * @param showRootNodes
 	 *            if true, root nodes will be shown
 	 */

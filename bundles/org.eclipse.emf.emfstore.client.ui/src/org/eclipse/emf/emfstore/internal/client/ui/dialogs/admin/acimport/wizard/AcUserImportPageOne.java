@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser
  ******************************************************************************/
@@ -31,7 +31,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * With this page the import source can be selected (via radio buttons).
- * 
+ *
  * @author deser
  */
 public class AcUserImportPageOne extends WizardPage {

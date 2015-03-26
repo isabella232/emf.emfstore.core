@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser - initial API and implementation
  ******************************************************************************/
@@ -101,7 +101,7 @@ public class LdapImportSource extends ImportSource {
 	 * correct reference (the children) of the given object. This is important
 	 * as otherwise displaying the items on a TreeViewer correctly would fail,
 	 * as the getParent()-method wouldn't return the right result.
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.acimport.ImportSource#getChildren(java.lang.Object)
 	 * @param arg0
 	 *            the object to get the children from.
@@ -280,7 +280,7 @@ public class LdapImportSource extends ImportSource {
 	/**
 	 * Initializes the connection to the LDAP server, using the properties
 	 * field.
-	 * 
+	 *
 	 * @throws CorruptedSourceException
 	 *             if no connection could be established to the given server.
 	 */
@@ -319,7 +319,7 @@ public class LdapImportSource extends ImportSource {
 
 	/**
 	 * Called when the input changes.
-	 * 
+	 *
 	 * @param arg0
 	 *            the viewer
 	 * @param arg1

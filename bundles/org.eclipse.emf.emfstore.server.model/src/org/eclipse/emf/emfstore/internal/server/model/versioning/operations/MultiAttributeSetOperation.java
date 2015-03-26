@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Multi Attribute Set Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeSetOperation()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface MultiAttributeSetOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Index</em>' attribute.
 	 * @see #setIndex(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeSetOperation_Index()
@@ -55,7 +55,7 @@ public interface MultiAttributeSetOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation#getIndex
 	 * <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Index</em>' attribute.
 	 * @see #getIndex()
 	 * @generated
@@ -70,7 +70,7 @@ public interface MultiAttributeSetOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Old Value</em>' attribute.
 	 * @see #setOldValue(Object)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeSetOperation_OldValue()
@@ -84,7 +84,7 @@ public interface MultiAttributeSetOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation#getOldValue
 	 * <em>Old Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Old Value</em>' attribute.
 	 * @see #getOldValue()
@@ -100,7 +100,7 @@ public interface MultiAttributeSetOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>New Value</em>' attribute.
 	 * @see #setNewValue(Object)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeSetOperation_NewValue()
@@ -114,7 +114,7 @@ public interface MultiAttributeSetOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation#getNewValue
 	 * <em>New Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>New Value</em>' attribute.
 	 * @see #getNewValue()

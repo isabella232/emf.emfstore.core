@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel
  ******************************************************************************/
@@ -20,10 +20,10 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * and their containment tree in way that is overlapping. For example the conflicting operations might try to delete and
  * alter an
  * EObject at the same time.
- * 
- * 
+ *
+ *
  * @author mkoegel
- * 
+ *
  */
 public interface ESConflict {
 
@@ -32,7 +32,7 @@ public interface ESConflict {
 	 * of a revision on the current branch. Rejecting them is easy, they can just be dropped.
 	 * The local operations are the users local operations that have not been committed yet or the operations of a
 	 * another branch that is merged into the current branch.
-	 * 
+	 *
 	 * @return a set of operations
 	 */
 	Set<ESOperation> getLocalOperations();
@@ -43,14 +43,14 @@ public interface ESConflict {
 	 * operation canceling out the original operation will need to be calculated.
 	 * The remote operations are usually their operations (operations of other committers, that are committed to the
 	 * server already) or the operations of the current branch if another branch is merged into that branch.
-	 * 
+	 *
 	 * @return a set of operations
 	 */
 	Set<ESOperation> getRemoteOperations();
 
 	/**
 	 * Resolve the conflict by accepting the given local operations and rejecting the given remote operations.
-	 * 
+	 *
 	 * @param acceptedLocalOperations a list of local accepted operations
 	 * @param rejectedRemoteOperations a list of rejected remote operations
 	 */

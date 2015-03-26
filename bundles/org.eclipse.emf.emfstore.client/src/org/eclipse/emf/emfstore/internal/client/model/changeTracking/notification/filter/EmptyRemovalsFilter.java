@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Slawomir Chodnicki - initial API and implementation
  ******************************************************************************/
@@ -24,15 +24,15 @@ import org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo;
  * <p>
  * An example of a zero effect remove would be a notification that <code>[]</code> changed to <code>null</code>.
  * </p>
- * 
+ *
  * @author chodnick
  */
 public class EmptyRemovalsFilter implements ESNotificationFilter {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.handler.ESNotificationFilter#check(org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo,
 	 *      org.eclipse.emf.emfstore.common.model.ESObjectContainer)
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -14,7 +14,7 @@ package org.eclipse.emf.emfstore.internal.server.exceptions;
 /**
  * This exception is thrown whenever there occurs a problem while performing
  * decryption.
- * 
+ *
  * @author emueller
  */
 @SuppressWarnings("serial")
@@ -22,7 +22,7 @@ public class ServerKeyStoreException extends AccessControlException {
 
 	/**
 	 * Constructor for wrapping an already existing exception.
-	 * 
+	 *
 	 * @param exception
 	 *            the exception that should get wrapped
 	 */
@@ -32,7 +32,7 @@ public class ServerKeyStoreException extends AccessControlException {
 
 	/**
 	 * Constructor with an additional error message.
-	 * 
+	 *
 	 * @param message
 	 *            an error message
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -16,16 +16,16 @@ import org.eclipse.emf.emfstore.internal.client.ui.controller.UICreateRemoteProj
 
 /**
  * Creates an empty project on a server.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class CreateProjectOnServerHandler extends AbstractEMFStoreHandler {
 
 	@Override
 	public void handle() {
 
-		ServerInfo serverInfo = requireSelection(ServerInfo.class);
+		final ServerInfo serverInfo = requireSelection(ServerInfo.class);
 
 		if (serverInfo == null || serverInfo.getLastUsersession() == null) {
 			return;

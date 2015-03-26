@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Aleksandar Shterev - initial API and implementation
  * Edgar Mueller - Refactorings due to new API, invalidation of existing sessions
@@ -32,9 +32,9 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * Wizard for adding or creating a new repository.
- * 
- * 
- * 
+ *
+ *
+ *
  * @author shterev
  * @author emueller
  */
@@ -58,7 +58,7 @@ public class NewRepositoryWizard extends Wizard implements INewWizard {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param server
 	 *            the server that will be edited in case the wizard is called in edit mode
 	 */
@@ -147,7 +147,7 @@ public class NewRepositoryWizard extends Wizard implements INewWizard {
 
 	/**
 	 * Getter for the server.
-	 * 
+	 *
 	 * @return the server
 	 */
 	public ESServer getServer() {
@@ -161,7 +161,7 @@ public class NewRepositoryWizard extends Wizard implements INewWizard {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
 	 *      org.eclipse.jface.viewers.IStructuredSelection)
 	 */

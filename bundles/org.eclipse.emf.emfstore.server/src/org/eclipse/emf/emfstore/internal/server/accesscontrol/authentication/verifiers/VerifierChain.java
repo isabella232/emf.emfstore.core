@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 
 /**
  * Calls all available verifiers and tries to verify the given credentials.
- * 
+ *
  * @author wesendon
  */
 public class VerifierChain extends AbstractAuthenticationControl {
@@ -36,7 +36,7 @@ public class VerifierChain extends AbstractAuthenticationControl {
 
 	/**
 	 * Returns the list of verifier. can be used to add and remove verifier.
-	 * 
+	 *
 	 * @return list of verifier
 	 */
 	public List<AbstractAuthenticationControl> getVerifiers() {
@@ -44,9 +44,9 @@ public class VerifierChain extends AbstractAuthenticationControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String)
 	 */

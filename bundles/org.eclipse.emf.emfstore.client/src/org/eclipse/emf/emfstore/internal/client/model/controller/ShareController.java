@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * ovonwesen
  * emueller
@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Shares a project.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -43,7 +43,7 @@ public class ShareController extends ServerCall<ProjectInfo> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be shared
 	 * @param session

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl.FactoryIm
 
 /**
  * Transactional EditingDomain provider for the EMFStore.
- * 
+ *
  * @author wesendon
  */
 public class TransactionalEditingDomainProvider implements ESEditingDomainProvider {
@@ -30,7 +30,7 @@ public class TransactionalEditingDomainProvider implements ESEditingDomainProvid
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.provider.ESEditingDomainProvider#getEditingDomain(org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public EditingDomain getEditingDomain(ResourceSet resourceSet) {

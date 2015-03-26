@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -26,9 +26,9 @@ import org.eclipse.ui.progress.IProgressService;
  * A monitored action will be executed using the {@link IProgressService} of
  * Eclipse. Clients may use the passed {@link IProgressMonitor} to update the
  * status of their progress.
- * 
+ *
  * @author emueller
- * 
+ *
  * @param <T>
  *            the return type of the action
  */
@@ -40,7 +40,7 @@ public abstract class MonitoredEMFStoreAction<T> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param fork
 	 *            whether the {@link IProgressService} should fork the request
 	 * @param cancelable
@@ -53,9 +53,9 @@ public abstract class MonitoredEMFStoreAction<T> {
 
 	/**
 	 * Executes the request using the {@link IProgressService} of Eclipse.
-	 * 
+	 *
 	 * @return the return value as determined by {@link #doRun(IProgressMonitor)}
-	 * 
+	 *
 	 */
 	public final T execute() {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
@@ -86,7 +86,7 @@ public abstract class MonitoredEMFStoreAction<T> {
 
 	/**
 	 * Executes the request creating a {@link SubProgressMonitor}.
-	 * 
+	 *
 	 * @param monitor the currently used {@link IProgressMonitor}
 	 * @return the return value as determined by {@link #doRun(IProgressMonitor)}
 	 */
@@ -112,7 +112,7 @@ public abstract class MonitoredEMFStoreAction<T> {
 	 * intended to be overridden by clients to initialize data that needs user
 	 * involvement via UI calls. Clients should not execute long-lasting
 	 * operations via this method.
-	 * 
+	 *
 	 * @return true, if execution may continue, false, if requirements for
 	 *         executing {@link #doRun(IProgressMonitor)} are not met
 	 */
@@ -126,7 +126,7 @@ public abstract class MonitoredEMFStoreAction<T> {
 	 * method will not be executed via the {@link IProgressService} and is
 	 * intended to be overridden by clients. Clients may use this method
 	 * in order to perform clean-up tasks or the like.
-	 * 
+	 *
 	 */
 	public void afterRun() {
 		// do nothing by default
@@ -138,7 +138,7 @@ public abstract class MonitoredEMFStoreAction<T> {
 	 * Clients may override this method if they want to treat all {@link ESException} equally. Otherwise they are
 	 * obliged to handle {@link ESException} in {@link #doRun(IProgressMonitor)}, if
 	 * possible.
-	 * 
+	 *
 	 * @param e
 	 *            the exception that has been thrown
 	 */
@@ -147,12 +147,12 @@ public abstract class MonitoredEMFStoreAction<T> {
 	/**
 	 * The actual behavior that should be performed when the {@link #execute()} is called.<br/>
 	 * Must be implemented by clients.
-	 * 
+	 *
 	 * @param monitor
 	 *            the {@link IProgressMonitor} that should be used by clients to
 	 *            update the status of their progress
 	 * @return an optional return value
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case an error occurs
 	 */
@@ -160,7 +160,7 @@ public abstract class MonitoredEMFStoreAction<T> {
 
 	/**
 	 * Whether this action runs in its own thread.
-	 * 
+	 *
 	 * @return true, if this action has been forked to run in its own thread,
 	 *         false otherwise
 	 */

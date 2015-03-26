@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  * emueller
@@ -36,10 +36,10 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * Further, in the default implementation, when the {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace}
  * is set,
  * it is checked whether it has an user session attached to it.
- * 
+ *
  * @author wesendon
  * @author emueller
- * 
+ *
  * @param <U> the return type of the wrapped action
  */
 public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
@@ -60,7 +60,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Default constructor with user session.
-	 * 
+	 *
 	 * @param usersession preselected user session
 	 */
 	public ServerCall(Usersession usersession) {
@@ -70,7 +70,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Default constructor with project space.
-	 * 
+	 *
 	 * @param localProject
 	 *            relevant project space if existent
 	 */
@@ -82,7 +82,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Default constructor with serverinfo.
-	 * 
+	 *
 	 * @param server a given server
 	 */
 	public ServerCall(ServerInfo server) {
@@ -92,7 +92,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Default constructor with user session and progress monitor.
-	 * 
+	 *
 	 * @param usersession
 	 *            preselected user session
 	 * @param monitor
@@ -105,7 +105,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Default constructor with project space and progress monitor.
-	 * 
+	 *
 	 * @param localProject
 	 *            relevant project, if existent
 	 * @param monitor
@@ -118,7 +118,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Default constructor with server info and progress monitor.
-	 * 
+	 *
 	 * @param server
 	 *            a given server info
 	 * @param monitor
@@ -131,7 +131,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Returns the server info that is used by this server call, if set.
-	 * 
+	 *
 	 * @return the server info that is used by this server call, if set
 	 */
 	public ServerInfo getServer() {
@@ -140,7 +140,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Sets the server info that is used by this server call.
-	 * 
+	 *
 	 * @param server
 	 *            the server info that should be used by this server call
 	 * @return the server call itself
@@ -152,7 +152,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Sets the user session to be used by this server call.
-	 * 
+	 *
 	 * @param usersession
 	 *            the user session to be used by the server call
 	 * @return the server call itself
@@ -164,7 +164,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Returns the user session that is used by this server call.
-	 * 
+	 *
 	 * @return the user session in use
 	 */
 	public Usersession getUsersession() {
@@ -174,7 +174,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 	/**
 	 * Returns the project space that will be checked for a valid user session when
 	 * executing this server call.
-	 * 
+	 *
 	 * @return the project space that will be checked for a valid user session
 	 */
 	public ProjectSpaceBase getProjectSpace() {
@@ -184,7 +184,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 	/**
 	 * Sets the progress monitor instance that may be used during
 	 * execution of this server call.
-	 * 
+	 *
 	 * @param monitor
 	 *            a progress monitor instance that may used during execution
 	 *            of this server call
@@ -201,7 +201,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 	/**
 	 * Returns the progress monitor instance that may be used during
 	 * execution of this server call.
-	 * 
+	 *
 	 * @return the progress monitor instance that may be used during execution of this server call
 	 */
 	public IProgressMonitor getProgressMonitor() {
@@ -210,7 +210,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Returns the connection manager used by this server call.
-	 * 
+	 *
 	 * @return the connection manager in use
 	 */
 	protected ConnectionManager getConnectionManager() {
@@ -219,7 +219,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Returns the session ID to be used by this server call.
-	 * 
+	 *
 	 * @return the session ID to be used by the server call for authetication against the server
 	 */
 	protected SessionId getSessionId() {
@@ -228,7 +228,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Sets the session ID to be used by this server call.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session ID to be used for authentication against the server
 	 */
@@ -238,7 +238,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Runs this call with the given session ID.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the session ID to be used for authentication against the server
 	 * @throws ESException
@@ -251,7 +251,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Performs the actual behavior of the call. Meant to be implemented by clients.
-	 * 
+	 *
 	 * @return a return value of type <code>U</code>
 	 * @throws ESException
 	 *             in case any exception occurs during execution of the call
@@ -260,7 +260,7 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 
 	/**
 	 * Executes the server call.
-	 * 
+	 *
 	 * @return a return value of type <code>U</code>
 	 * @throws ESException
 	 *             in case any exception occurs during execution of the call
@@ -271,9 +271,9 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESServerCall toAPI() {
@@ -284,9 +284,9 @@ public abstract class ServerCall<U> implements APIDelegate<ESServerCall> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESServerCall createAPI() {

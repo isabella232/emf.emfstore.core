@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.provider;
@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer}
  * object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PendingFileTransferItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -42,7 +42,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PendingFileTransferItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -73,7 +73,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the File Version feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addFileVersionPropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the Chunk Number feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addChunkNumberPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the Upload feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addUploadPropertyDescriptor(Object object) {
@@ -145,7 +145,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the File Name feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addFileNamePropertyDescriptor(Object object) {
@@ -169,7 +169,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This adds a property descriptor for the Preliminary File Name feature. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPreliminaryFileNamePropertyDescriptor(Object object) {
@@ -196,7 +196,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -211,7 +211,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -225,7 +225,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This returns PendingFileTransfer.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -236,7 +236,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -251,7 +251,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating
 	 * a viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -278,7 +278,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -294,7 +294,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

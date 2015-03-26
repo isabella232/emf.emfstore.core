@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel
  ******************************************************************************/
@@ -27,7 +27,7 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 
 	/**
 	 * Constructs a new instance by wrapping a {@link ConflictBucket}.
-	 * 
+	 *
 	 * @param internalType the internal object
 	 */
 	public ESConflictImpl(ConflictBucket internalType) {
@@ -35,9 +35,9 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflict#getLocalOperations()
 	 */
 	public Set<ESOperation> getLocalOperations() {
@@ -45,9 +45,9 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflict#getRemoteOperations()
 	 */
 	public Set<ESOperation> getRemoteOperations() {
@@ -55,9 +55,9 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflict#resolveConflict(java.util.Set, java.util.Set)
 	 */
 	public void resolveConflict(Set<ESOperation> acceptedLocalOperations, Set<ESOperation> rejectedRemoteOperations) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.provider;
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.model.VersionInfo;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.VersionInfo} object.
  * <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class VersionInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -40,7 +40,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersionInfoItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,7 +67,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Emf Store Version String feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEmfStoreVersionStringPropertyDescriptor(Object object) {
@@ -90,7 +90,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns VersionInfo.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -102,7 +102,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -118,7 +118,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +149,7 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

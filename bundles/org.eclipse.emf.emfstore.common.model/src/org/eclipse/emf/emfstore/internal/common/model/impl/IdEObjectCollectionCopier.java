@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 
 /**
  * A copier class for copying projects.
- * 
+ *
  * @author emueller
  */
 public class IdEObjectCollectionCopier extends Copier {
@@ -29,8 +29,8 @@ public class IdEObjectCollectionCopier extends Copier {
 	private static final long serialVersionUID = 1L;
 	private Project orgProject;
 	private ProjectImpl copiedProject;
-	private HashMap<EObject, String> eObjectToIdMap;
-	private HashMap<String, EObject> idToEObjectMap;
+	private final HashMap<EObject, String> eObjectToIdMap;
+	private final HashMap<String, EObject> idToEObjectMap;
 
 	/**
 	 * Default constructor.
@@ -45,7 +45,7 @@ public class IdEObjectCollectionCopier extends Copier {
 		if (eObject instanceof Project) {
 			orgProject = (Project) eObject;
 		}
-		EObject copiedEObject = super.copy(eObject);
+		final EObject copiedEObject = super.copy(eObject);
 
 		if (copiedEObject instanceof Project) {
 			// TODO: PlainEObjectMode, make sure that project is really returned as the last element
@@ -58,7 +58,7 @@ public class IdEObjectCollectionCopier extends Copier {
 			return copiedEObject;
 		}
 
-		ModelElementId eObjectId = orgProject.getModelElementId(eObject);
+		final ModelElementId eObjectId = orgProject.getModelElementId(eObject);
 		eObjectToIdMap.put(copiedEObject, eObjectId.getId());
 		idToEObjectMap.put(eObjectId.getId(), copiedEObject);
 

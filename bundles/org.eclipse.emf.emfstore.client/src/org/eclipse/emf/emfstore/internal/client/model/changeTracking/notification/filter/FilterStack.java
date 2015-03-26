@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Slawomir Chodnicki - initial API and implementation
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
  * This class filters a notification recording according to predefined stacks of
  * filters. Available stacks are created as static properties for easy
  * reference.
- * 
+ *
  * @author chodnick
  */
 public final class FilterStack implements ESNotificationFilter {
@@ -50,7 +50,7 @@ public final class FilterStack implements ESNotificationFilter {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param filters the filter the filter stack should consists of.
 	 */
 	public FilterStack(ESNotificationFilter[] filters) {
@@ -72,9 +72,9 @@ public final class FilterStack implements ESNotificationFilter {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.handler.ESNotificationFilter#check(org.eclipse.emf.emfstore.common.model.util.ESNotificationInfo,
 	 *      org.eclipse.emf.emfstore.common.model.ESObjectContainer)
 	 */

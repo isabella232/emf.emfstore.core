@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Hodaie
  ******************************************************************************/
@@ -47,7 +47,7 @@ import org.eclipse.ui.PlatformUI;
 /**
  * This is shows the properties of a project (name, ...) and a list of its participants. The user can change the role of
  * a participant in TableViewer using a ComboboxCellEditor.
- * 
+ *
  * @author Hodaie
  */
 public class ProjectComposite extends PropertiesComposite {
@@ -68,7 +68,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent parent
 	 * @param style style
 	 * @param adminBroker used to communicate with server.
@@ -145,7 +145,7 @@ public class ProjectComposite extends PropertiesComposite {
 	 * This will be used when adding a new participant using add button. 1. show a list of all AcOrgUnits that do not
 	 * participate in this project (get list of all AcOrgUnits, remove those who take part in this Project) 2. return
 	 * the selected participant
-	 * 
+	 *
 	 * @return
 	 */
 	private EList<ACOrgUnit> getParticipants() {
@@ -189,7 +189,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.PropertiesComposite#getTabTitle()
 	 */
 	@Override
@@ -199,7 +199,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * This adds role column to table viewer. Using role column user can see and change role of a participant.
-	 * 
+	 *
 	 * @param parent parent
 	 */
 	@Override
@@ -263,7 +263,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * This changes the role of an OrgUnit for current project. This will be called form RoleEditinSupport.setValue().
-	 * 
+	 *
 	 * @param orgUnit orgUnit
 	 * @param role new role
 	 */
@@ -321,7 +321,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @param input
 	 *            must be a {@link ProjectInfo} instance
 	 */
@@ -341,7 +341,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * This returns an integer representing the actual role of an OrgUnit.
-	 * 
+	 *
 	 * @param orgUnit orgUnit
 	 * @return integer
 	 */
@@ -372,7 +372,7 @@ public class ProjectComposite extends PropertiesComposite {
 
 	/**
 	 * This class provides editing support for Role column in TableViewer. It uses a ComboBoxCellEditor.
-	 * 
+	 *
 	 * @author Hodaie
 	 */
 	private class RoleEditingSupport extends EditingSupport {

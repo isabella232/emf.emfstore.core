@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Configuration class for the merge dialog.
- * 
+ *
  * @author wesendon
  */
 public final class UIDecisionConfig {
@@ -30,12 +30,12 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Inits the fonts for the dialog.
-	 * 
+	 *
 	 * @param fontRegistry
 	 *            fontRegistry
 	 */
 	public static void initFonts(FontRegistry fontRegistry) {
-		FontData[] fontData = JFaceResources.getDialogFontDescriptor().getFontData();
+		final FontData[] fontData = JFaceResources.getDialogFontDescriptor().getFontData();
 		if (fontData.length > 0) {
 			fontData[0].setStyle(SWT.ITALIC);
 			fontData[0].setHeight(fontData[0].getHeight() - 1);
@@ -46,7 +46,7 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Color for selected option background.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getOptionSelectedBack() {
@@ -55,7 +55,7 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Color for selected option background if mouse entered.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getOptionSelectedBackEnter() {
@@ -64,7 +64,7 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Color for selected option text.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getOptionSelectedFor() {
@@ -73,7 +73,7 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Color for selected option text if mouse entered.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getOptionEnteredColor() {
@@ -82,7 +82,7 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Default background color.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getDefaultColor() {
@@ -91,7 +91,7 @@ public final class UIDecisionConfig {
 
 	/**
 	 * Default text color.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getDefaultTextColor() {
@@ -102,7 +102,7 @@ public final class UIDecisionConfig {
 	 * Color 1 for {@link org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox} . Every other box
 	 * has this
 	 * background color.
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getFirstDecisionBoxColor() {
@@ -113,7 +113,7 @@ public final class UIDecisionConfig {
 	 * Color 2 for {@link org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox} . Every other box
 	 * has this
 	 * background color
-	 * 
+	 *
 	 * @return color
 	 */
 	public static Color getSecondDecisionBoxColor() {

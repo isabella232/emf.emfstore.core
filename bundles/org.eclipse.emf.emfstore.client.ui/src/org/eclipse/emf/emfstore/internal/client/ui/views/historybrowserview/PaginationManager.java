@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors: Aumann
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
@@ -29,9 +29,9 @@ import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
 
 /**
  * Class handling pagination. See constructor {@link #PaginationManager(ProjectSpace, EObject, int, int)}
- * 
+ *
  * @author Aumann
- * 
+ *
  */
 public class PaginationManager {
 
@@ -61,11 +61,11 @@ public class PaginationManager {
 	/**
 	 * Creates a new PaginationManager with given page range around the central
 	 * version. The central version is initialized to be the base version.
-	 * 
+	 *
 	 * Note that the real number of versions shown might be smaller if there are
 	 * not enough versions above (e.g. base version == head version) or below
 	 * the center version (e.g. only x revisions yet, but below is larger).
-	 * 
+	 *
 	 * @param projectSpace
 	 *            The project space to operate on.
 	 * @param modelElement An optional modelElement to show the history for. <code>null</code> to show the history for
@@ -140,7 +140,7 @@ public class PaginationManager {
 	 * check if there are enough previous versions if not: set centerVersion
 	 * further down to retrieve more lower versions 2) next page : similiar to
 	 * prev page
-	 * 
+	 *
 	 * @param historyInfos
 	 */
 	private void setCorrectCenterVersionAndHistory(List<HistoryInfo> newQueryHistoryInfos, int newCenterVersionId,
@@ -283,7 +283,7 @@ public class PaginationManager {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param centerVersion The query center version.
 	 * @return
 	 * @throws ESException
@@ -322,7 +322,7 @@ public class PaginationManager {
 
 	/**
 	 * Helper functions for retrieving history info when the current margin info is of the wrong branch.
-	 * 
+	 *
 	 * @throws ESException
 	 */
 	private QueryMargins getBranchAdaptedMargins(PrimaryVersionSpec centerVersion, int aboveCenter, int belowCenter)
@@ -350,7 +350,7 @@ public class PaginationManager {
 	/**
 	 * Allows to switch between showing all history info items (across all branches) or just those relevant to the
 	 * current project branch.
-	 * 
+	 *
 	 * @param allVersions if true versions across all branches are shown, otherwise only versions for the current branch
 	 *            including ancestor versions
 	 */
@@ -381,10 +381,10 @@ public class PaginationManager {
 	/**
 	 * Swaps to a page containing the specified version. Call {@link #retrieveHistoryInfos()} to
 	 * retrieve the new page.
-	 * 
+	 *
 	 * @param id The identifier of the version to display.
 	 * @throws ESException When an error occurs while retrieving versions from the server.
-	 * 
+	 *
 	 * @return true if a version range surrounding the id has been found, false otherwise. Note that the range does not
 	 *         necessarily contain the id, for example if only versions for a certain branch are shown.
 	 */

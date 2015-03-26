@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * ovonwesen
  * emueller
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.controller.UIUpdateProjectCon
  * Updates a {@link ProjectSpace} to the most recent version (HEAD).<br/>
  * It is assumed that the user previously has selected a {@link ProjectSpace} instance.<br/>
  * Alternatively, you may pass in the project space to be updated via a constructor.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -31,12 +31,12 @@ public class UpdateProjectHandler extends AbstractEMFStoreHandler {
 	 * Default constructor.
 	 */
 	public UpdateProjectHandler() {
-		this.projectSpace = null;
+		projectSpace = null;
 	}
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} to be updated
 	 */
@@ -45,9 +45,9 @@ public class UpdateProjectHandler extends AbstractEMFStoreHandler {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.handlers.AbstractEMFStoreHandler#handle()
 	 */
 	@Override

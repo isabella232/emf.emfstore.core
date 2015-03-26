@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -28,11 +28,11 @@ import org.eclipse.swt.widgets.Shell;
  * executed in its own thread. If the controller's action should be executed in its own thread clients need to wrap all
  * UI calls with RunInUIThread or {@link RunInUI#runWithResult} to avoid invalid thread access
  * exceptions.
- * 
- * 
+ *
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  * @param <T> return type of the controller
  */
 public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreAction<T> {
@@ -41,7 +41,7 @@ public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreA
 
 	/**
 	 * Constructor. The constructed UI controller will executed its action in the UI thread.
-	 * 
+	 *
 	 * @param shell
 	 *            the shell that will be used during execution of the controller's action
 	 */
@@ -52,7 +52,7 @@ public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreA
 
 	/**
 	 * Constructor. The constructed UI controller will executed its action in the UI thread.
-	 * 
+	 *
 	 * @param shell
 	 *            the shell that will be used during execution of the controller's action
 	 * @param cancelable
@@ -65,7 +65,7 @@ public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreA
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the shell that will be used during execution of the controller's action
 	 * @param fork
@@ -80,7 +80,7 @@ public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreA
 
 	/**
 	 * Returns the shell used by the UI controller.
-	 * 
+	 *
 	 * @return the shell
 	 */
 	public Shell getShell() {
@@ -89,7 +89,7 @@ public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreA
 
 	/**
 	 * Sets the shell to be used by this UI controller.
-	 * 
+	 *
 	 * @param newShell
 	 *            the shell to be used by the UI controller
 	 */
@@ -99,12 +99,12 @@ public abstract class AbstractEMFStoreUIController<T> extends MonitoredEMFStoreA
 
 	/**
 	 * Shows a confirmation dialog.
-	 * 
+	 *
 	 * @param title
 	 *            the title of the confirmation dialog
 	 * @param message
 	 *            the message to be shown in the dialog
-	 * 
+	 *
 	 * @return true, if the user confirms the dialog by clicking "Yes", otherwise false
 	 */
 	public boolean confirm(final String title, final String message) {

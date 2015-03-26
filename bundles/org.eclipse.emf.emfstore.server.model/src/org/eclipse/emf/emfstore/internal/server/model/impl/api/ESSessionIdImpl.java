@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -17,15 +17,15 @@ import org.eclipse.emf.emfstore.server.model.ESSessionId;
 
 /**
  * Mapping between {@link ESSessionId} and {@link SessionId}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESSessionIdImpl extends AbstractAPIImpl<ESSessionId, SessionId> implements ESSessionId {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the delegate
 	 */
@@ -34,9 +34,9 @@ public class ESSessionIdImpl extends AbstractAPIImpl<ESSessionId, SessionId> imp
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
 	public String getId() {

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
 
 /**
  * Factory for creating {@link VersionSpec VersionSpecs}.
- * 
+ *
  */
 public final class VersionsFactory {
 
@@ -29,7 +29,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Creates a HEAD revision for the branch "trunk".
-	 * 
+	 *
 	 * @return head version
 	 */
 	public HeadVersionSpec createHEAD() {
@@ -38,7 +38,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Creates a {@link HeadVersionSpec}.
-	 * 
+	 *
 	 * @param branch name of the branch
 	 * @return the head version spec
 	 */
@@ -48,7 +48,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Creates a {@link HeadVersionSpec}.
-	 * 
+	 *
 	 * @param versionSpec which is used for resolving branch
 	 * @return the head version spec
 	 */
@@ -58,7 +58,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Create {@link BranchVersionSpec}.
-	 * 
+	 *
 	 * @param value name of the branch
 	 * @return the branch version spec
 	 */
@@ -68,7 +68,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Creates a {@link BranchVersionSpec}.
-	 * 
+	 *
 	 * @param spec versionSpec which is used for resolving branch
 	 * @return the branch version spec
 	 */
@@ -78,7 +78,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Checks whether two versions spec target the same branch.
-	 * 
+	 *
 	 * @param spec1 the first version spec
 	 * @param spec2 the second version spec
 	 * @return <code>true</code> if same branch, <code>false</code> otherwise
@@ -89,7 +89,7 @@ public final class VersionsFactory {
 
 	/**
 	 * Creates a {@link TagVersionSpec}.
-	 * 
+	 *
 	 * @param tag the tag to use
 	 * @param branch the branch
 	 * @return the tag version spec

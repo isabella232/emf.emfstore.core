@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.events.server;
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Updated Event</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  * <em>New Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerPackage#getProjectUpdatedEvent()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface ProjectUpdatedEvent extends ServerProjectEvent {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>New Version</em>' containment reference.
 	 * @see #setNewVersion(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerPackage#getProjectUpdatedEvent_NewVersion()
@@ -52,7 +52,7 @@ public interface ProjectUpdatedEvent extends ServerProjectEvent {
 	 * <em>New Version</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>New Version</em>' containment reference.
 	 * @see #getNewVersion()
 	 * @generated

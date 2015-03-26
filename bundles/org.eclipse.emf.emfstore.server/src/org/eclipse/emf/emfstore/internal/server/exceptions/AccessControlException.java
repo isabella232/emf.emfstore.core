@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 /**
  * Represents a access control violation. Access to a server resource may not be allowed for current user or user name
  * or password might be wrong.
- * 
+ *
  * @author koegel
  */
 @SuppressWarnings("serial")
@@ -24,7 +24,7 @@ public class AccessControlException extends ESException {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param string message
 	 */
 	public AccessControlException(String string) {
@@ -40,7 +40,7 @@ public class AccessControlException extends ESException {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param string message
 	 * @param e cause
 	 */

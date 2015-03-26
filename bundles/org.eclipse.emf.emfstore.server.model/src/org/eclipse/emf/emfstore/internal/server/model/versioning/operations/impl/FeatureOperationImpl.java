@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>Feature Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class FeatureOperationImpl extends AbstractOperationImpl implements FeatureOperation {
@@ -56,7 +56,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFeatureName()
 	 * @generated
 	 * @ordered
@@ -65,7 +65,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	/**
 	 * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFeatureName()
 	 * @generated
 	 * @ordered
@@ -76,7 +76,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * The default value of the '{@link #getUnset() <em>Unset</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUnset()
 	 * @generated
 	 * @ordered
@@ -86,7 +86,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * The cached value of the '{@link #getUnset() <em>Unset</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUnset()
 	 * @generated
 	 * @ordered
@@ -95,7 +95,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected FeatureOperationImpl() {
@@ -104,7 +104,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -114,7 +114,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getFeatureName() {
@@ -123,7 +123,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFeatureName(String newFeatureName) {
@@ -138,7 +138,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public UnsetType getUnset()
@@ -149,7 +149,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setUnset(UnsetType newUnset)
@@ -164,7 +164,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -181,7 +181,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -200,7 +200,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -219,7 +219,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -236,7 +236,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -256,7 +256,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation#getFeature(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 * @generated NOT
 	 */
@@ -270,7 +270,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#reverse()
 	 */
 	@Override
@@ -281,7 +281,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
@@ -292,9 +292,9 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation#getFeature(org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
 	 */
@@ -310,7 +310,7 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 
 	/**
 	 * Sets the unset field of the reverse operation accordingly.
-	 * 
+	 *
 	 * @param operation The reverse operation
 	 * @generated NOT
 	 */

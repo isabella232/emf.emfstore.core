@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version}
  * object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class VersionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -42,7 +42,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersionItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -74,7 +74,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This adds a property descriptor for the Next Version feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNextVersionPropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This adds a property descriptor for the Previous Version feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPreviousVersionPropertyDescriptor(Object object) {
@@ -119,7 +119,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This adds a property descriptor for the Ancestor Version feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addAncestorVersionPropertyDescriptor(Object object) {
@@ -142,7 +142,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This adds a property descriptor for the Branched Versions feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addBranchedVersionsPropertyDescriptor(Object object) {
@@ -165,7 +165,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This adds a property descriptor for the Merged To Version feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMergedToVersionPropertyDescriptor(Object object) {
@@ -188,7 +188,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This adds a property descriptor for the Merged From Version feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMergedFromVersionPropertyDescriptor(Object object) {
@@ -213,7 +213,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -230,7 +230,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -244,7 +244,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * This returns Version.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -256,7 +256,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -269,7 +269,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -291,7 +291,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -317,7 +317,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

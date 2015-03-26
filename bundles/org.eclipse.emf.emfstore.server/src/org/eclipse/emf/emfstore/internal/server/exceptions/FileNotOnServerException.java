@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jfinis
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 
 /**
  * Exception class for file transfers that indicates that a requested file was not found on the server.
- * 
+ *
  * @author jfinis
  */
 public class FileNotOnServerException extends FileTransferException {
@@ -25,7 +25,7 @@ public class FileNotOnServerException extends FileTransferException {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param p project id of the file that was not found on server
 	 * @param fileIdentifier identifier of the file
 	 */

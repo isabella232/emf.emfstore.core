@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * shterev
  ******************************************************************************/
@@ -18,29 +18,29 @@ import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithRe
 
 /**
  * Property tester to test if the server info has been logged in.
- * 
+ *
  * @author shterev
  */
 public class ServerInfoIsLoggedInTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
 	public boolean test(Object receiver, String property, Object[] args, final Object expectedValue) {
 		if (receiver instanceof ServerInfo && expectedValue instanceof Boolean) {
 			final ServerInfo serverInfo = (ServerInfo) receiver;
-			EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
+			final EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
 				@Override
 				protected Boolean doRun() {
-					Usersession usersession = serverInfo.getLastUsersession();
-					Boolean ret = new Boolean(usersession != null && usersession.isLoggedIn());
+					final Usersession usersession = serverInfo.getLastUsersession();
+					final Boolean ret = new Boolean(usersession != null && usersession.isLoggedIn());
 					return ret.equals(expectedValue);
 				}
 			};
-			Boolean result = command.run(false);
+			final Boolean result = command.run(false);
 			return result;
 		}
 		return false;

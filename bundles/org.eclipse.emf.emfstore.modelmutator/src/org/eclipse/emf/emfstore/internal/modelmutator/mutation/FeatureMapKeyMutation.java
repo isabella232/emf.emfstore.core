@@ -39,7 +39,7 @@ import com.google.common.collect.Lists;
  *
  */
 public class FeatureMapKeyMutation extends StructuralFeatureMutation<ESFeatureMapKeyMutation>
-implements ESFeatureMapKeyMutation {
+	implements ESFeatureMapKeyMutation {
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.

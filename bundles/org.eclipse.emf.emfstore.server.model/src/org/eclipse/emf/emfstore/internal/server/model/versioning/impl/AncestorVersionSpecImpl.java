@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * Source</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AncestorVersionSpecImpl extends VersionSpecImpl implements AncestorVersionSpec {
@@ -40,7 +40,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AncestorVersionSpecImpl() {
@@ -68,7 +68,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getTarget() {
@@ -110,7 +110,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetTarget() {
@@ -119,7 +119,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetTarget(PrimaryVersionSpec newTarget, NotificationChain msgs) {
@@ -140,7 +140,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTarget(PrimaryVersionSpec newTarget) {
@@ -168,7 +168,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getSource() {
@@ -200,7 +200,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetSource() {
@@ -209,7 +209,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetSource(PrimaryVersionSpec newSource, NotificationChain msgs) {
@@ -230,7 +230,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSource(PrimaryVersionSpec newSource) {
@@ -258,7 +258,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -275,7 +275,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -298,7 +298,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -317,7 +317,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -336,7 +336,7 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -357,11 +357,11 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	private ESAncestorVersionSpecImpl apiImpl;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESAncestorVersionSpecImpl toAPI() {
@@ -373,11 +373,11 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESAncestorVersionSpecImpl createAPI() {

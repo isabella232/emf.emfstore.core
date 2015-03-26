@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -21,15 +21,15 @@ import org.eclipse.jface.viewers.TableViewer;
 
 /**
  * Action for deleting a group.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class DeleteGroupAction extends DeleteOrgUnitAction {
 
 	/**
 	 * Creates the delete-user-action.
-	 * 
+	 *
 	 * @param adminBroker
 	 *            the {@link AdminBroker} that actually deletes the user
 	 * @param tableViewer
@@ -43,7 +43,7 @@ public class DeleteGroupAction extends DeleteOrgUnitAction {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.action.DeleteOrgUnitAction#deleteAction(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit)
 	 */
 	@Override
@@ -54,7 +54,7 @@ public class DeleteGroupAction extends DeleteOrgUnitAction {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.action.DeleteOrgUnitAction#orgUnitName()
 	 */
 	@Override

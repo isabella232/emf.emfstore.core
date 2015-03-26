@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -32,7 +32,7 @@ import org.osgi.framework.Bundle;
 
 /**
  * Generic container for conflicts.
- * 
+ *
  * @author wesendon
  */
 public class DecisionBox extends Composite {
@@ -46,7 +46,7 @@ public class DecisionBox extends Composite {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            parent
 	 * @param decisionManager
@@ -91,7 +91,7 @@ public class DecisionBox extends Composite {
 
 	/**
 	 * Returns the decisionmanager.
-	 * 
+	 *
 	 * @return decisionmanager
 	 */
 	public DecisionManager getDecisionManager() {
@@ -100,7 +100,7 @@ public class DecisionBox extends Composite {
 
 	/**
 	 * Set the solution of this conflict.
-	 * 
+	 *
 	 * @param option
 	 *            the option
 	 */
@@ -112,7 +112,7 @@ public class DecisionBox extends Composite {
 	/**
 	 * Relayouts the box. Needed when box is dynamically resized. This is NOT a
 	 * nice solution.
-	 * 
+	 *
 	 * @param heightSizeChange
 	 *            size delta
 	 */
@@ -124,7 +124,7 @@ public class DecisionBox extends Composite {
 
 	/**
 	 * Returns the conflict of the box.
-	 * 
+	 *
 	 * @return conflict
 	 */
 	public VisualConflict getConflict() {

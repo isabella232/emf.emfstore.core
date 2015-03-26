@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -33,10 +33,10 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for reverting a commit.
- * 
+ *
  * @author emueller
  * @author wesendon
- * 
+ *
  */
 public class UIRevertCommitController extends AbstractEMFStoreUIController<Void> {
 
@@ -45,7 +45,7 @@ public class UIRevertCommitController extends AbstractEMFStoreUIController<Void>
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the shell that is used during the revert
 	 * @param versionSpec
@@ -61,9 +61,9 @@ public class UIRevertCommitController extends AbstractEMFStoreUIController<Void>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

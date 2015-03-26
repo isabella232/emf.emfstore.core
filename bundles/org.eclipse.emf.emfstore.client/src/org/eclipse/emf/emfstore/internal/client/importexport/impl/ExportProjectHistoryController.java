@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -31,18 +31,18 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Controller class for exporting a {@link ProjectHistory}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ExportProjectHistoryController extends ServerCall<Void> implements IExportImportController {
 
 	private ProjectHistory projectHistory;
-	private ProjectInfo projectInfo;
+	private final ProjectInfo projectInfo;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectInfo
 	 *            the project info containing the history to be exported
 	 */
@@ -51,9 +51,9 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getLabel()
 	 */
 	public String getLabel() {
@@ -61,9 +61,9 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredNames()
 	 */
 	public String[] getFilteredNames() {
@@ -72,9 +72,9 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredExtensions()
 	 */
 	public String[] getFilteredExtensions() {
@@ -82,9 +82,9 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getParentFolderPropertyKey()
 	 */
 	public String getParentFolderPropertyKey() {
@@ -92,9 +92,9 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#execute(java.io.File,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -108,16 +108,16 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	private void saveProjectHistory(ProjectHistory projectHistory, String absoluteFileName) throws IOException {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource resource = resourceSet.createResource(URI.createFileURI(absoluteFileName));
+		final ResourceSet resourceSet = new ResourceSetImpl();
+		final Resource resource = resourceSet.createResource(URI.createFileURI(absoluteFileName));
 		resource.getContents().add(projectHistory);
 		ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilename()
 	 */
 	public String getFilename() {
@@ -127,9 +127,9 @@ public class ExportProjectHistoryController extends ServerCall<Void> implements 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#isExport()
 	 */
 	public boolean isExport() {

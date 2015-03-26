@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  * Edgar Mueller - ObserverBus refactoring
@@ -23,14 +23,14 @@ import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall.Result;
 
 /**
  * Notifier for Commands. Notifies Observers about command start, completion and failure.
- * 
+ *
  * @author koegel
  */
 public class EMFStoreCommandNotifier {
 
 	/**
 	 * Notify all registered listeners about command start.
-	 * 
+	 *
 	 * @param startedCommand
 	 *            the command that has been started
 	 */
@@ -45,7 +45,7 @@ public class EMFStoreCommandNotifier {
 
 	/**
 	 * Notify all registered listeners about command failure.
-	 * 
+	 *
 	 * @param command the command
 	 * @param exception the exception that triggered the failure
 	 */
@@ -61,7 +61,7 @@ public class EMFStoreCommandNotifier {
 
 	/**
 	 * Notify all registered listeners about command completion.
-	 * 
+	 *
 	 * @param completedCommand
 	 *            the completed command
 	 */
@@ -88,7 +88,7 @@ public class EMFStoreCommandNotifier {
 
 	/**
 	 * Add a command stack observer.
-	 * 
+	 *
 	 * @param observer
 	 *            the observer to be added
 	 */
@@ -100,7 +100,7 @@ public class EMFStoreCommandNotifier {
 
 	/**
 	 * Remove a command stack observer.
-	 * 
+	 *
 	 * @param observer
 	 *            the observer to be removed
 	 */

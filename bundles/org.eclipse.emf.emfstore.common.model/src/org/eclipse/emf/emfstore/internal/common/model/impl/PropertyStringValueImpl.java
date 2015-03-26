@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model.impl;
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue;
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyStringValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PropertyStringValueImpl extends EObjectImpl implements PropertyStringValue {
@@ -35,7 +35,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PropertyStringValueImpl() {
@@ -66,7 +66,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getValue() {
@@ -87,7 +87,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setValue(String newValue) {
@@ -102,7 +102,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -117,7 +117,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -133,7 +133,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +149,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

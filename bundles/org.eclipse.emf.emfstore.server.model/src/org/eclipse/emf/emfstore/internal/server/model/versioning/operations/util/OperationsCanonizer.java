@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Crea
  * Canonizes a list of operations. Removes all operations that are not necessary
  * to achieve the same result when the list of operations is applied to a
  * project. Contract: project.apply(opList) = project.apply(cannonizedOpList)
- * 
+ *
  * @author koegel
  */
 public final class OperationsCanonizer {
@@ -41,7 +41,7 @@ public final class OperationsCanonizer {
 
 	/**
 	 * Canonize the operation list.
-	 * 
+	 *
 	 * @param operations
 	 *            a list of operations (the list is order by creation time)
 	 */

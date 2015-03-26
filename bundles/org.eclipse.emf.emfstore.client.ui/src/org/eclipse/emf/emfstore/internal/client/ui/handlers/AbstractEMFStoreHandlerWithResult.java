@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * ovonwesen
  * emueller
@@ -26,12 +26,12 @@ import org.eclipse.swt.widgets.Shell;
  * workspace. They are responsible for calling the UI controllers and therefore provide
  * helper methods that can determine the currently selected element, if needed.
  * This handler is capable of returning a result.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  * @param <T> the return type of the handler
- * 
+ *
  * @see AbstractEMFStoreHandler
  */
 public abstract class AbstractEMFStoreHandlerWithResult<T> extends AbstractHandler {
@@ -40,7 +40,7 @@ public abstract class AbstractEMFStoreHandlerWithResult<T> extends AbstractHandl
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
 	 */
 	public T execute(ExecutionEvent event) throws ExecutionException {
@@ -59,14 +59,14 @@ public abstract class AbstractEMFStoreHandlerWithResult<T> extends AbstractHandl
 
 	/**
 	 * Executes the handler and returns a result.
-	 * 
+	 *
 	 * @return a return value of type <b>T</b>
 	 */
 	public abstract T handleWithResult();
 
 	/**
 	 * Returns the event which was responsible for executing this handler.
-	 * 
+	 *
 	 * @return the event that executed this handler
 	 */
 	protected ExecutionEvent getEvent() {
@@ -76,15 +76,15 @@ public abstract class AbstractEMFStoreHandlerWithResult<T> extends AbstractHandl
 	/**
 	 * Returns an object of the given <code>clazz</code> if it can be extracted from
 	 * the current selection.
-	 * 
+	 *
 	 * @param clazz
 	 *            the type of the object that is requested to be extracted from the current selection
 	 * @return an object of type <b>T</b> that is contained within the current selection
-	 * 
+	 *
 	 * @throws RequiredSelectionException
 	 *             if the selection is invalid, i.e. if no object of the given type is contained in the selection
 	 *             or if the selection is <code>null</code>
-	 * 
+	 *
 	 * @param <U> the type of the object to be extracted from the current selection
 	 */
 	public <U> U requireSelection(Class<U> clazz) throws RequiredSelectionException {
@@ -93,7 +93,7 @@ public abstract class AbstractEMFStoreHandlerWithResult<T> extends AbstractHandl
 
 	/**
 	 * Returns the currently active shell.
-	 * 
+	 *
 	 * @return the active shell
 	 */
 	public Shell getShell() {

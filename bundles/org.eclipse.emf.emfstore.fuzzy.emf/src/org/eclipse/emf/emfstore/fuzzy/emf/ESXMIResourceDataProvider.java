@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  * Philip Langer - configuring of numbers of changes during mutation
@@ -60,10 +60,10 @@ import org.junit.runners.model.TestClass;
  * </p>
  * During the run it records {@link TestResult}s to create a test run for
  * reporting purpose.
- * 
+ *
  * @author Julian Sommerfeldt
  * @since 2.0
- * 
+ *
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
@@ -213,7 +213,7 @@ public class ESXMIResourceDataProvider implements ESFuzzyEMFDataProvider {
 
 	/**
 	 * See {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider ESFuzzyDataProvider}.
-	 * 
+	 *
 	 * @param count
 	 *            Which run is it?
 	 * @return The new {@link EObject}.
@@ -391,7 +391,7 @@ public class ESXMIResourceDataProvider implements ESFuzzyEMFDataProvider {
 
 	/**
 	 * Set the options for the {@link ESXMIResourceDataProvider}.
-	 * 
+	 *
 	 * @param options
 	 *            the options.
 	 */
@@ -420,7 +420,7 @@ public class ESXMIResourceDataProvider implements ESFuzzyEMFDataProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyDataProvider#setMutator(org.eclipse.emf.emfstore.modelmutator.ESAbstractModelMutator)
 	 */
 	public void setMutator(ESAbstractModelMutator modelMutator) {

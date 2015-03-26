@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Zardosht Hodaie, gurcankarakoc, deser - initial API and implementation
  ******************************************************************************/
@@ -59,7 +59,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * This class sets the contents of tabs on the left side of OrgUnitManagmentGUI.
- * 
+ *
  * @author Hodaie, gurcankarakoc, deser
  */
 public abstract class TabContent {
@@ -122,7 +122,7 @@ public abstract class TabContent {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param tabName tab name
 	 * @param adminBroker AdminBroker
 	 * @param frm ProperitesForm
@@ -135,7 +135,7 @@ public abstract class TabContent {
 
 	/**
 	 * Creates contents of each tab.
-	 * 
+	 *
 	 * @param tabFolder parent
 	 * @return contents composite
 	 */
@@ -166,7 +166,7 @@ public abstract class TabContent {
 
 	/**
 	 * Use to register actions for the tab.
-	 * 
+	 *
 	 * @return list of actions or empty list
 	 */
 	protected abstract List<Action> initActions();
@@ -348,7 +348,7 @@ public abstract class TabContent {
 	/**
 	 * This is called from user and group properties composites in order to update TableViewer, For example when name of
 	 * an OrgUnit is changed.
-	 * 
+	 *
 	 * @return tableViewer
 	 */
 	public TableViewer getTableViewer() {

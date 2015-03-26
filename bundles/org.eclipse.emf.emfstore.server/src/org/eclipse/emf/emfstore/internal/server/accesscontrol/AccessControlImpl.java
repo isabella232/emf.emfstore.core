@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - introduced DAO
@@ -51,7 +51,7 @@ import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
 
 /**
  * Implementation of an {@link AccessControl} combining authentication and authorization.
- * 
+ *
  * @author mkoegel
  * @author ovonwesen
  * @author emueller
@@ -74,10 +74,10 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param acDAOFacade
 	 *            a DAO facade encapsulating different AC related DAOs
-	 * 
+	 *
 	 * @throws FatalESException
 	 *             an exception
 	 */
@@ -153,9 +153,9 @@ public class AccessControlImpl implements AccessControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthenticationControl#logIn(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String, org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo)
 	 */
@@ -174,9 +174,9 @@ public class AccessControlImpl implements AccessControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl#logout(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public void logout(SessionId sessionId) throws AccessControlException {
@@ -190,7 +190,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * Resolve a String to a user.
-	 * 
+	 *
 	 * @param username
 	 * @return the ACuser instance with the given name
 	 * @throws AccessControlException
@@ -219,7 +219,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkSession(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public void checkSession(SessionId sessionId) throws AccessControlException {
@@ -230,7 +230,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkWriteAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.util.Set)
 	 */
@@ -254,7 +254,7 @@ public class AccessControlImpl implements AccessControl {
 	/**
 	 * Check if the given list of roles can write to the model element in the
 	 * project.
-	 * 
+	 *
 	 * @param roles
 	 *            a list of roles
 	 * @param projectId
@@ -277,7 +277,7 @@ public class AccessControlImpl implements AccessControl {
 	/**
 	 * Check if the given list of roles can read the model element in the
 	 * project.
-	 * 
+	 *
 	 * @param roles
 	 *            a list of roles
 	 * @param projectId
@@ -351,7 +351,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkReadAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.util.Set)
 	 */
@@ -374,7 +374,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
@@ -418,11 +418,11 @@ public class AccessControlImpl implements AccessControl {
 	/**
 	 * Removes any orphan {@link ProjectId}s from the given {@link ProjectAdminRole}, i.e.
 	 * all invalid {@link ProjectId}s will be removed.
-	 * 
+	 *
 	 * @param orgUnitId
-	 * 
+	 *
 	 * @param paRole the {@link ProjectAdminRole} to be cleaned up
-	 * 
+	 *
 	 * @throws AccessControlException in case the requested orgUnit does not exist
 	 */
 	private void cleanupPARole(ACOrgUnitId orgUnitId) throws AccessControlException {
@@ -459,9 +459,9 @@ public class AccessControlImpl implements AccessControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccessForOrgUnit(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
@@ -485,9 +485,9 @@ public class AccessControlImpl implements AccessControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccessForOrgUnit(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.util.Set)
 	 */
@@ -540,9 +540,9 @@ public class AccessControlImpl implements AccessControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
@@ -583,7 +583,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkServerAdminAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public void checkServerAdminAccess(SessionId sessionId) throws AccessControlException {
@@ -645,9 +645,9 @@ public class AccessControlImpl implements AccessControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkAccess(org.eclipse.emf.emfstore.internal.server.core.MethodInvocation)
 	 */
 	public void checkAccess(MethodInvocation op) throws AccessControlException {
@@ -692,7 +692,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * Returns the authentication control that is currently used by the access control.
-	 * 
+	 *
 	 * @return the currently active authentication control
 	 */
 	public AbstractAuthenticationControl getAuthenticationControl() {
@@ -701,7 +701,7 @@ public class AccessControlImpl implements AccessControl {
 
 	/**
 	 * Sets the authentication control to be used by the access control.
-	 * 
+	 *
 	 * @param authenticationControl
 	 *            the authentication control to be used
 	 */

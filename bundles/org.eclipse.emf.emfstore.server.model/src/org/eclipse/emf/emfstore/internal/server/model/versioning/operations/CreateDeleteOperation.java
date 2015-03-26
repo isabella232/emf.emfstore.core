@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Create Delete Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  * <em>EObject To Id Map</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation()
  * @model
  * @generated
@@ -50,7 +50,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Delete</em>' attribute.
 	 * @see #setDelete(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation_Delete()
@@ -64,7 +64,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#isDelete
 	 * <em>Delete</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Delete</em>' attribute.
 	 * @see #isDelete()
@@ -80,7 +80,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Model Element</em>' containment reference.
 	 * @see #setModelElement(EObject)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation_ModelElement()
@@ -95,7 +95,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * <em>Model Element</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Model Element</em>' containment reference.
 	 * @see #getModelElement()
 	 * @generated
@@ -112,7 +112,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Sub Operations</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation_SubOperations()
 	 * @model containment="true" resolveProxies="true"
@@ -130,7 +130,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>EObject To Id Map</em>' map.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation_EObjectToIdMap()
 	 * @model mapType=
@@ -144,7 +144,7 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * the deleted element did not have a parent at the time of deletion or the
 	 * parent cannot be determined anymore since it has also been removed from
 	 * the given project.
-	 * 
+	 *
 	 * @param project
 	 *            the current project (needed to derive the parent)
 	 * @return the element id

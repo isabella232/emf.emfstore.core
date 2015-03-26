@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -48,10 +48,10 @@ import org.eclipse.wb.swt.ResourceManager;
 
 /**
  * The login dialog.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  * @see LoginDialogController
  */
 public class LoginDialog extends TitleAreaDialog {
@@ -71,13 +71,13 @@ public class LoginDialog extends TitleAreaDialog {
 
 	/**
 	 * Create the dialog.
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell to be used by the dialog
 	 * @param controller
 	 *            the login dialog controller repsonsible for opening up the
 	 *            login dialog
-	 * 
+	 *
 	 */
 	public LoginDialog(Shell parentShell, ILoginDialogController controller) {
 		super(parentShell);
@@ -85,9 +85,9 @@ public class LoginDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -202,7 +202,7 @@ public class LoginDialog extends TitleAreaDialog {
 
 	/**
 	 * Fills the login dialog data according to the given {@link Usersession}.
-	 * 
+	 *
 	 * @param usersession
 	 *            the user session to be loaded
 	 */
@@ -240,9 +240,9 @@ public class LoginDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#okPressed()
 	 */
 	@Override
@@ -295,9 +295,9 @@ public class LoginDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
@@ -313,9 +313,9 @@ public class LoginDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
 	 */
 	@Override
@@ -332,7 +332,7 @@ public class LoginDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns the selected {@link Usersession}.
-	 * 
+	 *
 	 * @return the selected {@link Usersession}
 	 */
 	public Usersession getSelectedUsersession() {
@@ -343,9 +343,9 @@ public class LoginDialog extends TitleAreaDialog {
 	 * Simple listener for loading the selected usersession if the user changes
 	 * the selected entry within the combo box that contains all known
 	 * usersessions.
-	 * 
+	 *
 	 * @author ovonwesen
-	 * 
+	 *
 	 */
 	private final class ComboListener implements ISelectionChangedListener,
 		ModifyListener {
@@ -374,7 +374,7 @@ public class LoginDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns the password as entered by the user.
-	 * 
+	 *
 	 * @return the entered password
 	 */
 	public String getPassword() {
@@ -383,7 +383,7 @@ public class LoginDialog extends TitleAreaDialog {
 
 	/**
 	 * Whether the password should be saved.
-	 * 
+	 *
 	 * @return {@code true}, if the password should be saved, {@code false} otherwise
 	 */
 	public boolean isSavePassword() {
@@ -392,7 +392,7 @@ public class LoginDialog extends TitleAreaDialog {
 
 	/**
 	 * Whether the password has been modified.
-	 * 
+	 *
 	 * @return {@code true}, if the password has been modified, {@code false} otherwise
 	 */
 	public boolean isPasswordModified() {

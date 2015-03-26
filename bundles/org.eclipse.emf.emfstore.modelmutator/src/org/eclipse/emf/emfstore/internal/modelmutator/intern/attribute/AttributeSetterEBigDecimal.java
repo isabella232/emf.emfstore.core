@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Stephan Koehler, Eugen Neufeld, Philip Achenbach - initial API and implementation
  ******************************************************************************/
@@ -19,18 +19,18 @@ import java.util.Random;
 
 /**
  * Class for creating random BigDecimal values.
- * 
+ *
  * @author Eugen Neufeld
  * @author Stephan Koehler
  * @author Philip Achenbach
- * 
+ *
  * @see AttributeSetter
  */
 public class AttributeSetterEBigDecimal extends AttributeSetter<BigDecimal> {
 
 	/**
 	 * Creates a new AttributeSetter for BigDecimal attributes.
-	 * 
+	 *
 	 * @param random
 	 *            Random object used to create attribute values
 	 */

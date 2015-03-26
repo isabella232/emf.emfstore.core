@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -36,14 +36,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <em>Operations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -63,7 +63,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	/**
 	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOperations()
 	 * @generated
 	 * @ordered
@@ -72,7 +72,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected OperationGroupImpl() {
@@ -81,7 +81,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -91,7 +91,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -100,7 +100,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -114,7 +114,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<AbstractOperation> getOperations() {
@@ -128,7 +128,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -166,7 +166,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -185,7 +185,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -202,7 +202,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

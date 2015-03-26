@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -68,7 +68,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
  * DecisionManager is the controller for the merge dialog and therefore it's
  * main component. It calculates the conflicts from incoming changes and can
  * execute resolved conflicts.
- * 
+ *
  * @author wesendon
  */
 public class DecisionManager {
@@ -87,7 +87,7 @@ public class DecisionManager {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param project
 	 *            the related project
 	 * @param changeConflict
@@ -404,7 +404,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the conflicts.
-	 * 
+	 *
 	 * @return list of conflicts.
 	 */
 	public ArrayList<VisualConflict> getConflicts() {
@@ -413,7 +413,7 @@ public class DecisionManager {
 
 	/**
 	 * Checks whether all conflicts are resolved.
-	 * 
+	 *
 	 * @return true if all are resolved
 	 */
 	public boolean isResolved() {
@@ -445,7 +445,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the conflictdetector.
-	 * 
+	 *
 	 * @return conflictdetector
 	 */
 	public ConflictDetector getConflictDetector() {
@@ -454,7 +454,7 @@ public class DecisionManager {
 
 	/**
 	 * Flat whether branches are merged opposed to versions on the same branch.
-	 * 
+	 *
 	 * @return true, if branches
 	 */
 	public boolean isBranchMerge() {
@@ -463,7 +463,7 @@ public class DecisionManager {
 
 	/**
 	 * Get the Name of an model element by modelelement id.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            id of element
 	 * @return name as string
@@ -474,7 +474,7 @@ public class DecisionManager {
 
 	/**
 	 * Get the Name of an model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            element
 	 * @return name as string
@@ -486,7 +486,7 @@ public class DecisionManager {
 	/**
 	 * Returns the model element. Therefore the project as well as creation and
 	 * deletion operations are searched.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the id of an element
 	 * @return the model element with the given ID or <code>null</code> if no such model element has been found
@@ -498,7 +498,7 @@ public class DecisionManager {
 	/**
 	 * Returns the name of the author for a operation in list of their
 	 * operations.
-	 * 
+	 *
 	 * @param theirOperation
 	 *            operation
 	 * @return name as string or empty string
@@ -548,7 +548,7 @@ public class DecisionManager {
 
 	/**
 	 * Count my leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countMyLeafOperations() {
@@ -580,7 +580,7 @@ public class DecisionManager {
 
 	/**
 	 * Count their leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countTheirLeafOperations() {
@@ -594,7 +594,7 @@ public class DecisionManager {
 
 	/**
 	 * Count my leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countMyOperations() {
@@ -608,7 +608,7 @@ public class DecisionManager {
 
 	/**
 	 * Count their leaf operations.
-	 * 
+	 *
 	 * @return the number of leaf operations
 	 */
 	public int countTheirOperations() {
@@ -620,7 +620,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the mapping that is used to resolve model elements correctly.
-	 * 
+	 *
 	 * @return the ID to {@link EObject} mapping
 	 */
 	public ModelElementIdToEObjectMapping getIdToEObjectMapping() {
@@ -629,7 +629,7 @@ public class DecisionManager {
 
 	/**
 	 * Returns the project on which the decision manager is working on.
-	 * 
+	 *
 	 * @return the project associated with this decision manager
 	 */
 	public Project getProject() {

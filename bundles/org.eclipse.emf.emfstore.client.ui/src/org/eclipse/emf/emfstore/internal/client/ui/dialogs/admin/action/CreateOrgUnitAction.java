@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -35,9 +35,9 @@ import org.eclipse.swt.widgets.TableItem;
 
 /**
  * Abstract action for creating {@link ACOrgUnit}s.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class CreateOrgUnitAction extends Action {
 
@@ -47,7 +47,7 @@ public abstract class CreateOrgUnitAction extends Action {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param title
 	 *            the action title
 	 * @param adminBroker
@@ -171,7 +171,7 @@ public abstract class CreateOrgUnitAction extends Action {
 
 	/**
 	 * Returns the field that is used to identify a {@link ACOrgUnit} such as the name.
-	 * 
+	 *
 	 * @return the field that is used to identify a ACOrgUnit
 	 */
 	protected abstract String getPrimaryFieldName();
@@ -179,14 +179,14 @@ public abstract class CreateOrgUnitAction extends Action {
 	/**
 	 * Returns the name of the organizational unit.
 	 * Will be used to label the input dialog and such.
-	 * 
+	 *
 	 * @return a stirng describing the organizational unit
 	 */
 	protected abstract String orgUnitName();
 
 	/**
 	 * Call that is responsible for actually creating the {@link ACOrgUnit}.
-	 * 
+	 *
 	 * @param fieldValues
 	 *            a mapping from field names to their values
 	 * @return the created ACOrgUnit
@@ -199,7 +199,7 @@ public abstract class CreateOrgUnitAction extends Action {
 	 * Returns all fields that are necessary for creating a {@link ACOrgUnit}.
 	 * For each field a corresponding text field will be created in the
 	 * input dialog that holds the information about the create user.
-	 * 
+	 *
 	 * @return all fields that are necessary for creating a {@link ACOrgUnit}
 	 */
 	protected abstract Set<String> getInputFieldNames();

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -23,34 +23,35 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.events.IExpansionListener;
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 
 /**
  * Uses widgets to display details if needed for the decision box.
- * 
+ *
  * @author wesendon
  */
 public class DetailsComponent extends Section {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param decisionBox
 	 *            parent
 	 * @param conflict
 	 *            conflict
 	 */
 	public DetailsComponent(final DecisionBox decisionBox, VisualConflict conflict) {
-		super(decisionBox, Section.TWISTIE);
+		super(decisionBox, ExpandableComposite.TWISTIE);
 		setText("Details");
 		setLayout(new FillLayout());
-		GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
+		final GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
 		layoutData.horizontalSpan = 2;
 		setLayoutData(layoutData);
 		setBackground(decisionBox.getBackground());
 		// section.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		int columns = 1;
+		final int columns = 1;
 
 		//
 		// for (ConflictOption option : conflict.getOptions()) {
@@ -59,8 +60,8 @@ public class DetailsComponent extends Section {
 		// }
 		// }
 
-		Composite client = new Composite(this, SWT.NONE);
-		TableWrapLayout layout = new TableWrapLayout();
+		final Composite client = new Composite(this, SWT.NONE);
+		final TableWrapLayout layout = new TableWrapLayout();
 		layout.numColumns = columns;
 		layout.makeColumnsEqualWidth = true;
 		layout.topMargin = 0;
@@ -68,10 +69,10 @@ public class DetailsComponent extends Section {
 		layout.rightMargin = 0;
 		layout.leftMargin = 0;
 		client.setLayout(layout);
-		client.setBackground(this.getBackground());
+		client.setBackground(getBackground());
 
 		MergeTextWidget multiWidget = null;
-		for (ConflictOption option : conflict.getOptions()) {
+		for (final ConflictOption option : conflict.getOptions()) {
 			if (!option.isDetailsProvider() || option.getDetailProvider() == null) {
 				continue;
 			}
@@ -92,10 +93,10 @@ public class DetailsComponent extends Section {
 		addExpansionListener(new IExpansionListener() {
 
 			// FIXME: assuming initial size
-			private Rectangle bounds = new Rectangle(0, 0, 0, 20);
+			private final Rectangle bounds = new Rectangle(0, 0, 0, 20);
 
 			public void expansionStateChanged(ExpansionEvent e) {
-				int height = bounds.height;
+				final int height = bounds.height;
 				bounds.height = getBounds().height;
 				decisionBox.layoutPage(bounds.height - height);
 			}

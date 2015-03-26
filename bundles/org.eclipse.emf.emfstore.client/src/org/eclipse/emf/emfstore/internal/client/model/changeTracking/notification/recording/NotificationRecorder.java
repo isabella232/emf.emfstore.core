@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Slawamir Chodnicki - initial API and implementation
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
 /**
  * A Notification recorder is meant to generate a NotificationRecording. To create the recording just repeatedly call
  * record() with incoming EMF notifications.
- * 
+ *
  * @author chodnick
  */
 public class NotificationRecorder {
@@ -30,7 +30,7 @@ public class NotificationRecorder {
 
 	/**
 	 * Records a new EMF Notification.
-	 * 
+	 *
 	 * @param n the notification to record
 	 */
 	public void record(Notification n) {
@@ -47,7 +47,7 @@ public class NotificationRecorder {
 	/**
 	 * Returns a completed notification recording, may throw IllegalStateException in case the recording is requested
 	 * while recording still takes place, i.e. the EMF notification chain is not completed yet.
-	 * 
+	 *
 	 * @return a completed notification recording if one is ready
 	 */
 	public NotificationRecording getRecording() {
@@ -101,7 +101,7 @@ public class NotificationRecorder {
 
 	/**
 	 * Starts a new recording.
-	 * 
+	 *
 	 * @param aHint the hint to use when creating the new recording.
 	 */
 	public void newRecording(NotificationRecordingHint aHint) {

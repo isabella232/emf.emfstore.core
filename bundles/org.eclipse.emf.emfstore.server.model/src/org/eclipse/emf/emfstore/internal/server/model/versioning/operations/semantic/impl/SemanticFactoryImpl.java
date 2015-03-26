@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl;
@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory {
@@ -29,7 +29,7 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static SemanticFactory init() {
@@ -52,7 +52,7 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public SemanticFactoryImpl() {
@@ -61,7 +61,7 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -75,7 +75,7 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public SemanticPackage getSemanticPackage() {
@@ -84,7 +84,7 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -47,14 +47,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SingleReferenceOperationImpl extends ReferenceOperationImpl implements SingleReferenceOperation {
 	/**
 	 * The cached value of the '{@link #getOldValue() <em>Old Value</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 	/**
 	 * The cached value of the '{@link #getNewValue() <em>New Value</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewValue()
 	 * @generated
 	 * @ordered
@@ -73,7 +73,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected SingleReferenceOperationImpl() {
@@ -82,7 +82,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -92,7 +92,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId getOldValue() {
@@ -124,7 +124,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId basicGetOldValue() {
@@ -133,7 +133,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetOldValue(ModelElementId newOldValue, NotificationChain msgs) {
@@ -154,7 +154,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldValue(ModelElementId newOldValue) {
@@ -182,7 +182,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId getNewValue() {
@@ -214,7 +214,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId basicGetNewValue() {
@@ -223,7 +223,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNewValue(ModelElementId newNewValue, NotificationChain msgs) {
@@ -244,7 +244,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewValue(ModelElementId newNewValue) {
@@ -272,7 +272,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -289,7 +289,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -312,7 +312,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -331,7 +331,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -350,7 +350,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -466,7 +466,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation#getOtherInvolvedModelElements()
 	 */
 	@Override

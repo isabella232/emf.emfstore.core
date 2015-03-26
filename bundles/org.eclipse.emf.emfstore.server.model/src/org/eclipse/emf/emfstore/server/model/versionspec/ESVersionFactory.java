@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  * Edgar Mueller - API annotations
@@ -16,10 +16,10 @@ import org.eclipse.emf.emfstore.common.model.ESFactory;
 
 /**
  * A factory for creating version specifiers.
- * 
+ *
  * @author wesendon
  * @author emueller
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */
@@ -27,14 +27,14 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Creates a HEAD revision for the branch "trunk".
-	 * 
+	 *
 	 * @return head version
 	 */
 	ESHeadVersionSpec createHEAD();
 
 	/**
 	 * Create {@link ESHeadVersionSpec}.
-	 * 
+	 *
 	 * @param branch
 	 *            name of branch
 	 * @return version spec
@@ -43,7 +43,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Create {@link ESHeadVersionSpec}.
-	 * 
+	 *
 	 * @param versionSpec
 	 *            copies branch name from
 	 * @return version spec
@@ -52,7 +52,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Create {@link ESPrimaryVersionSpec}.
-	 * 
+	 *
 	 * @param branch
 	 *            branch name
 	 * @param index
@@ -63,19 +63,19 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Create {@link ESPrimaryVersionSpec}.
-	 * 
+	 *
 	 * @param versionSpec
 	 *            copy branch name from
 	 * @param index
 	 *            version number
-	 * 
+	 *
 	 * @return version spec
 	 */
 	ESPrimaryVersionSpec createPRIMARY(ESVersionSpec versionSpec, int index);
 
 	/**
 	 * Create {@link ESPrimaryVersionSpec}.
-	 * 
+	 *
 	 * @param i
 	 *            version number
 	 * @return version spec
@@ -84,7 +84,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Create {@link ESBranchVersionSpec}.
-	 * 
+	 *
 	 * @param value
 	 *            branch name
 	 * @return version spec
@@ -93,7 +93,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Creates {@link ESBranchVersionSpec}.
-	 * 
+	 *
 	 * @param spec
 	 *            copies branch name from
 	 * @return version spec
@@ -102,7 +102,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Creates {@link ESAncestorVersionSpec}.
-	 * 
+	 *
 	 * @param source
 	 *            source
 	 * @param target
@@ -114,7 +114,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Checks whether two versions spec target the same branch.
-	 * 
+	 *
 	 * @param spec1
 	 *            spec 1
 	 * @param spec2
@@ -125,7 +125,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Creates {@link ESTagVersionSpec}.
-	 * 
+	 *
 	 * @param tag
 	 *            tag
 	 * @param branch
@@ -136,7 +136,7 @@ public interface ESVersionFactory extends ESFactory {
 
 	/**
 	 * Creates an {@link ESPagedUpdateVersionSpec}.
-	 * 
+	 *
 	 * @param baseVersion
 	 *            the base version from which on to count the maximally allowed changes
 	 * @param maxChanges

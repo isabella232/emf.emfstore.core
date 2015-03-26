@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -21,9 +21,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
  * It wraps a {@link IConfigurationElement} for convenience purposes.
  * As {@link ESExtensionPoint} it can be configured to return null or throw an runtime exception
  * {@link ESExtensionPointException}
- * 
+ *
  * @author wesendon
- * 
+ *
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public final class ESExtensionElement {
@@ -33,7 +33,7 @@ public final class ESExtensionElement {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param element element to be wrapped
 	 */
 	public ESExtensionElement(final IConfigurationElement element) {
@@ -42,18 +42,18 @@ public final class ESExtensionElement {
 
 	/**
 	 * Constructor, allowing to set whether exceptions should be thrown instead of returning null.
-	 * 
+	 *
 	 * @param element element to be wrapped
 	 * @param throwExceptions if true exceptions are thrown instead of returning null
 	 */
 	public ESExtensionElement(final IConfigurationElement element, final boolean throwExceptions) {
 		this.element = element;
-		this.exceptionInsteadOfNull = throwExceptions;
+		exceptionInsteadOfNull = throwExceptions;
 	}
 
 	/**
 	 * Returns the value of the boolean attribute, if existing, or false otherwise.
-	 * 
+	 *
 	 * @param name attribute id
 	 * @return Boolean or an {@link ESExtensionPointException} is thrown
 	 */
@@ -63,7 +63,7 @@ public final class ESExtensionElement {
 
 	/**
 	 * Returns the value of the boolean attribute, if existing, or given defaultValue otherwise.
-	 * 
+	 *
 	 * @param name attribute id
 	 * @param defaultValue the default value
 	 * @return Boolean or an {@link ESExtensionPointException} is thrown
@@ -78,26 +78,26 @@ public final class ESExtensionElement {
 
 	/**
 	 * Returns an Integer attribute.
-	 * 
+	 *
 	 * @param name attribute id
 	 * @return Integer, null or an {@link ESExtensionPointException} is thrown
 	 */
 	public Integer getInteger(final String name) {
 		try {
 			return Integer.parseInt(getAttribute(name));
-		} catch (NumberFormatException e) {
+		} catch (final NumberFormatException e) {
 			return (Integer) handleErrorOrNull(exceptionInsteadOfNull, e);
 		}
 	}
 
 	/**
 	 * Returns an attribute as string.
-	 * 
+	 *
 	 * @param name attribute id
 	 * @return String, null or an {@link ESExtensionPointException} is thrown
 	 */
 	public String getAttribute(final String name) {
-		final String attribute = this.element.getAttribute(name);
+		final String attribute = element.getAttribute(name);
 		if (attribute == null) {
 			handleErrorOrNull(exceptionInsteadOfNull, null);
 		}
@@ -106,7 +106,7 @@ public final class ESExtensionElement {
 
 	/**
 	 * Returns a class, or rather the registered instance of this class.
-	 * 
+	 *
 	 * @param classAttributeName attribute name of the class attribute
 	 * @param returnType expected class type
 	 * @param <T> type of class
@@ -115,40 +115,40 @@ public final class ESExtensionElement {
 	@SuppressWarnings("unchecked")
 	public <T> T getClass(final String classAttributeName, final Class<T> returnType) {
 		try {
-			Object executableExtension = this.element.createExecutableExtension(classAttributeName);
+			final Object executableExtension = element.createExecutableExtension(classAttributeName);
 			if (returnType.isInstance(executableExtension)) {
 				return (T) executableExtension;
 			}
 			return (T) handleErrorOrNull(exceptionInsteadOfNull, null);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			return (T) handleErrorOrNull(exceptionInsteadOfNull, e);
 		}
 	}
 
 	/**
 	 * Returns the wrapped element.
-	 * 
+	 *
 	 * @return {@link IConfigurationElement}
 	 */
 	public IConfigurationElement getIConfigurationElement() {
-		return this.element;
+		return element;
 	}
 
 	/**
 	 * Set wrapper to throw exceptions or otherwise return null.
-	 * 
+	 *
 	 * @param throwException if true, exceptions are thrown
 	 */
 	public void setThrowException(boolean throwException) {
-		this.exceptionInsteadOfNull = throwException;
+		exceptionInsteadOfNull = throwException;
 	}
 
 	/**
 	 * Returns whether exceptions are thrown or null is returned.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean getThrowException() {
-		return this.exceptionInsteadOfNull;
+		return exceptionInsteadOfNull;
 	}
 }

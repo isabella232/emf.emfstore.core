@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
 /**
  * This class acts as a simple wrapper around the operation recorder and provides convenience methods
  * for undoing operations and handling composite operations.
- * 
+ *
  * @author koegel
  * @author emueller
  */
@@ -44,7 +44,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space the operation manager should be attached to
 	 */
@@ -79,7 +79,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	/**
 	 * Adds an operation observer that gets notified whenever an operation
 	 * is either executed or undone.
-	 * 
+	 *
 	 * @param operationObserver
 	 *            the operation observer to be added
 	 */
@@ -91,7 +91,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Removed the given operation observer from the list of operation observers.
-	 * 
+	 *
 	 * @param operationObserver
 	 *            the operation observer to be removed
 	 */
@@ -103,7 +103,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Notifies all operations observer that an operation has been undone.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation that has been undone
 	 */
@@ -116,7 +116,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Notify the operation observer that an operation has just completed.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation
 	 */
@@ -145,7 +145,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Replace and complete the current composite operation.
-	 * 
+	 *
 	 * @param semanticCompositeOperation
 	 *            the semantic operation that replaces the composite operation
 	 */
@@ -158,7 +158,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Opens up a handle for creating a composite operation.
-	 * 
+	 *
 	 * @return the handle for the composite operation
 	 */
 	public CompositeOperationHandle beginCompositeOperation() {
@@ -166,9 +166,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.impl.OperationRecorderListener#operationsRecorded(java.util.List)
 	 */
 	public void operationsRecorded(List<? extends AbstractOperation> operations) {
@@ -177,7 +177,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Clears all recorded operations.
-	 * 
+	 *
 	 * @return the cleared operations
 	 */
 	public List<AbstractOperation> clearOperations() {
@@ -185,9 +185,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ESDisposable#dispose()
 	 */
 	public void dispose() {
@@ -197,7 +197,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Returns the notification recorder.
-	 * 
+	 *
 	 * @return the notification recorder
 	 */
 	public NotificationRecorder getNotificationRecorder() {
@@ -205,9 +205,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandStarted(org.eclipse.emf.common.command.Command)
 	 */
 	public void commandStarted(Command command) {
@@ -215,9 +215,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandCompleted(org.eclipse.emf.common.command.Command)
 	 */
 	public void commandCompleted(Command command) {
@@ -225,9 +225,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver#commandFailed(org.eclipse.emf.common.command.Command,
 	 *      java.lang.Exception)
 	 */
@@ -236,9 +236,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#notify(org.eclipse.emf.common.notify.Notification,
 	 *      org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection, org.eclipse.emf.ecore.EObject)
 	 */
@@ -247,9 +247,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#modelElementAdded(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -258,9 +258,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#modelElementRemoved(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -269,9 +269,9 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#collectionDeleted(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void collectionDeleted(IdEObjectCollection collection) {
@@ -294,7 +294,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Returns the configuration options for the operation recorder.
-	 * 
+	 *
 	 * @return the operation recorder configuration options
 	 */
 	public OperationRecorderConfig getRecorderConfig() {
@@ -303,7 +303,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Notifies the manager that a command has been completed.
-	 * 
+	 *
 	 * @param command
 	 *            the {@link Command} that has been completed
 	 * @param isNestedCommand
@@ -317,7 +317,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 
 	/**
 	 * Whether the operation manager considers a command is being run.
-	 * 
+	 *
 	 * @return <code>true</code> if a command is being run, <code>false</code> otherwise
 	 */
 	public boolean isCommandRunning() {

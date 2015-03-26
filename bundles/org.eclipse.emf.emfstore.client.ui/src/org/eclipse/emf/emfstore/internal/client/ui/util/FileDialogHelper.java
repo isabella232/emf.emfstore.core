@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Eugen Neufeld - initial API and implementation
  ******************************************************************************/
@@ -20,9 +20,9 @@ import org.osgi.framework.Bundle;
 
 /**
  * A helper class that can be used to export projects.
- * 
+ *
  * @author Eugen Neufeld, David Soto Setzke
- * 
+ *
  */
 public final class FileDialogHelper {
 
@@ -35,7 +35,7 @@ public final class FileDialogHelper {
 
 	/**
 	 * Opens an export file dialog.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell
 	 * @param fileName
@@ -48,7 +48,7 @@ public final class FileDialogHelper {
 
 	/**
 	 * Opens an import file dialog.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell
 	 * @return the absolute file path to the imported file, or {@code null} if import has been cancelled

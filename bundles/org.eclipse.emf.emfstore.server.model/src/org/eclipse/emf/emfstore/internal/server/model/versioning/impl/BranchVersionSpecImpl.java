@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -20,14 +20,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVersionSpec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected BranchVersionSpecImpl() {
@@ -36,7 +36,7 @@ public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVers
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -50,11 +50,11 @@ public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVers
 	private ESBranchVersionSpecImpl apiImpl;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESBranchVersionSpecImpl toAPI() {
@@ -66,11 +66,11 @@ public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVers
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESBranchVersionSpecImpl createAPI() {

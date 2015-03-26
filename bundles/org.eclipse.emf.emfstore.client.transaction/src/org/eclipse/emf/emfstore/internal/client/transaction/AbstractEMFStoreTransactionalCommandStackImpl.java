@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel
  * Edgar Mueller
@@ -20,9 +20,9 @@ import org.eclipse.emf.transaction.internal.Tracing;
 /**
  * Abstract superclass for EMFStore CommandStacks supporting transaction. Will be replaced by correspponding class from
  * EMF Transaction as soon as it becomes available which is planned for EMF 2.10.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 @SuppressWarnings("restriction")
 public abstract class AbstractEMFStoreTransactionalCommandStackImpl extends TransactionalCommandStackImpl {
@@ -87,11 +87,13 @@ public abstract class AbstractEMFStoreTransactionalCommandStackImpl extends Tran
 	/**
 	 * Undo hook to enable the execution of the undo within a transaction.
 	 */
+	@Override
 	protected abstract void basicUndo();
 
 	/**
 	 * Redo hook to enable the execution of the redo within a transaction.
 	 */
+	@Override
 	protected abstract void basicRedo();
 
 }

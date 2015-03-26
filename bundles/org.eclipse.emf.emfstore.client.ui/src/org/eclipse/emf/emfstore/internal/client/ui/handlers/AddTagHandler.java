@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * ovonwesen
  * emueller
@@ -24,7 +24,7 @@ import org.eclipse.ui.PlatformUI;
 /**
  * Handler for adding a tag to a selected {@link HistoryInfo} instance.
  * It is assumed that the user previously has selected a {@link HistoryInfo} instance.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -32,10 +32,10 @@ public class AddTagHandler extends AbstractEMFStoreHandler {
 
 	@Override
 	public void handle() {
-		HistoryInfo historyInfo = requireSelection(HistoryInfo.class);
+		final HistoryInfo historyInfo = requireSelection(HistoryInfo.class);
 
-		ESLocalProject localProject = getProjectFromHistoryView();
-		ESHistoryInfo info = historyInfo.toAPI();
+		final ESLocalProject localProject = getProjectFromHistoryView();
+		final ESHistoryInfo info = historyInfo.toAPI();
 
 		// TODO
 		if (localProject == null || info == null) {
@@ -47,7 +47,7 @@ public class AddTagHandler extends AbstractEMFStoreHandler {
 	}
 
 	private ESLocalProject getProjectFromHistoryView() {
-		HistoryBrowserView historyBrowserView = getHistoryBrowserViewFromActivePart();
+		final HistoryBrowserView historyBrowserView = getHistoryBrowserViewFromActivePart();
 
 		if (historyBrowserView == null) {
 			return null;
@@ -59,8 +59,8 @@ public class AddTagHandler extends AbstractEMFStoreHandler {
 	private HistoryBrowserView getHistoryBrowserViewFromActivePart() {
 		// TODO: controller currently does not work if the active workbench window is not
 		// the history view
-		IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+		final IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		final IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
 
 		if (activePage == null || !(activePage.getActivePart() instanceof HistoryBrowserView)) {
 			return null;

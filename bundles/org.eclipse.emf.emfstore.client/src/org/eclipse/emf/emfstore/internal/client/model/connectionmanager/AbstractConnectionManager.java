@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 /**
  * Superclass for all connection managers which map {@link SessionId}s
  * to the relative connection simply by using a generic map.
- * 
+ *
  * @param <T> type of connection client
  * @author wesendon
  */
@@ -37,7 +37,7 @@ public abstract class AbstractConnectionManager<T> {
 
 	/**
 	 * Adds a connection proxy.
-	 * 
+	 *
 	 * @param id session id as key
 	 * @param connectionProxy connection proxy
 	 */
@@ -47,7 +47,7 @@ public abstract class AbstractConnectionManager<T> {
 
 	/**
 	 * Removes connection proxy.
-	 * 
+	 *
 	 * @param id sessionid
 	 */
 	protected void removeConnectionProxy(SessionId id) {
@@ -56,7 +56,7 @@ public abstract class AbstractConnectionManager<T> {
 
 	/**
 	 * Returns the connection proxy attached to the session id.
-	 * 
+	 *
 	 * @param id
 	 *            the session ID
 	 * @return a connection proxy
@@ -73,7 +73,7 @@ public abstract class AbstractConnectionManager<T> {
 
 	/**
 	 * Returns the map.
-	 * 
+	 *
 	 * @return the map
 	 */
 	protected Map<SessionId, T> getConnectionProxyMap() {
@@ -82,7 +82,7 @@ public abstract class AbstractConnectionManager<T> {
 
 	/**
 	 * Checks whether there is a connection proxy for the given {@link SessionId}.
-	 * 
+	 *
 	 * @param id
 	 *            a session ID
 	 * @return true if there is a connection proxy available for the given ID, false otherwise

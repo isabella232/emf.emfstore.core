@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.SettingWithReferenced
 
 /**
  * Caches removed elements.
- * 
+ *
  * @author emueller
  */
 public class RemovedElementsCache {
@@ -39,7 +39,7 @@ public class RemovedElementsCache {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param collection an underlying {@link org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection}
 	 */
 	public RemovedElementsCache(IdEObjectCollectionImpl collection) {
@@ -52,7 +52,7 @@ public class RemovedElementsCache {
 
 	/**
 	 * Adds a new deleted element to the cache.
-	 * 
+	 *
 	 * @param rootElement
 	 *            the deleted element
 	 * @param allModelElements
@@ -80,7 +80,7 @@ public class RemovedElementsCache {
 	/**
 	 * Returns a list of all removed root elements. Children of
 	 * any root element are not included in the returned list.
-	 * 
+	 *
 	 * @return list of all root elements
 	 */
 	public List<EObject> getRemovedRootElements() {
@@ -89,7 +89,7 @@ public class RemovedElementsCache {
 
 	/**
 	 * Checks whether the given model element has been previously removed.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element that should be checked whether it has been removed
 	 * @return {@code true}, if the model element has been removed, {@code false} otherwise
@@ -100,7 +100,7 @@ public class RemovedElementsCache {
 
 	/**
 	 * Returns the id of the specified removed element.
-	 * 
+	 *
 	 * @param removedElement
 	 *            The removed element whose id is requested
 	 * @return the model element id of the removed element
@@ -111,7 +111,7 @@ public class RemovedElementsCache {
 
 	/**
 	 * Returns the saved settings of the specified model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            The model element whose settings are requested
 	 * @return the settings

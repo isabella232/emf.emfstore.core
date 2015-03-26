@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model.impl;
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class IdentifiableElementImpl extends EObjectImpl implements IdentifiableElement {
@@ -36,7 +36,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getIdentifier()
 	 * @generated
 	 * @ordered
@@ -47,7 +47,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getIdentifier()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected IdentifiableElementImpl() {
@@ -66,7 +66,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> . <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getIdentifier() {
@@ -85,7 +85,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIdentifier(String newIdentifier) {
@@ -99,7 +99,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -113,7 +113,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -143,7 +143,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,7 +157,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

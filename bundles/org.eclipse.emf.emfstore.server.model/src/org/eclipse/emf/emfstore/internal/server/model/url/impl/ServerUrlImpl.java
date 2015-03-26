@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url.impl;
@@ -26,14 +26,14 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ServerUrlImpl#getPort <em>Port</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	/**
 	 * The default value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHostName()
 	 * @generated
 	 * @ordered
@@ -43,7 +43,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	/**
 	 * The cached value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHostName()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	/**
 	 * The default value of the '{@link #getPort() <em>Port</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPort()
 	 * @generated
 	 * @ordered
@@ -63,7 +63,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	/**
 	 * The cached value of the '{@link #getPort() <em>Port</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPort()
 	 * @generated
 	 * @ordered
@@ -72,7 +72,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ServerUrlImpl() {
@@ -81,7 +81,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -91,7 +91,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getHostName() {
@@ -100,7 +100,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setHostName(String newHostName) {
@@ -114,7 +114,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getPort() {
@@ -123,7 +123,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPort(int newPort) {
@@ -136,7 +136,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -172,7 +172,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -191,7 +191,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -228,7 +228,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getUrlString()
 	 * @generated NOT
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 
 /**
  * This class represents an option/solution for a conflict. A conflict may have several options.
- * 
+ *
  * @author wesendon
  */
 public class ConflictOption {
@@ -32,19 +32,19 @@ public class ConflictOption {
 
 	/**
 	 * Type of options.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	public enum OptionType {
 		/**
-		 * 
+		 *
 		 */
 		MyOperation, TheirOperation, MergeText, Custom
 	}
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param option name of option
 	 * @param type type
 	 */
@@ -56,7 +56,7 @@ public class ConflictOption {
 
 	/**
 	 * Alternative contstrutor which will toString the input object.
-	 * 
+	 *
 	 * @param obj object
 	 * @param type option type
 	 */
@@ -66,7 +66,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns the option's label.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getOptionLabel() {
@@ -75,7 +75,7 @@ public class ConflictOption {
 
 	/**
 	 * Sets the option's label.
-	 * 
+	 *
 	 * @param option text
 	 */
 	public void setOptionLabel(String option) {
@@ -84,7 +84,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns the Option's label with new line characters removed.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getStrippedOptionLabel() {
@@ -93,7 +93,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns the complete option label.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getFullOptionLabel() {
@@ -102,7 +102,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns the type.
-	 * 
+	 *
 	 * @return type
 	 */
 	public OptionType getType() {
@@ -111,7 +111,7 @@ public class ConflictOption {
 
 	/**
 	 * Adds the change operations, which will be applied in case, that this option is selected as solution.
-	 * 
+	 *
 	 * @param ops operations
 	 */
 	public void addOperations(Set<AbstractOperation> ops) {
@@ -124,7 +124,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns the operations, stored in this option.
-	 * 
+	 *
 	 * @return list of operations
 	 */
 	public Set<AbstractOperation> getOperations() {
@@ -133,7 +133,7 @@ public class ConflictOption {
 
 	/**
 	 * Tells whehter option provides details.
-	 * 
+	 *
 	 * @return true, if so
 	 */
 	public boolean isDetailsProvider() {
@@ -142,7 +142,7 @@ public class ConflictOption {
 
 	/**
 	 * Sets a detailprovider.
-	 * 
+	 *
 	 * @param detailProvider identifying string
 	 */
 	public void setDetailProvider(String detailProvider) {
@@ -151,7 +151,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns detailprovider string.
-	 * 
+	 *
 	 * @return detail provider identifier
 	 */
 	public String getDetailProvider() {
@@ -161,7 +161,7 @@ public class ConflictOption {
 
 	/**
 	 * Returns whether option should be called ({@link #optionChosen()}), if selected.
-	 * 
+	 *
 	 * @return true or false
 	 */
 	public boolean hasExtraOptionAction() {
@@ -170,7 +170,7 @@ public class ConflictOption {
 
 	/**
 	 * Called if Option is chosen in the UI.
-	 * 
+	 *
 	 * @return if true, Option will be updated
 	 */
 	public boolean optionChosen() {

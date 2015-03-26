@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -30,9 +30,9 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * Dialog showing the detail changes about other involved operations in case a conflict option contains more than one
  * operation.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class DetailsDialog extends TitleAreaDialog {
 
@@ -41,7 +41,7 @@ public class DetailsDialog extends TitleAreaDialog {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell
 	 * @param decisionManager
@@ -51,9 +51,9 @@ public class DetailsDialog extends TitleAreaDialog {
 	 */
 	public DetailsDialog(Shell parentShell, DecisionManager decisionManager, ConflictOption option) {
 		super(parentShell);
-		this.setShellStyle(this.getShellStyle() | SWT.RESIZE);
+		setShellStyle(getShellStyle() | SWT.RESIZE);
 		this.decisionManager = decisionManager;
-		this.operations = new ArrayList<AbstractOperation>(option.getOperations());
+		operations = new ArrayList<AbstractOperation>(option.getOperations());
 	}
 
 	@Override
@@ -68,13 +68,13 @@ public class DetailsDialog extends TitleAreaDialog {
 		setTitle("Other involved changes");
 		setMessage("There are " + (operations.size() - 1) + " other operation(s) involved.");
 
-		Composite tabComposite = new Composite(parent, SWT.NONE);
+		final Composite tabComposite = new Composite(parent, SWT.NONE);
 		tabComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		tabComposite.setLayout(new GridLayout(2, false));
 
 		GridLayoutFactory.fillDefaults().applyTo(tabComposite);
 
-		TabbedChangesComposite changesComposite = new TabbedChangesComposite(tabComposite, SWT.BORDER,
+		final TabbedChangesComposite changesComposite = new TabbedChangesComposite(tabComposite, SWT.BORDER,
 			decisionManager.getProject(), operations, decisionManager.getIdToEObjectMapping(), false);
 		changesComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 

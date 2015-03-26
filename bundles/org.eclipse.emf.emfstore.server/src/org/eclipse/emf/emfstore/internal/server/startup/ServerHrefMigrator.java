@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -51,9 +51,9 @@ import org.xml.sax.SAXException;
  * and prior need to be migrated.
  * <p>
  * This migrator will update the HRefs in legacy files on the server side.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class ServerHrefMigrator {
 
@@ -64,7 +64,7 @@ public class ServerHrefMigrator {
 
 	/**
 	 * Performs the migration, if needed. Creates a backup beforehand.
-	 * 
+	 *
 	 * @return <code>true</code> if migration was successful, <code>false</code> if an error occurred and the server
 	 *         startup should be canceled.
 	 */
@@ -131,7 +131,7 @@ public class ServerHrefMigrator {
 
 	/**
 	 * Creates a backup.
-	 * 
+	 *
 	 * @param from path to source
 	 * @param to path to destination
 	 * @return the backup file
@@ -220,7 +220,7 @@ public class ServerHrefMigrator {
 
 	/**
 	 * Updates the href attribute in tags with the given name.
-	 * 
+	 *
 	 * @param pathToFile the path of the xmi file to be updated
 	 * @param tagName the tag for which the hrefs are to be updated
 	 * @param rule the rule computing the new value
@@ -304,7 +304,7 @@ public class ServerHrefMigrator {
 
 	/**
 	 * Updates the attribute with the given name.
-	 * 
+	 *
 	 * @param pathToFile the path of the xmi file to be updated
 	 * @param tagName the tag for which the attribute contents are to be updated
 	 * @param rule the rule computing the new value
@@ -353,7 +353,7 @@ public class ServerHrefMigrator {
 
 	/**
 	 * Returns a list of project IDs that could not be migrated.
-	 * 
+	 *
 	 * @return the corruptProjectIds
 	 */
 	public List<String> getCorruptProjectIds() {

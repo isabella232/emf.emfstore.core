@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -54,7 +54,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 /**
  * The KeyStoreManager manages the client's KeyStore in which the SSL
  * certificates for multiple EMFStore servers can be stored.
- * 
+ *
  * @author wesendon
  */
 
@@ -103,7 +103,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Returns an instance of the {@link KeyStoreManager}.
-	 * 
+	 *
 	 * @return {@link KeyStoreManager}
 	 */
 	public static synchronized KeyStoreManager getInstance() {
@@ -152,7 +152,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Lists all certificates in the client's KeyStore.
-	 * 
+	 *
 	 * @return string representation of the certificates
 	 * @throws ESCertificateException
 	 *             is thrown when problems occur with the CertificateStore, i.e.
@@ -177,7 +177,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Deletes a certificate in the keystore.
-	 * 
+	 *
 	 * @param alias
 	 *            alias of certificate
 	 * @throws ESCertificateException
@@ -202,7 +202,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.provider.ESKeyStoreManager#addCertificate(java.lang.String,
 	 *      java.lang.String)
 	 */
@@ -230,7 +230,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Remove certificate with the given alias.
-	 * 
+	 *
 	 * @param alias the certificate alias
 	 * @throws ESCertificateException if removal fails
 	 */
@@ -251,7 +251,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.provider.ESKeyStoreManager#addCertificate(java.lang.String,
 	 *      java.io.InputStream)
 	 */
@@ -305,7 +305,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Reloads the keystore.
-	 * 
+	 *
 	 * @throws ESCertificateException
 	 *             in case of failure
 	 */
@@ -348,7 +348,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 	/**
 	 * Returns a SSL Context. This is need for encryption, used by the
 	 * SSLSocketFactory.
-	 * 
+	 *
 	 * @return SSL Context
 	 * @throws ESCertificateException
 	 *             in case of failure retrieving the context
@@ -383,7 +383,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * True if a KeyStore file exists.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean keyStoreExists() {
@@ -393,7 +393,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Returns the path to the KeyStore.
-	 * 
+	 *
 	 * @return a path
 	 */
 	public String getPathToKeyStore() {
@@ -402,7 +402,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Encrypts a password.
-	 * 
+	 *
 	 * @param password
 	 *            the password to be encrypted
 	 * @param server
@@ -463,7 +463,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Test whether a given alias is the default certificate alias.
-	 * 
+	 *
 	 * @param alias
 	 *            alias under test
 	 * @return true if default, false else
@@ -474,7 +474,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.provider.ESKeyStoreManager#getDefaultCertificate()
 	 */
 	public String getDefaultCertificate() {
@@ -489,7 +489,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * Returns true if the given alias maps to an existing certificate.
-	 * 
+	 *
 	 * @param alias
 	 *            Certificate alias
 	 * @return boolean
@@ -506,7 +506,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.provider.ESKeyStoreManager#setDefaultCertificate(java.lang.String)
 	 */
 	public void setDefaultCertificate(String defaultCertificate) {
@@ -516,7 +516,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 	/**
 	 * Returns the certificate mapped by the given alias. Returns null if no
 	 * such certificate exists.
-	 * 
+	 *
 	 * @param alias
 	 *            String
 	 * @return Certificate
@@ -538,7 +538,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.provider.ESKeyStoreManager#certificateExists(java.lang.String)
 	 */
 	public boolean certificateExists(String alias) throws ESCertificateException {

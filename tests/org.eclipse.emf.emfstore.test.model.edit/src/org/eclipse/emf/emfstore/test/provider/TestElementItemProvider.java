@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.test.model.provider.TestmodelEditPlugin;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.test.model.TestElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestElementItemProvider
@@ -51,7 +51,7 @@ public class TestElementItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElementItemProvider(AdapterFactory adapterFactory)
@@ -63,7 +63,7 @@ public class TestElementItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -92,7 +92,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object)
@@ -117,7 +117,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Strings feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addStringsPropertyDescriptor(Object object)
@@ -142,7 +142,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the References feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addReferencesPropertyDescriptor(Object object)
@@ -168,7 +168,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Reference feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addReferencePropertyDescriptor(Object object)
@@ -193,7 +193,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Other Reference feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addOtherReferencePropertyDescriptor(Object object)
@@ -219,7 +219,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Description feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object)
@@ -245,7 +245,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Non Contained NTo1 feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNonContained_NTo1PropertyDescriptor(Object object)
@@ -271,7 +271,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Non Contained 1To N feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNonContained_1ToNPropertyDescriptor(Object object)
@@ -297,7 +297,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Non Contained NTo M feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNonContained_NToMPropertyDescriptor(Object object)
@@ -323,7 +323,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Non Contained MTo N feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNonContained_MToNPropertyDescriptor(Object object)
@@ -349,7 +349,7 @@ public class TestElementItemProvider
 	 * This adds a property descriptor for the Contained Elements No Opposite feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addContainedElements_NoOppositePropertyDescriptor(Object object)
@@ -377,7 +377,7 @@ public class TestElementItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -404,7 +404,7 @@ public class TestElementItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -420,7 +420,7 @@ public class TestElementItemProvider
 	 * This returns TestElement.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -433,7 +433,7 @@ public class TestElementItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -450,7 +450,7 @@ public class TestElementItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -485,7 +485,7 @@ public class TestElementItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -562,7 +562,7 @@ public class TestElementItemProvider
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -599,7 +599,7 @@ public class TestElementItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

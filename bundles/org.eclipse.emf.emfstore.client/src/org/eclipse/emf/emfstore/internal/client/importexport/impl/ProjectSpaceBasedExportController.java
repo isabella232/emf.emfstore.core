@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -16,9 +16,9 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 
 /**
  * Exports a entity which is part of a project space.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class ProjectSpaceBasedExportController implements IExportImportController {
 
@@ -26,7 +26,7 @@ public abstract class ProjectSpaceBasedExportController implements IExportImport
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space that contains the data to be exported
 	 */
@@ -36,7 +36,7 @@ public abstract class ProjectSpaceBasedExportController implements IExportImport
 
 	/**
 	 * Returns the project space.
-	 * 
+	 *
 	 * @return the project space.
 	 */
 	ProjectSpace getProjectSpace() {

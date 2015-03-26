@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * TobiasVerhoeven
  ******************************************************************************/
@@ -15,7 +15,7 @@ import java.util.Calendar;
 
 /**
  * A factory for creating ESLogMessage objects.
- * 
+ *
  * @author Tobias Verhoeven
  */
 public final class LogMessageFactory {
@@ -28,7 +28,7 @@ public final class LogMessageFactory {
 
 	/**
 	 * Creates a new log message with the specified message and author.
-	 * 
+	 *
 	 * @param message
 	 *            the message
 	 * @param author

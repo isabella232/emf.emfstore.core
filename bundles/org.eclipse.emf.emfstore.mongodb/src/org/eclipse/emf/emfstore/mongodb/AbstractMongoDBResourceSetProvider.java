@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -21,17 +21,17 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Abstract {@link ESResourceSetProvider} for Mongo DB.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 @SuppressWarnings("restriction")
 public abstract class AbstractMongoDBResourceSetProvider implements ESResourceSetProvider {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.ESResourceSetProvider#getResourceSet()
 	 */
 	public ResourceSet getResourceSet() {
@@ -49,7 +49,7 @@ public abstract class AbstractMongoDBResourceSetProvider implements ESResourceSe
 
 	/**
 	 * Creates and adds a URIConverter to the ResourceSet.
-	 * 
+	 *
 	 * @param resourceSet the resourceset for which the uri converter is created.
 	 */
 	protected abstract void setURIConverter(ResourceSetImpl resourceSet);

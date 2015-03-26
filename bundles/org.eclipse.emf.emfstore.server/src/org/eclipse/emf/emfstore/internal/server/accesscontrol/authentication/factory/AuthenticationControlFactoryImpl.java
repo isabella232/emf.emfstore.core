@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - refactorings and singleton access
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidPropertyExcept
 
 /**
  * Default authentication control factory.
- * 
+ *
  * @author wesendon
  */
 public final class AuthenticationControlFactoryImpl implements AuthenticationControlFactory {
@@ -39,7 +39,7 @@ public final class AuthenticationControlFactoryImpl implements AuthenticationCon
 
 	/**
 	 * The singleton instance.
-	 * 
+	 *
 	 * @return the singleton instance
 	 */
 	public static AuthenticationControlFactory getInstance() {
@@ -47,9 +47,9 @@ public final class AuthenticationControlFactoryImpl implements AuthenticationCon
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.factory.AuthenticationControlFactory#createAuthenticationControl(org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType)
 	 */
 	public AbstractAuthenticationControl createAuthenticationControl(AuthenticationControlType authenticationControlType)

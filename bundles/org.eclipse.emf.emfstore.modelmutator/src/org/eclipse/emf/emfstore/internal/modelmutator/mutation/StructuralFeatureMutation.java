@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -21,9 +21,9 @@ import org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation;
 
 /**
  * An abstract mutation for changing structural feature values.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  * @param <M> the implementing API mutation type
  */
 public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMutation<?>> extends Mutation
@@ -34,7 +34,7 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public StructuralFeatureMutation(ESModelMutatorUtil util) {
@@ -44,7 +44,7 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
@@ -54,9 +54,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#getExcludedTargetEClasses()
 	 */
 	public Collection<EClass> getExcludedTargetEClasses() {
@@ -64,9 +64,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#getExcludedTargetFeatures()
 	 */
 	public Collection<EStructuralFeature> getExcludedTargetFeatures() {
@@ -74,9 +74,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#getExcludedTargetObjects()
 	 */
 	public Collection<EObject> getExcludedTargetObjects() {
@@ -84,9 +84,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#setTargetObject(org.eclipse.emf.ecore.EObject)
 	 */
 	@SuppressWarnings("unchecked")
@@ -96,9 +96,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#getTargetObject()
 	 */
 	public EObject getTargetObject() {
@@ -106,9 +106,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#setTargetFeature(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	@SuppressWarnings("unchecked")
@@ -118,9 +118,9 @@ public abstract class StructuralFeatureMutation<M extends ESStructuralFeatureMut
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESStructuralFeatureMutation#getTargetFeature()
 	 */
 	public EStructuralFeature getTargetFeature() {

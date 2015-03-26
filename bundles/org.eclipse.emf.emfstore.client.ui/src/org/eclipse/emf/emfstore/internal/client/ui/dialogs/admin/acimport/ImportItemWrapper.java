@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser
  ******************************************************************************/
@@ -21,15 +21,15 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
  * the source (e.g. an UID in the case of LDAP) then we can save this reference
  * in the sourceObj-field of this class, using it later on to create appropriate
  * ACOrgUnits.
- * 
+ *
  * @author deser
  */
 public class ImportItemWrapper {
 
-	private Object sourceObj; // holds a (textual or any other) reference to a
-								// source object. Most likely a String is
+	private final Object sourceObj; // holds a (textual or any other) reference to a
+	// source object. Most likely a String is
 	// needed here
-	private ACOrgUnit orgUnit;
+	private final ACOrgUnit orgUnit;
 	private ImportItemWrapper parentOrgUnit;
 	private ArrayList<ImportItemWrapper> childOrgUnits;
 

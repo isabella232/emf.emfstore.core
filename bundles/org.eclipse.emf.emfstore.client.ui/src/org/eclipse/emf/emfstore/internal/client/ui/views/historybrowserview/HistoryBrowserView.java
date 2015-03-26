@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
@@ -96,12 +96,12 @@ import org.eclipse.ui.part.ViewPart;
 
 /**
  * This eclipse views displays the version history of EMFStore.
- * 
+ *
  * @author wesendon
  * @author Aumann
  * @author Hodaie
  * @author Shterev
- * 
+ *
  */
 // TODO: review setInput methods
 public class HistoryBrowserView extends ViewPart implements ProjectSpaceContainer {
@@ -433,7 +433,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Displays the history for the given input.
-	 * 
+	 *
 	 * @param input eobject in projectspace or projectspace itself
 	 */
 	public void setInput(EObject input) {
@@ -457,7 +457,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Sets a {@link ESLocalProject} as an input for the view. The history for the input will be shown.
-	 * 
+	 *
 	 * @param localProject the project to show the history for.
 	 */
 	public void setInput(ESLocalProject localProject) {
@@ -544,9 +544,9 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * ====================================================================
-	 * 
+	 *
 	 * TOOLBAR.
-	 * 
+	 *
 	 * ====================================================================
 	 */
 
@@ -768,7 +768,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Expand/Collapse action.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	private final class ExpandCollapseAction extends Action {
@@ -800,7 +800,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	/**
 	 * Treeviewer that provides a model element selection for selected
 	 * operations and mode element ids.
-	 * 
+	 *
 	 * @author koegel
 	 */
 	private final class TreeViewerWithModelElementSelectionProvider extends TreeViewer {
@@ -816,7 +816,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.jface.viewers.AbstractTreeViewer#getSelection()
 		 */
 		@Override

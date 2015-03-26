@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * mkoegel
  * emueller
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 
 /**
  * Tests if auto save is enabled.
- * 
+ *
  * @author mkoegel
  * @author emueller
  */
@@ -29,17 +29,19 @@ public class IsAutoSaveEnabledTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
 	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
-		return (expectedValue != null && expectedValue.equals(Configuration.getClientBehavior().isAutoSaveEnabled()) && !isAutoSaveEnabledTesterDisabled);
+		return expectedValue != null && expectedValue.equals(Configuration.getClientBehavior().isAutoSaveEnabled())
+			&& !isAutoSaveEnabledTesterDisabled;
 	}
 
 	private static boolean initExtensionPoint() {
-		ESExtensionPoint extensionPoint = new ESExtensionPoint("org.eclipse.emf.emfstore.client.ui.disableSaveControls");
-		ESExtensionElement element = extensionPoint.getFirst();
+		final ESExtensionPoint extensionPoint = new ESExtensionPoint(
+			"org.eclipse.emf.emfstore.client.ui.disableSaveControls");
+		final ESExtensionElement element = extensionPoint.getFirst();
 
 		if (element == null) {
 			// default

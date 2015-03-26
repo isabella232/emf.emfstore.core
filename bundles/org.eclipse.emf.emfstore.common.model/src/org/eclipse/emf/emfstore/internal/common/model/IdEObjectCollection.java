@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -25,9 +25,9 @@ import org.eclipse.emf.emfstore.common.model.ESObjectContainer;
  * A collection of {@link EObject}s where each one can be identified via a {@link ModelElementId}. {@link EObject}s can
  * be added and deleted and checked
  * whether they are part of the collection.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 
 public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelElementId>,
@@ -35,7 +35,7 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 
 	/**
 	 * Adds the given model element to the collection.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element that should be added to the collection
 	 */
@@ -50,7 +50,7 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	 * Allocates certain IDs for the given model elements in the mapping.
 	 * If any {@link EObject} contained in the mapping is added to this collection
 	 * its {@link ModelElementId} will be determined using the ID in the mapping.
-	 * 
+	 *
 	 * @param modelElementToIdMap
 	 *            A map containing {@link ModelElementId}s for the model element
 	 *            and its children
@@ -60,64 +60,64 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	/**
 	 * Removes any allocated ID entries from this collection that are contained
 	 * in the given set of {@link ModelElementId}s.
-	 * 
+	 *
 	 * @param modelElementIds
 	 *            the set of model element IDs to be released
 	 */
 	void disallocateModelElementIds(Set<ModelElementId> modelElementIds);
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESObjectContainer#contains(org.eclipse.emf.ecore.EObject)
 	 */
 	boolean contains(EObject modelElement);
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESObjectContainer#contains(java.lang.Object)
 	 */
 	boolean contains(ModelElementId eObjectId);
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESObjectContainer#getModelElementId(org.eclipse.emf.ecore.EObject)
 	 */
 	ModelElementId getModelElementId(EObject modelElement);
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESObjectContainer#getModelElement(java.lang.Object)
 	 */
 	EObject getModelElement(ModelElementId modelElementId);
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESObjectContainer#getModelElements()
 	 */
 	EList<EObject> getModelElements();
 
 	/**
 	 * Deletes the given model element from the collection.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element that should get deleted
 	 */
 	void deleteModelElement(EObject modelElement);
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESObjectContainer#getAllModelElements()
 	 */
 	Set<EObject> getAllModelElements();
@@ -125,7 +125,7 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	/**
 	 * Retrieve a list of model elements of a certain type in the collection
 	 * that are directly contained in the collection.
-	 * 
+	 *
 	 * @param <T>
 	 *            a sub-type of model element
 	 * @param modelElementClass
@@ -140,7 +140,7 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	/**
 	 * /**
 	 * Initializes the ID caches of the project with the given mappings.
-	 * 
+	 *
 	 * @param eObjectToIdMap
 	 *            a mapping from EObjects to IDs
 	 * @param idToEObjectMap
@@ -162,7 +162,7 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	 * Returns a copy of the ID/EObject mapping where IDs are represented as strings.
 	 * This method is mainly provided for convenience and performance reasons,
 	 * where the ID must be a string.
-	 * 
+	 *
 	 * @return the ID/EObject mapping
 	 */
 	Map<String, EObject> getIdToEObjectMapping();
@@ -171,7 +171,7 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	 * Returns a copy of the EObject/ID mapping where IDs are represented as strings.
 	 * This method is mainly provided for convenience and performance reasons,
 	 * where the ID must be a string.
-	 * 
+	 *
 	 * @return the EObject/ID mapping
 	 */
 	Map<EObject, String> getEObjectToIdMapping();

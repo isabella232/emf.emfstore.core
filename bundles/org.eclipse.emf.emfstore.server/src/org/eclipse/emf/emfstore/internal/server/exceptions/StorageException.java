@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * OttoWesendonk
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 /**
  * Represents a problem with data storage. This is a condition the server or one of its components can not recover from
  * and where a server shutdown is inevitable.
- * 
+ *
  * @author Otto Wesendonk
  */
 @SuppressWarnings("serial")
@@ -34,7 +34,7 @@ public class StorageException extends ESException {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param message the message
 	 * @param cause underlying exception
 	 */
@@ -44,7 +44,7 @@ public class StorageException extends ESException {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param message the message
 	 */
 	public StorageException(String message) {

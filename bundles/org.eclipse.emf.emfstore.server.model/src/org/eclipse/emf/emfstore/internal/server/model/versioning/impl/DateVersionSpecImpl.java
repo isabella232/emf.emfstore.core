@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <em>Date</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionSpec {
@@ -43,7 +43,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	/**
 	 * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DateVersionSpecImpl() {
@@ -71,7 +71,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -81,7 +81,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getDate() {
@@ -90,7 +90,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDate(Date newDate) {
@@ -104,7 +104,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,7 +119,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -135,7 +135,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -151,7 +151,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -166,7 +166,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -183,11 +183,11 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESDateVersionSpecImpl toAPI() {
@@ -200,11 +200,11 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESDateVersionSpecImpl createAPI() {

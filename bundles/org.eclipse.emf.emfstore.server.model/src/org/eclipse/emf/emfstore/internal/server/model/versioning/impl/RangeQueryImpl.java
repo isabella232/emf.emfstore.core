@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -33,9 +33,9 @@ import org.eclipse.emf.emfstore.server.model.query.ESRangeQuery;
  * Include Outgoing</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated NOT
- * 
+ *
  * @param <T> a API range query subtype
  */
 public class RangeQueryImpl<T extends ESRangeQuery<?>>
@@ -49,7 +49,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	/**
 	 * The default value of the '{@link #getUpperLimit() <em>Upper Limit</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUpperLimit()
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	/**
 	 * The cached value of the '{@link #getUpperLimit() <em>Upper Limit</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUpperLimit()
 	 * @generated
 	 * @ordered
@@ -69,7 +69,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	/**
 	 * The default value of the '{@link #getLowerLimit() <em>Lower Limit</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLowerLimit()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	/**
 	 * The cached value of the '{@link #getLowerLimit() <em>Lower Limit</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLowerLimit()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	 * The default value of the '{@link #isIncludeIncoming() <em>Include Incoming</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeIncoming()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	 * The cached value of the '{@link #isIncludeIncoming() <em>Include Incoming</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeIncoming()
 	 * @generated
 	 * @ordered
@@ -112,7 +112,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	 * The default value of the '{@link #isIncludeOutgoing() <em>Include Outgoing</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeOutgoing()
 	 * @generated
 	 * @ordered
@@ -123,7 +123,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	 * The cached value of the '{@link #isIncludeOutgoing() <em>Include Outgoing</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeOutgoing()
 	 * @generated
 	 * @ordered
@@ -132,7 +132,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected RangeQueryImpl() {
@@ -141,7 +141,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -151,7 +151,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getUpperLimit() {
@@ -160,7 +160,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setUpperLimit(int newUpperLimit) {
@@ -174,7 +174,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getLowerLimit() {
@@ -183,7 +183,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLowerLimit(int newLowerLimit) {
@@ -197,7 +197,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIncludeIncoming() {
@@ -206,7 +206,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIncludeIncoming(boolean newIncludeIncoming) {
@@ -220,7 +220,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIncludeOutgoing() {
@@ -229,7 +229,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIncludeOutgoing(boolean newIncludeOutgoing) {
@@ -243,7 +243,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -263,7 +263,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -287,7 +287,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -311,7 +311,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -331,7 +331,7 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -354,11 +354,11 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public T toAPI() {
@@ -370,11 +370,11 @@ public class RangeQueryImpl<T extends ESRangeQuery<?>>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })

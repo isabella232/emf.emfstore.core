@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors: Max Hohenegger (bug 371196)
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.controller;
@@ -24,9 +24,9 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * UI-related controller class that shares a project and displays a progress bar during the share.
  * When finished a confirmation dialog is shown.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UIShareProjectController extends AbstractEMFStoreUIController<Void> {
 
@@ -38,7 +38,7 @@ public class UIShareProjectController extends AbstractEMFStoreUIController<Void>
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that is used during the share
 	 * @param localProject
@@ -51,7 +51,7 @@ public class UIShareProjectController extends AbstractEMFStoreUIController<Void>
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that is used during the share
 	 * @param usersession
@@ -94,9 +94,9 @@ public class UIShareProjectController extends AbstractEMFStoreUIController<Void>
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * gurcankarakoc, deser - initial API and implementation
  ******************************************************************************/
@@ -45,7 +45,7 @@ public class GroupTabContent extends TabContent implements IPropertyChangeListen
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param string
 	 *            name of tab
 	 * @param adminBroker
@@ -61,7 +61,7 @@ public class GroupTabContent extends TabContent implements IPropertyChangeListen
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.TabContent#initActions()
 	 */
 	@Override
@@ -143,7 +143,7 @@ public class GroupTabContent extends TabContent implements IPropertyChangeListen
 
 	/**
 	 * Refresh the tableViewer after a property change. (Used e.g. after importing users via e.g. CSV.)
-	 * 
+	 *
 	 * @param event The event to deal with.
 	 */
 	public void propertyChange(PropertyChangeEvent event) {

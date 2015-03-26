@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * naughton
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
  * Helps with validation of modelelements.
- * 
+ *
  * @author naughton
  * @deprecated
  */
@@ -33,7 +33,7 @@ public final class ValidationConstraintHelper {
 	/**
 	 * Returns the structural feature specified by the feature name belonging to
 	 * the model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the modelElement
 	 * @param featureName
@@ -41,12 +41,12 @@ public final class ValidationConstraintHelper {
 	 * @return the structuralFeature
 	 */
 	public static EStructuralFeature getErrorFeatureForModelElement(EObject modelElement, String featureName) {
-		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
+		final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
 			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
-		IItemPropertyDescriptor itemPropertyDescriptor = adapterFactoryItemDelegator.getPropertyDescriptor(
+		final AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
+		final IItemPropertyDescriptor itemPropertyDescriptor = adapterFactoryItemDelegator.getPropertyDescriptor(
 			modelElement, featureName);
-		EStructuralFeature errorFeature = (EStructuralFeature) itemPropertyDescriptor.getFeature(modelElement);
+		final EStructuralFeature errorFeature = (EStructuralFeature) itemPropertyDescriptor.getFeature(modelElement);
 		adapterFactory.dispose();
 		return errorFeature;
 	}

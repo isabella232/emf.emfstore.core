@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser
  ******************************************************************************/
@@ -39,7 +39,7 @@ public class ImportLabelProvider implements ILabelProvider {
 
 	/**
 	 * Constructs a FileTreeLabelProvider.
-	 * 
+	 *
 	 * @param controller
 	 *            the controller which handles the import
 	 */
@@ -53,7 +53,7 @@ public class ImportLabelProvider implements ILabelProvider {
 
 	/**
 	 * Gets the image to display for a node in the tree.
-	 * 
+	 *
 	 * @param arg0
 	 *            the node
 	 * @return Image
@@ -71,7 +71,7 @@ public class ImportLabelProvider implements ILabelProvider {
 
 	/**
 	 * Gets the text to display for a node in the tree.
-	 * 
+	 *
 	 * @param arg0
 	 *            the node
 	 * @return String
@@ -81,9 +81,9 @@ public class ImportLabelProvider implements ILabelProvider {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
@@ -94,7 +94,7 @@ public class ImportLabelProvider implements ILabelProvider {
 	/**
 	 * Returns whether changes to the specified property on the specified
 	 * element would affect the label for the element.
-	 * 
+	 *
 	 * @param arg0
 	 *            the element
 	 * @param arg1
@@ -107,7 +107,7 @@ public class ImportLabelProvider implements ILabelProvider {
 
 	/**
 	 * Adds a listener to this label provider.
-	 * 
+	 *
 	 * @param arg0
 	 *            the listener
 	 */
@@ -117,7 +117,7 @@ public class ImportLabelProvider implements ILabelProvider {
 
 	/**
 	 * Removes the listener.
-	 * 
+	 *
 	 * @param arg0
 	 *            the listener to remove
 	 */

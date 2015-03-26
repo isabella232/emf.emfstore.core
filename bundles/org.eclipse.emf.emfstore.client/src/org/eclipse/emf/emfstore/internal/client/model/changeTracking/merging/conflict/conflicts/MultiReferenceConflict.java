@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Maximilian Koegel, Edgar Mueller - Bugfix 421361
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Mult
 
 /**
  * Conflict between two {@link MultiReferenceConflict}.
- * 
+ *
  * @author wesendon
  */
 public class MultiReferenceConflict extends VisualConflict {
@@ -39,7 +39,7 @@ public class MultiReferenceConflict extends VisualConflict {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param conflictBucket
 	 *            the conflict bucket
 	 * @param decisionManager
@@ -57,8 +57,8 @@ public class MultiReferenceConflict extends VisualConflict {
 
 	/**
 	 * Construct conflict from designated left and right operation.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param conflictBucket the conflict
 	 * @param leftOperation the left operation
 	 * @param rightOperation the right operation

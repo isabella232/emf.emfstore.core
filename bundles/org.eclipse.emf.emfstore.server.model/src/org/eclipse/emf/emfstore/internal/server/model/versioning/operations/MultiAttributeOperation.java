@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Multi Attribute Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Referenced Values</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeOperation()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface MultiAttributeOperation extends FeatureOperation {
 	 * If the meaning of the '<em>Add</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Add</em>' attribute.
 	 * @see #setAdd(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeOperation_Add()
@@ -55,7 +55,7 @@ public interface MultiAttributeOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation#isAdd
 	 * <em>Add</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Add</em>' attribute.
 	 * @see #isAdd()
 	 * @generated
@@ -72,7 +72,7 @@ public interface MultiAttributeOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Indexes</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeOperation_Indexes()
 	 * @model
@@ -89,7 +89,7 @@ public interface MultiAttributeOperation extends FeatureOperation {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Referenced Values</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeOperation_ReferencedValues()
 	 * @model unique="false"

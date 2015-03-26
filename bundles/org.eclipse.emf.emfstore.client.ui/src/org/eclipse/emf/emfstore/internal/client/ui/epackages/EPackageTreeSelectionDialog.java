@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * TobiasVerhoeven
  ******************************************************************************/
@@ -23,14 +23,14 @@ import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 
 /**
  * The Class EPackageTreeSelectionDialog.
- * 
+ *
  * @author Tobias Verhoeven
  */
 public class EPackageTreeSelectionDialog extends ElementTreeSelectionDialog {
 
 	/**
 	 * Instantiates a new e package tree selection dialog.
-	 * 
+	 *
 	 * @param modelElements the model elements
 	 */
 	public EPackageTreeSelectionDialog(Set<EPackage> modelElements) {
@@ -38,13 +38,13 @@ public class EPackageTreeSelectionDialog extends ElementTreeSelectionDialog {
 			ComposedAdapterFactory.Descriptor.Registry.INSTANCE)), new EPackageTreeContentProvider());
 		setTitle("Select EPackage");
 		setMessage("Available EPackages");
-		this.setComparator(new ViewerComparator());
+		setComparator(new ViewerComparator());
 		setInput(modelElements);
 	}
 
 	/**
 	 * Returns the selected EPackage.
-	 * 
+	 *
 	 * @return the selected EPackage or null if nothing was selected.
 	 */
 	public EPackage getSelectedEPackage() {
@@ -67,13 +67,13 @@ public class EPackageTreeSelectionDialog extends ElementTreeSelectionDialog {
 		private Set<EPackage> rootPackages;
 
 		private void extractRootPackages(Set<EPackage> packages) {
-			for (EPackage pkg : packages) {
+			for (final EPackage pkg : packages) {
 				extractAllSuperPackages(pkg, packages);
 			}
 		}
 
 		private void extractAllSuperPackages(EPackage ePackage, Set<EPackage> packages) {
-			EPackage eSuperPackage = ePackage.getESuperPackage();
+			final EPackage eSuperPackage = ePackage.getESuperPackage();
 			if (eSuperPackage == null) {
 				if (packages.contains(ePackage)) {
 					rootPackages.add(ePackage);
@@ -91,7 +91,7 @@ public class EPackageTreeSelectionDialog extends ElementTreeSelectionDialog {
 		public Object[] getElements(Object inputElement) {
 			if (rootPackages == null) {
 				rootPackages = new LinkedHashSet<EPackage>();
-				this.extractRootPackages((Set<EPackage>) inputElement);
+				extractRootPackages((Set<EPackage>) inputElement);
 			}
 			return rootPackages.toArray();
 		}

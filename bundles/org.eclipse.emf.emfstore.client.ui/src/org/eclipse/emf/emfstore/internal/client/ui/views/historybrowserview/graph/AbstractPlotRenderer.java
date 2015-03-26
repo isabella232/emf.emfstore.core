@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 /*
@@ -67,9 +67,9 @@ import org.eclipse.swt.graphics.Color;
  * All drawing methods assume the coordinate space for the current commit's cell starts at (upper left corner is) 0,0.
  * If this is not true (like say in SWT) the implementation must perform the cell offset computations within the various
  * draw methods.
- * 
+ *
  * Adapted from: org.eclipse.jgit.revplot.PlotCommitList.AbstractPlotRenderer
- * 
+ *
  */
 public abstract class AbstractPlotRenderer {
 	private static final int LANE_WIDTH = 14;
@@ -80,7 +80,7 @@ public abstract class AbstractPlotRenderer {
 
 	/**
 	 * Paint one commit using the underlying graphics library.
-	 * 
+	 *
 	 * @param commit
 	 *            the commit to render in this cell. Must not be null.
 	 * @param h
@@ -170,7 +170,7 @@ public abstract class AbstractPlotRenderer {
 
 	/**
 	 * Draw a decoration for the IPlotCommit at x,y.
-	 * 
+	 *
 	 * @param x
 	 *            left
 	 * @param y
@@ -195,7 +195,7 @@ public abstract class AbstractPlotRenderer {
 	 * <p>
 	 * If a null lane is supplied the return value must still be acceptable to a drawing method. Usually this means the
 	 * implementation should return a default color.
-	 * 
+	 *
 	 * @param myLane
 	 *            the current lane. May be null.
 	 * @param fullSaturation if true a fully saturated color is returned, otherwise a lighter, washed-out one
@@ -205,7 +205,7 @@ public abstract class AbstractPlotRenderer {
 
 	/**
 	 * Draw a single line within this cell.
-	 * 
+	 *
 	 * @param color
 	 *            the color to use while drawing the line.
 	 * @param x1
@@ -226,7 +226,7 @@ public abstract class AbstractPlotRenderer {
 	 * <p>
 	 * Usually the commit dot is a filled oval in blue, then a drawn oval in black, using the same coordinates for both
 	 * operations.
-	 * 
+	 *
 	 * @param x
 	 *            upper left of the oval's bounding box.
 	 * @param y
@@ -242,7 +242,7 @@ public abstract class AbstractPlotRenderer {
 	 * Draw a single boundary commit (aka uninteresting commit) dot.
 	 * <p>
 	 * Usually a boundary commit dot is a light gray oval with a white center.
-	 * 
+	 *
 	 * @param x
 	 *            upper left of the oval's bounding box.
 	 * @param y
@@ -258,7 +258,7 @@ public abstract class AbstractPlotRenderer {
 	 * Draw a single line of text.
 	 * <p>
 	 * The font and colors used to render the text are left up to the implementation.
-	 * 
+	 *
 	 * @param msg
 	 *            the text to draw. Does not contain LFs.
 	 * @param x

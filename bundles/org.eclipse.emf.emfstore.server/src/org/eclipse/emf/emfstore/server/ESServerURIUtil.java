@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -25,10 +25,10 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Helper class for creating EMFStore Server URIs and accessing segments.
- * 
+ *
  * @author jfaltermeier
  * @since 1.1
- * 
+ *
  */
 public final class ESServerURIUtil {
 
@@ -103,7 +103,7 @@ public final class ESServerURIUtil {
 	 * Creates an EMFStore URI for addressing the serverspace.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/serverspace
-	 * 
+	 *
 	 * @return the EMFStore URI
 	 */
 	public static URI createServerSpaceURI() {
@@ -114,7 +114,7 @@ public final class ESServerURIUtil {
 	 * Creates an EMFStore URI for addressing a dynamic model.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/dynamic-models/example.ecore
-	 * 
+	 *
 	 * @param ePackage the ePackage
 	 * @return the EMFStore URI
 	 * @throws ESException if namespace Uri can't be converted to filename
@@ -134,7 +134,7 @@ public final class ESServerURIUtil {
 	 * Creates an EMFStore URI for addressing the history of a project.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/projecthistory
-	 * 
+	 *
 	 * @param projectId the project id
 	 * @return the EMFStore URI
 	 */
@@ -146,7 +146,7 @@ public final class ESServerURIUtil {
 	 * Creates an EMFStore URI for addressing a specific version of a project.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/versions/<i>nr</i>
-	 * 
+	 *
 	 * @param projectId the project id
 	 * @param versionId the version id
 	 * @return the EMFStore URI
@@ -160,7 +160,7 @@ public final class ESServerURIUtil {
 	 * Creates an EMFStore URI for addressing a specific changepackage of a project.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/changepackages/<i>nr</i>
-	 * 
+	 *
 	 * @param projectId the project id
 	 * @param versionId the version id
 	 * @return the EMFStore URI
@@ -173,7 +173,7 @@ public final class ESServerURIUtil {
 	 * Creates an EMFStore URI for addressing a specific state of a project.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/projectstates/<i>nr</i>
-	 * 
+	 *
 	 * @param projectId the project id
 	 * @param versionId the version id
 	 * @return the EMFStore URI
@@ -186,7 +186,7 @@ public final class ESServerURIUtil {
 	 * Returns the used profile.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<b><i>profile</i></b>/projects/<i>identifier</i>/versions/<i>nr</i>
-	 * 
+	 *
 	 * @return the profile
 	 */
 	public static String getProfile() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url.impl;
@@ -31,14 +31,14 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFragment {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -48,7 +48,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	/**
 	 * The cached value of the '{@link #getProjectId() <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectId()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ProjectUrlFragmentImpl() {
@@ -76,7 +76,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -86,7 +86,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -95,7 +95,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -108,7 +108,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId getProjectId() {
@@ -140,7 +140,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId basicGetProjectId() {
@@ -149,7 +149,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetProjectId(ProjectId newProjectId, NotificationChain msgs) {
@@ -170,7 +170,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectId(ProjectId newProjectId) {
@@ -198,7 +198,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -213,7 +213,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -233,7 +233,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -252,7 +252,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -271,7 +271,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -288,7 +288,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -306,7 +306,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public String getUrlString() {

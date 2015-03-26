@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.impl;
@@ -30,14 +30,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * <em>New Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements ProjectUpdatedEvent {
 	/**
 	 * The cached value of the '{@link #getNewVersion() <em>New Version</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewVersion()
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ProjectUpdatedEventImpl() {
@@ -55,7 +55,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -65,17 +65,17 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getNewVersion() {
 		if (newVersion != null && newVersion.eIsProxy())
 		{
-			InternalEObject oldNewVersion = (InternalEObject) newVersion;
+			final InternalEObject oldNewVersion = (InternalEObject) newVersion;
 			newVersion = (PrimaryVersionSpec) eResolveProxy(oldNewVersion);
 			if (newVersion != oldNewVersion)
 			{
-				InternalEObject newNewVersion = (InternalEObject) newVersion;
+				final InternalEObject newNewVersion = (InternalEObject) newVersion;
 				NotificationChain msgs = oldNewVersion.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, null);
 				if (newNewVersion.eInternalContainer() == null)
@@ -83,11 +83,13 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 					msgs = newNewVersion.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, oldNewVersion, newVersion));
+				}
 			}
 		}
 		return newVersion;
@@ -95,7 +97,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetNewVersion() {
@@ -104,51 +106,56 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNewVersion(PrimaryVersionSpec newNewVersion, NotificationChain msgs) {
-		PrimaryVersionSpec oldNewVersion = newVersion;
+		final PrimaryVersionSpec oldNewVersion = newVersion;
 		newVersion = newNewVersion;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, oldNewVersion, newNewVersion);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewVersion(PrimaryVersionSpec newNewVersion) {
 		if (newNewVersion != newVersion)
 		{
 			NotificationChain msgs = null;
-			if (newVersion != null)
+			if (newVersion != null) {
 				msgs = ((InternalEObject) newVersion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
-			if (newNewVersion != null)
+			}
+			if (newNewVersion != null) {
 				msgs = ((InternalEObject) newNewVersion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
+			}
 			msgs = basicSetNewVersion(newNewVersion, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION,
 				newNewVersion, newNewVersion));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -163,7 +170,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -171,8 +178,9 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 		switch (featureID)
 		{
 		case ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION:
-			if (resolve)
+			if (resolve) {
 				return getNewVersion();
+			}
 			return basicGetNewVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -180,7 +188,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -196,7 +204,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -212,7 +220,7 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

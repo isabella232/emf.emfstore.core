@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model;
@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project</b></em>'.
- * 
+ *
  * @implements IAdaptable <!-- end-user-doc -->
- * 
+ *
  *             <p>
  *             The following features are supported:
  *             <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *             <em>Cut Elements</em>}</li>
  *             </ul>
  *             </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getProject()
  * @model
  * @extends NotifiableIdEObjectCollection
@@ -46,7 +46,7 @@ public interface Project extends IAdaptable, NotifiableIdEObjectCollection {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Model Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getProject_ModelElements()
 	 * @model containment="true" resolveProxies="true" ordered="false"
@@ -63,7 +63,7 @@ public interface Project extends IAdaptable, NotifiableIdEObjectCollection {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Cut Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getProject_CutElements()
 	 * @model containment="true" resolveProxies="true"

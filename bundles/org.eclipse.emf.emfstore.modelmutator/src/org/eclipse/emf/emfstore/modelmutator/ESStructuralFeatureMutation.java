@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  * Edgar Mueller - API layer
@@ -20,13 +20,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * An abstract mutation for changing structural feature values.
- * 
+ *
  * @author Philip Langer
  * @author emueller
  * @since 2.0
- * 
+ *
  * @param <T> a subtype of {@link ESStructuralFeatureMutation}
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */
@@ -34,14 +34,14 @@ public interface ESStructuralFeatureMutation<T extends ESStructuralFeatureMutati
 
 	/**
 	 * Returns the selected or set target object that will or has been mutated.
-	 * 
+	 *
 	 * @return the target object
 	 */
 	EObject getTargetObject();
 
 	/**
 	 * Returns the {@link EStructuralFeature} of a target object that will or has been mutated.
-	 * 
+	 *
 	 * @return the target feature
 	 */
 	EStructuralFeature getTargetFeature();
@@ -53,7 +53,7 @@ public interface ESStructuralFeatureMutation<T extends ESStructuralFeatureMutati
 	 * contained in this collection. The returned collection is changeable. Add items using
 	 * {@code getExcludedTargetEClasses().add}.
 	 * </p>
-	 * 
+	 *
 	 * @return the collection of excluded EClasses
 	 */
 	Collection<EClass> getExcludedTargetEClasses();
@@ -64,7 +64,7 @@ public interface ESStructuralFeatureMutation<T extends ESStructuralFeatureMutati
 	 * <p>
 	 * The returned collection is changeable. Add items using {@code getExcludedTargetFeatures().add}.
 	 * </p>
-	 * 
+	 *
 	 * @return the collection of excluded features
 	 */
 	Collection<EStructuralFeature> getExcludedTargetFeatures();
@@ -74,27 +74,27 @@ public interface ESStructuralFeatureMutation<T extends ESStructuralFeatureMutati
 	 * <p>
 	 * The returned collection is changeable. Add items using {@code getExcludedTargetObjects().add}.
 	 * </p>
-	 * 
+	 *
 	 * @return the collection of EObjects
 	 */
 	Collection<EObject> getExcludedTargetObjects();
 
 	/**
 	 * Sets the {@link EObject} to be used as target object.
-	 * 
+	 *
 	 * @param targetObject
 	 *            the target object to be mutated
-	 * 
+	 *
 	 * @return this mutation
 	 */
 	T setTargetObject(EObject targetObject);
 
 	/**
 	 * Sets the {@link EStructuralFeature} of a target object that will be mutated.
-	 * 
+	 *
 	 * @param targetFeature
 	 *            the feature of the target object to be mutated
-	 * 
+	 *
 	 * @return this mutation
 	 */
 	T setTargetFeature(EStructuralFeature targetFeature);

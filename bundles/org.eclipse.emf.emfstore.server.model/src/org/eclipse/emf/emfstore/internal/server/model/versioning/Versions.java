@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
 
 /**
  * Helper class for creating version specifier.
- * 
+ *
  * @author wesendon
  */
 public final class Versions {
@@ -26,7 +26,7 @@ public final class Versions {
 
 	/**
 	 * Creates a HEAD revision for the branch "trunk".
-	 * 
+	 *
 	 * @return head version
 	 */
 	public static HeadVersionSpec createHEAD() {
@@ -35,19 +35,19 @@ public final class Versions {
 
 	/**
 	 * Create {@link HeadVersionSpec}.
-	 * 
+	 *
 	 * @param branch name of branch
 	 * @return version spec
 	 */
 	public static HeadVersionSpec createHEAD(String branch) {
-		HeadVersionSpec headVersionSpec = VersioningFactory.eINSTANCE.createHeadVersionSpec();
+		final HeadVersionSpec headVersionSpec = VersioningFactory.eINSTANCE.createHeadVersionSpec();
 		headVersionSpec.setBranch(branch);
 		return headVersionSpec;
 	}
 
 	/**
 	 * Create {@link HeadVersionSpec}.
-	 * 
+	 *
 	 * @param versionSpec copies branch name from
 	 * @return version spec
 	 */
@@ -60,13 +60,13 @@ public final class Versions {
 
 	/**
 	 * Create {@link PrimaryVersionSpec}.
-	 * 
+	 *
 	 * @param branch branch name
 	 * @param index verison number
 	 * @return version spec
 	 */
 	public static PrimaryVersionSpec createPRIMARY(String branch, int index) {
-		PrimaryVersionSpec spec = VersioningFactory.eINSTANCE.createPrimaryVersionSpec();
+		final PrimaryVersionSpec spec = VersioningFactory.eINSTANCE.createPrimaryVersionSpec();
 		spec.setIdentifier(index);
 		spec.setBranch(branch);
 		return spec;
@@ -74,10 +74,10 @@ public final class Versions {
 
 	/**
 	 * Create {@link PrimaryVersionSpec}.
-	 * 
+	 *
 	 * @param versionSpec copy branch name from
 	 * @param index version number
-	 * 
+	 *
 	 * @return version spec
 	 */
 	public static PrimaryVersionSpec createPRIMARY(VersionSpec versionSpec, int index) {
@@ -86,7 +86,7 @@ public final class Versions {
 
 	/**
 	 * Create {@link PrimaryVersionSpec}.
-	 * 
+	 *
 	 * @param i version number
 	 * @return version spec
 	 */
@@ -97,19 +97,19 @@ public final class Versions {
 
 	/**
 	 * Create {@link BranchVersionSpec}.
-	 * 
+	 *
 	 * @param value branch name
 	 * @return version spec
 	 */
 	public static BranchVersionSpec createBRANCH(String value) {
-		BranchVersionSpec branchSpec = VersioningFactory.eINSTANCE.createBranchVersionSpec();
+		final BranchVersionSpec branchSpec = VersioningFactory.eINSTANCE.createBranchVersionSpec();
 		branchSpec.setBranch(value);
 		return branchSpec;
 	}
 
 	/**
 	 * Creates {@link BranchVersionSpec}.
-	 * 
+	 *
 	 * @param spec copies branch name from
 	 * @return version spec
 	 */
@@ -119,13 +119,13 @@ public final class Versions {
 
 	/**
 	 * Creates {@link AncestorVersionSpec}.
-	 * 
+	 *
 	 * @param source source
 	 * @param target target
 	 * @return version spec
 	 */
 	public static AncestorVersionSpec createANCESTOR(PrimaryVersionSpec source, PrimaryVersionSpec target) {
-		AncestorVersionSpec ancestor = VersioningFactory.eINSTANCE.createAncestorVersionSpec();
+		final AncestorVersionSpec ancestor = VersioningFactory.eINSTANCE.createAncestorVersionSpec();
 		ancestor.setBranch(source.getBranch());
 		ancestor.setSource(ModelUtil.clone(source));
 		ancestor.setTarget(ModelUtil.clone(target));
@@ -134,7 +134,7 @@ public final class Versions {
 
 	/**
 	 * Checks whether two versions spec target the same branch.
-	 * 
+	 *
 	 * @param spec1
 	 *            spec 1
 	 * @param spec2
@@ -153,13 +153,13 @@ public final class Versions {
 
 	/**
 	 * Creates {@link TagVersionSpec}.
-	 * 
+	 *
 	 * @param tag tag
 	 * @param branch branch name
 	 * @return version spec
 	 */
 	public static TagVersionSpec createTAG(String tag, String branch) {
-		TagVersionSpec tagSpec = VersioningFactory.eINSTANCE.createTagVersionSpec();
+		final TagVersionSpec tagSpec = VersioningFactory.eINSTANCE.createTagVersionSpec();
 		tagSpec.setBranch(branch);
 		tagSpec.setName(tag);
 		return tagSpec;
@@ -167,7 +167,7 @@ public final class Versions {
 
 	/**
 	 * Creates a {@link PagedUpdateVersionSpec}.
-	 * 
+	 *
 	 * @param baseVersion
 	 *            the base version from which on to count the changes
 	 * @param maxChanges
@@ -175,7 +175,7 @@ public final class Versions {
 	 * @return the created version specification
 	 */
 	public static PagedUpdateVersionSpec createPAGEDUPDATE(PrimaryVersionSpec baseVersion, int maxChanges) {
-		PagedUpdateVersionSpec versionSpec = VersioningFactory.eINSTANCE.createPagedUpdateVersionSpec();
+		final PagedUpdateVersionSpec versionSpec = VersioningFactory.eINSTANCE.createPagedUpdateVersionSpec();
 		versionSpec.setBaseVersionSpec(baseVersion);
 		versionSpec.setMaxChanges(maxChanges);
 		return versionSpec;

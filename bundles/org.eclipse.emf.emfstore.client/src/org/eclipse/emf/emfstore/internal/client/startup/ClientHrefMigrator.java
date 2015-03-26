@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -35,9 +35,9 @@ import org.xml.sax.SAXException;
  * and prior need to be migrated.
  * <p>
  * This migrator will update the Hrefs in legacy files on the client side.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class ClientHrefMigrator extends ServerHrefMigrator {
 
@@ -45,7 +45,7 @@ public class ClientHrefMigrator extends ServerHrefMigrator {
 
 	/**
 	 * Performs the migration, if needed. Creates a backup beforehand.
-	 * 
+	 *
 	 * @return <code>true</code> if migration was successful, <code>false</code> if an error occurred and the client
 	 *         startup should be canceled.
 	 */

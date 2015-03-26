@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt - initial API and implementation
  ******************************************************************************/
@@ -18,18 +18,18 @@ import java.lang.annotation.Target;
 
 /**
  * Annotations used in tests using the {@link ESFuzzyRunner}.
- * 
+ *
  * @author Julian Sommerfeldt
  * @since 2.0
- * 
+ *
  */
 public final class Annotations {
 
 	/**
 	 * Annotation to declare the field in the test, where to set the data.
-	 * 
+	 *
 	 * @author Julian Sommerfeldt
-	 * 
+	 *
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.FIELD })
@@ -38,9 +38,9 @@ public final class Annotations {
 
 	/**
 	 * Annotations to declare the field for the {@link ESFuzzyUtil}.
-	 * 
+	 *
 	 * @author Julian Sommerfeldt
-	 * 
+	 *
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.FIELD })
@@ -49,9 +49,9 @@ public final class Annotations {
 
 	/**
 	 * An annotation to set the fuzzy data provider for the {@link ESFuzzyRunner}.
-	 * 
+	 *
 	 * @author Julian Sommerfeldt
-	 * 
+	 *
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.TYPE })
@@ -63,9 +63,9 @@ public final class Annotations {
 
 	/**
 	 * An annotation to set the model mutator that is used by the data provider.
-	 * 
+	 *
 	 * @author emueller
-	 * 
+	 *
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.FIELD })
@@ -74,9 +74,9 @@ public final class Annotations {
 
 	/**
 	 * An optional annotation to declare options to use in the fuzzy data provider.
-	 * 
+	 *
 	 * @author Julian Sommerfeldt
-	 * 
+	 *
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.FIELD })

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  * koegel
@@ -18,7 +18,7 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflict
 /**
  * Represents a controller that can merge conflicting changes resulting in a
  * list of changes that is not conflicting any more.
- * 
+ *
  * @author koegel
  * @author wesendon
  */
@@ -27,7 +27,7 @@ public interface ConflictResolver {
 	/**
 	 * Resolves all conflicts between the given change packages "theirs" and the
 	 * given local operations.
-	 * 
+	 *
 	 * @param project
 	 *            the project at the time were all local changes are already
 	 *            applied and their operations are NOT, in other words the base

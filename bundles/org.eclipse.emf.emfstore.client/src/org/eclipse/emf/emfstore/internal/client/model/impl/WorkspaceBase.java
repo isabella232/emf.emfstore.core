@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -51,11 +51,11 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Workspace space base class that contains custom user methods.
- * 
+ *
  * @author koegel
  * @author wesendon
  * @author emueller
- * 
+ *
  */
 public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ESDisposable,
 	DeleteProjectSpaceObserver {
@@ -64,14 +64,14 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * A mapping between project and project spaces.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private Map<Project, ProjectSpace> projectToProjectSpaceMap;
 
 	/**
 	 * The resource set of the workspace.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private ResourceSet workspaceResourceSet;
@@ -79,7 +79,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	// BEGIN OF CUSTOM CODE
 	/**
 	 * Adds a new ProjectSpace to the workspace.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            The project space to be added
 	 */
@@ -90,14 +90,14 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * Initializes a new project space.
-	 * 
+	 *
 	 * @param projectName
 	 *            the name of the new project
 	 * @param project
 	 *            the project to be contained in the project space
 	 * @param cloneProject
 	 *            whether to clone the project
-	 * 
+	 *
 	 * @return the new {@link ProjectSpace} of the cloned {@link Project}
 	 */
 	public ProjectSpace createLocalProject(String projectName, Project project, boolean cloneProject) {
@@ -116,7 +116,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * Initializes a new project space and clones the given project.
-	 * 
+	 *
 	 * @param projectName
 	 *            the name of the new project
 	 * @param project
@@ -128,9 +128,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESWorkspace#createLocalProject(java.lang.String)
 	 */
 	public ProjectSpace createLocalProject(String projectName) {
@@ -139,9 +139,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#init()
 	 */
 	@SuppressWarnings("unchecked")
@@ -157,9 +157,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.ESDisposable#dispose()
 	 */
 	public void dispose() {
@@ -172,9 +172,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#setResourceSet(org.eclipse.emf.ecore.resource.ResourceSet)
 	 */
 	public void setResourceSet(ResourceSet resourceSet) {
@@ -186,9 +186,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#updateACUser(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public void updateACUser(ServerInfo serverInfo) throws ESException {
@@ -202,9 +202,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#updateACUser(org.eclipse.emf.emfstore.internal.client.model.Usersession)
 	 */
 	public void updateACUser(Usersession usersession) throws ESException {
@@ -243,7 +243,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#importProject(java.lang.String)
 	 */
 	public ProjectSpace importProject(String absoluteFileName) throws IOException {
@@ -254,7 +254,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#importProjectSpace(java.lang.String)
 	 */
 	public ProjectSpace importProjectSpace(String absoluteFileName) throws IOException {
@@ -272,7 +272,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#resolve(org.eclipse.emf.emfstore.internal.server.model.url.ProjectUrlFragment)
 	 */
 	public Set<ProjectSpace> resolve(ProjectUrlFragment projectUrlFragment) throws ProjectUrlResolutionException {
@@ -290,7 +290,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#resolve(org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl)
 	 */
 	public Set<ServerInfo> resolve(ServerUrl serverUrl) throws ServerUrlResolutionException {
@@ -309,9 +309,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#save()
 	 */
 	public void save() {
@@ -324,9 +324,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#exportProjectSpace(org.eclipse.emf.emfstore.internal.client.model.ProjectSpace,
 	 *      java.io.File)
 	 */
@@ -335,9 +335,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#exportProjectSpace(org.eclipse.emf.emfstore.internal.client.model.ProjectSpace,
 	 *      java.io.File, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -347,9 +347,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#exportWorkSpace(java.io.File)
 	 */
 	public void exportWorkSpace(File file) throws IOException {
@@ -357,9 +357,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#exportWorkSpace(java.io.File,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -371,7 +371,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	 * {@inheritDoc}<br/>
 	 * <br/>
 	 * This is to enable the workspace to be root of table views.
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
 	 * @generated NOT
 	 */
@@ -380,9 +380,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#getAdminBroker(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public AdminBroker getAdminBroker(final ServerInfo serverInfo) throws ESException, AccessControlException {
@@ -395,9 +395,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#getAdminBroker(org.eclipse.emf.emfstore.internal.client.model.Usersession)
 	 */
 	public AdminBroker getAdminBroker(final Usersession usersession) throws ESException, AccessControlException {
@@ -410,9 +410,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#getEditingDomain()
 	 */
 	public EditingDomain getEditingDomain() {
@@ -421,7 +421,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#getProjectSpace(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 */
 	public ProjectSpace getProjectSpace(Project project) throws UnkownProjectException {
@@ -433,9 +433,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.observers.DeleteProjectSpaceObserver#projectSpaceDeleted(org.eclipse.emf.emfstore.internal.client.model.ProjectSpace)
 	 */
 	public void projectSpaceDeleted(ProjectSpace projectSpace) {
@@ -447,9 +447,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#addServerInfo(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public void addServerInfo(ServerInfo serverInfo) {
@@ -458,9 +458,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#removeServerInfo(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public void removeServerInfo(ServerInfo serverInfo) {
@@ -483,9 +483,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Workspace#removeUsersession(org.eclipse.emf.emfstore.internal.client.model.Usersession)
 	 */
 	public void removeUsersession(Usersession session) throws ESException {
@@ -495,9 +495,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESWorkspaceImpl toAPI() {
@@ -509,7 +509,7 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 
 	/**
 	 * Set the API implementation class.
-	 * 
+	 *
 	 * @param apiImpl
 	 *            the internal workspace implementation class to be used
 	 */
@@ -518,9 +518,9 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESWorkspaceImpl createAPI() {

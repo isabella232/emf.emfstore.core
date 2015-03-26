@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl;
@@ -54,14 +54,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
  * <em>Branches</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	/**
 	 * The cached value of the '{@link #getProjectId() <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectId()
 	 * @generated
 	 * @ordered
@@ -71,7 +71,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	/**
 	 * The cached value of the '{@link #getVersions() <em>Versions</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getVersions()
 	 * @generated
 	 * @ordered
@@ -82,7 +82,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * The default value of the '{@link #getProjectName() <em>Project Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectName()
 	 * @generated
 	 * @ordered
@@ -92,7 +92,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	/**
 	 * The cached value of the '{@link #getProjectName() <em>Project Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectName()
 	 * @generated
 	 * @ordered
@@ -103,7 +103,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * The default value of the '{@link #getProjectDescription() <em>Project Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectDescription()
 	 * @generated
 	 * @ordered
@@ -114,7 +114,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * The cached value of the '{@link #getProjectDescription() <em>Project Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectDescription()
 	 * @generated
 	 * @ordered
@@ -125,7 +125,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 * The cached value of the '{@link #getSharedProperties()
 	 * <em>Shared Properties</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSharedProperties()
 	 * @generated
 	 * @ordered
@@ -135,7 +135,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	/**
 	 * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getBranches()
 	 * @generated
 	 * @ordered
@@ -144,7 +144,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ProjectHistoryImpl() {
@@ -153,7 +153,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -163,7 +163,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId getProjectId() {
@@ -195,7 +195,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId basicGetProjectId() {
@@ -204,7 +204,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetProjectId(ProjectId newProjectId, NotificationChain msgs) {
@@ -225,7 +225,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectId(ProjectId newProjectId) {
@@ -253,7 +253,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Version> getVersions() {
@@ -268,7 +268,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	// begin of custom code
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public Version getLastVersion() {
@@ -280,7 +280,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getProjectName() {
@@ -289,7 +289,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectName(String newProjectName) {
@@ -303,7 +303,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getProjectDescription() {
@@ -312,7 +312,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectDescription(String newProjectDescription) {
@@ -326,7 +326,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<EMFStoreProperty> getSharedProperties() {
@@ -340,7 +340,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<BranchInfo> getBranches() {
@@ -354,7 +354,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -375,7 +375,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -403,7 +403,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -438,7 +438,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -469,7 +469,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -495,7 +495,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

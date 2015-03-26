@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -45,14 +45,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>Referenced Values</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiAttributeOperationImpl extends FeatureOperationImpl implements MultiAttributeOperation {
 	/**
 	 * The default value of the '{@link #isAdd() <em>Add</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAdd()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	/**
 	 * The cached value of the '{@link #isAdd() <em>Add</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAdd()
 	 * @generated
 	 * @ordered
@@ -72,7 +72,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	/**
 	 * The cached value of the '{@link #getIndexes() <em>Indexes</em>}' attribute list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndexes()
 	 * @generated
 	 * @ordered
@@ -83,7 +83,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 * The cached value of the '{@link #getReferencedValues() <em>Referenced Values</em>}' attribute list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getReferencedValues()
 	 * @generated
 	 * @ordered
@@ -92,7 +92,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultiAttributeOperationImpl() {
@@ -101,7 +101,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isAdd() {
@@ -120,7 +120,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAdd(boolean newAdd) {
@@ -134,7 +134,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Integer> getIndexes() {
@@ -148,7 +148,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Object> getReferencedValues() {
@@ -162,7 +162,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -181,7 +181,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -206,7 +206,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -228,7 +228,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -247,7 +247,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -268,9 +268,9 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	@SuppressWarnings("unchecked")
@@ -331,7 +331,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.FeatureOperationImpl#reverse()
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Hodaie
  * koegel
@@ -60,7 +60,7 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 /**
  * This is the super class of property composites shown on properties form (right side of OrgUnitManagmentGUI). It
  * contains an attributes group at top, a TableViewer and button to add/remove OrgUnits.
- * 
+ *
  * @author Hodaie
  */
 public abstract class PropertiesComposite extends Composite {
@@ -79,7 +79,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent parent
 	 * @param style style
 	 * @param adminBroker adminBroker
@@ -140,7 +140,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * Returns the title of the tab.
-	 * 
+	 *
 	 * @return the title of the tab.
 	 */
 	protected abstract String getTabTitle();
@@ -154,7 +154,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * This creates table viewer group control.
-	 * 
+	 *
 	 * @param groupName group name
 	 */
 	protected void createTableGroup(String groupName) {
@@ -169,7 +169,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * This creates TableViewer.
-	 * 
+	 *
 	 * @param parent parent
 	 */
 	protected void createTableViewer(Composite parent) {
@@ -206,7 +206,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * This creates add/remove Buttons underneath TableViewer.
-	 * 
+	 *
 	 * @param parent parent
 	 */
 	protected void createButtons(Composite parent) {
@@ -293,7 +293,7 @@ public abstract class PropertiesComposite extends Composite {
 	/**
 	 * This will be used when adding OrgUnits using drag and drop This adds an existing OrgUnit. Subclasses must
 	 * override this.
-	 * 
+	 *
 	 * @param orgUnit orgUnit
 	 */
 	protected void addExistingOrgUnit(ACOrgUnit orgUnit) {
@@ -302,7 +302,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * This removes an OrgUnit. Subclasses must override this.
-	 * 
+	 *
 	 * @param orgUnit OrgUnit
 	 */
 	protected abstract void removeOrgUnit(ACOrgUnit orgUnit);
@@ -315,7 +315,7 @@ public abstract class PropertiesComposite extends Composite {
 	/**
 	 * Shows an element selection dialog with specified initial contents and title, and returns an array of selected
 	 * elements.
-	 * 
+	 *
 	 * @param content initial contents
 	 * @param title title
 	 * @return selected elements.
@@ -337,7 +337,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * Returns selected item in TableViewer.
-	 * 
+	 *
 	 * @return selected item in table viewer
 	 */
 	protected EObject getSelectedItem() {
@@ -399,7 +399,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * Label provider for users and groups.
-	 * 
+	 *
 	 * @author koegel
 	 */
 	private final class ILabelProviderImplementation implements ILabelProvider {
@@ -433,7 +433,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * This is the LabelProvider for TableViewer.
-	 * 
+	 *
 	 * @author Hodaie
 	 */
 	private class TableContentProvider implements IStructuredContentProvider {
@@ -489,7 +489,7 @@ public abstract class PropertiesComposite extends Composite {
 
 	/**
 	 * This is the ContentProvider for the TableViewer.
-	 * 
+	 *
 	 * @author Hodaie
 	 */
 	private class TableLabelProvider extends AdapterFactoryLabelProvider {

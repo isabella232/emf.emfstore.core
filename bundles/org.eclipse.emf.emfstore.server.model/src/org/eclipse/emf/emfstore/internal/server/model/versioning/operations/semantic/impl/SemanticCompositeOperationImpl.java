@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl;
@@ -20,14 +20,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
  * end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class SemanticCompositeOperationImpl extends CompositeOperationImpl implements
 	SemanticCompositeOperation {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected SemanticCompositeOperationImpl() {
@@ -36,7 +36,7 @@ public abstract class SemanticCompositeOperationImpl extends CompositeOperationI
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

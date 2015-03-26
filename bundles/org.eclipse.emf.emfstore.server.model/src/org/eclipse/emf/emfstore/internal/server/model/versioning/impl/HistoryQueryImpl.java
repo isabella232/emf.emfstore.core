@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -34,9 +34,9 @@ import org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery;
  * Include All Versions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated NOT
- * 
+ *
  * @param <T> a API history query subtype
  */
 public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObjectImpl implements
@@ -44,7 +44,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -55,7 +55,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 * The default value of the '{@link #isIncludeChangePackages() <em>Include Change Packages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeChangePackages()
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 * The cached value of the '{@link #isIncludeChangePackages() <em>Include Change Packages</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeChangePackages()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 * The default value of the '{@link #isIncludeAllVersions() <em>Include All Versions</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeAllVersions()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 * The cached value of the '{@link #isIncludeAllVersions() <em>Include All Versions</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isIncludeAllVersions()
 	 * @generated
 	 * @ordered
@@ -97,7 +97,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected HistoryQueryImpl() {
@@ -106,7 +106,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -116,7 +116,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getSource() {
@@ -145,7 +145,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetSource() {
@@ -154,7 +154,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetSource(PrimaryVersionSpec newSource, NotificationChain msgs) {
@@ -175,7 +175,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	/**
 	 * .
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSource(PrimaryVersionSpec newSource) {
@@ -201,7 +201,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIncludeChangePackages() {
@@ -210,7 +210,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIncludeChangePackages(boolean newIncludeChangePackages) {
@@ -225,7 +225,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIncludeAllVersions() {
@@ -234,7 +234,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIncludeAllVersions(boolean newIncludeAllVersions) {
@@ -248,7 +248,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -262,7 +262,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -283,7 +283,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -304,7 +304,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -325,7 +325,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -343,7 +343,7 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

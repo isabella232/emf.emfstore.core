@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Zardosht Hoiaie
  * Edgar Mueller
@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * This is the update dialog. It shows just a ChangesTreeComposite.
- * 
+ *
  * @author Hodaie
  * @author emueller
  */
@@ -44,7 +44,7 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell
 	 * @param localProject

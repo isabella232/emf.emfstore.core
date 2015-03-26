@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  * Edgar Mueller
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * A path query additionally considers a target version beside the source version, i.e. it is possible to specify a
  * version range.
  * </p>
- * 
+ *
  * @author wesendon
  * @author emueller
  */
@@ -33,7 +33,7 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param pathQuery
 	 *            the delegate
 	 */
@@ -42,9 +42,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#getSource()
 	 */
 	public ESPrimaryVersionSpec getSource() {
@@ -52,9 +52,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#setSource(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec)
 	 */
 	public void setSource(ESPrimaryVersionSpec versionSpec) {
@@ -62,9 +62,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#setIncludeChangePackages(boolean)
 	 */
 	public void setIncludeChangePackages(boolean includeChangePackages) {
@@ -72,9 +72,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#isIncludeChangePackages()
 	 */
 	public boolean isIncludeChangePackages() {
@@ -82,9 +82,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#setIncludeAllVersions(boolean)
 	 */
 	public void setIncludeAllVersions(boolean includeAllVersion) {
@@ -92,9 +92,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#isIncludeAllVersions()
 	 */
 	public boolean isIncludeAllVersions() {
@@ -102,9 +102,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESPathQuery#getTarget()
 	 */
 	public ESPrimaryVersionSpec getTarget() {
@@ -112,9 +112,9 @@ public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> 
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESPathQuery#setTarget(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec)
 	 */
 	public void setTarget(ESPrimaryVersionSpec target) {

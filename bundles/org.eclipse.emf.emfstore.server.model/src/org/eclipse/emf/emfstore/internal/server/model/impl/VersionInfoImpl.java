@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl;
@@ -27,7 +27,7 @@ import org.osgi.framework.Version;
  * Version String</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
@@ -35,7 +35,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 * The default value of the '{@link #getEmfStoreVersionString() <em>Emf Store Version String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEmfStoreVersionString()
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 * The cached value of the '{@link #getEmfStoreVersionString() <em>Emf Store Version String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEmfStoreVersionString()
 	 * @generated
 	 * @ordered
@@ -55,7 +55,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected VersionInfoImpl() {
@@ -64,7 +64,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -74,7 +74,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getEmfStoreVersionString() {
@@ -83,7 +83,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setEmfStoreVersionString(String newEmfStoreVersionString) {
@@ -98,7 +98,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	// begin of custom code
 	/**
 	 * <!-- begin-user-doc --> Get the version.
-	 * 
+	 *
 	 * @return the version <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -108,7 +108,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> Set the version String.
-	 * 
+	 *
 	 * @param emfStoreVersion
 	 *            the version <!-- end-user-doc -->
 	 * @generated NOT
@@ -121,7 +121,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -136,7 +136,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -152,7 +152,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -168,7 +168,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -184,7 +184,7 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

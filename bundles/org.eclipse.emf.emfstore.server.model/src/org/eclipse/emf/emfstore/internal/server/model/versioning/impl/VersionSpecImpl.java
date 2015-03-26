@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -25,14 +25,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionSpecImpl#getBranch <em>Branch</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec {
 	/**
 	 * The default value of the '{@link #getBranch() <em>Branch</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getBranch()
 	 * @generated
 	 * @ordered
@@ -42,7 +42,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	/**
 	 * The cached value of the '{@link #getBranch() <em>Branch</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getBranch()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected VersionSpecImpl() {
@@ -60,7 +60,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -70,7 +70,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getBranch() {
@@ -79,7 +79,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setBranch(String newBranch) {
@@ -93,7 +93,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -108,7 +108,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -124,7 +124,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +140,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -155,7 +155,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.impl;
@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
@@ -30,7 +30,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ServerFactory init() {
@@ -53,7 +53,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerFactoryImpl() {
@@ -62,7 +62,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectUpdatedEvent createProjectUpdatedEvent() {
@@ -88,7 +88,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerPackage getServerPackage() {
@@ -97,7 +97,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -30,12 +30,14 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass testConfigEClass = null;
@@ -43,6 +45,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass testRunEClass = null;
@@ -50,6 +53,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass testResultEClass = null;
@@ -57,6 +61,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass testDiffEClass = null;
@@ -64,6 +69,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass diffReportEClass = null;
@@ -71,6 +77,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass rootEClass = null;
@@ -78,20 +85,20 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass mutatorConfigEClass = null;
 
 	/**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
+	 * EPackage.Registry} by the package
 	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
+	 * performs initialization of the package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#eNS_URI
 	 * @see #init()
@@ -104,29 +111,33 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
-	 * <p>This method is used to initialize {@link ConfigPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
+	 *
+	 * <p>
+	 * This method is used to initialize {@link ConfigPackage#eINSTANCE} when that field is accessed. Clients should not
+	 * invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static ConfigPackage init() {
-		if (isInited)
+		if (isInited) {
 			return (ConfigPackage) EPackage.Registry.INSTANCE.getEPackage(ConfigPackage.eNS_URI);
+		}
 
 		// Obtain or create and register package
-		ConfigPackageImpl theConfigPackage = (ConfigPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConfigPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI) : new ConfigPackageImpl());
+		final ConfigPackageImpl theConfigPackage = (ConfigPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConfigPackageImpl ? EPackage.Registry.INSTANCE
+			.get(eNS_URI)
+			: new ConfigPackageImpl());
 
 		isInited = true;
 
@@ -147,6 +158,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTestConfig() {
@@ -156,6 +168,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestConfig_Seed() {
@@ -165,6 +178,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestConfig_Count() {
@@ -174,6 +188,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestConfig_TestClass() {
@@ -183,6 +198,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestConfig_Id() {
@@ -192,6 +208,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTestConfig_MutatorConfig() {
@@ -201,6 +218,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTestRun() {
@@ -210,6 +228,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTestRun_Config() {
@@ -219,6 +238,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestRun_Time() {
@@ -228,6 +248,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTestRun_Results() {
@@ -237,6 +258,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTestResult() {
@@ -246,6 +268,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestResult_SeedCount() {
@@ -255,6 +278,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestResult_TestName() {
@@ -264,6 +288,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestResult_Error() {
@@ -273,6 +298,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestResult_Failure() {
@@ -282,6 +308,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestResult_ExecutionTime() {
@@ -291,6 +318,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getTestDiff() {
@@ -300,6 +328,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTestDiff_LastUpdate() {
@@ -309,6 +338,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTestDiff_Config() {
@@ -318,6 +348,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTestDiff_OldResult() {
@@ -327,6 +358,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getTestDiff_NewResult() {
@@ -336,6 +368,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getDiffReport() {
@@ -345,6 +378,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getDiffReport_Diffs() {
@@ -354,6 +388,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getRoot() {
@@ -363,6 +398,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getRoot_Elements() {
@@ -372,6 +408,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EClass getMutatorConfig() {
@@ -381,6 +418,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMutatorConfig_RootEClass() {
@@ -390,6 +428,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_MinObjectsCount() {
@@ -399,6 +438,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_IgnoreAndLog() {
@@ -408,6 +448,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_DoNotGenerateRoot() {
@@ -417,6 +458,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_UseEcoreUtilDelete() {
@@ -426,6 +468,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMutatorConfig_EClassesToIgnore() {
@@ -435,6 +478,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMutatorConfig_EStructuralFeaturesToIgnore() {
@@ -444,6 +488,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EReference getMutatorConfig_EPackages() {
@@ -453,6 +498,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_MaxDeleteCount() {
@@ -462,6 +508,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_MutationCount() {
@@ -471,6 +518,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMutatorConfig_AllowDuplicateIDs() {
@@ -480,6 +528,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConfigFactory getConfigFactory() {
@@ -489,20 +538,23 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
+	 * Creates the meta-model objects for the package. This method is
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated)
+		if (isCreated) {
 			return;
+		}
 		isCreated = true;
 
 		// Create classes and their features
@@ -554,20 +606,23 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
+	 * Complete the initialization of the package and its meta-model. This
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized)
+		if (isInitialized) {
 			return;
+		}
 		isInitialized = true;
 
 		// Initialize package
@@ -592,8 +647,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			getTestConfig_Count(),
 			ecorePackage.getEInt(),
 			"count", null, 0, 1, TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		EGenericType g1 = createEGenericType(ecorePackage.getEJavaClass());
-		EGenericType g2 = createEGenericType();
+		final EGenericType g1 = createEGenericType(ecorePackage.getEJavaClass());
+		final EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEAttribute(
 			getTestConfig_TestClass(),
@@ -605,14 +660,14 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			"id", null, 0, 1, TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getTestConfig_MutatorConfig(),
-			this.getMutatorConfig(),
+			getMutatorConfig(),
 			null,
 			"mutatorConfig", null, 0, 1, TestConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(testRunEClass, TestRun.class, "TestRun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(
 			getTestRun_Config(),
-			this.getTestConfig(),
+			getTestConfig(),
 			null,
 			"config", null, 0, 1, TestRun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
@@ -621,7 +676,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			"time", null, 0, 1, TestRun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getTestRun_Results(),
-			this.getTestResult(),
+			getTestResult(),
 			null,
 			"results", null, 0, -1, TestRun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -655,17 +710,17 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			"lastUpdate", null, 0, 1, TestDiff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getTestDiff_Config(),
-			this.getTestConfig(),
+			getTestConfig(),
 			null,
 			"config", null, 0, 1, TestDiff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getTestDiff_OldResult(),
-			this.getTestResult(),
+			getTestResult(),
 			null,
 			"oldResult", null, 0, 1, TestDiff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getTestDiff_NewResult(),
-			this.getTestResult(),
+			getTestResult(),
 			null,
 			"newResult", null, 0, 1, TestDiff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -673,7 +728,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 			"DiffReport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(
 			getDiffReport_Diffs(),
-			this.getTestDiff(),
+			getTestDiff(),
 			null,
 			"diffs", null, 0, -1, DiffReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -739,4 +794,4 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createResource(eNS_URI);
 	}
 
-} //ConfigPackageImpl
+} // ConfigPackageImpl

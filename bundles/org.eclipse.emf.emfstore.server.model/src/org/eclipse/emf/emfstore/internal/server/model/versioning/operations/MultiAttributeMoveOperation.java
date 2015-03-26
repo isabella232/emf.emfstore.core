@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Multi Attribute Move Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * <em>Referenced Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeMoveOperation()
  * @model
  * @generated
@@ -42,7 +42,7 @@ public interface MultiAttributeMoveOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Old Index</em>' attribute.
 	 * @see #setOldIndex(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeMoveOperation_OldIndex()
@@ -56,7 +56,7 @@ public interface MultiAttributeMoveOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeMoveOperation#getOldIndex
 	 * <em>Old Index</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Old Index</em>' attribute.
 	 * @see #getOldIndex()
@@ -72,7 +72,7 @@ public interface MultiAttributeMoveOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>New Index</em>' attribute.
 	 * @see #setNewIndex(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeMoveOperation_NewIndex()
@@ -86,7 +86,7 @@ public interface MultiAttributeMoveOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeMoveOperation#getNewIndex
 	 * <em>New Index</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>New Index</em>' attribute.
 	 * @see #getNewIndex()
@@ -102,7 +102,7 @@ public interface MultiAttributeMoveOperation extends FeatureOperation {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Referenced Value</em>' attribute.
 	 * @see #setReferencedValue(Object)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeMoveOperation_ReferencedValue()
@@ -117,7 +117,7 @@ public interface MultiAttributeMoveOperation extends FeatureOperation {
 	 * <em>Referenced Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Referenced Value</em>' attribute.
 	 * @see #getReferencedValue()
 	 * @generated

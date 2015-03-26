@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url.impl;
@@ -30,21 +30,21 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * The prefix for all EMFStore URLs.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public static final String PREFIX = "emfstore://"; //$NON-NLS-1$
 
 	/**
 	 * The standard parsing exception message.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private static final String EXCEPTION_MESSAGE = "Invalid EMFStore URL!"; //$NON-NLS-1$
@@ -53,7 +53,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static UrlFactory init() {
@@ -76,7 +76,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public UrlFactoryImpl() {
@@ -85,7 +85,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -107,7 +107,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerUrl createServerUrl() {
@@ -117,7 +117,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectUrlFragment createProjectUrlFragment() {
@@ -127,7 +127,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementUrlFragment createModelElementUrlFragment() {
@@ -201,7 +201,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementUrl createModelElementUrl() {
@@ -211,7 +211,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public UrlPackage getUrlPackage() {
@@ -220,7 +220,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

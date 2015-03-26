@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config;
@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>ESFuzzyTest Run</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESTestRunImpl>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun#getResults <em>Results</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestRun()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface TestRun extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Config</em>' containment reference.
 	 * @see #setConfig(TestConfig)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestRun_Config()
@@ -58,7 +58,7 @@ public interface TestRun extends EObject {
 	 * <em>Config</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Config</em>' containment reference.
 	 * @see #getConfig()
 	 * @generated
@@ -72,7 +72,7 @@ public interface TestRun extends EObject {
 	 * If the meaning of the '<em>Time</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Time</em>' attribute.
 	 * @see #setTime(Date)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestRun_Time()
@@ -86,7 +86,7 @@ public interface TestRun extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Time</em>' attribute.
 	 * @see #getTime()
 	 * @generated
@@ -102,7 +102,7 @@ public interface TestRun extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Results</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestRun_Results()
 	 * @model containment="true"

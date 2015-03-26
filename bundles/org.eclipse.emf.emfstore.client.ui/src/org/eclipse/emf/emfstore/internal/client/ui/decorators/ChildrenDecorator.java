@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Hodaie
  ******************************************************************************/
@@ -24,28 +24,29 @@ import org.eclipse.jface.viewers.ILightweightLabelDecorator;
 /**
  * This decorator shows a link icon on item which are shown as children of a parent in Navigator, but are not actually
  * contained in that parent. (i.e. model elements shown under a WorkItemMeetingSection)
- * 
+ *
  * @author Hodaie
  */
 public class ChildrenDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.ILightweightLabelDecorator#decorate(java.lang.Object,
 	 *      org.eclipse.jface.viewers.IDecoration)
 	 */
 	public void decorate(Object element, IDecoration decoration) {
-		URL url = FileLocator.find(Platform.getBundle("org.eclipse.emf.ecp.common"), new Path("icons/shortcut.png"),
+		final URL url = FileLocator.find(Platform.getBundle("org.eclipse.emf.ecp.common"), new Path(
+			"icons/shortcut.png"),
 			null);
-		ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(url);
+		final ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(url);
 		decoration.addOverlay(imageDescriptor, IDecoration.BOTTOM_RIGHT);
 
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void addListener(ILabelProviderListener listener) {
@@ -54,7 +55,7 @@ public class ChildrenDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
@@ -63,7 +64,7 @@ public class ChildrenDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
 	 */
 	public boolean isLabelProperty(Object element, String property) {
@@ -72,7 +73,7 @@ public class ChildrenDecorator implements ILightweightLabelDecorator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void removeListener(ILabelProviderListener listener) {

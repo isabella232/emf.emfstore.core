@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  * Edgar Mueller
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 
 /**
  * Implementation of a factory for creating {@link ESServer} instances.
- * 
+ *
  * @author wesendon
  * @author emueller
  */
@@ -46,9 +46,9 @@ public final class ESServerFactoryImpl implements ESServerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServerFactory#createServer(java.lang.String, int, java.lang.String)
 	 */
 	public ESServer createServer(final String url, final int port, final String certificate) {
@@ -57,9 +57,9 @@ public final class ESServerFactoryImpl implements ESServerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServerFactory#createServer(java.lang.String, java.lang.String, int,
 	 *      java.lang.String)
 	 */
@@ -72,7 +72,7 @@ public final class ESServerFactoryImpl implements ESServerFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServerFactory#createAndStartLocalServer()
 	 */
 	public ESServer createAndStartLocalServer() throws ESServerStartFailedException {
@@ -92,7 +92,7 @@ public final class ESServerFactoryImpl implements ESServerFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServerFactory#stopLocalServer()
 	 */
 	public void stopLocalServer() {

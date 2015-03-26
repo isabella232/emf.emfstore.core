@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -23,13 +23,13 @@ import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.util.DefaultMergeLabelProvider;
 import org.eclipse.emf.emfstore.internal.common.ExtensionRegistry;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
-import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 
 /**
  * This is an alternative merge handler, using the new merge wizard.
- * 
+ *
  * @author wesendon
  */
 public class MergeProjectHandler extends AbstractConflictResolver {
@@ -39,7 +39,7 @@ public class MergeProjectHandler extends AbstractConflictResolver {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param isBranchMerge
 	 *            specifies whether two branches are merged, rather then changes
 	 *            from the same branches.
@@ -74,16 +74,16 @@ public class MergeProjectHandler extends AbstractConflictResolver {
 		return RunInUI.runWithResult(new Callable<Boolean>() {
 
 			public Boolean call() {
-				MergeWizard wizard = new MergeWizard(decisionManager);
-				WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
+				final MergeWizard wizard = new MergeWizard(decisionManager);
+				final WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
 				dialog.setPageSize(1000, 500);
 				dialog.setBlockOnOpen(true);
 				dialog.create();
 
-				int open = dialog.open();
+				final int open = dialog.open();
 
 				getLabelProvider().dispose();
-				return (open == Dialog.OK);
+				return open == Window.OK;
 			}
 		});
 	}

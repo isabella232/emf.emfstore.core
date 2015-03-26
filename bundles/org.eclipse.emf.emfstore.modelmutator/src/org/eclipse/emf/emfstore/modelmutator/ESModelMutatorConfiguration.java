@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * JulianSommerfeldt
  * StephanK?hler
@@ -32,13 +32,13 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 
 /**
  * Configuration for the ModelMutator.
- * 
+ *
  * @author Eugen Neufeld
  * @author Stephan Koehler
  * @author Philip Achenbach
  * @author Julian Sommerfeldt
  * @since 2.0
- * 
+ *
  * @noextend This class is not intended to be subclassed by clients.
  */
 public class ESModelMutatorConfiguration {
@@ -73,7 +73,7 @@ public class ESModelMutatorConfiguration {
 
 	/**
 	 * The constructor for the configuration.
-	 * 
+	 *
 	 * @param modelPackage the EPackages
 	 * @param rootEObject the rootObject for the generation/change
 	 * @param seed the seed for the generation/change
@@ -84,7 +84,7 @@ public class ESModelMutatorConfiguration {
 
 	/**
 	 * The constructor for the configuration.
-	 * 
+	 *
 	 * @param modelPackages the EPackages
 	 * @param rootEObject the rootObject for the generation/change
 	 * @param seed the seed for the generation/change
@@ -274,7 +274,7 @@ public class ESModelMutatorConfiguration {
 	/**
 	 * Should the Mutator use {@link org.eclipse.emf.ecore.util.EcoreUtil#delete(EObject)}?<br>
 	 * NOTE: This is a very expensive method and will decrease the performance dramatically.
-	 * 
+	 *
 	 * @param useEcoreUtilDelete Should the Mutator use {@link org.eclipse.emf.ecore.util.EcoreUtil#delete(EObject)}?
 	 */
 	public void setUseEcoreUtilDelete(boolean useEcoreUtilDelete) {
@@ -297,7 +297,7 @@ public class ESModelMutatorConfiguration {
 
 	/**
 	 * Returns the number of mutations to be performed.
-	 * 
+	 *
 	 * @return the number of mutations
 	 */
 	public int getMutationCount() {
@@ -306,7 +306,7 @@ public class ESModelMutatorConfiguration {
 
 	/**
 	 * Sets the number of mutations to be performed.
-	 * 
+	 *
 	 * @param mutationCount the number of mutations to set
 	 */
 	public void setMutationCount(Integer mutationCount) {
@@ -315,7 +315,7 @@ public class ESModelMutatorConfiguration {
 
 	/**
 	 * Specifies whether the model generation or mutation are allowed to add non-unique values in ID attributes.
-	 * 
+	 *
 	 * @return <code>true</code> if duplicate IDs are allowed, <code>false</code> otherwise.
 	 */
 	public boolean isAllowDuplicateIDs() {
@@ -324,7 +324,7 @@ public class ESModelMutatorConfiguration {
 
 	/**
 	 * Sets whether the model generation or mutation should be allowed to add non-unique values in ID attributes.
-	 * 
+	 *
 	 * @param allowDuplicateIDs Should the model generator and mutator be allowed to add non-unique values in ID
 	 *            attributes?
 	 */

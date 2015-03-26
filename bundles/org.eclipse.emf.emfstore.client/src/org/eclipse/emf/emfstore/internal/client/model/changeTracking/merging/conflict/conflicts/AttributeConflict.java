@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
 
 /**
  * Conflict for two attribute operations.
- * 
+ *
  * @author wesendon
  * @author emueller
  */
@@ -44,7 +44,7 @@ public class AttributeConflict extends VisualConflict {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param conflictBucket the conflict
 	 * @param decisionManager decisionmanager
 	 */
@@ -77,7 +77,7 @@ public class AttributeConflict extends VisualConflict {
 
 	/**
 	 * Allows to init options, without adding a merge text option.
-	 * 
+	 *
 	 * @param options list of options
 	 * @param withMerge true, if merge text option ({@link MergeTextOption}) should be added
 	 */

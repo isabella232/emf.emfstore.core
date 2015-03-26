@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core;
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 
 /**
  * Internal command, in order to avoid accesscontrol.
- * 
+ *
  * @param <T> the emfstore interface
  */
 // TODO: internal
@@ -24,7 +24,7 @@ public abstract class InternalCommand<T extends AbstractEmfstoreInterface> {
 
 	/**
 	 * Sets the interface which runs the command.
-	 * 
+	 *
 	 * @param theInterface the emfstore interface
 	 */
 	@SuppressWarnings("unchecked")
@@ -46,11 +46,11 @@ public abstract class InternalCommand<T extends AbstractEmfstoreInterface> {
 
 	/**
 	 * Generates a fake session id in order to use the emfstore interfaces.
-	 * 
+	 *
 	 * @return SessionId
 	 */
 	protected SessionId fakeSessionId() {
-		SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
+		final SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
 		sessionId.setId("-FAKE-");
 		return sessionId;
 	}

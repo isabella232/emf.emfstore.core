@@ -29,8 +29,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
+import org.eclipse.emf.emfstore.modelmutator.ESMutationException;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * pfeifferc,jfinis
  ******************************************************************************/
@@ -18,7 +18,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 
 /**
  * Data object for file transfer information.
- * 
+ *
  * @author pfeifferc, jfinis
  */
 public class FileTransferInformation implements Serializable {
@@ -38,12 +38,12 @@ public class FileTransferInformation implements Serializable {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param identifier the file identifier
 	 * @param fileSize the file size, in bytes
 	 */
 	public FileTransferInformation(FileIdentifier identifier, int fileSize) {
-		this.fileIdentifier = identifier.getIdentifier();
+		fileIdentifier = identifier.getIdentifier();
 		this.fileSize = fileSize;
 	}
 
@@ -66,14 +66,14 @@ public class FileTransferInformation implements Serializable {
 	 */
 
 	public FileIdentifier getFileIdentifier() {
-		FileIdentifier fid = ModelFactory.eINSTANCE.createFileIdentifier();
+		final FileIdentifier fid = ModelFactory.eINSTANCE.createFileIdentifier();
 		fid.setIdentifier(fileIdentifier);
 		return fid;
 	}
 
 	/**
 	 * Sets the filde identifer.
-	 * 
+	 *
 	 * @param fileId file identifier
 	 */
 	public void setFileIdentifier(FileIdentifier fileId) {
@@ -99,7 +99,7 @@ public class FileTransferInformation implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder string = new StringBuilder();
+		final StringBuilder string = new StringBuilder();
 		string.append(fileIdentifier);
 		string.append("\nFile size: ");
 		return string.toString();

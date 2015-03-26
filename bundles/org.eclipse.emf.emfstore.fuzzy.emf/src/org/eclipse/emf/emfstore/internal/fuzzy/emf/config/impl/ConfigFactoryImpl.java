@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -29,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
@@ -36,16 +37,17 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ConfigFactory init() {
 		try {
-			ConfigFactory theConfigFactory = (ConfigFactory) EPackage.Registry.INSTANCE
+			final ConfigFactory theConfigFactory = (ConfigFactory) EPackage.Registry.INSTANCE
 				.getEFactory(ConfigPackage.eNS_URI);
 			if (theConfigFactory != null) {
 				return theConfigFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ConfigFactoryImpl();
@@ -55,6 +57,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConfigFactoryImpl() {
@@ -64,6 +67,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,76 +95,84 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestConfig createTestConfig() {
-		TestConfigImpl testConfig = new TestConfigImpl();
+		final TestConfigImpl testConfig = new TestConfigImpl();
 		return testConfig;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestRun createTestRun() {
-		TestRunImpl testRun = new TestRunImpl();
+		final TestRunImpl testRun = new TestRunImpl();
 		return testRun;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestResult createTestResult() {
-		TestResultImpl testResult = new TestResultImpl();
+		final TestResultImpl testResult = new TestResultImpl();
 		return testResult;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TestDiff createTestDiff() {
-		TestDiffImpl testDiff = new TestDiffImpl();
+		final TestDiffImpl testDiff = new TestDiffImpl();
 		return testDiff;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DiffReport createDiffReport() {
-		DiffReportImpl diffReport = new DiffReportImpl();
+		final DiffReportImpl diffReport = new DiffReportImpl();
 		return diffReport;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Root createRoot() {
-		RootImpl root = new RootImpl();
+		final RootImpl root = new RootImpl();
 		return root;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public MutatorConfig createMutatorConfig() {
-		MutatorConfigImpl mutatorConfig = new MutatorConfigImpl();
+		final MutatorConfigImpl mutatorConfig = new MutatorConfigImpl();
 		return mutatorConfig;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConfigPackage getConfigPackage() {
@@ -170,6 +182,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -178,4 +191,4 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 		return ConfigPackage.eINSTANCE;
 	}
 
-} //ConfigFactoryImpl
+} // ConfigFactoryImpl

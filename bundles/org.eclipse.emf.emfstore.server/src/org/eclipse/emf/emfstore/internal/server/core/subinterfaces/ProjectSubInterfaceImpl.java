@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  ******************************************************************************/
@@ -49,14 +49,14 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * This subinterface implements all project related functionality.
- * 
+ *
  * @author wesendon
  */
 public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface
 	 *            parent interface
 	 * @throws FatalESException
@@ -73,7 +73,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the corresponding project.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @return a project or throws exception
@@ -102,13 +102,13 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Get the project state for a specific version.
-	 * 
+	 *
 	 * @param projectId
 	 *            the {@link ProjectId} of the project to be fetched
 	 * @param versionSpec
 	 *            the requested version
 	 * @return the state of the project for the specified version
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if the given version is invalid
 	 * @throws ESException
@@ -134,11 +134,11 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Get the project state for a specific version.
-	 * 
+	 *
 	 * @param version
 	 *            the requested version
 	 * @return the state of the project for the specified version
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException
 	 *             if the given version is invalid
 	 * @throws ESException
@@ -171,7 +171,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns all projects.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of a session that is checked whether read access is granted
 	 * @return a list of all projects
@@ -195,7 +195,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Creates a empty project.
-	 * 
+	 *
 	 * @param name
 	 *            the name of the project
 	 * @param description
@@ -227,7 +227,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Creates a new project.
-	 * 
+	 *
 	 * @param name
 	 *            the name of the project
 	 * @param description
@@ -258,7 +258,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Deletes the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param deleteFiles
@@ -274,7 +274,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Deletes the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            project id
 	 * @param deleteFiles
@@ -348,7 +348,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Import the given project history to the server.
-	 * 
+	 *
 	 * @param projectHistory
 	 *            the history to be imported
 	 * @return the ID of a new project
@@ -395,7 +395,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the history for the project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @return the project history

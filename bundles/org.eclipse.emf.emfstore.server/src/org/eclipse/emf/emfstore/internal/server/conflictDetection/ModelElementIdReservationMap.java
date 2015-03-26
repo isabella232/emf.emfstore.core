@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Tracks any reservation based on {@link org.eclipse.emf.emfstore.internal.common.model.ModelElementId ModelElementId}
  * s.
- * 
+ *
  * @author mkoegel
  * @author emueller
  */
@@ -28,7 +28,7 @@ public class ModelElementIdReservationMap extends LinkedHashMap<String, FeatureN
 
 	/**
 	 * Returns a set of {@link ConflictBucketCandidate}s for a given ModelElementId.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ModelElementId for which to retrieve the {@link ConflictBucketCandidate}s
 	 * @return a set of {@link ConflictBucketCandidate}s for the given ModelElementId
@@ -44,7 +44,7 @@ public class ModelElementIdReservationMap extends LinkedHashMap<String, FeatureN
 	/**
 	 * Returns a set of {@link ConflictBucketCandidate}s for the combination
 	 * of ModelElementId and a feature name.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ModelElementId for which to retrieve the {@link ConflictBucketCandidate}s
 	 * @param featureName
@@ -66,7 +66,7 @@ public class ModelElementIdReservationMap extends LinkedHashMap<String, FeatureN
 	/**
 	 * Returns a set of {@link ConflictBucketCandidate}s for the combination
 	 * of ModelElementId, a feature name and an opposite model element.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ModelElementId for which to retrieve the {@link ConflictBucketCandidate}s
 	 * @param featureName

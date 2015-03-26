@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <em>Base Version Spec</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements PagedUpdateVersionSpec
@@ -48,7 +48,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 * The default value of the '{@link #getMaxChanges() <em>Max Changes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMaxChanges()
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 * The cached value of the '{@link #getMaxChanges() <em>Max Changes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMaxChanges()
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 * The cached value of the '{@link #getBaseVersionSpec() <em>Base Version Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getBaseVersionSpec()
 	 * @generated
 	 * @ordered
@@ -80,7 +80,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PagedUpdateVersionSpecImpl()
@@ -91,7 +91,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getMaxChanges()
@@ -114,7 +114,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMaxChanges(int newMaxChanges)
@@ -130,7 +130,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getBaseVersionSpec()
@@ -165,7 +165,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetBaseVersionSpec()
@@ -176,7 +176,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetBaseVersionSpec(PrimaryVersionSpec newBaseVersionSpec, NotificationChain msgs)
@@ -199,7 +199,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setBaseVersionSpec(PrimaryVersionSpec newBaseVersionSpec)
@@ -229,7 +229,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -246,7 +246,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -268,7 +268,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -289,7 +289,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -310,7 +310,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -329,7 +329,7 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -347,11 +347,11 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESPagedUpdateVersionSpecImpl toAPI() {
@@ -364,11 +364,11 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESPagedUpdateVersionSpecImpl createAPI() {

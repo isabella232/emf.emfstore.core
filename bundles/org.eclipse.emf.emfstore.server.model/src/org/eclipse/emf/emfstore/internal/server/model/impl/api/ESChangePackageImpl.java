@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -18,15 +18,15 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * Mapping between {@link ESChangePackage} and {@link ChangePackage}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, ChangePackage> implements ESChangePackage {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param changePackage
 	 *            the delegate
 	 */
@@ -35,9 +35,9 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
 	public ESLogMessage getLogMessage() {
@@ -45,13 +45,13 @@ public class ESChangePackageImpl extends AbstractAPIImpl<ESChangePackage, Change
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
 	public void setLogMessage(ESLogMessage logMessage) {
-		ESLogMessageImpl logMessageImpl = (ESLogMessageImpl) logMessage;
+		final ESLogMessageImpl logMessageImpl = (ESLogMessageImpl) logMessage;
 		toInternalAPI().setLogMessage(logMessageImpl.toInternalAPI());
 	}
 

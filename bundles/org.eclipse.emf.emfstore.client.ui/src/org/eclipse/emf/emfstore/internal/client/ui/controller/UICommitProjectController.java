@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -44,10 +44,10 @@ import org.eclipse.swt.widgets.Shell;
  * able to confirm the commit. If no changes have been made by the user a
  * information dialog is presented that states that there are no pending changes
  * to be committed.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  */
 public class UICommitProjectController extends
 	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
@@ -58,7 +58,7 @@ public class UICommitProjectController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent shell that will be used during commit
 	 * @param localProject
@@ -71,9 +71,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#noLocalChanges(org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
 	public void noLocalChanges(ESLocalProject localProject) {
@@ -88,9 +88,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#baseVersionOutOfDate(ESLocalProject,
 	 *      IProgressMonitor)
 	 */
@@ -122,9 +122,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage,
 	 *      org.eclipse.emf.emfstore.common.model.ESModelElementIdToEObjectMapping)
@@ -198,9 +198,9 @@ public class UICommitProjectController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

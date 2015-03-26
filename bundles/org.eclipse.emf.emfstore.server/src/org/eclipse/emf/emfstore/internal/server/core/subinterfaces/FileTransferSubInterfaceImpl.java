@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * pfeifferc
  ******************************************************************************/
@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.storage.XMIServerURIConverter;
 
 /**
  * The file transfer subinterface.
- * 
+ *
  * @author pfeifferc
  */
 public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
@@ -67,7 +67,7 @@ public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Reads a chunk from the file linked to the fileInformation.
-	 * 
+	 *
 	 * @param projectId project attachment folder
 	 * @param fileInformation file information object
 	 * @return FileChunk
@@ -95,7 +95,7 @@ public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	/**
 	 * Writes a chunk to the file linked to the fileInformation in the fileChunk. If the data in the file chunk is null,
 	 * this is treated as a request for a file version.
-	 * 
+	 *
 	 * @param fileChunk contains data and information about the file attachment, file version and chunk number
 	 * @param projectId project id
 	 * @return fileInformation containing the (new) file version

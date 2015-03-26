@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * deser
  ******************************************************************************/
@@ -52,8 +52,8 @@ public class LdapSourceDialog extends TitleAreaDialog {
 	public LdapSourceDialog(Shell parentShell, LdapImportSource ldapImport) {
 		super(parentShell);
 		this.ldapImport = ldapImport;
-		this.setTitle(Messages.LdapSourceDialog_LDAPImport);
-		this.isInitFinished = false;
+		setTitle(Messages.LdapSourceDialog_LDAPImport);
+		isInitFinished = false;
 	}
 
 	/**
@@ -67,23 +67,23 @@ public class LdapSourceDialog extends TitleAreaDialog {
 		// Set the specific help for this Composite
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, Activator.PLUGIN_ID + ".help_import_ldap"); //$NON-NLS-1$
 
-		Composite contents = new Composite(parent, SWT.NONE);
+		final Composite contents = new Composite(parent, SWT.NONE);
 		contents.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
 		setTitle(Messages.LdapSourceDialog_LDAPServerData);
 		setMessage(Messages.LdapSourceDialog_EnterServerData);
 
-		Label name = new Label(contents, SWT.NULL);
+		final Label name = new Label(contents, SWT.NULL);
 		name.setText(Messages.LdapSourceDialog_ServerName);
 		serverName = new Text(contents, SWT.SINGLE | SWT.BORDER);
 		serverName.setSize(350, 20);
 
-		Label desc = new Label(contents, SWT.NULL);
+		final Label desc = new Label(contents, SWT.NULL);
 		desc.setText(Messages.LdapSourceDialog_ServerBase);
 		ldapBase = new Text(contents, SWT.SINGLE | SWT.BORDER);
 		ldapBase.setSize(350, 20);
 
-		Point defaultMargins = LayoutConstants.getMargins();
+		final Point defaultMargins = LayoutConstants.getMargins();
 		GridLayoutFactory.fillDefaults().numColumns(2).margins(defaultMargins.x, defaultMargins.y)
 			.generateLayout(contents);
 
@@ -95,28 +95,28 @@ public class LdapSourceDialog extends TitleAreaDialog {
 	 */
 	@Override
 	public void okPressed() {
-		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(getShell());
+		final ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(getShell());
 		progressMonitorDialog.open();
 		progressMonitorDialog.getProgressMonitor().beginTask(Messages.LdapSourceDialog_Connecting,
 			IProgressMonitor.UNKNOWN);
 
-		Properties serverProperties = new Properties();
+		final Properties serverProperties = new Properties();
 
 		serverProperties.put(Context.PROVIDER_URL, serverName.getText());
 		serverProperties.put(LdapImportSource.LDAP_BASE, ldapBase.getText());
 
-		this.ldapImport.setProperties(serverProperties);
+		ldapImport.setProperties(serverProperties);
 		try {
-			this.ldapImport.connect();
-			this.isInitFinished = true;
+			ldapImport.connect();
+			isInitFinished = true;
 			progressMonitorDialog.close();
-		} catch (CorruptedSourceException e) {
+		} catch (final CorruptedSourceException e) {
 			progressMonitorDialog.close();
-			this.isInitFinished = false;
+			isInitFinished = false;
 			EMFStoreMessageDialog.showExceptionDialog(Messages.LdapSourceDialog_ExceptionMessage, e);
 		}
 
-		this.isOkPressed = true;
+		isOkPressed = true;
 		close();
 	}
 
@@ -125,7 +125,7 @@ public class LdapSourceDialog extends TitleAreaDialog {
 	 */
 	@Override
 	protected void cancelPressed() {
-		this.isOkPressed = false;
+		isOkPressed = false;
 		close();
 	}
 
@@ -134,7 +134,7 @@ public class LdapSourceDialog extends TitleAreaDialog {
 	 *         connection to the given server has been established).
 	 */
 	public boolean getIsInitFinished() {
-		return this.isOkPressed && this.isInitFinished;
+		return isOkPressed && isInitFinished;
 	}
 
 }

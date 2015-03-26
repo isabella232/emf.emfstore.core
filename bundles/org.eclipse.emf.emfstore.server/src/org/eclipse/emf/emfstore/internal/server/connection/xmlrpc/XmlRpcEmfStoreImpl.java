@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -46,7 +46,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * XML RPC connection interface for emfstore.
- * 
+ *
  * @author wesendon
  */
 public class XmlRpcEmfStoreImpl implements EMFStore {
@@ -61,7 +61,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * Log in the given credentials.
-	 * 
+	 *
 	 * @param username
 	 *            the name of the user
 	 * @param password
@@ -79,10 +79,10 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * Logout the session with the given ID.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session to be logged out
-	 * 
+	 *
 	 * @throws AccessControlException
 	 *             in case logout fails
 	 */
@@ -163,7 +163,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
 	 */
 	public List<BranchInfo> getBranches(SessionId sessionId, ProjectId projectId) throws ESException {
@@ -261,7 +261,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#registerEPackage(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.ecore.EPackage)
 	 */
@@ -272,7 +272,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {

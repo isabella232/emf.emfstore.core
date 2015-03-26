@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -56,7 +56,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>Referenced Model Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiReferenceOperationImpl extends ReferenceOperationImpl implements MultiReferenceOperation {
@@ -64,7 +64,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	/**
 	 * The default value of the '{@link #isAdd() <em>Add</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAdd()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	/**
 	 * The cached value of the '{@link #isAdd() <em>Add</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAdd()
 	 * @generated
 	 * @ordered
@@ -84,7 +84,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -94,7 +94,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	/**
 	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -105,7 +105,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 * The cached value of the '{@link #getReferencedModelElements()
 	 * <em>Referenced Model Elements</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getReferencedModelElements()
 	 * @generated
 	 * @ordered
@@ -114,7 +114,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultiReferenceOperationImpl() {
@@ -123,7 +123,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -133,7 +133,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isAdd() {
@@ -142,7 +142,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAdd(boolean newAdd) {
@@ -156,7 +156,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getIndex() {
@@ -165,7 +165,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIndex(int newIndex) {
@@ -179,7 +179,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ModelElementId> getReferencedModelElements() {
@@ -193,7 +193,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -227,7 +227,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -251,7 +251,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -273,7 +273,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -292,7 +292,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -442,7 +442,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getOtherInvolvedModelElements()
 	 */
 	@Override

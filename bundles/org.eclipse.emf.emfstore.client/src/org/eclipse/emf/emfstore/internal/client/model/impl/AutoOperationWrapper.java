@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -26,14 +26,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 
 /**
  * Very basic implementation of an {@link ESOperationModifier}. All operations are merged into one composite operation.
- * 
+ *
  * @author wesendon
  */
 public class AutoOperationWrapper implements ESOperationModifier {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.handler.ESOperationModifier#modify(java.util.List,
 	 *      org.eclipse.emf.common.command.Command)
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.server.exceptions;
 
 /**
  * Represents an exception because the base version of a project space is not up to date.
- * 
+ *
  * @author koegel
  */
 // MK: move to workspace

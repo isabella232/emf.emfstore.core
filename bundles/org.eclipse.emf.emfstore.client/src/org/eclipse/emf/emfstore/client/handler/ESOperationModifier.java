@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - API annotations
@@ -20,9 +20,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 /**
  * This interface allows to hook into the operation recorder and to modify the recorded operations.
  * Generally this is useful for combining similar operations into composite operations.
- * 
+ *
  * @author wesendon
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  */
 public interface ESOperationModifier {
@@ -39,13 +39,13 @@ public interface ESOperationModifier {
 	 * <p>
 	 * <b>NOTE:</b> This method is only called if commands are used.
 	 * </p>
-	 * 
+	 *
 	 * @param operations
 	 *            the recorded operations that may be modified
 	 * @param command
 	 *            the triggering command
 	 * @return a possibly modified list of operations
-	 * 
+	 *
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	List<AbstractOperation> modify(List<AbstractOperation> operations, Command command);

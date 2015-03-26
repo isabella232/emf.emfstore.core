@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -16,16 +16,16 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESBranchVersionSpec;
 
 /**
  * Mapping between {@link ESBranchVersionSpecImpl} and {@link BranchVersionSpec}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESBranchVersionSpecImpl extends ESVersionSpecImpl<ESBranchVersionSpec, BranchVersionSpec> implements
 	ESBranchVersionSpec {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param branchVersionSpec
 	 *            the delegate
 	 */
@@ -37,7 +37,7 @@ public class ESBranchVersionSpecImpl extends ESVersionSpecImpl<ESBranchVersionSp
 	public boolean equals(Object object) {
 
 		if (object instanceof ESBranchVersionSpecImpl) {
-			ESBranchVersionSpecImpl branchVersionSpecImpl = (ESBranchVersionSpecImpl) object;
+			final ESBranchVersionSpecImpl branchVersionSpecImpl = (ESBranchVersionSpecImpl) object;
 			return toInternalAPI().equals(branchVersionSpecImpl.toInternalAPI());
 		}
 

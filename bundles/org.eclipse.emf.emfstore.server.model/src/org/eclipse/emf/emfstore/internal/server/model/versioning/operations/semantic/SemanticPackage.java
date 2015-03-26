@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic;
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticFactory
  * @model kind="package"
  * @generated
@@ -33,7 +33,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNAME = "semantic"; //$NON-NLS-1$
@@ -41,7 +41,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The package namespace URI.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_URI = "http://eclipse.org/emf/emfstore/server/model/versioning/operations/semantic"; //$NON-NLS-1$
@@ -49,7 +49,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The package namespace name.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic"; //$NON-NLS-1$
@@ -58,7 +58,7 @@ public interface SemanticPackage extends EPackage {
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	SemanticPackage eINSTANCE = org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticPackageImpl
@@ -70,7 +70,7 @@ public interface SemanticPackage extends EPackage {
 	 * <em>Composite Operation</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticCompositeOperationImpl
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticPackageImpl#getSemanticCompositeOperation()
 	 * @generated
@@ -80,7 +80,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -89,7 +89,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Model Element Id</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -98,7 +98,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Accepted</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -107,7 +107,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Client Date</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -116,7 +116,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Sub Operations</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +125,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Main Operation</b></em>' reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -134,7 +134,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Composite Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -143,7 +143,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Composite Description</b></em>' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -152,7 +152,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Reversed</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -161,7 +161,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Composite Operation</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -172,7 +172,7 @@ public interface SemanticPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation
 	 * <em>Composite Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Composite Operation</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation
 	 * @generated
@@ -182,7 +182,7 @@ public interface SemanticPackage extends EPackage {
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -198,7 +198,7 @@ public interface SemanticPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	interface Literals {
@@ -208,7 +208,7 @@ public interface SemanticPackage extends EPackage {
 		 * <em>Composite Operation</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticCompositeOperationImpl
 		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticPackageImpl#getSemanticCompositeOperation()
 		 * @generated

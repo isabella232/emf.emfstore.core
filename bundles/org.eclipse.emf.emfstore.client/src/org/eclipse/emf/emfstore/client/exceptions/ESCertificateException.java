@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Card Pfeiffer - initial API and implementation
  * Edgar Mueller - renaming & javadoc, API annotations
@@ -14,10 +14,10 @@ package org.eclipse.emf.emfstore.client.exceptions;
 
 /**
  * Thrown in case problems arise with the KeyStoreManager.
- * 
+ *
  * @author pfeifferc
  * @author emueller
- * 
+ *
  * @noextend This class is not intended to be subclassed by clients.
  */
 public class ESCertificateException extends Exception {
@@ -26,7 +26,7 @@ public class ESCertificateException extends Exception {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param message
 	 *            the detailed error message
 	 * @param cause
@@ -38,7 +38,7 @@ public class ESCertificateException extends Exception {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param message
 	 *            the detailed error message
 	 */

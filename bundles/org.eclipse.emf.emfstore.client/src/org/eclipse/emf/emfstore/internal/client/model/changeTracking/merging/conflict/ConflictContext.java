@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Feat
 
 /**
  * Holding the data for the context of an conflict.
- * 
+ *
  * @author wesendon
  */
 public class ConflictContext {
@@ -30,7 +30,7 @@ public class ConflictContext {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param modelElement element
 	 * @param attribute attribute
 	 * @param opponent opponent
@@ -43,7 +43,7 @@ public class ConflictContext {
 
 	/**
 	 * Alternative constructor.
-	 * 
+	 *
 	 * @param modelElement element
 	 * @param opponent opponent
 	 */
@@ -55,7 +55,7 @@ public class ConflictContext {
 
 	/**
 	 * Alternative constructor.
-	 * 
+	 *
 	 * @param manager decisionmanager
 	 * @param myOperation my op
 	 * @param theirOperation their op
@@ -69,7 +69,7 @@ public class ConflictContext {
 
 	/**
 	 * Get ModelELement.
-	 * 
+	 *
 	 * @return element
 	 */
 	public EObject getModelElement() {
@@ -78,7 +78,7 @@ public class ConflictContext {
 
 	/**
 	 * Get Attribute.
-	 * 
+	 *
 	 * @return attribute
 	 */
 	public String getAttribute() {
@@ -87,7 +87,7 @@ public class ConflictContext {
 
 	/**
 	 * Get Opponent.
-	 * 
+	 *
 	 * @return opponent
 	 */
 	public String getOpponent() {
@@ -96,7 +96,7 @@ public class ConflictContext {
 
 	/**
 	 * Get label for Modelelement.
-	 * 
+	 *
 	 * @return label
 	 */
 	public String getModelElementTitleLabel() {
@@ -105,7 +105,7 @@ public class ConflictContext {
 
 	/**
 	 * Get label of attribute.
-	 * 
+	 *
 	 * @return label
 	 */
 	public String getAttributeTitleLabel() {
@@ -114,7 +114,7 @@ public class ConflictContext {
 
 	/**
 	 * Get label of opponent.
-	 * 
+	 *
 	 * @return label
 	 */
 	public String getOpponentTitleLabel() {

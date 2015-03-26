@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Shterev
  ******************************************************************************/
@@ -44,7 +44,7 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Label provider for the SCM views.
- * 
+ *
  * @author Shterev
  */
 public class SCMLabelProvider extends ColumnLabelProvider {
@@ -72,7 +72,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param project
 	 *            the project that is used to resolve revision numbers
 	 */
@@ -160,7 +160,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	 * Gets the text for a history info. This may be overridden by subclasses to
 	 * change the behavior (e.g. if info should be distributed across multiply
 	 * label providers)
-	 * 
+	 *
 	 * @param historyInfo
 	 *            The historInfo the text is retrieved for.
 	 * @return The text for the given historyInfo.
@@ -350,9 +350,9 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
 	 */
 	@Override
@@ -376,7 +376,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	/**
 	 * Sets the project that is used to resolve revision numbers that are
 	 * possibly used within the labels.
-	 * 
+	 *
 	 * @param newProject
 	 *            the project to be set
 	 */

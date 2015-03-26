@@ -37,72 +37,77 @@ import org.junit.Test;
 public class AttributeChangeMutationTest extends AbstractMutationTest {
 
 	@Test
-	public void addValueForGivenAttributeAndContainer() throws ESMutationException {
-		
+	public void addValueForGivenAttributeAndContainer()
+			throws ESMutationException {
+
 		ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
-			.setNewValue("TEST")
-			.setRandomChangeMode(ESRandomChangeMode.ADD)
-			.setTargetObject(ePackageWithTwoClasses)
-			.setTargetFeature(E_PACKAGE.getEPackage_NsURI())
-			.apply();
+				.setNewValue("TEST")
+				.setRandomChangeMode(ESRandomChangeMode.ADD)
+				.setTargetObject(ePackageWithTwoClasses)
+				.setTargetFeature(E_PACKAGE.getEPackage_NsURI()).apply();
 
 		assertEquals("TEST", ePackageWithTwoClasses.getNsURI());
 	}
 
 	@Test
-	public void unsetSingleValuedAttributeForGivenAttributeAndContainer() throws ESMutationException {
+	public void unsetSingleValuedAttributeForGivenAttributeAndContainer()
+			throws ESMutationException {
 		ePackageWithTwoClasses.setNsURI("TEST");
-		
+
 		ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
-			.setRandomChangeMode(ESRandomChangeMode.DELETE)
-			.setTargetObject(ePackageWithTwoClasses)
-			.setTargetFeature(E_PACKAGE.getEPackage_NsURI())
-			.apply();
-		
+				.setRandomChangeMode(ESRandomChangeMode.DELETE)
+				.setTargetObject(ePackageWithTwoClasses)
+				.setTargetFeature(E_PACKAGE.getEPackage_NsURI()).apply();
+
 		assertNull(ePackageWithTwoClasses.getNsURI());
-		assertFalse(ePackageWithTwoClasses.eIsSet(E_PACKAGE.getEPackage_NsURI()));
+		assertFalse(ePackageWithTwoClasses
+				.eIsSet(E_PACKAGE.getEPackage_NsURI()));
 	}
 
 	@Test
-	public void selectTargetContainerForGivenFeature() throws ESMutationException {
-		
-		ESAttributeChangeMutation mutation = 
-				ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
-					.setRandomChangeMode(ESRandomChangeMode.ADD)
-					.setTargetFeature(E_PACKAGE.getEClass_Abstract());
-		
+	public void selectTargetContainerForGivenFeature()
+			throws ESMutationException {
+
+		ESAttributeChangeMutation mutation = ESMutationFactory
+				.attributeChange(utilForEPackageWithTwoClasses)
+				.setRandomChangeMode(ESRandomChangeMode.ADD)
+				.setTargetFeature(E_PACKAGE.getEClass_Abstract());
+
 		mutation.apply();
-		
+
 		assertEquals(E_PACKAGE.getEClass(), mutation.getTargetObject().eClass());
-		assertTrue(ePackageWithTwoClasses.getEClassifiers().contains(mutation.getTargetObject()));
+		assertTrue(ePackageWithTwoClasses.getEClassifiers().contains(
+				mutation.getTargetObject()));
 	}
 
 	@Test
-	public void selectTargetFeatureForGivenTargetContainer() throws ESMutationException {
-		
-		ESAttributeChangeMutation mutation = 
-				ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
-					.setRandomChangeMode(ESRandomChangeMode.ADD)
-					.setTargetObject(ePackageWithTwoClasses);
-		
+	public void selectTargetFeatureForGivenTargetContainer()
+			throws ESMutationException {
+
+		ESAttributeChangeMutation mutation = ESMutationFactory
+				.attributeChange(utilForEPackageWithTwoClasses)
+				.setRandomChangeMode(ESRandomChangeMode.ADD)
+				.setTargetObject(ePackageWithTwoClasses);
+
 		mutation.apply();
 
 		final EStructuralFeature targetFeature = mutation.getTargetFeature();
 		final EClass targetContainerClass = ePackageWithTwoClasses.eClass();
-		final EList<EAttribute> allAttributes = targetContainerClass.getEAllAttributes();
-		
+		final EList<EAttribute> allAttributes = targetContainerClass
+				.getEAllAttributes();
+
 		assertTrue(allAttributes.contains(targetFeature));
 	}
 
 	@Test
 	public void addObject() throws ESMutationException {
-		
-		ESAttributeChangeMutation mutation = 
-				ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
-					.setRandomChangeMode(ESRandomChangeMode.ADD);
-		
+
+		ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(
+				utilForEPackageWithTwoClasses).setRandomChangeMode(
+				ESRandomChangeMode.ADD);
+
 		mutation.apply();
-		
+
 		assertNotNull(mutation.getTargetObject());
 		assertNotNull(mutation.getTargetFeature());
 		assertThat(mutation.getTargetFeature(), instanceOf(EAttribute.class));

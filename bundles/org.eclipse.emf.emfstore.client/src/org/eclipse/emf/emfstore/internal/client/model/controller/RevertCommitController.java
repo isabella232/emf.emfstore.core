@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Controller that forces a revert of version specifier.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -39,7 +39,7 @@ public class RevertCommitController extends ServerCall<Void> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the {@link ProjectSpace} containing the project upon which to revert a commit
 	 * @param versionSpec
@@ -84,7 +84,7 @@ public class RevertCommitController extends ServerCall<Void> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Aleksander Shterev, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.TabItem;
 /**
  * A composite that contains multiple tabs displaying the operation from a
  * different view - e.g. grouped by model element, or ungrouped.
- * 
+ *
  * @author Shterev
  * @author emueller
  */
@@ -44,7 +44,7 @@ public class TabbedChangesComposite extends Composite {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the composite's parent
 	 * @param style
@@ -68,7 +68,7 @@ public class TabbedChangesComposite extends Composite {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the composite's parent
 	 * @param style

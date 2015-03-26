@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  * Edgar Mueller
@@ -21,31 +21,31 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * Handler for forcing the revert of a commit.
- * 
+ *
  * @author ovonwesen
  * @author emueller
- * 
+ *
  */
 public class RevertCommitHandler extends AbstractEMFStoreHandler {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.handlers.AbstractEMFStoreHandler#handle()
 	 */
 	@Override
 	public void handle() {
 
 		// TODO: remove HistoryBrowserView, switch to API class
-		IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-		IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+		final IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		final IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
 
 		if (activePage == null || !(activePage.getActivePart() instanceof HistoryBrowserView)) {
 			return;
 		}
 
-		HistoryBrowserView view = (HistoryBrowserView) activePage.getActivePart();
+		final HistoryBrowserView view = (HistoryBrowserView) activePage.getActivePart();
 
 		new UIRevertCommitController(
 			getShell(),

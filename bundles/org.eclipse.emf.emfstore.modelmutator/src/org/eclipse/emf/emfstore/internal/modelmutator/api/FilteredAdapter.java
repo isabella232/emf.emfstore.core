@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * JulianSommerfeldt
  ******************************************************************************/
@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 
 /**
  * Adapter to log changes of model in modelmutator. Also useful to filter notifications.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 public abstract class FilteredAdapter extends EContentAdapter {
 
@@ -89,7 +89,7 @@ public abstract class FilteredAdapter extends EContentAdapter {
 
 	/**
 	 * Convert an int eventType of a notification to a {@link String}.
-	 * 
+	 *
 	 * @param eventType The eventType to convert.
 	 * @return The {@link String} representing the eventType.
 	 */

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Julian Sommerfeldt
  ******************************************************************************/
@@ -24,9 +24,9 @@ import org.eclipse.swt.widgets.Shell;
  * Compare two {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo HistoryInfo}s of a
  * {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace
  * ProjectSpace}.
- * 
+ *
  * @author jsommerfeldt
- * 
+ *
  */
 public class UICompareRevisionsController extends AbstractEMFStoreUIController<Void> {
 
@@ -36,7 +36,7 @@ public class UICompareRevisionsController extends AbstractEMFStoreUIController<V
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell shell to display the controller
 	 * @param versionSpec1 the first version specification to compare
 	 * @param versionSpec2 the second version specification to compare

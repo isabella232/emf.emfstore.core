@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * mkoegel
  ******************************************************************************/
@@ -23,34 +23,34 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * Tests if the currently selected project space has unsaved changes.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 public class CurrentProjectSpaceHasUnsavedChangesTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
 	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
 
-		IWorkbench workbench = PlatformUI.getWorkbench();
+		final IWorkbench workbench = PlatformUI.getWorkbench();
 		if (workbench == null) {
 			return false;
 		}
-		IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
+		final IWorkbenchWindow activeWorkbenchWindow = workbench.getActiveWorkbenchWindow();
 		if (activeWorkbenchWindow == null) {
 			return false;
 		}
-		ISelection selection = activeWorkbenchWindow.getSelectionService().getSelection();
+		final ISelection selection = activeWorkbenchWindow.getSelectionService().getSelection();
 		if (selection instanceof StructuredSelection) {
-			StructuredSelection structuredSelection = (StructuredSelection) selection;
-			Object firstElement = structuredSelection.getFirstElement();
+			final StructuredSelection structuredSelection = (StructuredSelection) selection;
+			final Object firstElement = structuredSelection.getFirstElement();
 			if (firstElement instanceof EObject) {
-				ProjectSpace projectSpace = ModelUtil.getParent(ProjectSpace.class, ((EObject) firstElement));
+				final ProjectSpace projectSpace = ModelUtil.getParent(ProjectSpace.class, (EObject) firstElement);
 				if (projectSpace != null) {
 					return expectedValue.equals(projectSpace.hasUnsavedChanges());
 				}

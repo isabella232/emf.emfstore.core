@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Shterev
  ******************************************************************************/
@@ -23,7 +23,7 @@ import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 
 /**
  * Decorator to show the username for a ProjectSpace.
- * 
+ *
  * @author Shterev
  */
 public class UsernameDecorator extends AdapterImpl implements ILightweightLabelDecorator {
@@ -44,9 +44,9 @@ public class UsernameDecorator extends AdapterImpl implements ILightweightLabelD
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void addListener(ILabelProviderListener listener) {
@@ -54,9 +54,9 @@ public class UsernameDecorator extends AdapterImpl implements ILightweightLabelD
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
@@ -65,9 +65,9 @@ public class UsernameDecorator extends AdapterImpl implements ILightweightLabelD
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
 	 */
 	public boolean isLabelProperty(Object element, String property) {
@@ -75,9 +75,9 @@ public class UsernameDecorator extends AdapterImpl implements ILightweightLabelD
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void removeListener(ILabelProviderListener listener) {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * naughton
  * emueller
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * A collection that is able of maintaining a list of {@link IdEObjectCollectionChangeObserver}.
- * 
+ *
  * @author koegel
  * @author naughton
  * @author emueller
@@ -68,9 +68,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	 * assigned to the {@link EObject}s it contains, they will be used for
 	 * creating the model element IDs within the project, if not, the model element IDs will get created on
 	 * the fly.
-	 * 
+	 *
 	 * An {@link EObjectChangeNotifier} is also attached to the given {@link XMIResource}.
-	 * 
+	 *
 	 * @param xmiResource
 	 *            a {@link XMIResource}
 	 * @throws IOException
@@ -94,9 +94,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NotifiableIdEObjectCollection#modelElementAdded(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -120,14 +120,14 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 
 	/**
 	 * Add a new cut element.
-	 * 
+	 *
 	 * @param eObject The new cut element.
 	 */
 	public abstract void addCutElement(EObject eObject);
 
 	/**
 	 * Notifies all collection change observers.
-	 * 
+	 *
 	 * @param command
 	 *            the notification command
 	 */
@@ -190,9 +190,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.IdEObjectCollectionImpl#initMapping(java.util.Map,
 	 *      java.util.Map)
 	 */
@@ -205,9 +205,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#notify(org.eclipse.emf.common.notify.Notification,
 	 *      org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection, org.eclipse.emf.ecore.EObject)
 	 */
@@ -231,9 +231,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NotifiableIdEObjectCollection#addIdEObjectCollectionChangeObserver(org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver)
 	 */
 	public synchronized void addIdEObjectCollectionChangeObserver(
@@ -249,9 +249,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NotifiableIdEObjectCollection#removeIdEObjectCollectionChangeObserver(org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver)
 	 */
 	public synchronized void removeIdEObjectCollectionChangeObserver(
@@ -267,7 +267,7 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 
 	/**
 	 * Make a project change observer undetachable.
-	 * 
+	 *
 	 * @param observer
 	 *            the observer
 	 */
@@ -276,9 +276,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NotifiableIdEObjectCollection#modelElementRemoved(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -294,10 +294,10 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 
 	/**
 	 * Copies the current collection.
-	 * 
+	 *
 	 * @param <T>
 	 *            the actual collection type to be copied
-	 * 
+	 *
 	 * @return the copied collection
 	 */
 	@Override
@@ -317,9 +317,9 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#collectionDeleted(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void collectionDeleted(IdEObjectCollection collection) {
@@ -328,7 +328,7 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NotifiableIdEObjectCollection#getChangeNotifier()
 	 */
 	public EObjectChangeNotifier getChangeNotifier() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -16,11 +16,11 @@ import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Model Element Query</b></em>'.
- * 
+ *
  * @extends ESModelElementQueryImpl
  *          <!--
  *          end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
  *          Model Elements </em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getModelElementQuery()
  * @model
  * @generated NOT
@@ -44,7 +44,7 @@ public interface ModelElementQuery extends RangeQuery<ESModelElementQuery> {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Model Elements</em>' containment reference
 	 *         list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getModelElementQuery_ModelElements()

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -22,16 +22,16 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
 
 /**
  * The API implementation wrapper for {@link MutatorConfig}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, MutatorConfig>
 	implements ESMutatorConfig {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param mutatorConfig
 	 *            the internal {@link MutatorConfig} instance to be wrapped
 	 */
@@ -41,7 +41,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getRootEClass()
 	 */
 	public EClass getRootEClass() {
@@ -50,7 +50,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getMinObjectsCount()
 	 */
 	public int getMinObjectsCount() {
@@ -59,7 +59,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#isDoNotGenerateRoot()
 	 */
 	public boolean isDoNotGenerateRoot() {
@@ -68,7 +68,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getEClassesToIgnore()
 	 */
 	public Collection<EClass> getEClassesToIgnore() {
@@ -77,7 +77,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getEStructuralFeaturesToIgnore()
 	 */
 	public Collection<EStructuralFeature> getEStructuralFeaturesToIgnore() {
@@ -86,7 +86,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#isIgnoreAndLog()
 	 */
 	public boolean isIgnoreAndLog() {
@@ -95,7 +95,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#isUseEcoreUtilDelete()
 	 */
 	public boolean isUseEcoreUtilDelete() {
@@ -104,7 +104,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getMaxDeleteCount()
 	 */
 	public Integer getMaxDeleteCount() {
@@ -113,7 +113,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getEPackages()
 	 */
 	public Collection<EPackage> getEPackages() {
@@ -122,7 +122,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#isAllowDuplicateIDs()
 	 */
 	public boolean isAllowDuplicateIDs() {
@@ -131,7 +131,7 @@ public class ESMutatorConfigImpl extends AbstractAPIImpl<ESMutatorConfigImpl, Mu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.fuzzy.emf.ESMutatorConfig#getMutationCount()
 	 */
 	public int getMutationCount() {

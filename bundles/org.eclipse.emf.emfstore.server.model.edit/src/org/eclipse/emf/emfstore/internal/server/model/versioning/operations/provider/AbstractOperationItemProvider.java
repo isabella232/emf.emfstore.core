@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class AbstractOperationItemProvider extends IdentifiableElementItemProvider {
@@ -54,7 +54,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AbstractOperationItemProvider(AdapterFactory adapterFactory) {
@@ -63,7 +63,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getChildren(java.lang.Object)
 	 */
@@ -85,7 +85,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -104,7 +104,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * This adds a property descriptor for the Model Element Id feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addModelElementIdPropertyDescriptor(Object object) {
@@ -127,7 +127,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * This adds a property descriptor for the Accepted feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addAcceptedPropertyDescriptor(Object object) {
@@ -150,7 +150,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * This adds a property descriptor for the Client Date feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addClientDatePropertyDescriptor(Object object) {
@@ -174,7 +174,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * This returns AbstractOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -202,7 +202,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -223,7 +223,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -234,7 +234,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -274,7 +274,7 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	/**
 	 * Returns a comma separated list of class names and model names. {id1, id2}
 	 * will become "Comment 'some comment', LeafSection 'section title'"
-	 * 
+	 *
 	 * @param idList
 	 *            the list of model element IDs to return the names for
 	 * @return classes and names as a string

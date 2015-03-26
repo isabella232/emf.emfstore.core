@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -13,15 +13,15 @@ package org.eclipse.emf.emfstore.internal.modelmutator.mutation;
 
 import static com.google.common.base.Predicates.and;
 import static com.google.common.base.Predicates.not;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_EOBJECT_OR_LIST;
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NULL_OR_LIST;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.hasCompatibleType;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isAncestor;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isChild;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isCompatibleWithAnyFeatureOfEClass;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isContainedByEObject;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isContainedByFeature;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_EOBJECT_OR_LIST;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.isNotTheSame;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NULL_OR_LIST;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.mayBeContainedByAnyOfTheseReferences;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.mayBeContainedByFeature;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.mayTakeEObjectAsValue;
@@ -42,9 +42,9 @@ import com.google.common.base.Predicate;
 
 /**
  * A mutation, which moves an object from one container into another.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  */
 public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMutation> implements ESMoveObjectMutation {
 
@@ -53,7 +53,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public MoveObjectMutation(ESModelMutatorUtil util) {
@@ -68,7 +68,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	/**
 	 * Creates a new mutation with the specified {@code util} and a selector for the source and target container,
 	 * {@code sourceContainerSelector} and {@code targetContainerSelector}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param sourceContainerSelector The source selector for selecting the source container and feature.
 	 * @param targetContainerSelector The target selector for selecting the target container and feature.
@@ -104,7 +104,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	 * contained in this collection. The returned collection is changeable. Add items using
 	 * {@code getExcludedSourceEClasses().add}.
 	 * </p>
-	 * 
+	 *
 	 * @return The collection of excluded EClasses.
 	 */
 	public Collection<EClass> getExcludedSourceEClasses() {
@@ -117,7 +117,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	 * <p>
 	 * The returned collection is changeable. Add items using {@code getExcludedSourceFeatures().add}.
 	 * </p>
-	 * 
+	 *
 	 * @return The collection of excluded features.
 	 */
 	public Collection<EStructuralFeature> getExcludedSourceFeatures() {
@@ -130,7 +130,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	 * <p>
 	 * The returned collection is changeable. Add items using {@code getExcludedSourceObjects().add}.
 	 * </p>
-	 * 
+	 *
 	 * @return The collection of EObjects.
 	 */
 	public Collection<EObject> getExcludedSourceObjects() {
@@ -138,9 +138,9 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#setSourceObject(org.eclipse.emf.ecore.EObject)
 	 */
 	public ESMoveObjectMutation setSourceObject(EObject sourceObject) {
@@ -149,9 +149,9 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#getSourceObject()
 	 */
 	public EObject getSourceObject() {
@@ -159,9 +159,9 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#setSourceFeature(org.eclipse.emf.ecore.EStructuralFeature)
 	 */
 	public ESMoveObjectMutation setSourceFeature(EStructuralFeature sourceFeature) {
@@ -172,7 +172,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	/**
 	 * Returns the {@link EStructuralFeature} of a source object from which this mutation will move or moved an
 	 * object.
-	 * 
+	 *
 	 * @return The feature of the source object through which the moved or to-be-moved object was or is contained.
 	 */
 	public EStructuralFeature getSourceFeature() {
@@ -180,9 +180,9 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#setEObjectToMove(org.eclipse.emf.ecore.EObject)
 	 */
 	public ESMoveObjectMutation setEObjectToMove(EObject eObjectToMove) {
@@ -191,9 +191,9 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESMoveObjectMutation#getEObjectToMove()
 	 */
 	public EObject getEObjectToMove() {
@@ -202,7 +202,7 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
@@ -214,9 +214,9 @@ public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMu
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override

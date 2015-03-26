@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Zardosht Hodaie - initial API and implementation
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  * TabFolder with three tabs for Projects, Groups, and Users. On the right side
  * there is a properties view (PropertisForm). When user double clicks an item
  * in a tab, its details are shown in details view
- * 
+ *
  * @author Hodaie
  */
 public class OrgUnitManagementGUI {
@@ -46,7 +46,7 @@ public class OrgUnitManagementGUI {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            Parent
 	 * @param adminBroker
@@ -60,7 +60,7 @@ public class OrgUnitManagementGUI {
 	/**
 	 * Create the SashForm. On the left hand is a TabFolder with tree tabs, and
 	 * on the right hand the properties are shown.
-	 * 
+	 *
 	 * @param parent
 	 */
 	private void createSash(Composite parent, AdminBroker adminBroker) {
@@ -83,7 +83,7 @@ public class OrgUnitManagementGUI {
 
 	/**
 	 * Create a TabFolder with three tabs for Project, Groups, and Users.
-	 * 
+	 *
 	 * @param sash
 	 */
 	private void createTabFolder(SashForm sash) {
@@ -133,7 +133,7 @@ public class OrgUnitManagementGUI {
 	 * This creates the tabs within tab folder and sets sets AdminBorker and
 	 * PropertiesForm for them. Tab items need to be aware of properties form in
 	 * order to set its input on double click or do a drag and drop operation.
-	 * 
+	 *
 	 * @param adminBroker
 	 * @param frm
 	 */
@@ -193,7 +193,7 @@ public class OrgUnitManagementGUI {
 	 * This will be used by GroupComposite and UserComposite. When name of a
 	 * group or user is changed, this must be reflected in corresponding tab.
 	 * This done by refreshing the ListViewer on a tab.
-	 * 
+	 *
 	 * @return Active tab of TabFolder
 	 */
 	public TabContent getActiveTabContent() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Aleksander Shterev, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * Create project dialog.
- * 
+ *
  * @author shterev
  * @author emueller
  */
@@ -39,7 +39,7 @@ public class CreateProjectDialog extends TitleAreaDialog {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent shell
 	 */
@@ -50,7 +50,7 @@ public class CreateProjectDialog extends TitleAreaDialog {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent shell
 	 * @param labelText
@@ -97,7 +97,7 @@ public class CreateProjectDialog extends TitleAreaDialog {
 
 	/**
 	 * Returns the name of the project as entered by the user.
-	 * 
+	 *
 	 * @return the name of the project that is going to be created
 	 */
 	public String getName() {

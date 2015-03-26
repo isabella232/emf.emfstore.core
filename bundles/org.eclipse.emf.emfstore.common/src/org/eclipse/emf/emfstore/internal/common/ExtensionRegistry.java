@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -19,10 +19,10 @@ import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 /**
  * The extension registry may be used as simple replacement for the extension
  * point mechanism in case one does not want to expose internal types.
- * 
+ *
  * It is capable of retrieving actual extension point information, but currently
  * does not support contributing such.
- * 
+ *
  * @author emueller
  */
 public final class ExtensionRegistry {
@@ -40,7 +40,7 @@ public final class ExtensionRegistry {
 
 	/**
 	 * Returns the requested extension point.
-	 * 
+	 *
 	 * @param id
 	 *            the ID of the extension point to be returned
 	 * @param clazz
@@ -50,7 +50,7 @@ public final class ExtensionRegistry {
 	 * @param shouldSetDefault
 	 *            whether the default instance should be registered
 	 * @return the requested extension which might be the default instance specified
-	 * 
+	 *
 	 * @param <T> the expected type
 	 */
 	@SuppressWarnings("unchecked")
@@ -79,13 +79,13 @@ public final class ExtensionRegistry {
 
 	/**
 	 * Returns the requested extension point.
-	 * 
+	 *
 	 * @param id
 	 *            the ID of the extension point to be returned
 	 * @param clazz
 	 *            the expected type
 	 * @return the requested extension which might be the default instance specified
-	 * 
+	 *
 	 * @param <T> the expected type
 	 */
 	public <T> T get(String id, Class<T> clazz) {
@@ -94,12 +94,12 @@ public final class ExtensionRegistry {
 
 	/**
 	 * Set the extension.
-	 * 
+	 *
 	 * @param id
 	 *            the ID of the extension point to be returned
 	 * @param t
 	 *            the extension to be set
-	 * 
+	 *
 	 * @param <T> the type of the extension to be set
 	 */
 	public <T> void set(String id, T t) {
@@ -125,11 +125,11 @@ public final class ExtensionRegistry {
 	/**
 	 * Simple wrapper around an object to provide
 	 * a setter and a getter.
-	 * 
+	 *
 	 * Might be extended with additional information in the future.
-	 * 
+	 *
 	 * @author emueller
-	 * 
+	 *
 	 */
 	class ESConfigElement {
 
@@ -137,7 +137,7 @@ public final class ExtensionRegistry {
 
 		/**
 		 * Constructor.
-		 * 
+		 *
 		 * @param o
 		 *            the actual extension to be wrapped
 		 */
@@ -147,7 +147,7 @@ public final class ExtensionRegistry {
 
 		/**
 		 * Returns the wrapped extension.
-		 * 
+		 *
 		 * @return the extension
 		 */
 		public Object get() {
@@ -156,7 +156,7 @@ public final class ExtensionRegistry {
 
 		/**
 		 * Set the extension.
-		 * 
+		 *
 		 * @param t
 		 *            the extension to be set
 		 */
@@ -167,7 +167,7 @@ public final class ExtensionRegistry {
 
 	/**
 	 * Remove the extension with the given ID.
-	 * 
+	 *
 	 * @param id
 	 *            the ID of the extension to be removed
 	 */

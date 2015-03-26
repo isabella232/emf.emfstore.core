@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpec {
@@ -41,7 +41,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -60,7 +60,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TagVersionSpecImpl() {
@@ -69,7 +69,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -88,7 +88,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -102,7 +102,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -117,7 +117,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -133,7 +133,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +149,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -182,7 +182,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -197,7 +197,7 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -206,11 +206,11 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESTagVersionSpecImpl toAPI() {
@@ -222,11 +222,11 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESTagVersionSpecImpl createAPI() {

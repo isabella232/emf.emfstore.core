@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -49,9 +49,9 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * UIController for branch creation. Slightly modified copy of the commit
  * controller
- * 
+ *
  * @author wesendon
- * 
+ *
  */
 public class UICreateBranchController extends
 	AbstractEMFStoreUIController<ESPrimaryVersionSpec> implements
@@ -63,7 +63,7 @@ public class UICreateBranchController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the
 	 *            creation of the branch
@@ -76,7 +76,7 @@ public class UICreateBranchController extends
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the
 	 *            creation of the branch
@@ -94,9 +94,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#noLocalChanges(ESLocalProject)
 	 */
 	public void noLocalChanges(ESLocalProject projectSpace) {
@@ -110,9 +110,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#baseVersionOutOfDate(ESLocalProject,
 	 *      IProgressMonitor)
 	 */
@@ -143,9 +143,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback#inspectChanges(ESLocalProject, ESChangePackage,
 	 *      ESModelElementIdToEObjectMapping)
 	 */
@@ -188,9 +188,9 @@ public class UICreateBranchController extends
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.controller.AbstractEMFStoreUIController#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * mkoegel
  ******************************************************************************/
@@ -18,15 +18,15 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Test if the project has pending unsaved changes.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 public class ProjectIsDirtyTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
@@ -35,8 +35,8 @@ public class ProjectIsDirtyTester extends PropertyTester {
 			return false;
 		}
 		if (receiver instanceof EObject) {
-			EObject eObject = (EObject) receiver;
-			ProjectSpace projectSpace = ModelUtil.getParent(ProjectSpace.class, eObject);
+			final EObject eObject = (EObject) receiver;
+			final ProjectSpace projectSpace = ModelUtil.getParent(ProjectSpace.class, eObject);
 			if (projectSpace == null) {
 				return false;
 			}

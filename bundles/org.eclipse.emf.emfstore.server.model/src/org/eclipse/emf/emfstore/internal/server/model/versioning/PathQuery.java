@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -14,17 +14,17 @@ import org.eclipse.emf.emfstore.server.model.query.ESPathQuery;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Path Query</b></em>'.
- * 
+ *
  * @extends ESPathQueryImpl
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery#getTarget <em>Target</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPathQuery()
  * @model
  * @generated NOT
@@ -38,7 +38,7 @@ public interface PathQuery extends HistoryQuery<ESPathQuery> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPathQuery_Target()
@@ -52,7 +52,7 @@ public interface PathQuery extends HistoryQuery<ESPathQuery> {
 	 * <em>Target</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Target</em>' containment reference.
 	 * @see #getTarget()
 	 * @generated

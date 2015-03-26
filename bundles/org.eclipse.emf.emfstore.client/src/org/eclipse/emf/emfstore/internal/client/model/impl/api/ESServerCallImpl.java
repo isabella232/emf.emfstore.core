@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -26,9 +26,9 @@ import org.eclipse.emf.emfstore.internal.common.api.InternalAPIDelegator;
  * Note that this class does not inherit from {@link org.eclipse.emf.emfstore.internal.common.api.AbstractAPIImpl} since
  * {@link ServerCall} is not a modeled class.
  * </p>
- * 
+ *
  * @author emueller
- * 
+ *
  * @param <U> the actual return type of the call
  */
 public class ESServerCallImpl<U> implements ESServerCall, InternalAPIDelegator<ESServerCall, ServerCall<U>> {
@@ -37,7 +37,7 @@ public class ESServerCallImpl<U> implements ESServerCall, InternalAPIDelegator<E
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param serverCall
 	 *            the server call to be wrapped
 	 */
@@ -47,7 +47,7 @@ public class ESServerCallImpl<U> implements ESServerCall, InternalAPIDelegator<E
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.sessionprovider.ESServerCall#getUsersession()
 	 */
 	public ESUsersession getUsersession() {
@@ -60,9 +60,9 @@ public class ESServerCallImpl<U> implements ESServerCall, InternalAPIDelegator<E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.sessionprovider.ESServerCall#getLocalProject()
 	 */
 	public ESLocalProject getLocalProject() {
@@ -75,9 +75,9 @@ public class ESServerCallImpl<U> implements ESServerCall, InternalAPIDelegator<E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.sessionprovider.ESServerCall#getServer()
 	 */
 	public ESServer getServer() {
@@ -90,9 +90,9 @@ public class ESServerCallImpl<U> implements ESServerCall, InternalAPIDelegator<E
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.InternalAPIDelegator#toInternalAPI()
 	 */
 	public ServerCall<U> toInternalAPI() {

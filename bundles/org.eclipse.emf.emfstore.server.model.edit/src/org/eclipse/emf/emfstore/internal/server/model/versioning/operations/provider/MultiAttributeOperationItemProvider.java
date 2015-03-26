@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -26,14 +26,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MultiAttributeOperationItemProvider extends FeatureOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiAttributeOperationItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -63,7 +63,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This adds a property descriptor for the Add feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addAddPropertyDescriptor(Object object) {
@@ -86,7 +86,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	/**
 	 * This adds a property descriptor for the Indexes feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIndexesPropertyDescriptor(Object object) {
@@ -109,7 +109,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	/**
 	 * This adds a property descriptor for the Referenced Values feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addReferencedValuesPropertyDescriptor(Object object) {
@@ -133,7 +133,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This returns MultiAttributeOperation.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -161,7 +161,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -183,7 +183,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

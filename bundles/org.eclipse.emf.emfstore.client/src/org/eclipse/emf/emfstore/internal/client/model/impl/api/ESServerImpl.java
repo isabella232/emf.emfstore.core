@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -43,14 +43,14 @@ import org.eclipse.emf.emfstore.server.model.ESGlobalProjectId;
 
 /**
  * Mapping between {@link ESServer} and {@link ServerInfo}.
- * 
+ *
  * @author emueller
  */
 public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> implements ESServer {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            the delegate
 	 */
@@ -59,9 +59,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getName()
 	 */
 	public String getName() {
@@ -73,9 +73,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#setName(java.lang.String)
 	 */
 	public void setName(final String serverName) {
@@ -88,9 +88,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getPort()
 	 */
 	public int getPort() {
@@ -102,9 +102,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#setPort(int)
 	 */
 	public void setPort(final int port) {
@@ -117,9 +117,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getURL()
 	 */
 	public String getURL() {
@@ -131,9 +131,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#setURL(java.lang.String)
 	 */
 	public void setURL(final String url) {
@@ -146,9 +146,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getCertificateAlias()
 	 */
 	public String getCertificateAlias() {
@@ -160,9 +160,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#setCertificateAlias(java.lang.String)
 	 */
 	public void setCertificateAlias(final String alias) {
@@ -175,9 +175,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getLastUsersession()
 	 */
 	public ESUsersession getLastUsersession() {
@@ -192,9 +192,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#createRemoteProject(java.lang.String,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -205,9 +205,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#createRemoteProject(org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -220,9 +220,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#login(java.lang.String, java.lang.String)
 	 */
 	public ESUsersession login(String name, String password) throws ESException {
@@ -272,9 +272,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getRemoteProjects()
 	 */
 	public List<ESRemoteProject> getRemoteProjects() throws ESException {
@@ -288,9 +288,9 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ESServer#getRemoteProjects(org.eclipse.emf.emfstore.client.ESUsersession)
 	 */
 	public List<ESRemoteProject> getRemoteProjects(ESUsersession usersession)
@@ -346,11 +346,11 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 
 	/**
 	 * Returns the remote project with the given ID.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of the project
 	 * @return the remote project or {@code null}, if no project with the given ID has been found
-	 * 
+	 *
 	 * @throws ESException in case an error occurs while retrieving the remote project
 	 */
 	public ESRemoteProject getRemoteProject(final ESGlobalProjectId projectId) throws ESException {
@@ -366,14 +366,14 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 
 	/**
 	 * Returns the remote project with the given ID.
-	 * 
+	 *
 	 * @param usersession
 	 *            the {@link ESUsersession} that should be used to fetch the remote project.<br/>
 	 *            If <code>null</code>, the session manager will try to inject a session.
 	 * @param projectId
 	 *            the ID of the project
 	 * @return the remote project or {@code null}, if no project with the given ID has been found
-	 * 
+	 *
 	 * @throws ESException in case an error occurs while retrieving the remote project
 	 */
 	public ESRemoteProject getRemoteProject(final ESUsersession usersession,

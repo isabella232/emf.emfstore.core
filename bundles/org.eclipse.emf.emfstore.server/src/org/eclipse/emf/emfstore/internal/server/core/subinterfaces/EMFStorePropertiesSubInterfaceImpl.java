@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * groeber
  * emueller
@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 /**
  * The {@link EMFStorePropertiesSubInterfaceImpl} class is responsible for
  * handling modifications of EMFStore properties.
- * 
+ *
  * @author groeber
  * @author emueller
  */
@@ -57,14 +57,14 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 
 	/**
 	 * Set the Shared Properties from client on server.
-	 * 
+	 *
 	 * @param properties
 	 *            properties to be set
 	 * @param projectId
 	 *            Project where the properties should be saved
 	 * @throws ESException
 	 *             if the specified project does not exist
-	 * 
+	 *
 	 * @return a list of properties that could not be updated since they are outdated
 	 */
 	@EmfStoreMethod(MethodId.SETEMFPROPERTIES)
@@ -128,7 +128,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 
 	/**
 	 * Return the Properties for a specific Project.
-	 * 
+	 *
 	 * @param projectId
 	 *            ProjectId for the properties
 	 * @return EMap containing the Key string and the property value
@@ -155,7 +155,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 
 	/**
 	 * Find the {@link ProjectHistory} belonging to the project with the given {@link ProjectId}.
-	 * 
+	 *
 	 * @param projectId
 	 *            a project ID
 	 * @return the found project history or <code>null</code> if none has been found
@@ -174,7 +174,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 
 	/**
 	 * Finds the property with the given name within the given {@link ProjectHistory}.
-	 * 
+	 *
 	 * @param projectHistory
 	 *            the project history that should be looked up
 	 * @param propertyName
@@ -188,7 +188,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 
 	/**
 	 * Initializes a cache entry for the given {@link ProjectHistory}.
-	 * 
+	 *
 	 * @param projectHistory
 	 *            the history information for which a property-related cache entry should be created
 	 * @return the updated cache map containing the new cache entry
@@ -210,7 +210,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 	/**
 	 * Updates the cache by adding the given {@link EMFStoreProperty} to the shared
 	 * properties of the given {@link ProjectHistory}.
-	 * 
+	 *
 	 * @param history
 	 *            the history
 	 * @param property

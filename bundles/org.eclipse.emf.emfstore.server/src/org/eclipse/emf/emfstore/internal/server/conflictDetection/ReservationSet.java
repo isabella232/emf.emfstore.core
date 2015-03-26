@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -17,10 +17,10 @@ import java.util.Set;
  * <p>
  * Mapping from model elements to their features.
  * </p>
- * 
+ *
  * @author mkoegel
  * @author emueller
- * 
+ *
  */
 public class ReservationSet {
 
@@ -35,7 +35,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds an full reservation.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 */
@@ -45,7 +45,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds an existence reservation.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 */
@@ -55,7 +55,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds an full reservation.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 */
@@ -65,7 +65,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds a feature reservation for the given model element an one of its feature.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -77,7 +77,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds a multi-reference feature reservation together with an opposite model element.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -92,7 +92,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds a reservation for a map entry that is contained in a map feature.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -108,7 +108,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds a full reservation for the given model element.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param conflictBucketCandidate
@@ -122,7 +122,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds an existence reservation.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param conflictBucketCandidate
@@ -147,7 +147,7 @@ public class ReservationSet {
 
 	/**
 	 * Adds a feature reservation for the given feature.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -181,7 +181,7 @@ public class ReservationSet {
 
 	/**
 	 * Performs an opposite reservation for multi-reference features.
-	 * 
+	 *
 	 * @param modelElementID
 	 *            the ID of a model element
 	 * @param featureName
@@ -219,7 +219,7 @@ public class ReservationSet {
 
 	/**
 	 * Returns all model elements in the reservation set.
-	 * 
+	 *
 	 * @return a set of all model elements
 	 */
 	public Set<String> getAllModelElements() {
@@ -228,7 +228,7 @@ public class ReservationSet {
 
 	/**
 	 * Whether the given model element has an existence reservation.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @return {@code true}, if there is an existence reservation for the given model element, {@code false} otherwise
@@ -240,7 +240,7 @@ public class ReservationSet {
 
 	/**
 	 * Whether the given model element has a full reservation.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @return {@code true}, if there is a full reservation for the given model element, {@code false} otherwise
@@ -252,7 +252,7 @@ public class ReservationSet {
 
 	/**
 	 * Returns all reserved features for the given model element.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a mode element
 	 * @return a set of all feature names that are reserved for the given model element
@@ -263,7 +263,7 @@ public class ReservationSet {
 
 	/**
 	 * Whether the given model element has a reservation for the given feature.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -282,7 +282,7 @@ public class ReservationSet {
 
 	/**
 	 * Whether the given model element has a opposite reservation for the given feature.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -301,7 +301,7 @@ public class ReservationSet {
 
 	/**
 	 * Returns all opposites for the given model element ID and a feature.
-	 * 
+	 *
 	 * @param modelElementID
 	 *            the ID of a model element
 	 * @param featureName
@@ -314,7 +314,7 @@ public class ReservationSet {
 
 	/**
 	 * Returns all conflict bucket candidates for the given model element.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @return a set of {@link ConflictBucketCandidate}s
@@ -325,7 +325,7 @@ public class ReservationSet {
 
 	/**
 	 * Returns all conflict bucket candidates for the given model element and a feature.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -339,7 +339,7 @@ public class ReservationSet {
 	/**
 	 * Returns all conflict bucket candidates for the given model element and its feature, together with
 	 * an opposite model element.
-	 * 
+	 *
 	 * @param modelElementId
 	 *            the ID of a model element
 	 * @param featureName
@@ -356,7 +356,7 @@ public class ReservationSet {
 
 	/**
 	 * Whether the given model element has a feature reservation with the given opposite model element.
-	 * 
+	 *
 	 * @param modelElementID
 	 *            the ID of the model element
 	 * @param featureName

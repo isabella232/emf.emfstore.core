@@ -31,7 +31,8 @@ public class UIBranchControllersTest extends AbstractUIControllerTestWithCommit 
 		final int branchesSize = getLocalProject().getBranches(monitor).size();
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				final UICreateBranchController createBranchController = new UICreateBranchController(getBot().getDisplay()
+				final UICreateBranchController createBranchController = new UICreateBranchController(getBot()
+					.getDisplay()
 					.getActiveShell(),
 					getLocalProject());
 				createBranchController.execute();

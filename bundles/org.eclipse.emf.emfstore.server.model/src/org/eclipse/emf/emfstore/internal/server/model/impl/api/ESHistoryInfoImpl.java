@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -26,14 +26,14 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec;
 
 /**
  * Mapping between {@link ESHistoryInfo} and {@link HistoryInfo}.
- * 
+ *
  * @author emueller
  */
 public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInfo> implements ESHistoryInfo {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param historyInfo
 	 *            the delegate
 	 */
@@ -42,9 +42,9 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getPrimarySpec()
 	 */
 	public ESPrimaryVersionSpec getPrimarySpec() {
@@ -52,20 +52,20 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getNextSpecs()
 	 */
 	public List<ESPrimaryVersionSpec> getNextSpecs() {
-		EList<PrimaryVersionSpec> nextSpec = toInternalAPI().getNextSpec();
+		final EList<PrimaryVersionSpec> nextSpec = toInternalAPI().getNextSpec();
 		return APIUtil.mapToAPI(ESPrimaryVersionSpec.class, nextSpec);
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getPreviousSpec()
 	 */
 	public ESPrimaryVersionSpec getPreviousSpec() {
@@ -73,9 +73,9 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getMergedFromSpecs()
 	 */
 	public List<ESPrimaryVersionSpec> getMergedFromSpecs() {
@@ -83,9 +83,9 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getMergedToSpecs()
 	 */
 	public List<ESPrimaryVersionSpec> getMergedToSpecs() {
@@ -93,9 +93,9 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getLogMessage()
 	 */
 	public ESLogMessage getLogMessage() {
@@ -103,9 +103,9 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getTagSpecs()
 	 */
 	public List<ESTagVersionSpec> getTagSpecs() {
@@ -113,9 +113,9 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getChangePackage()
 	 */
 	public ESChangePackage getChangePackage() {

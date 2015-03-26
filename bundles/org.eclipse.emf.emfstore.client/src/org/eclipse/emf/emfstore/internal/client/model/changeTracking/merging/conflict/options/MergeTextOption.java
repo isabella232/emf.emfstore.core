@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Attr
 
 /**
  * Special option to merge longer texts.
- * 
+ *
  * @author wesendon
  */
 public class MergeTextOption extends ConflictOption {
@@ -44,7 +44,7 @@ public class MergeTextOption extends ConflictOption {
 
 	/**
 	 * Add options which should be merged. ATM: only "my" and "their" are supported
-	 * 
+	 *
 	 * @param option other option
 	 */
 	public void add(ConflictOption option) {
@@ -65,7 +65,7 @@ public class MergeTextOption extends ConflictOption {
 
 	/**
 	 * Returns "my" text.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getMyText() {
@@ -75,7 +75,7 @@ public class MergeTextOption extends ConflictOption {
 
 	/**
 	 * Returns "their" text.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getTheirString() {
@@ -112,7 +112,7 @@ public class MergeTextOption extends ConflictOption {
 
 	/**
 	 * Set resulted merged text.
-	 * 
+	 *
 	 * @param text text
 	 */
 	public void setMergedText(String text) {
@@ -121,7 +121,7 @@ public class MergeTextOption extends ConflictOption {
 
 	/**
 	 * Get merged text.
-	 * 
+	 *
 	 * @return text
 	 */
 	public String getMergedText() {

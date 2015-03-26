@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * aleaum
  ******************************************************************************/
@@ -18,13 +18,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 
 /**
  * @author aleaum
- * 
+ *
  */
 public class HistorySCMLabelProvider extends SCMLabelProvider {
 
 	/**
 	 * Creates a new {@link HistorySCMLabelProvider} for the given project.
-	 * 
+	 *
 	 */
 	public HistorySCMLabelProvider() {
 		super();
@@ -41,11 +41,11 @@ public class HistorySCMLabelProvider extends SCMLabelProvider {
 			.getBaseVersion().getIdentifier()) {
 			baseVersion = "*";
 		}
-		StringBuilder builder = new StringBuilder();
+		final StringBuilder builder = new StringBuilder();
 
 		if (!historyInfo.getTagSpecs().isEmpty()) {
 			builder.append("[");
-			for (TagVersionSpec versionSpec : historyInfo.getTagSpecs()) {
+			for (final TagVersionSpec versionSpec : historyInfo.getTagSpecs()) {
 				builder.append(versionSpec.getName());
 				builder.append(",");
 			}

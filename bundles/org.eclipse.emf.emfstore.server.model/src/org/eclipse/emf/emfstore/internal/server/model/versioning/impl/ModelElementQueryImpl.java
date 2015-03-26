@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
  * Model Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated NOT
  */
 public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> implements ModelElementQuery {
@@ -43,7 +43,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 	 * The cached value of the '{@link #getModelElements() <em>Model Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getModelElements()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ModelElementQueryImpl() {
@@ -61,7 +61,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -71,7 +71,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ModelElementId> getModelElements() {
@@ -84,7 +84,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -129,7 +129,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -144,7 +144,7 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

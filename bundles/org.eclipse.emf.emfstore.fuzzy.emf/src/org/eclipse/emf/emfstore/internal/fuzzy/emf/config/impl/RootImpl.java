@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.Root;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.RootImpl#getElements <em>Elements</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.RootImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +41,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -50,6 +51,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RootImpl() {
@@ -59,6 +61,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,6 +72,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<EObject> getElements() {
@@ -81,6 +85,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -95,6 +100,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -109,6 +115,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -126,6 +133,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -141,6 +149,7 @@ public class RootImpl extends EObjectImpl implements Root {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -152,4 +161,4 @@ public class RootImpl extends EObjectImpl implements Root {
 		return super.eIsSet(featureID);
 	}
 
-} //RootImpl
+} // RootImpl

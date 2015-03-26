@@ -28,7 +28,8 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
 import org.junit.Before;
 
 /**
- * Abstract test case providing common functionalities for all unit tests of {@link Mutation mutations}.
+ * Abstract test case providing common functionalities for all unit tests of
+ * {@link Mutation mutations}.
  * 
  * @author Philip Langer
  */
@@ -67,14 +68,17 @@ public abstract class AbstractMutationTest {
 	private TypeWithFeatureMapContainment createTestTypeModel() {
 		TestmodelFactory tFactory = TestmodelFactory.eINSTANCE;
 
-		TypeWithFeatureMapContainment root = tFactory.createTypeWithFeatureMapContainment();
+		TypeWithFeatureMapContainment root = tFactory
+				.createTypeWithFeatureMapContainment();
 		root.setName("Root");
 
-		TypeWithFeatureMapContainment child1 = tFactory.createTypeWithFeatureMapContainment();
+		TypeWithFeatureMapContainment child1 = tFactory
+				.createTypeWithFeatureMapContainment();
 		child1.setName("Child2Containment");
 		root.getSecondKeyContainment().add(child1);
 
-		TypeWithFeatureMapNonContainment child2 = tFactory.createTypeWithFeatureMapNonContainment();
+		TypeWithFeatureMapNonContainment child2 = tFactory
+				.createTypeWithFeatureMapNonContainment();
 		child2.setName("Child1NonContainment");
 		child2.getFirstKey().add(root);
 		child2.getSecondKey().add(child2);

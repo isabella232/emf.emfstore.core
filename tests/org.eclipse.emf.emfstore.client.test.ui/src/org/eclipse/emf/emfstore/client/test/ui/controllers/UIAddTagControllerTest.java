@@ -62,7 +62,8 @@ public class UIAddTagControllerTest extends AbstractUIControllerTestWithCommit {
 		UIThreadRunnable.asyncExec(
 			new VoidResult() {
 				public void run() {
-					UIAddTagController addTagController = new UIAddTagController(getBot().getDisplay().getActiveShell(),
+					UIAddTagController addTagController = new UIAddTagController(
+						getBot().getDisplay().getActiveShell(),
 						getLocalProject(), historyInfo);
 					addTagController.execute();
 				}

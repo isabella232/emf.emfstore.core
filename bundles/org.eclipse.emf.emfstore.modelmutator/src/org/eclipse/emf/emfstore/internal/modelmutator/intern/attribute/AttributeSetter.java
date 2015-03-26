@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.intern.attribute;
@@ -17,7 +17,7 @@ import java.util.Random;
  * Abstract class that defines methods for creating attributes in order
  * to generate or change Ecore models. Attributes are created
  * using a Random object.
- * 
+ *
  * @param <E> the attribute type of the attributes to create
  */
 public abstract class AttributeSetter<E> {
@@ -30,7 +30,7 @@ public abstract class AttributeSetter<E> {
 
 	/**
 	 * The construction of the AttributeSetter with Random object.
-	 * 
+	 *
 	 * @param random the random object used for the setters
 	 */
 	public AttributeSetter(Random random) {
@@ -40,7 +40,7 @@ public abstract class AttributeSetter<E> {
 	/**
 	 * Creates one attribute of type <code>E</code>.
 	 * The result is determined by <code>random</code>.
-	 * 
+	 *
 	 * @return the created attribute
 	 */
 	public abstract E createNewAttribute();
@@ -48,7 +48,7 @@ public abstract class AttributeSetter<E> {
 	/**
 	 * Creates a collection of attributes of type <code>E</code>.
 	 * The result is determined by <code>random</code>.
-	 * 
+	 *
 	 * @param maxAmount the maximum amount of attributes to create
 	 * @return all created attributes as a collection
 	 */

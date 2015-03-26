@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -21,9 +21,9 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * Key-Value-Store for conflict descriptions.
- * 
+ *
  * @author wesendon
- * 
+ *
  */
 public class DescriptionProvider {
 
@@ -34,7 +34,7 @@ public class DescriptionProvider {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param prefix
 	 *            prefix for all keys
 	 */
@@ -78,7 +78,7 @@ public class DescriptionProvider {
 
 	/**
 	 * Returns a description for given key.
-	 * 
+	 *
 	 * @param key
 	 *            key
 	 * @return description
@@ -96,7 +96,7 @@ public class DescriptionProvider {
 
 	/**
 	 * Default value, if key is unknown.
-	 * 
+	 *
 	 * @return default: empty string ""
 	 */
 	protected String getDefaultValue() {
@@ -105,7 +105,7 @@ public class DescriptionProvider {
 
 	/**
 	 * Set a prefix for all keys.
-	 * 
+	 *
 	 * @param prefix
 	 *            prefix, can be null
 	 */

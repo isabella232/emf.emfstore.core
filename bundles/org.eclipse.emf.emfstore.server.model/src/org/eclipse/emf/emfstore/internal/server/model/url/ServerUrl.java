@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url;
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Server Url</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getPort <em>Port</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getServerUrl()
  * @model
  * @generated
@@ -36,7 +36,7 @@ public interface ServerUrl extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Host Name</em>' attribute.
 	 * @see #setHostName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getServerUrl_HostName()
@@ -49,7 +49,7 @@ public interface ServerUrl extends EObject {
 	 * Sets the value of the ' {@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getHostName
 	 * <em>Host Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Host Name</em>' attribute.
 	 * @see #getHostName()
@@ -64,7 +64,7 @@ public interface ServerUrl extends EObject {
 	 * If the meaning of the '<em>Port</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Port</em>' attribute.
 	 * @see #setPort(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getServerUrl_Port()
@@ -77,7 +77,7 @@ public interface ServerUrl extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getPort <em>Port</em>}
 	 * ' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Port</em>' attribute.
 	 * @see #getPort()
 	 * @generated
@@ -86,7 +86,7 @@ public interface ServerUrl extends EObject {
 
 	/**
 	 * Returns a string representation of the url.
-	 * 
+	 *
 	 * @return the string
 	 */
 	String getUrlString();

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -19,23 +19,23 @@ import org.eclipse.emf.emfstore.mongodb.AbstractMongoDBResourceSetProvider;
 
 /**
  * MongoDB ResourceSet provider for EMFStore Server.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class MongoDBServerResourceSetProvider extends AbstractMongoDBResourceSetProvider {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.mongodb.AbstractMongoDBResourceSetProvider#setURIConverter(org.eclipse.emf.ecore.resource.impl.ResourceSetImpl)
 	 */
 	@Override
 	protected void setURIConverter(ResourceSetImpl resourceSet) {
 		// reuse uri handlers set up by resourcesetfactory
-		EList<URIHandler> uriHandler = resourceSet.getURIConverter().getURIHandlers();
-		URIConverter uriConverter = new MongoServerURIConverter();
+		final EList<URIHandler> uriHandler = resourceSet.getURIConverter().getURIHandlers();
+		final URIConverter uriConverter = new MongoServerURIConverter();
 		uriConverter.getURIHandlers().clear();
 		uriConverter.getURIHandlers().addAll(uriHandler);
 		resourceSet.setURIConverter(uriConverter);

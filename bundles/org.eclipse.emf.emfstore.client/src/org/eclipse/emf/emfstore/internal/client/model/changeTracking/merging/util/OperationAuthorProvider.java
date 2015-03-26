@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel
  ******************************************************************************/
@@ -16,15 +16,15 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 
 /**
  * Provides the author for a given operation.
- * 
+ *
  * @author mkoegel
- * 
+ *
  */
 public interface OperationAuthorProvider extends ESObserver {
 
 	/**
 	 * Get the author for the given operation.
-	 * 
+	 *
 	 * @param operation the operation
 	 * @return an author String
 	 */

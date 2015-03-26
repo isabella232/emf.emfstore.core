@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  * Edgar Mueller - API annotations
@@ -20,10 +20,10 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
  * Factory for creating history queries.
- * 
+ *
  * @author wesendon
  * @author emueller
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */
@@ -31,7 +31,7 @@ public interface ESHistoryQueryFactory extends ESFactory {
 
 	/**
 	 * Factory method for creating a {@link ESRangeQuery}.
-	 * 
+	 *
 	 * @param source
 	 *            the source version of the query
 	 * @param upper
@@ -55,7 +55,7 @@ public interface ESHistoryQueryFactory extends ESFactory {
 	/**
 	 * Factory method for creating a {@link ESPathQuery}, which fetches
 	 * all changes from {@code source} to {@code target}.
-	 * 
+	 *
 	 * @param source
 	 *            the source version of the query
 	 * @param target
@@ -71,7 +71,7 @@ public interface ESHistoryQueryFactory extends ESFactory {
 
 	/**
 	 * Factory method for creating a {@link ESModelElementQuery}.
-	 * 
+	 *
 	 * @param source
 	 *            the source version of the query
 	 * @param modelElements
@@ -91,7 +91,7 @@ public interface ESHistoryQueryFactory extends ESFactory {
 
 	/**
 	 * Factory method for creating a {@link ESModelElementQuery}.
-	 * 
+	 *
 	 * @param source
 	 *            the source version of the query
 	 * @param id

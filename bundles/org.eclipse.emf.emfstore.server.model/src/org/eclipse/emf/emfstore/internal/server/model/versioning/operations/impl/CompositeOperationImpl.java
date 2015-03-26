@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -55,14 +55,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <em>Reversed</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CompositeOperationImpl extends AbstractOperationImpl implements CompositeOperation {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#getOtherInvolvedModelElements()
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * The cached value of the '{@link #getSubOperations() <em>Sub Operations</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSubOperations()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * The cached value of the '{@link #getMainOperation() <em>Main Operation</em>}' reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getMainOperation()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * The default value of the '{@link #getCompositeName() <em>Composite Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getCompositeName()
 	 * @generated
 	 * @ordered
@@ -111,7 +111,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * The cached value of the '{@link #getCompositeName() <em>Composite Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getCompositeName()
 	 * @generated
 	 * @ordered
@@ -121,7 +121,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * The default value of the '{@link #getCompositeDescription() <em>Composite Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getCompositeDescription()
 	 * @generated
 	 * @ordered
@@ -131,7 +131,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * The cached value of the '{@link #getCompositeDescription() <em>Composite Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getCompositeDescription()
 	 * @generated
 	 * @ordered
@@ -141,7 +141,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	/**
 	 * The default value of the '{@link #isReversed() <em>Reversed</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isReversed()
 	 * @generated
 	 * @ordered
@@ -151,7 +151,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	/**
 	 * The cached value of the '{@link #isReversed() <em>Reversed</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isReversed()
 	 * @generated
 	 * @ordered
@@ -160,7 +160,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected CompositeOperationImpl() {
@@ -169,7 +169,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -183,9 +183,9 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 * <!-- begin-user-doc --> Returns all sub operations. Will not enforce
 	 * uniqueness. Will not enforce uniqueness, do NOT add the same element
 	 * twice!
-	 * 
+	 *
 	 * @return a list of sub operation <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@SuppressWarnings("serial")
@@ -206,7 +206,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AbstractOperation getMainOperation() {
@@ -227,7 +227,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AbstractOperation basicGetMainOperation() {
@@ -236,7 +236,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setMainOperation(AbstractOperation newMainOperation) {
@@ -250,7 +250,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getCompositeName() {
@@ -259,7 +259,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setCompositeName(String newCompositeName) {
@@ -273,7 +273,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getCompositeDescription() {
@@ -282,7 +282,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setCompositeDescription(String newCompositeDescription) {
@@ -297,7 +297,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isReversed() {
@@ -306,7 +306,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setReversed(boolean newReversed) {
@@ -321,7 +321,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	// begin of custom code
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public void cannonize() {
@@ -333,7 +333,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -348,7 +348,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -374,7 +374,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -404,7 +404,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -432,7 +432,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -457,7 +457,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -510,7 +510,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
 	public List<AbstractOperation> getLeafOperations() {

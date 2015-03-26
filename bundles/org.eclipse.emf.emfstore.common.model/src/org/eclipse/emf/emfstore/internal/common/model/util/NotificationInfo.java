@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.common.model.impl.util.ESNotificationIn
 /**
  * NotificationInfo is a type safe wrapper for EMF Notifications. It wraps a org.eclipse.emf.common.notify.Notification
  * and implements a few additional getter methods
- * 
+ *
  * @author chodnick
  */
 
@@ -40,7 +40,7 @@ public class NotificationInfo implements Notification, APIDelegate<ESNotificatio
 
 	/**
 	 * The constructor needs the notification to wrap.
-	 * 
+	 *
 	 * @param n the notification to wrap
 	 */
 	public NotificationInfo(Notification n) {
@@ -529,7 +529,7 @@ public class NotificationInfo implements Notification, APIDelegate<ESNotificatio
 
 	/**
 	 * Returns the type of the {@link Notification}.
-	 * 
+	 *
 	 * @return a {@link Notification} type
 	 */
 	public Class<? extends Notification> getNotificationType() {
@@ -538,7 +538,7 @@ public class NotificationInfo implements Notification, APIDelegate<ESNotificatio
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESNotificationInfo toAPI() {
@@ -550,9 +550,9 @@ public class NotificationInfo implements Notification, APIDelegate<ESNotificatio
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESNotificationInfo createAPI() {
@@ -561,7 +561,7 @@ public class NotificationInfo implements Notification, APIDelegate<ESNotificatio
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.notify.Notification#wasSet()
 	 */
 	public boolean wasSet() {

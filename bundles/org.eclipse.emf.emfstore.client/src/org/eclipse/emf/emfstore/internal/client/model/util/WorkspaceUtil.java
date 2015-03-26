@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.IResourceLogger;
 
 /**
  * Workspace utility class.
- * 
+ *
  * @author koegel
  */
 public final class WorkspaceUtil {
@@ -48,7 +48,7 @@ public final class WorkspaceUtil {
 
 	/**
 	 * Returns the resource logger.
-	 * 
+	 *
 	 * @return the resource logger
 	 */
 	public static IResourceLogger getResourceLogger() {
@@ -57,7 +57,7 @@ public final class WorkspaceUtil {
 
 	/**
 	 * Log an exception to the error log.
-	 * 
+	 *
 	 * @param message the message
 	 * @param e the exception
 	 */
@@ -67,7 +67,7 @@ public final class WorkspaceUtil {
 
 	/**
 	 * Log a warning to the error log.
-	 * 
+	 *
 	 * @param message the message
 	 * @param e the exception
 	 */
@@ -77,7 +77,7 @@ public final class WorkspaceUtil {
 
 	/**
 	 * Log a warning to the error log.
-	 * 
+	 *
 	 * @param message the message
 	 * @param exception the exception or null f not applicable
 	 * @param statusInt the status constant as defined in {@link IStatus}
@@ -95,7 +95,7 @@ public final class WorkspaceUtil {
 
 	/**
 	 * Log a message.
-	 * 
+	 *
 	 * @param message the message
 	 * @param statusInt the status constant as defined in {@link IStatus}
 	 */
@@ -109,7 +109,7 @@ public final class WorkspaceUtil {
 	 * Handles the given exception by wrapping it in a {@link RuntimeException} and propagating it to all registered
 	 * exception handlers. If no exception handler did handle the exception
 	 * a the wrapped exception will be re-thrown.
-	 * 
+	 *
 	 * @param errorMessage
 	 *            the error message that should be used for propagating the exception
 	 * @param exception
@@ -123,7 +123,7 @@ public final class WorkspaceUtil {
 	 * Handles the given exception by wrapping it in a {@link RuntimeException} and propagating it to all registered
 	 * exception handlers. If no exception handler did handle the exception
 	 * a the wrapped exception will be re-thrown.
-	 * 
+	 *
 	 * @param exception
 	 *            the actual exception
 	 */

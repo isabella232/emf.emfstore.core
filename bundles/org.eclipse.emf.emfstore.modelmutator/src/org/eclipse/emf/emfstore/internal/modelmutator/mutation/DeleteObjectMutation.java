@@ -1,19 +1,19 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.modelmutator.mutation;
 
+import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_EOBJECT_OR_LIST;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.containsEObjectWithMaxNumberOfContainments;
 import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.hasMaxNumberOfContainments;
-import static org.eclipse.emf.emfstore.internal.modelmutator.mutation.MutationPredicates.IS_NON_EMPTY_EOBJECT_OR_LIST;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -25,9 +25,9 @@ import com.google.common.base.Predicate;
 
 /**
  * A mutation, which deletes a new object from the model.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  */
 public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObjectMutation> implements
 	ESDeleteObjectMutation {
@@ -37,7 +37,7 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 
 	/**
 	 * Creates a new mutation with the specified {@code util}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public DeleteObjectMutation(ESModelMutatorUtil util) {
@@ -47,7 +47,7 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector}.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */
@@ -61,9 +61,9 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.modelmutator.ESDeleteObjectMutation#setMaxNumberOfContainments(int)
 	 */
 	public DeleteObjectMutation setMaxNumberOfContainments(int maxNumberOfContainments) {
@@ -73,7 +73,7 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 
 	/**
 	 * Returns the maximum number of containments that the object selected for deletion may contain.
-	 * 
+	 *
 	 * @return The maximum number of containments of the object to be deleted.
 	 */
 	public int getMaxNumberOfContainments() {
@@ -82,7 +82,7 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 
 	/**
 	 * Sets the object to be deleted by this mutation.
-	 * 
+	 *
 	 * @param eObjectToDelete The object to be deleted.
 	 */
 	public void setEObjectToDelete(EObject eObjectToDelete) {
@@ -91,7 +91,7 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 
 	/**
 	 * Returns the object deleted or to be deleted by this mutation.
-	 * 
+	 *
 	 * @return The deleted or to-be-deleted object.
 	 */
 	public EObject getEObjectToDelete() {
@@ -100,7 +100,7 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#clone()
 	 */
 	@Override
@@ -112,9 +112,9 @@ public class DeleteObjectMutation extends ContainmentChangeMutation<ESDeleteObje
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation#apply()
 	 */
 	@Override

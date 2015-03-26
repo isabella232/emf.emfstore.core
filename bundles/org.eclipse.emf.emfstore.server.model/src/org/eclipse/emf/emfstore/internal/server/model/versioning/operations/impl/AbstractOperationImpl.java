@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -46,7 +46,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * <em>Client Date</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractOperationImpl extends IdentifiableElementImpl implements AbstractOperation {
@@ -68,7 +68,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 * The cached value of the '{@link #getModelElementId() <em>Model Element Id</em>}' containment reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getModelElementId()
 	 * @generated
 	 * @ordered
@@ -78,7 +78,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	/**
 	 * The default value of the '{@link #isAccepted() <em>Accepted</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAccepted()
 	 * @generated
 	 * @ordered
@@ -87,7 +87,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	/**
 	 * The cached value of the '{@link #isAccepted() <em>Accepted</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isAccepted()
 	 * @generated
 	 * @ordered
@@ -97,7 +97,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	/**
 	 * The default value of the '{@link #getClientDate() <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getClientDate()
 	 * @generated
 	 * @ordered
@@ -106,7 +106,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	/**
 	 * The cached value of the '{@link #getClientDate() <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getClientDate()
 	 * @generated
 	 * @ordered
@@ -115,7 +115,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AbstractOperationImpl() {
@@ -124,7 +124,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -134,7 +134,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId getModelElementId() {
@@ -166,7 +166,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId basicGetModelElementId() {
@@ -175,7 +175,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetModelElementId(ModelElementId newModelElementId, NotificationChain msgs) {
@@ -196,7 +196,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setModelElementId(ModelElementId newModelElementId) {
@@ -224,7 +224,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isAccepted() {
@@ -233,7 +233,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAccepted(boolean newAccepted) {
@@ -247,7 +247,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getClientDate() {
@@ -256,7 +256,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setClientDate(Date newClientDate) {
@@ -270,7 +270,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -286,17 +286,17 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	// begin of custom code
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public abstract AbstractOperation reverse();
 
 	/**
 	 * Initializes the given operation with the {@link ModelElementId} of this operation and a date.
-	 * 
+	 *
 	 * @param abstractOperation
 	 *            the operation that needs to be initialized
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected void reverse(AbstractOperation abstractOperation) {
@@ -308,7 +308,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -330,7 +330,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -352,7 +352,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -374,7 +374,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -393,7 +393,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -425,7 +425,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getAllInvolvedModelElements()
 	 */
 	public Set<ModelElementId> getAllInvolvedModelElements() {
@@ -439,7 +439,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getOtherInvolvedModelElements()
 	 */
 	public Set<ModelElementId> getOtherInvolvedModelElements() {

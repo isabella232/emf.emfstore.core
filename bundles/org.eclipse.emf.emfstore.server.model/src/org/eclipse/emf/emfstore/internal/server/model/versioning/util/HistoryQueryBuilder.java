@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 
 /**
  * Helper class for history query creation.
- * 
+ *
  * @author wesendon
  */
 public final class HistoryQueryBuilder {
@@ -34,7 +34,7 @@ public final class HistoryQueryBuilder {
 
 	/**
 	 * Factory method for range query.
-	 * 
+	 *
 	 * @param source
 	 *            source version
 	 * @param upper
@@ -67,7 +67,7 @@ public final class HistoryQueryBuilder {
 
 	/**
 	 * Factory method for path query. Getting all changes from source to target.
-	 * 
+	 *
 	 * @param source
 	 *            source version
 	 * @param target
@@ -90,7 +90,7 @@ public final class HistoryQueryBuilder {
 
 	/**
 	 * Factory method for modelelements range queries.
-	 * 
+	 *
 	 * @param source
 	 *            source version
 	 * @param modelElements
@@ -124,7 +124,7 @@ public final class HistoryQueryBuilder {
 
 	/**
 	 * Factory method for modelelement range queries.
-	 * 
+	 *
 	 * @param source
 	 *            source version
 	 * @param id

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Feat
 /**
  * Main class representing a conflict. It offers all kind of convenience methods
  * and organizes the conflicts initialization.
- * 
+ *
  * @author wesendon
  */
 public abstract class VisualConflict extends Observable {
@@ -43,7 +43,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * List of operations.
-	 * 
+	 *
 	 * @see #Conflict(List, List, DecisionManager)
 	 */
 	private final Set<AbstractOperation> leftOperations;
@@ -55,7 +55,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Construct conflict from given specific left and right operation.
-	 * 
+	 *
 	 * @param conflictBucket the underlying conflict
 	 * @param leftOperation the left operation
 	 * @param rightOperation the right operation
@@ -73,7 +73,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Construct conflict from given specific left and right operation.
-	 * 
+	 *
 	 * @param conflictBucket the underlying conflict
 	 * @param decisionManager the decision manager
 	 * @param leftIsMy true if left operation is my operation
@@ -97,7 +97,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param conflictBucket
 	 *            the underlying conflict
 	 * @param decisionManager
@@ -109,7 +109,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Additional constructor, which allows deactivating initialization.
-	 * 
+	 *
 	 * @see #Conflict(List, List, DecisionManager)
 	 * @param leftOperations
 	 *            first list of operations (often: myOperations)
@@ -148,7 +148,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Determines whether left operations are my.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isLeftMy() {
@@ -167,7 +167,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Is called in order to init the options.
-	 * 
+	 *
 	 * @param options
 	 *            list of options
 	 */
@@ -175,7 +175,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Init conflict description.
-	 * 
+	 *
 	 * @param description
 	 *            pre initialized description
 	 * @return description
@@ -198,7 +198,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Inits the ConflictContext.
-	 * 
+	 *
 	 * @return context.
 	 */
 	protected ConflictContext initConflictContext() {
@@ -207,7 +207,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Returns the conflict context.
-	 * 
+	 *
 	 * @return context.
 	 */
 	public ConflictContext getConflictContext() {
@@ -216,7 +216,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Returns the conflict description.
-	 * 
+	 *
 	 * @return conflict description
 	 */
 	public ConflictDescription getConflictDescription() {
@@ -225,7 +225,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Returns the list of options.
-	 * 
+	 *
 	 * @return list options
 	 */
 	public List<ConflictOption> getOptions() {
@@ -234,7 +234,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Returns whether this conflict is resolved.
-	 * 
+	 *
 	 * @return true if resolved
 	 */
 	public boolean isResolved() {
@@ -243,7 +243,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Checks whether the related options have details.
-	 * 
+	 *
 	 * @return true, if at least one got details.
 	 */
 	public boolean hasDetails() {
@@ -257,7 +257,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Sets an options as solution for this conflict.
-	 * 
+	 *
 	 * @param conflictOption
 	 *            option
 	 */
@@ -269,7 +269,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Returns the {@link DecisionManager}.
-	 * 
+	 *
 	 * @return decisionManager
 	 */
 	public DecisionManager getDecisionManager() {
@@ -278,7 +278,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Returns the solution.
-	 * 
+	 *
 	 * @return solution
 	 */
 	public ConflictOption getSolution() {
@@ -288,7 +288,7 @@ public abstract class VisualConflict extends Observable {
 	/**
 	 * This method is used by {@link DecisionManager} in order to create the
 	 * resulting operations.
-	 * 
+	 *
 	 * @return a set containing the rejected operations
 	 */
 	public Set<AbstractOperation> getRejectedTheirs() {
@@ -313,7 +313,7 @@ public abstract class VisualConflict extends Observable {
 	/**
 	 * This method is used by {@link DecisionManager} in order to create the
 	 * resulting operations.
-	 * 
+	 *
 	 * @return set containing the accepted operations
 	 */
 	public Set<AbstractOperation> getAcceptedMine() {
@@ -331,7 +331,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get an option by its type.
-	 * 
+	 *
 	 * @param type
 	 *            type
 	 * @return option or null
@@ -342,7 +342,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get my operations.
-	 * 
+	 *
 	 * @return list of operations
 	 */
 	public Set<AbstractOperation> getMyOperations() {
@@ -351,7 +351,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get their operations.
-	 * 
+	 *
 	 * @return list of operations
 	 */
 	public Set<AbstractOperation> getTheirOperations() {
@@ -360,7 +360,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get left operations.
-	 * 
+	 *
 	 * @return list of operations
 	 */
 	public Set<AbstractOperation> getLeftOperations() {
@@ -369,7 +369,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * get right operations.
-	 * 
+	 *
 	 * @return list of operations
 	 */
 	public Set<AbstractOperation> getRightOperations() {
@@ -378,7 +378,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get first left operation.
-	 * 
+	 *
 	 * @return operation
 	 */
 	public AbstractOperation getLeftOperation() {
@@ -387,7 +387,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * get first right operation.
-	 * 
+	 *
 	 * @return operation
 	 */
 	public AbstractOperation getRightOperation() {
@@ -396,7 +396,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get my operation.
-	 * 
+	 *
 	 * @return operation
 	 */
 	public AbstractOperation getMyOperation() {
@@ -405,7 +405,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get their operation.
-	 * 
+	 *
 	 * @return operation
 	 */
 	public AbstractOperation getTheirOperation() {
@@ -414,7 +414,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get my operation and cast.
-	 * 
+	 *
 	 * @param <T>
 	 *            cast type
 	 * @param clazz
@@ -428,7 +428,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Get their operation and cast.
-	 * 
+	 *
 	 * @param <T>
 	 *            cast type
 	 * @param clazz
@@ -449,7 +449,7 @@ public abstract class VisualConflict extends Observable {
 
 	/**
 	 * Whether the left operations is mine operation.
-	 * 
+	 *
 	 * @param leftIsMy
 	 *            should be {@code true}, if the left operation belongs to me, {@code false} otherwise
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
@@ -39,14 +39,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	/**
 	 * The default value of the '{@link #getFirstName() <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFirstName()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	/**
 	 * The cached value of the '{@link #getFirstName() <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFirstName()
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	/**
 	 * The default value of the '{@link #getLastName() <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastName()
 	 * @generated
 	 * @ordered
@@ -76,7 +76,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	/**
 	 * The cached value of the '{@link #getLastName() <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastName()
 	 * @generated
 	 * @ordered
@@ -87,7 +87,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 * The cached value of the '{@link #getEffectiveGroups()
 	 * <em>Effective Groups</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEffectiveGroups()
 	 * @generated
 	 * @ordered
@@ -98,7 +98,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPassword()
 	 * @generated
 	 * @ordered
@@ -109,7 +109,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPassword()
 	 * @generated
 	 * @ordered
@@ -118,7 +118,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ACUserImpl() {
@@ -127,7 +127,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -137,7 +137,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getFirstName() {
@@ -146,7 +146,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFirstName(String newFirstName) {
@@ -160,7 +160,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getLastName() {
@@ -169,7 +169,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLastName(String newLastName) {
@@ -183,7 +183,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ACGroup> getEffectiveGroups() {
@@ -198,7 +198,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getPassword()
@@ -209,7 +209,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPassword(String newPassword)
@@ -224,7 +224,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -239,7 +239,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -260,7 +260,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -287,7 +287,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -312,7 +312,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -333,7 +333,7 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

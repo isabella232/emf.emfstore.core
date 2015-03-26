@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - refactorings
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 
 /**
  * Abstract class for authentication.
- * 
+ *
  * @author wesendonk
  */
 public abstract class AbstractAuthenticationControl implements AuthenticationControl {
@@ -46,7 +46,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 
 	/**
 	 * Tries to login the given user.
-	 * 
+	 *
 	 * @param resolvedUser
 	 *            the user instance as resolved by the user
 	 * @param username
@@ -57,7 +57,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	 *            the version of the client
 	 * @return an {@link AuthenticationInformation} instance holding information about the
 	 *         logged-in session
-	 * 
+	 *
 	 * @throws AccessControlException in case the login fails
 	 */
 	public AuthenticationInformation logIn(ACUser resolvedUser, String username, String password,
@@ -76,7 +76,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 
 	/**
 	 * Creates a new {@link AuthenticationInformation} with a {@link SessionId} set.
-	 * 
+	 *
 	 * @return a new instance of an {@link AuthenticationInformation} with an already
 	 *         set session ID
 	 */
@@ -89,7 +89,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 
 	/**
 	 * Prepares password before it is used for authentication. Normally this includes decrypting the password
-	 * 
+	 *
 	 * @param password password
 	 * @return prepared password
 	 * @throws ServerKeyStoreException in case of an exception
@@ -101,7 +101,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 
 	/**
 	 * Check username and password against superuser.
-	 * 
+	 *
 	 * @param username username
 	 * @param password password
 	 * @return true if super user
@@ -121,7 +121,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	 * When using authentication you should use
 	 * {@link AuthenticationControl#logIn(ACUser, String, String, ClientVersionInfo)} in order to gain a
 	 * session id.
-	 * 
+	 *
 	 * @param resolvedUser
 	 *            the user instance that has been resolved by the user
 	 * @param username
@@ -138,7 +138,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	/**
 	 * Checks whether the given client version is valid.
 	 * If not, throws an exception
-	 * 
+	 *
 	 * @param clientVersionInfo
 	 *            the client version to be checked
 	 * @throws ClientVersionOutOfDateException

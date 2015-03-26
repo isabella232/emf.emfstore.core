@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Zardosht Hodaie - initial API and implementation
  ******************************************************************************/
@@ -38,7 +38,7 @@ import org.eclipse.ui.forms.widgets.Form;
  * This shows attributes of a ACGroup (name, description) and show a list of its
  * member OrgUnits. You can use drag and drop to drop a group or a user on
  * members list, and it will be added to members.
- * 
+ *
  * @author Hodaie
  */
 public class GroupComposite extends PropertiesComposite {
@@ -48,7 +48,7 @@ public class GroupComposite extends PropertiesComposite {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent
 	 *            parent
 	 * @param style
@@ -126,7 +126,7 @@ public class GroupComposite extends PropertiesComposite {
 	/**
 	 * This will be used when adding a new member using add button. It shows a
 	 * list of ACOrgUnits on the server.
-	 * 
+	 *
 	 * @return selected elements
 	 */
 	private EList<ACOrgUnit> getNewMembers() {
@@ -159,7 +159,7 @@ public class GroupComposite extends PropertiesComposite {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.PropertiesComposite#getTabTitle()
 	 */
 	@Override

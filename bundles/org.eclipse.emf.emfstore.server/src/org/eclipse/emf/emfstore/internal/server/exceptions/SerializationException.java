@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Is thrown in case of serialization problems.
- * 
+ *
  * @author wesendon
  */
 public class SerializationException extends ESException {
@@ -24,7 +24,7 @@ public class SerializationException extends ESException {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param message message
 	 * @param cause exception
 	 */
@@ -34,7 +34,7 @@ public class SerializationException extends ESException {
 
 	/**
 	 * Default constructor. Default message is set.
-	 * 
+	 *
 	 * @param cause exception
 	 */
 	public SerializationException(Throwable cause) {
@@ -43,7 +43,7 @@ public class SerializationException extends ESException {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param message error message
 	 */
 	public SerializationException(String message) {

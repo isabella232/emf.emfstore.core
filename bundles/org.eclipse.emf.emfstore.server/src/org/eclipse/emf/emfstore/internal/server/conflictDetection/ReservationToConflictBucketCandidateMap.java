@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  * Edgar Mueller - custom reservation set modifiers
@@ -40,7 +40,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Sing
 
 /**
  * Map from model elements and their features to conflict candidate buckets.
- * 
+ *
  * @author mkoegel
  * @author emueller
  */
@@ -194,7 +194,7 @@ public class ReservationToConflictBucketCandidateMap {
 
 	/**
 	 * Scans the given {@link AbstractOperation} into the reservation set.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation to be scanned
 	 * @param priority
@@ -301,7 +301,7 @@ public class ReservationToConflictBucketCandidateMap {
 
 	/**
 	 * Tries to find the operation that set's the key attribute of a map entry.
-	 * 
+	 *
 	 * @param createDeleteOperation
 	 * @return
 	 */
@@ -383,7 +383,7 @@ public class ReservationToConflictBucketCandidateMap {
 
 	/**
 	 * Get all Conflict Buckets that are part of the map.
-	 * 
+	 *
 	 * @return a set of conflict bucket candidates
 	 */
 	public Set<ConflictBucketCandidate> getConflictBucketCandidates() {

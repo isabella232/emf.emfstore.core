@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.client.model.util;
 
 /**
  * Command that can buffer a result for later retrieval.
- * 
+ *
  * @author koegel
  * @param <T> result type
  */
@@ -23,7 +23,7 @@ public abstract class EMFStoreCommandWithResult<T> extends AbstractEMFStoreComma
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.util.AbstractEMFStoreCommand#commandBody()
 	 */
 	@Override
@@ -33,14 +33,14 @@ public abstract class EMFStoreCommandWithResult<T> extends AbstractEMFStoreComma
 
 	/**
 	 * The actual action that is being executed.
-	 * 
+	 *
 	 * @return the result
 	 */
 	protected abstract T doRun();
 
 	/**
 	 * Executes the command on the workspaces editing domain.
-	 * 
+	 *
 	 * @return the result
 	 * @deprecated Use run(boolean) instead
 	 */
@@ -51,7 +51,7 @@ public abstract class EMFStoreCommandWithResult<T> extends AbstractEMFStoreComma
 
 	/**
 	 * Executes the command on the workspaces editing domain.
-	 * 
+	 *
 	 * @param ignoreExceptions true if any thrown exception in the execution of the command should be ignored.
 	 * @return the result
 	 */

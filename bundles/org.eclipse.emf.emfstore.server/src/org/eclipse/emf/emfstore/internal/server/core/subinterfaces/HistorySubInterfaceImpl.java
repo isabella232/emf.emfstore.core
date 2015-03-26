@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -54,14 +54,14 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 /**
  * This subinterfaces implements all history related functionality for the
  * EmfStoreImpl interface.
- * 
+ *
  * @author wesendon
  */
 public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface
 	 *            parent interface
 	 * @throws FatalESException
@@ -78,7 +78,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Add a tag to the specified version specifier.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @param versionSpec
@@ -86,7 +86,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @param tag
 	 *            the tag to be added
 	 * @throws ESException in case of failure
-	 * 
+	 *
 	 */
 	@EmfStoreMethod(MethodId.ADDTAG)
 	public void addTag(ProjectId projectId, PrimaryVersionSpec versionSpec, TagVersionSpec tag)
@@ -109,7 +109,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Removes the tag from the specified version specifier.
-	 * 
+	 *
 	 * @param projectId
 	 *            the ID of a project
 	 * @param versionSpec
@@ -117,7 +117,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @param tag
 	 *            the tag to be removed
 	 * @throws ESException in case of failure
-	 * 
+	 *
 	 */
 	@EmfStoreMethod(MethodId.REMOVETAG)
 	public void removeTag(ProjectId projectId, PrimaryVersionSpec versionSpec, TagVersionSpec tag)
@@ -141,7 +141,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns history information for the given project.
-	 * 
+	 *
 	 * @param projectId
 	 *            the {@link ProjectId} of the project whose history should be fetched
 	 * @param historyQuery
@@ -399,7 +399,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	/**
 	 * Generates a history info from a version. If needed also adds the HEAD
 	 * tag, which isn't persistent.
-	 * 
+	 *
 	 * @param projectId
 	 *            project
 	 * @param version
@@ -458,9 +458,9 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Sorts versions based on the primary version spec.
-	 * 
+	 *
 	 * @author wesendon
-	 * 
+	 *
 	 */
 	private final class VersionComparator implements Comparator<Version> {
 		private final boolean asc;

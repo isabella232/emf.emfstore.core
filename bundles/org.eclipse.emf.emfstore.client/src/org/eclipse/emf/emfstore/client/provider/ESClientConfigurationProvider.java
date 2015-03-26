@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -18,9 +18,9 @@ import org.eclipse.emf.emfstore.client.ESServer;
 /**
  * This provider allows to set the default {@link ESServer} and
  * initialize the {@link ESKeyStoreManager} with necessary certificates.
- * 
+ *
  * @author wesendon
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  */
 public interface ESClientConfigurationProvider {
@@ -34,9 +34,9 @@ public interface ESClientConfigurationProvider {
 	 * {@link org.eclipse.emf.emfstore.client.ESWorkspaceProvider#INSTANCE} in the scope of this method. This means you
 	 * must not create a session while creating the default server information.
 	 * </p>
-	 * 
+	 *
 	 * @return a list of default server entries
-	 * 
+	 *
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	List<ESServer> getDefaultServerInfos();
@@ -45,10 +45,10 @@ public interface ESClientConfigurationProvider {
 	 * Allows the {@link ESClientConfigurationProvider} to initialize the {@link ESKeyStoreManager}. Use
 	 * {@link ESKeyStoreManager#setDefaultCertificate(String)} to set the default alias and
 	 * {@link ESKeyStoreManager#addCertificate(String, java.io.InputStream)} to add your certificate.
-	 * 
+	 *
 	 * @param keyStoreManager
 	 *            the {@link ESKeyStoreManager} to be initialized
-	 * 
+	 *
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	void initDefaultCertificates(ESKeyStoreManager keyStoreManager);

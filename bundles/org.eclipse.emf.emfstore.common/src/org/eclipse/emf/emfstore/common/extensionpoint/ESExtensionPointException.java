@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -13,9 +13,9 @@ package org.eclipse.emf.emfstore.common.extensionpoint;
 
 /**
  * Exception thrown by the {@link ESExtensionPoint} wrapper.
- * 
+ *
  * @author wesendon
- * 
+ *
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public final class ESExtensionPointException extends RuntimeException {
@@ -24,7 +24,7 @@ public final class ESExtensionPointException extends RuntimeException {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param exception causing exception
 	 */
 	public ESExtensionPointException(final Exception exception) {
@@ -33,7 +33,7 @@ public final class ESExtensionPointException extends RuntimeException {
 
 	/**
 	 * Default configuration.
-	 * 
+	 *
 	 * @param message
 	 *            the exception message
 	 */

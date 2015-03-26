@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Stephan Koehler, Eugen Neufeld, Philip Achenbach, DmitryLitvinov - initial API and implementation
  * Edgar Mueller - API layer
@@ -21,21 +21,21 @@ import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
 
 /**
  * Implementation of AbstractModelMutator with empty preMutate and postMutate methods.
- * 
- * 
+ *
+ *
  * @author Eugen Neufeld
  * @author Stephan Koehler
  * @author Philip Achenbach
  * @author Dmitry Litvinov
- * 
+ *
  * @since 2.0
- * 
+ *
  */
 public class ESDefaultModelMutator extends ESAbstractModelMutator {
 
 	/**
 	 * Generates a model as specified in the config.
-	 * 
+	 *
 	 * @param config the configuration
 	 */
 	public static void generateModel(ESModelMutatorConfiguration config) {
@@ -45,7 +45,7 @@ public class ESDefaultModelMutator extends ESAbstractModelMutator {
 
 	/**
 	 * Modifies a model as specified in the config.
-	 * 
+	 *
 	 * @param config the configuration
 	 */
 	public static void changeModel(ESModelMutatorConfiguration config) {
@@ -55,7 +55,7 @@ public class ESDefaultModelMutator extends ESAbstractModelMutator {
 
 	/**
 	 * Modifies a model as specified in the config.
-	 * 
+	 *
 	 * @param config
 	 *            the configuration
 	 * @param ignoredFeatures
@@ -68,7 +68,7 @@ public class ESDefaultModelMutator extends ESAbstractModelMutator {
 
 	/**
 	 * The constructor.
-	 * 
+	 *
 	 * @param config
 	 *            the configuration used in the process
 	 */

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -20,10 +20,10 @@ import org.eclipse.emf.emfstore.internal.modelmutator.mutation.ReferenceChangeMu
 
 /**
  * Factory for creating mutations.
- * 
+ *
  * @author emueller
  * @since 2.0
- * 
+ *
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public final class ESMutationFactory {
@@ -37,7 +37,7 @@ public final class ESMutationFactory {
 
 	/**
 	 * Creates an {@link ESAddObjectMutation}.
-	 * 
+	 *
 	 * @param util
 	 *            the model mutator utility used for accessing the model to be mutated
 	 * @return the created {@link ESAddObjectMutation}
@@ -48,7 +48,7 @@ public final class ESMutationFactory {
 
 	/**
 	 * Creates an {@link ESAttributeChangeMutation}.
-	 * 
+	 *
 	 * @param util
 	 *            the model mutator utility used for accessing the model to be mutated
 	 * @return the created {@link ESAttributeChangeMutation}
@@ -59,7 +59,7 @@ public final class ESMutationFactory {
 
 	/**
 	 * Creates an {@link ESFeatureMapKeyMutation}.
-	 * 
+	 *
 	 * @param util
 	 *            the model mutator utility used for accessing the model to be mutated
 	 * @return the created {@link ESFeatureMapKeyMutation}
@@ -70,7 +70,7 @@ public final class ESMutationFactory {
 
 	/**
 	 * Creates an {@link ESDeleteObjectMutation}.
-	 * 
+	 *
 	 * @param util
 	 *            the model mutator utility used for accessing the model to be mutated
 	 * @return the created {@link ESFeatureMapKeyMutation}
@@ -81,7 +81,7 @@ public final class ESMutationFactory {
 
 	/**
 	 * Creates an {@link ESMoveObjectMutation}.
-	 * 
+	 *
 	 * @param util
 	 *            the model mutator utility used for accessing the model to be mutated
 	 * @return the created {@link ESMoveObjectMutation}
@@ -92,7 +92,7 @@ public final class ESMutationFactory {
 
 	/**
 	 * Creates an {@link ESReferenceChangeMutation}.
-	 * 
+	 *
 	 * @param util
 	 *            the model mutator utility used for accessing the model to be mutated
 	 * @return the created {@link ESReferenceChangeMutation}

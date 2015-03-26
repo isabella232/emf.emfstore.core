@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model.impl;
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<String, EMFStoreProperty> {
@@ -40,7 +40,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
@@ -72,7 +72,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PropertyMapEntryImpl() {
@@ -82,7 +82,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,7 +93,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getTypedKey() {
@@ -103,7 +103,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTypedKey(String newKey) {
@@ -117,7 +117,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMFStoreProperty getTypedValue() {
@@ -137,7 +137,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMFStoreProperty basicGetTypedValue() {
@@ -147,7 +147,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTypedValue(EMFStoreProperty newValue) {
@@ -162,7 +162,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -182,7 +182,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -201,7 +201,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -220,7 +220,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -237,7 +237,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -256,7 +256,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected int hash = -1;
@@ -264,7 +264,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getHash() {
@@ -278,7 +278,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setHash(int hash) {
@@ -288,7 +288,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getKey() {
@@ -298,7 +298,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setKey(String key) {
@@ -308,7 +308,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMFStoreProperty getValue() {
@@ -318,7 +318,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMFStoreProperty setValue(EMFStoreProperty value) {
@@ -330,7 +330,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")

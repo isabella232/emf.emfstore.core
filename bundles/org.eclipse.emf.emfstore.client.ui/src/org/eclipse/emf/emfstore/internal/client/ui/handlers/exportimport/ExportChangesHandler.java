@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.handlers.AbstractEMFStoreHand
 
 /**
  * Handler for exporting local changes from a selected {@link ProjectSpace}.
- * 
+ *
  * @author emueller
  */
 public class ExportChangesHandler extends AbstractEMFStoreHandler {

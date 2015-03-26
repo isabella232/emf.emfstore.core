@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Helming
  ******************************************************************************/
@@ -33,7 +33,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * The decorator that shows the version of a ProjectSpace.
- * 
+ *
  * @author Helming
  */
 public class VersionDecorator extends AdapterImpl implements ILightweightLabelDecorator, ESUpdateObserver,
@@ -68,9 +68,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void addListener(ILabelProviderListener listener) {
@@ -78,9 +78,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
 	 */
 	public void dispose() {
@@ -96,9 +96,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
 	 */
 	public void removeListener(ILabelProviderListener listener) {
@@ -106,9 +106,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	@Override
@@ -119,9 +119,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -130,9 +130,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#commitCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
@@ -142,7 +142,7 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
 	 */
 	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages, IProgressMonitor monitor) {
@@ -150,9 +150,9 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#updateCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Zardosht Hodaie - initial API and implementation
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * This is a dialog to manage users and groups (OrgUnits) and their access
  * rights for different projects.
- * 
+ *
  * @author Hodaie
  */
 public class ManageOrgUnitsDialog extends Dialog {
@@ -30,7 +30,7 @@ public class ManageOrgUnitsDialog extends Dialog {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            Shell
 	 * @param adminBroker
@@ -47,7 +47,7 @@ public class ManageOrgUnitsDialog extends Dialog {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
 	 */
 	@Override

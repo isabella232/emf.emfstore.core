@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model;
@@ -33,11 +33,11 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Workspace</b></em>'.
- * 
+ *
  * @implements IAdaptable
  * @extends APIDelegate<ESWorkspaceImpl>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -47,7 +47,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getUsersessions <em>Usersessions</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace()
  * @model
  * @generated
@@ -56,7 +56,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Creates a new local project that is not shared with the server yet.
-	 * 
+	 *
 	 * @param projectName
 	 *            the project name
 	 * @param projectDescription
@@ -67,7 +67,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Exports a project space to a file.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            The project space that should be exported
 	 * @param file
@@ -79,7 +79,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Exports a project space to a file.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            The project space that should be exported
 	 * @param file
@@ -93,7 +93,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Exports the whole workspace.
-	 * 
+	 *
 	 * @param file
 	 *            The file to export to
 	 * @throws IOException
@@ -103,7 +103,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Exports the whole workspace to the given file.
-	 * 
+	 *
 	 * @param file
 	 *            The file to export to
 	 * @param progressMonitor
@@ -115,7 +115,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Returns an {@link AdminBroker} related to the given {@link ServerInfo}.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            The {@link ServerInfo} that should be used to retrieve the
 	 *            admin broker.
@@ -130,7 +130,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Returns an {@link AdminBroker} related to the given {@link Usersession}.
-	 * 
+	 *
 	 * @param session
 	 *            The user session that should be used to retrieve the admin
 	 *            broker.<br/>
@@ -147,7 +147,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Return this editing domain belonging to this workspace.
-	 * 
+	 *
 	 * @return the editing domain
 	 * @generated NOT
 	 */
@@ -155,7 +155,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Retrieves the project space for the given project.
-	 * 
+	 *
 	 * @param project
 	 *            The project for which to retrieve the project space.
 	 * @return the project space the given project is contained in
@@ -175,7 +175,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Spaces</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace_ProjectSpaces()
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getWorkspace
@@ -194,7 +194,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Server Infos</em>' containment reference
 	 *         list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace_ServerInfos()
@@ -213,7 +213,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Usersessions</em>' containment reference
 	 *         list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace_Usersessions()
@@ -224,7 +224,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Imports a project into a project space.
-	 * 
+	 *
 	 * @param project
 	 *            The project to be imported
 	 * @param name
@@ -240,7 +240,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	/**
 	 * Import an existing project from a given file. The project space
 	 * containing the project will be created upon execution.
-	 * 
+	 *
 	 * @param absoluteFileName
 	 *            The absolute path to a file to import from.
 	 * @return the newly created project space in which the imported project is
@@ -252,7 +252,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Import an existing project space from a file.
-	 * 
+	 *
 	 * @param absoluteFileName
 	 *            The absolute path to a file to import from.
 	 * @return the imported project space
@@ -263,7 +263,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Initializes the workspace and its project spaces.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	void init();
@@ -272,7 +272,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	 * Resolves a project URL fragment to the project space the project is in.<br/>
 	 * Since a project may have been checked out multiple times, a set of
 	 * project spaces is returned.
-	 * 
+	 *
 	 * @param projectUrlFragment
 	 *            the project URL fragment to resolve
 	 * @return a set of matching project spaces
@@ -284,7 +284,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Resolves a server URL to a server.
-	 * 
+	 *
 	 * @param serverUrl
 	 *            the server URL to be resolved
 	 * @return the resolved {@link ServerInfo}
@@ -300,7 +300,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Returns the workspace resource set.
-	 * 
+	 *
 	 * @return The resource set of the workspace
 	 * @generated NOT
 	 */
@@ -308,7 +308,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Set the workspace resource set.
-	 * 
+	 *
 	 * @param resourceSet
 	 *            The resource set to be set.
 	 * @generated NOT
@@ -317,7 +317,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Updates the ACUser and it roles.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            The {@link ServerInfo} that is used to update the ACUser.
 	 * @throws ESException
@@ -327,7 +327,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Updates the ACUser and it roles.
-	 * 
+	 *
 	 * @param session
 	 *            The {@link Usersession} that should be used to update the
 	 *            ACUser. If <code>null</code>, the session manager will search
@@ -339,7 +339,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Adds an server info and saves.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            the server info to be added
 	 */
@@ -347,7 +347,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Removes an server info and saves.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            the server info to be removed
 	 */
@@ -355,7 +355,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 
 	/**
 	 * Remove the given {@link Usersession} from the workspace.
-	 * 
+	 *
 	 * @param session
 	 *            the session to be removed
 	 * @throws ESException

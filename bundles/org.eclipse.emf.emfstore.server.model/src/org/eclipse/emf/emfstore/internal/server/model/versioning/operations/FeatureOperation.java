@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Feature Operation</b></em>'. <!-- end-user-doc
  * -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  * <em>Feature Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getFeatureOperation()
  * @model abstract="true"
  * @generated
@@ -41,7 +41,7 @@ public interface FeatureOperation extends AbstractOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Feature Name</em>' attribute.
 	 * @see #setFeatureName(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getFeatureOperation_FeatureName()
@@ -56,7 +56,7 @@ public interface FeatureOperation extends AbstractOperation {
 	 * <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Feature Name</em>' attribute.
 	 * @see #getFeatureName()
 	 * @generated
@@ -73,7 +73,7 @@ public interface FeatureOperation extends AbstractOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Unset</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.UnsetType
 	 * @see #setUnset(UnsetType)
@@ -89,7 +89,7 @@ public interface FeatureOperation extends AbstractOperation {
 	 * <em>Unset</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Unset</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.UnsetType
 	 * @see #getUnset()
@@ -100,7 +100,7 @@ public interface FeatureOperation extends AbstractOperation {
 	/**
 	 * Get the feature from the Eclass of the model element identified by the
 	 * model element of the operation.
-	 * 
+	 *
 	 * @param project
 	 *            the project
 	 * @return the feature
@@ -112,7 +112,7 @@ public interface FeatureOperation extends AbstractOperation {
 
 	/**
 	 * Get the feature from the eclass of the given model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element
 	 * @return the feature

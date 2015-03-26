@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.server.ESXmlRpcWebServerProvider;
 
 /**
  * Manages the webserver for XML RPC connections.
- * 
+ *
  * @author wesendon
  */
 public final class XmlRpcWebserverManager {
@@ -37,7 +37,7 @@ public final class XmlRpcWebserverManager {
 
 	/**
 	 * Returns an instance of the webserver manager.
-	 * 
+	 *
 	 * @return instance of websever manager.
 	 */
 	public static ESXmlRpcWebServerProvider getInstance() {
@@ -51,7 +51,7 @@ public final class XmlRpcWebserverManager {
 	/**
 	 * Returns the registered {@link ESLocationProvider} or if not existent, the
 	 * {@link org.eclipse.emf.emfstore.internal.server.DefaultServerWorkspaceLocationProvider}.
-	 * 
+	 *
 	 * @return workspace location provider
 	 */
 	public static synchronized ESXmlRpcWebServerProvider getWebServerProvider() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  ******************************************************************************/
@@ -23,14 +23,14 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * This subinterface implements all user related functionality.
- * 
+ *
  * @author wesendonk
  */
 public class UserSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param parentInterface parent interface
 	 * @throws FatalESException in case of failure
 	 */
@@ -40,7 +40,7 @@ public class UserSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Resolves a given user ID to the an actual user instance.
-	 * 
+	 *
 	 * @param sessionId
 	 *            the ID of the session that is used to resolve the user
 	 * @param id

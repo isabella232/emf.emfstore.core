@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jfinis
  ******************************************************************************/
@@ -14,7 +14,7 @@ package org.eclipse.emf.emfstore.internal.client.model.filetransfer;
 /**
  * Statistics class that can be queried to get detailed information about a file transfer. This information might be
  * useful to display pretty progress monitor text for example.
- * 
+ *
  * @author jfinis
  */
 public class FileTransferStatistics {
@@ -23,21 +23,21 @@ public class FileTransferStatistics {
 	private int transferredBytes;
 	private long startTime;
 	private long stopTime;
-	private FileDownloadStatus status;
+	private final FileDownloadStatus status;
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param status the starting status.
 	 */
 	FileTransferStatistics(FileDownloadStatus status) {
-		this.fileSize = FileDownloadStatus.NOT_AVAILABLE;
+		fileSize = FileDownloadStatus.NOT_AVAILABLE;
 		this.status = status;
 	}
 
 	/**
 	 * .
-	 * 
+	 *
 	 * @return the file size
 	 */
 	public int getFileSize() {
@@ -46,7 +46,7 @@ public class FileTransferStatistics {
 
 	/**
 	 * .
-	 * 
+	 *
 	 * @return the number of already transferred bytes
 	 */
 	public int getTransferredBytes() {
@@ -56,7 +56,7 @@ public class FileTransferStatistics {
 	/**
 	 * Returns a value between 0 and 1 stating the percentage of already transfered data. If the transfer has not been
 	 * started yet, 0 is returned. If the transfer is finished, 1 is returned.
-	 * 
+	 *
 	 * @return percentage of transfered data
 	 */
 	public float getPercentTransferred() {
@@ -68,7 +68,7 @@ public class FileTransferStatistics {
 		default:
 		}
 
-		int fileSize = getFileSize();
+		final int fileSize = getFileSize();
 
 		// Better not risk a division by zero
 		if (fileSize <= 0) {
@@ -80,7 +80,7 @@ public class FileTransferStatistics {
 
 	/**
 	 * Returns the average throughput in bytes per second.
-	 * 
+	 *
 	 * @return average throughput
 	 */
 	public float getAverageThroughput() {
@@ -89,7 +89,7 @@ public class FileTransferStatistics {
 			return 0;
 		default:
 		}
-		long elapsed = getElapsedMilis();
+		final long elapsed = getElapsedMilis();
 
 		// No div by zero
 		if (elapsed == 0) {
@@ -103,7 +103,7 @@ public class FileTransferStatistics {
 	 * Gets the number of remaining seconds (estimated). Works only if the transfer is running. If it is finished 0 is
 	 * returned. If it is not yet started or canceled, then NOT_AVAILABLE is returned. If the throughput is 0, then
 	 * NOT_AVAILABLE is returned as well.
-	 * 
+	 *
 	 * @return the number of remaining seconds
 	 */
 	public int getEstimatedRemainingTime() {
@@ -115,8 +115,8 @@ public class FileTransferStatistics {
 			return 0;
 		default:
 		}
-		int remaining = getRemainingBytes();
-		float avgThroughput = getAverageThroughput();
+		final int remaining = getRemainingBytes();
+		final float avgThroughput = getAverageThroughput();
 
 		if (avgThroughput == 0) {
 			return FileDownloadStatus.NOT_AVAILABLE;
@@ -127,7 +127,7 @@ public class FileTransferStatistics {
 
 	/**
 	 * returns the amount of bytes that has not yet been transferred.
-	 * 
+	 *
 	 * @return remaining bytes
 	 */
 	public int getRemainingBytes() {
@@ -137,7 +137,7 @@ public class FileTransferStatistics {
 	/**
 	 * Returns the number of seconds the download is already active. If it is not yet active, then 0 is returned. If the
 	 * download is finished or canceled, then the time in which it was active is returned.
-	 * 
+	 *
 	 * @return the elapsed time
 	 */
 	public int getElapsedTime() {
@@ -146,7 +146,7 @@ public class FileTransferStatistics {
 
 	/**
 	 * .
-	 * 
+	 *
 	 * @return the elapsed time since start in milliseconds
 	 */
 	private long getElapsedMilis() {
@@ -163,7 +163,7 @@ public class FileTransferStatistics {
 
 	/**
 	 * Internal method that is called to register the start of the transfer.
-	 * 
+	 *
 	 * @param fileSize the size of the file
 	 */
 	void registerStart(int fileSize) {

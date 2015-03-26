@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestRunImpl#getResults <em>Results</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestRunImpl extends EObjectImpl implements TestRun {
@@ -47,7 +47,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The cached value of the '{@link #getConfig() <em>Config</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getConfig()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTime()
 	 * @generated
 	 * @ordered
@@ -69,7 +69,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTime()
 	 * @generated
 	 * @ordered
@@ -80,7 +80,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getResults()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestRunImpl() {
@@ -100,7 +100,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig getConfig() {
@@ -121,7 +121,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetConfig(TestConfig newConfig, NotificationChain msgs) {
@@ -142,7 +142,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setConfig(TestConfig newConfig) {
@@ -169,7 +169,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getTime() {
@@ -179,7 +179,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTime(Date newTime) {
@@ -193,7 +193,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestResult> getResults() {
@@ -206,7 +206,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -223,7 +223,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -242,7 +242,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -266,7 +266,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -288,7 +288,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -307,7 +307,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

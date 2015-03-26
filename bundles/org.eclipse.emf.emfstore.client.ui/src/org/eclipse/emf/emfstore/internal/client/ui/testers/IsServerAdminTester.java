@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Shterev
  ******************************************************************************/
@@ -23,14 +23,14 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 
 /**
  * Checks if the user has admin access to the server.
- * 
+ *
  * @author Shterev
  */
 public class IsServerAdminTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */
@@ -42,7 +42,7 @@ public class IsServerAdminTester extends PropertyTester {
 			if (receiver instanceof ServerInfo) {
 				serverInfo = (ServerInfo) receiver;
 			} else if (receiver instanceof ProjectInfo) {
-				ProjectInfo projectInfo = (ProjectInfo) receiver;
+				final ProjectInfo projectInfo = (ProjectInfo) receiver;
 				serverInfo = findServerInfo(projectInfo);
 			}
 
@@ -52,24 +52,24 @@ public class IsServerAdminTester extends PropertyTester {
 
 			// TODO OTS
 			final ServerInfo finalServerInfo = serverInfo;
-			EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
+			final EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
 				@Override
 				protected Boolean doRun() {
-					Usersession usersession = finalServerInfo.getLastUsersession();
+					final Usersession usersession = finalServerInfo.getLastUsersession();
 					boolean isAdmin = false;
 					if (usersession != null && usersession.getACUser() != null) {
-						AccessControlHelper accessControlHelper = new AccessControlHelper(usersession);
+						final AccessControlHelper accessControlHelper = new AccessControlHelper(usersession);
 						try {
 							accessControlHelper.checkServerAdminAccess();
 							isAdmin = true;
-						} catch (AccessControlException e) {
+						} catch (final AccessControlException e) {
 						}
 					}
 
 					return new Boolean(isAdmin).equals(expectedValue);
 				}
 			};
-			Boolean result = command.run(false);
+			final Boolean result = command.run(false);
 			return result;
 
 		}
@@ -77,8 +77,8 @@ public class IsServerAdminTester extends PropertyTester {
 	}
 
 	private ServerInfo findServerInfo(ProjectInfo projectInfo) {
-		ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
-		for (ServerInfo serverInfo : workspace.toInternalAPI().getServerInfos()) {
+		final ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
+		for (final ServerInfo serverInfo : workspace.toInternalAPI().getServerInfos()) {
 			if (projectInfo.eContainer() != null && projectInfo.eContainer().equals(serverInfo)) {
 				return serverInfo;
 			}

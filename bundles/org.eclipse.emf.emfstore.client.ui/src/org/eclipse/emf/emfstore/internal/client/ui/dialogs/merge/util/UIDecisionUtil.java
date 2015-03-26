@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Class offering common methods for the merge dialog.
- * 
+ *
  * @author wesendon
  */
 public final class UIDecisionUtil {
@@ -36,7 +36,7 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Fetches image by path.
-	 * 
+	 *
 	 * @param path
 	 *            path
 	 * @return image
@@ -47,7 +47,7 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Fetches image descriptor by path.
-	 * 
+	 *
 	 * @param path
 	 *            path
 	 * @return {@link ImageDescriptor}
@@ -64,7 +64,7 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Cuts a text to certain length and adds "..." at the end if needed.
-	 * 
+	 *
 	 * @param str
 	 *            text
 	 * @param length
@@ -90,7 +90,7 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Strips line breaking characters from text.
-	 * 
+	 *
 	 * @param text
 	 *            text
 	 * @return linf of text
@@ -104,7 +104,7 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Returns FontRegistry.
-	 * 
+	 *
 	 * @return fonts
 	 */
 	public static synchronized FontRegistry getFontRegistry() {
@@ -117,9 +117,9 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Returns the visualizationhelper.
-	 * 
+	 *
 	 * @param decisionManager instance of the decisionManager
-	 * 
+	 *
 	 * @return visualizationhelper
 	 */
 	public static ChangePackageVisualizationHelper getChangePackageVisualizationHelper(DecisionManager decisionManager) {
@@ -128,7 +128,7 @@ public final class UIDecisionUtil {
 
 	/**
 	 * Returns a label provider.
-	 * 
+	 *
 	 * @return label provider
 	 */
 	public static AdapterFactoryLabelProvider getAdapterFactory() {

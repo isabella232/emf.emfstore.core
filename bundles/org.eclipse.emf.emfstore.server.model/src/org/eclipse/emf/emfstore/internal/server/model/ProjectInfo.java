@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
@@ -15,9 +15,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Info</b></em>'.
- * 
+ *
  * <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectInfo()
  * @model
  * @generated
@@ -40,7 +40,7 @@ public interface ProjectInfo extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see ModelPackage#getProjectInfo_Name()
@@ -53,7 +53,7 @@ public interface ProjectInfo extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo#getName <em>Name</em>}'
 	 * attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -68,7 +68,7 @@ public interface ProjectInfo extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see ModelPackage#getProjectInfo_Description()
@@ -82,7 +82,7 @@ public interface ProjectInfo extends EObject {
 	 * <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Description</em>' attribute.
 	 * @see #getDescription()
 	 * @generated
@@ -97,7 +97,7 @@ public interface ProjectInfo extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Id</em>' containment reference.
 	 * @see #setProjectId(ProjectId)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectInfo_ProjectId()
@@ -111,7 +111,7 @@ public interface ProjectInfo extends EObject {
 	 * <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Project Id</em>' containment reference.
 	 * @see #getProjectId()
 	 * @generated
@@ -126,7 +126,7 @@ public interface ProjectInfo extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Version</em>' containment reference.
 	 * @see #setVersion(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectInfo_Version()
@@ -140,7 +140,7 @@ public interface ProjectInfo extends EObject {
 	 * <em>Version</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Version</em>' containment reference.
 	 * @see #getVersion()
 	 * @generated

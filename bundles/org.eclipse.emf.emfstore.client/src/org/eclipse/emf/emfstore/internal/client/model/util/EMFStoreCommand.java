@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -13,14 +13,14 @@ package org.eclipse.emf.emfstore.internal.client.model.util;
 
 /**
  * Recording command that can buffer a result for later retrieval.
- * 
+ *
  * @author koegel
  */
 public abstract class EMFStoreCommand extends AbstractEMFStoreCommand {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param label the commands label.
 	 */
 	public EMFStoreCommand(String label) {
@@ -30,7 +30,7 @@ public abstract class EMFStoreCommand extends AbstractEMFStoreCommand {
 
 	/**
 	 * Default Constructor.
-	 * 
+	 *
 	 */
 	public EMFStoreCommand() {
 		super();
@@ -43,7 +43,7 @@ public abstract class EMFStoreCommand extends AbstractEMFStoreCommand {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.util.AbstractEMFStoreCommand#commandBody()
 	 */
 	@Override
@@ -53,7 +53,7 @@ public abstract class EMFStoreCommand extends AbstractEMFStoreCommand {
 
 	/**
 	 * Executes the command on the workspaces editing domain.
-	 * 
+	 *
 	 * @param ignoreExceptions true if any thrown exception in the execution of the command should be ignored.
 	 */
 	public void run(boolean ignoreExceptions) {

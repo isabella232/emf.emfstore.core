@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config;
@@ -17,22 +17,23 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESTestConfigImpl;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>ESFuzzyTest Config</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESTestConfigImpl>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getSeed <em>Seed</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getCount <em>Count</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass <em>ESFuzzyTest Class</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass <em>ESFuzzyTest Class
+ *          </em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getId <em>Id</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getMutatorConfig <em>Mutator Config
  *          </em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig()
  * @model
  * @generated
@@ -45,7 +46,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * If the meaning of the '<em>Seed</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Seed</em>' attribute.
 	 * @see #setSeed(long)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_Seed()
@@ -59,7 +60,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>Seed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Seed</em>' attribute.
 	 * @see #getSeed()
 	 * @generated
@@ -74,7 +75,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Count</em>' attribute.
 	 * @see #setCount(int)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_Count()
@@ -88,7 +89,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Count</em>' attribute.
 	 * @see #getCount()
 	 * @generated
@@ -99,11 +100,11 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * Returns the value of the '<em><b>ESFuzzyTest Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>ESFuzzyTest Class</em>' attribute isn't clear, there really should be more of a description
-	 * here...
+	 * If the meaning of the '<em>ESFuzzyTest Class</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>ESFuzzyTest Class</em>' attribute.
 	 * @see #setTestClass(Class)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_TestClass()
@@ -117,7 +118,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>ESFuzzyTest Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>ESFuzzyTest Class</em>' attribute.
 	 * @see #getTestClass()
 	 * @generated
@@ -131,7 +132,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_Id()
@@ -145,7 +146,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -160,7 +161,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Mutator Config</em>' containment reference.
 	 * @see #setMutatorConfig(MutatorConfig)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_MutatorConfig()
@@ -174,7 +175,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>Mutator Config</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Mutator Config</em>' containment reference.
 	 * @see #getMutatorConfig()
 	 * @generated

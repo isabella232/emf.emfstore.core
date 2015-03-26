@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.events.impl;
@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
@@ -30,7 +30,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static EventsFactory init() {
@@ -53,7 +53,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EventsFactoryImpl() {
@@ -62,7 +62,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Event createEvent() {
@@ -88,7 +88,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EventsPackage getEventsPackage() {
@@ -97,7 +97,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

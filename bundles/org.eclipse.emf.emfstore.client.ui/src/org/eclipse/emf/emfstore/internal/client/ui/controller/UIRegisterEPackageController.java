@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * TobiasVerhoeven
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * The Class UIRegisterEPackageController.
- * 
+ *
  * @author Tobias Verhoeven
  */
 public class UIRegisterEPackageController extends
@@ -39,7 +39,7 @@ public class UIRegisterEPackageController extends
 
 	/**
 	 * Instantiates a new UIRegisterPackageController.
-	 * 
+	 *
 	 * @param shell
 	 *            shell
 	 * @param serverInfo
@@ -52,7 +52,7 @@ public class UIRegisterEPackageController extends
 
 	/**
 	 * Register a new EPackage which can be selected with a SelectionDialog.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            server info
 	 * @throws ESException

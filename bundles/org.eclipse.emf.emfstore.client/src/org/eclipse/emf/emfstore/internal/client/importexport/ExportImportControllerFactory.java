@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 
 /**
  * Convenience class for easy obtainment of export/import controllers.
- * 
+ *
  * @author emueller
  */
 public class ExportImportControllerFactory {
@@ -38,7 +38,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns the controller for exporting a project history.
-		 * 
+		 *
 		 * @param projectInfo
 		 *            the project info containing the history to be exported
 		 * @return the controller for exporting the given project history
@@ -49,7 +49,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns the controller for exporting changes on a given project space.
-		 * 
+		 *
 		 * @param projectSpace
 		 *            the project space containing the pending changes to be exported
 		 * @return the controller for exporting the changes on the given project space
@@ -60,7 +60,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns the controller for exporting a project.
-		 * 
+		 *
 		 * @param projectSpace
 		 *            the project space containing the project to be exported
 		 * @return the controller for exporting the given project within the given project space
@@ -71,7 +71,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns the controller for exporting the whole workspace.
-		 * 
+		 *
 		 * @return the controller for exporting the workspace
 		 */
 		public static IExportImportController getExportWorkspaceController() {
@@ -80,7 +80,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns the controller for exporting a given project space.
-		 * 
+		 *
 		 * @param projectSpace
 		 *            the project space to be exported
 		 * @return the controller for exporting the given project space
@@ -97,7 +97,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns a controller for import a project history.
-		 * 
+		 *
 		 * @return a controller for importing a project history
 		 */
 		public static IExportImportController getImportProjectHistoryController() {
@@ -106,7 +106,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns a controller for import the changes on the given project space.
-		 * 
+		 *
 		 * @param projectSpace
 		 *            the project space containing the changes to be imported
 		 * @return a controller for importing changes on the given project space
@@ -118,7 +118,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns a controller for import a project.
-		 * 
+		 *
 		 * @param projectName
 		 *            a name that will be assigned to the imported project
 		 * @return a controller for importing a project
@@ -129,7 +129,7 @@ public class ExportImportControllerFactory {
 
 		/**
 		 * Returns a controller for import the given project space.
-		 * 
+		 *
 		 * @return a controller for importing the given project space
 		 */
 		public static IExportImportController getImportProjectSpaceController() {

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflict
 
 /**
  * Exception that represents that there are conflicting changes.
- * 
+ *
  * @author koegel
  */
 @SuppressWarnings("serial")
@@ -25,7 +25,7 @@ public class ChangeConflictException extends WorkspaceException {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param changeConflict
 	 *            the {@link ChangeConflictSet} leading to the conflict
 	 */
@@ -35,7 +35,7 @@ public class ChangeConflictException extends WorkspaceException {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param message
 	 *            a error message
 	 * @param conflictSet
@@ -49,7 +49,7 @@ public class ChangeConflictException extends WorkspaceException {
 
 	/**
 	 * Returns the change conflict.
-	 * 
+	 *
 	 * @return the change conflict that caused the exception
 	 */
 	public ChangeConflictSet getChangeConflict() {

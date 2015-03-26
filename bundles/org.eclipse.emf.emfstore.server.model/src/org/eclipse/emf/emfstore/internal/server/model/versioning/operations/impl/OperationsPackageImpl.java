@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -58,132 +58,132 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OperationsPackageImpl extends EPackageImpl implements OperationsPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass abstractOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass compositeOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass featureOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass createDeleteOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass attributeOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass multiAttributeOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass multiAttributeSetOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass multiAttributeMoveOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass singleReferenceOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass multiReferenceOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass multiReferenceSetOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass multiReferenceMoveOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass referenceOperationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass operationIdEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass operationGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass modelElementGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass eObjectToModelElementIdMapEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EEnum containmentTypeEEnum = null;
@@ -191,7 +191,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EEnum unsetTypeEEnum = null;
@@ -204,7 +204,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
 	 * performs initialization of the package, or returns the registered package, if one already exists. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#eNS_URI
 	 * @see #init()
@@ -216,19 +216,19 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>
 	 * This method is used to initialize {@link OperationsPackage#eINSTANCE} when that field is accessed. Clients should
 	 * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -310,7 +310,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getAbstractOperation() {
@@ -319,7 +319,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getAbstractOperation_ModelElementId() {
@@ -328,7 +328,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getAbstractOperation_Accepted() {
@@ -337,7 +337,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getAbstractOperation_ClientDate() {
@@ -346,7 +346,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getCompositeOperation() {
@@ -355,7 +355,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getCompositeOperation_SubOperations() {
@@ -364,7 +364,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getCompositeOperation_MainOperation() {
@@ -373,7 +373,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getCompositeOperation_CompositeName() {
@@ -382,7 +382,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getCompositeOperation_CompositeDescription() {
@@ -391,7 +391,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getCompositeOperation_Reversed() {
@@ -400,7 +400,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getFeatureOperation() {
@@ -409,7 +409,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getFeatureOperation_FeatureName() {
@@ -419,7 +419,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getFeatureOperation_Unset()
@@ -429,7 +429,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getCreateDeleteOperation() {
@@ -438,7 +438,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getCreateDeleteOperation_Delete() {
@@ -447,7 +447,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getCreateDeleteOperation_ModelElement() {
@@ -456,7 +456,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getCreateDeleteOperation_SubOperations() {
@@ -465,7 +465,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getCreateDeleteOperation_EObjectToIdMap() {
@@ -474,7 +474,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getAttributeOperation() {
@@ -483,7 +483,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getAttributeOperation_OldValue() {
@@ -492,7 +492,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getAttributeOperation_NewValue() {
@@ -501,7 +501,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getMultiAttributeOperation() {
@@ -510,7 +510,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeOperation_Add() {
@@ -519,7 +519,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeOperation_Indexes() {
@@ -528,7 +528,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeOperation_ReferencedValues() {
@@ -537,7 +537,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getMultiAttributeSetOperation() {
@@ -546,7 +546,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeSetOperation_Index() {
@@ -555,7 +555,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeSetOperation_OldValue() {
@@ -564,7 +564,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeSetOperation_NewValue() {
@@ -573,7 +573,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getMultiAttributeMoveOperation() {
@@ -582,7 +582,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeMoveOperation_OldIndex() {
@@ -591,7 +591,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeMoveOperation_NewIndex() {
@@ -600,7 +600,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiAttributeMoveOperation_ReferencedValue() {
@@ -609,7 +609,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getSingleReferenceOperation() {
@@ -618,7 +618,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getSingleReferenceOperation_OldValue() {
@@ -627,7 +627,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getSingleReferenceOperation_NewValue() {
@@ -636,7 +636,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getMultiReferenceOperation() {
@@ -645,7 +645,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiReferenceOperation_Add() {
@@ -654,7 +654,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiReferenceOperation_Index() {
@@ -663,7 +663,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getMultiReferenceOperation_ReferencedModelElements() {
@@ -672,7 +672,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getMultiReferenceSetOperation() {
@@ -681,7 +681,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiReferenceSetOperation_Index() {
@@ -690,7 +690,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getMultiReferenceSetOperation_OldValue() {
@@ -699,7 +699,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getMultiReferenceSetOperation_NewValue() {
@@ -708,7 +708,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getMultiReferenceMoveOperation() {
@@ -717,7 +717,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiReferenceMoveOperation_OldIndex() {
@@ -726,7 +726,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getMultiReferenceMoveOperation_NewIndex() {
@@ -735,7 +735,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getMultiReferenceMoveOperation_ReferencedModelElementId() {
@@ -744,7 +744,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getReferenceOperation() {
@@ -753,7 +753,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getReferenceOperation_Bidirectional() {
@@ -762,7 +762,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getReferenceOperation_OppositeFeatureName() {
@@ -771,7 +771,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getReferenceOperation_ContainmentType() {
@@ -780,7 +780,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getOperationId() {
@@ -789,7 +789,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getOperationGroup() {
@@ -798,7 +798,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getOperationGroup_Name() {
@@ -807,7 +807,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getOperationGroup_Operations() {
@@ -816,7 +816,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getModelElementGroup() {
@@ -825,7 +825,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getModelElementGroup_Name() {
@@ -834,7 +834,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getModelElementGroup_ModelElements() {
@@ -843,7 +843,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getEObjectToModelElementIdMap() {
@@ -852,7 +852,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getEObjectToModelElementIdMap_Key() {
@@ -861,7 +861,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getEObjectToModelElementIdMap_Value() {
@@ -870,7 +870,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EEnum getContainmentType() {
@@ -880,7 +880,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EEnum getUnsetType()
@@ -890,7 +890,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OperationsFactory getOperationsFactory() {
@@ -899,7 +899,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -909,7 +909,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -1005,7 +1005,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -1014,7 +1014,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * Complete the initialization of the package and its meta-model. This
 	 * method is guarded to have no affect on any invocation but its first. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void initializePackageContents() {

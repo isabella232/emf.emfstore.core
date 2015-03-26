@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -22,9 +22,9 @@ import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 
 /**
  * Represents the configuration of the EMFStore MongoDB plugin.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public final class MongoDBConfiguration {
 
@@ -98,7 +98,7 @@ public final class MongoDBConfiguration {
 	/**
 	 * Returns the prefix for MongoDB URIs. <br>
 	 * e.g. <code>mongodb://localhost/</code> </br>
-	 * 
+	 *
 	 * @return the prefix
 	 */
 	public String getMongoURIPrefix() {

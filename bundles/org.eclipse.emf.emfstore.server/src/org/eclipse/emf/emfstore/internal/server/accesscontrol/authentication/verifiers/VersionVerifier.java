@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -23,20 +23,20 @@ import org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo;
  * Utility class to verify the client version. When specifying the allowed versions, clients may either specify an array
  * containing all allowed version numbers or specify a single wildcard version.
  * </p>
- * 
+ *
  * <p>
  * A wildcard version is specified via the '*' letter. All other letters known from regular expressions are not
  * considered.
  * </p>
- * 
+ *
  * <p>
  * For instance the wildcard version 1.2.3.x would accept all 1.2.3 versions independently of the actual qualifier where
  * {@code x} stand for a qualifier. Multiple wildcard versions are <b>not</b> allowed
  * </p>
- * 
- * 
+ *
+ *
  * @author emueller
- * 
+ *
  */
 public final class VersionVerifier {
 
@@ -45,10 +45,10 @@ public final class VersionVerifier {
 
 	/**
 	 * Verifies the client version against a set of allowed versions.
-	 * 
+	 *
 	 * @param versions
 	 *            the list of accepted versions or a single wildcard version like '1.2.3.*'
-	 * 
+	 *
 	 * @param clientVersionInfo
 	 *            the client version to verify
 	 * @throws ClientVersionOutOfDateException

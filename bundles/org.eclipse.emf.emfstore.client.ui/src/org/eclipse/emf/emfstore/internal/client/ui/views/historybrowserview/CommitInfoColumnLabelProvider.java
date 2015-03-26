@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * aleaum
  ******************************************************************************/
@@ -20,16 +20,16 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 
 /**
  * @author aleaum
- * 
+ *
  */
 public class CommitInfoColumnLabelProvider extends ColumnLabelProvider {
 	@Override
 	public String getText(Object element) {
 		if (element instanceof HistoryInfo) {
-			HistoryInfo historyInfo = (HistoryInfo) element;
+			final HistoryInfo historyInfo = (HistoryInfo) element;
 			LogMessage logMessage = null;
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm");
-			StringBuilder builder = new StringBuilder();
+			final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm");
+			final StringBuilder builder = new StringBuilder();
 			if (historyInfo.getLogMessage() != null) {
 				logMessage = historyInfo.getLogMessage();
 			} else if (historyInfo.getChangePackage() != null && historyInfo.getChangePackage().getLogMessage() != null) {
@@ -38,7 +38,7 @@ public class CommitInfoColumnLabelProvider extends ColumnLabelProvider {
 			if (logMessage != null) {
 				builder.append(" [");
 				builder.append(logMessage.getAuthor());
-				Date clientDate = logMessage.getClientDate();
+				final Date clientDate = logMessage.getClientDate();
 				if (clientDate != null) {
 					builder.append(" @ ");
 					builder.append(dateFormat.format(clientDate));

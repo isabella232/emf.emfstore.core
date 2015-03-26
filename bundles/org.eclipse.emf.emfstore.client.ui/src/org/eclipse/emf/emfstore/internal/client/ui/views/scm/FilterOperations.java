@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -19,9 +19,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 /**
  * A class that divides an given input into operations that may be filtered via
  * the {@link EClassFilter}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class FilterOperations {
 
@@ -30,19 +30,19 @@ public class FilterOperations {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param idToEObjectMapping
 	 *            a mapping from {@link EObject}s to their IDs. Used to resolve {@link EObject}s involved within
 	 *            operations
 	 */
 	public FilterOperations(ModelElementIdToEObjectMapping idToEObjectMapping) {
 		this.idToEObjectMapping = idToEObjectMapping;
-		this.ignoredClass = null;
+		ignoredClass = null;
 	}
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param idToEObjectMapping
 	 *            a mapping from {@link EObject}s to their IDs. Used to resolve {@link EObject}s involved within
 	 *            operations
@@ -57,24 +57,24 @@ public class FilterOperations {
 
 	/**
 	 * Filters the given input according to the filtering rules of the {@link EClassFilter}.
-	 * 
+	 *
 	 * @param input
 	 *            the input to be filtered
 	 * @return a {@link FilteredOperationsResult} containing the filtered and non-filtered types
-	 * 
+	 *
 	 */
 	public FilteredOperationsResult filter(Object[] input) {
 
-		FilteredOperationsResult result = new FilteredOperationsResult();
+		final FilteredOperationsResult result = new FilteredOperationsResult();
 
-		for (Object object : input) {
+		for (final Object object : input) {
 
 			if (ignoredClass != null && ignoredClass.isInstance(object)) {
 				continue;
 			}
 
 			if (object instanceof AbstractOperation) {
-				AbstractOperation operation = (AbstractOperation) object;
+				final AbstractOperation operation = (AbstractOperation) object;
 				if (eClassFilterEnabled()
 					&& EClassFilter.INSTANCE.involvesOnlyFilteredEClasses(idToEObjectMapping, operation)) {
 					result.addFilteredOperation(operation);

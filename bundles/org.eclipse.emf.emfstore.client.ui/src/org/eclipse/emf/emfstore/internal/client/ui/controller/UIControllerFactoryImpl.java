@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.controller;
@@ -36,9 +36,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#commitProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
@@ -48,9 +48,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#createBranch(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESProject)
 	 */
@@ -60,9 +60,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#createBranch(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESBranchVersionSpec)
@@ -74,9 +74,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#createLocalProject(org.eclipse.swt.widgets.Shell)
 	 */
 	public ESLocalProject createLocalProject(Shell shell) {
@@ -84,9 +84,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#createLocalProject(org.eclipse.swt.widgets.Shell,
 	 *      java.lang.String)
 	 */
@@ -95,9 +95,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#createRemoteProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESUsersession)
 	 */
@@ -108,9 +108,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#createRemoteProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESUsersession, java.lang.String)
 	 */
@@ -121,9 +121,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#deleteLocalProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
@@ -132,9 +132,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#deleteRemoteProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESRemoteProject, org.eclipse.emf.emfstore.client.ESUsersession)
 	 */
@@ -145,9 +145,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#login(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESServer)
 	 */
@@ -156,9 +156,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#logout(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESUsersession)
 	 */
@@ -167,9 +167,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#mergeBranch(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
@@ -178,9 +178,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#registerEPackage(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESServer)
 	 */
@@ -189,9 +189,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#removeServer(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESServer)
 	 */
@@ -200,9 +200,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#shareProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
@@ -211,9 +211,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#showHistoryView(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
@@ -222,9 +222,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#showHistoryView(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -233,9 +233,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#updateProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */
@@ -245,9 +245,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#updateProject(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
@@ -258,9 +258,9 @@ public final class UIControllerFactoryImpl implements ESUIControllerFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory#updateProjectToVersion(org.eclipse.swt.widgets.Shell,
 	 *      org.eclipse.emf.emfstore.client.ESLocalProject)
 	 */

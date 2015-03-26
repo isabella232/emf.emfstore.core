@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.impl;
@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Writer
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
@@ -33,7 +33,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static RolesFactory init() {
@@ -56,7 +56,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public RolesFactoryImpl() {
@@ -65,7 +65,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -87,7 +87,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ReaderRole createReaderRole() {
@@ -97,7 +97,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public WriterRole createWriterRole() {
@@ -107,7 +107,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectAdminRole createProjectAdminRole() {
@@ -117,7 +117,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerAdmin createServerAdmin() {
@@ -127,7 +127,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public RolesPackage getRolesPackage() {
@@ -136,7 +136,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

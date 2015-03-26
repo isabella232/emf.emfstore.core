@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -40,7 +40,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFactory {
@@ -48,7 +48,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static OperationsFactory init() {
@@ -71,7 +71,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OperationsFactoryImpl() {
@@ -80,7 +80,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -122,7 +122,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +140,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -158,7 +158,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public CompositeOperation createCompositeOperation() {
@@ -168,7 +168,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public CreateDeleteOperation createCreateDeleteOperation() {
@@ -178,7 +178,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AttributeOperation createAttributeOperation() {
@@ -188,7 +188,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiAttributeOperation createMultiAttributeOperation() {
@@ -198,7 +198,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiAttributeSetOperation createMultiAttributeSetOperation() {
@@ -208,7 +208,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiAttributeMoveOperation createMultiAttributeMoveOperation() {
@@ -218,7 +218,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public SingleReferenceOperation createSingleReferenceOperation() {
@@ -228,7 +228,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiReferenceOperation createMultiReferenceOperation() {
@@ -238,7 +238,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiReferenceSetOperation createMultiReferenceSetOperation() {
@@ -248,7 +248,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MultiReferenceMoveOperation createMultiReferenceMoveOperation() {
@@ -258,7 +258,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OperationId createOperationId() {
@@ -268,7 +268,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OperationGroup createOperationGroup() {
@@ -278,7 +278,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementGroup createModelElementGroup() {
@@ -288,7 +288,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<EObject, ModelElementId> createEObjectToModelElementIdMap() {
@@ -298,7 +298,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ContainmentType createContainmentTypeFromString(EDataType eDataType, String initialValue) {
@@ -313,7 +313,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertContainmentTypeToString(EDataType eDataType, Object instanceValue) {
@@ -323,7 +323,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public UnsetType createUnsetTypeFromString(EDataType eDataType, String initialValue)
@@ -339,7 +339,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertUnsetTypeToString(EDataType eDataType, Object instanceValue)
@@ -349,7 +349,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OperationsPackage getOperationsPackage() {
@@ -358,7 +358,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

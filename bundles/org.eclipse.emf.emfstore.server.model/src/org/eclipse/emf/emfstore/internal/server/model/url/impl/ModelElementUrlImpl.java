@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.url.impl;
@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * <em>Model Element Url Fragment</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl {
@@ -48,7 +48,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	/**
 	 * The cached value of the '{@link #getServerUrl() <em>Server Url</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getServerUrl()
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 * The cached value of the '{@link #getProjectUrlFragment()
 	 * <em>Project Url Fragment</em>}' containment reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectUrlFragment()
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 * The cached value of the '{@link #getModelElementUrlFragment()
 	 * <em>Model Element Url Fragment</em>}' containment reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getModelElementUrlFragment()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ModelElementUrlImpl() {
@@ -88,7 +88,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerUrl getServerUrl() {
@@ -130,7 +130,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerUrl basicGetServerUrl() {
@@ -139,7 +139,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetServerUrl(ServerUrl newServerUrl, NotificationChain msgs) {
@@ -160,7 +160,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setServerUrl(ServerUrl newServerUrl) {
@@ -188,7 +188,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectUrlFragment getProjectUrlFragment() {
@@ -220,7 +220,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectUrlFragment basicGetProjectUrlFragment() {
@@ -229,7 +229,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetProjectUrlFragment(ProjectUrlFragment newProjectUrlFragment, NotificationChain msgs) {
@@ -250,7 +250,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectUrlFragment(ProjectUrlFragment newProjectUrlFragment) {
@@ -278,7 +278,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementUrlFragment getModelElementUrlFragment() {
@@ -311,7 +311,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementUrlFragment basicGetModelElementUrlFragment() {
@@ -320,7 +320,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetModelElementUrlFragment(ModelElementUrlFragment newModelElementUrlFragment,
@@ -343,7 +343,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setModelElementUrlFragment(ModelElementUrlFragment newModelElementUrlFragment) {
@@ -372,7 +372,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -391,7 +391,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -419,7 +419,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -441,7 +441,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -463,7 +463,7 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

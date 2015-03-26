@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2008-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  */
 package org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl;
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestDiffImpl#getNewResult <em>New Result</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestDiffImpl extends EObjectImpl implements TestDiff {
@@ -44,7 +44,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The default value of the '{@link #getLastUpdate() <em>Last Update</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastUpdate()
 	 * @generated
 	 * @ordered
@@ -55,7 +55,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getLastUpdate() <em>Last Update</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastUpdate()
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getConfig() <em>Config</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getConfig()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getOldResult() <em>Old Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldResult()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getNewResult() <em>New Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewResult()
 	 * @generated
 	 * @ordered
@@ -98,7 +98,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestDiffImpl() {
@@ -108,7 +108,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,7 +119,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getLastUpdate() {
@@ -129,7 +129,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLastUpdate(Date newLastUpdate) {
@@ -144,7 +144,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig getConfig() {
@@ -164,7 +164,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig basicGetConfig() {
@@ -174,7 +174,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setConfig(TestConfig newConfig) {
@@ -188,7 +188,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestResult getOldResult() {
@@ -198,7 +198,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetOldResult(TestResult newOldResult, NotificationChain msgs) {
@@ -219,7 +219,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldResult(TestResult newOldResult) {
@@ -247,7 +247,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestResult getNewResult() {
@@ -257,7 +257,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNewResult(TestResult newNewResult, NotificationChain msgs) {
@@ -278,7 +278,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewResult(TestResult newNewResult) {
@@ -306,7 +306,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -323,7 +323,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -347,7 +347,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -372,7 +372,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -397,7 +397,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -418,7 +418,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

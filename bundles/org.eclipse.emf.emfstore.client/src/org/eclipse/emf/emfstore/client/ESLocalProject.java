@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -30,11 +30,11 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
 
 /**
  * Represents a project in the local workspace that was checked out from a server or created locally.
- * 
+ *
  * @author emueller
  * @author wesendon
  * @author mkoegel
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */
@@ -52,11 +52,11 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * This method throws a {@link org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException} runtime
 	 * exception if the project hasn't been shared yet
 	 * </p>
-	 * 
+	 *
 	 * @param monitor a progress monitor to track the progress of the commit
-	 * 
+	 *
 	 * @return the new base version, if the commit was successful, otherwise the old base version
-	 * 
+	 *
 	 * @throws ESException in case any error occurs during commit
 	 */
 	ESPrimaryVersionSpec commit(IProgressMonitor monitor) throws ESException;
@@ -74,16 +74,16 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * This method throws a {@link org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException} runtime
 	 * exception if the project hasn't been shared yet
 	 * </p>
-	 * 
+	 *
 	 * @param logMessage
 	 *            a message describing the changes being committed
 	 * @param callback
 	 *            an optional {@link ESCommitCallback}
 	 * @param monitor
 	 *            an {@link IProgressMonitor} instance that is used to track the progress of the commit
-	 * 
+	 *
 	 * @return the new base version, if the commit was successful, otherwise the old base version
-	 * 
+	 *
 	 * @throws ESUpdateRequiredException in case the local working copy is outdated and an update is required
 	 * @throws ESException in case any other error occurs during commit
 	 */
@@ -103,7 +103,7 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * This method throws a {@link org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException} runtime
 	 * exception if the project hasn't been shared yet
 	 * </p>
-	 * 
+	 *
 	 * @param branch
 	 *            the {@link ESBranchVersionSpec} indicating the branch to commit to
 	 * @param logMessage
@@ -112,9 +112,9 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 *            a optional {@link ESCommitCallback}
 	 * @param monitor
 	 *            an {@link IProgressMonitor} instance that is used to track the progress of the commit
-	 * 
+	 *
 	 * @return the new base version, if the commit was successful, otherwise the old base version
-	 * 
+	 *
 	 * @throws InvalidVersionSpecException in case the given {@link ESBranchVersionSpec} could not be resolved
 	 * @throws ESUpdateRequiredException in case the local working copy is outdated
 	 * @throws ESException in case any other error occurs during commit
@@ -130,12 +130,12 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * This method throws a {@link org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException} runtime
 	 * exception if the project hasn't been shared yet
 	 * </p>
-	 * 
+	 *
 	 * @param monitor
 	 *            a progress monitor to track progress
-	 * 
+	 *
 	 * @return the new base version
-	 * 
+	 *
 	 * @throws ChangeConflictException in case a conflict is detected on update
 	 * @throws ESException in case update fails for any other reason
 	 */
@@ -149,7 +149,7 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * This method throws a {@link org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException} runtime
 	 * exception if the project hasn't been shared yet
 	 * </p>
-	 * 
+	 *
 	 * @param version
 	 *            the {@link ESVersionSpec} to update to
 	 * @param callback
@@ -157,7 +157,7 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * @param monitor
 	 *            an {@link IProgressMonitor} instance that is used to track the progress of the update
 	 * @return the new base version
-	 * 
+	 *
 	 * @throws ChangeConflictException in case a conflict is detected on update
 	 * @throws ESException in case update fails for any other reason
 	 */
@@ -166,7 +166,7 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 
 	/**
 	 * Adds this project to the workspace.
-	 * 
+	 *
 	 * @param progressMonitor a {@link IProgressMonitor} to track the progress while
 	 *            adding the project to the workspace
 	 */
@@ -179,10 +179,10 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * <p>
 	 * The {@link ESUsersession} used to share the project will be injected by the framework.
 	 * </p>
-	 * 
+	 *
 	 * @param monitor
 	 *            an {@link IProgressMonitor} instance that is used to indicate progress while sharing the project
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case an error occurs while sharing the project
 	 */
@@ -190,12 +190,12 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 
 	/**
 	 * Shares this project.
-	 * 
+	 *
 	 * @param session
 	 *            the {@link ESUsersession} that should be used for sharing the project
 	 * @param monitor
 	 *            an {@link IProgressMonitor} instance that is used to indicate progress while sharing the project
-	 * 
+	 *
 	 * @return the corresponding remote project of a successful share
 	 * @throws ESException
 	 *             in case an error occurs while sharing the project
@@ -204,35 +204,35 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 
 	/**
 	 * Whether this project has been shared.
-	 * 
+	 *
 	 * @return {@code true}, if the project space has been shared, {@code false} otherwise
 	 */
 	boolean isShared();
 
 	/**
 	 * Returns the {@link ESUsersession} associated with this project, if any.
-	 * 
+	 *
 	 * @return the user session associated with this project, or {@code null}, if no such session is available
 	 */
 	ESUsersession getUsersession();
 
 	/**
 	 * Returns the base version of the project.
-	 * 
+	 *
 	 * @return the base version of the project
 	 */
 	ESPrimaryVersionSpec getBaseVersion();
 
 	/**
 	 * Returns the {@link Date} when the project was updated the last time.
-	 * 
+	 *
 	 * @return the date of the last update
 	 */
 	Date getLastUpdated();
 
 	/**
 	 * Returns a list with copies of the most recent log messages.
-	 * 
+	 *
 	 * @return a list with copies of the most recent log messages
 	 */
 	List<String> getRecentLogMessages();
@@ -244,19 +244,19 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 
 	/**
 	 * Undo the last operation <em>n</em> operations of the project.
-	 * 
+	 *
 	 * @param operations
 	 *            the number of operations to be undone
-	 * 
+	 *
 	 */
 	void undoLastOperations(int operations);
 
 	/**
 	 * Determines whether the project is up to date, that is, whether the base
 	 * revision and the head revision are equal.
-	 * 
+	 *
 	 * @return {@code true}, if the project is up to date, {@code false} otherwise
-	 * 
+	 *
 	 * @throws ESException
 	 *             if the head revision can not be resolved
 	 */
@@ -275,23 +275,23 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 
 	/**
 	 * Determines whether the project has unsaved changes.
-	 * 
+	 *
 	 * @return {@code true}, if there are unsaved changes, {@code false} otherwise
 	 */
 	boolean hasUnsavedChanges();
 
 	/**
 	 * Determines whether the project has uncommitted changes.
-	 * 
+	 *
 	 * @return {@code true}, if there are any uncommitted changes, {@code false} otherwise
 	 */
 	boolean hasUncommitedChanges();
 
 	/**
 	 * Returns the {@link ESRemoteProject} on a server this local project is associated with.
-	 * 
+	 *
 	 * @return the remote project this project is associated with
-	 * 
+	 *
 	 * @throws ESException in case any error occurs while retrieving the remote project
 	 */
 	ESRemoteProject getRemoteProject() throws ESException;
@@ -300,7 +300,7 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * Returns a locally unique ID for the project. It is only unique within the same workspace and it is not the same
 	 * for different checkouts of the same {@link ESRemoteProject}. It is intended to identify a local copy of a remote
 	 * project.
-	 * 
+	 *
 	 * @return the ID of the project
 	 */
 	ESLocalProjectId getLocalProjectId();

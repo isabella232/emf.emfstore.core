@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -36,7 +36,7 @@ import diff.match.patch.diff_match_patch.Operation;
 
 /**
  * Is used to display longer conflicting text and to merge them.
- * 
+ *
  * @author wesendon
  */
 public class MergeTextWidget implements Observer {
@@ -48,7 +48,7 @@ public class MergeTextWidget implements Observer {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param decisionBox container
 	 * @param detailsComponent details component
 	 */
@@ -61,7 +61,7 @@ public class MergeTextWidget implements Observer {
 
 	/**
 	 * Add involved ConflictOptions.
-	 * 
+	 *
 	 * @param option option
 	 */
 	public void addOption(ConflictOption option) {
@@ -70,7 +70,7 @@ public class MergeTextWidget implements Observer {
 
 	/**
 	 * Called by container in order to build gui.
-	 * 
+	 *
 	 * @param parent container
 	 */
 	public void createContent(Composite parent) {
@@ -168,7 +168,7 @@ public class MergeTextWidget implements Observer {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(Observable o, Object arg) {

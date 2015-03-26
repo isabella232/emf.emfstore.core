@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -42,7 +42,7 @@ public class MultiReferenceSetConflict extends VisualConflict {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param decisionManager {@link DecisionManager}
 	 * @param myMultiRef is my multireference
 	 */
@@ -60,7 +60,7 @@ public class MultiReferenceSetConflict extends VisualConflict {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.VisualConflict.dialogs.merge.conflict.Conflict#initConflictDescription()
 	 */
 	@Override
@@ -88,7 +88,7 @@ public class MultiReferenceSetConflict extends VisualConflict {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.VisualConflict.dialogs.merge.conflict.Conflict#initConflictOptions(java.util.List)
 	 */
 	@Override

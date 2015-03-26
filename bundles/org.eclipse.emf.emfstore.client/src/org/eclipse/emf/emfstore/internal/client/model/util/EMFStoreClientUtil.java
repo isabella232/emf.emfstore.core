@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Utility class for EMFStore clients to ease connecting to the server.
- * 
+ *
  * @author koegel
  */
 public final class EMFStoreClientUtil {
@@ -44,7 +44,7 @@ public final class EMFStoreClientUtil {
 	/**
 	 * Gives a server info for a given port and URL. Searches first for already existing ones. If the search fails, it
 	 * creates a new one and registers it for later lookup.
-	 * 
+	 *
 	 * @param url the server URL (e.g. IP address or DNS name)
 	 * @param port the server port
 	 * @return a server info
@@ -69,7 +69,7 @@ public final class EMFStoreClientUtil {
 
 	/**
 	 * Create a server info for a given port and URL.
-	 * 
+	 *
 	 * @param url the server URL (e.g. IP address or DNS name)
 	 * @param port the server port
 	 * @param certificateAlias the certificateAlias
@@ -91,7 +91,7 @@ public final class EMFStoreClientUtil {
 	/**
 	 * Create a default user session with the default super user and password and a server on localhost on the default
 	 * port.
-	 * 
+	 *
 	 * @return a user session
 	 */
 	public static Usersession createUsersession() {
@@ -100,7 +100,7 @@ public final class EMFStoreClientUtil {
 
 	/**
 	 * Create a {@link Usersession} for the given credentials and server info.
-	 * 
+	 *
 	 * @param username the user name
 	 * @param password the password
 	 * @param serverUrl server URL
@@ -131,7 +131,7 @@ public final class EMFStoreClientUtil {
 
 	/**
 	 * Checks, if the given credentials can be authenticated at the given server.
-	 * 
+	 *
 	 * @param username the user name
 	 * @param password the password
 	 * @param serverUrl server url
@@ -156,7 +156,7 @@ public final class EMFStoreClientUtil {
 
 	/**
 	 * Determine if the contents of two projects are equal.
-	 * 
+	 *
 	 * @param projectA a project
 	 * @param projectB another project
 	 * @return true if the projects´ contents are identical

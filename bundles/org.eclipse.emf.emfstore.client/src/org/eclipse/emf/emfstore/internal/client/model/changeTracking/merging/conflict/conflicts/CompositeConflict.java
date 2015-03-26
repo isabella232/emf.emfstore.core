@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util
 
 /**
  * Conflict {@link CompositeOperation} involved.
- * 
+ *
  * @author wesendon
  */
 public class CompositeConflict extends VisualConflict {
@@ -44,7 +44,7 @@ public class CompositeConflict extends VisualConflict {
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param conflictBucket
 	 *            the conflict
 	 * @param decisionManager

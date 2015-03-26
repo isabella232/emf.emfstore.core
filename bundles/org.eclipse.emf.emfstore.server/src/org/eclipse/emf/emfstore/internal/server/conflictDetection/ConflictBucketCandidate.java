@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel
  ******************************************************************************/
@@ -29,15 +29,15 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
  * The operation with the highest priority is used to determine which of the operations is used to represent all my and
  * all their operations in a conflict. The operation with the highest priority is selected for representation.
  * </p>
- * 
+ *
  * @author koegel
- * 
+ *
  */
 public class ConflictBucketCandidate {
 
-	private Set<AbstractOperation> myOperations;
-	private Set<AbstractOperation> theirOperations;
-	private Map<AbstractOperation, Integer> operationToPriorityMap;
+	private final Set<AbstractOperation> myOperations;
+	private final Set<AbstractOperation> theirOperations;
+	private final Map<AbstractOperation, Integer> operationToPriorityMap;
 	private ConflictBucketCandidate parentConflictBucketCandidate;
 
 	/**
@@ -51,7 +51,7 @@ public class ConflictBucketCandidate {
 
 	/**
 	 * Add an operation for a model element id and its feature to the bucket.
-	 * 
+	 *
 	 * @param operation the operation
 	 * @param isMyOperation a boolean to determine if the operation is to be added to mz or their operations
 	 * @param priority the global priority of the operation
@@ -71,7 +71,7 @@ public class ConflictBucketCandidate {
 	/**
 	 * Add another another conflict candidate bucket to this bucket including all their collected operations and
 	 * invoveld ids.
-	 * 
+	 *
 	 * @param otherBucket the other bucket
 	 */
 	public void addConflictBucketCandidate(ConflictBucketCandidate otherBucket) {
@@ -86,7 +86,7 @@ public class ConflictBucketCandidate {
 
 	/**
 	 * Returns the root conflict bucket this bucket belongs to.
-	 * 
+	 *
 	 * @return the root conflict bucket
 	 */
 	public ConflictBucketCandidate getRootConflictBucketCandidate() {
@@ -99,7 +99,7 @@ public class ConflictBucketCandidate {
 	private ConflictBucketCandidate getParentConflictBucketCandidate(List<ConflictBucketCandidate> pathToRoot) {
 		if (parentConflictBucketCandidate == null) {
 			// this is root, compress path
-			for (ConflictBucketCandidate conflictBucketCandidate : pathToRoot) {
+			for (final ConflictBucketCandidate conflictBucketCandidate : pathToRoot) {
 				conflictBucketCandidate.setParentConflictBucketCandidate(this);
 			}
 			return this;
@@ -111,7 +111,7 @@ public class ConflictBucketCandidate {
 
 	/**
 	 * Sets the parent conflict bucket of this bucket.
-	 * 
+	 *
 	 * @param parentConflictBucketCandidate
 	 *            the parent bucket of this bucket
 	 */
@@ -155,7 +155,7 @@ public class ConflictBucketCandidate {
 	 * Calculate a set of conflict buckets from this candidate bucket. The result set may be empty if no conflicts are
 	 * found within
 	 * the candidate bucket.
-	 * 
+	 *
 	 * @param detector the conflict detector
 	 * @param myOperationsNonConflictingOperations a transient set where all non conflicting my operations are added
 	 *            to
@@ -164,7 +164,7 @@ public class ConflictBucketCandidate {
 	 */
 	public Set<ConflictBucket> calculateConflictBuckets(ConflictDetector detector,
 		Set<AbstractOperation> myOperationsNonConflictingOperations) {
-		Set<ConflictBucket> conflictBucketsSet = new LinkedHashSet<ConflictBucket>();
+		final Set<ConflictBucket> conflictBucketsSet = new LinkedHashSet<ConflictBucket>();
 
 		// if the bucket is not conflicting (empty my or their) just add all my operations to non conflicting set
 		if (!isConflicting()) {
@@ -172,18 +172,18 @@ public class ConflictBucketCandidate {
 			return conflictBucketsSet;
 		}
 
-		ConflictBucket newConflictBucket = new ConflictBucket(getMyOperations(), getTheirOperations());
+		final ConflictBucket newConflictBucket = new ConflictBucket(getMyOperations(), getTheirOperations());
 		conflictBucketsSet.add(newConflictBucket);
 		return selectMyandTheirOperation(conflictBucketsSet);
 	}
 
 	private Set<ConflictBucket> selectMyandTheirOperation(Set<ConflictBucket> conflictBucketsSet) {
 
-		for (ConflictBucket conflictBucket : conflictBucketsSet) {
+		for (final ConflictBucket conflictBucket : conflictBucketsSet) {
 			Integer maxPriority = -1;
 			AbstractOperation maxOperation = null;
-			for (AbstractOperation myOperation : conflictBucket.getMyOperations()) {
-				Integer currentPrio = operationToPriorityMap.get(myOperation);
+			for (final AbstractOperation myOperation : conflictBucket.getMyOperations()) {
+				final Integer currentPrio = operationToPriorityMap.get(myOperation);
 				if (currentPrio > maxPriority) {
 					maxPriority = currentPrio;
 					maxOperation = myOperation;
@@ -192,11 +192,11 @@ public class ConflictBucketCandidate {
 			conflictBucket.setMyOperation(maxOperation);
 		}
 
-		for (ConflictBucket conflictBucket : conflictBucketsSet) {
+		for (final ConflictBucket conflictBucket : conflictBucketsSet) {
 			Integer maxPriority = -1;
 			AbstractOperation maxOperation = null;
-			for (AbstractOperation theirOperation : conflictBucket.getTheirOperations()) {
-				Integer currentPrio = operationToPriorityMap.get(theirOperation);
+			for (final AbstractOperation theirOperation : conflictBucket.getTheirOperations()) {
+				final Integer currentPrio = operationToPriorityMap.get(theirOperation);
 				if (currentPrio > maxPriority) {
 					maxPriority = currentPrio;
 					maxOperation = theirOperation;

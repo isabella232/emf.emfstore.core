@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 
 /**
  * Holds the monitor objects for synchronizing the access on the serverspace. It's implemented as a singleton.
- * 
+ *
  * @author wesendon
  */
 // TODO: internal
@@ -33,15 +33,15 @@ public final class MonitorProvider {
 
 	/**
 	 * Returns an singleton instance of the monitor provider.
-	 * 
+	 *
 	 * @return the singleton instance
 	 */
 	public static MonitorProvider getInstance() {
 		return SingletonHolder.INSTANCE;
 	}
 
-	private Object monitor;
-	private HashMap<String, Object> monitors;
+	private final Object monitor;
+	private final HashMap<String, Object> monitors;
 
 	/**
 	 * Private constructor.
@@ -54,7 +54,7 @@ public final class MonitorProvider {
 
 	/**
 	 * Returns the main monitor objects.
-	 * 
+	 *
 	 * @return the monitor
 	 */
 	public synchronized Object getMonitor() {
@@ -63,7 +63,7 @@ public final class MonitorProvider {
 
 	/**
 	 * Returns a monitor for a given namespace.
-	 * 
+	 *
 	 * @param namespace namespace.
 	 * @return monitor object
 	 */
@@ -76,7 +76,7 @@ public final class MonitorProvider {
 
 	/**
 	 * Removes a monitor of a certain namespace.
-	 * 
+	 *
 	 * @param namespace the namespace
 	 * @return true if it was deleted, false if it didn't exist anyway or if it's the main monitor, which can't be
 	 *         deleted.
@@ -86,7 +86,7 @@ public final class MonitorProvider {
 		if (namespace.endsWith(MAIN_MONITOR)) {
 			return false;
 		} else {
-			return (monitors.remove(namespace) != null);
+			return monitors.remove(namespace) != null;
 		}
 	}
 }

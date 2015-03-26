@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -29,9 +29,9 @@ import org.eclipse.ui.PlatformUI;
 /**
  * Generic UI-specific controller class that is capable of executing
  * both, import and export controller classes.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UIGenericExportImportController extends AbstractEMFStoreUIController<Void> {
 
@@ -40,7 +40,7 @@ public class UIGenericExportImportController extends AbstractEMFStoreUIControlle
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell}
 	 * @param controller
@@ -52,9 +52,9 @@ public class UIGenericExportImportController extends AbstractEMFStoreUIControlle
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#preRun()
 	 */
 	@Override
@@ -89,9 +89,9 @@ public class UIGenericExportImportController extends AbstractEMFStoreUIControlle
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

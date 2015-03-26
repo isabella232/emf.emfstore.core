@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 /**
  * This verifier can be used to store user and passwords in a property file. Entries in the property file look should
  * look like this: <b>user = password</b>
- * 
+ *
  * @author wesendonk
  */
 public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
@@ -39,7 +39,7 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Hash algorithms supported by SPFV verifier.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	public enum Hash {
@@ -51,7 +51,7 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Default constructor. No hash will be used for passwords
-	 * 
+	 *
 	 * @see #SimplePropertyFileVerifier(String, Hash)
 	 * @param filePath path to password file
 	 * @throws FatalESException in case of failure
@@ -62,7 +62,7 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 
 	/**
 	 * Constructor with ability to select hash algorithm for password.
-	 * 
+	 *
 	 * @param filePath path to file
 	 * @param hash selected hash
 	 * @throws FatalESException if hash is null
@@ -101,9 +101,9 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String)
 	 */

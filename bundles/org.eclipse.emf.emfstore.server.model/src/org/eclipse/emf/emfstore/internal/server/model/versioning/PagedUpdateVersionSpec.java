@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -16,10 +16,10 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Paged Update Version Spec</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESPagedUpdateVersionSpec>
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
  *          <em>Base Version Spec</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPagedUpdateVersionSpec()
  * @model
  * @generated
@@ -45,7 +45,7 @@ public interface PagedUpdateVersionSpec extends VersionSpec, APIDelegate<ESPaged
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Max Changes</em>' attribute.
 	 * @see #setMaxChanges(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPagedUpdateVersionSpec_MaxChanges()
@@ -60,7 +60,7 @@ public interface PagedUpdateVersionSpec extends VersionSpec, APIDelegate<ESPaged
 	 * <em>Max Changes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Max Changes</em>' attribute.
 	 * @see #getMaxChanges()
 	 * @generated
@@ -75,7 +75,7 @@ public interface PagedUpdateVersionSpec extends VersionSpec, APIDelegate<ESPaged
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Base Version Spec</em>' containment reference.
 	 * @see #setBaseVersionSpec(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPagedUpdateVersionSpec_BaseVersionSpec()
@@ -90,7 +90,7 @@ public interface PagedUpdateVersionSpec extends VersionSpec, APIDelegate<ESPaged
 	 * <em>Base Version Spec</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Base Version Spec</em>' containment reference.
 	 * @see #getBaseVersionSpec()
 	 * @generated

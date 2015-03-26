@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  * Edgar Mueller
@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Display;
  * The login dialog controller manages a given {@link ESUsersession} and/or a {@link ESServer} to determine when it is
  * necessary to open a {@link LoginDialog} in order to authenticate the user. It does not, however,
  * open a dialog, if the usersession is already logged in.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -46,9 +46,9 @@ public class LoginDialogController implements ILoginDialogController {
 	private LoginDialog dialog;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.login.ILoginDialogController#getKnownUsersessions()
 	 */
 	public List<ESUsersession> getKnownUsersessions() {
@@ -121,7 +121,7 @@ public class LoginDialogController implements ILoginDialogController {
 
 	/**
 	 * Returns the server name.
-	 * 
+	 *
 	 * @return the label
 	 */
 	public String getServerLabel() {
@@ -129,9 +129,9 @@ public class LoginDialogController implements ILoginDialogController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.login.ILoginDialogController#validate(org.eclipse.emf.emfstore.client.ESUsersession)
 	 */
 	public void validate(final ESUsersession session) throws ESException {
@@ -157,9 +157,9 @@ public class LoginDialogController implements ILoginDialogController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.login.ILoginDialogController#getUsersession()
 	 */
 	public ESUsersession getUsersession() {
@@ -167,9 +167,9 @@ public class LoginDialogController implements ILoginDialogController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.login.ILoginDialogController#getServer()
 	 */
 	public ESServer getServer() {
@@ -182,8 +182,8 @@ public class LoginDialogController implements ILoginDialogController {
 	/**
 	 * Perform a login using an {@link ESUsersession} that can be determined with
 	 * the given {@link ESServer}.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param server
 	 *            the server info to be used in order to determine a valid
 	 *            usersession
@@ -202,7 +202,7 @@ public class LoginDialogController implements ILoginDialogController {
 
 	/**
 	 * Perform a login using the given {@link ESUsersession}.
-	 * 
+	 *
 	 * @param usersession
 	 *            the usersession to be used during login
 	 * @param force
@@ -220,8 +220,8 @@ public class LoginDialogController implements ILoginDialogController {
 	/**
 	 * Perform a login using an {@link ESUsersession} that can be determined with
 	 * the given {@link ESServer}.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param server
 	 *            the server info to be used in order to determine a valid
 	 *            usersession
@@ -237,7 +237,7 @@ public class LoginDialogController implements ILoginDialogController {
 
 	/**
 	 * Perform a login using the given {@link ESUsersession}.
-	 * 
+	 *
 	 * @param usersession
 	 *            the usersession to be used during login
 	 * @return usersession

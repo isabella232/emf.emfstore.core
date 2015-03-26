@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Aumann,Faltermeier
  ******************************************************************************/
@@ -33,11 +33,11 @@ import org.eclipse.swt.widgets.Display;
 /**
  * This class manages the creation of PlotCommits from HistoryInfos. See {@link IPlotCommitProvider} for
  * interface details.
- * 
+ *
  * Major parts of graph lane logic taken from org.eclipse.jgit.revplot.PlotCommitList.
- * 
+ *
  * @author Aumann, Faltermeier
- * 
+ *
  */
 public class PlotCommitProvider implements IPlotCommitProvider {
 
@@ -48,7 +48,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 	private Map<HistoryInfo, IPlotCommit> commitForHistory = new LinkedHashMap<HistoryInfo, IPlotCommit>();
 	private Map<Integer, IPlotCommit> commitForID;
 	private int nextBranchColorIndex;
-	private Map<String, Integer> colorForBranch = new LinkedHashMap<String, Integer>();
+	private final Map<String, Integer> colorForBranch = new LinkedHashMap<String, Integer>();
 
 	private static List<Color> createdSaturatedColors = new LinkedList<Color>();
 	private static List<Color> createdLightColors = new LinkedList<Color>();
@@ -66,7 +66,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 
 	/**
 	 * Creates a new PlotCommitProvider from a list of {@linkplain HistoryInfo} objects.
-	 * 
+	 *
 	 */
 	public PlotCommitProvider() {
 		reset(null);
@@ -75,15 +75,15 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 	/**
 	 * Reset the state of the plot commit provider and refresh
 	 * it with the given history info.
-	 * 
+	 *
 	 * @param infos
 	 *            the history info which is used to refresh the provider
 	 */
 	public void reset(List<HistoryInfo> infos) {
-		this.nextBranchColorIndex = 0;
-		this.freePositions = new TreeSet<Integer>();
-		this.activeLanes = new LinkedHashSet<PlotLane>(32);
-		this.commitForHistory = new LinkedHashMap<HistoryInfo, IPlotCommit>();
+		nextBranchColorIndex = 0;
+		freePositions = new TreeSet<Integer>();
+		activeLanes = new LinkedHashSet<PlotLane>(32);
+		commitForHistory = new LinkedHashMap<HistoryInfo, IPlotCommit>();
 		if (infos != null) {
 			refresh(infos);
 		}
@@ -91,21 +91,21 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview.graph.IPlotCommitProvider#refresh(java.util.List)
 	 */
 	public void refresh(List<HistoryInfo> newInfos) {
-		this.positionsAllocated = 0;
-		this.commits = new PlotCommit[newInfos.size()];
-		this.freePositions.clear();
-		this.activeLanes.clear();
-		this.commitForHistory.clear();
-		this.dummyParentForId.clear();
+		positionsAllocated = 0;
+		commits = new PlotCommit[newInfos.size()];
+		freePositions.clear();
+		activeLanes.clear();
+		commitForHistory.clear();
+		dummyParentForId.clear();
 
 		for (int i = 0; i < newInfos.size(); i++) {
 			commits[i] = new PlotCommit(newInfos.get(i));
 			commitForHistory.put(newInfos.get(i), commits[i]);
-			Color[] branchColors = getColorsForBranch(commits[i].getBranch());
+			final Color[] branchColors = getColorsForBranch(commits[i].getBranch());
 			commits[i].setColor(branchColors[0]);
 			commits[i].setLightColor(branchColors[1]);
 		}
@@ -122,13 +122,13 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 	}
 
 	private IPlotCommit[] insertDummyParents(IPlotCommit[] dummyParents, IPlotCommit[] realCommits) {
-		IPlotCommit[] wholeArray = new IPlotCommit[dummyParents.length + realCommits.length];
+		final IPlotCommit[] wholeArray = new IPlotCommit[dummyParents.length + realCommits.length];
 
 		for (int i = 0; i < realCommits.length; i++) {
 			wholeArray[i] = realCommits[i];
 		}
 
-		int offsetForDummyParents = realCommits.length;
+		final int offsetForDummyParents = realCommits.length;
 
 		for (int i = 0; i < dummyParents.length; i++) {
 			wholeArray[i + offsetForDummyParents] = dummyParents[i];
@@ -153,7 +153,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 
 	private void setupCommitIdLookUp() {
 		commitForID = new LinkedHashMap<Integer, IPlotCommit>();
-		for (IPlotCommit commit : commits) {
+		for (final IPlotCommit commit : commits) {
 			commitForID.put(commit.getId(), commit);
 		}
 	}
@@ -166,9 +166,9 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 		saturatedColors[3] = getSysColor(SWT.COLOR_CYAN);
 		saturatedColors[4] = getSysColor(SWT.COLOR_YELLOW);
 
-		Color orange = new Color(Display.getDefault(), 255, 148, 0);
-		Color violet = new Color(Display.getDefault(), 128, 0, 128);
-		Color brown = new Color(Display.getDefault(), 148, 64, 0);
+		final Color orange = new Color(Display.getDefault(), 255, 148, 0);
+		final Color violet = new Color(Display.getDefault(), 128, 0, 128);
+		final Color brown = new Color(Display.getDefault(), 148, 64, 0);
 		saturatedColors[5] = orange;
 		saturatedColors[6] = violet;
 		saturatedColors[7] = brown;
@@ -191,7 +191,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 	}
 
 	private static Color createLightColor(Color color) {
-		float[] hsbColor = java.awt.Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+		final float[] hsbColor = java.awt.Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
 		hsbColor[1] = hsbColor[1] * 0.2f;
 		hsbColor[2] = hsbColor[2] * 1.1f;
 
@@ -199,18 +199,18 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 			hsbColor[2] = 1f;
 		}
 
-		int lightColorRGB = java.awt.Color.HSBtoRGB(hsbColor[0], hsbColor[1], hsbColor[2]);
+		final int lightColorRGB = java.awt.Color.HSBtoRGB(hsbColor[0], hsbColor[1], hsbColor[2]);
 
-		java.awt.Color lightColor = new java.awt.Color(lightColorRGB);
+		final java.awt.Color lightColor = new java.awt.Color(lightColorRGB);
 
-		Color lightColorSWT = new Color(Display.getDefault(), lightColor.getRed(), lightColor.getGreen(),
+		final Color lightColorSWT = new Color(Display.getDefault(), lightColor.getRed(), lightColor.getGreen(),
 			lightColor.getBlue());
 		createdLightColors.add(lightColorSWT);
 		return lightColorSWT;
 	}
 
 	private Color[] getColorsForBranch(String branch) {
-		String trunkIdentifier = "trunk";
+		final String trunkIdentifier = "trunk";
 		if (trunkIdentifier.equals(branch)) {
 			return COLORS_TRUNK;
 		}
@@ -221,7 +221,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 			colorForBranch.put(branch, colorIndex);
 			nextBranchColorIndex = (nextBranchColorIndex + 1) % saturatedColors.length;
 		}
-		Color[] retColors = new Color[2];
+		final Color[] retColors = new Color[2];
 		retColors[0] = saturatedColors[colorIndex];
 		retColors[1] = lightColors[colorIndex];
 		return retColors;
@@ -229,13 +229,13 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 
 	private void setupParents(List<HistoryInfo> historyInfos) {
 		for (int i = 0; i < historyInfos.size(); i++) {
-			HistoryInfo currInfo = historyInfos.get(i);
+			final HistoryInfo currInfo = historyInfos.get(i);
 
 			// check if this historyinfo element is a merge
-			EList<PrimaryVersionSpec> mergedFrom = currInfo.getMergedFrom();
-			ArrayList<IPlotCommit> parents = new ArrayList<IPlotCommit>();
+			final EList<PrimaryVersionSpec> mergedFrom = currInfo.getMergedFrom();
+			final ArrayList<IPlotCommit> parents = new ArrayList<IPlotCommit>();
 			if (mergedFrom != null && mergedFrom.size() >= 1) {
-				for (PrimaryVersionSpec mergeParent : mergedFrom) {
+				for (final PrimaryVersionSpec mergeParent : mergedFrom) {
 					if (commitForID.containsKey(mergeParent.getIdentifier())) {
 						parents.add(commitForID.get(mergeParent.getIdentifier()));
 					} else {
@@ -247,7 +247,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 
 			}
 			// we only have one parent or none
-			PrimaryVersionSpec parentSpec = currInfo.getPreviousSpec();
+			final PrimaryVersionSpec parentSpec = currInfo.getPreviousSpec();
 			if (parentSpec != null) {
 				if (commitForID.containsKey(parentSpec.getIdentifier())) {
 					parents.add(commitForID.get(parentSpec.getIdentifier()));
@@ -278,7 +278,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 			final IPlotCommit c = currCommit.getChild(0);
 			if (c.getLane() == null) {
 				// Hmmph. This child must be the first along this lane.
-				PlotLane lane = nextFreeLane();
+				final PlotLane lane = nextFreeLane();
 				lane.setSaturatedColor(c.getColor());
 				lane.setLightColor(c.getLightColor());
 				c.setLane(lane);
@@ -321,7 +321,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 				// don't forget to position all of your children if they are
 				// not already positioned.
 				if (c.getLane() == null) {
-					PlotLane lane = nextFreeLane();
+					final PlotLane lane = nextFreeLane();
 					lane.setSaturatedColor(c.getColor());
 					lane.setLightColor(c.getLightColor());
 					c.setLane(lane);
@@ -344,7 +344,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 				closeLane(reservedLane);
 			}
 
-			PlotLane lane = nextFreeLane();
+			final PlotLane lane = nextFreeLane();
 			lane.setSaturatedColor(currCommit.getColor());
 			lane.setLightColor(currCommit.getLightColor());
 			currCommit.setLane(lane);
@@ -355,7 +355,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 	}
 
 	private void setupChildren(IPlotCommit currCommit) {
-		int nParents = currCommit.getParentCount();
+		final int nParents = currCommit.getParentCount();
 		for (int i = 0; i < nParents; i++) {
 			currCommit.getParent(i).addChild(currCommit);
 		}
@@ -376,7 +376,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 	private void handleBlockedLanes(final int index, final IPlotCommit commit, final int nChildren) {
 		// take care:
 		int remaining = nChildren;
-		BitSet blockedPositions = new BitSet();
+		final BitSet blockedPositions = new BitSet();
 		for (int r = index - 1; r >= 0; r--) {
 			final IPlotCommit rObj = commits[r];
 			if (commit.isChild(rObj)) {
@@ -385,7 +385,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 				}
 			}
 			if (rObj != null) {
-				PlotLane lane = rObj.getLane();
+				final PlotLane lane = rObj.getLane();
 				if (lane != null) {
 					blockedPositions.set(lane.getPosition());
 				}
@@ -395,7 +395,7 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 		// Now let's check whether we have to reposition the lane
 		if (blockedPositions.get(commit.getLane().getPosition())) {
 			int newPos = -1;
-			for (Integer pos : freePositions) {
+			for (final Integer pos : freePositions) {
 				if (!blockedPositions.get(pos.intValue())) {
 					newPos = pos.intValue();
 					break;
@@ -419,22 +419,22 @@ public class PlotCommitProvider implements IPlotCommitProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview.graph.IPlotCommitProvider#getCommitFor(org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo,
 	 *      boolean)
 	 */
 	public IPlotCommit getCommitFor(HistoryInfo info, boolean onlyAChildRequest) {
-		IPlotCommit comForInfo = commitForHistory.get(info);
+		final IPlotCommit comForInfo = commitForHistory.get(info);
 		comForInfo.setIsRealCommit(!onlyAChildRequest);
 		return comForInfo;
 	}
 
-	private Map<Integer, IPlotCommit> dummyParentForId = new LinkedHashMap<Integer, IPlotCommit>();
+	private final Map<Integer, IPlotCommit> dummyParentForId = new LinkedHashMap<Integer, IPlotCommit>();
 
 	private IPlotCommit getDummyParent(int id, String parentBranch) {
 		if (!dummyParentForId.containsKey(id)) {
-			IPlotCommit dummyParent = new PlotCommit(id, parentBranch);
-			Color[] colors = getColorsForBranch(parentBranch);
+			final IPlotCommit dummyParent = new PlotCommit(id, parentBranch);
+			final Color[] colors = getColorsForBranch(parentBranch);
 			// set light color for saturated color to hint at "parent out of page"
 			dummyParent.setColor(colors[1]);
 			dummyParent.setLightColor(colors[1]);

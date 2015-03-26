@@ -481,7 +481,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			if (!isServerAdmin && role.canAdministrate(projectId)) {
 				throw new AccessControlException(
 					Messages.AdminEmfStoreImpl_RemovePA_Violation_1
-					+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
+						+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
 			}
 
 			role.getProjects().remove(projectId);
@@ -624,9 +624,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	public void deleteUser(SessionId sessionId, ACOrgUnitId userId) throws ESException {
 		checkForNulls(sessionId, userId);
 		getAuthorizationControl()
-		.checkProjectAdminAccessForOrgUnit(sessionId, userId);
+			.checkProjectAdminAccessForOrgUnit(sessionId, userId);
 		getAuthorizationControl()
-		.checkProjectAdminAccess(sessionId, null, PAPrivileges.DeleteOrgUnit);
+			.checkProjectAdminAccess(sessionId, null, PAPrivileges.DeleteOrgUnit);
 		for (final Iterator<ACUser> iter = daoFacade.getUsers().iterator(); iter.hasNext();) {
 			final ACUser user = iter.next();
 			final List<ACGroup> groups = getGroups(sessionId, userId);

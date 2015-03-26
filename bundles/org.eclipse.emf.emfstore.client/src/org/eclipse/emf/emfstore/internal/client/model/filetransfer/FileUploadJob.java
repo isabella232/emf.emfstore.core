@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * pfeifferc,jfinis
  ******************************************************************************/
@@ -25,14 +25,14 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * File Upload Job class is responsible for uploading files to the server in the Eclipse Worker thread.
- * 
+ *
  * @author pfeifferc, jfinis
  */
 public class FileUploadJob extends FileTransferJob {
 
 	/**
 	 * Default constructor. Only used internally; only the FileTransferManager may create such jobs.
-	 * 
+	 *
 	 * @param transferManager the transfer manager which created the job
 	 * @param fileId the identifier of the file to be uploaded
 	 * @param transferVisibleToUser progress bar yes/no
@@ -70,7 +70,7 @@ public class FileUploadJob extends FileTransferJob {
 
 	/**
 	 * Retrieves and writes the file chunks until the end flag is set in a file chunk.
-	 * 
+	 *
 	 * @param fileChunk file chunk
 	 * @param monitor showing the progress of the transfer.
 	 * @throws ESException if any error occurs in the emf store

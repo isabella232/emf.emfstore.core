@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -47,14 +47,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl implements MultiReferenceSetOperation {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	/**
 	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	/**
 	 * The cached value of the '{@link #getOldValue() <em>Old Value</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -84,7 +84,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	/**
 	 * The cached value of the '{@link #getNewValue() <em>New Value</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewValue()
 	 * @generated
 	 * @ordered
@@ -93,7 +93,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultiReferenceSetOperationImpl() {
@@ -102,7 +102,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getIndex() {
@@ -121,7 +121,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIndex(int newIndex) {
@@ -135,7 +135,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId getOldValue() {
@@ -167,7 +167,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId basicGetOldValue() {
@@ -176,7 +176,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetOldValue(ModelElementId newOldValue, NotificationChain msgs) {
@@ -197,7 +197,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldValue(ModelElementId newOldValue) {
@@ -225,7 +225,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId getNewValue() {
@@ -257,7 +257,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId basicGetNewValue() {
@@ -266,7 +266,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNewValue(ModelElementId newNewValue, NotificationChain msgs) {
@@ -287,7 +287,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewValue(ModelElementId newNewValue) {
@@ -315,7 +315,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -332,7 +332,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -357,7 +357,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -379,7 +379,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -401,7 +401,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -420,7 +420,7 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -437,9 +437,9 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void apply(IdEObjectCollection project) {

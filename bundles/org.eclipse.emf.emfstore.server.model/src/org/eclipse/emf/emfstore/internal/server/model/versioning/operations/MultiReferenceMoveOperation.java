@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
@@ -15,7 +15,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Multi Reference Move Operation</b></em>'. <!--
  * end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * <em>Referenced Model Element Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceMoveOperation()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface MultiReferenceMoveOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Old Index</em>' attribute.
 	 * @see #setOldIndex(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceMoveOperation_OldIndex()
@@ -58,7 +58,7 @@ public interface MultiReferenceMoveOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceMoveOperation#getOldIndex
 	 * <em>Old Index</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Old Index</em>' attribute.
 	 * @see #getOldIndex()
@@ -74,7 +74,7 @@ public interface MultiReferenceMoveOperation extends FeatureOperation {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>New Index</em>' attribute.
 	 * @see #setNewIndex(int)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceMoveOperation_NewIndex()
@@ -88,7 +88,7 @@ public interface MultiReferenceMoveOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceMoveOperation#getNewIndex
 	 * <em>New Index</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>New Index</em>' attribute.
 	 * @see #getNewIndex()
@@ -104,7 +104,7 @@ public interface MultiReferenceMoveOperation extends FeatureOperation {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Referenced Model Element Id</em>' containment reference.
 	 * @see #setReferencedModelElementId(ModelElementId)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceMoveOperation_ReferencedModelElementId()
@@ -118,7 +118,7 @@ public interface MultiReferenceMoveOperation extends FeatureOperation {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceMoveOperation#getReferencedModelElementId
 	 * <em>Referenced Model Element Id</em>}' containment reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Referenced Model Element Id</em>'
 	 *            containment reference.

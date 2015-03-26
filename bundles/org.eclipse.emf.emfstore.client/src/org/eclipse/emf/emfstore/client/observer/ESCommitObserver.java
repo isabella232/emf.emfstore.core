@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Aleksandar Shterev - initial API and implementation
  * Edgar Mueller - API changes, Javadoc
@@ -21,10 +21,10 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
 /**
  * An observer which waits for commit notifications and authorizes the commit procedure.
- * 
+ *
  * @author shterev
  * @author emueller
- * 
+ *
  * @noextend This interface is not intended to be extended by clients.
  */
 public interface ESCommitObserver extends ESObserver {
@@ -32,7 +32,7 @@ public interface ESCommitObserver extends ESObserver {
 	/**
 	 * Called before the commit proceeds. A callback method to initiate the commit dialog and allow the user to confirm
 	 * the changes.
-	 * 
+	 *
 	 * @param project
 	 *            the project the commit occurs on
 	 * @param changePackage
@@ -41,14 +41,14 @@ public interface ESCommitObserver extends ESObserver {
 	 *            an {@link IProgressMonitor} instance that may be used by clients to inform
 	 *            about progress
 	 * @return true if the changes have been confirmed, false - otherwise.
-	 * 
+	 *
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	boolean inspectChanges(ESLocalProject project, ESChangePackage changePackage, IProgressMonitor monitor);
 
 	/**
 	 * Called after the commit is completed.
-	 * 
+	 *
 	 * @param project
 	 *            the project on which the commit has completed
 	 * @param newRevision
@@ -56,7 +56,7 @@ public interface ESCommitObserver extends ESObserver {
 	 * @param monitor
 	 *            an {@link IProgressMonitor} instance that may be used by clients to inform
 	 *            about progress
-	 * 
+	 *
 	 * @noreference This method is not intended to be referenced by clients.
 	 */
 	void commitCompleted(ESLocalProject project, ESPrimaryVersionSpec newRevision, IProgressMonitor monitor);

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -17,16 +17,16 @@ import org.eclipse.emf.emfstore.server.model.ESGlobalProjectId;
 
 /**
  * Mapping between {@link ESGlobalProjectId} and {@link ProjectId}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, ProjectId> implements
 	ESGlobalProjectId {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectId
 	 *            the delegate
 	 */
@@ -35,9 +35,9 @@ public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, Pr
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
 	public String getId() {
@@ -45,16 +45,16 @@ public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, Pr
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
 	public boolean equals(Object otherObject) {
 
 		if (otherObject instanceof ESGlobalProjectIdImpl) {
-			ESGlobalProjectIdImpl otherId = (ESGlobalProjectIdImpl) otherObject;
+			final ESGlobalProjectIdImpl otherId = (ESGlobalProjectIdImpl) otherObject;
 			return otherId.toInternalAPI().equals(toInternalAPI());
 		}
 
@@ -62,9 +62,9 @@ public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, Pr
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

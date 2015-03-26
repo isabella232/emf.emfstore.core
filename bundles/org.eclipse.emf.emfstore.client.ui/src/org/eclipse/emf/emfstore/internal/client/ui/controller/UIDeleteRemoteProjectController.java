@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for deleting a project on the server.
- * 
+ *
  * @author emueller
  */
 public class UIDeleteRemoteProjectController extends AbstractEMFStoreUIController<Void> {
@@ -43,7 +43,7 @@ public class UIDeleteRemoteProjectController extends AbstractEMFStoreUIControlle
 	 * The {@link ESUsersession} to delete the remote server instance will be injected. If this is not desired use one
 	 * of the other constructors.
 	 * </p>
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the deletion of the project
 	 * @param serverInfo
@@ -61,7 +61,7 @@ public class UIDeleteRemoteProjectController extends AbstractEMFStoreUIControlle
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the deletion of the project
 	 * @param session
@@ -79,7 +79,7 @@ public class UIDeleteRemoteProjectController extends AbstractEMFStoreUIControlle
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} that should be used during the deletion of the project
 	 * @param session
@@ -96,9 +96,9 @@ public class UIDeleteRemoteProjectController extends AbstractEMFStoreUIControlle
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

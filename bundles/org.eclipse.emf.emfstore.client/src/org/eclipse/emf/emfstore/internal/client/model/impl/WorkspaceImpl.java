@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl;
@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Usersession;
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl#getUsersessions <em>Usersessions </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  */
 public class WorkspaceImpl extends WorkspaceBase {
 
@@ -44,7 +44,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 * The cached value of the '{@link #getProjectSpaces() <em>Project Spaces</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectSpaces()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	/**
 	 * The cached value of the '{@link #getServerInfos() <em>Server Infos</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getServerInfos()
 	 * @generated
 	 * @ordered
@@ -65,7 +65,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 * The cached value of the '{@link #getUsersessions() <em>Usersessions</em>} ' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @see #getUsersessions()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected WorkspaceImpl() {
@@ -83,7 +83,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -119,7 +119,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,7 +157,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -183,7 +183,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -193,7 +193,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -215,7 +215,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ProjectSpace> getProjectSpaces() {
@@ -229,7 +229,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ServerInfo> getServerInfos() {
@@ -243,7 +243,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Usersession> getUsersessions() {

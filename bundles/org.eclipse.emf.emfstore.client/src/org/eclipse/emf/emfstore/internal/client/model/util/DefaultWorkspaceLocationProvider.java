@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -23,14 +23,14 @@ import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
  * folder. Allowing this isn't mandatory. It is encouraged to subclass this
  * class when implementing an own location provider, since it offers convenience
  * methods. By convention, every path should end with an folder separator char.
- * 
+ *
  * @author wesendon
  */
 public class DefaultWorkspaceLocationProvider extends DefaultServerWorkspaceLocationProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.DefaultServerWorkspaceLocationProvider#getRootDirectory()
 	 */
 	@Override
@@ -45,7 +45,7 @@ public class DefaultWorkspaceLocationProvider extends DefaultServerWorkspaceLoca
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.DefaultServerWorkspaceLocationProvider#getSelectedProfile()
 	 */
 	@Override

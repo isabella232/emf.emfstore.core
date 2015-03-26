@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Michael Kagel
  * Edgar Mueller
@@ -18,7 +18,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 
 /**
  * Interface for a custom LabelProvider for {@link AbstractOperation}s.
- * 
+ *
  * @author Michael Kagel
  * @author emueller
  */
@@ -46,7 +46,7 @@ public interface OperationCustomLabelProvider extends ESDisposable {
 
 	/**
 	 * Returns the name of the given model element.
-	 * 
+	 *
 	 * @param modelElement
 	 *            the model element whose name should be determined
 	 * @return the name of the given model element
@@ -55,7 +55,7 @@ public interface OperationCustomLabelProvider extends ESDisposable {
 
 	/**
 	 * Returns the description of an operation.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation which needs to be visualized by the image
 	 * @return the description of the operation
@@ -64,7 +64,7 @@ public interface OperationCustomLabelProvider extends ESDisposable {
 
 	/**
 	 * Returns the image of an operation.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation which needs to be visualized by the image
 	 * @return the image of the operation
@@ -73,7 +73,7 @@ public interface OperationCustomLabelProvider extends ESDisposable {
 
 	/**
 	 * Checks if this provider can render the given operation.
-	 * 
+	 *
 	 * @param operation
 	 *            the operation which should be checked
 	 * @return whether the label provider can render the given operation

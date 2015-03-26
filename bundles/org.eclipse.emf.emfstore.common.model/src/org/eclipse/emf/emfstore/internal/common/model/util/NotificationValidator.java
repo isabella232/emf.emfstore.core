@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick - initial API and implementation
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * Validates an EMF notification. Optionally generates a status message, describing potential problems.
- * 
+ *
  * @author chodnick
  */
 final class NotificationValidator {
@@ -34,7 +34,7 @@ final class NotificationValidator {
 
 	/**
 	 * Singleton access.
-	 * 
+	 *
 	 * @return the validator instance
 	 */
 	public static NotificationValidator getInstance() {
@@ -50,7 +50,7 @@ final class NotificationValidator {
 
 	/**
 	 * Validates a notification and sets its valid flag and validationmessage string.
-	 * 
+	 *
 	 * @param n the notification to validate
 	 */
 	protected void validate(NotificationInfo n) {

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -16,7 +16,7 @@ import java.util.Set;
 
 /**
  * Tracks any reservation based an a feature name.
- * 
+ *
  * @author mkoegel
  * @author emueller
  */
@@ -38,7 +38,7 @@ public class FeatureNameReservationMap extends LinkedHashMapWithConflictBucketCa
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param isAllFeatures
 	 *            whether to make a reservation for all feature
 	 */
@@ -48,7 +48,7 @@ public class FeatureNameReservationMap extends LinkedHashMapWithConflictBucketCa
 
 	/**
 	 * Default constructor that does not make a reservation for all feature.
-	 * 
+	 *
 	 */
 	public FeatureNameReservationMap() {
 		this(false);
@@ -72,7 +72,7 @@ public class FeatureNameReservationMap extends LinkedHashMapWithConflictBucketCa
 
 	/**
 	 * Whether this reservation map holds a reservation for an existence feature.
-	 * 
+	 *
 	 * @return <code>true</code>, if this reservation holds a reservation for an existence feature, <code>false</code>
 	 *         otherwise
 	 */
@@ -82,7 +82,7 @@ public class FeatureNameReservationMap extends LinkedHashMapWithConflictBucketCa
 
 	/**
 	 * Whether this reservation map has a reservation for all features.
-	 * 
+	 *
 	 * @return <code>true</code>, if this reservation map has a reservation for all features <code>false</code>
 	 *         otherwise
 	 */
@@ -92,7 +92,7 @@ public class FeatureNameReservationMap extends LinkedHashMapWithConflictBucketCa
 
 	/**
 	 * Returns the {@link ConflictBucketCandidate}s for a given feature name.
-	 * 
+	 *
 	 * @param featureName
 	 *            a feature name
 	 * @return a set of {@link ConflictBucketCandidate}s for the given feature name
@@ -112,7 +112,7 @@ public class FeatureNameReservationMap extends LinkedHashMapWithConflictBucketCa
 
 	/**
 	 * Returns the {@link ConflictBucketCandidate}s for the combination of a feature name and an opposite.
-	 * 
+	 *
 	 * @param featureName
 	 *            a feature name
 	 * @param oppositeModelElement

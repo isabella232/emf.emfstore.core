@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model.impl;
@@ -18,7 +18,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Element Id</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelElementId {
@@ -29,7 +29,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 	private ESModelElementIdImpl apiImpl;
 
 	/**
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ModelElementIdImpl() {
@@ -38,7 +38,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -48,7 +48,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESModelElementIdImpl toAPI() {
@@ -62,7 +62,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 
 	/**
 	 * Sets the api impl.
-	 * 
+	 *
 	 * @param esModelElementIdImpl api impl
 	 */
 	public void setAPIImpl(ESModelElementIdImpl esModelElementIdImpl) {
@@ -71,7 +71,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESModelElementIdImpl createAPI() {

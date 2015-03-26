@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk
  * Edgar Mueller
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.server.ESLocationProvider;
 /**
  * Contains configuration options and information about the workspace related files
  * used by the client.
- * 
+ *
  * @author emueller
  * @author ovonwesen
  * @author mkoegel
@@ -42,7 +42,7 @@ public class FileInfo {
 	/**
 	 * Returns the registered {@link ESLocationProvider} or if not existent, the
 	 * {@link DefaultWorkspaceLocationProvider}.
-	 * 
+	 *
 	 * @return workspace location provider
 	 */
 	public ESLocationProvider getLocationProvider() {
@@ -68,7 +68,7 @@ public class FileInfo {
 
 	/**
 	 * Gets the Workspace directory with an pending {@link File#separatorChar} at the end.
-	 * 
+	 *
 	 * @return the workspace directory path string
 	 */
 	public String getWorkspaceDirectory() {
@@ -86,7 +86,7 @@ public class FileInfo {
 	/**
 	 * Return the path of the plugin data directory inside the EMFStore
 	 * workspace (trailing file separator included).
-	 * 
+	 *
 	 * @return the plugin data directory absolute path as string
 	 */
 	public String getPluginDataBaseDirectory() {
@@ -96,7 +96,7 @@ public class FileInfo {
 	/**
 	 * Returns the directory that is used for error logging.<br/>
 	 * If the directory does not exist it will be created. Upon exit of the JVM it will be deleted.
-	 * 
+	 *
 	 * @return the path to the error log directory
 	 */
 	public String getErrorLogDirectory() {

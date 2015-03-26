@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -43,7 +43,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
  * Controller class for updating a project space.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -54,7 +54,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be updated
 	 * @param version
@@ -86,9 +86,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override
@@ -227,7 +227,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate change packages from the change package.
-	 * 
+	 *
 	 * @param incomingChanges incoming change packages
 	 * @param localChanges local change package
 	 * @return baseVersionDelta
@@ -252,7 +252,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate operations.
-	 * 
+	 *
 	 * @param incomingChanges incoming change package
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed

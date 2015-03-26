@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -19,10 +19,10 @@ import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 /**
  * Abstract URIConverter for normalizing EMFStore URIs on server side. Delegates normalizing to specialized methods
  * which have to be implemented by extenders.
- * 
+ *
  * @author jfaltermeier
  * @since 1.1
- * 
+ *
  */
 public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverterImpl {
 
@@ -92,7 +92,7 @@ public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore serverspace URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @return the normalized URI
 	 */
@@ -103,7 +103,7 @@ public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverte
 	 * <p />
 	 * This may be overridden for usage in relation with a custom {@link ESDynamicModelProvider}. The default
 	 * implementation will map the URI to a File-URI and works in accordance to the default FileDynamicModelProvider.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param ecoreName the file name of the dynamic model
 	 * @return the normalized URI
@@ -115,7 +115,7 @@ public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore projecthistory URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @return the normalized URI
@@ -124,7 +124,7 @@ public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore version URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @param version the version
@@ -134,7 +134,7 @@ public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore changepackage URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @param version the version
@@ -144,7 +144,7 @@ public abstract class ESAbstractServerURIConverter extends ExtensibleURIConverte
 
 	/**
 	 * Normalizes an EMFStore projectstate URI.
-	 * 
+	 *
 	 * @param profile the selected profile
 	 * @param projectId the project's id
 	 * @param version the version

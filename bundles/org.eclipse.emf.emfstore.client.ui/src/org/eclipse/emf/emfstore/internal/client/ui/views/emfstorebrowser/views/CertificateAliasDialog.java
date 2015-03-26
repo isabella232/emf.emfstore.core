@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * pfeifferc
  ******************************************************************************/
@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * The CertificateAliasDialog allows the user to choose a designation for the
  * certificate being imported.
- * 
+ *
  * @author pfeifferc
  */
 @Deprecated
@@ -33,7 +33,7 @@ public class CertificateAliasDialog extends Dialog {
 	/**
 	 * The message to display, or <code>null</code> if none.
 	 */
-	private String message;
+	private final String message;
 
 	/**
 	 * The input value; the empty string by default.
@@ -45,7 +45,7 @@ public class CertificateAliasDialog extends Dialog {
 	 */
 	private Text text;
 
-	private String dialogTitle;
+	private final String dialogTitle;
 
 	/**
 	 * Creates an input dialog with OK and Cancel buttons. Note that the dialog
@@ -53,7 +53,7 @@ public class CertificateAliasDialog extends Dialog {
 	 * <p>
 	 * Note that the <code>open</code> method blocks for input dialogs.
 	 * </p>
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell, or <code>null</code> to create a top-level
 	 *            shell
@@ -86,12 +86,12 @@ public class CertificateAliasDialog extends Dialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		// create composite
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		// create message
 		if (message != null) {
-			Label label = new Label(composite, SWT.WRAP);
+			final Label label = new Label(composite, SWT.WRAP);
 			label.setText(message);
-			GridData data = new GridData(GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL
+			final GridData data = new GridData(GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL
 				| GridData.HORIZONTAL_ALIGN_FILL | GridData.VERTICAL_ALIGN_CENTER);
 			data.widthHint = convertHorizontalDLUsToPixels(IDialogConstants.MINIMUM_MESSAGE_AREA_WIDTH);
 			label.setLayoutData(data);
@@ -105,7 +105,7 @@ public class CertificateAliasDialog extends Dialog {
 
 	/**
 	 * Returns the text area.
-	 * 
+	 *
 	 * @return the text area
 	 */
 	protected Text getText() {
@@ -114,7 +114,7 @@ public class CertificateAliasDialog extends Dialog {
 
 	/**
 	 * Returns the string typed into this input dialog.
-	 * 
+	 *
 	 * @return the input string
 	 */
 	public String getValue() {
@@ -123,7 +123,7 @@ public class CertificateAliasDialog extends Dialog {
 
 	/**
 	 * Configure the shell.
-	 * 
+	 *
 	 * @param shell
 	 *            shell
 	 * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)

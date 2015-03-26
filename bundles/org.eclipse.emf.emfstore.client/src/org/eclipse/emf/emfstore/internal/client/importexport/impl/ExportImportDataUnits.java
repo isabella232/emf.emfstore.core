@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.importexport.impl;
@@ -20,14 +20,14 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 public enum ExportImportDataUnits implements ExportImportDataUnit {
 	/**
 	 * A local change.
-	 * 
+	 *
 	 * @see ProjectSpace#getLocalChangePackage()
 	 */
 	Change {
 		/**
-		 * 
+		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getExtension()
 		 */
 		public String getExtension() {
@@ -36,7 +36,7 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getName()
 		 */
 		public String getName() {
@@ -49,9 +49,9 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 	 */
 	Project {
 		/**
-		 * 
+		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getExtension()
 		 */
 		public String getExtension() {
@@ -60,7 +60,7 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getName()
 		 */
 		public String getName() {
@@ -73,9 +73,9 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 	 */
 	ProjectSpace {
 		/**
-		 * 
+		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getExtension()
 		 */
 		public String getExtension() {
@@ -84,7 +84,7 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getName()
 		 */
 		public String getName() {
@@ -98,9 +98,9 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 	Workspace {
 
 		/**
-		 * 
+		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getExtension()
 		 */
 		public String getExtension() {
@@ -109,7 +109,7 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getName()
 		 */
 		public String getName() {
@@ -122,9 +122,9 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 	 */
 	History {
 		/**
-		 * 
+		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getExtension()
 		 */
 		public String getExtension() {
@@ -133,7 +133,7 @@ public enum ExportImportDataUnits implements ExportImportDataUnit {
 
 		/**
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.internal.client.importexport.ExportImportDataUnit#getName()
 		 */
 		public String getName() {

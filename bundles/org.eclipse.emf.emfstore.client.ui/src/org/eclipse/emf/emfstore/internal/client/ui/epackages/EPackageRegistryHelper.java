@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * TobiasVerhoeven
  ******************************************************************************/
@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 
 /**
  * Helper-class to retrieve EPackages from the EPackage-registry.
- * 
+ *
  * @author Tobias Verhoeven
  */
 public final class EPackageRegistryHelper {
@@ -33,23 +33,23 @@ public final class EPackageRegistryHelper {
 
 	/**
 	 * Gets all available EPackages from the EPackageRegistry.
-	 * 
+	 *
 	 * @param filterKnown weather known packages should be filtered or not.
 	 * @return the available packages
-	 * 
+	 *
 	 */
 	public static Set<EPackage> getAvailablePackages(boolean filterKnown) {
-		Registry registry = EPackage.Registry.INSTANCE;
-		HashSet<Entry<String, Object>> entries = new LinkedHashSet<Entry<String, Object>>(registry.entrySet());
+		final Registry registry = EPackage.Registry.INSTANCE;
+		final HashSet<Entry<String, Object>> entries = new LinkedHashSet<Entry<String, Object>>(registry.entrySet());
 
-		Set<EPackage> packages = new LinkedHashSet<EPackage>();
-		for (Entry<String, Object> entry : entries) {
+		final Set<EPackage> packages = new LinkedHashSet<EPackage>();
+		for (final Entry<String, Object> entry : entries) {
 			if (!filterKnown || !isKnownPackage(entry.getKey())) {
 				try {
-					EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(entry.getKey());
+					final EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(entry.getKey());
 					packages.add(ePackage);
 					// BEGIN SUPRESS CATCH EXCEPTION
-				} catch (RuntimeException e) {
+				} catch (final RuntimeException e) {
 					// END SUPRESS CATCH EXCEPTION
 					WorkspaceUtil.logWarning("Failed to load EPackage", e);
 				}
@@ -60,7 +60,7 @@ public final class EPackageRegistryHelper {
 
 	/**
 	 * Checks if the package is a known package which should not be presented to users.
-	 * 
+	 *
 	 * @param key the key
 	 * @return true, if is known package
 	 */
@@ -70,7 +70,7 @@ public final class EPackageRegistryHelper {
 
 	/**
 	 * Registers a EPackage in the EPackageRegistry.
-	 * 
+	 *
 	 * @param pkg the EPackage to be registered
 	 */
 	public static void registerEPackage(EPackage pkg) {

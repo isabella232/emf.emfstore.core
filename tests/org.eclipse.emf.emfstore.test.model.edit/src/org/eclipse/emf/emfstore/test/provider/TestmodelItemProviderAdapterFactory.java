@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.test.model.util.TestmodelAdapterFactory;
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory implements ComposeableAdapterFactory,
@@ -48,7 +48,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
@@ -57,7 +57,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -66,7 +66,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -75,7 +75,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestmodelItemProviderAdapterFactory()
@@ -92,7 +92,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestElementItemProvider testElementItemProvider;
@@ -101,7 +101,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TestElement}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,7 +119,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestElementToStringMapItemProvider testElementToStringMapItemProvider;
@@ -128,7 +128,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -146,7 +146,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected StringToStringMapItemProvider stringToStringMapItemProvider;
@@ -155,7 +155,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -173,7 +173,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestElementToTestElementMapItemProvider testElementToTestElementMapItemProvider;
@@ -182,7 +182,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -200,7 +200,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected StringToTestElementMapItemProvider stringToTestElementMapItemProvider;
@@ -209,7 +209,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -227,7 +227,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.test.model.TestType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestTypeItemProvider testTypeItemProvider;
@@ -236,7 +236,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TestType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -255,7 +255,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TypeWithFeatureMapNonContainmentItemProvider typeWithFeatureMapNonContainmentItemProvider;
@@ -264,7 +264,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -283,7 +283,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TypeWithFeatureMapContainmentItemProvider typeWithFeatureMapContainmentItemProvider;
@@ -292,7 +292,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -310,7 +310,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory()
@@ -322,7 +322,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
@@ -333,7 +333,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -346,7 +346,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -358,7 +358,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -366,8 +366,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	{
 		if (isFactoryForType(type))
 		{
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
+			final Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
 			{
 				return adapter;
 			}
@@ -380,7 +380,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void addListener(INotifyChangedListener notifyChangedListener)
@@ -392,7 +392,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener)
@@ -404,7 +404,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void fireNotifyChanged(Notification notification)
@@ -421,27 +421,35 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * This disposes all of the item providers created by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void dispose()
 	{
-		if (testElementItemProvider != null)
+		if (testElementItemProvider != null) {
 			testElementItemProvider.dispose();
-		if (testElementToStringMapItemProvider != null)
+		}
+		if (testElementToStringMapItemProvider != null) {
 			testElementToStringMapItemProvider.dispose();
-		if (stringToStringMapItemProvider != null)
+		}
+		if (stringToStringMapItemProvider != null) {
 			stringToStringMapItemProvider.dispose();
-		if (testElementToTestElementMapItemProvider != null)
+		}
+		if (testElementToTestElementMapItemProvider != null) {
 			testElementToTestElementMapItemProvider.dispose();
-		if (stringToTestElementMapItemProvider != null)
+		}
+		if (stringToTestElementMapItemProvider != null) {
 			stringToTestElementMapItemProvider.dispose();
-		if (testTypeItemProvider != null)
+		}
+		if (testTypeItemProvider != null) {
 			testTypeItemProvider.dispose();
-		if (typeWithFeatureMapNonContainmentItemProvider != null)
+		}
+		if (typeWithFeatureMapNonContainmentItemProvider != null) {
 			typeWithFeatureMapNonContainmentItemProvider.dispose();
-		if (typeWithFeatureMapContainmentItemProvider != null)
+		}
+		if (typeWithFeatureMapContainmentItemProvider != null) {
 			typeWithFeatureMapContainmentItemProvider.dispose();
+		}
 	}
 
 }

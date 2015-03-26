@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.internal.client.model.util;
 
 /**
  * Command with a parameter.
- * 
+ *
  * @author emueller
  * @param <T> parameter type
  */
@@ -28,14 +28,14 @@ public abstract class EMFStoreCommandWithParameter<T> extends AbstractEMFStoreCo
 
 	/**
 	 * The actual action that is being executed.
-	 * 
+	 *
 	 * @param parameter the parameter of type T
 	 */
 	protected abstract void doRun(T parameter);
 
 	/**
 	 * Executes the command on the workspaces editing domain.
-	 * 
+	 *
 	 * @param parameter the parameter
 	 * @param ignoreExceptions true if any thrown exception in the execution of the command should be ignored.
 	 */

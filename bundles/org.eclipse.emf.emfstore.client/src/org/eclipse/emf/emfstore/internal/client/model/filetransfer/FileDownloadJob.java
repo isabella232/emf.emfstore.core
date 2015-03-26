@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Carl Pfeiffer, Jan Finis - initial API and implementaiton
  ******************************************************************************/
@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * File Download Job class is responsible for downloading files from the server in the Eclipse Worker thread.
- * 
+ *
  * @author pfeifferc, jfinis
  */
 public class FileDownloadJob extends FileTransferJob {
@@ -35,7 +35,7 @@ public class FileDownloadJob extends FileTransferJob {
 
 	/**
 	 * Default constructor. Only used internally; only the FileTransferManager may create such jobs.
-	 * 
+	 *
 	 * @param status the status to which this download job will report its progress
 	 * @param transferManager the transfer manager administering the download.
 	 * @param fileId the id of the file to be transferred
@@ -79,7 +79,7 @@ public class FileDownloadJob extends FileTransferJob {
 
 	/**
 	 * Registers an exception.
-	 * 
+	 *
 	 * @param e the exception to register
 	 * @return CANCEL_STATUS
 	 */

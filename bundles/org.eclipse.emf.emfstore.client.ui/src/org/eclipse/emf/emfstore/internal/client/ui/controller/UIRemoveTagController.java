@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -30,9 +30,9 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 /**
  * UI controller for removing version tags.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 // TODO: re-package exception for more sensible error messages
 public class UIRemoveTagController extends AbstractEMFStoreUIController<Void> {
@@ -41,7 +41,7 @@ public class UIRemoveTagController extends AbstractEMFStoreUIController<Void> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell}
 	 * @param historyInfo
@@ -54,9 +54,9 @@ public class UIRemoveTagController extends AbstractEMFStoreUIController<Void> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

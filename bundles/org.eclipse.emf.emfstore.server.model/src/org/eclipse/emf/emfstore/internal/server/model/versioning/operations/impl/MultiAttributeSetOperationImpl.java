@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -41,14 +41,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MultiAttributeSetOperationImpl extends FeatureOperationImpl implements MultiAttributeSetOperation {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	/**
 	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	/**
 	 * The default value of the '{@link #getOldValue() <em>Old Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -78,7 +78,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	/**
 	 * The cached value of the '{@link #getOldValue() <em>Old Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -88,7 +88,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	/**
 	 * The default value of the '{@link #getNewValue() <em>New Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewValue()
 	 * @generated
 	 * @ordered
@@ -98,7 +98,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	/**
 	 * The cached value of the '{@link #getNewValue() <em>New Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewValue()
 	 * @generated
 	 * @ordered
@@ -107,7 +107,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultiAttributeSetOperationImpl() {
@@ -116,7 +116,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -126,7 +126,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getIndex() {
@@ -135,7 +135,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIndex(int newIndex) {
@@ -149,7 +149,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Object getOldValue() {
@@ -158,7 +158,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldValue(Object newOldValue) {
@@ -172,7 +172,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Object getNewValue() {
@@ -181,7 +181,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewValue(Object newNewValue) {
@@ -195,7 +195,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -214,7 +214,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -236,7 +236,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -258,7 +258,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -277,7 +277,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -298,9 +298,9 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	@SuppressWarnings("unchecked")

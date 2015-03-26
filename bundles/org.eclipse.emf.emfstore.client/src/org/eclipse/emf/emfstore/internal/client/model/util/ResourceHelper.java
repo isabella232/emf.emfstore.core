@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Helper for resource operations.
- * 
+ *
  * @author wesendon
  */
 public final class ResourceHelper {
@@ -40,7 +40,7 @@ public final class ResourceHelper {
 
 	/**
 	 * Gets an element from a resource.
-	 * 
+	 *
 	 * @param <T> type of element
 	 * @param absoluteFileName filepath of resource
 	 * @param type .class from type
@@ -80,7 +80,7 @@ public final class ResourceHelper {
 
 	/**
 	 * Gets an element from a resource.
-	 * 
+	 *
 	 * @param <T> type of element
 	 * @param absoluteFileName filepath of resource
 	 * @param type .class from type
@@ -95,7 +95,7 @@ public final class ResourceHelper {
 
 	/**
 	 * Puts an element into a new resource.
-	 * 
+	 *
 	 * @param <T> element type
 	 * @param element The element to be put
 	 * @param absoluteFileName filepath of resource
@@ -111,7 +111,7 @@ public final class ResourceHelper {
 
 	/**
 	 * Puts an element into a new resource.
-	 * 
+	 *
 	 * @param <T> element type
 	 * @param element The element to be put
 	 * @param absoluteFileName filepath of resource
@@ -137,7 +137,7 @@ public final class ResourceHelper {
 
 	/**
 	 * Puts an element into a new resource.
-	 * 
+	 *
 	 * @param <T> element type
 	 * @param workSpace the workspace to be put
 	 * @param absoluteFileName filepath of resource

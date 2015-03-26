@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -24,14 +24,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 
 /**
  * Exports a {@link Project}.
- * 
+ *
  * @author emueller
  */
 public class ExportProjectController extends ProjectSpaceBasedExportController {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace the {@link ProjectSpace} whose contained {@link Project} should be exported
 	 */
 	public ExportProjectController(ProjectSpace projectSpace) {
@@ -39,9 +39,9 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredNames()
 	 */
 	public String[] getFilteredNames() {
@@ -50,9 +50,9 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredExtensions()
 	 */
 	public String[] getFilteredExtensions() {
@@ -60,9 +60,9 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getLabel()
 	 */
 	public String getLabel() {
@@ -70,9 +70,9 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilename()
 	 */
 	public String getFilename() {
@@ -82,9 +82,9 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getParentFolderPropertyKey()
 	 */
 	public String getParentFolderPropertyKey() {
@@ -93,7 +93,7 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#execute(java.io.File,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -108,9 +108,9 @@ public class ExportProjectController extends ProjectSpaceBasedExportController {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#isExport()
 	 */
 	public boolean isExport() {

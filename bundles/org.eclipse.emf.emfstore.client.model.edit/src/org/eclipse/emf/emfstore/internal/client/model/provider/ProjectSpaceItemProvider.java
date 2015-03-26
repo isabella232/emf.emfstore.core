@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.provider;
@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.client.model.ProjectSpace} object.
  * <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
@@ -47,10 +47,10 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc -->
-	 * 
+	 *
 	 * @param adapterFactory the adapter factory
 	 *            <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ProjectSpaceItemProvider(AdapterFactory adapterFactory) {
@@ -60,7 +60,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -83,7 +83,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Project Name feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addProjectNamePropertyDescriptor(Object object) {
@@ -107,7 +107,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Project Description feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addProjectDescriptionPropertyDescriptor(Object object) {
@@ -131,7 +131,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Usersession feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addUsersessionPropertyDescriptor(Object object) {
@@ -155,7 +155,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Last Updated feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addLastUpdatedPropertyDescriptor(Object object) {
@@ -179,7 +179,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Resource Count feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addResourceCountPropertyDescriptor(Object object) {
@@ -203,7 +203,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Dirty feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDirtyPropertyDescriptor(Object object) {
@@ -226,7 +226,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * This adds a property descriptor for the Old Log Messages feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addOldLogMessagesPropertyDescriptor(Object object) {
@@ -251,7 +251,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * This adds a property descriptor for the Changed Shared Properties feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addChangedSharedPropertiesPropertyDescriptor(Object object) {
@@ -277,7 +277,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -298,7 +298,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -312,7 +312,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	// begin of custom code
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getImage(java.lang.Object)
 	 * @generated NOT
 	 */
@@ -323,7 +323,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getText(java.lang.Object)
 	 * @generated NOT
 	 */
@@ -346,7 +346,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * and by creating a
 	 * viewer notification, which it passes to {@link #fireNotifyChanged}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -395,7 +395,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -442,7 +442,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -465,7 +465,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	/**
 	 * Return the resource locator for this item provider's resources. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -475,7 +475,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#setTarget(org.eclipse.emf.common.notify.Notifier)
 	 */
 	@Override

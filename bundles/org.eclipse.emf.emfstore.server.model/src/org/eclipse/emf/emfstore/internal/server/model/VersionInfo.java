@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
@@ -15,7 +15,7 @@ import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Version Info</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.osgi.framework.Version;
  * String</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getVersionInfo()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface VersionInfo extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Emf Store Version String</em>' attribute.
 	 * @see #setEmfStoreVersionString(String)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getVersionInfo_EmfStoreVersionString()
@@ -52,7 +52,7 @@ public interface VersionInfo extends EObject {
 	 * <em>Emf Store Version String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Emf Store Version String</em>' attribute.
 	 * @see #getEmfStoreVersionString()
 	 * @generated
@@ -62,7 +62,7 @@ public interface VersionInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Emf Store Version String</b></em>'
 	 * attribute as a Version. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 * @return the version of the emf store plugin.
 	 */
@@ -73,7 +73,7 @@ public interface VersionInfo extends EObject {
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.VersionInfo#getEmfStoreVersionString
 	 * <em>Emf Store Version String</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 * @param emfStoreVersion
 	 *            the version of the emf store plugin

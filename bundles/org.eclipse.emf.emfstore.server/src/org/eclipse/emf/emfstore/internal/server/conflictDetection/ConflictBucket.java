@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.server.ESConflict;
 /**
  * Represents a bucket of conflicting operations sets. In this context my operations are operations authored/owned by
  * the current user while their operation are incoming operations from another user.
- * 
+ *
  * @author koegel
  */
 public class ConflictBucket implements APIDelegate<ESConflict> {
@@ -38,7 +38,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param myOperation initial my operation
 	 * @param theirOperation initial their operation
 	 */
@@ -51,7 +51,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param myOperations initial set of my operations
 	 * @param theirOperations initial set of their operations
 	 */
@@ -83,7 +83,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 
 	/**
 	 * Set one of my operations representing all my operations.
-	 * 
+	 *
 	 * @param myOperation the operation
 	 */
 	public void setMyOperation(AbstractOperation myOperation) {
@@ -106,9 +106,9 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
 	public ESConflict toAPI() {
@@ -119,9 +119,9 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESConflict createAPI() {
@@ -131,7 +131,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 	/**
 	 * Resolve the conflict by specifying the accepted local operations and the rejected
 	 * remote operations.
-	 * 
+	 *
 	 * @param acceptedLocalOperations
 	 *            a set of local operations that have been accepted
 	 * @param rejectedRemoteOperations
@@ -146,7 +146,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 
 	/**
 	 * Returns the set of local operations that have been accepted.
-	 * 
+	 *
 	 * @return a set of accepted local operations
 	 */
 	public Set<AbstractOperation> getAcceptedLocalOperations() {
@@ -155,7 +155,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 
 	/**
 	 * Returns the set of remote operations that have been rejected.
-	 * 
+	 *
 	 * @return the set of rejected remote operations
 	 */
 	public Set<AbstractOperation> getRejectedRemoteOperations() {
@@ -164,7 +164,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 
 	/**
 	 * Whether this conflict bucket is resolved.
-	 * 
+	 *
 	 * @return <code>true</code> if this bucket is resolved, <code>false</code> otherwise
 	 */
 	public boolean isResolved() {

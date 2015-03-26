@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel, Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 /**
  * The connection manager manages the connection to the EMFStore.
  * It will initiate, reinitiate and terminate the connection as needed.
- * 
+ *
  * @author mkoegel
  * @author wesendon
  */
@@ -55,7 +55,7 @@ public interface ConnectionManager extends EMFStore {
 	/**
 	 * Log into the server given by server info. The connection manager will also remember the serverInfo associated
 	 * with the session id.
-	 * 
+	 *
 	 * @param username the user name
 	 * @param password the password
 	 * @param severInfo the server info for the server to log into
@@ -68,7 +68,7 @@ public interface ConnectionManager extends EMFStore {
 
 	/**
 	 * Deletes a session on the server.
-	 * 
+	 *
 	 * @param sessionId id to be deleted.
 	 * @throws ESException in case of failure on server
 	 */
@@ -76,7 +76,7 @@ public interface ConnectionManager extends EMFStore {
 
 	/**
 	 * Checks whether session id is logged in.
-	 * 
+	 *
 	 * @param id session id
 	 * @return true, if logged in
 	 */
@@ -84,12 +84,12 @@ public interface ConnectionManager extends EMFStore {
 
 	/**
 	 * Returns the version of the EMFStore server.
-	 * 
+	 *
 	 * @param serverInfo
 	 *            the EMFStore server whose version should be retrieved
-	 * 
+	 *
 	 * @return the version of the EMFStore server
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of a failure
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.provider;
@@ -44,14 +44,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation} object.
  * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class CreateDeleteOperationItemProvider extends AbstractOperationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public CreateDeleteOperationItemProvider(AdapterFactory adapterFactory) {
@@ -61,7 +61,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	/**
 	 * This adds a property descriptor for the Delete feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDeletePropertyDescriptor(Object object) {
@@ -103,7 +103,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -120,7 +120,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -159,9 +159,9 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	/**
 	 * This returns CreateDeleteOperation.gif. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
-	 * 
+	 *
 	 * @param object
 	 *            the object for which to provide the label image
 	 * @return the image used to label the object
@@ -181,7 +181,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 * @param object
 	 *            the object to be described
@@ -205,7 +205,8 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 				description = Messages.CreateDeleteOperationItemProvider_Text_Created + elementClassAndName;
 			}
 			if (childrenCount > 0) {
-				description += Messages.CreateDeleteOperationItemProvider_Text_Including + childrenCount + Messages.CreateDeleteOperationItemProvider_Text_Siblings;
+				description += Messages.CreateDeleteOperationItemProvider_Text_Including + childrenCount
+					+ Messages.CreateDeleteOperationItemProvider_Text_Siblings;
 			}
 
 			final EList<ReferenceOperation> subOperations = op.getSubOperations();
@@ -213,7 +214,8 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 			if (op.isDelete() && subOperationCount > 0) {
 				final ReferenceOperation referenceOperation = subOperations.get(subOperationCount - 1);
 				if (referenceOperation.getContainmentType().equals(ContainmentType.CONTAINMENT)) {
-					description += Messages.CreateDeleteOperationItemProvider_Text_From + getModelElementClassAndName(referenceOperation.getModelElementId());
+					description += Messages.CreateDeleteOperationItemProvider_Text_From
+						+ getModelElementClassAndName(referenceOperation.getModelElementId());
 				}
 			}
 			return description;
@@ -226,7 +228,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -251,7 +253,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -583,7 +585,7 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	/**
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

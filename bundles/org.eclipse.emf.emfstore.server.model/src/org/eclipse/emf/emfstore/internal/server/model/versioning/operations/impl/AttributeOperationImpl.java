@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl;
@@ -37,14 +37,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * <em>New Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AttributeOperationImpl extends FeatureOperationImpl implements AttributeOperation {
 	/**
 	 * The default value of the '{@link #getOldValue() <em>Old Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	/**
 	 * The cached value of the '{@link #getOldValue() <em>Old Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	/**
 	 * The default value of the '{@link #getNewValue() <em>New Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewValue()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	/**
 	 * The cached value of the '{@link #getNewValue() <em>New Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewValue()
 	 * @generated
 	 * @ordered
@@ -83,7 +83,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AttributeOperationImpl() {
@@ -92,7 +92,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -102,7 +102,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Object getOldValue() {
@@ -111,7 +111,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldValue(Object newOldValue) {
@@ -125,7 +125,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Object getNewValue() {
@@ -134,7 +134,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewValue(Object newNewValue) {
@@ -148,7 +148,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -165,7 +165,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -184,7 +184,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -203,7 +203,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -220,7 +220,7 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

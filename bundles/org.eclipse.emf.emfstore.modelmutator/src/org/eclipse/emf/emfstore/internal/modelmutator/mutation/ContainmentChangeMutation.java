@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Philip Langer - initial API and implementation
  ******************************************************************************/
@@ -16,9 +16,9 @@ import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
 
 /**
  * Abstract mutation for mutating the containment tree of models.
- * 
+ *
  * @author Philip Langer
- * 
+ *
  * @param <M> the implementing API mutation type
  */
 public abstract class ContainmentChangeMutation<M extends ESContainmentChangeMutation<?>> extends
@@ -27,7 +27,7 @@ public abstract class ContainmentChangeMutation<M extends ESContainmentChangeMut
 	/**
 	 * Creates a new mutation with the specified {@code util} making sure that only containment references are selected
 	 * as target feature.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 */
 	public ContainmentChangeMutation(ESModelMutatorUtil util) {
@@ -38,7 +38,7 @@ public abstract class ContainmentChangeMutation<M extends ESContainmentChangeMut
 	/**
 	 * Creates a new mutation with the specified {@code util} and the {@code selector} making sure that
 	 * only containment references are selected as target feature.
-	 * 
+	 *
 	 * @param util The model mutator util used for accessing the model to be mutated.
 	 * @param selector The target selector for selecting the target container and feature.
 	 */

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
@@ -15,11 +15,11 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Ancestor Version Spec</b></em>'.
- * 
+ *
  * @extends APIDelegate<ESAncestorVersionSpec>
  *          <!--
  *          end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec;
  *          Source</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getAncestorVersionSpec()
  * @model
  * @generated
@@ -43,7 +43,7 @@ public interface AncestorVersionSpec extends VersionSpec, APIDelegate<ESAncestor
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getAncestorVersionSpec_Target()
@@ -58,7 +58,7 @@ public interface AncestorVersionSpec extends VersionSpec, APIDelegate<ESAncestor
 	 * containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Target</em>' containment reference.
 	 * @see #getTarget()
 	 * @generated
@@ -73,7 +73,7 @@ public interface AncestorVersionSpec extends VersionSpec, APIDelegate<ESAncestor
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Source</em>' containment reference.
 	 * @see #setSource(PrimaryVersionSpec)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getAncestorVersionSpec_Source()
@@ -88,7 +88,7 @@ public interface AncestorVersionSpec extends VersionSpec, APIDelegate<ESAncestor
 	 * containment reference.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Source</em>' containment reference.
 	 * @see #getSource()
 	 * @generated

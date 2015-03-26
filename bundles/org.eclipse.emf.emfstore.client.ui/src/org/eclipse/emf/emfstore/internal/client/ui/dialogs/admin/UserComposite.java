@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Hodaie
  ******************************************************************************/
@@ -38,7 +38,7 @@ import org.eclipse.ui.forms.widgets.Form;
 /**
  * This shows attributes of a ACUser (name, description) and show a list of groups this user belongs to. You can use
  * drag and drop to drop a group on list of user's groups to add user to that group.
- * 
+ *
  * @author Hodaie
  */
 public class UserComposite extends PropertiesComposite {
@@ -48,7 +48,7 @@ public class UserComposite extends PropertiesComposite {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parent parent
 	 * @param style style
 	 * @param adminBroker used to communicate with server
@@ -120,7 +120,7 @@ public class UserComposite extends PropertiesComposite {
 
 	/**
 	 * This is used when adding a group using add button. It shows an element selection dialog.
-	 * 
+	 *
 	 * @return a list of selected groups to which this ACUser will be added.
 	 */
 	private List<ACGroup> getGroups() {
@@ -153,9 +153,9 @@ public class UserComposite extends PropertiesComposite {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.admin.PropertiesComposite#getTabTitle()
 	 */
 	@Override

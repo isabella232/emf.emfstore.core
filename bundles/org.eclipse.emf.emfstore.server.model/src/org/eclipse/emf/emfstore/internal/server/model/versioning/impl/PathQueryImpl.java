@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PathQueryImpl#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated NOT
  */
 public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements PathQuery {
@@ -43,7 +43,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PathQueryImpl() {
@@ -61,7 +61,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -71,7 +71,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec getTarget() {
@@ -100,7 +100,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpec basicGetTarget() {
@@ -109,7 +109,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetTarget(PrimaryVersionSpec newTarget, NotificationChain msgs) {
@@ -129,7 +129,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTarget(PrimaryVersionSpec newTarget) {
@@ -155,7 +155,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -169,7 +169,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -201,7 +201,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -216,7 +216,7 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -233,11 +233,11 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESPathQueryImpl toAPI() {
@@ -248,11 +248,11 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESPathQueryImpl createAPI() {

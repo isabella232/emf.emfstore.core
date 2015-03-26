@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl;
@@ -28,14 +28,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	/**
 	 * The cached value of the '{@link #getMembers() <em>Members</em>}' reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMembers()
 	 * @generated
 	 * @ordered
@@ -44,7 +44,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ACGroupImpl() {
@@ -53,7 +53,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -64,7 +64,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	// begin of custom code
 	/**
 	 * <!-- begin-user-doc --> Get the group members.
-	 * 
+	 *
 	 * @return a list of org units <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -90,7 +90,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -105,7 +105,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -123,7 +123,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

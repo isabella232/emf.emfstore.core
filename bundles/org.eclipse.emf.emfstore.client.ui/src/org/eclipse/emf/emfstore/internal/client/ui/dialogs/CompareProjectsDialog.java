@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * zardosht
  ******************************************************************************/
@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -37,32 +38,32 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * Dialog for project comparison.
- * 
+ *
  * @author zardosht
  */
 public class CompareProjectsDialog extends TitleAreaDialog {
 
-	private ProjectSpace selectedProjectSpace;
+	private final ProjectSpace selectedProjectSpace;
 	private ListViewer listViewer;
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite contents = new Composite(parent, SWT.NONE);
+		final Composite contents = new Composite(parent, SWT.NONE);
 		contents.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		contents.setLayout(new GridLayout());
-		Label lbl1 = new Label(contents, SWT.NONE);
+		final Label lbl1 = new Label(contents, SWT.NONE);
 		lbl1.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
 		lbl1.setText("Selected Project:");
-		Label lblSelectedProj = new Label(contents, SWT.BORDER);
+		final Label lblSelectedProj = new Label(contents, SWT.BORDER);
 		lblSelectedProj.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		lblSelectedProj.setText(selectedProjectSpace.getProjectName());
 
-		Label lbl3 = new Label(contents, SWT.NONE);
+		final Label lbl3 = new Label(contents, SWT.NONE);
 		lbl3.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
 		lbl3.setText("Compare to:");
 
@@ -70,7 +71,7 @@ public class CompareProjectsDialog extends TitleAreaDialog {
 		listViewer.getList().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		listViewer.setContentProvider(new IStructuredContentProvider() {
 			public Object[] getElements(Object inputElement) {
-				List<? extends ESProject> projects = ESWorkspaceProviderImpl.getInstance().getWorkspace()
+				final List<? extends ESProject> projects = ESWorkspaceProviderImpl.getInstance().getWorkspace()
 					.getLocalProjects();
 				return projects.toArray();
 			}
@@ -94,34 +95,34 @@ public class CompareProjectsDialog extends TitleAreaDialog {
 		listViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			public void selectionChanged(SelectionChangedEvent event) {
-				ProjectSpace secondProjectSpace = (ProjectSpace) (((StructuredSelection) event.getSelection())
-					.getFirstElement());
+				final ProjectSpace secondProjectSpace = (ProjectSpace) ((StructuredSelection) event.getSelection())
+					.getFirstElement();
 				if (secondProjectSpace.equals(selectedProjectSpace)) {
 					CompareProjectsDialog.this.setErrorMessage("Selected projects must be different");
-					CompareProjectsDialog.this.getButton(CompareProjectsDialog.OK).setEnabled(false);
+					CompareProjectsDialog.this.getButton(Window.OK).setEnabled(false);
 				} else {
 					CompareProjectsDialog.this.setErrorMessage(null);
-					CompareProjectsDialog.this.getButton(CompareProjectsDialog.OK).setEnabled(true);
+					CompareProjectsDialog.this.getButton(Window.OK).setEnabled(true);
 				}
 			}
 		});
 		listViewer.setInput(new Object());
 
-		this.setTitle("Select a project from list to compare");
+		setTitle("Select a project from list to compare");
 		return contents;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.jface.dialogs.Dialog#okPressed()
 	 */
 	@Override
 	protected void okPressed() {
 
-		ProjectSpace secondProjectSpace = (ProjectSpace) (((StructuredSelection) listViewer.getSelection())
-			.getFirstElement());
-		boolean areEqual = ModelUtil.areEqual(selectedProjectSpace.getProject(), secondProjectSpace.getProject());
+		final ProjectSpace secondProjectSpace = (ProjectSpace) ((StructuredSelection) listViewer.getSelection())
+			.getFirstElement();
+		final boolean areEqual = ModelUtil.areEqual(selectedProjectSpace.getProject(), secondProjectSpace.getProject());
 		String message;
 		if (areEqual) {
 			message = "The projects are identical.";
@@ -136,7 +137,7 @@ public class CompareProjectsDialog extends TitleAreaDialog {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param parentShell
 	 *            the parent shell
 	 * @param selectedProjectSpace
@@ -144,7 +145,7 @@ public class CompareProjectsDialog extends TitleAreaDialog {
 	 */
 	public CompareProjectsDialog(Shell parentShell, ProjectSpace selectedProjectSpace) {
 		super(parentShell);
-		this.setShellStyle(this.getShellStyle() | SWT.RESIZE);
+		setShellStyle(getShellStyle() | SWT.RESIZE);
 		this.selectedProjectSpace = selectedProjectSpace;
 
 	}

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Zardosth Hodaie
  ******************************************************************************/
@@ -21,15 +21,15 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 /**
  * Clients (like GUI classes) who are not interested if an operation has been run forward or backward (i.e. undone) can
  * use this add this listener to project space.
- * 
+ *
  * @author hodaie
  */
 public abstract class SimpleOperationObserver implements OperationObserver, ESCommitObserver {
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#commitCompleted(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
@@ -40,9 +40,9 @@ public abstract class SimpleOperationObserver implements OperationObserver, ESCo
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.observer.ESCommitObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      org.eclipse.emf.emfstore.server.model.ESChangePackage, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -53,7 +53,7 @@ public abstract class SimpleOperationObserver implements OperationObserver, ESCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationExecuted(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public void operationExecuted(AbstractOperation operation) {
@@ -62,7 +62,7 @@ public abstract class SimpleOperationObserver implements OperationObserver, ESCo
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationUndone(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public void operationUndone(AbstractOperation operation) {
@@ -71,7 +71,7 @@ public abstract class SimpleOperationObserver implements OperationObserver, ESCo
 
 	/**
 	 * Called when an operation has been executed, either forward or backwards (i.e. undo).
-	 * 
+	 *
 	 * @param operation
 	 *            the executed operation
 	 */

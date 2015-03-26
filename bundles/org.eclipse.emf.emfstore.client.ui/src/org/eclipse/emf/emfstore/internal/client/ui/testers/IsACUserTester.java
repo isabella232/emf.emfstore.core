@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * weiglt
  ******************************************************************************/
@@ -20,14 +20,14 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlExceptio
 
 /**
  * This property tester checks if current user is ACUser.
- * 
+ *
  * @author weiglt
  */
 public class IsACUserTester extends PropertyTester {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
 	 *      java.lang.Object)
 	 */

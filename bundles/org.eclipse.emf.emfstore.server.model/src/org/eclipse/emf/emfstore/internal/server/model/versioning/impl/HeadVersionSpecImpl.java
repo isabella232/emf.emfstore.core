@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -20,14 +20,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionSpec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected HeadVersionSpecImpl() {
@@ -36,7 +36,7 @@ public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionS
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -46,17 +46,17 @@ public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionS
 
 	/**
 	 * The API wrapper implementation class.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private ESHeadVersionSpecImpl apiImpl;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESHeadVersionSpecImpl toAPI() {
@@ -69,11 +69,11 @@ public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionS
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESHeadVersionSpecImpl createAPI() {

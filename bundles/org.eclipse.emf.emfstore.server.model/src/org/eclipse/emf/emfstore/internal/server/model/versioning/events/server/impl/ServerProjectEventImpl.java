@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.impl;
@@ -29,14 +29,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * <em>Project Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ServerProjectEventImpl extends ServerEventImpl implements ServerProjectEvent {
 	/**
 	 * The cached value of the '{@link #getProjectId() <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectId()
 	 * @generated
 	 * @ordered
@@ -45,7 +45,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ServerProjectEventImpl() {
@@ -54,7 +54,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -64,17 +64,17 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId getProjectId() {
 		if (projectId != null && projectId.eIsProxy())
 		{
-			InternalEObject oldProjectId = (InternalEObject) projectId;
+			final InternalEObject oldProjectId = (InternalEObject) projectId;
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId)
 			{
-				InternalEObject newProjectId = (InternalEObject) projectId;
+				final InternalEObject newProjectId = (InternalEObject) projectId;
 				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null)
@@ -82,11 +82,13 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, oldProjectId, projectId));
+				}
 			}
 		}
 		return projectId;
@@ -94,7 +96,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectId basicGetProjectId() {
@@ -103,51 +105,56 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetProjectId(ProjectId newProjectId, NotificationChain msgs) {
-		ProjectId oldProjectId = projectId;
+		final ProjectId oldProjectId = projectId;
 		projectId = newProjectId;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, oldProjectId, newProjectId);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setProjectId(ProjectId newProjectId) {
 		if (newProjectId != projectId)
 		{
 			NotificationChain msgs = null;
-			if (projectId != null)
+			if (projectId != null) {
 				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
-			if (newProjectId != null)
+			}
+			if (newProjectId != null) {
 				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 					- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
+			}
 			msgs = basicSetProjectId(newProjectId, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
+		else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID,
 				newProjectId, newProjectId));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -162,7 +169,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -170,8 +177,9 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 		switch (featureID)
 		{
 		case ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID:
-			if (resolve)
+			if (resolve) {
 				return getProjectId();
+			}
 			return basicGetProjectId();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -179,7 +187,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -195,7 +203,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -211,7 +219,7 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * ovonwesen
  ******************************************************************************/
@@ -17,13 +17,13 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.uti
 
 /**
  * Default label provider for merges.
- * 
+ *
  * @author ovonwesen
- * 
+ *
  */
 public class DefaultMergeLabelProvider implements MergeLabelProvider {
 
-	private AdapterFactoryLabelProvider adapterFactory;
+	private final AdapterFactoryLabelProvider adapterFactory;
 
 	/**
 	 * Default constructor.
@@ -33,9 +33,9 @@ public class DefaultMergeLabelProvider implements MergeLabelProvider {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.MergeLabelProvider#getPriority()
 	 */
 	public int getPriority() {
@@ -43,9 +43,9 @@ public class DefaultMergeLabelProvider implements MergeLabelProvider {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.MergeLabelProvider#getText(org.eclipse.emf.ecore.EObject)
 	 */
 	public String getText(EObject modelElement) {
@@ -53,9 +53,9 @@ public class DefaultMergeLabelProvider implements MergeLabelProvider {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.MergeLabelProvider#dispose()
 	 */
 	public void dispose() {

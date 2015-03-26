@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Helmut Naughton, Maximilian Koegel, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionCh
  * @author koegel
  * @author naughton
  * @author emueller
- * 
+ *
  * @extends NotifiableIdEObjectCollectionImpl
  */
 public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Project {
@@ -38,7 +38,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	 * The cached value of the '{@link #getModelElements() <em>Model Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getModelElements()
 	 * @generated
 	 * @ordered
@@ -48,7 +48,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	/**
 	 * The cached value of the '{@link #getCutElements() <em>Cut Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getCutElements()
 	 * @generated
 	 * @ordered
@@ -61,7 +61,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	private ESModelElementIdToEObjectMappingImpl mappingImpl;
 
 	/**
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ProjectImpl() {
@@ -70,7 +70,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> .<!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -80,7 +80,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 
@@ -95,7 +95,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<EObject> getCutElements() {
@@ -108,7 +108,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -124,7 +124,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +140,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -161,7 +161,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -196,7 +196,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	/**
 	 * this methods implements the adapter interface which is needed by the
 	 * navigator.
-	 * 
+	 *
 	 * @param adapter
 	 *            the adapter class
 	 * @return the adapter
@@ -207,7 +207,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.Project#delete()
 	 */
 	public void delete() {
@@ -223,7 +223,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.IdEObjectCollectionImpl#setModelElements(java.util.Collection)
 	 * @generate NOT
 	 */
@@ -233,9 +233,9 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.NotifiableIdEObjectCollectionImpl#addCutElement(org.eclipse.emf.ecore.EObject)
 	 */
 	@Override
@@ -245,7 +245,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.NotifiableIdEObjectCollectionImpl#initMapping()
 	 */
 	@Override
@@ -264,9 +264,9 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public ESModelElementIdToEObjectMappingImpl toAPI() {
@@ -280,7 +280,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
 	public ESModelElementIdToEObjectMappingImpl createAPI() {

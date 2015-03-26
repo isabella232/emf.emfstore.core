@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -28,9 +28,9 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
 /**
  * Implementation for the {@link ESVersionFactory} that takes care of the mapping and delegates
  * the actual work to {@link Versions}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class ESVersionsFactoryImpl implements ESVersionFactory {
 
@@ -40,9 +40,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	public static final ESVersionsFactoryImpl INSTANCE = new ESVersionsFactoryImpl();
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPRIMARY(java.lang.String, int)
 	 */
 	public ESPrimaryVersionSpec createPRIMARY(String branch, int index) {
@@ -50,9 +50,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPRIMARY(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec,
 	 *      int)
 	 */
@@ -67,9 +67,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPRIMARY(int)
 	 */
 	public ESPrimaryVersionSpec createPRIMARY(int i) {
@@ -77,9 +77,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createANCESTOR(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec)
 	 */
@@ -89,9 +89,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createHEAD()
 	 */
 	public ESHeadVersionSpec createHEAD() {
@@ -99,9 +99,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createHEAD(java.lang.String)
 	 */
 	public ESHeadVersionSpec createHEAD(String branch) {
@@ -109,9 +109,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createHEAD(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
 	 */
 	public ESHeadVersionSpec createHEAD(ESVersionSpec versionSpec) {
@@ -124,9 +124,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createBRANCH(java.lang.String)
 	 */
 	public ESBranchVersionSpec createBRANCH(String value) {
@@ -134,9 +134,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createBRANCH(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
 	 */
 	public ESBranchVersionSpec createBRANCH(ESVersionSpec versionSpec) {
@@ -149,9 +149,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#isSameBranch(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
 	 */
@@ -168,9 +168,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createTAG(java.lang.String,
 	 *      java.lang.String)
 	 */
@@ -179,9 +179,9 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPAGEDUPDATE(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      int)
 	 */

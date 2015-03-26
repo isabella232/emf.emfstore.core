@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -29,9 +29,9 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for creating a remote project.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UICreateRemoteProjectController extends AbstractEMFStoreUIController<ESRemoteProject> {
 
@@ -40,7 +40,7 @@ public class UICreateRemoteProjectController extends AbstractEMFStoreUIControlle
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} to be used during the creation of the remote project
 	 */
@@ -52,7 +52,7 @@ public class UICreateRemoteProjectController extends AbstractEMFStoreUIControlle
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} to be used during the creation of the remote project
 	 * @param session
@@ -66,7 +66,7 @@ public class UICreateRemoteProjectController extends AbstractEMFStoreUIControlle
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param shell
 	 *            the parent {@link Shell} to be used during the creation of the remote project
 	 * @param session
@@ -101,9 +101,9 @@ public class UICreateRemoteProjectController extends AbstractEMFStoreUIControlle
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override

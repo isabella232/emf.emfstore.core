@@ -16,18 +16,18 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 
 /**
  * Implementation of {@link ESCompare} using the EMF Compare Framework to compare to {@link Project}s.
- * 
+ *
  * @author jsommerfeldt
- * 
+ *
  */
 public class EMFCompareComparator implements ESCompare {
 
 	private ComparisonResourceSnapshot snapshot;
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESCompare#compare(org.eclipse.emf.ecore.EObject,
 	 *      org.eclipse.emf.ecore.EObject)
 	 */
@@ -48,9 +48,9 @@ public class EMFCompareComparator implements ESCompare {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.client.ui.ESCompare#display()
 	 */
 	public void display() {

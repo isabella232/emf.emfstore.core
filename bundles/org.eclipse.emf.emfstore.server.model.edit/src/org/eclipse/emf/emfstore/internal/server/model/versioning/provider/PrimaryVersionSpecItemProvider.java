@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.provider;
@@ -26,14 +26,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * This is the item provider adapter for a
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PrimaryVersionSpecItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +43,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -61,7 +61,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	/**
 	 * This adds a property descriptor for the Identifier feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIdentifierPropertyDescriptor(Object object) {
@@ -85,7 +85,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This adds a property descriptor for the Project State Checksum feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addProjectStateChecksumPropertyDescriptor(Object object)
@@ -110,7 +110,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns PrimaryVersionSpec.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -122,7 +122,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -159,7 +159,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

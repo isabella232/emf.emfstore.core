@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
 
 /**
  * A NotificationRecording is basically a list of EMF Notifications.
- * 
+ *
  * @author chodnick
  */
 public class NotificationRecording {
@@ -83,7 +83,7 @@ public class NotificationRecording {
 
 	/**
 	 * Use to change the contents of the recording dynamically. For example in filters.
-	 * 
+	 *
 	 * @return a mutable internal representation of the notifcations
 	 */
 	public List<NotificationInfo> asMutableList() {

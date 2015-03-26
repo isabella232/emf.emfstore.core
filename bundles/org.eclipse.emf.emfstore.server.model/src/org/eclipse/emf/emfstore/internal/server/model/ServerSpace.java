@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model;
@@ -21,10 +21,10 @@ import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Server Space</b></em>'.
- * 
+ *
  * @extends org.eclipse.emf.emfstore.internal.server.model.versioning.DAOProvider
  *          <!-- end-user-doc -->
- * 
+ *
  *          <p>
  *          The following features are supported:
  *          <ul>
@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace#getUsers <em>Users</em>}</li>
  *          </ul>
  *          </p>
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getServerSpace()
  * @model
  * @generated
@@ -51,7 +51,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Groups</em>' containment reference list.
 	 * @see ModelPackage#getServerSpace_Groups()
 	 * @model containment="true" resolveProxies="true"
@@ -68,7 +68,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Projects</em>' reference list.
 	 * @see ModelPackage#getServerSpace_Projects()
 	 * @model
@@ -86,7 +86,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Open Sessions</em>' containment reference
 	 *         list.
 	 * @see ModelPackage#getServerSpace_OpenSessions()
@@ -105,7 +105,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Users</em>' containment reference list.
 	 * @see ModelPackage#getServerSpace_Users()
 	 * @model containment="true" resolveProxies="true"
@@ -116,7 +116,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	/**
 	 * Make the current ServerSpace state persistent. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @throws IOException
 	 *             if save fails
 	 * @model
@@ -128,7 +128,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	/**
 	 * Set the resource the ServerSpace is contained in. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param resource
 	 *            the resource
 	 * @model
