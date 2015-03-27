@@ -52,7 +52,7 @@
 
    <element name="orgUnitResolverServiceProvider">
       <complexType>
-         <attribute name="orgUnitServiceClass" type="string">
+         <attribute name="orgUnitResolverServiceClass" type="string">
             <annotation>
                <documentation>
                   

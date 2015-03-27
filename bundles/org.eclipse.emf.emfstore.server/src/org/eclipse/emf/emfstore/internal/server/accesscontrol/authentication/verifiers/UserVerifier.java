@@ -14,6 +14,7 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.ve
 import java.util.Set;
 
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
@@ -64,7 +65,7 @@ public abstract class UserVerifier extends PasswordVerifier {
 
 		if (verifySuperUser(username, preparedPassword) || verifyPassword(username, preparedPassword)) {
 			final AuthenticationInformation createAuthenticationInfo = createAuthenticationInfo();
-			createAuthenticationInfo.setResolvedACUser(findUser(username));
+			createAuthenticationInfo.setResolvedACUser(ModelUtil.clone(findUser(username)));
 			return createAuthenticationInfo.toAPI();
 		}
 
