@@ -35,6 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
  * Validates the serverspace in three different ways. First it resolves all proxies, then checks whether all ME have ids
@@ -169,16 +170,21 @@ public class EmfStoreValidator {
 					projectHistory.getProjectId().getId()));
 			for (final Version version : projectHistory.getVersions()) {
 				if (version.getChanges() != null) {
-					for (final AbstractOperation abstractOperation : version.getChanges().getOperations()) {
-						if (!(abstractOperation instanceof CompositeOperation)
-							&& (abstractOperation.getModelElementId() == null
-							|| abstractOperation.getModelElementId().getId() == null)) {
-							errors.add(
-								MessageFormat.format(
-									Messages.EmfStoreValidator_ChangeOperation_Has_No_ModelElementId,
-									projectHistory.getProjectId(),
-									version.getPrimarySpec().getIdentifier()));
+					final ESCloseableIterable<AbstractOperation> operations = version.getChanges().operations();
+					try {
+						for (final AbstractOperation abstractOperation : operations.iterable()) {
+							if (!(abstractOperation instanceof CompositeOperation)
+								&& (abstractOperation.getModelElementId() == null
+								|| abstractOperation.getModelElementId().getId() == null)) {
+								errors.add(
+									MessageFormat.format(
+										Messages.EmfStoreValidator_ChangeOperation_Has_No_ModelElementId,
+										projectHistory.getProjectId(),
+										version.getPrimarySpec().getIdentifier()));
+							}
 						}
+					} finally {
+						operations.close();
 					}
 				}
 				if (version.getProjectState() != null) {

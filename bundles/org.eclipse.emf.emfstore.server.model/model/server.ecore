@@ -81,13 +81,11 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ChangePackage">
+    <eClassifiers xsi:type="ecore:EClass" name="ChangePackage" eSuperTypes="#//versioning/AbstractChangePackage">
       <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
           eType="#//versioning/operations/AbstractOperation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
           eType="#//versioning/events/Event" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="logMessage" eType="#//versioning/LogMessage"
-          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="versionProperties" upperBound="-1"
           eType="#//versioning/VersionProperty" containment="true"/>
     </eClassifiers>
@@ -176,6 +174,19 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxChanges" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="baseVersionSpec" eType="#//versioning/PrimaryVersionSpec"
           containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AbstractChangePackage" abstract="true"
+        interface="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="logMessage" eType="#//versioning/LogMessage"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FileBasedChangePackage" eSuperTypes="#//versioning/AbstractChangePackage">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="operationProxies" upperBound="-1"
+          eType="#//versioning/OperationProxy" transient="true" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OperationProxy">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eSubpackages name="operations" nsURI="http://eclipse.org/emf/emfstore/server/model/versioning/operations"
         nsPrefix="org.eclipse.emf.emfstore.internal.server.model.versioning.operations">

@@ -126,8 +126,8 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_clientDate_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_clientDate_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_LogMessage_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_LogMessage_clientDate_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE,
 				true,
 				false,

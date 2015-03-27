@@ -15,7 +15,6 @@ package org.eclipse.emf.emfstore.internal.server.conflictDetection;
 import static org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil.isCreateDelete;
 
 import java.text.MessageFormat;
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +25,11 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMap
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
  * @author emueller
@@ -58,14 +58,14 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * @param mapping
 	 *            an initial mapping from {EObject}s to their {@link ModelElementId}s
 	 * @param changePackages
-	 *            a list of {@link ChangePackage}s whose involved model elements should
+	 *            a list of {@link AbstractChangePackage}s whose involved model elements should
 	 *            be added to the mapping
 	 */
 	public ModelElementIdToEObjectMappingImpl(ModelElementIdToEObjectMapping mapping,
-		List<ChangePackage> changePackages) {
+		List<AbstractChangePackage> changePackages) {
 		this(mapping);
-		for (final ChangePackage changePackage : changePackages) {
-			this.put(changePackage);
+		for (final AbstractChangePackage changePackage : changePackages) {
+			put(changePackage);
 		}
 	}
 
@@ -92,36 +92,43 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 *
 	 * @param project the project which contains the initial mapping from {EObject}s to their
 	 *            {@link org.eclipse.emf.emfstore.common.model.ESModelElementId ESModelElementId}s
-	 * @param changePackage a {@link ChangePackage}s whose involved model elements should
+	 * @param changePackage a {@link AbstractChangePackage}s whose involved model elements should
 	 *            be added to the mapping
 	 */
-	public ModelElementIdToEObjectMappingImpl(Project project, ChangePackage changePackage) {
+	public ModelElementIdToEObjectMappingImpl(Project project, AbstractChangePackage changePackage) {
 		this(project);
 		this.put(changePackage);
 	}
 
 	/**
-	 * Adds all model elements that are involved in operations contained in the {@link ChangePackage} and their
+	 * Adds all model elements that are involved in operations contained in the {@link AbstractChangePackage} and their
 	 * respective IDs into the mapping.
 	 *
 	 * @param changePackages
-	 *            the {@link ChangePackage ChangePackages} whose model elements should be added to the mapping
+	 *            the {@link AbstractChangePackage} whose model elements should be added to the mapping
 	 */
-	public void put(List<ChangePackage> changePackages) {
-		for (final ChangePackage changePackage : changePackages) {
+	public void put(List<AbstractChangePackage> changePackages) {
+		for (final AbstractChangePackage changePackage : changePackages) {
 			put(changePackage);
 		}
 	}
 
 	/**
-	 * Adds all model elements that are involved in operations contained in the {@link ChangePackage} and their
+	 * Adds all model elements that are involved in operations contained in the {@link AbstractChangePackage} and their
 	 * respective IDs into the mapping.
 	 *
 	 * @param changePackage
-	 *            the {@link ChangePackage} whose model elements should be added to the mapping
+	 *            the {@link AbstractChangePackage} whose model elements should be added to the mapping
 	 */
-	public void put(ChangePackage changePackage) {
-		put(changePackage.getOperations());
+	public void put(AbstractChangePackage changePackage) {
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				scanOperationIntoMapping(operation);
+			}
+		} finally {
+			operations.close();
+		}
 	}
 
 	/**
@@ -129,7 +136,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 *
 	 * @param operations the operations
 	 */
-	public void put(Collection<AbstractOperation> operations) {
+	public void put(Iterable<AbstractOperation> operations) {
 		for (final AbstractOperation op : operations) {
 			scanOperationIntoMapping(op);
 		}

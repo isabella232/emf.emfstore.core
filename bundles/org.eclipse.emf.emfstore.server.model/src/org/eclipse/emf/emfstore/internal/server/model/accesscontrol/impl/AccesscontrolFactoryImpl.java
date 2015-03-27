@@ -41,7 +41,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 		try
 		{
 			final AccesscontrolFactory theAccesscontrolFactory = (AccesscontrolFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/accesscontrol"); //$NON-NLS-1$
+				.getEFactory(AccesscontrolPackage.eNS_URI);
 			if (theAccesscontrolFactory != null)
 			{
 				return theAccesscontrolFactory;

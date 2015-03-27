@@ -36,7 +36,7 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 		try
 		{
 			final SemanticFactory theSemanticFactory = (SemanticFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/operations/semantic"); //$NON-NLS-1$
+				.getEFactory(SemanticPackage.eNS_URI);
 			if (theSemanticFactory != null)
 			{
 				return theSemanticFactory;

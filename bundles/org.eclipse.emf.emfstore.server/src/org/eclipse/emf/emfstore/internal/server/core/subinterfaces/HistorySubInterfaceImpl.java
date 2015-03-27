@@ -17,14 +17,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
@@ -39,7 +36,6 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.RangeQuery;
@@ -48,7 +44,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -154,11 +149,13 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		sanityCheckObjects(projectId, historyQuery);
 		synchronized (getMonitor()) {
 
-			if (historyQuery instanceof ModelElementQuery) {
+			// TODO LCP model element query disabled
+			// if (historyQuery instanceof ModelElementQuery) {
+			//
+			// return handleMEQuery(projectId, (ModelElementQuery) historyQuery);
 
-				return handleMEQuery(projectId, (ModelElementQuery) historyQuery);
-
-			} else if (historyQuery instanceof RangeQuery) {
+			// } else
+			if (historyQuery instanceof RangeQuery) {
 
 				return versionToHistoryInfo(projectId, handleRangeQuery(projectId, (RangeQuery<?>) historyQuery),
 					historyQuery.isIncludeChangePackages());
@@ -210,51 +207,52 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		return result;
 	}
 
-	private List<HistoryInfo> handleMEQuery(ProjectId projectId, ModelElementQuery query) throws ESException {
-		final List<Version> inRange = handleRangeQuery(projectId, query);
-		// SortedSet<Version> relevantVersions = new TreeSet<Version>(new VersionComparator(false));
-		// for (ModelElementId id : query.getModelElements()) {
-		// relevantVersions.addAll(historyCache.getChangesForModelElement(projectId, id));
-		// }
-		// relevantVersions.retainAll(inRange);
-		final List<Version> relevantVersions = filterVersions(inRange, query.getModelElements());
-		final List<HistoryInfo> result = versionToHistoryInfo(projectId, relevantVersions,
-			query.isIncludeChangePackages());
-		// filter ops
-		for (final HistoryInfo historyInfo : result) {
-			filterOperationsForSelectedME(query.getModelElements(), historyInfo);
-		}
-		return result;
-	}
+	// TODO LCP
+	// private List<HistoryInfo> handleMEQuery(ProjectId projectId, ModelElementQuery query) throws ESException {
+	// final List<Version> inRange = handleRangeQuery(projectId, query);
+	// // SortedSet<Version> relevantVersions = new TreeSet<Version>(new VersionComparator(false));
+	// // for (ModelElementId id : query.getModelElements()) {
+	// // relevantVersions.addAll(historyCache.getChangesForModelElement(projectId, id));
+	// // }
+	// // relevantVersions.retainAll(inRange);
+	// final List<Version> relevantVersions = filterVersions(inRange, query.getModelElements());
+	// final List<HistoryInfo> result = versionToHistoryInfo(projectId, relevantVersions,
+	// query.isIncludeChangePackages());
+	// // filter ops
+	// for (final HistoryInfo historyInfo : result) {
+	// filterOperationsForSelectedElements(query.getModelElements(), historyInfo);
+	// }
+	// return result;
+	// }
 
-	// TODO combine with op filtering
-	private List<Version> filterVersions(List<Version> inRange, List<ModelElementId> modelElements) {
-		final ArrayList<Version> result = new ArrayList<Version>();
-		for (final Version version : inRange) {
-			// special case for initial version
-			if (version.getPrimarySpec() != null && version.getPrimarySpec().getIdentifier() == 0) {
-				if (version.getProjectState() != null) {
-					for (final ModelElementId id : modelElements) {
-						if (version.getProjectState().contains(id)) {
-							result.add(version);
-							break;
-						}
-					}
-				}
-			}
-			if (version.getChanges() == null) {
-				continue;
-			}
-			final Set<ModelElementId> involvedModelElements = version.getChanges().getAllInvolvedModelElements();
-			for (final ModelElementId id : modelElements) {
-				if (involvedModelElements.contains(id)) {
-					result.add(version);
-					break;
-				}
-			}
-		}
-		return result;
-	}
+	// TODO LCP combine with op filtering
+	// private List<Version> filterVersions(List<Version> inRange, List<ModelElementId> modelElements) {
+	// final ArrayList<Version> result = new ArrayList<Version>();
+	// for (final Version version : inRange) {
+	// // special case for initial version
+	// if (version.getPrimarySpec() != null && version.getPrimarySpec().getIdentifier() == 0) {
+	// if (version.getProjectState() != null) {
+	// for (final ModelElementId id : modelElements) {
+	// if (version.getProjectState().contains(id)) {
+	// result.add(version);
+	// break;
+	// }
+	// }
+	// }
+	// }
+	// if (version.getChanges() == null) {
+	// continue;
+	// }
+	// final Set<ModelElementId> involvedModelElements = version.getChanges().getAllInvolvedModelElements();
+	// for (final ModelElementId id : modelElements) {
+	// if (involvedModelElements.contains(id)) {
+	// result.add(version);
+	// break;
+	// }
+	// }
+	// }
+	// return result;
+	// }
 
 	private int sourceNumber(HistoryQuery<?> query) throws ESException {
 		if (query.getSource() == null) {
@@ -371,21 +369,30 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		return result;
 	}
 
-	private void filterOperationsForSelectedME(List<ModelElementId> ids, HistoryInfo historyInfo) {
-		if (historyInfo.getChangePackage() == null || historyInfo.getChangePackage().getOperations() == null) {
-			return;
-		}
-		final Set<AbstractOperation> operationsToRemove = new LinkedHashSet<AbstractOperation>();
-		final EList<AbstractOperation> operations = historyInfo.getChangePackage().getOperations();
-		for (final AbstractOperation operation : operations) {
-			for (final ModelElementId id : ids) {
-				if (!operation.getAllInvolvedModelElements().contains(id)) {
-					operationsToRemove.add(operation);
-				}
-			}
-		}
-		operations.removeAll(operationsToRemove);
-	}
+	// TODO LCP
+	// private void filterOperationsForSelectedElements(List<ModelElementId> ids, HistoryInfo historyInfo) {
+	// if (historyInfo.getChangePackage() == null) {
+	// return;
+	// }
+	// final Set<AbstractOperation> operationsToRemove = new LinkedHashSet<AbstractOperation>();
+	// final ESCloseableIterable<AbstractOperation> operations = historyInfo.getChangePackage().operations();
+	//
+	// try {
+	// final Iterable<AbstractOperation> iterable = operations.iterable();
+	//
+	// } finally {
+	//
+	// }
+	//
+	// for (final AbstractOperation operation : operations) {
+	// for (final ModelElementId id : ids) {
+	// if (!operation.getAllInvolvedModelElements().contains(id)) {
+	// operationsToRemove.add(operation);
+	// }
+	// }
+	// }
+	// operations.removeAll(operationsToRemove);
+	// }
 
 	private List<HistoryInfo> versionToHistoryInfo(ProjectId projectId, Collection<Version> versions, boolean includeCP)
 		throws ESException {

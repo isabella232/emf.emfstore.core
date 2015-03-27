@@ -14,13 +14,14 @@ package org.eclipse.emf.emfstore.internal.client.ui.dialogs;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.client.ui.Activator;
 import org.eclipse.emf.emfstore.internal.client.ui.views.changes.TabbedChangesComposite;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
@@ -37,7 +38,7 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class UpdateDialog extends EMFStoreTitleAreaDialog {
 
-	private final List<ChangePackage> changes;
+	private final List<AbstractChangePackage> changes;
 	private final ProjectSpace projectSpace;
 	private Image updateImage;
 	private final ModelElementIdToEObjectMapping idToEObjectMapping;
@@ -57,7 +58,7 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 	public UpdateDialog(
 		Shell parentShell,
 		ESLocalProject localProject,
-		List<ChangePackage> changes,
+		List<AbstractChangePackage> changes,
 		ModelElementIdToEObjectMapping idToEObjectMapping) {
 
 		super(parentShell);
@@ -87,7 +88,7 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 				true, true, 2, 1));
 		}
 
-		String projectName = "";
+		String projectName = StringUtils.EMPTY;
 		// show number of changes on dialog title
 		if (projectSpace.getProjectName() != null
 			&& projectSpace.getProjectName().length() > 0) {
@@ -97,10 +98,9 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 		setTitle("Incoming changes from server" + projectName);
 		int operationCount = 0;
 		int rootCount = 0;
-		for (final ChangePackage esChangePackage : changes) {
-			final ChangePackage changePackage = esChangePackage;
-			rootCount += changePackage.getOperations().size();
-			operationCount += changePackage.getSize();
+		for (final AbstractChangePackage changePackage : changes) {
+			rootCount += changePackage.size();
+			operationCount += changePackage.leafSize();
 		}
 		setMessage("Number of versions: " + changes.size()
 			+ ", Number of composite changes: " + rootCount

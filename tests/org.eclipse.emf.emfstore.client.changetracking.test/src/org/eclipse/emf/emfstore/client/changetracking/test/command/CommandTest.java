@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -60,7 +60,7 @@ import org.junit.Test;
 
 /**
  * Tests for the command recording to detect deletes, cuts and copies.
- * 
+ *
  * @author koegel
  */
 public class CommandTest extends ESTest {
@@ -154,8 +154,8 @@ public class CommandTest extends ESTest {
 		ESWorkspaceProviderImpl.getInstance().getEditingDomain().getCommandStack().execute(delete);
 
 		assertEquals(0, createComment.getContainedElements().size());
-		assertEquals(1, getProjectSpace().getOperations().size());
-		assertTrue(getProjectSpace().getOperations().get(0) instanceof CreateDeleteOperation);
+		assertEquals(1, forceGetOperations().size());
+		assertTrue(forceGetOperations().get(0) instanceof CreateDeleteOperation);
 	}
 
 	/**
@@ -283,7 +283,7 @@ public class CommandTest extends ESTest {
 
 	/**
 	 * check element deletion tracking.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -305,7 +305,7 @@ public class CommandTest extends ESTest {
 			fail(COMMAND_NOT_EXECUTABLE);
 		}
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -319,7 +319,7 @@ public class CommandTest extends ESTest {
 
 	/**
 	 * check complex element deletion tracking.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -364,7 +364,7 @@ public class CommandTest extends ESTest {
 
 		assertFalse(getProject().contains(useCase));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -790,7 +790,7 @@ public class CommandTest extends ESTest {
 
 		clearOperations();
 
-		assertEquals(0, getProjectSpace().getOperations().size());
+		assertEquals(0, forceGetOperations().size());
 		final EditingDomain editingDomain = ESWorkspaceProviderImpl.getInstance().getEditingDomain();
 
 		// delete
@@ -809,14 +809,14 @@ public class CommandTest extends ESTest {
 		assertEquals(0, leafSection.getContainedElements().size());
 		// undo delete
 		assertTrue(editingDomain.getCommandStack().canUndo());
-		assertEquals(1, getProjectSpace().getOperations().size());
+		assertEquals(1, forceGetOperations().size());
 
 		// undo the command - add actor to model elements feature
 
 		editingDomain.getCommandStack().undo();
 
 		assertEquals(1, leafSection.getContainedElements().size());
-		// // assertEquals(0, getProjectSpace().getOperations().size());
+		// // assertEquals(0,forceGetOperations().size());
 		assertTrue(editingDomain.getCommandStack().canRedo());
 
 		// redo the command - delete again
@@ -870,7 +870,7 @@ public class CommandTest extends ESTest {
 		assertEquals(4, ModelUtil.getAllContainedModelElements(leafSection, false).size());
 		assertTrue(getProject().contains(workPackageId));
 
-		assertEquals(2, getProjectSpace().getOperations().size());
+		assertEquals(2, forceGetOperations().size());
 
 	}
 
@@ -888,7 +888,7 @@ public class CommandTest extends ESTest {
 			}
 		}.run(false);
 
-		assertEquals(0, getProjectSpace().getOperations().size());
+		assertEquals(0, forceGetOperations().size());
 
 		final EditingDomain editingDomain = ESWorkspaceProviderImpl.getInstance().getEditingDomain();
 
@@ -915,7 +915,7 @@ public class CommandTest extends ESTest {
 			}
 		}.run(false);
 
-		assertEquals(0, getProjectSpace().getOperations().size());
+		assertEquals(0, forceGetOperations().size());
 		final EditingDomain editingDomain = ESWorkspaceProviderImpl.getInstance().getEditingDomain();
 
 		// delete
@@ -923,20 +923,20 @@ public class CommandTest extends ESTest {
 
 		assertEquals(0, leafSection.getContainedElements().size());
 		assertTrue(editingDomain.getCommandStack().canUndo());
-		assertEquals(1, getProjectSpace().getOperations().size());
+		assertEquals(1, forceGetOperations().size());
 
 		// undo the command
 		// command.undo();
 		editingDomain.getCommandStack().undo();
 
 		assertEquals(1, leafSection.getContainedElements().size());
-		// assertEquals(0, getProjectSpace().getOperations().size());
+		// assertEquals(0,forceGetOperations().size());
 		assertTrue(editingDomain.getCommandStack().canRedo());
 
 		// redo the command
 		editingDomain.getCommandStack().redo();
 		assertEquals(0, leafSection.getContainedElements().size());
-		// assertEquals(1, getProjectSpace().getOperations().size());
+		// assertEquals(1,forceGetOperations().size());
 	}
 
 	@Test

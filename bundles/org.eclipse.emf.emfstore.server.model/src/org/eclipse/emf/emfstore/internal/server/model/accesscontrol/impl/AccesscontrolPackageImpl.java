@@ -449,51 +449,73 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(acUserEClass, ACUser.class, "ACUser", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getACUser_FirstName(), ecorePackage.getEString(), "firstName", null, 0, 1, ACUser.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getACUser_LastName(), ecorePackage.getEString(), "lastName", null, 0, 1, ACUser.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getACUser_EffectiveGroups(), getACGroup(), null, "effectiveGroups", null, 0, -1, //$NON-NLS-1$
-			ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getACUser_Password(), ecorePackage.getEString(), "password", null, 0, 1, ACUser.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(
+			getACUser_FirstName(),
+			ecorePackage.getEString(),
+			"firstName", null, 0, 1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getACUser_LastName(),
+			ecorePackage.getEString(),
+			"lastName", null, 0, 1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getACUser_EffectiveGroups(),
+			getACGroup(),
+			null,
+			"effectiveGroups", null, 0, -1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getACUser_Password(),
+			ecorePackage.getEString(),
+			"password", null, 0, 1, ACUser.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(acOrgUnitEClass, ACOrgUnit.class, "ACOrgUnit", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getACOrgUnit_Name(), ecorePackage.getEString(), "name", null, 1, 1, ACOrgUnit.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getACOrgUnit_Roles(), theRolesPackage.getRole(), null, "roles", null, 0, -1, ACOrgUnit.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getACOrgUnit_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
-			ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getACOrgUnit_Properties(), getOrgUnitProperty(), null, "properties", null, 0, -1, //$NON-NLS-1$
-			ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(acOrgUnitEClass, ACOrgUnit.class,
+			"ACOrgUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getACOrgUnit_Name(),
+			ecorePackage.getEString(),
+			"name", null, 1, 1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getACOrgUnit_Roles(),
+			theRolesPackage.getRole(),
+			null,
+			"roles", null, 0, -1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getACOrgUnit_Description(),
+			ecorePackage.getEString(),
+			"description", null, 0, 1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getACOrgUnit_Properties(),
+			getOrgUnitProperty(),
+			null,
+			"properties", null, 0, -1, ACOrgUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		addEOperation(acOrgUnitEClass, getACOrgUnitId(), "getId", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(acGroupEClass, ACGroup.class, "ACGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getACGroup_Members(), getACOrgUnit(), null, "members", null, 0, -1, ACGroup.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
+		initEReference(
+			getACGroup_Members(),
+			getACOrgUnit(),
+			null,
+			"members", null, 0, -1, ACGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getACGroup_Members().getEKeys().add(theModelPackage.getIdentifiableElement_Identifier());
 
-		initEClass(acOrgUnitIdEClass, ACOrgUnitId.class, "ACOrgUnitId", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
+		initEClass(acOrgUnitIdEClass, ACOrgUnitId.class,
+			"ACOrgUnitId", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(orgUnitPropertyEClass, OrgUnitProperty.class, "OrgUnitProperty", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOrgUnitProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, OrgUnitProperty.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrgUnitProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, //$NON-NLS-1$
-			OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getOrgUnitProperty_Project(), theModelPackage_1.getProjectId(), null, "project", null, 0, 1, //$NON-NLS-1$
-			OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(orgUnitPropertyEClass, OrgUnitProperty.class,
+			"OrgUnitProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getOrgUnitProperty_Name(),
+			ecorePackage.getEString(),
+			"name", null, 0, 1, OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getOrgUnitProperty_Value(),
+			ecorePackage.getEString(),
+			"value", null, 0, 1, OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getOrgUnitProperty_Project(),
+			theModelPackage_1.getProjectId(),
+			null,
+			"project", null, 0, 1, OrgUnitProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		getOrgUnitProperty_Project().getEKeys().add(theModelPackage.getUniqueIdentifier_Id());
 	}
 

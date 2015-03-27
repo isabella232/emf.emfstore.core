@@ -56,7 +56,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
@@ -504,44 +504,25 @@ public class DecisionManager {
 	 * @return name as string or empty string
 	 */
 	public String getAuthorForOperation(AbstractOperation theirOperation) {
-		// TODO: review
+
 		EObject container = theirOperation;
-		while (!(container instanceof ChangePackage)) {
+		while (!AbstractChangePackage.class.isInstance(container) && container != null) {
 			container = container.eContainer();
 		}
 
-		final ChangePackage cp = (ChangePackage) container;
-
-		// ME: I don't think this will be ever the case
-		if (cp.getLogMessage() == null || cp.getLogMessage().getAuthor() == null) {
+		if (container == null) {
+			// TODO LCP
 			return StringUtils.EMPTY;
 		}
 
-		return cp.getLogMessage().getAuthor();
-		// theirOperation.
-		// for (ChangePackage cp : theirChangePackages) {
-		// for (AbstractOperation op : cp.getOperations()) {
-		// List<AbstractOperation> tmpList = new ArrayList<AbstractOperation>();
-		// if (op instanceof CompositeOperation) {
-		// tmpList.add(op);
-		// tmpList.addAll(((CompositeOperation) op).getSubOperations());
-		// } else {
-		// tmpList.add(op);
-		// }
-		// for (AbstractOperation ao : tmpList) {
-		// if (ao.equals(theirOperation)) {
-		// LogMessage log = cp.getLogMessage();
-		// if (log == null) {
-		// return "";
-		// }
-		// return (log.getAuthor() == null) ? "" : log.getAuthor();
-		//
-		// }
-		// }
-		// }
-		// }
-		// MKCD
-		// return StringUtils.EMPTY;
+		final AbstractChangePackage changePackage = (AbstractChangePackage) container;
+
+		// ME: I don't think this will be ever the case
+		if (changePackage.getLogMessage() == null || changePackage.getLogMessage().getAuthor() == null) {
+			return StringUtils.EMPTY;
+		}
+
+		return changePackage.getLogMessage().getAuthor();
 	}
 
 	private Integer myLeafOperationCount;

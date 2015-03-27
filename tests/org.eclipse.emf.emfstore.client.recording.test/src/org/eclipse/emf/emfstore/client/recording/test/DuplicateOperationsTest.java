@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -24,23 +24,32 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
 import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
+import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
+import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
+import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.controller.UpdateController;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsFactory;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
+import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.junit.Test;
+
+import com.google.common.collect.Iterables;
 
 /**
  * @author emueller
- * 
+ *
  */
 public class DuplicateOperationsTest extends ESTest {
 
@@ -79,34 +88,68 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testConflictingChangePackage() {
+	public void testConflictinggetLocalChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
-		final AbstractOperation a = createOperation(A);
-		final AbstractOperation b = createOperation(B);
-		final ChangePackage cp = createChangePackage(a, b);
-		final ChangePackage localCP = createChangePackage(
-			ModelUtil.clone(a), ModelUtil.clone(b));
-		final boolean hasBeenRemoved = updateController.removeDuplicateOperations(cp, localCP);
-		assertEquals(0, localCP.getOperations().size());
-		assertTrue(hasBeenRemoved);
+
+		Add.toProject(getLocalProject(), Create.testElement());
+		Add.toProject(getLocalProject(), Create.testElement());
+
+		final AbstractChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				cp.add(operation);
+			}
+		} finally {
+			operations.close();
+		}
+
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final boolean hasBeenRemoved = updateController
+					.removeDuplicateOperations(cp, getProjectSpace().getLocalChangePackage());
+				assertTrue(hasBeenRemoved);
+			}
+		});
+		assertEquals(0, getProjectSpace().getLocalChangePackage().size());
 	}
 
 	@Test
-	public void testConflictingChangePackageWithMoreOpsThanLocal() {
+	public void testConflictingChangePackageWithMoreOpsThanLocal() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
-		final AbstractOperation a = createOperation(A);
-		final AbstractOperation b = createOperation(B);
-		final AbstractOperation c = createOperation(C);
-		final ChangePackage cp = createChangePackage(a, b);
-		final ChangePackage localCP = createChangePackage(
-			ModelUtil.clone(a), ModelUtil.clone(b), c);
-		final boolean hasBeenRemoved = updateController.removeDuplicateOperations(cp, localCP);
-		assertEquals(1, localCP.getOperations().size());
-		assertTrue(hasBeenRemoved);
+
+		Add.toProject(getLocalProject(), Create.testElement("foo")); //$NON-NLS-1$
+		Add.toProject(getLocalProject(), Create.testElement("bar")); //$NON-NLS-1$
+		Add.toProject(getLocalProject(), Create.testElement("baz")); //$NON-NLS-1$
+
+		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
+		final Iterable<AbstractOperation> operationIterable = operations.iterable();
+		final AbstractOperation firstOp = Iterables.get(operationIterable, 0);
+		final AbstractOperation secondOp = Iterables.get(operationIterable, 0);
+		cp.getOperations().add(ModelUtil.clone(firstOp));
+		cp.getOperations().add(ModelUtil.clone(secondOp));
+		operations.close();
+
+		final List<ESChangePackage> incoming = new ArrayList<ESChangePackage>();
+		incoming.add(cp.toAPI());
+
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final boolean hasBeenRemoved = updateController
+					.removeDuplicateOperations(cp, getProjectSpace().getLocalChangePackage());
+				assertTrue(hasBeenRemoved);
+			}
+		});
+		assertEquals(1, getProjectSpace().getLocalChangePackage().size());
 	}
 
 	@Test
-	public void testNonConflictingChangePackage() {
+	public void testNonConflictinggetLocalChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -118,7 +161,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testNoLocalChanges() {
+	public void testNoLocalChanges() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -129,7 +172,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test(expected = IllegalStateException.class)
-	public void testIllegalIncomingChangePackage() {
+	public void testIllegalIncominggetLocalChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -141,7 +184,7 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test(expected = IllegalStateException.class)
-	public void testIllegalLocalChangePackage() {
+	public void testIllegalLocalgetLocalChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
 		final AbstractOperation a = createOperation(A);
 		final AbstractOperation b = createOperation(B);
@@ -153,43 +196,70 @@ public class DuplicateOperationsTest extends ESTest {
 	}
 
 	@Test
-	public void testRemoveChangePackage() {
+	public void testRemovegetLocalChangePackage() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
-		final AbstractOperation a = createOperation(A);
-		final AbstractOperation b = createOperation(B);
-		final ChangePackage cp = createChangePackage(a, b);
-		final ChangePackage localCP = createChangePackage(
-			ModelUtil.clone(a), ModelUtil.clone(b));
-		final List<ChangePackage> incoming = new ArrayList<ChangePackage>();
-		incoming.add(cp);
-		final int delta = updateController.removeFromChangePackages(incoming, localCP);
-		assertEquals(1, delta);
-		assertEquals(0, localCP.getOperations().size());
+		Add.toProject(getLocalProject(), Create.testElement());
+		Add.toProject(getLocalProject(), Create.testElement());
+
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
+		try {
+			for (final AbstractOperation op : operations.iterable()) {
+				changePackage.add(op);
+			}
+		} finally {
+			operations.close();
+		}
+
+		final List<AbstractChangePackage> incoming = new ArrayList<AbstractChangePackage>();
+		incoming.add(changePackage);
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final int delta = updateController.removeFromChangePackages(incoming);
+				assertEquals(1, delta);
+			}
+		});
+		assertEquals(0, getProjectSpace().getLocalChangePackage().size());
 		assertEquals(0, incoming.size());
 	}
 
 	@Test
-	public void testRemoveChangePackageWithMoreIncomingChanges() {
+	public void testRemoveChangePackageWithMoreIncomingChanges() throws ESException {
 		final UpdateController updateController = createDummyUpdateController();
-		final AbstractOperation a = createOperation(A);
-		final AbstractOperation b = createOperation(B);
-		final AbstractOperation c = createOperation(C);
-		final ChangePackage cp = createChangePackage(a, b);
-		final ChangePackage cp2 = createChangePackage(c);
-		final ChangePackage localCP = createChangePackage(
-			ModelUtil.clone(a), ModelUtil.clone(b));
-		final List<ChangePackage> incoming = new ArrayList<ChangePackage>();
+
+		Add.toProject(getLocalProject(), Create.testElement());
+		Add.toProject(getLocalProject(), Create.testElement());
+
+		final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
+		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+			.operations();
+		final Iterable<AbstractOperation> iterable = operations.iterable();
+		final AbstractOperation firstOp = Iterables.get(iterable, 0);
+		final AbstractOperation secondOp = Iterables.get(iterable, 0);
+		final AbstractOperation thirdOp = createOperation("fooOp"); //$NON-NLS-1$
+		operations.close();
+		cp.add(firstOp);
+		cp.add(secondOp);
+
+		final ChangePackage cp2 = VersioningFactory.eINSTANCE.createChangePackage();
+		cp2.getOperations().add(thirdOp);
+
+		final List<AbstractChangePackage> incoming = new ArrayList<AbstractChangePackage>();
 		incoming.add(cp);
 		incoming.add(cp2);
-		final int delta = updateController.removeFromChangePackages(incoming, localCP);
-		assertEquals(1, delta);
-		assertEquals(0, localCP.getOperations().size());
+
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final int delta = updateController.removeFromChangePackages(
+					incoming);
+				assertEquals(1, delta);
+			}
+		});
+		assertEquals(0, getProjectSpace().getLocalChangePackage().size());
 		assertEquals(1, incoming.size());
 	}
 
-	// @Test
-	// public void testConflictingChangePackageWithLocalChanges() {
-	// final UpdateController updateController = createDummyUpdateController();
-	// updateController.removeDuplicateOperations(incomingChanges, localChanges);
-	// }
 }

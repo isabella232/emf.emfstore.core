@@ -40,7 +40,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 		try
 		{
 			final RolesFactory theRolesFactory = (RolesFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/roles"); //$NON-NLS-1$
+				.getEFactory(RolesPackage.eNS_URI);
 			if (theRolesFactory != null)
 			{
 				return theRolesFactory;

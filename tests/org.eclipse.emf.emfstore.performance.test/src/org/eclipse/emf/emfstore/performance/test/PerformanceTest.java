@@ -36,12 +36,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * This TestCase tests all methods in the main
- * {@link org.unicase.emfstore.EmfStore} interface.
+ * This TestCase tests all methods in the main {@link org.unicase.emfstore.EmfStore} interface.
  * 
  * @author Dmitry Litvinov
  */
 public class PerformanceTest extends ESTestWithLoggedInUser {
+	
 
 	private static final int PROJECTSIZE = 10000;
 	private static final int NR_OF_CHANGES = 100;
@@ -72,16 +72,14 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 	/**
 	 * Start server and gain session id.
 	 * 
-	 * @throws ESException
-	 *             in case of failure
+	 * @throws ESException in case of failure
 	 * @throws IOException
 	 */
 	@Override
 	public void before() {
 		super.before();
 		generateModels(getProjectSpace(), PROJECTSIZE);
-		System.out.println("MODEL SIZE: "
-				+ getLocalProject().getAllModelElements().size());
+		System.out.println("MODEL SIZE: " + getLocalProject().getAllModelElements().size());
 		initMeasurments();
 	}
 
@@ -92,16 +90,12 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 	}
 
 	/**
-	 * Opens projects of different sizes, shares them with the server and then
-	 * deletes them. r
+	 * Opens projects of different sizes, shares them with the server and then deletes them. r
 	 * 
-	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId,
-	 *      String, String,
-	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage,
-	 *      Project)
+	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId, String, String,
+	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage, Project)
 	 * @see org.unicase.emfstore.EmfStore#getProjectList(org.eclipse.emf.emfstore.server.model.SessionId)
-	 * @throws ESException
-	 *             in case of failure.
+	 * @throws ESException in case of failure.
 	 * @throws IOException
 	 */
 	@Test
@@ -113,21 +107,18 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 			memoryMeter.startMeasurements();
 			memBefore[i] = usedMemory();
 			long time = System.currentTimeMillis();
-
+			
 			ProjectUtil.share(getUsersession(), getLocalProject());
-
+			
 			times[i] = (System.currentTimeMillis() - time) / 1000.0;
 
 			memAfter[i] = usedMemory();
 			memDuring[i] = memoryMeter.stopMeasurements();
-			ModelUtil.logInfo("share project - iteration #" + (i + 1)
-					+ ": time=" + times[i] + ", memory used before: "
-					+ memBefore[i] / 1024 / 1024 + "MB, during: "
-					+ memDuring[i] / 1024 / 1024 + "MB, after: " + memAfter[i]
-					/ 1024 / 1024 + "MB");
+			ModelUtil.logInfo("share project - iteration #" + (i + 1) + ": time=" + times[i] + ", memory used before: "
+				+ memBefore[i] / 1024 / 1024 + "MB, during: " + memDuring[i] / 1024 / 1024 + "MB, after: "
+				+ memAfter[i] / 1024 / 1024 + "MB");
 
-			// if (i > 0 && memAfter[i] > memAfterThreshold * ACCEPTED_VARIANCE)
-			// {
+			// if (i > 0 && memAfter[i] > memAfterThreshold * ACCEPTED_VARIANCE) {
 			// fail();
 			// }
 			memAfterThreshold = memAfter[i];
@@ -141,23 +132,19 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 	}
 
 	/**
-	 * Measures average time, spent for the checkout operation. Opens projects
-	 * of different sizes, shares them with the server, checkouts and then
-	 * deletes them.
+	 * Measures average time, spent for the checkout operation. Opens projects of different sizes, shares them with the
+	 * server, checkouts and then deletes them.
 	 * 
-	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId,
-	 *      String, String,
-	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage,
-	 *      Project)
+	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId, String, String,
+	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage, Project)
 	 * @see org.unicase.emfstore.EmfStore#getProjectList(org.eclipse.emf.emfstore.server.model.SessionId)
-	 * @throws ESException
-	 *             in case of failure.
+	 * @throws ESException in case of failure.
 	 */
 	@Test
 	public void testCheckoutProject() throws ESException {
 
 		ProjectUtil.share(getUsersession(), getLocalProject());
-
+		
 		long memAfterThreshold = 0;
 		for (int i = 0; i < NUM_ITERATIONS; i++) {
 			memoryMeter.startMeasurements();
@@ -168,12 +155,9 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 			times[i] = (System.currentTimeMillis() - time) / 1000.0;
 			memAfter[i] = usedMemory();
 			memDuring[i] = memoryMeter.stopMeasurements();
-			ModelUtil.logInfo("checkout project "
-					+ getProjectSpace().getProjectName() + " iteration #"
-					+ (i + 1) + ": time=" + times[i] + ", memory used before: "
-					+ memBefore[i] / 1024 / 1024 + "MB, during: "
-					+ memDuring[i] / 1024 / 1024 + "MB, after: " + memAfter[i]
-					/ 1024 / 1024 + "MB");
+			ModelUtil.logInfo("checkout project " + getProjectSpace().getProjectName() + " iteration #" + (i + 1)
+				+ ": time=" + times[i] + ", memory used before: " + memBefore[i] / 1024 / 1024 + "MB, during: "
+				+ memDuring[i] / 1024 / 1024 + "MB, after: " + memAfter[i] / 1024 / 1024 + "MB");
 
 			if (i > 0 && memAfter[i] > memAfterThreshold * 1.2) {
 				fail("Memory consumption too high.");
@@ -185,29 +169,23 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 	}
 
 	/**
-	 * Measures average time, spent for the commit and update operations. Opens
-	 * projects of different sizes, shares them with the server and checks it
-	 * out as two different projects. Then the test generates changes in one of
-	 * the projects, using the ModelMutator, commits them to the server, and
-	 * updates the second project. The test performs model change, commit and
-	 * update NUM_ITERATIONS times and calculates times for commit and update
-	 * operations
+	 * Measures average time, spent for the commit and update operations. Opens projects of different sizes, shares them
+	 * with the server and checks it out as two different projects. Then the test generates changes in one of the
+	 * projects, using the ModelMutator, commits them to the server, and updates the second project. The test performs
+	 * model change, commit and update NUM_ITERATIONS times and calculates times for commit and update operations
 	 * 
-	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId,
-	 *      String, String,
-	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage,
-	 *      Project)
+	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId, String, String,
+	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage, Project)
 	 * @see org.unicase.emfstore.EmfStore#getProjectList(org.eclipse.emf.emfstore.server.model.SessionId)
-	 * @throws ESException
-	 *             in case of failure.
+	 * @throws ESException in case of failure.
 	 */
 	@Test
 	public void testCommitAndUpdateProject() throws ESException {
 
 		getLocalProject().shareProject(nullMonitor());
-
+	
 		final ESLocalProject checkout = ProjectUtil.checkout(getLocalProject());
-
+		
 		double[] modelChangeTimes = new double[NUM_ITERATIONS];
 		double[] commitTimes = new double[NUM_ITERATIONS];
 		double[] updateTimes = new double[NUM_ITERATIONS];
@@ -229,14 +207,11 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 
 			memDuringMut[i] = memoryMeter.stopMeasurements();
 			memAfterMut[i] = usedMemory();
-			ModelUtil.logInfo("change model-  iteration #" + (i + 1)
-					+ ": time=" + modelChangeTimes[i] + " memory used before:"
-					+ memBeforeMut[i] / 1024 / 1024 + "MB, during: "
-					+ memDuringMut[i] / 1024 / 1024 + "MB, after: "
-					+ memAfterMut[i] / 1024 / 1024 + "MB");
+			ModelUtil.logInfo("change model-  iteration #" + (i + 1) + ": time=" + modelChangeTimes[i]
+				+ " memory used before:" + memBeforeMut[i] / 1024 / 1024 + "MB, during: " + memDuringMut[i] / 1024
+				/ 1024 + "MB, after: " + memAfterMut[i] / 1024 / 1024 + "MB");
 
-			System.out.println("VERSION BEFORE commit:"
-					+ getLocalProject().getBaseVersion().getIdentifier());
+			System.out.println("VERSION BEFORE commit:" + getLocalProject().getBaseVersion().getIdentifier());
 			time = System.currentTimeMillis();
 			memoryMeter.startMeasurements();
 			time = System.currentTimeMillis();
@@ -246,11 +221,9 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 
 			memDuringCommit[i] = memoryMeter.stopMeasurements();
 			memAfterCommit[i] = usedMemory();
-			ModelUtil.logInfo("commit project - iteration #" + (i + 1)
-					+ ": time=" + commitTimes[i] + ", memory used before: "
-					+ memAfterMut[i] / 1024 / 1024 + "MB, during: "
-					+ memDuringCommit[i] / 1024 / 1024 + "MB, after: "
-					+ memAfterCommit[i] / 1024 / 1024 + "MB");
+			ModelUtil.logInfo("commit project - iteration #" + (i + 1) + ": time=" + commitTimes[i]
+				+ ", memory used before: " + memAfterMut[i] / 1024 / 1024 + "MB, during: " + memDuringCommit[i] / 1024
+				/ 1024 + "MB, after: " + memAfterCommit[i] / 1024 / 1024 + "MB");
 			if (i > 0 && memAfter[i] > memAfterThreshold * ACCEPTED_VARIANCE) {
 				fail();
 			}
@@ -262,17 +235,14 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 			checkout.update(new NullProgressMonitor());
 			updateTimes[i] = (System.currentTimeMillis() - time) / 1000.0;
 			// TODO: re-enable clean memory task
-			// CleanMemoryTask task = new
-			// CleanMemoryTask(ESWorkspaceProviderImpl.getInstance().getCurrentWorkspace()
+			// CleanMemoryTask task = new CleanMemoryTask(ESWorkspaceProviderImpl.getInstance().getCurrentWorkspace()
 			// .getResourceSet());
 			// task.run();
 			memDuringUpdate[i] = memoryMeter.stopMeasurements();
 			memAfterUpdate[i] = usedMemory();
-			ModelUtil.logInfo("update project - iteration #" + (i + 1)
-					+ ": time=" + updateTimes[i] + ", memory used before: "
-					+ memAfterCommit[i] / 1024 / 1024 + "MB, during: "
-					+ memDuringUpdate[i] / 1024 / 1024 + "MB, after: "
-					+ memAfterUpdate[i] / 1024 / 1024 + "MB");
+			ModelUtil.logInfo("update project - iteration #" + (i + 1) + ": time=" + updateTimes[i]
+				+ ", memory used before: " + memAfterCommit[i] / 1024 / 1024 + "MB, during: " + memDuringUpdate[i]
+					/ 1024 / 1024 + "MB, after: " + memAfterUpdate[i] / 1024 / 1024 + "MB");
 
 			if (i > 0 && memAfter[i] > memAfterThreshold * ACCEPTED_VARIANCE) {
 				fail();
@@ -281,11 +251,9 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 
 		}
 
-		ModelUtil.logInfo("Mutate model - average="
-				+ Calculate.average(modelChangeTimes) + ", min="
-				+ Calculate.min(modelChangeTimes) + ", max="
-				+ Calculate.max(modelChangeTimes) + ", mean="
-				+ Calculate.mean(modelChangeTimes));
+		ModelUtil.logInfo("Mutate model - average=" + Calculate.average(modelChangeTimes) + ", min="
+			+ Calculate.min(modelChangeTimes) + ", max=" + Calculate.max(modelChangeTimes) + ", mean="
+			+ Calculate.mean(modelChangeTimes));
 
 	}
 
@@ -300,71 +268,62 @@ public class PerformanceTest extends ESTestWithLoggedInUser {
 
 	public static long usedMemory() {
 		Runtime.getRuntime().gc();
-		return Runtime.getRuntime().totalMemory()
-				- Runtime.getRuntime().freeMemory();
+		return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 	}
-
+	
 	private static IProgressMonitor nullMonitor() {
 		return new NullProgressMonitor();
 	}
-
-	public void generateModels(final ProjectSpace projectSpace,
-			int numberOfModleElements) {
+	
+	public void generateModels(final ProjectSpace projectSpace, int numberOfModleElements) {
 		lastSeed = lastSeed == seed ? seed + 1 : seed;
 		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
 				ESModelMutatorUtil.getEPackage(MODEL_KEY),
 				projectSpace.getProject(), lastSeed);
-
+		
 		mmc.setMaxDeleteCount(1);
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(numberOfModleElements);
-		mmc.setEditingDomain(ESWorkspaceProviderImpl.getInstance()
-				.getInternalWorkspace().getEditingDomain());
+		mmc.setEditingDomain(ESWorkspaceProviderImpl.getInstance().getInternalWorkspace().getEditingDomain());
 		Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
-		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE
-				.getProject_CutElements());
+		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_CutElements());
 		mmc.seteStructuralFeaturesToIgnore(features);
-
+		
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
 				ESDefaultModelMutator.generateModel(mmc);
 			}
 		});
-
-		System.out.println("Number of changes: "
-				+ projectSpace.getOperations().size());
+		
+//		System.out.println("Number of changes: " + projectSpace.getOperations().size());
 	}
 
 	public void changeModel(final ProjectSpace prjSpace, final int nrOfChanges) {
 		lastSeed = lastSeed == seed ? seed + 1 : seed;
 		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
-				ESModelMutatorUtil.getEPackage(MODEL_KEY),
-				prjSpace.getProject(), lastSeed);
+						ESModelMutatorUtil.getEPackage(MODEL_KEY),
+						prjSpace.getProject(), lastSeed);
 		mmc.setMaxDeleteCount(1);
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(1);
-		mmc.setEditingDomain(ESWorkspaceProviderImpl.getInstance()
-				.getInternalWorkspace().getEditingDomain());
+		mmc.setEditingDomain(ESWorkspaceProviderImpl.getInstance().getInternalWorkspace().getEditingDomain());
 		Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
-		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE
-				.getProject_CutElements());
+		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_CutElements());
 		mmc.seteStructuralFeaturesToIgnore(features);
 		List<EPackage> packages = new ArrayList<EPackage>();
 		packages.add(BowlingPackage.eINSTANCE);
 		mmc.setModelPackages(packages);
-
+		
 		long time = System.currentTimeMillis();
-		RunESCommand.run(new ESVoidCallable() {
+		RunESCommand.run(new ESVoidCallable() {			
 			@Override
 			public void run() {
 				mmc.setMinObjectsCount(nrOfChanges);
 				ESDefaultModelMutator.changeModel(mmc);
 			}
 		});
-		System.out.println("Changed model: "
-				+ (System.currentTimeMillis() - time) / 1000.0 + "sec");
-		System.out.println("Number of changes: "
-				+ prjSpace.getOperations().size());
+		System.out.println("Changed model: " + (System.currentTimeMillis() - time) / 1000.0 + "sec");
+//		System.out.println("Number of changes: " + prjSpace.getOperations().size());
 	}
 }

@@ -150,9 +150,8 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	 *            the semantic operation that replaces the composite operation
 	 */
 	public void endCompositeOperation(SemanticCompositeOperation semanticCompositeOperation) {
-		final List<AbstractOperation> operations = projectSpace.getOperations();
-		operations.remove(operations.size() - 1);
-		operations.add(semanticCompositeOperation);
+		projectSpace.getLocalChangePackage().removeAtEnd(1);
+		projectSpace.getLocalChangePackage().add(semanticCompositeOperation);
 		endCompositeOperation();
 	}
 

@@ -41,7 +41,7 @@ public interface TestResult extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Seed Count</em>' attribute.
 	 * @see #setSeedCount(int)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult_SeedCount()
@@ -55,7 +55,7 @@ public interface TestResult extends EObject {
 	 * <em>Seed Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Seed Count</em>' attribute.
 	 * @see #getSeedCount()
 	 * @generated
@@ -70,7 +70,7 @@ public interface TestResult extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>ESFuzzyTest Name</em>' attribute.
 	 * @see #setTestName(String)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult_TestName()
@@ -84,7 +84,7 @@ public interface TestResult extends EObject {
 	 * <em>ESFuzzyTest Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>ESFuzzyTest Name</em>' attribute.
 	 * @see #getTestName()
 	 * @generated
@@ -99,7 +99,7 @@ public interface TestResult extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Error</em>' attribute.
 	 * @see #setError(String)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult_Error()
@@ -113,7 +113,7 @@ public interface TestResult extends EObject {
 	 * <em>Error</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Error</em>' attribute.
 	 * @see #getError()
 	 * @generated
@@ -128,7 +128,7 @@ public interface TestResult extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Failure</em>' attribute.
 	 * @see #setFailure(String)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult_Failure()
@@ -142,7 +142,7 @@ public interface TestResult extends EObject {
 	 * <em>Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Failure</em>' attribute.
 	 * @see #getFailure()
 	 * @generated
@@ -157,7 +157,7 @@ public interface TestResult extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Execution Time</em>' attribute.
 	 * @see #setExecutionTime(long)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult_ExecutionTime()
@@ -171,7 +171,7 @@ public interface TestResult extends EObject {
 	 * <em>Execution Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Execution Time</em>' attribute.
 	 * @see #getExecutionTime()
 	 * @generated

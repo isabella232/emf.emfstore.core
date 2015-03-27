@@ -33,9 +33,9 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -103,7 +103,7 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	 * {@inheritDoc}
 	 */
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
+		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
 		return getConnectionProxy(sessionId).callWithResult("createVersion", PrimaryVersionSpec.class, sessionId, //$NON-NLS-1$
 			projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion, logMessage);
@@ -137,10 +137,9 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
-		VersionSpec target)
-		throws InvalidVersionSpecException, ESException {
-		return getConnectionProxy(sessionId).callWithListResult("getChanges", ChangePackage.class, sessionId, //$NON-NLS-1$
+	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+		VersionSpec target) throws InvalidVersionSpecException, ESException {
+		return getConnectionProxy(sessionId).callWithListResult("getChanges", AbstractChangePackage.class, sessionId, //$NON-NLS-1$
 			projectId, source, target);
 	}
 

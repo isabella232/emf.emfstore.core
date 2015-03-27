@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
@@ -35,8 +34,6 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *          Operations</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getEvents <em>Events
  *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getLogMessage <em>Log
- *          Message</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getVersionProperties <em>
  *          Version Properties</em>}</li>
  *          </ul>
@@ -46,7 +43,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * @model
  * @generated
  */
-public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
+public interface ChangePackage extends AbstractChangePackage, APIDelegate<ESChangePackage> {
 
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
@@ -78,36 +75,6 @@ public interface ChangePackage extends EObject, APIDelegate<ESChangePackage> {
 	 * @generated
 	 */
 	EList<Event> getEvents();
-
-	/**
-	 * Returns the value of the '<em><b>Log Message</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Log Message</em>' containment reference isn't clear, there really should be more of a
-	 * description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Log Message</em>' containment reference.
-	 * @see #setLogMessage(LogMessage)
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage_LogMessage()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	LogMessage getLogMessage();
-
-	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getLogMessage
-	 * <em>Log Message</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *
-	 * @param value the new value of the '<em>Log Message</em>' containment reference.
-	 * @see #getLogMessage()
-	 * @generated
-	 */
-	void setLogMessage(LogMessage value);
 
 	/**
 	 * Returns the value of the '<em><b>Version Properties</b></em>' containment reference list.

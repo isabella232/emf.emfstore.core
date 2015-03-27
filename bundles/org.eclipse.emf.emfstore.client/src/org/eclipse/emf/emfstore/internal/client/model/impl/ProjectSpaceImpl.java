@@ -17,6 +17,7 @@ import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.emfstore.client.util.ESClientURIUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.Workspace;
@@ -32,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 
 /**
@@ -271,7 +273,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected ChangePackage localChangePackage;
+	protected AbstractChangePackage localChangePackage;
 
 	/**
 	 * The cached value of the '{@link #getMergedVersion() <em>Merged Version</em>}' containment reference.
@@ -650,7 +652,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			setWorkspace((Workspace) newValue);
 			return;
 		case ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE:
-			setLocalChangePackage((ChangePackage) newValue);
+			setLocalChangePackage((AbstractChangePackage) newValue);
 			return;
 		case ModelPackage.PROJECT_SPACE__MERGED_VERSION:
 			setMergedVersion((PrimaryVersionSpec) newValue);
@@ -721,7 +723,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			setWorkspace((Workspace) null);
 			return;
 		case ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE:
-			setLocalChangePackage((ChangePackage) null);
+			setLocalChangePackage((AbstractChangePackage) null);
 			return;
 		case ModelPackage.PROJECT_SPACE__MERGED_VERSION:
 			setMergedVersion((PrimaryVersionSpec) null);
@@ -1167,11 +1169,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 *
 	 * @generated
 	 */
-	public ChangePackage getLocalChangePackage() {
+	public AbstractChangePackage getLocalChangePackage()
+	{
 		if (localChangePackage != null && localChangePackage.eIsProxy())
 		{
 			final InternalEObject oldLocalChangePackage = (InternalEObject) localChangePackage;
-			localChangePackage = (ChangePackage) eResolveProxy(oldLocalChangePackage);
+			localChangePackage = (AbstractChangePackage) eResolveProxy(oldLocalChangePackage);
 			if (localChangePackage != oldLocalChangePackage)
 			{
 				final InternalEObject newLocalChangePackage = (InternalEObject) localChangePackage;
@@ -1200,7 +1203,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 *
 	 * @generated
 	 */
-	public ChangePackage basicGetLocalChangePackage() {
+	public AbstractChangePackage basicGetLocalChangePackage() {
 		return localChangePackage;
 	}
 
@@ -1210,8 +1213,10 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 *
 	 * @generated
 	 */
-	public NotificationChain basicSetLocalChangePackage(ChangePackage newLocalChangePackage, NotificationChain msgs) {
-		final ChangePackage oldLocalChangePackage = localChangePackage;
+	public NotificationChain basicSetLocalChangePackage(AbstractChangePackage newLocalChangePackage,
+		NotificationChain msgs)
+	{
+		final AbstractChangePackage oldLocalChangePackage = localChangePackage;
 		localChangePackage = newLocalChangePackage;
 		if (eNotificationRequired())
 		{
@@ -1232,7 +1237,8 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	 *
 	 * @generated
 	 */
-	public void setLocalChangePackage(ChangePackage newLocalChangePackage) {
+	public void setLocalChangePackage(AbstractChangePackage newLocalChangePackage)
+	{
 		if (newLocalChangePackage != localChangePackage)
 		{
 			NotificationChain msgs = null;
@@ -1376,5 +1382,25 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		result.append(oldLogMessages);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage#setChangePackage(org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage)
+	 */
+	public void setChangePackage(AbstractChangePackage changePackage) {
+		setLocalChangePackage(changePackage);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage#getChangePackageUri()
+	 */
+	public URI getChangePackageUri() {
+		final URI localChangePackageUri = ESClientURIUtil.createOperationsURI(this);
+		final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
+		return normalizedUri;
 	}
 }

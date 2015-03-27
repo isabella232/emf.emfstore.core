@@ -49,11 +49,14 @@ import org.xml.sax.SAXException;
  */
 public class EObjectSerializer extends TypeSerializerImpl {
 
+	private static final String SELF_CONTAINMENT_CHECK_OPTION = "SelfContainmentCheck"; //$NON-NLS-1$
+	private static final String HREF_CHECK_OPTION = "HrefCheck"; //$NON-NLS-1$
+	private static final String SERIALIZATION_OPTIONS_EXT = "org.eclipse.emf.emfstore.common.model.serializationOptions"; //$NON-NLS-1$
 	/**
 	 * EObject Tag for parsing.
 	 */
-	public static final String EOBJECT_TAG = "EObject";
-	private static final String EX_EOBJECT_TAG = "ex:" + EOBJECT_TAG;
+	public static final String EOBJECT_TAG = "EObject"; //$NON-NLS-1$
+	private static final String EX_EOBJECT_TAG = "ex:" + EOBJECT_TAG; //$NON-NLS-1$
 	private static boolean hrefCheckEnabled;
 	private static boolean containmentCheckEnabled;
 	private static boolean serializationOptionsInitialized;

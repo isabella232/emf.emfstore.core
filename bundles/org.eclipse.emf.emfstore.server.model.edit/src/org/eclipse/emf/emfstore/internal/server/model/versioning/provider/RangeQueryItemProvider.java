@@ -72,8 +72,8 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RangeQuery_upperLimit_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_upperLimit_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_RangeQuery_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_upperLimit_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				VersioningPackage.Literals.RANGE_QUERY__UPPER_LIMIT,
 				true,
 				false,
@@ -95,8 +95,8 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RangeQuery_lowerLimit_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_lowerLimit_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_RangeQuery_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_lowerLimit_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				VersioningPackage.Literals.RANGE_QUERY__LOWER_LIMIT,
 				true,
 				false,

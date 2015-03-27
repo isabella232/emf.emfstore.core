@@ -55,7 +55,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 		try
 		{
 			final OperationsFactory theOperationsFactory = (OperationsFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/operations"); //$NON-NLS-1$
+				.getEFactory(OperationsPackage.eNS_URI);
 			if (theOperationsFactory != null)
 			{
 				return theOperationsFactory;
@@ -305,8 +305,8 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 		final ContainmentType result = ContainmentType.get(initialValue);
 		if (result == null)
 		{
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" //$NON-NLS-1$ //$NON-NLS-2$
-				+ eDataType.getName() + "'"); //$NON-NLS-1$
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 		return result;
 	}
@@ -329,9 +329,10 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public UnsetType createUnsetTypeFromString(EDataType eDataType, String initialValue)
 	{
 		final UnsetType result = UnsetType.get(initialValue);
-		if (result == null) {
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" //$NON-NLS-1$ //$NON-NLS-2$
-				+ eDataType.getName() + "'"); //$NON-NLS-1$
+		if (result == null)
+		{
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 		return result;
 	}

@@ -298,7 +298,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		return result;
 	}
 
-	private void operationsRecorded(List<? extends AbstractOperation> operations) {
+	private void operationsRecorded(List<AbstractOperation> operations) {
 
 		if (operations.size() == 0) {
 			return;
@@ -906,7 +906,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * Aborts the current composite operation.
 	 */
 	public void abortCompositeOperation() {
-		projectSpace.applyOperations(Collections.singletonList(compositeOperation.reverse()), false);
+		final AbstractOperation reversedCompositeOperation = compositeOperation.reverse();
+		projectSpace.applyOperations(
+			Collections.singletonList(reversedCompositeOperation), false);
 
 		removedElementsCache.clear();
 		notificationRecorder.stopRecording();

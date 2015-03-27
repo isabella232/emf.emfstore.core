@@ -303,20 +303,24 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 		projectUpdatedEventEClass.getESuperTypes().add(getServerProjectEvent());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(serverEventEClass, ServerEvent.class, "ServerEvent", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
-			IS_GENERATED_INSTANCE_CLASS);
+		initEClass(serverEventEClass, ServerEvent.class,
+			"ServerEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(serverProjectEventEClass, ServerProjectEvent.class, "ServerProjectEvent", IS_ABSTRACT, //$NON-NLS-1$
-			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getServerProjectEvent_ProjectId(), theModelPackage_1.getProjectId(), null, "projectId", null, 0, //$NON-NLS-1$
-			1, ServerProjectEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(serverProjectEventEClass, ServerProjectEvent.class,
+			"ServerProjectEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+			getServerProjectEvent_ProjectId(),
+			theModelPackage_1.getProjectId(),
+			null,
+			"projectId", null, 0, 1, ServerProjectEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(projectUpdatedEventEClass, ProjectUpdatedEvent.class, "ProjectUpdatedEvent", !IS_ABSTRACT, //$NON-NLS-1$
-			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProjectUpdatedEvent_NewVersion(), theVersioningPackage.getPrimaryVersionSpec(), null,
-			"newVersion", null, 0, 1, ProjectUpdatedEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(projectUpdatedEventEClass, ProjectUpdatedEvent.class,
+			"ProjectUpdatedEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+			getProjectUpdatedEvent_NewVersion(),
+			theVersioningPackage.getPrimaryVersionSpec(),
+			null,
+			"newVersion", null, 0, 1, ProjectUpdatedEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // ServerPackageImpl

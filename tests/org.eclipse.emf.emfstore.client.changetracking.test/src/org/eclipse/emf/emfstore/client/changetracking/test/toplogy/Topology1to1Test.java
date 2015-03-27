@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller
  ******************************************************************************/
@@ -42,7 +42,7 @@ import org.junit.Test;
 
 /**
  * Tests operations in 1:1 topologies.
- * 
+ *
  * @author chodnick
  * @author emueller
  */
@@ -50,13 +50,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from null to some reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentNullToValueNotContainedAlreadyOperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -74,7 +74,7 @@ public class Topology1to1Test extends ESTest {
 		Update.testElement(TestElementFeatures.containedElement(), issue, solution);
 		assertSame(solution, issue.getContainedElement());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -103,13 +103,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from null to some reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentNullToValueNotContainedAlreadyOperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -125,7 +125,7 @@ public class Topology1to1Test extends ESTest {
 
 		assertSame(solution, issue.getContainedElement());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -157,13 +157,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentValueToOtherValueNotContainedAlreadyOperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solutionOld = Create.testElement();
@@ -188,7 +188,7 @@ public class Topology1to1Test extends ESTest {
 
 		assertSame(solutionNew, issue.getContainedElement());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(2, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -226,13 +226,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentValueToOtherValueNotContainedAlreadyOperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solutionOld = Create.testElement();
@@ -253,7 +253,7 @@ public class Topology1to1Test extends ESTest {
 		Update.testElement(TestElementFeatures.srefContainer(), solutionNew, issue);
 		assertSame(solutionNew, issue.getContainedElement());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final EList<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
 			.getSubOperations();
@@ -302,13 +302,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentValueToOtherValueContainedAlready1OperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -335,7 +335,7 @@ public class Topology1to1Test extends ESTest {
 		assertSame(solution2, issue1.getContainedElement());
 		assertNull(issue2.getContainedElement());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final EList<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
 			.getSubOperations();
@@ -378,13 +378,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentValueToOtherValueContainedAlready1OperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -411,7 +411,7 @@ public class Topology1to1Test extends ESTest {
 		assertSame(solution2, issue1.getContainedElement());
 		assertNull(issue2.getContainedElement());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final EList<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
 			.getSubOperations();
@@ -454,13 +454,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentNullToOtherValueContainedAlready1OperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -480,7 +480,7 @@ public class Topology1to1Test extends ESTest {
 		assertNull(issue1.getContainedElement());
 		assertSame(issue2.getContainedElement(), solution);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -519,13 +519,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentNullToOtherValueContainedAlready1OperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -545,7 +545,7 @@ public class Topology1to1Test extends ESTest {
 		assertNull(issue1.getContainedElement());
 		assertSame(issue2.getContainedElement(), solution);
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		if (operations.get(0) instanceof CompositeOperation) {
@@ -589,14 +589,14 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentValueToOtherValueContainedAlreadyNOperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -632,7 +632,7 @@ public class Topology1to1Test extends ESTest {
 		assertSame(solution2, issue.getContainedElement());
 		assertTrue(leafSection.getContainedElements().isEmpty());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final EList<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
 			.getSubOperations();
@@ -685,14 +685,14 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentValueToOtherValueContainedAlreadyNOperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -720,7 +720,7 @@ public class Topology1to1Test extends ESTest {
 		assertSame(solution2, issue.getContainedElement());
 		assertTrue(leafSection.getContainedElements().isEmpty());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		final EList<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
 			.getSubOperations();
@@ -778,13 +778,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentNullToValueContainedAlreadyNOperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -804,7 +804,7 @@ public class Topology1to1Test extends ESTest {
 		assertSame(solution, issue.getContainedElement());
 		assertTrue(leafSection.getContainedElements().isEmpty());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		if (operations.get(0) instanceof CompositeOperation) {
@@ -857,13 +857,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to some other reference, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentNullToValueContainedAlreadyNOperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -884,7 +884,7 @@ public class Topology1to1Test extends ESTest {
 		assertSame(solution, issue.getContainedElement());
 		assertTrue(leafSection.getContainedElements().isEmpty());
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		if (operations.get(0) instanceof CompositeOperation) {
@@ -940,13 +940,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to null, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentValueToNullOperateOnParent() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -964,7 +964,7 @@ public class Topology1to1Test extends ESTest {
 
 		Update.testElement(TestElementFeatures.containedElement(), issue, null);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final List<ReferenceOperation> subOperations = checkAndCast(
 			operations.get(0), CreateDeleteOperation.class).getSubOperations();
@@ -988,13 +988,13 @@ public class Topology1to1Test extends ESTest {
 
 	/**
 	 * Change an containment attribute from some reference to null, and check resulting op.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentValueToNullOperateOnChild() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -1013,7 +1013,7 @@ public class Topology1to1Test extends ESTest {
 
 		Update.testElement(TestElementFeatures.srefContainer(), solution, null);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final List<ReferenceOperation> subOperations = checkAndCast(operations.get(0), CreateDeleteOperation.class)
 			.getSubOperations();

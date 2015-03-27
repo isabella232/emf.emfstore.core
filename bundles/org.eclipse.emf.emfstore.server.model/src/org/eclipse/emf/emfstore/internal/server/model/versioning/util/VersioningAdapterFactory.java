@@ -14,11 +14,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -201,6 +203,18 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 		public Adapter casePagedUpdateVersionSpec(PagedUpdateVersionSpec object)
 		{
 			return createPagedUpdateVersionSpecAdapter();
+		}
+
+		@Override
+		public Adapter caseAbstractChangePackage(AbstractChangePackage object)
+		{
+			return createAbstractChangePackageAdapter();
+		}
+
+		@Override
+		public Adapter caseFileBasedChangePackage(FileBasedChangePackage object)
+		{
+			return createFileBasedChangePackageAdapter();
 		}
 
 		@Override
@@ -519,6 +533,42 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * <em>Abstract Change Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
+	 * @generated
+	 */
+	public Adapter createAbstractChangePackageAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
+	 * <em>File Based Change Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
+	 * @generated
+	 */
+	public Adapter createFileBasedChangePackageAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc --> This
 	 * default implementation returns null. <!-- end-user-doc -->
@@ -527,6 +577,10 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEObjectAdapter() {
+		return null;
+	}
+
+	public Adapter createOperationProxyAdapter() {
 		return null;
 	}
 

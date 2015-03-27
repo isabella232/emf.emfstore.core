@@ -238,12 +238,12 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * <!-- end-user-doc -->
 	 *
 	 * @return the value of the '<em>Change Package</em>' containment reference.
-	 * @see #setChangePackage(ChangePackage)
+	 * @see #setChangePackage(AbstractChangePackage)
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo_ChangePackage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ChangePackage getChangePackage();
+	AbstractChangePackage getChangePackage();
 
 	/**
 	 * Sets the value of the '
@@ -256,6 +256,6 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	 * @see #getChangePackage()
 	 * @generated
 	 */
-	void setChangePackage(ChangePackage value);
+	void setChangePackage(AbstractChangePackage value);
 
 } // HistoryInfo

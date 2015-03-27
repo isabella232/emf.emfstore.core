@@ -45,7 +45,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 		try
 		{
 			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model"); //$NON-NLS-1$
+				.getEFactory(ModelPackage.eNS_URI);
 			if (theModelFactory != null)
 			{
 				return theModelFactory;

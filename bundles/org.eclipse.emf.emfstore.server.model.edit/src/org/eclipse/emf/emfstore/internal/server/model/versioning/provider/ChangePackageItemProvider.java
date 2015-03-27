@@ -80,9 +80,9 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE);
 			childrenFeatures.add(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS);
 			childrenFeatures.add(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS);
-			childrenFeatures.add(VersioningPackage.Literals.CHANGE_PACKAGE__LOG_MESSAGE);
 			childrenFeatures.add(VersioningPackage.Literals.CHANGE_PACKAGE__VERSION_PROPERTIES);
 		}
 		return childrenFeatures;
@@ -141,9 +141,9 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 
 		switch (notification.getFeatureID(ChangePackage.class))
 		{
+		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
-		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
 		case VersioningPackage.CHANGE_PACKAGE__VERSION_PROPERTIES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -161,6 +161,11 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+			(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE,
+				VersioningFactory.eINSTANCE.createLogMessage()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -221,11 +226,6 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 			(createChildParameter
 			(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
 				ServerFactory.eINSTANCE.createProjectUpdatedEvent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__LOG_MESSAGE,
-				VersioningFactory.eINSTANCE.createLogMessage()));
 
 		newChildDescriptors.add
 			(createChildParameter

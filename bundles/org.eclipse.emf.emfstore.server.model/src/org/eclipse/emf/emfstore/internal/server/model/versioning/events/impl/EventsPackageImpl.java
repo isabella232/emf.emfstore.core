@@ -252,8 +252,10 @@ public class EventsPackageImpl extends EPackageImpl implements EventsPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Event.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(
+			getEvent_Timestamp(),
+			ecorePackage.getEDate(),
+			"timestamp", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // EventsPackageImpl

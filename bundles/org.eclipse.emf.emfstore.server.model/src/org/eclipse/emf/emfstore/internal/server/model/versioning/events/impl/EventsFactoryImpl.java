@@ -37,7 +37,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 		try
 		{
 			final EventsFactory theEventsFactory = (EventsFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/versioning/events"); //$NON-NLS-1$
+				.getEFactory(EventsPackage.eNS_URI);
 			if (theEventsFactory != null)
 			{
 				return theEventsFactory;

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -33,12 +33,12 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
  * Helper super class for merge tests.
- * 
+ *
  * @author wesendon
  */
 public class MergeTest extends ESTest {
@@ -47,7 +47,7 @@ public class MergeTest extends ESTest {
 
 	/**
 	 * Default Constructor.
-	 * 
+	 *
 	 * @return case helper
 	 */
 	public MergeCase newMergeCase() {
@@ -83,7 +83,7 @@ public class MergeTest extends ESTest {
 
 	/**
 	 * Helper class for merge tests. It manages the two projectspaces and offers covenience methods.
-	 * 
+	 *
 	 * @author wesendon
 	 */
 	public class MergeCase {
@@ -160,12 +160,15 @@ public class MergeTest extends ESTest {
 
 		public DecisionManager execute() {
 			ensureCopy();
-			final List<ChangePackage> myChangePackages = Arrays.asList(getProjectSpace().getLocalChangePackage(true));
-			final List<ChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace().getLocalChangePackage(
+			final List<AbstractChangePackage> myChangePackages = Arrays.asList(getProjectSpace().getLocalChangePackage(
 				true));
+			final List<AbstractChangePackage> theirChangePackages = Arrays.asList(getTheirProjectSpace()
+				.getLocalChangePackage(true));
 
-			final ChangeConflictSet changeConflictSet = new ConflictDetector().calculateConflicts(myChangePackages,
-				theirChangePackages, getProject());
+			final ChangeConflictSet changeConflictSet = new ConflictDetector().calculateConflicts(
+				myChangePackages,
+				theirChangePackages,
+				getProject());
 
 			final DecisionManager manager = new DecisionManager(getProject(), changeConflictSet, false);
 

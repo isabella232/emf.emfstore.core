@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick - initial API and implementation
  * Edgar Mueller - refactorings
@@ -45,7 +45,7 @@ import org.junit.Test;
 
 /**
  * Tests operations in 1:n topologies.
- * 
+ *
  * @author chodnick
  * @author emueller
  */
@@ -73,7 +73,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final CompositeOperation operation = checkAndCast(operations.get(0), CompositeOperation.class);
 
@@ -116,7 +116,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toProject(getLocalProject(), actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 
 		final EList<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -159,7 +159,7 @@ public class Topology1toNTest extends ESTest {
 		// create orphan
 		Add.toProject(getLocalProject(), actor);
 
-		final List<AbstractOperation> operations2 = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations2 = forceGetOperations();
 
 		assertEquals(1, operations2.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations2.get(0), CompositeOperation.class)
@@ -217,7 +217,7 @@ public class Topology1toNTest extends ESTest {
 		final ModelElementId actorId = getProject().getModelElementId(actor);
 		final ModelElementId sectionId = getProject().getModelElementId(section);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -248,7 +248,7 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * Add an uncontained child to a non-empty containment feature.
-	 * 
+	 *
 	 */
 	@Test
 	public void containmentAddUncontainedChildToNonEmpty() {
@@ -270,7 +270,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -296,7 +296,7 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * Add several uncontained children to an empty containment feature.
-	 * 
+	 *
 	 */
 	@Test
 	public void containmentAddUncontainedChildrenToEmpty() {
@@ -318,7 +318,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
 			.getSubOperations();
@@ -377,7 +377,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -413,7 +413,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void containmentAddUncontainedChildrenFakeManyToNonEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement actor1 = Create.testElement();
@@ -434,7 +434,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -488,7 +488,7 @@ public class Topology1toNTest extends ESTest {
 		assertFalse(section2.getContainedElements().contains(actor2));
 		assertTrue(section1.getContainedElements().contains(actor2));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -565,7 +565,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -674,7 +674,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 
@@ -779,7 +779,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements2(workPackage, bugReport);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertFalse(section.getContainedElements().contains(bugReport));
 		assertTrue(workPackage.getContainedElements2().contains(bugReport));
@@ -842,7 +842,7 @@ public class Topology1toNTest extends ESTest {
 		assertTrue(section.getContainedElements().contains(solution));
 		assertNull(issue.getContainer());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -924,7 +924,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 
@@ -1064,7 +1064,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(bugreports));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 
@@ -1186,7 +1186,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(new TestElement[] { solution1, solution2 }));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -1244,14 +1244,14 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * add several already contained children to a non-empty containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddDifferentFeatureContained1ChildrenToNonEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement issue1 = Create.testElement();
@@ -1273,7 +1273,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(new TestElement[] { solution1, solution2 }));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 
@@ -1407,7 +1407,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(addedElements));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -1599,7 +1599,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toContainedElements(section, Arrays.asList(addedElements));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -1723,7 +1723,7 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * remove last child from a containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -1742,7 +1742,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromContainedElements(section, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<ReferenceOperation> subOperations = checkAndCast(operations.get(0), CreateDeleteOperation.class)
@@ -1770,13 +1770,13 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * remove all children from a containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void containmentRemoveChildrenAndEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement actor1 = Create.testElement();
@@ -1796,7 +1796,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(3, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -1832,7 +1832,7 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * remove non-last child from a containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -1855,7 +1855,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromContainedElements(section, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 		final List<ReferenceOperation> subOperations = checkAndCast(operations.get(0), CreateDeleteOperation.class)
 			.getSubOperations();
@@ -1882,7 +1882,7 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * add a child to an empty non-containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -1899,7 +1899,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -1933,13 +1933,13 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * add some children to an empty non-containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void nonContainmentAddChildrenToEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement actor1 = Create.testElement();
@@ -1955,7 +1955,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -1998,13 +1998,13 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * add a child to a non-empty non-containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void nonContainmentAddChildToNonEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement oldTestElement = Create.testElement();
@@ -2020,7 +2020,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -2054,13 +2054,13 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * add some children to a non-empty non-containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void nonContainmentAddChildrenToNonEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement oldTestElement = Create.testElement();
@@ -2078,7 +2078,7 @@ public class Topology1toNTest extends ESTest {
 
 		Add.toNonContainedNToM(useCase, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final AbstractOperation operation = operations.get(0);
@@ -2121,13 +2121,13 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * remove last child from non-containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
 	public void nonContainmentRemoveChildAndEmpty() throws UnsupportedOperationException,
-		UnsupportedNotificationException {
+	UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement actor = Create.testElement();
@@ -2141,7 +2141,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromNonContainedNToM(useCase, actor);
 
-		List<AbstractOperation> operations = getProjectSpace().getOperations();
+		List<AbstractOperation> operations = forceGetOperations();
 
 		// expecting a composite operation here
 		assertEquals(1, operations.size());
@@ -2201,7 +2201,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromNonContainedNToM(useCase, actor);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(1, operations.size());
 
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -2253,7 +2253,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromNonContainedNToM(useCase, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -2311,7 +2311,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromNonContainedNToM(useCase, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(1, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)
@@ -2344,7 +2344,7 @@ public class Topology1toNTest extends ESTest {
 
 	/**
 	 * remove some children from a containment feature.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -2371,7 +2371,7 @@ public class Topology1toNTest extends ESTest {
 
 		Delete.fromContainedElements(section, Arrays.asList(actors));
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		assertEquals(3, operations.size());
 		final List<AbstractOperation> subOperations = checkAndCast(operations.get(0), CompositeOperation.class)

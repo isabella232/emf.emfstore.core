@@ -27,8 +27,8 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.CommitDialog;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ESModelElementIdToEObjectMappingImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAbstractChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessageFactory;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
@@ -131,13 +131,13 @@ public class UICommitProjectController extends
 	 */
 	public boolean inspectChanges(
 		ESLocalProject localProject,
-		ESChangePackage changePackage,
+		final ESChangePackage changePackage,
 		ESModelElementIdToEObjectMapping idToEObjectMapping) {
 
-		final ChangePackage internalChangePackage = ((ESChangePackageImpl) changePackage).toInternalAPI();
+		// final ChangePackage internalChangePackage = ((ESChangePackageImpl) op).toInternalAPI();
 		final ProjectSpace projectSpace = ((ESLocalProjectImpl) localProject).toInternalAPI();
 
-		if (internalChangePackage.getOperations().isEmpty()) {
+		if (changePackage.isEmpty()) {
 			RunInUI.run(new Callable<Void>() {
 				public Void call() throws Exception {
 					MessageDialog
@@ -155,7 +155,7 @@ public class UICommitProjectController extends
 
 		final CommitDialog commitDialog = new CommitDialog(
 			getShell(),
-			internalChangePackage,
+			ESAbstractChangePackageImpl.class.cast(changePackage).toInternalAPI(),
 			projectSpace,
 			((ESModelElementIdToEObjectMappingImpl) idToEObjectMapping).toInternalAPI());
 
@@ -184,9 +184,11 @@ public class UICommitProjectController extends
 						projectSpace.getOldLogMessages().remove(0);
 					}
 
-					internalChangePackage.setLogMessage(
-						LogMessageFactory.INSTANCE.createLogMessage(commitDialog.getLogText(),
-							projectSpace.getUsersession().getUsername()));
+					final LogMessage logMessage = LogMessageFactory.INSTANCE.createLogMessage(
+						commitDialog.getLogText(),
+						projectSpace.getUsersession().getUsername()
+						);
+					changePackage.setLogMessage(logMessage.toAPI());
 					return null;
 				}
 			});

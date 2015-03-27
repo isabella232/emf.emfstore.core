@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.util.ConfigAdapterFact
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory implements ComposeableAdapterFactory,
@@ -47,7 +47,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
@@ -56,7 +56,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -65,7 +65,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -74,7 +74,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ConfigItemProviderAdapterFactory()
@@ -91,7 +91,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestConfigItemProvider testConfigItemProvider;
@@ -100,7 +100,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,7 +119,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestRunItemProvider testRunItemProvider;
@@ -128,7 +128,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -147,7 +147,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestResultItemProvider testResultItemProvider;
@@ -156,7 +156,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestDiffItemProvider testDiffItemProvider;
@@ -184,7 +184,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -203,7 +203,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.DiffReport} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DiffReportItemProvider diffReportItemProvider;
@@ -212,7 +212,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.DiffReport}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,7 +231,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected RootItemProvider rootItemProvider;
@@ -240,7 +240,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.Root}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -259,7 +259,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MutatorConfigItemProvider mutatorConfigItemProvider;
@@ -268,7 +268,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -286,7 +286,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory()
@@ -298,7 +298,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
@@ -309,7 +309,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -322,7 +322,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -334,7 +334,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -356,7 +356,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void addListener(INotifyChangedListener notifyChangedListener)
@@ -368,7 +368,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener)
@@ -380,7 +380,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void fireNotifyChanged(Notification notification)
@@ -397,7 +397,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This disposes all of the item providers created by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void dispose()

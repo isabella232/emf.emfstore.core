@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
@@ -28,15 +29,18 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
 
 /**
  * @author emueller
- * 
+ *
  */
 public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 
@@ -59,8 +63,8 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 		});
 		final ModelElementId modelElementId = getProject().getModelElementId(testElement);
 
-		final ChangePackage myChangePackage = Create.changePackage();
-		final ChangePackage theirChangePackage = Create.changePackage();
+		final AbstractChangePackage myChangePackage = Create.changePackage();
+		final AbstractChangePackage theirChangePackage = Create.changePackage();
 
 		final AttributeOperation myAttributeOp = Create.attributeOp();
 		myAttributeOp.setOldValue(FOO);
@@ -74,11 +78,11 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 		theirAttributeOp.setFeatureName(NAME);
 		theirAttributeOp.setModelElementId(ModelUtil.clone(modelElementId));
 
-		myChangePackage.getOperations().add(myAttributeOp);
-		theirChangePackage.getOperations().add(theirAttributeOp);
+		myChangePackage.add(myAttributeOp);
+		theirChangePackage.add(theirAttributeOp);
 
-		final List<ChangePackage> myChangePackages = Arrays.asList(myChangePackage);
-		final List<ChangePackage> theirChangePackages = Arrays.asList(theirChangePackage);
+		final List<AbstractChangePackage> myChangePackages = Arrays.asList(myChangePackage);
+		final List<AbstractChangePackage> theirChangePackages = Arrays.asList(theirChangePackage);
 
 		final ConflictDetector conflictDetector = new ConflictDetector();
 		final ChangeConflictSet conflictSet = conflictDetector.calculateConflicts(
@@ -102,10 +106,41 @@ public class MergeResolvedConflictsWithSyntheticOpTest extends ESTest {
 
 		// myChangePackage.getOperations().add(generatedAttributeOp);
 
-		final ChangePackage mergeResolvedConflicts = getProjectSpace().mergeResolvedConflicts(conflictSet,
+		final AbstractChangePackage mergeResolvedConflicts = getProjectSpace().mergeResolvedConflicts(
+			conflictSet,
 			myChangePackages,
 			theirChangePackages);
-		assertTrue(mergeResolvedConflicts.getOperations().contains(generatedAttributeOp));
+
+		assertTrue(containsOperations(mergeResolvedConflicts, generatedAttributeOp));
 	}
 
+	// TODO LCP: duplicate code, see ProjectSpace
+	private static boolean containsOperations(AbstractChangePackage changePackage, AbstractOperation operation) {
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			for (final AbstractOperation op : operations.iterable()) {
+				if (OperationUtil.isCreateDelete(op) &&
+					OperationUtil.isCreateDelete(operation)) {
+
+					final CreateDeleteOperation createDeleteOperation = CreateDeleteOperation.class
+						.cast(op);
+					final CreateDeleteOperation otherCreateDeleteOperation = CreateDeleteOperation.class
+						.cast(operation);
+
+					if (createDeleteOperation.getOperationId().equals(otherCreateDeleteOperation.getOperationId())
+						&& createDeleteOperation.getModelElementId().equals(
+							otherCreateDeleteOperation.getModelElementId())) {
+						return true;
+					}
+
+				} else if (EcoreUtil.equals(op, operation)) {
+					return true;
+				}
+			}
+		} finally {
+			operations.close();
+		}
+
+		return false;
+	}
 }

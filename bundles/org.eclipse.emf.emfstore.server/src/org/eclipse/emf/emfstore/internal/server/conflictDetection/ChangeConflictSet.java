@@ -18,6 +18,7 @@ import java.util.Set;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESConflictSet;
@@ -36,8 +37,8 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	private ESConflictSetImpl apiImpl;
 	private final Set<ConflictBucket> conflictBuckets;
 	private final Set<AbstractOperation> notInvolvedInConflict;
-	private final List<ChangePackage> leftChanges;
-	private final List<ChangePackage> rightChanges;
+	private final List<AbstractChangePackage> leftChanges;
+	private final List<AbstractChangePackage> rightChanges;
 
 	/**
 	 * Constructor.
@@ -56,8 +57,8 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	 *            a list of {@link ChangePackage}s representing the other side of the conflict
 	 */
 	public ChangeConflictSet(Set<ConflictBucket> conflictBuckets, Set<AbstractOperation> notInvolvedInConflict,
-		ModelElementIdToEObjectMapping idToEObjectMapping, List<ChangePackage> leftChanges,
-		List<ChangePackage> rightChanges) {
+		ModelElementIdToEObjectMapping idToEObjectMapping, List<AbstractChangePackage> leftChanges,
+		List<AbstractChangePackage> rightChanges) {
 
 		this.conflictBuckets = conflictBuckets;
 		this.notInvolvedInConflict = notInvolvedInConflict;
@@ -123,7 +124,7 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	 *
 	 * @return a list of {@link ChangePackage}s representing one side of the conflict
 	 */
-	public List<ChangePackage> getLeftChanges() {
+	public List<AbstractChangePackage> getLeftChanges() {
 		return leftChanges;
 	}
 
@@ -132,7 +133,7 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	 *
 	 * @return a list of {@link ChangePackage}s representing the other side of the conflict
 	 */
-	public List<ChangePackage> getRightChanges() {
+	public List<AbstractChangePackage> getRightChanges() {
 		return rightChanges;
 	}
 }

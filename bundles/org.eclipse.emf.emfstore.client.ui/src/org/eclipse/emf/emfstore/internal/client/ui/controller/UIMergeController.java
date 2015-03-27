@@ -55,7 +55,7 @@ public class UIMergeController extends AbstractEMFStoreUIController<Void> {
 
 	@Override
 	public Void doRun(IProgressMonitor monitor) throws ESException {
-		if (!projectSpace.getOperations().isEmpty()) {
+		if (!projectSpace.getLocalChangePackage().isEmpty()) {
 			MessageDialog
 				.openError(
 					getShell(),

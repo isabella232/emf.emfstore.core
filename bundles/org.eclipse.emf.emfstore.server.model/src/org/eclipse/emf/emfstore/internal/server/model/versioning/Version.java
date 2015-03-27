@@ -282,11 +282,11 @@ public interface Version extends EObject {
 	EList<Version> getMergedFromVersion();
 
 	/**
-	 * Allows to retrieve the ChangePackage associated with this version.
+	 * Allows to retrieve the {@link AbstractChangePackage} associated with this version.
 	 *
 	 * @return the changes
 	 */
-	ChangePackage getChanges();
+	AbstractChangePackage getChanges();
 
 	/**
 	 * Allows to retrieve the project state associated with this version.

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESLogMessageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
+import org.eclipse.emf.emfstore.server.model.ESLogMessage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Log Message</b></em>'. <!-- end-user-doc -->
@@ -41,12 +42,12 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * @generated NOT
 	 */
-	private ESLogMessageImpl apiImpl;
+	private ESLogMessage apiImpl;
 
 	/**
 	 * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getAuthor()
 	 * @generated
 	 * @ordered
@@ -56,7 +57,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getAuthor()
 	 * @generated
 	 * @ordered
@@ -66,7 +67,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -76,7 +77,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -86,7 +87,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -96,7 +97,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -106,7 +107,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The default value of the '{@link #getClientDate() <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getClientDate()
 	 * @generated
 	 * @ordered
@@ -116,7 +117,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	/**
 	 * The cached value of the '{@link #getClientDate() <em>Client Date</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getClientDate()
 	 * @generated
 	 * @ordered
@@ -125,7 +126,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected LogMessageImpl() {
@@ -134,7 +135,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,7 +145,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getMessage() {
@@ -153,21 +154,20 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setMessage(String newMessage) {
-		final String oldMessage = message;
+		String oldMessage = message;
 		message = newMessage;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.LOG_MESSAGE__MESSAGE, oldMessage,
 				message));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getAuthor() {
@@ -176,21 +176,20 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setAuthor(String newAuthor) {
-		final String oldAuthor = author;
+		String oldAuthor = author;
 		author = newAuthor;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.LOG_MESSAGE__AUTHOR, oldAuthor,
 				author));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Date getDate() {
@@ -199,20 +198,19 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setDate(Date newDate) {
-		final Date oldDate = date;
+		Date oldDate = date;
 		date = newDate;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.LOG_MESSAGE__DATE, oldDate, date));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Date getClientDate() {
@@ -221,21 +219,20 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setClientDate(Date newClientDate) {
-		final Date oldClientDate = clientDate;
+		Date oldClientDate = clientDate;
 		clientDate = newClientDate;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.LOG_MESSAGE__CLIENT_DATE,
 				oldClientDate, clientDate));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -256,7 +253,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -281,7 +278,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -306,7 +303,7 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -327,16 +324,15 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (author: "); //$NON-NLS-1$
 		result.append(author);
 		result.append(", message: "); //$NON-NLS-1$
@@ -350,30 +346,23 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	}
 
 	/**
-	 *
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
-	 *
-	 * @generated NOT
 	 */
-	public ESLogMessageImpl toAPI() {
+	public ESLogMessage toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
 		}
-
 		return apiImpl;
 	}
 
 	/**
-	 *
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
-	 *
-	 * @generated NOT
 	 */
-	public ESLogMessageImpl createAPI() {
+	public ESLogMessage createAPI() {
 		return new ESLogMessageImpl(this);
 	}
 

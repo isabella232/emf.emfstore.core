@@ -12,7 +12,6 @@
 package org.eclipse.emf.emfstore.internal.client.ui.views.scm;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +19,17 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVisualizationHelper;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
  * Content provider for the SCM views.
@@ -138,12 +142,23 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 		return super.getElements(object);
 	}
 
-	private List<AbstractOperation> getReversedOperations(
-		ChangePackage changePackage) {
-		final List<AbstractOperation> ops = new ArrayList<AbstractOperation>(
-			changePackage.getOperations());
-		Collections.reverse(ops);
-		return ops;
+	private List<OperationProxy> getReversedOperations(AbstractChangePackage changePackage) {
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		final List<OperationProxy> operationProxies = new ArrayList<OperationProxy>();
+		final ChangePackageVisualizationHelper changePackageVisualizationHelper = new ChangePackageVisualizationHelper(
+			idToEObjectMapping);
+		try {
+			final Iterable<AbstractOperation> operationIterable = operations.iterable();
+			for (final AbstractOperation abstractOperation : operationIterable) {
+				final OperationProxy operationProxy = VersioningFactory.eINSTANCE.createOperationProxy();
+				operationProxy.setLabel(changePackageVisualizationHelper.getDescription(abstractOperation));
+				operationProxies.add(0, operationProxy);
+			}
+		} finally {
+			operations.close();
+		}
+
+		return operationProxies;
 	}
 
 	private boolean isListOf(List<?> list, Class<? extends EObject> clazz) {
@@ -169,7 +184,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 		changePackageToFilteredMapping.put(changePackage, node);
 	}
 
-	private boolean changePackageHasBeenFiltered(ChangePackage changePackage) {
+	private boolean changePackageHasBeenFiltered(AbstractChangePackage changePackage) {
 		return changePackageToNonFilteredMapping.containsKey(changePackage);
 	}
 

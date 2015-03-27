@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
@@ -74,8 +75,10 @@ public class MultiReferenceSetOperationTest extends ESTest {
 		assertEquals(1, element.getReferences().size());
 		assertEquals(newValue, element.getReferences().get(0));
 
-		assertEquals(1, getProjectSpace().getOperations().size());
-		assertTrue(getProjectSpace().getOperations().get(0) instanceof MultiReferenceSetOperation);
+		final List<AbstractOperation> operations = forceGetOperations();
+
+		assertEquals(1, operations.size());
+		assertTrue(operations.get(0) instanceof MultiReferenceSetOperation);
 	}
 
 	/**
@@ -220,10 +223,12 @@ public class MultiReferenceSetOperationTest extends ESTest {
 		assertTrue(element.getReferences().size() == 1);
 		assertTrue(element.getReferences().get(0).equals(newValue));
 
+		final List<AbstractOperation> operations = forceGetOperations();
+
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				final AbstractOperation operation = getProjectSpace().getOperations().get(0).reverse();
+				final AbstractOperation operation = operations.get(0).reverse();
 				operation.apply(getProject());
 			}
 		}.run(false);

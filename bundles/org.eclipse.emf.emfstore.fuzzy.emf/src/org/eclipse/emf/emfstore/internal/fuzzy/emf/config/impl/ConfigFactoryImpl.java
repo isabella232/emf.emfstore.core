@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
@@ -37,7 +37,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ConfigFactory init() {
@@ -57,7 +57,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ConfigFactoryImpl() {
@@ -67,7 +67,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +95,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig createTestConfig() {
@@ -106,7 +106,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestRun createTestRun() {
@@ -117,7 +117,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestResult createTestResult() {
@@ -128,7 +128,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestDiff createTestDiff() {
@@ -139,7 +139,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public DiffReport createDiffReport() {
@@ -150,7 +150,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Root createRoot() {
@@ -161,7 +161,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MutatorConfig createMutatorConfig() {
@@ -172,7 +172,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ConfigPackage getConfigPackage() {
@@ -182,7 +182,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

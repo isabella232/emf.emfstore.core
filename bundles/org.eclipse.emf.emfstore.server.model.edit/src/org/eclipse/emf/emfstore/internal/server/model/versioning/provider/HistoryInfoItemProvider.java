@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
@@ -59,7 +60,7 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	public Collection<?> getChildren(Object object) {
 		if (object instanceof HistoryInfo) {
 			final HistoryInfo historyInfo = (HistoryInfo) object;
-			final ChangePackage changePackage = historyInfo.getChangePackage();
+			final AbstractChangePackage changePackage = historyInfo.getChangePackage();
 			if (changePackage == null) {
 				return new ArrayList<ChangePackage>();
 			}

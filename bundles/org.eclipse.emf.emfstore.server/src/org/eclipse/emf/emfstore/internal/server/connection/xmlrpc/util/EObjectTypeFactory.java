@@ -44,10 +44,9 @@ public class EObjectTypeFactory extends TypeFactoryImpl {
 	public TypeParser getParser(XmlRpcStreamConfig pConfig, NamespaceContextImpl pContext, String pURI,
 		String pLocalName) {
 		if (EObjectSerializer.EOBJECT_TAG.equals(pLocalName)) {
-			return new EObjectTypeParser();
-		} else {
-			return super.getParser(pConfig, pContext, pURI, pLocalName);
+			return new EObjectDeserializer();
 		}
+		return super.getParser(pConfig, pContext, pURI, pLocalName);
 	}
 
 	/**
@@ -57,9 +56,8 @@ public class EObjectTypeFactory extends TypeFactoryImpl {
 	public TypeSerializer getSerializer(XmlRpcStreamConfig pConfig, Object pObject) throws SAXException {
 		if (pObject instanceof EObject) {
 			return new EObjectSerializer();
-		} else {
-			return super.getSerializer(pConfig, pObject);
 		}
+		return super.getSerializer(pConfig, pObject);
 	}
 
 }

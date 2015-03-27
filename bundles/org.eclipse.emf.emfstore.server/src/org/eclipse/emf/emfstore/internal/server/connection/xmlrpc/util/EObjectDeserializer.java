@@ -33,6 +33,7 @@ import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.SerializationException;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 
 /**
  * Parser for EObjects.
@@ -40,10 +41,10 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.SerializationExceptio
  * @author ovonwesen
  * @author emueller
  */
-public class EObjectTypeParser extends ByteArrayParser {
+public class EObjectDeserializer extends ByteArrayParser {
 
-	private static final String COULDN_T_PARSE_E_OBJECT_TEXT = "Couldn't parse EObject: ";
-	private static final String FAILED_TO_READ_RESULT_OBJECT_TEXT = "Failed to read result object: ";
+	private static final String COULDN_T_PARSE_E_OBJECT_TEXT = Messages.EObjectDeserializer_ParsingFailed;
+	private static final String FAILED_TO_READ_RESULT_OBJECT_TEXT = Messages.EObjectDeserializer_ReadResultFailed;
 
 	@Override
 	public Object getResult() throws XmlRpcException {
@@ -89,7 +90,9 @@ public class EObjectTypeParser extends ByteArrayParser {
 	private static EObject getResultfromResource(XMIResource res) throws SerializationException {
 		final EObject result = res.getContents().get(0);
 
-		if (result instanceof IdEObjectCollection) {
+		if (result instanceof FileBasedChangePackage) {
+			throw new IllegalStateException(Messages.EObjectDeserializer_NoFileBasedChangePackageAllowed);
+		} else if (result instanceof IdEObjectCollection) {
 			final IdEObjectCollection collection = (IdEObjectCollection) result;
 			final Map<EObject, String> eObjectToIdMap = new LinkedHashMap<EObject, String>();
 			final Map<String, EObject> idToEObjectMap = new LinkedHashMap<String, EObject>();
@@ -105,7 +108,7 @@ public class EObjectTypeParser extends ByteArrayParser {
 				}
 
 				if (modelElementId == null) {
-					throw new SerializationException("Failed to retrieve ID for EObject contained in project: "
+					throw new SerializationException(Messages.EObjectDeserializer_NoIdFound
 						+ modelElement);
 				}
 

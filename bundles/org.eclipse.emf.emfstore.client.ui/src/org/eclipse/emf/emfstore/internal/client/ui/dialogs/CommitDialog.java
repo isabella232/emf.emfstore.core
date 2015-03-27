@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,15 +7,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Shterev
- * Hodaie
+ * Shterev, Hodaie - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -27,9 +25,13 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.ui.Activator;
 import org.eclipse.emf.emfstore.internal.client.ui.views.changes.TabbedChangesComposite;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -59,9 +61,10 @@ import org.eclipse.swt.widgets.Text;
 public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	KeyListener {
 
+	private static final String COMMITDIALOG_TRAY_EXTENSION_POINT = "org.eclipse.emf.emfstore.client.ui.commitdialog.tray"; //$NON-NLS-1$
 	private Text txtLogMsg;
-	private String logMsg = "";
-	private final ChangePackage changes;
+	private String logMsg = StringUtils.EMPTY;
+	private final AbstractChangePackage changes;
 	private EList<String> oldLogMessages;
 	private final ProjectSpace activeProjectSpace;
 	private final Map<String, CommitDialogTray> trays;
@@ -74,31 +77,31 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	 *
 	 * @param parentShell
 	 *            shell
-	 * @param changes
-	 *            the {@link ChangePackage} to be displayed
+	 * @param localChangePackage
+	 *            the local {@link AbstractChangePackage} to be displayed
 	 * @param activeProjectSpace
 	 *            ProjectSpace that will be committed
 	 * @param idToEObjectMapping
 	 *            a mapping between ModelElementIds and EObjects. This is needed
 	 *            correctly infer information about deleted model elements
 	 */
-	public CommitDialog(Shell parentShell, ChangePackage changes, ProjectSpace activeProjectSpace,
+	public CommitDialog(Shell parentShell, AbstractChangePackage localChangePackage, ProjectSpace activeProjectSpace,
 		ModelElementIdToEObjectMapping idToEObjectMapping) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE);
 		this.idToEObjectMapping = idToEObjectMapping;
-		this.changes = changes;
+		changes = localChangePackage;
 		this.activeProjectSpace = activeProjectSpace;
-		numberOfChanges = changes.getSize();
+		numberOfChanges = localChangePackage.size();
 		trays = new LinkedHashMap<String, CommitDialogTray>();
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
-			"org.eclipse.emf.emfstore.client.ui.commitdialog.tray", true)
+			COMMITDIALOG_TRAY_EXTENSION_POINT, true)
 			.getExtensionElements()) {
 			try {
-				final CommitDialogTray tray = element.getClass("class",
+				final CommitDialogTray tray = element.getClass("class", //$NON-NLS-1$
 					CommitDialogTray.class);
-				final String name = element.getAttribute("name");
+				final String name = element.getAttribute("name"); //$NON-NLS-1$
 				tray.init(CommitDialog.this);
 				trays.put(name, tray);
 			} catch (final ESExtensionPointException e) {
@@ -116,28 +119,10 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Commit");
-		commitImage = Activator.getImageDescriptor("icons/arrow_right.png")
+		newShell.setText(Messages.CommitDialog_Commit);
+		commitImage = Activator.getImageDescriptor("icons/arrow_right.png") //$NON-NLS-1$
 			.createImage();
 		newShell.setImage(commitImage);
-	}
-
-	/**
-	 * Returns the change package displayed by the commit dialog.
-	 *
-	 * @return the change package
-	 */
-	public ChangePackage getChangePackage() {
-		return changes;
-	}
-
-	/**
-	 * Returns the active project space.
-	 *
-	 * @return the active project space
-	 */
-	public ProjectSpace getActiveProjectSpace() {
-		return activeProjectSpace;
 	}
 
 	/**
@@ -151,28 +136,27 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		final Composite contents = new Composite(parent, SWT.NONE);
 		contents.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		contents.setLayout(new GridLayout(2, false));
-		String projectName = "";
+		String projectName = StringUtils.EMPTY;
 		if (activeProjectSpace.getProjectName() != null
 			&& activeProjectSpace.getProjectName().length() > 0) {
-			projectName = "of project \"" + activeProjectSpace.getProjectName()
-				+ "\" ";
+			projectName = Messages.CommitDialog_OfProject + "\"" + activeProjectSpace.getProjectName() + "\" "; //$NON-NLS-1$//$NON-NLS-2$
 		}
-		setTitle("Commit your local changes " + projectName + "to the server");
-		setMessage("Number of composite changes: "
-			+ changes.getOperations().size()
-			+ ", Number of overall changes: " + numberOfChanges);
+		setTitle(Messages.CommitDialog_CommitLocalChanges + projectName + Messages.CommitDialog_ToServer);
+		setMessage(Messages.CommitDialog_NumberOfCompositeChanges
+			+ numberOfChanges + ", " //$NON-NLS-1$
+			+ Messages.CommitDialog_NumberOverallChanges + numberOfChanges);
 
 		// Log message
 		final Label lblLogMsg = new Label(contents, SWT.NONE);
 		lblLogMsg.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
 			false, 2, 1));
-		lblLogMsg.setText("Log message:");
+		lblLogMsg.setText(Messages.CommitDialog_LogMessage);
 
 		createLogMessageText(contents);
 
 		// previous log messages
 		final Label oldLabel = new Label(contents, SWT.NONE);
-		oldLabel.setText("Previous messages:");
+		oldLabel.setText(Messages.CommitDialog_PreviousMessage);
 		final Combo oldMsg = new Combo(contents, SWT.READ_ONLY);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.TOP)
 			.grab(true, false).applyTo(oldMsg);
@@ -198,8 +182,23 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		}
 
 		// ChangesTree
-		final ArrayList<ChangePackage> changePackages = new ArrayList<ChangePackage>();
-		changePackages.add(changes);
+		final ArrayList<AbstractChangePackage> changePackages = new ArrayList<AbstractChangePackage>();
+		// changePackages.add(changes);
+
+		// TODO LCP: fully loading change packages to display them..
+		final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		cp.initialize(FileUtil.createLocationForTemporaryChangePackage());
+		final ESCloseableIterable<AbstractOperation> operations = changes.operations();
+		try {
+			for (final AbstractOperation operation : operations.iterable()) {
+				cp.add(operation);
+			}
+		} finally {
+			operations.close();
+		}
+
+		changePackages.add(cp);
+
 		final TabbedChangesComposite changesComposite = new TabbedChangesComposite(
 			contents, SWT.BORDER, changePackages, getActiveProjectSpace()
 				.getProject(), idToEObjectMapping, true);
@@ -207,7 +206,15 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 			.grab(true, true).span(2, 1).applyTo(changesComposite);
 
 		return contents;
+	}
 
+	/**
+	 * Returns the active project space.
+	 *
+	 * @return the active project space
+	 */
+	public ProjectSpace getActiveProjectSpace() {
+		return activeProjectSpace;
 	}
 
 	private void createLogMessageText(Composite contents) {
@@ -256,7 +263,7 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	 * @return the log message that has been set by the user.
 	 */
 	public String getLogText() {
-		return logMsg.equals("") ? "<Empty log message>" : logMsg;
+		return logMsg.equals(StringUtils.EMPTY) ? Messages.CommitDialog_EmptyMessage : logMsg;
 	}
 
 	/**
@@ -288,13 +295,13 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 	protected void createButtonsForButtonBar(Composite parent) {
 		// final String notifyUsers = "Notify users";
 		for (final ESExtensionElement c : new ESExtensionPoint(
-			"org.eclipse.emf.emfstore.client.ui.commitdialog.tray")
+			COMMITDIALOG_TRAY_EXTENSION_POINT)
 			.getExtensionElements()) {
-			final String name = c.getAttribute("name");
+			final String name = c.getAttribute("name"); //$NON-NLS-1$
 			final CommitDialogTray tray = trays.get(name);
 			if (tray != null) {
 				final Button notificationsButton = createButton(parent, 2138,
-					name + " >>", false);
+					name + " >>", false); //$NON-NLS-1$
 				notificationsButton
 					.addSelectionListener(new SelectionAdapter() {
 						private boolean isOpen;
@@ -303,13 +310,13 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 						public void widgetSelected(SelectionEvent e) {
 							if (!isOpen) {
 								openTray(tray);
-								notificationsButton.setText(name + " <<");
+								notificationsButton.setText(name + " <<"); //$NON-NLS-1$
 								final Rectangle bounds = getShell().getBounds();
 								bounds.x -= 100;
 								getShell().setBounds(bounds);
 							} else {
 								closeTray();
-								notificationsButton.setText(name + " >>");
+								notificationsButton.setText(name + " >>"); //$NON-NLS-1$
 								final Rectangle bounds = getShell().getBounds();
 								bounds.x += 100;
 								getShell().setBounds(bounds);
@@ -321,12 +328,4 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		}
 		super.createButtonsForButtonBar(parent);
 	}
-
-	/**
-	 * @return the operations.
-	 */
-	public List<AbstractOperation> getOperations() {
-		return changes.getOperations();
-	}
-
 }

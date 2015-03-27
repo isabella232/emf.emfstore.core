@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -36,7 +36,7 @@ import org.junit.Test;
 
 /**
  * Tests canonization of attribute operations.
- * 
+ *
  * @author chodnick
  */
 public class AttributeTest extends ComparingESTest {
@@ -78,7 +78,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes on a single feature.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -109,9 +109,9 @@ public class AttributeTest extends ComparingESTest {
 		}.run(false);
 
 		assertEquals(NEW_NAME, useCase.getName());
-		assertEquals(4, getProjectSpace().getOperations().size());
+		assertEquals(4, forceGetOperations().size());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		new EMFStoreCommand() {
 
@@ -138,7 +138,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes on a single feature.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -171,7 +171,7 @@ public class AttributeTest extends ComparingESTest {
 
 		assertEquals(null, useCase.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		new EMFStoreCommand() {
 			@Override
@@ -196,7 +196,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes on a single feature.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -227,7 +227,7 @@ public class AttributeTest extends ComparingESTest {
 
 		assertEquals(C_NAME, useCase.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(3, operations.size());
 
 		new EMFStoreCommand() {
@@ -253,7 +253,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes, resulting in a noop.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -284,7 +284,7 @@ public class AttributeTest extends ComparingESTest {
 		}.run(false);
 
 		assertEquals(OLD_NAME, useCase.getName());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(4, operations.size());
 
 		assertTrue(ModelUtil.areEqual(getProject(), expectedProject));
@@ -298,7 +298,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes, resulting in a noop.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -329,7 +329,7 @@ public class AttributeTest extends ComparingESTest {
 		}.run(false);
 
 		assertEquals(null, useCase.getName());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(4, operations.size());
 
 		assertTrue(ModelUtil.areEqual(getProject(), expectedProject));
@@ -347,7 +347,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes, resulting in a noop.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -383,7 +383,7 @@ public class AttributeTest extends ComparingESTest {
 		}.run(false);
 
 		assertTrue(ModelUtil.areEqual(getProject(), expectedProject));
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(7, operations.size());
 
 		canonize(operations);
@@ -394,7 +394,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes on multiple features.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -427,7 +427,7 @@ public class AttributeTest extends ComparingESTest {
 		}.run(false);
 
 		assertEquals(NEW_NAME, useCase.getName());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(6, operations.size());
 
 		new EMFStoreCommand() {
@@ -454,7 +454,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for mixed attribute changes on a single feature.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -495,7 +495,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(7, operations.size());
 
 		new EMFStoreCommand() {
@@ -520,7 +520,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for mixed attribute changes on a single feature.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -570,7 +570,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(NEW_NAME, useCase.getName());
 		assertEquals(FINAL_DESC, useCase.getDescription());
 		assertEquals(HOME, section.getName());
@@ -598,7 +598,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation, that contains attribute changes.
-	 * 
+	 *
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 */
@@ -639,7 +639,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(DESC_2, section.getDescription());
 		assertEquals(3, operations.size());
 
@@ -665,7 +665,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation, that contains attribute changes.
-	 * 
+	 *
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 */
@@ -706,7 +706,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 		assertEquals(NEW_DESCRIPTION, section.getDescription());
 
@@ -732,7 +732,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation, that contains attribute changes.
-	 * 
+	 *
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 */
@@ -772,7 +772,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
 
 		new EMFStoreCommand() {
@@ -797,7 +797,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for create and consecutive attribute changes.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -817,7 +817,7 @@ public class AttributeTest extends ComparingESTest {
 
 		assertEquals(NAME_OF_TEST_ELEMENT, useCase.getName());
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a create and two attribute operations
 		assertEquals(3, operations.size());
 
@@ -860,7 +860,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for create and consecutive attribute changes.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -887,7 +887,7 @@ public class AttributeTest extends ComparingESTest {
 
 		assertEquals(NAME_OF_TEST_ELEMENT, useCase.getName());
 		assertEquals(NAME_OF_TEST_ELEMENT2, useCase2.getName());
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expecting a create and two attribute operations per usecase
 		assertEquals(6, operations.size());
 
@@ -929,7 +929,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation, that contains attribute changes.
-	 * 
+	 *
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 */
@@ -962,7 +962,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		// expect create, 2 attribute ops, the composite, 1 attribute op
 		assertEquals(5, operations.size());
@@ -1016,7 +1016,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes followed by a delete.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -1029,10 +1029,12 @@ public class AttributeTest extends ComparingESTest {
 				getProject().addModelElement(useCase);
 				useCase.setName(ORIGINAL_NAME);
 				useCase.setDescription(ORIGINAL_DESCRIPTION);
-				clearOperations();
 			}
 		}.run(false);
+		clearOperations();
 
+		assertTrue(getProjectSpace().getLocalChangePackage().isEmpty());
+		assertTrue(forceGetOperations().isEmpty());
 		final Project originalProject = ModelUtil.clone(getProject());
 
 		new EMFStoreCommand() {
@@ -1044,7 +1046,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		// expecting two attribute operations and a delete
 		assertEquals(3, operations.size());
@@ -1089,7 +1091,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for consecutive attribute changes and delete.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -1111,9 +1113,9 @@ public class AttributeTest extends ComparingESTest {
 
 				useCase2.setName(ORIGINAL_NAME2);
 				useCase2.setDescription(ORIGINAL_DESCRIPTION2);
-				clearOperations();
 			}
 		}.run(false);
+		clearOperations();
 
 		final Project originalProject = ModelUtil.clone(getProject());
 
@@ -1141,7 +1143,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		// expecting two attribute operations and a delete per usecase
 		assertEquals(6, operations.size());
@@ -1216,7 +1218,7 @@ public class AttributeTest extends ComparingESTest {
 	// getProject().deleteModelElement(useCase);
 	// getProject().deleteModelElement(useCase2);
 	//
-	// List<AbstractOperation> operations = getProjectSpace().getOperations();
+	// List<AbstractOperation> operations = forceGetOperations();
 	//
 	// // expecting two attribute operations and a delete per usecase
 	// assertEquals(operations.size(), 6);
@@ -1248,7 +1250,7 @@ public class AttributeTest extends ComparingESTest {
 	// }
 	/**
 	 * Test the creation and completion of a composite operation, that contains attribute changes.
-	 * 
+	 *
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 */
@@ -1291,7 +1293,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 
 		// expect 1 attribute op, the composite, 1 attribute op, the delete
 		assertEquals(4, operations.size());
@@ -1353,7 +1355,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for create, attribute changes and delete.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -1373,7 +1375,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expect create, 2 attribute ops, delete
 		assertEquals(4, operations.size());
 
@@ -1392,7 +1394,7 @@ public class AttributeTest extends ComparingESTest {
 
 	/**
 	 * Tests canonization for create, attribute changes and delete.
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	@Test
@@ -1422,7 +1424,7 @@ public class AttributeTest extends ComparingESTest {
 			}
 		}.run(false);
 
-		final List<AbstractOperation> operations = getProjectSpace().getOperations();
+		final List<AbstractOperation> operations = forceGetOperations();
 		// expect create, 1 attribute ops, 1 multiref op, the delete
 		assertEquals(4, operations.size());
 

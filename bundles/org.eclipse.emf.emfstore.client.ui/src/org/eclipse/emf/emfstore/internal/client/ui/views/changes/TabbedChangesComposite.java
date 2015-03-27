@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMContentProvider;
 import org.eclipse.emf.emfstore.internal.client.ui.views.scm.SCMLabelProvider;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -59,7 +59,8 @@ public class TabbedChangesComposite extends Composite {
 	 * @param showRootNodes
 	 *            whether to show root nodes
 	 */
-	public TabbedChangesComposite(Composite parent, int style, List<ChangePackage> changePackages, Project project,
+	public TabbedChangesComposite(Composite parent, int style, List<AbstractChangePackage> changePackages,
+		Project project,
 		ModelElementIdToEObjectMapping idToEObjectMapping, boolean showRootNodes) {
 		super(parent, style);
 		createComposite(style, project, idToEObjectMapping, showRootNodes);

@@ -41,7 +41,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getSeedCount() <em>Seed Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSeedCount()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getSeedCount() <em>Seed Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSeedCount()
 	 * @generated
 	 * @ordered
@@ -63,7 +63,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getTestName() <em>ESFuzzyTest Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTestName()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getTestName() <em>ESFuzzyTest Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTestName()
 	 * @generated
 	 * @ordered
@@ -85,7 +85,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getError() <em>Error</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getError()
 	 * @generated
 	 * @ordered
@@ -96,7 +96,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getError() <em>Error</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getError()
 	 * @generated
 	 * @ordered
@@ -107,7 +107,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getFailure() <em>Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFailure()
 	 * @generated
 	 * @ordered
@@ -118,7 +118,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getFailure() <em>Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFailure()
 	 * @generated
 	 * @ordered
@@ -129,7 +129,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getExecutionTime() <em>Execution Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExecutionTime()
 	 * @generated
 	 * @ordered
@@ -140,7 +140,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getExecutionTime() <em>Execution Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExecutionTime()
 	 * @generated
 	 * @ordered
@@ -150,7 +150,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestResultImpl() {
@@ -160,7 +160,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -171,7 +171,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getSeedCount() {
@@ -181,7 +181,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSeedCount(int newSeedCount) {
@@ -196,7 +196,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getTestName() {
@@ -206,7 +206,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTestName(String newTestName) {
@@ -221,7 +221,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getError() {
@@ -231,7 +231,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setError(String newError) {
@@ -245,7 +245,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getFailure() {
@@ -255,7 +255,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFailure(String newFailure) {
@@ -270,7 +270,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public long getExecutionTime() {
@@ -280,7 +280,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setExecutionTime(long newExecutionTime) {
@@ -295,7 +295,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -318,7 +318,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -346,7 +346,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -374,7 +374,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -397,7 +397,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

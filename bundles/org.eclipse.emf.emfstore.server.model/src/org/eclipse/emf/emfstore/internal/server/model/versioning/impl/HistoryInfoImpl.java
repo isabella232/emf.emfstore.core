@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESHistoryInfoImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -157,7 +157,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 * @generated
 	 * @ordered
 	 */
-	protected ChangePackage changePackage;
+	protected AbstractChangePackage changePackage;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -531,11 +531,11 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	public ChangePackage getChangePackage() {
+	public AbstractChangePackage getChangePackage() {
 		if (changePackage != null && changePackage.eIsProxy())
 		{
 			final InternalEObject oldChangePackage = (InternalEObject) changePackage;
-			changePackage = (ChangePackage) eResolveProxy(oldChangePackage);
+			changePackage = (AbstractChangePackage) eResolveProxy(oldChangePackage);
 			if (changePackage != oldChangePackage)
 			{
 				final InternalEObject newChangePackage = (InternalEObject) changePackage;
@@ -563,7 +563,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	public ChangePackage basicGetChangePackage() {
+	public AbstractChangePackage basicGetChangePackage() {
 		return changePackage;
 	}
 
@@ -572,8 +572,8 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	public NotificationChain basicSetChangePackage(ChangePackage newChangePackage, NotificationChain msgs) {
-		final ChangePackage oldChangePackage = changePackage;
+	public NotificationChain basicSetChangePackage(AbstractChangePackage newChangePackage, NotificationChain msgs) {
+		final AbstractChangePackage oldChangePackage = changePackage;
 		changePackage = newChangePackage;
 		if (eNotificationRequired())
 		{
@@ -593,7 +593,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	public void setChangePackage(ChangePackage newChangePackage) {
+	public void setChangePackage(AbstractChangePackage newChangePackage) {
 		if (newChangePackage != changePackage)
 		{
 			NotificationChain msgs = null;
@@ -730,7 +730,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 			getVersionProperties().addAll((Collection<? extends VersionProperty>) newValue);
 			return;
 		case VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE:
-			setChangePackage((ChangePackage) newValue);
+			setChangePackage((AbstractChangePackage) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -770,7 +770,7 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 			getVersionProperties().clear();
 			return;
 		case VersioningPackage.HISTORY_INFO__CHANGE_PACKAGE:
-			setChangePackage((ChangePackage) null);
+			setChangePackage((AbstractChangePackage) null);
 			return;
 		}
 		super.eUnset(featureID);

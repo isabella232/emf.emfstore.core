@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * This is an alternative merge handler, using the new merge wizard.
- *
+ * 
  * @author wesendon
  */
 public class MergeProjectHandler extends AbstractConflictResolver {
@@ -39,7 +39,7 @@ public class MergeProjectHandler extends AbstractConflictResolver {
 
 	/**
 	 * Default constructor.
-	 *
+	 * 
 	 * @param isBranchMerge
 	 *            specifies whether two branches are merged, rather then changes
 	 *            from the same branches.
@@ -66,6 +66,7 @@ public class MergeProjectHandler extends AbstractConflictResolver {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected boolean controlDecisionManager(final DecisionManager decisionManager, ChangeConflictSet changeConflictSet) {
 		authorProvider = new DefaultOperationAuthorProvider(changeConflictSet.getLeftChanges(),

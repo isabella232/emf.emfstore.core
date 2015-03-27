@@ -238,8 +238,8 @@ public class SemanticPackageImpl extends EPackageImpl implements SemanticPackage
 		semanticCompositeOperationEClass.getESuperTypes().add(theOperationsPackage.getCompositeOperation());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(semanticCompositeOperationEClass, SemanticCompositeOperation.class, "SemanticCompositeOperation", //$NON-NLS-1$
-			IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(semanticCompositeOperationEClass, SemanticCompositeOperation.class,
+			"SemanticCompositeOperation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 	}
 
 } // SemanticPackageImpl

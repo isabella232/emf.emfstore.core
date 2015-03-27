@@ -126,8 +126,8 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_projectId_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ProjectInfo_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_projectId_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				ModelPackage.Literals.PROJECT_INFO__PROJECT_ID,
 				true,
 				false,
@@ -149,8 +149,8 @@ public class ProjectInfoItemProvider extends ItemProviderAdapter implements IEdi
 			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectInfo_version_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ProjectInfo_type"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ProjectInfo_version_feature", "_UI_ProjectInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				ModelPackage.Literals.PROJECT_INFO__VERSION,
 				true,
 				false,

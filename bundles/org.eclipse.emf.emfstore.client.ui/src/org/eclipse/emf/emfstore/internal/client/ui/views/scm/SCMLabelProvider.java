@@ -27,6 +27,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVi
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -138,7 +139,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		return ret;
 	}
 
-	private String getText(ChangePackage changePackage) {
+	private String getText(AbstractChangePackage changePackage) {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("Change Package");
 		if (changePackage.getLogMessage() != null) {

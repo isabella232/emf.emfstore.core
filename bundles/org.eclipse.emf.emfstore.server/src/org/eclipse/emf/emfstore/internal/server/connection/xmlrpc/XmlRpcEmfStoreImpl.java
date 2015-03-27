@@ -33,9 +33,9 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -125,7 +125,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 * {@inheritDoc}
 	 */
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
-		PrimaryVersionSpec baseVersionSpec, ChangePackage changePackage, BranchVersionSpec targetBranch,
+		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
 		return getEmfStore().createVersion(sessionId, projectId, baseVersionSpec, changePackage, targetBranch,
 			sourceVersion, logMessage);
@@ -157,7 +157,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
 		VersionSpec target) throws ESException {
 		return getEmfStore().getChanges(sessionId, projectId, source, target);
 	}

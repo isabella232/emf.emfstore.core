@@ -27,9 +27,9 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -118,7 +118,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 * @generated NOT
 	 */
 	PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId, PrimaryVersionSpec baseVersionSpec,
-		ChangePackage changePackage, BranchVersionSpec targetBranch, PrimaryVersionSpec sourceVersion,
+		AbstractChangePackage changePackage, BranchVersionSpec targetBranch, PrimaryVersionSpec sourceVersion,
 		LogMessage logMessage) throws ESException, InvalidVersionSpecException;
 
 	/**
@@ -155,7 +155,8 @@ public interface EMFStore extends EMFStoreInterface {
 	 *             if any error in the EmfStore occurs
 	 * @generated NOT
 	 */
-	List<ChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source, VersionSpec target)
+	List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+		VersionSpec target)
 		throws ESException;
 
 	/**

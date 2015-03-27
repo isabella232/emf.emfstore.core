@@ -38,8 +38,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
@@ -298,7 +298,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				} finally {
 					// delete resources
 					for (final Version version : project.getVersions()) {
-						final ChangePackage changes = version.getChanges();
+						final AbstractChangePackage changes = version.getChanges();
 						if (changes != null) {
 							changes.eResource().delete(null);
 						}

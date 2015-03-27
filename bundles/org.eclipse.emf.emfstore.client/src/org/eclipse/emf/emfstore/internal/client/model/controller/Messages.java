@@ -51,10 +51,13 @@ public final class Messages extends NLS {
 	public static String UpdateController_FetchingChanges;
 	public static String UpdateController_IncomingOperationsNotFullyConsumed;
 	public static String UpdateController_IncomingOperationsOnlyPartlyMatch;
+	public static String UpdateController_IncomingOpsNotConsumed;
+	public static String UpdateController_IncomingOpsPartlyMatched;
 	public static String UpdateController_LocalChanges_SaveFailed;
 	public static String UpdateController_ProjectSpace_SaveFailed;
 	public static String UpdateController_PullingUpBaseVersion;
 	public static String UpdateController_ResolvingNewVersion;
+	public static String UpdateController_TempFileCreationFailed;
 	public static String UpdateController_UpdatingProject;
 	static {
 		// initialize resource bundle

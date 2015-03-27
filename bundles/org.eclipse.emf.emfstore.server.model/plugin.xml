@@ -39,6 +39,14 @@
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated server -->
+      <package
+            uri="http://eclipse.org/emf/emfstore/server/model/versioning/events/server/"
+            class="org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerPackage"
+            genModel="model/server.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://eclipse.org/emf/emfstore/server/model/accesscontrol"
             class="org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage"

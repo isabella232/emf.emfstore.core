@@ -265,4 +265,39 @@ public final class FileUtil {
 
 		return StringUtils.substring(file.getName(), lastIndexOf);
 	}
+
+	/**
+	 * Moves the given {@code source} File to the given {@code destination}.
+	 *
+	 * @param source
+	 *            the source {@link File} being moved
+	 * @param destination
+	 *            the destination the {@code source} file should be moved to
+	 * @throws IOException
+	 *             in case the move fails
+	 */
+	public static void moveAndOverwrite(File source, File destination) throws IOException {
+		FileUtils.copyFile(source, destination);
+		if (!source.delete()) {
+			throw new IOException(Messages.FileUtil_DeleteFaild + source.getName());
+		}
+	}
+
+	/**
+	 * Creates a temporary file location and returns the absolute path to it.
+	 * The suffix of the temporary file is set to {@code .eoc}.
+	 *
+	 * @return the absolute path to the temporary file location
+	 */
+	public static String createLocationForTemporaryChangePackage() {
+		File tempFile;
+		try {
+			tempFile = File.createTempFile("temp-", ".eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+			tempFile.deleteOnExit();
+			return tempFile.getAbsolutePath();
+		} catch (final IOException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
 }

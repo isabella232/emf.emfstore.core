@@ -113,7 +113,7 @@ public class ShareController extends ServerCall<ProjectInfo> {
 
 		getProgressMonitor().worked(20);
 		getProgressMonitor().subTask(Messages.ShareController_Finalizing_Share);
-		getProjectSpace().getOperations().clear();
+		getProjectSpace().getLocalChangePackage().clear();
 		getProjectSpace().save();
 		getProjectSpace().updateDirtyState();
 

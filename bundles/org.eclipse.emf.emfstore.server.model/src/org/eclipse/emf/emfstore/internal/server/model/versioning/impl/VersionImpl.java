@@ -42,7 +42,7 @@ import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
@@ -976,12 +976,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		return project;
 	}
 
-	public ChangePackage getChanges() {
+	public AbstractChangePackage getChanges() {
 		final Resource resource = getChangePackageResource();
 		if (resource == null || resource.getContents().size() < 1) {
 			return null;
 		}
-		final ChangePackage changePackage = (ChangePackage) resource.getContents().get(0);
+		final AbstractChangePackage changePackage = (AbstractChangePackage) resource.getContents().get(0);
 		return changePackage;
 	}
 

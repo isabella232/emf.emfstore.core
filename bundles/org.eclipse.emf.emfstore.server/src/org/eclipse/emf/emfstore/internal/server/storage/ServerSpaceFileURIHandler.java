@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -22,17 +22,17 @@ import org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl;
 
 /**
  * Handler for serverspace file URIs. Adds functionality for also deleting project folder.
- *
+ * 
  * @author jfaltermeier
- *
+ * 
  */
 public class ServerSpaceFileURIHandler extends FileURIHandlerImpl {
 
-	private final HashSet<String> extensions;
+	private HashSet<String> extensions;
 
 	/**
 	 * Constructor for {@link ServerSpaceFileURIHandler}.
-	 *
+	 * 
 	 * @param extensions set of all file extensions this handler should handle.
 	 */
 	public ServerSpaceFileURIHandler(HashSet<String> extensions) {
@@ -41,7 +41,7 @@ public class ServerSpaceFileURIHandler extends FileURIHandlerImpl {
 
 	@Override
 	public boolean canHandle(URI uri) {
-		final String extension = "." + uri.fileExtension();
+		String extension = "." + uri.fileExtension();
 		return extensions.contains(extension);
 	}
 
@@ -49,8 +49,8 @@ public class ServerSpaceFileURIHandler extends FileURIHandlerImpl {
 	public void delete(URI uri, Map<?, ?> options) throws IOException
 	{
 		// TODO options?
-		final File file = new File(uri.toFileString());
-		final File parent = file.getParentFile();
+		File file = new File(uri.toFileString());
+		File parent = file.getParentFile();
 		file.delete();
 
 		if (parent != null && parent.exists() && parent.listFiles().length == 0) {

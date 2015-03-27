@@ -5,16 +5,15 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - intial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.conflictdetection.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.common.util.EList;
@@ -23,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
+import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
@@ -83,12 +83,11 @@ public class ConflictDetectionCreateTest extends ConflictDetectionTest {
 			}
 		});
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = secondProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(secondProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
-
-		assertTrue(conflicts.size() > 0);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
+		assertFalse(conflicts.isEmpty());
 	}
 
 	@Ignore
@@ -123,11 +122,11 @@ public class ConflictDetectionCreateTest extends ConflictDetectionTest {
 			}
 		});
 
-		final List<AbstractOperation> ops1 = getProjectSpace().getOperations();
-		final List<AbstractOperation> ops2 = secondProjectSpace.getOperations();
+		final List<AbstractOperation> ops1 = forceGetOperations();
+		final List<AbstractOperation> ops2 = forceGetOperations(secondProjectSpace);
 
-		final Set<AbstractOperation> conflicts = getConflicts(ops1, ops2);
+		final List<ConflictBucket> conflicts = getConflicts(ops1, ops2);
 
-		assertTrue(conflicts.size() > 0);
+		assertFalse(conflicts.isEmpty());
 	}
 }

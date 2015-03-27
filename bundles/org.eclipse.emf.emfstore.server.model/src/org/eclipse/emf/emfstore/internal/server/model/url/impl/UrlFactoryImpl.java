@@ -59,8 +59,7 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	public static UrlFactory init() {
 		try
 		{
-			final UrlFactory theUrlFactory = (UrlFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/server/model/url"); //$NON-NLS-1$
+			final UrlFactory theUrlFactory = (UrlFactory) EPackage.Registry.INSTANCE.getEFactory(UrlPackage.eNS_URI);
 			if (theUrlFactory != null)
 			{
 				return theUrlFactory;
