@@ -1,11 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -23,6 +23,7 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
+import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.ShareProjectAdapter;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FileChunk;
@@ -148,14 +149,20 @@ public class ConnectionMock implements ConnectionManager {
 	public ProjectInfo createEmptyProject(SessionId sessionId, String name, String description, LogMessage logMessage)
 		throws ESException {
 		checkSessionId(sessionId);
-		return emfStore.createEmptyProject(ModelUtil.clone(sessionId), name, description, ModelUtil.clone(logMessage));
+		final ProjectInfo projectInfo = emfStore.createEmptyProject(ModelUtil.clone(sessionId), name, description,
+			ModelUtil.clone(logMessage));
+		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		return projectInfo;
 	}
 
 	public ProjectInfo createProject(SessionId sessionId, String name, String description, LogMessage logMessage,
 		Project project) throws ESException {
 		checkSessionId(sessionId);
-		return emfStore.createProject(ModelUtil.clone(sessionId), name, description, ModelUtil.clone(logMessage),
+		final ProjectInfo projectInfo = emfStore.createProject(ModelUtil.clone(sessionId), name, description,
+			ModelUtil.clone(logMessage),
 			ModelUtil.clone(project));
+		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		return projectInfo;
 	}
 
 	public void deleteProject(SessionId sessionId, ProjectId projectId, boolean deleteFiles) throws ESException {
@@ -225,7 +232,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {
@@ -234,12 +241,12 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager#getVersion(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
 	public String getVersion(ServerInfo serverInfo) throws ESException {
 		final SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
-		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$			
+		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$
 		sessions.add(sessionId);
 		return emfStore.getVersion(sessionId);
 	}

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -19,13 +19,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.AdminEmfStore;
-import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
+import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.ShareProjectAdapter;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
@@ -49,7 +51,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Implementation of {@link AdminEmfStore} interface.
- * 
+ *
  * @author wesendon
  */
 // TODO: bring this interface in new subinterface structure and refactor it
@@ -59,7 +61,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	/**
 	 * Default constructor.
-	 * 
+	 *
 	 * @param daoFacade
 	 *            provider facade for access control related DAOs
 	 * @param serverSpace
@@ -324,8 +326,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			}
 		}
 
-		final Role newRole = (Role) RolesPackage.eINSTANCE.getEFactoryInstance().create(
-			(EClass) RolesPackage.eINSTANCE.getEClassifier(roleClass.getName()));
+		final Role newRole = createRoleFromEClass(roleClass);
 
 		newRole.getProjects().add(ModelUtil.clone(projectId));
 		orgUnit.getRoles().add(newRole);
@@ -340,18 +341,30 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, projectId, participantId, roleClass);
 
+		// check if requested role is the server admin role, which we never allow to be assigned via this call
+		if (isServerAdminRole(roleClass)) {
+			throw new AccessControlException(Messages.AdminEmfStoreImpl_Not_Allowed_To_Assign_ServerAdminRole);
+		}
+
+		final ACUser resolvedUser = getAuthorizationControl().resolveUser(sessionId);
+
+		if (!resolvedUser.getId().equals(participantId)) {
+			throw new AccessControlException(Messages.AdminEmfStoreImpl_OnlyAllowedForRequstingUser);
+		}
+
+		// Checks if the user is a project admin and whether the ShareProject privilege
+		// has been set in the es.properties. This method will throw an exception
+		// if the user is either not a project admin or the ShareProject privilege has not been set.
+		getAuthorizationControl().checkProjectAdminAccess(
+			sessionId,
+			null,
+			PAPrivileges.ShareProject);
+
+		// check if requesting session did actually share a project before
+		checkIfSessionIsAssociatedWithProject(sessionId, projectId);
+
 		projectId = getProjectId(projectId);
 		final ACOrgUnit orgUnit = getOrgUnit(participantId);
-
-		final Role newRole = (Role) RolesPackage.eINSTANCE.getEFactoryInstance().create(
-			(EClass) RolesPackage.eINSTANCE.getEClassifier(roleClass.getName()));
-
-		// if participant is server admin, return
-		for (final Role role : orgUnit.getRoles()) {
-			if (isServerAdmin(role)) {
-				return;
-			}
-		}
 
 		for (final Role role : orgUnit.getRoles()) {
 			if (areEqual(role, roleClass)) {
@@ -360,10 +373,29 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 				return;
 			}
 		}
+	}
 
-		newRole.getProjects().add(ModelUtil.clone(projectId));
-		orgUnit.getRoles().add(newRole);
-		save();
+	private static void checkIfSessionIsAssociatedWithProject(SessionId sessionId, ProjectId projectId)
+		throws AccessControlException {
+		final EList<Adapter> eAdapters = sessionId.eAdapters();
+		for (final Adapter adapter : eAdapters) {
+			if (ShareProjectAdapter.class.isInstance(adapter)) {
+				final ShareProjectAdapter shareAdapter = (ShareProjectAdapter) adapter;
+				final boolean didRemove = shareAdapter.removeProject(projectId);
+				if (didRemove) {
+					return;
+				}
+				throw new AccessControlException(Messages.AdminEmfStoreImpl_IllegalRequestToAddInitialRole);
+			}
+		}
+
+		// no ShareProjectAdapter with the correct project found
+		throw new AccessControlException(Messages.AdminEmfStoreImpl_IllegalRequestToAddInitialRole);
+	}
+
+	private Role createRoleFromEClass(EClass roleClass) {
+		return (Role) RolesPackage.eINSTANCE.getEFactoryInstance().create(
+			(EClass) RolesPackage.eINSTANCE.getEClassifier(roleClass.getName()));
 	}
 
 	private ProjectId getProjectId(ProjectId projectId) throws ESException {
@@ -429,13 +461,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, projectId, orgUnitId, roleClass);
 
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId);
+		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId, PAPrivileges.AssignRoleToOrgUnit);
 		final boolean isServerAdmin = getAuthorizationControl().checkProjectAdminAccessForOrgUnit(sessionId, orgUnitId,
 			Collections.singleton(projectId));
-
-		if (!ServerConfiguration.isProjectAdminPrivileg(PAPrivileges.AssignRoleToOrgUnit)) {
-			throw new AccessControlException(Messages.AdminEmfStoreImpl_Assign_Role_Privilege_Not_Set);
-		}
 
 		if (!isServerAdmin && isServerAdminRole(roleClass)) {
 			throw new AccessControlException(Messages.AdminEmfStoreImpl_Not_Allowed_To_Assign_ServerAdminRole);
@@ -475,8 +503,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			}
 		}
 		// create role if does not exists
-		final Role newRole = (Role) RolesPackage.eINSTANCE.getEFactoryInstance().create(
-			(EClass) RolesPackage.eINSTANCE.getEClassifier(roleClass.getName()));
+		final Role newRole = createRoleFromEClass(roleClass);
 		newRole.getProjects().add(ModelUtil.clone(projectId));
 		orgUnit.getRoles().add(newRole);
 		save();
@@ -508,8 +535,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			}
 		}
 
-		final Role newRole = (Role) RolesPackage.eINSTANCE.getEFactoryInstance().create(
-			(EClass) RolesPackage.eINSTANCE.getEClassifier(roleClass.getName()));
+		final Role newRole = createRoleFromEClass(roleClass);
 
 		orgUnit.getRoles().add(newRole);
 		save();
@@ -629,9 +655,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#changeUser(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
@@ -762,7 +788,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface#initSubInterfaces()
 	 */
 	@Override
