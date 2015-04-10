@@ -28,8 +28,10 @@ public final class Messages extends NLS {
 	public static String AdminEmfStoreImpl_Could_Not_Find_OrgUnit;
 	public static String AdminEmfStoreImpl_Group_Already_Exists;
 	public static String AdminEmfStoreImpl_Group_Does_Not_Exist;
+	public static String AdminEmfStoreImpl_IllegalRequestToAddInitialRole;
 	public static String AdminEmfStoreImpl_Not_Allowed_To_Assign_ServerAdminRole;
 	public static String AdminEmfStoreImpl_Not_Allowed_To_Create_Participant_With_ServerAdminRole;
+	public static String AdminEmfStoreImpl_OnlyAllowedForRequstingUser;
 	public static String AdminEmfStoreImpl_OrgUnit_Does_Not_Exist;
 	public static String AdminEmfStoreImpl_RemovePA_Violation_1;
 	public static String AdminEmfStoreImpl_RemovePA_Violation_2;

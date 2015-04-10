@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -19,6 +19,7 @@ import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
+import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.ShareProjectAdapter;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FileChunk;
@@ -102,7 +103,9 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public ProjectInfo createEmptyProject(SessionId sessionId, String name, String description, LogMessage logMessage)
 		throws ESException {
-		return getEmfStore().createEmptyProject(sessionId, name, description, logMessage);
+		final ProjectInfo projectInfo = getEmfStore().createEmptyProject(sessionId, name, description, logMessage);
+		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		return projectInfo;
 	}
 
 	/**
@@ -110,7 +113,9 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public ProjectInfo createProject(SessionId sessionId, String name, String description, LogMessage logMessage,
 		Project project) throws ESException {
-		return getEmfStore().createProject(sessionId, name, description, logMessage, project);
+		final ProjectInfo projectInfo = getEmfStore().createProject(sessionId, name, description, logMessage, project);
+		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		return projectInfo;
 	}
 
 	/**
@@ -270,4 +275,5 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	public String getVersion(SessionId sessionId) throws ESException {
 		return getEmfStore().getVersion(sessionId);
 	}
+
 }

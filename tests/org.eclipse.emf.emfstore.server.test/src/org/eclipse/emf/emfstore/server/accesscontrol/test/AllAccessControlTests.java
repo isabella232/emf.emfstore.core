@@ -39,8 +39,8 @@ import org.junit.runners.Suite;
 	CreateUserMissingPrivilegTests.class,
 	CreateUserWithPasswordTests.class,
 	CreateUserWithPasswordMissingPrivilegTests.class,
-
-// AdminEMFStoreTests.class
+	AdminEMFStoreTests.class,
+	AddInitialParticipantTest.class
 
 })
 public class AllAccessControlTests {
