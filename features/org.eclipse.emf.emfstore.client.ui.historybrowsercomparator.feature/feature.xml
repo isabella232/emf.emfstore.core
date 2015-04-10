@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.emfstore.client.ui.historybrowsercomparator.feature"
       label="HistoryBrowserComparator"
-      version="1.4.1.qualifier"
+      version="1.4.2.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.client.ui.historybrowsercomparator"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.4.1.qualifier">
+      license-feature-version="1.4.2.qualifier">
 
    <description url="http://emfstore.org">
       This feature adds a comparator to EMFStore&apos;s history browser.

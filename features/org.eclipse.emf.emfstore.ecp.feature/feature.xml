@@ -2,10 +2,10 @@
 <feature
       id="org.eclipse.emf.emfstore.ecp.feature"
       label="EMFStore ECP Integration"
-      version="1.4.1.qualifier"
+      version="1.4.2.qualifier"
       provider-name="Eclipse Modeling Project"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.4.1.qualifier">
+      license-feature-version="1.4.2.qualifier">
 
    <description url="http://emfstore.org ">
       The EMFStore ECP Integration feature includes all plugins to integrate EMFStore with ECP. EMFStore is provided with a set of reflective editors and a navigation view. ECP is provided with a backend and repository.
