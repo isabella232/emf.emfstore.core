@@ -148,11 +148,13 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	 *
 	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
 	 */
+	@Override
 	public Object invoke(Object obj, final Method method, final Object[] args) throws ESException {
 		final MethodInvocation methodInvocation = new MethodInvocation(method.getName(), args);
 		getAuthorizationControl().checkAccess(methodInvocation);
 
 		notifyServerCallObservers(new ServerCallObserverNotifier() {
+			@Override
 			public void notify(ESServerCallObserver observer) {
 				observer.notifyPreServerCallExecution(method, args);
 			}
@@ -161,6 +163,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 		try {
 			final Object result = subIfaceMethod.getIface().execute(subIfaceMethod.getMethod(), args);
 			notifyServerCallObservers(new ServerCallObserverNotifier() {
+				@Override
 				public void notify(ESServerCallObserver observer) {
 					observer.notifyPostServerCallExecution(method, args, result);
 				}
@@ -169,6 +172,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 			// notify observers about exceptions and rethrow exception
 		} catch (final ESException esException) {
 			notifyServerCallObservers(new ServerCallObserverNotifier() {
+				@Override
 				public void notify(ESServerCallObserver observer) {
 					observer.notifyServerCallExecutionESExceptionFailure(method, args, esException);
 				}
@@ -178,6 +182,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 		} catch (final RuntimeException runtimeException) {
 			// END SUPRESS CATCH EXCEPTION
 			notifyServerCallObservers(new ServerCallObserverNotifier() {
+				@Override
 				public void notify(ESServerCallObserver observer) {
 					observer.notifyServerCallExecutionRuntimeExceptionFailure(method, args, runtimeException);
 				}

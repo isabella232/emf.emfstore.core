@@ -57,8 +57,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNextVersionPropertyDescriptor(object);
@@ -78,19 +77,11 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addNextVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Version_nextVersion_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_Version_nextVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.VERSION__NEXT_VERSION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_Version_nextVersion_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_Version_nextVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.VERSION__NEXT_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -100,20 +91,11 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addPreviousVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Version_previousVersion_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Version_previousVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.VERSION__PREVIOUS_VERSION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_Version_previousVersion_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_Version_previousVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.VERSION__PREVIOUS_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -123,20 +105,11 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addAncestorVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Version_ancestorVersion_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Version_ancestorVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.VERSION__ANCESTOR_VERSION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_Version_ancestorVersion_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_Version_ancestorVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.VERSION__ANCESTOR_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -146,20 +119,13 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addBranchedVersionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Version_branchedVersions_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Version_branchedVersions_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.VERSION__BRANCHED_VERSIONS,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				VersioningPackage.Literals.VERSION__BRANCHED_VERSIONS, true, false, true, null, null, null));
 	}
 
 	/**
@@ -169,20 +135,11 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addMergedToVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Version_mergedToVersion_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Version_mergedToVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.VERSION__MERGED_TO_VERSION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_Version_mergedToVersion_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_Version_mergedToVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.VERSION__MERGED_TO_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -192,20 +149,13 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addMergedFromVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Version_mergedFromVersion_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Version_mergedFromVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.VERSION__MERGED_FROM_VERSION,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+				VersioningPackage.Literals.VERSION__MERGED_FROM_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -218,8 +168,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(VersioningPackage.Literals.VERSION__PRIMARY_SPEC);
 			childrenFeatures.add(VersioningPackage.Literals.VERSION__TAG_SPECS);
@@ -276,8 +225,7 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Version.class))
-		{
+		switch (notification.getFeatureID(Version.class)) {
 		case VersioningPackage.VERSION__PRIMARY_SPEC:
 		case VersioningPackage.VERSION__TAG_SPECS:
 		case VersioningPackage.VERSION__LOG_MESSAGE:
@@ -298,20 +246,14 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.VERSION__PRIMARY_SPEC,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.VERSION__PRIMARY_SPEC,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.VERSION__TAG_SPECS,
-				VersioningFactory.eINSTANCE.createTagVersionSpec()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.VERSION__TAG_SPECS,
+			VersioningFactory.eINSTANCE.createTagVersionSpec()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.VERSION__LOG_MESSAGE,
-				VersioningFactory.eINSTANCE.createLogMessage()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.VERSION__LOG_MESSAGE,
+			VersioningFactory.eINSTANCE.createLogMessage()));
 	}
 
 	/**

@@ -59,6 +59,7 @@ public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionS
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESHeadVersionSpecImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -76,6 +77,7 @@ public class HeadVersionSpecImpl extends VersionSpecImpl implements HeadVersionS
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESHeadVersionSpecImpl createAPI() {
 		return new ESHeadVersionSpecImpl(this);
 	}

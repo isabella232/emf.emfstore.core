@@ -34,16 +34,13 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 * @generated
 	 */
 	public static EventsFactory init() {
-		try
-		{
+		try {
 			final EventsFactory theEventsFactory = (EventsFactory) EPackage.Registry.INSTANCE
 				.getEFactory(EventsPackage.eNS_URI);
-			if (theEventsFactory != null)
-			{
+			if (theEventsFactory != null) {
 				return theEventsFactory;
 			}
-		} catch (final Exception exception)
-		{
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new EventsFactoryImpl();
@@ -67,8 +64,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID())
-		{
+		switch (eClass.getClassifierID()) {
 		case EventsPackage.EVENT:
 			return createEvent();
 		default:
@@ -81,6 +77,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public Event createEvent() {
 		final EventImpl event = new EventImpl();
 		return event;
@@ -91,6 +88,7 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EventsPackage getEventsPackage() {
 		return (EventsPackage) getEPackage();
 	}

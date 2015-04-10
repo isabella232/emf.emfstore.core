@@ -241,8 +241,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		// Obtain or create and register package
 		final OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl) (EPackage.Registry.INSTANCE
-			.get(eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
+			.get(eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
 			: new OperationsPackageImpl());
 
 		isInited = true;
@@ -275,8 +274,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theOperationsPackage.createPackageContents();
@@ -313,6 +311,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractOperation() {
 		return abstractOperationEClass;
 	}
@@ -322,6 +321,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractOperation_ModelElementId() {
 		return (EReference) abstractOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -331,6 +331,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractOperation_Accepted() {
 		return (EAttribute) abstractOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -340,6 +341,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractOperation_ClientDate() {
 		return (EAttribute) abstractOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -349,6 +351,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getCompositeOperation() {
 		return compositeOperationEClass;
 	}
@@ -358,6 +361,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getCompositeOperation_SubOperations() {
 		return (EReference) compositeOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -367,6 +371,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getCompositeOperation_MainOperation() {
 		return (EReference) compositeOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -376,6 +381,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCompositeOperation_CompositeName() {
 		return (EAttribute) compositeOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -385,6 +391,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCompositeOperation_CompositeDescription() {
 		return (EAttribute) compositeOperationEClass.getEStructuralFeatures().get(3);
 	}
@@ -394,6 +401,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCompositeOperation_Reversed() {
 		return (EAttribute) compositeOperationEClass.getEStructuralFeatures().get(4);
 	}
@@ -403,6 +411,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getFeatureOperation() {
 		return featureOperationEClass;
 	}
@@ -412,6 +421,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFeatureOperation_FeatureName() {
 		return (EAttribute) featureOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -422,8 +432,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
-	public EAttribute getFeatureOperation_Unset()
-	{
+	@Override
+	public EAttribute getFeatureOperation_Unset() {
 		return (EAttribute) featureOperationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -432,6 +442,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getCreateDeleteOperation() {
 		return createDeleteOperationEClass;
 	}
@@ -441,6 +452,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCreateDeleteOperation_Delete() {
 		return (EAttribute) createDeleteOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -450,6 +462,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getCreateDeleteOperation_ModelElement() {
 		return (EReference) createDeleteOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -459,6 +472,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getCreateDeleteOperation_SubOperations() {
 		return (EReference) createDeleteOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -468,6 +482,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getCreateDeleteOperation_EObjectToIdMap() {
 		return (EReference) createDeleteOperationEClass.getEStructuralFeatures().get(3);
 	}
@@ -477,6 +492,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getAttributeOperation() {
 		return attributeOperationEClass;
 	}
@@ -486,6 +502,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAttributeOperation_OldValue() {
 		return (EAttribute) attributeOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -495,6 +512,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAttributeOperation_NewValue() {
 		return (EAttribute) attributeOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -504,6 +522,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiAttributeOperation() {
 		return multiAttributeOperationEClass;
 	}
@@ -513,6 +532,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeOperation_Add() {
 		return (EAttribute) multiAttributeOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -522,6 +542,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeOperation_Indexes() {
 		return (EAttribute) multiAttributeOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -531,6 +552,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeOperation_ReferencedValues() {
 		return (EAttribute) multiAttributeOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -540,6 +562,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiAttributeSetOperation() {
 		return multiAttributeSetOperationEClass;
 	}
@@ -549,6 +572,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeSetOperation_Index() {
 		return (EAttribute) multiAttributeSetOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -558,6 +582,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeSetOperation_OldValue() {
 		return (EAttribute) multiAttributeSetOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -567,6 +592,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeSetOperation_NewValue() {
 		return (EAttribute) multiAttributeSetOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -576,6 +602,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiAttributeMoveOperation() {
 		return multiAttributeMoveOperationEClass;
 	}
@@ -585,6 +612,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeMoveOperation_OldIndex() {
 		return (EAttribute) multiAttributeMoveOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -594,6 +622,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeMoveOperation_NewIndex() {
 		return (EAttribute) multiAttributeMoveOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -603,6 +632,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiAttributeMoveOperation_ReferencedValue() {
 		return (EAttribute) multiAttributeMoveOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -612,6 +642,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getSingleReferenceOperation() {
 		return singleReferenceOperationEClass;
 	}
@@ -621,6 +652,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getSingleReferenceOperation_OldValue() {
 		return (EReference) singleReferenceOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -630,6 +662,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getSingleReferenceOperation_NewValue() {
 		return (EReference) singleReferenceOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -639,6 +672,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiReferenceOperation() {
 		return multiReferenceOperationEClass;
 	}
@@ -648,6 +682,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiReferenceOperation_Add() {
 		return (EAttribute) multiReferenceOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -657,6 +692,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiReferenceOperation_Index() {
 		return (EAttribute) multiReferenceOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -666,6 +702,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getMultiReferenceOperation_ReferencedModelElements() {
 		return (EReference) multiReferenceOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -675,6 +712,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiReferenceSetOperation() {
 		return multiReferenceSetOperationEClass;
 	}
@@ -684,6 +722,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiReferenceSetOperation_Index() {
 		return (EAttribute) multiReferenceSetOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -693,6 +732,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getMultiReferenceSetOperation_OldValue() {
 		return (EReference) multiReferenceSetOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -702,6 +742,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getMultiReferenceSetOperation_NewValue() {
 		return (EReference) multiReferenceSetOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -711,6 +752,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getMultiReferenceMoveOperation() {
 		return multiReferenceMoveOperationEClass;
 	}
@@ -720,6 +762,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiReferenceMoveOperation_OldIndex() {
 		return (EAttribute) multiReferenceMoveOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -729,6 +772,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMultiReferenceMoveOperation_NewIndex() {
 		return (EAttribute) multiReferenceMoveOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -738,6 +782,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getMultiReferenceMoveOperation_ReferencedModelElementId() {
 		return (EReference) multiReferenceMoveOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -747,6 +792,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getReferenceOperation() {
 		return referenceOperationEClass;
 	}
@@ -756,6 +802,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getReferenceOperation_Bidirectional() {
 		return (EAttribute) referenceOperationEClass.getEStructuralFeatures().get(0);
 	}
@@ -765,6 +812,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getReferenceOperation_OppositeFeatureName() {
 		return (EAttribute) referenceOperationEClass.getEStructuralFeatures().get(1);
 	}
@@ -774,6 +822,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getReferenceOperation_ContainmentType() {
 		return (EAttribute) referenceOperationEClass.getEStructuralFeatures().get(2);
 	}
@@ -783,6 +832,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getOperationId() {
 		return operationIdEClass;
 	}
@@ -792,6 +842,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getOperationGroup() {
 		return operationGroupEClass;
 	}
@@ -801,6 +852,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOperationGroup_Name() {
 		return (EAttribute) operationGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -810,6 +862,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getOperationGroup_Operations() {
 		return (EReference) operationGroupEClass.getEStructuralFeatures().get(1);
 	}
@@ -819,6 +872,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getModelElementGroup() {
 		return modelElementGroupEClass;
 	}
@@ -828,6 +882,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getModelElementGroup_Name() {
 		return (EAttribute) modelElementGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -837,6 +892,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getModelElementGroup_ModelElements() {
 		return (EReference) modelElementGroupEClass.getEStructuralFeatures().get(1);
 	}
@@ -846,6 +902,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getEObjectToModelElementIdMap() {
 		return eObjectToModelElementIdMapEClass;
 	}
@@ -855,6 +912,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getEObjectToModelElementIdMap_Key() {
 		return (EReference) eObjectToModelElementIdMapEClass.getEStructuralFeatures().get(0);
 	}
@@ -864,6 +922,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getEObjectToModelElementIdMap_Value() {
 		return (EReference) eObjectToModelElementIdMapEClass.getEStructuralFeatures().get(1);
 	}
@@ -873,6 +932,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public EEnum getContainmentType() {
 		return containmentTypeEEnum;
 	}
@@ -883,8 +943,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
-	public EEnum getUnsetType()
-	{
+	@Override
+	public EEnum getUnsetType() {
 		return unsetTypeEEnum;
 	}
 
@@ -893,6 +953,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 *
 	 * @generated
 	 */
+	@Override
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory) getEFactoryInstance();
 	}

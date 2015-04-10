@@ -48,8 +48,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addIdentifierPropertyDescriptor(object);
@@ -65,20 +64,14 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * @generated
 	 */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_PrimaryVersionSpec_identifier_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.PRIMARY_VERSION_SPEC__IDENTIFIER,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_PrimaryVersionSpec_identifier_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.PRIMARY_VERSION_SPEC__IDENTIFIER, true, false, false,
+			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -88,22 +81,15 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 *
 	 * @generated
 	 */
-	protected void addProjectStateChecksumPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_PrimaryVersionSpec_projectStateChecksum_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_projectStateChecksum_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+	protected void addProjectStateChecksumPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_PrimaryVersionSpec_projectStateChecksum_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_projectStateChecksum_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM, true, false, false,
+			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -128,8 +114,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	@Override
 	public String getText(Object object) {
 		final String label = ((PrimaryVersionSpec) object).getBranch();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PrimaryVersionSpec_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_PrimaryVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_PrimaryVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -145,8 +130,7 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(PrimaryVersionSpec.class))
-		{
+		switch (notification.getFeatureID(PrimaryVersionSpec.class)) {
 		case VersioningPackage.PRIMARY_VERSION_SPEC__IDENTIFIER:
 		case VersioningPackage.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

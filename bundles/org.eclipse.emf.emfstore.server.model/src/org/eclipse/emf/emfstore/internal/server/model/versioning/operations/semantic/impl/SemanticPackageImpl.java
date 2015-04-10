@@ -92,8 +92,7 @@ public class SemanticPackageImpl extends EPackageImpl implements SemanticPackage
 
 		// Obtain or create and register package
 		final SemanticPackageImpl theSemanticPackage = (SemanticPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SemanticPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new SemanticPackageImpl());
+			.get(eNS_URI) : new SemanticPackageImpl());
 
 		isInited = true;
 
@@ -125,8 +124,7 @@ public class SemanticPackageImpl extends EPackageImpl implements SemanticPackage
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theSemanticPackage.createPackageContents();
@@ -163,6 +161,7 @@ public class SemanticPackageImpl extends EPackageImpl implements SemanticPackage
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getSemanticCompositeOperation() {
 		return semanticCompositeOperationEClass;
 	}
@@ -172,6 +171,7 @@ public class SemanticPackageImpl extends EPackageImpl implements SemanticPackage
 	 *
 	 * @generated
 	 */
+	@Override
 	public SemanticFactory getSemanticFactory() {
 		return (SemanticFactory) getEFactoryInstance();
 	}

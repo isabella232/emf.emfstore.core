@@ -60,6 +60,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	 *
 	 * @throws AccessControlException in case the login fails
 	 */
+	@Override
 	public AuthenticationInformation logIn(ACUser resolvedUser, String username, String password,
 		ClientVersionInfo clientVersionInfo)
 		throws AccessControlException {
@@ -113,6 +114,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void logout(SessionId sessionId) throws AccessControlException {
 	}
 

@@ -46,6 +46,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 	 *
 	 * @throws ESServerInitException in case of failure
 	 */
+	@Override
 	public void initServer() throws ESServerInitException {
 		if (port == -1) {
 			throw new ESServerInitException(Messages.XmlRpcBuiltinWebServer_PortUnset);
@@ -88,6 +89,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 	 * @param clazz class of server interface
 	 * @throws ESServerInitException in case of failure
 	 */
+	@Override
 	public void addHandler(String handlerName, Class<?> clazz) throws ESServerInitException {
 		try {
 			final PropertyHandlerMapping mapper = (PropertyHandlerMapping) webServer.getXmlRpcServer()
@@ -104,6 +106,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 	 * @param handlerName the handler's name
 	 * @return true, if other handler still available
 	 */
+	@Override
 	public boolean removeHandler(String handlerName) {
 		final PropertyHandlerMapping mapper = (PropertyHandlerMapping) webServer.getXmlRpcServer().getHandlerMapping();
 		mapper.removeHandler(handlerName);
@@ -117,6 +120,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 	/**
 	 * Stops the server.
 	 */
+	@Override
 	public void stopServer() {
 		webServer.shutdown();
 		webServer = null;
@@ -127,6 +131,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESXmlRpcWebServerProvider#setPort(int)
 	 */
+	@Override
 	public void setPort(int port) {
 		this.port = port;
 	}
@@ -136,6 +141,7 @@ public final class XmlRpcBuiltinWebServer implements ESXmlRpcWebServerProvider {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESXmlRpcWebServerProvider#getPort()
 	 */
+	@Override
 	public int getPort() {
 		return port;
 	}

@@ -93,8 +93,7 @@ public class EventsPackageImpl extends EPackageImpl implements EventsPackage {
 
 		// Obtain or create and register package
 		final EventsPackageImpl theEventsPackage = (EventsPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof EventsPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new EventsPackageImpl());
+			.get(eNS_URI) : new EventsPackageImpl());
 
 		isInited = true;
 
@@ -126,8 +125,7 @@ public class EventsPackageImpl extends EPackageImpl implements EventsPackage {
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theEventsPackage.createPackageContents();
@@ -164,6 +162,7 @@ public class EventsPackageImpl extends EPackageImpl implements EventsPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getEvent() {
 		return eventEClass;
 	}
@@ -173,6 +172,7 @@ public class EventsPackageImpl extends EPackageImpl implements EventsPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEvent_Timestamp() {
 		return (EAttribute) eventEClass.getEStructuralFeatures().get(0);
 	}
@@ -182,6 +182,7 @@ public class EventsPackageImpl extends EPackageImpl implements EventsPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EventsFactory getEventsFactory() {
 		return (EventsFactory) getEFactoryInstance();
 	}

@@ -34,16 +34,13 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 * @generated
 	 */
 	public static ServerFactory init() {
-		try
-		{
+		try {
 			final ServerFactory theServerFactory = (ServerFactory) EPackage.Registry.INSTANCE
 				.getEFactory(ServerPackage.eNS_URI);
-			if (theServerFactory != null)
-			{
+			if (theServerFactory != null) {
 				return theServerFactory;
 			}
-		} catch (final Exception exception)
-		{
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ServerFactoryImpl();
@@ -67,8 +64,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID())
-		{
+		switch (eClass.getClassifierID()) {
 		case ServerPackage.PROJECT_UPDATED_EVENT:
 			return createProjectUpdatedEvent();
 		default:
@@ -81,6 +77,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ProjectUpdatedEvent createProjectUpdatedEvent() {
 		final ProjectUpdatedEventImpl projectUpdatedEvent = new ProjectUpdatedEventImpl();
 		return projectUpdatedEvent;
@@ -91,6 +88,7 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ServerPackage getServerPackage() {
 		return (ServerPackage) getEPackage();
 	}

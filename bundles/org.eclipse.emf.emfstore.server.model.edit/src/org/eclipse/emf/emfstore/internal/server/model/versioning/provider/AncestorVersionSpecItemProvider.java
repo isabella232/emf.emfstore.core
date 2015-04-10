@@ -48,8 +48,7 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -66,8 +65,7 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__TARGET);
 			childrenFeatures.add(VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__SOURCE);
@@ -110,8 +108,7 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	@Override
 	public String getText(Object object) {
 		final String label = ((AncestorVersionSpec) object).getBranch();
-		return label == null || label.length() == 0 ?
-			getString("_UI_AncestorVersionSpec_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_AncestorVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_AncestorVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -127,8 +124,7 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(AncestorVersionSpec.class))
-		{
+		switch (notification.getFeatureID(AncestorVersionSpec.class)) {
 		case VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET:
 		case VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -148,15 +144,11 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__TARGET,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__TARGET,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__SOURCE,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__SOURCE,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}
 
 	/**
@@ -170,12 +162,10 @@ public class AncestorVersionSpecItemProvider extends VersionSpecItemProvider {
 		final Object childFeature = feature;
 		final Object childObject = child;
 
-		final boolean qualify =
-			childFeature == VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__TARGET ||
-				childFeature == VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__SOURCE;
+		final boolean qualify = childFeature == VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__TARGET
+			|| childFeature == VersioningPackage.Literals.ANCESTOR_VERSION_SPEC__SOURCE;
 
-		if (qualify)
-		{
+		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}

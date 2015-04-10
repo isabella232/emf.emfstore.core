@@ -48,8 +48,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addAddPropertyDescriptor(object);
@@ -67,20 +66,14 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * @generated
 	 */
 	protected void addAddPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiAttributeOperation_add_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_add_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__ADD,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_MultiAttributeOperation_add_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_add_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__ADD, true, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,20 +83,14 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * @generated
 	 */
 	protected void addIndexesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiAttributeOperation_indexes_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_indexes_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__INDEXES,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_MultiAttributeOperation_indexes_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_indexes_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__INDEXES, true, false, false,
+			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -113,20 +100,14 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	 * @generated
 	 */
 	protected void addReferencedValuesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiAttributeOperation_referencedValues_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_referencedValues_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__REFERENCED_VALUES,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_MultiAttributeOperation_referencedValues_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeOperation_referencedValues_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_MultiAttributeOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MULTI_ATTRIBUTE_OPERATION__REFERENCED_VALUES, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -151,8 +132,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	@Override
 	public String getText(Object object) {
 		final String label = ((MultiAttributeOperation) object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_MultiAttributeOperation_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_MultiAttributeOperation_type") : //$NON-NLS-1$
 			getString("_UI_MultiAttributeOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -168,8 +148,7 @@ public class MultiAttributeOperationItemProvider extends FeatureOperationItemPro
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MultiAttributeOperation.class))
-		{
+		switch (notification.getFeatureID(MultiAttributeOperation.class)) {
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__ADD:
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__INDEXES:
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__REFERENCED_VALUES:

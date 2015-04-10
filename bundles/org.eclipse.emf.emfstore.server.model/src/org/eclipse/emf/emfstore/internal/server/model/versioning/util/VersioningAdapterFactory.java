@@ -61,8 +61,7 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public VersioningAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = VersioningPackage.eINSTANCE;
 		}
 	}
@@ -78,12 +77,10 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -95,131 +92,109 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected VersioningSwitch<Adapter> modelSwitch = new VersioningSwitch<Adapter>()
-	{
+	protected VersioningSwitch<Adapter> modelSwitch = new VersioningSwitch<Adapter>() {
 		@Override
-		public Adapter caseTagVersionSpec(TagVersionSpec object)
-		{
+		public Adapter caseTagVersionSpec(TagVersionSpec object) {
 			return createTagVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter caseDateVersionSpec(DateVersionSpec object)
-		{
+		public Adapter caseDateVersionSpec(DateVersionSpec object) {
 			return createDateVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter casePrimaryVersionSpec(PrimaryVersionSpec object)
-		{
+		public Adapter casePrimaryVersionSpec(PrimaryVersionSpec object) {
 			return createPrimaryVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter caseVersionSpec(VersionSpec object)
-		{
+		public Adapter caseVersionSpec(VersionSpec object) {
 			return createVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter caseLogMessage(LogMessage object)
-		{
+		public Adapter caseLogMessage(LogMessage object) {
 			return createLogMessageAdapter();
 		}
 
 		@Override
-		public Adapter caseChangePackage(ChangePackage object)
-		{
+		public Adapter caseChangePackage(ChangePackage object) {
 			return createChangePackageAdapter();
 		}
 
 		@Override
-		public Adapter caseHistoryInfo(HistoryInfo object)
-		{
+		public Adapter caseHistoryInfo(HistoryInfo object) {
 			return createHistoryInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseHistoryQuery(@SuppressWarnings("rawtypes") HistoryQuery object)
-		{
+		public Adapter caseHistoryQuery(@SuppressWarnings("rawtypes") HistoryQuery object) {
 			return createHistoryQueryAdapter();
 		}
 
 		@Override
-		public Adapter caseRangeQuery(@SuppressWarnings("rawtypes") RangeQuery object)
-		{
+		public Adapter caseRangeQuery(@SuppressWarnings("rawtypes") RangeQuery object) {
 			return createRangeQueryAdapter();
 		}
 
 		@Override
-		public Adapter casePathQuery(PathQuery object)
-		{
+		public Adapter casePathQuery(PathQuery object) {
 			return createPathQueryAdapter();
 		}
 
 		@Override
-		public Adapter caseModelElementQuery(ModelElementQuery object)
-		{
+		public Adapter caseModelElementQuery(ModelElementQuery object) {
 			return createModelElementQueryAdapter();
 		}
 
 		@Override
-		public Adapter caseVersion(Version object)
-		{
+		public Adapter caseVersion(Version object) {
 			return createVersionAdapter();
 		}
 
 		@Override
-		public Adapter caseHeadVersionSpec(HeadVersionSpec object)
-		{
+		public Adapter caseHeadVersionSpec(HeadVersionSpec object) {
 			return createHeadVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter caseVersionProperty(VersionProperty object)
-		{
+		public Adapter caseVersionProperty(VersionProperty object) {
 			return createVersionPropertyAdapter();
 		}
 
 		@Override
-		public Adapter caseBranchVersionSpec(BranchVersionSpec object)
-		{
+		public Adapter caseBranchVersionSpec(BranchVersionSpec object) {
 			return createBranchVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter caseBranchInfo(BranchInfo object)
-		{
+		public Adapter caseBranchInfo(BranchInfo object) {
 			return createBranchInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseAncestorVersionSpec(AncestorVersionSpec object)
-		{
+		public Adapter caseAncestorVersionSpec(AncestorVersionSpec object) {
 			return createAncestorVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter casePagedUpdateVersionSpec(PagedUpdateVersionSpec object)
-		{
+		public Adapter casePagedUpdateVersionSpec(PagedUpdateVersionSpec object) {
 			return createPagedUpdateVersionSpecAdapter();
 		}
 
 		@Override
-		public Adapter caseAbstractChangePackage(AbstractChangePackage object)
-		{
+		public Adapter caseAbstractChangePackage(AbstractChangePackage object) {
 			return createAbstractChangePackageAdapter();
 		}
 
 		@Override
-		public Adapter caseFileBasedChangePackage(FileBasedChangePackage object)
-		{
+		public Adapter caseFileBasedChangePackage(FileBasedChangePackage object) {
 			return createFileBasedChangePackageAdapter();
 		}
 
 		@Override
-		public Adapter defaultCase(EObject object)
-		{
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};
@@ -527,8 +502,7 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec
 	 * @generated
 	 */
-	public Adapter createPagedUpdateVersionSpecAdapter()
-	{
+	public Adapter createPagedUpdateVersionSpecAdapter() {
 		return null;
 	}
 
@@ -545,8 +519,7 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage
 	 * @generated
 	 */
-	public Adapter createAbstractChangePackageAdapter()
-	{
+	public Adapter createAbstractChangePackageAdapter() {
 		return null;
 	}
 
@@ -563,8 +536,7 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage
 	 * @generated
 	 */
-	public Adapter createFileBasedChangePackageAdapter()
-	{
+	public Adapter createFileBasedChangePackageAdapter() {
 		return null;
 	}
 

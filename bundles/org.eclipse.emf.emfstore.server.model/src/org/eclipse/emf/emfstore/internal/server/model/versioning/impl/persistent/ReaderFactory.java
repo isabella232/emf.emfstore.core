@@ -33,10 +33,12 @@ public class ReaderFactory {
 	 */
 	public ReadLineCapable create(final BufferedReader reader) {
 		return new ReadLineCapable() {
+			@Override
 			public String readLine() throws IOException {
 				return reader.readLine();
 			}
 
+			@Override
 			public void close() throws IOException {
 				reader.close();
 			}
@@ -52,10 +54,12 @@ public class ReaderFactory {
 	 */
 	public ReadLineCapable create(final ReversedLinesFileReader reversedReader) {
 		return new ReadLineCapable() {
+			@Override
 			public String readLine() throws IOException {
 				return reversedReader.readLine();
 			}
 
+			@Override
 			public void close() throws IOException {
 				reversedReader.close();
 			}

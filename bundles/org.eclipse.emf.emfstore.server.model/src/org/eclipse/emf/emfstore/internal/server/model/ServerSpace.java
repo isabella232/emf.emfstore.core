@@ -57,6 +57,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
+	@Override
 	EList<ACGroup> getGroups();
 
 	/**
@@ -74,6 +75,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * @model
 	 * @generated
 	 */
+	@Override
 	EList<ProjectHistory> getProjects();
 
 	/**
@@ -111,6 +113,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
+	@Override
 	EList<ACUser> getUsers();
 
 	/**
@@ -122,6 +125,7 @@ public interface ServerSpace extends EObject, ACDAOFacade {
 	 * @model
 	 * @generated NOT
 	 */
+	@Override
 	// FIXME: IOException???
 	void save() throws IOException;
 

@@ -58,8 +58,7 @@ public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter imp
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -75,20 +74,14 @@ public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter imp
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ModelElementUrlFragment_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementUrlFragment_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ModelElementUrlFragment_type"), //$NON-NLS-1$
-				UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ModelElementUrlFragment_name_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ModelElementUrlFragment_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_ModelElementUrlFragment_type"), //$NON-NLS-1$
+			UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -101,8 +94,7 @@ public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter imp
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID);
 		}
@@ -144,8 +136,7 @@ public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter imp
 	@Override
 	public String getText(Object object) {
 		final String label = ((ModelElementUrlFragment) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ModelElementUrlFragment_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_ModelElementUrlFragment_type") : //$NON-NLS-1$
 			getString("_UI_ModelElementUrlFragment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -161,8 +152,7 @@ public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter imp
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModelElementUrlFragment.class))
-		{
+		switch (notification.getFeatureID(ModelElementUrlFragment.class)) {
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
@@ -184,10 +174,8 @@ public class ModelElementUrlFragmentItemProvider extends ItemProviderAdapter imp
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID,
-				ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors.add(createChildParameter(UrlPackage.Literals.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID,
+			ModelFactory.eINSTANCE.createModelElementId()));
 	}
 
 	/**

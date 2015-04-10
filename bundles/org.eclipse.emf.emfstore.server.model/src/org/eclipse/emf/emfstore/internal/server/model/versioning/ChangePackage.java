@@ -99,6 +99,7 @@ public interface ChangePackage extends AbstractChangePackage, APIDelegate<ESChan
 	 * @param project
 	 *            the project
 	 */
+	@Override
 	void apply(Project project);
 
 	/**
@@ -111,6 +112,7 @@ public interface ChangePackage extends AbstractChangePackage, APIDelegate<ESChan
 	 * @param force
 	 *            if true, illegal Operations won't stop the other to be applied
 	 */
+	@Override
 	void apply(Project project, boolean force);
 
 	/**
@@ -125,6 +127,7 @@ public interface ChangePackage extends AbstractChangePackage, APIDelegate<ESChan
 	 *
 	 * @return the reverse change package
 	 */
+	@Override
 	ChangePackage reverse();
 
 	/**

@@ -101,8 +101,7 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 */
 	@Override
 	public Adapter createProjectUpdatedEventAdapter() {
-		if (projectUpdatedEventItemProvider == null)
-		{
+		if (projectUpdatedEventItemProvider == null) {
 			projectUpdatedEventItemProvider = new ProjectUpdatedEventItemProvider(this);
 		}
 
@@ -115,6 +114,7 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -125,6 +125,7 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -157,11 +158,9 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type))
-		{
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -175,6 +174,7 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -185,6 +185,7 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -196,11 +197,11 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}
@@ -211,6 +212,7 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (projectUpdatedEventItemProvider != null) {
 			projectUpdatedEventItemProvider.dispose();

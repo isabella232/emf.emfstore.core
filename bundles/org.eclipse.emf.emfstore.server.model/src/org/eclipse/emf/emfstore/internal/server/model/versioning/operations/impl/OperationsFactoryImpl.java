@@ -52,16 +52,13 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 * @generated
 	 */
 	public static OperationsFactory init() {
-		try
-		{
+		try {
 			final OperationsFactory theOperationsFactory = (OperationsFactory) EPackage.Registry.INSTANCE
 				.getEFactory(OperationsPackage.eNS_URI);
-			if (theOperationsFactory != null)
-			{
+			if (theOperationsFactory != null) {
 				return theOperationsFactory;
 			}
-		} catch (final Exception exception)
-		{
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new OperationsFactoryImpl();
@@ -85,8 +82,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID())
-		{
+		switch (eClass.getClassifierID()) {
 		case OperationsPackage.COMPOSITE_OPERATION:
 			return createCompositeOperation();
 		case OperationsPackage.CREATE_DELETE_OPERATION:
@@ -127,8 +123,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID())
-		{
+		switch (eDataType.getClassifierID()) {
 		case OperationsPackage.CONTAINMENT_TYPE:
 			return createContainmentTypeFromString(eDataType, initialValue);
 		case OperationsPackage.UNSET_TYPE:
@@ -145,8 +140,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID())
-		{
+		switch (eDataType.getClassifierID()) {
 		case OperationsPackage.CONTAINMENT_TYPE:
 			return convertContainmentTypeToString(eDataType, instanceValue);
 		case OperationsPackage.UNSET_TYPE:
@@ -161,6 +155,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public CompositeOperation createCompositeOperation() {
 		final CompositeOperationImpl compositeOperation = new CompositeOperationImpl();
 		return compositeOperation;
@@ -171,6 +166,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public CreateDeleteOperation createCreateDeleteOperation() {
 		final CreateDeleteOperationImpl createDeleteOperation = new CreateDeleteOperationImpl();
 		return createDeleteOperation;
@@ -181,6 +177,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public AttributeOperation createAttributeOperation() {
 		final AttributeOperationImpl attributeOperation = new AttributeOperationImpl();
 		return attributeOperation;
@@ -191,6 +188,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public MultiAttributeOperation createMultiAttributeOperation() {
 		final MultiAttributeOperationImpl multiAttributeOperation = new MultiAttributeOperationImpl();
 		return multiAttributeOperation;
@@ -201,6 +199,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public MultiAttributeSetOperation createMultiAttributeSetOperation() {
 		final MultiAttributeSetOperationImpl multiAttributeSetOperation = new MultiAttributeSetOperationImpl();
 		return multiAttributeSetOperation;
@@ -211,6 +210,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public MultiAttributeMoveOperation createMultiAttributeMoveOperation() {
 		final MultiAttributeMoveOperationImpl multiAttributeMoveOperation = new MultiAttributeMoveOperationImpl();
 		return multiAttributeMoveOperation;
@@ -221,6 +221,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public SingleReferenceOperation createSingleReferenceOperation() {
 		final SingleReferenceOperationImpl singleReferenceOperation = new SingleReferenceOperationImpl();
 		return singleReferenceOperation;
@@ -231,6 +232,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public MultiReferenceOperation createMultiReferenceOperation() {
 		final MultiReferenceOperationImpl multiReferenceOperation = new MultiReferenceOperationImpl();
 		return multiReferenceOperation;
@@ -241,6 +243,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public MultiReferenceSetOperation createMultiReferenceSetOperation() {
 		final MultiReferenceSetOperationImpl multiReferenceSetOperation = new MultiReferenceSetOperationImpl();
 		return multiReferenceSetOperation;
@@ -251,6 +254,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public MultiReferenceMoveOperation createMultiReferenceMoveOperation() {
 		final MultiReferenceMoveOperationImpl multiReferenceMoveOperation = new MultiReferenceMoveOperationImpl();
 		return multiReferenceMoveOperation;
@@ -261,6 +265,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public OperationId createOperationId() {
 		final OperationIdImpl operationId = new OperationIdImpl();
 		return operationId;
@@ -271,6 +276,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public OperationGroup createOperationGroup() {
 		final OperationGroupImpl operationGroup = new OperationGroupImpl();
 		return operationGroup;
@@ -281,6 +287,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public ModelElementGroup createModelElementGroup() {
 		final ModelElementGroupImpl modelElementGroup = new ModelElementGroupImpl();
 		return modelElementGroup;
@@ -303,8 +310,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 */
 	public ContainmentType createContainmentTypeFromString(EDataType eDataType, String initialValue) {
 		final ContainmentType result = ContainmentType.get(initialValue);
-		if (result == null)
-		{
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
@@ -326,11 +332,9 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	public UnsetType createUnsetTypeFromString(EDataType eDataType, String initialValue)
-	{
+	public UnsetType createUnsetTypeFromString(EDataType eDataType, String initialValue) {
 		final UnsetType result = UnsetType.get(initialValue);
-		if (result == null)
-		{
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
@@ -343,8 +347,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	public String convertUnsetTypeToString(EDataType eDataType, Object instanceValue)
-	{
+	public String convertUnsetTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -353,6 +356,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
+	@Override
 	public OperationsPackage getOperationsPackage() {
 		return (OperationsPackage) getEPackage();
 	}

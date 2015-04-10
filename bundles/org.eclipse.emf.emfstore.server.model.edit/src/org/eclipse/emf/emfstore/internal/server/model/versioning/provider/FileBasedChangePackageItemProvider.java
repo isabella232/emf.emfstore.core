@@ -39,12 +39,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class FileBasedChangePackageItemProvider
-	extends ItemProviderAdapter
-	implements
-	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource
-{
+public class FileBasedChangePackageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -52,8 +48,7 @@ public class FileBasedChangePackageItemProvider
 	 *
 	 * @generated
 	 */
-	public FileBasedChangePackageItemProvider(AdapterFactory adapterFactory)
-	{
+	public FileBasedChangePackageItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,10 +60,8 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addFilePathPropertyDescriptor(object);
@@ -83,23 +76,16 @@ public class FileBasedChangePackageItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addFilePathPropertyDescriptor(Object object)
-	{
+	protected void addFilePathPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_FileBasedChangePackage_filePath_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_FileBasedChangePackage_filePath_feature", "_UI_FileBasedChangePackage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.FILE_BASED_CHANGE_PACKAGE__FILE_PATH,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				VersioningPackage.Literals.FILE_BASED_CHANGE_PACKAGE__FILE_PATH, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -112,10 +98,8 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-	{
-		if (childrenFeatures == null)
-		{
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE);
 			childrenFeatures.add(VersioningPackage.Literals.FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES);
@@ -130,8 +114,7 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
-	{
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
@@ -146,8 +129,7 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/FileBasedChangePackage")); //$NON-NLS-1$
 	}
 
@@ -159,11 +141,9 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		final String label = ((FileBasedChangePackage) object).getFilePath();
-		return label == null || label.length() == 0 ?
-			getString("_UI_FileBasedChangePackage_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_FileBasedChangePackage_type") : //$NON-NLS-1$
 			getString("_UI_FileBasedChangePackage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -176,12 +156,10 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(FileBasedChangePackage.class))
-		{
+		switch (notification.getFeatureID(FileBasedChangePackage.class)) {
 		case VersioningPackage.FILE_BASED_CHANGE_PACKAGE__FILE_PATH:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
@@ -202,19 +180,15 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE,
-				VersioningFactory.eINSTANCE.createLogMessage()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE,
+			VersioningFactory.eINSTANCE.createLogMessage()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES,
-				VersioningFactory.eINSTANCE.createOperationProxy()));
+		newChildDescriptors.add(createChildParameter(
+			VersioningPackage.Literals.FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES,
+			VersioningFactory.eINSTANCE.createOperationProxy()));
 	}
 
 	/**
@@ -225,8 +199,7 @@ public class FileBasedChangePackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return ServerEditPlugin.INSTANCE;
 	}
 

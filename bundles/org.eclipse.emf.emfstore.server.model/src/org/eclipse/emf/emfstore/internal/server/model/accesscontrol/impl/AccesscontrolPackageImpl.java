@@ -159,8 +159,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theAccesscontrolPackage.createPackageContents();
@@ -197,6 +196,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getACUser() {
 		return acUserEClass;
 	}
@@ -206,6 +206,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getACUser_FirstName() {
 		return (EAttribute) acUserEClass.getEStructuralFeatures().get(0);
 	}
@@ -215,6 +216,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getACUser_LastName() {
 		return (EAttribute) acUserEClass.getEStructuralFeatures().get(1);
 	}
@@ -224,6 +226,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getACUser_EffectiveGroups() {
 		return (EReference) acUserEClass.getEStructuralFeatures().get(2);
 	}
@@ -234,8 +237,8 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
-	public EAttribute getACUser_Password()
-	{
+	@Override
+	public EAttribute getACUser_Password() {
 		return (EAttribute) acUserEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -244,6 +247,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getACOrgUnit() {
 		return acOrgUnitEClass;
 	}
@@ -253,6 +257,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getACOrgUnit_Name() {
 		return (EAttribute) acOrgUnitEClass.getEStructuralFeatures().get(0);
 	}
@@ -262,6 +267,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getACOrgUnit_Roles() {
 		return (EReference) acOrgUnitEClass.getEStructuralFeatures().get(1);
 	}
@@ -271,6 +277,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getACOrgUnit_Description() {
 		return (EAttribute) acOrgUnitEClass.getEStructuralFeatures().get(2);
 	}
@@ -280,6 +287,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getACOrgUnit_Properties() {
 		return (EReference) acOrgUnitEClass.getEStructuralFeatures().get(3);
 	}
@@ -289,6 +297,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getACGroup() {
 		return acGroupEClass;
 	}
@@ -298,6 +307,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getACGroup_Members() {
 		return (EReference) acGroupEClass.getEStructuralFeatures().get(0);
 	}
@@ -307,6 +317,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getACOrgUnitId() {
 		return acOrgUnitIdEClass;
 	}
@@ -316,6 +327,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getOrgUnitProperty() {
 		return orgUnitPropertyEClass;
 	}
@@ -325,6 +337,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOrgUnitProperty_Name() {
 		return (EAttribute) orgUnitPropertyEClass.getEStructuralFeatures().get(0);
 	}
@@ -334,6 +347,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getOrgUnitProperty_Value() {
 		return (EAttribute) orgUnitPropertyEClass.getEStructuralFeatures().get(1);
 	}
@@ -343,6 +357,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getOrgUnitProperty_Project() {
 		return (EReference) orgUnitPropertyEClass.getEStructuralFeatures().get(2);
 	}
@@ -352,6 +367,7 @@ public class AccesscontrolPackageImpl extends EPackageImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@Override
 	public AccesscontrolFactory getAccesscontrolFactory() {
 		return (AccesscontrolFactory) getEFactoryInstance();
 	}

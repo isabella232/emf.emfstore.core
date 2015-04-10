@@ -51,6 +51,7 @@ public class ESConflictSetImpl implements ESConflictSet, InternalAPIDelegator<ES
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.InternalAPIDelegator#toInternalAPI()
 	 */
+	@Override
 	public ChangeConflictSet toInternalAPI() {
 		return changeConflict;
 	}
@@ -61,6 +62,7 @@ public class ESConflictSetImpl implements ESConflictSet, InternalAPIDelegator<ES
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflictSet#getConflicts()
 	 */
+	@Override
 	public Set<ESConflict> getConflicts() {
 		final Set<ESConflict> conflicts = APIUtil
 			.toExternal(toInternalAPI().getConflictBuckets());

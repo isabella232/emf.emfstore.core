@@ -21,8 +21,7 @@ import org.eclipse.emf.emfstore.server.model.ESGlobalProjectId;
  * @author emueller
  *
  */
-public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, ProjectId> implements
-	ESGlobalProjectId {
+public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, ProjectId> implements ESGlobalProjectId {
 
 	/**
 	 * Constructor.
@@ -40,6 +39,7 @@ public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, Pr
 	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
+	@Override
 	public String getId() {
 		return toInternalAPI().getId();
 	}

@@ -56,8 +56,7 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -74,20 +73,14 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_VersionProperty_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_VersionProperty_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.VERSION_PROPERTY__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_VersionProperty_name_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_VersionProperty_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.VERSION_PROPERTY__NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -97,20 +90,14 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_VersionProperty_value_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_VersionProperty_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.VERSION_PROPERTY__VALUE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_VersionProperty_value_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_VersionProperty_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.VERSION_PROPERTY__VALUE, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -135,8 +122,7 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public String getText(Object object) {
 		final String label = ((VersionProperty) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_VersionProperty_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_VersionProperty_type") : //$NON-NLS-1$
 			getString("_UI_VersionProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -152,8 +138,7 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(VersionProperty.class))
-		{
+		switch (notification.getFeatureID(VersionProperty.class)) {
 		case VersioningPackage.VERSION_PROPERTY__NAME:
 		case VersioningPackage.VERSION_PROPERTY__VALUE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

@@ -56,8 +56,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addAuthorPropertyDescriptor(object);
@@ -75,20 +74,13 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addMessagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_LogMessage_message_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_message_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.LOG_MESSAGE__MESSAGE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_LogMessage_message_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_message_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.LOG_MESSAGE__MESSAGE, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -99,19 +91,13 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_LogMessage_date_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_date_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.LOG_MESSAGE__DATE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_LogMessage_date_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_date_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.LOG_MESSAGE__DATE, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -121,20 +107,15 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addClientDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_LogMessage_clientDate_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LogMessage_clientDate_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+				VersioningPackage.Literals.LOG_MESSAGE__CLIENT_DATE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -144,20 +125,13 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addAuthorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_LogMessage_author_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_author_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.LOG_MESSAGE__AUTHOR,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_LogMessage_author_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_LogMessage_author_feature", "_UI_LogMessage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.LOG_MESSAGE__AUTHOR, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -181,8 +155,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	@Override
 	public String getText(Object object) {
 		final String label = ((LogMessage) object).getAuthor();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LogMessage_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_LogMessage_type") : //$NON-NLS-1$
 			getString("_UI_LogMessage_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -198,8 +171,7 @@ public class LogMessageItemProvider extends ItemProviderAdapter implements IEdit
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LogMessage.class))
-		{
+		switch (notification.getFeatureID(LogMessage.class)) {
 		case VersioningPackage.LOG_MESSAGE__AUTHOR:
 		case VersioningPackage.LOG_MESSAGE__MESSAGE:
 		case VersioningPackage.LOG_MESSAGE__DATE:

@@ -136,6 +136,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
+	@Override
 	public boolean isAdd() {
 		return add;
 	}
@@ -145,6 +146,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setAdd(boolean newAdd) {
 		final boolean oldAdd = add;
 		add = newAdd;
@@ -159,6 +161,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
+	@Override
 	public int getIndex() {
 		return index;
 	}
@@ -168,6 +171,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setIndex(int newIndex) {
 		final int oldIndex = index;
 		index = newIndex;
@@ -182,9 +186,9 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<ModelElementId> getReferencedModelElements() {
-		if (referencedModelElements == null)
-		{
+		if (referencedModelElements == null) {
 			referencedModelElements = new EObjectContainmentEList.Resolving<ModelElementId>(ModelElementId.class, this,
 				OperationsPackage.MULTI_REFERENCE_OPERATION__REFERENCED_MODEL_ELEMENTS);
 		}
@@ -198,8 +202,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__REFERENCED_MODEL_ELEMENTS:
 			return ((InternalEList<?>) getReferencedModelElements()).basicRemove(otherEnd, msgs);
 		}
@@ -213,8 +216,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__ADD:
 			return isAdd();
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__INDEX:
@@ -233,8 +235,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__ADD:
 			setAdd((Boolean) newValue);
 			return;
@@ -256,8 +257,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__ADD:
 			setAdd(ADD_EDEFAULT);
 			return;
@@ -278,8 +278,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__ADD:
 			return add != ADD_EDEFAULT;
 		case OperationsPackage.MULTI_REFERENCE_OPERATION__INDEX:
@@ -310,6 +309,7 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 		return result.toString();
 	}
 
+	@Override
 	public void apply(IdEObjectCollection project) {
 
 		final EObject modelElement = project.getModelElement(getModelElementId());
@@ -349,7 +349,8 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 		case UnsetType.IS_UNSET_VALUE:
 			modelElement.eUnset(reference);
 			// Fall-through because we only want to set the unset-flag of the list. The reference itself shall be
-			// treated as before. If no fall-through the reference will always be removed from the project by unset, but
+			// treated as before. If no fall-through the reference will always be removed from the project by unset,
+			// but
 			// this is not intended.
 			// $FALL-THROUGH$
 		case UnsetType.NONE_VALUE:

@@ -49,9 +49,11 @@ public class FileBasedOperationIterable implements ESCloseableIterable<AbstractO
 	 *
 	 * @see java.lang.Iterable#iterator()
 	 */
+	@Override
 	public Iterable<AbstractOperation> iterable() {
 		operationIterator = new OperationIterator(operationsFilePath, direction);
 		return new Iterable<AbstractOperation>() {
+			@Override
 			public Iterator<AbstractOperation> iterator() {
 				return operationIterator;
 			}
@@ -64,6 +66,7 @@ public class FileBasedOperationIterable implements ESCloseableIterable<AbstractO
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESCloseableIterable#close()
 	 */
+	@Override
 	public void close() {
 		if (operationIterator != null) {
 			operationIterator.close();

@@ -126,8 +126,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 
 		// Obtain or create and register package
 		final RolesPackageImpl theRolesPackage = (RolesPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof RolesPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new RolesPackageImpl());
+			.get(eNS_URI) : new RolesPackageImpl());
 
 		isInited = true;
 
@@ -159,8 +158,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 			.getEPackage(AccesscontrolPackage.eNS_URI) : AccesscontrolPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRolesPackage.createPackageContents();
@@ -197,6 +195,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getRole() {
 		return roleEClass;
 	}
@@ -206,6 +205,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getRole_Projects() {
 		return (EReference) roleEClass.getEStructuralFeatures().get(0);
 	}
@@ -215,6 +215,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getReaderRole() {
 		return readerRoleEClass;
 	}
@@ -224,6 +225,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getWriterRole() {
 		return writerRoleEClass;
 	}
@@ -233,6 +235,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectAdminRole() {
 		return projectAdminRoleEClass;
 	}
@@ -242,6 +245,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getServerAdmin() {
 		return serverAdminEClass;
 	}
@@ -251,6 +255,7 @@ public class RolesPackageImpl extends EPackageImpl implements RolesPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public RolesFactory getRolesFactory() {
 		return (RolesFactory) getEFactoryInstance();
 	}

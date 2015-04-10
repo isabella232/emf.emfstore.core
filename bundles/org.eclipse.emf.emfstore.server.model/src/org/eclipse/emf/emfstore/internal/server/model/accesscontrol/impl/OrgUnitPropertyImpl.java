@@ -116,6 +116,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -125,6 +126,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -139,6 +141,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getValue() {
 		return value;
 	}
@@ -148,6 +151,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setValue(String newValue) {
 		final String oldValue = value;
 		value = newValue;
@@ -162,18 +166,16 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
+	@Override
 	public ProjectId getProject() {
-		if (project != null && project.eIsProxy())
-		{
+		if (project != null && project.eIsProxy()) {
 			final InternalEObject oldProject = (InternalEObject) project;
 			project = (ProjectId) eResolveProxy(oldProject);
-			if (project != oldProject)
-			{
+			if (project != oldProject) {
 				final InternalEObject newProject = (InternalEObject) project;
 				NotificationChain msgs = oldProject.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, null);
-				if (newProject.eInternalContainer() == null)
-				{
+				if (newProject.eInternalContainer() == null) {
 					msgs = newProject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
 				}
@@ -206,8 +208,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	public NotificationChain basicSetProject(ProjectId newProject, NotificationChain msgs) {
 		final ProjectId oldProject = project;
 		project = newProject;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, oldProject, newProject);
 			if (msgs == null) {
@@ -224,9 +225,9 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setProject(ProjectId newProject) {
-		if (newProject != project)
-		{
+		if (newProject != project) {
 			NotificationChain msgs = null;
 			if (project != null) {
 				msgs = ((InternalEObject) project).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -240,8 +241,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT,
 				newProject, newProject));
 		}
@@ -254,8 +254,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT:
 			return basicSetProject(null, msgs);
 		}
@@ -269,8 +268,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME:
 			return getName();
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__VALUE:
@@ -291,8 +289,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME:
 			setName((String) newValue);
 			return;
@@ -313,8 +310,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -335,8 +331,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case AccesscontrolPackage.ORG_UNIT_PROPERTY__VALUE:
@@ -370,6 +365,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void setValue(boolean value) {
 		String newValue = null;
 		if (value) {
@@ -383,6 +379,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void setValue(int value) {
 		setValue(new Integer(value).toString());
 	}
@@ -390,6 +387,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void setValue(String[] value) {
 		if (value.length == 0) {
 			setValue(StringUtils.EMPTY);
@@ -407,6 +405,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void setValue(EObject[] value) {
 		final String[] newValue = new String[value.length];
 		try {
@@ -421,6 +420,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Boolean getBooleanProperty() {
 		final String value = getValue();
 		if (value != null) {
@@ -433,6 +433,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Integer getIntegerProperty() {
 		final String value = getValue();
 		if (value != null) {
@@ -445,6 +446,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String[] getStringArrayProperty() {
 		final String value = getValue();
 		if (value != null) {

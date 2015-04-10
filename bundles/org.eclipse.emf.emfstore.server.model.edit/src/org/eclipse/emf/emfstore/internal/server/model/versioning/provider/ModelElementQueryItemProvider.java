@@ -48,8 +48,7 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -66,8 +65,7 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(VersioningPackage.Literals.MODEL_ELEMENT_QUERY__MODEL_ELEMENTS);
 		}
@@ -124,8 +122,7 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModelElementQuery.class))
-		{
+		switch (notification.getFeatureID(ModelElementQuery.class)) {
 		case VersioningPackage.MODEL_ELEMENT_QUERY__MODEL_ELEMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -144,10 +141,8 @@ public class ModelElementQueryItemProvider extends RangeQueryItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.MODEL_ELEMENT_QUERY__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.MODEL_ELEMENT_QUERY__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.createModelElementId()));
 	}
 
 }

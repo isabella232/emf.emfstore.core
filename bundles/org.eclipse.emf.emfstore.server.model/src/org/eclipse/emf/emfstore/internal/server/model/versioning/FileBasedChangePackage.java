@@ -36,8 +36,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * @model
  * @generated
  */
-public interface FileBasedChangePackage extends AbstractChangePackage, APIDelegate<ESChangePackage>
-{
+public interface FileBasedChangePackage extends AbstractChangePackage, APIDelegate<ESChangePackage> {
 
 	/**
 	 * Returns the value of the '<em><b>File Path</b></em>' attribute.
@@ -99,6 +98,7 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reverse()
 	 */
+	@Override
 	FileBasedChangePackage reverse();
 
 } // FileBasedChangePackage

@@ -49,8 +49,7 @@ public class ServerEventItemProvider extends EventItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -68,8 +67,7 @@ public class ServerEventItemProvider extends EventItemProvider {
 	public String getText(Object object) {
 		final Date labelValue = ((ServerEvent) object).getTimestamp();
 		final String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ServerEvent_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_ServerEvent_type") : //$NON-NLS-1$
 			getString("_UI_ServerEvent_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

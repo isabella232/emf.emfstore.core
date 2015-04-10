@@ -99,8 +99,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createTagVersionSpecAdapter() {
-		if (tagVersionSpecItemProvider == null)
-		{
+		if (tagVersionSpecItemProvider == null) {
 			tagVersionSpecItemProvider = new TagVersionSpecItemProvider(this);
 		}
 
@@ -125,8 +124,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createDateVersionSpecAdapter() {
-		if (dateVersionSpecItemProvider == null)
-		{
+		if (dateVersionSpecItemProvider == null) {
 			dateVersionSpecItemProvider = new DateVersionSpecItemProvider(this);
 		}
 
@@ -152,8 +150,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createPrimaryVersionSpecAdapter() {
-		if (primaryVersionSpecItemProvider == null)
-		{
+		if (primaryVersionSpecItemProvider == null) {
 			primaryVersionSpecItemProvider = new PrimaryVersionSpecItemProvider(this);
 		}
 
@@ -178,8 +175,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createLogMessageAdapter() {
-		if (logMessageItemProvider == null)
-		{
+		if (logMessageItemProvider == null) {
 			logMessageItemProvider = new LogMessageItemProvider(this);
 		}
 
@@ -204,8 +200,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createChangePackageAdapter() {
-		if (changePackageItemProvider == null)
-		{
+		if (changePackageItemProvider == null) {
 			changePackageItemProvider = new ChangePackageItemProvider(this);
 		}
 
@@ -230,8 +225,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createHistoryInfoAdapter() {
-		if (historyInfoItemProvider == null)
-		{
+		if (historyInfoItemProvider == null) {
 			historyInfoItemProvider = new HistoryInfoItemProvider(this);
 		}
 
@@ -256,8 +250,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createRangeQueryAdapter() {
-		if (rangeQueryItemProvider == null)
-		{
+		if (rangeQueryItemProvider == null) {
 			rangeQueryItemProvider = new RangeQueryItemProvider(this);
 		}
 
@@ -282,8 +275,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createPathQueryAdapter() {
-		if (pathQueryItemProvider == null)
-		{
+		if (pathQueryItemProvider == null) {
 			pathQueryItemProvider = new PathQueryItemProvider(this);
 		}
 
@@ -309,8 +301,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createModelElementQueryAdapter() {
-		if (modelElementQueryItemProvider == null)
-		{
+		if (modelElementQueryItemProvider == null) {
 			modelElementQueryItemProvider = new ModelElementQueryItemProvider(this);
 		}
 
@@ -334,8 +325,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createVersionAdapter() {
-		if (versionItemProvider == null)
-		{
+		if (versionItemProvider == null) {
 			versionItemProvider = new VersionItemProvider(this);
 		}
 
@@ -360,8 +350,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createHeadVersionSpecAdapter() {
-		if (headVersionSpecItemProvider == null)
-		{
+		if (headVersionSpecItemProvider == null) {
 			headVersionSpecItemProvider = new HeadVersionSpecItemProvider(this);
 		}
 
@@ -386,8 +375,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createVersionPropertyAdapter() {
-		if (versionPropertyItemProvider == null)
-		{
+		if (versionPropertyItemProvider == null) {
 			versionPropertyItemProvider = new VersionPropertyItemProvider(this);
 		}
 
@@ -413,8 +401,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createBranchVersionSpecAdapter() {
-		if (branchVersionSpecItemProvider == null)
-		{
+		if (branchVersionSpecItemProvider == null) {
 			branchVersionSpecItemProvider = new BranchVersionSpecItemProvider(this);
 		}
 
@@ -439,8 +426,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createBranchInfoAdapter() {
-		if (branchInfoItemProvider == null)
-		{
+		if (branchInfoItemProvider == null) {
 			branchInfoItemProvider = new BranchInfoItemProvider(this);
 		}
 
@@ -466,8 +452,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Adapter createAncestorVersionSpecAdapter() {
-		if (ancestorVersionSpecItemProvider == null)
-		{
+		if (ancestorVersionSpecItemProvider == null) {
 			ancestorVersionSpecItemProvider = new AncestorVersionSpecItemProvider(this);
 		}
 
@@ -493,10 +478,8 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 * @generated
 	 */
 	@Override
-	public Adapter createPagedUpdateVersionSpecAdapter()
-	{
-		if (pagedUpdateVersionSpecItemProvider == null)
-		{
+	public Adapter createPagedUpdateVersionSpecAdapter() {
+		if (pagedUpdateVersionSpecItemProvider == null) {
 			pagedUpdateVersionSpecItemProvider = new PagedUpdateVersionSpecItemProvider(this);
 		}
 
@@ -509,6 +492,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 *
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -519,6 +503,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -551,11 +536,9 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type))
-		{
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -569,6 +552,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 *
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -579,6 +563,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 *
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -590,11 +575,11 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 *
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}
@@ -605,6 +590,7 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	 *
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (tagVersionSpecItemProvider != null) {
 			tagVersionSpecItemProvider.dispose();

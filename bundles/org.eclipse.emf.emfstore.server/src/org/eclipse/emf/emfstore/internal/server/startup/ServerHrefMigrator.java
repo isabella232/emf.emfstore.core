@@ -149,6 +149,7 @@ public class ServerHrefMigrator {
 
 		final File serverHomeFile = new File(serverHome);
 		final File[] projectFiles = serverHomeFile.listFiles(new FilenameFilter() {
+			@Override
 			public boolean accept(File dir, String name) {
 				return name.startsWith(PROJECT_PREFIX);
 			}
@@ -173,6 +174,7 @@ public class ServerHrefMigrator {
 					new VersionRule());
 
 				final File[] versions = f.listFiles(new FilenameFilter() {
+					@Override
 					public boolean accept(File dir, String name) {
 						return name.startsWith("version-"); //$NON-NLS-1$
 					}

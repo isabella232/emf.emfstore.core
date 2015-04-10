@@ -57,8 +57,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -75,20 +74,14 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ModelElementGroup_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ModelElementGroup_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ModelElementGroup_name_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_ModelElementGroup_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MODEL_ELEMENT_GROUP__NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -113,20 +106,12 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	 * @generated
 	 */
 	protected void addModelElementsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ModelElementGroup_modelElements_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ModelElementGroup_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_ModelElementGroup_modelElements_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ModelElementGroup_modelElements_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_ModelElementGroup_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MODEL_ELEMENT_GROUP__MODEL_ELEMENTS, true, false, true, null, null, null));
 	}
 
 	/**
@@ -167,8 +152,7 @@ public class ModelElementGroupItemProvider extends ItemProviderAdapter implement
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModelElementGroup.class))
-		{
+		switch (notification.getFeatureID(ModelElementGroup.class)) {
 		case OperationsPackage.MODEL_ELEMENT_GROUP__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

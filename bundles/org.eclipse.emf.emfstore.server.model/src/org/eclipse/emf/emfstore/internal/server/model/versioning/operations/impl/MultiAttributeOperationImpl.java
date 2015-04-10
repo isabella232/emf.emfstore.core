@@ -114,6 +114,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
+	@Override
 	public boolean isAdd() {
 		return add;
 	}
@@ -123,6 +124,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setAdd(boolean newAdd) {
 		final boolean oldAdd = add;
 		add = newAdd;
@@ -137,9 +139,9 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Integer> getIndexes() {
-		if (indexes == null)
-		{
+		if (indexes == null) {
 			indexes = new EDataTypeUniqueEList<Integer>(Integer.class, this,
 				OperationsPackage.MULTI_ATTRIBUTE_OPERATION__INDEXES);
 		}
@@ -151,9 +153,9 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Object> getReferencedValues() {
-		if (referencedValues == null)
-		{
+		if (referencedValues == null) {
 			referencedValues = new EDataTypeEList<Object>(Object.class, this,
 				OperationsPackage.MULTI_ATTRIBUTE_OPERATION__REFERENCED_VALUES);
 		}
@@ -167,8 +169,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__ADD:
 			return isAdd();
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__INDEXES:
@@ -187,8 +188,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__ADD:
 			setAdd((Boolean) newValue);
 			return;
@@ -211,8 +211,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__ADD:
 			setAdd(ADD_EDEFAULT);
 			return;
@@ -233,8 +232,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__ADD:
 			return add != ADD_EDEFAULT;
 		case OperationsPackage.MULTI_ATTRIBUTE_OPERATION__INDEXES:
@@ -273,6 +271,7 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = project.getModelElement(getModelElementId());

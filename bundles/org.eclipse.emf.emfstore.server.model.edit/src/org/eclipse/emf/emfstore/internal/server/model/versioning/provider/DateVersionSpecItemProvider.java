@@ -48,8 +48,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addDatePropertyDescriptor(object);
@@ -65,20 +64,14 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_DateVersionSpec_date_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_DateVersionSpec_date_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_DateVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.DATE_VERSION_SPEC__DATE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_DateVersionSpec_date_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_DateVersionSpec_date_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_DateVersionSpec_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.DATE_VERSION_SPEC__DATE, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -103,8 +96,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	@Override
 	public String getText(Object object) {
 		final String label = ((DateVersionSpec) object).getBranch();
-		return label == null || label.length() == 0 ?
-			getString("_UI_DateVersionSpec_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_DateVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_DateVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -120,8 +112,7 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DateVersionSpec.class))
-		{
+		switch (notification.getFeatureID(DateVersionSpec.class)) {
 		case VersioningPackage.DATE_VERSION_SPEC__DATE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

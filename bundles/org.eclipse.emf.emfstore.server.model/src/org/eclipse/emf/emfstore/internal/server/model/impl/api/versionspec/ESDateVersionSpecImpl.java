@@ -41,6 +41,7 @@ public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESDateVersionSpec#getDate()
 	 */
+	@Override
 	public Date getDate() {
 		return toInternalAPI().getDate();
 	}

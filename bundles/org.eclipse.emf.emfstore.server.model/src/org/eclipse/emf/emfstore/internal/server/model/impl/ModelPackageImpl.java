@@ -158,8 +158,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		// Obtain or create and register package
 		final ModelPackageImpl theModelPackage = (ModelPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new ModelPackageImpl());
+			.get(eNS_URI) : new ModelPackageImpl());
 
 		isInited = true;
 
@@ -190,8 +189,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theModelPackage.createPackageContents();
@@ -228,6 +226,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectHistory() {
 		return projectHistoryEClass;
 	}
@@ -237,6 +236,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectHistory_ProjectId() {
 		return (EReference) projectHistoryEClass.getEStructuralFeatures().get(0);
 	}
@@ -246,6 +246,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectHistory_Versions() {
 		return (EReference) projectHistoryEClass.getEStructuralFeatures().get(1);
 	}
@@ -255,6 +256,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectHistory_ProjectName() {
 		return (EAttribute) projectHistoryEClass.getEStructuralFeatures().get(2);
 	}
@@ -264,6 +266,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectHistory_ProjectDescription() {
 		return (EAttribute) projectHistoryEClass.getEStructuralFeatures().get(3);
 	}
@@ -273,6 +276,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectHistory_SharedProperties() {
 		return (EReference) projectHistoryEClass.getEStructuralFeatures().get(4);
 	}
@@ -282,6 +286,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectHistory_Branches() {
 		return (EReference) projectHistoryEClass.getEStructuralFeatures().get(5);
 	}
@@ -291,6 +296,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectInfo() {
 		return projectInfoEClass;
 	}
@@ -300,6 +306,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectInfo_Name() {
 		return (EAttribute) projectInfoEClass.getEStructuralFeatures().get(0);
 	}
@@ -309,6 +316,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectInfo_Description() {
 		return (EAttribute) projectInfoEClass.getEStructuralFeatures().get(1);
 	}
@@ -318,6 +326,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectInfo_ProjectId() {
 		return (EReference) projectInfoEClass.getEStructuralFeatures().get(2);
 	}
@@ -327,6 +336,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectInfo_Version() {
 		return (EReference) projectInfoEClass.getEStructuralFeatures().get(3);
 	}
@@ -336,6 +346,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getSessionId() {
 		return sessionIdEClass;
 	}
@@ -345,6 +356,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getServerSpace() {
 		return serverSpaceEClass;
 	}
@@ -354,6 +366,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getServerSpace_Groups() {
 		return (EReference) serverSpaceEClass.getEStructuralFeatures().get(0);
 	}
@@ -363,6 +376,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getServerSpace_Projects() {
 		return (EReference) serverSpaceEClass.getEStructuralFeatures().get(1);
 	}
@@ -372,6 +386,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getServerSpace_OpenSessions() {
 		return (EReference) serverSpaceEClass.getEStructuralFeatures().get(2);
 	}
@@ -381,6 +396,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getServerSpace_Users() {
 		return (EReference) serverSpaceEClass.getEStructuralFeatures().get(3);
 	}
@@ -390,6 +406,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectId() {
 		return projectIdEClass;
 	}
@@ -399,6 +416,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getVersionInfo() {
 		return versionInfoEClass;
 	}
@@ -408,6 +426,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getVersionInfo_EmfStoreVersionString() {
 		return (EAttribute) versionInfoEClass.getEStructuralFeatures().get(0);
 	}
@@ -417,6 +436,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getClientVersionInfo() {
 		return clientVersionInfoEClass;
 	}
@@ -426,6 +446,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClientVersionInfo_Version() {
 		return (EAttribute) clientVersionInfoEClass.getEStructuralFeatures().get(0);
 	}
@@ -435,6 +456,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getClientVersionInfo_Name() {
 		return (EAttribute) clientVersionInfoEClass.getEStructuralFeatures().get(1);
 	}
@@ -444,6 +466,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getFileIdentifier() {
 		return fileIdentifierEClass;
 	}
@@ -453,6 +476,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getAuthenticationInformation() {
 		return authenticationInformationEClass;
 	}
@@ -462,6 +486,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getAuthenticationInformation_SessionId() {
 		return (EReference) authenticationInformationEClass.getEStructuralFeatures().get(0);
 	}
@@ -471,6 +496,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getAuthenticationInformation_ResolvedACUser() {
 		return (EReference) authenticationInformationEClass.getEStructuralFeatures().get(1);
 	}
@@ -480,6 +506,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ModelFactory getModelFactory() {
 		return (ModelFactory) getEFactoryInstance();
 	}
@@ -651,7 +678,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(versionInfoEClass, VersionInfo.class, "VersionInfo", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 			IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVersionInfo_EmfStoreVersionString(), ecorePackage.getEString(), "emfStoreVersionString", //$NON-NLS-1$
+		initEAttribute(getVersionInfo_EmfStoreVersionString(), ecorePackage.getEString(),
+			"emfStoreVersionString", //$NON-NLS-1$
 			null, 0, 1, VersionInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

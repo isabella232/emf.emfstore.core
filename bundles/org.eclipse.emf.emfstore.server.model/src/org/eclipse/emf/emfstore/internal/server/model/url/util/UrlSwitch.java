@@ -48,8 +48,7 @@ public class UrlSwitch<T> {
 	 * @generated
 	 */
 	public UrlSwitch() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = UrlPackage.eINSTANCE;
 		}
 	}
@@ -77,14 +76,11 @@ public class UrlSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage)
-		{
+		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
-		return eSuperTypes.isEmpty() ?
-			defaultCase(theEObject) :
-			doSwitch(eSuperTypes.get(0), theEObject);
+		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -97,8 +93,7 @@ public class UrlSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID)
-		{
+		switch (classifierID) {
 		case UrlPackage.SERVER_URL: {
 			final ServerUrl serverUrl = (ServerUrl) theEObject;
 			T result = caseServerUrl(serverUrl);

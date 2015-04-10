@@ -56,8 +56,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addHostNamePropertyDescriptor(object);
@@ -73,20 +72,13 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * @generated
 	 */
 	protected void addHostNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ServerUrl_hostName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ServerUrl_hostName_feature", "_UI_ServerUrl_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UrlPackage.Literals.SERVER_URL__HOST_NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ServerUrl_hostName_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ServerUrl_hostName_feature", "_UI_ServerUrl_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			UrlPackage.Literals.SERVER_URL__HOST_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+			null, null));
 	}
 
 	/**
@@ -97,19 +89,13 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	 * @generated
 	 */
 	protected void addPortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ServerUrl_port_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ServerUrl_port_feature", "_UI_ServerUrl_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UrlPackage.Literals.SERVER_URL__PORT,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ServerUrl_port_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ServerUrl_port_feature", "_UI_ServerUrl_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			UrlPackage.Literals.SERVER_URL__PORT, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+			null, null));
 	}
 
 	/**
@@ -133,8 +119,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	@Override
 	public String getText(Object object) {
 		final String label = ((ServerUrl) object).getHostName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ServerUrl_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_ServerUrl_type") : //$NON-NLS-1$
 			getString("_UI_ServerUrl_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -150,8 +135,7 @@ public class ServerUrlItemProvider extends ItemProviderAdapter implements IEditi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ServerUrl.class))
-		{
+		switch (notification.getFeatureID(ServerUrl.class)) {
 		case UrlPackage.SERVER_URL__HOST_NAME:
 		case UrlPackage.SERVER_URL__PORT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

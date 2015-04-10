@@ -346,7 +346,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 			ModelUtil.logInfo(
 				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-				(System.currentTimeMillis() - currentTimeMillis));
+					(System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
@@ -361,8 +361,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		} else if (targetBranchName.equals(VersionSpec.GLOBAL)) {
 			throw new InvalidVersionSpecException(
 				Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-				+ VersionSpec.GLOBAL +
-				Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+					+ VersionSpec.GLOBAL +
+					Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 		}
 	}
 
@@ -401,7 +401,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-			throws StorageException {
+		throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {

@@ -129,6 +129,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public int getIndex() {
 		return index;
 	}
@@ -138,6 +139,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setIndex(int newIndex) {
 		final int oldIndex = index;
 		index = newIndex;
@@ -152,6 +154,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public Object getOldValue() {
 		return oldValue;
 	}
@@ -161,6 +164,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setOldValue(Object newOldValue) {
 		final Object oldOldValue = oldValue;
 		oldValue = newOldValue;
@@ -175,6 +179,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public Object getNewValue() {
 		return newValue;
 	}
@@ -184,6 +189,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setNewValue(Object newNewValue) {
 		final Object oldNewValue = newValue;
 		newValue = newNewValue;
@@ -200,8 +206,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__INDEX:
 			return getIndex();
 		case OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__OLD_VALUE:
@@ -219,8 +224,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__INDEX:
 			setIndex((Integer) newValue);
 			return;
@@ -241,8 +245,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__INDEX:
 			setIndex(INDEX_EDEFAULT);
 			return;
@@ -263,8 +266,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__INDEX:
 			return index != INDEX_EDEFAULT;
 		case OperationsPackage.MULTI_ATTRIBUTE_SET_OPERATION__OLD_VALUE:
@@ -303,6 +305,7 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = project.getModelElement(getModelElementId());

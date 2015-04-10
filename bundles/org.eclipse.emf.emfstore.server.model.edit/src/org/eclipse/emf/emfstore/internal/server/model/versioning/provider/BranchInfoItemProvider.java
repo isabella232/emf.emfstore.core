@@ -58,8 +58,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -75,19 +74,13 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BranchInfo_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_BranchInfo_name_feature", "_UI_BranchInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.BRANCH_INFO__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_BranchInfo_name_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_BranchInfo_name_feature", "_UI_BranchInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.BRANCH_INFO__NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,8 +93,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(VersioningPackage.Literals.BRANCH_INFO__HEAD);
 			childrenFeatures.add(VersioningPackage.Literals.BRANCH_INFO__SOURCE);
@@ -143,8 +135,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	@Override
 	public String getText(Object object) {
 		final String label = ((BranchInfo) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_BranchInfo_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_BranchInfo_type") : //$NON-NLS-1$
 			getString("_UI_BranchInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -160,8 +151,7 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(BranchInfo.class))
-		{
+		switch (notification.getFeatureID(BranchInfo.class)) {
 		case VersioningPackage.BRANCH_INFO__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
@@ -184,15 +174,11 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.BRANCH_INFO__HEAD,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.BRANCH_INFO__HEAD,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.BRANCH_INFO__SOURCE,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.BRANCH_INFO__SOURCE,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}
 
 	/**
@@ -206,12 +192,10 @@ public class BranchInfoItemProvider extends ItemProviderAdapter implements IEdit
 		final Object childFeature = feature;
 		final Object childObject = child;
 
-		final boolean qualify =
-			childFeature == VersioningPackage.Literals.BRANCH_INFO__HEAD ||
-				childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
+		final boolean qualify = childFeature == VersioningPackage.Literals.BRANCH_INFO__HEAD
+			|| childFeature == VersioningPackage.Literals.BRANCH_INFO__SOURCE;
 
-		if (qualify)
-		{
+		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}

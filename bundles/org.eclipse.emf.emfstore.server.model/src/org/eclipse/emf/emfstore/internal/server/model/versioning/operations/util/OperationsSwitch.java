@@ -64,8 +64,7 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public OperationsSwitch() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = OperationsPackage.eINSTANCE;
 		}
 	}
@@ -93,14 +92,11 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage)
-		{
+		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
-		return eSuperTypes.isEmpty() ?
-			defaultCase(theEObject) :
-			doSwitch(eSuperTypes.get(0), theEObject);
+		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -113,8 +109,7 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID)
-		{
+		switch (classifierID) {
 		case OperationsPackage.ABSTRACT_OPERATION: {
 			final AbstractOperation abstractOperation = (AbstractOperation) theEObject;
 			T result = caseAbstractOperation(abstractOperation);

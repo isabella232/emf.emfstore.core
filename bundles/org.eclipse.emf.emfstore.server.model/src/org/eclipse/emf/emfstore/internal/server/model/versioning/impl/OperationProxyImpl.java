@@ -31,8 +31,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class OperationProxyImpl extends EObjectImpl implements OperationProxy
-{
+public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,8 +60,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 *
 	 * @generated
 	 */
-	protected OperationProxyImpl()
-	{
+	protected OperationProxyImpl() {
 		super();
 	}
 
@@ -73,8 +71,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 * @generated
 	 */
 	@Override
-	protected EClass eStaticClass()
-	{
+	protected EClass eStaticClass() {
 		return VersioningPackage.Literals.OPERATION_PROXY;
 	}
 
@@ -84,8 +81,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 *
 	 * @generated
 	 */
-	public String getLabel()
-	{
+	@Override
+	public String getLabel() {
 		return label;
 	}
 
@@ -95,8 +92,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 *
 	 * @generated
 	 */
-	public void setLabel(String newLabel)
-	{
+	@Override
+	public void setLabel(String newLabel) {
 		final String oldLabel = label;
 		label = newLabel;
 		if (eNotificationRequired()) {
@@ -112,10 +109,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType)
-	{
-		switch (featureID)
-		{
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case VersioningPackage.OPERATION_PROXY__LABEL:
 			return getLabel();
 		}
@@ -129,10 +124,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 * @generated
 	 */
 	@Override
-	public void eSet(int featureID, Object newValue)
-	{
-		switch (featureID)
-		{
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case VersioningPackage.OPERATION_PROXY__LABEL:
 			setLabel((String) newValue);
 			return;
@@ -147,10 +140,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 * @generated
 	 */
 	@Override
-	public void eUnset(int featureID)
-	{
-		switch (featureID)
-		{
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case VersioningPackage.OPERATION_PROXY__LABEL:
 			setLabel(LABEL_EDEFAULT);
 			return;
@@ -165,10 +156,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 * @generated
 	 */
 	@Override
-	public boolean eIsSet(int featureID)
-	{
-		switch (featureID)
-		{
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case VersioningPackage.OPERATION_PROXY__LABEL:
 			return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 		}
@@ -182,8 +171,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy
 	 * @generated
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		if (eIsProxy()) {
 			return super.toString();
 		}

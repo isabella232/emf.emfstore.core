@@ -130,6 +130,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -139,6 +140,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -152,9 +154,9 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Role> getRoles() {
-		if (roles == null)
-		{
+		if (roles == null) {
 			roles = new EObjectContainmentEList.Resolving<Role>(Role.class, this,
 				AccesscontrolPackage.AC_ORG_UNIT__ROLES);
 		}
@@ -169,6 +171,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getId()
 	 * @generated NOT
 	 */
+	@Override
 	public ACOrgUnitId getId() {
 		if (identifier == null) {
 			throw new IllegalStateException("ACOrgunit does not have an identifier"); //$NON-NLS-1$
@@ -211,8 +214,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_ORG_UNIT__ROLES:
 			return ((InternalEList<?>) getRoles()).basicRemove(otherEnd, msgs);
 		case AccesscontrolPackage.AC_ORG_UNIT__PROPERTIES:
@@ -226,6 +228,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -235,6 +238,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		final String oldDescription = description;
 		description = newDescription;
@@ -249,9 +253,9 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<OrgUnitProperty> getProperties() {
-		if (properties == null)
-		{
+		if (properties == null) {
 			properties = new EObjectContainmentEList.Resolving<OrgUnitProperty>(OrgUnitProperty.class, this,
 				AccesscontrolPackage.AC_ORG_UNIT__PROPERTIES);
 		}
@@ -265,8 +269,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_ORG_UNIT__NAME:
 			return getName();
 		case AccesscontrolPackage.AC_ORG_UNIT__ROLES:
@@ -287,8 +290,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_ORG_UNIT__NAME:
 			setName((String) newValue);
 			return;
@@ -314,8 +316,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_ORG_UNIT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -339,8 +340,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_ORG_UNIT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case AccesscontrolPackage.AC_ORG_UNIT__ROLES:

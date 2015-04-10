@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -39,7 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFactory {
@@ -47,20 +47,17 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static VersioningFactory init() {
-		try
-		{
-			VersioningFactory theVersioningFactory = (VersioningFactory) EPackage.Registry.INSTANCE
+		try {
+			final VersioningFactory theVersioningFactory = (VersioningFactory) EPackage.Registry.INSTANCE
 				.getEFactory(VersioningPackage.eNS_URI);
-			if (theVersioningFactory != null)
-			{
+			if (theVersioningFactory != null) {
 				return theVersioningFactory;
 			}
-		} catch (Exception exception)
-		{
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new VersioningFactoryImpl();
@@ -70,7 +67,7 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public VersioningFactoryImpl() {
@@ -79,13 +76,12 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID())
-		{
+		switch (eClass.getClassifierID()) {
 		case VersioningPackage.TAG_VERSION_SPEC:
 			return createTagVersionSpec();
 		case VersioningPackage.DATE_VERSION_SPEC:
@@ -129,203 +125,219 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public TagVersionSpec createTagVersionSpec() {
-		TagVersionSpecImpl tagVersionSpec = new TagVersionSpecImpl();
+		final TagVersionSpecImpl tagVersionSpec = new TagVersionSpecImpl();
 		return tagVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public DateVersionSpec createDateVersionSpec() {
-		DateVersionSpecImpl dateVersionSpec = new DateVersionSpecImpl();
+		final DateVersionSpecImpl dateVersionSpec = new DateVersionSpecImpl();
 		return dateVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public PrimaryVersionSpec createPrimaryVersionSpec() {
-		PrimaryVersionSpecImpl primaryVersionSpec = new PrimaryVersionSpecImpl();
+		final PrimaryVersionSpecImpl primaryVersionSpec = new PrimaryVersionSpecImpl();
 		return primaryVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public LogMessage createLogMessage() {
-		LogMessageImpl logMessage = new LogMessageImpl();
+		final LogMessageImpl logMessage = new LogMessageImpl();
 		return logMessage;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public ChangePackage createChangePackage() {
-		ChangePackageImpl changePackage = new ChangePackageImpl();
+		final ChangePackageImpl changePackage = new ChangePackageImpl();
 		return changePackage;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public HistoryInfo createHistoryInfo() {
-		HistoryInfoImpl historyInfo = new HistoryInfoImpl();
+		final HistoryInfoImpl historyInfo = new HistoryInfoImpl();
 		return historyInfo;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	@SuppressWarnings("rawtypes")
 	public RangeQuery createRangeQuery() {
-		RangeQueryImpl rangeQuery = new RangeQueryImpl();
+		final RangeQueryImpl rangeQuery = new RangeQueryImpl();
 		return rangeQuery;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public PathQuery createPathQuery() {
-		PathQueryImpl pathQuery = new PathQueryImpl();
+		final PathQueryImpl pathQuery = new PathQueryImpl();
 		return pathQuery;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public ModelElementQuery createModelElementQuery() {
-		ModelElementQueryImpl modelElementQuery = new ModelElementQueryImpl();
+		final ModelElementQueryImpl modelElementQuery = new ModelElementQueryImpl();
 		return modelElementQuery;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public Version createVersion() {
-		VersionImpl version = new VersionImpl();
+		final VersionImpl version = new VersionImpl();
 		return version;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public HeadVersionSpec createHeadVersionSpec() {
-		HeadVersionSpecImpl headVersionSpec = new HeadVersionSpecImpl();
+		final HeadVersionSpecImpl headVersionSpec = new HeadVersionSpecImpl();
 		return headVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public VersionProperty createVersionProperty() {
-		VersionPropertyImpl versionProperty = new VersionPropertyImpl();
+		final VersionPropertyImpl versionProperty = new VersionPropertyImpl();
 		return versionProperty;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public BranchVersionSpec createBranchVersionSpec() {
-		BranchVersionSpecImpl branchVersionSpec = new BranchVersionSpecImpl();
+		final BranchVersionSpecImpl branchVersionSpec = new BranchVersionSpecImpl();
 		return branchVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public BranchInfo createBranchInfo() {
-		BranchInfoImpl branchInfo = new BranchInfoImpl();
+		final BranchInfoImpl branchInfo = new BranchInfoImpl();
 		return branchInfo;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public AncestorVersionSpec createAncestorVersionSpec() {
-		AncestorVersionSpecImpl ancestorVersionSpec = new AncestorVersionSpecImpl();
+		final AncestorVersionSpecImpl ancestorVersionSpec = new AncestorVersionSpecImpl();
 		return ancestorVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public PagedUpdateVersionSpec createPagedUpdateVersionSpec()
-	{
-		PagedUpdateVersionSpecImpl pagedUpdateVersionSpec = new PagedUpdateVersionSpecImpl();
+	@Override
+	public PagedUpdateVersionSpec createPagedUpdateVersionSpec() {
+		final PagedUpdateVersionSpecImpl pagedUpdateVersionSpec = new PagedUpdateVersionSpecImpl();
 		return pagedUpdateVersionSpec;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public FileBasedChangePackage createFileBasedChangePackage()
-	{
-		FileBasedChangePackageImpl fileBasedChangePackage = new FileBasedChangePackageImpl();
+	@Override
+	public FileBasedChangePackage createFileBasedChangePackage() {
+		final FileBasedChangePackageImpl fileBasedChangePackage = new FileBasedChangePackageImpl();
 		return fileBasedChangePackage;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public OperationProxy createOperationProxy()
-	{
-		OperationProxyImpl operationProxy = new OperationProxyImpl();
+	@Override
+	public OperationProxy createOperationProxy() {
+		final OperationProxyImpl operationProxy = new OperationProxyImpl();
 		return operationProxy;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
+	@Override
 	public VersioningPackage getVersioningPackage() {
 		return (VersioningPackage) getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

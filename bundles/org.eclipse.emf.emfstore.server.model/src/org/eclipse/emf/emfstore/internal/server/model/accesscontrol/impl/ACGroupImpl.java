@@ -68,6 +68,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 * @return a list of org units <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	@SuppressWarnings("serial")
 	public EList<ACOrgUnit> getMembers() {
 		if (members == null) {
@@ -95,8 +96,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_GROUP__MEMBERS:
 			return getMembers();
 		}
@@ -111,8 +111,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_GROUP__MEMBERS:
 			getMembers().clear();
 			getMembers().addAll((Collection<? extends ACOrgUnit>) newValue);
@@ -128,8 +127,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_GROUP__MEMBERS:
 			getMembers().clear();
 			return;
@@ -144,8 +142,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case AccesscontrolPackage.AC_GROUP__MEMBERS:
 			return members != null && !members.isEmpty();
 		}

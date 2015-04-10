@@ -111,6 +111,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
+	@Override
 	public ESConflict toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -124,6 +125,7 @@ public class ConflictBucket implements APIDelegate<ESConflict> {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
+	@Override
 	public ESConflict createAPI() {
 		return new ESConflictImpl(this);
 	}

@@ -30,8 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class PagedUpdateVersionSpecItemProvider
-	extends VersionSpecItemProvider {
+public class PagedUpdateVersionSpecItemProvider extends VersionSpecItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -39,8 +38,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 *
 	 * @generated
 	 */
-	public PagedUpdateVersionSpecItemProvider(AdapterFactory adapterFactory)
-	{
+	public PagedUpdateVersionSpecItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -52,10 +50,8 @@ public class PagedUpdateVersionSpecItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addMaxChangesPropertyDescriptor(object);
@@ -71,22 +67,15 @@ public class PagedUpdateVersionSpecItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addMaxChangesPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_PagedUpdateVersionSpec_maxChanges_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_maxChanges_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+	protected void addMaxChangesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_PagedUpdateVersionSpec_maxChanges_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_maxChanges_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES, true, false, false,
+			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -96,22 +85,15 @@ public class PagedUpdateVersionSpecItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addBaseVersionSpecPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_PagedUpdateVersionSpec_baseVersionSpec_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_baseVersionSpec_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
-				VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+	protected void addBaseVersionSpecPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_PagedUpdateVersionSpec_baseVersionSpec_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_baseVersionSpec_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
+			VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, true, false, true, null, null,
+			null));
 	}
 
 	/**
@@ -122,8 +104,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/PagedUpdateVersionSpec")); //$NON-NLS-1$
 	}
 
@@ -135,11 +116,9 @@ public class PagedUpdateVersionSpecItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		final String label = ((PagedUpdateVersionSpec) object).getBranch();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PagedUpdateVersionSpec_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_PagedUpdateVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_PagedUpdateVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -152,12 +131,10 @@ public class PagedUpdateVersionSpecItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(PagedUpdateVersionSpec.class))
-		{
+		switch (notification.getFeatureID(PagedUpdateVersionSpec.class)) {
 		case VersioningPackage.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
@@ -174,8 +151,7 @@ public class PagedUpdateVersionSpecItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -166,18 +166,16 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ProjectId getProjectId() {
-		if (projectId != null && projectId.eIsProxy())
-		{
+		if (projectId != null && projectId.eIsProxy()) {
 			final InternalEObject oldProjectId = (InternalEObject) projectId;
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
-			if (projectId != oldProjectId)
-			{
+			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
 				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, null);
-				if (newProjectId.eInternalContainer() == null)
-				{
+				if (newProjectId.eInternalContainer() == null) {
 					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
 				}
@@ -210,8 +208,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	public NotificationChain basicSetProjectId(ProjectId newProjectId, NotificationChain msgs) {
 		final ProjectId oldProjectId = projectId;
 		projectId = newProjectId;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ModelPackage.PROJECT_HISTORY__PROJECT_ID, oldProjectId, newProjectId);
 			if (msgs == null) {
@@ -228,9 +225,9 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setProjectId(ProjectId newProjectId) {
-		if (newProjectId != projectId)
-		{
+		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
 				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -244,8 +241,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROJECT_HISTORY__PROJECT_ID,
 				newProjectId, newProjectId));
 		}
@@ -256,9 +252,9 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Version> getVersions() {
-		if (versions == null)
-		{
+		if (versions == null) {
 			versions = new EObjectContainmentEList.Resolving<Version>(Version.class, this,
 				ModelPackage.PROJECT_HISTORY__VERSIONS);
 		}
@@ -271,6 +267,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Version getLastVersion() {
 		final EList<Version> versions = getVersions();
 		return versions.size() == 0 ? null : versions.get(versions.size() - 1);
@@ -283,6 +280,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getProjectName() {
 		return projectName;
 	}
@@ -292,6 +290,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setProjectName(String newProjectName) {
 		final String oldProjectName = projectName;
 		projectName = newProjectName;
@@ -306,6 +305,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getProjectDescription() {
 		return projectDescription;
 	}
@@ -315,6 +315,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setProjectDescription(String newProjectDescription) {
 		final String oldProjectDescription = projectDescription;
 		projectDescription = newProjectDescription;
@@ -329,9 +330,9 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<EMFStoreProperty> getSharedProperties() {
-		if (sharedProperties == null)
-		{
+		if (sharedProperties == null) {
 			sharedProperties = new EObjectContainmentEList.Resolving<EMFStoreProperty>(EMFStoreProperty.class, this,
 				ModelPackage.PROJECT_HISTORY__SHARED_PROPERTIES);
 		}
@@ -343,9 +344,9 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<BranchInfo> getBranches() {
-		if (branches == null)
-		{
+		if (branches == null) {
 			branches = new EObjectContainmentEList.Resolving<BranchInfo>(BranchInfo.class, this,
 				ModelPackage.PROJECT_HISTORY__BRANCHES);
 		}
@@ -359,8 +360,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.PROJECT_HISTORY__PROJECT_ID:
 			return basicSetProjectId(null, msgs);
 		case ModelPackage.PROJECT_HISTORY__VERSIONS:
@@ -380,8 +380,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.PROJECT_HISTORY__PROJECT_ID:
 			if (resolve) {
 				return getProjectId();
@@ -409,8 +408,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.PROJECT_HISTORY__PROJECT_ID:
 			setProjectId((ProjectId) newValue);
 			return;
@@ -443,8 +441,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.PROJECT_HISTORY__PROJECT_ID:
 			setProjectId((ProjectId) null);
 			return;
@@ -474,8 +471,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.PROJECT_HISTORY__PROJECT_ID:
 			return projectId != null;
 		case ModelPackage.PROJECT_HISTORY__VERSIONS:

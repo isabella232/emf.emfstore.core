@@ -45,8 +45,7 @@ public class SemanticAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public SemanticAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = SemanticPackage.eINSTANCE;
 		}
 	}
@@ -62,12 +61,10 @@ public class SemanticAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -79,35 +76,29 @@ public class SemanticAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected SemanticSwitch<Adapter> modelSwitch = new SemanticSwitch<Adapter>()
-	{
+	protected SemanticSwitch<Adapter> modelSwitch = new SemanticSwitch<Adapter>() {
 		@Override
-		public Adapter caseSemanticCompositeOperation(SemanticCompositeOperation object)
-		{
+		public Adapter caseSemanticCompositeOperation(SemanticCompositeOperation object) {
 			return createSemanticCompositeOperationAdapter();
 		}
 
 		@Override
-		public Adapter caseIdentifiableElement(IdentifiableElement object)
-		{
+		public Adapter caseIdentifiableElement(IdentifiableElement object) {
 			return createIdentifiableElementAdapter();
 		}
 
 		@Override
-		public Adapter caseAbstractOperation(AbstractOperation object)
-		{
+		public Adapter caseAbstractOperation(AbstractOperation object) {
 			return createAbstractOperationAdapter();
 		}
 
 		@Override
-		public Adapter caseCompositeOperation(CompositeOperation object)
-		{
+		public Adapter caseCompositeOperation(CompositeOperation object) {
 			return createCompositeOperationAdapter();
 		}
 
 		@Override
-		public Adapter defaultCase(EObject object)
-		{
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};

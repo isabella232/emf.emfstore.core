@@ -115,6 +115,7 @@ public class EMFStoreController implements IApplication, Runnable {
 	 *
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
 	 */
+	@Override
 	public synchronized Object start(IApplicationContext context) throws FatalESException {
 		run(true);
 		instance = null;
@@ -238,6 +239,7 @@ public class EMFStoreController implements IApplication, Runnable {
 		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new
 			ILogListener() {
 
+				@Override
 				public void logging(IStatus status, String plugin) {
 					if (status.getSeverity() == IStatus.INFO) {
 						System.out.println(status.getMessage());
@@ -561,6 +563,7 @@ public class EMFStoreController implements IApplication, Runnable {
 	 *
 	 * @see java.lang.Runnable#run()
 	 */
+	@Override
 	public void run() {
 		try {
 			run(false);
@@ -611,6 +614,7 @@ public class EMFStoreController implements IApplication, Runnable {
 	 *
 	 * @see org.eclipse.equinox.app.IApplication#stop()
 	 */
+	@Override
 	public void stop() {
 		stopServer();
 	}

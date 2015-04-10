@@ -94,6 +94,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -103,6 +104,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -117,9 +119,9 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractOperation> getOperations() {
-		if (operations == null)
-		{
+		if (operations == null) {
 			operations = new EObjectResolvingEList<AbstractOperation>(AbstractOperation.class, this,
 				OperationsPackage.OPERATION_GROUP__OPERATIONS);
 		}
@@ -133,8 +135,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.OPERATION_GROUP__NAME:
 			return getName();
 		case OperationsPackage.OPERATION_GROUP__OPERATIONS:
@@ -151,8 +152,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.OPERATION_GROUP__NAME:
 			setName((String) newValue);
 			return;
@@ -171,8 +171,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.OPERATION_GROUP__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -190,8 +189,7 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.OPERATION_GROUP__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case OperationsPackage.OPERATION_GROUP__OPERATIONS:

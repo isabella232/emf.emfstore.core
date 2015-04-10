@@ -113,12 +113,7 @@ public enum ContainmentType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final ContainmentType[] VALUES_ARRAY = new ContainmentType[]
-	{
-		NONE,
-		CONTAINER,
-		CONTAINMENT,
-	};
+	private static final ContainmentType[] VALUES_ARRAY = new ContainmentType[] { NONE, CONTAINER, CONTAINMENT, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Containment Type</b></em>' enumerators.
@@ -135,11 +130,9 @@ public enum ContainmentType implements Enumerator {
 	 * @generated
 	 */
 	public static ContainmentType get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i)
-		{
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			final ContainmentType result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal))
-			{
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -153,11 +146,9 @@ public enum ContainmentType implements Enumerator {
 	 * @generated
 	 */
 	public static ContainmentType getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i)
-		{
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			final ContainmentType result = VALUES_ARRAY[i];
-			if (result.getName().equals(name))
-			{
+			if (result.getName().equals(name)) {
 				return result;
 			}
 		}
@@ -171,8 +162,7 @@ public enum ContainmentType implements Enumerator {
 	 * @generated
 	 */
 	public static ContainmentType get(int value) {
-		switch (value)
-		{
+		switch (value) {
 		case NONE_VALUE:
 			return NONE;
 		case CONTAINER_VALUE:
@@ -222,6 +212,7 @@ public enum ContainmentType implements Enumerator {
 	 *
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -231,6 +222,7 @@ public enum ContainmentType implements Enumerator {
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -240,6 +232,7 @@ public enum ContainmentType implements Enumerator {
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}

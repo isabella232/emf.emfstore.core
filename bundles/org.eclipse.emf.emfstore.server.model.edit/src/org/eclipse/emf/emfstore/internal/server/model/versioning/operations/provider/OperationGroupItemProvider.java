@@ -68,8 +68,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -86,20 +85,14 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_OperationGroup_name_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_OperationGroup_name_feature", //$NON-NLS-2$ //$NON-NLS-1$
-					"_UI_OperationGroup_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.OPERATION_GROUP__NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_OperationGroup_name_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_OperationGroup_name_feature", //$NON-NLS-2$ //$NON-NLS-1$
+				"_UI_OperationGroup_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.OPERATION_GROUP__NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -109,20 +102,12 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	 * @generated
 	 */
 	protected void addOperationsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_OperationGroup_operations_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_OperationGroup_operations_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_OperationGroup_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.OPERATION_GROUP__OPERATIONS,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_OperationGroup_operations_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_OperationGroup_operations_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_OperationGroup_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.OPERATION_GROUP__OPERATIONS, true, false, true, null, null, null));
 	}
 
 	// BEGIN OF CUSTOM CODE
@@ -165,8 +150,7 @@ public class OperationGroupItemProvider extends ItemProviderAdapter implements I
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(OperationGroup.class))
-		{
+		switch (notification.getFeatureID(OperationGroup.class)) {
 		case OperationsPackage.OPERATION_GROUP__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

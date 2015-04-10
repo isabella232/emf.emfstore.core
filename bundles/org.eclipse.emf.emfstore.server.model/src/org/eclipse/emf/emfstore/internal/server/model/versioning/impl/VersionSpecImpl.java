@@ -73,6 +73,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getBranch() {
 		return branch;
 	}
@@ -82,6 +83,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setBranch(String newBranch) {
 		final String oldBranch = branch;
 		branch = newBranch;
@@ -98,8 +100,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.VERSION_SPEC__BRANCH:
 			return getBranch();
 		}
@@ -113,8 +114,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.VERSION_SPEC__BRANCH:
 			setBranch((String) newValue);
 			return;
@@ -129,8 +129,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.VERSION_SPEC__BRANCH:
 			setBranch(BRANCH_EDEFAULT);
 			return;
@@ -145,8 +144,7 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.VERSION_SPEC__BRANCH:
 			return BRANCH_EDEFAULT == null ? branch != null : !BRANCH_EDEFAULT.equals(branch);
 		}

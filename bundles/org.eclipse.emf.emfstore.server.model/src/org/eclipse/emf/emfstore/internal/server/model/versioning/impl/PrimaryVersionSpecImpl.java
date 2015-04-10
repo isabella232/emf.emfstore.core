@@ -106,6 +106,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
+	@Override
 	public int getIdentifier() {
 		return identifier;
 	}
@@ -115,6 +116,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setIdentifier(int newIdentifier) {
 		final int oldIdentifier = identifier;
 		identifier = newIdentifier;
@@ -130,6 +132,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
+	@Override
 	public long getProjectStateChecksum() {
 		return projectStateChecksum;
 	}
@@ -140,6 +143,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setProjectStateChecksum(long newProjectStateChecksum) {
 		final long oldProjectStateChecksum = projectStateChecksum;
 		projectStateChecksum = newProjectStateChecksum;
@@ -157,8 +161,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.PRIMARY_VERSION_SPEC__IDENTIFIER:
 			return getIdentifier();
 		case VersioningPackage.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM:
@@ -174,8 +177,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.PRIMARY_VERSION_SPEC__IDENTIFIER:
 			setIdentifier((Integer) newValue);
 			return;
@@ -193,8 +195,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.PRIMARY_VERSION_SPEC__IDENTIFIER:
 			setIdentifier(IDENTIFIER_EDEFAULT);
 			return;
@@ -212,8 +213,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.PRIMARY_VERSION_SPEC__IDENTIFIER:
 			return identifier != IDENTIFIER_EDEFAULT;
 		case VersioningPackage.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM:
@@ -254,8 +254,8 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	public boolean equals(Object object) {
 		if (object instanceof PrimaryVersionSpec) {
 			final PrimaryVersionSpec otherPrimaryVersionSpec = (PrimaryVersionSpec) object;
-			return getIdentifier() == otherPrimaryVersionSpec.getIdentifier()
-				&& getBranch() != null && getBranch().equals(otherPrimaryVersionSpec.getBranch());
+			return getIdentifier() == otherPrimaryVersionSpec.getIdentifier() && getBranch() != null
+				&& getBranch().equals(otherPrimaryVersionSpec.getBranch());
 		}
 
 		return false;
@@ -280,6 +280,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
+	@Override
 	public int compareTo(PrimaryVersionSpec o) {
 		if (getIdentifier() == o.getIdentifier()) {
 			return 0;
@@ -298,6 +299,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESPrimaryVersionSpecImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -315,6 +317,7 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESPrimaryVersionSpecImpl createAPI() {
 		return new ESPrimaryVersionSpecImpl(this);
 	}

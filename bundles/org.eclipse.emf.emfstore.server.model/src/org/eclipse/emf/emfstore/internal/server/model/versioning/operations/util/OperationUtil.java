@@ -68,8 +68,8 @@ public final class OperationUtil {
 	 * @return true if correct
 	 */
 	public static boolean isCompositeSingleRef(AbstractOperation operation) {
-		return operation instanceof CompositeOperation && ((CompositeOperation) operation).getMainOperation()
-			instanceof SingleReferenceOperation;
+		return operation instanceof CompositeOperation
+			&& ((CompositeOperation) operation).getMainOperation() instanceof SingleReferenceOperation;
 	}
 
 	/**
@@ -80,8 +80,8 @@ public final class OperationUtil {
 	 * @return true if correct
 	 */
 	public static boolean isCompositeMultiRef(AbstractOperation operation) {
-		return operation instanceof CompositeOperation && ((CompositeOperation) operation).getMainOperation()
-			instanceof MultiReferenceOperation;
+		return operation instanceof CompositeOperation
+			&& ((CompositeOperation) operation).getMainOperation() instanceof MultiReferenceOperation;
 	}
 
 	/**

@@ -36,8 +36,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface AbstractChangePackage extends EObject
-{
+public interface AbstractChangePackage extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Log Message</b></em>' containment reference.

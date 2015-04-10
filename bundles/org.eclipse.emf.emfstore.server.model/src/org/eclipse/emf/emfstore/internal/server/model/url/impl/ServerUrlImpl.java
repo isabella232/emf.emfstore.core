@@ -94,6 +94,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getHostName() {
 		return hostName;
 	}
@@ -103,6 +104,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setHostName(String newHostName) {
 		final String oldHostName = hostName;
 		hostName = newHostName;
@@ -117,6 +119,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
+	@Override
 	public int getPort() {
 		return port;
 	}
@@ -126,6 +129,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setPort(int newPort) {
 		final int oldPort = port;
 		port = newPort;
@@ -141,8 +145,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.SERVER_URL__HOST_NAME:
 			return getHostName();
 		case UrlPackage.SERVER_URL__PORT:
@@ -158,8 +161,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.SERVER_URL__HOST_NAME:
 			setHostName((String) newValue);
 			return;
@@ -177,8 +179,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.SERVER_URL__HOST_NAME:
 			setHostName(HOST_NAME_EDEFAULT);
 			return;
@@ -196,8 +197,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.SERVER_URL__HOST_NAME:
 			return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
 		case UrlPackage.SERVER_URL__PORT:
@@ -232,6 +232,7 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getUrlString()
 	 * @generated NOT
 	 */
+	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getHostName());

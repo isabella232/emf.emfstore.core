@@ -57,6 +57,7 @@ public class ProjectIdImpl extends UniqueIdentifierImpl implements ProjectId {
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESGlobalProjectIdImpl toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -72,6 +73,7 @@ public class ProjectIdImpl extends UniqueIdentifierImpl implements ProjectId {
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESGlobalProjectIdImpl createAPI() {
 		return new ESGlobalProjectIdImpl(this);
 	}

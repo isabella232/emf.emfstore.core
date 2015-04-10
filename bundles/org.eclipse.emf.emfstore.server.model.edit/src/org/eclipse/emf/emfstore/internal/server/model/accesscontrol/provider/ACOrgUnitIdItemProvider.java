@@ -47,8 +47,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -76,8 +75,7 @@ public class ACOrgUnitIdItemProvider extends UniqueIdentifierItemProvider {
 	@Override
 	public String getText(Object object) {
 		final String label = ((ACOrgUnitId) object).getId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ACOrgUnitId_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_ACOrgUnitId_type") : //$NON-NLS-1$
 			getString("_UI_ACOrgUnitId_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

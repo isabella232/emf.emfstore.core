@@ -109,8 +109,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 
 		// Obtain or create and register package
 		final ServerPackageImpl theServerPackage = (ServerPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ServerPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new ServerPackageImpl());
+			.get(eNS_URI) : new ServerPackageImpl());
 
 		isInited = true;
 
@@ -142,8 +141,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI)
-			: UrlPackage.eINSTANCE);
+			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theServerPackage.createPackageContents();
@@ -180,6 +178,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getServerEvent() {
 		return serverEventEClass;
 	}
@@ -189,6 +188,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getServerProjectEvent() {
 		return serverProjectEventEClass;
 	}
@@ -198,6 +198,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getServerProjectEvent_ProjectId() {
 		return (EReference) serverProjectEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -207,6 +208,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectUpdatedEvent() {
 		return projectUpdatedEventEClass;
 	}
@@ -216,6 +218,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectUpdatedEvent_NewVersion() {
 		return (EReference) projectUpdatedEventEClass.getEStructuralFeatures().get(0);
 	}
@@ -225,6 +228,7 @@ public class ServerPackageImpl extends EPackageImpl implements ServerPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ServerFactory getServerFactory() {
 		return (ServerFactory) getEFactoryInstance();
 	}

@@ -91,6 +91,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -100,6 +101,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -114,18 +116,16 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
+	@Override
 	public ModelElementId getModelElementId() {
-		if (modelElementId != null && modelElementId.eIsProxy())
-		{
+		if (modelElementId != null && modelElementId.eIsProxy()) {
 			final InternalEObject oldModelElementId = (InternalEObject) modelElementId;
 			modelElementId = (ModelElementId) eResolveProxy(oldModelElementId);
-			if (modelElementId != oldModelElementId)
-			{
+			if (modelElementId != oldModelElementId) {
 				final InternalEObject newModelElementId = (InternalEObject) modelElementId;
 				NotificationChain msgs = oldModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, null);
-				if (newModelElementId.eInternalContainer() == null)
-				{
+				if (newModelElementId.eInternalContainer() == null) {
 					msgs = newModelElementId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
 				}
@@ -158,8 +158,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	public NotificationChain basicSetModelElementId(ModelElementId newModelElementId, NotificationChain msgs) {
 		final ModelElementId oldModelElementId = modelElementId;
 		modelElementId = newModelElementId;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, oldModelElementId, newModelElementId);
 			if (msgs == null) {
@@ -176,9 +175,9 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setModelElementId(ModelElementId newModelElementId) {
-		if (newModelElementId != modelElementId)
-		{
+		if (newModelElementId != modelElementId) {
 			NotificationChain msgs = null;
 			if (modelElementId != null) {
 				msgs = ((InternalEObject) modelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -192,8 +191,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, newModelElementId, newModelElementId));
 		}
@@ -206,8 +204,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID:
 			return basicSetModelElementId(null, msgs);
 		}
@@ -221,8 +218,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME:
 			return getName();
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID:
@@ -241,8 +237,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME:
 			setName((String) newValue);
 			return;
@@ -260,8 +255,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -279,8 +273,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID:
@@ -307,6 +300,7 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 		return result.toString();
 	}
 
+	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getName());

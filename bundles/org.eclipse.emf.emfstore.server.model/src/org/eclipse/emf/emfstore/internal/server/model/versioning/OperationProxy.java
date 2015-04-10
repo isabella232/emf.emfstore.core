@@ -28,8 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface OperationProxy extends EObject
-{
+public interface OperationProxy extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->

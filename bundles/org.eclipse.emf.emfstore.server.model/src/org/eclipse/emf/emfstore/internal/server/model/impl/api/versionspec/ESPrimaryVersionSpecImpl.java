@@ -39,6 +39,7 @@ public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersion
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec#getIdentifier()
 	 */
+	@Override
 	public int getIdentifier() {
 		return toInternalAPI().getIdentifier();
 	}

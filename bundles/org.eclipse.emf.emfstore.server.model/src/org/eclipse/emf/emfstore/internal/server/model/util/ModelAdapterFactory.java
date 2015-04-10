@@ -52,8 +52,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public ModelAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = ModelPackage.eINSTANCE;
 		}
 	}
@@ -69,12 +68,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -86,77 +83,64 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected ModelSwitch<Adapter> modelSwitch = new ModelSwitch<Adapter>()
-	{
+	protected ModelSwitch<Adapter> modelSwitch = new ModelSwitch<Adapter>() {
 		@Override
-		public Adapter caseProjectHistory(ProjectHistory object)
-		{
+		public Adapter caseProjectHistory(ProjectHistory object) {
 			return createProjectHistoryAdapter();
 		}
 
 		@Override
-		public Adapter caseProjectInfo(ProjectInfo object)
-		{
+		public Adapter caseProjectInfo(ProjectInfo object) {
 			return createProjectInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseSessionId(SessionId object)
-		{
+		public Adapter caseSessionId(SessionId object) {
 			return createSessionIdAdapter();
 		}
 
 		@Override
-		public Adapter caseServerSpace(ServerSpace object)
-		{
+		public Adapter caseServerSpace(ServerSpace object) {
 			return createServerSpaceAdapter();
 		}
 
 		@Override
-		public Adapter caseProjectId(ProjectId object)
-		{
+		public Adapter caseProjectId(ProjectId object) {
 			return createProjectIdAdapter();
 		}
 
 		@Override
-		public Adapter caseVersionInfo(VersionInfo object)
-		{
+		public Adapter caseVersionInfo(VersionInfo object) {
 			return createVersionInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseClientVersionInfo(ClientVersionInfo object)
-		{
+		public Adapter caseClientVersionInfo(ClientVersionInfo object) {
 			return createClientVersionInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseFileIdentifier(FileIdentifier object)
-		{
+		public Adapter caseFileIdentifier(FileIdentifier object) {
 			return createFileIdentifierAdapter();
 		}
 
 		@Override
-		public Adapter caseAuthenticationInformation(AuthenticationInformation object)
-		{
+		public Adapter caseAuthenticationInformation(AuthenticationInformation object) {
 			return createAuthenticationInformationAdapter();
 		}
 
 		@Override
-		public Adapter caseUniqueIdentifier(UniqueIdentifier object)
-		{
+		public Adapter caseUniqueIdentifier(UniqueIdentifier object) {
 			return createUniqueIdentifierAdapter();
 		}
 
 		@Override
-		public Adapter caseIdentifiableElement(IdentifiableElement object)
-		{
+		public Adapter caseIdentifiableElement(IdentifiableElement object) {
 			return createIdentifiableElementAdapter();
 		}
 
 		@Override
-		public Adapter defaultCase(EObject object)
-		{
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};

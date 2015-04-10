@@ -56,8 +56,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -74,8 +73,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.SERVER_SPACE__GROUPS);
 			childrenFeatures.add(ModelPackage.Literals.SERVER_SPACE__PROJECTS);
@@ -133,8 +131,7 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ServerSpace.class))
-		{
+		switch (notification.getFeatureID(ServerSpace.class)) {
 		case ModelPackage.SERVER_SPACE__GROUPS:
 		case ModelPackage.SERVER_SPACE__PROJECTS:
 		case ModelPackage.SERVER_SPACE__OPEN_SESSIONS:
@@ -156,25 +153,17 @@ public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEdi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.SERVER_SPACE__GROUPS,
-				AccesscontrolFactory.eINSTANCE.createACGroup()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.SERVER_SPACE__GROUPS,
+			AccesscontrolFactory.eINSTANCE.createACGroup()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.SERVER_SPACE__PROJECTS,
-				ModelFactory.eINSTANCE.createProjectHistory()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.SERVER_SPACE__PROJECTS,
+			ModelFactory.eINSTANCE.createProjectHistory()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.SERVER_SPACE__OPEN_SESSIONS,
-				ModelFactory.eINSTANCE.createSessionId()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.SERVER_SPACE__OPEN_SESSIONS,
+			ModelFactory.eINSTANCE.createSessionId()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.SERVER_SPACE__USERS,
-				AccesscontrolFactory.eINSTANCE.createACUser()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.SERVER_SPACE__USERS,
+			AccesscontrolFactory.eINSTANCE.createACUser()));
 	}
 
 	/**

@@ -51,9 +51,8 @@ public final class HistoryQueryBuilder {
 	 *            include changepackges
 	 * @return query
 	 */
-	public static RangeQuery<?> rangeQuery(PrimaryVersionSpec source, int upper,
-		int lower, boolean allVersions, boolean incoming, boolean outgoing,
-		boolean includeCp) {
+	public static RangeQuery<?> rangeQuery(PrimaryVersionSpec source, int upper, int lower, boolean allVersions,
+		boolean incoming, boolean outgoing, boolean includeCp) {
 		final RangeQuery<?> query = VersioningFactory.eINSTANCE.createRangeQuery();
 		query.setSource(ModelUtil.clone(source));
 		query.setUpperLimit(upper);
@@ -78,8 +77,8 @@ public final class HistoryQueryBuilder {
 	 *            include changepackages
 	 * @return query
 	 */
-	public static PathQuery pathQuery(PrimaryVersionSpec source,
-		PrimaryVersionSpec target, boolean allVersions, boolean includeCp) {
+	public static PathQuery pathQuery(PrimaryVersionSpec source, PrimaryVersionSpec target, boolean allVersions,
+		boolean includeCp) {
 		final PathQuery query = VersioningFactory.eINSTANCE.createPathQuery();
 		query.setSource(ModelUtil.clone(source));
 		query.setTarget(ModelUtil.clone(target));
@@ -105,12 +104,9 @@ public final class HistoryQueryBuilder {
 	 *            include change packages
 	 * @return query
 	 */
-	public static ModelElementQuery modelelementQuery(
-		PrimaryVersionSpec source,
-		List<ModelElementId> modelElements, int upper,
-		int lower, boolean allVersions, boolean includeCp) {
-		final ModelElementQuery query = VersioningFactory.eINSTANCE
-			.createModelElementQuery();
+	public static ModelElementQuery modelelementQuery(PrimaryVersionSpec source, List<ModelElementId> modelElements,
+		int upper, int lower, boolean allVersions, boolean includeCp) {
+		final ModelElementQuery query = VersioningFactory.eINSTANCE.createModelElementQuery();
 		query.setSource(ModelUtil.clone(source));
 		query.getModelElements().addAll(modelElements);
 		query.setUpperLimit(upper);
@@ -139,10 +135,8 @@ public final class HistoryQueryBuilder {
 	 *            include change packages
 	 * @return query
 	 */
-	public static ModelElementQuery modelelementQuery(
-		PrimaryVersionSpec source, ModelElementId id, int upper, int lower,
-		boolean allVersions, boolean includeCp) {
-		return modelelementQuery(source, Arrays.asList(id), upper, lower,
-			allVersions, includeCp);
+	public static ModelElementQuery modelelementQuery(PrimaryVersionSpec source, ModelElementId id, int upper,
+		int lower, boolean allVersions, boolean includeCp) {
+		return modelelementQuery(source, Arrays.asList(id), upper, lower, allVersions, includeCp);
 	}
 }

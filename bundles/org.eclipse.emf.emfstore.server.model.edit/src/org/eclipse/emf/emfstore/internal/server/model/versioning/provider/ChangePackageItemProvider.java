@@ -59,8 +59,7 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -77,8 +76,7 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE);
 			childrenFeatures.add(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS);
@@ -139,8 +137,7 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ChangePackage.class))
-		{
+		switch (notification.getFeatureID(ChangePackage.class)) {
 		case VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE:
 		case VersioningPackage.CHANGE_PACKAGE__OPERATIONS:
 		case VersioningPackage.CHANGE_PACKAGE__EVENTS:
@@ -162,75 +159,47 @@ public class ChangePackageItemProvider extends ItemProviderAdapter implements IE
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE,
-				VersioningFactory.eINSTANCE.createLogMessage()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE,
+			VersioningFactory.eINSTANCE.createLogMessage()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createCompositeOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createCompositeOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createCreateDeleteOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createCreateDeleteOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createAttributeOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createAttributeOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createMultiAttributeOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createMultiAttributeOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createMultiAttributeSetOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createMultiAttributeSetOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createMultiAttributeMoveOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createMultiAttributeMoveOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createSingleReferenceOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createSingleReferenceOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createMultiReferenceSetOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createMultiReferenceSetOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createMultiReferenceOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createMultiReferenceOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
-				OperationsFactory.eINSTANCE.createMultiReferenceMoveOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__OPERATIONS,
+			OperationsFactory.eINSTANCE.createMultiReferenceMoveOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
-				EventsFactory.eINSTANCE.createEvent()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
+			EventsFactory.eINSTANCE.createEvent()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
-				ServerFactory.eINSTANCE.createProjectUpdatedEvent()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__EVENTS,
+			ServerFactory.eINSTANCE.createProjectUpdatedEvent()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(VersioningPackage.Literals.CHANGE_PACKAGE__VERSION_PROPERTIES,
-				VersioningFactory.eINSTANCE.createVersionProperty()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE__VERSION_PROPERTIES,
+			VersioningFactory.eINSTANCE.createVersionProperty()));
 	}
 
 	/**

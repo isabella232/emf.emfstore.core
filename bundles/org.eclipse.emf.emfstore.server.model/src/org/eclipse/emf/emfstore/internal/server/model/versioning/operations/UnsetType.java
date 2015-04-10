@@ -27,8 +27,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum UnsetType implements Enumerator
-{
+public enum UnsetType implements Enumerator {
 	/**
 	 * The '<em><b>NONE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -117,13 +116,7 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	private static final UnsetType[] VALUES_ARRAY =
-		new UnsetType[]
-		{
-			NONE,
-			IS_UNSET,
-			WAS_UNSET,
-		};
+	private static final UnsetType[] VALUES_ARRAY = new UnsetType[] { NONE, IS_UNSET, WAS_UNSET, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Unset Type</b></em>' enumerators.
@@ -141,13 +134,10 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	public static UnsetType get(String literal)
-	{
-		for (int i = 0; i < VALUES_ARRAY.length; ++i)
-		{
+	public static UnsetType get(String literal) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			final UnsetType result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal))
-			{
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -161,13 +151,10 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	public static UnsetType getByName(String name)
-	{
-		for (int i = 0; i < VALUES_ARRAY.length; ++i)
-		{
+	public static UnsetType getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			final UnsetType result = VALUES_ARRAY[i];
-			if (result.getName().equals(name))
-			{
+			if (result.getName().equals(name)) {
 				return result;
 			}
 		}
@@ -181,10 +168,8 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	public static UnsetType get(int value)
-	{
-		switch (value)
-		{
+	public static UnsetType get(int value) {
+		switch (value) {
 		case NONE_VALUE:
 			return NONE;
 		case IS_UNSET_VALUE:
@@ -226,8 +211,7 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	private UnsetType(int value, String name, String literal)
-	{
+	private UnsetType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -239,8 +223,8 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	public int getValue()
-	{
+	@Override
+	public int getValue() {
 		return value;
 	}
 
@@ -250,8 +234,8 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	public String getName()
-	{
+	@Override
+	public String getName() {
 		return name;
 	}
 
@@ -261,8 +245,8 @@ public enum UnsetType implements Enumerator
 	 *
 	 * @generated
 	 */
-	public String getLiteral()
-	{
+	@Override
+	public String getLiteral() {
 		return literal;
 	}
 
@@ -274,8 +258,7 @@ public enum UnsetType implements Enumerator
 	 * @generated
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return literal;
 	}
 

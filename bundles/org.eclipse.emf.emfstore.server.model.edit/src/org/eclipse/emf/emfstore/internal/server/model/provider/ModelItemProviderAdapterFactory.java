@@ -98,8 +98,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createProjectHistoryAdapter() {
-		if (projectHistoryItemProvider == null)
-		{
+		if (projectHistoryItemProvider == null) {
 			projectHistoryItemProvider = new ProjectHistoryItemProvider(this);
 		}
 
@@ -123,8 +122,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createProjectInfoAdapter() {
-		if (projectInfoItemProvider == null)
-		{
+		if (projectInfoItemProvider == null) {
 			projectInfoItemProvider = new ProjectInfoItemProvider(this);
 		}
 
@@ -148,8 +146,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createSessionIdAdapter() {
-		if (sessionIdItemProvider == null)
-		{
+		if (sessionIdItemProvider == null) {
 			sessionIdItemProvider = new SessionIdItemProvider(this);
 		}
 
@@ -173,8 +170,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createServerSpaceAdapter() {
-		if (serverSpaceItemProvider == null)
-		{
+		if (serverSpaceItemProvider == null) {
 			serverSpaceItemProvider = new ServerSpaceItemProvider(this);
 		}
 
@@ -198,8 +194,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createProjectIdAdapter() {
-		if (projectIdItemProvider == null)
-		{
+		if (projectIdItemProvider == null) {
 			projectIdItemProvider = new ProjectIdItemProvider(this);
 		}
 
@@ -223,8 +218,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createVersionInfoAdapter() {
-		if (versionInfoItemProvider == null)
-		{
+		if (versionInfoItemProvider == null) {
 			versionInfoItemProvider = new VersionInfoItemProvider(this);
 		}
 
@@ -248,8 +242,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createClientVersionInfoAdapter() {
-		if (clientVersionInfoItemProvider == null)
-		{
+		if (clientVersionInfoItemProvider == null) {
 			clientVersionInfoItemProvider = new ClientVersionInfoItemProvider(this);
 		}
 
@@ -273,8 +266,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createFileIdentifierAdapter() {
-		if (fileIdentifierItemProvider == null)
-		{
+		if (fileIdentifierItemProvider == null) {
 			fileIdentifierItemProvider = new FileIdentifierItemProvider(this);
 		}
 
@@ -299,8 +291,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createAuthenticationInformationAdapter() {
-		if (authenticationInformationItemProvider == null)
-		{
+		if (authenticationInformationItemProvider == null) {
 			authenticationInformationItemProvider = new AuthenticationInformationItemProvider(this);
 		}
 
@@ -313,6 +304,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -323,6 +315,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -355,11 +348,9 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type))
-		{
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -373,6 +364,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -383,6 +375,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -394,11 +387,11 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}
@@ -409,6 +402,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (projectHistoryItemProvider != null) {
 			projectHistoryItemProvider.dispose();

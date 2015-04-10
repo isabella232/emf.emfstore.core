@@ -84,6 +84,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated
 	 */
+	@Override
 	public Date getDate() {
 		return date;
 	}
@@ -93,6 +94,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setDate(Date newDate) {
 		final Date oldDate = date;
 		date = newDate;
@@ -109,8 +111,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.DATE_VERSION_SPEC__DATE:
 			return getDate();
 		}
@@ -124,8 +125,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.DATE_VERSION_SPEC__DATE:
 			setDate((Date) newValue);
 			return;
@@ -140,8 +140,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.DATE_VERSION_SPEC__DATE:
 			setDate(DATE_EDEFAULT);
 			return;
@@ -156,8 +155,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case VersioningPackage.DATE_VERSION_SPEC__DATE:
 			return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 		}
@@ -190,6 +188,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESDateVersionSpecImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -207,6 +206,7 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ESDateVersionSpecImpl createAPI() {
 		return new ESDateVersionSpecImpl(this);
 	}

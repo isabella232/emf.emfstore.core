@@ -58,6 +58,7 @@ public class ReservationToConflictBucketCandidateMap {
 			ReservationSetModifier.ID,
 			ReservationSetModifier.class,
 			new ReservationSetModifier() {
+				@Override
 				public ReservationSet addCustomReservation(
 					AbstractOperation operation, ReservationSet reservationSet,
 					ModelElementIdToEObjectMapping mapping) {

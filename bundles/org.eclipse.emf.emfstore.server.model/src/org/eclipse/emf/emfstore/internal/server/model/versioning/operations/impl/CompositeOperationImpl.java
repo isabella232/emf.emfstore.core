@@ -188,6 +188,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	@SuppressWarnings("serial")
 	public EList<AbstractOperation> getSubOperations() {
 		if (subOperations == null) {
@@ -209,13 +210,12 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public AbstractOperation getMainOperation() {
-		if (mainOperation != null && mainOperation.eIsProxy())
-		{
+		if (mainOperation != null && mainOperation.eIsProxy()) {
 			final InternalEObject oldMainOperation = (InternalEObject) mainOperation;
 			mainOperation = (AbstractOperation) eResolveProxy(oldMainOperation);
-			if (mainOperation != oldMainOperation)
-			{
+			if (mainOperation != oldMainOperation) {
 				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION, oldMainOperation, mainOperation));
@@ -239,6 +239,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setMainOperation(AbstractOperation newMainOperation) {
 		final AbstractOperation oldMainOperation = mainOperation;
 		mainOperation = newMainOperation;
@@ -253,6 +254,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getCompositeName() {
 		return compositeName;
 	}
@@ -262,6 +264,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setCompositeName(String newCompositeName) {
 		final String oldCompositeName = compositeName;
 		compositeName = newCompositeName;
@@ -276,6 +279,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getCompositeDescription() {
 		return compositeDescription;
 	}
@@ -285,6 +289,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setCompositeDescription(String newCompositeDescription) {
 		final String oldCompositeDescription = compositeDescription;
 		compositeDescription = newCompositeDescription;
@@ -300,6 +305,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public boolean isReversed() {
 		return reversed;
 	}
@@ -309,6 +315,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setReversed(boolean newReversed) {
 		final boolean oldReversed = reversed;
 		reversed = newReversed;
@@ -324,6 +331,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public void cannonize() {
 		// MK: implement
 		throw new UnsupportedOperationException();
@@ -338,8 +346,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.COMPOSITE_OPERATION__SUB_OPERATIONS:
 			return ((InternalEList<?>) getSubOperations()).basicRemove(otherEnd, msgs);
 		}
@@ -353,8 +360,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.COMPOSITE_OPERATION__SUB_OPERATIONS:
 			return getSubOperations();
 		case OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION:
@@ -380,8 +386,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.COMPOSITE_OPERATION__SUB_OPERATIONS:
 			getSubOperations().clear();
 			getSubOperations().addAll((Collection<? extends AbstractOperation>) newValue);
@@ -409,8 +414,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.COMPOSITE_OPERATION__SUB_OPERATIONS:
 			getSubOperations().clear();
 			return;
@@ -437,8 +441,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.COMPOSITE_OPERATION__SUB_OPERATIONS:
 			return subOperations != null && !subOperations.isEmpty();
 		case OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION:
@@ -477,6 +480,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 		return result.toString();
 	}
 
+	@Override
 	public void apply(IdEObjectCollection project) {
 		for (final AbstractOperation abstractOperation : getSubOperations()) {
 			abstractOperation.apply(project);
@@ -513,6 +517,7 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
+	@Override
 	public List<AbstractOperation> getLeafOperations() {
 		final List<AbstractOperation> result = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation subOperation : getSubOperations()) {

@@ -21,8 +21,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  */
 public class ESPagedUpdateVersionSpecImpl extends ESVersionSpecImpl<ESPagedUpdateVersionSpec, PagedUpdateVersionSpec>
-	implements
-	ESPagedUpdateVersionSpec {
+	implements ESPagedUpdateVersionSpec {
 
 	/**
 	 * Constructor.
@@ -40,6 +39,7 @@ public class ESPagedUpdateVersionSpecImpl extends ESVersionSpecImpl<ESPagedUpdat
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpec#getBaseVersion()
 	 */
+	@Override
 	public ESPrimaryVersionSpec getBaseVersion() {
 		return toInternalAPI().getBaseVersionSpec().toAPI();
 	}
@@ -50,6 +50,7 @@ public class ESPagedUpdateVersionSpecImpl extends ESVersionSpecImpl<ESPagedUpdat
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpec#getMaxChanges()
 	 */
+	@Override
 	public int getMaxChanges() {
 		return toInternalAPI().getMaxChanges();
 	}

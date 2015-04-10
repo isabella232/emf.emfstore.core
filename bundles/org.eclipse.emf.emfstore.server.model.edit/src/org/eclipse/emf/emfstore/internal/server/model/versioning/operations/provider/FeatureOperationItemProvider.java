@@ -49,8 +49,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addFeatureNamePropertyDescriptor(object);
@@ -66,20 +65,14 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 * @generated
 	 */
 	protected void addFeatureNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_FeatureOperation_featureName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_featureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_FeatureOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.FEATURE_OPERATION__FEATURE_NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_FeatureOperation_featureName_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_featureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_FeatureOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.FEATURE_OPERATION__FEATURE_NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -89,22 +82,15 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	 *
 	 * @generated
 	 */
-	protected void addUnsetPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_FeatureOperation_unset_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_unset_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_FeatureOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.FEATURE_OPERATION__UNSET,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+	protected void addUnsetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_FeatureOperation_unset_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_FeatureOperation_unset_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_FeatureOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.FEATURE_OPERATION__UNSET, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -129,8 +115,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	@Override
 	public String getText(Object object) {
 		final String label = ((FeatureOperation) object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_FeatureOperation_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_FeatureOperation_type") : //$NON-NLS-1$
 			getString("_UI_FeatureOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -146,8 +131,7 @@ public class FeatureOperationItemProvider extends AbstractOperationItemProvider 
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(FeatureOperation.class))
-		{
+		switch (notification.getFeatureID(FeatureOperation.class)) {
 		case OperationsPackage.FEATURE_OPERATION__FEATURE_NAME:
 		case OperationsPackage.FEATURE_OPERATION__UNSET:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

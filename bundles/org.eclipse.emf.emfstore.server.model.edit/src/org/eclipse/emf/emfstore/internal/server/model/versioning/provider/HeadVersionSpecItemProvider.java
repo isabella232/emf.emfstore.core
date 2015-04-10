@@ -44,8 +44,7 @@ public class HeadVersionSpecItemProvider extends VersionSpecItemProvider {
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -74,8 +73,7 @@ public class HeadVersionSpecItemProvider extends VersionSpecItemProvider {
 	@Override
 	public String getText(Object object) {
 		final String label = ((HeadVersionSpec) object).getBranch();
-		return label == null || label.length() == 0 ?
-			getString("_UI_HeadVersionSpec_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_HeadVersionSpec_type") : //$NON-NLS-1$
 			getString("_UI_HeadVersionSpec_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

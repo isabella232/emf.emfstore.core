@@ -40,6 +40,7 @@ public class ESBranchInfoImpl extends AbstractAPIImpl<ESBranchInfo, BranchInfo> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESBranchInfo#getName()
 	 */
+	@Override
 	public String getName() {
 		return toInternalAPI().getName();
 	}
@@ -50,6 +51,7 @@ public class ESBranchInfoImpl extends AbstractAPIImpl<ESBranchInfo, BranchInfo> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESBranchInfo#getHead()
 	 */
+	@Override
 	public ESPrimaryVersionSpec getHead() {
 		return toInternalAPI().getHead().toAPI();
 	}
@@ -60,6 +62,7 @@ public class ESBranchInfoImpl extends AbstractAPIImpl<ESBranchInfo, BranchInfo> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESBranchInfo#getSource()
 	 */
+	@Override
 	public ESPrimaryVersionSpec getSource() {
 		return toInternalAPI().getSource().toAPI();
 	}

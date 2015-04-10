@@ -64,6 +64,7 @@ public class EObjectSerializer extends TypeSerializerImpl {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void write(ContentHandler pHandler, Object pObject) throws SAXException {
 		initSerializationOptions();
 		pHandler.startElement("", VALUE_TAG, VALUE_TAG, ZERO_ATTRIBUTES);

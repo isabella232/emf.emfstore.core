@@ -48,8 +48,7 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addOldValuePropertyDescriptor(object);
@@ -65,20 +64,12 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_SingleReferenceOperation_oldValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__OLD_VALUE,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_SingleReferenceOperation_oldValue_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__OLD_VALUE, true, false, true, null, null, null));
 	}
 
 	/**
@@ -88,20 +79,12 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_SingleReferenceOperation_newValue_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__NEW_VALUE,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_SingleReferenceOperation_newValue_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__NEW_VALUE, true, false, true, null, null, null));
 	}
 
 	// begin of custom code
@@ -139,27 +122,27 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 			// changing containment means relocating the item
 			if (isContainer && oldElement != null && newElement != null) {
 				return Messages.SingleReferenceOperationItemProvider_Text_Moved + elementName
-					+ Messages.SingleReferenceOperationItemProvider_Text_From + oldName +
-					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
+					+ Messages.SingleReferenceOperationItemProvider_Text_From + oldName
+					+ Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			} else if (isContainer && newElement != null) {
-				return Messages.SingleReferenceOperationItemProvider_Text_Moved + elementName +
-					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Moved + elementName
+					+ Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			} else if (oldElement == null && newElement == null) {
 				return Messages.SingleReferenceOperationItemProvider_Text_Unset + op.getFeatureName()
 					+ Messages.SingleReferenceOperationItemProvider_Text_In + elementName;
 			} else if (oldElement == null && newElement != null) {
-				return Messages.SingleReferenceOperationItemProvider_Text_Set + op.getFeatureName() +
-					Messages.SingleReferenceOperationItemProvider_Text_In + elementName +
-					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Set + op.getFeatureName()
+					+ Messages.SingleReferenceOperationItemProvider_Text_In + elementName
+					+ Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			} else if (oldElement != null && newElement == null) {
-				return Messages.SingleReferenceOperationItemProvider_Text_Unset + op.getFeatureName() +
-					Messages.SingleReferenceOperationItemProvider_Text_In + elementName +
-					Messages.SingleReferenceOperationItemProvider_Text_FromPreviousValue + oldName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Unset + op.getFeatureName()
+					+ Messages.SingleReferenceOperationItemProvider_Text_In + elementName
+					+ Messages.SingleReferenceOperationItemProvider_Text_FromPreviousValue + oldName;
 			} else {
-				return Messages.SingleReferenceOperationItemProvider_Text_Set + op.getFeatureName() +
-					Messages.SingleReferenceOperationItemProvider_Text_In + elementName +
-					Messages.SingleReferenceOperationItemProvider_Text_From + oldName +
-					Messages.SingleReferenceOperationItemProvider_Text_To + newName;
+				return Messages.SingleReferenceOperationItemProvider_Text_Set + op.getFeatureName()
+					+ Messages.SingleReferenceOperationItemProvider_Text_In + elementName
+					+ Messages.SingleReferenceOperationItemProvider_Text_From + oldName
+					+ Messages.SingleReferenceOperationItemProvider_Text_To + newName;
 			}
 		}
 		return super.getText(object);

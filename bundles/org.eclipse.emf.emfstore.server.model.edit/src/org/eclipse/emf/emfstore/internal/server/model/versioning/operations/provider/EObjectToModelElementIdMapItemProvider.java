@@ -53,8 +53,7 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addKeyPropertyDescriptor(object);
@@ -71,20 +70,12 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY, true, false, true, null, null, null));
 	}
 
 	/**
@@ -94,20 +85,12 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_EObjectToModelElementIdMap_value_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			getString("_UI_EObjectToModelElementIdMap_value_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, true, false, true, null, null, null));
 	}
 
 	/**

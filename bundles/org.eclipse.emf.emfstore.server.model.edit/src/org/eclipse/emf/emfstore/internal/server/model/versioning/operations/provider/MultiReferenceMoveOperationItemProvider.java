@@ -49,8 +49,7 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addOldIndexPropertyDescriptor(object);
@@ -67,20 +66,14 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addOldIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiReferenceMoveOperation_oldIndex_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_oldIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__OLD_INDEX,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_MultiReferenceMoveOperation_oldIndex_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_oldIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__OLD_INDEX, true, false, false,
+			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,20 +83,14 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addNewIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiReferenceMoveOperation_newIndex_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_newIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__NEW_INDEX,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_MultiReferenceMoveOperation_newIndex_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceMoveOperation_newIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__NEW_INDEX, true, false, false,
+			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -113,21 +100,15 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addReferencedModelElementIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiReferenceMoveOperation_referencedModelElementId_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
-					"_UI_MultiReferenceMoveOperation_referencedModelElementId_feature", //$NON-NLS-1$
-					"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_MultiReferenceMoveOperation_referencedModelElementId_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_MultiReferenceMoveOperation_referencedModelElementId_feature", //$NON-NLS-1$
+				"_UI_MultiReferenceMoveOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, true, false, true,
+			null, null, null));
 	}
 
 	// begin of custom code
@@ -157,8 +138,8 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 			final String elementName = getModelElementClassAndName(op.getModelElementId());
 			final String movedElementName = getModelElementClassAndName(op.getReferencedModelElementId());
 
-			return MessageFormat.format(Messages.MultiReferenceMoveOperationItemProvider_Text,
-				op.getFeatureName(), elementName, movedElementName, op.getOldIndex(), op.getNewIndex());
+			return MessageFormat.format(Messages.MultiReferenceMoveOperationItemProvider_Text, op.getFeatureName(),
+				elementName, movedElementName, op.getOldIndex(), op.getNewIndex());
 		}
 		return super.getText(object);
 	}
@@ -175,8 +156,7 @@ public class MultiReferenceMoveOperationItemProvider extends FeatureOperationIte
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MultiReferenceMoveOperation.class))
-		{
+		switch (notification.getFeatureID(MultiReferenceMoveOperation.class)) {
 		case OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__OLD_INDEX:
 		case OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__NEW_INDEX:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

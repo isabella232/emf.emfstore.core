@@ -37,16 +37,13 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 * @generated
 	 */
 	public static RolesFactory init() {
-		try
-		{
+		try {
 			final RolesFactory theRolesFactory = (RolesFactory) EPackage.Registry.INSTANCE
 				.getEFactory(RolesPackage.eNS_URI);
-			if (theRolesFactory != null)
-			{
+			if (theRolesFactory != null) {
 				return theRolesFactory;
 			}
-		} catch (final Exception exception)
-		{
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new RolesFactoryImpl();
@@ -70,8 +67,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID())
-		{
+		switch (eClass.getClassifierID()) {
 		case RolesPackage.READER_ROLE:
 			return createReaderRole();
 		case RolesPackage.WRITER_ROLE:
@@ -90,6 +86,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ReaderRole createReaderRole() {
 		final ReaderRoleImpl readerRole = new ReaderRoleImpl();
 		return readerRole;
@@ -100,6 +97,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public WriterRole createWriterRole() {
 		final WriterRoleImpl writerRole = new WriterRoleImpl();
 		return writerRole;
@@ -110,6 +108,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ProjectAdminRole createProjectAdminRole() {
 		final ProjectAdminRoleImpl projectAdminRole = new ProjectAdminRoleImpl();
 		return projectAdminRole;
@@ -120,6 +119,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public ServerAdmin createServerAdmin() {
 		final ServerAdminImpl serverAdmin = new ServerAdminImpl();
 		return serverAdmin;
@@ -130,6 +130,7 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
+	@Override
 	public RolesPackage getRolesPackage() {
 		return (RolesPackage) getEPackage();
 	}

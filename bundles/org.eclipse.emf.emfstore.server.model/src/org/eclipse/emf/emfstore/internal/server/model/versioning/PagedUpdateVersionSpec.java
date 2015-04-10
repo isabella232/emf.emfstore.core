@@ -35,8 +35,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
  * @model
  * @generated
  */
-public interface PagedUpdateVersionSpec extends VersionSpec, APIDelegate<ESPagedUpdateVersionSpec>
-{
+public interface PagedUpdateVersionSpec extends VersionSpec, APIDelegate<ESPagedUpdateVersionSpec> {
 	/**
 	 * Returns the value of the '<em><b>Max Changes</b></em>' attribute.
 	 * <!-- begin-user-doc -->

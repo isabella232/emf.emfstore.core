@@ -53,6 +53,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 
 	private ESOperation apiImpl;
 
+	@Override
 	public ESOperation toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -60,6 +61,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 		return apiImpl;
 	}
 
+	@Override
 	public ESOperation createAPI() {
 		return new ESOperationImpl(this);
 	}
@@ -137,18 +139,16 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
+	@Override
 	public ModelElementId getModelElementId() {
-		if (modelElementId != null && modelElementId.eIsProxy())
-		{
+		if (modelElementId != null && modelElementId.eIsProxy()) {
 			final InternalEObject oldModelElementId = (InternalEObject) modelElementId;
 			modelElementId = (ModelElementId) eResolveProxy(oldModelElementId);
-			if (modelElementId != oldModelElementId)
-			{
+			if (modelElementId != oldModelElementId) {
 				final InternalEObject newModelElementId = (InternalEObject) modelElementId;
 				NotificationChain msgs = oldModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, null, null);
-				if (newModelElementId.eInternalContainer() == null)
-				{
+				if (newModelElementId.eInternalContainer() == null) {
 					msgs = newModelElementId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, null, msgs);
 				}
@@ -181,8 +181,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	public NotificationChain basicSetModelElementId(ModelElementId newModelElementId, NotificationChain msgs) {
 		final ModelElementId oldModelElementId = modelElementId;
 		modelElementId = newModelElementId;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, oldModelElementId, newModelElementId);
 			if (msgs == null) {
@@ -199,9 +198,9 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setModelElementId(ModelElementId newModelElementId) {
-		if (newModelElementId != modelElementId)
-		{
+		if (newModelElementId != modelElementId) {
 			NotificationChain msgs = null;
 			if (modelElementId != null) {
 				msgs = ((InternalEObject) modelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -215,8 +214,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, newModelElementId, newModelElementId));
 		}
@@ -227,6 +225,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
+	@Override
 	public boolean isAccepted() {
 		return accepted;
 	}
@@ -236,6 +235,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setAccepted(boolean newAccepted) {
 		final boolean oldAccepted = accepted;
 		accepted = newAccepted;
@@ -250,6 +250,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
+	@Override
 	public Date getClientDate() {
 		return clientDate;
 	}
@@ -259,6 +260,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setClientDate(Date newClientDate) {
 		final Date oldClientDate = clientDate;
 		clientDate = newClientDate;
@@ -275,8 +277,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID:
 			return basicSetModelElementId(null, msgs);
 		}
@@ -289,6 +290,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public abstract AbstractOperation reverse();
 
 	/**
@@ -313,8 +315,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID:
 			if (resolve) {
 				return getModelElementId();
@@ -335,8 +336,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID:
 			setModelElementId((ModelElementId) newValue);
 			return;
@@ -357,8 +357,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID:
 			setModelElementId((ModelElementId) null);
 			return;
@@ -379,8 +378,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case OperationsPackage.ABSTRACT_OPERATION__MODEL_ELEMENT_ID:
 			return modelElementId != null;
 		case OperationsPackage.ABSTRACT_OPERATION__ACCEPTED:
@@ -414,6 +412,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public OperationId getOperationId() {
 		if (identifier == null) {
 			throw new IllegalStateException("Operation does not have an identifier"); //$NON-NLS-1$
@@ -428,6 +427,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getAllInvolvedModelElements()
 	 */
+	@Override
 	public Set<ModelElementId> getAllInvolvedModelElements() {
 		final Set<ModelElementId> result = new LinkedHashSet<ModelElementId>();
 		if (getModelElementId() != null) {
@@ -442,6 +442,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getOtherInvolvedModelElements()
 	 */
+	@Override
 	public Set<ModelElementId> getOtherInvolvedModelElements() {
 		return new LinkedHashSet<ModelElementId>();
 	}

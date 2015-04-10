@@ -55,8 +55,7 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -73,8 +72,7 @@ public class SemanticCompositeOperationItemProvider extends CompositeOperationIt
 	@Override
 	public String getText(Object object) {
 		final String label = ((SemanticCompositeOperation) object).getCompositeName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SemanticCompositeOperation_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_SemanticCompositeOperation_type") : //$NON-NLS-1$
 			getString("_UI_SemanticCompositeOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

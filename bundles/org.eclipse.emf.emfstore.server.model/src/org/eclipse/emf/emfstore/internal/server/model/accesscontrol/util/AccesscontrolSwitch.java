@@ -51,8 +51,7 @@ public class AccesscontrolSwitch<T> {
 	 * @generated
 	 */
 	public AccesscontrolSwitch() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = AccesscontrolPackage.eINSTANCE;
 		}
 	}
@@ -80,14 +79,11 @@ public class AccesscontrolSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage)
-		{
+		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
-		return eSuperTypes.isEmpty() ?
-			defaultCase(theEObject) :
-			doSwitch(eSuperTypes.get(0), theEObject);
+		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -100,8 +96,7 @@ public class AccesscontrolSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID)
-		{
+		switch (classifierID) {
 		case AccesscontrolPackage.AC_USER: {
 			final ACUser acUser = (ACUser) theEObject;
 			T result = caseACUser(acUser);

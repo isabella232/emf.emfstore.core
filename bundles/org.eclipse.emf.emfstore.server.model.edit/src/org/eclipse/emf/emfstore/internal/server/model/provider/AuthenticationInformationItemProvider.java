@@ -56,8 +56,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -74,8 +73,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.AUTHENTICATION_INFORMATION__SESSION_ID);
 			childrenFeatures.add(ModelPackage.Literals.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER);
@@ -132,8 +130,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(AuthenticationInformation.class))
-		{
+		switch (notification.getFeatureID(AuthenticationInformation.class)) {
 		case ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID:
 		case ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -153,15 +150,12 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.AUTHENTICATION_INFORMATION__SESSION_ID,
-				ModelFactory.eINSTANCE.createSessionId()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.AUTHENTICATION_INFORMATION__SESSION_ID,
+			ModelFactory.eINSTANCE.createSessionId()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER,
-				AccesscontrolFactory.eINSTANCE.createACUser()));
+		newChildDescriptors.add(createChildParameter(
+			ModelPackage.Literals.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER,
+			AccesscontrolFactory.eINSTANCE.createACUser()));
 	}
 
 	/**

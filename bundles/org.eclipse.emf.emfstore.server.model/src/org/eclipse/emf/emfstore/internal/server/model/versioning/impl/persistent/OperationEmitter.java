@@ -95,8 +95,7 @@ public class OperationEmitter {
 			if (direction == Direction.Backward) {
 				Collections.reverse(readLines);
 			}
-			return Optional.of(
-				deserialize(StringUtils.join(readLines, StringUtils.EMPTY)));
+			return Optional.of(deserialize(StringUtils.join(readLines, StringUtils.EMPTY)));
 		}
 
 		return Optional.absent();

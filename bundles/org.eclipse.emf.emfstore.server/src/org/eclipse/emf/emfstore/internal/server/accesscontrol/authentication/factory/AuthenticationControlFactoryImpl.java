@@ -52,6 +52,7 @@ public final class AuthenticationControlFactoryImpl implements AuthenticationCon
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.factory.AuthenticationControlFactory#createAuthenticationControl(org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType)
 	 */
+	@Override
 	public AbstractAuthenticationControl createAuthenticationControl(AuthenticationControlType authenticationControlType)
 		throws FatalESException {
 

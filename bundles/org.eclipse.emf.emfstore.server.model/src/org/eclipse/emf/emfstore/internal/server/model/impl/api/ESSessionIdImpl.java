@@ -39,6 +39,7 @@ public class ESSessionIdImpl extends AbstractAPIImpl<ESSessionId, SessionId> imp
 	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
+	@Override
 	public String getId() {
 		return toInternalAPI().getId();
 	}

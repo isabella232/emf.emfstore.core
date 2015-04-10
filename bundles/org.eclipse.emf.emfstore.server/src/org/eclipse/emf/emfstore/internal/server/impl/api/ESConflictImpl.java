@@ -40,6 +40,7 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflict#getLocalOperations()
 	 */
+	@Override
 	public Set<ESOperation> getLocalOperations() {
 		return APIUtil.toExternal(toInternalAPI().getMyOperations());
 	}
@@ -50,6 +51,7 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflict#getRemoteOperations()
 	 */
+	@Override
 	public Set<ESOperation> getRemoteOperations() {
 		return APIUtil.toExternal(toInternalAPI().getTheirOperations());
 	}
@@ -60,6 +62,7 @@ public class ESConflictImpl extends AbstractAPIImpl<ESConflict, ConflictBucket> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESConflict#resolveConflict(java.util.Set, java.util.Set)
 	 */
+	@Override
 	public void resolveConflict(Set<ESOperation> acceptedLocalOperations, Set<ESOperation> rejectedRemoteOperations) {
 		final Set<AbstractOperation> internalAcceptedLocalOperations = APIUtil.toInternal(acceptedLocalOperations);
 		final Set<AbstractOperation> internalRejectedRemoteOperations = APIUtil.toInternal(rejectedRemoteOperations);

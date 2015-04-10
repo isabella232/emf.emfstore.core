@@ -106,7 +106,7 @@
           eType="#//versioning/TagVersionSpec" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="versionProperties" upperBound="-1"
           eType="#//versioning/VersionProperty" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="changePackage" eType="#//versioning/ChangePackage"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="changePackage" eType="#//versioning/AbstractChangePackage"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HistoryQuery" abstract="true">
@@ -186,7 +186,8 @@
           eType="#//versioning/OperationProxy" transient="true" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OperationProxy">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="proxies" upperBound="-1"
+          eType="#//versioning/OperationProxy" containment="true"/>
     </eClassifiers>
     <eSubpackages name="operations" nsURI="http://eclipse.org/emf/emfstore/server/model/versioning/operations"
         nsPrefix="org.eclipse.emf.emfstore.internal.server.model.versioning.operations">

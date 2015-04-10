@@ -33,8 +33,8 @@ import com.google.common.collect.Iterables;
  * @since 1.5
  *
  */
-public class ESFileBasedChangePackageImpl extends ESAbstractChangePackageImpl<FileBasedChangePackage>
-implements ESChangePackage {
+public class ESFileBasedChangePackageImpl extends ESAbstractChangePackageImpl<FileBasedChangePackage> implements
+	ESChangePackage {
 
 	/**
 	 * Constructor.
@@ -52,6 +52,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
+	@Override
 	public void setLogMessage(ESLogMessage logMessage) {
 		final LogMessage logMsg = ESLogMessageImpl.class.cast(logMessage).toInternalAPI();
 		toInternalAPI().setLogMessage(logMsg);
@@ -62,6 +63,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#addAll(java.util.List)
 	 */
+	@Override
 	public void addAll(List<ESOperation> ops) {
 		final List<AbstractOperation> internalOps = APIUtil.toInternal(ops);
 		toInternalAPI().addAll(internalOps);
@@ -73,6 +75,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
 	 */
+	@Override
 	public void add(ESOperation op) {
 		toInternalAPI().add(ESOperationImpl.class.cast(op).toInternalAPI());
 	}
@@ -82,6 +85,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#clear()
 	 */
+	@Override
 	public void clear() {
 		toInternalAPI().clear();
 	}
@@ -91,6 +95,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#isEmpty()
 	 */
+	@Override
 	public boolean isEmpty() {
 		return toInternalAPI().isEmpty();
 	}
@@ -100,6 +105,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
+	@Override
 	public List<ESOperation> removeFromEnd(int n) {
 		final List<AbstractOperation> removedOperations = toInternalAPI().removeAtEnd(n);
 		return APIUtil.toExternal(removedOperations);
@@ -110,16 +116,20 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
+	@Override
 	public ESCloseableIterable<ESOperation> operations() {
 		final ESCloseableIterable<AbstractOperation> operations = toInternalAPI().operations();
 		return new ESCloseableIterable<ESOperation>() {
 
+			@Override
 			public void close() {
 				operations.close();
 			}
 
+			@Override
 			public Iterable<ESOperation> iterable() {
 				final Function<AbstractOperation, ESOperation> toESOperation = new Function<AbstractOperation, ESOperation>() {
+					@Override
 					public ESOperation apply(AbstractOperation arg0) {
 						return new ESOperationImpl(arg0);
 					}
@@ -135,6 +145,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
+	@Override
 	public int size() {
 		return toInternalAPI().size();
 	}
@@ -144,6 +155,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reverse()
 	 */
+	@Override
 	public ESChangePackage reverse() {
 		final FileBasedChangePackage reversedChangePackage = toInternalAPI();
 		return reversedChangePackage.toAPI();
@@ -154,6 +166,7 @@ implements ESChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
+	@Override
 	public ESLogMessage getLogMessage() {
 		final LogMessage logMessage = toInternalAPI().getLogMessage();
 		if (logMessage == null) {

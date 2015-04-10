@@ -89,6 +89,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -98,6 +99,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -111,18 +113,16 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
+	@Override
 	public ProjectId getProjectId() {
-		if (projectId != null && projectId.eIsProxy())
-		{
+		if (projectId != null && projectId.eIsProxy()) {
 			final InternalEObject oldProjectId = (InternalEObject) projectId;
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
-			if (projectId != oldProjectId)
-			{
+			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
 				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
 					- UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, null);
-				if (newProjectId.eInternalContainer() == null)
-				{
+				if (newProjectId.eInternalContainer() == null) {
 					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
 						- UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
 				}
@@ -155,8 +155,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	public NotificationChain basicSetProjectId(ProjectId newProjectId, NotificationChain msgs) {
 		final ProjectId oldProjectId = projectId;
 		projectId = newProjectId;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, oldProjectId, newProjectId);
 			if (msgs == null) {
@@ -173,9 +172,9 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
+	@Override
 	public void setProjectId(ProjectId newProjectId) {
-		if (newProjectId != projectId)
-		{
+		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
 				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -189,8 +188,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID,
 				newProjectId, newProjectId));
 		}
@@ -203,8 +201,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID:
 			return basicSetProjectId(null, msgs);
 		}
@@ -218,8 +215,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.PROJECT_URL_FRAGMENT__NAME:
 			return getName();
 		case UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID:
@@ -238,8 +234,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.PROJECT_URL_FRAGMENT__NAME:
 			setName((String) newValue);
 			return;
@@ -257,8 +252,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.PROJECT_URL_FRAGMENT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -276,8 +270,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case UrlPackage.PROJECT_URL_FRAGMENT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID:
@@ -309,6 +302,7 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated NOT
 	 */
+	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getName());

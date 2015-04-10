@@ -38,11 +38,13 @@ public class FileDynamicModelProvider implements ESDynamicModelProvider {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESDynamicModelProvider#getDynamicModels()
 	 */
+	@Override
 	public List<EPackage> getDynamicModels() {
 		final File dir = new File(ServerConfiguration.getServerHome() + "dynamic-models");
 		File[] files = null;
 
 		files = dir.listFiles(new FilenameFilter() {
+			@Override
 			public boolean accept(File d, String name) {
 				return name.endsWith(".ecore");
 			}

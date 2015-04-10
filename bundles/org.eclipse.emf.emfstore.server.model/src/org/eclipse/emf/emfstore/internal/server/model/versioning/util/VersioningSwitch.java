@@ -64,8 +64,7 @@ public class VersioningSwitch<T> {
 	 * @generated
 	 */
 	public VersioningSwitch() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = VersioningPackage.eINSTANCE;
 		}
 	}
@@ -93,14 +92,11 @@ public class VersioningSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage)
-		{
+		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
-		return eSuperTypes.isEmpty() ?
-			defaultCase(theEObject) :
-			doSwitch(eSuperTypes.get(0), theEObject);
+		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -113,8 +109,7 @@ public class VersioningSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID)
-		{
+		switch (classifierID) {
 		case VersioningPackage.TAG_VERSION_SPEC: {
 			final TagVersionSpec tagVersionSpec = (TagVersionSpec) theEObject;
 			T result = caseTagVersionSpec(tagVersionSpec);
@@ -603,8 +598,7 @@ public class VersioningSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePagedUpdateVersionSpec(PagedUpdateVersionSpec object)
-	{
+	public T casePagedUpdateVersionSpec(PagedUpdateVersionSpec object) {
 		return null;
 	}
 
@@ -620,8 +614,7 @@ public class VersioningSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAbstractChangePackage(AbstractChangePackage object)
-	{
+	public T caseAbstractChangePackage(AbstractChangePackage object) {
 		return null;
 	}
 
@@ -637,8 +630,7 @@ public class VersioningSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseFileBasedChangePackage(FileBasedChangePackage object)
-	{
+	public T caseFileBasedChangePackage(FileBasedChangePackage object) {
 		return null;
 	}
 

@@ -39,6 +39,7 @@ public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, Ta
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec#getName()
 	 */
+	@Override
 	public String getName() {
 		return toInternalAPI().getName();
 	}

@@ -109,8 +109,7 @@ public interface ESVersionFactory extends ESFactory {
 	 *            target
 	 * @return version spec
 	 */
-	ESAncestorVersionSpec createANCESTOR(ESPrimaryVersionSpec source,
-		ESPrimaryVersionSpec target);
+	ESAncestorVersionSpec createANCESTOR(ESPrimaryVersionSpec source, ESPrimaryVersionSpec target);
 
 	/**
 	 * Checks whether two versions spec target the same branch.

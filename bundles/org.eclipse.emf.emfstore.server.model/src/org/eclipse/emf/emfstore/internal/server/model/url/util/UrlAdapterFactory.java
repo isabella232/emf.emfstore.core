@@ -45,8 +45,7 @@ public class UrlAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public UrlAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = UrlPackage.eINSTANCE;
 		}
 	}
@@ -62,12 +61,10 @@ public class UrlAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -79,35 +76,29 @@ public class UrlAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected UrlSwitch<Adapter> modelSwitch = new UrlSwitch<Adapter>()
-	{
+	protected UrlSwitch<Adapter> modelSwitch = new UrlSwitch<Adapter>() {
 		@Override
-		public Adapter caseServerUrl(ServerUrl object)
-		{
+		public Adapter caseServerUrl(ServerUrl object) {
 			return createServerUrlAdapter();
 		}
 
 		@Override
-		public Adapter caseProjectUrlFragment(ProjectUrlFragment object)
-		{
+		public Adapter caseProjectUrlFragment(ProjectUrlFragment object) {
 			return createProjectUrlFragmentAdapter();
 		}
 
 		@Override
-		public Adapter caseModelElementUrlFragment(ModelElementUrlFragment object)
-		{
+		public Adapter caseModelElementUrlFragment(ModelElementUrlFragment object) {
 			return createModelElementUrlFragmentAdapter();
 		}
 
 		@Override
-		public Adapter caseModelElementUrl(ModelElementUrl object)
-		{
+		public Adapter caseModelElementUrl(ModelElementUrl object) {
 			return createModelElementUrlAdapter();
 		}
 
 		@Override
-		public Adapter defaultCase(EObject object)
-		{
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};

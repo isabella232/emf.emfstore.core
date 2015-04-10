@@ -39,6 +39,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void addMember(SessionId sessionId, ACOrgUnitId group, ACOrgUnitId member) throws ESException {
 		getAdminEmfStore().addMember(sessionId, group, member);
 	}
@@ -46,6 +47,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void addParticipant(SessionId sessionId, ProjectId projectId, ACOrgUnitId participant, EClass roleClass)
 		throws ESException {
 		getAdminEmfStore().addParticipant(sessionId, projectId, participant, roleClass);
@@ -54,6 +56,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId, String name, String description)
 		throws ESException {
 		getAdminEmfStore().changeOrgUnit(sessionId, orgUnitId, name, description);
@@ -67,6 +70,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
 	 */
+	@Override
 	public void changeUser(SessionId sessionId, ACOrgUnitId userId, String name, String password) throws ESException {
 		getAdminEmfStore().changeUser(sessionId, userId, name, password);
 	}
@@ -74,6 +78,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeRole(SessionId sessionId, ProjectId projectId, ACOrgUnitId orgUnit, EClass role)
 		throws ESException {
 		getAdminEmfStore().changeRole(sessionId, projectId, orgUnit, role);
@@ -82,6 +87,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public ACOrgUnitId createGroup(SessionId sessionId, String name) throws ESException {
 		return getAdminEmfStore().createGroup(sessionId, name);
 	}
@@ -89,6 +95,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public ACOrgUnitId createUser(SessionId sessionId, String name) throws ESException {
 		return getAdminEmfStore().createUser(sessionId, name);
 	}
@@ -96,6 +103,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void deleteGroup(SessionId sessionId, ACOrgUnitId group) throws ESException {
 		getAdminEmfStore().deleteGroup(sessionId, group);
 	}
@@ -103,6 +111,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void deleteUser(SessionId sessionId, ACOrgUnitId user) throws ESException {
 		getAdminEmfStore().deleteUser(sessionId, user);
 	}
@@ -110,6 +119,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACGroup> getGroups(SessionId sessionId) throws ESException {
 		return getAdminEmfStore().getGroups(sessionId);
 	}
@@ -117,6 +127,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACGroup> getGroups(SessionId sessionId, ACOrgUnitId user) throws ESException {
 		return getAdminEmfStore().getGroups(sessionId, user);
 	}
@@ -124,6 +135,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 		return getAdminEmfStore().getMembers(sessionId, groupId);
 	}
@@ -131,6 +143,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		return getAdminEmfStore().getOrgUnit(sessionId, orgUnitId);
 	}
@@ -138,6 +151,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		return getAdminEmfStore().getOrgUnits(sessionId);
 	}
@@ -145,6 +159,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 		return getAdminEmfStore().getParticipants(sessionId, projectId);
 	}
@@ -152,6 +167,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ProjectInfo> getProjectInfos(SessionId sessionId) throws ESException {
 		return getAdminEmfStore().getProjectInfos(sessionId);
 	}
@@ -159,6 +175,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Role getRole(SessionId sessionId, ProjectId projectId, ACOrgUnitId orgUnit) throws ESException {
 		return getAdminEmfStore().getRole(sessionId, projectId, orgUnit);
 	}
@@ -166,6 +183,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACUser> getUsers(SessionId sessionId) throws ESException {
 		return getAdminEmfStore().getUsers(sessionId);
 	}
@@ -173,6 +191,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeGroup(SessionId sessionId, ACOrgUnitId user, ACOrgUnitId group) throws ESException {
 		getAdminEmfStore().removeGroup(sessionId, user, group);
 	}
@@ -180,6 +199,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeMember(SessionId sessionId, ACOrgUnitId group, ACOrgUnitId member) throws ESException {
 		getAdminEmfStore().removeMember(sessionId, group, member);
 	}
@@ -187,6 +207,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeParticipant(SessionId sessionId, ProjectId projectId, ACOrgUnitId participant)
 		throws ESException {
 		getAdminEmfStore().removeParticipant(sessionId, projectId, participant);
@@ -198,6 +219,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#assignRole(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
 	 */
+	@Override
 	public void assignRole(SessionId sessionId, ACOrgUnitId orgUnitId, EClass roleClass) throws ESException {
 		getAdminEmfStore().assignRole(sessionId, orgUnitId, roleClass);
 	}
@@ -209,6 +231,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
 	 */
+	@Override
 	public void addInitialParticipant(SessionId sessionId, ProjectId projectId, ACOrgUnitId participantId,
 		EClass roleClass) throws ESException {
 		getAdminEmfStore().addInitialParticipant(sessionId, projectId, participantId, roleClass);

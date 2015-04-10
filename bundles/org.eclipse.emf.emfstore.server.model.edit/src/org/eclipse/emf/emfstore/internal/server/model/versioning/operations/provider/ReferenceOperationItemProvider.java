@@ -49,8 +49,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addBidirectionalPropertyDescriptor(object);
@@ -67,20 +66,14 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addBidirectionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReferenceOperation_bidirectional_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_bidirectional_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.REFERENCE_OPERATION__BIDIRECTIONAL,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReferenceOperation_bidirectional_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_bidirectional_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_ReferenceOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.REFERENCE_OPERATION__BIDIRECTIONAL, true, false, false,
+			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,20 +83,14 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addOppositeFeatureNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReferenceOperation_oppositeFeatureName_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_oppositeFeatureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReferenceOperation_oppositeFeatureName_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_oppositeFeatureName_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_ReferenceOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -113,20 +100,14 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addContainmentTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ReferenceOperation_containmentType_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_containmentType_feature", //$NON-NLS-1$ //$NON-NLS-2$
-					"_UI_ReferenceOperation_type"), //$NON-NLS-1$
-				OperationsPackage.Literals.REFERENCE_OPERATION__CONTAINMENT_TYPE,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ReferenceOperation_containmentType_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", "_UI_ReferenceOperation_containmentType_feature", //$NON-NLS-1$ //$NON-NLS-2$
+				"_UI_ReferenceOperation_type"), //$NON-NLS-1$
+			OperationsPackage.Literals.REFERENCE_OPERATION__CONTAINMENT_TYPE, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	// begin of custom code
@@ -153,8 +134,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	@Override
 	public String getText(Object object) {
 		final String label = ((ReferenceOperation) object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ReferenceOperation_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_ReferenceOperation_type") : //$NON-NLS-1$
 			getString("_UI_ReferenceOperation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -170,8 +150,7 @@ public class ReferenceOperationItemProvider extends FeatureOperationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ReferenceOperation.class))
-		{
+		switch (notification.getFeatureID(ReferenceOperation.class)) {
 		case OperationsPackage.REFERENCE_OPERATION__BIDIRECTIONAL:
 		case OperationsPackage.REFERENCE_OPERATION__OPPOSITE_FEATURE_NAME:
 		case OperationsPackage.REFERENCE_OPERATION__CONTAINMENT_TYPE:

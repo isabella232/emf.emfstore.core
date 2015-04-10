@@ -37,14 +37,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class OperationProxyItemProvider
-	extends ItemProviderAdapter
-	implements
-	IEditingDomainItemProvider,
-	ITreeItemContentProvider,
-	IItemLabelProvider,
-	IItemPropertySource
-{
+public class OperationProxyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -52,8 +46,7 @@ public class OperationProxyItemProvider
 	 *
 	 * @generated
 	 */
-	public OperationProxyItemProvider(AdapterFactory adapterFactory)
-	{
+	public OperationProxyItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,10 +58,8 @@ public class OperationProxyItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addLabelPropertyDescriptor(object);
@@ -83,23 +74,15 @@ public class OperationProxyItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addLabelPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_OperationProxy_label_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_OperationProxy_label_feature", "_UI_OperationProxy_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.OPERATION_PROXY__LABEL,
-				true,
-				false,
-				false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				null,
-				null));
+	protected void addLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_OperationProxy_label_feature"), //$NON-NLS-1$
+			getString(
+				"_UI_PropertyDescriptor_description", "_UI_OperationProxy_label_feature", "_UI_OperationProxy_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			VersioningPackage.Literals.OPERATION_PROXY__LABEL, true, false, false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -110,8 +93,7 @@ public class OperationProxyItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationProxy")); //$NON-NLS-1$
 	}
 
@@ -123,11 +105,9 @@ public class OperationProxyItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		final String label = ((OperationProxy) object).getLabel();
-		return label == null || label.length() == 0 ?
-			getString("_UI_OperationProxy_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_OperationProxy_type") : //$NON-NLS-1$
 			getString("_UI_OperationProxy_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -140,12 +120,10 @@ public class OperationProxyItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(OperationProxy.class))
-		{
+		switch (notification.getFeatureID(OperationProxy.class)) {
 		case VersioningPackage.OPERATION_PROXY__LABEL:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
@@ -162,8 +140,7 @@ public class OperationProxyItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -175,8 +152,7 @@ public class OperationProxyItemProvider
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return ServerEditPlugin.INSTANCE;
 	}
 

@@ -80,6 +80,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACGroup> getGroups(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
 		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
@@ -96,6 +97,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACGroup> getGroups(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		checkForNulls(sessionId, orgUnitId);
 		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
@@ -115,6 +117,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public ACOrgUnitId createGroup(SessionId sessionId, String name) throws ESException {
 
 		checkForNulls(sessionId, name);
@@ -148,6 +151,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeGroup(SessionId sessionId, ACOrgUnitId user, ACOrgUnitId group) throws ESException {
 
 		checkForNulls(sessionId, user, group);
@@ -166,6 +170,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void deleteGroup(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 
 		checkForNulls(sessionId, groupId);
@@ -199,6 +204,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 
 		checkForNulls(sessionId, groupId);
@@ -217,6 +223,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void addMember(SessionId sessionId, ACOrgUnitId group, ACOrgUnitId member) throws ESException {
 
 		checkForNulls(sessionId, group, member);
@@ -241,6 +248,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeMember(SessionId sessionId, ACOrgUnitId group, ACOrgUnitId member) throws ESException {
 
 		checkForNulls(sessionId, group, member);
@@ -267,6 +275,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 
 		checkForNulls(sessionId);
@@ -297,6 +306,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void addParticipant(SessionId sessionId, ProjectId projectId, ACOrgUnitId participantId, EClass roleClass)
 		throws ESException {
 
@@ -336,6 +346,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void addInitialParticipant(SessionId sessionId, ProjectId projectId, ACOrgUnitId participantId,
 		EClass roleClass) throws ESException {
 
@@ -412,6 +423,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeParticipant(SessionId sessionId, ProjectId projectId, ACOrgUnitId participantId)
 		throws ESException {
 		checkForNulls(sessionId, projectId, participantId);
@@ -440,6 +452,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Role getRole(SessionId sessionId, ProjectId projectId, ACOrgUnitId orgUnitId) throws ESException {
 
 		checkForNulls(sessionId, projectId, orgUnitId);
@@ -458,6 +471,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeRole(SessionId sessionId, ProjectId projectId, ACOrgUnitId orgUnitId, EClass roleClass)
 		throws ESException {
 
@@ -514,6 +528,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void assignRole(SessionId sessionId, ACOrgUnitId orgUnitId, EClass roleClass)
 		throws ESException {
 
@@ -546,6 +561,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACUser> getUsers(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
 		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
@@ -559,6 +575,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
 		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);
@@ -577,6 +594,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<ProjectInfo> getProjectInfos(SessionId sessionId) throws ESException {
 		checkForNulls(sessionId);
 		final List<ProjectInfo> result = new ArrayList<ProjectInfo>();
@@ -594,6 +612,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public ACOrgUnitId createUser(SessionId sessionId, String name) throws ESException {
 		checkForNulls(sessionId, name);
 		getAuthorizationControl().checkProjectAdminAccess(sessionId, null, PAPrivileges.CreateUser);
@@ -621,6 +640,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void deleteUser(SessionId sessionId, ACOrgUnitId userId) throws ESException {
 		checkForNulls(sessionId, userId);
 		getAuthorizationControl()
@@ -646,6 +666,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId, String name, String description)
 		throws ESException {
 		checkForNulls(sessionId, orgUnitId, name, description);
@@ -664,6 +685,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
 	 */
+	@Override
 	public void changeUser(SessionId sessionId, ACOrgUnitId userId, String name, String password) throws ESException {
 
 		checkForNulls(sessionId, userId, name, password);
@@ -697,6 +719,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		checkForNulls(sessionId, orgUnitId);
 		getAuthorizationControl().checkProjectAdminAccess(sessionId, null);

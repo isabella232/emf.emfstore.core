@@ -118,8 +118,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 
 		// Obtain or create and register package
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new UrlPackageImpl());
+			.get(eNS_URI) : new UrlPackageImpl());
 
 		isInited = true;
 
@@ -188,6 +187,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getServerUrl() {
 		return serverUrlEClass;
 	}
@@ -197,6 +197,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServerUrl_HostName() {
 		return (EAttribute) serverUrlEClass.getEStructuralFeatures().get(0);
 	}
@@ -206,6 +207,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServerUrl_Port() {
 		return (EAttribute) serverUrlEClass.getEStructuralFeatures().get(1);
 	}
@@ -215,6 +217,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectUrlFragment() {
 		return projectUrlFragmentEClass;
 	}
@@ -224,6 +227,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectUrlFragment_Name() {
 		return (EAttribute) projectUrlFragmentEClass.getEStructuralFeatures().get(0);
 	}
@@ -233,6 +237,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectUrlFragment_ProjectId() {
 		return (EReference) projectUrlFragmentEClass.getEStructuralFeatures().get(1);
 	}
@@ -242,6 +247,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getModelElementUrlFragment() {
 		return modelElementUrlFragmentEClass;
 	}
@@ -251,6 +257,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getModelElementUrlFragment_Name() {
 		return (EAttribute) modelElementUrlFragmentEClass.getEStructuralFeatures().get(0);
 	}
@@ -260,6 +267,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getModelElementUrlFragment_ModelElementId() {
 		return (EReference) modelElementUrlFragmentEClass.getEStructuralFeatures().get(1);
 	}
@@ -269,6 +277,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EClass getModelElementUrl() {
 		return modelElementUrlEClass;
 	}
@@ -278,6 +287,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getModelElementUrl_ServerUrl() {
 		return (EReference) modelElementUrlEClass.getEStructuralFeatures().get(0);
 	}
@@ -287,6 +297,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getModelElementUrl_ProjectUrlFragment() {
 		return (EReference) modelElementUrlEClass.getEStructuralFeatures().get(1);
 	}
@@ -296,6 +307,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getModelElementUrl_ModelElementUrlFragment() {
 		return (EReference) modelElementUrlEClass.getEStructuralFeatures().get(2);
 	}
@@ -305,6 +317,7 @@ public class UrlPackageImpl extends EPackageImpl implements UrlPackage {
 	 *
 	 * @generated
 	 */
+	@Override
 	public UrlFactory getUrlFactory() {
 		return (UrlFactory) getEFactoryInstance();
 	}
