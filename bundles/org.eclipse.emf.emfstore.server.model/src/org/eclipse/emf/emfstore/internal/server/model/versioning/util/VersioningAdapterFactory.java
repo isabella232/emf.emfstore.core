@@ -26,6 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -191,6 +192,11 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseFileBasedChangePackage(FileBasedChangePackage object) {
 			return createFileBasedChangePackageAdapter();
+		}
+
+		@Override
+		public Adapter caseOperationProxy(OperationProxy object) {
+			return createOperationProxyAdapter();
 		}
 
 		@Override

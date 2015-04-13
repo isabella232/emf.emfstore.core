@@ -1178,14 +1178,14 @@ public interface VersioningPackage extends EPackage {
 	int OPERATION_PROXY = 20;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Proxies</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_PROXY__LABEL = 0;
+	int OPERATION_PROXY__PROXIES = 0;
 
 	/**
 	 * The number of structural features of the '<em>Operation Proxy</em>' class.
@@ -2092,17 +2092,17 @@ public interface VersioningPackage extends EPackage {
 	EClass getOperationProxy();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getLabel <em>Label</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getProxies <em>Proxies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getLabel()
+	 * @return the meta object for the containment reference list '<em>Proxies</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getProxies()
 	 * @see #getOperationProxy()
 	 * @generated
 	 */
-	EAttribute getOperationProxy_Label();
+	EReference getOperationProxy_Proxies();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -2831,13 +2831,13 @@ public interface VersioningPackage extends EPackage {
 		EClass OPERATION_PROXY = eINSTANCE.getOperationProxy();
 
 		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Proxies</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
 		 * @generated
 		 */
-		EAttribute OPERATION_PROXY__LABEL = eINSTANCE.getOperationProxy_Label();
+		EReference OPERATION_PROXY__PROXIES = eINSTANCE.getOperationProxy_Proxies();
 
 	}
 

@@ -34,7 +34,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.change.ChangePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -75,6 +74,7 @@ import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileDownloadS
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileInformation;
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileTransferManager;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
+import org.eclipse.emf.emfstore.internal.client.model.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.observers.DeleteProjectSpaceObserver;
 import org.eclipse.emf.emfstore.internal.client.properties.PropertyManager;
@@ -84,7 +84,6 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
-import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
@@ -100,6 +99,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragmen
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -525,8 +525,8 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage(boolean)
 	 */
 	public AbstractChangePackage getLocalChangePackage(boolean canonize) {
-		final FileBasedChangePackage changePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		changePackage.initialize(FileUtil.createLocationForTemporaryChangePackage());
+		final AbstractChangePackage changePackage = ChangePackageUtil.createChangePackage();
+
 		// copy operations from ProjectSpace
 		final ESCloseableIterable<AbstractOperation> operations = getLocalChangePackage().operations();
 		try {
@@ -669,12 +669,19 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		initPropertyMap();
 
 		final URI localChangePackageUri = ESClientURIUtil.createOperationsURI(this);
-		final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
-		final String filePath = normalizedUri.toFileString();
 		AbstractChangePackage localChangePackage = getLocalChangePackage();
+
 		if (localChangePackage == null) {
-			localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-			((FileBasedChangePackage) localChangePackage).initialize(filePath);
+			if (Configuration.getClientBehavior().useFileBasedChangePackage()) {
+				final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
+				final String filePath = normalizedUri.toFileString();
+				localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+				((FileBasedChangePackage) localChangePackage).initialize(filePath);
+			} else {
+				localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
+				final Resource resource = getResourceSet().getResource(localChangePackageUri, false);
+				resource.getContents().add(localChangePackage);
+			}
 			setChangePackage(localChangePackage);
 		}
 
@@ -1040,8 +1047,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		}
 
 		mergeResult.addAll(acceptedMineList);
-		final FileBasedChangePackage result = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		result.initialize(FileUtil.createLocationForTemporaryChangePackage());
+		final AbstractChangePackage result = ChangePackageUtil.createChangePackage();
 
 		// dup op in mergeResult
 		result.addAll(mergeResult);

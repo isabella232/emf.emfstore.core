@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
 
-public abstract class ESTestWithSharedProject extends ESTestWithLoggedInUser {
+public abstract class ESTestWithSharedProject extends ESTestWithLoggedInUserMock {
 
 	private final ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
 

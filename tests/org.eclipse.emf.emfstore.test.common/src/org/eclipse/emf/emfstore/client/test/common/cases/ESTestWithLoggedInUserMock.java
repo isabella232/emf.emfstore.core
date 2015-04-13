@@ -1,13 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
- *
+ * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
- * Edgar - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.cases;
 
@@ -36,10 +35,17 @@ import org.junit.After;
 import org.junit.Before;
 
 /**
- * @author Edgar
- *
+ * A test case that involves a started server and an already logged-in user.
+ * The user to be logged can be specified via the {@link #getUser()} and {@link #getPassword()} methods.
+ * If the user does not exists it will be created. <br/>
+ * <br/>
+ * <b>NOTE</b>: Remember to call {@code startEMFStore()} and {@code stopEMFStore()} respectively in
+ * {@code beforeClass()} and {@code afterClass()}.
+ * 
+ * @author emueller
+ * 
  */
-public class ESTestWithLoggedInUser extends ESTestWithServer {
+public abstract class ESTestWithLoggedInUserMock extends ESTestWithMockServer {
 
 	private ESServer server;
 	private ESUsersession usersession;
@@ -65,7 +71,7 @@ public class ESTestWithLoggedInUser extends ESTestWithServer {
 
 	/**
 	 * Returns the name of the user that is used by the test.
-	 *
+	 * 
 	 * @return the user name
 	 */
 	public String getUser() {
@@ -74,7 +80,7 @@ public class ESTestWithLoggedInUser extends ESTestWithServer {
 
 	/**
 	 * Returns the password of the user that is used by the test to login the user.
-	 *
+	 * 
 	 * @return the password to be used to perform the login.
 	 */
 	public String getPassword() {

@@ -15,7 +15,7 @@ import static org.junit.Assert.fail;
 
 import org.eclipse.emf.emfstore.client.test.common.builders.BOOL.TRUE;
 import org.eclipse.emf.emfstore.client.test.common.builders.UserBuilder;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Delete;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
 
-public abstract class TransmissionTests extends ESTestWithLoggedInUser {
+public abstract class TransmissionTests extends ESTestWithLoggedInUserMock {
 
 	private static final String BAR = "bar"; //$NON-NLS-1$
 	private static final String WRITER2 = "writer2"; //$NON-NLS-1$

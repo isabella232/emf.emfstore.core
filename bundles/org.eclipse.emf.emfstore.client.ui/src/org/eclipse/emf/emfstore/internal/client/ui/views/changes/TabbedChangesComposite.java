@@ -41,6 +41,7 @@ public class TabbedChangesComposite extends Composite {
 	private Composite tabComposite;
 	private TreeViewer tabTreeViewer;
 	private SCMContentProvider contentProvider;
+	private SCMLabelProvider labelProvider;
 
 	/**
 	 * Default constructor.
@@ -111,17 +112,27 @@ public class TabbedChangesComposite extends Composite {
 
 		contentProvider = new SCMContentProvider(idToEObjectMapping);
 		contentProvider.setShowRootNodes(showRootNodes);
-		final SCMLabelProvider detailedLabelProvider = new SCMLabelProvider(project);
-		detailedLabelProvider
-			.setChangePackageVisualizationHelper(new ChangePackageVisualizationHelper(
-				idToEObjectMapping));
+		labelProvider = new SCMLabelProvider(project);
+		labelProvider.setChangePackageVisualizationHelper(
+			new ChangePackageVisualizationHelper(idToEObjectMapping));
 		tabTreeViewer.setContentProvider(contentProvider);
-		tabTreeViewer.setLabelProvider(detailedLabelProvider);
+		tabTreeViewer.setLabelProvider(labelProvider);
 		tabTreeViewer.expandToLevel(1);
 
 		final TabItem opTab = new TabItem(folder, style);
 		opTab.setText(Messages.TabbedChangesComposite_OperationsText);
 		opTab.setControl(tabComposite);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.swt.widgets.Widget#dispose()
+	 */
+	@Override
+	public void dispose() {
+		contentProvider.dispose();
+		labelProvider.dispose();
 	}
 
 }

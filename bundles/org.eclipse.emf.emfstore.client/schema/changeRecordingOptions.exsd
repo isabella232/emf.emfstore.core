@@ -84,6 +84,13 @@
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="useInMemoryChangePackage" type="boolean">
+            <annotation>
+               <documentation>
+                  Whether to use in-memory change packages instead of the default file-based ones.
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

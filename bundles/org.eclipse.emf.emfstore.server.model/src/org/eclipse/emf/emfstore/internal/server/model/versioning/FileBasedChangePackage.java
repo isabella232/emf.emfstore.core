@@ -12,6 +12,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
 /**
@@ -88,6 +89,9 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	/**
 	 * Initializes this change package.
 	 *
+	 * @param filePath
+	 *            the file path where the change package should be initialized
+	 *
 	 * @generated NOT
 	 */
 	void initialize(String filePath);
@@ -100,5 +104,26 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	 */
 	@Override
 	FileBasedChangePackage reverse();
+
+	/**
+	 * Returns the operation at the given index.
+	 *
+	 * @param index
+	 *            the requested index
+	 * @return the operation corresponding to the given index
+	 *
+	 * @generated NOT
+	 */
+	// TODO: move to AbstractChangePackage maybe?
+	AbstractOperation get(int index);
+
+	/**
+	 * Converts this file-based change package to an in-memory change package.<br>
+	 * <b>NOTE</b>: for very big change packages this might cause a serious
+	 * performance hit and also cause {@link OutOfMemoryError}s.
+	 * 
+	 * @return an in-memory change-package
+	 */
+	ChangePackage toInMemoryChangePackage();
 
 } // FileBasedChangePackage

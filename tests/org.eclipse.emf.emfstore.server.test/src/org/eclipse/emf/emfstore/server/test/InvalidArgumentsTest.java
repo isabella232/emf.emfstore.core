@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -37,6 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -53,7 +54,7 @@ import org.junit.Test;
 
 /**
  * This test calls the servermethods with null arguments.
- * 
+ *
  * @author wesendon
  */
 public class InvalidArgumentsTest {
@@ -164,8 +165,8 @@ public class InvalidArgumentsTest {
 	public void createVersionTest() throws ESException {
 		try {
 			testAllInvalidCombinations(connectionManager.getClass().getMethod("createVersion", //$NON-NLS-1$
-				new Class[] { SessionId.class, ProjectId.class, PrimaryVersionSpec.class, ChangePackage.class,
-					BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
+				new Class[] { SessionId.class, ProjectId.class, PrimaryVersionSpec.class, AbstractChangePackage.class,
+				BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
 		} catch (final SecurityException e) {
 			throw new ESException(e);
 		} catch (final NoSuchMethodException e) {

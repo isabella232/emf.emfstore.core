@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
 
-public abstract class ESTestWithRemoteProject extends ESTestWithLoggedInUser {
+public abstract class ESTestWithRemoteProject extends ESTestWithLoggedInUserMock {
 
 	private ESRemoteProject remoteProject;
 

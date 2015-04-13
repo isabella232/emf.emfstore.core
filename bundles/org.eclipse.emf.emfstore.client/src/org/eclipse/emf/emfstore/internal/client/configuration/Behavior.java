@@ -46,12 +46,14 @@ public class Behavior {
 	private static final String CUT_OFF_INCOMING_CROSS_REFS_EXTENSION_POINT_ATTRIBUTE_NAME = "cutOffIncomingCrossReferences"; //$NON-NLS-1$
 	private static final String FORCE_COMMANDS_EXTENSION_POINT_ATTRIBUTE_NAME = "forceCommands"; //$NON-NLS-1$
 	private static final String DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME = "denyAddCutElementsToModelElements"; //$NON-NLS-1$
+	private static final String USE_IN_MEMORY_CHANGE_PACKAGE = "useInMemoryChangePackage"; //$NON-NLS-1$
 
 	private static Boolean isAutoSaveActive;
 	private static Boolean isRerecordingActive;
 	private static Boolean isCutOffIncomingCrossReferencesActive;
 	private static Boolean isForceCommandsActive;
 	private static Boolean isDenyAddCutElementsToModelElementsFeatureActive;
+	private static Boolean isUseMemoryChangePackageActive;
 
 	private ESChecksumErrorHandler checksumErrorHandler;
 
@@ -195,6 +197,22 @@ public class Behavior {
 	 */
 	public void setChecksumErrorHandler(ESChecksumErrorHandler errorHandler) {
 		checksumErrorHandler = errorHandler;
+	}
+
+	/**
+	 * Whether the in-memory change package should be used.
+	 *
+	 * @return {@code true}, if the in-memory change package should be used, {@code false} otherwise
+	 */
+	public boolean useFileBasedChangePackage() {
+		if (isUseMemoryChangePackageActive == null) {
+			final ESExtensionPoint extensionPoint = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME);
+			isUseMemoryChangePackageActive = extensionPoint.getBoolean(USE_IN_MEMORY_CHANGE_PACKAGE);
+			if (isUseMemoryChangePackageActive == null) {
+				isUseMemoryChangePackageActive = Boolean.getBoolean("emfstore.inMemoryChangePackage"); //$NON-NLS-1$
+			}
+		}
+		return isUseMemoryChangePackageActive;
 	}
 
 	/**

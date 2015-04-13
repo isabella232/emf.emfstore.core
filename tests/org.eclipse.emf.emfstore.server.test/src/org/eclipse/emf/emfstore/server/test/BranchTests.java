@@ -26,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.emfstore.client.ESLocalProject;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.dsl.TestElementFeatures;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Update;
@@ -50,7 +50,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class BranchTests extends ESTestWithLoggedInUser {
+public class BranchTests extends ESTestWithLoggedInUserMock {
 
 	private static final String JERRY = "Jerry"; //$NON-NLS-1$
 	private static final String GUENTHER = "Guenther"; //$NON-NLS-1$

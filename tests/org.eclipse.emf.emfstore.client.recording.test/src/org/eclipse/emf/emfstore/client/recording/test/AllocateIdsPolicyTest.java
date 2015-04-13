@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jsommerfeldt
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
 import org.eclipse.emf.emfstore.bowling.Game;
 import org.eclipse.emf.emfstore.bowling.Matchup;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
@@ -40,11 +40,11 @@ import org.junit.Test;
 
 /**
  * Test the allocate ids policy of the {@link org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection}.
- * 
+ *
  * @author jsommerfeldt
- * 
+ *
  */
-public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
+public class AllocateIdsPolicyTest extends ESTestWithLoggedInUserMock {
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -70,7 +70,7 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Check clear after server actions.
-	 * 
+	 *
 	 * @throws ESException if there is a problem during a server action.
 	 */
 	@Test
@@ -113,7 +113,7 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Remove and add objects wihtin one command.
-	 * 
+	 *
 	 * @param comparator The {@link IdComparator} to compare ids.
 	 */
 	public void removeAddWithCommand(IdComparator comparator) {
@@ -151,7 +151,7 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Remove and add objects within several commands.
-	 * 
+	 *
 	 * @param comparator The {@link IdComparator} to compare ids.
 	 */
 	public void removeAddWithCommands(IdComparator comparator) {
@@ -196,7 +196,7 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Remove and add objects without commands.
-	 * 
+	 *
 	 * @param comparator The {@link IdComparator} to compare ids.
 	 */
 	public void removeAddWithoutCommand(IdComparator comparator) {
@@ -219,7 +219,7 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Remove an element by setting the reference to null and add it again- All without commands.
-	 * 
+	 *
 	 * @param comparator The {@link IdComparator} to compare ids.
 	 */
 	public void removeAddWithoutCommand2(IdComparator comparator) {
@@ -238,9 +238,9 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Internal interface for comparison.
-	 * 
+	 *
 	 * @author jsommerfeldt
-	 * 
+	 *
 	 */
 	private interface IdComparator {
 		void compare(ModelElementId id1, ModelElementId id2);
@@ -248,9 +248,9 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Internal equal {@link IdComparator}.
-	 * 
+	 *
 	 * @author jsommerfeldt
-	 * 
+	 *
 	 */
 	private static class EqualComparator implements IdComparator {
 		public void compare(ModelElementId id1, ModelElementId id2) {
@@ -260,9 +260,9 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUser {
 
 	/**
 	 * Internal not equal {@link IdComparator}.
-	 * 
+	 *
 	 * @author jsommerfeldt
-	 * 
+	 *
 	 */
 	private static class NotEqualComparator implements IdComparator {
 		public void compare(ModelElementId id1, ModelElementId id2) {

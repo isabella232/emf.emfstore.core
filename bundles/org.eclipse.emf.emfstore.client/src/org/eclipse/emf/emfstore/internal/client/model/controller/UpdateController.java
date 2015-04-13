@@ -11,8 +11,6 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,18 +26,16 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
+import org.eclipse.emf.emfstore.internal.client.model.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
-import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.impl.api.ESConflictSetImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
@@ -123,15 +119,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		checkAndRemoveDuplicateOperations(incomingChanges);
 
-		// TODO: LCP - operations are fully copied and held in memory
-		FileBasedChangePackage copiedLocalChangedPackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		copiedLocalChangedPackage.initialize(
-			FileUtil.createLocationForTemporaryChangePackage());
+		AbstractChangePackage copiedLocalChangedPackage = ChangePackageUtil.createChangePackage();
 		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
 			.operations();
 		try {
 			for (final AbstractOperation operation : operations.iterable()) {
-				copiedLocalChangedPackage.add(operation);
+				copiedLocalChangedPackage.add(ModelUtil.clone(operation));
 			}
 		} finally {
 			operations.close();
@@ -180,13 +173,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				getProgressMonitor().subTask(Messages.UpdateController_ConflictsDetected);
 				if (callback.conflictOccurred(new ESConflictSetImpl(changeConflictSet), getProgressMonitor())) {
 
-					final List<AbstractChangePackage> changePackageAsList = Lists.newArrayList();
-					changePackageAsList.add(copiedLocalChangedPackage);
+					final List<AbstractChangePackage> myChanges = Lists.newArrayList();
+					myChanges.add(copiedLocalChangedPackage);
 
-					// TODO: LCP cast
-					copiedLocalChangedPackage = (FileBasedChangePackage) getProjectSpace().mergeResolvedConflicts(
+					copiedLocalChangedPackage = getProjectSpace().mergeResolvedConflicts(
 						changeConflictSet,
-						changePackageAsList,
+						myChanges,
 						incomingChanges);
 					// continue with update by applying changes
 				} else {
@@ -295,32 +287,30 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			return false;
 		}
 
-		final FileBasedChangePackage tempChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		tempChangePackage.initialize(
-			FileUtil.createLocationForTemporaryChangePackage());
+		final AbstractChangePackage tempChangePackage = ChangePackageUtil.createChangePackage();
 		final ESCloseableIterable<AbstractOperation> localOperations = localChanges.operations();
 		final ESCloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
-		final Iterator<AbstractOperation> localOperationsIterator = localOperations.iterable().iterator();
-		final Iterator<AbstractOperation> incomingOpsIterator = incomingOps.iterable().iterator();
-
 		final int incomingOpsSize = incomingChanges.size();
 		int incomingIdx = 0;
 		boolean operationMatchingStarted = false;
 
 		try {
+			final Iterator<AbstractOperation> localOperationsIterator = localOperations.iterable().iterator();
+			final Iterator<AbstractOperation> incomingOpsIterator = incomingOps.iterable().iterator();
+
 			while (localOperationsIterator.hasNext()) {
 				final AbstractOperation localOp = localOperationsIterator.next();
 				if (incomingIdx == incomingOpsSize) {
 					new EMFStoreCommand() {
 						@Override
 						protected void doRun() {
-							tempChangePackage.add(localOp);
+							tempChangePackage.add(ModelUtil.clone(localOp));
 						}
 					}.run(false);
 					while (localOperationsIterator.hasNext()) {
 						// add all remaining local ops
 						final AbstractOperation next = localOperationsIterator.next();
-						tempChangePackage.add(next);
+						tempChangePackage.add(ModelUtil.clone(next));
 					}
 
 					// incoming change package is fully consumed, continue with next change package
@@ -332,7 +322,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				if (incomingOp.getIdentifier().equals(localOp.getIdentifier())) {
 					operationMatchingStarted = true;
 				} else {
-					tempChangePackage.add(localOp);
+					tempChangePackage.add(ModelUtil.clone(localOp));
 					if (operationMatchingStarted) {
 						ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
 						throw new IllegalStateException(Messages.UpdateController_IncomingOpsPartlyMatched);
@@ -352,34 +342,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			localOperations.close();
 			incomingOps.close();
 			if (incomingIdx == incomingOpsSize) {
-
 				tempChangePackage.attachToProjectSpace(getProjectSpace());
-
-				// TODO: LCP
-				// final URI operationsURI = ESClientURIUtil.createOperationsURI(getProjectSpace());
-				// final URI normalizedOperationUri = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
-				// .getResourceSet().getURIConverter().normalize(operationsURI);
-				// final String operationFileString = normalizedOperationUri.toFileString();
-				// final File operationFile = new File(operationFileString);
-				// operationFile.delete();
-				// try {
-				// FileUtil.moveAndOverwrite(tempFile, operationFile);
-				// getProjectSpace().setPersistentChangePackage(new PersistentChangePackage(
-				// operationFile.getAbsolutePath()));
-				// } catch (final IOException ex) {
-				// ex.printStackTrace();
-				// }
 			}
 		}
-	}
-
-	private static File createTempFile() {
-		File tempFile;
-		try {
-			tempFile = File.createTempFile("ops", "eoc"); //$NON-NLS-1$ //$NON-NLS-2$
-		} catch (final IOException ex) {
-			throw new RuntimeException(Messages.UpdateController_TempFileCreationFailed);
-		}
-		return tempFile;
 	}
 }

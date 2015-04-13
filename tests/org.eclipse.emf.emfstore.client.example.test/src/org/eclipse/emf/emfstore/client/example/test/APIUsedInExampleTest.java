@@ -13,7 +13,7 @@ package org.eclipse.emf.emfstore.client.example.test;
 
 import java.util.concurrent.Callable;
 
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.AfterClass;
@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author mkoegel
  * 
  */
-public class APIUsedInExampleTest extends ESTestWithLoggedInUser {
+public class APIUsedInExampleTest extends ESTestWithLoggedInUserMock {
 
 	@BeforeClass
 	public static void beforeClass() {

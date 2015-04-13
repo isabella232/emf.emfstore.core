@@ -12,7 +12,7 @@
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
@@ -38,7 +38,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
-public class ServerTest extends ESTestWithLoggedInUser {
+public class ServerTest extends ESTestWithLoggedInUserMock {
 
 	@Data
 	private Project project;

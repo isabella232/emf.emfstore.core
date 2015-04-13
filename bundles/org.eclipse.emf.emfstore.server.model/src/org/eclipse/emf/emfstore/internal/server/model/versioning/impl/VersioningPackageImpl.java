@@ -1061,8 +1061,8 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOperationProxy_Label() {
-		return (EAttribute) operationProxyEClass.getEStructuralFeatures().get(0);
+	public EReference getOperationProxy_Proxies() {
+		return (EReference) operationProxyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1189,7 +1189,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		createEReference(fileBasedChangePackageEClass, FILE_BASED_CHANGE_PACKAGE__OPERATION_PROXIES);
 
 		operationProxyEClass = createEClass(OPERATION_PROXY);
-		createEAttribute(operationProxyEClass, OPERATION_PROXY__LABEL);
+		createEReference(operationProxyEClass, OPERATION_PROXY__PROXIES);
 	}
 
 	/**
@@ -1361,7 +1361,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 			"versionProperties", null, 0, -1, HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getHistoryInfo_ChangePackage(),
-			getChangePackage(),
+			getAbstractChangePackage(),
 			null,
 			"changePackage", null, 0, 1, HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -1544,10 +1544,11 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 		initEClass(operationProxyEClass, OperationProxy.class,
 			"OperationProxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getOperationProxy_Label(),
-			ecorePackage.getEString(),
-			"label", null, 0, 1, OperationProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getOperationProxy_Proxies(),
+			getOperationProxy(),
+			null,
+			"proxies", null, 0, -1, OperationProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // VersioningPackageImpl

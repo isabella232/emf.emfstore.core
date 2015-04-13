@@ -24,7 +24,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESRemoteProject;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Delete;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
@@ -37,7 +37,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ServerCommunicationTest extends ESTestWithLoggedInUser {
+public class ServerCommunicationTest extends ESTestWithLoggedInUserMock {
 
 	private static final String REMOTE_PROJECT_NAME = "MyProject2"; //$NON-NLS-1$
 	private static final String PROJECT_NAME = "MyProject"; //$NON-NLS-1$

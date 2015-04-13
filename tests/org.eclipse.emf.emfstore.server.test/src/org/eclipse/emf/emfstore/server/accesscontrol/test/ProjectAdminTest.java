@@ -18,7 +18,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.AdminBroker;
@@ -48,7 +48,7 @@ import org.junit.Before;
  * @author emueller
  * 
  */
-public class ProjectAdminTest extends ESTestWithLoggedInUser {
+public class ProjectAdminTest extends ESTestWithLoggedInUserMock {
 
 	private static final String USERNAME = "Hans"; //$NON-NLS-1$
 	private static final String GROUP = "Group"; //$NON-NLS-1$
@@ -87,7 +87,7 @@ public class ProjectAdminTest extends ESTestWithLoggedInUser {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser#getUser()
+	 * @see org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock#getUser()
 	 */
 	@Override
 	public String getUser() {
@@ -109,7 +109,7 @@ public class ProjectAdminTest extends ESTestWithLoggedInUser {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser#getPassword()
+	 * @see org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock#getPassword()
 	 */
 	@Override
 	public String getPassword() {

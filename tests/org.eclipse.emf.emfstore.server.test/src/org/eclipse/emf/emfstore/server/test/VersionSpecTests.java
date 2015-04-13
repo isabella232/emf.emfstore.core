@@ -24,7 +24,7 @@ import java.util.concurrent.Callable;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.dsl.TestElementFeatures;
@@ -44,7 +44,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class VersionSpecTests extends ESTestWithLoggedInUser {
+public class VersionSpecTests extends ESTestWithLoggedInUserMock {
 
 	private static final String THIS_IS_A_DESCRIPTION = "this is a description"; //$NON-NLS-1$
 	private static final String YET_ANOTHER_ELEMENT = "yet another element"; //$NON-NLS-1$

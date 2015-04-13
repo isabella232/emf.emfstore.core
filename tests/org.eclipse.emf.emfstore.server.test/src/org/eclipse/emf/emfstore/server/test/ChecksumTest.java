@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
 import org.eclipse.emf.emfstore.client.callbacks.ESCommitCallback;
 import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.dsl.TestElementFeatures;
@@ -61,7 +61,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ChecksumTest extends ESTestWithLoggedInUser {
+public class ChecksumTest extends ESTestWithLoggedInUserMock {
 
 	private static final String C = "C"; //$NON-NLS-1$
 	private static final String SOME_COMMIT_MESSAGE = "SomeCommitMessage"; //$NON-NLS-1$
@@ -320,12 +320,12 @@ public class ChecksumTest extends ESTestWithLoggedInUser {
 
 		final ESLocalProject checkout = checkout(getLocalProject(), getLocalProject().getBaseVersion());
 
-		addElement(getLocalProject(), testElement);
+		Add.toProject(getLocalProject(), testElement);
 		Update.testElement(TestElementFeatures.name(), testElement, A);
 
 		commitWithoutCommand(getLocalProject());
 
-		addElement(checkout, Create.testElement());
+		Add.toProject(checkout, Create.testElement());
 
 		update(checkout);
 		commitWithoutCommand(checkout);

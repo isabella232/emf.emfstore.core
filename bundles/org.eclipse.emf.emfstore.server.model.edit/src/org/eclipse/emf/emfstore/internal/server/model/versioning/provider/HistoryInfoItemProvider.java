@@ -93,11 +93,12 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addLogMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
 			getString("_UI_HistoryInfo_logMessage_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_HistoryInfo_logMessage_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_HistoryInfo_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.HISTORY_INFO__LOG_MESSAGE, true, false, true, null, null, null));
+			getString(
+				"_UI_PropertyDescriptor_description", "_UI_HistoryInfo_logMessage_feature", "_UI_HistoryInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				VersioningPackage.Literals.HISTORY_INFO__LOG_MESSAGE, true, false, true, null, null, null));
 	}
 
 	/**
@@ -224,6 +225,9 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.HISTORY_INFO__CHANGE_PACKAGE,
 			VersioningFactory.eINSTANCE.createChangePackage()));
+
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.HISTORY_INFO__CHANGE_PACKAGE,
+			VersioningFactory.eINSTANCE.createFileBasedChangePackage()));
 	}
 
 	/**

@@ -30,7 +30,7 @@ import java.util.List;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.dsl.CreateAPI;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
@@ -56,7 +56,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.osgi.framework.Bundle;
 
-public class ServerInterfaceTest extends ESTestWithLoggedInUser {
+public class ServerInterfaceTest extends ESTestWithLoggedInUserMock {
 
 	private static final String FOO_BRANCH = "foo-branch"; //$NON-NLS-1$
 	private static final String FOOTAG = "footag"; //$NON-NLS-1$

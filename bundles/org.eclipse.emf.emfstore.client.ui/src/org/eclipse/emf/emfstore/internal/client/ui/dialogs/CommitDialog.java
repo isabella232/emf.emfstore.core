@@ -22,14 +22,12 @@ import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
+import org.eclipse.emf.emfstore.internal.client.model.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.Activator;
 import org.eclipse.emf.emfstore.internal.client.ui.views.changes.TabbedChangesComposite;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
-import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.jface.layout.GridDataFactory;
@@ -186,8 +184,9 @@ public class CommitDialog extends EMFStoreTitleAreaDialog implements
 		// changePackages.add(changes);
 
 		// TODO LCP: fully loading change packages to display them..
-		final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		cp.initialize(FileUtil.createLocationForTemporaryChangePackage());
+		final AbstractChangePackage cp = ChangePackageUtil.createChangePackage();
+		// final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+		// cp.initialize(FileUtil.createLocationForTemporaryChangePackage());
 		final ESCloseableIterable<AbstractOperation> operations = changes.operations();
 		try {
 			for (final AbstractOperation operation : operations.iterable()) {

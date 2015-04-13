@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.eclipse.emf.emfstore.client.ESUsersession;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.AdminBroker;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
@@ -37,7 +37,7 @@ import org.junit.Test;
 /**
  *
  */
-public class AdminBrokerTests extends ESTestWithLoggedInUser {
+public class AdminBrokerTests extends ESTestWithLoggedInUserMock {
 
 	private static final String GROUP_NAME = "grp"; //$NON-NLS-1$
 	private static final String USER_NAME = "quux"; //$NON-NLS-1$

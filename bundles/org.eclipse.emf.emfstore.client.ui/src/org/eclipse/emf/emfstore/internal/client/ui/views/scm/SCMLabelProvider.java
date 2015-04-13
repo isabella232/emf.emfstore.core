@@ -14,9 +14,11 @@ package org.eclipse.emf.emfstore.internal.client.ui.views.scm;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -29,8 +31,10 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
@@ -50,13 +54,13 @@ import org.eclipse.swt.widgets.Display;
  */
 public class SCMLabelProvider extends ColumnLabelProvider {
 
-	final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
+	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
 
-	private static final String ELEMENT_NOT_FOUND = "There is no sufficient information to display this element";
+	private static final String ELEMENT_NOT_FOUND = Messages.SCMLabelProvider_InsufficientInformation;
 	/**
 	 * String to display as info for Local revisions.
 	 */
-	protected static final String LOCAL_REVISION = "Local revision";
+	protected static final String LOCAL_REVISION = Messages.SCMLabelProvider_LocalRevision;
 
 	private final List<OperationId> highlighted;
 
@@ -83,11 +87,11 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		highlighted = new ArrayList<OperationId>();
 
 		baseRevision = Activator.getImageDescriptor(
-			"icons/HistoryInfo_base.png").createImage();
+			"icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
 		currentRevision = Activator.getImageDescriptor(
-			"icons/HistoryInfo_current.png").createImage();
+			"icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
 		headRevision = Activator.getImageDescriptor(
-			"icons/HistoryInfo_head.png").createImage();
+			"icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
 	}
 
 	/**
@@ -104,7 +108,10 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	public String getText(Object element) {
 
 		String ret = null;
-		if (element instanceof HistoryInfo) {
+		if (element instanceof OperationProxy) {
+			final OperationProxy proxy = (OperationProxy) element;
+			return getText(proxy);
+		} else if (element instanceof HistoryInfo) {
 			final HistoryInfo historyInfo = (HistoryInfo) element;
 			return getText(historyInfo);
 		} else if (element instanceof AbstractOperation
@@ -141,7 +148,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 
 	private String getText(AbstractChangePackage changePackage) {
 		final StringBuilder builder = new StringBuilder();
-		builder.append("Change Package");
+		builder.append(Messages.SCMLabelProvider_ChangePackage);
 		if (changePackage.getLogMessage() != null) {
 			final LogMessage logMessage = changePackage.getLogMessage();
 			builder.append(" ["); //$NON-NLS-1$
@@ -189,7 +196,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		}
 
 		builder.append(baseVersion);
-		builder.append("Version ");
+		builder.append(Messages.SCMLabelProvider_Version);
 		builder.append(historyInfo.getPrimarySpec().getIdentifier());
 		LogMessage logMessage = null;
 
@@ -211,6 +218,52 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 			builder.append(logMessage.getMessage());
 		}
 		return builder.toString();
+	}
+
+	private String getText(OperationProxy proxy) {
+		if (!proxy.isLabelProviderReady()) {
+			initProxy(proxy);
+		}
+		return proxy.getLabel();
+	}
+
+	private Image getImage(OperationProxy proxy) {
+		if (!proxy.isLabelProviderReady()) {
+			initProxy(proxy);
+		}
+		return proxy.getImage();
+	}
+
+	private void initProxy(OperationProxy proxy) {
+		final FileBasedChangePackage changePackage = getChangePackage(proxy);
+		final AbstractOperation operation = changePackage.get(proxy.getIndex());
+		prepareProxy(proxy, operation);
+	}
+
+	private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
+		proxy.setImage(
+			changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation));
+		proxy.setLabel(
+			changePackageVisualizationHelper.getDescription(operation));
+
+		if (CompositeOperation.class.isInstance(operation)) {
+			final CompositeOperation compositeOperation = (CompositeOperation) operation;
+			final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
+			final EList<OperationProxy> proxies = proxy.getProxies();
+
+			final Iterator<AbstractOperation> subOperationsIterator = subOperations.iterator();
+			final Iterator<OperationProxy> proxiesIterator = proxies.iterator();
+
+			while (subOperationsIterator.hasNext()) {
+				final AbstractOperation op = subOperationsIterator.next();
+				final OperationProxy p = proxiesIterator.next();
+				prepareProxy(p, op);
+			}
+		}
+	}
+
+	private FileBasedChangePackage getChangePackage(OperationProxy proxy) {
+		return ModelUtil.getParent(FileBasedChangePackage.class, proxy);
 	}
 
 	/**
@@ -286,7 +339,10 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	@Override
 	public Image getImage(Object element) {
 
-		if (element instanceof ModelElementId) {
+		if (element instanceof OperationProxy) {
+			final OperationProxy proxy = (OperationProxy) element;
+			return getImage(proxy);
+		} else if (element instanceof ModelElementId) {
 			return adapterFactoryLabelProvider
 				.getImage(changePackageVisualizationHelper
 					.getModelElement((ModelElementId) element));

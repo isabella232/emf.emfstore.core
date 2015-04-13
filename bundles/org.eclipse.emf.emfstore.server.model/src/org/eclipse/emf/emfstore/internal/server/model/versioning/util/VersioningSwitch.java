@@ -26,6 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
@@ -304,6 +305,14 @@ public class VersioningSwitch<T> {
 			if (result == null) {
 				result = caseAbstractChangePackage(fileBasedChangePackage);
 			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case VersioningPackage.OPERATION_PROXY: {
+			final OperationProxy operationProxy = (OperationProxy) theEObject;
+			T result = caseOperationProxy(operationProxy);
 			if (result == null) {
 				result = defaultCase(theEObject);
 			}
@@ -631,6 +640,22 @@ public class VersioningSwitch<T> {
 	 * @generated
 	 */
 	public T caseFileBasedChangePackage(FileBasedChangePackage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 *
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation Proxy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperationProxy(OperationProxy object) {
 		return null;
 	}
 

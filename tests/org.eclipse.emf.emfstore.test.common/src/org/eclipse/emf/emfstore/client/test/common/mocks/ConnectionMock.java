@@ -41,7 +41,6 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -49,9 +48,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 public class ConnectionMock implements ConnectionManager {
@@ -112,28 +108,12 @@ public class ConnectionMock implements ConnectionManager {
 		checkSessionId(sessionId);
 
 		if (FileBasedChangePackage.class.isInstance(changePackage)) {
-			cp = toInMemoryChangePackage(FileBasedChangePackage.class.cast(changePackage));
+			cp = FileBasedChangePackage.class.cast(changePackage).toInMemoryChangePackage();
 		}
 
 		return ModelUtil.clone(emfStore.createVersion(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
 			ModelUtil.clone(baseVersionSpec), ModelUtil.clone(cp), ModelUtil.clone(targetBranch),
 			ModelUtil.clone(sourceVersion), ModelUtil.clone(logMessage)));
-	}
-
-	private static ChangePackage toInMemoryChangePackage(FileBasedChangePackage fileBasedChangePackage) {
-		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
-		final ESCloseableIterable<AbstractOperation> operationsHandle = fileBasedChangePackage.operations();
-		try {
-			for (final AbstractOperation operation : operationsHandle.iterable()) {
-				changePackage.add(operation);
-			}
-		} finally {
-			operationsHandle.close();
-		}
-
-		changePackage.setLogMessage(ModelUtil.clone(fileBasedChangePackage.getLogMessage()));
-
-		return changePackage;
 	}
 
 	public PrimaryVersionSpec resolveVersionSpec(SessionId sessionId, ProjectId projectId, VersionSpec versionSpec)

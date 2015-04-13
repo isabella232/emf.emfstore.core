@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -17,12 +17,13 @@ import org.junit.runners.Suite;
 
 /**
  * Test suite for all server related tests.
- * 
+ *
  * @author emueller
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	AdminBrokerTests.class,
+	IntegrationTest.class,
+    AdminBrokerTests.class,
 	AllAccessControlTests.class,
 	BranchTests.class,
 	ServerInterfaceTest.class,

@@ -20,7 +20,6 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
-import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.EMFStoreController;
@@ -40,6 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangeP
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
@@ -624,16 +624,13 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				final List<AbstractChangePackage> resultReverse = new ArrayList<AbstractChangePackage>();
 				for (final AbstractChangePackage changePackage : result) {
 
-					// final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
-					final FileBasedChangePackage changePackageReverse = VersioningFactory.eINSTANCE
-						.createFileBasedChangePackage();
-					changePackageReverse.initialize(FileUtil.createLocationForTemporaryChangePackage());
+					final ChangePackage changePackageReverse = VersioningFactory.eINSTANCE.createChangePackage();
 					final ESCloseableIterable<AbstractOperation> reversedOperations = changePackage
 						.reversedOperations();
 					final ArrayList<AbstractOperation> copiedReversedOperations = new ArrayList<AbstractOperation>();
 					try {
 						for (final AbstractOperation op : reversedOperations.iterable()) {
-							copiedReversedOperations.add(op);
+							copiedReversedOperations.add(op.reverse());
 						}
 					} finally {
 						reversedOperations.close();

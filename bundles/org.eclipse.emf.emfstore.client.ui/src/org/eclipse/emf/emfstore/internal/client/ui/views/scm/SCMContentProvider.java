@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.internal.client.ui.views.scm;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVi
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
@@ -190,15 +192,38 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 
 	@Override
 	public boolean hasChildren(Object object) {
+		if (object instanceof FileBasedChangePackage) {
+			return true;
+		}
 		return getChildren(object).length > 0;
 	}
 
 	@Override
 	public Object[] getChildren(Object object) {
 
-		if (object instanceof HistoryInfo) {
+		if (object instanceof OperationProxy) {
+			return OperationProxy.class.cast(object).getProxies().toArray();
+		} else if (object instanceof HistoryInfo) {
 			final HistoryInfo historyInfo = (HistoryInfo) object;
 			return getChildren(historyInfo.getChangePackage());
+		} else if (object instanceof FileBasedChangePackage) {
+			final FileBasedChangePackage changePackage = (FileBasedChangePackage) object;
+			final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+			int opIndex = 0;
+			try {
+				for (final Iterator<AbstractOperation> iterator = operations.iterable().iterator(); iterator.hasNext();) {
+					final AbstractOperation operation = iterator.next();
+					final OperationProxy newProxy = createProxy(operation);
+					newProxy.setIndex(opIndex);
+					changePackage.getOperationProxies().add(newProxy);
+
+					opIndex += 1;
+				}
+			} finally {
+				operations.close();
+			}
+
+			return changePackage.getOperationProxies().toArray();
 		} else if (object instanceof ChangePackage) {
 
 			final List<Object> result = new ArrayList<Object>();
@@ -222,6 +247,20 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 		}
 
 		return super.getChildren(object);
+	}
+
+	private static OperationProxy createProxy(AbstractOperation operation) {
+		final OperationProxy newProxy = VersioningFactory.eINSTANCE.createOperationProxy();
+
+		if (CompositeOperation.class.isInstance(operation)) {
+			final CompositeOperation compositeOperation = (CompositeOperation) operation;
+			final List<AbstractOperation> leafOperations = compositeOperation.getSubOperations();
+			for (final AbstractOperation op : leafOperations) {
+				newProxy.getProxies().add(createProxy(op));
+			}
+		}
+
+		return newProxy;
 	}
 
 	/**

@@ -15,13 +15,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class UsersessionTest extends ESTestWithLoggedInUser {
+public class UsersessionTest extends ESTestWithLoggedInUserMock {
 
 	@BeforeClass
 	public static void beforeClass() {

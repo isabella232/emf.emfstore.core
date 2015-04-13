@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.emfstore.bowling.BowlingPackage;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
-import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
+import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
@@ -40,7 +40,7 @@ import org.junit.Test;
  * 
  * @author Dmitry Litvinov
  */
-public class PerformanceTest extends ESTestWithLoggedInUser {
+public class PerformanceTest extends ESTestWithLoggedInUserMock {
 	
 
 	private static final int PROJECTSIZE = 10000;
