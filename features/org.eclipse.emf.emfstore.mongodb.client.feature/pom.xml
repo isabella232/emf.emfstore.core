@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.eclipse.emf.emfstore</groupId>
     <artifactId>emfstore-features-parent</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.3-SNAPSHOT</version>
     <relativePath>../../releng/org.eclipse.emf.emfstore.releng.features</relativePath>
   </parent>
   <groupId>org.eclipse.emf.emfstore</groupId>
   <artifactId>org.eclipse.emf.emfstore.mongodb.client.feature</artifactId>
-  <version>1.4.2-SNAPSHOT</version>
+  <version>1.4.3-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
 
   <build>

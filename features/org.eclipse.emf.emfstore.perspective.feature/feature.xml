@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.emfstore.perspective.feature"
       label="EMFStore Perspective"
-      version="1.4.2.qualifier"
+      version="1.4.3.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.branding"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.4.2.qualifier">
+      license-feature-version="1.4.3.qualifier">
 
    <description url="http://emfstore.org">
       Contains perspective plugin of EMFStore that is used to show an Eclipse perspective.

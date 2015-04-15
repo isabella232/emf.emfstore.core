@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMFStore Client UI for RCP
 Bundle-SymbolicName: org.eclipse.emf.emfstore.client.ui.rcp
-Bundle-Version: 1.4.2.qualifier
-Fragment-Host: org.eclipse.emf.emfstore.client.ui;bundle-version="1.4.2"
+Bundle-Version: 1.4.3.qualifier
+Fragment-Host: org.eclipse.emf.emfstore.client.ui;bundle-version="1.4.3"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: Eclipse Modeling Project
 Export-Package: org.eclipse.emf.emfstore.internal.client.ui.dialogs.me
- rge.ui;version="1.4.2";x-internal:=true,org.eclipse.emf.emfstore.inte
- rnal.client.ui.dialogs.merge.ui.components;version="1.4.2";x-friends:
+ rge.ui;version="1.4.3";x-internal:=true,org.eclipse.emf.emfstore.inte
+ rnal.client.ui.dialogs.merge.ui.components;version="1.4.3";x-friends:
  ="org.eclipse.emf.emfstore.client.ui",org.eclipse.emf.emfstore.intern
- al.client.ui.util;version="1.4.2";x-friends:="org.eclipse.emf.emfstor
+ al.client.ui.util;version="1.4.3";x-friends:="org.eclipse.emf.emfstor
  e.client.ui"
