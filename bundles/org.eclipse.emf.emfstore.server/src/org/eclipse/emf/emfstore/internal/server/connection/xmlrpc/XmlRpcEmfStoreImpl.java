@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -104,7 +104,8 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	public ProjectInfo createEmptyProject(SessionId sessionId, String name, String description, LogMessage logMessage)
 		throws ESException {
 		final ProjectInfo projectInfo = getEmfStore().createEmptyProject(sessionId, name, description, logMessage);
-		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		final SessionId session = getAccessControl().resolveSessionById(sessionId.getId());
+		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
 
@@ -114,7 +115,9 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	public ProjectInfo createProject(SessionId sessionId, String name, String description, LogMessage logMessage,
 		Project project) throws ESException {
 		final ProjectInfo projectInfo = getEmfStore().createProject(sessionId, name, description, logMessage, project);
-		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+
+		final SessionId session = getAccessControl().resolveSessionById(sessionId.getId());
+		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
 

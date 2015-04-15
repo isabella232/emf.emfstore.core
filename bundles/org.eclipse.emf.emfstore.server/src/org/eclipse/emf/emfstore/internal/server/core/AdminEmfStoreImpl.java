@@ -341,12 +341,14 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		checkForNulls(sessionId, projectId, participantId, roleClass);
 
+		final SessionId session = getAuthorizationControl().resolveSessionById(sessionId.getId());
+
 		// check if requested role is the server admin role, which we never allow to be assigned via this call
 		if (isServerAdminRole(roleClass)) {
 			throw new AccessControlException(Messages.AdminEmfStoreImpl_Not_Allowed_To_Assign_ServerAdminRole);
 		}
 
-		final ACUser resolvedUser = getAuthorizationControl().resolveUser(sessionId);
+		final ACUser resolvedUser = getAuthorizationControl().resolveUser(session);
 
 		if (!resolvedUser.getId().equals(participantId)) {
 			throw new AccessControlException(Messages.AdminEmfStoreImpl_OnlyAllowedForRequstingUser);
@@ -356,12 +358,12 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		// has been set in the es.properties. This method will throw an exception
 		// if the user is either not a project admin or the ShareProject privilege has not been set.
 		getAuthorizationControl().checkProjectAdminAccess(
-			sessionId,
+			session,
 			null,
 			PAPrivileges.ShareProject);
 
 		// check if requesting session did actually share a project before
-		checkIfSessionIsAssociatedWithProject(sessionId, projectId);
+		checkIfSessionIsAssociatedWithProject(session, projectId);
 
 		projectId = getProjectId(projectId);
 		final ACOrgUnit orgUnit = getOrgUnit(participantId);

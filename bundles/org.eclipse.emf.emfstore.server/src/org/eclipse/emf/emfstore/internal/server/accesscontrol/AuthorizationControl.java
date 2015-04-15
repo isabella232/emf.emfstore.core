@@ -161,4 +161,13 @@ public interface AuthorizationControl {
 	 */
 	void checkAccess(MethodInvocation op) throws AccessControlException;
 
+	/**
+	 * Given an session ID as a string, returns the corresponding session, if any.
+	 * 
+	 * @param sessionId
+	 *            the session ID to be resolved
+	 * @return the resolved session ID, if any, otherwise null
+	 */
+	SessionId resolveSessionById(String sessionId);
+
 }
