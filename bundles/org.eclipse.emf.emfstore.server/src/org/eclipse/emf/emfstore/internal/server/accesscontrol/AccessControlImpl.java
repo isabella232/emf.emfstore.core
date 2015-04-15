@@ -18,6 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -706,6 +707,22 @@ public class AccessControlImpl implements AccessControl {
 	 */
 	public void setAuthenticationControl(AbstractAuthenticationControl authenticationControl) {
 		this.authenticationControl = authenticationControl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#resolveSessionById(java.lang.String)
+	 */
+	public SessionId resolveSessionById(String sessionId) {
+		final Set<Entry<SessionId, ACUserContainer>> entrySet = sessionUserMap.entrySet();
+		for (final Entry<SessionId, ACUserContainer> entry : entrySet) {
+			if (entry.getKey().getId().equals(sessionId)) {
+				return entry.getKey();
+			}
+		}
+
+		return null;
 	}
 
 }

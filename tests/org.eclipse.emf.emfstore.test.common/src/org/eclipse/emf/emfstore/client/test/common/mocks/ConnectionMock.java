@@ -148,20 +148,24 @@ public class ConnectionMock implements ConnectionManager {
 
 	public ProjectInfo createEmptyProject(SessionId sessionId, String name, String description, LogMessage logMessage)
 		throws ESException {
-		checkSessionId(sessionId);
-		final ProjectInfo projectInfo = emfStore.createEmptyProject(ModelUtil.clone(sessionId), name, description,
+		final SessionId clonedSessionId = ModelUtil.clone(sessionId);
+		checkSessionId(clonedSessionId);
+		final ProjectInfo projectInfo = emfStore.createEmptyProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage));
-		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		final SessionId session = accessControl.resolveSessionById(sessionId.getId());
+		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
 
 	public ProjectInfo createProject(SessionId sessionId, String name, String description, LogMessage logMessage,
 		Project project) throws ESException {
-		checkSessionId(sessionId);
-		final ProjectInfo projectInfo = emfStore.createProject(ModelUtil.clone(sessionId), name, description,
+		final SessionId clonedSessionId = ModelUtil.clone(sessionId);
+		checkSessionId(clonedSessionId);
+		final ProjectInfo projectInfo = emfStore.createProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage),
 			ModelUtil.clone(project));
-		ShareProjectAdapter.attachTo(sessionId, projectInfo.getProjectId());
+		final SessionId session = accessControl.resolveSessionById(sessionId.getId());
+		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
 
