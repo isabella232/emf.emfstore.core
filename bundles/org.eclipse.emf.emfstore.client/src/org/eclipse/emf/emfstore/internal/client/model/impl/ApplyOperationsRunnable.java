@@ -15,6 +15,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
@@ -67,7 +68,9 @@ public class ApplyOperationsRunnable implements Runnable {
 							// END SUPRESS CATCH EXCEPTION
 						}
 						if (addOperations) {
-							projectSpace.addOperations(Collections.singletonList(operation));
+							projectSpace.addOperations(
+								Collections.singletonList(
+									ModelUtil.clone(operation)));
 						}
 					}
 				} finally {

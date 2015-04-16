@@ -19,14 +19,9 @@ import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
-import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.test.model.TestElement;
 import org.junit.Test;
@@ -59,39 +54,15 @@ public class ProjectTest extends ESTest {
 			}
 		});
 
-		assertTrue(!getProject().contains(bar));
 		assertTrue(getProject().contains(baz));
 
-		final AbstractChangePackage changePackage = getProjectSpace().getLocalChangePackage();
-		final ChangePackage localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
-
-		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
-
-		try {
-			for (final AbstractOperation abstractOperation : operations.iterable()) {
-				localChangePackage.add(abstractOperation);
-			}
-		} finally {
-			operations.close();
-		}
-
-		final ESCloseableIterable<AbstractOperation> reversedOperations = localChangePackage.reversedOperations();
-
-		final ProjectSpaceBase ps = (ProjectSpaceBase) getProjectSpace();
-
+		final AbstractChangePackage localChangePackage = getProjectSpace().getLocalChangePackage();
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
-				try {
-					ps.applyOperations(reversedOperations.iterable(), false);
-				} finally {
-					reversedOperations.close();
-				}
+				localChangePackage.reverse().apply(getProject());
 			}
 		});
-
-		final String eObjectToString = ModelUtil.eObjectToString(getProject());
-		final String eObjectToString2 = ModelUtil.eObjectToString(clonedProjectSpace.getProject());
 
 		assertTrue(ModelUtil.areEqual(getProject(), clonedProjectSpace.getProject()));
 	}
