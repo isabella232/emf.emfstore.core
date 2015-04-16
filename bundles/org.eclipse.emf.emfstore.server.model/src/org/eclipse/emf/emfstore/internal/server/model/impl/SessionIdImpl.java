@@ -62,7 +62,6 @@ public class SessionIdImpl extends UniqueIdentifierImpl implements SessionId {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESSessionIdImpl toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -78,7 +77,6 @@ public class SessionIdImpl extends UniqueIdentifierImpl implements SessionId {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESSessionIdImpl createAPI() {
 		return new ESSessionIdImpl(this);
 	}

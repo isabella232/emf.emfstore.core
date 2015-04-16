@@ -95,7 +95,6 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getOldValue() {
 		if (oldValue != null && oldValue.eIsProxy()) {
 			final InternalEObject oldOldValue = (InternalEObject) oldValue;
@@ -154,7 +153,6 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOldValue(ModelElementId newOldValue) {
 		if (newOldValue != oldValue) {
 			NotificationChain msgs = null;
@@ -181,7 +179,6 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getNewValue() {
 		if (newValue != null && newValue.eIsProxy()) {
 			final InternalEObject oldNewValue = (InternalEObject) newValue;
@@ -240,7 +237,6 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewValue(ModelElementId newNewValue) {
 		if (newNewValue != newValue) {
 			NotificationChain msgs = null;
@@ -352,7 +348,6 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 		return super.eIsSet(featureID);
 	}
 
-	@Override
 	@SuppressWarnings("serial")
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = getModelElement(project, getModelElementId());

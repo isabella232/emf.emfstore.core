@@ -36,7 +36,6 @@ public class XmlRpcAdminConnectionHandler implements ConnectionHandler<AdminEmfS
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public String getName() {
 		return NAME;
 	}
@@ -44,7 +43,6 @@ public class XmlRpcAdminConnectionHandler implements ConnectionHandler<AdminEmfS
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public synchronized void init(AdminEmfStore adminEmfStore, AccessControl accessControl)
 		throws ESServerInitException {
 		XmlRpcAdminConnectionHandler.adminEmfStore = adminEmfStore;
@@ -68,7 +66,6 @@ public class XmlRpcAdminConnectionHandler implements ConnectionHandler<AdminEmfS
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler#stop()
 	 */
-	@Override
 	public void stop() {
 		final ESXmlRpcWebServerProvider webserverManager = XmlRpcWebserverManager.getInstance();
 		if (!webserverManager.removeHandler(ADMINEMFSTORE)) {

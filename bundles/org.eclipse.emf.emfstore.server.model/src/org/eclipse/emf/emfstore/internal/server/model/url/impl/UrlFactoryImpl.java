@@ -105,7 +105,6 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ServerUrl createServerUrl() {
 		final ServerUrlImpl serverUrl = new ServerUrlImpl();
 		return serverUrl;
@@ -116,7 +115,6 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectUrlFragment createProjectUrlFragment() {
 		final ProjectUrlFragmentImpl projectUrlFragment = new ProjectUrlFragmentImpl();
 		return projectUrlFragment;
@@ -127,7 +125,6 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementUrlFragment createModelElementUrlFragment() {
 		final ModelElementUrlFragmentImpl modelElementUrlFragment = new ModelElementUrlFragmentImpl();
 		return modelElementUrlFragment;
@@ -138,7 +135,6 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public ModelElementUrl createModelElementUrl(String url) throws MalformedURLException {
 
 		final ModelElementUrl modelURL = createModelElementUrl();
@@ -203,7 +199,6 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementUrl createModelElementUrl() {
 		final ModelElementUrlImpl modelElementUrl = new ModelElementUrlImpl();
 		return modelElementUrl;
@@ -214,7 +209,6 @@ public class UrlFactoryImpl extends EFactoryImpl implements UrlFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public UrlPackage getUrlPackage() {
 		return (UrlPackage) getEPackage();
 	}

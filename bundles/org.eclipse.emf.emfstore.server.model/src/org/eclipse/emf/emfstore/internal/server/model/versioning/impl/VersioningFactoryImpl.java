@@ -128,7 +128,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public TagVersionSpec createTagVersionSpec() {
 		final TagVersionSpecImpl tagVersionSpec = new TagVersionSpecImpl();
 		return tagVersionSpec;
@@ -139,7 +138,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public DateVersionSpec createDateVersionSpec() {
 		final DateVersionSpecImpl dateVersionSpec = new DateVersionSpecImpl();
 		return dateVersionSpec;
@@ -150,7 +148,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec createPrimaryVersionSpec() {
 		final PrimaryVersionSpecImpl primaryVersionSpec = new PrimaryVersionSpecImpl();
 		return primaryVersionSpec;
@@ -161,7 +158,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public LogMessage createLogMessage() {
 		final LogMessageImpl logMessage = new LogMessageImpl();
 		return logMessage;
@@ -172,7 +168,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public ChangePackage createChangePackage() {
 		final ChangePackageImpl changePackage = new ChangePackageImpl();
 		return changePackage;
@@ -183,7 +178,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public HistoryInfo createHistoryInfo() {
 		final HistoryInfoImpl historyInfo = new HistoryInfoImpl();
 		return historyInfo;
@@ -194,7 +188,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	@SuppressWarnings("rawtypes")
 	public RangeQuery createRangeQuery() {
 		final RangeQueryImpl rangeQuery = new RangeQueryImpl();
@@ -206,7 +199,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public PathQuery createPathQuery() {
 		final PathQueryImpl pathQuery = new PathQueryImpl();
 		return pathQuery;
@@ -217,7 +209,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementQuery createModelElementQuery() {
 		final ModelElementQueryImpl modelElementQuery = new ModelElementQueryImpl();
 		return modelElementQuery;
@@ -228,7 +219,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public Version createVersion() {
 		final VersionImpl version = new VersionImpl();
 		return version;
@@ -239,7 +229,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public HeadVersionSpec createHeadVersionSpec() {
 		final HeadVersionSpecImpl headVersionSpec = new HeadVersionSpecImpl();
 		return headVersionSpec;
@@ -250,7 +239,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public VersionProperty createVersionProperty() {
 		final VersionPropertyImpl versionProperty = new VersionPropertyImpl();
 		return versionProperty;
@@ -261,7 +249,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public BranchVersionSpec createBranchVersionSpec() {
 		final BranchVersionSpecImpl branchVersionSpec = new BranchVersionSpecImpl();
 		return branchVersionSpec;
@@ -272,7 +259,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public BranchInfo createBranchInfo() {
 		final BranchInfoImpl branchInfo = new BranchInfoImpl();
 		return branchInfo;
@@ -283,7 +269,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public AncestorVersionSpec createAncestorVersionSpec() {
 		final AncestorVersionSpecImpl ancestorVersionSpec = new AncestorVersionSpecImpl();
 		return ancestorVersionSpec;
@@ -295,7 +280,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public PagedUpdateVersionSpec createPagedUpdateVersionSpec() {
 		final PagedUpdateVersionSpecImpl pagedUpdateVersionSpec = new PagedUpdateVersionSpecImpl();
 		return pagedUpdateVersionSpec;
@@ -307,7 +291,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public FileBasedChangePackage createFileBasedChangePackage() {
 		final FileBasedChangePackageImpl fileBasedChangePackage = new FileBasedChangePackageImpl();
 		return fileBasedChangePackage;
@@ -319,7 +302,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public OperationProxy createOperationProxy() {
 		final OperationProxyImpl operationProxy = new OperationProxyImpl();
 		return operationProxy;
@@ -330,7 +312,6 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public VersioningPackage getVersioningPackage() {
 		return (VersioningPackage) getEPackage();
 	}

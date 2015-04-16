@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec;
  *
  */
 public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, TagVersionSpec> implements
-	ESTagVersionSpec {
+ESTagVersionSpec {
 
 	/**
 	 * Constructor.
@@ -39,7 +39,6 @@ public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, Ta
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec#getName()
 	 */
-	@Override
 	public String getName() {
 		return toInternalAPI().getName();
 	}

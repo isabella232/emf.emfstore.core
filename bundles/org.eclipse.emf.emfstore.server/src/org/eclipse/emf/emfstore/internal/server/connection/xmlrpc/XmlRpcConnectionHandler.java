@@ -38,7 +38,6 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public String getName() {
 		return NAME;
 	}
@@ -50,7 +49,6 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 	 * @see org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler#init(org.eclipse.emf.emfstore.internal.server.EMFStoreInterface,
 	 *      org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl)
 	 */
-	@Override
 	public synchronized void init(EMFStore emfStore, AccessControl accessControl) throws ESServerInitException {
 		XmlRpcConnectionHandler.emfStore = emfStore;
 		XmlRpcConnectionHandler.accessControl = accessControl;
@@ -83,7 +81,6 @@ public class XmlRpcConnectionHandler implements ConnectionHandler<EMFStore> {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler#stop()
 	 */
-	@Override
 	public void stop() {
 		final ESXmlRpcWebServerProvider webserverManager = XmlRpcWebserverManager.getInstance();
 		if (!webserverManager.removeHandler(EMFSTORE)) {

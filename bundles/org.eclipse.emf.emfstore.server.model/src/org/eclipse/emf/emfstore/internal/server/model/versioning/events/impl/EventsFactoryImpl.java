@@ -77,7 +77,6 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Event createEvent() {
 		final EventImpl event = new EventImpl();
 		return event;
@@ -88,7 +87,6 @@ public class EventsFactoryImpl extends EFactoryImpl implements EventsFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EventsPackage getEventsPackage() {
 		return (EventsPackage) getEPackage();
 	}

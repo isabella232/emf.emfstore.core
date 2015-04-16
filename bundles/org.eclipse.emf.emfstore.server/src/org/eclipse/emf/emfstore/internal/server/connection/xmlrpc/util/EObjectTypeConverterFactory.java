@@ -41,17 +41,14 @@ public class EObjectTypeConverterFactory extends TypeConverterFactoryImpl {
 	 * @author wesendon
 	 */
 	private static final class EObjectConverter implements TypeConverter {
-		@Override
 		public boolean isConvertable(Object pObject) {
 			return pObject == null || pObject instanceof EObject;
 		}
 
-		@Override
 		public Object convert(Object pObject) {
 			return pObject;
 		}
 
-		@Override
 		public Object backConvert(Object result) {
 			return result;
 		}

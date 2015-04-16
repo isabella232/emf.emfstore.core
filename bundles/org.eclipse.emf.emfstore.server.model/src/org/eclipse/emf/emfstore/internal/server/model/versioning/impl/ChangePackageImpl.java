@@ -142,7 +142,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	@SuppressWarnings("serial")
 	public EList<AbstractOperation> getOperations() {
 		if (operations == null) {
@@ -164,7 +163,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Event> getEvents() {
 		if (events == null) {
 			events = new EObjectContainmentEList.Resolving<Event>(Event.class, this,
@@ -178,7 +176,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy()) {
 			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
@@ -237,7 +234,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
@@ -264,7 +260,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<VersionProperty> getVersionProperties() {
 		if (versionProperties == null) {
 			versionProperties = new EObjectContainmentEList.Resolving<VersionProperty>(VersionProperty.class, this,
@@ -281,7 +276,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 * @return the reversed change package <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@Override
 	public ChangePackage reverse() {
 		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
 		// reverse subOperations and add in reverse order
@@ -298,7 +292,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#apply(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 * @generated NOT
 	 */
-	@Override
 	public void apply(Project project) {
 		apply(project, false);
 	}
@@ -309,7 +302,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#apply(org.eclipse.emf.emfstore.internal.common.model.Project,
 	 *      boolean)
 	 */
-	@Override
 	public void apply(Project project, boolean force) {
 		for (final AbstractOperation operation : getOperations()) {
 			try {
@@ -328,7 +320,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public void cannonize() {
 		OperationsCanonizer.canonize(getOperations());
 	}
@@ -456,7 +447,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getCopyOfOperations()
 	 */
-	@Override
 	public List<AbstractOperation> getCopyOfOperations() {
 		final List<AbstractOperation> copiedOperations = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation operation : getOperations()) {
@@ -468,7 +458,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public List<AbstractOperation> getLeafOperations() {
 		final List<AbstractOperation> leafOperations = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation operation : getOperations()) {
@@ -482,7 +471,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getAllInvolvedModelElements()
 	 */
-	@Override
 	public Set<ModelElementId> getAllInvolvedModelElements() {
 		final Set<ModelElementId> result = new LinkedHashSet<ModelElementId>();
 		for (final AbstractOperation operation : getOperations()) {
@@ -491,7 +479,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return result;
 	}
 
-	@Override
 	public List<AbstractOperation> getTouchingOperations(ModelElementId modelElementId) {
 		final ArrayList<AbstractOperation> result = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation operation : getOperations()) {
@@ -502,7 +489,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		return result;
 	}
 
-	@Override
 	public int getSize() {
 		return countLeafOperations(getOperations());
 	}
@@ -556,7 +542,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESChangePackageImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -574,7 +559,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESChangePackageImpl createAPI() {
 		return new ESChangePackageImpl(this);
 	}
@@ -584,7 +568,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
-	@Override
 	public void add(AbstractOperation operation) {
 		getOperations().add(operation);
 	}
@@ -594,7 +577,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#addAll(java.util.List)
 	 */
-	@Override
 	public void addAll(List<AbstractOperation> operations) {
 		getOperations().addAll(operations);
 	}
@@ -604,7 +586,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#size()
 	 */
-	@Override
 	public int size() {
 		// TODO: return leaf ops?
 		return getOperations().size();
@@ -615,16 +596,13 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#operations()
 	 */
-	@Override
 	public ESCloseableIterable<AbstractOperation> operations() {
 		return new ESCloseableIterable<AbstractOperation>() {
 
-			@Override
 			public void close() {
 				// nothing to do
 			}
 
-			@Override
 			public Iterable<AbstractOperation> iterable() {
 				return getOperations();
 			}
@@ -636,16 +614,13 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reversedOperations()
 	 */
-	@Override
 	public ESCloseableIterable<AbstractOperation> reversedOperations() {
 		return new ESCloseableIterable<AbstractOperation>() {
 
-			@Override
 			public void close() {
 				// nothing to do
 			}
 
-			@Override
 			public Iterable<AbstractOperation> iterable() {
 				return Lists.reverse(getOperations());
 			}
@@ -657,7 +632,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#isEmpty()
 	 */
-	@Override
 	public boolean isEmpty() {
 		return getOperations().isEmpty();
 	}
@@ -667,7 +641,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#removeAtEnd(int)
 	 */
-	@Override
 	public List<AbstractOperation> removeAtEnd(int n) {
 		final List<AbstractOperation> removedOperations = new ArrayList<AbstractOperation>();
 		for (int i = 0; i < n; i++) {
@@ -683,7 +656,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#clear()
 	 */
-	@Override
 	public void clear() {
 		getOperations().clear();
 	}
@@ -693,7 +665,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage)
 	 */
-	@Override
+
 	public void attachToProjectSpace(HasChangePackage changePackageHolder) {
 		changePackageHolder.setChangePackage(this);
 	}
@@ -703,7 +675,6 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#leafSize()
 	 */
-	@Override
 	public int leafSize() {
 		// TODO: review getSize, leafSize
 		return getSize();

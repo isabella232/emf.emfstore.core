@@ -49,7 +49,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#getLogMessage()
 	 */
-	@Override
 	public ESLogMessage getLogMessage() {
 		if (toInternalAPI().getLogMessage() == null) {
 			return null;
@@ -63,7 +62,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#setLogMessage(org.eclipse.emf.emfstore.server.model.ESLogMessage)
 	 */
-	@Override
 	public void setLogMessage(ESLogMessage logMessage) {
 		final LogMessage logMsg = ESLogMessageImpl.class.cast(logMessage).toInternalAPI();
 		toInternalAPI().setLogMessage(logMsg);
@@ -74,7 +72,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#addAll(java.util.List)
 	 */
-	@Override
 	public void addAll(List<ESOperation> ops) {
 		final List<AbstractOperation> operations = APIUtil.toInternal(ops);
 		toInternalAPI().getOperations().addAll(operations);
@@ -86,7 +83,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#add(org.eclipse.emf.emfstore.server.model.ESOperation)
 	 */
-	@Override
 	public void add(ESOperation op) {
 		final AbstractOperation operation = ESOperationImpl.class.cast(op).toInternalAPI();
 		toInternalAPI().getOperations().add(operation);
@@ -97,7 +93,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#clear()
 	 */
-	@Override
 	public void clear() {
 		toInternalAPI().getOperations().clear();
 	}
@@ -107,7 +102,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#isEmpty()
 	 */
-	@Override
 	public boolean isEmpty() {
 		return toInternalAPI().getOperations().isEmpty();
 	}
@@ -117,7 +111,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#removeFromEnd(int)
 	 */
-	@Override
 	public List<ESOperation> removeFromEnd(int n) {
 		final List<ESOperation> collectedOperations = new ArrayList<ESOperation>();
 		for (int i = 0; i < n; i++) {
@@ -134,16 +127,13 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#operations()
 	 */
-	@Override
 	public ESCloseableIterable<ESOperation> operations() {
 		return new ESCloseableIterable<ESOperation>() {
 
-			@Override
 			public void close() {
 				// nothing to do
 			}
 
-			@Override
 			public Iterable<ESOperation> iterable() {
 				final EList<AbstractOperation> operations = toInternalAPI().getOperations();
 				return APIUtil.toExternal(operations);
@@ -156,7 +146,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#size()
 	 */
-	@Override
 	public int size() {
 		return toInternalAPI().getSize();
 	}
@@ -167,7 +156,6 @@ public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePacka
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESChangePackage#reverse()
 	 */
-	@Override
 	public ESChangePackage reverse() {
 		return toInternalAPI().reverse().toAPI();
 	}

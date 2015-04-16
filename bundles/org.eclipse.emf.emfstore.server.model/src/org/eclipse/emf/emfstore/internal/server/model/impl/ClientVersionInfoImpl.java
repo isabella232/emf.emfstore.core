@@ -95,7 +95,6 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -105,7 +104,6 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setVersion(String newVersion) {
 		final String oldVersion = version;
 		version = newVersion;
@@ -120,7 +118,6 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -130,7 +127,6 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;

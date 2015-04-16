@@ -74,7 +74,6 @@ public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> i
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ModelElementId> getModelElements() {
 		if (modelElements == null) {
 			modelElements = new EObjectContainmentEList.Resolving<ModelElementId>(ModelElementId.class, this,

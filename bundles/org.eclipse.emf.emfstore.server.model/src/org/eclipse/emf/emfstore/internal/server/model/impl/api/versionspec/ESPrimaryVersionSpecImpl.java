@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *
  */
 public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersionSpec, PrimaryVersionSpec> implements
-	ESPrimaryVersionSpec {
+ESPrimaryVersionSpec {
 
 	/**
 	 * Constructor.
@@ -39,7 +39,6 @@ public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersion
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec#getIdentifier()
 	 */
-	@Override
 	public int getIdentifier() {
 		return toInternalAPI().getIdentifier();
 	}

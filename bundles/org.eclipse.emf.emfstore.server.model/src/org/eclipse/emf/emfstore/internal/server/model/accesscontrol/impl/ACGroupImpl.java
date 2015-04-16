@@ -68,7 +68,6 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 * @return a list of org units <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@Override
 	@SuppressWarnings("serial")
 	public EList<ACOrgUnit> getMembers() {
 		if (members == null) {

@@ -41,7 +41,6 @@ public class ESLogMessageImpl extends AbstractAPIImpl<ESLogMessage, LogMessage> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESLogMessage#getAuthor()
 	 */
-	@Override
 	public String getAuthor() {
 		return toInternalAPI().getAuthor();
 	}
@@ -52,7 +51,6 @@ public class ESLogMessageImpl extends AbstractAPIImpl<ESLogMessage, LogMessage> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESLogMessage#getClientDate()
 	 */
-	@Override
 	public Date getClientDate() {
 		return toInternalAPI().getClientDate();
 	}
@@ -63,7 +61,6 @@ public class ESLogMessageImpl extends AbstractAPIImpl<ESLogMessage, LogMessage> 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESLogMessage#getMessage()
 	 */
-	@Override
 	public String getMessage() {
 		return toInternalAPI().getMessage();
 	}

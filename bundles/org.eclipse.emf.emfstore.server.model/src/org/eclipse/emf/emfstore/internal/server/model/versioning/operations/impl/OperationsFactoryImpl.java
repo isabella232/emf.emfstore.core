@@ -155,7 +155,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public CompositeOperation createCompositeOperation() {
 		final CompositeOperationImpl compositeOperation = new CompositeOperationImpl();
 		return compositeOperation;
@@ -166,7 +165,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public CreateDeleteOperation createCreateDeleteOperation() {
 		final CreateDeleteOperationImpl createDeleteOperation = new CreateDeleteOperationImpl();
 		return createDeleteOperation;
@@ -177,7 +175,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public AttributeOperation createAttributeOperation() {
 		final AttributeOperationImpl attributeOperation = new AttributeOperationImpl();
 		return attributeOperation;
@@ -188,7 +185,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public MultiAttributeOperation createMultiAttributeOperation() {
 		final MultiAttributeOperationImpl multiAttributeOperation = new MultiAttributeOperationImpl();
 		return multiAttributeOperation;
@@ -199,7 +195,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public MultiAttributeSetOperation createMultiAttributeSetOperation() {
 		final MultiAttributeSetOperationImpl multiAttributeSetOperation = new MultiAttributeSetOperationImpl();
 		return multiAttributeSetOperation;
@@ -210,7 +205,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public MultiAttributeMoveOperation createMultiAttributeMoveOperation() {
 		final MultiAttributeMoveOperationImpl multiAttributeMoveOperation = new MultiAttributeMoveOperationImpl();
 		return multiAttributeMoveOperation;
@@ -221,7 +215,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public SingleReferenceOperation createSingleReferenceOperation() {
 		final SingleReferenceOperationImpl singleReferenceOperation = new SingleReferenceOperationImpl();
 		return singleReferenceOperation;
@@ -232,7 +225,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public MultiReferenceOperation createMultiReferenceOperation() {
 		final MultiReferenceOperationImpl multiReferenceOperation = new MultiReferenceOperationImpl();
 		return multiReferenceOperation;
@@ -243,7 +235,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public MultiReferenceSetOperation createMultiReferenceSetOperation() {
 		final MultiReferenceSetOperationImpl multiReferenceSetOperation = new MultiReferenceSetOperationImpl();
 		return multiReferenceSetOperation;
@@ -254,7 +245,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public MultiReferenceMoveOperation createMultiReferenceMoveOperation() {
 		final MultiReferenceMoveOperationImpl multiReferenceMoveOperation = new MultiReferenceMoveOperationImpl();
 		return multiReferenceMoveOperation;
@@ -265,7 +255,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public OperationId createOperationId() {
 		final OperationIdImpl operationId = new OperationIdImpl();
 		return operationId;
@@ -276,7 +265,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public OperationGroup createOperationGroup() {
 		final OperationGroupImpl operationGroup = new OperationGroupImpl();
 		return operationGroup;
@@ -287,7 +275,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementGroup createModelElementGroup() {
 		final ModelElementGroupImpl modelElementGroup = new ModelElementGroupImpl();
 		return modelElementGroup;
@@ -356,7 +343,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	 *
 	 * @generated
 	 */
-	@Override
 	public OperationsPackage getOperationsPackage() {
 		return (OperationsPackage) getEPackage();
 	}

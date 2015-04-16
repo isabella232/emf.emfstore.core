@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -35,7 +35,7 @@ import org.eclipse.swt.graphics.Image;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
@@ -43,7 +43,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	 * The cached value of the '{@link #getProxies() <em>Proxies</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProxies()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected OperationProxyImpl() {
@@ -66,7 +66,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,10 +77,9 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	@Override
 	public EList<OperationProxy> getProxies() {
 		if (proxies == null) {
 			proxies = new EObjectContainmentEList.Resolving<OperationProxy>(OperationProxy.class, this,
@@ -92,7 +91,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -107,7 +106,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -122,7 +121,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -140,7 +139,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,7 +155,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -170,70 +169,63 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setLabel(java.lang.String)
 	 */
-	@Override
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(org.eclipse.swt.graphics.Image)
 	 */
-	@Override
 	public void setImage(Image image) {
 		this.image = image;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getImage()
 	 */
-	@Override
 	public Image getImage() {
 		return image;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getLabel()
 	 */
-	@Override
 	public String getLabel() {
 		return label;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getIndex()
 	 */
-	@Override
 	public int getIndex() {
 		return index;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setIndex(int)
 	 */
-	@Override
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#isLabelProviderReady()
 	 */
-	@Override
 	public boolean isLabelProviderReady() {
 		return !label.equals(StringUtils.EMPTY) && getImage() != null;
 	}

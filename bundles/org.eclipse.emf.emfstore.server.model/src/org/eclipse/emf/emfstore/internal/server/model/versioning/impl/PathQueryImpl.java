@@ -74,7 +74,6 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getTarget() {
 		if (target != null && target.eIsProxy()) {
 			final InternalEObject oldTarget = (InternalEObject) target;
@@ -133,7 +132,6 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setTarget(PrimaryVersionSpec newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -242,7 +240,6 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESPathQueryImpl toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -258,7 +255,6 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESPathQueryImpl createAPI() {
 		return new ESPathQueryImpl(this);
 	}

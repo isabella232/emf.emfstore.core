@@ -22,7 +22,6 @@ public class VersionRule implements UpdateXMIAttributeRule {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.startup.UpdateXMIAttributeRule#getNewAttribute(java.lang.String)
 	 */
-	@Override
 	public String getNewAttribute(String oldAttr) {
 		final String[] fragments = oldAttr.split("-"); //$NON-NLS-1$
 		return "versions/" + fragments[1].split("\\.")[0] + "#/"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

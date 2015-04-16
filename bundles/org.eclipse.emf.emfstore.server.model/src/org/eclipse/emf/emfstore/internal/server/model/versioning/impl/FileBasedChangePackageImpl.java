@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
@@ -80,7 +80,7 @@ import com.google.common.collect.Iterables;
  * <em>Operation Proxies</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FileBasedChangePackageImpl extends EObjectImpl implements FileBasedChangePackage {
@@ -89,7 +89,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLogMessage()
 	 * @generated
 	 * @ordered
@@ -98,23 +98,23 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * Resource loading options.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private static Map<Object, Object> loadingOptions;
 
 	/**
 	 * The API representation of this change package.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private ESChangePackage apiImpl;
 
 	/**
 	 * Whether this change package has been initialized.
-	 * 
+	 *
 	 * TODO: move to Ecore? Maybe we don't even need this
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	private boolean needsInit;
@@ -123,7 +123,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * The default value of the '{@link #getFilePath() <em>File Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFilePath()
 	 * @generated
 	 * @ordered
@@ -133,7 +133,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * The cached value of the '{@link #getFilePath() <em>File Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFilePath()
 	 * @generated
 	 * @ordered
@@ -144,7 +144,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * The cached value of the '{@link #getOperationProxies() <em>Operation Proxies</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOperationProxies()
 	 * @generated
 	 * @ordered
@@ -154,7 +154,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected FileBasedChangePackageImpl() {
@@ -164,7 +164,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,10 +175,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	@Override
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy()) {
 			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
@@ -206,7 +205,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public LogMessage basicGetLogMessage() {
@@ -216,7 +215,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetLogMessage(LogMessage newLogMessage, NotificationChain msgs) {
@@ -237,10 +236,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	@Override
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
@@ -265,10 +263,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	@Override
 	public String getFilePath() {
 		return filePath;
 	}
@@ -276,10 +273,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	@Override
 	public void setFilePath(String newFilePath) {
 		final String oldFilePath = filePath;
 		filePath = newFilePath;
@@ -292,10 +288,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	@Override
 	public EList<OperationProxy> getOperationProxies() {
 		if (operationProxies == null) {
 			operationProxies = new EObjectContainmentEList.Resolving<OperationProxy>(OperationProxy.class, this,
@@ -307,7 +302,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -324,7 +319,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -346,7 +341,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -370,7 +365,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -392,7 +387,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -411,7 +406,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -429,10 +424,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
-	@Override
 	public ESChangePackage toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -442,21 +436,19 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
-	@Override
 	public ESChangePackage createAPI() {
 		return new ESFileBasedChangePackageImpl(this);
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#addAll(java.util.List)
 	 */
-	@Override
 	public void addAll(List<AbstractOperation> ops) {
 		// TODO: LCP - file is reopened for each op
 		for (final AbstractOperation op : ops) {
@@ -465,12 +457,11 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#add(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
-	@Override
 	public void add(final AbstractOperation op) {
 
 		final Resource resource = createVirtualResource();
@@ -509,12 +500,11 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reverse()
 	 */
-	@Override
 	public FileBasedChangePackage reverse() {
 		final FileBasedChangePackage reversedChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
 		// TODO LCP: where should we put the file
@@ -562,7 +552,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		return changePackage;
 	}
 
-	@Override
 	public ESCloseableIterable<AbstractOperation> reversedOperations() {
 		return new FileBasedOperationIterable(getFilePath(), Direction.Backward);
 	}
@@ -588,10 +577,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#size()
 	 */
-	@Override
 	public int size() {
 		int counter = 0;
 		ReversedLinesFileReader reversedLinesFileReader = null;
@@ -615,20 +603,18 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#operations()
 	 */
-	@Override
 	public ESCloseableIterable<AbstractOperation> operations() {
 		return new FileBasedOperationIterable(getFilePath(), Direction.Forward);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#isEmpty()
 	 */
-	@Override
 	public boolean isEmpty() {
 		BufferedReader reader = null;
 		try {
@@ -657,10 +643,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#removeAtEnd(int)
 	 */
-	@Override
 	public List<AbstractOperation> removeAtEnd(int n) {
 		ReversedLinesFileReader reversedLinesFileReader = null;
 		int counter = n;
@@ -703,10 +688,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#clear()
 	 */
-	@Override
 	public void clear() {
 		RandomAccessFile raf = null;
 		try {
@@ -733,10 +717,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage)
 	 */
-	@Override
 	public void attachToProjectSpace(HasChangePackage changePackageHolder) {
 		// final URI operationsURI = ESClientURIUtil.createOperationsURI(getProjectSpace());
 		// final URI normalizedOperationUri = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
@@ -758,10 +741,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#leafSize()
 	 */
-	@Override
 	public int leafSize() {
 		final ESCloseableIterable<AbstractOperation> operationHandle = operations();
 		try {
@@ -798,10 +780,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#initialize(java.lang.String)
 	 */
-	@Override
 	public void initialize(String filePath) {
 		setFilePath(filePath);
 		needsInit = false;
@@ -818,21 +799,19 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#apply(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 */
-	@Override
 	public void apply(Project project) {
 		apply(project, false);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#apply(org.eclipse.emf.emfstore.internal.common.model.Project,
 	 *      boolean)
 	 */
-	@Override
 	public void apply(Project project, boolean forceApplication) {
 		final ESCloseableIterable<AbstractOperation> operations = operations();
 		try {
@@ -853,10 +832,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#get(int)
 	 */
-	@Override
 	public AbstractOperation get(int index) {
 		final ESCloseableIterable<AbstractOperation> operations = operations();
 		try {
@@ -869,10 +847,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#toInMemoryChangePackage()
 	 */
-	@Override
 	public ChangePackage toInMemoryChangePackage() {
 		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
 		final ESCloseableIterable<AbstractOperation> operationsHandle = operations();

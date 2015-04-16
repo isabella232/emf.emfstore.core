@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.util.Eve
  * @generated
  */
 public class EventsItemProviderAdapterFactory extends EventsAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -112,7 +112,6 @@ public class EventsItemProviderAdapterFactory extends EventsAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -123,7 +122,6 @@ public class EventsItemProviderAdapterFactory extends EventsAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -172,7 +170,6 @@ public class EventsItemProviderAdapterFactory extends EventsAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -183,7 +180,6 @@ public class EventsItemProviderAdapterFactory extends EventsAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -195,7 +191,6 @@ public class EventsItemProviderAdapterFactory extends EventsAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -210,7 +205,6 @@ public class EventsItemProviderAdapterFactory extends EventsAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
 		if (eventItemProvider != null) {
 			eventItemProvider.dispose();

@@ -44,10 +44,8 @@ public class InMemoryOperationIterable implements ESCloseableIterable<ESOperatio
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESCloseableIterable#iterable()
 	 */
-	@Override
 	public Iterable<ESOperation> iterable() {
 		return new Iterable<ESOperation>() {
-			@Override
 			public Iterator<ESOperation> iterator() {
 				return operations.iterator();
 			}
@@ -60,7 +58,6 @@ public class InMemoryOperationIterable implements ESCloseableIterable<ESOperatio
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESCloseableIterable#close()
 	 */
-	@Override
 	public void close() {
 		// nothing to do
 	}

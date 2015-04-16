@@ -49,7 +49,6 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#rangeQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      int, int, boolean, boolean, boolean, boolean)
 	 */
-	@Override
 	public ESRangeQuery<?> rangeQuery(ESPrimaryVersionSpec source, int upper, int lower, boolean allVersions,
 		boolean incoming, boolean outgoing, boolean includeChangePackages) {
 
@@ -69,7 +68,6 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#pathQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec, boolean, boolean)
 	 */
-	@Override
 	public ESPathQuery pathQuery(ESPrimaryVersionSpec source, ESPrimaryVersionSpec target, boolean allVersions,
 		boolean includeChangePackages) {
 		final PrimaryVersionSpec sourceVersionSpec = ((ESPrimaryVersionSpecImpl) source).toInternalAPI();
@@ -86,7 +84,6 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#modelElementQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      java.util.List, int, int, boolean, boolean)
 	 */
-	@Override
 	public ESModelElementQuery modelElementQuery(ESPrimaryVersionSpec source, List<ESModelElementId> modelElements,
 		int upper, int lower, boolean allVersions, boolean includeChangePackages) {
 
@@ -112,7 +109,6 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#modelElementQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.common.model.ESModelElementId, int, int, boolean, boolean)
 	 */
-	@Override
 	public ESModelElementQuery modelElementQuery(ESPrimaryVersionSpec source, ESModelElementId id, int upper,
 		int lower, boolean allVersions, boolean includeCp) {
 		final ModelElementQuery modelelementQuery = HistoryQueryBuilder.modelelementQuery(

@@ -175,7 +175,6 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESIdToEObjectMapping#get(java.lang.Object)
 	 */
-	@Override
 	public EObject get(ModelElementId modelElementId) {
 		final EObject eObject = delegateMapping.get(modelElementId);
 		if (eObject != null) {
@@ -192,7 +191,6 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * {@inheritDoc}
 	 *
 	 */
-	@Override
 	public ESModelElementIdToEObjectMappingImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -207,7 +205,6 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 	 * {@inheritDoc}
 	 *
 	 */
-	@Override
 	public ESModelElementIdToEObjectMappingImpl createAPI() {
 		return new ESModelElementIdToEObjectMappingImpl(this);
 	}

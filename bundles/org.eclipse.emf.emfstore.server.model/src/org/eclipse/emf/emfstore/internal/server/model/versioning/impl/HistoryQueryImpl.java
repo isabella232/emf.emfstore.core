@@ -118,7 +118,6 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getSource() {
 		if (source != null && source.eIsProxy()) {
 			final InternalEObject oldSource = (InternalEObject) source;
@@ -173,12 +172,10 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	}
 
 	/**
-	 * .
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setSource(PrimaryVersionSpec newSource) {
 		if (newSource != source) {
 			NotificationChain msgs = null;
@@ -205,7 +202,6 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isIncludeChangePackages() {
 		return includeChangePackages;
 	}
@@ -215,7 +211,6 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setIncludeChangePackages(boolean newIncludeChangePackages) {
 		final boolean oldIncludeChangePackages = includeChangePackages;
 		includeChangePackages = newIncludeChangePackages;
@@ -231,7 +226,6 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isIncludeAllVersions() {
 		return includeAllVersions;
 	}
@@ -241,7 +235,6 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setIncludeAllVersions(boolean newIncludeAllVersions) {
 		final boolean oldIncludeAllVersions = includeAllVersions;
 		includeAllVersions = newIncludeAllVersions;

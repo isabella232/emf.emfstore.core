@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
  * @generated
  */
 public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -87,7 +87,6 @@ public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory i
 	 *
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -98,7 +97,6 @@ public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory i
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -147,7 +145,6 @@ public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory i
 	 *
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -158,7 +155,6 @@ public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory i
 	 *
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -170,7 +166,6 @@ public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory i
 	 *
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -185,7 +180,6 @@ public class SemanticItemProviderAdapterFactory extends SemanticAdapterFactory i
 	 *
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
 	}
 

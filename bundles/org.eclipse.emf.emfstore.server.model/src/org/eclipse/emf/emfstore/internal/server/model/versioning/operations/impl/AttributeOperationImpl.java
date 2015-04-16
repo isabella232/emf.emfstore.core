@@ -105,7 +105,6 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 *
 	 * @generated
 	 */
-	@Override
 	public Object getOldValue() {
 		return oldValue;
 	}
@@ -115,7 +114,6 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOldValue(Object newOldValue) {
 		final Object oldOldValue = oldValue;
 		oldValue = newOldValue;
@@ -130,7 +128,6 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 *
 	 * @generated
 	 */
-	@Override
 	public Object getNewValue() {
 		return newValue;
 	}
@@ -140,7 +137,6 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewValue(Object newNewValue) {
 		final Object oldNewValue = newValue;
 		newValue = newNewValue;
@@ -238,7 +234,6 @@ public class AttributeOperationImpl extends FeatureOperationImpl implements Attr
 		return result.toString();
 	}
 
-	@Override
 	public void apply(IdEObjectCollection project) {
 		final EObject object = project.getModelElement(getModelElementId());
 

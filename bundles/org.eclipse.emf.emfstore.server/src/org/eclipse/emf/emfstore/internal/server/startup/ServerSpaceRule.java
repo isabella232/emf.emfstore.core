@@ -22,7 +22,6 @@ public class ServerSpaceRule implements UpdateXMIAttributeRule {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.startup.UpdateXMIAttributeRule#getNewAttribute(java.lang.String)
 	 */
-	@Override
 	public String getNewAttribute(String oldAttr) {
 		String result = ""; //$NON-NLS-1$
 		final String[] projects = oldAttr.split(" "); //$NON-NLS-1$

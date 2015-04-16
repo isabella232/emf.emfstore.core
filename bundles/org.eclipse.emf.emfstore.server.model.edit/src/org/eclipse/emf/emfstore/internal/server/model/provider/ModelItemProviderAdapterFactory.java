@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.util.ModelAdapterFactory;
  * @generated
  */
 public class ModelItemProviderAdapterFactory extends ModelAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -304,7 +304,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -315,7 +314,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -364,7 +362,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -375,7 +372,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -387,7 +383,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -402,7 +397,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
 		if (projectHistoryItemProvider != null) {
 			projectHistoryItemProvider.dispose();

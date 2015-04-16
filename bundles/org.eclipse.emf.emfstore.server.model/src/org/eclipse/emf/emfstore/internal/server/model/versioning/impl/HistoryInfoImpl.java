@@ -184,7 +184,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getPrimarySpec() {
 		if (primarySpec != null && primarySpec.eIsProxy()) {
 			final InternalEObject oldPrimarySpec = (InternalEObject) primarySpec;
@@ -246,7 +245,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setPrimarySpec(PrimaryVersionSpec newPrimarySpec) {
 		if (newPrimarySpec != primarySpec) {
 			NotificationChain msgs = null;
@@ -273,7 +271,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<PrimaryVersionSpec> getNextSpec() {
 		if (nextSpec == null) {
 			nextSpec = new EObjectContainmentEList.Resolving<PrimaryVersionSpec>(PrimaryVersionSpec.class, this,
@@ -287,7 +284,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getPreviousSpec() {
 		if (previousSpec != null && previousSpec.eIsProxy()) {
 			final InternalEObject oldPreviousSpec = (InternalEObject) previousSpec;
@@ -346,7 +342,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setPreviousSpec(PrimaryVersionSpec newPreviousSpec) {
 		if (newPreviousSpec != previousSpec) {
 			NotificationChain msgs = null;
@@ -373,7 +368,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<PrimaryVersionSpec> getMergedFrom() {
 		if (mergedFrom == null) {
 			mergedFrom = new EObjectContainmentEList.Resolving<PrimaryVersionSpec>(PrimaryVersionSpec.class, this,
@@ -387,7 +381,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<PrimaryVersionSpec> getMergedTo() {
 		if (mergedTo == null) {
 			mergedTo = new EObjectContainmentEList.Resolving<PrimaryVersionSpec>(PrimaryVersionSpec.class, this,
@@ -401,7 +394,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy()) {
 			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
@@ -460,7 +452,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
@@ -487,7 +478,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<TagVersionSpec> getTagSpecs() {
 		if (tagSpecs == null) {
 			tagSpecs = new EObjectContainmentEList.Resolving<TagVersionSpec>(TagVersionSpec.class, this,
@@ -501,7 +491,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<VersionProperty> getVersionProperties() {
 		if (versionProperties == null) {
 			versionProperties = new EObjectContainmentEList.Resolving<VersionProperty>(VersionProperty.class, this,
@@ -515,7 +504,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public AbstractChangePackage getChangePackage() {
 		if (changePackage != null && changePackage.eIsProxy()) {
 			final InternalEObject oldChangePackage = (InternalEObject) changePackage;
@@ -574,7 +562,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setChangePackage(AbstractChangePackage newChangePackage) {
 		if (newChangePackage != changePackage) {
 			NotificationChain msgs = null;
@@ -790,7 +777,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESHistoryInfoImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -808,7 +794,6 @@ public class HistoryInfoImpl extends EObjectImpl implements HistoryInfo {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESHistoryInfoImpl createAPI() {
 		return new ESHistoryInfoImpl(this);
 	}

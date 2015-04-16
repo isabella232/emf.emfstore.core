@@ -105,7 +105,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -115,7 +114,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -129,7 +127,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getHead() {
 		if (head != null && head.eIsProxy()) {
 			final InternalEObject oldHead = (InternalEObject) head;
@@ -188,7 +185,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setHead(PrimaryVersionSpec newHead) {
 		if (newHead != head) {
 			NotificationChain msgs = null;
@@ -214,7 +210,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getSource() {
 		if (source != null && source.eIsProxy()) {
 			final InternalEObject oldSource = (InternalEObject) source;
@@ -273,7 +268,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setSource(PrimaryVersionSpec newSource) {
 		if (newSource != source) {
 			NotificationChain msgs = null;
@@ -421,7 +415,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESBranchInfoImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -439,7 +432,6 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESBranchInfoImpl createAPI() {
 		return new ESBranchInfoImpl(this);
 	}

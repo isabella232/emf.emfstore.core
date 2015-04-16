@@ -77,7 +77,6 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getEmfStoreVersionString() {
 		return emfStoreVersionString;
 	}
@@ -87,7 +86,6 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setEmfStoreVersionString(String newEmfStoreVersionString) {
 		final String oldEmfStoreVersionString = emfStoreVersionString;
 		emfStoreVersionString = newEmfStoreVersionString;
@@ -104,7 +102,6 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 * @return the version <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@Override
 	public Version getEmfStoreVersion() {
 		return new Version(getEmfStoreVersionString());
 	}
@@ -116,7 +113,6 @@ public class VersionInfoImpl extends EObjectImpl implements VersionInfo {
 	 *            the version <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@Override
 	public void setEmfStoreVersion(Version emfStoreVersion) {
 		setEmfStoreVersionString(emfStoreVersion.toString());
 	}

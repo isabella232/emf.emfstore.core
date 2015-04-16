@@ -76,7 +76,6 @@ public class EventImpl extends EObjectImpl implements Event {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Date getTimestamp() {
 		return timestamp;
 	}
@@ -86,7 +85,6 @@ public class EventImpl extends EObjectImpl implements Event {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setTimestamp(Date newTimestamp) {
 		final Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;

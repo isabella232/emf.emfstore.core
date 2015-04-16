@@ -259,7 +259,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		// Obtain or create and register package
 		final VersioningPackageImpl theVersioningPackage = (VersioningPackageImpl) (EPackage.Registry.INSTANCE
 			.get(eNS_URI) instanceof VersioningPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-			: new VersioningPackageImpl());
+				: new VersioningPackageImpl());
 
 		isInited = true;
 
@@ -269,29 +269,29 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		// Obtain or create and register interdependencies
 		final ModelPackageImpl theModelPackage_1 = (ModelPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI) instanceof ModelPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI)
-			: org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eINSTANCE);
+				.getEPackage(org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eNS_URI)
+				: org.eclipse.emf.emfstore.internal.server.model.ModelPackage.eINSTANCE);
 		final OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(OperationsPackage.eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(OperationsPackage.eNS_URI) : OperationsPackage.eINSTANCE);
+				.getEPackage(OperationsPackage.eNS_URI) : OperationsPackage.eINSTANCE);
 		final SemanticPackageImpl theSemanticPackage = (SemanticPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(SemanticPackage.eNS_URI) instanceof SemanticPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(SemanticPackage.eNS_URI) : SemanticPackage.eINSTANCE);
+				.getEPackage(SemanticPackage.eNS_URI) : SemanticPackage.eINSTANCE);
 		final EventsPackageImpl theEventsPackage = (EventsPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(EventsPackage.eNS_URI) instanceof EventsPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(EventsPackage.eNS_URI) : EventsPackage.eINSTANCE);
+				.getEPackage(EventsPackage.eNS_URI) : EventsPackage.eINSTANCE);
 		final ServerPackageImpl theServerPackage = (ServerPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(ServerPackage.eNS_URI) instanceof ServerPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(ServerPackage.eNS_URI) : ServerPackage.eINSTANCE);
+				.getEPackage(ServerPackage.eNS_URI) : ServerPackage.eINSTANCE);
 		final AccesscontrolPackageImpl theAccesscontrolPackage = (AccesscontrolPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(AccesscontrolPackage.eNS_URI) instanceof AccesscontrolPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(AccesscontrolPackage.eNS_URI) : AccesscontrolPackage.eINSTANCE);
+				.getEPackage(AccesscontrolPackage.eNS_URI) : AccesscontrolPackage.eINSTANCE);
 		final RolesPackageImpl theRolesPackage = (RolesPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(RolesPackage.eNS_URI) instanceof RolesPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
+				.getEPackage(RolesPackage.eNS_URI) : RolesPackage.eINSTANCE);
 		final UrlPackageImpl theUrlPackage = (UrlPackageImpl) (EPackage.Registry.INSTANCE
 			.getEPackage(UrlPackage.eNS_URI) instanceof UrlPackageImpl ? EPackage.Registry.INSTANCE
-			.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
+				.getEPackage(UrlPackage.eNS_URI) : UrlPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theVersioningPackage.createPackageContents();
@@ -328,7 +328,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getTagVersionSpec() {
 		return tagVersionSpecEClass;
 	}
@@ -338,7 +337,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getTagVersionSpec_Name() {
 		return (EAttribute) tagVersionSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -348,7 +346,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getDateVersionSpec() {
 		return dateVersionSpecEClass;
 	}
@@ -358,7 +355,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getDateVersionSpec_Date() {
 		return (EAttribute) dateVersionSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -368,7 +364,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getPrimaryVersionSpec() {
 		return primaryVersionSpecEClass;
 	}
@@ -378,7 +373,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getPrimaryVersionSpec_Identifier() {
 		return (EAttribute) primaryVersionSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -389,7 +383,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getPrimaryVersionSpec_ProjectStateChecksum() {
 		return (EAttribute) primaryVersionSpecEClass.getEStructuralFeatures().get(1);
 	}
@@ -399,7 +392,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getVersionSpec() {
 		return versionSpecEClass;
 	}
@@ -409,7 +401,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getVersionSpec_Branch() {
 		return (EAttribute) versionSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -419,7 +410,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getLogMessage() {
 		return logMessageEClass;
 	}
@@ -429,7 +419,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getLogMessage_Message() {
 		return (EAttribute) logMessageEClass.getEStructuralFeatures().get(1);
 	}
@@ -439,7 +428,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getLogMessage_Date() {
 		return (EAttribute) logMessageEClass.getEStructuralFeatures().get(2);
 	}
@@ -449,7 +437,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getLogMessage_ClientDate() {
 		return (EAttribute) logMessageEClass.getEStructuralFeatures().get(3);
 	}
@@ -459,7 +446,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getLogMessage_Author() {
 		return (EAttribute) logMessageEClass.getEStructuralFeatures().get(0);
 	}
@@ -469,7 +455,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getChangePackage() {
 		return changePackageEClass;
 	}
@@ -479,7 +464,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getChangePackage_Operations() {
 		return (EReference) changePackageEClass.getEStructuralFeatures().get(0);
 	}
@@ -489,7 +473,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getChangePackage_Events() {
 		return (EReference) changePackageEClass.getEStructuralFeatures().get(1);
 	}
@@ -499,7 +482,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getChangePackage_VersionProperties() {
 		return (EReference) changePackageEClass.getEStructuralFeatures().get(2);
 	}
@@ -509,7 +491,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getHistoryInfo() {
 		return historyInfoEClass;
 	}
@@ -520,7 +501,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_PrimarySpec() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(0);
 	}
@@ -530,7 +510,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_NextSpec() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(1);
 	}
@@ -540,7 +519,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_PreviousSpec() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(2);
 	}
@@ -550,7 +528,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_MergedFrom() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(3);
 	}
@@ -560,7 +537,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_MergedTo() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(4);
 	}
@@ -570,7 +546,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_LogMessage() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(5);
 	}
@@ -580,7 +555,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_TagSpecs() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(6);
 	}
@@ -590,7 +564,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_VersionProperties() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(7);
 	}
@@ -600,7 +573,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryInfo_ChangePackage() {
 		return (EReference) historyInfoEClass.getEStructuralFeatures().get(8);
 	}
@@ -610,7 +582,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getHistoryQuery() {
 		return historyQueryEClass;
 	}
@@ -620,7 +591,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getHistoryQuery_Source() {
 		return (EReference) historyQueryEClass.getEStructuralFeatures().get(0);
 	}
@@ -630,7 +600,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getHistoryQuery_IncludeChangePackages() {
 		return (EAttribute) historyQueryEClass.getEStructuralFeatures().get(1);
 	}
@@ -640,7 +609,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getHistoryQuery_IncludeAllVersions() {
 		return (EAttribute) historyQueryEClass.getEStructuralFeatures().get(2);
 	}
@@ -650,7 +618,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getRangeQuery() {
 		return rangeQueryEClass;
 	}
@@ -660,7 +627,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getRangeQuery_UpperLimit() {
 		return (EAttribute) rangeQueryEClass.getEStructuralFeatures().get(0);
 	}
@@ -670,7 +636,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getRangeQuery_LowerLimit() {
 		return (EAttribute) rangeQueryEClass.getEStructuralFeatures().get(1);
 	}
@@ -680,7 +645,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getRangeQuery_IncludeIncoming() {
 		return (EAttribute) rangeQueryEClass.getEStructuralFeatures().get(2);
 	}
@@ -690,7 +654,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getRangeQuery_IncludeOutgoing() {
 		return (EAttribute) rangeQueryEClass.getEStructuralFeatures().get(3);
 	}
@@ -700,7 +663,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getPathQuery() {
 		return pathQueryEClass;
 	}
@@ -710,7 +672,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getPathQuery_Target() {
 		return (EReference) pathQueryEClass.getEStructuralFeatures().get(0);
 	}
@@ -720,7 +681,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getModelElementQuery() {
 		return modelElementQueryEClass;
 	}
@@ -730,7 +690,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getModelElementQuery_ModelElements() {
 		return (EReference) modelElementQueryEClass.getEStructuralFeatures().get(0);
 	}
@@ -740,7 +699,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getVersion() {
 		return versionEClass;
 	}
@@ -750,7 +708,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_PrimarySpec() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(0);
 	}
@@ -760,7 +717,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_TagSpecs() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(1);
 	}
@@ -770,7 +726,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_NextVersion() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(2);
 	}
@@ -780,7 +735,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_PreviousVersion() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(3);
 	}
@@ -790,7 +744,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_LogMessage() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(4);
 	}
@@ -800,7 +753,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_AncestorVersion() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(5);
 	}
@@ -810,7 +762,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_BranchedVersions() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(6);
 	}
@@ -820,7 +771,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_MergedToVersion() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(7);
 	}
@@ -830,7 +780,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getVersion_MergedFromVersion() {
 		return (EReference) versionEClass.getEStructuralFeatures().get(8);
 	}
@@ -840,7 +789,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getHeadVersionSpec() {
 		return headVersionSpecEClass;
 	}
@@ -850,7 +798,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getVersionProperty() {
 		return versionPropertyEClass;
 	}
@@ -860,7 +807,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getVersionProperty_Name() {
 		return (EAttribute) versionPropertyEClass.getEStructuralFeatures().get(0);
 	}
@@ -870,7 +816,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getVersionProperty_Value() {
 		return (EAttribute) versionPropertyEClass.getEStructuralFeatures().get(1);
 	}
@@ -880,7 +825,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getBranchVersionSpec() {
 		return branchVersionSpecEClass;
 	}
@@ -890,7 +834,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getBranchInfo() {
 		return branchInfoEClass;
 	}
@@ -900,7 +843,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getBranchInfo_Name() {
 		return (EAttribute) branchInfoEClass.getEStructuralFeatures().get(0);
 	}
@@ -910,7 +852,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getBranchInfo_Head() {
 		return (EReference) branchInfoEClass.getEStructuralFeatures().get(1);
 	}
@@ -920,7 +861,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getBranchInfo_Source() {
 		return (EReference) branchInfoEClass.getEStructuralFeatures().get(2);
 	}
@@ -930,7 +870,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getAncestorVersionSpec() {
 		return ancestorVersionSpecEClass;
 	}
@@ -940,7 +879,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getAncestorVersionSpec_Target() {
 		return (EReference) ancestorVersionSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -950,7 +888,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getAncestorVersionSpec_Source() {
 		return (EReference) ancestorVersionSpecEClass.getEStructuralFeatures().get(1);
 	}
@@ -961,7 +898,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getPagedUpdateVersionSpec() {
 		return pagedUpdateVersionSpecEClass;
 	}
@@ -972,7 +908,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getPagedUpdateVersionSpec_MaxChanges() {
 		return (EAttribute) pagedUpdateVersionSpecEClass.getEStructuralFeatures().get(0);
 	}
@@ -983,7 +918,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getPagedUpdateVersionSpec_BaseVersionSpec() {
 		return (EReference) pagedUpdateVersionSpecEClass.getEStructuralFeatures().get(1);
 	}
@@ -994,7 +928,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getAbstractChangePackage() {
 		return abstractChangePackageEClass;
 	}
@@ -1005,7 +938,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getAbstractChangePackage_LogMessage() {
 		return (EReference) abstractChangePackageEClass.getEStructuralFeatures().get(0);
 	}
@@ -1016,7 +948,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getFileBasedChangePackage() {
 		return fileBasedChangePackageEClass;
 	}
@@ -1027,7 +958,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EAttribute getFileBasedChangePackage_FilePath() {
 		return (EAttribute) fileBasedChangePackageEClass.getEStructuralFeatures().get(0);
 	}
@@ -1038,7 +968,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getFileBasedChangePackage_OperationProxies() {
 		return (EReference) fileBasedChangePackageEClass.getEStructuralFeatures().get(1);
 	}
@@ -1049,7 +978,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EClass getOperationProxy() {
 		return operationProxyEClass;
 	}
@@ -1060,7 +988,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public EReference getOperationProxy_Proxies() {
 		return (EReference) operationProxyEClass.getEStructuralFeatures().get(0);
 	}
@@ -1070,7 +997,6 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	@Override
 	public VersioningFactory getVersioningFactory() {
 		return (VersioningFactory) getEFactoryInstance();
 	}

@@ -86,7 +86,6 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ReaderRole createReaderRole() {
 		final ReaderRoleImpl readerRole = new ReaderRoleImpl();
 		return readerRole;
@@ -97,7 +96,6 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public WriterRole createWriterRole() {
 		final WriterRoleImpl writerRole = new WriterRoleImpl();
 		return writerRole;
@@ -108,7 +106,6 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectAdminRole createProjectAdminRole() {
 		final ProjectAdminRoleImpl projectAdminRole = new ProjectAdminRoleImpl();
 		return projectAdminRole;
@@ -119,7 +116,6 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ServerAdmin createServerAdmin() {
 		final ServerAdminImpl serverAdmin = new ServerAdminImpl();
 		return serverAdmin;
@@ -130,7 +126,6 @@ public class RolesFactoryImpl extends EFactoryImpl implements RolesFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public RolesPackage getRolesPackage() {
 		return (RolesPackage) getEPackage();
 	}

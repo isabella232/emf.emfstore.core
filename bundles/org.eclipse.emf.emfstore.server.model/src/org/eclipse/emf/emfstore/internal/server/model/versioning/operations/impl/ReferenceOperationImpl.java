@@ -141,7 +141,6 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isBidirectional() {
 		return bidirectional;
 	}
@@ -151,7 +150,6 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setBidirectional(boolean newBidirectional) {
 		final boolean oldBidirectional = bidirectional;
 		bidirectional = newBidirectional;
@@ -166,7 +164,6 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getOppositeFeatureName() {
 		return oppositeFeatureName;
 	}
@@ -176,7 +173,6 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOppositeFeatureName(String newOppositeFeatureName) {
 		final String oldOppositeFeatureName = oppositeFeatureName;
 		oppositeFeatureName = newOppositeFeatureName;
@@ -192,7 +188,6 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public ContainmentType getContainmentType() {
 		return containmentType;
 	}
@@ -202,7 +197,6 @@ public abstract class ReferenceOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setContainmentType(ContainmentType newContainmentType) {
 		final ContainmentType oldContainmentType = containmentType;
 		containmentType = newContainmentType == null ? CONTAINMENT_TYPE_EDEFAULT : newContainmentType;

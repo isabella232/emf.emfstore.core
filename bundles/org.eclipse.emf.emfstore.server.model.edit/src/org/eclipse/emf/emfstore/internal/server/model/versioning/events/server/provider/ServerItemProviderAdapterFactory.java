@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.u
  * @generated
  */
 public class ServerItemProviderAdapterFactory extends ServerAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -114,7 +114,6 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -125,7 +124,6 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -174,7 +172,6 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -185,7 +182,6 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -197,7 +193,6 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -212,7 +207,6 @@ public class ServerItemProviderAdapterFactory extends ServerAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
 		if (projectUpdatedEventItemProvider != null) {
 			projectUpdatedEventItemProvider.dispose();

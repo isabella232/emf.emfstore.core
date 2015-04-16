@@ -58,7 +58,6 @@ public class ReservationToConflictBucketCandidateMap {
 			ReservationSetModifier.ID,
 			ReservationSetModifier.class,
 			new ReservationSetModifier() {
-				@Override
 				public ReservationSet addCustomReservation(
 					AbstractOperation operation, ReservationSet reservationSet,
 					ModelElementIdToEObjectMapping mapping) {
@@ -88,7 +87,7 @@ public class ReservationToConflictBucketCandidateMap {
 				|| reservationToConflictMap.hasFullReservation(modelElement)) {
 				final ConflictBucketCandidate mergedConflictBucketCandidates = mergeConflictBucketCandidates(
 					reservationToConflictMap
-						.getConflictBucketCandidates(modelElement),
+					.getConflictBucketCandidates(modelElement),
 					currentConflictBucketCandidate);
 				reservationToConflictMap.addFullReservation(modelElement, mergedConflictBucketCandidates);
 				continue;
@@ -154,11 +153,11 @@ public class ReservationToConflictBucketCandidateMap {
 
 					final ConflictBucketCandidate mergedConflictBucketCandidates = mergeConflictBucketCandidates(
 						reservationToConflictMap
-							.getConflictBucketCandidates(
-								modelElement,
-								featureName,
-								oppositeModelElement),
-						currentConflictBucketCandidate);
+						.getConflictBucketCandidates(
+							modelElement,
+							featureName,
+							oppositeModelElement),
+							currentConflictBucketCandidate);
 
 					reservationToConflictMap.addMultiReferenceWithOppositeReservation(
 						modelElement,

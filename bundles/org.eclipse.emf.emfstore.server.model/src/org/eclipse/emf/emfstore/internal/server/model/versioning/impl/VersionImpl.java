@@ -234,7 +234,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getPrimarySpec() {
 		if (primarySpec != null && primarySpec.eIsProxy()) {
 			final InternalEObject oldPrimarySpec = (InternalEObject) primarySpec;
@@ -293,7 +292,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setPrimarySpec(PrimaryVersionSpec newPrimarySpec) {
 		if (newPrimarySpec != primarySpec) {
 			NotificationChain msgs = null;
@@ -320,7 +318,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<TagVersionSpec> getTagSpecs() {
 		if (tagSpecs == null) {
 			tagSpecs = new EObjectContainmentEList.Resolving<TagVersionSpec>(TagVersionSpec.class, this,
@@ -334,7 +331,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Version getNextVersion() {
 		if (nextVersion != null && nextVersion.eIsProxy()) {
 			final InternalEObject oldNextVersion = (InternalEObject) nextVersion;
@@ -383,7 +379,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNextVersion(Version newNextVersion) {
 		if (newNextVersion != nextVersion) {
 			NotificationChain msgs = null;
@@ -410,7 +405,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Version getPreviousVersion() {
 		if (previousVersion != null && previousVersion.eIsProxy()) {
 			final InternalEObject oldPreviousVersion = (InternalEObject) previousVersion;
@@ -459,7 +453,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setPreviousVersion(Version newPreviousVersion) {
 		if (newPreviousVersion != previousVersion) {
 			NotificationChain msgs = null;
@@ -519,7 +512,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public LogMessage getLogMessage() {
 		if (logMessage != null && logMessage.eIsProxy()) {
 			final InternalEObject oldLogMessage = (InternalEObject) logMessage;
@@ -578,7 +570,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setLogMessage(LogMessage newLogMessage) {
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
@@ -605,7 +596,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Version getAncestorVersion() {
 		if (ancestorVersion != null && ancestorVersion.eIsProxy()) {
 			final InternalEObject oldAncestorVersion = (InternalEObject) ancestorVersion;
@@ -654,7 +644,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setAncestorVersion(Version newAncestorVersion) {
 		if (newAncestorVersion != ancestorVersion) {
 			NotificationChain msgs = null;
@@ -681,7 +670,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Version> getBranchedVersions() {
 		if (branchedVersions == null) {
 			branchedVersions = new EObjectWithInverseResolvingEList<Version>(Version.class, this,
@@ -695,7 +683,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Version> getMergedToVersion() {
 		if (mergedToVersion == null) {
 			mergedToVersion = new EObjectWithInverseResolvingEList.ManyInverse<Version>(Version.class, this,
@@ -709,7 +696,6 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Version> getMergedFromVersion() {
 		if (mergedFromVersion == null) {
 			mergedFromVersion = new EObjectWithInverseResolvingEList.ManyInverse<Version>(Version.class, this,
@@ -944,7 +930,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		return super.eIsSet(featureID);
 	}
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getProjectState()
+	 */
 	public Project getProjectState() {
 		final Resource resource = getProjectStateResource();
 		if (resource == null || resource.getContents().size() < 1) {
@@ -954,7 +945,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		return project;
 	}
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getChanges()
+	 */
 	public AbstractChangePackage getChanges() {
 		final Resource resource = getChangePackageResource();
 		if (resource == null || resource.getContents().size() < 1) {
@@ -1112,7 +1108,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		return eResource() == null ? null : eResource().getURI().trimSegments(2);
 	}
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#setChangeResource(org.eclipse.emf.ecore.resource.Resource)
+	 */
 	public void setChangeResource(Resource resource) {
 		if (resource == null) {
 			changePackageResource = new SoftReference<Resource>(null);
@@ -1127,7 +1128,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		}
 	}
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#setProjectStateResource(org.eclipse.emf.ecore.resource.Resource)
+	 */
 	public void setProjectStateResource(Resource resource) {
 		if (resource == null) {
 			projectStateResource = new SoftReference<Resource>(null);

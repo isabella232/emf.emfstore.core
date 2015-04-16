@@ -99,7 +99,6 @@ public class VersionPropertyImpl extends EObjectImpl implements VersionProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -109,7 +108,6 @@ public class VersionPropertyImpl extends EObjectImpl implements VersionProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -124,7 +122,6 @@ public class VersionPropertyImpl extends EObjectImpl implements VersionProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getValue() {
 		return value;
 	}
@@ -134,7 +131,6 @@ public class VersionPropertyImpl extends EObjectImpl implements VersionProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setValue(String newValue) {
 		final String oldValue = value;
 		value = newValue;

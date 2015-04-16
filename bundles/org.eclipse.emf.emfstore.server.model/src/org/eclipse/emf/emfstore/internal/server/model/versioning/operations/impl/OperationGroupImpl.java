@@ -94,7 +94,6 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -104,7 +103,6 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -119,7 +117,6 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<AbstractOperation> getOperations() {
 		if (operations == null) {
 			operations = new EObjectResolvingEList<AbstractOperation>(AbstractOperation.class, this,

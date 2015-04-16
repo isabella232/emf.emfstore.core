@@ -94,7 +94,6 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getHostName() {
 		return hostName;
 	}
@@ -104,7 +103,6 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setHostName(String newHostName) {
 		final String oldHostName = hostName;
 		hostName = newHostName;
@@ -119,7 +117,6 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getPort() {
 		return port;
 	}
@@ -129,7 +126,6 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setPort(int newPort) {
 		final int oldPort = port;
 		port = newPort;
@@ -232,7 +228,6 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getUrlString()
 	 * @generated NOT
 	 */
-	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getHostName());

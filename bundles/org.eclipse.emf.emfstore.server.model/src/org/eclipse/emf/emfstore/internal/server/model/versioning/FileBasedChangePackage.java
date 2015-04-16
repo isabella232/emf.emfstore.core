@@ -102,7 +102,6 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reverse()
 	 */
-	@Override
 	FileBasedChangePackage reverse();
 
 	/**
@@ -121,7 +120,7 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	 * Converts this file-based change package to an in-memory change package.<br>
 	 * <b>NOTE</b>: for very big change packages this might cause a serious
 	 * performance hit and also cause {@link OutOfMemoryError}s.
-	 * 
+	 *
 	 * @return an in-memory change-package
 	 */
 	ChangePackage toInMemoryChangePackage();

@@ -121,7 +121,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -131,7 +130,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -145,7 +143,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -155,7 +152,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setDescription(String newDescription) {
 		final String oldDescription = description;
 		description = newDescription;
@@ -172,7 +168,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *            the id.
 	 * @generated NOT
 	 */
-	@Override
 	public void setProjectId(ProjectId newProjectId) {
 		setProjectIdGen(ModelUtil.clone(newProjectId));
 	}
@@ -183,7 +178,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectId getProjectId() {
 		if (projectId != null && projectId.eIsProxy()) {
 			final InternalEObject oldProjectId = (InternalEObject) projectId;
@@ -268,7 +262,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getVersion() {
 		if (version != null && version.eIsProxy()) {
 			final InternalEObject oldVersion = (InternalEObject) version;
@@ -327,7 +320,6 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 	 *
 	 * @generated not
 	 */
-	@Override
 	public void setVersion(PrimaryVersionSpec newVersion) {
 		setVersionGen(ModelUtil.clone(newVersion));
 	}

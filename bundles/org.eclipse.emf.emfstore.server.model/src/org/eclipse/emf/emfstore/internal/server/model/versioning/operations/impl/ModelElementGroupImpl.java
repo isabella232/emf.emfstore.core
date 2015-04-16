@@ -94,7 +94,6 @@ public class ModelElementGroupImpl extends EObjectImpl implements ModelElementGr
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -104,7 +103,6 @@ public class ModelElementGroupImpl extends EObjectImpl implements ModelElementGr
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -119,7 +117,6 @@ public class ModelElementGroupImpl extends EObjectImpl implements ModelElementGr
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ModelElementId> getModelElements() {
 		if (modelElements == null) {
 			modelElements = new EObjectResolvingEList<ModelElementId>(ModelElementId.class, this,

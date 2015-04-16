@@ -82,7 +82,6 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -92,7 +91,6 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -211,7 +209,6 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESTagVersionSpecImpl toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -228,7 +225,6 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESTagVersionSpecImpl createAPI() {
 		return new ESTagVersionSpecImpl(this);
 	}

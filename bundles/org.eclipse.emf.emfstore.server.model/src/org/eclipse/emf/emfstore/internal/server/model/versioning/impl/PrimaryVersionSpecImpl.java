@@ -106,7 +106,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getIdentifier() {
 		return identifier;
 	}
@@ -116,7 +115,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setIdentifier(int newIdentifier) {
 		final int oldIdentifier = identifier;
 		identifier = newIdentifier;
@@ -132,7 +130,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
-	@Override
 	public long getProjectStateChecksum() {
 		return projectStateChecksum;
 	}
@@ -143,7 +140,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectStateChecksum(long newProjectStateChecksum) {
 		final long oldProjectStateChecksum = projectStateChecksum;
 		projectStateChecksum = newProjectStateChecksum;
@@ -280,7 +276,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
-	@Override
 	public int compareTo(PrimaryVersionSpec o) {
 		if (getIdentifier() == o.getIdentifier()) {
 			return 0;
@@ -299,7 +294,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESPrimaryVersionSpecImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -317,7 +311,6 @@ public class PrimaryVersionSpecImpl extends VersionSpecImpl implements PrimaryVe
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESPrimaryVersionSpecImpl createAPI() {
 		return new ESPrimaryVersionSpecImpl(this);
 	}

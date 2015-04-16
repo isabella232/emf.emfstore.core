@@ -114,7 +114,6 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isAdd() {
 		return add;
 	}
@@ -124,7 +123,6 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setAdd(boolean newAdd) {
 		final boolean oldAdd = add;
 		add = newAdd;
@@ -139,7 +137,6 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Integer> getIndexes() {
 		if (indexes == null) {
 			indexes = new EDataTypeUniqueEList<Integer>(Integer.class, this,
@@ -153,7 +150,6 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Object> getReferencedValues() {
 		if (referencedValues == null) {
 			referencedValues = new EDataTypeEList<Object>(Object.class, this,
@@ -271,7 +267,6 @@ public class MultiAttributeOperationImpl extends FeatureOperationImpl implements
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
-	@Override
 	@SuppressWarnings("unchecked")
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = project.getModelElement(getModelElementId());

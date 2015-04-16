@@ -77,7 +77,6 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectUpdatedEvent createProjectUpdatedEvent() {
 		final ProjectUpdatedEventImpl projectUpdatedEvent = new ProjectUpdatedEventImpl();
 		return projectUpdatedEvent;
@@ -88,7 +87,6 @@ public class ServerFactoryImpl extends EFactoryImpl implements ServerFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ServerPackage getServerPackage() {
 		return (ServerPackage) getEPackage();
 	}

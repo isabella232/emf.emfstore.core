@@ -50,7 +50,6 @@ public class DefaultServerWorkspaceLocationProvider implements ESLocationProvide
 	 *
 	 * @see org.eclipse.emf.emfstore.server.ESLocationProvider#getWorkspaceDirectory()
 	 */
-	@Override
 	public String getWorkspaceDirectory() {
 		String rootDirectory = getRootDirectory();
 		final File file = new File(rootDirectory);

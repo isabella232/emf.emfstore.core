@@ -166,7 +166,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectId getProjectId() {
 		if (projectId != null && projectId.eIsProxy()) {
 			final InternalEObject oldProjectId = (InternalEObject) projectId;
@@ -225,7 +224,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectId(ProjectId newProjectId) {
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
@@ -252,7 +250,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<Version> getVersions() {
 		if (versions == null) {
 			versions = new EObjectContainmentEList.Resolving<Version>(Version.class, this,
@@ -267,7 +264,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public Version getLastVersion() {
 		final EList<Version> versions = getVersions();
 		return versions.size() == 0 ? null : versions.get(versions.size() - 1);
@@ -280,7 +276,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getProjectName() {
 		return projectName;
 	}
@@ -290,7 +285,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectName(String newProjectName) {
 		final String oldProjectName = projectName;
 		projectName = newProjectName;
@@ -305,7 +299,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getProjectDescription() {
 		return projectDescription;
 	}
@@ -315,7 +308,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectDescription(String newProjectDescription) {
 		final String oldProjectDescription = projectDescription;
 		projectDescription = newProjectDescription;
@@ -330,7 +322,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<EMFStoreProperty> getSharedProperties() {
 		if (sharedProperties == null) {
 			sharedProperties = new EObjectContainmentEList.Resolving<EMFStoreProperty>(EMFStoreProperty.class, this,
@@ -344,7 +335,6 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<BranchInfo> getBranches() {
 		if (branches == null) {
 			branches = new EObjectContainmentEList.Resolving<BranchInfo>(BranchInfo.class, this,
@@ -480,7 +470,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 			return PROJECT_NAME_EDEFAULT == null ? projectName != null : !PROJECT_NAME_EDEFAULT.equals(projectName);
 		case ModelPackage.PROJECT_HISTORY__PROJECT_DESCRIPTION:
 			return PROJECT_DESCRIPTION_EDEFAULT == null ? projectDescription != null : !PROJECT_DESCRIPTION_EDEFAULT
-				.equals(projectDescription);
+			.equals(projectDescription);
 		case ModelPackage.PROJECT_HISTORY__SHARED_PROPERTIES:
 			return sharedProperties != null && !sharedProperties.isEmpty();
 		case ModelPackage.PROJECT_HISTORY__BRANCHES:

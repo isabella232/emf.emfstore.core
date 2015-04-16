@@ -67,7 +67,6 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectId getProjectId() {
 		if (projectId != null && projectId.eIsProxy()) {
 			final InternalEObject oldProjectId = (InternalEObject) projectId;
@@ -126,7 +125,6 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectId(ProjectId newProjectId) {
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;

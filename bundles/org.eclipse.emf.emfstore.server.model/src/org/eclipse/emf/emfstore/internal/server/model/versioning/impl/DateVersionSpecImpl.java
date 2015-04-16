@@ -84,7 +84,6 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated
 	 */
-	@Override
 	public Date getDate() {
 		return date;
 	}
@@ -94,7 +93,6 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setDate(Date newDate) {
 		final Date oldDate = date;
 		date = newDate;
@@ -188,7 +186,6 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESDateVersionSpecImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -206,7 +203,6 @@ public class DateVersionSpecImpl extends VersionSpecImpl implements DateVersionS
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESDateVersionSpecImpl createAPI() {
 		return new ESDateVersionSpecImpl(this);
 	}

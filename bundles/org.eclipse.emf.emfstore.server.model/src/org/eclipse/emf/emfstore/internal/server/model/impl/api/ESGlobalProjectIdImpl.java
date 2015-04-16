@@ -39,7 +39,6 @@ public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, Pr
 	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
-	@Override
 	public String getId() {
 		return toInternalAPI().getId();
 	}

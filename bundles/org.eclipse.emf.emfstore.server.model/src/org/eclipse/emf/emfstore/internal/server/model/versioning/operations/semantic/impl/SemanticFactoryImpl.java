@@ -74,7 +74,6 @@ public class SemanticFactoryImpl extends EFactoryImpl implements SemanticFactory
 	 *
 	 * @generated
 	 */
-	@Override
 	public SemanticPackage getSemanticPackage() {
 		return (SemanticPackage) getEPackage();
 	}

@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
  * @param <T> a subtype of the internal type {@link VersionSpec}
  */
 public class ESVersionSpecImpl<U extends ESVersionSpec, T extends VersionSpec & APIDelegate<U>> extends
-	AbstractAPIImpl<U, T> implements ESVersionSpec {
+AbstractAPIImpl<U, T> implements ESVersionSpec {
 
 	/**
 	 * Constructor.
@@ -43,7 +43,6 @@ public class ESVersionSpecImpl<U extends ESVersionSpec, T extends VersionSpec & 
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec#getBranch()
 	 */
-	@Override
 	public String getBranch() {
 		return toInternalAPI().getBranch();
 	}

@@ -130,7 +130,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getOldIndex() {
 		return oldIndex;
 	}
@@ -140,7 +139,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOldIndex(int newOldIndex) {
 		final int oldOldIndex = oldIndex;
 		oldIndex = newOldIndex;
@@ -155,7 +153,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getNewIndex() {
 		return newIndex;
 	}
@@ -165,7 +162,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewIndex(int newNewIndex) {
 		final int oldNewIndex = newIndex;
 		newIndex = newNewIndex;
@@ -180,7 +176,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public Object getReferencedValue() {
 		return referencedValue;
 	}
@@ -190,7 +185,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setReferencedValue(Object newReferencedValue) {
 		final Object oldReferencedValue = referencedValue;
 		referencedValue = newReferencedValue;
@@ -274,7 +268,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 			return newIndex != NEW_INDEX_EDEFAULT;
 		case OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE:
 			return REFERENCED_VALUE_EDEFAULT == null ? referencedValue != null : !REFERENCED_VALUE_EDEFAULT
-				.equals(referencedValue);
+			.equals(referencedValue);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -307,7 +301,6 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
-	@Override
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = project.getModelElement(getModelElementId());
 		if (modelElement == null) {

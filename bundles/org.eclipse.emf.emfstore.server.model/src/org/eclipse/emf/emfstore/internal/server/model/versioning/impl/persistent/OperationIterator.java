@@ -74,7 +74,6 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 	 *
 	 * @see java.util.Iterator#hasNext()
 	 */
-	@Override
 	public boolean hasNext() {
 		if (!isInitialized) {
 			init();
@@ -100,7 +99,6 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 	 *
 	 * @see java.util.Iterator#next()
 	 */
-	@Override
 	public AbstractOperation next() {
 		if (operation == null) {
 			hasNext();
@@ -114,7 +112,6 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 	 *
 	 * @see java.util.Iterator#remove()
 	 */
-	@Override
 	public void remove() {
 		throw new NotImplementedException();
 	}

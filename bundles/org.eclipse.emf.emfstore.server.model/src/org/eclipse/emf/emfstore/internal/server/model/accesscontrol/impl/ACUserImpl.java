@@ -140,7 +140,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getFirstName() {
 		return firstName;
 	}
@@ -150,7 +149,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setFirstName(String newFirstName) {
 		final String oldFirstName = firstName;
 		firstName = newFirstName;
@@ -165,7 +163,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getLastName() {
 		return lastName;
 	}
@@ -175,7 +172,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setLastName(String newLastName) {
 		final String oldLastName = lastName;
 		lastName = newLastName;
@@ -190,7 +186,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ACGroup> getEffectiveGroups() {
 		if (effectiveGroups == null) {
 			effectiveGroups = new EObjectContainmentEList.Resolving<ACGroup>(ACGroup.class, this,
@@ -205,7 +200,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -216,7 +210,6 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setPassword(String newPassword) {
 		final String oldPassword = password;
 		password = newPassword;

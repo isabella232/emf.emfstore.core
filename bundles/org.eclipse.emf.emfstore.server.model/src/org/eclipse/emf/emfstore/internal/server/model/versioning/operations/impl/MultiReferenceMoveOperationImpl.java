@@ -126,7 +126,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getOldIndex() {
 		return oldIndex;
 	}
@@ -136,7 +135,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOldIndex(int newOldIndex) {
 		final int oldOldIndex = oldIndex;
 		oldIndex = newOldIndex;
@@ -151,7 +149,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getNewIndex() {
 		return newIndex;
 	}
@@ -161,7 +158,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewIndex(int newNewIndex) {
 		final int oldNewIndex = newIndex;
 		newIndex = newNewIndex;
@@ -176,7 +172,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getReferencedModelElementId() {
 		if (referencedModelElementId != null && referencedModelElementId.eIsProxy()) {
 			final InternalEObject oldReferencedModelElementId = (InternalEObject) referencedModelElementId;
@@ -238,7 +233,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setReferencedModelElementId(ModelElementId newReferencedModelElementId) {
 		if (newReferencedModelElementId != referencedModelElementId) {
 			NotificationChain msgs = null;
@@ -376,7 +370,6 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 		return result.toString();
 	}
 
-	@Override
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = project.getModelElement(getModelElementId());
 		final EObject referencedModelElement = project.getModelElement(getReferencedModelElementId());

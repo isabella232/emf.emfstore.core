@@ -81,7 +81,6 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getTarget() {
 		if (target != null && target.eIsProxy()) {
 			final InternalEObject oldTarget = (InternalEObject) target;
@@ -140,7 +139,6 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setTarget(PrimaryVersionSpec newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
@@ -167,7 +165,6 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getSource() {
 		if (source != null && source.eIsProxy()) {
 			final InternalEObject oldSource = (InternalEObject) source;
@@ -226,7 +223,6 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setSource(PrimaryVersionSpec newSource) {
 		if (newSource != source) {
 			NotificationChain msgs = null;
@@ -351,7 +347,6 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESAncestorVersionSpecImpl toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -368,7 +363,6 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESAncestorVersionSpecImpl createAPI() {
 		return new ESAncestorVersionSpecImpl(this);
 	}

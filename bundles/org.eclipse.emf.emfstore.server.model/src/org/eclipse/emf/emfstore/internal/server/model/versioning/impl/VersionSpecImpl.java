@@ -73,7 +73,6 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getBranch() {
 		return branch;
 	}
@@ -83,7 +82,6 @@ public abstract class VersionSpecImpl extends EObjectImpl implements VersionSpec
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setBranch(String newBranch) {
 		final String oldBranch = branch;
 		branch = newBranch;

@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @param <U> a sub-type of {@link RangeQuery}
  */
 public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>> extends ESHistoryQueryImpl<T, U>
-	implements ESRangeQuery<T> {
+implements ESRangeQuery<T> {
 
 	/**
 	 * Constructor.
@@ -43,7 +43,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#getSource()
 	 */
-	@Override
 	public ESPrimaryVersionSpec getSource() {
 		return toInternalAPI().getSource().toAPI();
 	}
@@ -54,7 +53,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#setSource(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec)
 	 */
-	@Override
 	public void setSource(ESPrimaryVersionSpec versionSpec) {
 		if (versionSpec == null) {
 			toInternalAPI().setSource(null);
@@ -69,7 +67,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#setIncludeChangePackages(boolean)
 	 */
-	@Override
 	public void setIncludeChangePackages(boolean includeChangePackages) {
 		toInternalAPI().setIncludeChangePackages(includeChangePackages);
 	}
@@ -80,7 +77,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#isIncludeChangePackages()
 	 */
-	@Override
 	public boolean isIncludeChangePackages() {
 		return toInternalAPI().isIncludeChangePackages();
 	}
@@ -91,7 +87,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#setIncludeAllVersions(boolean)
 	 */
-	@Override
 	public void setIncludeAllVersions(boolean includeAllVersion) {
 		toInternalAPI().setIncludeAllVersions(includeAllVersion);
 	}
@@ -102,7 +97,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQuery#isIncludeAllVersions()
 	 */
-	@Override
 	public boolean isIncludeAllVersions() {
 		return toInternalAPI().isIncludeAllVersions();
 	}
@@ -113,7 +107,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#getUpperLimit()
 	 */
-	@Override
 	public int getUpperLimit() {
 		return toInternalAPI().getUpperLimit();
 	}
@@ -124,7 +117,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#setUpperLimit(int)
 	 */
-	@Override
 	public void setUpperLimit(int upperLimit) {
 		toInternalAPI().setUpperLimit(upperLimit);
 	}
@@ -135,7 +127,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#getLowerLimit()
 	 */
-	@Override
 	public int getLowerLimit() {
 		return toInternalAPI().getLowerLimit();
 	}
@@ -146,7 +137,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#setLowerLimit(int)
 	 */
-	@Override
 	public void setLowerLimit(int lowerLimit) {
 		toInternalAPI().setLowerLimit(lowerLimit);
 	}
@@ -157,7 +147,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#setIncludeIncoming(boolean)
 	 */
-	@Override
 	public void setIncludeIncoming(boolean includeIncomingVersions) {
 		toInternalAPI().setIncludeIncoming(includeIncomingVersions);
 	}
@@ -168,7 +157,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#isIncludeIncoming()
 	 */
-	@Override
 	public boolean isIncludeIncoming() {
 		return toInternalAPI().isIncludeIncoming();
 	}
@@ -179,7 +167,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#setIncludeOutgoing(boolean)
 	 */
-	@Override
 	public void setIncludeOutgoing(boolean includeOutgoingVersions) {
 		toInternalAPI().setIncludeOutgoing(includeOutgoingVersions);
 	}
@@ -190,7 +177,6 @@ public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESRangeQuery#isIncludeOutgoing()
 	 */
-	@Override
 	public boolean isIncludeOutgoing() {
 		return toInternalAPI().isIncludeOutgoing();
 	}

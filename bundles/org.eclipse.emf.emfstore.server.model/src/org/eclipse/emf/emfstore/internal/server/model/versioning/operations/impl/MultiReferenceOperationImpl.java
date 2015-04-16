@@ -136,7 +136,6 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isAdd() {
 		return add;
 	}
@@ -146,7 +145,6 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setAdd(boolean newAdd) {
 		final boolean oldAdd = add;
 		add = newAdd;
@@ -161,7 +159,6 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getIndex() {
 		return index;
 	}
@@ -171,7 +168,6 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setIndex(int newIndex) {
 		final int oldIndex = index;
 		index = newIndex;
@@ -186,7 +182,6 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ModelElementId> getReferencedModelElements() {
 		if (referencedModelElements == null) {
 			referencedModelElements = new EObjectContainmentEList.Resolving<ModelElementId>(ModelElementId.class, this,
@@ -309,7 +304,6 @@ public class MultiReferenceOperationImpl extends ReferenceOperationImpl implemen
 		return result.toString();
 	}
 
-	@Override
 	public void apply(IdEObjectCollection project) {
 
 		final EObject modelElement = project.getModelElement(getModelElementId());

@@ -118,7 +118,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ACGroup> getGroups() {
 		if (groups == null) {
 			groups = new EObjectContainmentEList.Resolving<ACGroup>(ACGroup.class, this,
@@ -132,7 +131,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ProjectHistory> getProjects() {
 		if (projects == null) {
 			projects = new EObjectResolvingEList<ProjectHistory>(ProjectHistory.class, this,
@@ -146,7 +144,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<SessionId> getOpenSessions() {
 		if (openSessions == null) {
 			openSessions = new EObjectContainmentEList.Resolving<SessionId>(SessionId.class, this,
@@ -160,7 +157,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ACUser> getUsers() {
 		if (users == null) {
 			users = new EObjectContainmentEList.Resolving<ACUser>(ACUser.class, this, ModelPackage.SERVER_SPACE__USERS);
@@ -286,7 +282,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public void save() throws IOException {
 		// FIXME: refactor when backend independent provider is available
 		if (resource != null) {
@@ -299,7 +294,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public void setResource(Resource resource) {
 		this.resource = resource;
 	}
@@ -309,7 +303,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACUserDAO#add(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser)
 	 */
-	@Override
 	public void add(ACUser user) {
 		getUsers().add(user);
 	}
@@ -319,7 +312,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACUserDAO#remove(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser)
 	 */
-	@Override
 	public void remove(ACUser user) {
 		getUsers().remove(user);
 	}
@@ -329,7 +321,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACGroupDAO#add(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup)
 	 */
-	@Override
 	public void add(ACGroup group) {
 		getGroups().add(group);
 	}
@@ -339,7 +330,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ACGroupDAO#remove(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup)
 	 */
-	@Override
 	public void remove(ACGroup group) {
 		getGroups().remove(group);
 	}
@@ -349,7 +339,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ProjectDAO#add(org.eclipse.emf.emfstore.internal.server.model.ProjectHistory)
 	 */
-	@Override
 	public void add(ProjectHistory history) {
 		getProjects().add(history);
 	}
@@ -359,7 +348,6 @@ public class ServerSpaceImpl extends EObjectImpl implements ServerSpace {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.dao.ProjectDAO#remove(org.eclipse.emf.emfstore.internal.server.model.ProjectHistory)
 	 */
-	@Override
 	public void remove(ProjectHistory history) {
 		getProjects().remove(history);
 	}

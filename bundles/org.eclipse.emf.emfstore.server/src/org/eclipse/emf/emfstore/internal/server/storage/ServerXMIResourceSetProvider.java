@@ -34,7 +34,6 @@ public class ServerXMIResourceSetProvider implements ESResourceSetProvider {
 	 *
 	 * @see org.eclipse.emf.emfstore.common.ESResourceSetProvider#getResourceSet()
 	 */
-	@Override
 	public ResourceSet getResourceSet() {
 		final ResourceSetImpl resourceSet = new ResourceSetImpl();
 		resourceSet.setResourceFactoryRegistry(new ResourceFactoryRegistry());

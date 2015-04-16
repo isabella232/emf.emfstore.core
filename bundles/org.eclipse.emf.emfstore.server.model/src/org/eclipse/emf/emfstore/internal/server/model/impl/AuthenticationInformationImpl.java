@@ -82,7 +82,6 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 	 *
 	 * @generated
 	 */
-	@Override
 	public SessionId getSessionId() {
 		if (sessionId != null && sessionId.eIsProxy()) {
 			final InternalEObject oldSessionId = (InternalEObject) sessionId;
@@ -141,7 +140,6 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setSessionId(SessionId newSessionId) {
 		if (newSessionId != sessionId) {
 			NotificationChain msgs = null;
@@ -168,7 +166,6 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 	 *
 	 * @generated
 	 */
-	@Override
 	public ACUser getResolvedACUser() {
 		if (resolvedACUser != null && resolvedACUser.eIsProxy()) {
 			final InternalEObject oldResolvedACUser = (InternalEObject) resolvedACUser;
@@ -227,7 +224,6 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setResolvedACUser(ACUser newResolvedACUser) {
 		if (newResolvedACUser != resolvedACUser) {
 			NotificationChain msgs = null;

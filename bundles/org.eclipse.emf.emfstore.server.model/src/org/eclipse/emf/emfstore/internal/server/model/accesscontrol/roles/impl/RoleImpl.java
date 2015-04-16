@@ -73,7 +73,6 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 * @return a list of project ids <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@Override
 	@SuppressWarnings("serial")
 	public EList<ProjectId> getProjects() {
 		if (projects == null) {
@@ -102,7 +101,6 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#canAdministrate(org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 * @generated NOT
 	 */
-	@Override
 	public boolean canAdministrate(ProjectId projectId) {
 		return false;
 	}
@@ -114,7 +112,6 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
 	 */
-	@Override
 	public boolean canCreate(ProjectId projectId, EObject modelElement) {
 		return false;
 	}
@@ -126,7 +123,6 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
 	 */
-	@Override
 	public boolean canDelete(ProjectId projectId, EObject modelElement) {
 		return false;
 	}
@@ -138,7 +134,6 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
 	 */
-	@Override
 	public boolean canModify(ProjectId projectId, EObject modelElement) {
 		return false;
 	}
@@ -150,7 +145,6 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 *      org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
 	 */
-	@Override
 	public boolean canRead(ProjectId projectId, EObject modelElement) {
 		return false;
 	}

@@ -149,7 +149,6 @@ public class ServerHrefMigrator {
 
 		final File serverHomeFile = new File(serverHome);
 		final File[] projectFiles = serverHomeFile.listFiles(new FilenameFilter() {
-			@Override
 			public boolean accept(File dir, String name) {
 				return name.startsWith(PROJECT_PREFIX);
 			}
@@ -174,7 +173,6 @@ public class ServerHrefMigrator {
 					new VersionRule());
 
 				final File[] versions = f.listFiles(new FilenameFilter() {
-					@Override
 					public boolean accept(File dir, String name) {
 						return name.startsWith("version-"); //$NON-NLS-1$
 					}
@@ -200,7 +198,7 @@ public class ServerHrefMigrator {
 	}
 
 	private String getProjectAttribute(String pathToFile) throws ParserConfigurationException, SAXException,
-		IOException {
+	IOException {
 		final DocumentBuilderFactory docFactory = DocumentBuilderFactory
 			.newInstance();
 		final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

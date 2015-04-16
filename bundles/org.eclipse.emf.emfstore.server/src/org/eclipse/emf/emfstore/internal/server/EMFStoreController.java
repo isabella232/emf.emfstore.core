@@ -115,7 +115,6 @@ public class EMFStoreController implements IApplication, Runnable {
 	 *
 	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
 	 */
-	@Override
 	public synchronized Object start(IApplicationContext context) throws FatalESException {
 		run(true);
 		instance = null;
@@ -239,20 +238,19 @@ public class EMFStoreController implements IApplication, Runnable {
 		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new
 			ILogListener() {
 
-				@Override
-				public void logging(IStatus status, String plugin) {
-					if (status.getSeverity() == IStatus.INFO) {
-						System.out.println(status.getMessage());
-					} else if (!status.isOK()) {
-						System.err.println(status.getMessage());
-						final Throwable exception = status.getException();
-						if (exception != null) {
-							exception.printStackTrace(System.err);
-						}
+			public void logging(IStatus status, String plugin) {
+				if (status.getSeverity() == IStatus.INFO) {
+					System.out.println(status.getMessage());
+				} else if (!status.isOK()) {
+					System.err.println(status.getMessage());
+					final Throwable exception = status.getException();
+					if (exception != null) {
+						exception.printStackTrace(System.err);
 					}
 				}
+			}
 
-			});
+		});
 	}
 
 	private void handleStartupListener() {
@@ -297,7 +295,7 @@ public class EMFStoreController implements IApplication, Runnable {
 					try {
 						FileUtil.copyFile(new URL("platform:/plugin/" //$NON-NLS-1$
 							+ element.getIConfigurationElement().getNamespaceIdentifier() + "/" + attribute) //$NON-NLS-1$
-							.openConnection().getInputStream(), targetFile);
+						.openConnection().getInputStream(), targetFile);
 						return;
 					} catch (final IOException e) {
 						ModelUtil.logWarning(
@@ -563,7 +561,6 @@ public class EMFStoreController implements IApplication, Runnable {
 	 *
 	 * @see java.lang.Runnable#run()
 	 */
-	@Override
 	public void run() {
 		try {
 			run(false);
@@ -614,7 +611,6 @@ public class EMFStoreController implements IApplication, Runnable {
 	 *
 	 * @see org.eclipse.equinox.app.IApplication#stop()
 	 */
-	@Override
 	public void stop() {
 		stopServer();
 	}

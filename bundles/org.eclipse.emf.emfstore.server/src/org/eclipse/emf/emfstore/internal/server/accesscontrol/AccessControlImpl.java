@@ -159,7 +159,6 @@ public class AccessControlImpl implements AccessControl {
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthenticationControl#logIn(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String, org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo)
 	 */
-	@Override
 	public AuthenticationInformation logIn(String username, String password,
 		ClientVersionInfo clientVersionInfo)
 		throws AccessControlException {
@@ -180,7 +179,6 @@ public class AccessControlImpl implements AccessControl {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl#logout(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
-	@Override
 	public void logout(SessionId sessionId) throws AccessControlException {
 		synchronized (MonitorProvider.getInstance().getMonitor(MONITOR_NAME)) {
 			if (sessionId == null) {
@@ -224,7 +222,6 @@ public class AccessControlImpl implements AccessControl {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkSession(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
-	@Override
 	public void checkSession(SessionId sessionId) throws AccessControlException {
 		if (!sessionUserMap.containsKey(sessionId)) {
 			throw new SessionTimedOutException(Messages.AccessControlImpl_SessionID_Unknown);
@@ -237,7 +234,6 @@ public class AccessControlImpl implements AccessControl {
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkWriteAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.util.Set)
 	 */
-	@Override
 	public void checkWriteAccess(SessionId sessionId, ProjectId projectId, Set<EObject> modelElements)
 		throws AccessControlException {
 		checkSession(sessionId);
@@ -359,7 +355,6 @@ public class AccessControlImpl implements AccessControl {
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkReadAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.util.Set)
 	 */
-	@Override
 	public void checkReadAccess(SessionId sessionId, ProjectId projectId, Set<EObject> modelElements)
 		throws AccessControlException {
 		checkSession(sessionId);
@@ -384,7 +379,6 @@ public class AccessControlImpl implements AccessControl {
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
 	// TODO: second parameter is optional
-	@Override
 	public boolean checkProjectAdminAccess(SessionId sessionId, ProjectId projectId, PAPrivileges privileg)
 		throws AccessControlException {
 		checkSession(sessionId);
@@ -471,7 +465,6 @@ public class AccessControlImpl implements AccessControl {
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccessForOrgUnit(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
-	@Override
 	public boolean checkProjectAdminAccessForOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId)
 		throws AccessControlException {
 
@@ -498,7 +491,6 @@ public class AccessControlImpl implements AccessControl {
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccessForOrgUnit(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.util.Set)
 	 */
-	@Override
 	public boolean checkProjectAdminAccessForOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId,
 		Set<ProjectId> projectIds)
 		throws AccessControlException {
@@ -554,7 +546,6 @@ public class AccessControlImpl implements AccessControl {
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkProjectAdminAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
-	@Override
 	public boolean checkProjectAdminAccess(SessionId sessionId, ProjectId projectId)
 		throws AccessControlException {
 		checkSession(sessionId);
@@ -595,7 +586,6 @@ public class AccessControlImpl implements AccessControl {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkServerAdminAccess(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
-	@Override
 	public void checkServerAdminAccess(SessionId sessionId) throws AccessControlException {
 		checkSession(sessionId);
 		final ACUser user = getUser(sessionId);
@@ -613,7 +603,6 @@ public class AccessControlImpl implements AccessControl {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public ACUser resolveUser(SessionId sessionId) throws AccessControlException {
 		checkSession(sessionId);
 		final ACUser tmpUser = sessionUserMap.get(sessionId).getRawUser();
@@ -623,7 +612,6 @@ public class AccessControlImpl implements AccessControl {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public ACUser resolveUser(ACOrgUnitId id) throws AccessControlException {
 		final ACUser tmpUser = getUser(id);
 		return copyAndResolveUser(tmpUser);
@@ -662,7 +650,6 @@ public class AccessControlImpl implements AccessControl {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#checkAccess(org.eclipse.emf.emfstore.internal.server.core.MethodInvocation)
 	 */
-	@Override
 	public void checkAccess(MethodInvocation op) throws AccessControlException {
 		initAccessMap();
 		final AccessLevel accessType = accessMap.get(op.getType());
@@ -718,14 +705,13 @@ public class AccessControlImpl implements AccessControl {
 	 * @param authenticationControl
 	 *            the authentication control to be used
 	 */
-	@Override
 	public void setAuthenticationControl(AbstractAuthenticationControl authenticationControl) {
 		this.authenticationControl = authenticationControl;
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl#resolveSessionById(java.lang.String)
 	 */
 	public SessionId resolveSessionById(String sessionId) {

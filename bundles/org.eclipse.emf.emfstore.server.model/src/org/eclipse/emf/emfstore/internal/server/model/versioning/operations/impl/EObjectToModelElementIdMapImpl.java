@@ -305,7 +305,6 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getHash() {
 		if (hash == -1) {
 			final Object theKey = getKey();
@@ -319,7 +318,6 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setHash(int hash) {
 		this.hash = hash;
 	}
@@ -329,7 +327,6 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 	 *
 	 * @generated
 	 */
-	@Override
 	public EObject getKey() {
 		return getTypedKey();
 	}
@@ -339,7 +336,6 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setKey(EObject key) {
 		setTypedKey(key);
 	}
@@ -349,7 +345,6 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getValue() {
 		return getTypedValue();
 	}
@@ -359,7 +354,6 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId setValue(ModelElementId value) {
 		final ModelElementId oldValue = getValue();
 		setTypedValue(value);

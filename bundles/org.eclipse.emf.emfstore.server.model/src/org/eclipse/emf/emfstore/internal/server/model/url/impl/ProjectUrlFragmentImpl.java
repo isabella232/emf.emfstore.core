@@ -89,7 +89,6 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -99,7 +98,6 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -113,7 +111,6 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectId getProjectId() {
 		if (projectId != null && projectId.eIsProxy()) {
 			final InternalEObject oldProjectId = (InternalEObject) projectId;
@@ -172,7 +169,6 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectId(ProjectId newProjectId) {
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
@@ -302,7 +298,6 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getName());

@@ -65,7 +65,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  */
 public class CreateDeleteOperationImpl extends AbstractOperationImpl implements CreateDeleteOperation {
 
-	@Override
 	public void apply(IdEObjectCollection collection) {
 		if (isDelete()) {
 			if (!collection.contains(getModelElementId())) {
@@ -250,7 +249,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isDelete() {
 		return delete;
 	}
@@ -260,7 +258,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setDelete(boolean newDelete) {
 		final boolean oldDelete = delete;
 		delete = newDelete;
@@ -275,7 +272,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public EObject getModelElement() {
 		if (modelElement != null && modelElement.eIsProxy()) {
 			final InternalEObject oldModelElement = (InternalEObject) modelElement;
@@ -334,7 +330,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setModelElement(EObject newModelElement) {
 		if (newModelElement != modelElement) {
 			NotificationChain msgs = null;
@@ -361,7 +356,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public EList<ReferenceOperation> getSubOperations() {
 		if (subOperations == null) {
 			subOperations = new EObjectContainmentEList.Resolving<ReferenceOperation>(ReferenceOperation.class, this,
@@ -375,7 +369,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public EMap<EObject, ModelElementId> getEObjectToIdMap() {
 		if (eObjectToIdMap == null) {
 			eObjectToIdMap = new EcoreEMap<EObject, ModelElementId>(
@@ -536,7 +529,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
-	@Override
+
 	public List<AbstractOperation> getLeafOperations() {
 		final List<AbstractOperation> result = new ArrayList<AbstractOperation>(getSubOperations().size() + 1);
 		final CreateDeleteOperation createDeleteClone = ModelUtil.clone(this);
@@ -553,7 +546,6 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#getParentofDeletedElement(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 * @generated NOT
 	 */
-	@Override
 	public ModelElementId getParentofDeletedElement(Project project) {
 
 		final EList<ReferenceOperation> referenceOperations = getSubOperations();

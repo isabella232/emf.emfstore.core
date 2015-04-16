@@ -101,7 +101,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectHistory createProjectHistory() {
 		final ProjectHistoryImpl projectHistory = new ProjectHistoryImpl();
 		return projectHistory;
@@ -112,7 +111,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectInfo createProjectInfo() {
 		final ProjectInfoImpl projectInfo = new ProjectInfoImpl();
 		return projectInfo;
@@ -123,7 +121,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public SessionId createSessionId() {
 		final SessionIdImpl sessionId = new SessionIdImpl();
 		return sessionId;
@@ -134,7 +131,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ServerSpace createServerSpace() {
 		final ServerSpaceImpl serverSpace = new ServerSpaceImpl();
 		return serverSpace;
@@ -145,7 +141,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectId createProjectId() {
 		final ProjectIdImpl projectId = new ProjectIdImpl();
 		return projectId;
@@ -156,7 +151,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public VersionInfo createVersionInfo() {
 		final VersionInfoImpl versionInfo = new VersionInfoImpl();
 		return versionInfo;
@@ -167,7 +161,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ClientVersionInfo createClientVersionInfo() {
 		final ClientVersionInfoImpl clientVersionInfo = new ClientVersionInfoImpl();
 		return clientVersionInfo;
@@ -178,7 +171,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public FileIdentifier createFileIdentifier() {
 		final FileIdentifierImpl fileIdentifier = new FileIdentifierImpl();
 		return fileIdentifier;
@@ -189,7 +181,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public AuthenticationInformation createAuthenticationInformation() {
 		final AuthenticationInformationImpl authenticationInformation = new AuthenticationInformationImpl();
 		return authenticationInformation;
@@ -200,7 +191,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelPackage getModelPackage() {
 		return (ModelPackage) getEPackage();
 	}

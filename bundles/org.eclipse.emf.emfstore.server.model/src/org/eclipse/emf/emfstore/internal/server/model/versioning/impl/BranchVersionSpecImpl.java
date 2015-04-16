@@ -57,7 +57,6 @@ public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVers
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESBranchVersionSpecImpl toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -74,7 +73,6 @@ public class BranchVersionSpecImpl extends VersionSpecImpl implements BranchVers
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESBranchVersionSpecImpl createAPI() {
 		return new ESBranchVersionSpecImpl(this);
 	}

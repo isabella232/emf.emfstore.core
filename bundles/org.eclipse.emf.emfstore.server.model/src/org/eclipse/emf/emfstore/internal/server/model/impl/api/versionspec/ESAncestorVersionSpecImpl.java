@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *
  */
 public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersionSpec, AncestorVersionSpec> implements
-	ESAncestorVersionSpec {
+ESAncestorVersionSpec {
 
 	/**
 	 * Constructor.
@@ -40,7 +40,6 @@ public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersi
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec#getTarget()
 	 */
-	@Override
 	public ESPrimaryVersionSpec getTarget() {
 		return toInternalAPI().getTarget().toAPI();
 	}
@@ -51,7 +50,6 @@ public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersi
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec#getSource()
 	 */
-	@Override
 	public ESPrimaryVersionSpec getSource() {
 		return toInternalAPI().getSource().toAPI();
 	}

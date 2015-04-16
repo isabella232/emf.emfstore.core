@@ -47,7 +47,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getPrimarySpec()
 	 */
-	@Override
 	public ESPrimaryVersionSpec getPrimarySpec() {
 		return toInternalAPI().getPrimarySpec().toAPI();
 	}
@@ -58,7 +57,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getNextSpecs()
 	 */
-	@Override
 	public List<ESPrimaryVersionSpec> getNextSpecs() {
 		final EList<PrimaryVersionSpec> nextSpec = toInternalAPI().getNextSpec();
 		return APIUtil.mapToAPI(ESPrimaryVersionSpec.class, nextSpec);
@@ -70,7 +68,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getPreviousSpec()
 	 */
-	@Override
 	public ESPrimaryVersionSpec getPreviousSpec() {
 		return toInternalAPI().getPreviousSpec().toAPI();
 	}
@@ -81,7 +78,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getMergedFromSpecs()
 	 */
-	@Override
 	public List<ESPrimaryVersionSpec> getMergedFromSpecs() {
 		return APIUtil.mapToAPI(ESPrimaryVersionSpec.class, toInternalAPI().getMergedFrom());
 	}
@@ -92,7 +88,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getMergedToSpecs()
 	 */
-	@Override
 	public List<ESPrimaryVersionSpec> getMergedToSpecs() {
 		return APIUtil.mapToAPI(ESPrimaryVersionSpec.class, toInternalAPI().getMergedTo());
 	}
@@ -103,7 +98,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getLogMessage()
 	 */
-	@Override
 	public ESLogMessage getLogMessage() {
 		return toInternalAPI().getLogMessage().toAPI();
 	}
@@ -114,7 +108,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getTagSpecs()
 	 */
-	@Override
 	public List<ESTagVersionSpec> getTagSpecs() {
 		return APIUtil.mapToAPI(ESTagVersionSpec.class, toInternalAPI().getTagSpecs());
 	}
@@ -125,7 +118,6 @@ public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInf
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESHistoryInfo#getChangePackage()
 	 */
-	@Override
 	public ESChangePackage getChangePackage() {
 
 		if (toInternalAPI().getChangePackage() == null) {

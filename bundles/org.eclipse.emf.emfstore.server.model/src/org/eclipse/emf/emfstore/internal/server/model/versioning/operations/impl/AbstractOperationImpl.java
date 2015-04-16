@@ -51,9 +51,19 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  */
 public abstract class AbstractOperationImpl extends IdentifiableElementImpl implements AbstractOperation {
 
+	/**
+	 * @generated NOT
+	 */
 	private ESOperation apiImpl;
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
 	public ESOperation toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -61,7 +71,14 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 		return apiImpl;
 	}
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
 	public ESOperation createAPI() {
 		return new ESOperationImpl(this);
 	}
@@ -139,7 +156,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getModelElementId() {
 		if (modelElementId != null && modelElementId.eIsProxy()) {
 			final InternalEObject oldModelElementId = (InternalEObject) modelElementId;
@@ -198,7 +214,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setModelElementId(ModelElementId newModelElementId) {
 		if (newModelElementId != modelElementId) {
 			NotificationChain msgs = null;
@@ -225,7 +240,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isAccepted() {
 		return accepted;
 	}
@@ -235,7 +249,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setAccepted(boolean newAccepted) {
 		final boolean oldAccepted = accepted;
 		accepted = newAccepted;
@@ -250,7 +263,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
-	@Override
 	public Date getClientDate() {
 		return clientDate;
 	}
@@ -260,7 +272,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setClientDate(Date newClientDate) {
 		final Date oldClientDate = clientDate;
 		clientDate = newClientDate;
@@ -290,7 +301,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public abstract AbstractOperation reverse();
 
 	/**
@@ -412,7 +422,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public OperationId getOperationId() {
 		if (identifier == null) {
 			throw new IllegalStateException("Operation does not have an identifier"); //$NON-NLS-1$
@@ -427,7 +436,6 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getAllInvolvedModelElements()
 	 */
-	@Override
 	public Set<ModelElementId> getAllInvolvedModelElements() {
 		final Set<ModelElementId> result = new LinkedHashSet<ModelElementId>();
 		if (getModelElementId() != null) {
@@ -442,7 +450,7 @@ public abstract class AbstractOperationImpl extends IdentifiableElementImpl impl
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getOtherInvolvedModelElements()
 	 */
-	@Override
+
 	public Set<ModelElementId> getOtherInvolvedModelElements() {
 		return new LinkedHashSet<ModelElementId>();
 	}

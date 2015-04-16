@@ -476,7 +476,6 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			this.asc = asc;
 		}
 
-		@Override
 		public int compare(Version o1, Version o2) {
 			final PrimaryVersionSpec v1 = o1.getPrimarySpec();
 			final PrimaryVersionSpec v2 = o2.getPrimarySpec();

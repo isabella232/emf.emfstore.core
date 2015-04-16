@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.url.util.UrlAdapterFactory
  * @generated
  */
 public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -187,7 +187,6 @@ public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -198,7 +197,6 @@ public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -247,7 +245,6 @@ public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -258,7 +255,6 @@ public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -270,7 +266,6 @@ public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -285,7 +280,6 @@ public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void dispose() {
 		if (serverUrlItemProvider != null) {
 			serverUrlItemProvider.dispose();

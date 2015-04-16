@@ -148,7 +148,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getMessage() {
 		return message;
 	}
@@ -158,7 +157,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setMessage(String newMessage) {
 		final String oldMessage = message;
 		message = newMessage;
@@ -173,7 +171,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getAuthor() {
 		return author;
 	}
@@ -183,7 +180,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setAuthor(String newAuthor) {
 		final String oldAuthor = author;
 		author = newAuthor;
@@ -198,7 +194,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Date getDate() {
 		return date;
 	}
@@ -208,7 +203,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setDate(Date newDate) {
 		final Date oldDate = date;
 		date = newDate;
@@ -222,7 +216,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public Date getClientDate() {
 		return clientDate;
 	}
@@ -232,7 +225,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setClientDate(Date newClientDate) {
 		final Date oldClientDate = clientDate;
 		clientDate = newClientDate;
@@ -359,7 +351,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
-	@Override
 	public ESLogMessage toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -372,7 +363,6 @@ public class LogMessageImpl extends EObjectImpl implements LogMessage {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
-	@Override
 	public ESLogMessage createAPI() {
 		return new ESLogMessageImpl(this);
 	}

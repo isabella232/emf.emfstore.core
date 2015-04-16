@@ -188,7 +188,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	@SuppressWarnings("serial")
 	public EList<AbstractOperation> getSubOperations() {
 		if (subOperations == null) {
@@ -210,7 +209,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public AbstractOperation getMainOperation() {
 		if (mainOperation != null && mainOperation.eIsProxy()) {
 			final InternalEObject oldMainOperation = (InternalEObject) mainOperation;
@@ -239,7 +237,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setMainOperation(AbstractOperation newMainOperation) {
 		final AbstractOperation oldMainOperation = mainOperation;
 		mainOperation = newMainOperation;
@@ -254,7 +251,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getCompositeName() {
 		return compositeName;
 	}
@@ -264,7 +260,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setCompositeName(String newCompositeName) {
 		final String oldCompositeName = compositeName;
 		compositeName = newCompositeName;
@@ -279,7 +274,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getCompositeDescription() {
 		return compositeDescription;
 	}
@@ -289,7 +283,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setCompositeDescription(String newCompositeDescription) {
 		final String oldCompositeDescription = compositeDescription;
 		compositeDescription = newCompositeDescription;
@@ -305,7 +298,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public boolean isReversed() {
 		return reversed;
 	}
@@ -315,7 +307,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setReversed(boolean newReversed) {
 		final boolean oldReversed = reversed;
 		reversed = newReversed;
@@ -331,7 +322,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public void cannonize() {
 		// MK: implement
 		throw new UnsupportedOperationException();
@@ -448,10 +438,10 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 			return mainOperation != null;
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME:
 			return COMPOSITE_NAME_EDEFAULT == null ? compositeName != null : !COMPOSITE_NAME_EDEFAULT
-				.equals(compositeName);
+			.equals(compositeName);
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION:
 			return COMPOSITE_DESCRIPTION_EDEFAULT == null ? compositeDescription != null
-				: !COMPOSITE_DESCRIPTION_EDEFAULT.equals(compositeDescription);
+			: !COMPOSITE_DESCRIPTION_EDEFAULT.equals(compositeDescription);
 		case OperationsPackage.COMPOSITE_OPERATION__REVERSED:
 			return reversed != REVERSED_EDEFAULT;
 		}
@@ -480,13 +470,24 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 		return result.toString();
 	}
 
-	@Override
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
+	 */
 	public void apply(IdEObjectCollection project) {
 		for (final AbstractOperation abstractOperation : getSubOperations()) {
 			abstractOperation.apply(project);
 		}
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#reverse()
+	 */
 	@Override
 	public AbstractOperation reverse() {
 		final CompositeOperation compositeOperation = OperationsFactory.eINSTANCE.createCompositeOperation();
@@ -517,7 +518,6 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
-	@Override
 	public List<AbstractOperation> getLeafOperations() {
 		final List<AbstractOperation> result = new ArrayList<AbstractOperation>();
 		for (final AbstractOperation subOperation : getSubOperations()) {

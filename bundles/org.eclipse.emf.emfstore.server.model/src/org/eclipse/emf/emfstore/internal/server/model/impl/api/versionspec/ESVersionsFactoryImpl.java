@@ -45,7 +45,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPRIMARY(java.lang.String, int)
 	 */
-	@Override
 	public ESPrimaryVersionSpec createPRIMARY(String branch, int index) {
 		return Versions.createPRIMARY(branch, index).toAPI();
 	}
@@ -57,7 +56,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPRIMARY(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec,
 	 *      int)
 	 */
-	@Override
 	public ESPrimaryVersionSpec createPRIMARY(ESVersionSpec versionSpec, int index) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
 			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
@@ -74,7 +72,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPRIMARY(int)
 	 */
-	@Override
 	public ESPrimaryVersionSpec createPRIMARY(int i) {
 		return Versions.createPRIMARY(i).toAPI();
 	}
@@ -86,7 +83,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createANCESTOR(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec)
 	 */
-	@Override
 	public ESAncestorVersionSpec createANCESTOR(ESPrimaryVersionSpec source, ESPrimaryVersionSpec target) {
 		return Versions.createANCESTOR(((ESPrimaryVersionSpecImpl) source).toInternalAPI(),
 			((ESPrimaryVersionSpecImpl) target).toInternalAPI()).toAPI();
@@ -98,7 +94,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createHEAD()
 	 */
-	@Override
 	public ESHeadVersionSpec createHEAD() {
 		return Versions.createHEAD().toAPI();
 	}
@@ -109,7 +104,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createHEAD(java.lang.String)
 	 */
-	@Override
 	public ESHeadVersionSpec createHEAD(String branch) {
 		return Versions.createHEAD(branch).toAPI();
 	}
@@ -120,7 +114,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createHEAD(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
 	 */
-	@Override
 	public ESHeadVersionSpec createHEAD(ESVersionSpec versionSpec) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
 			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
@@ -136,7 +129,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createBRANCH(java.lang.String)
 	 */
-	@Override
 	public ESBranchVersionSpec createBRANCH(String value) {
 		return Versions.createBRANCH(value).toAPI();
 	}
@@ -147,7 +139,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 *
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createBRANCH(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
 	 */
-	@Override
 	public ESBranchVersionSpec createBRANCH(ESVersionSpec versionSpec) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
 			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
@@ -164,7 +155,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#isSameBranch(org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec,
 	 *      org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec)
 	 */
-	@Override
 	public boolean isSameBranch(ESVersionSpec versionSpec, ESVersionSpec otherVersionSpec) {
 
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?> && otherVersionSpec instanceof ESVersionSpecImpl<?, ?>) {
@@ -182,7 +172,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createTAG(java.lang.String,
 	 *      java.lang.String)
 	 */
-	@Override
 	public ESTagVersionSpec createTAG(String tag, String branch) {
 		return Versions.createTAG(tag, branch).toAPI();
 	}
@@ -194,7 +183,6 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.versionspec.ESVersionFactory#createPAGEDUPDATE(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      int)
 	 */
-	@Override
 	public ESPagedUpdateVersionSpec createPAGEDUPDATE(ESPrimaryVersionSpec baseVersion, int maxChanges) {
 		final PrimaryVersionSpec primaryVersionSpec = ((ESPrimaryVersionSpecImpl) baseVersion).toInternalAPI();
 		return Versions.createPAGEDUPDATE(primaryVersionSpec, maxChanges).toAPI();

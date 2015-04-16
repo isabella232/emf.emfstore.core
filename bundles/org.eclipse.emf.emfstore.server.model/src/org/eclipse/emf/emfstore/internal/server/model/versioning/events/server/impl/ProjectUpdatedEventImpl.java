@@ -68,7 +68,6 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getNewVersion() {
 		if (newVersion != null && newVersion.eIsProxy()) {
 			final InternalEObject oldNewVersion = (InternalEObject) newVersion;
@@ -127,7 +126,6 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewVersion(PrimaryVersionSpec newNewVersion) {
 		if (newNewVersion != newVersion) {
 			NotificationChain msgs = null;

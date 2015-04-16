@@ -103,7 +103,6 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getMaxChanges() {
 		return maxChanges;
 	}
@@ -114,7 +113,6 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setMaxChanges(int newMaxChanges) {
 		final int oldMaxChanges = maxChanges;
 		maxChanges = newMaxChanges;
@@ -130,7 +128,6 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 *
 	 * @generated
 	 */
-	@Override
 	public PrimaryVersionSpec getBaseVersionSpec() {
 		if (baseVersionSpec != null && baseVersionSpec.eIsProxy()) {
 			final InternalEObject oldBaseVersionSpec = (InternalEObject) baseVersionSpec;
@@ -193,7 +190,6 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setBaseVersionSpec(PrimaryVersionSpec newBaseVersionSpec) {
 		if (newBaseVersionSpec != baseVersionSpec) {
 			NotificationChain msgs = null;
@@ -332,7 +328,6 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESPagedUpdateVersionSpecImpl toAPI() {
 
 		if (apiImpl == null) {
@@ -350,7 +345,6 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 	 *
 	 * @generated NOT
 	 */
-	@Override
 	public ESPagedUpdateVersionSpecImpl createAPI() {
 		return new ESPagedUpdateVersionSpecImpl(this);
 	}

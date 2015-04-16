@@ -116,7 +116,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -126,7 +125,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -141,7 +139,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getValue() {
 		return value;
 	}
@@ -151,7 +148,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setValue(String newValue) {
 		final String oldValue = value;
 		value = newValue;
@@ -166,7 +162,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectId getProject() {
 		if (project != null && project.eIsProxy()) {
 			final InternalEObject oldProject = (InternalEObject) project;
@@ -225,7 +220,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProject(ProjectId newProject) {
 		if (newProject != project) {
 			NotificationChain msgs = null;
@@ -365,7 +359,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public void setValue(boolean value) {
 		String newValue = null;
 		if (value) {
@@ -379,7 +372,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public void setValue(int value) {
 		setValue(new Integer(value).toString());
 	}
@@ -387,7 +379,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public void setValue(String[] value) {
 		if (value.length == 0) {
 			setValue(StringUtils.EMPTY);
@@ -405,7 +396,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public void setValue(EObject[] value) {
 		final String[] newValue = new String[value.length];
 		try {
@@ -420,7 +410,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Boolean getBooleanProperty() {
 		final String value = getValue();
 		if (value != null) {
@@ -433,7 +422,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Integer getIntegerProperty() {
 		final String value = getValue();
 		if (value != null) {
@@ -446,7 +434,6 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public String[] getStringArrayProperty() {
 		final String value = getValue();
 		if (value != null) {

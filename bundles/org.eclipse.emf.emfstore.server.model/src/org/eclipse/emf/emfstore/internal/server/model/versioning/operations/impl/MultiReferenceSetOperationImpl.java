@@ -115,7 +115,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getIndex() {
 		return index;
 	}
@@ -125,7 +124,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setIndex(int newIndex) {
 		final int oldIndex = index;
 		index = newIndex;
@@ -140,7 +138,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getOldValue() {
 		if (oldValue != null && oldValue.eIsProxy()) {
 			final InternalEObject oldOldValue = (InternalEObject) oldValue;
@@ -199,7 +196,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOldValue(ModelElementId newOldValue) {
 		if (newOldValue != oldValue) {
 			NotificationChain msgs = null;
@@ -226,7 +222,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getNewValue() {
 		if (newValue != null && newValue.eIsProxy()) {
 			final InternalEObject oldNewValue = (InternalEObject) newValue;
@@ -285,7 +280,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewValue(ModelElementId newNewValue) {
 		if (newNewValue != newValue) {
 			NotificationChain msgs = null;
@@ -431,7 +425,6 @@ public class MultiReferenceSetOperationImpl extends ReferenceOperationImpl imple
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
-	@Override
 	public void apply(IdEObjectCollection project) {
 		final EObject parentElement = project.getModelElement(getModelElementId());
 		if (parentElement == null) {

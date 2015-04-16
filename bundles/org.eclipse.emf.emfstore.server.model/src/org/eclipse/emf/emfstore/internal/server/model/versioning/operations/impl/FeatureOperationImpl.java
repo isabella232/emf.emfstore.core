@@ -117,7 +117,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getFeatureName() {
 		return featureName;
 	}
@@ -127,7 +126,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setFeatureName(String newFeatureName) {
 		final String oldFeatureName = featureName;
 		featureName = newFeatureName;
@@ -143,7 +141,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public UnsetType getUnset() {
 		return unset;
 	}
@@ -154,7 +151,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setUnset(UnsetType newUnset) {
 		final UnsetType oldUnset = unset;
 		unset = newUnset == null ? UNSET_EDEFAULT : newUnset;
@@ -258,7 +254,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation#getFeature(org.eclipse.emf.emfstore.internal.common.model.Project)
 	 * @generated NOT
 	 */
-	@Override
 	public EStructuralFeature getFeature(Project project) throws UnkownFeatureException {
 		final EObject modelElement = project.getModelElement(getModelElementId());
 		if (modelElement == null) {
@@ -284,7 +279,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * @generated NOT
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#getLeafOperations()
 	 */
-	@Override
 	public List<AbstractOperation> getLeafOperations() {
 		final List<AbstractOperation> result = new ArrayList<AbstractOperation>();
 		result.add(this);
@@ -298,7 +292,6 @@ public abstract class FeatureOperationImpl extends AbstractOperationImpl impleme
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation#getFeature(org.eclipse.emf.ecore.EObject)
 	 * @generated NOT
 	 */
-	@Override
 	public EStructuralFeature getFeature(EObject modelElement) throws UnkownFeatureException {
 		final EList<EStructuralFeature> features = modelElement.eClass().getEAllStructuralFeatures();
 		for (final EStructuralFeature feature : features) {

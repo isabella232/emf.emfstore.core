@@ -101,7 +101,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 *
 	 * @generated
 	 */
-	@Override
 	public ServerUrl getServerUrl() {
 		if (serverUrl != null && serverUrl.eIsProxy()) {
 			final InternalEObject oldServerUrl = (InternalEObject) serverUrl;
@@ -160,7 +159,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setServerUrl(ServerUrl newServerUrl) {
 		if (newServerUrl != serverUrl) {
 			NotificationChain msgs = null;
@@ -187,7 +185,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 *
 	 * @generated
 	 */
-	@Override
 	public ProjectUrlFragment getProjectUrlFragment() {
 		if (projectUrlFragment != null && projectUrlFragment.eIsProxy()) {
 			final InternalEObject oldProjectUrlFragment = (InternalEObject) projectUrlFragment;
@@ -246,7 +243,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setProjectUrlFragment(ProjectUrlFragment newProjectUrlFragment) {
 		if (newProjectUrlFragment != projectUrlFragment) {
 			NotificationChain msgs = null;
@@ -273,7 +269,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementUrlFragment getModelElementUrlFragment() {
 		if (modelElementUrlFragment != null && modelElementUrlFragment.eIsProxy()) {
 			final InternalEObject oldModelElementUrlFragment = (InternalEObject) modelElementUrlFragment;
@@ -335,7 +330,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setModelElementUrlFragment(ModelElementUrlFragment newModelElementUrlFragment) {
 		if (newModelElementUrlFragment != modelElementUrlFragment) {
 			NotificationChain msgs = null;
@@ -463,7 +457,6 @@ public class ModelElementUrlImpl extends EObjectImpl implements ModelElementUrl 
 		return super.eIsSet(featureID);
 	}
 
-	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(EMFSTORE_PROTOCOL_PREFIX);

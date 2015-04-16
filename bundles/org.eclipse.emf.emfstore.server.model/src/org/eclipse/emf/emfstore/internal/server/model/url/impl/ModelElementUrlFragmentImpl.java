@@ -91,7 +91,6 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -101,7 +100,6 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		final String oldName = name;
 		name = newName;
@@ -116,7 +114,6 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
-	@Override
 	public ModelElementId getModelElementId() {
 		if (modelElementId != null && modelElementId.eIsProxy()) {
 			final InternalEObject oldModelElementId = (InternalEObject) modelElementId;
@@ -175,7 +172,6 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setModelElementId(ModelElementId newModelElementId) {
 		if (newModelElementId != modelElementId) {
 			NotificationChain msgs = null;
@@ -300,7 +296,6 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 		return result.toString();
 	}
 
-	@Override
 	public String getUrlString() {
 		final StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getName());

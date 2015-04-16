@@ -129,7 +129,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public int getIndex() {
 		return index;
 	}
@@ -139,7 +138,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setIndex(int newIndex) {
 		final int oldIndex = index;
 		index = newIndex;
@@ -154,7 +152,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public Object getOldValue() {
 		return oldValue;
 	}
@@ -164,7 +161,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setOldValue(Object newOldValue) {
 		final Object oldOldValue = oldValue;
 		oldValue = newOldValue;
@@ -179,7 +175,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public Object getNewValue() {
 		return newValue;
 	}
@@ -189,7 +184,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @generated
 	 */
-	@Override
 	public void setNewValue(Object newNewValue) {
 		final Object oldNewValue = newValue;
 		newValue = newNewValue;
@@ -305,7 +299,6 @@ public class MultiAttributeSetOperationImpl extends FeatureOperationImpl impleme
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation#apply(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
-	@Override
 	@SuppressWarnings("unchecked")
 	public void apply(IdEObjectCollection project) {
 		final EObject modelElement = project.getModelElement(getModelElementId());

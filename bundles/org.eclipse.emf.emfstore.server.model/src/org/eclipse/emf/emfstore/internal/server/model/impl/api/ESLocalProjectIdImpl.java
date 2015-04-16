@@ -38,7 +38,6 @@ public class ESLocalProjectIdImpl implements ESLocalProjectId {
 	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESUniqueIdentifier#getId()
 	 */
-	@Override
 	public String getId() {
 		return id;
 	}

@@ -84,7 +84,6 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
 	 */
-	@Override
 	public ESConflictSet toAPI() {
 		if (apiImpl == null) {
 			apiImpl = createAPI();
@@ -98,7 +97,6 @@ public class ChangeConflictSet implements APIDelegate<ESConflictSet> {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
 	 */
-	@Override
 	public ESConflictSetImpl createAPI() {
 		return new ESConflictSetImpl(this);
 	}
