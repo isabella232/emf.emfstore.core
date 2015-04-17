@@ -204,7 +204,7 @@ public class Behavior {
 	 *
 	 * @return {@code true}, if the in-memory change package should be used, {@code false} otherwise
 	 */
-	public boolean useFileBasedChangePackage() {
+	public boolean useInMemoryChangePackage() {
 		if (isUseMemoryChangePackageActive == null) {
 			final ESExtensionPoint extensionPoint = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME);
 			isUseMemoryChangePackageActive = extensionPoint.getBoolean(USE_IN_MEMORY_CHANGE_PACKAGE);

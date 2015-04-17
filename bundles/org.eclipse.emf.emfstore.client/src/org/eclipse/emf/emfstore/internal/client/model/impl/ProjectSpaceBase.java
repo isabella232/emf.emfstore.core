@@ -672,7 +672,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		AbstractChangePackage localChangePackage = getLocalChangePackage();
 
 		if (localChangePackage == null) {
-			if (Configuration.getClientBehavior().useFileBasedChangePackage()) {
+			if (Configuration.getClientBehavior().useInMemoryChangePackage()) {
 				final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
 				final String filePath = normalizedUri.toFileString();
 				localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
