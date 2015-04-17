@@ -673,14 +673,14 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		if (localChangePackage == null) {
 			if (Configuration.getClientBehavior().useInMemoryChangePackage()) {
+				localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
+				final Resource resource = getResourceSet().getResource(localChangePackageUri, false);
+				resource.getContents().add(localChangePackage);
+			} else {
 				final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
 				final String filePath = normalizedUri.toFileString();
 				localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
 				((FileBasedChangePackage) localChangePackage).initialize(filePath);
-			} else {
-				localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
-				final Resource resource = getResourceSet().getResource(localChangePackageUri, false);
-				resource.getContents().add(localChangePackage);
 			}
 			setChangePackage(localChangePackage);
 		}
