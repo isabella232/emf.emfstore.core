@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- *
+ * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -19,6 +19,7 @@ import org.eclipse.emf.emfstore.client.handler.ESChecksumErrorHandler;
 import org.eclipse.emf.emfstore.client.provider.ESClientConfigurationProvider;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.client.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
@@ -28,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.ChecksumErrorHandler;
 
 /**
  * Configuration options that influence the behavior of the client.
- *
+ * 
  * @author emueller
  * @author ovonwesen
  * @author mkoegel
@@ -61,7 +62,7 @@ public class Behavior {
 	 * Whether to enable the automatic saving of the workspace.
 	 * If disabled, performance improves vastly, but clients have to
 	 * perform the saving of the workspace manually.
-	 *
+	 * 
 	 * @param enabled whether to enable auto save
 	 */
 	public void setAutoSave(boolean enabled) {
@@ -70,7 +71,7 @@ public class Behavior {
 
 	/**
 	 * Whether auto-save is enabled.
-	 *
+	 * 
 	 * @return true, if auto-save is enabled, false otherwise
 	 */
 	public boolean isAutoSaveEnabled() {
@@ -84,7 +85,7 @@ public class Behavior {
 
 	/**
 	 * Whether re-recording is enabled.
-	 *
+	 * 
 	 * @return <code>true</code>, if re-recording is enabled, <code>false</code> otherwise
 	 */
 	public Boolean isRerecordingActivated() {
@@ -99,7 +100,7 @@ public class Behavior {
 
 	/**
 	 * Whether incoming cross references should be cut off.
-	 *
+	 * 
 	 * @return {@link Boolean#TRUE}, if incoming cross references are cut off, {@link Boolean#FALSE} otherwise
 	 */
 	public Boolean isCutOffIncomingCrossReferencesActivated() {
@@ -114,7 +115,7 @@ public class Behavior {
 
 	/**
 	 * Whether the usage of commands is enforced. Default is {@link Boolean#FALSE}.
-	 *
+	 * 
 	 * @return {@link Boolean#TRUE}, if usage of commands is enforced, {@link Boolean#FALSE} otherwise
 	 */
 	public Boolean isForceCommandsActived() {
@@ -129,7 +130,7 @@ public class Behavior {
 
 	/**
 	 * Whether cut elements are added automatically as regular model elements by default.
-	 *
+	 * 
 	 * @return {@link Boolean#TRUE}, if cut elements are added automatically as regular elements, {@link Boolean#FALSE}
 	 *         otherwise
 	 */
@@ -148,7 +149,7 @@ public class Behavior {
 	/**
 	 * Whether the checksum check is active. If true, and checksum comparison fails, an {@link ESChecksumErrorHandler}
 	 * will be active.
-	 *
+	 * 
 	 * @return true, if the checksum comparison is activated, false otherwise
 	 */
 	public boolean isChecksumCheckActive() {
@@ -159,7 +160,7 @@ public class Behavior {
 
 	/**
 	 * Returns the active {@link ESChecksumErrorHandler}. The default is {@link ChecksumErrorHandler#AUTOCORRECT}.
-	 *
+	 * 
 	 * @return the active checksum error handler
 	 */
 	public ESChecksumErrorHandler getChecksumErrorHandler() {
@@ -191,7 +192,7 @@ public class Behavior {
 
 	/**
 	 * Set the active {@link ESChecksumErrorHandler}.
-	 *
+	 * 
 	 * @param errorHandler
 	 *            the error handler to be set
 	 */
@@ -201,14 +202,16 @@ public class Behavior {
 
 	/**
 	 * Whether the in-memory change package should be used.
-	 *
+	 * 
 	 * @return {@code true}, if the in-memory change package should be used, {@code false} otherwise
 	 */
 	public boolean useInMemoryChangePackage() {
 		if (isUseMemoryChangePackageActive == null) {
-			final ESExtensionPoint extensionPoint = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME);
-			isUseMemoryChangePackageActive = extensionPoint.getBoolean(USE_IN_MEMORY_CHANGE_PACKAGE);
-			if (isUseMemoryChangePackageActive == null) {
+			final ESExtensionPoint extensionPoint = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
+				.setThrowException(true);
+			try {
+				isUseMemoryChangePackageActive = extensionPoint.getBoolean(USE_IN_MEMORY_CHANGE_PACKAGE, false);
+			} catch (final ESExtensionPointException e) {
 				isUseMemoryChangePackageActive = Boolean.getBoolean("emfstore.inMemoryChangePackage"); //$NON-NLS-1$
 			}
 		}
@@ -217,7 +220,7 @@ public class Behavior {
 
 	/**
 	 * Get the default server info.
-	 *
+	 * 
 	 * @return server info
 	 */
 	public List<ServerInfo> getDefaultServerInfos() {
