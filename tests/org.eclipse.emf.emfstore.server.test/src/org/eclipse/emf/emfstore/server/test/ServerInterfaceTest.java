@@ -53,6 +53,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.osgi.framework.Bundle;
 
@@ -202,6 +203,7 @@ public class ServerInterfaceTest extends ESTestWithLoggedInUserMock {
 		assertEquals(1, resolvedVersionSpec.getIdentifier());
 	}
 
+	@Ignore
 	@Test
 	public void testERegisterEPackage() throws ESException {
 
