@@ -388,8 +388,8 @@
                         </goals>
                         <configuration>
                             <reportsDirectory>${project.build.directory}/surefire-reports/inMemoryChangePackage</reportsDirectory>
-                            <testSuite>org.eclipse.emf.emfstore.client.api.test</testSuite>
-                            <testClass>org.eclipse.emf.emfstore.client.api.test.AllAPITests</testClass>
+                            <testSuite>org.eclipse.emf.emfstore.client.test.ui</testSuite>
+                            <testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock</testClass>
                             <useUIHarness>true</useUIHarness>
                             <useUIThread>false</useUIThread>
                             <argLine>${tycho.testArgLine} -Dosgi.requiredJavaVersion=1.5 -Demfstore.inMemoryChangePackage=true -Xms40m -Xmx512m
@@ -415,11 +415,6 @@
                                 <dependency>
                                     <type>eclipse-plugin</type>
                                     <artifactId>org.eclipse.emf.emfstore.test.model.edit</artifactId>
-                                    <version>0.0.0</version>
-                                </dependency>
-                                <dependency>
-                                    <type>eclipse-plugin</type>
-                                    <artifactId>org.eclipse.emf.emfstore.client.transaction</artifactId>
                                     <version>0.0.0</version>
                                 </dependency>
                                 <dependency>
@@ -492,11 +487,6 @@
                                 </bundle>
                                 <bundle>
                                     <id>org.eclipse.emf.emfstore.client.test</id>
-                                    <level>4</level>
-                                    <autoStart>false</autoStart>
-                                </bundle>
-                                <bundle>
-                                    <id>org.eclipse.emf.emfstore.client.transaction</id>
                                     <level>4</level>
                                     <autoStart>false</autoStart>
                                 </bundle>
@@ -603,11 +593,6 @@
                                 </dependency>
                                 <dependency>
                                     <type>eclipse-plugin</type>
-                                    <artifactId>org.eclipse.emf.emfstore.client.transaction</artifactId>
-                                    <version>0.0.0</version>
-                                </dependency>
-                                <dependency>
-                                    <type>eclipse-plugin</type>
                                     <artifactId>org.eclipse.emf.emfstore.client.changetracking.test</artifactId>
                                     <version>0.0.0</version>
                                 </dependency>
@@ -676,11 +661,6 @@
                                 </bundle>
                                 <bundle>
                                     <id>org.eclipse.emf.emfstore.client.test</id>
-                                    <level>4</level>
-                                    <autoStart>false</autoStart>
-                                </bundle>
-                                <bundle>
-                                    <id>org.eclipse.emf.emfstore.client.transaction</id>
                                     <level>4</level>
                                     <autoStart>false</autoStart>
                                 </bundle>
