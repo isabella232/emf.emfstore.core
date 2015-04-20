@@ -207,20 +207,11 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 			final HistoryInfo historyInfo = (HistoryInfo) object;
 			return getChildren(historyInfo.getChangePackage());
 		} else if (object instanceof FileBasedChangePackage) {
-			final FileBasedChangePackage changePackage = (FileBasedChangePackage) object;
-			final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
-			int opIndex = 0;
-			try {
-				for (final Iterator<AbstractOperation> iterator = operations.iterable().iterator(); iterator.hasNext();) {
-					final AbstractOperation operation = iterator.next();
-					final OperationProxy newProxy = createProxy(operation);
-					newProxy.setIndex(opIndex);
-					changePackage.getOperationProxies().add(newProxy);
 
-					opIndex += 1;
-				}
-			} finally {
-				operations.close();
+			final FileBasedChangePackage changePackage = (FileBasedChangePackage) object;
+
+			if (changePackage.getOperationProxies().isEmpty()) {
+				createOperationProxies(changePackage);
 			}
 
 			return changePackage.getOperationProxies().toArray();
@@ -247,6 +238,23 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 		}
 
 		return super.getChildren(object);
+	}
+
+	private void createOperationProxies(final FileBasedChangePackage changePackage) {
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		int opIndex = 0;
+		try {
+			for (final Iterator<AbstractOperation> iterator = operations.iterable().iterator(); iterator.hasNext();) {
+				final AbstractOperation operation = iterator.next();
+				final OperationProxy newProxy = createProxy(operation);
+				newProxy.setIndex(opIndex);
+				changePackage.getOperationProxies().add(newProxy);
+
+				opIndex += 1;
+			}
+		} finally {
+			operations.close();
+		}
 	}
 
 	private static OperationProxy createProxy(AbstractOperation operation) {

@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.ESWorkspace;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
-import org.eclipse.emf.emfstore.client.test.ui.AllUITests;
+import org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -81,7 +81,7 @@ public abstract class AbstractUIControllerTest extends SWTBotTestCase {
 	}
 
 	protected int timeout() {
-		return AllUITests.TIMEOUT;
+		return AllUITestsWithMock.TIMEOUT;
 	}
 
 	@Test

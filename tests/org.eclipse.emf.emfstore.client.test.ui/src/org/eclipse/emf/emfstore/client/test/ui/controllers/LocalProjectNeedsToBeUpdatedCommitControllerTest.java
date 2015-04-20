@@ -14,7 +14,7 @@ package org.eclipse.emf.emfstore.client.test.ui.controllers;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
-import org.eclipse.emf.emfstore.client.test.ui.AllUITests;
+import org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock;
 import org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -70,7 +70,7 @@ public class LocalProjectNeedsToBeUpdatedCommitControllerTest extends AbstractUI
 			public String getFailureMessage() {
 				return "Commit did not succeed.";
 			}
-		}, AllUITests.TIMEOUT);
+		}, AllUITestsWithMock.TIMEOUT);
 
 		assertEquals(3, getCopy().getAllModelElements().size());
 	}

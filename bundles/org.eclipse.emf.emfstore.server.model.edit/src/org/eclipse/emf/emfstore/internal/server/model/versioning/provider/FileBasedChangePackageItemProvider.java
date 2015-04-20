@@ -122,15 +122,15 @@ public class FileBasedChangePackageItemProvider extends ItemProviderAdapter impl
 	}
 
 	/**
-	 * This returns FileBasedChangePackage.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *
-	 * @generated
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getImage(java.lang.Object)
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FileBasedChangePackage")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChangePackage.png")); //$NON-NLS-1$
 	}
 
 	/**

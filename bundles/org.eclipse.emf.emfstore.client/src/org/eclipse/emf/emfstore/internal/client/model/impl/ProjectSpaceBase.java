@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -267,7 +268,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		notifyPostApplyMergedChanges(myChanges);
 
 		setBaseVersion(baseSpec);
-		saveProjectSpaceOnly();
+		save();
 	}
 
 	private void reapplyLocalChanges(AbstractChangePackage myChangePackage) {
@@ -683,6 +684,18 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 				((FileBasedChangePackage) localChangePackage).initialize(filePath);
 			}
 			setChangePackage(localChangePackage);
+		} else {
+			if (!Configuration.getClientBehavior().useInMemoryChangePackage()) {
+				final FileBasedChangePackage changePackage = (FileBasedChangePackage) getLocalChangePackage();
+				// TODO: move to FileBasedChangePackage
+				try {
+					FileUtils.copyFile(
+						new File(changePackage.getFilePath()),
+						new File(changePackage.getTempFilePath()));
+				} catch (final IOException ex) {
+					ex.printStackTrace();
+				}
+			}
 		}
 
 		initCompleted = true;
@@ -1185,9 +1198,11 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	}
 
 	private void saveChangePackage() {
-		final Resource localChangePackageResource = getLocalChangePackage().eResource();
-		if (localChangePackageResource != null) {
-			saveResource(localChangePackageResource);
+		try {
+			getLocalChangePackage().save();
+		} catch (final IOException e) {
+			WorkspaceUtil.logException(Messages.ProjectSpaceBase_Error_During_Save
+				+ Messages.ProjectSpaceBase_Delete_Project_And_Checkout_Again, e);
 		}
 	}
 
@@ -1349,7 +1364,6 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 			applyOperations(iterator, false);
 			operationManager.notifyOperationUndone(lastOperation);
 
-			// operations.remove(lastOperation);
 			undoLastOperations(--numberOfOperations);
 		}
 		updateDirtyState();

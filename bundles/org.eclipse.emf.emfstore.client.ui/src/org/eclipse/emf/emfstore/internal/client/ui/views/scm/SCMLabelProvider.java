@@ -86,12 +86,9 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		this.project = project;
 		highlighted = new ArrayList<OperationId>();
 
-		baseRevision = Activator.getImageDescriptor(
-			"icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
-		currentRevision = Activator.getImageDescriptor(
-			"icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
-		headRevision = Activator.getImageDescriptor(
-			"icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
+		baseRevision = Activator.getImageDescriptor("icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
+		currentRevision = Activator.getImageDescriptor("icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
+		headRevision = Activator.getImageDescriptor("icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
 	}
 
 	/**
@@ -129,6 +126,9 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 			}
 		} else if (element instanceof ChangePackage) {
 			final ChangePackage changePackage = (ChangePackage) element;
+			return getText(changePackage);
+		} else if (element instanceof FileBasedChangePackage) {
+			final FileBasedChangePackage changePackage = (FileBasedChangePackage) element;
 			return getText(changePackage);
 		} else if (element instanceof EObject) {
 			// TODO: rather reference virtual node directly??

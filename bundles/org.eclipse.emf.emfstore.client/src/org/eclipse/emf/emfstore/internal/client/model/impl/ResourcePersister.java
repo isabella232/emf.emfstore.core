@@ -174,6 +174,12 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 			}
 
 			try {
+				ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getLocalChangePackage().save();
+			} catch (final IOException ex) {
+				ex.printStackTrace();
+			}
+
+			try {
 				ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
 			} catch (final IOException e) {
 				// ignore exception

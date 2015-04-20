@@ -28,7 +28,7 @@
 				</goals>
 				<configuration>
 					<testSuite>org.eclipse.emf.emfstore.client.test.ui</testSuite>
-					<testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITests</testClass>
+					<testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock</testClass>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>
 					<argLine>${tycho.testArgLine} -Dorg.eclipse.swtbot.search.timeout=30000 -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m</argLine>
@@ -201,7 +201,7 @@
 						</goals>
 						<configuration>
 							<testSuite>org.eclipse.emf.emfstore.client.test.ui</testSuite>
-							<testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITests</testClass>
+							<testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock</testClass>
 							<useUIHarness>true</useUIHarness>
 							<useUIThread>false</useUIThread>
 							<argLine>${tycho.testArgLine} -Dorg.eclipse.swtbot.search.timeout=30000 -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m</argLine>
@@ -393,6 +393,190 @@
                             <useUIHarness>true</useUIHarness>
                             <useUIThread>false</useUIThread>
                             <argLine>${tycho.testArgLine} -Dosgi.requiredJavaVersion=1.5 -Demfstore.inMemoryChangePackage=true -Xms40m -Xmx512m
+                            </argLine>
+                            <testFailureIgnore>true</testFailureIgnore>
+
+                            <dependencies>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.client.model.edit</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.client.test</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.test.model</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.test.model.edit</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.client.transaction</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.client.changetracking.test</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.client</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.common.model.edit</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.common.model</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.common</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.modelmutator</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.examplemodel.edit</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.examplemodel</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.migration</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.server.model.edit</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>
+                                    <artifactId>org.eclipse.emf.emfstore.server.model</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <type>eclipse-plugin</type>p
+                                    <artifactId>org.eclipse.emf.emfstore.server</artifactId>
+                                    <version>0.0.0</version>
+                                </dependency>
+                            </dependencies>
+
+                            <bundleStartLevel>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.client.model.edit</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.client.test</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.client.transaction</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.client</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.client.changetracking.test</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.common.model.edit</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.common.model</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.common</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.modelmutator</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.examplemodel.edit</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.examplemodel</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.migration</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.server.model.edit</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.server.model</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                                <bundle>
+                                    <id>org.eclipse.emf.emfstore.server</id>
+                                    <level>4</level>
+                                    <autoStart>false</autoStart>
+                                </bundle>
+                            </bundleStartLevel>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>AllUITests (Integration)</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <reportsDirectory>${project.build.directory}/surefire-reports/ui-tests-integration</reportsDirectory>
+                            <testSuite>org.eclipse.emf.emfstore.client.test.ui</testSuite>
+                            <testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITests</testClass>                            
+                            <useUIHarness>true</useUIHarness>
+                            <useUIThread>false</useUIThread>
+                            <argLine>${tycho.testArgLine} -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m
                             </argLine>
                             <testFailureIgnore>true</testFailureIgnore>
 

@@ -125,4 +125,12 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	 */
 	ChangePackage toInMemoryChangePackage();
 
+	/**
+	 * Returns the file path to the temporary file that is used
+	 * in between saves.
+	 *
+	 * @return the absolute path to the temporary file
+	 */
+	String getTempFilePath();
+
 } // FileBasedChangePackage

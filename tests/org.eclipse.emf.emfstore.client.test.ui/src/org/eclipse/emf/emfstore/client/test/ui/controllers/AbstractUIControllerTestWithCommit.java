@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.bowling.Player;
 import org.eclipse.emf.emfstore.bowling.Tournament;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.observer.ESUpdateObserver;
-import org.eclipse.emf.emfstore.client.test.ui.AllUITests;
+import org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock;
 import org.eclipse.emf.emfstore.client.ui.ESUIControllerFactory;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
@@ -120,7 +120,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 			public String getFailureMessage() {
 				return "Commit did not succeed.";
 			}
-		}, AllUITests.TIMEOUT);
+		}, AllUITestsWithMock.TIMEOUT);
 
 		assertEquals(baseVersion.getIdentifier() + 1,
 			localProject.getBaseVersion().getIdentifier());
