@@ -43,6 +43,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.emfstore.internal.common.ResourceFactoryRegistry;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESFileBasedChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
@@ -872,7 +873,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			operationsHandle.close();
 		}
 
-		changePackage.setLogMessage(getLogMessage());
+		changePackage.setLogMessage(ModelUtil.clone(getLogMessage()));
 
 		return changePackage;
 	}
