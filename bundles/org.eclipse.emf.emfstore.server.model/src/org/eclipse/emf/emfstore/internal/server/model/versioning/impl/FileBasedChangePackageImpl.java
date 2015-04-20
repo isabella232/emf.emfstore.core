@@ -738,11 +738,12 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		// .getResourceSet().getURIConverter().normalize(operationsURI);
 		final URI changePackageUri = changePackageHolder.getChangePackageUri();
 		final String operationFileString = changePackageUri.toFileString();
-		final File operationFile = new File(operationFileString);
-		operationFile.delete();
+		final File operationFile = new File(operationFileString + ".temp");
+		// operationFile.delete();
 		final File thisFile = new File(getTempFilePath());
 		try {
-			FileUtil.moveAndOverwrite(thisFile, operationFile);
+			FileUtil.copyFile(thisFile, operationFile);
+			thisFile.delete();
 			setFilePath(operationFileString);
 			changePackageHolder.setChangePackage(this);
 		} catch (final IOException ex) {
