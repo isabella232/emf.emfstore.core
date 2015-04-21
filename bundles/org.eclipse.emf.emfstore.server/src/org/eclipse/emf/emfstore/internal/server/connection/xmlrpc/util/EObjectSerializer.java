@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -45,7 +45,7 @@ import org.xml.sax.SAXException;
 
 /**
  * Serializer for EObjects.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -79,17 +79,13 @@ public class EObjectSerializer extends TypeSerializerImpl {
 				EObject eObject = (EObject) pObject;
 				XMIResource resource = (XMIResource) eObject.eResource();
 
-				boolean isFileBasedChangePackage = false;
-
 				if (eObject instanceof FileBasedChangePackage) {
 					final ChangePackage changePackage = FileBasedChangePackage.class.cast(eObject)
 						.toInMemoryChangePackage();
 					eObject = changePackage;
-					isFileBasedChangePackage = true;
 				}
 
-				if ((eObject instanceof ChangePackage && !isFileBasedChangePackage || eObject instanceof IdEObjectCollection)
-					&& resource != null) {
+				if (eObject instanceof IdEObjectCollection && resource != null) {
 					OutputStreamWriter writer = null;
 					try {
 						writer = new OutputStreamWriter(bos, CommonUtil.getEncoding());

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
+import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.internal.client.common.UnknownEMFStoreWorkloadCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -272,7 +273,12 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		});
 		resetExpandCollapse();
 		if (projectSpace == null || modelElement == null) {
-			viewer.setInput(Collections.EMPTY_LIST);
+			RunInUI.run(new ESVoidCallable() {
+				@Override
+				public void run() {
+					viewer.setInput(Collections.EMPTY_LIST);
+				}
+			});
 			return;
 		}
 		infos = getHistoryInfos();
@@ -501,7 +507,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		GridDataFactory.fillDefaults().align(SWT.CENTER, SWT.CENTER).grab(true, false).applyTo(noProjectHint);
 
 		noProjectHint
-			.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
+		.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
 		noProjectHint.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				final ElementListSelectionDialog elsd = new ElementListSelectionDialog(parent.getShell(),
@@ -683,7 +689,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		for (final HistoryInfo info : resultCandidates) {
 			if (info.getPrimarySpec().getIdentifier() != -1
 				&& (biggest && info.getPrimarySpec().compareTo(result) == 1 || !biggest && info.getPrimarySpec()
-					.compareTo(result) == -1)) {
+				.compareTo(result) == -1)) {
 				result = info.getPrimarySpec();
 			}
 		}
