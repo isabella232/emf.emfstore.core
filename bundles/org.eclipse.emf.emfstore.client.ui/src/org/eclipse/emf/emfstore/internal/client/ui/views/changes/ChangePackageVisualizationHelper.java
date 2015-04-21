@@ -57,6 +57,8 @@ public class ChangePackageVisualizationHelper {
 
 	private final ModelElementIdToEObjectMapping idToEObjectMapping;
 
+	private OperationCustomLabelProvider customLabelProvider;
+
 	/**
 	 * Constructor.
 	 *
@@ -136,9 +138,7 @@ public class ChangePackageVisualizationHelper {
 	}
 
 	private Image getCustomOperationProviderLabel(AbstractOperation operation) {
-		final OperationCustomLabelProvider customLabelProvider = ExtensionRegistry.INSTANCE.get(
-			OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class, new DefaultOperationLabelProvider(),
-			true);
+		final OperationCustomLabelProvider customLabelProvider = getLabelProvider();
 		if (customLabelProvider != null) {
 			try {
 				return (Image) customLabelProvider.getImage(operation);
@@ -162,11 +162,7 @@ public class ChangePackageVisualizationHelper {
 	public String getDescription(AbstractOperation op) {
 
 		// check of a custom operation label provider can provide a label
-		final OperationCustomLabelProvider customLabelProvider =
-			ExtensionRegistry.INSTANCE.get(
-				OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class,
-				new DefaultOperationLabelProvider(),
-				true);
+		final OperationCustomLabelProvider customLabelProvider = getLabelProvider();
 
 		if (op instanceof CompositeOperation) {
 			final CompositeOperation compositeOperation = (CompositeOperation) op;
@@ -178,6 +174,17 @@ public class ChangePackageVisualizationHelper {
 		}
 
 		return decorate(customLabelProvider, op);
+	}
+
+	private OperationCustomLabelProvider getLabelProvider() {
+		if (customLabelProvider == null) {
+			customLabelProvider =
+				ExtensionRegistry.INSTANCE.get(
+					OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class,
+					new DefaultOperationLabelProvider(),
+					true);
+		}
+		return customLabelProvider;
 	}
 
 	private String decorate(OperationCustomLabelProvider labelProvider, AbstractOperation op) {
@@ -254,5 +261,14 @@ public class ChangePackageVisualizationHelper {
 	 */
 	public EObject getModelElement(ModelElementId modelElementId) {
 		return idToEObjectMapping.get(modelElementId);
+	}
+
+	/**
+	 *
+	 */
+	public void dispose() {
+		if (customLabelProvider != null) {
+			customLabelProvider.dispose();
+		}
 	}
 }

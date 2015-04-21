@@ -415,6 +415,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	@Override
 	public void dispose() {
 		super.dispose();
+		changePackageVisualizationHelper.dispose();
 		headRevision.dispose();
 		currentRevision.dispose();
 		baseRevision.dispose();

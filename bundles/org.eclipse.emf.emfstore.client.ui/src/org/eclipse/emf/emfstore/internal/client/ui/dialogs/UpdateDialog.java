@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Zardosht Hoiaie
  * Edgar Mueller
@@ -42,6 +42,7 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 	private final ProjectSpace projectSpace;
 	private Image updateImage;
 	private final ModelElementIdToEObjectMapping idToEObjectMapping;
+	private TabbedChangesComposite changesComposite;
 
 	/**
 	 * Constructor.
@@ -80,7 +81,7 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 
 		// changes tree
 		if (changes != null) {
-			final TabbedChangesComposite changesComposite = new TabbedChangesComposite(
+			changesComposite = new TabbedChangesComposite(
 				contents, SWT.BORDER, changes, projectSpace.getProject(),
 				idToEObjectMapping, true);
 			// changesComposite.setReverseNodes(false);
@@ -125,6 +126,7 @@ public class UpdateDialog extends EMFStoreTitleAreaDialog {
 	@Override
 	public boolean close() {
 		updateImage.dispose();
+		changesComposite.dispose();
 		return super.close();
 	}
 

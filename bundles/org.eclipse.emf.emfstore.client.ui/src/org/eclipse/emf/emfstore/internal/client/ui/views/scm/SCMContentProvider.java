@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -202,7 +202,10 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 	public Object[] getChildren(Object object) {
 
 		if (object instanceof OperationProxy) {
-			return OperationProxy.class.cast(object).getProxies().toArray();
+			final OperationProxy proxy = OperationProxy.class.cast(object);
+			final FileBasedChangePackage changePackage = (FileBasedChangePackage) proxy.eContainer();
+			final AbstractOperation abstractOperation = changePackage.get(proxy.getIndex());
+			return getChildren(abstractOperation);
 		} else if (object instanceof HistoryInfo) {
 			final HistoryInfo historyInfo = (HistoryInfo) object;
 			return getChildren(historyInfo.getChangePackage());
@@ -210,9 +213,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 
 			final FileBasedChangePackage changePackage = (FileBasedChangePackage) object;
 
-			if (changePackage.getOperationProxies().isEmpty()) {
-				createOperationProxies(changePackage);
-			}
+			createOperationProxies(changePackage);
 
 			return changePackage.getOperationProxies().toArray();
 		} else if (object instanceof ChangePackage) {
@@ -243,18 +244,21 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 	private void createOperationProxies(final FileBasedChangePackage changePackage) {
 		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 		int opIndex = 0;
+		final List<OperationProxy> updatedProxies = new ArrayList<OperationProxy>();
 		try {
 			for (final Iterator<AbstractOperation> iterator = operations.iterable().iterator(); iterator.hasNext();) {
 				final AbstractOperation operation = iterator.next();
 				final OperationProxy newProxy = createProxy(operation);
 				newProxy.setIndex(opIndex);
-				changePackage.getOperationProxies().add(newProxy);
+				updatedProxies.add(newProxy);
 
 				opIndex += 1;
 			}
 		} finally {
 			operations.close();
 		}
+		changePackage.getOperationProxies().clear();
+		changePackage.getOperationProxies().addAll(updatedProxies);
 	}
 
 	private static OperationProxy createProxy(AbstractOperation operation) {

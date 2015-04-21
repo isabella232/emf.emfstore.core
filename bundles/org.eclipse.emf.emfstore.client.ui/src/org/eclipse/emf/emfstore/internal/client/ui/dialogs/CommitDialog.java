@@ -66,6 +66,7 @@ KeyListener {
 	private Image commitImage;
 	private final int numberOfChanges;
 	private final ModelElementIdToEObjectMapping idToEObjectMapping;
+	private TabbedChangesComposite changesComposite;
 
 	/**
 	 * Constructor.
@@ -92,7 +93,7 @@ KeyListener {
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			COMMITDIALOG_TRAY_EXTENSION_POINT, true)
-		.getExtensionElements()) {
+			.getExtensionElements()) {
 			try {
 				final CommitDialogTray tray = element.getClass("class", //$NON-NLS-1$
 					CommitDialogTray.class);
@@ -154,7 +155,7 @@ KeyListener {
 		oldLabel.setText(Messages.CommitDialog_PreviousMessage);
 		final Combo oldMsg = new Combo(contents, SWT.READ_ONLY);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.TOP)
-		.grab(true, false).applyTo(oldMsg);
+			.grab(true, false).applyTo(oldMsg);
 
 		final ArrayList<String> oldLogMessagesCopy = new ArrayList<String>();
 		oldLogMessagesCopy.addAll(oldLogMessages);
@@ -198,11 +199,11 @@ KeyListener {
 		//
 		// changePackages.add(cp);
 
-		final TabbedChangesComposite changesComposite = new TabbedChangesComposite(
+		changesComposite = new TabbedChangesComposite(
 			contents, SWT.BORDER, changePackages, getActiveProjectSpace()
-			.getProject(), idToEObjectMapping, true);
+				.getProject(), idToEObjectMapping, true);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL)
-		.grab(true, true).span(2, 1).applyTo(changesComposite);
+			.grab(true, true).span(2, 1).applyTo(changesComposite);
 
 		return contents;
 	}
@@ -219,7 +220,7 @@ KeyListener {
 	private void createLogMessageText(Composite contents) {
 		txtLogMsg = new Text(contents, SWT.MULTI | SWT.LEAD | SWT.BORDER);
 		GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
-		.align(SWT.FILL, SWT.TOP).hint(1, 45).applyTo(txtLogMsg);
+			.align(SWT.FILL, SWT.TOP).hint(1, 45).applyTo(txtLogMsg);
 		String logMsg = StringUtils.EMPTY;
 		final LogMessage logMessage = changes.getLogMessage();
 
@@ -255,6 +256,7 @@ KeyListener {
 	@Override
 	public boolean close() {
 		commitImage.dispose();
+		changesComposite.dispose();
 		return super.close();
 	}
 
@@ -295,34 +297,34 @@ KeyListener {
 		// final String notifyUsers = "Notify users";
 		for (final ESExtensionElement c : new ESExtensionPoint(
 			COMMITDIALOG_TRAY_EXTENSION_POINT)
-		.getExtensionElements()) {
+			.getExtensionElements()) {
 			final String name = c.getAttribute("name"); //$NON-NLS-1$
 			final CommitDialogTray tray = trays.get(name);
 			if (tray != null) {
 				final Button notificationsButton = createButton(parent, 2138,
 					name + " >>", false); //$NON-NLS-1$
 				notificationsButton
-				.addSelectionListener(new SelectionAdapter() {
-					private boolean isOpen;
+					.addSelectionListener(new SelectionAdapter() {
+						private boolean isOpen;
 
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						if (!isOpen) {
-							openTray(tray);
-							notificationsButton.setText(name + " <<"); //$NON-NLS-1$
-							final Rectangle bounds = getShell().getBounds();
-							bounds.x -= 100;
-							getShell().setBounds(bounds);
-						} else {
-							closeTray();
-							notificationsButton.setText(name + " >>"); //$NON-NLS-1$
-							final Rectangle bounds = getShell().getBounds();
-							bounds.x += 100;
-							getShell().setBounds(bounds);
+						@Override
+						public void widgetSelected(SelectionEvent e) {
+							if (!isOpen) {
+								openTray(tray);
+								notificationsButton.setText(name + " <<"); //$NON-NLS-1$
+								final Rectangle bounds = getShell().getBounds();
+								bounds.x -= 100;
+								getShell().setBounds(bounds);
+							} else {
+								closeTray();
+								notificationsButton.setText(name + " >>"); //$NON-NLS-1$
+								final Rectangle bounds = getShell().getBounds();
+								bounds.x += 100;
+								getShell().setBounds(bounds);
+							}
+							isOpen = !isOpen;
 						}
-						isOpen = !isOpen;
-					}
-				});
+					});
 			}
 		}
 		super.createButtonsForButtonBar(parent);
