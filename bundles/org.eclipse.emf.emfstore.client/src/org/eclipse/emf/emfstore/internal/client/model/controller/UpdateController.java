@@ -46,7 +46,7 @@ import com.google.common.collect.Lists;
 
 /**
  * Controller class for updating a project space.
- *
+ * 
  * @author ovonwesen
  * @author emueller
  */
@@ -57,7 +57,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 *
+	 * 
 	 * @param projectSpace
 	 *            the project space to be updated
 	 * @param version
@@ -89,9 +89,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override
@@ -249,7 +249,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate change packages from the change package.
-	 *
+	 * 
 	 * @param incomingChanges incoming change packages
 	 * @return baseVersionDelta
 	 */
@@ -276,7 +276,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate operations.
-	 *
+	 * 
 	 * @param incomingChanges incoming change package
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed
@@ -324,6 +324,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 					operationMatchingStarted = true;
 				} else {
 					tempChangePackage.add(ModelUtil.clone(localOp));
+					while (localOperationsIterator.hasNext()) {
+						tempChangePackage.add(ModelUtil.clone(localOperationsIterator.next()));
+					}
 					if (operationMatchingStarted) {
 						ModelUtil.logError(Messages.UpdateController_IncomingOperationsOnlyPartlyMatch);
 						throw new IllegalStateException(Messages.UpdateController_IncomingOpsPartlyMatched);
