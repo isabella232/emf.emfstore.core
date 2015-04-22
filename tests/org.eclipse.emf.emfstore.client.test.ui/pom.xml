@@ -392,8 +392,7 @@
                             <testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock</testClass>
                             <useUIHarness>true</useUIHarness>
                             <useUIThread>false</useUIThread>
-                            <argLine>${tycho.testArgLine} -Dosgi.requiredJavaVersion=1.5 -Demfstore.inMemoryChangePackage=true -Xms40m -Xmx512m
-                            </argLine>
+                            <argLine>${tycho.testArgLine} -Dorg.eclipse.swtbot.search.timeout=30000 -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m -Demfstore.inMemryChangePackage=true</argLine>
                             <testFailureIgnore>true</testFailureIgnore>
 
                             <dependencies>
@@ -566,10 +565,8 @@
                             <testClass>org.eclipse.emf.emfstore.client.test.ui.AllUITests</testClass>                            
                             <useUIHarness>true</useUIHarness>
                             <useUIThread>false</useUIThread>
-                            <argLine>${tycho.testArgLine} -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m
-                            </argLine>
+                            <argLine>${tycho.testArgLine} -Dorg.eclipse.swtbot.search.timeout=30000 -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m</argLine>
                             <testFailureIgnore>true</testFailureIgnore>
-
                             <dependencies>
                                 <dependency>
                                     <type>eclipse-plugin</type>
