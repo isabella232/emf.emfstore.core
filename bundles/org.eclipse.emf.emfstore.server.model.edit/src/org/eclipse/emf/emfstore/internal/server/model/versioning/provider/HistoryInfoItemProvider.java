@@ -98,7 +98,7 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 			getString("_UI_HistoryInfo_logMessage_feature"), //$NON-NLS-1$
 			getString(
 				"_UI_PropertyDescriptor_description", "_UI_HistoryInfo_logMessage_feature", "_UI_HistoryInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				VersioningPackage.Literals.HISTORY_INFO__LOG_MESSAGE, true, false, true, null, null, null));
+			VersioningPackage.Literals.HISTORY_INFO__LOG_MESSAGE, true, false, true, null, null, null));
 	}
 
 	/**

@@ -273,9 +273,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * Returns the path to the temporary file
-	 * 
+	 *
 	 * @return
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public String getTempFilePath() {
@@ -881,7 +881,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#save()
 	 */
 	public void save() throws IOException {

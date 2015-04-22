@@ -32,9 +32,9 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Server Space</b></em>'.
- * h
  *
- * @extends org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACRepository
+ *
+ * @extends
  *          <!-- end-user-doc -->
  *          <p>
  *          The following features are implemented:

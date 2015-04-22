@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
  *
  */
 public class ESModelElementQueryImpl extends ESRangeQueryImpl<ESModelElementQuery, ModelElementQuery> implements
-ESModelElementQuery {
+	ESModelElementQuery {
 
 	/**
 	 * Constructor.

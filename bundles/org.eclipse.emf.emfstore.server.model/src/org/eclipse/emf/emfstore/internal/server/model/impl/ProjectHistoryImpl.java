@@ -470,7 +470,7 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 			return PROJECT_NAME_EDEFAULT == null ? projectName != null : !PROJECT_NAME_EDEFAULT.equals(projectName);
 		case ModelPackage.PROJECT_HISTORY__PROJECT_DESCRIPTION:
 			return PROJECT_DESCRIPTION_EDEFAULT == null ? projectDescription != null : !PROJECT_DESCRIPTION_EDEFAULT
-			.equals(projectDescription);
+				.equals(projectDescription);
 		case ModelPackage.PROJECT_HISTORY__SHARED_PROPERTIES:
 			return sharedProperties != null && !sharedProperties.isEmpty();
 		case ModelPackage.PROJECT_HISTORY__BRANCHES:

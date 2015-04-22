@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.util.ModelAdapterFactory;
  * @generated
  */
 public class ModelItemProviderAdapterFactory extends ModelAdapterFactory implements ComposeableAdapterFactory,
-IChangeNotifier, IDisposable {
+	IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

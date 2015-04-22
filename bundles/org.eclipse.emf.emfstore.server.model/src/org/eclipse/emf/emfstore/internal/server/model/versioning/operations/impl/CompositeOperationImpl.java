@@ -438,10 +438,10 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 			return mainOperation != null;
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME:
 			return COMPOSITE_NAME_EDEFAULT == null ? compositeName != null : !COMPOSITE_NAME_EDEFAULT
-			.equals(compositeName);
+				.equals(compositeName);
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION:
 			return COMPOSITE_DESCRIPTION_EDEFAULT == null ? compositeDescription != null
-			: !COMPOSITE_DESCRIPTION_EDEFAULT.equals(compositeDescription);
+				: !COMPOSITE_DESCRIPTION_EDEFAULT.equals(compositeDescription);
 		case OperationsPackage.COMPOSITE_OPERATION__REVERSED:
 			return reversed != REVERSED_EDEFAULT;
 		}

@@ -122,9 +122,9 @@ public class FileBasedChangePackageItemProvider extends ItemProviderAdapter impl
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getImage(java.lang.Object)
 	 * @generated NOT
 	 */

@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESDateVersionSpec;
  *
  */
 public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, DateVersionSpec> implements
-ESDateVersionSpec {
+	ESDateVersionSpec {
 
 	/**
 	 * Constructor.

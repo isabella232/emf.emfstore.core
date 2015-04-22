@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  */
 public class ESPagedUpdateVersionSpecImpl extends ESVersionSpecImpl<ESPagedUpdateVersionSpec, PagedUpdateVersionSpec>
-implements ESPagedUpdateVersionSpec {
+	implements ESPagedUpdateVersionSpec {
 
 	/**
 	 * Constructor.

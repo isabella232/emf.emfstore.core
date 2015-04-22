@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *
  */
 public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersionSpec, PrimaryVersionSpec> implements
-ESPrimaryVersionSpec {
+	ESPrimaryVersionSpec {
 
 	/**
 	 * Constructor.

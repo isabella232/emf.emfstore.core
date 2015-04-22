@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec;
  *
  */
 public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, TagVersionSpec> implements
-ESTagVersionSpec {
+	ESTagVersionSpec {
 
 	/**
 	 * Constructor.

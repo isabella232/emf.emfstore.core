@@ -1111,7 +1111,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#setChangeResource(org.eclipse.emf.ecore.resource.Resource)
 	 */
 	public void setChangeResource(Resource resource) {
@@ -1131,7 +1131,7 @@ public class VersionImpl extends EObjectImpl implements Version {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.Version#setProjectStateResource(org.eclipse.emf.ecore.resource.Resource)
 	 */
 	public void setProjectStateResource(Resource resource) {

@@ -25,7 +25,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @param <U> a sub-type of {@link RangeQuery}
  */
 public class ESRangeQueryImpl<T extends ESRangeQuery<?>, U extends RangeQuery<T>> extends ESHistoryQueryImpl<T, U>
-implements ESRangeQuery<T> {
+	implements ESRangeQuery<T> {
 
 	/**
 	 * Constructor.

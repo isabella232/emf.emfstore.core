@@ -41,7 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.util.Accessc
  * @generated
  */
 public class AccesscontrolItemProviderAdapterFactory extends AccesscontrolAdapterFactory implements
-ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+	ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

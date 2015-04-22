@@ -268,7 +268,7 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 			return newIndex != NEW_INDEX_EDEFAULT;
 		case OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE:
 			return REFERENCED_VALUE_EDEFAULT == null ? referencedValue != null : !REFERENCED_VALUE_EDEFAULT
-			.equals(referencedValue);
+				.equals(referencedValue);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *
  */
 public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersionSpec, AncestorVersionSpec> implements
-ESAncestorVersionSpec {
+	ESAncestorVersionSpec {
 
 	/**
 	 * Constructor.

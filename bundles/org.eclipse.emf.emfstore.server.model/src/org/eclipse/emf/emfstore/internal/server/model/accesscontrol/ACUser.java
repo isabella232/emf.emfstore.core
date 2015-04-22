@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC User</b></em>'.
  *
- * @extends APIDelegate<ESUser>
  *          <!-- end-user-doc -->
  *
  *          <p>

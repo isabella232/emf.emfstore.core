@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Server Space</b></em>'.
  *
- * @extends org.eclipse.emf.emfstore.internal.server.model.versioning.DAOProvider
+ * @extends
  *          <!-- end-user-doc -->
  *
  *          <p>

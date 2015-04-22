@@ -34,7 +34,7 @@ import com.google.common.collect.Iterables;
  *
  */
 public class ESFileBasedChangePackageImpl extends ESAbstractChangePackageImpl<FileBasedChangePackage> implements
-ESChangePackage {
+	ESChangePackage {
 
 	/**
 	 * Constructor.
