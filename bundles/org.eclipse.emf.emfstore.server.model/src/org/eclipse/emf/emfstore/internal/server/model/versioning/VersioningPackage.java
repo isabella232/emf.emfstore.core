@@ -1198,6 +1198,102 @@ public interface VersioningPackage extends EPackage {
 	int OPERATION_PROXY_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl
+	 * <em>Change Package Envelope</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getChangePackageEnvelope()
+	 * @generated
+	 */
+	int CHANGE_PACKAGE_ENVELOPE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Fragment Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_ENVELOPE__FRAGMENT_INDEX = 0;
+
+	/**
+	 * The feature id for the '<em><b>Fragment Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Fragment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_ENVELOPE__FRAGMENT = 2;
+
+	/**
+	 * The number of structural features of the '<em>Change Package Envelope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_ENVELOPE_FEATURE_COUNT = 3;
+
+	/**
+	 * The meta object id for the '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl
+	 * <em>Change Package Proxy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getChangePackageProxy()
+	 * @generated
+	 */
+	int CHANGE_PACKAGE_PROXY = 22;
+
+	/**
+	 * The feature id for the '<em><b>Log Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_PROXY__LOG_MESSAGE = ABSTRACT_CHANGE_PACKAGE__LOG_MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_PROXY__ID = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Change Package Proxy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PACKAGE_PROXY_FEATURE_COUNT = ABSTRACT_CHANGE_PACKAGE_FEATURE_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec
 	 * <em>Tag Version Spec</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -2105,6 +2201,87 @@ public interface VersioningPackage extends EPackage {
 	EReference getOperationProxy_Proxies();
 
 	/**
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope
+	 * <em>Change Package Envelope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for class '<em>Change Package Envelope</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope
+	 * @generated
+	 */
+	EClass getChangePackageEnvelope();
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentIndex
+	 * <em>Fragment Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the attribute '<em>Fragment Index</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentIndex()
+	 * @see #getChangePackageEnvelope()
+	 * @generated
+	 */
+	EAttribute getChangePackageEnvelope_FragmentIndex();
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentCount
+	 * <em>Fragment Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the attribute '<em>Fragment Count</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentCount()
+	 * @see #getChangePackageEnvelope()
+	 * @generated
+	 */
+	EAttribute getChangePackageEnvelope_FragmentCount();
+
+	/**
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragment
+	 * <em>Fragment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the containment reference list '<em>Fragment</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragment()
+	 * @see #getChangePackageEnvelope()
+	 * @generated
+	 */
+	EReference getChangePackageEnvelope_Fragment();
+
+	/**
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy
+	 * <em>Change Package Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for class '<em>Change Package Proxy</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy
+	 * @generated
+	 */
+	EClass getChangePackageProxy();
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy#getId()
+	 * @see #getChangePackageProxy()
+	 * @generated
+	 */
+	EAttribute getChangePackageProxy_Id();
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -2838,6 +3015,68 @@ public interface VersioningPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OPERATION_PROXY__PROXIES = eINSTANCE.getOperationProxy_Proxies();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl
+		 * <em>Change Package Envelope</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getChangePackageEnvelope()
+		 * @generated
+		 */
+		EClass CHANGE_PACKAGE_ENVELOPE = eINSTANCE.getChangePackageEnvelope();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EAttribute CHANGE_PACKAGE_ENVELOPE__FRAGMENT_INDEX = eINSTANCE.getChangePackageEnvelope_FragmentIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EAttribute CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT = eINSTANCE.getChangePackageEnvelope_FragmentCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Fragment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EReference CHANGE_PACKAGE_ENVELOPE__FRAGMENT = eINSTANCE.getChangePackageEnvelope_Fragment();
+
+		/**
+		 * The meta object literal for the '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl
+		 * <em>Change Package Proxy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersioningPackageImpl#getChangePackageProxy()
+		 * @generated
+		 */
+		EClass CHANGE_PACKAGE_PROXY = eINSTANCE.getChangePackageProxy();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EAttribute CHANGE_PACKAGE_PROXY__ID = eINSTANCE.getChangePackageProxy_Id();
 
 	}
 

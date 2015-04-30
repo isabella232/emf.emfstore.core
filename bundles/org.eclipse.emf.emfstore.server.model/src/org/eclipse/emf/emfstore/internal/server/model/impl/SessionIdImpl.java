@@ -20,10 +20,6 @@ import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl;
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Session Id</b></em>'.
  *
  * @implements SessionId
- * @implements APIDelegate<ESSessionId>
- *             <!-- end-user-doc -->
- *             <p>
- *             </p>
  *
  * @generated
  */

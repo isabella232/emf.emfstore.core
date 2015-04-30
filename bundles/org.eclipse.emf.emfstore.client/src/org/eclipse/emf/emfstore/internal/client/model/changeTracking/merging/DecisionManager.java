@@ -57,12 +57,12 @@ import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflict
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictBucket;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ConflictDetector;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.SingleReferenceOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 
 /**
  * DecisionManager is the controller for the merge dialog and therefore it's
@@ -546,9 +546,9 @@ public class DecisionManager {
 		int theirLeafCount = 0;
 		for (final VisualConflict conflict : conflicts) {
 			myCount += conflict.getLeftOperations().size();
-			myLeafCount += ChangePackageImpl.countLeafOperations(conflict.getMyOperations());
+			myLeafCount += ChangePackageUtil.countLeafOperations(conflict.getMyOperations());
 			theirCount += conflict.getRightOperations().size();
-			theirLeafCount += ChangePackageImpl.countLeafOperations(conflict.getTheirOperations());
+			theirLeafCount += ChangePackageUtil.countLeafOperations(conflict.getTheirOperations());
 		}
 		myOperationCount = myCount;
 		myLeafOperationCount = myLeafCount;

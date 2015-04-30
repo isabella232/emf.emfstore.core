@@ -540,6 +540,60 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected ChangePackageEnvelopeItemProvider changePackageEnvelopeItemProvider;
+
+	/**
+	 * This creates an adapter for a
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public Adapter createChangePackageEnvelopeAdapter() {
+		if (changePackageEnvelopeItemProvider == null) {
+			changePackageEnvelopeItemProvider = new ChangePackageEnvelopeItemProvider(this);
+		}
+
+		return changePackageEnvelopeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected ChangePackageProxyItemProvider changePackageProxyItemProvider;
+
+	/**
+	 * This creates an adapter for a
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public Adapter createChangePackageProxyAdapter() {
+		if (changePackageProxyItemProvider == null) {
+			changePackageProxyItemProvider = new ChangePackageProxyItemProvider(this);
+		}
+
+		return changePackageProxyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -692,6 +746,12 @@ public class VersioningItemProviderAdapterFactory extends VersioningAdapterFacto
 		}
 		if (operationProxyItemProvider != null) {
 			operationProxyItemProvider.dispose();
+		}
+		if (changePackageEnvelopeItemProvider != null) {
+			changePackageEnvelopeItemProvider.dispose();
+		}
+		if (changePackageProxyItemProvider != null) {
+			changePackageProxyItemProvider.dispose();
 		}
 	}
 

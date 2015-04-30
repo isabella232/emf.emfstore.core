@@ -30,6 +30,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -120,6 +121,40 @@ public interface EMFStore extends EMFStoreInterface {
 	PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId, PrimaryVersionSpec baseVersionSpec,
 		AbstractChangePackage changePackage, BranchVersionSpec targetBranch, PrimaryVersionSpec sourceVersion,
 		LogMessage logMessage) throws ESException, InvalidVersionSpecException;
+
+	/**
+	 * Submits a single {@link ChangePackageEnvelope} containing a change package fragment that will be aggregated to a
+	 * complete {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage ChangePackage} once
+	 * all fragments are available.
+	 *
+	 * @param sessionId
+	 *            the {@link SessionId} for authentication
+	 * @param projectId
+	 *            the {@link ProjectId}
+	 * @param envelope
+	 *            a{@link ChangePackageEnvelope} containing the change package fragment
+	 *
+	 * @return an ID that is used to identify the set of submitted {@link ChangePackageEnvelope}s
+	 *
+	 * @throws ESException in case the fragment could not be created
+	 */
+	String uploadChangePackageFragment(SessionId sessionId, ProjectId projectId, ChangePackageEnvelope envelope)
+		throws ESException;
+
+	/**
+	 * Retrieves a change package fragment.
+	 *
+	 * @param sessionId
+	 *            the {@link SessionId} for authentication purposes
+	 * @param proxyId
+	 *            the ID of the change package proxy that is used to identify available fragments
+	 * @param fragmentIndex
+	 *            the index of fragment
+	 * @return a {@link ChangePackageEnvelope} containing the requested change package fragment
+	 * @throws ESException in case the fragment could not be fetched
+	 */
+	ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+		throws ESException;
 
 	/**
 	 * Resolve a version specified to a primary version specifier.

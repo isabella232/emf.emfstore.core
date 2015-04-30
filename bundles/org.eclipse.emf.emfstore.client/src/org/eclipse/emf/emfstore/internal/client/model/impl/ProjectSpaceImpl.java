@@ -1387,7 +1387,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage#setChangePackage(org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage)
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer#setChangePackage(org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage)
 	 */
 	public void setChangePackage(AbstractChangePackage changePackage) {
 		setLocalChangePackage(changePackage);
@@ -1396,7 +1396,7 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage#getChangePackageUri()
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer#getChangePackageUri()
 	 */
 	public URI getChangePackageUri() {
 		final URI localChangePackageUri = ESClientURIUtil.createOperationsURI(this);

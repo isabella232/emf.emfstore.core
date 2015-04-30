@@ -11,9 +11,11 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.connectionmanager.xmlrpc;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -28,11 +30,24 @@ import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
+import org.eclipse.emf.emfstore.internal.common.ESCollections;
+import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.SerializationException;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.EObjectTypeFactory;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ConnectionException;
+import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
+import org.eclipse.emf.emfstore.internal.server.model.SessionId;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.xml.sax.SAXException;
+
+import com.google.common.base.Optional;
 
 /**
  * Manager for XML RPC server calls.
@@ -160,8 +175,13 @@ public class XmlRpcClientManager {
 		if (client == null) {
 			throw new ConnectionException(ConnectionManager.REMOTE);
 		}
+
+		final Object[] adjustedParams = adjustParameters(params);
+
 		try {
-			return (T) client.execute(serverInterface + "." + methodName, params); //$NON-NLS-1$
+			final T result = (T) client.execute(serverInterface + "." + methodName, adjustedParams); //$NON-NLS-1$
+			return adjustResult(ESCollections.find(params, SessionId.class), result);
+
 		} catch (final XmlRpcException e) {
 			if (e.getCause() instanceof ESException) {
 				throw (ESException) e.getCause();
@@ -174,6 +194,124 @@ public class XmlRpcClientManager {
 				throw new ConnectionException(ConnectionManager.REMOTE + e.getMessage(), e);
 			}
 		}
+	}
+
+	private Object[] adjustParameters(final Object[] params) throws ESException {
+		if (!Configuration.getClientBehavior().getChangePackageFragmentSize().isPresent()) {
+			return params;
+		}
+
+		final Optional<SessionId> maybeSessionId = ESCollections.find(params, SessionId.class);
+		final Optional<ProjectId> maybeProjectId = ESCollections.find(params, ProjectId.class);
+
+		if (!maybeSessionId.isPresent() || !maybeProjectId.isPresent()) {
+			// do not attempt to split
+			return params;
+		}
+
+		for (int i = 0; i < params.length; i++) {
+			final Object param = params[i];
+			if (AbstractChangePackage.class.isInstance(param) && !ChangePackageProxy.class.isInstance(param)) {
+				params[i] = uploadInFragments(
+					maybeSessionId.get(),
+					maybeProjectId.get(),
+					AbstractChangePackage.class.cast(param));
+			}
+		}
+
+		return params;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private <T> T adjustResult(final Optional<SessionId> maybeSessionId, final T result) throws ESException {
+		if (result instanceof Object[]) {
+			final Object[] objects = (Object[]) result;
+			for (int i = 0; i < objects.length; i++) {
+				final Object item = objects[i];
+				objects[i] = adjustResult(maybeSessionId, item);
+			}
+			return (T) objects;
+		} else if (result instanceof List) {
+			final List l = (List) result;
+			for (int i = 0; i < l.size(); i++) {
+				l.set(i, adjustResult(maybeSessionId, result));
+			}
+		} else if (result instanceof ChangePackageProxy) {
+			return (T) downloadAndResolveChangePackage((ChangePackageProxy) result, maybeSessionId);
+		}
+
+		return result;
+	}
+
+	private AbstractChangePackage downloadAndResolveChangePackage(final ChangePackageProxy proxy,
+		final Optional<SessionId> maybeSession) throws ESException {
+
+		if (!maybeSession.isPresent()) {
+			throw new ESException(Messages.XmlRpcClientManager_NoValidSessionId);
+		}
+
+		int fragmentIndex = 0;
+		final FileBasedChangePackage changePackage = VersioningFactory.eINSTANCE
+			.createFileBasedChangePackage();
+		changePackage.initialize(FileUtil.createLocationForTemporaryChangePackage());
+
+		ChangePackageEnvelope envelope;
+		do {
+			envelope = executeCall("downloadChangePackageFragment", ChangePackageEnvelope.class, new Object[] { //$NON-NLS-1$
+				maybeSession.get(),
+					proxy.getId(),
+					fragmentIndex
+			});
+			changePackage.addAll(envelope.getFragment());
+			fragmentIndex += 1;
+		} while (!envelope.isLast());
+
+		try {
+			changePackage.setLogMessage(
+				ModelUtil.clone(proxy.getLogMessage()));
+			changePackage.save();
+		} catch (final IOException ex) {
+			throw new ESException(Messages.XmlRpcClientManager_SaveChangePackageFailed, ex);
+		}
+		return changePackage;
+	}
+
+	private ChangePackageProxy uploadInFragments(SessionId sessionId,
+		ProjectId projectId, AbstractChangePackage changePackage)
+		throws ESException {
+
+		// get() is guarded
+		final Iterator<ChangePackageEnvelope> envelopes = ChangePackageUtil.splitChangePackage(
+			changePackage,
+			Configuration.getClientBehavior().getChangePackageFragmentSize().get());
+
+		String proxyId = null;
+		try {
+			while (envelopes.hasNext()) {
+				proxyId = uploadChangePackageFragment(
+					sessionId,
+					projectId,
+					envelopes.next()
+					);
+			}
+		} catch (final XmlRpcException ex) {
+			throw new ESException(Messages.XmlRpcClientManager_UploadChangePackageFragmentCallFailed, ex);
+		}
+
+		final ChangePackageProxy proxy = VersioningFactory.eINSTANCE.createChangePackageProxy();
+		proxy.setLogMessage(ModelUtil.clone(changePackage.getLogMessage()));
+		proxy.setId(proxyId);
+		return proxy;
+	}
+
+	private String uploadChangePackageFragment(final SessionId sessionId,
+		final ProjectId projectId, final ChangePackageEnvelope envelope) throws XmlRpcException {
+		return (String) client.execute(serverInterface + "." + "uploadChangePackageFragment", //$NON-NLS-1$ //$NON-NLS-2$
+			new Object[] {
+				sessionId,
+				projectId,
+				envelope
+			});
 	}
 
 	/**

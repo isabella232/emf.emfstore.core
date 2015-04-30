@@ -75,7 +75,6 @@ import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileDownloadS
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileInformation;
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileTransferManager;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
-import org.eclipse.emf.emfstore.internal.client.model.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.observers.DeleteProjectSpaceObserver;
 import org.eclipse.emf.emfstore.internal.client.properties.PropertyManager;
@@ -108,9 +107,10 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -126,7 +126,7 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * 
  */
 public abstract class ProjectSpaceBase extends IdentifiableElementImpl
-	implements ProjectSpace, ESLoginObserver, ESDisposable, HasChangePackage {
+	implements ProjectSpace, ESLoginObserver, ESDisposable, ChangePackageContainer {
 
 	private ESLocalProjectImpl esLocalProjectImpl;
 
@@ -526,7 +526,9 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getLocalChangePackage(boolean)
 	 */
 	public AbstractChangePackage getLocalChangePackage(boolean canonize) {
-		final AbstractChangePackage changePackage = ChangePackageUtil.createChangePackage();
+		final AbstractChangePackage changePackage = ChangePackageUtil.createChangePackage(
+			Configuration.getClientBehavior().useInMemoryChangePackage()
+			);
 
 		// copy operations from ProjectSpace
 		final ESCloseableIterable<AbstractOperation> operations = getLocalChangePackage().operations();
@@ -1060,7 +1062,9 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		}
 
 		mergeResult.addAll(acceptedMineList);
-		final AbstractChangePackage result = ChangePackageUtil.createChangePackage();
+		final AbstractChangePackage result = ChangePackageUtil.createChangePackage(
+			Configuration.getClientBehavior().useInMemoryChangePackage()
+			);
 
 		// dup op in mergeResult
 		result.addAll(mergeResult);

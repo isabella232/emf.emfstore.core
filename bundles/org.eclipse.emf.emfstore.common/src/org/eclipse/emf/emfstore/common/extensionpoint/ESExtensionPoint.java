@@ -287,4 +287,5 @@ public final class ESExtensionPoint {
 	public String getId() {
 		return id;
 	}
+
 }

@@ -53,7 +53,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.Direction;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.FileBasedOperationIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.OperationEmitter;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ReadLineCapable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.XmlTags;
@@ -730,9 +730,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage)
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer)
 	 */
-	public void attachToProjectSpace(HasChangePackage changePackageHolder) {
+	public void attachToProjectSpace(ChangePackageContainer changePackageHolder) {
 		// final URI operationsURI = ESClientURIUtil.createOperationsURI(getProjectSpace());
 		// final URI normalizedOperationUri = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
 		// .getResourceSet().getURIConverter().normalize(operationsURI);

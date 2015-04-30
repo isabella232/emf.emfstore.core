@@ -228,6 +228,9 @@ public class HistoryInfoItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.HISTORY_INFO__CHANGE_PACKAGE,
 			VersioningFactory.eINSTANCE.createFileBasedChangePackage()));
+
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.HISTORY_INFO__CHANGE_PACKAGE,
+			VersioningFactory.eINSTANCE.createChangePackageProxy()));
 	}
 
 	/**

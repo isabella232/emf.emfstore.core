@@ -91,6 +91,15 @@
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="changePackageFragmentationSize" type="string">
+            <annotation>
+               <documentation>
+                  Describes the limit of leaf operations a single change package fragment is allowed to have. The default is none, meaning that no splitting of change packages takes place.
+
+This option is available on the server as well as on the client side.
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

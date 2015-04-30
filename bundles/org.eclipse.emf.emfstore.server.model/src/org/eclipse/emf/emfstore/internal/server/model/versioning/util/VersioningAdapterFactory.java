@@ -19,6 +19,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersion
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
@@ -197,6 +199,16 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseOperationProxy(OperationProxy object) {
 			return createOperationProxyAdapter();
+		}
+
+		@Override
+		public Adapter caseChangePackageEnvelope(ChangePackageEnvelope object) {
+			return createChangePackageEnvelopeAdapter();
+		}
+
+		@Override
+		public Adapter caseChangePackageProxy(ChangePackageProxy object) {
+			return createChangePackageProxyAdapter();
 		}
 
 		@Override
@@ -559,6 +571,40 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	public Adapter createOperationProxyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope
+	 * <em>Change Package Envelope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope
+	 * @generated
+	 */
+	public Adapter createChangePackageEnvelopeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy
+	 * <em>Change Package Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy
+	 * @generated
+	 */
+	public Adapter createChangePackageProxyAdapter() {
 		return null;
 	}
 

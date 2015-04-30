@@ -18,6 +18,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
@@ -30,7 +31,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * @author Edgar
+ * Integration tests that utilize the actual EMFStore middleware.
+ *
+ * @author emueller
  *
  */
 public class IntegrationTest extends ESTestWithLoggedInUser {
@@ -47,16 +50,22 @@ public class IntegrationTest extends ESTestWithLoggedInUser {
 
 	@Test
 	public void test() throws ESException {
-		final TestElement testElement = Create.testElement();
+		final TestElement testElement = Create.testElement("foo"); //$NON-NLS-1$
 		share(getUsersession(), getLocalProject());
+
+		final ESLocalProject clonedProject = getLocalProject().getRemoteProject().checkout("clonedProject", //$NON-NLS-1$
+			new NullProgressMonitor());
 
 		final PrimaryVersionSpec baseVersion = getProjectSpace().getBaseVersion();
 		Add.toProject(getLocalProject(), testElement);
+		Add.toProject(getLocalProject(), Create.testElement("bar")); //$NON-NLS-1$
 
 		getLocalProject().commit(new NullProgressMonitor());
 
 		final PrimaryVersionSpec targetVersion = getProjectSpace().getBaseVersion();
 		final List<AbstractChangePackage> changes = getProjectSpace().getChanges(targetVersion, baseVersion);
+
+		clonedProject.update(new NullProgressMonitor());
 
 		assertThat(changes.size(), equalTo(1));
 		assertThat(getLocalProject().getBaseVersion().getIdentifier(), equalTo(1));

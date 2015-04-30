@@ -15,12 +15,13 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 
 /**
- * Interfaces for types that have an instance of an {@link AbstractChangePackage}.
+ * Interfaces for types that own an instance of an {@link AbstractChangePackage}.
  *
  * author emueller
  *
  */
-public interface HasChangePackage {
+// TODO: move to more appropriate package
+public interface ChangePackageContainer {
 
 	/**
 	 * Set the given change package.

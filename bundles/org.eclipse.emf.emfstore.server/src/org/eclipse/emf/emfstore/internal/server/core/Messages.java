@@ -36,6 +36,10 @@ public final class Messages extends NLS {
 	public static String AdminEmfStoreImpl_RemovePA_Violation_1;
 	public static String AdminEmfStoreImpl_RemovePA_Violation_2;
 	public static String AdminEmfStoreImpl_Unknown_ProjectID;
+	public static String EMFStoreImpl_Missing_SessionAndOrProjectId;
+	public static String EMFStoreImpl_NoCompletedChangePackageFound;
+	public static String EMFStoreImpl_NoFragmentAdapterFound;
+	public static String EMFStoreImpl_NoValidSessiondIdFound;
 	public static String EMFStoreImpl_ServerCallObserverNotifier_Failed;
 	static {
 		// initialize resource bundle

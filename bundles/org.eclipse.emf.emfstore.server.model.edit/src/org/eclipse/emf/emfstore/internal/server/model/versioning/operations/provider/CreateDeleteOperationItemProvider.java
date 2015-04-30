@@ -81,14 +81,15 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 	 * @generated
 	 */
 	protected void addDeletePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_CreateDeleteOperation_delete_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_CreateDeleteOperation_delete_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_CreateDeleteOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.CREATE_DELETE_OPERATION__DELETE, true, false, false,
-			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CreateDeleteOperation_delete_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_CreateDeleteOperation_delete_feature", "_UI_CreateDeleteOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				OperationsPackage.Literals.CREATE_DELETE_OPERATION__DELETE, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -373,6 +374,12 @@ public class CreateDeleteOperationItemProvider extends AbstractOperationItemProv
 
 		newChildDescriptors.add(createChildParameter(OperationsPackage.Literals.CREATE_DELETE_OPERATION__MODEL_ELEMENT,
 			VersioningFactory.eINSTANCE.createOperationProxy()));
+
+		newChildDescriptors.add(createChildParameter(OperationsPackage.Literals.CREATE_DELETE_OPERATION__MODEL_ELEMENT,
+			VersioningFactory.eINSTANCE.createChangePackageEnvelope()));
+
+		newChildDescriptors.add(createChildParameter(OperationsPackage.Literals.CREATE_DELETE_OPERATION__MODEL_ELEMENT,
+			VersioningFactory.eINSTANCE.createChangePackageProxy()));
 
 		newChildDescriptors.add(createChildParameter(OperationsPackage.Literals.CREATE_DELETE_OPERATION__MODEL_ELEMENT,
 			EventsFactory.eINSTANCE.createEvent()));

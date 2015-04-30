@@ -28,6 +28,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersion
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
@@ -212,6 +214,22 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * @generated
 	 */
 	private EClass operationProxyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	private EClass changePackageEnvelopeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	private EClass changePackageProxyEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -993,6 +1011,66 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public EClass getChangePackageEnvelope() {
+		return changePackageEnvelopeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public EAttribute getChangePackageEnvelope_FragmentIndex() {
+		return (EAttribute) changePackageEnvelopeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public EAttribute getChangePackageEnvelope_FragmentCount() {
+		return (EAttribute) changePackageEnvelopeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public EReference getChangePackageEnvelope_Fragment() {
+		return (EReference) changePackageEnvelopeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public EClass getChangePackageProxy() {
+		return changePackageProxyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public EAttribute getChangePackageProxy_Id() {
+		return (EAttribute) changePackageProxyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
@@ -1116,6 +1194,14 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 
 		operationProxyEClass = createEClass(OPERATION_PROXY);
 		createEReference(operationProxyEClass, OPERATION_PROXY__PROXIES);
+
+		changePackageEnvelopeEClass = createEClass(CHANGE_PACKAGE_ENVELOPE);
+		createEAttribute(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT_INDEX);
+		createEAttribute(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT);
+		createEReference(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT);
+
+		changePackageProxyEClass = createEClass(CHANGE_PACKAGE_PROXY);
+		createEAttribute(changePackageProxyEClass, CHANGE_PACKAGE_PROXY__ID);
 	}
 
 	/**
@@ -1172,6 +1258,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		ancestorVersionSpecEClass.getESuperTypes().add(getVersionSpec());
 		pagedUpdateVersionSpecEClass.getESuperTypes().add(getVersionSpec());
 		fileBasedChangePackageEClass.getESuperTypes().add(getAbstractChangePackage());
+		changePackageProxyEClass.getESuperTypes().add(getAbstractChangePackage());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(tagVersionSpecEClass, TagVersionSpec.class,
@@ -1475,6 +1562,29 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 			getOperationProxy(),
 			null,
 			"proxies", null, 0, -1, OperationProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(changePackageEnvelopeEClass, ChangePackageEnvelope.class,
+			"ChangePackageEnvelope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getChangePackageEnvelope_FragmentIndex(),
+			ecorePackage.getEInt(),
+			"fragmentIndex", null, 1, 1, ChangePackageEnvelope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getChangePackageEnvelope_FragmentCount(),
+			ecorePackage.getEInt(),
+			"fragmentCount", null, 1, 1, ChangePackageEnvelope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+			getChangePackageEnvelope_Fragment(),
+			theOperationsPackage.getAbstractOperation(),
+			null,
+			"fragment", null, 0, -1, ChangePackageEnvelope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(changePackageProxyEClass, ChangePackageProxy.class,
+			"ChangePackageProxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+			getChangePackageProxy_Id(),
+			ecorePackage.getEString(),
+			"id", null, 0, 1, ChangePackageProxy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 	}
 
 } // VersioningPackageImpl

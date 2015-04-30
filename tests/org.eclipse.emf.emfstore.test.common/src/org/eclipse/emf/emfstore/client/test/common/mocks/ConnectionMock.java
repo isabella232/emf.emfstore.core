@@ -41,6 +41,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
@@ -267,6 +268,41 @@ public class ConnectionMock implements ConnectionManager {
 		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$
 		sessions.add(sessionId);
 		return emfStore.getVersion(sessionId);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#uploadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
+	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
+	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope)
+	 */
+	public String uploadChangePackageFragment(SessionId sessionId, ProjectId projectId, ChangePackageEnvelope envelope)
+		throws ESException {
+
+		checkSessionId(sessionId);
+
+		return emfStore.uploadChangePackageFragment(
+			ModelUtil.clone(sessionId),
+			ModelUtil.clone(projectId),
+			ModelUtil.clone(envelope));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
+	 *      java.lang.String, int)
+	 */
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+		throws ESException {
+		checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.downloadChangePackageFragment(
+				ModelUtil.clone(sessionId),
+				proxyId,
+				fragmentIndex)
+			);
 	}
 
 }

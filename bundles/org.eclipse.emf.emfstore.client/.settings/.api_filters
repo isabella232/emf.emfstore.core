@@ -32,6 +32,14 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/connectionmanager/xmlrpc/XmlRpcClientManager.java" type="org.eclipse.emf.emfstore.internal.client.model.connectionmanager.xmlrpc.XmlRpcClientManager">
+        <filter comment="internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="XmlRpcClientManager"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/emfstore/internal/client/model/controller/CommitController.java" type="org.eclipse.emf.emfstore.internal.client.model.controller.CommitController">
         <filter comment="internal API usage" id="572522506">
             <message_arguments>

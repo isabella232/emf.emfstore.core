@@ -202,6 +202,26 @@ public interface VersioningFactory extends EFactory {
 	OperationProxy createOperationProxy();
 
 	/**
+	 * Returns a new object of class '<em>Change Package Envelope</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return a new object of class '<em>Change Package Envelope</em>'.
+	 * @generated
+	 */
+	ChangePackageEnvelope createChangePackageEnvelope();
+
+	/**
+	 * Returns a new object of class '<em>Change Package Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return a new object of class '<em>Change Package Proxy</em>'.
+	 * @generated
+	 */
+	ChangePackageProxy createChangePackageProxy();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

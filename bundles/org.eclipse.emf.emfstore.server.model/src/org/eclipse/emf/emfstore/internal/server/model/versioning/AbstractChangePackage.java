@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -172,7 +172,7 @@ public interface AbstractChangePackage extends EObject {
 	 *
 	 * @generated NOT
 	 */
-	void attachToProjectSpace(HasChangePackage changePackageHolder);
+	void attachToProjectSpace(ChangePackageContainer changePackageHolder);
 
 	/**
 	 * Returns the API representation of this change package.
@@ -210,5 +210,16 @@ public interface AbstractChangePackage extends EObject {
 	 * @throws IOException in case saving fails
 	 */
 	void save() throws IOException;
+
+	/**
+	 * Returns the operation at the given index.
+	 *
+	 * @param index
+	 *            the requested index
+	 * @return the operation corresponding to the given index
+	 *
+	 * @generated NOT
+	 */
+	AbstractOperation get(int index);
 
 } // AbstractChangePackage

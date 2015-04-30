@@ -37,9 +37,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.events.Event;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationsCanonizer;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
@@ -492,48 +492,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	}
 
 	public int getSize() {
-		return countLeafOperations(getOperations());
-	}
-
-	public static int countLeafOperations(List<ChangePackage> changePackages) {
-		int count = 0;
-		for (final ChangePackage changePackage : changePackages) {
-			count += countLeafOperations(changePackage.getOperations());
-		}
-		return count;
-	}
-
-	public static int countLeafOperations(Collection<AbstractOperation> operations) {
-		int ret = 0;
-		for (final AbstractOperation operation : operations) {
-			if (operation instanceof CompositeOperation) {
-				ret = ret + getSize((CompositeOperation) operation);
-			} else {
-				ret++;
-			}
-		}
-		return ret;
-	}
-
-	private static int getSize(CompositeOperation compositeOperation) {
-		int ret = 0;
-		final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
-		for (final AbstractOperation abstractOperation : subOperations) {
-			if (abstractOperation instanceof CompositeOperation) {
-				ret = ret + getSize((CompositeOperation) abstractOperation);
-			} else {
-				ret++;
-			}
-		}
-		return ret;
-	}
-
-	public static int countOperations(List<ChangePackage> changePackages) {
-		int count = 0;
-		for (final ChangePackage changePackage : changePackages) {
-			count += changePackage.getOperations().size();
-		}
-		return count;
+		return ChangePackageUtil.countLeafOperations(getOperations());
 	}
 
 	/**
@@ -665,10 +624,10 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.HasChangePackage)
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer)
 	 */
 
-	public void attachToProjectSpace(HasChangePackage changePackageHolder) {
+	public void attachToProjectSpace(ChangePackageContainer changePackageHolder) {
 		changePackageHolder.setChangePackage(this);
 	}
 
@@ -693,6 +652,15 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		if (eResource != null) {
 			eResource.save(ModelUtil.getResourceSaveOptions());
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#get(int)
+	 */
+	public AbstractOperation get(int index) {
+		return getOperations().get(index);
 	}
 
 } // ChangePackageImpl

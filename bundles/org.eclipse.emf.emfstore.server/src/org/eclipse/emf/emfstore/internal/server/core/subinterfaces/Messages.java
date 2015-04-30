@@ -21,6 +21,10 @@ import org.eclipse.osgi.util.NLS;
  */
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.server.core.subinterfaces.messages"; //$NON-NLS-1$
+	public static String ChangePackageFragmentAdapter_SaveChangePackageFailed;
+	public static String ChangePackageFragmentProviderAdapter_NoFragmentsFound;
+	public static String ChangePackageFragmentUploadAdapter_ChangePackageAlreadyComplete;
+	public static String ChangePackageFragmentUploadAdapter_NoChangePackageFragmentsFound;
 	public static String EMFStorePropertiesSubInterfaceImpl_Project_Does_Not_Exist;
 	public static String EMFStorePropertiesSubInterfaceImpl_Properties_Not_Set;
 	public static String EPackageSubInterfaceImpl_Registration_Success_1;
@@ -39,6 +43,7 @@ public final class Messages extends NLS {
 	public static String ProjectSubInterfaceImpl_ProjectState_Not_Found;
 	public static String VersionSubInterfaceImpl_BranchName_Reserved_1;
 	public static String VersionSubInterfaceImpl_BranchName_Reserved_2;
+	public static String VersionSubInterfaceImpl_ChangePackageFragmentProviderAdapterMissing;
 	public static String VersionSubInterfaceImpl_ChecksumComputationFailed;
 	public static String VersionSubInterfaceImpl_EmptyBranch_Not_Allowed;
 	public static String VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed;

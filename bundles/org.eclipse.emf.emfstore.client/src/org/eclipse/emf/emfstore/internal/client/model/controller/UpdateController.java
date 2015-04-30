@@ -22,11 +22,11 @@ import org.eclipse.emf.emfstore.client.callbacks.ESUpdateCallback;
 import org.eclipse.emf.emfstore.client.exceptions.ESProjectNotSharedException;
 import org.eclipse.emf.emfstore.client.observer.ESUpdateObserver;
 import org.eclipse.emf.emfstore.internal.client.common.UnknownEMFStoreWorkloadCommand;
+import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
-import org.eclipse.emf.emfstore.internal.client.model.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
@@ -38,6 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -119,7 +120,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		checkAndRemoveDuplicateOperations(incomingChanges);
 
-		AbstractChangePackage copiedLocalChangedPackage = ChangePackageUtil.createChangePackage();
+		AbstractChangePackage copiedLocalChangedPackage = ChangePackageUtil.createChangePackage(
+			Configuration.getClientBehavior().useInMemoryChangePackage()
+			);
 		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
 			.operations();
 		try {
@@ -288,7 +291,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			return false;
 		}
 
-		final AbstractChangePackage tempChangePackage = ChangePackageUtil.createChangePackage();
+		final AbstractChangePackage tempChangePackage = ChangePackageUtil.createChangePackage(
+			Configuration.getClientBehavior().useInMemoryChangePackage()
+			);
 		final ESCloseableIterable<AbstractOperation> localOperations = localChanges.operations();
 		final ESCloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
 		final int incomingOpsSize = incomingChanges.size();

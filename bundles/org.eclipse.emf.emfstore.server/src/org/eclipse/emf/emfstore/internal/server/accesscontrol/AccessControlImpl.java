@@ -113,13 +113,15 @@ public class AccessControlImpl implements AccessControl {
 			MethodId.GETHISTORYINFO,
 			MethodId.GETCHANGES,
 			MethodId.RESOLVEVERSIONSPEC,
-			MethodId.DOWNLOADFILECHUNK);
+			MethodId.DOWNLOADFILECHUNK,
+			MethodId.DOWNLOADCHANGEPACKAGEFRAGMENT);
 
 		addAccessMapping(AccessLevel.PROJECT_WRITE,
 			MethodId.SETEMFPROPERTIES,
 			MethodId.TRANSMITPROPERTY,
 			MethodId.UPLOADFILECHUNK,
 			MethodId.CREATEVERSION,
+			MethodId.UPLOADCHANGEPACKAGEFRAGMENT,
 			MethodId.GETBRANCHES);
 
 		addAccessMapping(AccessLevel.PROJECT_ADMIN,

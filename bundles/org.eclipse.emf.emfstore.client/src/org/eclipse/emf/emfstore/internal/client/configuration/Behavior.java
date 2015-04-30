@@ -27,6 +27,8 @@ import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStore
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl;
 import org.eclipse.emf.emfstore.internal.client.model.util.ChecksumErrorHandler;
 
+import com.google.common.base.Optional;
+
 /**
  * Configuration options that influence the behavior of the client.
  * 
@@ -48,6 +50,7 @@ public class Behavior {
 	private static final String FORCE_COMMANDS_EXTENSION_POINT_ATTRIBUTE_NAME = "forceCommands"; //$NON-NLS-1$
 	private static final String DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME = "denyAddCutElementsToModelElements"; //$NON-NLS-1$
 	private static final String USE_IN_MEMORY_CHANGE_PACKAGE = "useInMemoryChangePackage"; //$NON-NLS-1$
+	private static final String CHANGEPACKAGE_FRAGMENT_SIZE = "changePackageFragmentSize"; //$NON-NLS-1$
 
 	private static Boolean isAutoSaveActive;
 	private static Boolean isRerecordingActive;
@@ -55,6 +58,7 @@ public class Behavior {
 	private static Boolean isForceCommandsActive;
 	private static Boolean isDenyAddCutElementsToModelElementsFeatureActive;
 	private static Boolean isUseMemoryChangePackageActive;
+	private static Optional<Integer> changePackageFragmentSize;
 
 	private ESChecksumErrorHandler checksumErrorHandler;
 
@@ -216,6 +220,35 @@ public class Behavior {
 			}
 		}
 		return isUseMemoryChangePackageActive;
+	}
+
+	/**
+	 * Returns the change package fragments size.
+	 *
+	 * @return the fragment size in operations, or absent, if none configured
+	 */
+	public Optional<Integer> getChangePackageFragmentSize() {
+		if (changePackageFragmentSize == null) {
+			final Integer fragmentSize = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
+			.getInteger(CHANGEPACKAGE_FRAGMENT_SIZE);
+			if (fragmentSize == null) {
+				changePackageFragmentSize = Optional.absent();
+			} else {
+				changePackageFragmentSize = Optional.of(fragmentSize);
+			}
+		}
+
+		return changePackageFragmentSize;
+	}
+
+	/**
+	 * Sets the fragment size to be used when splitting change packages.
+	 *
+	 * @param fragmentSize
+	 *            the fragment size (operation count)
+	 */
+	public void setChangePackageFragmentSize(Optional<Integer> fragmentSize) {
+		changePackageFragmentSize = fragmentSize;
 	}
 
 	/**

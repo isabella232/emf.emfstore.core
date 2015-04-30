@@ -149,6 +149,14 @@
       <genClasses ecoreClass="server.ecore#//versioning/OperationProxy">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference server.ecore#//versioning/OperationProxy/proxies"/>
       </genClasses>
+      <genClasses ecoreClass="server.ecore#//versioning/ChangePackageEnvelope">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageEnvelope/fragmentIndex"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageEnvelope/fragmentCount"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference server.ecore#//versioning/ChangePackageEnvelope/fragment"/>
+      </genClasses>
+      <genClasses ecoreClass="server.ecore#//versioning/ChangePackageProxy">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageProxy/id"/>
+      </genClasses>
       <nestedGenPackages prefix="Operations" basePackage="org.eclipse.emf.emfstore.internal.server.model.versioning"
           disposableProviderFactory="true" ecorePackage="server.ecore#//versioning/operations">
         <genEnums typeSafeEnumCompatible="false" ecoreEnum="server.ecore#//versioning/operations/ContainmentType">

@@ -19,6 +19,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersion
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
@@ -313,6 +315,25 @@ public class VersioningSwitch<T> {
 		case VersioningPackage.OPERATION_PROXY: {
 			final OperationProxy operationProxy = (OperationProxy) theEObject;
 			T result = caseOperationProxy(operationProxy);
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case VersioningPackage.CHANGE_PACKAGE_ENVELOPE: {
+			final ChangePackageEnvelope changePackageEnvelope = (ChangePackageEnvelope) theEObject;
+			T result = caseChangePackageEnvelope(changePackageEnvelope);
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case VersioningPackage.CHANGE_PACKAGE_PROXY: {
+			final ChangePackageProxy changePackageProxy = (ChangePackageProxy) theEObject;
+			T result = caseChangePackageProxy(changePackageProxy);
+			if (result == null) {
+				result = caseAbstractChangePackage(changePackageProxy);
+			}
 			if (result == null) {
 				result = defaultCase(theEObject);
 			}
@@ -656,6 +677,38 @@ public class VersioningSwitch<T> {
 	 * @generated
 	 */
 	public T caseOperationProxy(OperationProxy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Package Envelope</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 *
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Package Envelope</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangePackageEnvelope(ChangePackageEnvelope object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Package Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 *
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Package Proxy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangePackageProxy(ChangePackageProxy object) {
 		return null;
 	}
 

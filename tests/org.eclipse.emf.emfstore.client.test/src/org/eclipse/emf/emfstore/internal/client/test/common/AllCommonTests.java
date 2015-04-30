@@ -23,7 +23,12 @@ import org.junit.runners.Suite;
  * @author emueller
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ ObserverBusTest.class, ExtensionRegistryTest.class, ProjectCacheTest.class })
+@Suite.SuiteClasses({
+	ObserverBusTest.class,
+	ExtensionRegistryTest.class,
+	ProjectCacheTest.class,
+	ChangePackageUtilTest.class
+})
 public class AllCommonTests {
 
 }

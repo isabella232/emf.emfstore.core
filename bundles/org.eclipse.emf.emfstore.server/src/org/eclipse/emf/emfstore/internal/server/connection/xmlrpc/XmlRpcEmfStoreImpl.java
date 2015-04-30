@@ -36,6 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitPrope
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -278,6 +279,31 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public String getVersion(SessionId sessionId) throws ESException {
 		return getEmfStore().getVersion(sessionId);
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#uploadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
+	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
+	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope)
+	 */
+	public String uploadChangePackageFragment(SessionId sessionId, ProjectId projectId, ChangePackageEnvelope envelope)
+		throws ESException {
+		return getEmfStore().uploadChangePackageFragment(sessionId, projectId, envelope);
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
+	 *      java.lang.String, int)
+	 */
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+		throws ESException {
+		return getEmfStore().downloadChangePackageFragment(sessionId, proxyId, fragmentIndex);
 	}
 
 }

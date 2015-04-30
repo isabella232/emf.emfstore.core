@@ -19,6 +19,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersion
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
@@ -118,6 +120,10 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 			return createFileBasedChangePackage();
 		case VersioningPackage.OPERATION_PROXY:
 			return createOperationProxy();
+		case VersioningPackage.CHANGE_PACKAGE_ENVELOPE:
+			return createChangePackageEnvelope();
+		case VersioningPackage.CHANGE_PACKAGE_PROXY:
+			return createChangePackageProxy();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -305,6 +311,28 @@ public class VersioningFactoryImpl extends EFactoryImpl implements VersioningFac
 	public OperationProxy createOperationProxy() {
 		final OperationProxyImpl operationProxy = new OperationProxyImpl();
 		return operationProxy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public ChangePackageEnvelope createChangePackageEnvelope() {
+		final ChangePackageEnvelopeImpl changePackageEnvelope = new ChangePackageEnvelopeImpl();
+		return changePackageEnvelope;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public ChangePackageProxy createChangePackageProxy() {
+		final ChangePackageProxyImpl changePackageProxy = new ChangePackageProxyImpl();
+		return changePackageProxy;
 	}
 
 	/**

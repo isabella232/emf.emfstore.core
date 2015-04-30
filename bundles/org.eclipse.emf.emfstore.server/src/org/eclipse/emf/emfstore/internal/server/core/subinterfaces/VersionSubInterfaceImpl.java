@@ -16,8 +16,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.emfstore.internal.common.ESCollections;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -40,6 +42,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersion
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.DateVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HeadVersionSpec;
@@ -55,6 +58,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
+
+import com.google.common.base.Optional;
 
 /**
  * This subinterface implements all version related functionality.
@@ -238,6 +243,90 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	}
 
 	/**
+	 * Given a {@link ChangePackageEnvelope} which contains a change package fragment,
+	 * stores one or more fragments by attaching them to a session specific adapter.
+	 *
+	 * @param sessionId
+	 *            the {@link SessionId} belonging to the calling user
+	 * @param projectId
+	 *            the {@link ProjectId}
+	 * @param envelope
+	 *            the {@link ChangePackageEnvelope} containing the fragment
+	 * @return an ID identifying the stored fragment(s)
+	 * @throws ESException in case the fragment couldn't be stored
+	 */
+	@EmfStoreMethod(MethodId.UPLOADCHANGEPACKAGEFRAGMENT)
+	public String uploadChangePackageFragment(SessionId sessionId,
+		ProjectId projectId,
+		ChangePackageEnvelope envelope) throws ESException {
+
+		final String proxyId = generateProxyId(projectId.getId());
+
+		final SessionId session = getAuthorizationControl().resolveSessionById(sessionId.getId());
+		final Optional<ChangePackageFragmentUploadAdapter> maybeAdapter = ESCollections.find(session.eAdapters(),
+			ChangePackageFragmentUploadAdapter.class);
+		ChangePackageFragmentUploadAdapter adapter;
+
+		if (!maybeAdapter.isPresent()) {
+			adapter = new ChangePackageFragmentUploadAdapter();
+			session.eAdapters().add(adapter);
+		} else {
+			adapter = maybeAdapter.get();
+		}
+
+		adapter.addFragment(proxyId, envelope.getFragment());
+		if (envelope.isLast()) {
+			adapter.markAsComplete(proxyId);
+		}
+
+		return proxyId;
+	}
+
+	/**
+	 * Fetches a single change package fragment.
+	 *
+	 * @param sessionId
+	 *            the {@link SessionId} representing the requesting user
+	 * @param proxyId
+	 *            the ID that identifies the list of stored fragments
+	 * @param fragmentIndex
+	 *            allows to request different change package fragments
+	 * @return a {@link ChangePackageEnvelope} containing the change package fragment
+	 * @throws ESException in case the mandatory session adapter is missing
+	 */
+	@EmfStoreMethod(MethodId.DOWNLOADCHANGEPACKAGEFRAGMENT)
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+		throws ESException {
+
+		final SessionId session = getAuthorizationControl().resolveSessionById(sessionId.getId());
+		final Optional<ChangePackageFragmentProviderAdapter> maybeAdapter = ESCollections.find(session.eAdapters(),
+			ChangePackageFragmentProviderAdapter.class);
+
+		if (!maybeAdapter.isPresent()) {
+			throw new ESException(Messages.VersionSubInterfaceImpl_ChangePackageFragmentProviderAdapterMissing
+				+ sessionId);
+		}
+
+		final ChangePackageFragmentProviderAdapter adapter = maybeAdapter.get();
+		final ChangePackageEnvelope envelope = VersioningFactory.eINSTANCE.createChangePackageEnvelope();
+		final List<AbstractOperation> fragment = adapter.getFragment(proxyId, fragmentIndex);
+
+		envelope.getFragment().addAll(fragment);
+		envelope.setFragmentCount(adapter.getFragmentSize(proxyId));
+		envelope.setFragmentIndex(fragmentIndex);
+
+		if (envelope.isLast()) {
+			adapter.markAsConsumed(proxyId);
+		}
+
+		return envelope;
+	}
+
+	private String generateProxyId(String projectId) {
+		return UUID.nameUUIDFromBytes(projectId.getBytes()).toString();
+	}
+
+	/**
 	 * Create a new version.
 	 *
 	 * @param sessionId
@@ -266,10 +355,17 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 
 		// File-based change package should never arrive here in production mode
-		if (changePackage instanceof FileBasedChangePackage) {
-			throw new IllegalStateException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed);
+		if (FileBasedChangePackage.class.isInstance(changePackage)) {
+			throw new ESException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed);
 		}
 
+		return internalCreateVersion(projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion,
+			logMessage, user);
+	}
+
+	private PrimaryVersionSpec internalCreateVersion(ProjectId projectId, PrimaryVersionSpec baseVersionSpec,
+		AbstractChangePackage changePackage, BranchVersionSpec targetBranch, PrimaryVersionSpec sourceVersion,
+		LogMessage logMessage, final ACUser user) throws ESException {
 		synchronized (getMonitor()) {
 
 			final long currentTimeMillis = System.currentTimeMillis();
@@ -346,7 +442,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 			ModelUtil.logInfo(
 				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-					(System.currentTimeMillis() - currentTimeMillis));
+				(System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
@@ -361,8 +457,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		} else if (targetBranchName.equals(VersionSpec.GLOBAL)) {
 			throw new InvalidVersionSpecException(
 				Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-					+ VersionSpec.GLOBAL +
-					Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+				+ VersionSpec.GLOBAL +
+				Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 		}
 	}
 
@@ -401,7 +497,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-		throws StorageException {
+			throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {

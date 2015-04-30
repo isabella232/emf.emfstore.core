@@ -30,6 +30,8 @@ import org.eclipse.emf.emfstore.internal.server.startup.StartupListener;
 import org.eclipse.emf.emfstore.server.ESLocationProvider;
 import org.osgi.framework.Bundle;
 
+import com.google.common.base.Optional;
+
 /**
  * Represents the current server configuration.
  *
@@ -43,6 +45,9 @@ public final class ServerConfiguration {
 	 * Name of EMFStore properties file.
 	 */
 	public static final String ES_PROPERTIES = "es.properties"; //$NON-NLS-1$
+
+	private static final String RESOURCE_OPTIONS_EXTENSION_POINT = "org.eclipse.emf.emfstore.server.resourceOptions"; //$NON-NLS-1$
+	private static final String CHANGEPACKAGE_FRAGMENT_SIZE_ATTRIBUTE = "changePackageFragmentSize"; //$NON-NLS-1$
 
 	private static final String CHECKSUM_KEY = "org.eclipse.emf.emfstore.server.computeChecksum"; //$NON-NLS-1$
 
@@ -377,6 +382,7 @@ public final class ServerConfiguration {
 
 	private static ESLocationProvider locationProvider;
 	private static Boolean isChecksumComputationOnCommitActive;
+	private static Optional<Integer> changePackageFragmentSize;
 
 	/**
 	 * Return the server home directory location.
@@ -614,6 +620,38 @@ public final class ServerConfiguration {
 		}
 
 		return isChecksumComputationOnCommitActive;
+	}
+
+	/**
+	 * Returns the change package fragments size.
+	 *
+	 * @return the fragment size in operations. If absent, no change package splitting has been enabled.
+	 */
+	public static Optional<Integer> getChangePackageFragmentSize() {
+
+		if (changePackageFragmentSize == null) {
+
+			final Integer fragmentSize = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT, false)
+				.getInteger(CHANGEPACKAGE_FRAGMENT_SIZE_ATTRIBUTE);
+
+			if (fragmentSize == null) {
+				changePackageFragmentSize = Optional.absent();
+			} else {
+				changePackageFragmentSize = Optional.of(fragmentSize);
+			}
+		}
+
+		return changePackageFragmentSize;
+	}
+
+	/**
+	 * Sets the fragment size to be used when splitting change packages.
+	 *
+	 * @param fragmentSize
+	 *            the fragment size (operation count)
+	 */
+	public static void setChangePackageFragmentSize(Optional<Integer> fragmentSize) {
+		changePackageFragmentSize = fragmentSize;
 	}
 
 	/**
