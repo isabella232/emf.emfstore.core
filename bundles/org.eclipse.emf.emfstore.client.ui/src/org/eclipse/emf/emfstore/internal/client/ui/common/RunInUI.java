@@ -13,6 +13,8 @@ package org.eclipse.emf.emfstore.internal.client.ui.common;
 
 import java.util.concurrent.Callable;
 
+import org.eclipse.emf.emfstore.client.ui.ESUIRunnableProvider;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.swt.widgets.Display;
@@ -26,6 +28,8 @@ import org.eclipse.swt.widgets.Display;
 public final class RunInUI {
 
 	private static RunInUI runInUI = new RunInUI();
+	private ESUIRunnableProvider runnableProvider;
+	private boolean initialized;
 
 	private RunInUI() {
 
@@ -213,7 +217,7 @@ public final class RunInUI {
 
 			returnValue = null;
 
-			display.syncExec(new Runnable() {
+			display.syncExec(getUIRunnable(new Runnable() {
 
 				public void run() {
 					try {
@@ -222,7 +226,7 @@ public final class RunInUI {
 						exception = e;
 					}
 				}
-			});
+			}));
 
 			if (exception != null) {
 				throw exception;
@@ -239,6 +243,23 @@ public final class RunInUI {
 		 * @throws ESException in case an error occurs
 		 */
 		public abstract T doRun() throws ESException;
+	}
+
+	private Runnable getUIRunnable(Runnable runnable) {
+		final ESUIRunnableProvider runnableProvider = getRunnableProvider();
+		if (runnableProvider == null) {
+			return runnable;
+		}
+		return runnableProvider.createRunnable(runnable);
+	}
+
+	private ESUIRunnableProvider getRunnableProvider() {
+		if (!initialized) {
+			initialized = true;
+			runnableProvider = new ESExtensionPoint("org.eclipse.emf.emfstore.client.ui.uiRunnableProvider").getClass( //$NON-NLS-1$
+				"class", ESUIRunnableProvider.class); //$NON-NLS-1$
+		}
+		return runnableProvider;
 	}
 
 }

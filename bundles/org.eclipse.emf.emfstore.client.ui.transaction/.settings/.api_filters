@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.emfstore.client" version="2">
+    <resource path="src/org/eclipse/emf/emfstore/client/ESLocalProject.java" type="org.eclipse.emf.emfstore.client.ESLocalProject">
+        <filter comment="internal API usage" id="574619656">
+            <message_arguments>
+                <message_argument value="ESObjectContainer&lt;T&gt;"/>
+                <message_argument value="ESLocalProject"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/common/UnknownEMFStoreWorkloadCommand.java" type="org.eclipse.emf.emfstore.internal.client.common.UnknownEMFStoreWorkloadCommand">
+        <filter comment="EMFStore internal usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="UnknownEMFStoreWorkloadCommand&lt;T&gt;"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/ESWorkspaceProviderImpl.java" type="org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl">
+        <filter comment="internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESPriorityComparator"/>
+                <message_argument value="ESWorkspaceProviderImpl"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/connectionmanager/BasicSessionProvider.java" type="org.eclipse.emf.emfstore.internal.client.model.connectionmanager.BasicSessionProvider">
+        <filter comment="Internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="BasicSessionProvider"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/controller/CommitController.java" type="org.eclipse.emf.emfstore.internal.client.model.controller.CommitController">
+        <filter comment="internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="CommitController"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/CancelOperationException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.CancelOperationException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="CancelOperationException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/CommitCanceledException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.CommitCanceledException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="CommitCanceledException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/LoginCanceledException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.LoginCanceledException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="LoginCanceledException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/exceptions/WorkspaceException.java" type="org.eclipse.emf.emfstore.internal.client.model.exceptions.WorkspaceException">
+        <filter comment="internal API usage" id="571473929">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="WorkspaceException"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/impl/ProjectSpaceBase.java" type="org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase">
+        <filter comment="internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="ProjectSpaceBase"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/impl/api/ESLocalProjectImpl.java" type="org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl">
+        <filter comment="API wrapper class" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="ESLocalProjectImpl"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/impl/api/ESRemoteProjectImpl.java" type="org.eclipse.emf.emfstore.internal.client.model.impl.api.ESRemoteProjectImpl">
+        <filter comment="API wrapper class" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="ESRemoteProjectImpl"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/impl/api/ESServerFactoryImpl.java" type="org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerFactoryImpl">
+        <filter comment="API wrapper class" id="574668824">
+            <message_arguments>
+                <message_argument value="ESServerFactory"/>
+                <message_argument value="ESServerFactoryImpl"/>
+                <message_argument value="ESFactory"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/impl/api/ESServerImpl.java" type="org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl">
+        <filter comment="API wrapper class" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="ESServerImpl"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/model/util/ChecksumErrorHandler.java" type="org.eclipse.emf.emfstore.internal.client.model.util.ChecksumErrorHandler">
+        <filter comment="internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="ChecksumErrorHandler"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

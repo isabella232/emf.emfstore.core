@@ -29,6 +29,7 @@
 		<module>../../bundles/org.eclipse.emf.emfstore.ecore</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client.transaction</module>
+		<module>../../bundles/org.eclipse.emf.emfstore.client.ui.transaction</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client.ui.historybrowsercomparator</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.example.helloworld</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.example.installer</module>

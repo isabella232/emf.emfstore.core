@@ -5,6 +5,7 @@
   <extension-point id="filteredTypes" name="Filtered Types" schema="schema/filteredTypes.exsd"/>
   <extension-point id="historyBrowserComparator" name="HistoryBrowserComparator" schema="schema/historyBrowserComparator.exsd"/>
   <extension-point id="showPasswordControls" name="Show password controls" schema="schema/showPasswordControls.exsd"/>
+  <extension-point id="uiRunnableProvider" name="UI Runnable Provider" schema="schema/uiRunnableProvider.exsd"/>
   <extension
         point="org.eclipse.ui.handlers">
       <handler

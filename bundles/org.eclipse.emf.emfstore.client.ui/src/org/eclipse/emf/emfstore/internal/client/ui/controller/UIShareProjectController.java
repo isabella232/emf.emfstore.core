@@ -10,10 +10,13 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.controller;
 
+import java.util.concurrent.Callable;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
+import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.LoginCanceledException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
@@ -86,7 +89,12 @@ public class UIShareProjectController extends AbstractEMFStoreUIController<Void>
 						Messages.UIShareProjectController_ShareFailed,
 						shareErrorMessage);
 					if (ESLocalProjectImpl.class.isInstance(localProject)) {
-						((ESLocalProjectImpl) localProject).toInternalAPI().setUsersession(null);
+						RunESCommand.run(new Callable<Void>() {
+							public Void call() throws Exception {
+								((ESLocalProjectImpl) localProject).toInternalAPI().setUsersession(null);
+								return null;
+							}
+						});
 					}
 				}
 			}
