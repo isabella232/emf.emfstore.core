@@ -11,6 +11,7 @@
 package org.eclipse.emf.emfstore.client.test.ui.controllers;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
@@ -19,12 +20,19 @@ import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.ESWorkspace;
 import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
+import org.eclipse.emf.emfstore.client.exceptions.ESServerNotFoundException;
 import org.eclipse.emf.emfstore.client.test.ui.AllUITestsWithMock;
+import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
+import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.SWTBotTestCase;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,10 +68,50 @@ public abstract class AbstractUIControllerTest extends SWTBotTestCase {
 	}
 
 	@Override
-	protected void tearDown() throws Exception {
-		localProject = null;
-		checkedoutCopy = null;
-		super.tearDown();
+	@After
+	public void tearDown() {
+
+		final EMFStoreCommandWithException<ESException> cmd = new EMFStoreCommandWithException<ESException>() {
+			@Override
+			protected void doRun() {
+				((ESServerImpl) server).toInternalAPI().setLastUsersession(null);
+				((ESUsersessionImpl) usersession).setServer(null);
+				// setUp might have failed
+				if (usersession != null && usersession.isLoggedIn()) {
+					try {
+						usersession.logout();
+
+						final Iterator<Usersession> iter = ESWorkspaceProviderImpl.getInstance().getWorkspace()
+							.toInternalAPI()
+							.getUsersessions().iterator();
+						while (iter.hasNext()) {
+							if (iter.next().getServerInfo() == ((ESServerImpl) server).toInternalAPI()) {
+								iter.remove();
+							}
+						}
+						ESWorkspaceProvider.INSTANCE.getWorkspace().removeServer(server);
+					} catch (final ESException e) {
+						setException(e);
+					} catch (final ESServerNotFoundException e) {
+						fail(e.getMessage());
+					}
+				}
+			}
+		};
+
+		cmd.run(false);
+
+		if (cmd.hasException()) {
+			fail(cmd.getException().getMessage());
+		}
+
+		try {
+			super.tearDown();
+			// BEGIN SUPRESS CATCH EXCEPTION
+		} catch (final Exception ex) {
+			fail(ex.getMessage());
+			// END SURPRESS CATCH EXCEPTION
+		}
 	}
 
 	protected static void deleteLocalProjects() throws IOException, FatalESException, ESException {
