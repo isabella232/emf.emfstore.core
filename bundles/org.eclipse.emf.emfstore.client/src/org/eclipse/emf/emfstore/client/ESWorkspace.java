@@ -13,6 +13,7 @@
 package org.eclipse.emf.emfstore.client;
 
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.client.exceptions.ESServerNotFoundException;
@@ -66,8 +67,7 @@ public interface ESWorkspace {
 	 * @since 1.5
 	 *
 	 */
-	// FIXME: breaks API in 1.4.1
-	// Set<ESLocalProject> getLocalProjectByName(String projectName);
+	Set<ESLocalProject> getLocalProjectByName(String projectName);
 
 	/**
 	 * Returns all available servers.
