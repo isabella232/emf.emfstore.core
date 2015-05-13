@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -232,24 +232,24 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 
 		final Usersession usersession = ModelFactory.eINSTANCE.createUsersession();
 		usersession.setUsername(name);
-		usersession.setPassword(password);
 		usersession.setServerInfo(toInternalAPI());
+		usersession.setPassword(password);
 		final ESUsersessionImpl esSession = usersession.toAPI();
 
 		final EMFStoreCommandWithException<ESException> cmd =
 			new EMFStoreCommandWithException<ESException>() {
-				@Override
-				protected void doRun() {
-					workspace.toInternalAPI().getUsersessions().add(usersession);
-					try {
-						usersession.logIn();
-					} catch (final AccessControlException e) {
-						setException(e);
-					} catch (final ESException e) {
-						setException(e);
-					}
+			@Override
+			protected void doRun() {
+				workspace.toInternalAPI().getUsersessions().add(usersession);
+				try {
+					usersession.logIn();
+				} catch (final AccessControlException e) {
+					setException(e);
+				} catch (final ESException e) {
+					setException(e);
 				}
-			};
+			}
+		};
 
 		cmd.run(false);
 
