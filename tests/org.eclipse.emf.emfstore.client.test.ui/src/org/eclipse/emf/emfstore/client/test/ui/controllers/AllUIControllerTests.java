@@ -11,15 +11,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.ui.controllers;
 
-import org.eclipse.emf.emfstore.internal.client.configuration.Behavior;
-import org.eclipse.emf.emfstore.internal.client.model.Configuration;
-import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-
-import com.google.common.base.Optional;
 
 /**
  * Test Suite for running all UI controllers tests.
@@ -47,31 +40,7 @@ import com.google.common.base.Optional;
 	UIPagedUpdateProjectControllerTest.class,
 	UIShowHistoryControllerTest.class,
 	UIShowHistoryControllerForElementTest.class,
-	UIUndoLastOperationControllerTest.class
-})
+	UIUndoLastOperationControllerTest.class })
 public class AllUIControllerTests {
-
-	private static final Optional<Integer> MIN_CHANGEPACKAGE_FRAGMENT_SIZE = Optional.of(1);
-
-	private static Behavior clientBehavior = Configuration.getClientBehavior();
-	private static Optional<Integer> clientFragmentSize;
-	private static Optional<Integer> serverFragmentSize;
-
-	@BeforeClass
-	public static void beforeClass() {
-		clientFragmentSize = clientBehavior.getChangePackageFragmentSize();
-		serverFragmentSize = ServerConfiguration.getChangePackageFragmentSize();
-
-		Configuration.getClientBehavior().setChangePackageFragmentSize(
-			MIN_CHANGEPACKAGE_FRAGMENT_SIZE);
-		ServerConfiguration.setChangePackageFragmentSize(
-			MIN_CHANGEPACKAGE_FRAGMENT_SIZE);
-	}
-
-	@AfterClass
-	public static void afterClass() {
-		Configuration.getClientBehavior().setChangePackageFragmentSize(clientFragmentSize);
-		ServerConfiguration.setChangePackageFragmentSize(serverFragmentSize);
-	}
 
 }
