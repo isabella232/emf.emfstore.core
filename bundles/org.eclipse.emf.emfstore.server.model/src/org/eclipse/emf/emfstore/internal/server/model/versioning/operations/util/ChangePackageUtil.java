@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -26,6 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChange
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
  * Change package helper class.
@@ -76,16 +78,43 @@ public final class ChangePackageUtil {
 
 			private int fragmentIndex;
 			private int currentOpIndex;
+			private int count;
+			private boolean isInitialized;
 			private ChangePackageEnvelope envelope;
 
+			private void init() {
+				int leafSizeCounter = 0;
+				final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+				try {
+					for (final AbstractOperation operation : operations.iterable()) {
+						final int countLeafOperations = countLeafOperations(operation);
+						leafSizeCounter += countLeafOperations;
+						if (leafSizeCounter < changePackageFragmentSize) {
+							continue;
+						}
+						leafSizeCounter = 0;
+						count += 1;
+					}
+				} finally {
+					operations.close();
+				}
+				if (leafSizeCounter != 0 || count == 0) {
+					count += 1;
+				}
+				isInitialized = true;
+			}
+
 			public boolean hasNext() {
+
+				if (!isInitialized) {
+					init();
+				}
 
 				if (envelope == null) {
 					envelope = VersioningFactory.eINSTANCE.createChangePackageEnvelope();
 					final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
 					cp.setLogMessage(ModelUtil.clone(changePackage.getLogMessage()));
-					envelope.setFragmentCount(Math.max(1,
-						(int) Math.ceil(changePackage.leafSize() / (double) changePackageFragmentSize)));
+					envelope.setFragmentCount(count);
 				}
 
 				while (countLeafOperations(envelope.getFragment()) < changePackageFragmentSize
@@ -126,6 +155,13 @@ public final class ChangePackageUtil {
 
 	}
 
+	/**
+	 * Count all leaf operations of a collection of {@link AbstractOperation}s.
+	 *
+	 * @param operations
+	 *            a collection of operations
+	 * @return the leaf operation count of all involved operations
+	 */
 	public static int countLeafOperations(Collection<AbstractOperation> operations) {
 		int ret = 0;
 		for (final AbstractOperation operation : operations) {
@@ -136,6 +172,54 @@ public final class ChangePackageUtil {
 			}
 		}
 		return ret;
+	}
+
+	/**
+	 * Count all leaf operations of a single {@link AbstractOperation}s.
+	 *
+	 * @param operation
+	 *            a single operation
+	 * @return the leaf operation count of the given operation
+	 */
+	public static int countLeafOperations(AbstractOperation operation) {
+		return countLeafOperations(Collections.singleton(operation));
+	}
+
+	/**
+	 * Count all leaf operations of all operations contained in the given list of {@link ChangePackage}s.
+	 *
+	 * @param changePackages
+	 *            list of change packages
+	 * @return the leaf operation count of all operations contained in the list of change packages
+	 */
+	public static int countLeafOperations(List<AbstractChangePackage> changePackages) {
+		int count = 0;
+		for (final AbstractChangePackage changePackage : changePackages) {
+			final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+			try {
+				for (final AbstractOperation operation : operations.iterable()) {
+					count += countLeafOperations(operation);
+				}
+			} finally {
+				operations.close();
+			}
+		}
+		return count;
+	}
+
+	/**
+	 * Count all root operations within the given list of {@link ChangePackage}s.
+	 *
+	 * @param changePackages
+	 *            list of change packages
+	 * @return the root operation count of all change packages
+	 */
+	public static int countOperations(List<AbstractChangePackage> changePackages) {
+		int count = 0;
+		for (final AbstractChangePackage changePackage : changePackages) {
+			count += changePackage.size();
+		}
+		return count;
 	}
 
 	private static int getSize(CompositeOperation compositeOperation) {
@@ -150,21 +234,4 @@ public final class ChangePackageUtil {
 		}
 		return ret;
 	}
-
-	public static int countLeafOperations(List<ChangePackage> changePackages) {
-		int count = 0;
-		for (final ChangePackage changePackage : changePackages) {
-			count += countLeafOperations(changePackage.getOperations());
-		}
-		return count;
-	}
-
-	public static int countOperations(List<ChangePackage> changePackages) {
-		int count = 0;
-		for (final ChangePackage changePackage : changePackages) {
-			count += changePackage.getOperations().size();
-		}
-		return count;
-	}
-
 }

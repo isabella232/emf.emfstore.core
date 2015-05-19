@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,20 +46,21 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESFileBasedChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.Direction;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.FileBasedOperationIterable;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.OperationEmitter;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ReadLineCapable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.XmlTags;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
@@ -274,12 +276,12 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * Returns the path to the temporary file
 	 *
-	 * @return
+	 * @return the temporary file path
 	 *
 	 * @generated NOT
 	 */
 	public String getTempFilePath() {
-		return filePath + ".temp";
+		return filePath + ".temp"; //$NON-NLS-1$
 	}
 
 	/**
@@ -758,37 +760,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#leafSize()
 	 */
 	public int leafSize() {
-		final ESCloseableIterable<AbstractOperation> operationHandle = operations();
-		try {
-			return countLeafOperations(operationHandle.iterable());
-		} finally {
-			operationHandle.close();
-		}
-	}
-
-	private static int getSize(CompositeOperation compositeOperation) {
-		int ret = 0;
-		final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
-		for (final AbstractOperation abstractOperation : subOperations) {
-			if (abstractOperation instanceof CompositeOperation) {
-				ret = ret + getSize((CompositeOperation) abstractOperation);
-			} else {
-				ret++;
-			}
-		}
-		return ret;
-	}
-
-	private static int countLeafOperations(Iterable<AbstractOperation> operations) {
-		int ret = 0;
-		for (final AbstractOperation operation : operations) {
-			if (operation instanceof CompositeOperation) {
-				ret = ret + getSize((CompositeOperation) operation);
-			} else {
-				ret++;
-			}
-		}
-		return ret;
+		return ChangePackageUtil.countLeafOperations(Collections.singletonList((AbstractChangePackage) this));
 	}
 
 	/**

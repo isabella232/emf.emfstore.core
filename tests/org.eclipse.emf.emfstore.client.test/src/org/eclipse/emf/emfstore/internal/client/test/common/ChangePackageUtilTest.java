@@ -16,6 +16,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
@@ -26,6 +27,9 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangeP
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.test.model.TestElement;
@@ -81,7 +85,7 @@ public class ChangePackageUtilTest extends ESTestWithLoggedInUserMock {
 	}
 
 	@Test
-	public void shouldAssertThatCallingHasNextOnTheReturnedIteratorHasNoEffect() throws ESException {
+	public void shouldAssertThatCallingHasNextOnTheReturnedIteratorHasNoSideEffect() throws ESException {
 		ProjectUtil.share(getUsersession(), getLocalProject());
 		final TestElement foo = Create.testElement("foo");
 		final TestElement bar = Create.testElement("bar");
@@ -121,7 +125,7 @@ public class ChangePackageUtilTest extends ESTestWithLoggedInUserMock {
 	}
 
 	@Test
-	public void shouldSetHasNextFlagCorreclty() throws ESException {
+	public void shouldSetIsLastFlagCorrectly() throws ESException {
 		ProjectUtil.share(getUsersession(), getLocalProject());
 		final TestElement foo = Create.testElement("foo");
 		final TestElement bar = Create.testElement("bar");
@@ -141,4 +145,53 @@ public class ChangePackageUtilTest extends ESTestWithLoggedInUserMock {
 		assertTrue(secondFragment.isLast());
 	}
 
+	@Test
+	public void shouldConsiderRootOperationBoundaries() {
+
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		changePackage.getOperations().add(createDummyCompositeOperation(3));
+
+		final Iterator<ChangePackageEnvelope> iterator = ChangePackageUtil.splitChangePackage(changePackage, 1);
+
+		final ChangePackageEnvelope next = iterator.next();
+
+		assertFalse(iterator.hasNext());
+		assertEquals(0, next.getFragmentIndex());
+		assertTrue(next.isLast());
+	}
+
+	@Test
+	public void shouldConsiderRootOperationBoundariesOfMultipleOperations() {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		changePackage.getOperations().add(createDummyCompositeOperation(3));
+		changePackage.getOperations().add(createDummyCompositeOperation(2));
+		changePackage.getOperations().add(createDummyCompositeOperation(6));
+
+		final Iterator<ChangePackageEnvelope> iterator = ChangePackageUtil.splitChangePackage(changePackage, 5);
+
+		assertTrue(iterator.hasNext());
+		assertEquals(2, iterator.next().getFragmentCount());
+		assertTrue(iterator.hasNext());
+		assertTrue(iterator.next().isLast());
+	}
+
+	@Test(expected = NoSuchElementException.class)
+	public void shouldThrowNoSuchElementException() {
+		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
+		final Iterator<ChangePackageEnvelope> iterator = ChangePackageUtil.splitChangePackage(changePackage, 5);
+
+		assertTrue(iterator.next().isLast());
+		iterator.next();
+	}
+
+	private static CompositeOperation createDummyCompositeOperation(int subOpsSize) {
+		final CompositeOperation compositeOperation = OperationsFactory.eINSTANCE.createCompositeOperation();
+
+		for (int i = 0; i < subOpsSize; i++) {
+			final CreateDeleteOperation dummyOp = OperationsFactory.eINSTANCE.createCreateDeleteOperation();
+			compositeOperation.getSubOperations().add(dummyOp);
+		}
+
+		return compositeOperation;
+	}
 }

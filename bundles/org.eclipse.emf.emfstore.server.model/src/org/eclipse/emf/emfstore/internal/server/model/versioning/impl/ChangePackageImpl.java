@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +32,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionProperty;
@@ -637,8 +639,7 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#leafSize()
 	 */
 	public int leafSize() {
-		// TODO: review getSize, leafSize
-		return getSize();
+		return ChangePackageUtil.countLeafOperations(Collections.singletonList((AbstractChangePackage) this));
 	}
 
 	/**
