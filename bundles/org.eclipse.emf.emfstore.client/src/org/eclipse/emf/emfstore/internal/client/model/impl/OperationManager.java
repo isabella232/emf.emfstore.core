@@ -57,16 +57,23 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	private void configureOperationRecorder() {
+		final OperationRecorderConfig config = operationRecorder.getConfig();
+
 		// incoming cross-references are cut off by default
-		operationRecorder.getConfig().setCutOffIncomingCrossReferences(
+		config.setCutOffIncomingCrossReferences(
 			Configuration.getClientBehavior().isCutOffIncomingCrossReferencesActivated());
+
 		// usage of commands is not forced by default
-		operationRecorder.getConfig()
+		config
 			.setForceCommands(
 				Configuration.getClientBehavior().isForceCommandsActived());
+
 		// cut elements are added automatically as regular model elements by default
-		operationRecorder.getConfig().setDenyAddCutElementsToModelElements(
+		config.setDenyAddCutElementsToModelElements(
 			Configuration.getClientBehavior().isDenyAddCutElementsToModelElementsFeatureActived());
+
+		config.setOperationModifier(
+			Configuration.getClientBehavior().getOperationModifier());
 	}
 
 	/**

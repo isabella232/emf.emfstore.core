@@ -28,8 +28,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 public interface ESOperationModifier {
 
 	/**
+	 * <p>
 	 * ID of the {@link ESOperationModifier} option.
+	 * </p>
+	 *
+	 * This option is not in use anymore and has been replaced by the change recording option
+	 * {@code org.eclipse.emf.emfstore.client.changeRecordingOptions.operationModifier}.
 	 */
+	@Deprecated
 	String ID = "org.eclipse.emf.emfstore.client.handler.operationModifier"; //$NON-NLS-1$
 
 	/**

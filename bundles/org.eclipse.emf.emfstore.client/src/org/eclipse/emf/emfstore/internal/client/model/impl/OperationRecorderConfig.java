@@ -11,12 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl;
 
-import java.util.List;
-
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.emfstore.client.handler.ESOperationModifier;
-import org.eclipse.emf.emfstore.internal.common.ExtensionRegistry;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
  * Encapsulates configuration options for the operation recorder.
@@ -30,6 +25,7 @@ public class OperationRecorderConfig {
 	private boolean isRollBackInCaseOfCommandFailure;
 	private boolean isForceCommands;
 	private boolean isEmitOperationsUponCommandCompletion = true;
+	private ESOperationModifier operationModifier;
 
 	/**
 	 * Whether to cut off incoming cross references upon deletion.
@@ -55,7 +51,7 @@ public class OperationRecorderConfig {
 	 * Whether the usage of commands should be enforced.
 	 *
 	 * @return
-	 *         true, if the usage of commands is mandatory, false otherwise
+	 * 		true, if the usage of commands is mandatory, false otherwise
 	 */
 	public Boolean isForceCommands() {
 		return isForceCommands;
@@ -140,20 +136,21 @@ public class OperationRecorderConfig {
 	}
 
 	/**
-	 * Returns the operation modificator.
+	 * Set the operation modifier that enables to modify operations whenever they have been recored
 	 *
-	 * @return the operation modificator in use
+	 * @param operationModifier
+	 *            the operation modifier to be set
 	 */
-	public ESOperationModifier getOperationModificator() {
-		return ExtensionRegistry.INSTANCE.get(
-			ESOperationModifier.ID,
-			ESOperationModifier.class,
-			new ESOperationModifier() {
-				// return operations unaltered
-				public List<AbstractOperation> modify(List<AbstractOperation> operations, Command command) {
-					return operations;
-				}
-			},
-			true);
+	public void setOperationModifier(ESOperationModifier operationModifier) {
+		this.operationModifier = operationModifier;
+	}
+
+	/**
+	 * Returns the operation modifier in use.
+	 *
+	 * @return the operation in use
+	 */
+	public ESOperationModifier getOperationModifier() {
+		return operationModifier;
 	}
 }

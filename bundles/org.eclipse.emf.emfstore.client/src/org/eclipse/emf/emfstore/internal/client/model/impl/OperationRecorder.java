@@ -531,10 +531,10 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	}
 
 	private List<AbstractOperation> modifyOperations(List<AbstractOperation> operations, Command command) {
-		if (config.getOperationModificator() == null) {
+		if (operations.isEmpty() || config.getOperationModifier() == null) {
 			return operations;
 		}
-		return config.getOperationModificator().modify(operations, command);
+		return config.getOperationModifier().modify(operations, command);
 	}
 
 	private void deleteOutgoingCrossReferencesOfContainmentTree(Set<EObject> allEObjects) {
@@ -565,10 +565,9 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 				// deleted
 				if (reference.isMany()) {
 					@SuppressWarnings("unchecked")
-					final Set<EObject> referencesToRemove =
-						filterAllNonContained(
-							(List<EObject>) modelElement.eGet(reference),
-							allEObjects);
+					final Set<EObject> referencesToRemove = filterAllNonContained(
+						(List<EObject>) modelElement.eGet(reference),
+						allEObjects);
 					if (referencesToRemove.size() > 0) {
 						settingsToUnset.add(
 							new SettingWithElementsToRemove(
@@ -596,8 +595,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 			if (feature.isMany()) {
 				@SuppressWarnings("unchecked")
-				final List<EObject> referencedElements =
-					(List<EObject>) setting.getEObject().eGet(feature);
+				final List<EObject> referencedElements = (List<EObject>) setting.getEObject().eGet(feature);
 				referencedElements.removeAll(referencesToRemove);
 			} else {
 				setting.getEObject().eSet(feature, null);
@@ -771,7 +769,8 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 				l.add(operation);
 				continue;
 			}
-			if (operation instanceof CompositeOperation && ((CompositeOperation) operation).getMainOperation() != null) {
+			if (operation instanceof CompositeOperation
+				&& ((CompositeOperation) operation).getMainOperation() != null) {
 				final CompositeOperation compositeOperation = (CompositeOperation) operation;
 				boolean doesNotBelongToDelete = false;
 				for (final AbstractOperation subOperation : compositeOperation.getSubOperations()) {
@@ -1005,7 +1004,8 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages, IProgressMonitor monitor) {
+	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages,
+		IProgressMonitor monitor) {
 		return true;
 	}
 
