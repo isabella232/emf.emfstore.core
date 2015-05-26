@@ -150,9 +150,6 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	 * {@inheritDoc}
 	 */
 	public ProjectSpace getProjectSpace() {
-		if (isUnlinkedFromNavigator) {
-			return null;
-		}
 		return projectSpace;
 	}
 
