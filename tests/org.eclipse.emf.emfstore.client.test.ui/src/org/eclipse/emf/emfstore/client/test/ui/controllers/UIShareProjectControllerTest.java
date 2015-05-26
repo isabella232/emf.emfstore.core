@@ -22,7 +22,6 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotList;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.junit.Test;
 
@@ -58,9 +57,6 @@ public class UIShareProjectControllerTest extends AbstractUIControllerTest {
 				shareProjectController.execute();
 			}
 		});
-		final SWTBotList list = getBot().shell("Please select a server").bot().list();
-		list.select(1);
-		getBot().button("OK").click();
 
 		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
