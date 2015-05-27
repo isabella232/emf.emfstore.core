@@ -9,7 +9,7 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.accesscontrol;
+package org.eclipse.emf.emfstore.server.auth;
 
 /**
  * Determines what actions the
@@ -17,8 +17,9 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol;
  * ProjectAdminRole} is allowed to perform.
  *
  * @author emueller
+ * @since 1.5
  */
-public enum PAPrivileges {
+public enum ESProjectAdminPrivileges {
 
 	/**
 	 * Whether the project admin is allowed to assign a role.

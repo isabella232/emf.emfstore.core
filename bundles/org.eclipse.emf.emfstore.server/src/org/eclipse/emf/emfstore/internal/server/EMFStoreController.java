@@ -41,7 +41,6 @@ import org.eclipse.emf.emfstore.common.extensionpoint.ESPriorityComparator;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControlImpl;
 import org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.XmlRpcAdminConnectionHandler;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.XmlRpcConnectionHandler;
@@ -105,7 +104,7 @@ public class EMFStoreController implements IApplication, Runnable {
 
 	private EMFStore emfStore;
 	private AdminEmfStore adminEmfStore;
-	private AccessControlImpl accessControl;
+	private AccessControl accessControl;
 	private Set<ConnectionHandler<? extends EMFStoreInterface>> connectionHandlers;
 	private ServerSpace serverSpace;
 	private Resource resource;
@@ -162,8 +161,9 @@ public class EMFStoreController implements IApplication, Runnable {
 		handleStartupListener();
 
 		accessControl = initAccessControl(serverSpace);
+		// TODO: ugly
 		emfStore = EMFStoreImpl.createInterface(serverSpace, accessControl);
-		adminEmfStore = new AdminEmfStoreImpl(serverSpace, serverSpace, accessControl);
+		adminEmfStore = new AdminEmfStoreImpl(serverSpace, accessControl);
 
 		// copy keystore file to workspace if not existent
 		copyFileToWorkspace(ServerConfiguration.getServerKeyStorePath(), ServerConfiguration.SERVER_KEYSTORE_FILE,
@@ -421,12 +421,12 @@ public class EMFStoreController implements IApplication, Runnable {
 		return instance;
 	}
 
-	private AccessControlImpl initAccessControl(ServerSpace serverSpace) throws FatalESException {
+	private static synchronized AccessControl initAccessControl(ServerSpace serverSpace) throws FatalESException {
 		setSuperUser(serverSpace);
-		return new AccessControlImpl(serverSpace);
+		return new AccessControl(serverSpace);
 	}
 
-	private void setSuperUser(ServerSpace serverSpace) throws FatalESException {
+	private static void setSuperUser(ServerSpace serverSpace) throws FatalESException {
 		final String superuser = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER,
 			ServerConfiguration.SUPER_USER_DEFAULT);
 		for (final ACUser user : serverSpace.getUsers()) {

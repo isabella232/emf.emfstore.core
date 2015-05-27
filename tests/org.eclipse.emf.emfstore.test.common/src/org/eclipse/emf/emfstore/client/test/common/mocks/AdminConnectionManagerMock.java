@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.AbstractConnectionManager;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.AdminConnectionManager;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.AdminEmfStoreImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ConnectionException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
@@ -37,11 +37,11 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	private final AdminEmfStoreImpl adminEmfStore;
 
-	public AdminConnectionManagerMock(ACDAOFacade daoFacade, AuthorizationControl authorizationControl,
+	public AdminConnectionManagerMock(ACDAOFacade daoFacade, AccessControl accessControl,
 		ServerSpace serverSpace)
 		throws FatalESException {
 
-		adminEmfStore = new AdminEmfStoreImpl(daoFacade, serverSpace, authorizationControl);
+		adminEmfStore = new AdminEmfStoreImpl(serverSpace, accessControl);
 	}
 
 	public void initConnection(ServerInfo serverInfo, SessionId id) throws ConnectionException {
@@ -54,7 +54,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getProjectInfos(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public List<ProjectInfo> getProjectInfos(SessionId sessionId) throws ESException {
@@ -64,7 +64,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getGroups(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public List<ACGroup> getGroups(SessionId sessionId) throws ESException {
@@ -74,7 +74,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getUsers(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
 	public List<ACUser> getUsers(SessionId sessionId) throws ESException {
@@ -84,9 +84,10 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getOrgUnits(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getOrgUnits(sessionId);
@@ -94,18 +95,18 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getOrgUnit(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
-	public ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
+	public ACOrgUnit<?> getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getOrgUnit(sessionId, orgUnitId);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#createGroup(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      java.lang.String)
 	 */
@@ -116,7 +117,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#deleteGroup(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
@@ -127,7 +128,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getGroups(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
@@ -138,7 +139,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#removeGroup(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
@@ -150,10 +151,11 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getMembers(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getMembers(sessionId, groupId);
@@ -161,7 +163,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#addMember(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
@@ -173,7 +175,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#removeMember(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
@@ -185,7 +187,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#createUser(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      java.lang.String)
 	 */
@@ -197,7 +199,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#deleteUser(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
 	 */
@@ -208,7 +210,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#changeOrgUnit(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
@@ -221,7 +223,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#changeUser(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, java.lang.String,
 	 *      java.lang.String)
@@ -233,10 +235,11 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getParticipants(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId)
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 		getConnectionProxy(sessionId);
 		return adminEmfStore.getParticipants(sessionId, projectId);
@@ -244,7 +247,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#addParticipant(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
@@ -257,7 +260,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#removeParticipant(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
@@ -270,7 +273,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#getRole(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId)
@@ -282,7 +285,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#changeRole(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
@@ -295,7 +298,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#assignRole(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
 	 */
@@ -306,7 +309,7 @@ public class AdminConnectionManagerMock extends AbstractConnectionManager<Object
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.AdminEmfStore#addInitialParticipant(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)

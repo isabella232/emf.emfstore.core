@@ -9,18 +9,20 @@
  * Contributors:
  * boehlke
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.core;
+package org.eclipse.emf.emfstore.server.auth;
 
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
 
 /**
  * Represents an method invocation of a method contained in the EmfStore interface.
  *
  * @author boehlke
+ * @since 1.5
  */
-public class MethodInvocation {
+public class ESMethodInvocation {
 
 	private final MethodId methodId;
 	private final Object[] allParameters;
@@ -34,10 +36,10 @@ public class MethodInvocation {
 	 * @param params the parameters, including the session id
 	 * @throws InvalidInputException throw if first parameter is not a session id
 	 */
-	public MethodInvocation(String methodName, Object[] params) throws InvalidInputException {
+	public ESMethodInvocation(String methodName, Object[] params) throws InvalidInputException {
 		sessionId = (SessionId) params[0];
 		if (sessionId == null) {
-			throw new InvalidInputException("operations requires session id");
+			throw new InvalidInputException("operations requires session id"); //$NON-NLS-1$
 		}
 		allParameters = params;
 		methodId = MethodId.valueOf(methodName.toUpperCase());
@@ -66,9 +68,9 @@ public class MethodInvocation {
 				result[i - 1] = allParameters[i];
 			}
 			return result;
-		} else {
-			return new Object[0];
 		}
+
+		return new Object[0];
 	}
 
 	/**
@@ -85,8 +87,8 @@ public class MethodInvocation {
 	 *
 	 * @return the session id
 	 */
-	public SessionId getSessionId() {
-		return sessionId;
+	public ESSessionId getSessionId() {
+		return sessionId.toAPI();
 	}
 
 	/**

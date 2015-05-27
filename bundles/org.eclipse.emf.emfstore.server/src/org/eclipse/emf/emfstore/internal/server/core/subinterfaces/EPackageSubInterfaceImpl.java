@@ -31,10 +31,10 @@ import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
 import org.eclipse.emf.emfstore.internal.server.core.helper.EPackageHelper;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.server.ESServerURIUtil;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -64,7 +64,7 @@ public class EPackageSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 *            the package to be registered
 	 * @throws ESException if registration storage fails
 	 */
-	@EmfStoreMethod(MethodId.REGISTEREPACKAGE)
+	@ESMethod(MethodId.REGISTEREPACKAGE)
 	public void registerEPackage(EPackage ePackage) throws ESException {
 		synchronized (MonitorProvider.getInstance().getMonitor(E_PACKAGE_REGISTRATION)) {
 			final List<EPackage> packages = EPackageHelper.getAllSubPackages(ePackage);

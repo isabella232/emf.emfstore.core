@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
+import org.eclipse.emf.emfstore.server.model.ESGroup;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>AC Group</b></em>'. <!-- end-user-doc -->
@@ -31,7 +33,13 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  *
  * @generated
  */
-public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
+public class ACGroupImpl extends ACOrgUnitImpl<ESGroup> implements ACGroup {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESGroupImpl apiImpl;
+
 	/**
 	 * The cached value of the '{@link #getMembers() <em>Members</em>}' reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -40,6 +48,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 * @generated
 	 * @ordered
 	 */
+	@SuppressWarnings("rawtypes")
 	protected EList<ACOrgUnit> members;
 
 	/**
@@ -68,7 +77,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 * @return a list of org units <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@SuppressWarnings("serial")
+	@SuppressWarnings({ "serial", "rawtypes" })
 	public EList<ACOrgUnit> getMembers() {
 		if (members == null) {
 			// see comment in RoleImpl.getProjects()
@@ -107,7 +116,7 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 	 *
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -146,6 +155,33 @@ public class ACGroupImpl extends ACOrgUnitImpl implements ACGroup {
 			return members != null && !members.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	@Override
+	public ESGroup toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	@Override
+	public ESGroupImpl createAPI() {
+		return new ESGroupImpl(this);
 	}
 
 } // ACGroupImpl

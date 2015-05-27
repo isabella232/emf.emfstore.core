@@ -25,11 +25,11 @@ import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -67,7 +67,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 	 *
 	 * @return a list of properties that could not be updated since they are outdated
 	 */
-	@EmfStoreMethod(MethodId.SETEMFPROPERTIES)
+	@ESMethod(MethodId.SETEMFPROPERTIES)
 	public List<EMFStoreProperty> setEMFProperties(List<EMFStoreProperty> properties, ProjectId projectId)
 		throws ESException {
 		sanityCheckObjects(properties, projectId);
@@ -135,7 +135,7 @@ public class EMFStorePropertiesSubInterfaceImpl extends AbstractSubEmfstoreInter
 	 * @throws ESException
 	 *             if specified property does not exist
 	 */
-	@EmfStoreMethod(MethodId.GETEMFPROPERTIES)
+	@ESMethod(MethodId.GETEMFPROPERTIES)
 	public List<EMFStoreProperty> getEMFProperties(ProjectId projectId) throws ESException {
 		sanityCheckObjects(projectId);
 

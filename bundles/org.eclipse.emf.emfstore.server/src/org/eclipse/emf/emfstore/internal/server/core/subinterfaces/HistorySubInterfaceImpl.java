@@ -25,8 +25,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
@@ -44,6 +42,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -83,7 +83,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException in case of failure
 	 *
 	 */
-	@EmfStoreMethod(MethodId.ADDTAG)
+	@ESMethod(MethodId.ADDTAG)
 	public void addTag(ProjectId projectId, PrimaryVersionSpec versionSpec, TagVersionSpec tag)
 		throws ESException {
 
@@ -114,7 +114,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException in case of failure
 	 *
 	 */
-	@EmfStoreMethod(MethodId.REMOVETAG)
+	@ESMethod(MethodId.REMOVETAG)
 	public void removeTag(ProjectId projectId, PrimaryVersionSpec versionSpec, TagVersionSpec tag)
 		throws ESException {
 		sanityCheckObjects(projectId, versionSpec, tag);
@@ -144,7 +144,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return a list containing {@link HistoryInfo} about the project
 	 * @throws ESException in case an error occurs while fetching the history
 	 */
-	@EmfStoreMethod(MethodId.GETHISTORYINFO)
+	@ESMethod(MethodId.GETHISTORYINFO)
 	public List<HistoryInfo> getHistoryInfo(ProjectId projectId, HistoryQuery<?> historyQuery) throws ESException {
 		sanityCheckObjects(projectId, historyQuery);
 		synchronized (getMonitor()) {

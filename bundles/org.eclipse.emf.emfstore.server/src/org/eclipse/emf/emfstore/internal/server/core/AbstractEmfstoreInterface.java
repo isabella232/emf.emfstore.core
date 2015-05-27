@@ -11,19 +11,28 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
+import org.eclipse.emf.emfstore.internal.server.exceptions.SessionTimedOutException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
+import org.eclipse.emf.emfstore.server.model.ESGlobalProjectId;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * Super class of all EmfstoreInterfaces. Emfstore interfaces performs sanity checks, runs accesscontrol and then
@@ -36,26 +45,25 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
  */
 public abstract class AbstractEmfstoreInterface {
 
-	private final AuthorizationControl authorizationControl;
 	private final HashMap<Class<? extends AbstractSubEmfstoreInterface>, AbstractSubEmfstoreInterface> subInterfaces;
 	private boolean accessControlDisabled;
 	private final ServerSpace serverSpace;
+	private final AccessControl accessControl;
 
 	/**
 	 * Default constructor.
 	 *
 	 * @param serverSpace the server space
-	 * @param authorizationControl access control
+	 * @param accessControl access control
 	 * @throws FatalESException if initialization fails
 	 */
-	public AbstractEmfstoreInterface(ServerSpace serverSpace,
-		AuthorizationControl authorizationControl)
+	public AbstractEmfstoreInterface(ServerSpace serverSpace, AccessControl accessControl)
 		throws FatalESException {
-		this.serverSpace = serverSpace;
-		if (serverSpace == null || authorizationControl == null) {
+		if (serverSpace == null || accessControl == null) {
 			throw new FatalESException();
 		}
-		this.authorizationControl = authorizationControl;
+		this.serverSpace = serverSpace;
+		this.accessControl = accessControl;
 		accessControlDisabled = false;
 		subInterfaces = new LinkedHashMap<Class<? extends AbstractSubEmfstoreInterface>, AbstractSubEmfstoreInterface>();
 		initSubInterfaces();
@@ -128,8 +136,20 @@ public abstract class AbstractEmfstoreInterface {
 	 *
 	 * @return authorizationControl
 	 */
-	protected AuthorizationControl getAuthorizationControl() {
-		return authorizationControl;
+	protected AccessControl getAccessControl() {
+		return accessControl;
+	}
+
+	/**
+	 * Checks if the given session is valid.
+	 *
+	 * @param sessionId
+	 *            the session to be check
+	 * @throws SessionTimedOutException
+	 *             in case the session is invalid
+	 */
+	protected synchronized void checkSession(SessionId sessionId) throws SessionTimedOutException {
+		getAccessControl().getSessions().isValid(sessionId.toAPI());
 	}
 
 	/**
@@ -146,7 +166,10 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkReadAccess(sessionId, projectId, modelElements);
+		getAccessControl().getAuthorizationService().checkReadAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			modelElements);
 	}
 
 	/**
@@ -163,41 +186,137 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkWriteAccess(sessionId, projectId, modelElements);
+		getAccessControl().getAuthorizationService().checkWriteAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			modelElements);
+	}
+
+	protected SessionId resolveSessionById(String sessionId) {
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId);
+		return APIUtil.toInternal(SessionId.class, resolvedSession);
+	}
+
+	protected ACUser resolveUserBySessionId(String sessionId) throws AccessControlException {
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId);
+		final ESUser resolvedUser = getAccessControl().getSessions().resolveUser(resolvedSession);
+		return (ACUser) ESUserImpl.class.cast(resolvedUser).toInternalAPI();
 	}
 
 	/**
-	 * Checks project admin access.
+	 * Checks project administrator access.
 	 *
 	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
-	 * @param sessionId sessionid
-	 * @param projectId project id
-	 * @param privilege project admin privilege to be checked
+	 * @param sessionId
+	 *            a valid session id
+	 * @param projectId
+	 *            project id
+	 * @param privilege project administrator privilege to be checked
 	 * @throws AccessControlException access exception
 	 */
 	protected synchronized void checkProjectAdminAccess(SessionId sessionId, ProjectId projectId,
-		PAPrivileges privilege)
-		throws AccessControlException {
+		ESProjectAdminPrivileges privilege)
+			throws AccessControlException {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId, privilege);
+		getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI(),
+			privilege);
+	}
+
+	/**
+	 * Checks project administrator access for the given organizational unit.
+	 *
+	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
+	 * @param sessionId
+	 *            a valid session id
+	 * @param projectId
+	 *            project id
+	 * @param orgUnitId
+	 *            the ID of the organizational unit
+	 * @return if {@code true}, access was granted via the server administrator role, otherwise
+	 *         access has been granted by the project administrator role
+	 * @throws AccessControlException
+	 *             in case the caller has no access at all
+	 */
+	protected synchronized boolean checkProjectAdminAccessForOrgUnit(SessionId sessionId, ProjectId projectId,
+		ACOrgUnitId orgUnitId) throws AccessControlException {
+
+		if (accessControlDisabled) {
+			return true;
+		}
+
+		return getAccessControl().getAuthorizationService().checkProjectAdminAccessForOrgUnit(
+			sessionId.toAPI(),
+			orgUnitId.toAPI(),
+			Collections.<ESGlobalProjectId> singleton(projectId.toAPI()));
+	}
+
+	/**
+	 * Checks project administrator access.
+	 *
+	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
+	 * @param sessionId
+	 *            a valid session id
+	 * @param privilege
+	 *            project administrator privilege to be checked
+	 * @return if {@code true}, access was granted via the server administrator role, otherwise
+	 *         access has been granted by the project administrator role
+	 * @throws AccessControlException access exception
+	 */
+	protected synchronized boolean checkProjectAdminAccess(SessionId sessionId, ESProjectAdminPrivileges privilege)
+		throws AccessControlException {
+		if (accessControlDisabled) {
+			return true;
+		}
+		return getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null,
+			privilege);
+	}
+
+	/**
+	 * Checks project administrator access.
+	 *
+	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
+	 * @param sessionId
+	 *            a valid session id
+	 * @return if {@code true}, access was granted via the server administrator role, otherwise
+	 *         access has been granted by the project administrator role
+	 * @throws AccessControlException access exception
+	 */
+	protected synchronized boolean checkProjectAdminAccess(SessionId sessionId)
+		throws AccessControlException {
+		if (accessControlDisabled) {
+			return true;
+		}
+		return getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			null);
 	}
 
 	/**
 	 * Checks project admin access.
 	 *
 	 * @see AuthorizationControl#checkProjectAdminAccess(SessionId, ProjectId)
-	 * @param sessionId sessionid
+	 * @param sessionId
+	 *            a valid session id
 	 * @param projectId project id
+	 * @return if {@code true}, access was granted via the server administrator role, otherwise
+	 *         access has been granted by the project administrator role
 	 * @throws AccessControlException access exception
 	 */
-	protected synchronized void checkProjectAdminAccess(SessionId sessionId, ProjectId projectId)
+	protected synchronized boolean checkProjectAdminAccess(SessionId sessionId, ProjectId projectId)
 		throws AccessControlException {
 		if (accessControlDisabled) {
-			return;
+			return true;
 		}
-		getAuthorizationControl().checkProjectAdminAccess(sessionId, projectId);
+
+		return getAccessControl().getAuthorizationService().checkProjectAdminAccess(
+			sessionId.toAPI(),
+			projectId.toAPI());
 	}
 
 	/**
@@ -211,7 +330,7 @@ public abstract class AbstractEmfstoreInterface {
 		if (accessControlDisabled) {
 			return;
 		}
-		getAuthorizationControl().checkServerAdminAccess(sessionId);
+		getAccessControl().getAuthorizationService().checkServerAdminAccess(sessionId.toAPI());
 	}
 
 	/**

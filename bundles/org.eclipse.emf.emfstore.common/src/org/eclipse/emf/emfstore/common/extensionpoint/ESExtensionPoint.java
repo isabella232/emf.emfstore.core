@@ -112,7 +112,29 @@ public final class ESExtensionPoint {
 		if (first != null) {
 			return first.getClass(classAttributeName, returnType);
 		}
-		return (T) handleErrorOrNull(exceptionInsteadOfNull, null);
+		return (T) handleErrorOrNull(exceptionInsteadOfNull, null, Messages.ESExtensionPoint_ValueNotFound);
+	}
+
+	/**
+	 * Gets all available classes with the specified type from the elements.
+	 *
+	 * @param classAttributeName class attribute name
+	 * @param returnType Class of expected return value
+	 * @param <T> the type of the class
+	 * @return the result list that is possibly empty
+	 * @since 1.5
+	 */
+	public <T> List<T> getClasses(String classAttributeName, Class<T> returnType) {
+		final List<ESExtensionElement> extensionElements = getExtensionElements();
+		final List<T> result = new ArrayList<T>();
+		for (final ESExtensionElement extensionElement : extensionElements) {
+			final T res = extensionElement.getClass(classAttributeName, returnType);
+			if (res != null) {
+				result.add(res);
+			}
+		}
+
+		return result;
 	}
 
 	/**
@@ -141,7 +163,7 @@ public final class ESExtensionPoint {
 		if (element != null) {
 			return element.getBoolean(name, defaultValue);
 		}
-		handleErrorOrNull(exceptionInsteadOfNull, null);
+		handleErrorOrNull(exceptionInsteadOfNull, null, Messages.ESExtensionPoint_ValueNotFound);
 		return defaultValue;
 	}
 
@@ -158,7 +180,7 @@ public final class ESExtensionPoint {
 		if (element != null) {
 			return element.getInteger(name);
 		}
-		return (Integer) handleErrorOrNull(exceptionInsteadOfNull, null);
+		return (Integer) handleErrorOrNull(exceptionInsteadOfNull, null, Messages.ESExtensionPoint_ValueNotFound);
 	}
 
 	/**
@@ -174,7 +196,7 @@ public final class ESExtensionPoint {
 		if (element != null) {
 			return element.getAttribute(name);
 		}
-		return (String) handleErrorOrNull(exceptionInsteadOfNull, null);
+		return (String) handleErrorOrNull(exceptionInsteadOfNull, null, Messages.ESExtensionPoint_ValueNotFound);
 	}
 
 	/**
@@ -206,7 +228,8 @@ public final class ESExtensionPoint {
 		if (elements.size() > 0) {
 			return elements.get(0);
 		}
-		return (ESExtensionElement) handleErrorOrNull(exceptionInsteadOfNull, null);
+		return (ESExtensionElement) handleErrorOrNull(exceptionInsteadOfNull, null,
+			Messages.ESExtensionPoint_ValueNotFound);
 	}
 
 	/**
@@ -247,13 +270,14 @@ public final class ESExtensionPoint {
 	 * thrown.
 	 *
 	 * @param useException chosen option
-	 * @param expOrNull exception which will be wrapped, or null, for which an exception can be genereated
+	 * @param expOrNull exception which will be wrapped, or null, for which an exception can be generated
+	 * @param message the exception message in case an exception should be thrown
 	 * @return null, or a {@link ESExtensionPointException} is thrown
 	 */
-	protected static Object handleErrorOrNull(boolean useException, Exception expOrNull) {
+	protected static Object handleErrorOrNull(boolean useException, Exception expOrNull, String message) {
 		if (useException) {
 			if (expOrNull == null) {
-				throw new ESExtensionPointException(Messages.ESExtensionPoint_ValueNotFound);
+				throw new ESExtensionPointException(message);
 			}
 			logException(expOrNull);
 			throw new ESExtensionPointException(expOrNull);

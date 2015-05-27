@@ -16,12 +16,12 @@ import java.io.IOException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -47,7 +47,7 @@ public class ProjectPropertiesSubInterfaceImpl extends AbstractSubEmfstoreInterf
 	 * @param projectId the specified {@link ProjectId}
 	 * @throws ESException if any error occurs setting the properties
 	 */
-	@EmfStoreMethod(MethodId.TRANSMITPROPERTY)
+	@ESMethod(MethodId.TRANSMITPROPERTY)
 	public void transmitProperty(OrgUnitProperty changedProperty, ACUser recUser, ProjectId projectId)
 		throws ESException {
 		sanityCheckObjects(changedProperty, recUser, projectId);

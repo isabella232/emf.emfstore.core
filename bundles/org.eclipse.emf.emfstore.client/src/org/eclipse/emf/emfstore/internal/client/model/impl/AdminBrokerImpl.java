@@ -71,10 +71,8 @@ public class AdminBrokerImpl implements AdminBroker {
 	 *      org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId, org.eclipse.emf.ecore.EClass)
 	 */
 	public void changeRole(ProjectId projectId, ACOrgUnitId orgUnit, EClass role) throws ESException {
-
 		ESWorkspaceProviderImpl.getInstance().getAdminConnectionManager()
 			.changeRole(getSessionId(), projectId, orgUnit, role);
-
 	}
 
 	/**

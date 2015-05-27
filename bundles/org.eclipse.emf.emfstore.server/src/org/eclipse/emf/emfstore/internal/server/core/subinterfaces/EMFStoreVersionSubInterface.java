@@ -14,9 +14,9 @@ package org.eclipse.emf.emfstore.internal.server.core.subinterfaces;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.osgi.framework.Bundle;
 
 /**
@@ -43,7 +43,7 @@ public class EMFStoreVersionSubInterface extends AbstractSubEmfstoreInterface {
 	 *
 	 * @return the EMFStore version
 	 */
-	@EmfStoreMethod(MethodId.GETVERSION)
+	@ESMethod(MethodId.GETVERSION)
 	public String getVersion() {
 		final Bundle emfStoreBundle = Platform.getBundle("org.eclipse.emf.emfstore.server"); //$NON-NLS-1$
 		final String versionId = emfStoreBundle.getHeaders().get(org.osgi.framework.Constants.BUNDLE_VERSION);

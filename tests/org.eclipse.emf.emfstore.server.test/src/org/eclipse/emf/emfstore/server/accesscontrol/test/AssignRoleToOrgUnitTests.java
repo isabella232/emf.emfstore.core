@@ -21,7 +21,6 @@ import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
@@ -30,13 +29,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ReaderRole;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link PAPrivileges#AssignRoleToOrgUnit} privilege of a
+ * Test the {@link ESProjectAdminPrivileges#AssignRoleToOrgUnit} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller
@@ -47,8 +47,8 @@ public class AssignRoleToOrgUnitTests extends ProjectAdminTest {
 	@BeforeClass
 	public static void beforeClass() {
 		startEMFStoreWithPAProperties(
-			PAPrivileges.ShareProject,
-			PAPrivileges.AssignRoleToOrgUnit);
+			ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit);
 	}
 
 	@AfterClass

@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -38,6 +39,7 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
@@ -50,6 +52,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
 
 public class ConnectionMock implements ConnectionManager {
 
@@ -67,13 +71,15 @@ public class ConnectionMock implements ConnectionManager {
 
 	public AuthenticationInformation logIn(String username, String password, ServerInfo severInfo,
 		ClientVersionInfo clientVersionInfo) throws ESException {
-		final AuthenticationInformation logIn = accessControl.logIn(username, password, clientVersionInfo);
-		sessions.add(logIn.getSessionId());
-		return logIn;
+		final ESAuthenticationInformation logIn = accessControl.getLoginService()
+			.logIn(username, password, clientVersionInfo.toAPI());
+		final AuthenticationInformation internalAPI = ESAuthenticationInformationImpl.class.cast(logIn).toInternalAPI();
+		sessions.add(internalAPI.getSessionId());
+		return internalAPI;
 	}
 
 	public void logout(SessionId sessionId) throws ESException {
-		accessControl.logout(sessionId);
+		accessControl.getLoginService().logout(sessionId.toAPI());
 		sessions.remove(sessionId);
 	}
 
@@ -167,7 +173,8 @@ public class ConnectionMock implements ConnectionManager {
 		checkSessionId(clonedSessionId);
 		final ProjectInfo projectInfo = emfStore.createEmptyProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage));
-		final SessionId session = accessControl.resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = accessControl.getSessions().resolveSessionById(sessionId.getId());
+		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
@@ -179,7 +186,8 @@ public class ConnectionMock implements ConnectionManager {
 		final ProjectInfo projectInfo = emfStore.createProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage),
 			ModelUtil.clone(project));
-		final SessionId session = accessControl.resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = accessControl.getSessions().resolveSessionById(sessionId.getId());
+		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
@@ -219,8 +227,9 @@ public class ConnectionMock implements ConnectionManager {
 		return emfStore.uploadFileChunk(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), fileChunk);
 	}
 
-	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId, FileTransferInformation fileInformation)
-		throws ESException {
+	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
+		FileTransferInformation fileInformation)
+			throws ESException {
 		checkSessionId(sessionId);
 		return emfStore.downloadFileChunk(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), fileInformation);
 	}
@@ -272,7 +281,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#uploadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope)
@@ -290,7 +299,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      java.lang.String, int)
 	 */
@@ -301,8 +310,7 @@ public class ConnectionMock implements ConnectionManager {
 			emfStore.downloadChangePackageFragment(
 				ModelUtil.clone(sessionId),
 				proxyId,
-				fragmentIndex)
-			);
+				fragmentIndex));
 	}
 
 }

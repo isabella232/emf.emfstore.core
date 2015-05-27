@@ -19,12 +19,12 @@ import java.util.List;
 
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
@@ -42,12 +42,12 @@ public class AdminEMFStoreTests extends ProjectAdminTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		startEMFStoreWithPAProperties(PAPrivileges.ShareProject,
-			PAPrivileges.AssignRoleToOrgUnit, // needed for share
-			PAPrivileges.ChangeAssignmentsOfOrgUnits,
-			PAPrivileges.CreateGroup,
-			PAPrivileges.CreateUser,
-			PAPrivileges.DeleteOrgUnit);
+		startEMFStoreWithPAProperties(ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit, // needed for share
+			ESProjectAdminPrivileges.ChangeAssignmentsOfOrgUnits,
+			ESProjectAdminPrivileges.CreateGroup,
+			ESProjectAdminPrivileges.CreateUser,
+			ESProjectAdminPrivileges.DeleteOrgUnit);
 	}
 
 	@Override

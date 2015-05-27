@@ -12,9 +12,9 @@
 package org.eclipse.emf.emfstore.server.accesscontrol.test;
 
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the missing {@link PAPrivileges#ChangeUserPassword} privilege of a
+ * Test the missing {@link ESProjectAdminPrivileges#ChangeUserPassword} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller
@@ -32,7 +32,7 @@ public class CreateUserWithPasswordMissingPrivilegTests extends ProjectAdminTest
 
 	@BeforeClass
 	public static void beforeClass() {
-		startEMFStoreWithPAProperties(PAPrivileges.CreateUser);
+		startEMFStoreWithPAProperties(ESProjectAdminPrivileges.CreateUser);
 	}
 
 	public static void afterClass() {

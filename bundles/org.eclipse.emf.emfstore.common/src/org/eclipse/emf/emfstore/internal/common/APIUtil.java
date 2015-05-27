@@ -281,6 +281,11 @@ public final class APIUtil {
 	@SuppressWarnings("unchecked")
 	public static <V, U extends InternalAPIDelegator<U, T>, T extends APIDelegate<U>> T toInternal(
 		Class<T> apiClass, V element) {
+
+		if (element == null) {
+			return null;
+		}
+
 		return ((U) element).toInternalAPI();
 	}
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
@@ -44,6 +45,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
 
 /**
  * XML RPC connection interface for emfstore.
@@ -75,7 +78,10 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public AuthenticationInformation logIn(String username, String password, ClientVersionInfo clientVersionInfo)
 		throws AccessControlException {
-		return getAccessControl().logIn(username, password, clientVersionInfo);
+		final ESAuthenticationInformation authInfo = getAccessControl().getLoginService()
+			.logIn(username, password, clientVersionInfo.toAPI());
+		return org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl.class
+			.cast(authInfo).toInternalAPI();
 	}
 
 	/**
@@ -88,7 +94,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 *             in case logout fails
 	 */
 	public void logout(SessionId sessionId) throws AccessControlException {
-		getAccessControl().logout(sessionId);
+		getAccessControl().getLoginService().logout(sessionId.toAPI());
 	}
 
 	/**
@@ -105,7 +111,8 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	public ProjectInfo createEmptyProject(SessionId sessionId, String name, String description, LogMessage logMessage)
 		throws ESException {
 		final ProjectInfo projectInfo = getEmfStore().createEmptyProject(sessionId, name, description, logMessage);
-		final SessionId session = getAccessControl().resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
+		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
@@ -116,8 +123,8 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	public ProjectInfo createProject(SessionId sessionId, String name, String description, LogMessage logMessage,
 		Project project) throws ESException {
 		final ProjectInfo projectInfo = getEmfStore().createProject(sessionId, name, description, logMessage, project);
-
-		final SessionId session = getAccessControl().resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
+		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
@@ -143,8 +150,9 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	/**
 	 * {@inheritDoc}
 	 */
-	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId, FileTransferInformation fileInformation)
-		throws ESException {
+	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
+		FileTransferInformation fileInformation)
+			throws ESException {
 		return getEmfStore().downloadFileChunk(sessionId, projectId, fileInformation);
 	}
 
@@ -284,7 +292,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#uploadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope)

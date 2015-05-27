@@ -99,6 +99,7 @@ public class AccesscontrolFactoryImpl extends EFactoryImpl implements Accesscont
 	 *
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	public ACOrgUnit createACOrgUnit() {
 		final ACOrgUnitImpl acOrgUnit = new ACOrgUnitImpl();
 		return acOrgUnit;

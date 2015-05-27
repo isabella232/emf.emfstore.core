@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Otto von Wesendonk
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core.subinterfaces;
 
@@ -22,8 +22,6 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidProjectIdException;
@@ -45,10 +43,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
- * This subinterface implements all project related functionality.
+ * This sub-interface implements all project related functionality.
  *
  * @author wesendon
  */
@@ -114,7 +115,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException
 	 *             in case of failure
 	 */
-	@EmfStoreMethod(MethodId.GETPROJECT)
+	@ESMethod(MethodId.GETPROJECT)
 	public Project getProject(ProjectId projectId, VersionSpec versionSpec)
 		throws InvalidVersionSpecException, ESException {
 
@@ -177,13 +178,17 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return a list of all projects
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.GETPROJECTLIST)
+	@ESMethod(MethodId.GETPROJECTLIST)
 	public List<ProjectInfo> getProjectList(SessionId sessionId) throws ESException {
 		synchronized (getMonitor()) {
 			final List<ProjectInfo> result = new ArrayList<ProjectInfo>();
 			for (final ProjectHistory projectHistory : getServerSpace().getProjects()) {
 				try {
-					getAuthorizationControl().checkReadAccess(sessionId, projectHistory.getProjectId(), null);
+					final ESAuthorizationService authorizationService = getAccessControl().getAuthorizationService();
+					authorizationService.checkReadAccess(
+						sessionId.toAPI(),
+						projectHistory.getProjectId().toAPI(),
+						null);
 					result.add(createProjectInfo(projectHistory));
 				} catch (final AccessControlException e) {
 					// if this exception occurs, project won't be added to list
@@ -205,7 +210,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return a {@link ProjectInfo} instance holding information about the created project
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.CREATEEMPTYPROJECT)
+	@ESMethod(MethodId.CREATEEMPTYPROJECT)
 	public ProjectInfo createProject(String name, String description, LogMessage logMessage) throws ESException {
 		sanityCheckObjects(name, description, logMessage);
 		synchronized (getMonitor()) {
@@ -217,7 +222,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 					description,
 					logMessage,
 					org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
-						.createProject());
+					.createProject());
 			} catch (final FatalESException e) {
 				throw new StorageException(StorageException.NOSAVE);
 			}
@@ -239,7 +244,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return a {@link ProjectInfo} instance holding information about the created project
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.CREATEPROJECT)
+	@ESMethod(MethodId.CREATEPROJECT)
 	public ProjectInfo createProject(String name, String description, LogMessage logMessage, Project project)
 		throws ESException {
 		sanityCheckObjects(name, description, logMessage, project);
@@ -266,7 +271,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException
 	 *             in case of failure
 	 */
-	@EmfStoreMethod(MethodId.DELETEPROJECT)
+	@ESMethod(MethodId.DELETEPROJECT)
 	public void deleteProject(ProjectId projectId, boolean deleteFiles) throws ESException {
 		sanityCheckObjects(projectId);
 		deleteProject(projectId, deleteFiles, true);
@@ -354,7 +359,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return the ID of a new project
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.IMPORTPROJECTHISTORYTOSERVER)
+	@ESMethod(MethodId.IMPORTPROJECTHISTORYTOSERVER)
 	public ProjectId importProjectHistoryToServer(ProjectHistory projectHistory) throws ESException {
 		sanityCheckObjects(projectHistory);
 		synchronized (getMonitor()) {
@@ -401,7 +406,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return the project history
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.EXPORTPROJECTHISTORYFROMSERVER)
+	@ESMethod(MethodId.EXPORTPROJECTHISTORYFROMSERVER)
 	public ProjectHistory exportProjectHistoryFromServer(ProjectId projectId) throws ESException {
 		sanityCheckObjects(projectId);
 		synchronized (getMonitor()) {

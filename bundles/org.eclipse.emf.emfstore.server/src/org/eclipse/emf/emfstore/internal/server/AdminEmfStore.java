@@ -67,6 +67,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 	 * @return list of orgUnits
 	 * @throws ESException if any error in the EmfStore occurs
 	 */
+	@SuppressWarnings("rawtypes")
 	List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException;
 
 	/**
@@ -77,6 +78,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 	 * @return an orgUnit
 	 * @throws ESException if any error in the EmfStore occurs
 	 */
+	@SuppressWarnings("rawtypes")
 	ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException;
 
 	/**
@@ -126,6 +128,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 	 * @return a list of orgUnits
 	 * @throws ESException if any error in the EmfStore occurs.
 	 */
+	@SuppressWarnings("rawtypes")
 	List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException;
 
 	/**
@@ -202,6 +205,7 @@ public interface AdminEmfStore extends EMFStoreInterface {
 	 * @return a list of orgUnits
 	 * @throws ESException if any error in the EmfStore occurs
 	 */
+	@SuppressWarnings("rawtypes")
 	List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException;
 
 	/**

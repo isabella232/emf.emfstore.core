@@ -21,13 +21,13 @@ import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -36,7 +36,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link PAPrivileges#DeleteOrgUnit} privilege of a
+ * Test the {@link ESProjectAdminPrivileges#DeleteOrgUnit} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller
@@ -47,11 +47,11 @@ public class DeleteOrgUnitTest extends ProjectAdminTest {
 	@BeforeClass
 	public static void beforeClass() {
 		startEMFStoreWithPAProperties(
-			PAPrivileges.CreateGroup,
-			PAPrivileges.ChangeAssignmentsOfOrgUnits,
-			PAPrivileges.AssignRoleToOrgUnit,
-			PAPrivileges.ShareProject,
-			PAPrivileges.DeleteOrgUnit);
+			ESProjectAdminPrivileges.CreateGroup,
+			ESProjectAdminPrivileges.ChangeAssignmentsOfOrgUnits,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit,
+			ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.DeleteOrgUnit);
 	}
 
 	@AfterClass

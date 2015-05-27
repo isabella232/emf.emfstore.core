@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *
  * @author wesendon
  */
-public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlRpcClientManager> implements
+public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlRpcClientManager>implements
 	AdminConnectionManager {
 
 	private static final String ASSIGN_ROLE = "assignRole"; //$NON-NLS-1$
@@ -153,6 +153,7 @@ public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlR
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 		return getConnectionProxy(sessionId).callWithListResult(GET_MEMBERS, ACOrgUnit.class, sessionId, groupId);
 	}
@@ -160,6 +161,7 @@ public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlR
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		return getConnectionProxy(sessionId).callWithResult(GET_ORG_UNIT, ACOrgUnit.class, sessionId, orgUnitId);
 	}
@@ -167,6 +169,7 @@ public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlR
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		return getConnectionProxy(sessionId).callWithListResult(GET_ORG_UNITS, ACOrgUnit.class, sessionId);
 	}
@@ -174,6 +177,7 @@ public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlR
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 		return getConnectionProxy(sessionId).callWithListResult(GET_PARTICIPANTS, ACOrgUnit.class, sessionId,
 			projectId);

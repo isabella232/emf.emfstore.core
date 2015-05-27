@@ -48,6 +48,7 @@ public interface AccesscontrolFactory extends EFactory {
 	 * @return a new object of class '<em>AC Org Unit</em>'.
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	ACOrgUnit createACOrgUnit();
 
 	/**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -21,7 +21,7 @@ import java.util.Properties;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
  * This verifier can be used to store user and passwords in a property file. Entries in the property file look should
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  *
  * @author wesendonk
  */
-public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
+public class SimplePropertyFileUserVerifier extends UserVerifier {
 
 	private final Properties passwordFile;
 
@@ -52,31 +52,39 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 	/**
 	 * Default constructor. No hash will be used for passwords
 	 *
-	 * @see #SimplePropertyFileVerifier(String, Hash)
-	 * @param filePath path to password file
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 * @param propertyFilePath
+	 *            path to file
 	 * @throws FatalESException in case of failure
 	 */
-	public SimplePropertyFileVerifier(String filePath) throws FatalESException {
-		this(filePath, Hash.NONE);
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String propertyFilePath)
+		throws FatalESException {
+		this(orgUnitProvider, propertyFilePath, Hash.NONE);
 	}
 
 	/**
 	 * Constructor with ability to select hash algorithm for password.
 	 *
-	 * @param filePath path to file
-	 * @param hash selected hash
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 * @param propertyFilePath
+	 *            path to file
+	 * @param hash
+	 *            selected hash
 	 * @throws FatalESException if hash is null
 	 */
-	public SimplePropertyFileVerifier(String filePath, Hash hash) throws FatalESException {
-		super();
-		this.filePath = filePath;
+	public SimplePropertyFileUserVerifier(ESOrgUnitProvider orgUnitProvider, String propertyFilePath, Hash hash)
+		throws FatalESException {
+		super(orgUnitProvider);
+		filePath = propertyFilePath;
 		if (hash == null) {
 			throw new FatalESException(Messages.SimplePropertyFileVerifier_HashMayNotBeNull);
 		}
 		this.hash = hash;
 
 		passwordFile = new Properties();
-		loadPasswordFile(filePath);
+		loadPasswordFile(propertyFilePath);
 	}
 
 	private void loadPasswordFile(String filePath) {
@@ -104,11 +112,11 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
+	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.PasswordVerifier#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String)
 	 */
 	@Override
-	protected boolean verifyPassword(ACUser resolvedUser, String username, String password)
+	protected boolean verifyPassword(String username, String password)
 		throws AccessControlException {
 		loadPasswordFile(filePath);
 		final String expectedPassword = passwordFile.getProperty(username);
@@ -143,5 +151,15 @@ public class SimplePropertyFileVerifier extends AbstractAuthenticationControl {
 		}
 
 		return null;
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+
 	}
 }

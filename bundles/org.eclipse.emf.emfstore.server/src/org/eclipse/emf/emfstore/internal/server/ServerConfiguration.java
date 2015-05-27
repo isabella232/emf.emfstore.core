@@ -23,11 +23,11 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType;
 import org.eclipse.emf.emfstore.internal.server.startup.PostStartupListener;
 import org.eclipse.emf.emfstore.internal.server.startup.StartupListener;
 import org.eclipse.emf.emfstore.server.ESLocationProvider;
+import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.osgi.framework.Bundle;
 
 import com.google.common.base.Optional;
@@ -241,7 +241,7 @@ public final class ServerConfiguration {
 	/**
 	 * Default authentication policy is simple property file aut.
 	 */
-	public static final AuthenticationControlType AUTHENTICATION_POLICY_DEFAULT = AuthenticationControlType.spfv;
+	public static final ESAuthenticationControlType AUTHENTICATION_POLICY_DEFAULT = ESAuthenticationControlType.spfv;
 
 	/**
 	 * Path to property file for SPFV authentication.
@@ -330,15 +330,15 @@ public final class ServerConfiguration {
 	}
 
 	@SuppressWarnings("serial")
-	private static Map<PAPrivileges, Boolean> defaultPAPrivilegs = new LinkedHashMap<PAPrivileges, Boolean>() {
+	private static Map<ESProjectAdminPrivileges, Boolean> defaultPAPrivilegs = new LinkedHashMap<ESProjectAdminPrivileges, Boolean>() {
 		{
-			put(PAPrivileges.AssignRoleToOrgUnit, Boolean.TRUE);
-			put(PAPrivileges.ChangeAssignmentsOfOrgUnits, Boolean.FALSE);
-			put(PAPrivileges.ChangeUserPassword, Boolean.FALSE);
-			put(PAPrivileges.CreateGroup, Boolean.FALSE);
-			put(PAPrivileges.ShareProject, Boolean.FALSE);
-			put(PAPrivileges.CreateUser, Boolean.FALSE);
-			put(PAPrivileges.DeleteOrgUnit, Boolean.FALSE);
+			put(ESProjectAdminPrivileges.AssignRoleToOrgUnit, Boolean.TRUE);
+			put(ESProjectAdminPrivileges.ChangeAssignmentsOfOrgUnits, Boolean.FALSE);
+			put(ESProjectAdminPrivileges.ChangeUserPassword, Boolean.FALSE);
+			put(ESProjectAdminPrivileges.CreateGroup, Boolean.FALSE);
+			put(ESProjectAdminPrivileges.ShareProject, Boolean.FALSE);
+			put(ESProjectAdminPrivileges.CreateUser, Boolean.FALSE);
+			put(ESProjectAdminPrivileges.DeleteOrgUnit, Boolean.FALSE);
 		}
 	};
 
@@ -353,7 +353,7 @@ public final class ServerConfiguration {
 	 *         ProjectAdminRole} has the right to perform
 	 *         the requested privilege, {@code false} otherwise
 	 */
-	public static boolean isProjectAdminPrivileg(PAPrivileges requestedPrivileg) {
+	public static boolean isProjectAdminPrivileg(ESProjectAdminPrivileges requestedPrivileg) {
 		final String[] definedPrivileges = ServerConfiguration.getSplittedProperty(PROJECT_ADMIN_PRIVILEGES_KEY);
 
 		// key not present in config
@@ -362,7 +362,7 @@ public final class ServerConfiguration {
 		}
 
 		for (final String definedPrivileg : definedPrivileges) {
-			final PAPrivileges privilege = PAPrivileges.valueOf(definedPrivileg);
+			final ESProjectAdminPrivileges privilege = ESProjectAdminPrivileges.valueOf(definedPrivileg);
 			if (privilege.equals(requestedPrivileg)) {
 				return true;
 			}
@@ -413,7 +413,7 @@ public final class ServerConfiguration {
 			// TODO EXPT PRIO
 			try {
 				locationProvider = new ESExtensionPoint(LOCATION_PROVIDER_KEY, true)
-					.getClass("providerClass", ESLocationProvider.class); //$NON-NLS-1$
+				.getClass("providerClass", ESLocationProvider.class); //$NON-NLS-1$
 			} catch (final ESExtensionPointException e) {
 				final String message = Messages.ServerConfiguration_No_Location_Provider;
 				ModelUtil.logWarning(message);
@@ -611,7 +611,7 @@ public final class ServerConfiguration {
 			try {
 				isChecksumComputationOnCommitActive = new ESExtensionPoint(
 					CHECKSUM_KEY, true)
-					.getBoolean("shouldComputeChecksumOnCommit"); //$NON-NLS-1$
+				.getBoolean("shouldComputeChecksumOnCommit"); //$NON-NLS-1$
 			} catch (final ESExtensionPointException e) {
 				final String message = Messages.ServerConfiguration_Default_Checksum_Behavior;
 				ModelUtil.logWarning(message);

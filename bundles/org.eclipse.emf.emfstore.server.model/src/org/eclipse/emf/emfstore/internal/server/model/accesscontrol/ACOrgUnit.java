@@ -11,28 +11,34 @@
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Org Unit</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Org Unit</b></em>'.
  *
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getRoles <em>Roles</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>Description
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getProperties <em>Properties</em>}</li>
- * </ul>
- * </p>
+ * @extends APIDelegate<ESOrgUnit>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getName <em>Name</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getRoles <em>Roles</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>
+ *          Description </em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getProperties <em>
+ *          Properties</em>}</li>
+ *          </ul>
+ *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit()
  * @model
  * @generated
  */
-public interface ACOrgUnit extends IdentifiableElement {
+public interface ACOrgUnit<E extends ESOrgUnit> extends IdentifiableElement, APIDelegate<E> {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc -->

@@ -1,16 +1,17 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.util;
 
+// import java.io.File;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -46,9 +47,6 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControlImpl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.factory.AuthenticationControlFactory;
 import org.eclipse.emf.emfstore.internal.server.core.EMFStoreImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ConnectionException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
@@ -64,13 +62,14 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesFactory;
 import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.osgi.framework.FrameworkUtil;
 
 /**
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public final class ServerUtil {
 
@@ -84,7 +83,7 @@ public final class ServerUtil {
 
 	/**
 	 * Returns the default port of EMFStore which is 8888.
-	 * 
+	 *
 	 * @return the default port of EMFStore
 	 */
 	public static int defaultPort() {
@@ -93,7 +92,7 @@ public final class ServerUtil {
 
 	/**
 	 * Returns the default port of EMFStore which is 8888.
-	 * 
+	 *
 	 * @return the default port of EMFStore
 	 */
 	public static String localhost() {
@@ -163,11 +162,9 @@ public final class ServerUtil {
 
 		ServerConfiguration.setProperties(initProperties(properties));
 		setSuperUser(daoFacadeMock);
-		final AccessControl accessControl = new AccessControlImpl(daoFacadeMock);
-		accessControl.setAuthenticationControl(AuthenticationControlFactory.INSTANCE
-			.createAuthenticationControl(AuthenticationControlType.model));
-
-		// AdminConnectionManagerMock adminConnectionManagerMock = new AdminConnectionManagerMock(accessControl);
+		final AccessControl accessControl = new AccessControl(
+			ESAuthenticationControlType.model,
+			serverSpace);
 
 		final EMFStore emfStore = EMFStoreImpl.createInterface(serverSpace, accessControl);
 		ESWorkspaceProviderImpl.getInstance().setConnectionManager(
@@ -188,14 +185,14 @@ public final class ServerUtil {
 
 	/**
 	 * Convenience method for deleting a group by name instead of its ID.
-	 * 
+	 *
 	 * @param session
 	 *            the {@link ESUsersession} that is used to connection to the admin connection manager
 	 * @param groupName
 	 *            the name of the group to be deleted. Case is ignored
-	 * 
+	 *
 	 * @return {@code true}, if the groups has been deleted successfully, {@code false} otherwise
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case the delete fails
 	 */

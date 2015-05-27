@@ -17,10 +17,13 @@ import org.eclipse.osgi.util.NLS;
  * Access control related messages.
  *
  * @author emueller
- *
+ * @generated
  */
 public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.server.accesscontrol.messages"; //$NON-NLS-1$
+	public static String AccessControl_CustomAuthorizationInitFailed;
+	public static String AccessControl_CustomOrgUnitProviderInitFailed;
+	public static String AccessControl_MultipleExtensionsDiscovered;
 	public static String AccessControlImpl_Given_Group_Does_Not_Exist;
 	public static String AccessControlImpl_Given_OrgUnit_Does_Not_Exist;
 	public static String AccessControlImpl_Given_User_Does_Not_Exist;
@@ -31,6 +34,8 @@ public final class Messages extends NLS {
 	public static String AccessControlImpl_SessionID_Is_Null;
 	public static String AccessControlImpl_SessionID_Unknown;
 	public static String AccessControlImpl_Unknown_Access_Type;
+	public static String DefaultESAuthorizationService_UnknownSession;
+	public static String LoginService_CustomLoginServiceInitFailed;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar Mueller
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.impl.api;
 
@@ -21,7 +21,8 @@ import org.eclipse.emf.emfstore.server.model.ESGlobalProjectId;
  * @author emueller
  *
  */
-public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectId, ProjectId> implements ESGlobalProjectId {
+public class ESGlobalProjectIdImpl extends AbstractAPIImpl<ESGlobalProjectIdImpl, ProjectId> implements
+	ESGlobalProjectId {
 
 	/**
 	 * Constructor.

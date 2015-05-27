@@ -15,16 +15,16 @@ import static org.junit.Assert.assertTrue;
 
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link PAPrivileges#ShareProject} privilege of a
+ * Test the {@link ESProjectAdminPrivileges#ShareProject} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller
@@ -34,7 +34,7 @@ public class CreateProjectTest extends ProjectAdminTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		startEMFStoreWithPAProperties(PAPrivileges.ShareProject);
+		startEMFStoreWithPAProperties(ESProjectAdminPrivileges.ShareProject);
 	}
 
 	@AfterClass

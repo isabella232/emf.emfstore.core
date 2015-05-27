@@ -21,8 +21,6 @@ import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileNotOnServerException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
@@ -32,6 +30,8 @@ import org.eclipse.emf.emfstore.internal.server.filetransfer.FilePartitionerUtil
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FileTransferInformation;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.storage.XMIServerURIConverter;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 
 /**
  * The file transfer subinterface.
@@ -74,7 +74,7 @@ public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws FileTransferException if any error occurs reading the file
 	 * @throws InvalidInputException thrown if one of the parameters is null
 	 */
-	@EmfStoreMethod(MethodId.DOWNLOADFILECHUNK)
+	@ESMethod(MethodId.DOWNLOADFILECHUNK)
 	public FileChunk downloadFileChunk(ProjectId projectId, FileTransferInformation fileInformation)
 		throws FileTransferException, InvalidInputException {
 		sanityCheckObjects(projectId, fileInformation);
@@ -102,7 +102,7 @@ public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws FileTransferException if any error occurs writing to the file
 	 * @throws InvalidInputException thrown if one of the parameters is null
 	 */
-	@EmfStoreMethod(MethodId.UPLOADFILECHUNK)
+	@ESMethod(MethodId.UPLOADFILECHUNK)
 	public FileTransferInformation uploadFileChunk(ProjectId projectId, FileChunk fileChunk)
 		throws FileTransferException, InvalidInputException {
 		sanityCheckObjects(projectId, fileChunk);

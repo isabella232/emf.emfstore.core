@@ -79,14 +79,16 @@ public class AccesscontrolAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected AccesscontrolSwitch<Adapter> modelSwitch = new AccesscontrolSwitch<Adapter>() {
+	protected AccesscontrolSwitch<Adapter> modelSwitch = new AccesscontrolSwitch<Adapter>()
+		{
 		@Override
 		public Adapter caseACUser(ACUser object) {
 			return createACUserAdapter();
 		}
 
 		@Override
-		public Adapter caseACOrgUnit(ACOrgUnit object) {
+		public Adapter caseACOrgUnit(@SuppressWarnings("rawtypes") ACOrgUnit object)
+		{
 			return createACOrgUnitAdapter();
 		}
 
@@ -119,144 +121,144 @@ public class AccesscontrolAdapterFactory extends AdapterFactoryImpl {
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
-	};
+		};
 
-	/**
-	 * Creates an adapter for the <code>target</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *
-	 * @param target the object to adapt.
-	 * @return the adapter for the <code>target</code>.
-	 * @generated
-	 */
-	@Override
-	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
-	}
+		/**
+		 * Creates an adapter for the <code>target</code>.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @param target the object to adapt.
+		 * @return the adapter for the <code>target</code>.
+		 * @generated
+		 */
+		@Override
+		public Adapter createAdapter(Notifier target) {
+			return modelSwitch.doSwitch((EObject) target);
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser
-	 * <em>AC User</em>}'. <!-- begin-user-doc --> This default implementation
-	 * returns null so that we can easily ignore cases; it's useful to ignore a
-	 * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-	 * -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser
-	 * @generated
-	 */
-	public Adapter createACUserAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser
+		 * <em>AC User</em>}'. <!-- begin-user-doc --> This default implementation
+		 * returns null so that we can easily ignore cases; it's useful to ignore a
+		 * case when inheritance will catch all the cases anyway. <!-- end-user-doc
+		 * -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser
+		 * @generated
+		 */
+		public Adapter createACUserAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit <em>AC Org Unit</em>}'.
-	 * <!-- begin-user-doc --> This default
-	 * implementation returns null so that we can easily ignore cases; it's
-	 * useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit
-	 * @generated
-	 */
-	public Adapter createACOrgUnitAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit <em>AC Org Unit</em>}'.
+		 * <!-- begin-user-doc --> This default
+		 * implementation returns null so that we can easily ignore cases; it's
+		 * useful to ignore a case when inheritance will catch all the cases anyway.
+		 * <!-- end-user-doc -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit
+		 * @generated
+		 */
+		public Adapter createACOrgUnitAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup
-	 * <em>AC Group</em>}'. <!-- begin-user-doc --> This default implementation
-	 * returns null so that we can easily ignore cases; it's useful to ignore a
-	 * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-	 * -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup
-	 * @generated
-	 */
-	public Adapter createACGroupAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup
+		 * <em>AC Group</em>}'. <!-- begin-user-doc --> This default implementation
+		 * returns null so that we can easily ignore cases; it's useful to ignore a
+		 * case when inheritance will catch all the cases anyway. <!-- end-user-doc
+		 * -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup
+		 * @generated
+		 */
+		public Adapter createACGroupAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId <em>AC Org Unit Id</em>}'.
-	 * <!-- begin-user-doc --> This default
-	 * implementation returns null so that we can easily ignore cases; it's
-	 * useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId
-	 * @generated
-	 */
-	public Adapter createACOrgUnitIdAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId <em>AC Org Unit Id</em>}'.
+		 * <!-- begin-user-doc --> This default
+		 * implementation returns null so that we can easily ignore cases; it's
+		 * useful to ignore a case when inheritance will catch all the cases anyway.
+		 * <!-- end-user-doc -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId
+		 * @generated
+		 */
+		public Adapter createACOrgUnitIdAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty <em>Org Unit Property</em>}'.
-	 * <!-- begin-user-doc --> This default
-	 * implementation returns null so that we can easily ignore cases; it's
-	 * useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty
-	 * @generated
-	 */
-	public Adapter createOrgUnitPropertyAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty <em>Org Unit Property</em>}'.
+		 * <!-- begin-user-doc --> This default
+		 * implementation returns null so that we can easily ignore cases; it's
+		 * useful to ignore a case when inheritance will catch all the cases anyway.
+		 * <!-- end-user-doc -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty
+		 * @generated
+		 */
+		public Adapter createOrgUnitPropertyAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement <em>Identifiable Element</em>}'.
-	 * <!-- begin-user-doc --> This default
-	 * implementation returns null so that we can easily ignore cases; it's
-	 * useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement
-	 * @generated
-	 */
-	public Adapter createIdentifiableElementAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement <em>Identifiable Element</em>}'.
+		 * <!-- begin-user-doc --> This default
+		 * implementation returns null so that we can easily ignore cases; it's
+		 * useful to ignore a case when inheritance will catch all the cases anyway.
+		 * <!-- end-user-doc -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement
+		 * @generated
+		 */
+		public Adapter createIdentifiableElementAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier <em>Unique Identifier</em>}'.
-	 * <!-- begin-user-doc --> This default
-	 * implementation returns null so that we can easily ignore cases; it's
-	 * useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier
-	 * @generated
-	 */
-	public Adapter createUniqueIdentifierAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for an object of class '
+		 * {@link org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier <em>Unique Identifier</em>}'.
+		 * <!-- begin-user-doc --> This default
+		 * implementation returns null so that we can easily ignore cases; it's
+		 * useful to ignore a case when inheritance will catch all the cases anyway.
+		 * <!-- end-user-doc -->
+		 *
+		 * @return the new adapter.
+		 * @see org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier
+		 * @generated
+		 */
+		public Adapter createUniqueIdentifierAdapter() {
+			return null;
+		}
 
-	/**
-	 * Creates a new adapter for the default case.
-	 * <!-- begin-user-doc --> This
-	 * default implementation returns null. <!-- end-user-doc -->
-	 *
-	 * @return the new adapter.
-	 * @generated
-	 */
-	public Adapter createEObjectAdapter() {
-		return null;
-	}
+		/**
+		 * Creates a new adapter for the default case.
+		 * <!-- begin-user-doc --> This
+		 * default implementation returns null. <!-- end-user-doc -->
+		 *
+		 * @return the new adapter.
+		 * @generated
+		 */
+		public Adapter createEObjectAdapter() {
+			return null;
+		}
 
 } // AccesscontrolAdapterFactory

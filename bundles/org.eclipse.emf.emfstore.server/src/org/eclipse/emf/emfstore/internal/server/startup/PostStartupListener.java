@@ -14,7 +14,7 @@ package org.eclipse.emf.emfstore.internal.server.startup;
 import java.util.Set;
 
 import org.eclipse.emf.emfstore.internal.server.EMFStoreInterface;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControlImpl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.connection.ConnectionHandler;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
  *
  * @author Otto
  */
-// TODO: replace AccessControlImpl with AccesControl iface
 public interface PostStartupListener {
 
 	/**
@@ -33,7 +32,7 @@ public interface PostStartupListener {
 	 * @param accessControl accesscontrol
 	 * @param connectionHandlers set of connection handler
 	 */
-	void postStartUp(ServerSpace serverspace, AccessControlImpl accessControl,
+	void postStartUp(ServerSpace serverspace, AccessControl accessControl,
 		Set<ConnectionHandler<? extends EMFStoreInterface>> connectionHandlers);
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -9,16 +9,16 @@
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication;
+package org.eclipse.emf.emfstore.server.auth;
 
 /**
- * Enum for all available
- * {@link org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.AuthenticationControlType}s.
+ * Enum for all available {@link org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType}s.
  *
  * @author emueller
+ * @since 1.5
  *
  */
-public enum AuthenticationControlType {
+public enum ESAuthenticationControlType {
 
 	/**
 	 * A verifier that uses a simple property file for authentication.
@@ -31,7 +31,7 @@ public enum AuthenticationControlType {
 		 */
 		@Override
 		public String toString() {
-			return "spfv";
+			return "spfv"; //$NON-NLS-1$
 		}
 	},
 	/**
@@ -45,7 +45,7 @@ public enum AuthenticationControlType {
 		 */
 		@Override
 		public String toString() {
-			return "ldap";
+			return "ldap"; //$NON-NLS-1$
 		}
 	},
 	/**
@@ -60,7 +60,7 @@ public enum AuthenticationControlType {
 		 */
 		@Override
 		public String toString() {
-			return "model";
+			return "model"; //$NON-NLS-1$
 		}
 	}
 }

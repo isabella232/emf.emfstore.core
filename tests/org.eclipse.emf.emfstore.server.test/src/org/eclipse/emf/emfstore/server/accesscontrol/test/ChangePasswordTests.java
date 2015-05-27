@@ -19,12 +19,12 @@ import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -33,7 +33,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link PAPrivileges#CreateUser} and {@link PAPrivileges#ChangeUserPassword} privileges of a
+ * Test the {@link ESProjectAdminPrivileges#CreateUser} and {@link ESProjectAdminPrivileges#ChangeUserPassword}
+ * privileges of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole} in a
  * more complex scenarios.
  *
@@ -47,10 +48,10 @@ public class ChangePasswordTests extends ProjectAdminTest {
 	@BeforeClass
 	public static void beforeClass() {
 		startEMFStoreWithPAProperties(
-			PAPrivileges.ShareProject,
-			PAPrivileges.AssignRoleToOrgUnit,
-			PAPrivileges.ChangeUserPassword,
-			PAPrivileges.ChangeAssignmentsOfOrgUnits);
+			ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit,
+			ESProjectAdminPrivileges.ChangeUserPassword,
+			ESProjectAdminPrivileges.ChangeAssignmentsOfOrgUnits);
 	}
 
 	@AfterClass
@@ -124,10 +125,8 @@ public class ChangePasswordTests extends ProjectAdminTest {
 		final ACOrgUnitId newUser = ServerUtil.createUser(getSuperUsersession(), getNewUsername());
 		ProjectUtil.share(getUsersession(), getLocalProject());
 		// share a second project
-		final ProjectId projectId =
-			ESGlobalProjectIdImpl.class.cast(
-				ProjectUtil.share(getSuperUsersession(), getLocalProject())
-				).toInternalAPI();
+		final ProjectId projectId = ESGlobalProjectIdImpl.class.cast(
+			ProjectUtil.share(getSuperUsersession(), getLocalProject())).toInternalAPI();
 		getAdminBroker().changeRole(
 			projectId,
 			newUser,

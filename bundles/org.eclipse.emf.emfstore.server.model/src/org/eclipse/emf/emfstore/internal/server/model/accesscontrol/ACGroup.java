@@ -11,22 +11,27 @@
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.server.model.ESGroup;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Group</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Group</b></em>'.
  *
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup#getMembers <em>Members</em>}</li>
- * </ul>
- * </p>
+ * @extends APIDelegate<ESGroup>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup#getMembers <em>Members</em>}
+ *          </li>
+ *          </ul>
+ *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACGroup()
  * @model
  * @generated
  */
-public interface ACGroup extends ACOrgUnit {
+public interface ACGroup extends ACOrgUnit<ESGroup> {
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit}.
@@ -42,6 +47,7 @@ public interface ACGroup extends ACOrgUnit {
 	 * @model keys="identifier"
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	EList<ACOrgUnit> getMembers();
 
 } // ACGroup

@@ -689,7 +689,8 @@ public final class ESModelMutatorUtil {
 		}
 	}
 
-	private void setMonoAttribute(EObject eObject, final EAttribute attribute, final AttributeSetter<?> attributeSetter) {
+	private void setMonoAttribute(EObject eObject, final EAttribute attribute,
+		final AttributeSetter<?> attributeSetter) {
 		setPerCommand(eObject, attribute, attributeSetter.createNewAttribute());
 	}
 
@@ -781,11 +782,6 @@ public final class ESModelMutatorUtil {
 		return eStructuralFeatures;
 	}
 
-	class Pair {
-		public EStructuralFeature feature;
-		public EObject value;
-	}
-
 	/**
 	 * @param random
 	 * @param uninitializedFeatureMapEntries
@@ -835,7 +831,7 @@ public final class ESModelMutatorUtil {
 				entry.setFeature(feature);
 				entry.setReferenceValue(
 					createOfType(
-					EReference.class.cast(feature).getEReferenceType()));
+						EReference.class.cast(feature).getEReferenceType()));
 				entries.add(entry);
 			} else {
 				final EAttribute attribute = EAttribute.class.cast(feature);
@@ -883,7 +879,7 @@ public final class ESModelMutatorUtil {
 		}
 	}
 
-	public EObject createOfType(EClass eClass) {
+	private EObject createOfType(EClass eClass) {
 		final EObject eObjectToAdd = EcoreUtil.create(eClass);
 		setEObjectAttributes(eObjectToAdd);
 		return eObjectToAdd;
@@ -1100,14 +1096,25 @@ public final class ESModelMutatorUtil {
 					if (random.nextBoolean()) {
 						// if the reference is ordered, do not use an index
 						final Integer newIndex = reference.isOrdered() ? null : random.nextInt(size);
-						setPerCommand(eObject, reference, possibleReferenceObjects.get(index), newIndex);
+						final EObject target = possibleReferenceObjects.get(index);
+						// if (!EMFCycleDetector.wouldBeCycle(config.getRootEObject(), eObject, target)) {
+						setPerCommand(eObject, reference, target, newIndex);
+						// } else {
+						// TODO
+						// }
+
 					} else {
 						final Object objectToMove = ownerList.get(random.nextInt(size));
 						movePerCommand(eObject, reference, objectToMove, index);
 					}
 				} else {
-					addPerCommand(eObject, reference, possibleReferenceObjects.get(index), random.nextBoolean()
+					final EObject target = possibleReferenceObjects.get(index);
+					// if (!EMFCycleDetector.wouldBeCycle(config.getRootEObject(), eObject, target)) {
+					addPerCommand(eObject, reference, target, random.nextBoolean()
 						&& size > 0 ? random.nextInt(size) : null);
+					// } else {
+					// TODO
+					// }
 				}
 
 				// ensures every EObject is set at most once
@@ -1116,7 +1123,12 @@ public final class ESModelMutatorUtil {
 				}
 			}
 		} else if (random.nextBoolean() || reference.isRequired()) {
-			setPerCommand(eObject, reference, possibleReferenceObjects.get(index));
+			final EObject target = possibleReferenceObjects.get(index);
+			// if (!EMFCycleDetector.wouldBeCycle(config.getRootEObject(), eObject, target)) {
+			setPerCommand(eObject, reference, target);
+			// } else {
+			// TODO
+			// }
 		}
 	}
 

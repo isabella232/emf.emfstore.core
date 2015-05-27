@@ -9,7 +9,7 @@
  * Contributors:
  * boehlke
  ******************************************************************************/
-package org.eclipse.emf.emfstore.internal.server.core.helper;
+package org.eclipse.emf.emfstore.server.auth;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,10 +20,11 @@ import java.lang.annotation.Target;
  * Marks methods that implement EmfStore methods.
  *
  * @author boehlke
+ * @since 1.5
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface EmfStoreMethod {
+public @interface ESMethod {
 	/**
 	 * the operation methodId, e.g. getproject
 	 */

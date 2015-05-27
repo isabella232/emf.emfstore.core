@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.ESCollections;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
@@ -28,8 +29,6 @@ import org.eclipse.emf.emfstore.internal.server.EMFStoreController;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
@@ -37,6 +36,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
@@ -56,8 +56,12 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 import com.google.common.base.Optional;
 
@@ -95,7 +99,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException
 	 *             if versionSpec can't be resolved or other failure
 	 */
-	@EmfStoreMethod(MethodId.RESOLVEVERSIONSPEC)
+	@ESMethod(MethodId.RESOLVEVERSIONSPEC)
 	public PrimaryVersionSpec resolveVersionSpec(ProjectId projectId, VersionSpec versionSpec)
 		throws InvalidVersionSpecException, ESException {
 
@@ -124,8 +128,9 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		}
 	}
 
-	private PrimaryVersionSpec resolveAncestorVersionSpec(ProjectHistory projectHistory, AncestorVersionSpec versionSpec)
-		throws InvalidVersionSpecException {
+	private PrimaryVersionSpec resolveAncestorVersionSpec(ProjectHistory projectHistory,
+		AncestorVersionSpec versionSpec)
+			throws InvalidVersionSpecException {
 
 		Version currentSource = getVersion(projectHistory, versionSpec.getSource());
 		Version currentTarget = getVersion(projectHistory, versionSpec.getTarget());
@@ -255,14 +260,15 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return an ID identifying the stored fragment(s)
 	 * @throws ESException in case the fragment couldn't be stored
 	 */
-	@EmfStoreMethod(MethodId.UPLOADCHANGEPACKAGEFRAGMENT)
+	@ESMethod(MethodId.UPLOADCHANGEPACKAGEFRAGMENT)
 	public String uploadChangePackageFragment(SessionId sessionId,
 		ProjectId projectId,
 		ChangePackageEnvelope envelope) throws ESException {
 
 		final String proxyId = generateProxyId(projectId.getId());
 
-		final SessionId session = getAuthorizationControl().resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
+		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		final Optional<ChangePackageFragmentUploadAdapter> maybeAdapter = ESCollections.find(session.eAdapters(),
 			ChangePackageFragmentUploadAdapter.class);
 		ChangePackageFragmentUploadAdapter adapter;
@@ -294,11 +300,12 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return a {@link ChangePackageEnvelope} containing the change package fragment
 	 * @throws ESException in case the mandatory session adapter is missing
 	 */
-	@EmfStoreMethod(MethodId.DOWNLOADCHANGEPACKAGEFRAGMENT)
+	@ESMethod(MethodId.DOWNLOADCHANGEPACKAGEFRAGMENT)
 	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
 		throws ESException {
 
-		final SessionId session = getAuthorizationControl().resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
+		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		final Optional<ChangePackageFragmentProviderAdapter> maybeAdapter = ESCollections.find(session.eAdapters(),
 			ChangePackageFragmentProviderAdapter.class);
 
@@ -346,12 +353,17 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return the new version
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.CREATEVERSION)
+	@ESMethod(MethodId.CREATEVERSION)
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
 		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException {
 
-		final ACUser user = getAuthorizationControl().resolveUser(sessionId);
+		getAccessControl().getSessions().isValid(sessionId.toAPI());
+		final ESUser rawUser = getAccessControl().getSessions().getRawUser(sessionId.toAPI());
+		final ACUser tmpUser = (ACUser) ESUserImpl.class.cast(rawUser).toInternalAPI();
+		final ESUser copyAndResolveUser = getAccessControl().getOrgUnitResolverServive().copyAndResolveUser(
+			tmpUser.toAPI());
+		final ACUser user = (ACUser) ESUserImpl.class.cast(copyAndResolveUser).toInternalAPI();
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 
 		// File-based change package should never arrive here in production mode
@@ -441,8 +453,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			}
 
 			ModelUtil.logInfo(
-				Messages.VersionSubInterfaceImpl_TotalTimeForCommit +
-				(System.currentTimeMillis() - currentTimeMillis));
+				Messages.VersionSubInterfaceImpl_TotalTimeForCommit + (System.currentTimeMillis() - currentTimeMillis));
 			return newVersion.getPrimarySpec();
 		}
 	}
@@ -457,8 +468,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		} else if (targetBranchName.equals(VersionSpec.GLOBAL)) {
 			throw new InvalidVersionSpecException(
 				Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-				+ VersionSpec.GLOBAL +
-				Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+				+ VersionSpec.GLOBAL + Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 		}
 	}
 
@@ -618,7 +628,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @return a list containing information about each branch
 	 * @throws ESException in case of failure
 	 */
-	@EmfStoreMethod(MethodId.GETBRANCHES)
+	@ESMethod(MethodId.GETBRANCHES)
 	public List<BranchInfo> getBranches(ProjectId projectId) throws ESException {
 		synchronized (getMonitor()) {
 			final ProjectHistory projectHistory = getSubInterface(ProjectSubInterfaceImpl.class).getProject(projectId);
@@ -676,7 +686,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException
 	 *             in case of failure
 	 */
-	@EmfStoreMethod(MethodId.GETCHANGES)
+	@ESMethod(MethodId.GETCHANGES)
 	public List<AbstractChangePackage> getChanges(ProjectId projectId, VersionSpec source, VersionSpec target)
 		throws InvalidVersionSpecException, ESException {
 

@@ -42,7 +42,8 @@ Export-Package: org.eclipse.emf.emfstore.internal.server.model;version="1.5.0";
   x-friends:="org.eclipse.emf.emfstore.client,
    org.eclipse.emf.emfstore.client.ui,
    org.eclipse.emf.emfstore.test.common,
-   org.eclipse.emf.emfstore.server.test",
+   org.eclipse.emf.emfstore.server.test,
+   org.eclipse.emf.emfstore.server",
  org.eclipse.emf.emfstore.internal.server.model.impl.api.query;version="1.5.0";x-friends:="org.eclipse.emf.emfstore.client.ui,org.eclipse.emf.emfstore.client,org.eclipse.emf.emfstore.client.test",
  org.eclipse.emf.emfstore.internal.server.model.impl.api.versionspec;version="1.5.0";
   x-friends:="org.eclipse.emf.emfstore.client,

@@ -18,9 +18,9 @@ import static org.junit.Assert.fail;
 
 import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link PAPrivileges#ChangeAssignmentsOfOrgUnits} privilege of a project admin
+ * Test the {@link ESProjectAdminPrivileges#ChangeAssignmentsOfOrgUnits} privilege of a project admin
  * role.
  * 
  * @author emueller
@@ -41,8 +41,8 @@ public class AssignOrgUnitToGroupMissingPrivilegeTests extends ProjectAdminTest 
 
 	@BeforeClass
 	public static void beforeClass() {
-		startEMFStoreWithPAProperties(PAPrivileges.ShareProject,
-			PAPrivileges.AssignRoleToOrgUnit);
+		startEMFStoreWithPAProperties(ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit);
 	}
 
 	@AfterClass

@@ -86,7 +86,7 @@ public final class ESExtensionElement {
 		try {
 			return Integer.parseInt(getAttribute(name));
 		} catch (final NumberFormatException e) {
-			return (Integer) handleErrorOrNull(exceptionInsteadOfNull, e);
+			return (Integer) handleErrorOrNull(exceptionInsteadOfNull, e, Messages.ESExtensionPoint_ValueNotFound);
 		}
 	}
 
@@ -99,7 +99,7 @@ public final class ESExtensionElement {
 	public String getAttribute(final String name) {
 		final String attribute = element.getAttribute(name);
 		if (attribute == null) {
-			handleErrorOrNull(exceptionInsteadOfNull, null);
+			handleErrorOrNull(exceptionInsteadOfNull, null, Messages.ESExtensionPoint_ValueNotFound);
 		}
 		return attribute;
 	}
@@ -119,9 +119,9 @@ public final class ESExtensionElement {
 			if (returnType.isInstance(executableExtension)) {
 				return (T) executableExtension;
 			}
-			return (T) handleErrorOrNull(exceptionInsteadOfNull, null);
+			return (T) handleErrorOrNull(exceptionInsteadOfNull, null, Messages.ESExtensionPoint_ValueNotFound);
 		} catch (final CoreException e) {
-			return (T) handleErrorOrNull(exceptionInsteadOfNull, e);
+			return (T) handleErrorOrNull(exceptionInsteadOfNull, e, Messages.ESExtensionPoint_ValueNotFound);
 		}
 	}
 

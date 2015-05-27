@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
@@ -107,8 +107,8 @@ public abstract class AbstractSubEmfstoreInterface {
 	 *
 	 * @return authorizationControl
 	 */
-	protected AuthorizationControl getAuthorizationControl() {
-		return parentInterface.getAuthorizationControl();
+	protected AccessControl getAccessControl() {
+		return parentInterface.getAccessControl();
 	}
 
 	/**

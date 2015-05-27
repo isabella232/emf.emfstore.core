@@ -10,15 +10,20 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.accesscontrol;
 
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitIdImpl;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Org Unit Id</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Org Unit Id</b></em>'.
+ *
+ * @extends APIDelegate<ESOrgUnitId>
+ *          <!-- end-user-doc -->
  *
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnitId()
  * @model
  * @generated
  */
-public interface ACOrgUnitId extends UniqueIdentifier {
+public interface ACOrgUnitId extends UniqueIdentifier, APIDelegate<ESOrgUnitIdImpl> {
 } // ACOrgUnitId

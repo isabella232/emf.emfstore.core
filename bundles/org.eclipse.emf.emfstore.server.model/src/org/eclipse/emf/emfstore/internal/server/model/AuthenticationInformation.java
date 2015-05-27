@@ -11,27 +11,31 @@
 package org.eclipse.emf.emfstore.internal.server.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Authentication Information</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Authentication Information</b></em>'.
  *
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getSessionId <em>Session Id</em>}
- * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getResolvedACUser <em>Resolved AC
- * User</em>}</li>
- * </ul>
- * </p>
+ * @extends APIDelegate<ESGlobalProjectId><!-- end-user-doc --
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getSessionId <em>Session
+ *          Id</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getResolvedACUser <em>
+ *          Resolved AC User</em>}</li>
+ *          </ul>
+ *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getAuthenticationInformation()
  * @model
  * @generated
  */
-public interface AuthenticationInformation extends EObject {
+public interface AuthenticationInformation extends EObject, APIDelegate<ESAuthenticationInformation> {
 	/**
 	 * Returns the value of the '<em><b>Session Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

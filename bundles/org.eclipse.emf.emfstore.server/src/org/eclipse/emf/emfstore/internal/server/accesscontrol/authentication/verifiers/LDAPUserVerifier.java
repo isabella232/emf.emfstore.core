@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -25,14 +25,14 @@ import javax.naming.directory.SearchResult;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.connection.ServerKeyStoreManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
- * Verifies username/password using LDAP.
+ * Verifies user name/password using LDAP.
  *
  * @author Wesendonk
  */
-public class LDAPVerifier extends AbstractAuthenticationControl {
+public class LDAPUserVerifier extends UserVerifier {
 
 	private final String ldapUrl;
 	private final String ldapBase;
@@ -46,13 +46,19 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 	/**
 	 * Default constructor.
 	 *
-	 * @param ldapUrl url, if url starts with ldaps:// SSL is used.
+	 * @param orgUnitProvider
+	 *            provides access to users and groups
+	 * @param ldapUrl
+	 *            URL, if the URL starts with {@code ldaps://}, SSL is used.
 	 * @param ldapBase base
 	 * @param searchDn dn
 	 * @param authUser user to allow access to server
 	 * @param authPassword password of user to allow access to server
 	 */
-	public LDAPVerifier(String ldapUrl, String ldapBase, String searchDn, String authUser, String authPassword) {
+	// TODO: recheck orgUnitProvider
+	public LDAPUserVerifier(ESOrgUnitProvider orgUnitProvider,
+		String ldapUrl, String ldapBase, String searchDn, String authUser, String authPassword) {
+		super(orgUnitProvider);
 		this.ldapUrl = ldapUrl;
 		this.ldapBase = ldapBase;
 		this.searchDn = searchDn;
@@ -66,14 +72,20 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 	}
 
 	/**
+	 * This method must be implemented by subclasses in order to verify a pair of username and password.
+	 * When using authentication you should use {@link org.eclipse.emf.emfstore.server.auth.ESUserVerifier
+	 * ESUserVerifier#verifyUser(String, String, ESClientVersionInfo)} in order to gain a session id.
 	 *
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
-	 *      java.lang.String, java.lang.String)
+	 * @param username
+	 *            the user name as entered by the client; may differ from the user name of the {@code resolvedUser}
+	 * @param password
+	 *            the password as entered by the client
+	 * @return boolean {@code true} if authentication was successful, {@code false} if not
+	 * @throws AccessControlException
+	 *             if an exception occurs during the verification process
 	 */
 	@Override
-	public boolean verifyPassword(ACUser resolvedUser, String username, String password) throws AccessControlException {
+	public boolean verifyPassword(String username, String password) throws AccessControlException {
 		DirContext dirContext = null;
 
 		// anonymous bind and resolve user
@@ -176,6 +188,16 @@ public class LDAPVerifier extends AbstractAuthenticationControl {
 			return null;
 		}
 		return resolvedName;
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+
 	}
 
 }

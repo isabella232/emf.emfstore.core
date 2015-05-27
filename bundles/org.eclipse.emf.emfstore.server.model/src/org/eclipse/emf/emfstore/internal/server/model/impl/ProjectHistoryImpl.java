@@ -25,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESProjectHistoryImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 
@@ -58,6 +59,12 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
  * @generated
  */
 public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESProjectHistoryImpl apiImpl;
+
 	/**
 	 * The cached value of the '{@link #getProjectId() <em>Project Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -497,6 +504,33 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 		result.append(projectDescription);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESProjectHistoryImpl toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESProjectHistoryImpl createAPI() {
+		return new ESProjectHistoryImpl(this);
 	}
 
 } // ProjectHistoryImpl

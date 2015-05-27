@@ -16,10 +16,10 @@ import static org.junit.Assert.assertFalse;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.Before;
@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link PAPrivileges#CreateUser} and {@link PAPrivileges#ChangeUserPassword} privileges of a
+ * Test the {@link ESProjectAdminPrivileges#CreateUser} and {@link ESProjectAdminPrivileges#ChangeUserPassword} privileges of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller
@@ -40,8 +40,8 @@ public class CreateUserWithPasswordTests extends ProjectAdminTest {
 	@BeforeClass
 	public static void beforeClass() {
 		startEMFStoreWithPAProperties(
-			PAPrivileges.CreateUser,
-			PAPrivileges.ChangeUserPassword);
+			ESProjectAdminPrivileges.CreateUser,
+			ESProjectAdminPrivileges.ChangeUserPassword);
 	}
 
 	public static void afterClass() {

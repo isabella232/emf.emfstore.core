@@ -20,13 +20,13 @@ import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.PAPrivileges;
 import org.eclipse.emf.emfstore.internal.server.core.Messages;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -51,9 +51,10 @@ public class AddInitialParticipantTest extends ProjectAdminTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		startEMFStoreWithPAProperties(PAPrivileges.ShareProject,
-			PAPrivileges.AssignRoleToOrgUnit // needed for share
-		);
+		startEMFStoreWithPAProperties(
+			ESProjectAdminPrivileges.ShareProject,
+			ESProjectAdminPrivileges.AssignRoleToOrgUnit // needed for share
+			);
 	}
 
 	@Test(expected = ESException.class)

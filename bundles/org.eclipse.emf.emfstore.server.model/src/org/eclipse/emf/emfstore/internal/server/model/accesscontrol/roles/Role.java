@@ -12,23 +12,29 @@ package org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
+import org.eclipse.emf.emfstore.server.model.ESRole;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Role</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Role</b></em>'.
  *
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#getProjects <em>Projects</em>}</li>
- * </ul>
- * </p>
+ * @extends APIDelegate<ESRole>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#getProjects <em>Projects
+ *          </em>}</li>
+ *          </ul>
+ *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage#getRole()
  * @model abstract="true"
  * @generated
  */
-public interface Role extends EObject {
+public interface Role extends EObject, APIDelegate<ESRole> {
 	/**
 	 * Returns the value of the '<em><b>Projects</b></em>' containment reference
 	 * list. The list contents are of type {@link org.eclipse.emf.emfstore.internal.server.model.ProjectId}. <!--

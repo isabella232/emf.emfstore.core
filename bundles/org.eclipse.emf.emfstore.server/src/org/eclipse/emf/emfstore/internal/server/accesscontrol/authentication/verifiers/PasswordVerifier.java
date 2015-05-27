@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -13,23 +13,21 @@
 package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers;
 
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthenticationControl;
 import org.eclipse.emf.emfstore.internal.server.connection.ServerKeyStoreManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ClientVersionOutOfDateException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ServerKeyStoreException;
 import org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation;
-import org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
-import org.eclipse.emf.emfstore.internal.server.model.SessionId;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
+import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 
 /**
  * Abstract class for authentication.
  *
  * @author wesendonk
  */
-public abstract class AbstractAuthenticationControl implements AuthenticationControl {
+public abstract class PasswordVerifier implements ESUserVerifier {
 
 	private final String superuser;
 	private final String superuserpw;
@@ -37,7 +35,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	/**
 	 * Default constructor.
 	 */
-	public AbstractAuthenticationControl() {
+	public PasswordVerifier() {
 		superuser = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER,
 			ServerConfiguration.SUPER_USER_DEFAULT);
 		superuserpw = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER_PASSWORD,
@@ -45,37 +43,7 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	}
 
 	/**
-	 * Tries to login the given user.
-	 *
-	 * @param resolvedUser
-	 *            the user instance as resolved by the user
-	 * @param username
-	 *            the username as determined by the client
-	 * @param password
-	 *            the password as entered by the client
-	 * @param clientVersionInfo
-	 *            the version of the client
-	 * @return an {@link AuthenticationInformation} instance holding information about the
-	 *         logged-in session
-	 *
-	 * @throws AccessControlException in case the login fails
-	 */
-	public AuthenticationInformation logIn(ACUser resolvedUser, String username, String password,
-		ClientVersionInfo clientVersionInfo)
-			throws AccessControlException {
-
-		checkClientVersion(clientVersionInfo);
-		password = preparePassword(password);
-
-		if (verifySuperUser(username, password) || verifyPassword(resolvedUser, username, password)) {
-			return createAuthenticationInfo();
-		}
-
-		throw new AccessControlException();
-	}
-
-	/**
-	 * Creates a new {@link AuthenticationInformation} with a {@link SessionId} set.
+	 * Creates a new {@link AuthenticationInformation} with a session ID set.
 	 *
 	 * @return a new instance of an {@link AuthenticationInformation} with an already
 	 *         set session ID
@@ -100,9 +68,9 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	}
 
 	/**
-	 * Check username and password against superuser.
+	 * Check user name and password against superuser.
 	 *
-	 * @param username username
+	 * @param username user name
 	 * @param password password
 	 * @return true if super user
 	 */
@@ -111,29 +79,19 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	public void logout(SessionId sessionId) throws AccessControlException {
-	}
-
-	/**
 	 * This method must be implemented by subclasses in order to verify a pair of username and password.
-	 * When using authentication you should use
-	 * {@link AuthenticationControl#logIn(ACUser, String, String, ClientVersionInfo)} in order to gain a
-	 * session id.
+	 * When using authentication you should use {@link ESUserVerifier#logIn(String, String, ESClientVersionInfo)} in
+	 * order to gain a session id.
 	 *
-	 * @param resolvedUser
-	 *            the user instance that has been resolved by the user
 	 * @param username
-	 *            the username as entered by the client; may differ from the user name of the {@code resolvedUser}
+	 *            the user name as entered by the client; may differ from the user name of the {@code resolvedUser}
 	 * @param password
 	 *            the password as entered by the client
 	 * @return boolean {@code true} if authentication was successful, {@code false} if not
 	 * @throws AccessControlException
 	 *             if an exception occurs during the verification process
 	 */
-	protected abstract boolean verifyPassword(ACUser resolvedUser,
-		String username, String password) throws AccessControlException;
+	protected abstract boolean verifyPassword(String username, String password) throws AccessControlException;
 
 	/**
 	 * Checks whether the given client version is valid.
@@ -144,10 +102,10 @@ public abstract class AbstractAuthenticationControl implements AuthenticationCon
 	 * @throws ClientVersionOutOfDateException
 	 *             in case the given client version is not valid
 	 */
-	// TODO include client name in verification
-	protected void checkClientVersion(ClientVersionInfo clientVersionInfo) throws ClientVersionOutOfDateException {
+	protected void checkClientVersion(ESClientVersionInfo clientVersionInfo) throws ClientVersionOutOfDateException {
 		VersionVerifier.verify(
 			ServerConfiguration.getSplittedProperty(ServerConfiguration.ACCEPTED_VERSIONS),
-			clientVersionInfo);
+			org.eclipse.emf.emfstore.internal.server.model.impl.api.ESClientVersionInfoImpl.class.cast(
+				clientVersionInfo).toInternalAPI());
 	}
 }

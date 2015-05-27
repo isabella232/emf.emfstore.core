@@ -27,6 +27,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.OrgUnitProperty;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitImpl;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>AC Org Unit</b></em>'. <!-- end-user-doc -->
@@ -44,7 +46,12 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
  *
  * @generated
  */
-public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit {
+public class ACOrgUnitImpl<E extends ESOrgUnit> extends IdentifiableElementImpl implements ACOrgUnit<E> {
+
+	/**
+	 * @generated NOT
+	 */
+	private E apiImpl;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -183,6 +190,7 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 * @generated NOT
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof ACOrgUnit) {
@@ -364,6 +372,32 @@ public class ACOrgUnitImpl extends IdentifiableElementImpl implements ACOrgUnit 
 		result.append(description);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public E toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public E createAPI() {
+		return (E) new ESOrgUnitImpl(this);
 	}
 
 } // ACOrgUnitImpl

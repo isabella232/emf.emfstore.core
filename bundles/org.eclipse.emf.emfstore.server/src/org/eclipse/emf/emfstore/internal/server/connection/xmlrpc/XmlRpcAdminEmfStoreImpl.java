@@ -124,6 +124,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getMembers(SessionId sessionId, ACOrgUnitId groupId) throws ESException {
 		return getAdminEmfStore().getMembers(sessionId, groupId);
 	}
@@ -131,13 +132,14 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
-	public ACOrgUnit getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
+	public ACOrgUnit<?> getOrgUnit(SessionId sessionId, ACOrgUnitId orgUnitId) throws ESException {
 		return getAdminEmfStore().getOrgUnit(sessionId, orgUnitId);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getOrgUnits(SessionId sessionId) throws ESException {
 		return getAdminEmfStore().getOrgUnits(sessionId);
 	}
@@ -145,6 +147,7 @@ public class XmlRpcAdminEmfStoreImpl implements AdminEmfStore {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("rawtypes")
 	public List<ACOrgUnit> getParticipants(SessionId sessionId, ProjectId projectId) throws ESException {
 		return getAdminEmfStore().getParticipants(sessionId, projectId);
 	}

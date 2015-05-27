@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -15,23 +15,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
  * Calls all available verifiers and tries to verify the given credentials.
  *
  * @author wesendon
  */
-public class VerifierChain extends AbstractAuthenticationControl {
+public class UserVerifierChain extends UserVerifier {
 
-	private final ArrayList<AbstractAuthenticationControl> verifiers;
+	// TODO: wrong type
+	private final ArrayList<UserVerifier> verifiers;
 
 	/**
 	 * Constructs an empty verifier chain.
+	 *
+	 * @param orgUnitProvider
+	 *            an {@link ESOrgUnitProvider} for finding users
 	 */
-	public VerifierChain() {
-		super();
-		verifiers = new ArrayList<AbstractAuthenticationControl>();
+	public UserVerifierChain(ESOrgUnitProvider orgUnitProvider) {
+		super(orgUnitProvider);
+		verifiers = new ArrayList<UserVerifier>();
 	}
 
 	/**
@@ -39,7 +43,7 @@ public class VerifierChain extends AbstractAuthenticationControl {
 	 *
 	 * @return list of verifier
 	 */
-	public List<AbstractAuthenticationControl> getVerifiers() {
+	public List<UserVerifier> getVerifiers() {
 		return verifiers;
 	}
 
@@ -47,18 +51,26 @@ public class VerifierChain extends AbstractAuthenticationControl {
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.AbstractAuthenticationControl#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
+	 * @see org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers.PasswordVerifier#verifyPassword(org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser,
 	 *      java.lang.String, java.lang.String)
 	 */
 	@Override
-	protected boolean verifyPassword(ACUser resolvedUser, String username, String password)
+	protected boolean verifyPassword(String username, String password)
 		throws AccessControlException {
-		for (final AbstractAuthenticationControl verifier : verifiers) {
-			if (verifier.verifyPassword(resolvedUser, username, password)) {
+		for (final UserVerifier verifier : verifiers) {
+			if (verifier.verifyPassword(username, password)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
+	 */
+	public void init(ESOrgUnitProvider orgUnitProvider) {
+	}
 }

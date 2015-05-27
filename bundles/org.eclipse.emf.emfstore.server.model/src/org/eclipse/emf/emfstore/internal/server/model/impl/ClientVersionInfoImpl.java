@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo;
 import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESClientVersionInfoImpl;
+import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Client Version Info</b></em>'. <!--
@@ -31,6 +33,12 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
  * @generated
  */
 public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionInfo {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESClientVersionInfoImpl apiImpl;
+
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -221,6 +229,31 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 		result.append(name);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESClientVersionInfo toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESClientVersionInfoImpl createAPI() {
+		return new ESClientVersionInfoImpl(this);
 	}
 
 } // ClientVersionInfoImpl

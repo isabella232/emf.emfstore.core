@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
+import org.eclipse.emf.emfstore.server.model.ESUser;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>AC User</b></em>'. <!-- end-user-doc -->
@@ -42,7 +44,13 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  *
  * @generated
  */
-public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
+public class ACUserImpl extends ACOrgUnitImpl<ESUser> implements ACUser {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESUserImpl apiImpl;
+
 	/**
 	 * The default value of the '{@link #getFirstName() <em>First Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -343,6 +351,29 @@ public class ACUserImpl extends ACOrgUnitImpl implements ACUser {
 		result.append(password);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 */
+	@Override
+	public ESUser toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 */
+	@Override
+	public ESUserImpl createAPI() {
+		return new ESUserImpl(this);
 	}
 
 } // ACUserImpl

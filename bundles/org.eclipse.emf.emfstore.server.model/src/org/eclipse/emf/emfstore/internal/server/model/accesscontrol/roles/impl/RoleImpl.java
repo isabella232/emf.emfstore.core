@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESRoleImpl;
+import org.eclipse.emf.emfstore.server.model.ESRole;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Role</b></em>'. <!-- end-user-doc -->
@@ -37,6 +39,12 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
  * @generated
  */
 public abstract class RoleImpl extends EObjectImpl implements Role {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESRoleImpl apiImpl;
+
 	/**
 	 * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -236,6 +244,31 @@ public abstract class RoleImpl extends EObjectImpl implements Role {
 	 */
 	protected boolean isMyProject(ProjectId projectId) {
 		return getProjects().contains(projectId);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESRole toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESRoleImpl createAPI() {
+		return new ESRoleImpl(this);
 	}
 
 } // RoleImpl

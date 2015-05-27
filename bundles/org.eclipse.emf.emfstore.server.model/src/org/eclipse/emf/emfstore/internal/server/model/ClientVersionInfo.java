@@ -11,24 +11,28 @@
 package org.eclipse.emf.emfstore.internal.server.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
+import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object ' <em><b>Client Version Info</b></em>'. <!--
- * end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object ' <em><b>Client Version Info</b></em>'.
  *
- * <p>
- * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion <em>Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getName <em>Name</em>}</li>
- * </ul>
- * </p>
+ * @extends APIDelegate<ESClientVersionInfo>
+ *          <!-- end-user-doc -->
+ *
+ *          <p>
+ *          The following features are supported:
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion <em>Version</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getName <em>Name</em>}</li>
+ *          </ul>
+ *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getClientVersionInfo()
  * @model
  * @generated
  */
-public interface ClientVersionInfo extends EObject {
+public interface ClientVersionInfo extends EObject, APIDelegate<ESClientVersionInfo> {
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute. <!--
 	 * begin-user-doc -->

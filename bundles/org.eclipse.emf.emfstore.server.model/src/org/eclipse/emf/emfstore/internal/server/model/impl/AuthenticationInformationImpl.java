@@ -20,6 +20,7 @@ import org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation;
 import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Authentication Information</b></em>'. <!--
@@ -37,6 +38,12 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  * @generated
  */
 public class AuthenticationInformationImpl extends EObjectImpl implements AuthenticationInformation {
+
+	/**
+	 * @generated NOT
+	 */
+	private ESAuthenticationInformationImpl apiImpl;
+
 	/**
 	 * The cached value of the '{@link #getSessionId() <em>Session Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -333,6 +340,31 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 			return resolvedACUser != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESAuthenticationInformationImpl toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESAuthenticationInformationImpl createAPI() {
+		return new ESAuthenticationInformationImpl(this);
 	}
 
 } // AuthenticationInformationImpl

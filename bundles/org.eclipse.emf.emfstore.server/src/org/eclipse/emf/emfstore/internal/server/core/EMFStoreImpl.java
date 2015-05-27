@@ -23,15 +23,14 @@ import java.util.UUID;
 
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.ESCollections;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.EMFStore;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.eclipse.emf.emfstore.internal.server.accesscontrol.AuthorizationControl;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod;
-import org.eclipse.emf.emfstore.internal.server.core.helper.EmfStoreMethod.MethodId;
-import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.ChangePackageFragmentUploadAdapter;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.ChangePackageFragmentProviderAdapter;
+import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.ChangePackageFragmentUploadAdapter;
 import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.EMFStorePropertiesSubInterfaceImpl;
 import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.EMFStoreVersionSubInterface;
 import org.eclipse.emf.emfstore.internal.server.core.subinterfaces.EPackageSubInterfaceImpl;
@@ -48,7 +47,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangeP
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.server.auth.ESMethod;
+import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
+import org.eclipse.emf.emfstore.server.auth.ESMethodInvocation;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.eclipse.emf.emfstore.server.model.ESSessionId;
 import org.eclipse.emf.emfstore.server.observer.ESServerCallObserver;
 
 import com.google.common.base.Optional;
@@ -101,14 +104,14 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	 *
 	 * @param serverSpace
 	 *            the {@link ServerSpace}
-	 * @param authorizationControl
-	 *            the {@link AuthorizationControl}
+	 * @param accessControl
+	 *            the {@link AccessControl}
 	 * @throws FatalESException
 	 *             in case of failure
 	 */
-	public EMFStoreImpl(ServerSpace serverSpace, AuthorizationControl authorizationControl)
+	public EMFStoreImpl(ServerSpace serverSpace, AccessControl accessControl)
 		throws FatalESException {
-		super(serverSpace, authorizationControl);
+		super(serverSpace, accessControl);
 		serverCallObservers = initServerCallObservers();
 	}
 
@@ -148,7 +151,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	protected void addSubInterface(AbstractSubEmfstoreInterface iface) {
 		super.addSubInterface(iface);
 		for (final Method method : iface.getClass().getMethods()) {
-			final EmfStoreMethod implSpec = method.getAnnotation(EmfStoreMethod.class);
+			final ESMethod implSpec = method.getAnnotation(ESMethod.class);
 			if (implSpec != null) {
 				subInterfaceMethods.put(implSpec.value(), new SubInterfaceMethod(iface, method));
 			}
@@ -162,8 +165,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	 * @see java.lang.reflect.InvocationHandler#invoke(java.lang.Object, java.lang.reflect.Method, java.lang.Object[])
 	 */
 	public Object invoke(Object obj, final Method method, final Object[] args) throws ESException {
-		final MethodInvocation methodInvocation = new MethodInvocation(method.getName(), args);
-		getAuthorizationControl().checkAccess(methodInvocation);
+		final ESMethodInvocation methodInvocation = new ESMethodInvocation(method.getName(), args);
 
 		final Object[] adjustedArgs = adjustParameters(args);
 
@@ -274,8 +276,8 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	private ChangePackageProxy createAndRegisterChangePackageProxy(final SessionId session,
 		final AbstractChangePackage changePackage) {
 
-		final SessionId sessionId = getAuthorizationControl()
-			.resolveSessionById(session.getId());
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(session.getId());
+		final SessionId sessionId = APIUtil.toInternal(SessionId.class, resolvedSession);
 
 		ChangePackageFragmentProviderAdapter adapter;
 		final Optional<ChangePackageFragmentProviderAdapter> maybeAdapter = ESCollections.find(
@@ -311,11 +313,12 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 				Messages.EMFStoreImpl_NoValidSessiondIdFound);
 		}
 
-		final SessionId sessionId = getAuthorizationControl()
-			.resolveSessionById(maybeSession.get().getId());
+		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(
+			maybeSession.get().getId());
+		final SessionId sessionId = APIUtil.toInternal(SessionId.class, resolvedSession);
 
-		final Optional<ChangePackageFragmentUploadAdapter> maybeAdapter =
-			ESCollections.find(sessionId.eAdapters(), ChangePackageFragmentUploadAdapter.class);
+		final Optional<ChangePackageFragmentUploadAdapter> maybeAdapter = ESCollections.find(sessionId.eAdapters(),
+			ChangePackageFragmentUploadAdapter.class);
 
 		if (!maybeAdapter.isPresent()) {
 			throw new ESException(
@@ -365,7 +368,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	 * @throws IllegalArgumentException thrown by Proxy.newInstance
 	 * @throws FatalESException thrown if something fatal happens
 	 */
-	public static EMFStore createInterface(ServerSpace serverSpace, AuthorizationControl accessControl)
+	public static EMFStore createInterface(ServerSpace serverSpace, AccessControl accessControl)
 		throws IllegalArgumentException, FatalESException {
 		return (EMFStore) Proxy.newProxyInstance(EMFStoreImpl.class.getClassLoader(), new Class[] { EMFStore.class },
 			new EMFStoreImpl(serverSpace, accessControl));

@@ -83,7 +83,9 @@ public class AccesscontrolSwitch<T> {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
-		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
+		return eSuperTypes.isEmpty() ?
+			defaultCase(theEObject) :
+				doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -112,6 +114,7 @@ public class AccesscontrolSwitch<T> {
 			return result;
 		}
 		case AccesscontrolPackage.AC_ORG_UNIT: {
+			@SuppressWarnings("rawtypes")
 			final ACOrgUnit acOrgUnit = (ACOrgUnit) theEObject;
 			T result = caseACOrgUnit(acOrgUnit);
 			if (result == null) {
@@ -188,7 +191,7 @@ public class AccesscontrolSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseACOrgUnit(ACOrgUnit object) {
+	public T caseACOrgUnit(@SuppressWarnings("rawtypes") ACOrgUnit object) {
 		return null;
 	}
 

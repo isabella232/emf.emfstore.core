@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.emfstore.internal.common.model.impl.UniqueIdentifierImpl;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitIdImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>AC Org Unit Id</b></em>'. <!-- end-user-doc
@@ -24,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  * @generated
  */
 public class ACOrgUnitIdImpl extends UniqueIdentifierImpl implements ACOrgUnitId {
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -42,5 +44,35 @@ public class ACOrgUnitIdImpl extends UniqueIdentifierImpl implements ACOrgUnitId
 	protected EClass eStaticClass() {
 		return AccesscontrolPackage.Literals.AC_ORG_UNIT_ID;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESOrgUnitIdImpl toAPI() {
+		if (apiImpl == null) {
+			apiImpl = createAPI();
+		}
+		return apiImpl;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 *
+	 * @generated NOT
+	 */
+	public ESOrgUnitIdImpl createAPI() {
+		return new ESOrgUnitIdImpl(this);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	private ESOrgUnitIdImpl apiImpl;
 
 } // ACOrgUnitIdImpl

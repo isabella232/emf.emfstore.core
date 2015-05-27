@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.ESSessionId;
  * @author emueller
  *
  */
-public class ESSessionIdImpl extends AbstractAPIImpl<ESSessionId, SessionId> implements ESSessionId {
+public class ESSessionIdImpl extends AbstractAPIImpl<ESSessionIdImpl, SessionId> implements ESSessionId {
 
 	/**
 	 * Constructor.
