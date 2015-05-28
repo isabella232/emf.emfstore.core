@@ -69,193 +69,222 @@ public class ConnectionMock implements ConnectionManager {
 		sessions = new LinkedHashSet<SessionId>();
 	}
 
-	public AuthenticationInformation logIn(String username, String password, ServerInfo severInfo,
-		ClientVersionInfo clientVersionInfo) throws ESException {
+	public AuthenticationInformation logIn(final String username, final String password, final ServerInfo severInfo,
+		final ClientVersionInfo clientVersionInfo) throws ESException {
 		final ESAuthenticationInformation logIn = accessControl.getLoginService()
-			.logIn(username, password, clientVersionInfo.toAPI());
-		final AuthenticationInformation internalAPI = ESAuthenticationInformationImpl.class.cast(logIn).toInternalAPI();
-		sessions.add(internalAPI.getSessionId());
-		return internalAPI;
+			.logIn(username, password, ModelUtil.clone(clientVersionInfo).toAPI());
+		final AuthenticationInformation authInfo = ESAuthenticationInformationImpl.class.cast(logIn).toInternalAPI();
+		sessions.add(authInfo.getSessionId());
+		return authInfo;
 	}
 
-	public void logout(SessionId sessionId) throws ESException {
-		accessControl.getLoginService().logout(sessionId.toAPI());
+	public void logout(final SessionId sessionId) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		accessControl.getLoginService().logout(clonedSessionId.toAPI());
 		sessions.remove(sessionId);
 	}
 
-	public boolean isLoggedIn(SessionId id) {
-		return sessions.contains(id);
+	public boolean isLoggedIn(final SessionId sessionId) {
+		return sessions.contains(ModelUtil.clone(sessionId));
 	}
 
-	public void checkSessionId(SessionId sessionId) throws ESException {
-		if (!isLoggedIn(sessionId)) {
-			throw new AccessControlException();
-		}
+	public List<ProjectInfo> getProjectList(final SessionId sessionId) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(emfStore.getProjectList(clonedSessionId));
 	}
 
-	public List<ProjectInfo> getProjectList(SessionId sessionId) throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getProjectList(ModelUtil.clone(sessionId)));
-	}
-
-	public Project getProject(SessionId sessionId, ProjectId projectId, VersionSpec versionSpec)
+	public Project getProject(final SessionId sessionId, final ProjectId projectId, final VersionSpec versionSpec)
 		throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getProject(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(versionSpec)));
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.getProject(clonedSessionId,
+				ModelUtil.clone(projectId),
+				ModelUtil.clone(versionSpec)));
 	}
 
 	public PrimaryVersionSpec createVersion(final SessionId sessionId, final ProjectId projectId,
 		final PrimaryVersionSpec baseVersionSpec, final AbstractChangePackage changePackage,
 		final BranchVersionSpec targetBranch,
-		final PrimaryVersionSpec sourceVersion, final LogMessage logMessage) throws ESException,
-		InvalidVersionSpecException {
+		final PrimaryVersionSpec sourceVersion, final LogMessage logMessage)
+			throws ESException, InvalidVersionSpecException {
 
 		AbstractChangePackage cp = changePackage;
-		checkSessionId(sessionId);
+		final SessionId clonedSessionId = checkSessionId(sessionId);
 
 		if (FileBasedChangePackage.class.isInstance(changePackage)) {
 			cp = FileBasedChangePackage.class.cast(changePackage).toInMemoryChangePackage();
 		}
 
-		return ModelUtil.clone(emfStore.createVersion(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
+		return ModelUtil.clone(emfStore.createVersion(clonedSessionId, ModelUtil.clone(projectId),
 			ModelUtil.clone(baseVersionSpec), ModelUtil.clone(cp), ModelUtil.clone(targetBranch),
 			ModelUtil.clone(sourceVersion), ModelUtil.clone(logMessage)));
 	}
 
-	public PrimaryVersionSpec resolveVersionSpec(SessionId sessionId, ProjectId projectId, VersionSpec versionSpec)
-		throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.resolveVersionSpec(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(versionSpec)));
+	public PrimaryVersionSpec resolveVersionSpec(final SessionId sessionId, final ProjectId projectId,
+		final VersionSpec versionSpec)
+			throws ESException {
+
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.resolveVersionSpec(clonedSessionId,
+				ModelUtil.clone(projectId),
+				ModelUtil.clone(versionSpec)));
 	}
 
-	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
+	public List<AbstractChangePackage> getChanges(final SessionId sessionId, final ProjectId projectId,
+		final VersionSpec source,
 		VersionSpec target) throws ESException {
-		checkSessionId(sessionId);
+		final SessionId clonedSessionId = checkSessionId(sessionId);
 		final List<AbstractChangePackage> changes = emfStore.getChanges(
-			ModelUtil.clone(sessionId),
+			clonedSessionId,
 			ModelUtil.clone(projectId),
 			ModelUtil.clone(source),
 			ModelUtil.clone(target));
 		return ModelUtil.clone(changes);
 	}
 
-	public List<BranchInfo> getBranches(SessionId sessionId, ProjectId projectId) throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getBranches(ModelUtil.clone(sessionId), ModelUtil.clone(projectId)));
+	public List<BranchInfo> getBranches(final SessionId sessionId, final ProjectId projectId) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(emfStore.getBranches(clonedSessionId, ModelUtil.clone(projectId)));
 	}
 
-	public List<HistoryInfo> getHistoryInfo(SessionId sessionId, ProjectId projectId, HistoryQuery<?> historyQuery)
-		throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getHistoryInfo(ModelUtil.clone(sessionId), ModelUtil.clone(projectId),
-			ModelUtil.clone(historyQuery)));
+	public List<HistoryInfo> getHistoryInfo(final SessionId sessionId, final ProjectId projectId,
+		final HistoryQuery<?> historyQuery)
+			throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.getHistoryInfo(
+				clonedSessionId,
+				ModelUtil.clone(projectId),
+				ModelUtil.clone(historyQuery)));
 	}
 
-	public void addTag(SessionId sessionId, ProjectId projectId, PrimaryVersionSpec versionSpec, TagVersionSpec tag)
-		throws ESException {
-		checkSessionId(sessionId);
-		emfStore.addTag(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), ModelUtil.clone(versionSpec),
+	public void addTag(final SessionId sessionId, final ProjectId projectId, final PrimaryVersionSpec versionSpec,
+		final TagVersionSpec tag)
+			throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		emfStore.addTag(
+			clonedSessionId,
+			ModelUtil.clone(projectId),
+			ModelUtil.clone(versionSpec),
 			ModelUtil.clone(tag));
 	}
 
-	public void removeTag(SessionId sessionId, ProjectId projectId, PrimaryVersionSpec versionSpec, TagVersionSpec tag)
-		throws ESException {
-		checkSessionId(sessionId);
-		emfStore.removeTag(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), ModelUtil.clone(versionSpec),
+	public void removeTag(final SessionId sessionId, final ProjectId projectId, final PrimaryVersionSpec versionSpec,
+		final TagVersionSpec tag)
+			throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		emfStore.removeTag(
+			clonedSessionId,
+			ModelUtil.clone(projectId),
+			ModelUtil.clone(versionSpec),
 			ModelUtil.clone(tag));
 	}
 
-	public ProjectInfo createEmptyProject(SessionId sessionId, String name, String description, LogMessage logMessage)
-		throws ESException {
-		final SessionId clonedSessionId = ModelUtil.clone(sessionId);
-		checkSessionId(clonedSessionId);
+	public ProjectInfo createEmptyProject(final SessionId sessionId, final String name, final String description,
+		final LogMessage logMessage)
+			throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
 		final ProjectInfo projectInfo = emfStore.createEmptyProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage));
-		final ESSessionId resolvedSession = accessControl.getSessions().resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = accessControl.getSessions().resolveSessionById(clonedSessionId.getId());
 		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
 
-	public ProjectInfo createProject(SessionId sessionId, String name, String description, LogMessage logMessage,
-		Project project) throws ESException {
+	public ProjectInfo createProject(final SessionId sessionId, final String name, final String description,
+		final LogMessage logMessage,
+		final Project project) throws ESException {
+
 		final SessionId clonedSessionId = ModelUtil.clone(sessionId);
 		checkSessionId(clonedSessionId);
 		final ProjectInfo projectInfo = emfStore.createProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage),
 			ModelUtil.clone(project));
-		final ESSessionId resolvedSession = accessControl.getSessions().resolveSessionById(sessionId.getId());
+		final ESSessionId resolvedSession = accessControl.getSessions().resolveSessionById(clonedSessionId.getId());
 		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		ShareProjectAdapter.attachTo(session, projectInfo.getProjectId());
 		return projectInfo;
 	}
 
-	public void deleteProject(SessionId sessionId, ProjectId projectId, boolean deleteFiles) throws ESException {
-		checkSessionId(sessionId);
+	public void deleteProject(final SessionId sessionId, final ProjectId projectId, final boolean deleteFiles)
+		throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
 		this.deleteFiles = deleteFiles;
-		emfStore.deleteProject(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), deleteFiles);
+		emfStore.deleteProject(clonedSessionId, ModelUtil.clone(projectId), deleteFiles);
 	}
 
 	public boolean didDeleteFiles() {
 		return deleteFiles;
 	}
 
-	public ACUser resolveUser(SessionId sessionId, ACOrgUnitId id) throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.resolveUser(ModelUtil.clone(sessionId), ModelUtil.clone(id)));
+	public ACUser resolveUser(final SessionId sessionId, final ACOrgUnitId id) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(emfStore.resolveUser(clonedSessionId, ModelUtil.clone(id)));
 	}
 
-	public ProjectId importProjectHistoryToServer(SessionId sessionId, ProjectHistory projectHistory)
+	public ProjectId importProjectHistoryToServer(final SessionId sessionId, final ProjectHistory projectHistory)
 		throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.importProjectHistoryToServer(ModelUtil.clone(sessionId),
-			ModelUtil.clone(projectHistory)));
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.importProjectHistoryToServer(
+				clonedSessionId,
+				ModelUtil.clone(projectHistory)));
 	}
 
-	public ProjectHistory exportProjectHistoryFromServer(SessionId sessionId, ProjectId projectId)
+	public ProjectHistory exportProjectHistoryFromServer(final SessionId sessionId, final ProjectId projectId)
 		throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.exportProjectHistoryFromServer(ModelUtil.clone(sessionId),
-			ModelUtil.clone(projectId)));
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.exportProjectHistoryFromServer(clonedSessionId,
+				ModelUtil.clone(projectId)));
 	}
 
-	public FileTransferInformation uploadFileChunk(SessionId sessionId, ProjectId projectId, FileChunk fileChunk)
-		throws ESException {
-		checkSessionId(sessionId);
-		return emfStore.uploadFileChunk(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), fileChunk);
-	}
-
-	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
-		FileTransferInformation fileInformation)
+	public FileTransferInformation uploadFileChunk(final SessionId sessionId, final ProjectId projectId,
+		final FileChunk fileChunk)
 			throws ESException {
-		checkSessionId(sessionId);
-		return emfStore.downloadFileChunk(ModelUtil.clone(sessionId), ModelUtil.clone(projectId), fileInformation);
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return emfStore.uploadFileChunk(clonedSessionId, ModelUtil.clone(projectId), fileChunk);
 	}
 
-	public void transmitProperty(SessionId sessionId, OrgUnitProperty changedProperty, ACUser user, ProjectId projectId)
-		throws ESException {
-		checkSessionId(sessionId);
-		emfStore.transmitProperty(ModelUtil.clone(sessionId), ModelUtil.clone(changedProperty), ModelUtil.clone(user),
+	public FileChunk downloadFileChunk(final SessionId sessionId, final ProjectId projectId,
+		final FileTransferInformation fileInformation) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return emfStore.downloadFileChunk(clonedSessionId, ModelUtil.clone(projectId), fileInformation);
+	}
+
+	public void transmitProperty(final SessionId sessionId, final OrgUnitProperty changedProperty, final ACUser user,
+		final ProjectId projectId)
+			throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		emfStore.transmitProperty(
+			clonedSessionId,
+			ModelUtil.clone(changedProperty),
+			ModelUtil.clone(user),
 			ModelUtil.clone(projectId));
 	}
 
-	public List<EMFStoreProperty> setEMFProperties(SessionId sessionId, List<EMFStoreProperty> property,
-		ProjectId projectId) throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.setEMFProperties(ModelUtil.clone(sessionId), ModelUtil.clone(property),
-			ModelUtil.clone(projectId)));
+	public List<EMFStoreProperty> setEMFProperties(final SessionId sessionId, final List<EMFStoreProperty> property,
+		final ProjectId projectId) throws ESException {
+
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(
+			emfStore.setEMFProperties(
+				clonedSessionId,
+				ModelUtil.clone(property),
+				ModelUtil.clone(projectId)));
 	}
 
-	public List<EMFStoreProperty> getEMFProperties(SessionId sessionId, ProjectId projectId) throws ESException {
-		checkSessionId(sessionId);
-		return ModelUtil.clone(emfStore.getEMFProperties(ModelUtil.clone(sessionId), ModelUtil.clone(projectId)));
+	public List<EMFStoreProperty> getEMFProperties(final SessionId sessionId, final ProjectId projectId)
+		throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return ModelUtil.clone(emfStore.getEMFProperties(clonedSessionId, ModelUtil.clone(projectId)));
 	}
 
-	public void registerEPackage(SessionId sessionId, EPackage pkg) throws ESException {
-		checkSessionId(sessionId);
-		emfStore.registerEPackage(ModelUtil.clone(sessionId), ModelUtil.clone(pkg));
+	public void registerEPackage(final SessionId sessionId, final EPackage pkg) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		emfStore.registerEPackage(clonedSessionId, ModelUtil.clone(pkg));
 	}
 
 	/**
@@ -263,8 +292,9 @@ public class ConnectionMock implements ConnectionManager {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#getVersion(org.eclipse.emf.emfstore.internal.server.model.SessionId)
 	 */
-	public String getVersion(SessionId sessionId) throws ESException {
-		return emfStore.getVersion(sessionId);
+	public String getVersion(final SessionId sessionId) throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
+		return emfStore.getVersion(clonedSessionId);
 	}
 
 	/**
@@ -272,7 +302,7 @@ public class ConnectionMock implements ConnectionManager {
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager#getVersion(org.eclipse.emf.emfstore.internal.client.model.ServerInfo)
 	 */
-	public String getVersion(ServerInfo serverInfo) throws ESException {
+	public String getVersion(final ServerInfo serverInfo) throws ESException {
 		final SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
 		sessionId.setId(serverInfo.getUrl().toString() + "/defaultSession"); //$NON-NLS-1$
 		sessions.add(sessionId);
@@ -286,13 +316,14 @@ public class ConnectionMock implements ConnectionManager {
 	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope)
 	 */
-	public String uploadChangePackageFragment(SessionId sessionId, ProjectId projectId, ChangePackageEnvelope envelope)
-		throws ESException {
+	public String uploadChangePackageFragment(final SessionId sessionId, final ProjectId projectId,
+		final ChangePackageEnvelope envelope)
+			throws ESException {
 
-		checkSessionId(sessionId);
+		final SessionId clonedSessionId = checkSessionId(sessionId);
 
 		return emfStore.uploadChangePackageFragment(
-			ModelUtil.clone(sessionId),
+			clonedSessionId,
 			ModelUtil.clone(projectId),
 			ModelUtil.clone(envelope));
 	}
@@ -303,14 +334,22 @@ public class ConnectionMock implements ConnectionManager {
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
 	 *      java.lang.String, int)
 	 */
-	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
-		throws ESException {
-		checkSessionId(sessionId);
+	public ChangePackageEnvelope downloadChangePackageFragment(final SessionId sessionId, final String proxyId,
+		final int fragmentIndex)
+			throws ESException {
+		final SessionId clonedSessionId = checkSessionId(sessionId);
 		return ModelUtil.clone(
 			emfStore.downloadChangePackageFragment(
-				ModelUtil.clone(sessionId),
+				clonedSessionId,
 				proxyId,
 				fragmentIndex));
 	}
 
+	private SessionId checkSessionId(SessionId sessionId) throws ESException {
+		final SessionId clonedSessionId = ModelUtil.clone(sessionId);
+		if (!isLoggedIn(clonedSessionId)) {
+			throw new AccessControlException();
+		}
+		return clonedSessionId;
+	}
 }
