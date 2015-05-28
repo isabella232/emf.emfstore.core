@@ -26,8 +26,7 @@ public final class WorkspaceLocator {
 
 	}
 
-	private static final Map<String, ESWorkspaceProviderImpl> WORKSPACE_PROVIDER_MAP =
-		new LinkedHashMap<String, ESWorkspaceProviderImpl>();
+	private static final Map<String, ESWorkspaceProviderImpl> WORKSPACE_PROVIDER_MAP = new LinkedHashMap<String, ESWorkspaceProviderImpl>();
 
 	/**
 	 * Creates a workspace and associates it with the given ID.
@@ -65,7 +64,7 @@ public final class WorkspaceLocator {
 	}
 
 	/**
-	 * Checks whether a workspace provier exists for the given identifier.
+	 * Checks whether a workspace provider exists for the given identifier.
 	 *
 	 * @param workspaceProviderId
 	 *            the workspace provider identifier

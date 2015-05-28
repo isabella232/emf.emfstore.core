@@ -80,7 +80,9 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author jfaltermeier
  */
 public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCommitObserver, ESUpdateObserver,
-	ESShareObserver, ESCheckoutObserver, ESDisposable {
+ESShareObserver, ESCheckoutObserver, ESDisposable {
+
+	private static final String WORKSPACE_INIT_EXT_POINT_ID = "org.eclipse.emf.emfstore.client.workspaceInitObserver"; //$NON-NLS-1$
 
 	/**
 	 * This thread local variable stores the ESWorkspaceProviderImpl associated with this thread.
@@ -90,8 +92,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 * threads associated with them. When new threads are started this this threadlocal variable
 	 * is inherited by the newly created thread.
 	 */
-	private static final ThreadLocal<ESWorkspaceProviderImpl> WS_THREAD_LOCAL =
-		new InheritableThreadLocal<ESWorkspaceProviderImpl>();
+	private static final ThreadLocal<ESWorkspaceProviderImpl> WS_THREAD_LOCAL = new InheritableThreadLocal<ESWorkspaceProviderImpl>();
 
 	private static final String DEFAULT_WORKSPACE_ID = "default"; //$NON-NLS-1$
 
@@ -173,8 +174,7 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 */
 	public static ESWorkspaceProviderImpl getInstance() {
 		if (WS_THREAD_LOCAL.get() == null) {
-			if (defaultInstance == null)
-			{
+			if (defaultInstance == null) {
 				try {
 					defaultInstance = new ESWorkspaceProviderImpl(DEFAULT_WORKSPACE_ID);
 					defaultInstance.initialize();
@@ -515,12 +515,13 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 * Notifies all {@link ESWorkspaceInitObserver} that the workspace initialization is complete.
 	 */
 	void notifyPostWorkspaceInitiators() {
-		for (final ESExtensionElement element : new ESExtensionPoint("org.eclipse.emf.emfstore.client.notify.postinit", //$NON-NLS-1$
-			true).getExtensionElements()) {
+		final List<ESExtensionElement> extensionElements = new ESExtensionPoint(WORKSPACE_INIT_EXT_POINT_ID, true)
+			.getExtensionElements();
+		for (final ESExtensionElement element : extensionElements) {
 			try {
-				element.getClass("class", ESWorkspaceInitObserver.class).workspaceInitComplete( //$NON-NLS-1$
-					currentWorkspace
-						.toAPI());
+				element
+				.getClass("class", ESWorkspaceInitObserver.class) //$NON-NLS-1$
+				.workspaceInitComplete(currentWorkspace.toAPI());
 			} catch (final ESExtensionPointException e) {
 				WorkspaceUtil.logException(e.getMessage(), e);
 			}
@@ -601,7 +602,8 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 		} catch (final IOException e) {
 			WorkspaceUtil.logException(
 				Messages.ESWorkspaceProviderImpl_Create_Workspace_Failed
-					+ Configuration.getFileInfo().getWorkspaceDirectory(), e);
+				+ Configuration.getFileInfo().getWorkspaceDirectory(),
+				e);
 		}
 		return workspace;
 	}
@@ -697,7 +699,8 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	 * @see org.eclipse.emf.emfstore.client.observer.ESUpdateObserver#inspectChanges(org.eclipse.emf.emfstore.client.ESLocalProject,
 	 *      java.util.List, org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages, IProgressMonitor monitor) {
+	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages,
+		IProgressMonitor monitor) {
 		return true;
 	}
 
