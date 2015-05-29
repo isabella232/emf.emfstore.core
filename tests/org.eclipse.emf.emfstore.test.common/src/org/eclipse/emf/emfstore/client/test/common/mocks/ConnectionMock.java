@@ -79,8 +79,7 @@ public class ConnectionMock implements ConnectionManager {
 	}
 
 	public void logout(final SessionId sessionId) throws ESException {
-		final SessionId clonedSessionId = checkSessionId(sessionId);
-		accessControl.getLoginService().logout(clonedSessionId.toAPI());
+		accessControl.getLoginService().logout(ModelUtil.clone(sessionId).toAPI());
 		sessions.remove(sessionId);
 	}
 
@@ -106,7 +105,7 @@ public class ConnectionMock implements ConnectionManager {
 		final PrimaryVersionSpec baseVersionSpec, final AbstractChangePackage changePackage,
 		final BranchVersionSpec targetBranch,
 		final PrimaryVersionSpec sourceVersion, final LogMessage logMessage)
-			throws ESException, InvalidVersionSpecException {
+		throws ESException, InvalidVersionSpecException {
 
 		AbstractChangePackage cp = changePackage;
 		final SessionId clonedSessionId = checkSessionId(sessionId);
@@ -122,7 +121,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public PrimaryVersionSpec resolveVersionSpec(final SessionId sessionId, final ProjectId projectId,
 		final VersionSpec versionSpec)
-			throws ESException {
+		throws ESException {
 
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		return ModelUtil.clone(
@@ -150,7 +149,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public List<HistoryInfo> getHistoryInfo(final SessionId sessionId, final ProjectId projectId,
 		final HistoryQuery<?> historyQuery)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		return ModelUtil.clone(
 			emfStore.getHistoryInfo(
@@ -161,7 +160,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public void addTag(final SessionId sessionId, final ProjectId projectId, final PrimaryVersionSpec versionSpec,
 		final TagVersionSpec tag)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		emfStore.addTag(
 			clonedSessionId,
@@ -172,7 +171,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public void removeTag(final SessionId sessionId, final ProjectId projectId, final PrimaryVersionSpec versionSpec,
 		final TagVersionSpec tag)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		emfStore.removeTag(
 			clonedSessionId,
@@ -183,7 +182,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public ProjectInfo createEmptyProject(final SessionId sessionId, final String name, final String description,
 		final LogMessage logMessage)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		final ProjectInfo projectInfo = emfStore.createEmptyProject(clonedSessionId, name, description,
 			ModelUtil.clone(logMessage));
@@ -243,7 +242,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public FileTransferInformation uploadFileChunk(final SessionId sessionId, final ProjectId projectId,
 		final FileChunk fileChunk)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		return emfStore.uploadFileChunk(clonedSessionId, ModelUtil.clone(projectId), fileChunk);
 	}
@@ -256,7 +255,7 @@ public class ConnectionMock implements ConnectionManager {
 
 	public void transmitProperty(final SessionId sessionId, final OrgUnitProperty changedProperty, final ACUser user,
 		final ProjectId projectId)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		emfStore.transmitProperty(
 			clonedSessionId,
@@ -318,7 +317,7 @@ public class ConnectionMock implements ConnectionManager {
 	 */
 	public String uploadChangePackageFragment(final SessionId sessionId, final ProjectId projectId,
 		final ChangePackageEnvelope envelope)
-			throws ESException {
+		throws ESException {
 
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 
@@ -336,7 +335,7 @@ public class ConnectionMock implements ConnectionManager {
 	 */
 	public ChangePackageEnvelope downloadChangePackageFragment(final SessionId sessionId, final String proxyId,
 		final int fragmentIndex)
-			throws ESException {
+		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		return ModelUtil.clone(
 			emfStore.downloadChangePackageFragment(
