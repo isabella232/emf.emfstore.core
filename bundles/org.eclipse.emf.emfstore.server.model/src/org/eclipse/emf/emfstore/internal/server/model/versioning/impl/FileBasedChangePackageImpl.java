@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,6 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
 
@@ -25,7 +26,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -88,6 +88,16 @@ import com.google.common.collect.Iterables;
  */
 public class FileBasedChangePackageImpl extends EObjectImpl implements FileBasedChangePackage {
 
+	private static final String EMPTY_CHANGE_PACKAGE = XmlTags.XML_HEADER + XmlTags.CHANGE_PACKAGE_START
+		+ XmlTags.CHANGE_PACKAGE_END;
+
+	private static final String TEMP_FILE_PREFIX = "temp-"; //$NON-NLS-1$
+
+	private static final String TEMP_SUFFIX = ".temp"; //$NON-NLS-1$
+
+	// FIXME we also have a constant for this on the client side
+	private static final String OPERATION_FILE_SUFFIX = ".eoc"; //$NON-NLS-1$
+
 	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -116,7 +126,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	/**
 	 * Whether this change package has been initialized.
 	 *
-	 * TODO: move to Ecore? Maybe we don't even need this
+	 * FIXME: move to Ecore? Maybe we don't even need this
 	 *
 	 * @generated NOT
 	 */
@@ -281,7 +291,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public String getTempFilePath() {
-		return filePath + ".temp"; //$NON-NLS-1$
+		return filePath + TEMP_SUFFIX;
 	}
 
 	/**
@@ -464,7 +474,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#addAll(java.util.List)
 	 */
 	public void addAll(List<AbstractOperation> ops) {
-		// TODO: LCP - file is reopened for each op
+		// FIXME: LCP - file is reopened for each operation
 		for (final AbstractOperation op : ops) {
 			add(op);
 		}
@@ -478,37 +488,38 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	public void add(final AbstractOperation op) {
 
+		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		final Resource resource = createVirtualResource();
-
 		resource.getContents().add(op);
 
-		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		RandomAccessFile raf = null;
+		Optional<RandomAccessFile> maybeRandomAccessFile = Optional.absent();
+
 		try {
 			outputStream.write(asBytes(XmlTags.OPERATIONS_START_TAG + XmlTags.NEWLINE));
 			resource.save(outputStream, loadingOptions());
-			outputStream.write((XmlTags.OPERATIONS_END_TAG + XmlTags.NEWLINE).getBytes());
-			final String filePath = getTempFilePath();
-
-			final File file = new File(filePath);
+			outputStream.write(asBytes(XmlTags.OPERATIONS_END_TAG + XmlTags.NEWLINE));
 
 			if (needsInit) {
-				needsInit = false;
-				final FileWriter writer = new FileWriter(file);
-				writer.write(XmlTags.XML_HEADER + XmlTags.CHANGE_PACKAGE_START);
-				writer.write(XmlTags.CHANGE_PACKAGE_END);
-				writer.close();
+				initializeEmptyChangePackage();
 			}
 
-			raf = new RandomAccessFile(filePath, "rw"); //$NON-NLS-1$
-			raf.skipBytes((int) (raf.length() - XmlTags.CHANGE_PACKAGE_END.getBytes().length));
-			raf.write(outputStream.toByteArray());
-			raf.write(XmlTags.CHANGE_PACKAGE_END.getBytes());
+			final RandomAccessFile randomAccessFile = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
+			maybeRandomAccessFile = Optional.of(randomAccessFile);
+			randomAccessFile.skipBytes((int) (randomAccessFile.length() - asBytes(XmlTags.CHANGE_PACKAGE_END).length));
+			randomAccessFile.write(outputStream.toByteArray());
+			randomAccessFile.write(asBytes(XmlTags.CHANGE_PACKAGE_END));
 		} catch (final IOException e) {
-			// avoid checked exception since this would lead to cluttered code
-			throw new RuntimeException(e);
+			// ESException not available
+			throw new IllegalStateException(e);
 		} finally {
-			IOUtils.closeQuietly(raf);
+			try {
+				outputStream.close();
+				if (maybeRandomAccessFile.isPresent()) {
+					maybeRandomAccessFile.get().close();
+				}
+			} catch (final IOException ex) {
+				ModelUtil.logException(ex);
+			}
 		}
 	}
 
@@ -519,15 +530,15 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#reverse()
 	 */
 	public FileBasedChangePackage reverse() {
+		// create a new temporary change package that will contain all reversed operations
 		final FileBasedChangePackage reversedChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		// TODO LCP: where should we put the file
 		try {
-			final File tempFile = File.createTempFile("temp-", ".eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+			final File tempFile = File.createTempFile(TEMP_FILE_PREFIX, OPERATION_FILE_SUFFIX);
 			tempFile.deleteOnExit();
 			reversedChangePackage.initialize(tempFile.getAbsolutePath());
 		} catch (final IOException ex) {
-			// TODO
-			ex.printStackTrace();
+			// we cannot throw ESException, since it cannot be brought into scope
+			throw new IllegalStateException(ex);
 		}
 		final ESCloseableIterable<AbstractOperation> operationsHandle = reversedOperations();
 		try {
@@ -544,14 +555,12 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	public FileBasedChangePackage copy() {
 		final FileBasedChangePackage changePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		// TODO LCP: where should we put the file
 		try {
-			final File tempFile = File.createTempFile("temp-", ".eoc"); //$NON-NLS-1$ //$NON-NLS-2$
+			final File tempFile = File.createTempFile(TEMP_FILE_PREFIX, OPERATION_FILE_SUFFIX);
 			tempFile.deleteOnExit();
 			changePackage.initialize(tempFile.getAbsolutePath());
 		} catch (final IOException ex) {
-			// TODO
-			ex.printStackTrace();
+			throw new IllegalStateException(ex);
 		}
 		final ESCloseableIterable<AbstractOperation> operationsHandle = operations();
 		try {
@@ -595,20 +604,27 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	public int size() {
 		int counter = 0;
-		ReversedLinesFileReader reversedLinesFileReader = null;
+		Optional<ReversedLinesFileReader> maybeReversedReader = Optional.absent();
 		try {
-			reversedLinesFileReader = new ReversedLinesFileReader(new File(getTempFilePath()));
+			final ReversedLinesFileReader reversedReader = new ReversedLinesFileReader(new File(getTempFilePath()));
+			maybeReversedReader = Optional.of(reversedReader);
 			String line;
-			while ((line = reversedLinesFileReader.readLine()) != null) {
+			while ((line = reversedReader.readLine()) != null) {
 				if (line.contains(XmlTags.OPERATIONS_END_TAG)) {
 					counter++;
 				}
 			}
 		} catch (final IOException ex) {
-			// TODO
-			ex.printStackTrace();
+			// ESException not available
+			throw new IllegalStateException(ex);
 		} finally {
-			IOUtils.closeQuietly(reversedLinesFileReader);
+			if (maybeReversedReader.isPresent()) {
+				try {
+					maybeReversedReader.get().close();
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
 		}
 		return counter;
 
@@ -629,27 +645,28 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#isEmpty()
 	 */
 	public boolean isEmpty() {
-		BufferedReader reader = null;
+		Optional<BufferedReader> maybeReader = Optional.absent();
 		try {
 			final File file = new File(getTempFilePath());
 			if (!file.exists()) {
 				return true;
 			}
-			// TODO: move reader into operationemitter
-			reader = new BufferedReader(new FileReader(file));
+			// FIXME: move reader into OperationEmitter?
+			maybeReader = Optional.of(new BufferedReader(new FileReader(file)));
 			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Forward);
-			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(reader);
-			return !operationEmitter.tryEmit(create).isPresent();
+			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(maybeReader.get());
+			// check if we have at least one operation
+			final Optional<AbstractOperation> maybeOp = operationEmitter.tryEmit(create);
+			return !maybeOp.isPresent();
 		} catch (final IOException ex) {
 			throw new RuntimeException(ex);
 		} finally {
 			try {
-				if (reader != null) {
-					reader.close();
+				if (maybeReader.isPresent()) {
+					maybeReader.get().close();
 				}
 			} catch (final IOException ex) {
-				// TODO Auto-generated catch block
-				ex.printStackTrace();
+				ModelUtil.logException(ex);
 			}
 		}
 	}
@@ -660,30 +677,31 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#removeAtEnd(int)
 	 */
 	public List<AbstractOperation> removeAtEnd(int n) {
-		ReversedLinesFileReader reversedLinesFileReader = null;
+		final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
+		final OperationEmitter operationEmitter = new OperationEmitter(Direction.Backward);
+		Optional<ReversedLinesFileReader> maybeReversedReader = Optional.absent();
 		int counter = n;
 
 		try {
-			final String filePath = getTempFilePath();
-			reversedLinesFileReader = new ReversedLinesFileReader(new File(filePath));
-			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Backward);
+			final ReversedLinesFileReader reversedReader = new ReversedLinesFileReader(new File(getTempFilePath()));
+			maybeReversedReader = Optional.of(reversedReader);
 			AbstractOperation operation;
-			final List<AbstractOperation> ops = new ArrayList<AbstractOperation>();
-			final ReadLineCapable reader = ReadLineCapable.INSTANCE.create(reversedLinesFileReader);
-			final Optional<AbstractOperation> optionalOperation = operationEmitter.tryEmit(reader);
-			while (counter > 0 && optionalOperation.isPresent()) {
-				operation = optionalOperation.get();
+			final ReadLineCapable reader = ReadLineCapable.INSTANCE.create(reversedReader);
+			final Optional<AbstractOperation> maybeOperation = operationEmitter.tryEmit(reader);
+
+			while (counter > 0 && maybeOperation.isPresent()) {
+				operation = maybeOperation.get();
 				ops.add(operation);
 				counter -= 1;
 			}
-			// TODO: reuse readlinecapable?
+
+			// FIXME: reuse ReadLineCapable?
 			final long offset = operationEmitter.getOffset();
 
-			final RandomAccessFile raf = new RandomAccessFile(filePath, "rw"); //$NON-NLS-1$
+			final RandomAccessFile raf = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
 			final long skip = raf.length() + 1 - offset;
 			raf.seek(skip);
-			// TODO: duplicate code
-			final byte[] bytes = (XmlTags.NEWLINE + XmlTags.CHANGE_PACKAGE_END).getBytes();
+			final byte[] bytes = asBytes(XmlTags.NEWLINE + XmlTags.CHANGE_PACKAGE_END);
 			raf.write(bytes);
 			raf.setLength(skip + bytes.length);
 			raf.close();
@@ -691,13 +709,17 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			return ops;
 
 		} catch (final IOException ex) {
-			ex.printStackTrace();
+			// ESException not available
+			throw new IllegalStateException(ex);
 		} finally {
-			IOUtils.closeQuietly(reversedLinesFileReader);
+			if (maybeReversedReader.isPresent()) {
+				try {
+					maybeReversedReader.get().close();
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
 		}
-
-		return null;
-
 	}
 
 	/**
@@ -706,24 +728,23 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#clear()
 	 */
 	public void clear() {
-		RandomAccessFile raf = null;
+		Optional<RandomAccessFile> maybeRandomAccessFile = Optional.absent();
 		try {
-			raf = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
-			raf.seek(0);
-			final String emptyChangePackage = XmlTags.XML_HEADER + XmlTags.CHANGE_PACKAGE_START
-				+ XmlTags.CHANGE_PACKAGE_END;
-			raf.write(emptyChangePackage.getBytes());
-			raf.setLength(emptyChangePackage.length());
+			final RandomAccessFile randomAccessFile = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
+			maybeRandomAccessFile = Optional.of(randomAccessFile);
+			randomAccessFile.seek(0);
+			randomAccessFile.write(asBytes(EMPTY_CHANGE_PACKAGE));
+			randomAccessFile.setLength(EMPTY_CHANGE_PACKAGE.length());
 		} catch (final FileNotFoundException ex) {
 			throw new RuntimeException(ex);
 		} catch (final IOException ex) {
 			throw new RuntimeException(ex);
 		} finally {
-			if (raf != null) {
+			if (maybeRandomAccessFile.isPresent()) {
 				try {
-					raf.close();
+					maybeRandomAccessFile.get().close();
 				} catch (final IOException ex) {
-					ex.printStackTrace();
+					ModelUtil.logException(ex);
 				}
 			}
 		}
@@ -735,12 +756,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer)
 	 */
 	public void attachToProjectSpace(ChangePackageContainer changePackageHolder) {
-		// final URI operationsURI = ESClientURIUtil.createOperationsURI(getProjectSpace());
-		// final URI normalizedOperationUri = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace()
-		// .getResourceSet().getURIConverter().normalize(operationsURI);
 		final URI changePackageUri = changePackageHolder.getChangePackageUri();
 		final String operationFileString = changePackageUri.toFileString();
-		final File operationFile = new File(operationFileString + ".temp");
+		final File operationFile = new File(operationFileString + TEMP_SUFFIX);
 		// operationFile.delete();
 		final File thisFile = new File(getTempFilePath());
 		try {
@@ -749,9 +767,16 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			setFilePath(operationFileString);
 			changePackageHolder.setChangePackage(this);
 		} catch (final IOException ex) {
-			// TODO: LCP
-			ex.printStackTrace();
+			// ESException not available
+			throw new IllegalStateException(ex);
 		}
+	}
+
+	public void delete() {
+		final File opFile = new File(getFilePath());
+		final File tempOpFile = new File(getTempFilePath());
+		opFile.delete();
+		tempOpFile.delete();
 	}
 
 	/**
@@ -770,15 +795,27 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	public void initialize(String filePath) {
 		setFilePath(filePath);
+		initializeEmptyChangePackage();
+	}
+
+	private void initializeEmptyChangePackage() {
 		needsInit = false;
+		Optional<FileWriter> maybeWriter = Optional.absent();
 		try {
-			final FileWriter writer = new FileWriter(getTempFilePath());
-			writer.write(XmlTags.XML_HEADER + XmlTags.CHANGE_PACKAGE_START);
-			writer.write(XmlTags.CHANGE_PACKAGE_END);
-			writer.close();
+			final FileWriter fileWriter = new FileWriter(getTempFilePath());
+			maybeWriter = Optional.of(fileWriter);
+			fileWriter.write(EMPTY_CHANGE_PACKAGE);
 		} catch (final IOException ex) {
-			// TODO LCP
-			ex.printStackTrace();
+			// ESException not available
+			throw new IllegalStateException(ex);
+		} finally {
+			if (maybeWriter.isPresent()) {
+				try {
+					maybeWriter.get().close();
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
 		}
 	}
 
