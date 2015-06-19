@@ -198,7 +198,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	private void initGraphRenderer() {
 		renderer = new SWTPlotRenderer(viewer.getTree().getDisplay());
-		viewer.getTree().addListener(SWT.Paint, new Listener() {
+		// XXX SWT.PaintItem is not available in RAP, so we are using the numerical constant here
+		viewer.getTree().addListener(/* SWT.PaintItem */42, new Listener() {
 			public void handleEvent(Event event) {
 				doPaint(event);
 			}
