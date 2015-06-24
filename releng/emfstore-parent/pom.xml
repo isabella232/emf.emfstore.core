@@ -5,7 +5,7 @@
 
 	<groupId>org.eclipse.emf.emfstore</groupId>
 	<artifactId>emfstore-parent</artifactId>
-	<version>1.5.0-SNAPSHOT</version>
+	<version>1.6.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -16,8 +16,8 @@
 		<maven-checkstyle-version>2.10</maven-checkstyle-version>
 		<jacoco-version>0.6.2.201302030002</jacoco-version>
 		<javadoc-version>2.9</javadoc-version>
-		<javadoc-title>EMFStore 1.5.0 API</javadoc-title>
-		<emfstore-version>1.5.0-SNAPSHOT</emfstore-version>
+		<javadoc-title>EMFStore 1.6.0 API</javadoc-title>
+		<emfstore-version>1.6.0-SNAPSHOT</emfstore-version>
 		<jarsigner-version>1.0.5</jarsigner-version>
 		<maven.antrun.plugin.version>1.7</maven.antrun.plugin.version>
 		<!-- Properties to enable jacoco code coverage analysis with sonar -->
