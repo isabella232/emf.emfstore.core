@@ -147,10 +147,11 @@ public abstract class AbstractSubEmfstoreInterface {
 			ModelUtil.logWarning(Messages.AbstractSubEmfstoreInterface_Method_Not_Accessible, e);
 			throw new ESException(e);
 		} catch (final InvocationTargetException e) {
-			if (InvalidVersionSpecException.class.isInstance(e.getTargetException())
-				|| AccessControlException.class.isInstance(e.getTargetException())) {
+			final Throwable targetException = e.getTargetException();
+			if (InvalidVersionSpecException.class.isInstance(targetException)
+				|| AccessControlException.class.isInstance(targetException)) {
 				ModelUtil.logInfo(
-					Messages.AbstractSubEmfstoreInterface_Exception_On_Execution + e.getMessage());
+					Messages.AbstractSubEmfstoreInterface_Exception_On_Execution + targetException.getMessage());
 			} else {
 				ModelUtil.logInfo(
 					Messages.AbstractSubEmfstoreInterface_Exception_On_Execution + stackTraceOf(e));

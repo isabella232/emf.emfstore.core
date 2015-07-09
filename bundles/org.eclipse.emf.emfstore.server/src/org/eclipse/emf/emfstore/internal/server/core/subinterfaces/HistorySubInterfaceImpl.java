@@ -284,14 +284,14 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		int end = from;
 
 		if (!tollerant && (from < 0 || to < 0 || from > globalhead || to > globalhead)) {
-			throw new InvalidVersionSpecException();
+			throw new InvalidVersionSpecException(Messages.HistorySubInterfaceImpl_InvalidVersionSpec);
 		}
 
 		start = Math.min(globalhead, to);
 		end = Math.max(0, from);
 
 		if (start < 0 || start > globalhead || end < 0 || end > globalhead) {
-			throw new InvalidVersionSpecException();
+			throw new InvalidVersionSpecException(Messages.HistorySubInterfaceImpl_InvalidVersionSpec);
 		}
 
 		if (start == end) {
@@ -300,7 +300,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 		// saftey check
 		if (Math.abs(start - end) > Math.abs(to - from)) {
-			throw new InvalidVersionSpecException();
+			throw new InvalidVersionSpecException(Messages.HistorySubInterfaceImpl_InvalidVersionSpec);
 		}
 		final ArrayList<Version> result = new ArrayList<Version>();
 		for (int i = start; i >= end; i--) {

@@ -35,6 +35,7 @@ public final class Messages extends NLS {
 	public static String FileTransferSubInterfaceImpl_Locate_Cache_Failed;
 	public static String FileTransferSubInterfaceImpl_Locate_Tmp_Failed;
 	public static String FileTransferSubInterfaceImpl_Move_Failed;
+	public static String HistorySubInterfaceImpl_InvalidVersionSpec;
 	public static String ProjectPropertiesSubInterfaceImpl_Property_Not_Set;
 	public static String ProjectPropertiesSubInterfaceImpl_User_Does_Not_Exist;
 	public static String ProjectSubInterfaceImpl_Null;
@@ -47,14 +48,21 @@ public final class Messages extends NLS {
 	public static String VersionSubInterfaceImpl_ChecksumComputationFailed;
 	public static String VersionSubInterfaceImpl_EmptyBranch_Not_Allowed;
 	public static String VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed;
+	public static String VersionSubInterfaceImpl_HeadVersionNotFound;
 	public static String VersionSubInterfaceImpl_Invalid_Source_Or_Target;
 	public static String VersionSubInterfaceImpl_InvalidBranchOrVersion;
 	public static String VersionSubInterfaceImpl_InvalidPath;
 	public static String VersionSubInterfaceImpl_InvalidVersionRequested;
 	public static String VersionSubInterfaceImpl_NextVersionInvalid;
+	public static String VersionSubInterfaceImpl_NoAncestorFound;
+	public static String VersionSubInterfaceImpl_NoBranchInfo;
+	public static String VersionSubInterfaceImpl_NoSourceNorTarget;
+	public static String VersionSubInterfaceImpl_PrimaryVersionNotFound;
 	public static String VersionSubInterfaceImpl_ShuttingServerDown;
+	public static String VersionSubInterfaceImpl_TagVersionNotFound;
 	public static String VersionSubInterfaceImpl_TargetBranchCombination_Invalid;
 	public static String VersionSubInterfaceImpl_TotalTimeForCommit;
+	public static String VersionSubInterfaceImpl_UnknownVersionSpec;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
