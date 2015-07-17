@@ -14,7 +14,7 @@
 		<tycho-version>0.20.0</tycho-version>
 		<junit-version>4.8.2</junit-version>
 		<maven-checkstyle-version>2.10</maven-checkstyle-version>
-		<jacoco-version>0.7.5.201505241946</jacoco-version>
+		<jacoco-version>0.7.4.201502262128</jacoco-version>
 		<javadoc-version>2.9</javadoc-version>
 		<javadoc-title>EMFStore 1.6.0 API</javadoc-title>
 		<emfstore-version>1.6.0-SNAPSHOT</emfstore-version>
