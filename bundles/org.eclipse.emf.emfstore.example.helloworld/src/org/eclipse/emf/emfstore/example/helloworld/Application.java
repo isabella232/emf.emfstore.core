@@ -7,8 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Florian Pirchner
- * Maximilian Koegel
+ * Florian Pirchner, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.example.helloworld;
 
@@ -137,7 +136,7 @@ public class Application implements IApplication {
 
 		// First we add a league and set the league name.
 		final League league = BowlingFactory.eINSTANCE.createLeague();
-		league.setName("Suprbowling League"); //$NON-NLS-1$
+		league.setName("Superbowling League"); //$NON-NLS-1$
 
 		// Next we add the league to the root of the project. The project has a containment feature called model
 		// element that holds all root elements of a project. This list is comparable to the content list in EMF

@@ -29,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.EMFStoreController;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
+import org.eclipse.emf.emfstore.internal.server.exceptions.BranchInfoMissingException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
@@ -130,7 +131,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	private PrimaryVersionSpec resolveAncestorVersionSpec(ProjectHistory projectHistory,
 		AncestorVersionSpec versionSpec)
-		throws InvalidVersionSpecException {
+			throws InvalidVersionSpecException {
 
 		Version currentSource = getVersion(projectHistory, versionSpec.getSource());
 		Version currentTarget = getVersion(projectHistory, versionSpec.getTarget());
@@ -239,10 +240,10 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	}
 
 	private PrimaryVersionSpec resolveBranchVersionSpec(ProjectHistory projectHistory, BranchVersionSpec versionSpec)
-		throws InvalidVersionSpecException {
+		throws BranchInfoMissingException {
 		final BranchInfo branchInfo = getBranchInfo(projectHistory, versionSpec);
 		if (branchInfo == null) {
-			throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_NoBranchInfo);
+			throw new BranchInfoMissingException(Messages.VersionSubInterfaceImpl_NoBranchInfo);
 		}
 		return branchInfo.getHead();
 	}
@@ -507,7 +508,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-		throws StorageException {
+			throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {

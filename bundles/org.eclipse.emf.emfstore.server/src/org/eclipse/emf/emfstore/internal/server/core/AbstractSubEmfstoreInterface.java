@@ -21,9 +21,9 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
+import org.eclipse.emf.emfstore.internal.server.exceptions.BranchInfoMissingException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
-import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -147,23 +147,48 @@ public abstract class AbstractSubEmfstoreInterface {
 			ModelUtil.logWarning(Messages.AbstractSubEmfstoreInterface_Method_Not_Accessible, e);
 			throw new ESException(e);
 		} catch (final InvocationTargetException e) {
+
 			final Throwable targetException = e.getTargetException();
-			if (InvalidVersionSpecException.class.isInstance(targetException)
-				|| AccessControlException.class.isInstance(targetException)) {
-				ModelUtil.logInfo(
-					Messages.AbstractSubEmfstoreInterface_Exception_On_Execution + targetException.getMessage());
+			if (shouldLogExceptionMessageOnly(targetException)) {
+				logException(targetException, true);
 			} else {
-				ModelUtil.logInfo(
-					Messages.AbstractSubEmfstoreInterface_Exception_On_Execution + stackTraceOf(e));
+				logException(targetException, false);
 			}
-			if (e.getTargetException() instanceof ESException) {
-				throw (ESException) e.getTargetException();
+
+			if (shouldRethrow(targetException)) {
+				throw createESException(targetException);
 			}
-			throw new ESException(e.getTargetException());
+
+			return null;
 		}
 	}
 
-	private String stackTraceOf(Throwable throwable) {
+	private static void logException(Throwable throwable, boolean messageOnly) {
+		final String msg = messageOnly ? throwable.getMessage() : stackTraceOf(throwable);
+		ModelUtil.logInfo(
+			Messages.AbstractSubEmfstoreInterface_Exception_On_Execution + msg);
+	}
+
+	private static boolean shouldLogExceptionMessageOnly(Throwable throwable) {
+		return BranchInfoMissingException.class.isInstance(throwable)
+			|| AccessControlException.class.isInstance(throwable);
+	}
+
+	private static boolean shouldRethrow(Throwable throwable) {
+		if (BranchInfoMissingException.class.isInstance(throwable)) {
+			return false;
+		}
+		return true;
+	}
+
+	private static ESException createESException(Throwable throwable) {
+		if (ESException.class.isInstance(throwable)) {
+			return (ESException) throwable;
+		}
+		return new ESException(throwable);
+	}
+
+	private static String stackTraceOf(Throwable throwable) {
 		final StringWriter sw = new StringWriter();
 		final PrintWriter pw = new PrintWriter(sw);
 		throwable.printStackTrace(pw);
