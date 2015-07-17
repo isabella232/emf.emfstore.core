@@ -82,7 +82,7 @@
 						<artifactId>tycho-compiler-plugin</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<useJDK>JavaSE-1.7</useJDK>
+							<useJDK>1.7</useJDK>
 						</configuration>
 					</plugin>
 				</plugins>
