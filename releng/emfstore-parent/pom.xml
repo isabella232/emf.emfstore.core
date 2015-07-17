@@ -14,7 +14,7 @@
 		<tycho-version>0.20.0</tycho-version>
 		<junit-version>4.8.2</junit-version>
 		<maven-checkstyle-version>2.10</maven-checkstyle-version>
-		<jacoco-version>0.6.2.201302030002</jacoco-version>
+		<jacoco-version>0.7.5.201505241946</jacoco-version>
 		<javadoc-version>2.9</javadoc-version>
 		<javadoc-title>EMFStore 1.6.0 API</javadoc-title>
 		<emfstore-version>1.6.0-SNAPSHOT</emfstore-version>
@@ -79,10 +79,10 @@
 				<plugins>
 					<plugin>
 						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-compiler-plugin</artifactId>
+						<artifactId>target-platform-configuration</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<useJDK>1.7</useJDK>
+							<executionEnvironment>JavaSE-1.7</executionEnvironment>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -121,7 +121,7 @@
 				<artifactId>tycho-versions-plugin</artifactId>  
 				<version>${tycho-version}</version>  
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -218,7 +218,7 @@
 					<propertyExpansion>samedir=${basedir}/../../EMFStoreDeveloper/coding</propertyExpansion>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -236,7 +236,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -249,42 +249,42 @@
 					<excludePackageNames>*.test.*:*.bowling.*:*.example.*:*.eclipse.wb.*</excludePackageNames>
 					<tags>
 						<tag>
-              				<name>generated</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>generated</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>ordered</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>ordered</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>model</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>model</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>noextend</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>noextend</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>noimplement</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>noimplement</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>noinstantiate</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>noinstantiate</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>noreference</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>noreference</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>extends</name>
-              				<placement>X</placement>
-            			</tag>
+							<name>extends</name>
+							<placement>X</placement>
+						</tag>
 						<tag>
-              				<name>implements</name>
-              				<placement>X</placement>
-            			</tag>
-          			</tags>
+							<name>implements</name>
+							<placement>X</placement>
+						</tag>
+					</tags>
 				</configuration>
 			</plugin>
 		</plugins>
