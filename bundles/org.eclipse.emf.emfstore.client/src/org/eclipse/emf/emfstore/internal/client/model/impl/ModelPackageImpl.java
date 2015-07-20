@@ -227,17 +227,17 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
-	public EReference getServerInfo_ProjectInfos() {
-		return (EReference) serverInfoEClass.getEStructuralFeatures().get(3);
+	public EAttribute getServerInfo_Path()
+	{
+		return (EAttribute) serverInfoEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
-	public EReference getServerInfo_LastUsersession() {
+	public EReference getServerInfo_ProjectInfos() {
 		return (EReference) serverInfoEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -247,8 +247,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 *
 	 * @generated
 	 */
+	public EReference getServerInfo_LastUsersession() {
+		return (EReference) serverInfoEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
 	public EAttribute getServerInfo_CertificateAlias() {
-		return (EAttribute) serverInfoEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) serverInfoEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -623,6 +633,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(serverInfoEClass, SERVER_INFO__NAME);
 		createEAttribute(serverInfoEClass, SERVER_INFO__URL);
 		createEAttribute(serverInfoEClass, SERVER_INFO__PORT);
+		createEAttribute(serverInfoEClass, SERVER_INFO__PATH);
 		createEReference(serverInfoEClass, SERVER_INFO__PROJECT_INFOS);
 		createEReference(serverInfoEClass, SERVER_INFO__LAST_USERSESSION);
 		createEAttribute(serverInfoEClass, SERVER_INFO__CERTIFICATE_ALIAS);
@@ -742,6 +753,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 			getServerInfo_Port(),
 			ecorePackage.getEInt(),
 			"port", null, 1, 1, ServerInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getServerInfo_Path(),
+			ecorePackage.getEString(),
+			"path", null, 1, 1, ServerInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 			getServerInfo_ProjectInfos(),
 			theModelPackage_1.getProjectInfo(),

@@ -151,6 +151,16 @@ public interface ModelPackage extends EPackage {
 	int SERVER_INFO__PORT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_INFO__PATH = 3;
+
+	/**
 	 * The feature id for the '<em><b>Project Infos</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -158,7 +168,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_INFO__PROJECT_INFOS = 3;
+	int SERVER_INFO__PROJECT_INFOS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Last Usersession</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -167,7 +177,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_INFO__LAST_USERSESSION = 4;
+	int SERVER_INFO__LAST_USERSESSION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Certificate Alias</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -176,7 +186,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_INFO__CERTIFICATE_ALIAS = 5;
+	int SERVER_INFO__CERTIFICATE_ALIAS = 6;
 
 	/**
 	 * The number of structural features of the '<em>Server Info</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -185,7 +195,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_INFO_FEATURE_COUNT = 6;
+	int SERVER_INFO_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.client.model.impl.UsersessionImpl
@@ -633,6 +643,19 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getServerInfo_Port();
+
+	/**
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPath()
+	 * @see #getServerInfo()
+	 * @generated
+	 */
+	EAttribute getServerInfo_Path();
 
 	/**
 	 * Returns the meta object for the containment reference list '
@@ -1180,6 +1203,15 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERVER_INFO__PORT = eINSTANCE.getServerInfo_Port();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * 
+		 * @generated
+		 */
+		EAttribute SERVER_INFO__PATH = eINSTANCE.getServerInfo_Path();
 
 		/**
 		 * The meta object literal for the '<em><b>Project Infos</b></em>' containment reference list feature. <!--

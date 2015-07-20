@@ -37,6 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getUrl <em>Url</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getPort <em>Port</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getPath <em>Path</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getProjectInfos <em>Project Infos</em>}
  * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getLastUsersession <em>Last Usersession
@@ -114,6 +115,24 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 */
 	protected int port = PORT_EDEFAULT;
 
+	/**
+	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PATH_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String path = PATH_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getProjectInfos() <em>Project Infos</em>}' containment reference list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -241,6 +260,29 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPath()
+	{
+		return path;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPath(String newPath)
+	{
+		String oldPath = path;
+		path = newPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__PATH, oldPath, path));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
@@ -351,6 +393,8 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 			return getUrl();
 		case ModelPackage.SERVER_INFO__PORT:
 			return getPort();
+		case ModelPackage.SERVER_INFO__PATH:
+			return getPath();
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			return getProjectInfos();
 		case ModelPackage.SERVER_INFO__LAST_USERSESSION:
@@ -382,6 +426,9 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 			return;
 		case ModelPackage.SERVER_INFO__PORT:
 			setPort((Integer) newValue);
+			return;
+		case ModelPackage.SERVER_INFO__PATH:
+			setPath((String) newValue);
 			return;
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			getProjectInfos().clear();
@@ -415,6 +462,9 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 		case ModelPackage.SERVER_INFO__PORT:
 			setPort(PORT_EDEFAULT);
 			return;
+		case ModelPackage.SERVER_INFO__PATH:
+			setPath(PATH_EDEFAULT);
+			return;
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			getProjectInfos().clear();
 			return;
@@ -443,6 +493,8 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 			return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
 		case ModelPackage.SERVER_INFO__PORT:
 			return port != PORT_EDEFAULT;
+		case ModelPackage.SERVER_INFO__PATH:
+			return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			return projectInfos != null && !projectInfos.isEmpty();
 		case ModelPackage.SERVER_INFO__LAST_USERSESSION:
@@ -472,6 +524,8 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 		result.append(url);
 		result.append(", port: "); //$NON-NLS-1$
 		result.append(port);
+		result.append(", path: "); //$NON-NLS-1$
+		result.append(path);
 		result.append(", certificateAlias: "); //$NON-NLS-1$
 		result.append(certificateAlias);
 		result.append(')');

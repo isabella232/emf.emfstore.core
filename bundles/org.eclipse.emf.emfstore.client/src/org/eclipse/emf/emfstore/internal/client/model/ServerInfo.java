@@ -28,6 +28,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getName <em>Name</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getUrl <em>Url</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPort <em>Port</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPath <em>Path</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getProjectInfos <em>Project Infos</em>}
  *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getLastUsersession <em>Last Usersession
@@ -122,6 +123,34 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * @generated
 	 */
 	void setPort(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Path</em>' attribute isn't clear, there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * 
+	 * @return the value of the '<em>Path</em>' attribute.
+	 * @see #setPath(String)
+	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_Path()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getPath();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPath <em>Path</em>}'
+	 * attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @param value the new value of the '<em>Path</em>' attribute.
+	 * @see #getPath()
+	 * @generated
+	 */
+	void setPath(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Project Infos</b></em>' containment reference list.
