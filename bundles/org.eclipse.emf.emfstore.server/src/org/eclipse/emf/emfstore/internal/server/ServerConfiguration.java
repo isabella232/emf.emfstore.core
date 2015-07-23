@@ -295,6 +295,11 @@ public final class ServerConfiguration {
 	 */
 	public static final String AUTHENTICATION_MATCH_USERS_IGNORE_CASE = "emfstore.accesscontrol.authentication.matchusers.ignorecase"; //$NON-NLS-1$
 
+	/**
+	 * Whether authenticated users (eg. by LDAP) should be created in the server workspace on-the-fly on login.
+	 */
+	public static final String AUTHENTICATION_CREATE_AUTHENTICATED_USERS = "emfstore.accesscontrol.authentication.createusers"; //$NON-NLS-1$
+
 	private static final List<PostStartupListener> POST_STARTUP_LISTENERS = new ArrayList<PostStartupListener>();
 	private static final List<StartupListener> STARTUP_LISTENERS = new ArrayList<StartupListener>();
 
