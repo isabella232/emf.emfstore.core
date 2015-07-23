@@ -39,7 +39,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.client.ESUsersession;
@@ -251,7 +250,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void applyChanges(PrimaryVersionSpec baseSpec, List<AbstractChangePackage> incomingChangePackages,
 		AbstractChangePackage myChanges, IProgressMonitor progressMonitor, boolean runChecksumCheckOnBaseSpec)
-		throws ESException {
+			throws ESException {
 
 		// revert local changes
 		notifyPreRevertMyChanges(getLocalChangePackage());
@@ -292,7 +291,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<AbstractChangePackage> incomingChangePackages,
 		IProgressMonitor progressMonitor)
-		throws ESException {
+			throws ESException {
 
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 
@@ -528,8 +527,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public AbstractChangePackage getLocalChangePackage(boolean canonize) {
 		final AbstractChangePackage changePackage = ChangePackageUtil.createChangePackage(
-			Configuration.getClientBehavior().useInMemoryChangePackage()
-			);
+			Configuration.getClientBehavior().useInMemoryChangePackage());
 
 		// copy operations from ProjectSpace
 		final ESCloseableIterable<AbstractOperation> operations = getLocalChangePackage().operations();
@@ -544,8 +542,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		final LogMessage logMessage = VersioningFactory.eINSTANCE.createLogMessage();
 		if (getUsersession() != null) {
 			logMessage.setAuthor(getUsersession().getUsername());
-		}
-		else {
+		} else {
 			logMessage.setAuthor(Messages.ProjectSpaceBase_Unknown_Author);
 		}
 		logMessage.setClientDate(new Date());
@@ -646,12 +643,17 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		}
 	}
 
-	// TODO LCP method signature is not part of interface
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#init()
+	 */
 	public void init() {
 		initCrossReferenceAdapter();
 
-		final ESCommandStack commandStack = (ESCommandStack)
-			ESWorkspaceProviderImpl.getInstance().getEditingDomain().getCommandStack();
+		final ESCommandStack commandStack = (ESCommandStack) ESWorkspaceProviderImpl.getInstance().getEditingDomain()
+			.getCommandStack();
 
 		fileTransferManager = new FileTransferManager(this);
 		operationManager = new OperationManager(this);
@@ -730,7 +732,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.inverseCrossReferenceCache") //$NON-NLS-1$
-			.getExtensionElements()) {
+				.getExtensionElements()) {
 			useCrossReferenceAdapter &= element.getBoolean("activated"); //$NON-NLS-1$
 		}
 
@@ -953,7 +955,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-		throws ESException {
+			throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -999,7 +1001,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public AbstractChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<AbstractChangePackage> myChangePackages, List<AbstractChangePackage> theirChangePackages)
-		throws ChangeConflictException {
+			throws ChangeConflictException {
 
 		final Set<AbstractOperation> accceptedMineSet = new LinkedHashSet<AbstractOperation>();
 		final Set<AbstractOperation> rejectedTheirsSet = new LinkedHashSet<AbstractOperation>();
@@ -1021,16 +1023,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 				for (final AbstractOperation myOperation : operations.iterable()) {
 					final Set<AbstractOperation> notInvolvedInConflict = conflictSet.getNotInvolvedInConflict();
 					final List<AbstractOperation> ops = new ArrayList<AbstractOperation>(notInvolvedInConflict);
-					// final AbstractOperation abstractOperation = ops.get(0);
-					// EcoreUtil.equals(abstractOperation, myOperation);
-					// if (abstractOperation instanceof CreateDeleteOperation) {
-					// final CreateDeleteOperation m = (CreateDeleteOperation) abstractOperation;
-					// final CreateDeleteOperation m2 = (CreateDeleteOperation) myOperation;
-					// final boolean equals = EcoreUtil.equals(m.getModelElement(), m2.getModelElement());
-					// final boolean equals2 = EcoreUtil.equals(m, m2);
-					//
-					// System.out.println(equals);
-					// }
+
 					if (containsOp(ops, myOperation)) {
 						acceptedMineList.add(myOperation);
 					} else if (containsOp(accceptedMineSet, myOperation)) {
@@ -1069,8 +1062,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		mergeResult.addAll(acceptedMineList);
 		final AbstractChangePackage result = ChangePackageUtil.createChangePackage(
-			Configuration.getClientBehavior().useInMemoryChangePackage()
-			);
+			Configuration.getClientBehavior().useInMemoryChangePackage());
 
 		// dup op in mergeResult
 		result.addAll(mergeResult);
@@ -1088,11 +1080,12 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 				final CreateDeleteOperation otherCreateDeleteOperation = CreateDeleteOperation.class.cast(op);
 
 				if (createDeleteOperation.getOperationId().equals(otherCreateDeleteOperation.getOperationId())
-					&& createDeleteOperation.getModelElementId().equals(otherCreateDeleteOperation.getModelElementId())) {
+					&& createDeleteOperation.getModelElementId()
+						.equals(otherCreateDeleteOperation.getModelElementId())) {
 					return true;
 				}
 
-			} else if (EcoreUtil.equals(abstractOperation, op)) {
+			} else if (abstractOperation.getOperationId().equals(op.getOperationId())) {
 				return true;
 			}
 		}
@@ -1446,8 +1439,8 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 			getProject().eAdapters().remove(crossReferenceAdapter);
 		}
 
-		final ESCommandStack commandStack = (ESCommandStack)
-			ESWorkspaceProviderImpl.getInstance().getEditingDomain().getCommandStack();
+		final ESCommandStack commandStack = (ESCommandStack) ESWorkspaceProviderImpl.getInstance().getEditingDomain()
+			.getCommandStack();
 		commandStack.removeCommandStackObserver(operationManager);
 		commandStack.removeCommandStackObserver(resourcePersister);
 
