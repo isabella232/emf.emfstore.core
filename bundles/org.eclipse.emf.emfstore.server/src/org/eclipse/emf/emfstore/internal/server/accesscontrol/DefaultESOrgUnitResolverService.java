@@ -24,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitIdImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
@@ -35,6 +36,8 @@ import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 import org.eclipse.emf.emfstore.server.model.ESRole;
 import org.eclipse.emf.emfstore.server.model.ESUser;
 
+import com.google.common.base.Preconditions;
+
 /**
  * Default implementation of an {@link ESOrgUnitResolver}.
  *
@@ -45,6 +48,12 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 
 	private ESOrgUnitProvider orgUnitProvider;
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#getRolesFromGroups(org.eclipse.emf.emfstore.server.model.ESOrgUnit)
+	 */
 	public List<ESRole> getRolesFromGroups(ESOrgUnit orgUnit) {
 		final ArrayList<ESRole> roles = new ArrayList<ESRole>();
 		for (final ESGroup group : getGroups(orgUnit)) {
@@ -63,7 +72,12 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 		return copyAndResolveUser(authInfo.getUser());
 	}
 
-	// TODO: rename
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#copyAndResolveUser(org.eclipse.emf.emfstore.server.model.ESUser)
+	 */
 	public ESUser copyAndResolveUser(ESUser esUser) {
 		final ACUser tmpUser = (ACUser) ESUserImpl.class.cast(esUser).toInternalAPI();
 		final ACUser user = ModelUtil.clone(tmpUser);
@@ -95,13 +109,14 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#resolveUser(org.eclipse.emf.emfstore.server.model.ESOrgUnitId)
 	 */
 	public ESUser resolveUser(ESOrgUnitId orgUnitId) throws AccessControlException {
-		// private ACUser resolveUser(String username) throws AccessControlException {
+
+		Preconditions.checkNotNull(orgUnitId);
 
 		synchronized (MonitorProvider.getInstance().getMonitor()) {
 			final Set<ESUser> users = orgUnitProvider.getUsers();
 			final Set<ACUser> internal = APIUtil.toInternal(users);
 			for (final ACUser user : internal) {
-				if (user.getId().equals(orgUnitId)) {
+				if (user.getId().equals(ESOrgUnitIdImpl.class.cast(orgUnitId).toInternalAPI())) {
 					return user.toAPI();
 				}
 			}
@@ -122,7 +137,7 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#getGroups(org.eclipse.emf.emfstore.server.model.ESOrgUnit)
 	 */
 	public List<ESGroup> getGroups(ESOrgUnit esOrgUnit) {
