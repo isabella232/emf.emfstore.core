@@ -56,18 +56,20 @@ public class UserSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		sanityCheckObjects(sessionId);
 		synchronized (getMonitor()) {
 			final AccessControl accessControl = getAccessControl();
+			accessControl.getAuthorizationService().checkServerAdminAccess(sessionId.toAPI());
 			final ESUser rawUser = accessControl.getSessions().getRawUser(sessionId.toAPI());
-			final ESUser resolvedUser = accessControl.getOrgUnitResolverServive().resolveUser(id.toAPI());
 
-			final ACUser requestingUser = (ACUser) ESUserImpl.class.cast(rawUser).toInternalAPI();
-			final ACUser acUser = (ACUser) ESUserImpl.class.cast(resolvedUser).toInternalAPI();
-
-			if (requestingUser.getId().equals(acUser.getId())) {
-				return acUser;
+			final ESUser resolvedUser;
+			if (id == null) {
+				resolvedUser = accessControl.getOrgUnitResolverServive().resolveUser(
+					// TODO casts
+					ESUserImpl.class.cast(rawUser).toInternalAPI().getId().toAPI());
+			} else {
+				resolvedUser = accessControl.getOrgUnitResolverServive().resolveUser(id.toAPI());
 			}
 
-			accessControl.getAuthorizationService().checkServerAdminAccess(sessionId.toAPI());
-			return acUser;
+			final ESUser user = accessControl.getOrgUnitResolverServive().copyAndResolveUser(resolvedUser);
+			return (ACUser) ESUserImpl.class.cast(user).toInternalAPI();
 		}
 	}
 }
