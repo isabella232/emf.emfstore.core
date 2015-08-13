@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 
 /**
  * <p>
- * Represents a bucket containing operations that potentially conflict but that do not neccessarily conflict. It also
+ * Represents a bucket containing operations that potentially conflict but that do not necessarily conflict. It also
  * includes the involved model element ids and the priority of each operation.
  * </p>
  * <p>
