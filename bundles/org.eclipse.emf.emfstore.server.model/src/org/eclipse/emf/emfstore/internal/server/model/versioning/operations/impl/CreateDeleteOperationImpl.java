@@ -74,8 +74,8 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 			}
 
 			final EObject localModelElement = collection.getModelElement(getModelElementId());
-			final List<EObject> allContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
-				localModelElement, false);
+			final List<EObject> allContainedModelElements = ModelUtil
+				.getAllContainedModelElementsAsList(localModelElement, false);
 			allContainedModelElements.add(localModelElement);
 
 			applySubOperations(collection);
@@ -91,7 +91,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 				}
 			}
 
-			collection.clearAllocatedCaches();
+			collection.clearAllocatedCaches(eObjectToIdMap.values());
 		} else {
 			if (collection.contains(getModelElementId())) {
 				// silently fail
@@ -103,12 +103,12 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 			final CreateDeleteOperationImpl clone = ModelUtil.clone(this);
 
 			final EObject element = getModelElement();
-			final List<EObject> allContainedModelElements = ModelUtil
-				.getAllContainedModelElementsAsList(element, false);
+			final List<EObject> allContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(element,
+				false);
 			allContainedModelElements.add(element);
 			final EObject copiedElement = ModelUtil.clone(element);
-			final List<EObject> copiedAllContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
-				copiedElement, false);
+			final List<EObject> copiedAllContainedModelElements = ModelUtil
+				.getAllContainedModelElementsAsList(copiedElement, false);
 			copiedAllContainedModelElements.add(copiedElement);
 			clone.getEObjectToIdMap().clear();
 
@@ -154,8 +154,8 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 		final EObject copiedElement = ModelUtil.clone(element);
 		createDeleteOperation.setModelElement(copiedElement);
 		createDeleteOperation.setModelElementId(ModelUtil.clone(getModelElementId()));
-		final List<EObject> copiedAllContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
-			copiedElement, false);
+		final List<EObject> copiedAllContainedModelElements = ModelUtil
+			.getAllContainedModelElementsAsList(copiedElement, false);
 		copiedAllContainedModelElements.add(copiedElement);
 
 		for (int i = 0; i < allContainedModelElements.size(); i++) {
@@ -278,11 +278,11 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 			modelElement = eResolveProxy(oldModelElement);
 			if (modelElement != oldModelElement) {
 				final InternalEObject newModelElement = (InternalEObject) modelElement;
-				NotificationChain msgs = oldModelElement.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, null);
+				NotificationChain msgs = oldModelElement.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, null);
 				if (newModelElement.eInternalContainer() == null) {
-					msgs = newModelElement.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, msgs);
+					msgs = newModelElement.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -334,12 +334,12 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 		if (newModelElement != modelElement) {
 			NotificationChain msgs = null;
 			if (modelElement != null) {
-				msgs = ((InternalEObject) modelElement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, msgs);
+				msgs = ((InternalEObject) modelElement).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, msgs);
 			}
 			if (newModelElement != null) {
-				msgs = ((InternalEObject) newModelElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, msgs);
+				msgs = ((InternalEObject) newModelElement).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.CREATE_DELETE_OPERATION__MODEL_ELEMENT, null, msgs);
 			}
 			msgs = basicSetModelElement(newModelElement, msgs);
 			if (msgs != null) {

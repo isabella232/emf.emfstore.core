@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,6 +46,13 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	 * Clear allocated caches.
 	 */
 	void clearAllocatedCaches();
+
+	/**
+	 * Clear caches from the given set of {@link ModelElementId}s.
+	 *
+	 * @param modelElementIds the collection of {@link ModelElementId}s to be removed from the allocated cache
+	 */
+	void clearAllocatedCaches(Collection<ModelElementId> modelElementIds);
 
 	/**
 	 * Allocates certain IDs for the given model elements in the mapping.

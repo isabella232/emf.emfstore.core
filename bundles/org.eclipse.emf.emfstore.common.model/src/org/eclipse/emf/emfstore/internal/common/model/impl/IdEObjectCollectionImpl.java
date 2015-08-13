@@ -812,6 +812,17 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		allocatedIdToEObjectMap.clear();
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#clearAllocatedCaches(java.util.Collection)
+	 */
+	public void clearAllocatedCaches(Collection<ModelElementId> modelElementIds) {
+		allocatedIdToEObjectMap.keySet().removeAll(modelElementIds);
+		allocatedEObjectToIdMap.values().removeAll(modelElementIds);
+	}
+
 	private void putIntoAllocatedCaches(EObject modelElement, ModelElementId modelElementId) {
 		allocatedEObjectToIdMap.put(modelElement, modelElementId.getId());
 		allocatedIdToEObjectMap.put(modelElementId.getId(), modelElement);
