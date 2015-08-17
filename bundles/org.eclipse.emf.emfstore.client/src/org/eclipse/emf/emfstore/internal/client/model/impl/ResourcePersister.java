@@ -161,10 +161,8 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 			}
 
 			if (resource instanceof EMFStoreResource) {
-				final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
-				EMFStoreResource.class.cast(resource).setIdToEObjectMap(
-					project.getIdToEObjectMapping(),
-					project.getEObjectToIdMapping());
+				final EMFStoreResource emfStoreResource = EMFStoreResource.class.cast(resource);
+				initializeMapping(emfStoreResource);
 			} else {
 				final Set<EObject> modelElements = ModelUtil.getAllContainedModelElements(resource, false, false);
 
@@ -176,7 +174,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 			try {
 				ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getLocalChangePackage().save();
 			} catch (final IOException ex) {
-				ex.printStackTrace();
+				ModelUtil.logError(ex.getMessage());
 			}
 
 			try {
@@ -188,6 +186,18 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 		isDirty = false;
 		fireDirtyStateChangedNotification();
+	}
+
+	private void initializeMapping(final EMFStoreResource resource) {
+		if (resource.isMappingInitialized()) {
+			return;
+		}
+		final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
+		resource.addEObjectToIdDelegateMapping(project.getEObjectToIdMapping());
+		resource.addEObjectToIdDelegateMapping(project.getAllocatedEObjectToIdMapping());
+		resource.addIdToEObjectDelegateMapping(project.getAllocatedIdToEObjectMapping());
+		resource.addIdToEObjectDelegateMapping(project.getIdToEObjectMapping());
+		resource.setMappingInitialized(true);
 	}
 
 	/**

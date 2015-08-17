@@ -53,7 +53,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.emf.emfstore.common.ESResourceSetProvider;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
@@ -421,13 +420,11 @@ public final class ModelUtil {
 			resourceLoadOptions = new LinkedHashMap<Object, Object>();
 			resourceLoadOptions.put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.TRUE);
 			resourceLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
-			resourceLoadOptions.put(XMLResource.OPTION_USE_DEPRECATED_METHODS, Boolean.FALSE);
 			resourceLoadOptions.put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
 			resourceLoadOptions.put(XMLResource.OPTION_ENCODING, CommonUtil.getEncoding());
 			resourceLoadOptions.put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
 		}
-		// force re-init of pool and name-to-feature map
-		resourceLoadOptions.put(XMLResource.OPTION_USE_PARSER_POOL, new XMLParserPoolImpl());
+		// force re-init name-to-feature map
 		resourceLoadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, new HashMap());
 		return resourceLoadOptions;
 	}
@@ -770,7 +767,7 @@ public final class ModelUtil {
 	 *             if loading the object from the resource fails.
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends EObject> T loadEObjectFromResource(EClass eClass, URI resourceURI, boolean checkConstraints)
+	public static <T extends EObject> T loadEObjectFromResource(EClass eClass, URI resourceURI,	boolean checkConstraints)
 		throws IOException {
 
 		final ResourceSet resourceSet = getResourceSetForURI(resourceURI);
@@ -1336,7 +1333,7 @@ public final class ModelUtil {
 	}
 
 	/**
-	 * Return whether the given eObject instance is a singelton.
+	 * Return whether the given eObject instance is a singleton.
 	 * 
 	 * @param eObject
 	 *            the instance

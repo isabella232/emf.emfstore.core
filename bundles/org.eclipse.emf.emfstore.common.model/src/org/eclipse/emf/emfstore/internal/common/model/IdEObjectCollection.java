@@ -167,20 +167,56 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	void initMapping();
 
 	/**
-	 * Returns a copy of the ID/EObject mapping where IDs are represented as strings.
+	 * Returns the ID/EObject mapping where IDs are represented as strings.
+	 * <p>
 	 * This method is mainly provided for convenience and performance reasons,
 	 * where the ID must be a string.
+	 * </p>
 	 *
 	 * @return the ID/EObject mapping
 	 */
 	Map<String, EObject> getIdToEObjectMapping();
 
 	/**
-	 * Returns a copy of the EObject/ID mapping where IDs are represented as strings.
+	 * Returns the EObject/ID mapping where IDs are represented as strings.
+	 *
+	 * <p>
 	 * This method is mainly provided for convenience and performance reasons,
 	 * where the ID must be a string.
+	 * </p>
 	 *
 	 * @return the EObject/ID mapping
 	 */
 	Map<EObject, String> getEObjectToIdMapping();
+
+	/**
+	 * Returns the ID/EObject mapping of objects which either have been deleted
+	 * within the currently running command or will be added to the project.
+	 * IDs are represented as strings.
+	 * <p>
+	 * This method is mainly provided for convenience and performance reasons,
+	 * where the ID must be a string.
+	 * </p>
+	 *
+	 * @return the ID/EObject mapping
+	 *
+	 * @see this{@link #allocateModelElementIds(Map)}
+	 */
+	Map<EObject, String> getAllocatedEObjectToIdMapping();
+
+	/**
+	 * Returns the EObject/ID mapping of objects which either have been deleted
+	 * within the currently running command or will be added to the project.
+	 * IDs are represented as strings.
+	 *
+	 * <p>
+	 * This method is mainly provided for convenience and performance reasons,
+	 * where the ID must be a string.
+	 * </p>
+	 *
+	 * @return the EObject/ID mapping
+	 *
+	 * @see this{@link #allocateModelElementIds(Map)}
+	 */
+	Map<String, EObject> getAllocatedIdToEObjectMapping();
 }

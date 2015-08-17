@@ -162,9 +162,14 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 					createDeleteOperation.getIdentifier()));
 			}
 
-			for (final EObject modelElement : createDeleteOperation.getEObjectToIdMap().keySet()) {
-				idToEObjectMapping.put(createDeleteOperation.getEObjectToIdMap().get(modelElement).toString(),
-					modelElement);
+			// only put model elements into idToEObjectMapping if they aren't already contained in the delegate mapping
+			for (final Map.Entry<EObject, ModelElementId> entry : createDeleteOperation.getEObjectToIdMap()
+				.entrySet()) {
+				final ModelElementId modelElementId = entry.getValue();
+				final EObject modelElement = entry.getKey();
+				if (delegateMapping.get(modelElementId) == null) {
+					idToEObjectMapping.put(modelElementId.getId(), modelElement);
+				}
 			}
 		}
 	}
