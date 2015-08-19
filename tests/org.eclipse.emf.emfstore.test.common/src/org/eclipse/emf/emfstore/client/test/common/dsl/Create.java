@@ -49,6 +49,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 import org.eclipse.emf.emfstore.test.model.TestElement;
+import org.eclipse.emf.emfstore.test.model.TestType;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 
 // TODO: class returns internal as well as external types
@@ -126,6 +127,10 @@ public final class Create {
 
 	public static TestElement testElement() {
 		return TestmodelFactory.eINSTANCE.createTestElement();
+	}
+
+	public static TestType testType() {
+		return TestmodelFactory.eINSTANCE.createTestType();
 	}
 
 	public static Player player() {

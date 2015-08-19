@@ -23,7 +23,8 @@ Export-Package: org.eclipse.emf.emfstore.client.test.common;version="2.0.0";x-fr
    org.eclipse.emf.emfstore.fuzzy.emf.test,
    org.eclipse.emf.emfstore.client.example.test,
    org.eclipse.emf.emfstore.performance.test,
-   org.eclipse.emf.emfstore.client.api.test",
+   org.eclipse.emf.emfstore.client.api.test,
+   org.eclipse.emf.emfstore.client.ui.test",
  org.eclipse.emf.emfstore.client.test.common.config;version="2.0.0";x-internal:=true,
  org.eclipse.emf.emfstore.client.test.common.dsl;version="2.0.0";
   x-friends:="org.eclipse.emf.emfstore.server.test,
@@ -33,7 +34,8 @@ Export-Package: org.eclipse.emf.emfstore.client.test.common;version="2.0.0";x-fr
    org.eclipse.emf.emfstore.client.recording.test,
    org.eclipse.emf.emfstore.client.test,
    org.eclipse.emf.emfstore.client.test.ui,
-   org.eclipse.emf.emfstore.client.api.test",
+   org.eclipse.emf.emfstore.client.api.test,
+   org.eclipse.emf.emfstore.client.ui.test",
  org.eclipse.emf.emfstore.client.test.common.mocks;version="2.0.0";x-friends:="org.eclipse.emf.emfstore.server.test",
  org.eclipse.emf.emfstore.client.test.common.util;version="2.0.0";
   x-friends:="org.eclipse.emf.emfstore.server.test,

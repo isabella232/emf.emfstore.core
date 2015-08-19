@@ -15,6 +15,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeMoveOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation;
@@ -203,6 +204,17 @@ public final class OperationUtil {
 	 */
 	public static boolean isCreateDelete(AbstractOperation operation) {
 		return operation instanceof CreateDeleteOperation;
+	}
+
+	/**
+	 * Checks whether given operation is a feature operation.
+	 *
+	 * @param operation
+	 *            operation
+	 * @return true if correct
+	 */
+	public static boolean isFeature(AbstractOperation operation) {
+		return operation instanceof FeatureOperation;
 	}
 
 }
