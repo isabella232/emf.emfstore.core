@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -34,7 +34,7 @@ import com.google.common.base.Optional;
 
 /**
  * Configuration options that influence the behavior of the client.
- * 
+ *
  * @author emueller
  * @author ovonwesen
  * @author mkoegel
@@ -46,15 +46,50 @@ public class Behavior {
 	 */
 	public static final long NO_CHECKSUM = -1;
 
-	private static final String RESOURCE_OPTIONS_EXTENSION_POINT_NAME = "org.eclipse.emf.emfstore.client.changeRecordingOptions"; //$NON-NLS-1$
-	private static final String AUTO_SAVE_EXTENSION_POINT_ATTRIBUTE_NAME = "autoSave"; //$NON-NLS-1$
-	private static final String RERECORD_LOCAL_CHANGES_EXTENSION_POINT_ATTRIBUTE_NAME = "rerecordLocalChanges"; //$NON-NLS-1$
-	private static final String CUT_OFF_INCOMING_CROSS_REFS_EXTENSION_POINT_ATTRIBUTE_NAME = "cutOffIncomingCrossReferences"; //$NON-NLS-1$
-	private static final String FORCE_COMMANDS_EXTENSION_POINT_ATTRIBUTE_NAME = "forceCommands"; //$NON-NLS-1$
-	private static final String DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME = "denyAddCutElementsToModelElements"; //$NON-NLS-1$
-	private static final String USE_IN_MEMORY_CHANGE_PACKAGE = "useInMemoryChangePackage"; //$NON-NLS-1$
-	private static final String CHANGEPACKAGE_FRAGMENT_SIZE = "changePackageFragmentSize"; //$NON-NLS-1$
-	private static final String OPERATION_MODIFIER = "operationModifier"; //$NON-NLS-1$
+	/**
+	 * Base identifier for all change recording related options.
+	 */
+	public static final String RESOURCE_OPTIONS_EXTENSION_POINT_NAME = "org.eclipse.emf.emfstore.client.changeRecordingOptions"; //$NON-NLS-1$
+
+	/**
+	 * Auto save option identifier.
+	 */
+	public static final String AUTO_SAVE_EXTENSION_POINT_ATTRIBUTE_NAME = "autoSave"; //$NON-NLS-1$
+
+	/**
+	 * Re-record option identifier.
+	 */
+	public static final String RERECORD_LOCAL_CHANGES_EXTENSION_POINT_ATTRIBUTE_NAME = "rerecordLocalChanges"; //$NON-NLS-1$
+
+	/**
+	 * 'Cut off incoming references' option identifier.
+	 */
+	public static final String CUT_OFF_INCOMING_CROSS_REFS_EXTENSION_POINT_ATTRIBUTE_NAME = "cutOffIncomingCrossReferences"; //$NON-NLS-1$
+
+	/**
+	 * 'Force commands' option identifier.
+	 */
+	public static final String FORCE_COMMANDS_EXTENSION_POINT_ATTRIBUTE_NAME = "forceCommands"; //$NON-NLS-1$
+
+	/**
+	 * 'Deny add cut elements to model elements feature' option identifier.
+	 */
+	public static final String DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME = "denyAddCutElementsToModelElements"; //$NON-NLS-1$
+
+	/**
+	 * Use in-memory change packages option identifier.
+	 */
+	public static final String USE_IN_MEMORY_CHANGE_PACKAGE = "useInMemoryChangePackage"; //$NON-NLS-1$
+
+	/**
+	 * Change package fragment size option identifier.
+	 */
+	public static final String CHANGEPACKAGE_FRAGMENT_SIZE = "changePackageFragmentSize"; //$NON-NLS-1$
+
+	/**
+	 * Operation modifier option identifier.
+	 */
+	public static final String OPERATION_MODIFIER = "operationModifier"; //$NON-NLS-1$
 
 	private static Boolean isAutoSaveActive;
 	private static Boolean isRerecordingActive;
@@ -71,7 +106,7 @@ public class Behavior {
 	 * Whether to enable the automatic saving of the workspace.
 	 * If disabled, performance improves vastly, but clients have to
 	 * perform the saving of the workspace manually.
-	 * 
+	 *
 	 * @param enabled whether to enable auto save
 	 */
 	public void setAutoSave(boolean enabled) {
@@ -80,7 +115,7 @@ public class Behavior {
 
 	/**
 	 * Whether auto-save is enabled.
-	 * 
+	 *
 	 * @return true, if auto-save is enabled, false otherwise
 	 */
 	public boolean isAutoSaveEnabled() {
@@ -94,7 +129,7 @@ public class Behavior {
 
 	/**
 	 * Whether re-recording is enabled.
-	 * 
+	 *
 	 * @return <code>true</code>, if re-recording is enabled, <code>false</code> otherwise
 	 */
 	public Boolean isRerecordingActivated() {
@@ -109,7 +144,7 @@ public class Behavior {
 
 	/**
 	 * Whether incoming cross references should be cut off.
-	 * 
+	 *
 	 * @return {@link Boolean#TRUE}, if incoming cross references are cut off, {@link Boolean#FALSE} otherwise
 	 */
 	public Boolean isCutOffIncomingCrossReferencesActivated() {
@@ -124,7 +159,7 @@ public class Behavior {
 
 	/**
 	 * Whether the usage of commands is enforced. Default is {@link Boolean#FALSE}.
-	 * 
+	 *
 	 * @return {@link Boolean#TRUE}, if usage of commands is enforced, {@link Boolean#FALSE} otherwise
 	 */
 	public Boolean isForceCommandsActived() {
@@ -139,7 +174,7 @@ public class Behavior {
 
 	/**
 	 * Whether cut elements are added automatically as regular model elements by default.
-	 * 
+	 *
 	 * @return {@link Boolean#TRUE}, if cut elements are added automatically as regular elements, {@link Boolean#FALSE}
 	 *         otherwise
 	 */
@@ -148,8 +183,8 @@ public class Behavior {
 		if (isDenyAddCutElementsToModelElementsFeatureActive == null) {
 			isDenyAddCutElementsToModelElementsFeatureActive = new ESExtensionPoint(
 				RESOURCE_OPTIONS_EXTENSION_POINT_NAME)
-				.getBoolean(DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME,
-					Boolean.FALSE);
+					.getBoolean(DENY_ADD_CUT_ELEMENTS_TO_MODELELEMENTS_FEATURE_EXTENSION_POINT_ATTRIBUTE_NAME,
+						Boolean.FALSE);
 		}
 
 		return isDenyAddCutElementsToModelElementsFeatureActive;
@@ -158,7 +193,7 @@ public class Behavior {
 	/**
 	 * Whether the checksum check is active. If true, and checksum comparison fails, an {@link ESChecksumErrorHandler}
 	 * will be active.
-	 * 
+	 *
 	 * @return true, if the checksum comparison is activated, false otherwise
 	 */
 	public boolean isChecksumCheckActive() {
@@ -169,7 +204,7 @@ public class Behavior {
 
 	/**
 	 * Returns the active {@link ESChecksumErrorHandler}. The default is {@link ChecksumErrorHandler#AUTOCORRECT}.
-	 * 
+	 *
 	 * @return the active checksum error handler
 	 */
 	public ESChecksumErrorHandler getChecksumErrorHandler() {
@@ -201,7 +236,7 @@ public class Behavior {
 
 	/**
 	 * Set the active {@link ESChecksumErrorHandler}.
-	 * 
+	 *
 	 * @param errorHandler
 	 *            the error handler to be set
 	 */
@@ -211,7 +246,7 @@ public class Behavior {
 
 	/**
 	 * Whether the in-memory change package should be used.
-	 * 
+	 *
 	 * @return {@code true}, if the in-memory change package should be used, {@code false} otherwise
 	 */
 	public boolean useInMemoryChangePackage() {
@@ -282,14 +317,14 @@ public class Behavior {
 
 	/**
 	 * Get the default server info.
-	 * 
+	 *
 	 * @return server info
 	 */
 	public List<ServerInfo> getDefaultServerInfos() {
 		final ESClientConfigurationProvider provider = new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.client.defaultConfigurationProvider") //$NON-NLS-1$
-			.getClass("providerClass", //$NON-NLS-1$
-				ESClientConfigurationProvider.class);
+				.getClass("providerClass", //$NON-NLS-1$
+					ESClientConfigurationProvider.class);
 		final ArrayList<ServerInfo> result = new ArrayList<ServerInfo>();
 		if (provider != null) {
 			final List<ESServer> defaultServerInfos = provider.getDefaultServerInfos();

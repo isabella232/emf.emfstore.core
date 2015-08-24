@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.internal.client.observers;
 
 import org.eclipse.emf.emfstore.common.ESObserver;
+import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
@@ -24,18 +25,22 @@ public interface OperationObserver extends ESObserver {
 	/**
 	 * Called when an {@link AbstractOperation} has been executed.
 	 *
+	 * @param projectSpace
+	 *            the {@link ProjectSpace} this operation was executed on
 	 * @param operation
 	 *            the executed operation
 	 */
-	void operationExecuted(AbstractOperation operation);
+	void operationExecuted(ProjectSpace projectSpace, AbstractOperation operation);
 
 	/**
 	 * Called when an {@link AbstractOperation} has been reversed.
 	 *
+	 * @param projectSpace
+	 *            the {@link ProjectSpace} this operation was undone on
 	 * @param operation
 	 *            the operation that has been reversed.<br/>
 	 *            <b>Note</b>: the given operation is not reserved. If you wish to get
 	 *            the reversed operation, call {@link AbstractOperation#reverse()} on {@code operation}
 	 */
-	void operationUndone(AbstractOperation operation);
+	void operationUndone(ProjectSpace projectSpace, AbstractOperation operation);
 }
