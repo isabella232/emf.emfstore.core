@@ -11,21 +11,34 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.common;
 
+import static org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil.isComposite;
 import static org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil.isCreateDelete;
+import static org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.OperationUtil.isFeature;
 
+import java.text.MessageFormat;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.emfstore.client.ui.ESClassFilter;
+import org.eclipse.emf.emfstore.client.ui.ESWhitelistFilter;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementIdToEObjectMapping;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.FeatureOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.UnkownFeatureException;
 
 /**
  * Utility class for determing filtered types and operations that
@@ -36,36 +49,61 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Crea
  */
 public final class EClassFilter {
 
+	private static final String POINT_ID = "org.eclipse.emf.emfstore.client.ui.filteredTypes"; //$NON-NLS-1$
+	private static final String FILTERED_TYPES_ATTRIBUTE = "filteredTypes"; //$NON-NLS-1$
+
 	/**
 	 * Singleton.
 	 */
 	public static final EClassFilter INSTANCE = new EClassFilter();
 
 	private final Set<EClass> filteredEClasses;
+	private final Map<EClass, Collection<EStructuralFeature>> whitelist;
 	private String filterLabel;
 
-	private EClassFilter() {
+	/**
+	 * Creates a new {@link EClassFilter} instance.
+	 */
+	/* package */ EClassFilter() {
 		filteredEClasses = new LinkedHashSet<EClass>();
+		whitelist = new LinkedHashMap<EClass, Collection<EStructuralFeature>>();
 		initFilteredEClasses();
 	}
 
 	private void initFilteredEClasses() {
 
-		final ESExtensionPoint extensionPoint = new ESExtensionPoint("org.eclipse.emf.emfstore.client.ui.filteredTypes");
+		final ESExtensionPoint extensionPoint = new ESExtensionPoint(POINT_ID);
 
 		if (extensionPoint.size() == 0) {
 			return;
 		}
 
 		for (final ESExtensionElement element : extensionPoint.getExtensionElements()) {
-			final ESClassFilter filter = element.getClass("filteredTypes", ESClassFilter.class);
+			final ESClassFilter filter = element.getClass(FILTERED_TYPES_ATTRIBUTE, ESClassFilter.class);
 
-			if (filter != null) {
-				filteredEClasses.addAll(filter.getFilteredEClasses());
-			}
+			registerFilter(filter);
 
 			if (filterLabel == null) {
 				filterLabel = filter.getLabel();
+			}
+		}
+	}
+
+	/**
+	 * @param filter the {@link ESClassFilter} to register
+	 */
+	void registerFilter(final ESClassFilter filter) {
+		if (filter != null) {
+			filteredEClasses.addAll(filter.getFilteredEClasses());
+		}
+
+		if (ESWhitelistFilter.class.isInstance(filter)) {
+			for (final Entry<EClass, Collection<EStructuralFeature>> entry : ESWhitelistFilter.class.cast(filter)
+				.getNonFilteredFeaturesForEClass().entrySet()) {
+				if (!whitelist.containsKey(entry.getKey())) {
+					whitelist.put(entry.getKey(), new LinkedHashSet<EStructuralFeature>());
+				}
+				whitelist.get(entry.getKey()).addAll(entry.getValue());
 			}
 		}
 	}
@@ -91,6 +129,24 @@ public final class EClassFilter {
 	}
 
 	/**
+	 * Whether the given {@link EClass} is considered filtered taking the changed feature into account.
+	 *
+	 * @param eClass the EClass to check.
+	 * @param feature the changed feature
+	 * @return <code>true</code> of the EClass is considered as filtered, <code>false</code> otherwise
+	 */
+	public boolean isFiltered(EClass eClass, EStructuralFeature feature) {
+		if (!isFilteredEClass(eClass)) {
+			return false;
+		}
+		if (!whitelist.containsKey(eClass)) {
+			return true;
+		}
+		return !whitelist.get(eClass).contains(feature);
+
+	}
+
+	/**
 	 * Whether the given operation only involves types that are considered to be filtered.
 	 *
 	 * @param idToEObjectMapping
@@ -103,28 +159,12 @@ public final class EClassFilter {
 	public boolean involvesOnlyFilteredEClasses(ModelElementIdToEObjectMapping idToEObjectMapping,
 		AbstractOperation operation) {
 
-		if (operation instanceof CompositeOperation) {
-			final CompositeOperation composite = (CompositeOperation) operation;
-			for (final AbstractOperation op : composite.getSubOperations()) {
-				if (!involvesOnlyFilteredEClasses(idToEObjectMapping, op)) {
-					return false;
-				}
-			}
-
-			return true;
+		if (isComposite(operation)) {
+			return compositeOperationInvolvesOnlyFilteredEClasses(idToEObjectMapping, operation);
 		}
 
 		if (isCreateDelete(operation)) {
-			final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) operation;
-			for (final EObject modelElement : createDeleteOperation.getEObjectToIdMap().keySet()) {
-				if (modelElement != null && !isFilteredEClass(modelElement.eClass())) {
-					return false;
-				} else if (modelElement == null) {
-					return false;
-				}
-			}
-
-			return true;
+			return createDeleteOperationInvolvesOnlyFilteredEClasses(operation);
 		}
 
 		final ModelElementId id = operation.getModelElementId();
@@ -136,6 +176,43 @@ public final class EClassFilter {
 
 		if (!isFilteredEClass(modelElement.eClass())) {
 			return false;
+		}
+
+		if (isFeature(operation)) {
+			try {
+				final EStructuralFeature feature = FeatureOperation.class.cast(operation).getFeature(modelElement);
+				return isFiltered(modelElement.eClass(), feature);
+			} catch (final UnkownFeatureException ex) {
+				ModelUtil.log(
+					MessageFormat.format("{0} could not access feature of a feature operation", getClass().getName()), //$NON-NLS-1$
+					ex, IStatus.WARNING);
+				return true;
+			}
+		}
+
+		return true;
+	}
+
+	private boolean createDeleteOperationInvolvesOnlyFilteredEClasses(AbstractOperation operation) {
+		final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) operation;
+		for (final EObject modelElement : createDeleteOperation.getEObjectToIdMap().keySet()) {
+			if (modelElement != null && !isFilteredEClass(modelElement.eClass())) {
+				return false;
+			} else if (modelElement == null) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private boolean compositeOperationInvolvesOnlyFilteredEClasses(ModelElementIdToEObjectMapping idToEObjectMapping,
+		AbstractOperation operation) {
+		final CompositeOperation composite = (CompositeOperation) operation;
+		for (final AbstractOperation op : composite.getSubOperations()) {
+			if (!involvesOnlyFilteredEClasses(idToEObjectMapping, op)) {
+				return false;
+			}
 		}
 
 		return true;
