@@ -12,9 +12,12 @@
 package org.eclipse.emf.emfstore.internal.client.model.impl;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
@@ -23,13 +26,13 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver;
 import org.eclipse.emf.emfstore.client.handler.ESNotificationFilter;
 import org.eclipse.emf.emfstore.client.observer.ESCommitObserver;
 import org.eclipse.emf.emfstore.client.observer.ESUpdateObserver;
 import org.eclipse.emf.emfstore.internal.client.model.Configuration;
+import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.filter.EmptyRemovalsFilter;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.filter.FilterStack;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.notification.filter.TouchFilter;
@@ -39,7 +42,6 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.common.EMFStoreResource;
 import org.eclipse.emf.emfstore.internal.common.ESDisposable;
 import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
-import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.NotificationInfo;
@@ -133,7 +135,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 
 	/**
 	 * Save all dirty resources to disk now if auto-save is active.
-	 * If auto-save is disabled, clients have to programatically
+	 * If auto-save is disabled, clients have to programmatically
 	 * save the dirty resource set by setting the <code>force</code> parameter
 	 * to true.
 	 *
@@ -145,7 +147,7 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 			return;
 		}
 
-		if (!isDirty && !force) {
+		if (!force && !isDirty) {
 			return;
 		}
 
@@ -160,44 +162,29 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 				continue;
 			}
 
-			if (resource instanceof EMFStoreResource) {
-				final EMFStoreResource emfStoreResource = EMFStoreResource.class.cast(resource);
-				initializeMapping(emfStoreResource);
-			} else {
-				final Set<EObject> modelElements = ModelUtil.getAllContainedModelElements(resource, false, false);
+			final ProjectSpace projectSpace = ESLocalProjectImpl.class.cast(localProject).toInternalAPI();
+			if (EMFStoreResource.class.isInstance(resource) && resource == projectSpace.getProject().eResource()) {
+				final Map<EObject, String> eObjectToIdMapping = new LinkedHashMap<EObject, String>(
+					projectSpace.getProject().getEObjectToIdMapping());
+				final Map<String, EObject> idToEObjectMapping = new LinkedHashMap<String, EObject>(
+					projectSpace.getProject().getIdToEObjectMapping());
+				EMFStoreResource.class.cast(resource).setIdToEObjectMap(idToEObjectMapping, eObjectToIdMapping);
+			}
 
-				for (final EObject modelElement : modelElements) {
-					setModelElementIdOnResource((XMIResource) resource, modelElement);
+			try {
+				if (projectSpace.getLocalChangePackage().eResource() == resource) {
+					projectSpace.getLocalChangePackage().save();
+				} else {
+					ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
 				}
-			}
-
-			try {
-				ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getLocalChangePackage().save();
-			} catch (final IOException ex) {
-				ModelUtil.logError(ex.getMessage());
-			}
-
-			try {
-				ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
 			} catch (final IOException e) {
-				// ignore exception
+				throw new RuntimeException(
+					MessageFormat.format(Messages.ResourcePersister_SaveFailed, resource.getURI()));
 			}
 		}
 
 		isDirty = false;
 		fireDirtyStateChangedNotification();
-	}
-
-	private void initializeMapping(final EMFStoreResource resource) {
-		if (resource.isMappingInitialized()) {
-			return;
-		}
-		final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
-		resource.addEObjectToIdDelegateMapping(project.getEObjectToIdMapping());
-		resource.addEObjectToIdDelegateMapping(project.getAllocatedEObjectToIdMapping());
-		resource.addIdToEObjectDelegateMapping(project.getAllocatedIdToEObjectMapping());
-		resource.addIdToEObjectDelegateMapping(project.getIdToEObjectMapping());
-		resource.setMappingInitialized(true);
 	}
 
 	/**
@@ -297,28 +284,6 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 				childResource.getContents().remove(element);
 			}
 		}
-	}
-
-	private void setModelElementIdOnResource(XMIResource resource, EObject modelElement) {
-
-		if (modelElement instanceof IdEObjectCollection) {
-			return;
-		}
-
-		final String modelElementId = getIDForEObject(modelElement);
-		resource.setID(modelElement, modelElementId);
-	}
-
-	private String getIDForEObject(EObject modelElement) {
-		final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
-		final String modelElementId = project.getModelElementId(modelElement).toString();
-
-		if (modelElementId == null) {
-			WorkspaceUtil
-				.handleException(new IllegalStateException(Messages.ResourcePersister_MissingID + modelElement));
-		}
-
-		return modelElementId;
 	}
 
 	private void fireDirtyStateChangedNotification() {

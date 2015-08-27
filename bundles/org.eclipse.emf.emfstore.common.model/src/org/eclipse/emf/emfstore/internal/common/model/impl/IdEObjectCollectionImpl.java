@@ -829,22 +829,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		allocatedIdToEObjectMap.put(modelElementId.getId(), modelElement);
 	}
 
-	/**
-	 * Returns the EObject Id.
-	 *
-	 * @param eObject the eobject
-	 * @return the id or null if there is no model element id
-	 */
-	public String getEObjectId(EObject eObject) {
-		final ModelElementId modelElementId = getModelElementId(eObject);
-
-		if (modelElementId != null) {
-			return modelElementId.getId();
-		}
-
-		return null;
-	}
-
 	private ModelElementId getNewModelElementID() {
 		// if there is registered modelElementIdGenerator, use it
 		if (modelElementIdGenerator != null) {
@@ -887,26 +871,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	 */
 	public Map<EObject, String> getEObjectToIdMapping() {
 		return eObjectToIdMap;
-	}
-
-	/**
-	 *
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#getAllocatedEObjectToIdMapping()
-	 */
-	public Map<EObject, String> getAllocatedEObjectToIdMapping() {
-		return allocatedEObjectToIdMap;
-	}
-
-	/**
-	 *
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#getAllocatedIdToEObjectMapping()
-	 */
-	public Map<String, EObject> getAllocatedIdToEObjectMapping() {
-		return allocatedIdToEObjectMap;
 	}
 
 	/**

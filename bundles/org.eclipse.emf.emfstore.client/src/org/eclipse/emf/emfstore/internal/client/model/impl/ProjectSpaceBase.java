@@ -654,19 +654,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		fileTransferManager = new FileTransferManager(this);
 		operationManager = new OperationManager(this);
 
-		initResourcePersister();
-
-		commandStack.addCommandStackObserver(operationManager);
-		commandStack.addCommandStackObserver(resourcePersister);
-
 		// initialization order is important!
-		getProject().addIdEObjectCollectionChangeObserver(operationManager);
-		getProject().addIdEObjectCollectionChangeObserver(resourcePersister);
-
-		if (getProject() instanceof ProjectImpl) {
-			((ProjectImpl) getProject()).setUndetachable(operationManager);
-			((ProjectImpl) getProject()).setUndetachable(resourcePersister);
-		}
 
 		initPropertyMap();
 
@@ -697,6 +685,18 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 					ex.printStackTrace();
 				}
 			}
+		}
+
+		initResourcePersister();
+		commandStack.addCommandStackObserver(resourcePersister);
+		commandStack.addCommandStackObserver(operationManager);
+
+		getProject().addIdEObjectCollectionChangeObserver(operationManager);
+		getProject().addIdEObjectCollectionChangeObserver(resourcePersister);
+
+		if (getProject() instanceof ProjectImpl) {
+			((ProjectImpl) getProject()).setUndetachable(operationManager);
+			((ProjectImpl) getProject()).setUndetachable(resourcePersister);
 		}
 
 		initCompleted = true;
@@ -744,7 +744,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		if (!isTransient) {
 			resourcePersister.addResource(eResource());
-			// resourcePersister.addResource(getLocalChangePackage().eResource());
+			resourcePersister.addResource(getLocalChangePackage().eResource());
 			resourcePersister.addResource(getProject().eResource());
 			resourcePersister.addDirtyStateChangeLister(new ESLocalProjectSaveStateNotifier(toAPI()));
 			ESWorkspaceProviderImpl.getObserverBus().register(resourcePersister);
@@ -1033,7 +1033,6 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 							break;
 						}
 					}
-//					accceptedMineSet.remove(myOperation);
 
 				}
 			} finally {

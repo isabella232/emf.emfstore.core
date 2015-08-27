@@ -24,7 +24,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.common.ESSafeRunnable;
 import org.eclipse.emf.emfstore.common.ESSafeRunner;
@@ -114,7 +113,7 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 	private void addToResource(EObject eObject) {
 		final Resource resource = eObject.eResource();
 		if (resource != null && resource != eResource()) {
-			EcoreUtil.remove(eObject);
+			resource.getContents().remove(eObject);
 		}
 	}
 
@@ -148,11 +147,13 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 							observersToRemove.add(changeObserver);
 							ModelUtil.logException(
 								Messages.NotifiableIdEObjectCollectionImpl_Exception_Detach
-									+ changeObserver.getClass().getName(), exception);
+									+ changeObserver.getClass().getName(),
+								exception);
 						} else {
 							ModelUtil.logException(
 								Messages.NotifiableIdEObjectCollectionImpl_Exception_NoDetach
-									+ changeObserver.getClass().getName(), exception);
+									+ changeObserver.getClass().getName(),
+								exception);
 						}
 					} else {
 						exceptionThrowingObservers.add(changeObserver);

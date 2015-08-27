@@ -166,9 +166,6 @@ public abstract class WorkspaceBase extends EObjectImpl implements Workspace, ES
 		for (final ProjectSpace projectSpace : getProjectSpaces()) {
 			((ProjectSpaceBase) projectSpace).dispose();
 		}
-		getServerInfos().clear();
-		getUsersessions().clear();
-		save();
 	}
 
 	/**

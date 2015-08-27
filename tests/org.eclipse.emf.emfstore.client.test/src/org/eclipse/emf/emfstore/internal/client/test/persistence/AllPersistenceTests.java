@@ -25,7 +25,8 @@ import org.junit.runners.Suite;
 	PersistenceTest.class,
 	FeatureMapPersistenceTest.class,
 	ResourcePersisterTest.class,
-	ProjectLastUpdatedTest.class
+	ProjectLastUpdatedTest.class,
+	ResourceCrossContainmentTest.class
 })
 public class AllPersistenceTests {
 
