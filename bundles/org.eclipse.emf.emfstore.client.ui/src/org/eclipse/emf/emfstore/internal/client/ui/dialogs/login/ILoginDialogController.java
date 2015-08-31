@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
+ * Copyright (c) 2012-2015 EclipseSource Muenchen GmbH and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -19,7 +19,9 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * The login dialog controller manages a given {@link ESUsersession} and/or a {@link ESServer} instance
- * to determine when it is necessary to open a {@link LoginDialog} in order to authenticate the user.
+ * to determine when it is necessary to open a
+ * {@link org.eclipse.emf.emfstore.internal.client.ui.dialogs.AbstractLoginDialog AbstractLoginDialog} in order to
+ * authenticate the user.
  * If authentication already took place no such dialog should be opened.
  *
  * @author ovonwesen

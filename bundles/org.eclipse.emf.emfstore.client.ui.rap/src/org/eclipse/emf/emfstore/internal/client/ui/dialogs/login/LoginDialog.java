@@ -21,9 +21,9 @@ import org.eclipse.emf.emfstore.internal.client.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
+import org.eclipse.emf.emfstore.internal.client.ui.dialogs.AbstractLoginDialog;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelection;
@@ -37,7 +37,6 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -47,27 +46,21 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.ResourceManager;
 
 /**
- * The login dialog.
+ * RAP version of the login dialog.
  *
  * @author ovonwesen
  * @author emueller
  *
  * @see LoginDialogController
  */
-public class LoginDialog extends TitleAreaDialog {
+public class LoginDialog extends AbstractLoginDialog {
 
-	private static final String CLIENT_UI_BUNDLE = "org.eclipse.emf.emfstore.client.ui"; //$NON-NLS-1$
+	private static final String CLIENT_UI_BUNDLE = "org.eclipse.emf.emfstore.client.ui.rap"; //$NON-NLS-1$
 	private static final String LOGIN_ICON = "icons/login_icon.png"; //$NON-NLS-1$
 	private Text passwordField;
-	private Button savePassword;
 	private ComboViewer usernameCombo;
 
-	private final ILoginDialogController controller;
-	private Usersession selectedUsersession;
 	private List<Usersession> knownUsersessions;
-	private String password;
-	private boolean passwordModified;
-	private boolean isSavePassword;
 
 	/**
 	 * Create the dialog.
@@ -75,13 +68,12 @@ public class LoginDialog extends TitleAreaDialog {
 	 * @param parentShell
 	 *            the parent shell to be used by the dialog
 	 * @param controller
-	 *            the login dialog controller repsonsible for opening up the
+	 *            the login dialog controller responsible for opening up the
 	 *            login dialog
 	 *
 	 */
 	public LoginDialog(Shell parentShell, ILoginDialogController controller) {
-		super(parentShell);
-		this.controller = controller;
+		super(parentShell, controller);
 	}
 
 	/**
@@ -93,7 +85,7 @@ public class LoginDialog extends TitleAreaDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		setTitleImage(ResourceManager.getPluginImage(CLIENT_UI_BUNDLE, LOGIN_ICON));
-		setTitle(Messages.LoginDialog_Login_To + controller.getServer().getName());
+		setTitle(Messages.LoginDialog_Login_To + getController().getServer().getName());
 		setMessage(Messages.LoginDialog_Enter_Name_And_Password);
 		getShell().setText(Messages.LoginDialog_Auth_Required);
 		final Composite area = (Composite) super.createDialogArea(parent);
@@ -111,42 +103,30 @@ public class LoginDialog extends TitleAreaDialog {
 		createUsernameCombo(loginContainer);
 		createPasswordLabel(loginContainer);
 		createPasswordField(loginContainer);
-		createSavePasswordLabel(loginContainer);
-		createSavePassword(loginContainer);
 
 		initData();
-		if (controller.getUsersession() == null) {
-			final ESUsersession lastUsersession = controller.getServer().getLastUsersession();
+		if (getController().getUsersession() == null) {
+			final ESUsersession lastUsersession = getController().getServer().getLastUsersession();
 			if (lastUsersession != null) {
 				loadUsersession(((ESUsersessionImpl) lastUsersession).toInternalAPI());
 			} else {
 				loadUsersession(null);
 			}
 		} else {
-			final ESUsersession usersession = controller.getUsersession();
+			final ESUsersession usersession = getController().getUsersession();
 			loadUsersession(((ESUsersessionImpl) usersession).toInternalAPI());
 		}
 		return area;
 	}
 
-	private void createSavePassword(Composite parent) {
-		savePassword = new Button(parent, SWT.CHECK);
-		new Label(parent, SWT.NONE);
-	}
-
-	private void createSavePasswordLabel(Composite parent) {
-		final Label savePasswordLabel = new Label(parent, SWT.NONE);
-		savePasswordLabel.setText(Messages.LoginDialog_Save_Password);
-	}
-
 	private void createPasswordField(Composite parent) {
 		passwordField = new Text(parent, SWT.BORDER | SWT.PASSWORD);
 		final GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gridData.widthHint = 250;
+		gridData.widthHint = 300;
 		passwordField.setLayoutData(gridData);
 		passwordField.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
-				passwordModified = true;
+				setPasswordModified(true);
 				flushErrorMessage();
 			}
 		});
@@ -178,7 +158,7 @@ public class LoginDialog extends TitleAreaDialog {
 		final Combo combo = usernameCombo.getCombo();
 		combo.addModifyListener(comboListener);
 		final GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gridData.widthHint = 235;
+		gridData.widthHint = 285;
 		combo.setLayoutData(gridData);
 		new Label(parent, SWT.NONE);
 	}
@@ -196,7 +176,7 @@ public class LoginDialog extends TitleAreaDialog {
 			}
 		});
 
-		knownUsersessions = APIUtil.mapToInternalAPI(Usersession.class, controller.getKnownUsersessions());
+		knownUsersessions = APIUtil.mapToInternalAPI(Usersession.class, getController().getKnownUsersessions());
 		usernameCombo.setInput(knownUsersessions);
 	}
 
@@ -211,11 +191,10 @@ public class LoginDialog extends TitleAreaDialog {
 			return;
 		}
 
-		selectedUsersession = usersession;
+		setSelectedSession(usersession);
 
 		// reset fields
 		passwordField.setMessage(StringUtils.EMPTY);
-		savePassword.setSelection(false);
 
 		if (getSelectedUsersession() != null) {
 
@@ -231,11 +210,10 @@ public class LoginDialog extends TitleAreaDialog {
 				passwordField
 					.setMessage(Messages.LoginDialog_Password_Saved_Reenter_To_Change);
 				passwordField.setText(StringUtils.EMPTY);
-				savePassword.setSelection(true);
 			}
 			// reset password modified. modified password is only relevant when
 			// dealing with saved passwords.
-			passwordModified = false;
+			setPasswordModified(false);
 		}
 	}
 
@@ -250,7 +228,7 @@ public class LoginDialog extends TitleAreaDialog {
 		final String username = usernameCombo.getCombo().getText();
 
 		Usersession candidateSession = getSelectedUsersession();
-		final ESServerImpl server = (ESServerImpl) controller.getServer();
+		final ESServerImpl server = (ESServerImpl) getController().getServer();
 
 		// try to find usersession with same username in order to avoid
 		// duplicates
@@ -260,10 +238,10 @@ public class LoginDialog extends TitleAreaDialog {
 
 		if (candidateSession == null
 			|| !candidateSession.getServerInfo().equals(server.toInternalAPI())) {
-			final ESServerImpl serverImpl = (ESServerImpl) controller.getServer();
+			final ESServerImpl serverImpl = (ESServerImpl) getController().getServer();
 			candidateSession = ModelFactory.eINSTANCE.createUsersession();
 			final Usersession session = candidateSession;
-			selectedUsersession = candidateSession;
+			setSelectedSession(candidateSession);
 
 			RunESCommand.run(new Callable<Void>() {
 				public Void call() throws Exception {
@@ -274,9 +252,7 @@ public class LoginDialog extends TitleAreaDialog {
 			});
 		}
 
-		password = passwordField.getText();
-		isSavePassword = savePassword.getSelection();
-
+		setPassword(passwordField.getText());
 		super.okPressed();
 	}
 
@@ -320,7 +296,7 @@ public class LoginDialog extends TitleAreaDialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(400, 250);
+		return new Point(500, 300);
 	}
 
 	/**
@@ -328,15 +304,6 @@ public class LoginDialog extends TitleAreaDialog {
 	 */
 	private void flushErrorMessage() {
 		setErrorMessage(null);
-	}
-
-	/**
-	 * Returns the selected {@link Usersession}.
-	 *
-	 * @return the selected {@link Usersession}
-	 */
-	public Usersession getSelectedUsersession() {
-		return selectedUsersession;
 	}
 
 	/**
@@ -370,32 +337,5 @@ public class LoginDialog extends TitleAreaDialog {
 			}
 			flushErrorMessage();
 		}
-	}
-
-	/**
-	 * Returns the password as entered by the user.
-	 *
-	 * @return the entered password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * Whether the password should be saved.
-	 *
-	 * @return {@code true}, if the password should be saved, {@code false} otherwise
-	 */
-	public boolean isSavePassword() {
-		return isSavePassword;
-	}
-
-	/**
-	 * Whether the password has been modified.
-	 *
-	 * @return {@code true}, if the password has been modified, {@code false} otherwise
-	 */
-	public boolean isPasswordModified() {
-		return passwordModified;
 	}
 }
