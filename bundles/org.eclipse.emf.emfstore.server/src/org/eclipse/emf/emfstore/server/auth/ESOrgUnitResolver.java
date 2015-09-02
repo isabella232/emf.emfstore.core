@@ -64,8 +64,9 @@ public interface ESOrgUnitResolver {
 	 * @param orgUnitId
 	 *            the ID of an organizational unit
 	 * @return a list of {@link ESGroup}s
+	 * @throws AccessControlException in case of missing access right
 	 */
-	List<ESGroup> getGroups(ESOrgUnitId orgUnitId);
+	List<ESGroup> getGroups(ESOrgUnitId orgUnitId) throws AccessControlException;
 
 	/**
 	 * Returns the group membership of the organizational unit.

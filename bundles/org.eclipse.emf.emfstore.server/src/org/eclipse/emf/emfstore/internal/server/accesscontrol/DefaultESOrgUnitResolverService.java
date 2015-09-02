@@ -51,7 +51,7 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#getRolesFromGroups(org.eclipse.emf.emfstore.server.model.ESOrgUnit)
 	 */
 	public List<ESRole> getRolesFromGroups(ESOrgUnit orgUnit) {
@@ -126,12 +126,14 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 
 	/**
 	 * {@inheritDoc}
+	 * 
+	 * @throws AccessControlException
 	 *
 	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#getGroups(org.eclipse.emf.emfstore.server.model.ESOrgUnitId)
 	 */
-	public List<ESGroup> getGroups(ESOrgUnitId orgUnitId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ESGroup> getGroups(ESOrgUnitId orgUnitId) throws AccessControlException {
+		final ESUser resolvedUser = resolveUser(orgUnitId);
+		return getGroups(resolvedUser);
 	}
 
 	/**
