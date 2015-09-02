@@ -18,7 +18,6 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
  *
  * @param <T> the emfstore interface
  */
-// TODO: internal
 public abstract class InternalCommand<T extends AbstractEmfstoreInterface> {
 	private T theInterface;
 
@@ -51,7 +50,7 @@ public abstract class InternalCommand<T extends AbstractEmfstoreInterface> {
 	 */
 	protected SessionId fakeSessionId() {
 		final SessionId sessionId = ModelFactory.eINSTANCE.createSessionId();
-		sessionId.setId("-FAKE-");
+		sessionId.setId("-FAKE-"); //$NON-NLS-1$
 		return sessionId;
 	}
 }

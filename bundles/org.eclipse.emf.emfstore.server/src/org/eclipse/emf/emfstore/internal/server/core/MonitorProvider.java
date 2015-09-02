@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core;
 
@@ -15,14 +15,13 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
- * Holds the monitor objects for synchronizing the access on the serverspace. It's implemented as a singleton.
+ * Holds the monitor objects for synchronizing the access on the server space. It's implemented as a singleton.
  *
  * @author wesendon
  */
-// TODO: internal
 public final class MonitorProvider {
 
-	private static final String MAIN_MONITOR = "mainMonitor";
+	private static final String MAIN_MONITOR = "mainMonitor"; //$NON-NLS-1$
 
 	/**
 	 * Initializes the singleton instance statically.
@@ -85,8 +84,7 @@ public final class MonitorProvider {
 		// can't remove main monitor!
 		if (namespace.endsWith(MAIN_MONITOR)) {
 			return false;
-		} else {
-			return monitors.remove(namespace) != null;
 		}
+		return monitors.remove(namespace) != null;
 	}
 }

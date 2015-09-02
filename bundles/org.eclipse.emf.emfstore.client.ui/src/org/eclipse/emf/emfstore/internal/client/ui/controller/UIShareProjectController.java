@@ -14,6 +14,7 @@ import java.util.concurrent.Callable;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
+import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
@@ -49,6 +50,22 @@ public class UIShareProjectController extends AbstractEMFStoreUIController<Void>
 	 */
 	public UIShareProjectController(Shell shell, ESLocalProject localProject) {
 		super(shell, true, false);
+		this.localProject = localProject;
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 * @param shell
+	 *            the parent {@link Shell} that is used during the share
+	 * @param localProject
+	 *            the {@link ESLocalProject} that should be shared
+	 * @param server
+	 *            the {@link ESServer} that should be used to share the project
+	 */
+	public UIShareProjectController(Shell shell, ESLocalProject localProject, ESServer server) {
+		super(shell, true, false);
+		usersession = server.getLastUsersession();
 		this.localProject = localProject;
 	}
 

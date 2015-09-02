@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar
+ * Edgar Mueller - inital API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.ui.controllers;
 
@@ -53,7 +53,8 @@ public class UIShareProjectControllerTest extends AbstractUIControllerTest {
 			public void run() {
 				final UIShareProjectController shareProjectController = new UIShareProjectController(
 					getBot().getDisplay().getActiveShell(),
-					localProject);
+					localProject,
+					getServer());
 				shareProjectController.execute();
 			}
 		});
