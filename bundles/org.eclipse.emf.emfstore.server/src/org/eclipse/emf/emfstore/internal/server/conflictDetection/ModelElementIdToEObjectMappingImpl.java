@@ -188,7 +188,7 @@ public class ModelElementIdToEObjectMappingImpl implements ModelElementIdToEObje
 		if (modelElementId == null) {
 			return null;
 		}
-		return idToEObjectMapping.get(modelElementId.toString());
+		return idToEObjectMapping.get(modelElementId.getId());
 	}
 
 	/**
