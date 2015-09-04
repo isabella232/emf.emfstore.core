@@ -260,6 +260,12 @@ public final class ModelUtil {
 			resource.save(uws, saveOptions);
 		} catch (final IOException e) {
 			throw new SerializationException(e);
+		} finally {
+			try {
+				uws.close();
+			} catch (final IOException exception) {
+				logException(exception);
+			}
 		}
 
 		return stringWriter.toString().trim();
