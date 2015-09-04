@@ -84,7 +84,7 @@ public class Behavior {
 	/**
 	 * Change package fragment size option identifier.
 	 */
-	public static final String CHANGEPACKAGE_FRAGMENT_SIZE = "changePackageFragmentSize"; //$NON-NLS-1$
+	public static final String CHANGEPACKAGE_FRAGMENT_SIZE = "changePackageFragmentationSize"; //$NON-NLS-1$
 
 	/**
 	 * Operation modifier option identifier.
