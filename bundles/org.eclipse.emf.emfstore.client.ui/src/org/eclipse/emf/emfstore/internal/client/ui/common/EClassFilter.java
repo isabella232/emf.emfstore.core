@@ -164,7 +164,7 @@ public final class EClassFilter {
 		}
 
 		if (isCreateDelete(operation)) {
-			return createDeleteOperationInvolvesOnlyFilteredEClasses(operation);
+			return createDeleteOperationInvolvesOnlyFilteredEClasses(idToEObjectMapping, operation);
 		}
 
 		final ModelElementId id = operation.getModelElementId();
@@ -193,12 +193,19 @@ public final class EClassFilter {
 		return true;
 	}
 
-	private boolean createDeleteOperationInvolvesOnlyFilteredEClasses(AbstractOperation operation) {
+	private boolean createDeleteOperationInvolvesOnlyFilteredEClasses(ModelElementIdToEObjectMapping idToEObjectMapping,
+		AbstractOperation operation) {
 		final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) operation;
 		for (final EObject modelElement : createDeleteOperation.getEObjectToIdMap().keySet()) {
 			if (modelElement != null && !isFilteredEClass(modelElement.eClass())) {
 				return false;
 			} else if (modelElement == null) {
+				return false;
+			}
+		}
+
+		for (final AbstractOperation op : createDeleteOperation.getSubOperations()) {
+			if (!involvesOnlyFilteredEClasses(idToEObjectMapping, op)) {
 				return false;
 			}
 		}
