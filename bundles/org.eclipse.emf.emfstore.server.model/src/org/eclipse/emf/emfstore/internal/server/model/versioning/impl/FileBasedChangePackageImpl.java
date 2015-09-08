@@ -11,17 +11,14 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +45,6 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESFileBasedChangePackageImpl;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
@@ -62,7 +58,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ReadLineCapable;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.XmlTags;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 
@@ -140,15 +135,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	private ESChangePackage apiImpl;
 
 	/**
-	 * Whether this change package has been initialized.
-	 *
-	 * FIXME: move to Ecore? Maybe we don't even need this
-	 *
-	 * @generated NOT
-	 */
-	private boolean needsInit;
-
-	/**
 	 * The default value of the '{@link #getFilePath() <em>File Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,6 +165,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @ordered
 	 */
 	protected EList<OperationProxy> operationProxies;
+
+	private Optional<Integer> cachedSize = Optional.absent();
+	private Optional<Integer> cachedLeafSize = Optional.absent();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -506,6 +495,8 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	public void add(AbstractOperation op) {
 
+		updateCaches(1, op.getLeafOperations().size());
+
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		final Resource resource = createVirtualResource();
 		resource.getContents().add(op);
@@ -521,10 +512,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			// resource.save(outputStream, resourceOptions());
 
 			outputStream.write(asBytes(XmlTags.OPERATIONS_END_TAG + XmlTags.NEWLINE));
-
-			if (needsInit) {
-				initializeEmptyChangePackage();
-			}
 
 			final RandomAccessFile randomAccessFile = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
 			maybeRandomAccessFile = Optional.of(randomAccessFile);
@@ -625,7 +612,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			resourceOptions = new LinkedHashMap<Object, Object>();
 			resourceOptions.put(XMLResource.OPTION_DECLARE_XML, Boolean.FALSE);
 			resourceOptions.put(XMLResource.OPTION_RECORD_ANY_TYPE_NAMESPACE_DECLARATIONS, Boolean.TRUE);
-			// resourceOptions.put(XMLResource.OPTION_FORMATTED, Boolean.FALSE);
 		}
 		return resourceOptions;
 	}
@@ -655,31 +641,10 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public int size() {
-		int counter = 0;
-		Optional<ReversedLinesFileReader> maybeReversedReader = Optional.absent();
-		try {
-			final ReversedLinesFileReader reversedReader = new ReversedLinesFileReader(new File(getTempFilePath()));
-			maybeReversedReader = Optional.of(reversedReader);
-			String line;
-			while ((line = reversedReader.readLine()) != null) {
-				if (line.contains(XmlTags.OPERATIONS_END_TAG)) {
-					counter++;
-				}
-			}
-		} catch (final IOException ex) {
-			// ESException not available
-			throw new IllegalStateException(ex);
-		} finally {
-			if (maybeReversedReader.isPresent()) {
-				try {
-					maybeReversedReader.get().close();
-				} catch (final IOException ex) {
-					ModelUtil.logException(ex);
-				}
-			}
+		if (!cachedSize.isPresent()) {
+			computeSize();
 		}
-		return counter;
-
+		return cachedSize.get();
 	}
 
 	/**
@@ -699,30 +664,10 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public boolean isEmpty() {
-		Optional<BufferedReader> maybeReader = Optional.absent();
-		try {
-			final File file = new File(getTempFilePath());
-			if (!file.exists()) {
-				return true;
-			}
-			// FIXME: move reader into OperationEmitter?
-			maybeReader = Optional.of(new BufferedReader(new FileReader(file)));
-			final OperationEmitter operationEmitter = new OperationEmitter(Direction.Forward);
-			final ReadLineCapable create = ReadLineCapable.INSTANCE.create(maybeReader.get());
-			// check if we have at least one operation
-			final Optional<AbstractOperation> maybeOp = operationEmitter.tryEmit(create);
-			return !maybeOp.isPresent();
-		} catch (final IOException ex) {
-			throw new RuntimeException(ex);
-		} finally {
-			try {
-				if (maybeReader.isPresent()) {
-					maybeReader.get().close();
-				}
-			} catch (final IOException ex) {
-				ModelUtil.logException(ex);
-			}
+		if (!cachedSize.isPresent()) {
+			computeSize();
 		}
+		return cachedSize.get() == 0;
 	}
 
 	/**
@@ -744,11 +689,17 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			final ReadLineCapable reader = ReadLineCapable.INSTANCE.create(reversedReader);
 			final Optional<AbstractOperation> maybeOperation = operationEmitter.tryEmit(reader);
 
+			int removedOps = 0;
+			int removedLeafOps = 0;
 			while (counter > 0 && maybeOperation.isPresent()) {
 				operation = maybeOperation.get();
 				ops.add(operation);
+				removedOps += 1;
+				removedLeafOps += operation.getLeafOperations().size();
 				counter -= 1;
 			}
+
+			updateCaches(-removedOps, -removedLeafOps);
 
 			// FIXME: reuse ReadLineCapable?
 			final long offset = operationEmitter.getOffset();
@@ -777,6 +728,20 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		}
 	}
 
+	private void invalidateCaches() {
+		cachedSize = Optional.absent();
+		cachedLeafSize = Optional.absent();
+	}
+
+	private void updateCaches(int size, int leafSize) {
+		final int lSize = cachedSize.isPresent() ? cachedSize.get() : 0;
+		final int lLeafSize = cachedLeafSize.isPresent() ? cachedLeafSize.get() : 0;
+		final int newSize = lSize + size;
+		final int newLeafSize = lLeafSize + leafSize;
+		cachedSize = Optional.of(newSize >= 0 ? newSize : 0);
+		cachedLeafSize = Optional.of(newLeafSize >= 0 ? newLeafSize : 0);
+	}
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -784,6 +749,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public void clear() {
+		invalidateCaches();
 		Optional<RandomAccessFile> maybeRandomAccessFile = Optional.absent();
 		try {
 			final RandomAccessFile randomAccessFile = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
@@ -846,7 +812,40 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public int leafSize() {
-		return ChangePackageUtil.countLeafOperations(Collections.singletonList((AbstractChangePackage) this));
+		if (!cachedLeafSize.isPresent()) {
+			computeSize();
+		}
+		return cachedLeafSize.get();
+	}
+
+	private void computeSize() {
+		Optional<ReversedLinesFileReader> maybeReversedReader = Optional.absent();
+		int size = 0;
+		int leafSize = 0;
+		try {
+			final ReversedLinesFileReader reversedReader = new ReversedLinesFileReader(new File(getTempFilePath()));
+			maybeReversedReader = Optional.of(reversedReader);
+			String line;
+			while ((line = reversedReader.readLine()) != null) {
+				if (line.contains(XmlTags.OPERATIONS_END_TAG)) {
+					size += 1;
+				} else if (line.contains(XmlTags.SUB_OPERATIONS_END_TAG)) {
+					leafSize += 1;
+				}
+			}
+		} catch (final IOException ex) {
+			// ESException not available
+			throw new IllegalStateException(ex);
+		} finally {
+			if (maybeReversedReader.isPresent()) {
+				try {
+					maybeReversedReader.get().close();
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
+		}
+		updateCaches(size, leafSize);
 	}
 
 	/**
@@ -864,7 +863,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	private void initializeEmptyChangePackage() {
-		needsInit = false;
 		Optional<FileWriter> maybeWriter = Optional.absent();
 		try {
 			final FileWriter fileWriter = new FileWriter(getTempFilePath());

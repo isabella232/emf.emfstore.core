@@ -688,6 +688,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		}
 
 		initResourcePersister();
+		// TODO: use ObserverBug to register observers
 		commandStack.addCommandStackObserver(resourcePersister);
 		commandStack.addCommandStackObserver(operationManager);
 
