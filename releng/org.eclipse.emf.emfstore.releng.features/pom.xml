@@ -18,6 +18,7 @@
 		<module>../../features/org.eclipse.emf.emfstore.common.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.server.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.ui.feature</module>
+		<module>../../features/org.eclipse.emf.emfstore.client.ui.rap.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.ecore.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.transaction.feature</module>

@@ -45,6 +45,9 @@
    <feature id="org.eclipse.emf.emfstore.client.ui.historybrowsercomparator.feature" version="0.0.0">
       <category name="org.eclipse.emf.emfstore.other"/>
    </feature>
+   <feature id="org.eclipse.emf.emfstore.client.ui.rap.feature" version="0.0.0">
+      <category name="org.eclipse.emf.emfstore.other"/>
+   </feature>
    <category-def name="org.eclipse.emf.emfstore.core" label="EMFStore Core Features">
       <description>
          Core Features of EMFStore, a model repository for EMF.
