@@ -129,8 +129,8 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME,
-				oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.ORG_UNIT_PROPERTY__NAME, oldName,
+				name));
 		}
 	}
 
@@ -168,11 +168,11 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 			project = (ProjectId) eResolveProxy(oldProject);
 			if (project != oldProject) {
 				final InternalEObject newProject = (InternalEObject) project;
-				NotificationChain msgs = oldProject.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, null);
+				NotificationChain msgs = oldProject.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, null);
 				if (newProject.eInternalContainer() == null) {
-					msgs = newProject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
+					msgs = newProject.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -224,12 +224,12 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 		if (newProject != project) {
 			NotificationChain msgs = null;
 			if (project != null) {
-				msgs = ((InternalEObject) project).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
+				msgs = ((InternalEObject) project).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
 			}
 			if (newProject != null) {
-				msgs = ((InternalEObject) newProject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
+				msgs = ((InternalEObject) newProject).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - AccesscontrolPackage.ORG_UNIT_PROPERTY__PROJECT, null, msgs);
 			}
 			msgs = basicSetProject(newProject, msgs);
 			if (msgs != null) {
@@ -413,8 +413,7 @@ public class OrgUnitPropertyImpl extends EObjectImpl implements OrgUnitProperty 
 	public Boolean getBooleanProperty() {
 		final String value = getValue();
 		if (value != null) {
-			final Boolean b = new Boolean(value);
-			return b;
+			return Boolean.parseBoolean(value);
 		}
 		throw new IllegalStateException("Existing key without value!"); //$NON-NLS-1$
 	}

@@ -39,8 +39,7 @@ public class ProjectHasLocalChangesTester extends PropertyTester {
 
 			return RunESCommand.runWithResult(new Callable<Boolean>() {
 				public Boolean call() throws Exception {
-					final Boolean hasLocalChanges = new Boolean(localProject.hasUncommitedChanges());
-					return hasLocalChanges.equals(expectedValue);
+					return Boolean.valueOf(localProject.hasUncommitedChanges()).equals(expectedValue);
 				}
 			});
 		}

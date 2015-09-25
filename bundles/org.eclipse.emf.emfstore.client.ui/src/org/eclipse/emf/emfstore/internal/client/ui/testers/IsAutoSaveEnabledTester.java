@@ -25,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Configuration;
  */
 public class IsAutoSaveEnabledTester extends PropertyTester {
 
+	private static final String ORG_ECLIPSE_EMF_EMFSTORE_CLIENT_UI_DISABLE_SAVE_CONTROLS = "org.eclipse.emf.emfstore.client.ui.disableSaveControls"; //$NON-NLS-1$
 	private static boolean isAutoSaveEnabledTesterDisabled = initExtensionPoint();
 
 	/**
@@ -40,7 +41,7 @@ public class IsAutoSaveEnabledTester extends PropertyTester {
 
 	private static boolean initExtensionPoint() {
 		final ESExtensionPoint extensionPoint = new ESExtensionPoint(
-			"org.eclipse.emf.emfstore.client.ui.disableSaveControls");
+			ORG_ECLIPSE_EMF_EMFSTORE_CLIENT_UI_DISABLE_SAVE_CONTROLS);
 		final ESExtensionElement element = extensionPoint.getFirst();
 
 		if (element == null) {
@@ -48,6 +49,6 @@ public class IsAutoSaveEnabledTester extends PropertyTester {
 			return false;
 		}
 
-		return element.getBoolean("enabled", false);
+		return element.getBoolean("enabled", false); //$NON-NLS-1$
 	}
 }

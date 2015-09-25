@@ -39,7 +39,7 @@ public class ServerInfoIsLoggedInTester extends PropertyTester {
 			}
 			try {
 				usersession.toAPI().refresh();
-				return new Boolean(usersession.isLoggedIn()).equals(expectedValue);
+				return Boolean.valueOf(usersession.isLoggedIn()).equals(expectedValue);
 			} catch (final ESException ex) {
 				return Boolean.FALSE.equals(expectedValue);
 			}

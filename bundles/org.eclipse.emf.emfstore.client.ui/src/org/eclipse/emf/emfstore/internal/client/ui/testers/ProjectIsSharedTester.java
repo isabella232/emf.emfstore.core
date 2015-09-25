@@ -36,7 +36,7 @@ public class ProjectIsSharedTester extends PropertyTester {
 				@Override
 				protected Boolean doRun() {
 					final Usersession usersession = projectSpace.getUsersession();
-					final Boolean isShared = new Boolean(usersession != null);
+					final Boolean isShared = Boolean.valueOf(usersession != null);
 					return isShared.equals(expectedValue);
 				}
 			};

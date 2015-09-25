@@ -50,7 +50,7 @@ public class IsACUserTester extends PropertyTester {
 						}
 					}
 
-					return new Boolean(isACUser).equals(expectedValue);
+					return Boolean.valueOf(isACUser).equals(expectedValue);
 				}
 			};
 			return command.run(false);

@@ -110,7 +110,7 @@ public class Behavior {
 	 * @param enabled whether to enable auto save
 	 */
 	public void setAutoSave(boolean enabled) {
-		isAutoSaveActive = new Boolean(enabled);
+		isAutoSaveActive = Boolean.valueOf(enabled);
 	}
 
 	/**
