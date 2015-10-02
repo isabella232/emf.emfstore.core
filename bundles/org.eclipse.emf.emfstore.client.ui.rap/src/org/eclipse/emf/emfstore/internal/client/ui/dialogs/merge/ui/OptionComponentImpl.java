@@ -31,8 +31,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Text;
 
 /**
  * This component of the decision box dynamically displays the possible options.
@@ -88,12 +88,12 @@ public class OptionComponentImpl implements OptionComponent {
 		case MyOperation:
 			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch
 				: Messages.OptionComponentImpl_KeepMyChange + countInfo
-				+ ": "; //$NON-NLS-1$
+					+ ": "; //$NON-NLS-1$
 			break;
 		case TheirOperation:
 			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch
 				: Messages.OptionComponentImpl_KeepTheirChange + countInfo
-				+ ": "; //$NON-NLS-1$
+					+ ": "; //$NON-NLS-1$
 			break;
 		case Custom:
 			if (option instanceof CustomConflictOption) {
@@ -163,7 +163,7 @@ public class OptionComponentImpl implements OptionComponent {
 	private final class OptionContainer extends Composite {
 
 		private final ConflictOption option;
-		private final Text styledText;
+		private final Label label;
 
 		private OptionContainer(VisualConflict conflict, final ConflictOption option) {
 			super(group, SWT.BORDER | SWT.INHERIT_FORCE);
@@ -173,12 +173,10 @@ public class OptionComponentImpl implements OptionComponent {
 			setLayout(layout);
 			setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-			styledText = new Text(this, SWT.READ_ONLY);
-			styledText.setCursor(new Cursor(getDisplay(), SWT.CURSOR_HAND));
-			styledText.setEditable(false);
-			styledText.setEnabled(false);
-			styledText.setBackground(getBackground());
-			styledText.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
+			label = new Label(this, SWT.NONE);
+			label.setCursor(new Cursor(getDisplay(), SWT.CURSOR_HAND));
+			label.setBackground(getBackground());
+			label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
 			setText();
 
 			final Button detailsButton = new Button(this, SWT.NONE);
@@ -187,7 +185,8 @@ public class OptionComponentImpl implements OptionComponent {
 			detailsButton.addSelectionListener(new SelectionListener() {
 
 				public void widgetSelected(SelectionEvent e) {
-					final DetailsDialog detailsDialog = new DetailsDialog(getShell(), dBox.getDecisionManager(), option);
+					final DetailsDialog detailsDialog = new DetailsDialog(getShell(), dBox.getDecisionManager(),
+						option);
 					detailsDialog.open();
 				}
 
@@ -205,16 +204,7 @@ public class OptionComponentImpl implements OptionComponent {
 			final String result = UIDecisionUtil.cutString(option.getStrippedOptionLabel(), DecisionUtil.OPTION_LENGTH,
 				true);
 
-			styledText.setText(prefix + " " + result); //$NON-NLS-1$
-
-			// TODO: RAP compat
-			// if (prefix != "") {
-			// StyleRange prefixRange = new StyleRange();
-			// prefixRange.start = 0;
-			// prefixRange.length = prefix.length();
-			// prefixRange.fontStyle = SWT.ITALIC;
-			// styledText.setStyleRange(prefixRange);
-			// }
+			label.setText(prefix + " " + result); //$NON-NLS-1$
 		}
 
 		public ConflictOption getOption() {

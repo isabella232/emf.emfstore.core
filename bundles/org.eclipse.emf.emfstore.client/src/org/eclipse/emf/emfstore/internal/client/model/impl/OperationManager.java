@@ -84,31 +84,6 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 	}
 
 	/**
-	 * Adds an operation observer that gets notified whenever an operation
-	 * is either executed or undone.
-	 *
-	 * @param operationObserver
-	 *            the operation observer to be added
-	 */
-	public void addOperationObserver(OperationObserver operationObserver) {
-		ESWorkspaceProviderImpl
-			.getObserverBus()
-			.register(operationObserver);
-	}
-
-	/**
-	 * Removed the given operation observer from the list of operation observers.
-	 *
-	 * @param operationObserver
-	 *            the operation observer to be removed
-	 */
-	public void removeOperationListener(OperationObserver operationObserver) {
-		ESWorkspaceProviderImpl
-			.getObserverBus()
-			.unregister(operationObserver);
-	}
-
-	/**
 	 * Notifies all operations observer that an operation has been undone.
 	 *
 	 * @param operation
@@ -118,7 +93,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 		ESWorkspaceProviderImpl
 			.getObserverBus()
 			.notify(OperationObserver.class)
-			.operationUndone(operation);
+			.operationUndone(projectSpace, operation);
 	}
 
 	/**
@@ -131,7 +106,7 @@ public class OperationManager implements OperationRecorderListener, ESDisposable
 		ESWorkspaceProviderImpl
 			.getObserverBus()
 			.notify(OperationObserver.class)
-			.operationExecuted(operation);
+			.operationExecuted(projectSpace, operation);
 	}
 
 	/**

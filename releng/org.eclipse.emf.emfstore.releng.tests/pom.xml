@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>org.eclipse.emf.emfstore</groupId>
 		<artifactId>emfstore-parent</artifactId>
-		<version>1.5.1-SNAPSHOT</version>
+		<version>1.6.0-SNAPSHOT</version>
 		<relativePath>../emfstore-parent/</relativePath>
 	</parent>
 	<groupId>org.eclipse.emf.emfstore</groupId>
 	<artifactId>emfstore-tests-parent</artifactId>
-	<version>1.5.1-SNAPSHOT</version>
+	<version>1.6.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -29,5 +29,6 @@
 		<module>../../tests/org.eclipse.emf.emfstore.client.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.client.test.ui</module>
 		<module>../../tests/org.eclipse.emf.emfstore.performance.test</module>
+		<module>../../tests/org.eclipse.emf.emfstore.client.ui.test</module>
 	</modules>
 </project>

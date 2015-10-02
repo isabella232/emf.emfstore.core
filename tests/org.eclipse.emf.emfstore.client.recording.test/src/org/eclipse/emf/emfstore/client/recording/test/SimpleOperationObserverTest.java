@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.recording.test;
@@ -19,6 +19,7 @@ import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
+import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.observers.SimpleOperationObserver;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.junit.Before;
@@ -38,15 +39,13 @@ public class SimpleOperationObserverTest extends ESTest {
 
 	@Test
 	public void testForwards() {
-
-		getProjectSpace().getOperationManager().addOperationObserver(new SimpleOperationObserver() {
-
+		final SimpleOperationObserver observer = new SimpleOperationObserver() {
 			@Override
 			public void operationPerformed(AbstractOperation operation) {
 				operationPerformed = true;
 			}
-
-		});
+		};
+		ESWorkspaceProviderImpl.getObserverBus().register(observer);
 
 		Add.toProject(getLocalProject(), Create.testElement(A));
 
@@ -60,14 +59,16 @@ public class SimpleOperationObserverTest extends ESTest {
 
 		assertFalse(operationPerformed);
 
-		getProjectSpace().getOperationManager().addOperationObserver(new SimpleOperationObserver() {
+		final SimpleOperationObserver observer = new SimpleOperationObserver() {
 
 			@Override
 			public void operationPerformed(AbstractOperation operation) {
 				operationPerformed = true;
 			}
 
-		});
+		};
+
+		ESWorkspaceProviderImpl.getObserverBus().register(observer);
 
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {

@@ -126,9 +126,7 @@ public class DecisionManager {
 
 		unvisualizedConflicts = new LinkedHashSet<ConflictBucket>();
 
-		Set<ConflictBucket> conflictBuckets;
-
-		conflictBuckets = changeConflictSet.getConflictBuckets();
+		final Set<ConflictBucket> conflictBuckets = changeConflictSet.getConflictBuckets();
 
 		createConflicts(conflictBuckets);
 	}
@@ -574,9 +572,9 @@ public class DecisionManager {
 	private Integer myOperationCount;
 
 	/**
-	 * Count my leaf operations.
+	 * Count my operations.
 	 *
-	 * @return the number of leaf operations
+	 * @return the number of operations
 	 */
 	public int countMyOperations() {
 		if (myOperationCount == null) {

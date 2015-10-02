@@ -61,12 +61,6 @@ public final class ServerConfiguration {
 	public static final String RESOURCE_STORAGE = "emfstore.persistence.resourceStorage"; //$NON-NLS-1$
 
 	/**
-	 * Constant for the Default Resource Storage.
-	 */
-	// TODO: OTS
-	public static final String RESOURCE_STORAGE_DEFAULT = "org.eclipse.emf.emfstore.internal.server.storage.XMLStorage"; //$NON-NLS-1$
-
-	/**
 	 * RMI encryption property, possible values are true and false.
 	 */
 	public static final String RMI_ENCRYPTION = "emfstore.connection.rmi.encryption"; //$NON-NLS-1$
@@ -413,7 +407,7 @@ public final class ServerConfiguration {
 			// TODO EXPT PRIO
 			try {
 				locationProvider = new ESExtensionPoint(LOCATION_PROVIDER_KEY, true)
-				.getClass("providerClass", ESLocationProvider.class); //$NON-NLS-1$
+					.getClass("providerClass", ESLocationProvider.class); //$NON-NLS-1$
 			} catch (final ESExtensionPointException e) {
 				final String message = Messages.ServerConfiguration_No_Location_Provider;
 				ModelUtil.logWarning(message);
@@ -437,7 +431,8 @@ public final class ServerConfiguration {
 	 */
 	public static String getStartArgument(String parameter) {
 		for (final String arg : Platform.getApplicationArgs()) {
-			if (arg.startsWith(parameter) && arg.length() > parameter.length() && arg.charAt(parameter.length()) == '=') {
+			if (arg.startsWith(parameter) && arg.length() > parameter.length()
+				&& arg.charAt(parameter.length()) == '=') {
 				return arg.substring(parameter.length() + 1, arg.length());
 			}
 		}
@@ -611,7 +606,7 @@ public final class ServerConfiguration {
 			try {
 				isChecksumComputationOnCommitActive = new ESExtensionPoint(
 					CHECKSUM_KEY, true)
-				.getBoolean("shouldComputeChecksumOnCommit"); //$NON-NLS-1$
+						.getBoolean("shouldComputeChecksumOnCommit"); //$NON-NLS-1$
 			} catch (final ESExtensionPointException e) {
 				final String message = Messages.ServerConfiguration_Default_Checksum_Behavior;
 				ModelUtil.logWarning(message);

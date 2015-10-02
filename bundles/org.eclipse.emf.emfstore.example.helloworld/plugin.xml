@@ -13,19 +13,4 @@
          </run>
       </application>
    </extension>
-   <extension
-         point="org.eclipse.emf.emfstore.server.accessControl">
-      <authorizationServiceProvider
-            authorizationServiceClass="Auth">
-      </authorizationServiceProvider>
-      <userVerifierServiceProvider
-            userVerifierServiceClass="UserVerifier">
-      </userVerifierServiceProvider>
-      <orgUnitProvider
-            orgUnitProviderClass="asdf">
-      </orgUnitProvider>
-      <orgUnitResolverServiceProvider
-            orgUnitServiceClass="ga">
-      </orgUnitResolverServiceProvider>
-   </extension>
 </plugin>

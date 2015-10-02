@@ -29,6 +29,7 @@ import org.eclipse.emf.emfstore.internal.server.EMFStoreController;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
+import org.eclipse.emf.emfstore.internal.server.exceptions.BranchInfoMissingException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
@@ -124,7 +125,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				return resolvePagedUpdateVersionSpec(projectHistory, (PagedUpdateVersionSpec) versionSpec);
 			}
 
-			throw new InvalidVersionSpecException();
+			throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_UnknownVersionSpec);
 		}
 	}
 
@@ -167,7 +168,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			}
 
 		}
-		throw new InvalidVersionSpecException();
+		throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_NoAncestorFound);
 	}
 
 	private PrimaryVersionSpec resolvePrimaryVersionSpec(ProjectHistory projectHistory, PrimaryVersionSpec versionSpec)
@@ -194,7 +195,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			}
 
 		}
-		throw new InvalidVersionSpecException();
+		throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_PrimaryVersionNotFound);
 	}
 
 	private PrimaryVersionSpec resolveHeadVersionSpec(ProjectHistory projectHistory, HeadVersionSpec versionSpec)
@@ -206,7 +207,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		if (info != null) {
 			return info.getHead();
 		}
-		throw new InvalidVersionSpecException();
+		throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_HeadVersionNotFound);
 	}
 
 	private PrimaryVersionSpec resolveDateVersionSpec(ProjectHistory projectHistory, DateVersionSpec versionSpec) {
@@ -235,14 +236,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				}
 			}
 		}
-		throw new InvalidVersionSpecException();
+		throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_TagVersionNotFound);
 	}
 
 	private PrimaryVersionSpec resolveBranchVersionSpec(ProjectHistory projectHistory, BranchVersionSpec versionSpec)
-		throws InvalidVersionSpecException {
+		throws BranchInfoMissingException {
 		final BranchInfo branchInfo = getBranchInfo(projectHistory, versionSpec);
 		if (branchInfo == null) {
-			throw new InvalidVersionSpecException();
+			throw new BranchInfoMissingException(Messages.VersionSubInterfaceImpl_NoBranchInfo);
 		}
 		return branchInfo.getHead();
 	}
@@ -468,7 +469,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		} else if (targetBranchName.equals(VersionSpec.GLOBAL)) {
 			throw new InvalidVersionSpecException(
 				Messages.VersionSubInterfaceImpl_BranchName_Reserved_1
-				+ VersionSpec.GLOBAL + Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
+					+ VersionSpec.GLOBAL + Messages.VersionSubInterfaceImpl_BranchName_Reserved_2);
 		}
 	}
 
@@ -803,7 +804,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			final Version targetVersion = getVersion(projectHistory, target);
 
 			if (sourceVersion == null || targetVersion == null) {
-				throw new InvalidVersionSpecException();
+				throw new InvalidVersionSpecException(Messages.VersionSubInterfaceImpl_NoSourceNorTarget);
 			}
 			final List<Version> result = new ArrayList<Version>();
 

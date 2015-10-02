@@ -38,7 +38,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver;
-import org.eclipse.emf.emfstore.client.changetracking.ESCommandStack;
 import org.eclipse.emf.emfstore.client.observer.ESCommitObserver;
 import org.eclipse.emf.emfstore.client.observer.ESPostCreationObserver;
 import org.eclipse.emf.emfstore.client.observer.ESShareObserver;
@@ -87,7 +86,6 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	public static final String UNKOWN_CREATOR = Messages.OperationRecorder_Unknown;
 
 	private int currentOperationListSize;
-	private ESCommandStack emfStoreCommandStack;
 
 	private List<AbstractOperation> operations;
 	private final List<OperationRecorderListener> observers;
@@ -984,9 +982,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 	 * @see org.eclipse.emf.emfstore.internal.common.model.util.IdEObjectCollectionChangeObserver#collectionDeleted(org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection)
 	 */
 	public void collectionDeleted(IdEObjectCollection collection) {
-		if (emfStoreCommandStack != null) {
-			emfStoreCommandStack.removeCommandStackObserver(this);
-		}
+
 	}
 
 	/**

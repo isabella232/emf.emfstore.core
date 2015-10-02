@@ -25,7 +25,7 @@ public class InvalidVersionSpecException extends ESException {
 	 * Default constructor.
 	 */
 	public InvalidVersionSpecException() {
-		super("");
+		super(Messages.InvalidVersionSpecException_InvalidVersionSpec);
 	}
 
 	/**

@@ -1,18 +1,17 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.dsl;
 
 import java.util.Date;
-import java.util.concurrent.Callable;
 
 import org.eclipse.emf.emfstore.bowling.BowlingFactory;
 import org.eclipse.emf.emfstore.bowling.Game;
@@ -26,7 +25,6 @@ import org.eclipse.emf.emfstore.client.ESWorkspaceProvider;
 import org.eclipse.emf.emfstore.client.test.common.TestSessionProvider2;
 import org.eclipse.emf.emfstore.client.test.common.builders.BOOL.TRUE;
 import org.eclipse.emf.emfstore.client.test.common.builders.UserBuilder;
-import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
@@ -51,6 +49,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 import org.eclipse.emf.emfstore.test.model.TestElement;
+import org.eclipse.emf.emfstore.test.model.TestType;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 
 // TODO: class returns internal as well as external types
@@ -62,13 +61,8 @@ public final class Create {
 		// util class
 	}
 
-	// TODO: Move to Create class
 	public static ESLocalProject project(final String projectName) {
-		return RunESCommand.runWithResult(new Callable<ESLocalProject>() {
-			public ESLocalProject call() throws Exception {
-				return ESWorkspaceProvider.INSTANCE.getWorkspace().createLocalProject(projectName);
-			}
-		});
+		return ESWorkspaceProvider.INSTANCE.getWorkspace().createLocalProject(projectName);
 	}
 
 	public static ACOrgUnitId user(UserBuilder<TRUE, TRUE, TRUE> userBuilder) throws ESException {
@@ -133,6 +127,10 @@ public final class Create {
 
 	public static TestElement testElement() {
 		return TestmodelFactory.eINSTANCE.createTestElement();
+	}
+
+	public static TestType testType() {
+		return TestmodelFactory.eINSTANCE.createTestType();
 	}
 
 	public static Player player() {

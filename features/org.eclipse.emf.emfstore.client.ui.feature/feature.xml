@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.emfstore.client.ui.feature"
       label="EMFStore Client UI"
-      version="1.5.1.qualifier"
+      version="1.6.0.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.client.ui"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.5.1.qualifier">
+      license-feature-version="1.6.0.qualifier">
 
    <description url="http://emfstore.org">
       This feature contains all plugins to provide user interfaces
@@ -60,14 +60,6 @@ for client applications connecting to the EMFStore server.
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.emfstore.client.ui.rap"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
          unpack="false"/>
 
    <plugin

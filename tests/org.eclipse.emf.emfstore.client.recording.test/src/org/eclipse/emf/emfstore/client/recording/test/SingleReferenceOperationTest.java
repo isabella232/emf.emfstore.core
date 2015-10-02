@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Maximilian Koegel - initial API and implementation
  ******************************************************************************/
@@ -49,7 +49,7 @@ import org.junit.Test;
 
 /**
  * Tests the SingleReferenceOperation.
- * 
+ *
  * @author koegel
  */
 public class SingleReferenceOperationTest extends ESTest {
@@ -61,7 +61,7 @@ public class SingleReferenceOperationTest extends ESTest {
 
 	/**
 	 * Change a single reference and check the generated operation.
-	 * 
+	 *
 	 */
 	@Test
 	public void changeSingleReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -100,7 +100,8 @@ public class SingleReferenceOperationTest extends ESTest {
 		assertTrue(operation instanceof MultiReferenceOperationImpl);
 		final MultiReferenceOperation multiReferenceOperation = (MultiReferenceOperation) operation;
 		assertEquals(TestElementFeatures.nonContained1ToN().getName(), multiReferenceOperation.getFeatureName());
-		assertEquals(TestElementFeatures.nonContainedNTo1().getName(), multiReferenceOperation.getOppositeFeatureName());
+		assertEquals(TestElementFeatures.nonContainedNTo1().getName(),
+			multiReferenceOperation.getOppositeFeatureName());
 
 		final ModelElementId useCaseId = ModelUtil.getProject(useCase).getModelElementId(useCase);
 		final ModelElementId actorId = ModelUtil.getProject(actor).getModelElementId(actor);
@@ -129,7 +130,7 @@ public class SingleReferenceOperationTest extends ESTest {
 
 	/**
 	 * Change an single reference twice and check the generated operation.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */
@@ -184,9 +185,7 @@ public class SingleReferenceOperationTest extends ESTest {
 		final TestElement oldActor = Create.testElement();
 		final TestElement newActor = Create.testElement();
 
-		Add.toProject(getLocalProject(), useCase);
-		Add.toProject(getLocalProject(), oldActor);
-		Add.toProject(getLocalProject(), newActor);
+		Add.toProject(getLocalProject(), useCase, oldActor, newActor);
 		Update.testElement(TestElementFeatures.nonContainedNTo1(), useCase, oldActor);
 		assertEquals(oldActor, useCase.getNonContained_NTo1());
 
@@ -302,7 +301,7 @@ public class SingleReferenceOperationTest extends ESTest {
 
 	/**
 	 * Move a containee to another container.
-	 * 
+	 *
 	 */
 	@Test
 	public void moveContainmentReference() throws UnsupportedOperationException, UnsupportedNotificationException {
@@ -342,7 +341,8 @@ public class SingleReferenceOperationTest extends ESTest {
 
 		assertEquals(3, operations.size());
 
-		MultiReferenceOperation multiReferenceOperation = checkAndCast(operations.get(0), MultiReferenceOperation.class);
+		MultiReferenceOperation multiReferenceOperation = checkAndCast(operations.get(0),
+			MultiReferenceOperation.class);
 
 		final ModelElementId oldIssueId = ModelUtil.getProject(oldIssue).getModelElementId(oldIssue);
 		final ModelElementId proposalId = ModelUtil.getProject(proposal).getModelElementId(proposal);

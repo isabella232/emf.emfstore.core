@@ -53,4 +53,9 @@ public final class XmlTags {
 	 * Operations closing tag (<&#47;operations>).
 	 */
 	public static final String OPERATIONS_END_TAG = "</operations>"; //$NON-NLS-1$
+
+	/**
+	 * Sub operations closing tag (<&#47;subOperations>).
+	 */
+	public static final String SUB_OPERATIONS_END_TAG = "</subOperations>"; //$NON-NLS-1$
 }

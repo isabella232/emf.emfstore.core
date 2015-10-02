@@ -5,33 +5,29 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
- * Edgar Mueller
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.controller;
 
-import java.util.ArrayList;
-import java.util.concurrent.Callable;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
-import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
+import org.eclipse.emf.emfstore.internal.client.model.Usersession;
+import org.eclipse.emf.emfstore.internal.client.model.Workspace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl;
-import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
-import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
-import org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 
 /**
  * UI controller for removing a server from the workspace.
- *
+ * 
  * @author emueller
  */
 public class UIRemoveServerController extends
@@ -41,7 +37,7 @@ public class UIRemoveServerController extends
 
 	/**
 	 * Constructor.
-	 *
+	 * 
 	 * @param shell
 	 *            the parent shell that should be used during the delet
 	 * @param server
@@ -54,9 +50,9 @@ public class UIRemoveServerController extends
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.MonitoredEMFStoreAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
@@ -71,53 +67,17 @@ public class UIRemoveServerController extends
 			return null;
 		}
 
-		final ESWorkspaceImpl workspace = ESWorkspaceProviderImpl.getInstance().getWorkspace();
-		final EList<ProjectSpace> projectSpaces = workspace.toInternalAPI().getProjectSpaces();
-		final ArrayList<ProjectSpace> usedSpaces = new ArrayList<ProjectSpace>();
-
-		for (final ProjectSpace projectSpace : projectSpaces) {
-			if (projectSpace.getUsersession() != null
-				&& projectSpace.getUsersession().getServerInfo()
-					.equals(serverInfo)) {
-				usedSpaces.add(projectSpace);
+		final Workspace workspace = ESWorkspaceProviderImpl.getInstance().getInternalWorkspace();
+		workspace.getServerInfos().remove(serverInfo);
+		final Set<Usersession> invalidSessions = new LinkedHashSet<Usersession>();
+		// remove all now invalid sessions
+		for (final Usersession session : ESWorkspaceProviderImpl.getInstance().getInternalWorkspace().getUsersessions()) {
+			if (session.getServerInfo() == serverInfo) {
+				invalidSessions.add(session);
 			}
 		}
-
-		RunInUI.run(new Callable<Void>() {
-			public Void call() throws Exception {
-				ESWorkspaceProviderImpl.getInstance().getWorkspace().getServers()
-					.remove(serverInfo);
-				return null;
-			}
-		});
-
-		if (usedSpaces.size() == 0) {
-			// TODO: add code to add & remove server
-			new EMFStoreCommand() {
-				@Override
-				protected void doRun() {
-					EcoreUtil.delete(serverInfo);
-					// TODO OTS auto save;
-					// ESWorkspaceProviderImpl.getInstance().getWorkspace().save();
-				}
-			}.run(false);
-
-			return null;
-		}
-
-		final StringBuilder message = new StringBuilder();
-
-		for (final ProjectSpace pSpace : usedSpaces) {
-			message.append(Messages.UIRemoveServerController_Newline + pSpace.getProjectName());
-		}
-
-		MessageDialog.openError(
-			getShell(),
-			Messages.UIRemoveServerController_ErrorDelete_Title,
-			String.format(
-				Messages.UIRemoveServerController_ErrorDelete_Message
-					+ message.toString(),
-				serverInfo.getName()));
+		workspace.getUsersessions().removeAll(invalidSessions);
+		workspace.save();
 
 		return null;
 	}

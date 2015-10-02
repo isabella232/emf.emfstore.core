@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -24,6 +24,7 @@ import org.eclipse.emf.emfstore.client.handler.ESOperationModifier;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
+import org.eclipse.emf.emfstore.internal.client.configuration.Behavior;
 import org.eclipse.emf.emfstore.internal.client.model.CompositeOperationHandle;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.InvalidHandleException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.AutoOperationWrapper;
@@ -41,7 +42,7 @@ import org.junit.Test;
 
 /**
  * Tests the comnposite operation recording.
- * 
+ *
  * @author koegel
  */
 public class CompositeOperationTest extends ESTest {
@@ -78,7 +79,7 @@ public class CompositeOperationTest extends ESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation.
-	 * 
+	 *
 	 * @throws ESException
 	 */
 	@Test
@@ -129,7 +130,7 @@ public class CompositeOperationTest extends ESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation.
-	 * 
+	 *
 	 * @throws ESException
 	 */
 	@Test
@@ -188,18 +189,22 @@ public class CompositeOperationTest extends ESTest {
 
 	/**
 	 * Test the creation and completion of a composite operation.
-	 * 
+	 *
 	 * @throws ESException
 	 */
 	@Test
 	public void createSmallCompositeAcrossCommandsWithAutoOperationWrapper() throws ESException {
 
+		final String operationModifierId = Behavior.RESOURCE_OPTIONS_EXTENSION_POINT_NAME + "." //$NON-NLS-1$
+			+ Behavior.OPERATION_MODIFIER;
+
 		// TODO: Think about elegant solution to replace the operation modifier during a single test
-		final ESOperationModifier operationModifier = ExtensionRegistry.INSTANCE.get(ESOperationModifier.ID,
+		final ESOperationModifier operationModifier = ExtensionRegistry.INSTANCE.get(
+			operationModifierId,
 			ESOperationModifier.class);
 
 		ExtensionRegistry.INSTANCE.set(
-			ESOperationModifier.ID,
+			operationModifierId,
 			new AutoOperationWrapper());
 
 		final TestElement section = addSection();
@@ -252,13 +257,13 @@ public class CompositeOperationTest extends ESTest {
 		assertEquals(4, compositeOperation.getSubOperations().size());
 
 		ExtensionRegistry.INSTANCE.set(
-			ESOperationModifier.ID,
+			operationModifierId,
 			operationModifier);
 	}
 
 	/**
 	 * Test the creation and abort of a composite operation.
-	 * 
+	 *
 	 * @throws InvalidHandleException if the test fails
 	 * @throws IOException
 	 * @throws ESException
@@ -305,7 +310,8 @@ public class CompositeOperationTest extends ESTest {
 		final Project loadedProject = ModelUtil.loadEObjectFromResource(
 			org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE.getModelPackage().getProject(),
 			getProject()
-				.eResource().getURI(), false);
+				.eResource().getURI(),
+			false);
 
 		assertTrue(ModelUtil.areEqual(loadedProject, getProject()));
 		assertEquals(false, getProject().contains(useCase));

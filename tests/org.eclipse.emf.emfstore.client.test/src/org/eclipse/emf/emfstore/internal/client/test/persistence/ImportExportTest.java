@@ -50,7 +50,9 @@ public class ImportExportTest extends ESTest {
 
 	@Test
 	public void testExportImportChangesController() throws IOException {
-		final ProjectSpace clonedProjectSpace = ModelUtil.clone(getProjectSpace());
+		final ProjectSpace copiedProjectSpace = ESWorkspaceProviderImpl.getInstance().getWorkspace()
+			.createLocalProject("Copy").toInternalAPI();
+		copiedProjectSpace.setProject(ModelUtil.clone(getProject()));
 		final TestElement testElement = Create.testElement("A");
 		ProjectUtil.addElement(getLocalProject(), testElement);
 		assertTrue(getProjectSpace().getLocalChangePackage().size() > 0);
@@ -64,9 +66,9 @@ public class ImportExportTest extends ESTest {
 		// TODO: assert file was written
 
 		new ExportImportControllerExecutor(temp, new NullProgressMonitor())
-			.execute(ExportImportControllerFactory.Import.getImportChangesController(clonedProjectSpace));
+			.execute(ExportImportControllerFactory.Import.getImportChangesController(copiedProjectSpace));
 
-		assertTrue(ModelUtil.areEqual(getProjectSpace().getProject(), clonedProjectSpace.getProject()));
+		assertTrue(ModelUtil.areEqual(getProjectSpace().getProject(), copiedProjectSpace.getProject()));
 	}
 
 	@Test

@@ -64,6 +64,7 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 			addNamePropertyDescriptor(object);
 			addUrlPropertyDescriptor(object);
 			addPortPropertyDescriptor(object);
+			addPathPropertyDescriptor(object);
 			addLastUsersessionPropertyDescriptor(object);
 			addCertificateAliasPropertyDescriptor(object);
 		}
@@ -135,6 +136,29 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 				false,
 				false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				null,
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPathPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ServerInfo_path_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_path_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				ModelPackage.Literals.SERVER_INFO__PATH,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				null,
 				null));
 	}
@@ -261,6 +285,7 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 		case ModelPackage.SERVER_INFO__NAME:
 		case ModelPackage.SERVER_INFO__URL:
 		case ModelPackage.SERVER_INFO__PORT:
+		case ModelPackage.SERVER_INFO__PATH:
 		case ModelPackage.SERVER_INFO__CERTIFICATE_ALIAS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

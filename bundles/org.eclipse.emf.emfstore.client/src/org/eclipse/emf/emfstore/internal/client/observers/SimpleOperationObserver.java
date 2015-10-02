@@ -14,6 +14,7 @@ package org.eclipse.emf.emfstore.internal.client.observers;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.observer.ESCommitObserver;
+import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
@@ -52,20 +53,24 @@ public abstract class SimpleOperationObserver implements OperationObserver, ESCo
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationExecuted(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationExecuted(org.eclipse.emf.emfstore.internal.client.model.ProjectSpace,
+	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
-	public void operationExecuted(AbstractOperation operation) {
+	public void operationExecuted(ProjectSpace projectSpace, AbstractOperation operation) {
 		operationPerformed(operation);
 	}
 
 	/**
-	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationUndone(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationUndone(org.eclipse.emf.emfstore.internal.client.model.ProjectSpace,
+	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
-	public void operationUndone(AbstractOperation operation) {
+	public void operationUndone(ProjectSpace projectSpace, AbstractOperation operation) {
 		operationPerformed(operation.reverse());
 	}
 

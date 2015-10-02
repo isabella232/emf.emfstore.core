@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common.model;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,6 +46,13 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	 * Clear allocated caches.
 	 */
 	void clearAllocatedCaches();
+
+	/**
+	 * Clear caches from the given set of {@link ModelElementId}s.
+	 *
+	 * @param modelElementIds the collection of {@link ModelElementId}s to be removed from the allocated cache
+	 */
+	void clearAllocatedCaches(Collection<ModelElementId> modelElementIds);
 
 	/**
 	 * Allocates certain IDs for the given model elements in the mapping.
@@ -159,20 +167,26 @@ public interface IdEObjectCollection extends EObject, ESObjectContainer<ModelEle
 	void initMapping();
 
 	/**
-	 * Returns a copy of the ID/EObject mapping where IDs are represented as strings.
+	 * Returns the ID/EObject mapping where IDs are represented as strings.
+	 * <p>
 	 * This method is mainly provided for convenience and performance reasons,
 	 * where the ID must be a string.
+	 * </p>
 	 *
 	 * @return the ID/EObject mapping
 	 */
 	Map<String, EObject> getIdToEObjectMapping();
 
 	/**
-	 * Returns a copy of the EObject/ID mapping where IDs are represented as strings.
+	 * Returns the EObject/ID mapping where IDs are represented as strings.
+	 *
+	 * <p>
 	 * This method is mainly provided for convenience and performance reasons,
 	 * where the ID must be a string.
+	 * </p>
 	 *
 	 * @return the EObject/ID mapping
 	 */
 	Map<EObject, String> getEObjectToIdMapping();
+
 }

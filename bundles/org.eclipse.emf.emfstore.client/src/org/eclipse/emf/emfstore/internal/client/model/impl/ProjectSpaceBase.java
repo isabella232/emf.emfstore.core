@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -272,20 +273,15 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	}
 
 	private void reapplyLocalChanges(AbstractChangePackage myChangePackage) {
-		if (Configuration.getClientBehavior().isRerecordingActivated()) {
-			final ESCloseableIterable<AbstractOperation> operations = myChangePackage.operations();
-			try {
+		final ESCloseableIterable<AbstractOperation> operations = myChangePackage.operations();
+		try {
+			if (Configuration.getClientBehavior().isRerecordingActivated()) {
 				applyOperationsWithRerecording(operations.iterable());
-			} finally {
-				operations.close();
-			}
-		} else {
-			final ESCloseableIterable<AbstractOperation> operations = myChangePackage.operations();
-			try {
+			} else {
 				applyOperations(operations.iterable(), true);
-			} finally {
-				operations.close();
 			}
+		} finally {
+			operations.close();
 		}
 	}
 
@@ -658,19 +654,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		fileTransferManager = new FileTransferManager(this);
 		operationManager = new OperationManager(this);
 
-		initResourcePersister();
-
-		commandStack.addCommandStackObserver(operationManager);
-		commandStack.addCommandStackObserver(resourcePersister);
-
 		// initialization order is important!
-		getProject().addIdEObjectCollectionChangeObserver(operationManager);
-		getProject().addIdEObjectCollectionChangeObserver(resourcePersister);
-
-		if (getProject() instanceof ProjectImpl) {
-			((ProjectImpl) getProject()).setUndetachable(operationManager);
-			((ProjectImpl) getProject()).setUndetachable(resourcePersister);
-		}
 
 		initPropertyMap();
 
@@ -701,6 +685,19 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 					ex.printStackTrace();
 				}
 			}
+		}
+
+		initResourcePersister();
+		// TODO: use ObserverBug to register observers
+		commandStack.addCommandStackObserver(resourcePersister);
+		commandStack.addCommandStackObserver(operationManager);
+
+		getProject().addIdEObjectCollectionChangeObserver(operationManager);
+		getProject().addIdEObjectCollectionChangeObserver(resourcePersister);
+
+		if (getProject() instanceof ProjectImpl) {
+			((ProjectImpl) getProject()).setUndetachable(operationManager);
+			((ProjectImpl) getProject()).setUndetachable(resourcePersister);
 		}
 
 		initCompleted = true;
@@ -748,7 +745,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		if (!isTransient) {
 			resourcePersister.addResource(eResource());
-			// resourcePersister.addResource(getLocalChangePackage().eResource());
+			resourcePersister.addResource(getLocalChangePackage().eResource());
 			resourcePersister.addResource(getProject().eResource());
 			resourcePersister.addDirtyStateChangeLister(new ESLocalProjectSaveStateNotifier(toAPI()));
 			ESWorkspaceProviderImpl.getObserverBus().register(resourcePersister);
@@ -1029,7 +1026,14 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 					} else if (containsOp(accceptedMineSet, myOperation)) {
 						acceptedMineList.add(myOperation);
 					}
-					accceptedMineSet.remove(myOperation);
+					final Iterator<AbstractOperation> iterator = accceptedMineSet.iterator();
+					while (iterator.hasNext()) {
+						final AbstractOperation operation = iterator.next();
+						if (operation.getIdentifier().equals(myOperation.getIdentifier())) {
+							iterator.remove();
+							break;
+						}
+					}
 
 				}
 			} finally {
@@ -1359,12 +1363,12 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		if (!getLocalChangePackage().isEmpty()) {
 			final List<AbstractOperation> operations = getLocalChangePackage().removeAtEnd(1);
-			final AbstractOperation lastOperation = operations.get(operations.size() - 1);
+			final AbstractOperation lastOperation = operations.get(0);
 			final AbstractOperation reversedOperation = lastOperation.reverse();
 
-			final Iterable<AbstractOperation> iterator = Collections.singletonList(reversedOperation);
+			final Iterable<AbstractOperation> iterable = Collections.singletonList(reversedOperation);
 
-			applyOperations(iterator, false);
+			applyOperations(iterable, false);
 			operationManager.notifyOperationUndone(lastOperation);
 
 			undoLastOperations(--numberOfOperations);

@@ -7,14 +7,15 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * shterev
+ * Aleksandar Shterev - initial API and implementation
+ * Edgar Mueller - Bug 473284
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.testers;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
-import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithResult;
+import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Property tester to test if the server info has been logged in.
@@ -30,18 +31,18 @@ public class ServerInfoIsLoggedInTester extends PropertyTester {
 	 *      java.lang.Object)
 	 */
 	public boolean test(Object receiver, String property, Object[] args, final Object expectedValue) {
-		if (receiver instanceof ServerInfo && expectedValue instanceof Boolean) {
-			final ServerInfo serverInfo = (ServerInfo) receiver;
-			final EMFStoreCommandWithResult<Boolean> command = new EMFStoreCommandWithResult<Boolean>() {
-				@Override
-				protected Boolean doRun() {
-					final Usersession usersession = serverInfo.getLastUsersession();
-					final Boolean ret = new Boolean(usersession != null && usersession.isLoggedIn());
-					return ret.equals(expectedValue);
-				}
-			};
-			final Boolean result = command.run(false);
-			return result;
+		if (ServerInfo.class.isInstance(receiver) && expectedValue instanceof Boolean) {
+			final ServerInfo serverInfo = ServerInfo.class.cast(receiver);
+			final Usersession usersession = serverInfo.getLastUsersession();
+			if (usersession == null) {
+				return Boolean.FALSE.equals(expectedValue);
+			}
+			try {
+				usersession.toAPI().refresh();
+				return new Boolean(usersession.isLoggedIn()).equals(expectedValue);
+			} catch (final ESException ex) {
+				return Boolean.FALSE.equals(expectedValue);
+			}
 		}
 		return false;
 	}

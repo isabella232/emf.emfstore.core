@@ -532,7 +532,8 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	 *      java.lang.Boolean)
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends EObject> Set<T> getAllModelElementsByClass(Class<T> modelElementClass, Boolean includeSubclasses) {
+	public <T extends EObject> Set<T> getAllModelElementsByClass(Class<T> modelElementClass,
+		Boolean includeSubclasses) {
 		final LinkedHashSet<T> result = new LinkedHashSet<T>();
 		if (includeSubclasses) {
 			for (final EObject modelElement : getAllModelElements()) {
@@ -812,32 +813,27 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		allocatedIdToEObjectMap.clear();
 	}
 
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#clearAllocatedCaches(java.util.Collection)
+	 */
+	public void clearAllocatedCaches(Collection<ModelElementId> modelElementIds) {
+		allocatedIdToEObjectMap.keySet().removeAll(modelElementIds);
+		allocatedEObjectToIdMap.values().removeAll(modelElementIds);
+	}
+
 	private void putIntoAllocatedCaches(EObject modelElement, ModelElementId modelElementId) {
 		allocatedEObjectToIdMap.put(modelElement, modelElementId.getId());
 		allocatedIdToEObjectMap.put(modelElementId.getId(), modelElement);
 	}
 
-	/**
-	 * Returns the EObject Id.
-	 *
-	 * @param eObject the eobject
-	 * @return the id or null if there is no model element id
-	 */
-	public String getEObjectId(EObject eObject) {
-		final ModelElementId modelElementId = getModelElementId(eObject);
-
-		if (modelElementId != null) {
-			return modelElementId.getId();
-		}
-
-		return null;
-	}
-
 	private ModelElementId getNewModelElementID() {
 		// if there is registered modelElementIdGenerator, use it
 		if (modelElementIdGenerator != null) {
-			final ESModelElementIdImpl modelElementId =
-				(ESModelElementIdImpl) modelElementIdGenerator.generateModelElementId(this);
+			final ESModelElementIdImpl modelElementId = (ESModelElementIdImpl) modelElementIdGenerator
+				.generateModelElementId(this);
 			return modelElementId.toInternalAPI();
 		}
 
@@ -865,9 +861,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#getIdToEObjectMapping()
 	 */
 	public Map<String, EObject> getIdToEObjectMapping() {
-		final Map<String, EObject> mapping = new LinkedHashMap<String, EObject>(idToEObjectMap);
-		mapping.putAll(new LinkedHashMap<String, EObject>(allocatedIdToEObjectMap));
-		return mapping;
+		return idToEObjectMap;
 	}
 
 	/**
@@ -876,9 +870,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#getEObjectToIdMapping()
 	 */
 	public Map<EObject, String> getEObjectToIdMapping() {
-		final Map<EObject, String> mapping = new LinkedHashMap<EObject, String>(eObjectToIdMap);
-		mapping.putAll(new LinkedHashMap<EObject, String>(allocatedEObjectToIdMap));
-		return mapping;
+		return eObjectToIdMap;
 	}
 
 	/**

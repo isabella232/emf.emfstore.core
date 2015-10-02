@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -14,6 +14,7 @@ package org.eclipse.emf.emfstore.internal.client.model.controller;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,7 +48,7 @@ import com.google.common.collect.Lists;
 
 /**
  * Controller class for updating a project space.
- * 
+ *
  * @author ovonwesen
  * @author emueller
  */
@@ -58,7 +59,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param projectSpace
 	 *            the project space to be updated
 	 * @param version
@@ -90,9 +91,9 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall#run()
 	 */
 	@Override
@@ -162,12 +163,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		}
 
 		ESWorkspaceProviderImpl
-			.getObserverBus()
-			.notify(ESUpdateObserver.class, true)
-			.inspectChanges(
-				getProjectSpace().toAPI(),
-				incomingAPIChangePackages,
-				getProgressMonitor());
+		.getObserverBus()
+		.notify(ESUpdateObserver.class, true)
+		.inspectChanges(
+			getProjectSpace().toAPI(),
+			incomingAPIChangePackages,
+			getProgressMonitor());
 
 		if (!getProjectSpace().getLocalChangePackage().isEmpty()) {
 			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
@@ -201,7 +202,11 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			getProgressMonitor(),
 			true);
 
-		ESWorkspaceProviderImpl.getObserverBus().notify(ESUpdateObserver.class, true)
+		final Date now = new Date();
+		getProjectSpace().setLastUpdated(now);
+
+		ESWorkspaceProviderImpl.getObserverBus()
+			.notify(ESUpdateObserver.class, true)
 			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
 
 		return getProjectSpace().getBaseVersion();
@@ -245,14 +250,14 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		ModelUtil.logError(MessageFormat
 			.format(
 				Messages.UpdateController_ChangePackagesRemoved
-					+ Messages.UpdateController_PullingUpBaseVersion,
+				+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 		getProjectSpace().save();
 	}
 
 	/**
 	 * Remove duplicate change packages from the change package.
-	 * 
+	 *
 	 * @param incomingChanges incoming change packages
 	 * @return baseVersionDelta
 	 */
@@ -279,7 +284,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 	/**
 	 * Remove duplicate operations.
-	 * 
+	 *
 	 * @param incomingChanges incoming change package
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed

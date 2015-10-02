@@ -45,7 +45,8 @@ public class EMFStoreResource extends XMIResourceImpl {
 	 * @param eObjectToIdMap
 	 *            a map from EObjects to IDs in the resource
 	 */
-	public void setIdToEObjectMap(final Map<String, EObject> idToEObjectMap, final Map<EObject, String> eObjectToIdMap) {
+	public void setIdToEObjectMap(final Map<String, EObject> idToEObjectMap,
+		final Map<EObject, String> eObjectToIdMap) {
 		this.idToEObjectMap = idToEObjectMap;
 		eObjectToIDMap = eObjectToIdMap;
 	}

@@ -7,13 +7,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * Edgar - initial API and implementation
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.ui;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUser;
 import org.eclipse.emf.emfstore.client.test.ui.conflictdetection.BidirectionalConflictMergeTest;
 import org.eclipse.emf.emfstore.client.test.ui.controllers.AllUIControllerTests;
+import org.eclipse.emf.emfstore.client.test.ui.testers.ServerInfoIsLoggedInTesterTest;
 import org.eclipse.emf.emfstore.internal.client.configuration.Behavior;
 import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
@@ -32,7 +33,10 @@ import com.google.common.base.Optional;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	AllUIControllerTests.class,
-	BidirectionalConflictMergeTest.class })
+	BidirectionalConflictMergeTest.class,
+	ServerInfoIsLoggedInTesterTest.class
+})
+@SuppressWarnings("restriction")
 public class AllUITests extends ESTestWithLoggedInUser {
 
 	public static final int TIMEOUT = 20000;

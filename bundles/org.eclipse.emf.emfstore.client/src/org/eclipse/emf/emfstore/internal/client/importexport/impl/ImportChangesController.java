@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,12 +7,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * emueller
+ * Edgar Mueller - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.importexport.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -22,7 +23,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 
 /**
  * A controller for importing changes which then will be applied upon
@@ -52,7 +56,7 @@ public class ImportChangesController implements IExportImportController {
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getLabel()
 	 */
 	public String getLabel() {
-		return "changes";
+		return Messages.ImportChangesController_Changes;
 	}
 
 	/**
@@ -62,8 +66,11 @@ public class ImportChangesController implements IExportImportController {
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredNames()
 	 */
 	public String[] getFilteredNames() {
-		return new String[] { "EMFStore change package (" + ExportImportDataUnits.Change.getExtension() + ")",
-			"All Files (*.*)" };
+		return new String[] {
+			MessageFormat.format(Messages.ImportChangesController_ChangePackageFileType_Filter,
+				ExportImportDataUnits.Change.getExtension()),
+			Messages.ImportChangesController_AllFilesFilter
+		};
 	}
 
 	/**
@@ -73,7 +80,7 @@ public class ImportChangesController implements IExportImportController {
 	 * @see org.eclipse.emf.emfstore.internal.client.importexport.IExportImportController#getFilteredExtensions()
 	 */
 	public String[] getFilteredExtensions() {
-		return new String[] { "*" + ExportImportDataUnits.Change.getExtension(), "*.*" };
+		return new String[] { "*" + ExportImportDataUnits.Change.getExtension(), "*.*" }; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -101,17 +108,22 @@ public class ImportChangesController implements IExportImportController {
 
 		// sanity check
 		if (directContents.size() != 1 && !(directContents.get(0) instanceof ChangePackage)) {
-			throw new IOException("File is corrupt, does not contain changes.");
+			throw new IOException(Messages.ImportChangesController_CorruptFile);
 		}
 
-		final ChangePackage changePackage = (ChangePackage) directContents.get(0);
+		final AbstractChangePackage changePackage = (AbstractChangePackage) directContents.get(0);
 
 		// / TODO
 		// if (!projectSpace.isInitialized()) {
 		// projectSpace.init();
 		// }
 
-		projectSpace.applyOperations(changePackage.getOperations(), true);
+		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+		try {
+			projectSpace.applyOperations(operations.iterable(), true);
+		} finally {
+			operations.close();
+		}
 	}
 
 	/**

@@ -24,7 +24,10 @@ import org.junit.runners.Suite;
 	ImportExportTest.class,
 	PersistenceTest.class,
 	FeatureMapPersistenceTest.class,
-	ResourcePersisterTest.class })
+	ResourcePersisterTest.class,
+	ProjectLastUpdatedTest.class,
+	ResourceCrossContainmentTest.class
+})
 public class AllPersistenceTests {
 
 }

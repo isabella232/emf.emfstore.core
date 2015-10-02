@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.test;
@@ -227,11 +227,6 @@ public class VersionSpecTests extends ESTestWithLoggedInUserMock {
 	public void resolveBranch() throws ESException {
 		assertEquals(VERSIONS[5],
 			history.toInternalAPI().resolveVersionSpec(Versions.createBRANCH(B2), new NullProgressMonitor()));
-	}
-
-	@Test(expected = InvalidVersionSpecException.class)
-	public void resolveIllegalBranch() throws ESException {
-		history.toInternalAPI().resolveVersionSpec(Versions.createBRANCH(FOO), new NullProgressMonitor());
 	}
 
 	@Test
