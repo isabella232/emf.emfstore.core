@@ -30,7 +30,7 @@
             <configuration>
               <source>
                 <repository>
-                    <url>http://download.eclipse.org/ecp/releases/releases_17/170_RC3</url>
+                    <url>http://download.eclipse.org/ecp/releases/releases_17/171</url>
                     <layout>p2</layout>
                 </repository>
                 <repository>
