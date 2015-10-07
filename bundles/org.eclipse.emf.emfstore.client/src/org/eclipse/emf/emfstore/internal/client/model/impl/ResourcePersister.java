@@ -174,9 +174,9 @@ public class ResourcePersister implements ESCommandObserver, IdEObjectCollection
 			try {
 				if (projectSpace.getLocalChangePackage().eResource() == resource) {
 					projectSpace.getLocalChangePackage().save();
-				} else {
-					ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
 				}
+				ModelUtil.saveResource(resource, WorkspaceUtil.getResourceLogger());
+
 			} catch (final IOException e) {
 				throw new RuntimeException(
 					MessageFormat.format(Messages.ResourcePersister_SaveFailed, resource.getURI()));
