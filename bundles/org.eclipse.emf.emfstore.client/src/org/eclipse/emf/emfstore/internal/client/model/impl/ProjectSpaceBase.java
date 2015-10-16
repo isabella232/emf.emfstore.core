@@ -50,6 +50,7 @@ import org.eclipse.emf.emfstore.client.handler.ESRunnableContext;
 import org.eclipse.emf.emfstore.client.observer.ESLoginObserver;
 import org.eclipse.emf.emfstore.client.observer.ESMergeObserver;
 import org.eclipse.emf.emfstore.client.util.ESClientURIUtil;
+import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
@@ -720,25 +721,34 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		final String filePath = normalizedUri.toFileString();
 		final String tempPath = changePackage.getTempFilePath();
 		final String path = changePackage.getFilePath();
-		changePackage.setFilePath(filePath + ".1"); //$NON-NLS-1$
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				changePackage.setFilePath(filePath + ".1"); //$NON-NLS-1$
+			}
+		});
 
-		// move files
 		try {
 			FileUtils.moveFile(new File(tempPath), new File(changePackage.getTempFilePath()));
 			FileUtils.moveFile(new File(path), new File(changePackage.getFilePath()));
-		} catch (final IOException ex1) {
-			ex1.printStackTrace();
+		} catch (final IOException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
 		}
 
 		// move change package into its own resource
 		final Resource resource = getResourceSet().createResource(localChangePackageUri);
-		resource.getContents().add(changePackage);
-		setChangePackage(changePackage);
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				resource.getContents().add(changePackage);
+				setChangePackage(changePackage);
+			}
+		});
 		try {
 			eResource().save(ModelUtil.getResourceSaveOptions());
 			resource.save(ModelUtil.getResourceSaveOptions());
 		} catch (final IOException ex) {
-			ex.printStackTrace();
+			WorkspaceUtil.logException(ex.getMessage(), ex);
 		}
 	}
 
