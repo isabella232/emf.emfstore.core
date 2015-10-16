@@ -670,19 +670,26 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 				final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
 				final String filePath = normalizedUri.toFileString();
 				localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-				((FileBasedChangePackage) localChangePackage).initialize(filePath);
+				((FileBasedChangePackage) localChangePackage)
+					.initialize(filePath + FileBasedChangePackageImpl.FILE_OP_INDEX);
+				final Resource resource = getResourceSet().getResource(localChangePackageUri, false);
+				resource.getContents().add(localChangePackage);
 			}
 			setChangePackage(localChangePackage);
 		} else {
 			if (!Configuration.getClientBehavior().useInMemoryChangePackage()) {
 				final FileBasedChangePackage changePackage = (FileBasedChangePackage) getLocalChangePackage();
-				// TODO: move to FileBasedChangePackage
-				try {
-					FileUtils.copyFile(
-						new File(changePackage.getFilePath()),
-						new File(changePackage.getTempFilePath()));
-				} catch (final IOException ex) {
-					ex.printStackTrace();
+				if (changePackage.eResource() == eResource()) {
+					migrateFileBasedChangePackageIntoDedicatedResource(localChangePackageUri, changePackage);
+				} else {
+					// TODO: move to FileBasedChangePackage
+					try {
+						FileUtils.copyFile(
+							new File(changePackage.getFilePath()),
+							new File(changePackage.getTempFilePath()));
+					} catch (final IOException ex) {
+						WorkspaceUtil.logException(ex.getMessage(), ex);
+					}
 				}
 			}
 		}
@@ -704,6 +711,35 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		startChangeRecording();
 		cleanCutElements();
+	}
+
+	private void migrateFileBasedChangePackageIntoDedicatedResource(final URI localChangePackageUri,
+		final FileBasedChangePackage changePackage) {
+
+		final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
+		final String filePath = normalizedUri.toFileString();
+		final String tempPath = changePackage.getTempFilePath();
+		final String path = changePackage.getFilePath();
+		changePackage.setFilePath(filePath + ".1"); //$NON-NLS-1$
+
+		// move files
+		try {
+			FileUtils.moveFile(new File(tempPath), new File(changePackage.getTempFilePath()));
+			FileUtils.moveFile(new File(path), new File(changePackage.getFilePath()));
+		} catch (final IOException ex1) {
+			ex1.printStackTrace();
+		}
+
+		// move change package into its own resource
+		final Resource resource = getResourceSet().createResource(localChangePackageUri);
+		resource.getContents().add(changePackage);
+		setChangePackage(changePackage);
+		try {
+			eResource().save(ModelUtil.getResourceSaveOptions());
+			resource.save(ModelUtil.getResourceSaveOptions());
+		} catch (final IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
