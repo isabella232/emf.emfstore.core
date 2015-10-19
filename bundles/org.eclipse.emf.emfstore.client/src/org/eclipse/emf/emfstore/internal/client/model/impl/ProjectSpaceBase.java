@@ -675,6 +675,11 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 					.initialize(filePath + FileBasedChangePackageImpl.FILE_OP_INDEX);
 				final Resource resource = getResourceSet().getResource(localChangePackageUri, false);
 				resource.getContents().add(localChangePackage);
+				try {
+					resource.save(ModelUtil.getResourceSaveOptions());
+				} catch (final IOException ex) {
+					WorkspaceUtil.logException(ex.getMessage(), ex);
+				}
 			}
 			setChangePackage(localChangePackage);
 		} else {
