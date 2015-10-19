@@ -50,6 +50,7 @@ import org.eclipse.emf.emfstore.client.handler.ESRunnableContext;
 import org.eclipse.emf.emfstore.client.observer.ESLoginObserver;
 import org.eclipse.emf.emfstore.client.observer.ESMergeObserver;
 import org.eclipse.emf.emfstore.client.util.ESClientURIUtil;
+import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
@@ -664,25 +665,37 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		if (localChangePackage == null) {
 			if (Configuration.getClientBehavior().useInMemoryChangePackage()) {
 				localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
-				final Resource resource = getResourceSet().getResource(localChangePackageUri, false);
+				final Resource resource = getResourceSet().createResource(localChangePackageUri);
 				resource.getContents().add(localChangePackage);
 			} else {
 				final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
 				final String filePath = normalizedUri.toFileString();
 				localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-				((FileBasedChangePackage) localChangePackage).initialize(filePath);
+				((FileBasedChangePackage) localChangePackage)
+					.initialize(filePath + FileBasedChangePackageImpl.FILE_OP_INDEX);
+				final Resource resource = getResourceSet().createResource(localChangePackageUri);
+				resource.getContents().add(localChangePackage);
+				try {
+					resource.save(ModelUtil.getResourceSaveOptions());
+				} catch (final IOException ex) {
+					WorkspaceUtil.logException(ex.getMessage(), ex);
+				}
 			}
 			setChangePackage(localChangePackage);
 		} else {
 			if (!Configuration.getClientBehavior().useInMemoryChangePackage()) {
 				final FileBasedChangePackage changePackage = (FileBasedChangePackage) getLocalChangePackage();
-				// TODO: move to FileBasedChangePackage
-				try {
-					FileUtils.copyFile(
-						new File(changePackage.getFilePath()),
-						new File(changePackage.getTempFilePath()));
-				} catch (final IOException ex) {
-					ex.printStackTrace();
+				if (changePackage.eResource() == eResource()) {
+					migrateFileBasedChangePackageIntoDedicatedResource(localChangePackageUri, changePackage);
+				} else {
+					// TODO: move to FileBasedChangePackage
+					try {
+						FileUtils.copyFile(
+							new File(changePackage.getFilePath()),
+							new File(changePackage.getTempFilePath()));
+					} catch (final IOException ex) {
+						WorkspaceUtil.logException(ex.getMessage(), ex);
+					}
 				}
 			}
 		}
@@ -704,6 +717,44 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 		startChangeRecording();
 		cleanCutElements();
+	}
+
+	private void migrateFileBasedChangePackageIntoDedicatedResource(final URI localChangePackageUri,
+		final FileBasedChangePackage changePackage) {
+
+		final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
+		final String filePath = normalizedUri.toFileString();
+		final String tempPath = changePackage.getTempFilePath();
+		final String path = changePackage.getFilePath();
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				changePackage.setFilePath(filePath + ".1"); //$NON-NLS-1$
+			}
+		});
+
+		try {
+			FileUtils.moveFile(new File(tempPath), new File(changePackage.getTempFilePath()));
+			FileUtils.moveFile(new File(path), new File(changePackage.getFilePath()));
+		} catch (final IOException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		}
+
+		// move change package into its own resource
+		final Resource resource = getResourceSet().createResource(localChangePackageUri);
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				resource.getContents().add(changePackage);
+				setChangePackage(changePackage);
+			}
+		});
+		try {
+			eResource().save(ModelUtil.getResourceSaveOptions());
+			resource.save(ModelUtil.getResourceSaveOptions());
+		} catch (final IOException ex) {
+			WorkspaceUtil.logException(ex.getMessage(), ex);
+		}
 	}
 
 	@SuppressWarnings("unchecked")

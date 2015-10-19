@@ -110,6 +110,11 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	private static final String OPERATION_FILE_SUFFIX = ".eoc"; //$NON-NLS-1$
 
 	/**
+	 * Index of an operations file tuple consisting of the actual and the temporary file.
+	 */
+	public static final String FILE_OP_INDEX = ".1"; //$NON-NLS-1$
+
+	/**
 	 * The cached value of the '{@link #getLogMessage() <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -778,17 +783,16 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#attachToProjectSpace(org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.ChangePackageContainer)
 	 * @generated NOT
 	 */
-	public void attachToProjectSpace(ChangePackageContainer changePackageHolder) {
-		final URI changePackageUri = changePackageHolder.getChangePackageUri();
+	public void attachToProjectSpace(ChangePackageContainer changePackageContainer) {
+		final URI changePackageUri = changePackageContainer.getChangePackageUri();
 		final String operationFileString = changePackageUri.toFileString();
-		final File operationFile = new File(operationFileString + TEMP_SUFFIX);
-		// operationFile.delete();
+		final File tempOperationFile = new File(operationFileString + FILE_OP_INDEX + TEMP_SUFFIX);
 		final File thisFile = new File(getTempFilePath());
 		try {
-			FileUtil.copyFile(thisFile, operationFile);
+			FileUtil.copyFile(thisFile, tempOperationFile);
 			thisFile.delete();
-			setFilePath(operationFileString);
-			changePackageHolder.setChangePackage(this);
+			setFilePath(operationFileString + FILE_OP_INDEX);
+			changePackageContainer.setChangePackage(this);
 		} catch (final IOException ex) {
 			// ESException not available
 			throw new IllegalStateException(ex);
@@ -864,10 +868,14 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	private void initializeEmptyChangePackage() {
 		Optional<FileWriter> maybeWriter = Optional.absent();
+		Optional<FileWriter> maybeTempWriter = Optional.absent();
 		try {
-			final FileWriter fileWriter = new FileWriter(getTempFilePath());
+			final FileWriter fileWriter = new FileWriter(getFilePath());
+			final FileWriter tempFileWriter = new FileWriter(getTempFilePath());
 			maybeWriter = Optional.of(fileWriter);
+			maybeTempWriter = Optional.of(tempFileWriter);
 			fileWriter.write(EMPTY_CHANGE_PACKAGE);
+			tempFileWriter.write(EMPTY_CHANGE_PACKAGE);
 		} catch (final IOException ex) {
 			// ESException not available
 			throw new IllegalStateException(ex);
@@ -875,6 +883,13 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			if (maybeWriter.isPresent()) {
 				try {
 					maybeWriter.get().close();
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
+			if (maybeTempWriter.isPresent()) {
+				try {
+					maybeTempWriter.get().close();
 				} catch (final IOException ex) {
 					ModelUtil.logException(ex);
 				}
