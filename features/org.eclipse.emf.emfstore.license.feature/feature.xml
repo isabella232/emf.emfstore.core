@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.emfstore.license.feature"
       label="EMFStore License"
-      version="1.6.0.qualifier"
+      version="1.6.1.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description>
