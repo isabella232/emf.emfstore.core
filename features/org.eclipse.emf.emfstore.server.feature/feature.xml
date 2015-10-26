@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.emfstore.server.feature"
       label="EMFStore Server"
-      version="1.6.1.qualifier"
+      version="1.6.2.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.server"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.6.1.qualifier">
+      license-feature-version="1.6.2.qualifier">
 
    <description url="http://emfstore.org">
       This feature contains all plugins to run the EMFStore server.
