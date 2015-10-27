@@ -19,6 +19,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
@@ -37,10 +38,8 @@ import com.google.common.base.Optional;
 public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 
 	// maps proxy ID to file-based change package
-	private final Map<String, FileBasedChangePackage> proxyIdToChangePackageFragments =
-		new LinkedHashMap<String, FileBasedChangePackage>();
-	private final Map<String, FileBasedChangePackage> proxyIdToCompletedChangePackages =
-		new LinkedHashMap<String, FileBasedChangePackage>();
+	private final Map<String, FileBasedChangePackage> proxyIdToChangePackageFragments = new LinkedHashMap<String, FileBasedChangePackage>();
+	private final Map<String, FileBasedChangePackage> proxyIdToCompletedChangePackages = new LinkedHashMap<String, FileBasedChangePackage>();
 
 	/**
 	 * Adds a single fragment.
@@ -110,7 +109,7 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
 		try {
 			for (final AbstractOperation operation : operationsHandle.iterable()) {
-				changePackage.add(operation);
+				changePackage.add(ModelUtil.clone(operation));
 			}
 		} finally {
 			operationsHandle.close();
