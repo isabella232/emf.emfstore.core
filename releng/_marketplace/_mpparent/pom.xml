@@ -34,7 +34,7 @@
                     <layout>p2</layout>
                 </repository>
                 <repository>
-                    <url>http://download.eclipse.org/emfstore/releases_16/161</url>
+                    <url>http://download.eclipse.org/emfstore/releases_16/162</url>
                     <layout>p2</layout>
                 </repository>
               </source>
