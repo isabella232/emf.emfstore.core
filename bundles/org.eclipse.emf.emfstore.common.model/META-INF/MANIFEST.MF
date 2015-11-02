@@ -2,19 +2,19 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMFStore Common Model
 Bundle-SymbolicName: org.eclipse.emf.emfstore.common.model;singleton:=true
-Bundle-Version: 1.6.2.qualifier
+Bundle-Version: 1.7.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.eclipse.emf.emfstore.common;bundle-version="[1.6.2,2.0.0)";visibility:=reexport,
+Require-Bundle: org.eclipse.emf.emfstore.common;bundle-version="[1.7.0,2.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)",
  org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
  org.eclipse.emf.ecore.xmi;bundle-version="[2.5.0,3.0.0)"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.emf.emfstore.common.model;version="1.6.2",
- org.eclipse.emf.emfstore.common.model.util;version="1.6.2",org.eclips
- e.emf.emfstore.internal.common.model;version="1.6.2"; x-friends:="org
+Export-Package: org.eclipse.emf.emfstore.common.model;version="1.7.0",
+ org.eclipse.emf.emfstore.common.model.util;version="1.7.0",org.eclips
+ e.emf.emfstore.internal.common.model;version="1.7.0"; x-friends:="org
  .eclipse.emf.emfstore.client,  org.eclipse.emf.emfstore.client.model.
  edit,  org.eclipse.emf.emfstore.client.ui,  org.eclipse.emf.emfstore.
  common.model.edit,  org.eclipse.emf.emfstore.ecore,  org.eclipse.emf.
@@ -28,14 +28,14 @@ Export-Package: org.eclipse.emf.emfstore.common.model;version="1.6.2",
  p.emfstore.core,  org.eclipse.emf.ecp.emfstore.ui.e3,  org.eclipse.em
  f.emfstore.performance.test,  org.eclipse.emf.emfstore.fuzzy.emf,  or
  g.eclipse.emf.emfstore.client.ui.test",org.eclipse.emf.emfstore.inter
- nal.common.model.impl;version="1.6.2"; x-friends:="org.eclipse.emf.em
+ nal.common.model.impl;version="1.7.0"; x-friends:="org.eclipse.emf.em
  fstore.client,  org.eclipse.emf.emfstore.client.changetracking.test, 
   org.eclipse.emf.emfstore.client.recording.test,  org.eclipse.emf.emf
  store.client.ui,  org.eclipse.emf.emfstore.server,  org.eclipse.emf.e
  mfstore.server.model,  org.eclipse.emf.ecp.emfstore.core,  org.eclips
  e.emf.emfstore.client.conflictdetection.test",org.eclipse.emf.emfstor
- e.internal.common.model.impl.util;version="1.6.2";x-internal:=true,or
- g.eclipse.emf.emfstore.internal.common.model.util;version="1.6.2"; x-
+ e.internal.common.model.impl.util;version="1.7.0";x-internal:=true,or
+ g.eclipse.emf.emfstore.internal.common.model.util;version="1.7.0"; x-
  friends:="org.eclipse.emf.emfstore.client,  org.eclipse.emf.emfstore.
  client.ui,  org.eclipse.emf.emfstore.common.model.edit,  org.eclipse.
  emf.emfstore.fuzzy.emf.test,  org.eclipse.emf.emfstore.migration,  or
