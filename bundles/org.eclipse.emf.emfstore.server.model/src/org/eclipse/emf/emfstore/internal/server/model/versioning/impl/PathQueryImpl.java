@@ -27,13 +27,14 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PathQueryImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PathQueryImpl#getTarget <em>Target</em>}
+ * </li>
  * </ul>
  * </p>
  *
  * @generated NOT
  */
-public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements PathQuery {
+public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery>implements PathQuery {
 
 	/**
 	 * @generated NOT
@@ -80,8 +81,8 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 			target = (PrimaryVersionSpec) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				final InternalEObject newTarget = (InternalEObject) target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.PATH_QUERY__TARGET, null, null);
+				NotificationChain msgs = oldTarget.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.PATH_QUERY__TARGET, null, null);
 				if (newTarget.eInternalContainer() == null) {
 					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.PATH_QUERY__TARGET,
 						null, msgs);
@@ -136,12 +137,12 @@ public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements Path
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null) {
-				msgs = ((InternalEObject) target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.PATH_QUERY__TARGET, null, msgs);
+				msgs = ((InternalEObject) target).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.PATH_QUERY__TARGET, null, msgs);
 			}
 			if (newTarget != null) {
-				msgs = ((InternalEObject) newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.PATH_QUERY__TARGET, null, msgs);
+				msgs = ((InternalEObject) newTarget).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.PATH_QUERY__TARGET, null, msgs);
 			}
 			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null) {

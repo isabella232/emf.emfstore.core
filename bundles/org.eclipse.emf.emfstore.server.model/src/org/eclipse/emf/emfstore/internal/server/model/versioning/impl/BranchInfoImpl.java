@@ -28,7 +28,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getHead <em>Head</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getSource <em>Source</em>}
+ * </li>
  * </ul>
  * </p>
  *
@@ -133,11 +134,11 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 			head = (PrimaryVersionSpec) eResolveProxy(oldHead);
 			if (head != oldHead) {
 				final InternalEObject newHead = (InternalEObject) head;
-				NotificationChain msgs = oldHead.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.BRANCH_INFO__HEAD, null, null);
+				NotificationChain msgs = oldHead.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__HEAD, null, null);
 				if (newHead.eInternalContainer() == null) {
-					msgs = newHead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__HEAD,
-						null, msgs);
+					msgs = newHead.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__HEAD, null,
+						msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -189,19 +190,20 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 		if (newHead != head) {
 			NotificationChain msgs = null;
 			if (head != null) {
-				msgs = ((InternalEObject) head).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.BRANCH_INFO__HEAD, null, msgs);
+				msgs = ((InternalEObject) head).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__HEAD, null, msgs);
 			}
 			if (newHead != null) {
-				msgs = ((InternalEObject) newHead).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.BRANCH_INFO__HEAD, null, msgs);
+				msgs = ((InternalEObject) newHead).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__HEAD, null, msgs);
 			}
 			msgs = basicSetHead(newHead, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
 		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.BRANCH_INFO__HEAD, newHead, newHead));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, VersioningPackage.BRANCH_INFO__HEAD, newHead, newHead));
 		}
 	}
 
@@ -216,8 +218,8 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 			source = (PrimaryVersionSpec) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				final InternalEObject newSource = (InternalEObject) source;
-				NotificationChain msgs = oldSource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.BRANCH_INFO__SOURCE, null, null);
+				NotificationChain msgs = oldSource.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__SOURCE, null, null);
 				if (newSource.eInternalContainer() == null) {
 					msgs = newSource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__SOURCE,
 						null, msgs);
@@ -272,12 +274,12 @@ public class BranchInfoImpl extends EObjectImpl implements BranchInfo {
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null) {
-				msgs = ((InternalEObject) source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.BRANCH_INFO__SOURCE, null, msgs);
+				msgs = ((InternalEObject) source).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__SOURCE, null, msgs);
 			}
 			if (newSource != null) {
-				msgs = ((InternalEObject) newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.BRANCH_INFO__SOURCE, null, msgs);
+				msgs = ((InternalEObject) newSource).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.BRANCH_INFO__SOURCE, null, msgs);
 			}
 			msgs = basicSetSource(newSource, msgs);
 			if (msgs != null) {

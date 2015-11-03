@@ -74,11 +74,11 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 			newVersion = (PrimaryVersionSpec) eResolveProxy(oldNewVersion);
 			if (newVersion != oldNewVersion) {
 				final InternalEObject newNewVersion = (InternalEObject) newVersion;
-				NotificationChain msgs = oldNewVersion.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, null);
+				NotificationChain msgs = oldNewVersion.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, null);
 				if (newNewVersion.eInternalContainer() == null) {
-					msgs = newNewVersion.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
+					msgs = newNewVersion.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -130,12 +130,12 @@ public class ProjectUpdatedEventImpl extends ServerProjectEventImpl implements P
 		if (newNewVersion != newVersion) {
 			NotificationChain msgs = null;
 			if (newVersion != null) {
-				msgs = ((InternalEObject) newVersion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
+				msgs = ((InternalEObject) newVersion).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
 			}
 			if (newNewVersion != null) {
-				msgs = ((InternalEObject) newNewVersion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
+				msgs = ((InternalEObject) newNewVersion).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ServerPackage.PROJECT_UPDATED_EVENT__NEW_VERSION, null, msgs);
 			}
 			msgs = basicSetNewVersion(newNewVersion, msgs);
 			if (msgs != null) {

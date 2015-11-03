@@ -35,8 +35,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @model
  * @generated
  */
-public interface PrimaryVersionSpec extends VersionSpec, Comparable<PrimaryVersionSpec>,
-	APIDelegate<ESPrimaryVersionSpec> {
+public interface PrimaryVersionSpec
+	extends VersionSpec, Comparable<PrimaryVersionSpec>, APIDelegate<ESPrimaryVersionSpec> {
 
 	/**
 	 * Returns the value of the '<em><b>Identifier</b></em>' attribute. <!--

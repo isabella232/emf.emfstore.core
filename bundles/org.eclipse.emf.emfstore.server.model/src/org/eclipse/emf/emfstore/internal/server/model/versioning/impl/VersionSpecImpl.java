@@ -22,7 +22,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionSpecImpl#getBranch <em>Branch</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionSpecImpl#getBranch <em>Branch</em>}
+ * </li>
  * </ul>
  * </p>
  *

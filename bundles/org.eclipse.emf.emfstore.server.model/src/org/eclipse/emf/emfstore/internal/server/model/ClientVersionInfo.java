@@ -23,7 +23,8 @@ import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
  *          <p>
  *          The following features are supported:
  *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion <em>Version</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getVersion <em>Version</em>}
+ *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo#getName <em>Name</em>}</li>
  *          </ul>
  *          </p>

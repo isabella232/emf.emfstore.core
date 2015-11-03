@@ -25,7 +25,8 @@ import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getVersion <em>Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getVersion <em>Version</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -116,8 +117,8 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 		final String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__VERSION,
-				oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__VERSION, oldVersion,
+				version));
 		}
 	}
 
@@ -139,7 +140,8 @@ public class ClientVersionInfoImpl extends EObjectImpl implements ClientVersionI
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__NAME, oldName, name));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, ModelPackage.CLIENT_VERSION_INFO__NAME, oldName, name));
 		}
 	}
 

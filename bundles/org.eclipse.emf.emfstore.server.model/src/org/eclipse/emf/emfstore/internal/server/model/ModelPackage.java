@@ -222,7 +222,8 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SESSION_ID_FEATURE_COUNT = org.eclipse.emf.emfstore.internal.common.model.ModelPackage.UNIQUE_IDENTIFIER_FEATURE_COUNT + 0;
+	int SESSION_ID_FEATURE_COUNT = org.eclipse.emf.emfstore.internal.common.model.ModelPackage.UNIQUE_IDENTIFIER_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the ' {@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl
@@ -307,7 +308,8 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_ID_FEATURE_COUNT = org.eclipse.emf.emfstore.internal.common.model.ModelPackage.UNIQUE_IDENTIFIER_FEATURE_COUNT + 0;
+	int PROJECT_ID_FEATURE_COUNT = org.eclipse.emf.emfstore.internal.common.model.ModelPackage.UNIQUE_IDENTIFIER_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the ' {@link org.eclipse.emf.emfstore.internal.server.model.impl.VersionInfoImpl
@@ -405,7 +407,8 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_IDENTIFIER_FEATURE_COUNT = org.eclipse.emf.emfstore.internal.common.model.ModelPackage.IDENTIFIABLE_ELEMENT_FEATURE_COUNT + 0;
+	int FILE_IDENTIFIER_FEATURE_COUNT = org.eclipse.emf.emfstore.internal.common.model.ModelPackage.IDENTIFIABLE_ELEMENT_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '

@@ -20,8 +20,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec;
  * @author emueller
  *
  */
-public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, TagVersionSpec> implements
-	ESTagVersionSpec {
+public class ESTagVersionSpecImpl extends ESVersionSpecImpl<ESTagVersionSpec, TagVersionSpec>
+	implements ESTagVersionSpec {
 
 	/**
 	 * Constructor.

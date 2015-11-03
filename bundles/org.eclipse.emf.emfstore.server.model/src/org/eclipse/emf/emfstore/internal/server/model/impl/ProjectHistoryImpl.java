@@ -179,11 +179,11 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
-				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, null);
+				NotificationChain msgs = oldProjectId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null) {
-					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
+					msgs = newProjectId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -235,12 +235,12 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
-				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) projectId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
 			}
 			if (newProjectId != null) {
-				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) newProjectId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_HISTORY__PROJECT_ID, null, msgs);
 			}
 			msgs = basicSetProjectId(newProjectId, msgs);
 			if (msgs != null) {
@@ -476,8 +476,8 @@ public class ProjectHistoryImpl extends EObjectImpl implements ProjectHistory {
 		case ModelPackage.PROJECT_HISTORY__PROJECT_NAME:
 			return PROJECT_NAME_EDEFAULT == null ? projectName != null : !PROJECT_NAME_EDEFAULT.equals(projectName);
 		case ModelPackage.PROJECT_HISTORY__PROJECT_DESCRIPTION:
-			return PROJECT_DESCRIPTION_EDEFAULT == null ? projectDescription != null : !PROJECT_DESCRIPTION_EDEFAULT
-				.equals(projectDescription);
+			return PROJECT_DESCRIPTION_EDEFAULT == null ? projectDescription != null
+				: !PROJECT_DESCRIPTION_EDEFAULT.equals(projectDescription);
 		case ModelPackage.PROJECT_HISTORY__SHARED_PROPERTIES:
 			return sharedProperties != null && !sharedProperties.isEmpty();
 		case ModelPackage.PROJECT_HISTORY__BRANCHES:

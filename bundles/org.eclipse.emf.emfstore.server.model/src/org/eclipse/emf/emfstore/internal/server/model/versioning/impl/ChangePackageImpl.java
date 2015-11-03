@@ -186,11 +186,11 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 			logMessage = (LogMessage) eResolveProxy(oldLogMessage);
 			if (logMessage != oldLogMessage) {
 				final InternalEObject newLogMessage = (InternalEObject) logMessage;
-				NotificationChain msgs = oldLogMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, null);
+				NotificationChain msgs = oldLogMessage.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, null);
 				if (newLogMessage.eInternalContainer() == null) {
-					msgs = newLogMessage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
+					msgs = newLogMessage.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -242,12 +242,12 @@ public class ChangePackageImpl extends EObjectImpl implements ChangePackage {
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
 			if (logMessage != null) {
-				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
+				msgs = ((InternalEObject) logMessage).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
 			}
 			if (newLogMessage != null) {
-				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
+				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE__LOG_MESSAGE, null, msgs);
 			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
 			if (msgs != null) {

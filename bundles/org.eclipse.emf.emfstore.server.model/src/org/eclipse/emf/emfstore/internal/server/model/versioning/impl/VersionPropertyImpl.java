@@ -112,8 +112,8 @@ public class VersionPropertyImpl extends EObjectImpl implements VersionProperty 
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION_PROPERTY__NAME, oldName,
-				name));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION_PROPERTY__NAME, oldName, name));
 		}
 	}
 

@@ -20,8 +20,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  *
  */
-public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersionSpec, PrimaryVersionSpec> implements
-	ESPrimaryVersionSpec {
+public class ESPrimaryVersionSpecImpl extends ESVersionSpecImpl<ESPrimaryVersionSpec, PrimaryVersionSpec>
+	implements ESPrimaryVersionSpec {
 
 	/**
 	 * Constructor.

@@ -107,8 +107,8 @@ public class ServerUrlImpl extends EObjectImpl implements ServerUrl {
 		final String oldHostName = hostName;
 		hostName = newHostName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.SERVER_URL__HOST_NAME, oldHostName,
-				hostName));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, UrlPackage.SERVER_URL__HOST_NAME, oldHostName, hostName));
 		}
 	}
 

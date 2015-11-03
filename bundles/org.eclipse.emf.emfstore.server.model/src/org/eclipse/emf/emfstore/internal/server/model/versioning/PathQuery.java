@@ -21,7 +21,8 @@ import org.eclipse.emf.emfstore.server.model.query.ESPathQuery;
  *          <p>
  *          The following features are supported:
  *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery#getTarget <em>Target</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.PathQuery#getTarget <em>Target</em>}
+ *          </li>
  *          </ul>
  *          </p>
  *

@@ -95,11 +95,11 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 			sessionId = (SessionId) eResolveProxy(oldSessionId);
 			if (sessionId != oldSessionId) {
 				final InternalEObject newSessionId = (InternalEObject) sessionId;
-				NotificationChain msgs = oldSessionId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, null);
+				NotificationChain msgs = oldSessionId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, null);
 				if (newSessionId.eInternalContainer() == null) {
-					msgs = newSessionId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
+					msgs = newSessionId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -151,12 +151,12 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 		if (newSessionId != sessionId) {
 			NotificationChain msgs = null;
 			if (sessionId != null) {
-				msgs = ((InternalEObject) sessionId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
+				msgs = ((InternalEObject) sessionId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
 			}
 			if (newSessionId != null) {
-				msgs = ((InternalEObject) newSessionId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
+				msgs = ((InternalEObject) newSessionId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__SESSION_ID, null, msgs);
 			}
 			msgs = basicSetSessionId(newSessionId, msgs);
 			if (msgs != null) {
@@ -179,11 +179,11 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 			resolvedACUser = (ACUser) eResolveProxy(oldResolvedACUser);
 			if (resolvedACUser != oldResolvedACUser) {
 				final InternalEObject newResolvedACUser = (InternalEObject) resolvedACUser;
-				NotificationChain msgs = oldResolvedACUser.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, null);
+				NotificationChain msgs = oldResolvedACUser.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, null);
 				if (newResolvedACUser.eInternalContainer() == null) {
-					msgs = newResolvedACUser.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
+					msgs = newResolvedACUser.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -235,12 +235,12 @@ public class AuthenticationInformationImpl extends EObjectImpl implements Authen
 		if (newResolvedACUser != resolvedACUser) {
 			NotificationChain msgs = null;
 			if (resolvedACUser != null) {
-				msgs = ((InternalEObject) resolvedACUser).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
+				msgs = ((InternalEObject) resolvedACUser).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
 			}
 			if (newResolvedACUser != null) {
-				msgs = ((InternalEObject) newResolvedACUser).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
+				msgs = ((InternalEObject) newResolvedACUser).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER, null, msgs);
 			}
 			msgs = basicSetResolvedACUser(newResolvedACUser, msgs);
 			if (msgs != null) {

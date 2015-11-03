@@ -20,8 +20,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESBranchVersionSpec;
  * @author emueller
  *
  */
-public class ESBranchVersionSpecImpl extends ESVersionSpecImpl<ESBranchVersionSpec, BranchVersionSpec> implements
-	ESBranchVersionSpec {
+public class ESBranchVersionSpecImpl extends ESVersionSpecImpl<ESBranchVersionSpec, BranchVersionSpec>
+	implements ESBranchVersionSpec {
 
 	/**
 	 * Constructor.

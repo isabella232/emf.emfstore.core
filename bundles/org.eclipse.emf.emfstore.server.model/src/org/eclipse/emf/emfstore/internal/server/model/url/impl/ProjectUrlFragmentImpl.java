@@ -102,7 +102,8 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, UrlPackage.PROJECT_URL_FRAGMENT__NAME, oldName, name));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, UrlPackage.PROJECT_URL_FRAGMENT__NAME, oldName, name));
 		}
 	}
 
@@ -117,11 +118,11 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
-				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, null);
+				NotificationChain msgs = oldProjectId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null) {
-					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
+					msgs = newProjectId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -173,12 +174,12 @@ public class ProjectUrlFragmentImpl extends EObjectImpl implements ProjectUrlFra
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
-				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) projectId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
 			}
 			if (newProjectId != null) {
-				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) newProjectId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UrlPackage.PROJECT_URL_FRAGMENT__PROJECT_ID, null, msgs);
 			}
 			msgs = basicSetProjectId(newProjectId, msgs);
 			if (msgs != null) {

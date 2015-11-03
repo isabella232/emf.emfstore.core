@@ -59,8 +59,8 @@ public class ESVersionsFactoryImpl implements ESVersionFactory {
 	public ESPrimaryVersionSpec createPRIMARY(ESVersionSpec versionSpec, int index) {
 		if (versionSpec instanceof ESVersionSpecImpl<?, ?>) {
 			final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
-			final PrimaryVersionSpec primaryVersionSpec = Versions
-				.createPRIMARY(versionSpecImpl.toInternalAPI(), index);
+			final PrimaryVersionSpec primaryVersionSpec = Versions.createPRIMARY(versionSpecImpl.toInternalAPI(),
+				index);
 			return primaryVersionSpec.toAPI();
 		}
 		throw new IllegalArgumentException();

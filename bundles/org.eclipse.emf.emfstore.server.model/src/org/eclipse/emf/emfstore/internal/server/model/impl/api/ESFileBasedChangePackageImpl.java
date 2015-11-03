@@ -33,8 +33,8 @@ import com.google.common.collect.Iterables;
  * @since 1.5
  *
  */
-public class ESFileBasedChangePackageImpl extends ESAbstractChangePackageImpl<FileBasedChangePackage> implements
-	ESChangePackage {
+public class ESFileBasedChangePackageImpl extends ESAbstractChangePackageImpl<FileBasedChangePackage>
+	implements ESChangePackage {
 
 	/**
 	 * Constructor.

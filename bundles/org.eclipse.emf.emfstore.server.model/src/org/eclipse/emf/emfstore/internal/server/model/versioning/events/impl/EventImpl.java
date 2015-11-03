@@ -89,8 +89,8 @@ public class EventImpl extends EObjectImpl implements Event {
 		final Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, EventsPackage.EVENT__TIMESTAMP, oldTimestamp,
-				timestamp));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, EventsPackage.EVENT__TIMESTAMP, oldTimestamp, timestamp));
 		}
 	}
 

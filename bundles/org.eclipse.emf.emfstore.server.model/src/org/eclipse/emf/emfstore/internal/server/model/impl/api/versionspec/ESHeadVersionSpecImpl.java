@@ -20,8 +20,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESHeadVersionSpec;
  * @author emueller
  *
  */
-public class ESHeadVersionSpecImpl extends ESVersionSpecImpl<ESHeadVersionSpec, HeadVersionSpec> implements
-	ESHeadVersionSpec {
+public class ESHeadVersionSpecImpl extends ESVersionSpecImpl<ESHeadVersionSpec, HeadVersionSpec>
+	implements ESHeadVersionSpec {
 
 	/**
 	 * Constructor.
