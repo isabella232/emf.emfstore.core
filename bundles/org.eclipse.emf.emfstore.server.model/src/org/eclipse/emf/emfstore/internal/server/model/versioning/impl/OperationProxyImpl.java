@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
-import org.eclipse.swt.graphics.Image;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +48,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	 * @ordered
 	 */
 	protected EList<OperationProxy> proxies;
-	private Image image;
+	private byte[] image;
 	private String label = ""; //$NON-NLS-1$
 	private int index = -1;
 
@@ -177,20 +176,22 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	}
 
 	/**
-	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(org.eclipse.swt.graphics.Image)
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(byte[])
 	 */
-	public void setImage(Image image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
 	/**
-	 * {@inheritDoc}
 	 *
+	 * {@inheritDoc}
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getImage()
 	 */
-	public Image getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 

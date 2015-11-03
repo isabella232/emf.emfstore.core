@@ -12,7 +12,6 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.swt.graphics.Image;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,11 +59,11 @@ public interface OperationProxy extends EObject {
 	/**
 	 * Sets the image to be used by the label provider.
 	 *
-	 * @param image the image to be set
+	 * @param image a byte array that represents a SWT image
 	 *
 	 * @generated NOT
 	 */
-	void setImage(Image image);
+	void setImage(byte[] image);
 
 	/**
 	 * Returns the image to be used by the label provider.
@@ -73,7 +72,7 @@ public interface OperationProxy extends EObject {
 	 *
 	 * @generated NOT
 	 */
-	Image getImage();
+	byte[] getImage();
 
 	/**
 	 * Returns the label to be used by the label provider.
