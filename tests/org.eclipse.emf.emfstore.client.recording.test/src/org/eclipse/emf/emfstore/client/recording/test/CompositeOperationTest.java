@@ -20,18 +20,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import org.eclipse.emf.emfstore.client.ESCompositeOperationHandle;
+import org.eclipse.emf.emfstore.client.exceptions.ESInvalidCompositeOperationException;
 import org.eclipse.emf.emfstore.client.handler.ESOperationModifier;
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTest;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.util.RunESCommand;
+import org.eclipse.emf.emfstore.common.model.ESModelElementId;
 import org.eclipse.emf.emfstore.internal.client.configuration.Behavior;
-import org.eclipse.emf.emfstore.internal.client.model.CompositeOperationHandle;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.InvalidHandleException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.AutoOperationWrapper;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommandWithResult;
 import org.eclipse.emf.emfstore.internal.common.ExtensionRegistry;
-import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
@@ -92,7 +93,7 @@ public class CompositeOperationTest extends ESTest {
 
 			@Override
 			protected void doRun() {
-				final CompositeOperationHandle handle = getProjectSpace().beginCompositeOperation();
+				final ESCompositeOperationHandle handle = getLocalProject().beginCompositeOperation();
 				section.setName(NEW_NAME);
 				section.setDescription(NEW_DESCRIPTION);
 				section.getContainedElements().add(useCase);
@@ -103,11 +104,11 @@ public class CompositeOperationTest extends ESTest {
 				assertEquals(NEW_NAME, section.getName());
 				assertEquals(NEW_DESCRIPTION, section.getDescription());
 
-				final ModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section);
+				final ESModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section).toAPI();
 
 				try {
 					handle.end(SECTION_CREATION, DESCRIPTION3, sectionId);
-				} catch (final InvalidHandleException e) {
+				} catch (final ESInvalidCompositeOperationException e) {
 					fail();
 				}
 			}
@@ -139,10 +140,10 @@ public class CompositeOperationTest extends ESTest {
 		final TestElement section = addSection();
 		final TestElement useCase = Create.testElement();
 
-		final CompositeOperationHandle handle = new EMFStoreCommandWithResult<CompositeOperationHandle>() {
+		final ESCompositeOperationHandle handle = new EMFStoreCommandWithResult<ESCompositeOperationHandle>() {
 			@Override
-			protected CompositeOperationHandle doRun() {
-				final CompositeOperationHandle handle = getProjectSpace().beginCompositeOperation();
+			protected ESCompositeOperationHandle doRun() {
+				final ESCompositeOperationHandle handle = getLocalProject().beginCompositeOperation();
 				section.setName(NEW_NAME);
 				section.setDescription(NEW_DESCRIPTION);
 				section.getContainedElements().add(useCase);
@@ -157,7 +158,7 @@ public class CompositeOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final ModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section);
+		final ESModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section).toAPI();
 		assertEquals(0, forceGetOperations().size());
 
 		new EMFStoreCommand() {
@@ -166,7 +167,7 @@ public class CompositeOperationTest extends ESTest {
 			protected void doRun() {
 				try {
 					handle.end(SECTION_CREATION, DESCRIPTION3, sectionId);
-				} catch (final InvalidHandleException e) {
+				} catch (final ESInvalidCompositeOperationException e) {
 					fail();
 				}
 			}
@@ -210,10 +211,10 @@ public class CompositeOperationTest extends ESTest {
 		final TestElement section = addSection();
 		final TestElement useCase = Create.testElement();
 
-		final CompositeOperationHandle handle = new EMFStoreCommandWithResult<CompositeOperationHandle>() {
+		final ESCompositeOperationHandle handle = new EMFStoreCommandWithResult<ESCompositeOperationHandle>() {
 			@Override
-			protected CompositeOperationHandle doRun() {
-				final CompositeOperationHandle handle = getProjectSpace().beginCompositeOperation();
+			protected ESCompositeOperationHandle doRun() {
+				final ESCompositeOperationHandle handle = getLocalProject().beginCompositeOperation();
 				section.setName(NEW_NAME);
 				section.setDescription(NEW_DESCRIPTION);
 				section.getContainedElements().add(useCase);
@@ -228,7 +229,7 @@ public class CompositeOperationTest extends ESTest {
 			}
 		}.run(false);
 
-		final ModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section);
+		final ESModelElementId sectionId = ModelUtil.getProject(section).getModelElementId(section).toAPI();
 		assertEquals(0, forceGetOperations().size());
 
 		new EMFStoreCommand() {
@@ -237,7 +238,7 @@ public class CompositeOperationTest extends ESTest {
 			protected void doRun() {
 				try {
 					handle.end(SECTION_CREATION, DESCRIPTION3, sectionId);
-				} catch (final InvalidHandleException e) {
+				} catch (final ESInvalidCompositeOperationException e) {
 					fail();
 				}
 			}
@@ -278,7 +279,7 @@ public class CompositeOperationTest extends ESTest {
 
 			@Override
 			protected void doRun() {
-				final CompositeOperationHandle handle = getProjectSpace().beginCompositeOperation();
+				final ESCompositeOperationHandle handle = getLocalProject().beginCompositeOperation();
 				section.setName(NEW_NAME);
 				section.setDescription(NEW_DESCRIPTION);
 				section.getContainedElements().add(useCase);
@@ -291,7 +292,7 @@ public class CompositeOperationTest extends ESTest {
 
 				try {
 					handle.abort();
-				} catch (final InvalidHandleException e) {
+				} catch (final ESInvalidCompositeOperationException e) {
 					fail();
 				}
 			}
@@ -335,10 +336,10 @@ public class CompositeOperationTest extends ESTest {
 				getProject().addModelElement(workPackage);
 				getProject().addModelElement(actionItem);
 				actionItem.setContainer(workPackage);
-				final CompositeOperationHandle compositeOperationHandle = getProjectSpace().beginCompositeOperation();
+				final ESCompositeOperationHandle compositeOperationHandle = getLocalProject().beginCompositeOperation();
 				try {
 					compositeOperationHandle.abort();
-				} catch (final InvalidHandleException e) {
+				} catch (final ESInvalidCompositeOperationException e) {
 					throw new IllegalStateException(e);
 				}
 
@@ -357,14 +358,14 @@ public class CompositeOperationTest extends ESTest {
 
 			@Override
 			protected void doRun() {
-				CompositeOperationHandle compositeOperationHandle = getProjectSpace().beginCompositeOperation();
+				ESCompositeOperationHandle compositeOperationHandle = getLocalProject().beginCompositeOperation();
 				try {
 					compositeOperationHandle.abort();
-					compositeOperationHandle = getProjectSpace().beginCompositeOperation();
+					compositeOperationHandle = getLocalProject().beginCompositeOperation();
 					compositeOperationHandle.abort();
-					compositeOperationHandle = getProjectSpace().beginCompositeOperation();
+					compositeOperationHandle = getLocalProject().beginCompositeOperation();
 					compositeOperationHandle.abort();
-				} catch (final InvalidHandleException e) {
+				} catch (final ESInvalidCompositeOperationException e) {
 					fail();
 				}
 			}
