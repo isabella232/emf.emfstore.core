@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author wesendon
  * @author emueller
  */
-public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery> implements ESPathQuery {
+public class ESPathQueryImpl extends ESHistoryQueryImpl<ESPathQuery, PathQuery>implements ESPathQuery {
 
 	/**
 	 * Constructor.

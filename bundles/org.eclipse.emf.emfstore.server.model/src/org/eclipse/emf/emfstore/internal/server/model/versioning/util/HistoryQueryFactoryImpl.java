@@ -109,8 +109,8 @@ public final class HistoryQueryFactoryImpl implements ESHistoryQueryFactory {
 	 * @see org.eclipse.emf.emfstore.server.model.query.ESHistoryQueryFactory#modelElementQuery(org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec,
 	 *      org.eclipse.emf.emfstore.common.model.ESModelElementId, int, int, boolean, boolean)
 	 */
-	public ESModelElementQuery modelElementQuery(ESPrimaryVersionSpec source, ESModelElementId id, int upper,
-		int lower, boolean allVersions, boolean includeCp) {
+	public ESModelElementQuery modelElementQuery(ESPrimaryVersionSpec source, ESModelElementId id, int upper, int lower,
+		boolean allVersions, boolean includeCp) {
 		final ModelElementQuery modelelementQuery = HistoryQueryBuilder.modelelementQuery(
 			((ESPrimaryVersionSpecImpl) source).toInternalAPI(), ((ESModelElementIdImpl) id).toInternalAPI(), upper,
 			lower, allVersions, includeCp);

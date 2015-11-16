@@ -241,8 +241,8 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 		final AbstractOperation oldMainOperation = mainOperation;
 		mainOperation = newMainOperation;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION, oldMainOperation, mainOperation));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION,
+				oldMainOperation, mainOperation));
 		}
 	}
 
@@ -264,8 +264,8 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 		final String oldCompositeName = compositeName;
 		compositeName = newCompositeName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME, oldCompositeName, compositeName));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME,
+				oldCompositeName, compositeName));
 		}
 	}
 
@@ -437,8 +437,8 @@ public class CompositeOperationImpl extends AbstractOperationImpl implements Com
 		case OperationsPackage.COMPOSITE_OPERATION__MAIN_OPERATION:
 			return mainOperation != null;
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_NAME:
-			return COMPOSITE_NAME_EDEFAULT == null ? compositeName != null : !COMPOSITE_NAME_EDEFAULT
-				.equals(compositeName);
+			return COMPOSITE_NAME_EDEFAULT == null ? compositeName != null
+				: !COMPOSITE_NAME_EDEFAULT.equals(compositeName);
 		case OperationsPackage.COMPOSITE_OPERATION__COMPOSITE_DESCRIPTION:
 			return COMPOSITE_DESCRIPTION_EDEFAULT == null ? compositeDescription != null
 				: !COMPOSITE_DESCRIPTION_EDEFAULT.equals(compositeDescription);

@@ -45,8 +45,8 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractOperation extends IdentifiableElement,
-	APIDelegate<org.eclipse.emf.emfstore.server.model.ESOperation> {
+public interface AbstractOperation
+	extends IdentifiableElement, APIDelegate<org.eclipse.emf.emfstore.server.model.ESOperation> {
 	/**
 	 * Returns the value of the '<em><b>Model Element Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

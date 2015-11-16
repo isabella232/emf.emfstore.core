@@ -21,7 +21,8 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
  * The following features are supported:
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ProjectUrlFragment#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ProjectUrlFragment#getProjectId <em>Project Id</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ProjectUrlFragment#getProjectId <em>Project Id</em>}
+ * </li>
  * </ul>
  * </p>
  *

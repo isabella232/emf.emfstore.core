@@ -57,8 +57,8 @@ public class OperationIterator implements Iterator<AbstractOperation> {
 		operationEmitter = new OperationEmitter(direction);
 		try {
 			if (direction == Direction.Forward) {
-				reader = ReadLineCapable.INSTANCE.create(new BufferedReader(
-					new FileReader(new File(operationsFilePath))));
+				reader = ReadLineCapable.INSTANCE
+					.create(new BufferedReader(new FileReader(new File(operationsFilePath))));
 			} else {
 				reader = ReadLineCapable.INSTANCE.create(new ReversedLinesFileReader(new File(operationsFilePath)));
 			}

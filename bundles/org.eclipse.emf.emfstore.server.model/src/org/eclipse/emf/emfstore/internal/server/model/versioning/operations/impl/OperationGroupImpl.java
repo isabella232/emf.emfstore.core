@@ -107,8 +107,8 @@ public class OperationGroupImpl extends EObjectImpl implements OperationGroup {
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.OPERATION_GROUP__NAME, oldName,
-				name));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, OperationsPackage.OPERATION_GROUP__NAME, oldName, name));
 		}
 	}
 

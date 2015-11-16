@@ -2715,7 +2715,8 @@ public interface OperationsPackage extends EPackage {
 		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
 		 *
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiAttributeMoveOperationImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.
+		 *      MultiAttributeMoveOperationImpl
 		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.OperationsPackageImpl#getMultiAttributeMoveOperation()
 		 * @generated
 		 */
@@ -2862,7 +2863,8 @@ public interface OperationsPackage extends EPackage {
 		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
 		 *
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceMoveOperationImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.
+		 *      MultiReferenceMoveOperationImpl
 		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.OperationsPackageImpl#getMultiReferenceMoveOperation()
 		 * @generated
 		 */

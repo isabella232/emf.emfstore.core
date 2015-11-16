@@ -24,9 +24,8 @@ import com.google.common.base.Preconditions;
  *
  * @author emueller
  */
-public class ESAuthenticationInformationImpl
-extends AbstractAPIImpl<ESAuthenticationInformation, AuthenticationInformation> implements
-ESAuthenticationInformation {
+public class ESAuthenticationInformationImpl extends
+	AbstractAPIImpl<ESAuthenticationInformation, AuthenticationInformation>implements ESAuthenticationInformation {
 
 	/**
 	 * Constructor.
@@ -55,7 +54,6 @@ ESAuthenticationInformation {
 	 */
 	public void setUser(ESUser user) {
 		Preconditions.checkNotNull(user);
-		toInternalAPI().setResolvedACUser(
-			(ACUser) ESUserImpl.class.cast(user).toInternalAPI());
+		toInternalAPI().setResolvedACUser((ACUser) ESUserImpl.class.cast(user).toInternalAPI());
 	}
 }

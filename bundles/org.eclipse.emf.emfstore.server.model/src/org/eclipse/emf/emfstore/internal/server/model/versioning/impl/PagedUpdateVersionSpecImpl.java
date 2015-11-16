@@ -134,11 +134,13 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 			baseVersionSpec = (PrimaryVersionSpec) eResolveProxy(oldBaseVersionSpec);
 			if (baseVersionSpec != oldBaseVersionSpec) {
 				final InternalEObject newBaseVersionSpec = (InternalEObject) baseVersionSpec;
-				NotificationChain msgs = oldBaseVersionSpec.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, null);
+				NotificationChain msgs = oldBaseVersionSpec.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null,
+					null);
 				if (newBaseVersionSpec.eInternalContainer() == null) {
-					msgs = newBaseVersionSpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, msgs);
+					msgs = newBaseVersionSpec.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null,
+						msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -194,12 +196,14 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 		if (newBaseVersionSpec != baseVersionSpec) {
 			NotificationChain msgs = null;
 			if (baseVersionSpec != null) {
-				msgs = ((InternalEObject) baseVersionSpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, msgs);
+				msgs = ((InternalEObject) baseVersionSpec).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null,
+					msgs);
 			}
 			if (newBaseVersionSpec != null) {
-				msgs = ((InternalEObject) newBaseVersionSpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null, msgs);
+				msgs = ((InternalEObject) newBaseVersionSpec).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, null,
+					msgs);
 			}
 			msgs = basicSetBaseVersionSpec(newBaseVersionSpec, msgs);
 			if (msgs != null) {
@@ -207,7 +211,8 @@ public class PagedUpdateVersionSpecImpl extends VersionSpecImpl implements Paged
 			}
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, newBaseVersionSpec, newBaseVersionSpec));
+				VersioningPackage.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, newBaseVersionSpec,
+				newBaseVersionSpec));
 		}
 	}
 

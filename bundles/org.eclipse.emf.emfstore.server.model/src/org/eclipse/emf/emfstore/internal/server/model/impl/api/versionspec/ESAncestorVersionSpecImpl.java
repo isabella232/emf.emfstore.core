@@ -21,8 +21,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  *
  */
-public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersionSpec, AncestorVersionSpec> implements
-	ESAncestorVersionSpec {
+public class ESAncestorVersionSpecImpl extends ESVersionSpecImpl<ESAncestorVersionSpec, AncestorVersionSpec>
+	implements ESAncestorVersionSpec {
 
 	/**
 	 * Constructor.

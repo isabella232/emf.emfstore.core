@@ -95,8 +95,8 @@ public class TagVersionSpecImpl extends VersionSpecImpl implements TagVersionSpe
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.TAG_VERSION_SPEC__NAME, oldName,
-				name));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, VersioningPackage.TAG_VERSION_SPEC__NAME, oldName, name));
 		}
 	}
 

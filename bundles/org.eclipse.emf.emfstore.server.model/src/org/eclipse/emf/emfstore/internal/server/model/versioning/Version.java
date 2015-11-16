@@ -21,9 +21,11 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getPrimarySpec <em>Primary Spec</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getPrimarySpec <em>Primary Spec</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getTagSpecs <em>Tag Specs</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getNextVersion <em>Next Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getNextVersion <em>Next Version</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getPreviousVersion <em>Previous Version
  * </em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getLogMessage <em>Log Message</em>}</li>

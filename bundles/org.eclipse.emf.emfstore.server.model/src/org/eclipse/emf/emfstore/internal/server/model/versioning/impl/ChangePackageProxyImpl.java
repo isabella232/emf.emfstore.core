@@ -40,7 +40,8 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl#getLogMessage <em>
  * Log Message</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl#getId <em>Id</em>}
+ * </li>
  * </ul>
  * </p>
  *
@@ -113,11 +114,11 @@ public class ChangePackageProxyImpl extends EObjectImpl implements ChangePackage
 			logMessage = (LogMessage) eResolveProxy(oldLogMessage);
 			if (logMessage != oldLogMessage) {
 				final InternalEObject newLogMessage = (InternalEObject) logMessage;
-				NotificationChain msgs = oldLogMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, null);
+				NotificationChain msgs = oldLogMessage.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, null);
 				if (newLogMessage.eInternalContainer() == null) {
-					msgs = newLogMessage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, msgs);
+					msgs = newLogMessage.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -172,12 +173,12 @@ public class ChangePackageProxyImpl extends EObjectImpl implements ChangePackage
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
 			if (logMessage != null) {
-				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, msgs);
+				msgs = ((InternalEObject) logMessage).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, msgs);
 			}
 			if (newLogMessage != null) {
-				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, msgs);
+				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.CHANGE_PACKAGE_PROXY__LOG_MESSAGE, null, msgs);
 			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
 			if (msgs != null) {
@@ -209,7 +210,8 @@ public class ChangePackageProxyImpl extends EObjectImpl implements ChangePackage
 		final String oldId = id;
 		id = newId;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.CHANGE_PACKAGE_PROXY__ID, oldId, id));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, VersioningPackage.CHANGE_PACKAGE_PROXY__ID, oldId, id));
 		}
 	}
 
