@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.emf.emfstore.client.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.emf.emfstore.common" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
-      <appInfo>
-         <meta.schema plugin="org.eclipse.emf.emfstore.client.ui" id="uiRunnableProvider" name="UI Runnable Provider"/>
-      </appInfo>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.emf.emfstore.common" id="uiRunnableContext" name="UI Runnable Context"/>
+      </appinfo>
       <documentation>
          Extension point for providing a possibility to wrap runnables which are supposed to be executed on the UI Thread.
       </documentation>
@@ -12,9 +12,9 @@
 
    <element name="extension">
       <annotation>
-         <appInfo>
-            <meta.element deprecated="true" />
-         </appInfo>
+         <appinfo>
+            <meta.element />
+         </appinfo>
       </annotation>
       <complexType>
          <sequence>
@@ -39,74 +39,69 @@
                <documentation>
                   
                </documentation>
-               <appInfo>
+               <appinfo>
                   <meta.attribute translatable="true"/>
-               </appInfo>
+               </appinfo>
             </annotation>
          </attribute>
       </complexType>
    </element>
 
    <element name="provider">
-      <annotation>
-         <appInfo>
-            <meta.element deprecated="true"/>
-         </appInfo>
-      </annotation>
       <complexType>
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
                   
                </documentation>
-               <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.client.ui.ESUIRunnableProvider" deprecated="true"/>
-               </appInfo>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.common.ESUIRunnableContext"/>
+               </appinfo>
             </annotation>
          </attribute>
       </complexType>
    </element>
 
    <annotation>
-      <appInfo>
+      <appinfo>
          <meta.section type="since"/>
-      </appInfo>
+      </appinfo>
       <documentation>
          1.5
       </documentation>
    </annotation>
 
    <annotation>
-      <appInfo>
+      <appinfo>
          <meta.section type="examples"/>
-      </appInfo>
+      </appinfo>
       <documentation>
          [Enter extension point usage example here.]
       </documentation>
    </annotation>
 
    <annotation>
-      <appInfo>
+      <appinfo>
          <meta.section type="apiinfo"/>
-      </appInfo>
+      </appinfo>
       <documentation>
          [Enter API information here.]
       </documentation>
    </annotation>
 
    <annotation>
-      <appInfo>
+      <appinfo>
          <meta.section type="implementation"/>
-      </appInfo>
+      </appinfo>
       <documentation>
          [Enter information about supplied implementation of this extension point.]
       </documentation>
    </annotation>
 
    <annotation>
-      <appInfo>
+      <appinfo>
          <meta.section type="copyright"/>
-      </appInfo>
+      </appinfo>
       <documentation>
          Copyright (c) 2011-2015 EclipseSource Muenchen GmbH and others.&lt;br/&gt;
 
