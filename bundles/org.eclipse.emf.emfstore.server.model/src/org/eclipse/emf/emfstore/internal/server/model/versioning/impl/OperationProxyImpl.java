@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
 
@@ -48,7 +49,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	 * @ordered
 	 */
 	protected EList<OperationProxy> proxies;
-	private byte[] image;
+
+	private ImageProxy imageProxy;
 	private String label = ""; //$NON-NLS-1$
 	private int index = -1;
 
@@ -179,20 +181,20 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	 *
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(byte[])
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy)
 	 */
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImage(ImageProxy imageProxy) {
+		this.imageProxy = imageProxy;
 	}
 
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getImage()
 	 */
-	public byte[] getImage() {
-		return image;
+	public ImageProxy getImage() {
+		return imageProxy;
 	}
 
 	/**

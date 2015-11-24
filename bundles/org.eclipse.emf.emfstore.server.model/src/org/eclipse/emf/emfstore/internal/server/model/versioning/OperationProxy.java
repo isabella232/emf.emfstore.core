@@ -57,13 +57,14 @@ public interface OperationProxy extends EObject {
 	void setLabel(String label);
 
 	/**
-	 * Sets the image to be used by the label provider.
+	 * Sets the image proxy that is used by the label provider to
+	 * create the appropriate image.
 	 *
-	 * @param image a byte array that represents a SWT image
+	 * @param imageProxy the image proxy
 	 *
 	 * @generated NOT
 	 */
-	void setImage(byte[] image);
+	void setImage(ImageProxy imageProxy);
 
 	/**
 	 * Returns the image to be used by the label provider.
@@ -72,7 +73,7 @@ public interface OperationProxy extends EObject {
 	 *
 	 * @generated NOT
 	 */
-	byte[] getImage();
+	ImageProxy getImage();
 
 	/**
 	 * Returns the label to be used by the label provider.

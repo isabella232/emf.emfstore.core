@@ -11,8 +11,6 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.scm;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
-import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.Activator;
 import org.eclipse.emf.emfstore.internal.client.ui.common.EClassFilter;
 import org.eclipse.emf.emfstore.internal.client.ui.views.changes.ChangePackageVisualizationHelper;
@@ -36,6 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangeP
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
@@ -49,6 +47,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -231,11 +230,18 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		return proxy.getLabel();
 	}
 
-	private byte[] getImage(OperationProxy proxy) {
+	private ImageData createImageFromProxy(OperationProxy proxy) {
 		if (!proxy.isLabelProviderReady()) {
 			initProxy(proxy);
 		}
-		return proxy.getImage();
+		final ImageProxy imageProxy = proxy.getImage();
+		final ImageData imageData = new ImageData(imageProxy.getWidth(),
+			imageProxy.getHeight(),
+			imageProxy.getDepth(),
+			new PaletteData(imageProxy.getRedMask(), imageProxy.getGreenMask(), imageProxy.getBlueMask()),
+			imageProxy.getScanlinePad(),
+			imageProxy.getData());
+		return imageData;
 	}
 
 	private void initProxy(OperationProxy proxy) {
@@ -245,8 +251,19 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	}
 
 	private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
-		proxy.setImage(
-			changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation).getImageData().data);
+		final ImageData imageData = changePackageVisualizationHelper
+			.getImage(adapterFactoryLabelProvider, operation)
+			.getImageData();
+		final ImageProxy imageProxy = ImageProxy.create()
+			.setWitdh(imageData.width)
+			.setHeight(imageData.height)
+			.setDepth(imageData.depth)
+			.setRedMask(imageData.palette.redMask)
+			.setGreenMask(imageData.palette.greenMask)
+			.setBlueMask(imageData.palette.blueMask)
+			.setScanlinePad(imageData.scanlinePad)
+			.setData(imageData.data);
+		proxy.setImage(imageProxy);
 		proxy.setLabel(
 			changePackageVisualizationHelper.getDescription(operation));
 
@@ -337,21 +354,6 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		return null;
 	}
 
-	private static ImageData loadImageData(byte[] image) {
-		final ByteArrayInputStream stream = new ByteArrayInputStream(image);
-		ImageData imageData = null;
-		try {
-			imageData = new ImageData(stream);
-		} finally {
-			try {
-				stream.close();
-			} catch (final IOException ex) {
-				WorkspaceUtil.logException(ex.getMessage(), ex);
-			}
-		}
-		return imageData;
-	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -360,10 +362,10 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 
 		if (element instanceof OperationProxy) {
 			final OperationProxy proxy = (OperationProxy) element;
-			final byte[] image = getImage(proxy);
+			final ImageData imageData = createImageFromProxy(proxy);
 			final Image swtImage = new Image(
 				Display.getDefault(),
-				loadImageData(image));
+				imageData);
 			return swtImage;
 		} else if (element instanceof ModelElementId) {
 			return adapterFactoryLabelProvider
