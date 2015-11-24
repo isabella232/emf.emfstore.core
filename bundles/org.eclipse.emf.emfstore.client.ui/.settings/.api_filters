@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <component id="org.eclipse.emf.emfstore.client.ui" version="2">
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/ui/common/RunInUI.java" type="org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI">
+        <filter comment="internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="RunInUI"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/emfstore/internal/client/ui/common/RunInUI.java" type="org.eclipse.emf.emfstore.internal.client.ui.common.RunInUI$WithException">
+        <filter comment="Internal API usage" id="572522506">
+            <message_arguments>
+                <message_argument value="ESException"/>
+                <message_argument value="WithException"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/emfstore/internal/client/ui/controller/UIUpdateProjectController.java" type="org.eclipse.emf.emfstore.internal.client.ui.controller.UIUpdateProjectController">
         <filter comment="Internal usage" id="640712815">
             <message_arguments>

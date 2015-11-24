@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.emf.emfstore.client.ui.uiRunnableProvider">
+         point="org.eclipse.emf.emfstore.common.uiRunnableContext">
       <provider
             class="org.eclipse.emf.emfstore.internal.client.ui.transaction.PrivilegedRunnableProvider">
       </provider>

@@ -11,24 +11,17 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.ui;
 
+import org.eclipse.emf.emfstore.common.ESUIRunnableContext;
+
 /**
  * Interface for providing a {@link Runnable} which will get executed on the UI Thread.
  *
  * @author jfaltermeier
  * @since 1.5
  * @noextend This interface is not intended to be extended by clients.
- *
+ * @deprecated
  */
-public interface ESUIRunnableProvider {
-
-	/**
-	 * The method is used to create a {@link Runnable} which will be executed on the UI thread. The returned
-	 * {@link Runnable} is expected to wrap the given runnable.
-	 *
-	 * @param runnable the {@link Runnable} which will be executed by the runnable
-	 * @return a {@link Runnable} which can be executed on the UI Thread in a safe fashion.
-	 * @noreference This method is not intended to be referenced by clients.
-	 */
-	Runnable createRunnable(Runnable runnable);
+@Deprecated
+public interface ESUIRunnableProvider extends ESUIRunnableContext {
 
 }

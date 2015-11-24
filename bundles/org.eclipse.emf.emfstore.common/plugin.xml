@@ -3,4 +3,5 @@
 <plugin>
    <extension-point id="observerBusExtensionPointRegistration" name="Observer Markup Interface" schema="schema/observerBusExtensionPointRegistration.exsd"/>
    <extension-point id="discardDanglingHREFs" name="Discard Dangling HREFs" schema="schema/discardDanglingHREFs.exsd"/>
+   <extension-point id="uiRunnableContext" name="UI Runnable Context" schema="schema/uiRunnableContext.exsd"/>
 </plugin>
