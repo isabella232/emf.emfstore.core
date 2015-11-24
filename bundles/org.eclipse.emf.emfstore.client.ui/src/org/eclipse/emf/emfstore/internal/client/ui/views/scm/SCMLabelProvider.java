@@ -72,10 +72,8 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	private final Image currentRevision;
 	private final Image headRevision;
 
-	private final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
-		ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-	private final AdapterFactoryLabelProvider adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-		adapterFactory);
+	private ComposedAdapterFactory adapterFactory;
+	private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
 	private Project project;
 
 	/**
@@ -92,6 +90,17 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		baseRevision = Activator.getImageDescriptor("icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
 		currentRevision = Activator.getImageDescriptor("icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
 		headRevision = Activator.getImageDescriptor("icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
+		init();
+	}
+
+	private void init() {
+		if (adapterFactory == null) {
+			adapterFactory = new ComposedAdapterFactory(
+				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		}
+		if (adapterFactoryLabelProvider == null) {
+			adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		}
 	}
 
 	/**
@@ -444,8 +453,17 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		headRevision.dispose();
 		currentRevision.dispose();
 		baseRevision.dispose();
+		disposeAdapterFactories();
+	}
+
+	private void disposeAdapterFactories() {
 		if (adapterFactory != null) {
 			adapterFactory.dispose();
+			adapterFactory = null;
+		}
+		if (adapterFactoryLabelProvider != null) {
+			adapterFactoryLabelProvider.dispose();
+			adapterFactoryLabelProvider = null;
 		}
 	}
 

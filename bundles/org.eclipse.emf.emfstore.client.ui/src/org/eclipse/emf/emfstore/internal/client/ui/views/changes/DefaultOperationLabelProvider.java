@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Default label provider for operations.
@@ -31,15 +32,23 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 */
 	protected static final String UNKOWN_ELEMENT = Messages.DefaultOperationLabelProvider_UnknownElement;
 
-	private final AdapterFactoryLabelProvider adapterFactoryLabelProvider;
-	private final ComposedAdapterFactory adapterFactory;
+	private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
+	private ComposedAdapterFactory adapterFactory;
 
 	/**
 	 * Constructor.
 	 */
 	public DefaultOperationLabelProvider() {
-		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		init();
+	}
+
+	protected void init() {
+		if (adapterFactory == null) {
+			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		}
+		if (adapterFactoryLabelProvider == null) {
+			adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		}
 	}
 
 	/**
@@ -49,7 +58,6 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getDescription(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public String getDescription(AbstractOperation operation) {
-
 		if (operation instanceof CompositeOperation) {
 			final CompositeOperation compositeOperation = (CompositeOperation) operation;
 			// artificial composite because of opposite reference,
@@ -69,7 +77,10 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getImage(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public Object getImage(AbstractOperation operation) {
-		return adapterFactoryLabelProvider.getImage(operation);
+		init();
+		final Image image = adapterFactoryLabelProvider.getImage(operation);
+		dispose();
+		return image;
 	}
 
 	/**
@@ -89,13 +100,15 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getModelElementName(org.eclipse.emf.ecore.EObject)
 	 */
 	public String getModelElementName(EObject modelElement) {
-
+		init();
 		if (modelElement == null) {
 			return UNKOWN_ELEMENT;
 		}
 
 		// TODO: provide sensible label for given model element
-		return trim(adapterFactoryLabelProvider.getText(modelElement));
+		final String trimmedText = trim(adapterFactoryLabelProvider.getText(modelElement));
+		dispose();
+		return trimmedText;
 	}
 
 	private String trim(Object object) {
@@ -118,9 +131,11 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	public void dispose() {
 		if (adapterFactory != null) {
 			adapterFactory.dispose();
+			adapterFactory = null;
 		}
 		if (adapterFactoryLabelProvider != null) {
 			adapterFactoryLabelProvider.dispose();
+			adapterFactoryLabelProvider = null;
 		}
 	}
 
