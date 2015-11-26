@@ -48,6 +48,7 @@ public final class ServerConfiguration {
 
 	private static final String RESOURCE_OPTIONS_EXTENSION_POINT = "org.eclipse.emf.emfstore.server.resourceOptions"; //$NON-NLS-1$
 	private static final String CHANGEPACKAGE_FRAGMENT_SIZE_ATTRIBUTE = "changePackageFragmentSize"; //$NON-NLS-1$
+	private static final String SERVER_USE_FILEBASED_CHANGEPACKAGE = "useFileBasedChangePackage"; //$NON-NLS-1$
 
 	private static final String CHECKSUM_KEY = "org.eclipse.emf.emfstore.server.computeChecksum"; //$NON-NLS-1$
 
@@ -377,6 +378,7 @@ public final class ServerConfiguration {
 	private static ESLocationProvider locationProvider;
 	private static Boolean isChecksumComputationOnCommitActive;
 	private static Optional<Integer> changePackageFragmentSize;
+	private static Boolean useFileBasedChangePackageOnServer;
 
 	/**
 	 * Return the server home directory location.
@@ -647,6 +649,25 @@ public final class ServerConfiguration {
 	 */
 	public static void setChangePackageFragmentSize(Optional<Integer> fragmentSize) {
 		changePackageFragmentSize = fragmentSize;
+	}
+
+	/**
+	 * @return <code>true</code> if change-packages may be persisted in a fragmented file-based format,
+	 *         <code>false</code> otherwise
+	 */
+	public static boolean useFileBasedChangePackageOnServer() {
+		if (useFileBasedChangePackageOnServer == null) {
+			try {
+				useFileBasedChangePackageOnServer = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT, true)
+					.getBoolean(SERVER_USE_FILEBASED_CHANGEPACKAGE, false);
+			} catch (final ESExtensionPointException e) {
+				// if no resource option for the filebased changepackge could be found at the extension point
+				// check for the "emfstore.server.fileBasedChangePackage" system property
+				// if the property is absent as well, use false as the default
+				useFileBasedChangePackageOnServer = Boolean.getBoolean("emfstore.server.fileBasedChangePackage"); //$NON-NLS-1$
+			}
+		}
+		return useFileBasedChangePackageOnServer;
 	}
 
 	/**

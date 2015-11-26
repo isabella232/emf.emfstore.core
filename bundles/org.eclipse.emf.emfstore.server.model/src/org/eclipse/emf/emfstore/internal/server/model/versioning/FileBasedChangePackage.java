@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
+import java.io.IOException;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
@@ -119,5 +121,16 @@ public interface FileBasedChangePackage extends AbstractChangePackage, APIDelega
 	 * @return the absolute path to the temporary file
 	 */
 	String getTempFilePath();
+
+	/**
+	 * Moves this change package.
+	 *
+	 * @param newFilePath
+	 *            the file path where the change package should be moved to
+	 * @throws IOException in case of an error during move
+	 *
+	 * @generated NOT
+	 */
+	void move(String newFilePath) throws IOException;
 
 } // FileBasedChangePackage

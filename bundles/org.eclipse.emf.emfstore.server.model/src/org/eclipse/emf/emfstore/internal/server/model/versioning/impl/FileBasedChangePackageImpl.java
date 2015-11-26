@@ -301,6 +301,10 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public String getTempFilePath() {
+		return getTempFilePath(filePath);
+	}
+
+	private String getTempFilePath(String filePath) {
 		return filePath + TEMP_SUFFIX;
 	}
 
@@ -980,6 +984,40 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		final File tempFile = new File(getTempFilePath());
 		final File filePath = new File(getFilePath());
 		FileUtil.copyFile(tempFile, filePath);
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#move(java.lang.String)
+	 * @generated NOT
+	 */
+	public void move(String newFilePath) throws IOException {
+		if (newFilePath == null) {
+			throw new IOException();
+		}
+		if (newFilePath.equals(getFilePath())) {
+			return;
+		}
+
+		final File currentTempFile = new File(getTempFilePath());
+		final File currentFilePath = new File(getFilePath());
+		final File targetTempFile = new File(getTempFilePath(newFilePath));
+		final File targetFilePath = new File(newFilePath);
+
+		FileUtil.moveAndOverwrite(currentTempFile, targetTempFile);
+		try {
+			FileUtil.moveAndOverwrite(currentFilePath, targetFilePath);
+		} catch (final IOException ex) {
+			// if the temp-file could be moved, but the actual file fails,
+			// we will try to recover by moving the temp file back
+			FileUtil.moveAndOverwrite(targetTempFile, currentTempFile);
+			throw ex;
+		}
+
+		// all is fine, set the new file path
+		setFilePath(newFilePath);
 	}
 
 } // FileBasedChangePackageImpl

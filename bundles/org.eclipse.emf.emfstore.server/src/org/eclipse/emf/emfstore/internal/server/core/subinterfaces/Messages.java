@@ -47,6 +47,7 @@ public final class Messages extends NLS {
 	public static String VersionSubInterfaceImpl_ChangePackageFragmentProviderAdapterMissing;
 	public static String VersionSubInterfaceImpl_ChecksumComputationFailed;
 	public static String VersionSubInterfaceImpl_EmptyBranch_Not_Allowed;
+	public static String VersionSubInterfaceImpl_FileBasedChangePackageExpected;
 	public static String VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed;
 	public static String VersionSubInterfaceImpl_HeadVersionNotFound;
 	public static String VersionSubInterfaceImpl_Invalid_Source_Or_Target;
