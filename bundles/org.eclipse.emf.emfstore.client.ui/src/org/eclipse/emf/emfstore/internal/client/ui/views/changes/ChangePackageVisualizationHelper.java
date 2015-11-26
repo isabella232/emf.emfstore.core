@@ -147,6 +147,8 @@ public class ChangePackageVisualizationHelper {
 				// END SUPRESS CATCH EXCEPTION
 				ModelUtil.logWarning(Messages.ChangePackageVisualizationHelper_CustomOperationProvider_LoadImageFailed,
 					e);
+			} finally {
+				customLabelProvider.dispose();
 			}
 		}
 		return null;
@@ -160,10 +162,6 @@ public class ChangePackageVisualizationHelper {
 	 * @return the description for the given operation
 	 */
 	public String getDescription(AbstractOperation op) {
-
-		// check of a custom operation label provider can provide a label
-		final OperationCustomLabelProvider customLabelProvider = getLabelProvider();
-
 		if (op instanceof CompositeOperation) {
 			final CompositeOperation compositeOperation = (CompositeOperation) op;
 			// artificial composite because of opposite ref, take description of
@@ -173,16 +171,23 @@ public class ChangePackageVisualizationHelper {
 			}
 		}
 
-		return decorate(customLabelProvider, op);
+		// check of a custom operation label provider can provide a label
+		final OperationCustomLabelProvider customLabelProvider = getLabelProvider();
+		String decorate;
+		try {
+			decorate = decorate(customLabelProvider, op);
+			return decorate;
+		} finally {
+			customLabelProvider.dispose();
+		}
 	}
 
 	private OperationCustomLabelProvider getLabelProvider() {
 		if (customLabelProvider == null) {
-			customLabelProvider =
-				ExtensionRegistry.INSTANCE.get(
-					OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class,
-					new DefaultOperationLabelProvider(),
-					true);
+			customLabelProvider = ExtensionRegistry.INSTANCE.get(
+				OperationCustomLabelProvider.ID, OperationCustomLabelProvider.class,
+				new DefaultOperationLabelProvider(),
+				true);
 		}
 		return customLabelProvider;
 	}
