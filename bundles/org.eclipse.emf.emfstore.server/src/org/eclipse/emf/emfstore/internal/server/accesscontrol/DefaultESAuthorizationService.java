@@ -147,8 +147,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 		checkSession(sessionId);
 
 		final ACUser user = (ACUser) getOrgUnit(sessions.resolveToOrgUnitId(sessionId));
-		final List<Role> internalRoles = APIUtil.toInternal(orgUnitResolver.getRolesFromGroups(user.toAPI()));
-		final Iterable<Role> roles = Iterables.concat(user.getRoles(), internalRoles);
+		final Iterable<Role> roles = getAllRoles(user.getId().toAPI());
 
 		if (Iterables.any(roles, isServerAdminPredicate)) {
 			return true;
@@ -242,7 +241,8 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 		cleanupPARole(orgUnitId);
 		final ACUser user = (ACUser) getOrgUnit(sessions.resolveToOrgUnitId(sessionId));
 
-		if (Iterables.any(user.getRoles(), isServerAdminPredicate)) {
+		final List<Role> allRoles = getAllRoles(user.getId().toAPI());
+		if (Iterables.any(allRoles, isServerAdminPredicate)) {
 			return true;
 		}
 
@@ -289,8 +289,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 
 		checkSession(sessionId);
 		final ACUser user = (ACUser) getOrgUnit(sessions.resolveToOrgUnitId(sessionId));
-		final List<Role> internalRoles = APIUtil.toInternal(orgUnitResolver.getRolesFromGroups(user.toAPI()));
-		final Iterable<Role> roles = Iterables.concat(user.getRoles(), internalRoles);
+		final Iterable<Role> roles = getAllRoles(user.getId().toAPI());
 
 		if (Iterables.any(roles, isServerAdminPredicate)) {
 			return true;
