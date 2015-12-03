@@ -19,7 +19,7 @@ package org.eclipse.emf.emfstore.common;
  *
  * @noextend This interface is not intended to be extended by clients.
  */
-public interface ESUIRunnableContext {
+public interface ESRunnableWrapper {
 
 	/**
 	 * The method is used to create a {@link Runnable} which will be executed on the UI thread. The returned

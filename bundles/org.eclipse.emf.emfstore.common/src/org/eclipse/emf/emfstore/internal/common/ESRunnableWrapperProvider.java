@@ -11,40 +11,40 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common;
 
-import org.eclipse.emf.emfstore.common.ESUIRunnableContext;
+import org.eclipse.emf.emfstore.common.ESRunnableWrapper;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 
 /**
- * Singleton for obtaining an {@link ESUIRunnableContext} instance.
+ * Singleton for obtaining an {@link ESRunnableWrapper} instance.
  *
  * @author emueller
  *
  */
-public final class ESUIRunnableContextProvider {
+public final class ESRunnableWrapperProvider {
 
-	private static ESUIRunnableContextProvider instance;
-	private ESUIRunnableContext runnableContext;
+	private static ESRunnableWrapperProvider instance;
+	private ESRunnableWrapper runnableContext;
 	private boolean initialized;
 
-	private ESUIRunnableContextProvider() {
+	private ESRunnableWrapperProvider() {
 
 	}
 
 	/**
-	 * Returns the {@link ESUIRunnableContextProvider} singleton instance.
+	 * Returns the {@link ESRunnableWrapperProvider} singleton instance.
 	 *
-	 * @return the {@link ESUIRunnableContextProvider} singleton
+	 * @return the {@link ESRunnableWrapperProvider} singleton
 	 */
-	public static ESUIRunnableContextProvider getInstance() {
+	public static ESRunnableWrapperProvider getInstance() {
 		if (instance == null) {
-			instance = new ESUIRunnableContextProvider();
+			instance = new ESRunnableWrapperProvider();
 		}
 		return instance;
 	}
 
 	/**
 	 * Embed the given {@link Runnable} into the context of the currently
-	 * registered {@link ESUIRunnableContext} if any.
+	 * registered {@link ESRunnableWrapper} if any.
 	 *
 	 * @param runnable
 	 *            the {@link Runnable} to be embedded
@@ -52,18 +52,18 @@ public final class ESUIRunnableContextProvider {
 	 * @return the wrapped {@link Runnable}
 	 */
 	public Runnable embedInContext(Runnable runnable) {
-		final ESUIRunnableContext runnableContext = getRunnableContext();
-		if (runnableContext == null) {
+		final ESRunnableWrapper runnableWrapper = getRunnableWrapper();
+		if (runnableWrapper == null) {
 			return runnable;
 		}
-		return runnableContext.createRunnable(runnable);
+		return runnableWrapper.createRunnable(runnable);
 	}
 
-	private ESUIRunnableContext getRunnableContext() {
+	private ESRunnableWrapper getRunnableWrapper() {
 		if (!initialized) {
 			initialized = true;
-			runnableContext = new ESExtensionPoint("org.eclipse.emf.emfstore.common.uiRunnableContext").getClass( //$NON-NLS-1$
-				"class", ESUIRunnableContext.class); //$NON-NLS-1$
+			runnableContext = new ESExtensionPoint("org.eclipse.emf.emfstore.common.runnableWrapper").getClass( //$NON-NLS-1$
+				"class", ESRunnableWrapper.class); //$NON-NLS-1$
 		}
 		return runnableContext;
 	}

@@ -14,7 +14,7 @@ package org.eclipse.emf.emfstore.internal.client.ui.common;
 import java.util.concurrent.Callable;
 
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
-import org.eclipse.emf.emfstore.internal.common.ESUIRunnableContextProvider;
+import org.eclipse.emf.emfstore.internal.common.ESRunnableWrapperProvider;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.swt.widgets.Display;
 
@@ -214,7 +214,7 @@ public final class RunInUI {
 
 			returnValue = null;
 
-			display.syncExec(ESUIRunnableContextProvider.getInstance().embedInContext(new Runnable() {
+			display.syncExec(ESRunnableWrapperProvider.getInstance().embedInContext(new Runnable() {
 
 				public void run() {
 					try {

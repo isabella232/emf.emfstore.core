@@ -215,6 +215,11 @@
                                     <artifactId>org.eclipse.emf.emfstore.client.transaction</artifactId>
                                     <version>0.0.0</version>
                                 </dependency>
+								<dependency>
+									<type>eclipse-plugin</type>
+									<artifactId>org.eclipse.emf.emfstore.client.ui.transaction</artifactId>
+									<version>0.0.0</version>
+								</dependency>
                                 <dependency>
                                     <type>eclipse-plugin</type>
                                     <artifactId>org.eclipse.emf.emfstore.client.changetracking.test</artifactId>
@@ -399,6 +404,11 @@
                                     <artifactId>org.eclipse.emf.emfstore.client.transaction</artifactId>
                                     <version>0.0.0</version>
                                 </dependency>
+								<dependency>
+									<type>eclipse-plugin</type>
+									<artifactId>org.eclipse.emf.emfstore.client.ui.transaction</artifactId>
+									<version>0.0.0</version>
+								</dependency>
                                 <dependency>
                                     <type>eclipse-plugin</type>
                                     <artifactId>org.eclipse.emf.emfstore.client.changetracking.test</artifactId>
@@ -583,6 +593,11 @@
                                     <artifactId>org.eclipse.emf.emfstore.client.transaction</artifactId>
                                     <version>0.0.0</version>
                                 </dependency>
+								<dependency>
+									<type>eclipse-plugin</type>
+									<artifactId>org.eclipse.emf.emfstore.client.ui.transaction</artifactId>
+									<version>0.0.0</version>
+								</dependency>
                                 <dependency>
                                     <type>eclipse-plugin</type>
                                     <artifactId>org.eclipse.emf.emfstore.client.changetracking.test</artifactId>

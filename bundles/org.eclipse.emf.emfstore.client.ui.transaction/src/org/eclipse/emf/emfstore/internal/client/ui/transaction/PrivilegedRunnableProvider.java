@@ -12,26 +12,26 @@
 package org.eclipse.emf.emfstore.internal.client.ui.transaction;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.emfstore.common.ESUIRunnableContext;
+import org.eclipse.emf.emfstore.common.ESRunnableWrapper;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 /**
- * Implementation of {@link ESUIRunnableContext} for creating
+ * Implementation of {@link ESRunnableWrapper} for creating
  * {@link TransactionalEditingDomain#createPrivilegedRunnable(Runnable) privileged runnables} to be executed on the UI
  * thread.
  *
  * @author jfaltermeier
  *
  */
-public class PrivilegedRunnableProvider implements ESUIRunnableContext {
+public class PrivilegedRunnableProvider implements ESRunnableWrapper {
 
 	/**
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.common.ESUIRunnableContext#createRunnable(java.lang.Runnable)
+	 * @see org.eclipse.emf.emfstore.common.ESRunnableWrapper#createRunnable(java.lang.Runnable)
 	 */
 	public Runnable createRunnable(Runnable runnable) {
 		final EditingDomain editingDomain = ESWorkspaceProviderImpl.getInstance().getEditingDomain();

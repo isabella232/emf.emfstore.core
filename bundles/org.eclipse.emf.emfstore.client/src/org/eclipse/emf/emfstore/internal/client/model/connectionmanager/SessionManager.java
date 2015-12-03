@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerCallImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
-import org.eclipse.emf.emfstore.internal.common.ESUIRunnableContextProvider;
+import org.eclipse.emf.emfstore.internal.common.ESRunnableWrapperProvider;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.SessionTimedOutException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.UnknownSessionException;
@@ -118,17 +118,23 @@ public class SessionManager {
 
 		// having isLoggedIn return true does not necessarily mean we have a
 		// session representation on the server side, which always must be the case
-		ESUIRunnableContextProvider.getInstance().embedInContext(new Runnable() {
+		ESRunnableWrapperProvider.getInstance().embedInContext(new Runnable() {
+
 			public void run() {
-				try {
-					usersession.logIn();
-				} catch (final AccessControlException ex) {
-					WorkspaceUtil.logException(ex.getMessage(), ex);
-				} catch (final ESException ex) {
-					WorkspaceUtil.logException(ex.getMessage(), ex);
-				}
+				RunESCommand.run(new Callable<Void>() {
+					public Void call() throws Exception {
+						try {
+							usersession.logIn();
+						} catch (final AccessControlException ex) {
+							WorkspaceUtil.logException(ex.getMessage(), ex);
+						} catch (final ESException ex) {
+							WorkspaceUtil.logException(ex.getMessage(), ex);
+						}
+						return null;
+					}
+				});
 			}
-		});
+		}).run();
 
 		return usersession;
 	}

@@ -11,7 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.ui;
 
-import org.eclipse.emf.emfstore.common.ESUIRunnableContext;
+import org.eclipse.emf.emfstore.common.ESRunnableWrapper;
 
 /**
  * Interface for providing a {@link Runnable} which will get executed on the UI Thread.
@@ -22,6 +22,6 @@ import org.eclipse.emf.emfstore.common.ESUIRunnableContext;
  * @deprecated
  */
 @Deprecated
-public interface ESUIRunnableProvider extends ESUIRunnableContext {
+public interface ESUIRunnableProvider extends ESRunnableWrapper {
 
 }

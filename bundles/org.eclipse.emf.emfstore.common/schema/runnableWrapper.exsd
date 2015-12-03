@@ -3,10 +3,10 @@
 <schema targetNamespace="org.eclipse.emf.emfstore.common" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.emf.emfstore.common" id="uiRunnableContext" name="UI Runnable Context"/>
+         <meta.schema plugin="org.eclipse.emf.emfstore.common" id="runnableWrapper" name="Runnable Wrapper"/>
       </appinfo>
       <documentation>
-         Extension point for providing a possibility to wrap runnables which are supposed to be executed on the UI Thread.
+         Extension point for providing a possibility to wrap runnables. This may be needed in some cases when running on the UI Thread or when running with a Transactional Editing Domain.
       </documentation>
    </annotation>
 
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.common.ESUIRunnableContext"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.common.ESRunnableWrapper"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -67,7 +67,7 @@
          <meta.section type="since"/>
       </appinfo>
       <documentation>
-         1.5
+         1.7
       </documentation>
    </annotation>
 

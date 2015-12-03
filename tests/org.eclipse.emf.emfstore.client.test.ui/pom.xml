@@ -225,6 +225,11 @@
 								</dependency>
 								<dependency>
 									<type>eclipse-plugin</type>
+									<artifactId>org.eclipse.emf.emfstore.client.ui.transaction</artifactId>
+									<version>0.0.0</version>
+								</dependency>
+								<dependency>
+									<type>eclipse-plugin</type>
 									<artifactId>org.eclipse.emf.emfstore.client</artifactId>
 									<version>0.0.0</version>
 								</dependency>
@@ -303,6 +308,11 @@
 								</bundle>
 								<bundle>
 									<id>org.eclipse.emf.emfstore.client.transaction</id>
+									<level>4</level>
+									<autoStart>false</autoStart>
+								</bundle>
+								<bundle>
+									<id>org.eclipse.emf.emfstore.client.ui.transaction</id>
 									<level>4</level>
 									<autoStart>false</autoStart>
 								</bundle>
