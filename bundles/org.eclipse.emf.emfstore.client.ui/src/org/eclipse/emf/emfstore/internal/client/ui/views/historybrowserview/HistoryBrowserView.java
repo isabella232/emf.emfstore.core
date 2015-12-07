@@ -315,8 +315,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private List<HistoryInfo> getHistoryInfos() {
-		final Shell shell =
-			getViewSite().getShell();
+		final Shell shell = getViewSite().getShell();
 
 		final List<HistoryInfo> result = new AbstractEMFStoreUIController<List<HistoryInfo>>(shell, true,
 			false) {
@@ -374,8 +373,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			true);
 		// TODO: proivde util method
 		final ESHistoryQuery<ESModelElementQuery> api = query.toAPI();
-		final List<ESHistoryInfo> infos =
-			projectSpace.toAPI().getHistoryInfos(api, new NullProgressMonitor());
+		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(api, new NullProgressMonitor());
 		return infos;
 	}
 
@@ -505,7 +503,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		GridDataFactory.fillDefaults().align(SWT.CENTER, SWT.CENTER).grab(true, false).applyTo(noProjectHint);
 
 		noProjectHint
-		.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
+			.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
 		noProjectHint.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				final ElementListSelectionDialog elsd = new ElementListSelectionDialog(parent.getShell(),
@@ -551,6 +549,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	@Override
 	public void dispose() {
 		adapterFactoryLabelProvider.dispose();
+		changeLabel.dispose();
+		commitLabel.dispose();
 		super.dispose();
 	}
 
@@ -687,7 +687,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		for (final HistoryInfo info : resultCandidates) {
 			if (info.getPrimarySpec().getIdentifier() != -1
 				&& (biggest && info.getPrimarySpec().compareTo(result) == 1 || !biggest && info.getPrimarySpec()
-				.compareTo(result) == -1)) {
+					.compareTo(result) == -1)) {
 				result = info.getPrimarySpec();
 			}
 		}
