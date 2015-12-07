@@ -24,6 +24,7 @@ public class Messages extends NLS {
 	public static String HistoryBrowserView_Changes;
 	public static String HistoryBrowserView_CommitMessage;
 	public static String HistoryBrowserView_Error;
+	public static String HistoryBrowserView_ExpandCollapseToggle;
 	public static String HistoryBrowserView_ExpandToggle;
 	public static String HistoryBrowserView_FetchingHistory;
 	public static String HistoryBrowserView_GoToRevision;
