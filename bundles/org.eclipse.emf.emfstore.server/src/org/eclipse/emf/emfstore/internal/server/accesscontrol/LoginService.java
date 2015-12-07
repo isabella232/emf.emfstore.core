@@ -27,8 +27,8 @@ import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationI
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
-import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
 import org.eclipse.emf.emfstore.server.auth.ESSessions;
+import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
 import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
@@ -77,7 +77,6 @@ public class LoginService {
 		this.orgUnitResolver = orgUnitResolver;
 	}
 
-	// TODO: init called every time
 	private ESUserVerifier initUserVerifierService() {
 
 		try {
@@ -141,9 +140,6 @@ public class LoginService {
 		}
 	}
 
-	/**
-	 * @return
-	 */
 	private ESUserVerifier getUserVerifierService() {
 		if (userVerifier == null) {
 			userVerifier = initUserVerifierService();
@@ -166,4 +162,30 @@ public class LoginService {
 			sessions.remove(sessionId);
 		}
 	}
+
+	/**
+	 * Checks whether the given credentials are valid without logging the client in.
+	 *
+	 * @param username
+	 *            the user name
+	 * @param password
+	 *            the encrypted password of the user
+	 * @param clientVersionInfo
+	 *            the client's version
+	 * @return {@code true}, if the user's credentials are valid, {@code false} otherwise
+	 */
+	public boolean verifyUser(String username, String password, ESClientVersionInfo clientVersionInfo) {
+		try {
+			getUserVerifierService().verifyUser(
+				username,
+				password,
+				clientVersionInfo);
+			return true;
+		} catch (final AccessControlException e) {
+			// ignore
+		}
+
+		return false;
+	}
+
 }

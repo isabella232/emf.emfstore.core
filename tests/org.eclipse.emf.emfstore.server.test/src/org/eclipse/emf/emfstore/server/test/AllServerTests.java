@@ -23,11 +23,12 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	IntegrationTest.class,
-    AdminBrokerTests.class,
+	AdminBrokerTests.class,
 	AllAccessControlTests.class,
 	BranchTests.class,
 	ServerInterfaceTest.class,
 	HistoryAPITests.class,
+	LoginServiceTest.class,
 	ChangeCertificationTest.class,
 	ChecksumTest.class,
 	FileManagerTest.class,
