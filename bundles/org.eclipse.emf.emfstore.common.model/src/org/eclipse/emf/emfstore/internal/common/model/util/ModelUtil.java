@@ -1165,33 +1165,43 @@ public final class ModelUtil {
 
 	/**
 	 * Delete the given incoming cross references to the given model element from any
-	 * other model element in the given project.
+	 * other model element in the given collection except for the set of source elements
+	 * to ignore.
 	 *
 	 * @param inverseReferences a collection of inverse references
-	 * @param modelElement
+	 * @param element
 	 *            the model element
+	 * @param referenceSourceElementsToIgnore
+	 *            the set of all elements referencing the element to be ignored
 	 */
-	public static void deleteIncomingCrossReferencesFromParent(Collection<Setting> inverseReferences,
-		EObject modelElement) {
+	public static void deleteIncomingCrossReferencesToElement(
+		EObject element,
+		Collection<Setting> inverseReferences,
+		Set<EObject> referenceSourceElementsToIgnore) {
+
 		for (final Setting setting : inverseReferences) {
+
 			final EStructuralFeature eStructuralFeature = setting.getEStructuralFeature();
 			final EReference reference = (EReference) eStructuralFeature;
+			final EObject sourceElement = setting.getEObject();
+
+			if (referenceSourceElementsToIgnore.contains(sourceElement)) {
+				continue;
+			}
 
 			if (reference.isContainer() || reference.isContainment() || !reference.isChangeable()) {
 				continue;
 			}
 
-			final EObject opposite = setting.getEObject();
-
 			if (eStructuralFeature.isMany()) {
-				((EList<?>) opposite.eGet(eStructuralFeature)).remove(modelElement);
+				((EList<?>) sourceElement.eGet(eStructuralFeature)).remove(element);
 			} else {
-				if (opposite instanceof Map.Entry<?, ?> && eStructuralFeature.getName().equals("key")) { //$NON-NLS-1$
+				if (sourceElement instanceof Map.Entry<?, ?> && eStructuralFeature.getName().equals("key")) { //$NON-NLS-1$
 					logWarning(MessageFormat.format(
-						Messages.ModelUtil_Incoming_CrossRef_Is_Map_Key, modelElement));
+						Messages.ModelUtil_Incoming_CrossRef_Is_Map_Key, element));
 				}
 
-				opposite.eUnset(eStructuralFeature);
+				sourceElement.eUnset(eStructuralFeature);
 			}
 		}
 	}

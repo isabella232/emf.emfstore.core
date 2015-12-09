@@ -542,16 +542,16 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		// delete all non containment cross references to other elements
 		for (final EObject modelElement : allEObjects) {
 			for (final EReference reference : modelElement.eClass().getEAllReferences()) {
-				final EClassifier eType = reference.getEType();
 
-				if (!EClass.class.isInstance(eType)) {
+				if (!EClass.class.isInstance(reference.getEType())) {
 					continue;
 				}
+				final EClass eClass = (EClass) reference.getEType();
 
-				if (Map.Entry.class.isAssignableFrom(eType.getInstanceClass()) && reference.isContainment()
+				if (Map.Entry.class.isAssignableFrom(eClass.getInstanceClass()) && reference.isContainment()
 					&& reference.isChangeable()) {
 
-					handleMapEntryDeletion(modelElement, eType, reference, allEObjects);
+					handleMapEntryDeletion(modelElement, eClass, reference, allEObjects);
 					continue;
 				}
 
@@ -616,56 +616,48 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		return referencedElementsCopy;
 	}
 
-	private void handleMapEntryDeletion(EObject modelElement, EClassifier eType, EReference reference,
+	private void handleMapEntryDeletion(EObject modelElement, EClass mapEntryEClass, EReference reference,
 		Set<EObject> allEObjects) {
-		final EClass mapEntryEClass = (EClass) eType;
-		final EReference nonContainmentKeyReference = getNonContainmentKeyReference(mapEntryEClass);
 
+		@SuppressWarnings("unchecked")
+		final List<EObject> mapEntriesEList = (List<EObject>) modelElement.eGet(reference);
+		final Set<EObject> mapEntriesToRemove = new LinkedHashSet<EObject>();
+
+		final EReference nonContainmentKeyReference = getNonContainmentKeyReference(mapEntryEClass);
 		// key references seems to be containment, skip loop
 		if (nonContainmentKeyReference == null) {
 			return;
 		}
 
-		@SuppressWarnings("unchecked")
-		final List<EObject> mapEntriesEList = (List<EObject>) modelElement.eGet(reference);
-		boolean outgoingKeyReferenceFound = false;
+		// find all map entries which reference an object outside of the containment tree
+		// with their non-containment key
+		for (final EObject mapEntry : mapEntriesEList) {
 
-		// check key reference of all map entries if they reference one of the objects in the containment
-		// tree
-		for (final EObject eObject : mapEntriesEList) {
+			final Object targetElement = mapEntry.eGet(nonContainmentKeyReference);
 
-			final Object eGet = eObject.eGet(nonContainmentKeyReference);
-
-			if (!allEObjects.contains(eGet)) {
-				outgoingKeyReferenceFound = true;
-				break;
+			if (!allEObjects.contains(targetElement)) {
+				mapEntriesToRemove.add(mapEntry);
 			}
 		}
 
-		if (!outgoingKeyReferenceFound) {
-			// no bad reference found, skip special treatment
+		if (mapEntriesToRemove.isEmpty()) {
 			return;
 		}
 
-		// copy list before clearing reference
-		// TODO is this really the underlying list
-		final List<EObject> mapEntries = new ArrayList<EObject>(mapEntriesEList);
-
 		// the reference is a containment map feature and its referenced entries do have at least one
-		// non-containment key crossreference that goes to an element outside of
-		// the containment tree, therefore we
-		// delete the map entries
+		// non-containment key cross-reference that goes to an element outside of
+		// the containment tree, therefore we delete respective map entries
 		// instead of waiting for the referenced key element to be cut off from the map entry
 		// in the children recursion
-		// since cutting off a key reference will render the map into an invalid state on deserialization
+		// since cutting off a key reference will render the map into an invalid state on de-serialization
 		// which can
 		// result in unresolved proxies
 		EcoreUtil.resolveAll(modelElement);
-		modelElement.eUnset(reference);
-		for (final EObject mapEntry : mapEntries) {
-			handleElementDelete(mapEntry);
-		}
 
+		for (final EObject mapEntryToRemove : mapEntriesToRemove) {
+			mapEntriesEList.remove(mapEntryToRemove);
+			handleElementDelete(mapEntryToRemove);
+		}
 	}
 
 	private EReference getNonContainmentKeyReference(EClass eClass) {
@@ -683,16 +675,18 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 	private void handleElementDelete(EObject deletedElement) {
 
-		final Set<EObject> allContainedModelElementsSet = ModelUtil.getAllContainedModelElements(deletedElement, false);
-		allContainedModelElementsSet.add(deletedElement);
-		deleteOutgoingCrossReferencesOfContainmentTree(allContainedModelElementsSet);
+		final Set<EObject> allDeletedModelElements = ModelUtil.getAllContainedModelElements(deletedElement,
+			false /* includeTransientContainments is false */);
+		allDeletedModelElements.add(deletedElement);
+		deleteOutgoingCrossReferencesOfContainmentTree(allDeletedModelElements);
 
 		if (config.isCutOffIncomingCrossReferences()) {
-
-			for (final EObject eObject : allContainedModelElementsSet) {
+			for (final EObject element : allDeletedModelElements) {
 				// delete incoming cross references
-				final Collection<Setting> inverseReferences = projectSpace.findInverseCrossReferences(eObject);
-				ModelUtil.deleteIncomingCrossReferencesFromParent(inverseReferences, eObject);
+				final Collection<Setting> inverseReferences = projectSpace.findInverseCrossReferences(element);
+				ModelUtil.deleteIncomingCrossReferencesToElement(element,
+					inverseReferences,
+					allDeletedModelElements);
 
 			}
 		}
