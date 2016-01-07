@@ -11,7 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.common;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -34,7 +34,7 @@ public class EMFStoreResource extends XMIResourceImpl {
 	 */
 	public EMFStoreResource(final URI uri) {
 		super(uri);
-		setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
+		setIntrinsicIDToEObjectMap(new LinkedHashMap<String, EObject>());
 	}
 
 	/**
