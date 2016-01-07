@@ -36,8 +36,12 @@ public final class XmlTags {
 	 * Change package opening tag.
 	 */
 	public static final String CHANGE_PACKAGE_START = "<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage " //$NON-NLS-1$
-		+ "xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning=\"http://eclipse.org/emf/emfstore/server/model/versioning\" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations=\"http://eclipse.org/emf/emfstore/server/model/versioning/operations\">" //$NON-NLS-1$
-		+ NEWLINE;
+		+ "xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning=\"http://eclipse.org/emf/emfstore/server/model/versioning\" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations=\"http://eclipse.org/emf/emfstore/server/model/versioning/operations\">"; //$NON-NLS-1$
+
+	/**
+	 * Change package opening tag with newline.
+	 */
+	public static final String CHANGE_PACKAGE_START_WITH_NEWLINE = CHANGE_PACKAGE_START + NEWLINE;
 
 	/**
 	 * Change package closing tag.
