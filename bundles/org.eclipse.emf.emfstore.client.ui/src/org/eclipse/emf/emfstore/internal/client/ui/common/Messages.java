@@ -17,12 +17,13 @@ import org.eclipse.osgi.util.NLS;
  * Common Client UI messages.
  *
  * @author emueller
- *
+ * @generated
  */
 public final class Messages extends NLS {
 
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.client.ui.common.messages"; //$NON-NLS-1$
 	public static String MonitoredEMFStoreAction;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
