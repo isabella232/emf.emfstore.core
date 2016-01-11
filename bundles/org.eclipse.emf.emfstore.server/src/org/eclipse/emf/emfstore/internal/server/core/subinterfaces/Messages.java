@@ -42,6 +42,7 @@ public final class Messages extends NLS {
 	public static String ProjectSubInterfaceImpl_ProjectDoesNotExist;
 	public static String ProjectSubInterfaceImpl_ProjectResources_Not_Deleted;
 	public static String ProjectSubInterfaceImpl_ProjectState_Not_Found;
+	public static String VersionSubInterfaceImpl_0;
 	public static String VersionSubInterfaceImpl_BranchName_Reserved_1;
 	public static String VersionSubInterfaceImpl_BranchName_Reserved_2;
 	public static String VersionSubInterfaceImpl_ChangePackageFragmentProviderAdapterMissing;

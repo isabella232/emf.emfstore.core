@@ -271,6 +271,13 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final String proxyId = generateProxyId(projectId.getId());
 
 		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
+
+		if (resolvedSession == null) {
+			throw new ESException(
+				MessageFormat.format(
+					Messages.VersionSubInterfaceImpl_0, sessionId.getId()));
+		}
+
 		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		final Optional<ChangePackageFragmentUploadAdapter> maybeAdapter = ESCollections.find(session.eAdapters(),
 			ChangePackageFragmentUploadAdapter.class);
