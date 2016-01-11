@@ -78,7 +78,11 @@ public class AcUserImportPageOne extends WizardPage {
 		for (final ImportSource src : list) {
 			radios[i] = new Button(composite, SWT.RADIO);
 			radios[i].setText(src.getLabel());
-			radios[i].setBounds(30, 5, 200, 30);
+			radios[i].setBounds(
+				convertHorizontalDLUsToPixels(30),
+				convertVerticalDLUsToPixels(5),
+				convertHorizontalDLUsToPixels(200),
+				convertVerticalDLUsToPixels(30));
 			radios[i].addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {

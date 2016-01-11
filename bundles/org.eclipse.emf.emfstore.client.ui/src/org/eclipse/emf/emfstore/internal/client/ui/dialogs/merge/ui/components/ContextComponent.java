@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * wesendon
+ * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.components;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.uti
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.util.UIDecisionUtil;
 import org.eclipse.emf.emfstore.internal.common.ESDisposable;
+import org.eclipse.jface.layout.PixelConverter;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -34,6 +35,8 @@ import org.eclipse.swt.widgets.Label;
  */
 public class ContextComponent extends Composite implements ESDisposable {
 
+	private static final String CONTENT = "content"; //$NON-NLS-1$
+	private static final String TITLE_LABEL = "titleLabel"; //$NON-NLS-1$
 	private final ComposedAdapterFactory adapterFactory;
 
 	/**
@@ -48,10 +51,11 @@ public class ContextComponent extends Composite implements ESDisposable {
 		super(parent, SWT.NONE);
 
 		final ConflictContext context = conflict.getConflictContext();
+		final PixelConverter pixelConverter = new PixelConverter(this);
 
 		final GridLayout layout = new GridLayout(3, false);
-		layout.verticalSpacing = 1;
-		layout.horizontalSpacing = 20;
+		layout.verticalSpacing = pixelConverter.convertVerticalDLUsToPixels(1);
+		layout.horizontalSpacing = pixelConverter.convertHorizontalDLUsToPixels(20);
 		setLayout(layout);
 		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 
@@ -61,17 +65,17 @@ public class ContextComponent extends Composite implements ESDisposable {
 
 		final Label meTitle = new Label(this, SWT.NONE);
 		meTitle.setText(context.getModelElementTitleLabel());
-		meTitle.setFont(fontRegistry.get("titleLabel"));
+		meTitle.setFont(fontRegistry.get(TITLE_LABEL));
 		meTitle.setBackground(getBackground());
 
 		final Label attTitle = new Label(this, SWT.NONE);
 		attTitle.setText(context.getAttributeTitleLabel());
-		attTitle.setFont(fontRegistry.get("titleLabel"));
+		attTitle.setFont(fontRegistry.get(TITLE_LABEL));
 		attTitle.setBackground(getBackground());
 
 		final Label oppTitle = new Label(this, SWT.NONE);
 		oppTitle.setText(context.getOpponentTitleLabel());
-		oppTitle.setFont(fontRegistry.get("titleLabel"));
+		oppTitle.setFont(fontRegistry.get(TITLE_LABEL));
 		oppTitle.setBackground(getBackground());
 
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -81,17 +85,17 @@ public class ContextComponent extends Composite implements ESDisposable {
 		meLabel.setImage(provider.getImage(context.getModelElement()));
 		meLabel.setText(UIDecisionUtil.cutString(provider.getText(context.getModelElement()), 40, true));
 		meLabel.setToolTipText(DecisionUtil.getClassAndName(context.getModelElement()));
-		meLabel.setFont(fontRegistry.get("content"));
+		meLabel.setFont(fontRegistry.get(CONTENT));
 		meLabel.setBackground(getBackground());
 
 		final Label attLabel = new Label(this, SWT.NONE);
 		attLabel.setText(context.getAttribute());
-		attLabel.setFont(fontRegistry.get("content"));
+		attLabel.setFont(fontRegistry.get(CONTENT));
 		attLabel.setBackground(getBackground());
 
 		final Label oppLable = new Label(this, SWT.NONE);
 		oppLable.setText(context.getOpponent());
-		oppLable.setFont(fontRegistry.get("content"));
+		oppLable.setFont(fontRegistry.get(CONTENT));
 		oppLable.setBackground(getBackground());
 	}
 

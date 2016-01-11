@@ -23,6 +23,7 @@ import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.util.UIDecisionConfig;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.GridDataFactory;
+import org.eclipse.jface.layout.PixelConverter;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -83,8 +84,8 @@ public class MergeWizardPage extends WizardPage {
 	 */
 	public void createControl(final Composite parent) {
 		parent.setLayout(new GridLayout());
-
-		final Composite topBar = createTopBar(parent);
+		final PixelConverter converter = new PixelConverter(parent);
+		final Composite topBar = createTopBar(parent, converter);
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(topBar);
 		final ScrolledComposite scrolledComposite = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
 		scrolledComposite.setExpandHorizontal(true);
@@ -128,24 +129,24 @@ public class MergeWizardPage extends WizardPage {
 
 		scrolledComposite.setContent(client);
 
-		final Point computeSize = calcParentSize(parent, topBar);
+		final Point computeSize = calcParentSize(parent, topBar, converter);
 		scrolledComposite.setMinSize(computeSize);
 
 		setControl(scrolledComposite);
 	}
 
-	private Point calcParentSize(final Composite parent, Composite topBar) {
+	private Point calcParentSize(final Composite parent, Composite topBar, PixelConverter converter) {
 		final Point computeSize = parent.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		computeSize.x = parent.getBounds().width;
 		// Due to resizing issues give a bit of extra space.
-		computeSize.y = computeSize.y + topBar.getSize().y + 50;
+		computeSize.y = computeSize.y + topBar.getSize().y + converter.convertHorizontalDLUsToPixels(50);
 		return computeSize;
 	}
 
-	private Composite createTopBar(Composite parent) {
+	private Composite createTopBar(Composite parent, PixelConverter converter) {
 		final Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new RowLayout(SWT.HORIZONTAL));
-		composite.setSize(SWT.DEFAULT, 200);
+		composite.setSize(SWT.DEFAULT, converter.convertVerticalDLUsToPixels(200));
 
 		final Button acceptMine = new Button(composite, SWT.PUSH);
 		acceptMine.setText(Messages.MergeWizardPage_KeepMyChanges);

@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.ConflictOption;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.options.MergeTextOption;
@@ -90,11 +91,6 @@ public class MergeTextWidget implements Observer {
 		setText(option, text);
 		text.setBackground(tabFolder.getBackground());
 		text.setEditable(isEditable(option));
-		// TODO: RAP compat
-		// text.setWordWrap(true);
-		// text.setTopMargin(5);
-		// text.setLeftMargin(5);
-		// text.setRightMargin(5);
 		tab.setControl(text);
 
 	}
@@ -114,28 +110,15 @@ public class MergeTextWidget implements Observer {
 		final LinkedList<Diff> diffMain = dmp.diff_main(mergeOption.getMyText(), mergeOption.getTheirString());
 		dmp.diff_cleanupEfficiency(diffMain);
 
-		String description = "";
-		// TODO: RAP compat
-		// List<StyleRange> styleRanges = new ArrayList<StyleRange>();
+		final StringBuffer description = new StringBuffer();
 
 		for (final Diff diff : diffMain) {
 			final String text = diff.text;
 			if (!diff.operation.equals(Operation.EQUAL)) {
-				// StyleRange styleRange = new StyleRange();
-				// styleRange.start = description.length();
-				// styleRange.length = text.length();
-
-				// if (diff.operation.equals(Operation.DELETE)) {
-				// styleRange.foreground = Display.getDefault().getSystemColor(SWT.COLOR_RED);
-				// } else if (diff.operation.equals(Operation.INSERT)) {
-				// styleRange.foreground = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GREEN);
-				// }
-				// styleRanges.add(styleRange);
 			}
-			description += text;
+			description.append(text);
 		}
-		styledText.setText(description);
-		// styledText.setStyleRanges(styleRanges.toArray(new StyleRange[styleRanges.size()]));
+		styledText.setText(description.toString());
 		styledText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				final String newText = styledText.getText();
@@ -162,7 +145,7 @@ public class MergeTextWidget implements Observer {
 		case MergeText:
 			return option.getOptionLabel();
 		default:
-			return "";
+			return StringUtils.EMPTY;
 		}
 	}
 

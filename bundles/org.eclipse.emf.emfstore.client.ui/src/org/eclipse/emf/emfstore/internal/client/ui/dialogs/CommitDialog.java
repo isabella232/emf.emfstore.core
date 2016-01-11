@@ -54,7 +54,7 @@ import org.eclipse.swt.widgets.Text;
  * @author Shterev
  */
 public class CommitDialog extends EMFStoreTitleAreaDialog implements
-KeyListener {
+	KeyListener {
 
 	private static final String COMMITDIALOG_TRAY_EXTENSION_POINT = "org.eclipse.emf.emfstore.client.ui.commitdialog.tray"; //$NON-NLS-1$
 	private Text txtLogMsg;
@@ -93,7 +93,7 @@ KeyListener {
 
 		for (final ESExtensionElement element : new ESExtensionPoint(
 			COMMITDIALOG_TRAY_EXTENSION_POINT, true)
-			.getExtensionElements()) {
+				.getExtensionElements()) {
 			try {
 				final CommitDialogTray tray = element.getClass("class", //$NON-NLS-1$
 					CommitDialogTray.class);
@@ -181,27 +181,10 @@ KeyListener {
 		final ArrayList<AbstractChangePackage> changePackages = new ArrayList<AbstractChangePackage>();
 		changePackages.add(changes);
 
-		// final ArrayList<AbstractChangePackage> changePackages = new ArrayList<AbstractChangePackage>();
-		// // changePackages.add(changes);
-		//
-		// // TODO LCP: fully loading change packages to display them..
-		// final AbstractChangePackage cp = ChangePackageUtil.createChangePackage();
-		// // final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		// // cp.initialize(FileUtil.createLocationForTemporaryChangePackage());
-		// final ESCloseableIterable<AbstractOperation> operations = changes.operations();
-		// try {
-		// for (final AbstractOperation operation : operations.iterable()) {
-		// cp.add(operation);
-		// }
-		// } finally {
-		// operations.close();
-		// }
-		//
-		// changePackages.add(cp);
-
 		changesComposite = new TabbedChangesComposite(
 			contents, SWT.BORDER, changePackages, getActiveProjectSpace()
-				.getProject(), idToEObjectMapping, true);
+				.getProject(),
+			idToEObjectMapping, true);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL)
 			.grab(true, true).span(2, 1).applyTo(changesComposite);
 
@@ -219,8 +202,12 @@ KeyListener {
 
 	private void createLogMessageText(Composite contents) {
 		txtLogMsg = new Text(contents, SWT.MULTI | SWT.LEAD | SWT.BORDER);
-		GridDataFactory.fillDefaults().grab(true, false).span(2, 1)
-			.align(SWT.FILL, SWT.TOP).hint(1, 45).applyTo(txtLogMsg);
+		GridDataFactory.fillDefaults()
+			.grab(true, false)
+			.span(2, 1)
+			.align(SWT.FILL, SWT.TOP)
+			.hint(convertHorizontalDLUsToPixels(1), convertVerticalDLUsToPixels(45))
+			.applyTo(txtLogMsg);
 		String logMsg = StringUtils.EMPTY;
 		final LogMessage logMessage = changes.getLogMessage();
 
@@ -297,7 +284,7 @@ KeyListener {
 		// final String notifyUsers = "Notify users";
 		for (final ESExtensionElement c : new ESExtensionPoint(
 			COMMITDIALOG_TRAY_EXTENSION_POINT)
-			.getExtensionElements()) {
+				.getExtensionElements()) {
 			final String name = c.getAttribute("name"); //$NON-NLS-1$
 			final CommitDialogTray tray = trays.get(name);
 			if (tray != null) {
@@ -313,13 +300,13 @@ KeyListener {
 								openTray(tray);
 								notificationsButton.setText(name + " <<"); //$NON-NLS-1$
 								final Rectangle bounds = getShell().getBounds();
-								bounds.x -= 100;
+								bounds.x -= convertHorizontalDLUsToPixels(100);
 								getShell().setBounds(bounds);
 							} else {
 								closeTray();
 								notificationsButton.setText(name + " >>"); //$NON-NLS-1$
 								final Rectangle bounds = getShell().getBounds();
-								bounds.x += 100;
+								bounds.x += convertHorizontalDLUsToPixels(100);
 								getShell().setBounds(bounds);
 							}
 							isOpen = !isOpen;

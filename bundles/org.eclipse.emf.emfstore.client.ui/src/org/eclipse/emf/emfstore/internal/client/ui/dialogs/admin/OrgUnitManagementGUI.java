@@ -162,19 +162,6 @@ public class OrgUnitManagementGUI {
 
 		// set initial input to properties form
 		projectsTabContents.selectFirstElement();
-
-		// tabFolder.addSelectionListener(new SelectionListener() {
-		//
-		// public void widgetDefaultSelected(SelectionEvent e) {
-		// }
-		//
-		// // Update every tableViewer on any click on one of the TabItems
-		// public void widgetSelected(SelectionEvent e) {
-		// projectsTabContents.getTableViewer().refresh();
-		// groupsTabContents.getTableViewer().refresh();
-		// usersTabContents.getTableViewer().refresh();
-		// }
-		// });
 	}
 
 	private TabItem createTab(TabFolder folder, TabContent tabContent, String text) {
