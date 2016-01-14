@@ -17,9 +17,12 @@ import java.io.DataInput;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.RandomAccessFile;
+import java.nio.channels.Channels;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,21 +78,45 @@ public class OperationEmitter implements Closeable {
 
 	private void determineOperationOffsets() {
 		try {
-			// TODO: are there any alternative implementations (e.g. Apache)?
-			final OptimizedRandomAccessFile raf = new OptimizedRandomAccessFile(operationsFile, "r"); //$NON-NLS-1$
+			final RandomAccessFile randomAccessFile = new RandomAccessFile(operationsFile, "r"); //$NON-NLS-1$
+			final InputStream inputStream = Channels.newInputStream(randomAccessFile.getChannel());
+			final InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			final BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+			long filePointer = 0;
 			try {
 				String line;
-				while ((line = raf.readLine()) != null) {
+				while ((line = bufferedReader.readLine()) != null) {
+					filePointer += line.getBytes().length;
+					final long filePointerAfterReadline = randomAccessFile.getFilePointer();
+					randomAccessFile.seek(filePointer);
+					int byteAfterLine = randomAccessFile.read();
+					/*
+					 * Line is terminated by either:
+					 * \r\n
+					 * \r
+					 * \n
+					 */
+					if (byteAfterLine == '\r') {
+						filePointer += 1;
+						byteAfterLine = randomAccessFile.read();
+					}
+					if (byteAfterLine == '\n') {
+						filePointer += 1;
+					}
+					randomAccessFile.seek(filePointerAfterReadline);
+
 					if (line.contains(XmlTags.CHANGE_PACKAGE_START)) {
-						startOffset = raf.getFilePointer();
+						startOffset = filePointer;
 					} else if (line.contains(XmlTags.OPERATIONS_START_TAG)) {
-						forwardOffsets.add(raf.getFilePointer());
+						forwardOffsets.add(filePointer);
 					} else if (line.contains(XmlTags.OPERATIONS_END_TAG)) {
-						backwardsOffsets.add(raf.getFilePointer());
+						backwardsOffsets.add(filePointer);
 					}
 				}
 			} finally {
-				raf.close();
+				bufferedReader.close();
+				randomAccessFile.close();
 			}
 		} catch (final IOException ex) {
 			ModelUtil.logException(ex);
