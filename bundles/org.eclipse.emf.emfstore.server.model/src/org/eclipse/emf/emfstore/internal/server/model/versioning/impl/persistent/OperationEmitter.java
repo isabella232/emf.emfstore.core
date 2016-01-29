@@ -147,8 +147,19 @@ public class OperationEmitter implements Closeable {
 		return backwardsOffsets.get(currentOpIndex);
 	}
 
+	/**
+	 * Since an XML Resource needs exactly one root object, we have to write a dummy object to the stream.
+	 *
+	 * @param pos the outputstream
+	 * @throws IOException in case there is a problem during write
+	 */
+	private static void writeDummyResourceToStream(PipedOutputStream pos) throws IOException {
+		pos.write(XmlTags.XML_RESOURCE_WITH_EOBJECT.getBytes());
+	}
+
 	private void readForward(PipedOutputStream pos) {
 		try {
+			boolean operationsFound = false;
 			boolean withinOperationsElement = false;
 			final boolean isForwardDir = direction == Direction.Forward;
 			final String closingTag = getClosingTag(isForwardDir);
@@ -157,12 +168,16 @@ public class OperationEmitter implements Closeable {
 				if (line.contains(getOpeningTag(isForwardDir))) {
 					withinOperationsElement = true;
 				} else if (withinOperationsElement) {
+					operationsFound = true;
 					pos.write(line.getBytes());
 				}
 				line = reader.readLine();
 			}
 			if (line != null) {
 				withinOperationsElement = false;
+			}
+			if (!operationsFound) {
+				writeDummyResourceToStream(pos);
 			}
 		} catch (final IOException ex) {
 			ModelUtil.logException(ex);
@@ -177,6 +192,7 @@ public class OperationEmitter implements Closeable {
 
 	private void readForward(DataInput reader, PipedOutputStream pos) {
 		try {
+			boolean operationsFound = false;
 			boolean withinOperationsElement = true;
 			final String closingTag = getClosingTag(true);
 			String line = reader.readLine();
@@ -184,9 +200,14 @@ public class OperationEmitter implements Closeable {
 				if (line.contains(getOpeningTag(true))) {
 					withinOperationsElement = true;
 				} else if (withinOperationsElement && line.length() > 0) {
+					operationsFound = true;
 					pos.write(line.getBytes());
 				}
 				line = reader.readLine();
+			}
+
+			if (!operationsFound) {
+				writeDummyResourceToStream(pos);
 			}
 		} catch (final IOException ex) {
 			ModelUtil.logException(ex);
@@ -252,10 +273,13 @@ public class OperationEmitter implements Closeable {
 		}).start();
 
 		try {
-			return Optional.of(deserialize(pis));
-		} catch (final IOException e) {
-			// e.printStackTrace();
+			final EObject deserializedObject = deserialize(pis);
+			if (AbstractOperation.class.isInstance(deserializedObject)) {
+				return Optional.of(AbstractOperation.class.cast(deserializedObject));
+			}
 			return Optional.absent();
+		} catch (final IOException e) {
+			throw e;
 		} finally {
 			pis.close();
 		}
@@ -270,15 +294,13 @@ public class OperationEmitter implements Closeable {
 		return isForward ? XmlTags.OPERATIONS_START_TAG : XmlTags.OPERATIONS_END_TAG;
 	}
 
-	private AbstractOperation deserialize(final PipedInputStream pis) throws IOException {
+	private EObject deserialize(final PipedInputStream pis) throws IOException {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		final Resource resource = resourceSet.createResource(URI.createURI("virtualResource.xmi")); //$NON-NLS-1$
 		((XMLResourceImpl) resource).setIntrinsicIDToEObjectMap(Maps.<String, EObject> newLinkedHashMap());
 		final XMLLoadImpl xmlLoadImpl = new XMLLoadImpl(new XMLHelperImpl());
 		xmlLoadImpl.load((XMLResource) resource, pis, ModelUtil.getResourceLoadOptions());
-		final AbstractOperation operation = (AbstractOperation) resource.getContents().get(0);
-		// ((XMLResourceImpl) resource).getIntrinsicIDToEObjectMap().clear();
-		return operation;
+		return resource.getContents().get(0);
 	}
 
 	/**

@@ -62,4 +62,7 @@ public final class XmlTags {
 	 * Sub operations closing tag (<&#47;subOperations>).
 	 */
 	public static final String SUB_OPERATIONS_END_TAG = "</subOperations>"; //$NON-NLS-1$
+
+	public static final String XML_RESOURCE_WITH_EOBJECT = "<?xml version=\"1.0\" encoding=\"ASCII\"?>\n" //$NON-NLS-1$
+		+ "<ecore:EObject xmlns:ecore=\"http://www.eclipse.org/emf/2002/Ecore\"/>"; //$NON-NLS-1$
 }
