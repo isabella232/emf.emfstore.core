@@ -18,9 +18,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util.ChangePackageUtil;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
@@ -33,8 +32,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  */
 public class ChangePackageFragmentProviderAdapter extends AdapterImpl {
 
-	private final Map<String, Map<Integer, List<AbstractOperation>>> proxyIdToChangePackageFragments =
-		new LinkedHashMap<String, Map<Integer, List<AbstractOperation>>>();
+	private final Map<String, Map<Integer, List<String>>> proxyIdToChangePackageFragments = new LinkedHashMap<String, Map<Integer, List<String>>>();
 
 	/**
 	 * Splits the given change package into fragments and stores them.
@@ -45,7 +43,7 @@ public class ChangePackageFragmentProviderAdapter extends AdapterImpl {
 	 * @param changePackage
 	 *            the change package to be splitted
 	 */
-	public void addAsFragments(String proxyId, AbstractChangePackage changePackage) {
+	public void addAsFragments(String proxyId, FileBasedChangePackage changePackage) {
 
 		final Iterator<ChangePackageEnvelope> envelopes = ChangePackageUtil.splitChangePackage(
 			changePackage,
@@ -56,10 +54,10 @@ public class ChangePackageFragmentProviderAdapter extends AdapterImpl {
 		}
 	}
 
-	private void addFragment(String proxyId, List<AbstractOperation> fragment) {
-		Map<Integer, List<AbstractOperation>> map = proxyIdToChangePackageFragments.get(proxyId);
+	private void addFragment(String proxyId, List<String> fragment) {
+		Map<Integer, List<String>> map = proxyIdToChangePackageFragments.get(proxyId);
 		if (map == null) {
-			map = new LinkedHashMap<Integer, List<AbstractOperation>>();
+			map = new LinkedHashMap<Integer, List<String>>();
 			proxyIdToChangePackageFragments.put(proxyId, map);
 		}
 		final int currentSize = map.size();
@@ -76,8 +74,8 @@ public class ChangePackageFragmentProviderAdapter extends AdapterImpl {
 	 * @return the fragment
 	 * @throws ESException in case no fragments for the given proxy ID are present
 	 */
-	public List<AbstractOperation> getFragment(String proxyId, int fragmentIndex) throws ESException {
-		final Map<Integer, List<AbstractOperation>> fragments = proxyIdToChangePackageFragments.get(proxyId);
+	public List<String> getFragment(String proxyId, int fragmentIndex) throws ESException {
+		final Map<Integer, List<String>> fragments = proxyIdToChangePackageFragments.get(proxyId);
 		if (fragments == null) {
 			throw new ESException(Messages.ChangePackageFragmentProviderAdapter_NoFragmentsFound);
 		}
@@ -92,7 +90,7 @@ public class ChangePackageFragmentProviderAdapter extends AdapterImpl {
 	 * @return the number of available fragments
 	 */
 	public int getFragmentSize(String proxyId) {
-		final Map<Integer, List<AbstractOperation>> map = proxyIdToChangePackageFragments.get(proxyId);
+		final Map<Integer, List<String>> map = proxyIdToChangePackageFragments.get(proxyId);
 		if (map == null) {
 			return -1;
 		}

@@ -23,6 +23,7 @@ public final class Messages extends NLS {
 
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.client.model.connectionmanager.xmlrpc.messages"; //$NON-NLS-1$
 	public static String XmlRpcClientManager_Could_Not_Load_Certificate;
+	public static String XmlRpcClientManager_DownloadOfFragmentFailed;
 	public static String XmlRpcClientManager_UploadChangePackageFragmentCallFailed;
 	public static String XmlRpcClientManager_Malformed_URL_Or_Port;
 	public static String XmlRpcClientManager_NoValidSessionAndOrProjectId;

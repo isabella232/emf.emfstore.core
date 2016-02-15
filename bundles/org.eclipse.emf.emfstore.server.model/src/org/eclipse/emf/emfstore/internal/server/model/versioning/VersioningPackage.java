@@ -1166,8 +1166,8 @@ public interface VersioningPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl
-	 * <em>Operation Proxy</em>}' class.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl <em>Operation Proxy</em>
+	 * }' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -1231,7 +1231,7 @@ public interface VersioningPackage extends EPackage {
 	int CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Fragment</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Fragment</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -1343,8 +1343,8 @@ public interface VersioningPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec
-	 * <em>Primary Version Spec</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec <em>Primary Version Spec</em>
+	 * }'.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 *
@@ -1464,8 +1464,8 @@ public interface VersioningPackage extends EPackage {
 	EAttribute getLogMessage_Author();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage <em>Change Package</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage
+	 * <em>Change Package</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>Change Package</em>'.
@@ -1525,8 +1525,8 @@ public interface VersioningPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the containment reference '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPrimarySpec
-	 * <em>Primary Spec</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPrimarySpec <em>Primary Spec</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -2242,23 +2242,23 @@ public interface VersioningPackage extends EPackage {
 	EAttribute getChangePackageEnvelope_FragmentCount();
 
 	/**
-	 * Returns the meta object for the containment reference list '
+	 * Returns the meta object for the attribute list '
 	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragment
 	 * <em>Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the containment reference list '<em>Fragment</em>'.
+	 * @return the meta object for the attribute list '<em>Fragment</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragment()
 	 * @see #getChangePackageEnvelope()
 	 * @generated
 	 */
-	EReference getChangePackageEnvelope_Fragment();
+	EAttribute getChangePackageEnvelope_Fragment();
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy
-	 * <em>Change Package Proxy</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy <em>Change Package Proxy</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -2578,8 +2578,8 @@ public interface VersioningPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryQueryImpl
-		 * <em>History Query</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryQueryImpl <em>History Query</em>
+		 * }' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
 		 *
@@ -3048,13 +3048,13 @@ public interface VersioningPackage extends EPackage {
 		EAttribute CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT = eINSTANCE.getChangePackageEnvelope_FragmentCount();
 
 		/**
-		 * The meta object literal for the '<em><b>Fragment</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Fragment</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
 		 * @generated
 		 */
-		EReference CHANGE_PACKAGE_ENVELOPE__FRAGMENT = eINSTANCE.getChangePackageEnvelope_Fragment();
+		EAttribute CHANGE_PACKAGE_ENVELOPE__FRAGMENT = eINSTANCE.getChangePackageEnvelope_Fragment();
 
 		/**
 		 * The meta object literal for the '
