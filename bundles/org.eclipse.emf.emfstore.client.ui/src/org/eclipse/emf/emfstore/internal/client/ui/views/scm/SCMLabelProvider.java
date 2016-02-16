@@ -48,6 +48,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -244,13 +245,21 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 			initProxy(proxy);
 		}
 		final ImageProxy imageProxy = proxy.getImage();
-		final ImageData imageData = new ImageData(imageProxy.getWidth(),
-			imageProxy.getHeight(),
-			imageProxy.getDepth(),
-			new PaletteData(imageProxy.getRedMask(), imageProxy.getGreenMask(), imageProxy.getBlueMask()),
-			imageProxy.getScanlinePad(),
-			imageProxy.getData());
+		final ImageData imageData = new ImageData(imageProxy.getWidth(), imageProxy.getHeight(), imageProxy.getDepth(),
+			createPaletteData(imageProxy), imageProxy.getScanlinePad(), imageProxy.getData());
 		return imageData;
+	}
+
+	private PaletteData createPaletteData(final ImageProxy imageProxy) {
+		if (imageProxy.isDirect()) {
+			return new PaletteData(imageProxy.getRedMask(), imageProxy.getGreenMask(), imageProxy.getBlueMask());
+		}
+		final RGB[] colors = new RGB[imageProxy.getPaletteColors().length];
+		for (int i = 0; i < imageProxy.getPaletteColors().length; i++) {
+			final ImageProxy.RGB rgb = imageProxy.getPaletteColors()[i];
+			colors[i] = new RGB(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+		}
+		return new PaletteData(colors);
 	}
 
 	private void initProxy(OperationProxy proxy) {
