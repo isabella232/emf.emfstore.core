@@ -152,7 +152,7 @@
       <genClasses ecoreClass="server.ecore#//versioning/ChangePackageEnvelope">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageEnvelope/fragmentIndex"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageEnvelope/fragmentCount"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference server.ecore#//versioning/ChangePackageEnvelope/fragment"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageEnvelope/fragment"/>
       </genClasses>
       <genClasses ecoreClass="server.ecore#//versioning/ChangePackageProxy">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute server.ecore#//versioning/ChangePackageProxy/id"/>

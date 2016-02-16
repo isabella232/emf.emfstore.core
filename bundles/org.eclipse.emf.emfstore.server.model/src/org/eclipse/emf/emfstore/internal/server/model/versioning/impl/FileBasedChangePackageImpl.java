@@ -171,8 +171,8 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	protected EList<OperationProxy> operationProxies;
 
-	private Optional<Integer> cachedSize = Optional.absent();
-	private Optional<Integer> cachedLeafSize = Optional.absent();
+	private int leafSize;
+	private int size;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -504,8 +504,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 */
 	public void add(AbstractOperation op) {
 
-		updateCaches(1, op.getLeafOperations().size());
-
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		final Resource resource = createVirtualResource();
 		resource.getContents().add(op);
@@ -650,10 +648,8 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public int size() {
-		if (!cachedSize.isPresent()) {
-			computeSize();
-		}
-		return cachedSize.get();
+		computeSize();
+		return size;
 	}
 
 	/**
@@ -673,10 +669,8 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public boolean isEmpty() {
-		if (!cachedSize.isPresent()) {
-			computeSize();
-		}
-		return cachedSize.get() == 0;
+		computeSize();
+		return size == 0;
 	}
 
 	/**
@@ -697,24 +691,18 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 			AbstractOperation operation;
 			final Optional<AbstractOperation> maybeOperation = operationEmitter.tryEmit();
 
-			int removedOps = 0;
-			int removedLeafOps = 0;
 			while (counter > 0 && maybeOperation.isPresent()) {
 				operation = maybeOperation.get();
 				ops.add(operation);
-				removedOps += 1;
-				removedLeafOps += operation.getLeafOperations().size();
 				counter -= 1;
 			}
-
-			updateCaches(-removedOps, -removedLeafOps);
 
 			raf = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
 			final long skip = operationEmitter.getOffset();
 			raf.seek(skip);
 			final byte[] bytes = asBytes(XmlTags.NEWLINE + XmlTags.CHANGE_PACKAGE_END);
 			raf.write(bytes);
-			raf.setLength(skip + bytes.length);			
+			raf.setLength(skip + bytes.length);
 
 			return ops;
 
@@ -734,20 +722,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		}
 	}
 
-	private void invalidateCaches() {
-		cachedSize = Optional.absent();
-		cachedLeafSize = Optional.absent();
-	}
-
-	private void updateCaches(int size, int leafSize) {
-		final int lSize = cachedSize.isPresent() ? cachedSize.get() : 0;
-		final int lLeafSize = cachedLeafSize.isPresent() ? cachedLeafSize.get() : 0;
-		final int newSize = lSize + size;
-		final int newLeafSize = lLeafSize + leafSize;
-		cachedSize = Optional.of(newSize >= 0 ? newSize : 0);
-		cachedLeafSize = Optional.of(newLeafSize >= 0 ? newLeafSize : 0);
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -755,7 +729,6 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public void clear() {
-		invalidateCaches();
 		Optional<RandomAccessFile> maybeRandomAccessFile = Optional.absent();
 		try {
 			final RandomAccessFile randomAccessFile = new RandomAccessFile(getTempFilePath(), "rw"); //$NON-NLS-1$
@@ -817,10 +790,8 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	 * @generated NOT
 	 */
 	public int leafSize() {
-		if (!cachedLeafSize.isPresent()) {
-			computeSize();
-		}
-		return cachedLeafSize.get();
+		computeSize();
+		return size + leafSize;
 	}
 
 	private void computeSize() {
@@ -850,7 +821,9 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 				}
 			}
 		}
-		updateCaches(size, leafSize);
+
+		this.leafSize = leafSize;
+		this.size = size;
 	}
 
 	/**

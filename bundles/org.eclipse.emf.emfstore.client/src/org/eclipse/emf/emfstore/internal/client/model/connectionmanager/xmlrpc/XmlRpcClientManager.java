@@ -11,6 +11,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.connectionmanager.xmlrpc;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -211,11 +213,11 @@ public class XmlRpcClientManager {
 
 		for (int i = 0; i < params.length; i++) {
 			final Object param = params[i];
-			if (AbstractChangePackage.class.isInstance(param) && !ChangePackageProxy.class.isInstance(param)) {
+			if (FileBasedChangePackage.class.isInstance(param) && !ChangePackageProxy.class.isInstance(param)) {
 				params[i] = uploadInFragments(
 					maybeSessionId.get(),
 					maybeProjectId.get(),
-					AbstractChangePackage.class.cast(param));
+					FileBasedChangePackage.class.cast(param));
 			}
 		}
 
@@ -254,17 +256,34 @@ public class XmlRpcClientManager {
 		final FileBasedChangePackage changePackage = VersioningFactory.eINSTANCE
 			.createFileBasedChangePackage();
 		changePackage.initialize(FileUtil.createLocationForTemporaryChangePackage());
+		final File file = new File(changePackage.getTempFilePath());
+		FileWriter writer = null;
+		try {
+			writer = new FileWriter(file);
 
-		ChangePackageEnvelope envelope;
-		do {
-			envelope = executeCall("downloadChangePackageFragment", ChangePackageEnvelope.class, new Object[] { //$NON-NLS-1$
-				maybeSession.get(),
+			ChangePackageEnvelope envelope;
+			do {
+				envelope = executeCall("downloadChangePackageFragment", ChangePackageEnvelope.class, new Object[] { //$NON-NLS-1$
+					maybeSession.get(),
 					proxy.getId(),
 					fragmentIndex
-			});
-			changePackage.addAll(envelope.getFragment());
-			fragmentIndex += 1;
-		} while (!envelope.isLast());
+				});
+				for (final String s : envelope.getFragment()) {
+					writer.write(s + "\n"); //$NON-NLS-1$
+				}
+				fragmentIndex += 1;
+			} while (!envelope.isLast());
+		} catch (final IOException ex) {
+			throw new ESException(Messages.XmlRpcClientManager_DownloadOfFragmentFailed, ex);
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (final IOException ex) {
+					throw new ESException(Messages.XmlRpcClientManager_DownloadOfFragmentFailed, ex);
+				}
+			}
+		}
 
 		try {
 			changePackage.setLogMessage(
@@ -277,8 +296,8 @@ public class XmlRpcClientManager {
 	}
 
 	private ChangePackageProxy uploadInFragments(SessionId sessionId,
-		ProjectId projectId, AbstractChangePackage changePackage)
-		throws ESException {
+		ProjectId projectId, FileBasedChangePackage changePackage)
+			throws ESException {
 
 		// get() is guarded
 		final Iterator<ChangePackageEnvelope> envelopes = ChangePackageUtil.splitChangePackage(
@@ -291,8 +310,7 @@ public class XmlRpcClientManager {
 				proxyId = uploadChangePackageFragment(
 					sessionId,
 					projectId,
-					envelopes.next()
-					);
+					envelopes.next());
 			}
 		} catch (final XmlRpcException ex) {
 			throw new ESException(Messages.XmlRpcClientManager_UploadChangePackageFragmentCallFailed, ex);
@@ -327,7 +345,7 @@ public class XmlRpcClientManager {
 		gzipCompressionEnabled = false;
 		final ESExtensionElement element = new ESExtensionPoint(
 			"org.eclipse.emf.emfstore.common.model.serializationOptions") //$NON-NLS-1$
-			.getFirst();
+				.getFirst();
 
 		if (element != null) {
 			gzipCompressionEnabled = element.getBoolean("GzipCompression"); //$NON-NLS-1$
