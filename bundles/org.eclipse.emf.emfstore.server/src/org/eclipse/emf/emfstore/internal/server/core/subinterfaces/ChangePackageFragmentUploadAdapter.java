@@ -11,8 +11,6 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core.subinterfaces;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
@@ -40,8 +38,8 @@ import com.google.common.base.Optional;
 public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 
 	// maps proxy ID to file-based change package
-	private final Map<String, File> proxyIdToChangePackageFragments = new LinkedHashMap<String, File>();
-	private final Map<String, File> proxyIdToCompletedChangePackages = new LinkedHashMap<String, File>();
+	private final Map<String, FileBasedChangePackage> proxyIdToChangePackageFragments = new LinkedHashMap<String, FileBasedChangePackage>();
+	private final Map<String, FileBasedChangePackage> proxyIdToCompletedChangePackages = new LinkedHashMap<String, FileBasedChangePackage>();
 
 	/**
 	 * Adds a single fragment.
@@ -52,28 +50,19 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 	 *            the actual fragment to be added
 	 * @throws ESException in case the fragment could not be added
 	 */
-	public void addFragment(String proxyId, List<String> fragment) throws ESException {
-		File file = proxyIdToChangePackageFragments.get(proxyId);
-		if (file == null) {
-			file = new File(FileUtil.createLocationForTemporaryChangePackage() + ".temp"); //$NON-NLS-1$
-			proxyIdToChangePackageFragments.put(proxyId, file);
+	public void addFragment(String proxyId, List<AbstractOperation> fragment) throws ESException {
+		FileBasedChangePackage fileBasedChangePackage = proxyIdToChangePackageFragments.get(proxyId);
+		if (fileBasedChangePackage == null) {
+			fileBasedChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+			fileBasedChangePackage.initialize(
+				FileUtil.createLocationForTemporaryChangePackage());
+			proxyIdToChangePackageFragments.put(proxyId, fileBasedChangePackage);
 		}
-		FileWriter writer = null;
+		fileBasedChangePackage.addAll(fragment);
 		try {
-			writer = new FileWriter(file);
-			for (final String str : fragment) {
-				writer.write(str + "\n"); //$NON-NLS-1$
-			}
+			fileBasedChangePackage.save();
 		} catch (final IOException ex) {
-			throw new ESException(Messages.ChangePackageFragmentUploadAdapter_SplittingFailed, ex);
-		} finally {
-			if (writer != null) {
-				try {
-					writer.close();
-				} catch (final IOException ex) {
-					throw new ESException(Messages.ChangePackageFragmentAdapter_SaveChangePackageFailed, ex);
-				}
-			}
+			throw new ESException(Messages.ChangePackageFragmentAdapter_SaveChangePackageFailed, ex);
 		}
 	}
 
@@ -85,8 +74,8 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 	 * @throws ESException in case
 	 */
 	public void markAsComplete(String proxyId) throws ESException {
-		final File possiblyCompletedChangePackage = proxyIdToCompletedChangePackages.get(proxyId);
-		final File fileBasedChangePackage = proxyIdToChangePackageFragments.get(proxyId);
+		final FileBasedChangePackage possiblyCompletedChangePackage = proxyIdToCompletedChangePackages.get(proxyId);
+		final FileBasedChangePackage fileBasedChangePackage = proxyIdToChangePackageFragments.get(proxyId);
 
 		if (possiblyCompletedChangePackage != null) {
 			throw new ESException(Messages.ChangePackageFragmentUploadAdapter_ChangePackageAlreadyComplete);
@@ -112,16 +101,11 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 	 * @return the aggregated {@link ChangePackage} as an {@link Optional}
 	 */
 	public Optional<ChangePackage> convertFileBasedToInMemoryChangePackage(String proxyId) {
-		final File file = proxyIdToCompletedChangePackages.get(proxyId);
-		if (file == null) {
+		final FileBasedChangePackage fileBasedChangePackage = proxyIdToCompletedChangePackages.get(proxyId);
+		if (fileBasedChangePackage == null) {
 			return Optional.absent();
 		}
-		final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		final String path = file.getAbsolutePath().substring(0,
-			file.getAbsolutePath().length() - ".temp".length()); //$NON-NLS-1$
-		cp.setFilePath(path);
-
-		final ESCloseableIterable<AbstractOperation> operationsHandle = cp.operations();
+		final ESCloseableIterable<AbstractOperation> operationsHandle = fileBasedChangePackage.operations();
 		final ChangePackage changePackage = VersioningFactory.eINSTANCE.createChangePackage();
 		try {
 			for (final AbstractOperation operation : operationsHandle.iterable()) {
@@ -142,21 +126,11 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 	 * @return the file based change package as an {@link Optional}
 	 */
 	public Optional<FileBasedChangePackage> getFileBasedChangePackage(String proxyId) {
-		final File file = proxyIdToCompletedChangePackages.get(proxyId);
-		if (file == null) {
+		final FileBasedChangePackage fileBasedChangePackage = proxyIdToCompletedChangePackages.get(proxyId);
+		if (fileBasedChangePackage == null) {
 			return Optional.absent();
 		}
-		final FileBasedChangePackage cp = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-		final String path = file.getAbsolutePath().substring(0,
-			file.getAbsolutePath().length() - ".temp".length()); //$NON-NLS-1$
-		cp.setFilePath(path);
-		try {
-			cp.save();
-		} catch (final IOException ex) {
-			// TODO: use checked exception?
-			throw new IllegalStateException(ex);
-		}
-		return Optional.of(cp);
+		return Optional.of(fileBasedChangePackage);
 	}
 
 	/**

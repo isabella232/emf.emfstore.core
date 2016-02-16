@@ -194,8 +194,8 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragmentCount" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragment" unique="false"
-          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="fragment" upperBound="-1"
+          eType="#//versioning/operations/AbstractOperation" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ChangePackageProxy" eSuperTypes="#//versioning/AbstractChangePackage">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

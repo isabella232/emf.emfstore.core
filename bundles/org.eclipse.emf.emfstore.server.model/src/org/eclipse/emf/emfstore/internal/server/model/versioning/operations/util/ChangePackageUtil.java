@@ -11,18 +11,15 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.io.LineIterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
@@ -74,12 +71,13 @@ public final class ChangePackageUtil {
 	 *            the max number of operations a single fragment may consists of
 	 * @return an iterator for the created fragments
 	 */
-	public static Iterator<ChangePackageEnvelope> splitChangePackage(final FileBasedChangePackage changePackage,
+	public static Iterator<ChangePackageEnvelope> splitChangePackage(final AbstractChangePackage changePackage,
 		final int changePackageFragmentSize) {
 
 		return new Iterator<ChangePackageEnvelope>() {
 
 			private int fragmentIndex;
+			private int currentOpIndex;
 			private int count;
 			private boolean isInitialized;
 			private ChangePackageEnvelope envelope;
@@ -114,31 +112,23 @@ public final class ChangePackageUtil {
 
 				if (envelope == null) {
 					envelope = VersioningFactory.eINSTANCE.createChangePackageEnvelope();
+					final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
+					cp.setLogMessage(ModelUtil.clone(changePackage.getLogMessage()));
 					envelope.setFragmentCount(count);
 				}
 
-				int envelopeSize = 0;
+				while (countLeafOperations(envelope.getFragment()) < changePackageFragmentSize
+					&& currentOpIndex < changePackage.size()) {
 
-				FileReader reader;
-				try {
-					reader = new FileReader(new File(changePackage.getTempFilePath()));
-					final LineIterator lineIterator = new LineIterator(reader);
-					final StringBuffer b = new StringBuffer();
-
-					while (envelopeSize < changePackageFragmentSize && lineIterator.hasNext()) {
-						final String nextLine = lineIterator.next();
-						envelope.getFragment().add(nextLine);
-						b.append(nextLine + "\n"); //$NON-NLS-1$
-						envelopeSize += 1;
-					}
-					b.toString();
-				} catch (final FileNotFoundException ex) {
-					throw new IllegalStateException(ex);
+					// FIXME: get(opIndex) might be slow
+					final AbstractOperation op = changePackage.get(currentOpIndex);
+					envelope.getFragment().add(ModelUtil.clone(op));
+					currentOpIndex += 1;
 				}
 
 				envelope.setFragmentIndex(fragmentIndex);
 
-				if (envelope.getFragment().size() == changePackageFragmentSize || fragmentIndex == 0) {
+				if (!envelope.getFragment().isEmpty() || fragmentIndex == 0) {
 					return true;
 				}
 

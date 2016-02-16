@@ -260,9 +260,8 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 *
 	 * <p>
-	 * This method is used to initialize {@link VersioningPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc
+	 * This method is used to initialize {@link VersioningPackage#eINSTANCE} when that field is accessed. Clients should
+	 * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 *
 	 * @see #eNS_URI
@@ -1049,8 +1048,8 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 	 *
 	 * @generated
 	 */
-	public EAttribute getChangePackageEnvelope_Fragment() {
-		return (EAttribute) changePackageEnvelopeEClass.getEStructuralFeatures().get(2);
+	public EReference getChangePackageEnvelope_Fragment() {
+		return (EReference) changePackageEnvelopeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1201,7 +1200,7 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		changePackageEnvelopeEClass = createEClass(CHANGE_PACKAGE_ENVELOPE);
 		createEAttribute(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT_INDEX);
 		createEAttribute(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT);
-		createEAttribute(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT);
+		createEReference(changePackageEnvelopeEClass, CHANGE_PACKAGE_ENVELOPE__FRAGMENT);
 
 		changePackageProxyEClass = createEClass(CHANGE_PACKAGE_PROXY);
 		createEAttribute(changePackageProxyEClass, CHANGE_PACKAGE_PROXY__ID);
@@ -1479,9 +1478,9 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		initEAttribute(getChangePackageEnvelope_FragmentCount(), ecorePackage.getEInt(), "fragmentCount", null, 1, 1, //$NON-NLS-1$
 			ChangePackageEnvelope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChangePackageEnvelope_Fragment(), ecorePackage.getEString(), "fragment", null, 0, -1, //$NON-NLS-1$
-			ChangePackageEnvelope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
+		initEReference(getChangePackageEnvelope_Fragment(), theOperationsPackage.getAbstractOperation(), null,
+			"fragment", null, 0, -1, ChangePackageEnvelope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(changePackageProxyEClass, ChangePackageProxy.class, "ChangePackageProxy", !IS_ABSTRACT, //$NON-NLS-1$
 			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

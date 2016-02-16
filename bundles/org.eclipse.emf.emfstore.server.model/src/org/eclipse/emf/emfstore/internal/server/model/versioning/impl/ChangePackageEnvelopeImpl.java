@@ -14,13 +14,17 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,15 +32,15 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl#getFragmentIndex
  * <em>Fragment Index</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl#getFragmentCount
  * <em>Fragment Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl#getFragment
- * <em>Fragment</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageEnvelopeImpl#getFragment <em>
+ * Fragment</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -86,7 +90,7 @@ public class ChangePackageEnvelopeImpl extends EObjectImpl implements ChangePack
 	protected int fragmentCount = FRAGMENT_COUNT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getFragment() <em>Fragment</em>}' attribute list.
+	 * The cached value of the '{@link #getFragment() <em>Fragment</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -94,7 +98,7 @@ public class ChangePackageEnvelopeImpl extends EObjectImpl implements ChangePack
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> fragment;
+	protected EList<AbstractOperation> fragment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,12 +177,27 @@ public class ChangePackageEnvelopeImpl extends EObjectImpl implements ChangePack
 	 *
 	 * @generated
 	 */
-	public EList<String> getFragment() {
+	public EList<AbstractOperation> getFragment() {
 		if (fragment == null) {
-			fragment = new EDataTypeEList<String>(String.class, this,
+			fragment = new EObjectContainmentEList.Resolving<AbstractOperation>(AbstractOperation.class, this,
 				VersioningPackage.CHANGE_PACKAGE_ENVELOPE__FRAGMENT);
 		}
 		return fragment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case VersioningPackage.CHANGE_PACKAGE_ENVELOPE__FRAGMENT:
+			return ((InternalEList<?>) getFragment()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -218,7 +237,7 @@ public class ChangePackageEnvelopeImpl extends EObjectImpl implements ChangePack
 			return;
 		case VersioningPackage.CHANGE_PACKAGE_ENVELOPE__FRAGMENT:
 			getFragment().clear();
-			getFragment().addAll((Collection<? extends String>) newValue);
+			getFragment().addAll((Collection<? extends AbstractOperation>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -282,8 +301,6 @@ public class ChangePackageEnvelopeImpl extends EObjectImpl implements ChangePack
 		result.append(fragmentIndex);
 		result.append(", fragmentCount: "); //$NON-NLS-1$
 		result.append(fragmentCount);
-		result.append(", fragment: "); //$NON-NLS-1$
-		result.append(fragment);
 		result.append(')');
 		return result.toString();
 	}

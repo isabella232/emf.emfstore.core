@@ -23,7 +23,6 @@ public final class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.emf.emfstore.internal.server.core.subinterfaces.messages"; //$NON-NLS-1$
 	public static String ChangePackageFragmentAdapter_SaveChangePackageFailed;
 	public static String ChangePackageFragmentProviderAdapter_NoFragmentsFound;
-	public static String ChangePackageFragmentUploadAdapter_SplittingFailed;
 	public static String ChangePackageFragmentUploadAdapter_ChangePackageAlreadyComplete;
 	public static String ChangePackageFragmentUploadAdapter_NoChangePackageFragmentsFound;
 	public static String EMFStorePropertiesSubInterfaceImpl_Project_Does_Not_Exist;

@@ -326,7 +326,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 		final ChangePackageFragmentProviderAdapter adapter = maybeAdapter.get();
 		final ChangePackageEnvelope envelope = VersioningFactory.eINSTANCE.createChangePackageEnvelope();
-		final List<String> fragment = adapter.getFragment(proxyId, fragmentIndex);
+		final List<AbstractOperation> fragment = adapter.getFragment(proxyId, fragmentIndex);
 
 		envelope.getFragment().addAll(fragment);
 		envelope.setFragmentCount(adapter.getFragmentSize(proxyId));

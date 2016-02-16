@@ -252,10 +252,10 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 				results[i] = adjustResult(sessionId, results[i]);
 			}
 			return results;
-		} else if (FileBasedChangePackage.class.isInstance(result) && !ChangePackageProxy.class.isInstance(result)) {
+		} else if (AbstractChangePackage.class.isInstance(result) && !ChangePackageProxy.class.isInstance(result)) {
 			final ChangePackageProxy changePackageProxy = createAndRegisterChangePackageProxy(
 				sessionId,
-				FileBasedChangePackage.class.cast(result));
+				AbstractChangePackage.class.cast(result));
 			return changePackageProxy;
 		}
 
@@ -275,7 +275,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	 * @return
 	 */
 	private ChangePackageProxy createAndRegisterChangePackageProxy(final SessionId session,
-		final FileBasedChangePackage changePackage) {
+		final AbstractChangePackage changePackage) {
 
 		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(session.getId());
 		final SessionId sessionId = APIUtil.toInternal(SessionId.class, resolvedSession);
