@@ -269,7 +269,7 @@ public class XmlRpcClientManager {
 					fragmentIndex
 				});
 				for (final String s : envelope.getFragment()) {
-					writer.write(s + "\n"); //$NON-NLS-1$
+					writer.write(s + System.getProperty("line.separator")); //$NON-NLS-1$
 				}
 				fragmentIndex += 1;
 			} while (!envelope.isLast());

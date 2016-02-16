@@ -14,12 +14,16 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.uti
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
@@ -81,30 +85,8 @@ public final class ChangePackageUtil {
 
 			private int fragmentIndex;
 			private int count;
-			private boolean isInitialized;
 			private ChangePackageEnvelope envelope;
-
-			private void init() {
-				int leafSizeCounter = 0;
-				final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
-				try {
-					for (final AbstractOperation operation : operations.iterable()) {
-						final int countLeafOperations = countLeafOperations(operation);
-						leafSizeCounter += countLeafOperations;
-						if (leafSizeCounter < changePackageFragmentSize) {
-							continue;
-						}
-						leafSizeCounter = 0;
-						count += 1;
-					}
-				} finally {
-					operations.close();
-				}
-				if (leafSizeCounter != 0 || count == 0) {
-					count += 1;
-				}
-				isInitialized = true;
-			}
+			private boolean isInitialized;
 
 			public boolean hasNext() {
 
@@ -117,32 +99,70 @@ public final class ChangePackageUtil {
 					envelope.setFragmentCount(count);
 				}
 
-				int envelopeSize = 0;
-
-				FileReader reader;
-				try {
-					reader = new FileReader(new File(changePackage.getTempFilePath()));
-					final LineIterator lineIterator = new LineIterator(reader);
-					final StringBuffer b = new StringBuffer();
-
-					while (envelopeSize < changePackageFragmentSize && lineIterator.hasNext()) {
-						final String nextLine = lineIterator.next();
-						envelope.getFragment().add(nextLine);
-						b.append(nextLine + "\n"); //$NON-NLS-1$
-						envelopeSize += 1;
-					}
-					b.toString();
-				} catch (final FileNotFoundException ex) {
-					throw new IllegalStateException(ex);
-				}
+				final List<String> readLines = readLines(fragmentIndex * changePackageFragmentSize, changePackage,
+					changePackageFragmentSize);
+				envelope.getFragment().addAll(readLines);
 
 				envelope.setFragmentIndex(fragmentIndex);
 
-				if (envelope.getFragment().size() == changePackageFragmentSize || fragmentIndex == 0) {
+				if (!envelope.getFragment().isEmpty() || fragmentIndex == 0) {
 					return true;
 				}
 
 				return false;
+			}
+
+			private void init() {
+				LineNumberReader lineNumberReader = null;
+				try {
+					lineNumberReader = new LineNumberReader(new FileReader(new File(changePackage.getTempFilePath())));
+					lineNumberReader.skip(Long.MAX_VALUE);
+					final int lines = lineNumberReader.getLineNumber() + 1;
+					count = lines / changePackageFragmentSize;
+					if (lines % changePackageFragmentSize != 0) {
+						count += 1;
+					}
+				} catch (final FileNotFoundException ex) {
+					throw new IllegalStateException(ex);
+				} catch (final IOException ex) {
+					throw new IllegalStateException(ex);
+				} finally {
+					IOUtils.closeQuietly(lineNumberReader);
+				}
+				isInitialized = true;
+			}
+
+			private List<String> readLines(int from, final FileBasedChangePackage changePackage,
+				final int changePackageFragmentSize) {
+
+				int readLines = 0;
+				FileReader reader;
+				final List<String> lines = new ArrayList<String>();
+
+				try {
+					reader = new FileReader(new File(changePackage.getTempFilePath()));
+					final LineIterator lineIterator = new LineIterator(reader);
+					int read = 0;
+
+					while (read < from) {
+						if (!lineIterator.hasNext()) {
+							return lines;
+						}
+						lineIterator.next();
+						read += 1;
+					}
+
+					while (readLines < changePackageFragmentSize && lineIterator.hasNext()) {
+						final String nextLine = lineIterator.next();
+						readLines += 1;
+						lines.add(nextLine);
+					}
+
+				} catch (final FileNotFoundException ex) {
+					throw new IllegalStateException(ex);
+				}
+
+				return lines;
 			}
 
 			public ChangePackageEnvelope next() {
