@@ -268,22 +268,28 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		prepareProxy(proxy, operation);
 	}
 
+	private ImageProxy.RGB[] createColorData(RGB[] colors) {
+		ImageProxy.RGB[] result = null;
+		if (colors != null) {
+			result = new ImageProxy.RGB[colors.length];
+			for (int i = 0; i < colors.length; i++) {
+				result[i] = new ImageProxy.RGB(colors[i].red, colors[i].green, colors[i].blue);
+			}
+		}
+		return result;
+	}
+
 	private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
-		final ImageData imageData = changePackageVisualizationHelper
-			.getImage(adapterFactoryLabelProvider, operation)
+		final ImageData imageData = changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation)
 			.getImageData();
-		final ImageProxy imageProxy = ImageProxy.create()
-			.setWitdh(imageData.width)
-			.setHeight(imageData.height)
-			.setDepth(imageData.depth)
-			.setRedMask(imageData.palette.redMask)
-			.setGreenMask(imageData.palette.greenMask)
-			.setBlueMask(imageData.palette.blueMask)
-			.setScanlinePad(imageData.scanlinePad)
-			.setData(imageData.data);
+		final ImageProxy imageProxy = ImageProxy.create().setWitdh(imageData.width).setHeight(imageData.height)
+			.setDepth(imageData.depth).setRedMask(imageData.palette.redMask).setGreenMask(imageData.palette.greenMask)
+			.setBlueMask(imageData.palette.blueMask).setScanlinePad(imageData.scanlinePad).setData(imageData.data);
+		if (!imageData.palette.isDirect) {
+			imageProxy.setPaletteColors(createColorData(imageData.palette.colors));
+		}
 		proxy.setImage(imageProxy);
-		proxy.setLabel(
-			changePackageVisualizationHelper.getDescription(operation));
+		proxy.setLabel(changePackageVisualizationHelper.getDescription(operation));
 
 		if (CompositeOperation.class.isInstance(operation)) {
 			final CompositeOperation compositeOperation = (CompositeOperation) operation;
