@@ -60,9 +60,9 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 		}
 		FileWriter writer = null;
 		try {
-			writer = new FileWriter(file);
+			writer = new FileWriter(file, true);
 			for (final String str : fragment) {
-				writer.write(str + "\n"); //$NON-NLS-1$
+				writer.write(str + System.getProperty("line.separator")); //$NON-NLS-1$
 			}
 		} catch (final IOException ex) {
 			throw new ESException(Messages.ChangePackageFragmentUploadAdapter_SplittingFailed, ex);

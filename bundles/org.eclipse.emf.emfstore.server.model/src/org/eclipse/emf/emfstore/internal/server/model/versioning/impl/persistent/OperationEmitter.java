@@ -150,7 +150,7 @@ public class OperationEmitter implements Closeable {
 	/**
 	 * Since an XML Resource needs exactly one root object, we have to write a dummy object to the stream.
 	 *
-	 * @param pos the outputstream
+	 * @param pos the {@link PipedOutputStream}
 	 * @throws IOException in case there is a problem during write
 	 */
 	private static void writeDummyResourceToStream(PipedOutputStream pos) throws IOException {
@@ -224,6 +224,7 @@ public class OperationEmitter implements Closeable {
 
 		if (currentOpIndex < 0) {
 			try {
+				writeDummyResourceToStream(pos);
 				pos.close();
 			} catch (final IOException ex) {
 				ModelUtil.logException(ex);
