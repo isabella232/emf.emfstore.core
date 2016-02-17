@@ -1,13 +1,8 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
- * Technische Universitaet Muenchen.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- * Shterev
+ * Copyright (c) 2008-2011 Chair for Applied Software Engineering, Technische Universitaet Muenchen. All rights
+ * reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public
+ * License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ * Contributors: Shterev
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.scm;
 
@@ -48,6 +43,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -57,431 +53,417 @@ import org.eclipse.swt.widgets.Display;
  */
 public class SCMLabelProvider extends ColumnLabelProvider {
 
-	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
+  private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
 
-	private static final String ELEMENT_NOT_FOUND = Messages.SCMLabelProvider_InsufficientInformation;
-	/**
-	 * String to display as info for Local revisions.
-	 */
-	protected static final String LOCAL_REVISION = Messages.SCMLabelProvider_LocalRevision;
+  private static final String ELEMENT_NOT_FOUND = Messages.SCMLabelProvider_InsufficientInformation;
+  /**
+   * String to display as info for Local revisions.
+   */
+  protected static final String LOCAL_REVISION = Messages.SCMLabelProvider_LocalRevision;
 
-	private final List<OperationId> highlighted;
+  private final List<OperationId> highlighted;
 
-	private ChangePackageVisualizationHelper changePackageVisualizationHelper;
-	private final Image baseRevision;
-	private final Image currentRevision;
-	private final Image headRevision;
+  private ChangePackageVisualizationHelper changePackageVisualizationHelper;
+  private final Image baseRevision;
+  private final Image currentRevision;
+  private final Image headRevision;
 
-	private ComposedAdapterFactory adapterFactory;
-	private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
-	private Project project;
+  private ComposedAdapterFactory adapterFactory;
+  private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
+  private Project project;
 
-	/**
-	 * Default constructor.
-	 *
-	 * @param project
-	 *            the project that is used to resolve revision numbers
-	 */
-	public SCMLabelProvider(Project project) {
-		super();
-		this.project = project;
-		highlighted = new ArrayList<OperationId>();
+  /**
+   * Default constructor.
+   *
+   * @param project the project that is used to resolve revision numbers
+   */
+  public SCMLabelProvider(Project project) {
+    super();
+    this.project = project;
+    highlighted = new ArrayList<OperationId>();
 
-		baseRevision = Activator.getImageDescriptor("icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
-		currentRevision = Activator.getImageDescriptor("icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
-		headRevision = Activator.getImageDescriptor("icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
-		init();
-	}
+    baseRevision = Activator.getImageDescriptor("icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
+    currentRevision = Activator.getImageDescriptor("icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
+    headRevision = Activator.getImageDescriptor("icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
+    init();
+  }
 
-	private void init() {
-		if (adapterFactory == null) {
-			adapterFactory = new ComposedAdapterFactory(
-				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		}
-		if (adapterFactoryLabelProvider == null) {
-			adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
-		}
-	}
+  private void init() {
+    if (adapterFactory == null) {
+      adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+    }
+    if (adapterFactoryLabelProvider == null) {
+      adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+    }
+  }
 
-	/**
-	 * Default constructor.
-	 */
-	public SCMLabelProvider() {
-		this(null);
-	}
+  /**
+   * Default constructor.
+   */
+  public SCMLabelProvider() {
+    this(null);
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getText(Object element) {
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String getText(Object element) {
 
-		String ret = null;
-		if (element instanceof OperationProxy) {
-			final OperationProxy proxy = (OperationProxy) element;
-			return getText(proxy);
-		} else if (element instanceof HistoryInfo) {
-			final HistoryInfo historyInfo = (HistoryInfo) element;
-			return getText(historyInfo);
-		} else if (element instanceof AbstractOperation
-			&& changePackageVisualizationHelper != null) {
-			ret = changePackageVisualizationHelper
-				.getDescription((AbstractOperation) element);
-		} else if (element instanceof ModelElementId
-			&& changePackageVisualizationHelper != null) {
-			final EObject modelElement = changePackageVisualizationHelper
-				.getModelElement((ModelElementId) element);
-			if (modelElement != null) {
-				ret = adapterFactoryLabelProvider.getText(modelElement);
-			} else {
-				return ELEMENT_NOT_FOUND;
-			}
-		} else if (element instanceof ChangePackage) {
-			final ChangePackage changePackage = (ChangePackage) element;
-			return getText(changePackage);
-		} else if (element instanceof FileBasedChangePackage) {
-			final FileBasedChangePackage changePackage = (FileBasedChangePackage) element;
-			return getText(changePackage);
-		} else if (element instanceof EObject) {
-			// TODO: rather reference virtual node directly??
-			ret = adapterFactoryLabelProvider.getText(element);
-		} else if (element instanceof VirtualNode<?>) {
-			// TreeNode node = (TreeNode) element;
-			// must be node containing filtered operations
-			// if (node.getValue() instanceof ChangePackage) {
-			return EClassFilter.INSTANCE.getFilterLabel();
-			// }
-		} else {
-			ret = super.getText(element);
-		}
+    String ret = null;
+    if (element instanceof OperationProxy) {
+      final OperationProxy proxy = (OperationProxy) element;
+      return getText(proxy);
+    } else if (element instanceof HistoryInfo) {
+      final HistoryInfo historyInfo = (HistoryInfo) element;
+      return getText(historyInfo);
+    } else if (element instanceof AbstractOperation && changePackageVisualizationHelper != null) {
+      ret = changePackageVisualizationHelper.getDescription((AbstractOperation) element);
+    } else if (element instanceof ModelElementId && changePackageVisualizationHelper != null) {
+      final EObject modelElement = changePackageVisualizationHelper.getModelElement((ModelElementId) element);
+      if (modelElement != null) {
+        ret = adapterFactoryLabelProvider.getText(modelElement);
+      } else {
+        return ELEMENT_NOT_FOUND;
+      }
+    } else if (element instanceof ChangePackage) {
+      final ChangePackage changePackage = (ChangePackage) element;
+      return getText(changePackage);
+    } else if (element instanceof FileBasedChangePackage) {
+      final FileBasedChangePackage changePackage = (FileBasedChangePackage) element;
+      return getText(changePackage);
+    } else if (element instanceof EObject) {
+      // TODO: rather reference virtual node directly??
+      ret = adapterFactoryLabelProvider.getText(element);
+    } else if (element instanceof VirtualNode<?>) {
+      // TreeNode node = (TreeNode) element;
+      // must be node containing filtered operations
+      // if (node.getValue() instanceof ChangePackage) {
+      return EClassFilter.INSTANCE.getFilterLabel();
+      // }
+    } else {
+      ret = super.getText(element);
+    }
 
-		return ret;
-	}
+    return ret;
+  }
 
-	private String getText(AbstractChangePackage changePackage) {
-		final StringBuilder builder = new StringBuilder();
-		builder.append(Messages.SCMLabelProvider_ChangePackage);
-		if (changePackage.getLogMessage() != null) {
-			final LogMessage logMessage = changePackage.getLogMessage();
-			builder.append(" ["); //$NON-NLS-1$
-			builder.append(logMessage.getAuthor());
-			final Date clientDate = logMessage.getClientDate();
-			if (clientDate != null) {
-				builder.append(" @ "); //$NON-NLS-1$
-				builder.append(dateFormat.format(clientDate));
-			}
-			builder.append("] "); //$NON-NLS-1$
-			builder.append(logMessage.getMessage());
-		}
-		return builder.toString();
-	}
+  private String getText(AbstractChangePackage changePackage) {
+    final StringBuilder builder = new StringBuilder();
+    builder.append(Messages.SCMLabelProvider_ChangePackage);
+    if (changePackage.getLogMessage() != null) {
+      final LogMessage logMessage = changePackage.getLogMessage();
+      builder.append(" ["); //$NON-NLS-1$
+      builder.append(logMessage.getAuthor());
+      final Date clientDate = logMessage.getClientDate();
+      if (clientDate != null) {
+        builder.append(" @ "); //$NON-NLS-1$
+        builder.append(dateFormat.format(clientDate));
+      }
+      builder.append("] "); //$NON-NLS-1$
+      builder.append(logMessage.getMessage());
+    }
+    return builder.toString();
+  }
 
-	/**
-	 * Gets the text for a history info. This may be overridden by subclasses to
-	 * change the behavior (e.g. if info should be distributed across multiply
-	 * label providers)
-	 *
-	 * @param historyInfo
-	 *            The historInfo the text is retrieved for.
-	 * @return The text for the given historyInfo.
-	 */
-	protected String getText(HistoryInfo historyInfo) {
-		if (historyInfo.getPrimarySpec() != null
-			&& historyInfo.getPrimarySpec().getIdentifier() == -1) {
-			return LOCAL_REVISION;
-		}
+  /**
+   * Gets the text for a history info. This may be overridden by subclasses to change the behavior (e.g. if info should
+   * be distributed across multiply label providers)
+   *
+   * @param historyInfo The historInfo the text is retrieved for.
+   * @return The text for the given historyInfo.
+   */
+  protected String getText(HistoryInfo historyInfo) {
+    if (historyInfo.getPrimarySpec() != null && historyInfo.getPrimarySpec().getIdentifier() == -1) {
+      return LOCAL_REVISION;
+    }
 
-		String baseVersion = StringUtils.EMPTY;
-		if (historyInfo.getPrimarySpec().getIdentifier() == ESWorkspaceProviderImpl
-			.getProjectSpace(project).getBaseVersion().getIdentifier()) {
-			baseVersion = "*"; //$NON-NLS-1$
-		}
-		final StringBuilder builder = new StringBuilder();
+    String baseVersion = StringUtils.EMPTY;
+    if (historyInfo.getPrimarySpec().getIdentifier() == ESWorkspaceProviderImpl.getProjectSpace(project)
+      .getBaseVersion().getIdentifier()) {
+      baseVersion = "*"; //$NON-NLS-1$
+    }
+    final StringBuilder builder = new StringBuilder();
 
-		if (!historyInfo.getTagSpecs().isEmpty()) {
-			builder.append("["); //$NON-NLS-1$
-			for (final TagVersionSpec versionSpec : historyInfo.getTagSpecs()) {
-				builder.append(versionSpec.getName());
-				builder.append(","); //$NON-NLS-1$
-			}
-			builder.replace(builder.length() - 1, builder.length(), "] "); //$NON-NLS-1$
-		}
+    if (!historyInfo.getTagSpecs().isEmpty()) {
+      builder.append("["); //$NON-NLS-1$
+      for (final TagVersionSpec versionSpec : historyInfo.getTagSpecs()) {
+        builder.append(versionSpec.getName());
+        builder.append(","); //$NON-NLS-1$
+      }
+      builder.replace(builder.length() - 1, builder.length(), "] "); //$NON-NLS-1$
+    }
 
-		builder.append(baseVersion);
-		builder.append(Messages.SCMLabelProvider_Version);
-		builder.append(historyInfo.getPrimarySpec().getIdentifier());
-		LogMessage logMessage = null;
+    builder.append(baseVersion);
+    builder.append(Messages.SCMLabelProvider_Version);
+    builder.append(historyInfo.getPrimarySpec().getIdentifier());
+    LogMessage logMessage = null;
 
-		if (historyInfo.getLogMessage() != null) {
-			logMessage = historyInfo.getLogMessage();
-		} else if (historyInfo.getChangePackage() != null
-			&& historyInfo.getChangePackage().getLogMessage() != null) {
-			logMessage = historyInfo.getChangePackage().getLogMessage();
-		}
-		if (logMessage != null) {
-			builder.append(" ["); //$NON-NLS-1$
-			builder.append(logMessage.getAuthor());
-			final Date clientDate = logMessage.getClientDate();
-			if (clientDate != null) {
-				builder.append(" @ "); //$NON-NLS-1$
-				builder.append(dateFormat.format(clientDate));
-			}
-			builder.append("] "); //$NON-NLS-1$
-			builder.append(logMessage.getMessage());
-		}
-		return builder.toString();
-	}
+    if (historyInfo.getLogMessage() != null) {
+      logMessage = historyInfo.getLogMessage();
+    } else if (historyInfo.getChangePackage() != null && historyInfo.getChangePackage().getLogMessage() != null) {
+      logMessage = historyInfo.getChangePackage().getLogMessage();
+    }
+    if (logMessage != null) {
+      builder.append(" ["); //$NON-NLS-1$
+      builder.append(logMessage.getAuthor());
+      final Date clientDate = logMessage.getClientDate();
+      if (clientDate != null) {
+        builder.append(" @ "); //$NON-NLS-1$
+        builder.append(dateFormat.format(clientDate));
+      }
+      builder.append("] "); //$NON-NLS-1$
+      builder.append(logMessage.getMessage());
+    }
+    return builder.toString();
+  }
 
-	private String getText(OperationProxy proxy) {
-		if (!proxy.isLabelProviderReady()) {
-			initProxy(proxy);
-		}
-		return proxy.getLabel();
-	}
+  private String getText(OperationProxy proxy) {
+    if (!proxy.isLabelProviderReady()) {
+      initProxy(proxy);
+    }
+    return proxy.getLabel();
+  }
 
-	private ImageData createImageFromProxy(OperationProxy proxy) {
-		if (!proxy.isLabelProviderReady()) {
-			initProxy(proxy);
-		}
-		final ImageProxy imageProxy = proxy.getImage();
-		final ImageData imageData = new ImageData(imageProxy.getWidth(),
-			imageProxy.getHeight(),
-			imageProxy.getDepth(),
-			new PaletteData(imageProxy.getRedMask(), imageProxy.getGreenMask(), imageProxy.getBlueMask()),
-			imageProxy.getScanlinePad(),
-			imageProxy.getData());
-		return imageData;
-	}
+  private ImageData createImageFromProxy(OperationProxy proxy) {
+    if (!proxy.isLabelProviderReady()) {
+      initProxy(proxy);
+    }
+    final ImageProxy imageProxy = proxy.getImage();
+    final ImageData imageData = new ImageData(imageProxy.getWidth(), imageProxy.getHeight(), imageProxy.getDepth(),
+      createPaletteData(imageProxy), imageProxy.getScanlinePad(), imageProxy.getData());
+    return imageData;
+  }
 
-	private void initProxy(OperationProxy proxy) {
-		final FileBasedChangePackage changePackage = getChangePackage(proxy);
-		final AbstractOperation operation = changePackage.get(proxy.getIndex());
-		prepareProxy(proxy, operation);
-	}
+  private PaletteData createPaletteData(final ImageProxy imageProxy) {
+    if (imageProxy.isDirect()) {
+      return new PaletteData(imageProxy.getRedMask(), imageProxy.getGreenMask(), imageProxy.getBlueMask());
+    } else {
+      RGB[] colors = new RGB[imageProxy.getPaletteColors().length];
+      for (int i = 0; i < imageProxy.getPaletteColors().length; i++) {
+        ImageProxy.RGB rgb = imageProxy.getPaletteColors()[i];
+        colors[i] = new RGB(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+      }
+      return new PaletteData(colors);
+    }
+  }
 
-	private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
-		final ImageData imageData = changePackageVisualizationHelper
-			.getImage(adapterFactoryLabelProvider, operation)
-			.getImageData();
-		final ImageProxy imageProxy = ImageProxy.create()
-			.setWitdh(imageData.width)
-			.setHeight(imageData.height)
-			.setDepth(imageData.depth)
-			.setRedMask(imageData.palette.redMask)
-			.setGreenMask(imageData.palette.greenMask)
-			.setBlueMask(imageData.palette.blueMask)
-			.setScanlinePad(imageData.scanlinePad)
-			.setData(imageData.data);
-		proxy.setImage(imageProxy);
-		proxy.setLabel(
-			changePackageVisualizationHelper.getDescription(operation));
+  private void initProxy(OperationProxy proxy) {
+    final FileBasedChangePackage changePackage = getChangePackage(proxy);
+    final AbstractOperation operation = changePackage.get(proxy.getIndex());
+    prepareProxy(proxy, operation);
+  }
 
-		if (CompositeOperation.class.isInstance(operation)) {
-			final CompositeOperation compositeOperation = (CompositeOperation) operation;
-			final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
-			final EList<OperationProxy> proxies = proxy.getProxies();
+  private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
+    final ImageData imageData = changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation)
+      .getImageData();
+    final ImageProxy imageProxy = ImageProxy.create().setWitdh(imageData.width).setHeight(imageData.height)
+      .setDepth(imageData.depth).setRedMask(imageData.palette.redMask).setGreenMask(imageData.palette.greenMask)
+      .setBlueMask(imageData.palette.blueMask).setScanlinePad(imageData.scanlinePad).setData(imageData.data);
+    if (!imageData.palette.isDirect) {
+      imageProxy.setPaletteColors(createColorData(imageData.palette.colors));
+    }
+    proxy.setImage(imageProxy);
+    proxy.setLabel(changePackageVisualizationHelper.getDescription(operation));
 
-			final Iterator<AbstractOperation> subOperationsIterator = subOperations.iterator();
-			final Iterator<OperationProxy> proxiesIterator = proxies.iterator();
+    if (CompositeOperation.class.isInstance(operation)) {
+      final CompositeOperation compositeOperation = (CompositeOperation) operation;
+      final EList<AbstractOperation> subOperations = compositeOperation.getSubOperations();
+      final EList<OperationProxy> proxies = proxy.getProxies();
 
-			while (subOperationsIterator.hasNext()) {
-				final AbstractOperation op = subOperationsIterator.next();
-				final OperationProxy p = proxiesIterator.next();
-				prepareProxy(p, op);
-			}
-		}
-	}
+      final Iterator<AbstractOperation> subOperationsIterator = subOperations.iterator();
+      final Iterator<OperationProxy> proxiesIterator = proxies.iterator();
 
-	private FileBasedChangePackage getChangePackage(OperationProxy proxy) {
-		return ModelUtil.getParent(FileBasedChangePackage.class, proxy);
-	}
+      while (subOperationsIterator.hasNext()) {
+        final AbstractOperation op = subOperationsIterator.next();
+        final OperationProxy p = proxiesIterator.next();
+        prepareProxy(p, op);
+      }
+    }
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Color getForeground(Object element) {
+  private ImageProxy.RGB[] createColorData(RGB[] colors) {
+    ImageProxy.RGB[] result = null;
+    if (colors != null) {
+      result = new ImageProxy.RGB[colors.length];
+      for (int i = 0; i < colors.length; i++) {
+        result[i] = new ImageProxy.RGB(colors[i].red, colors[i].green, colors[i].blue);
+      }
+    }
+    return result;
+  }
 
-		if (element instanceof AbstractOperation) {
-			final AbstractOperation operation = (AbstractOperation) element;
-			if (highlighted.contains(operation.getOperationId())) {
-				return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
-			}
-		}
+  private FileBasedChangePackage getChangePackage(OperationProxy proxy) {
+    return ModelUtil.getParent(FileBasedChangePackage.class, proxy);
+  }
 
-		return super.getForeground(element);
-	}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Color getForeground(Object element) {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Font getFont(Object element) {
+    if (element instanceof AbstractOperation) {
+      final AbstractOperation operation = (AbstractOperation) element;
+      if (highlighted.contains(operation.getOperationId())) {
+        return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+      }
+    }
 
-		final Font italic = JFaceResources.getFontRegistry().getItalic(
-			JFaceResources.DIALOG_FONT);
-		final Font bold = JFaceResources.getFontRegistry().getBold(
-			JFaceResources.DIALOG_FONT);
+    return super.getForeground(element);
+  }
 
-		String text = getText(element);
-		if (text == null) {
-			text = StringUtils.EMPTY;
-		}
-		if (element instanceof HistoryInfo) {
-			if (text.equals(LOCAL_REVISION)) {
-				return italic;
-			}
-			final HistoryInfo historyInfo = (HistoryInfo) element;
-			if (historyInfo.getPrimarySpec().getIdentifier() == ESWorkspaceProviderImpl
-				.getProjectSpace(project).getBaseVersion().getIdentifier()) {
-				return bold;
-			}
-		} else if (element instanceof ModelElementId) {
-			if (text.equals(ELEMENT_NOT_FOUND)) {
-				return italic;
-			}
-		} else if (element instanceof VirtualNode<?>) {
-			return italic;
-		}
-		if (element instanceof EObject
-			&& ((EObject) element).eContainer() instanceof AbstractOperation) {
-			final AbstractOperation op = (AbstractOperation) ((EObject) element)
-				.eContainer();
-			if (element instanceof ModelElementId
-				&& element.equals(op.getModelElementId())) {
-				return bold;
-			}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Font getFont(Object element) {
 
-			final EObject modelElement = (EObject) element;
-			final Project project = ModelUtil.getProject(modelElement);
-			if (project != null
-				&& project.getModelElementId(modelElement).equals(
-					op.getModelElementId())) {
-				return bold;
-			}
-		}
-		return null;
-	}
+    final Font italic = JFaceResources.getFontRegistry().getItalic(JFaceResources.DIALOG_FONT);
+    final Font bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DIALOG_FONT);
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Image getImage(Object element) {
+    String text = getText(element);
+    if (text == null) {
+      text = StringUtils.EMPTY;
+    }
+    if (element instanceof HistoryInfo) {
+      if (text.equals(LOCAL_REVISION)) {
+        return italic;
+      }
+      final HistoryInfo historyInfo = (HistoryInfo) element;
+      if (historyInfo.getPrimarySpec().getIdentifier() == ESWorkspaceProviderImpl.getProjectSpace(project)
+        .getBaseVersion().getIdentifier()) {
+        return bold;
+      }
+    } else if (element instanceof ModelElementId) {
+      if (text.equals(ELEMENT_NOT_FOUND)) {
+        return italic;
+      }
+    } else if (element instanceof VirtualNode<?>) {
+      return italic;
+    }
+    if (element instanceof EObject && ((EObject) element).eContainer() instanceof AbstractOperation) {
+      final AbstractOperation op = (AbstractOperation) ((EObject) element).eContainer();
+      if (element instanceof ModelElementId && element.equals(op.getModelElementId())) {
+        return bold;
+      }
 
-		if (element instanceof OperationProxy) {
-			final OperationProxy proxy = (OperationProxy) element;
-			final ImageData imageData = createImageFromProxy(proxy);
-			final Image swtImage = new Image(
-				Display.getDefault(),
-				imageData);
-			return swtImage;
-		} else if (element instanceof ModelElementId) {
-			return adapterFactoryLabelProvider
-				.getImage(changePackageVisualizationHelper
-					.getModelElement((ModelElementId) element));
-		} else if (element instanceof HistoryInfo) {
-			final String text = getText(element);
-			if (text.equals(LOCAL_REVISION)) {
-				return currentRevision;
-			}
-			if (text.matches("\\[.*BASE.*\\].*")) { //$NON-NLS-1$
-				return baseRevision;
-			}
-			if (text.matches("\\[.*HEAD.*\\].*")) { //$NON-NLS-1$
-				return headRevision;
-			}
-		}
-		if (element instanceof CompositeOperation
-			&& ((CompositeOperation) element).getMainOperation() != null) {
-			return changePackageVisualizationHelper.getImage(
-				adapterFactoryLabelProvider,
-				((CompositeOperation) element).getMainOperation());
-		}
+      final EObject modelElement = (EObject) element;
+      final Project project = ModelUtil.getProject(modelElement);
+      if (project != null && project.getModelElementId(modelElement).equals(op.getModelElementId())) {
+        return bold;
+      }
+    }
+    return null;
+  }
 
-		if (element instanceof AbstractOperation) {
-			return changePackageVisualizationHelper.getImage(
-				adapterFactoryLabelProvider, (AbstractOperation) element);
-		}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Image getImage(Object element) {
 
-		return adapterFactoryLabelProvider.getImage(element);
-	}
+    if (element instanceof OperationProxy) {
+      final OperationProxy proxy = (OperationProxy) element;
+      final ImageData imageData = createImageFromProxy(proxy);
+      final Image swtImage = new Image(Display.getDefault(), imageData);
+      return swtImage;
+    } else if (element instanceof ModelElementId) {
+      return adapterFactoryLabelProvider
+        .getImage(changePackageVisualizationHelper.getModelElement((ModelElementId) element));
+    } else if (element instanceof HistoryInfo) {
+      final String text = getText(element);
+      if (text.equals(LOCAL_REVISION)) {
+        return currentRevision;
+      }
+      if (text.matches("\\[.*BASE.*\\].*")) { //$NON-NLS-1$
+        return baseRevision;
+      }
+      if (text.matches("\\[.*HEAD.*\\].*")) { //$NON-NLS-1$
+        return headRevision;
+      }
+    }
+    if (element instanceof CompositeOperation && ((CompositeOperation) element).getMainOperation() != null) {
+      return changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider,
+        ((CompositeOperation) element).getMainOperation());
+    }
 
-	/**
-	 * @param changePackageVisualizationHelper
-	 *            the changePackageVisualizationHelper to set
-	 */
-	public void setChangePackageVisualizationHelper(
-		ChangePackageVisualizationHelper changePackageVisualizationHelper) {
-		this.changePackageVisualizationHelper = changePackageVisualizationHelper;
-	}
+    if (element instanceof AbstractOperation) {
+      return changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, (AbstractOperation) element);
+    }
 
-	/**
-	 * @return the changePackageVisualizationHelper
-	 */
-	public ChangePackageVisualizationHelper getChangePackageVisualizationHelper() {
-		return changePackageVisualizationHelper;
-	}
+    return adapterFactoryLabelProvider.getImage(element);
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getToolTipText(Object element) {
-		final HistoryInfo historyInfo = ModelUtil.getParent(HistoryInfo.class,
-			(EObject) element);
-		return getText(historyInfo);
-	}
+  /**
+   * @param changePackageVisualizationHelper the changePackageVisualizationHelper to set
+   */
+  public void setChangePackageVisualizationHelper(ChangePackageVisualizationHelper changePackageVisualizationHelper) {
+    this.changePackageVisualizationHelper = changePackageVisualizationHelper;
+  }
 
-	/**
-	 * @return the highlighted elements list.
-	 */
-	public List<OperationId> getHighlighted() {
-		return highlighted;
-	}
+  /**
+   * @return the changePackageVisualizationHelper
+   */
+  public ChangePackageVisualizationHelper getChangePackageVisualizationHelper() {
+    return changePackageVisualizationHelper;
+  }
 
-	/**
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
-	 */
-	@Override
-	public void dispose() {
-		super.dispose();
-		changePackageVisualizationHelper.dispose();
-		headRevision.dispose();
-		currentRevision.dispose();
-		baseRevision.dispose();
-		disposeAdapterFactories();
-	}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String getToolTipText(Object element) {
+    final HistoryInfo historyInfo = ModelUtil.getParent(HistoryInfo.class, (EObject) element);
+    return getText(historyInfo);
+  }
 
-	private void disposeAdapterFactories() {
-		if (adapterFactory != null) {
-			adapterFactory.dispose();
-			adapterFactory = null;
-		}
-		if (adapterFactoryLabelProvider != null) {
-			adapterFactoryLabelProvider.dispose();
-			adapterFactoryLabelProvider = null;
-		}
-	}
+  /**
+   * @return the highlighted elements list.
+   */
+  public List<OperationId> getHighlighted() {
+    return highlighted;
+  }
 
-	/**
-	 * @return The project this label provider provides labels for.
-	 */
-	protected Project getProject() {
-		return project;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
+   */
+  @Override
+  public void dispose() {
+    super.dispose();
+    changePackageVisualizationHelper.dispose();
+    headRevision.dispose();
+    currentRevision.dispose();
+    baseRevision.dispose();
+    disposeAdapterFactories();
+  }
 
-	/**
-	 * Sets the project that is used to resolve revision numbers that are
-	 * possibly used within the labels.
-	 *
-	 * @param newProject
-	 *            the project to be set
-	 */
-	public void setProject(Project newProject) {
-		project = newProject;
-	}
+  private void disposeAdapterFactories() {
+    if (adapterFactory != null) {
+      adapterFactory.dispose();
+      adapterFactory = null;
+    }
+    if (adapterFactoryLabelProvider != null) {
+      adapterFactoryLabelProvider.dispose();
+      adapterFactoryLabelProvider = null;
+    }
+  }
+
+  /**
+   * @return The project this label provider provides labels for.
+   */
+  protected Project getProject() {
+    return project;
+  }
+
+  /**
+   * Sets the project that is used to resolve revision numbers that are possibly used within the labels.
+   *
+   * @param newProject the project to be set
+   */
+  public void setProject(Project newProject) {
+    project = newProject;
+  }
 }
