@@ -8,6 +8,7 @@
  *
  * Contributors:
  * Edgar Mueller - initial API and implementation
+ * Johannes Faltermeier - ESCompositeOperationHandle support
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.impl.api;
 
@@ -22,6 +23,7 @@ import java.util.concurrent.Callable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.client.ESCompositeOperationHandle;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.ESRemoteProject;
 import org.eclipse.emf.emfstore.client.ESUsersession;
@@ -75,6 +77,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
  * </p>
  *
  * @author emueller
+ * @author jfaltermeier
  *
  */
 public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, ProjectSpace>
@@ -148,8 +151,8 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 
 		final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
 
-		final PrimaryVersionSpec resolvedVersionSpec =
-			RunESCommand.WithException.runWithResult(ESException.class, new Callable<PrimaryVersionSpec>() {
+		final PrimaryVersionSpec resolvedVersionSpec = RunESCommand.WithException.runWithResult(ESException.class,
+			new Callable<PrimaryVersionSpec>() {
 				public PrimaryVersionSpec call() throws Exception {
 					return new ServerCall<PrimaryVersionSpec>(toInternalAPI(), monitor) {
 						@Override
@@ -424,7 +427,7 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 	 */
 	public ESPrimaryVersionSpec commitToBranch(final ESBranchVersionSpec branch, final String logMessage,
 		final ESCommitCallback callback, final IProgressMonitor monitor) throws InvalidVersionSpecException,
-		ESUpdateRequiredException, ESException {
+			ESUpdateRequiredException, ESException {
 
 		final PrimaryVersionSpec versionSpec = RunESCommand.WithException.runWithResult(ESException.class,
 			new Callable<PrimaryVersionSpec>() {
@@ -473,7 +476,7 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 	 */
 	public ESPrimaryVersionSpec update(ESVersionSpec versionSpec, final ESUpdateCallback callback,
 		final IProgressMonitor monitor)
-		throws ChangeConflictException, ESException {
+			throws ChangeConflictException, ESException {
 
 		final VersionSpec version;
 
@@ -594,7 +597,8 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 	 * @see org.eclipse.emf.emfstore.client.ESLocalProject#shareProject(org.eclipse.emf.emfstore.client.ESUsersession,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public ESRemoteProject shareProject(final ESUsersession session, final IProgressMonitor monitor) throws ESException {
+	public ESRemoteProject shareProject(final ESUsersession session, final IProgressMonitor monitor)
+		throws ESException {
 
 		final ESUsersessionImpl usersessionImpl = (ESUsersessionImpl) session;
 
@@ -831,6 +835,19 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 		return RunESCommand.WithException.runWithResult(ESException.class, new Callable<List<ESHistoryInfo>>() {
 			public List<ESHistoryInfo> call() throws Exception {
 				return copy(getRemoteProject().getHistoryInfos(getUsersession(), query, monitor));
+			}
+		});
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.client.ESLocalProject#beginCompositeOperation()
+	 */
+	public ESCompositeOperationHandle beginCompositeOperation() {
+		return RunESCommand.runWithResult(new Callable<ESCompositeOperationHandle>() {
+			public ESCompositeOperationHandle call() throws Exception {
+				return toInternalAPI().beginCompositeOperation().toAPI();
 			}
 		});
 	}

@@ -16,6 +16,7 @@ import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.con
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.util.DecisionUtil;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox;
 import org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.widgets.MergeTextWidget;
+import org.eclipse.jface.layout.PixelConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
@@ -44,21 +45,13 @@ public class DetailsComponent extends Section {
 	 */
 	public DetailsComponent(final DecisionBox decisionBox, VisualConflict conflict) {
 		super(decisionBox, ExpandableComposite.TWISTIE);
-		setText("Details");
+		setText("Details"); //$NON-NLS-1$
 		setLayout(new FillLayout());
 		final GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
 		layoutData.horizontalSpan = 2;
 		setLayoutData(layoutData);
 		setBackground(decisionBox.getBackground());
-		// section.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		final int columns = 1;
-
-		//
-		// for (ConflictOption option : conflict.getOptions()) {
-		// if (option.isDetailsProvider()) {
-		// columns++;
-		// }
-		// }
 
 		final Composite client = new Composite(this, SWT.NONE);
 		final TableWrapLayout layout = new TableWrapLayout();
@@ -90,10 +83,15 @@ public class DetailsComponent extends Section {
 		}
 
 		setClient(client);
+		final PixelConverter pixelConverter = new PixelConverter(this);
 		addExpansionListener(new IExpansionListener() {
 
 			// FIXME: assuming initial size
-			private final Rectangle bounds = new Rectangle(0, 0, 0, 20);
+			private final Rectangle bounds = new Rectangle(
+				0,
+				0,
+				0,
+				pixelConverter.convertVerticalDLUsToPixels(20));
 
 			public void expansionStateChanged(ExpansionEvent e) {
 				final int height = bounds.height;

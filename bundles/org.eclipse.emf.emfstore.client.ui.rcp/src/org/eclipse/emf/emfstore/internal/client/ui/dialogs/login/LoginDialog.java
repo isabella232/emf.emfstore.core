@@ -99,7 +99,9 @@ public class LoginDialog extends AbstractLoginDialog {
 		loginContainer.setLayout(new GridLayout(3, false));
 		loginContainer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 			true, 1, 1));
-		loginContainer.setBounds(0, 0, 64, 64);
+		loginContainer.setBounds(0, 0,
+			convertHorizontalDLUsToPixels(64),
+			convertVerticalDLUsToPixels(64));
 
 		createUsernameLabel(loginContainer);
 		createUsernameCombo(loginContainer);
@@ -136,7 +138,7 @@ public class LoginDialog extends AbstractLoginDialog {
 	private void createPasswordField(Composite parent) {
 		passwordField = new Text(parent, SWT.BORDER | SWT.PASSWORD);
 		final GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gridData.widthHint = 250;
+		gridData.widthHint = convertHorizontalDLUsToPixels(175);
 		passwordField.setLayoutData(gridData);
 		passwordField.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
@@ -150,7 +152,7 @@ public class LoginDialog extends AbstractLoginDialog {
 	private void createPasswordLabel(Composite parent) {
 		final Label passwordLabel = new Label(parent, SWT.NONE);
 		final GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gridData.widthHint = 80;
+		gridData.widthHint = convertHorizontalDLUsToPixels(80);
 		passwordLabel.setLayoutData(gridData);
 		passwordLabel.setText(Messages.LoginDialog_Password);
 	}
@@ -160,7 +162,7 @@ public class LoginDialog extends AbstractLoginDialog {
 		final Label usernameLabel = new Label(parent, SWT.NONE);
 		final GridData gridData = new GridData(SWT.RIGHT, SWT.CENTER, false, false,
 			1, 1);
-		gridData.widthHint = 95;
+		gridData.widthHint = convertHorizontalDLUsToPixels(95);
 		usernameLabel.setLayoutData(gridData);
 		usernameLabel.setText(Messages.LoginDialog_Username);
 	}
@@ -172,7 +174,7 @@ public class LoginDialog extends AbstractLoginDialog {
 		final Combo combo = usernameCombo.getCombo();
 		combo.addModifyListener(comboListener);
 		final GridData gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gridData.widthHint = 235;
+		gridData.widthHint = convertHorizontalDLUsToPixels(165);
 		combo.setLayoutData(gridData);
 		new Label(parent, SWT.NONE);
 	}
@@ -314,7 +316,9 @@ public class LoginDialog extends AbstractLoginDialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(400, 250);
+		return new Point(
+			convertHorizontalDLUsToPixels(300),
+			convertVerticalDLUsToPixels(125));
 	}
 
 	/**

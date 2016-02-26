@@ -48,8 +48,8 @@ public interface ESHistoryQueryFactory extends ESFactory {
 	 *            whether to include change packages
 	 * @return query the constructed range query
 	 */
-	ESRangeQuery<?> rangeQuery(ESPrimaryVersionSpec source, int upper, int lower, boolean allVersions,
-		boolean incoming, boolean outgoing, boolean includeChangePackages);
+	ESRangeQuery<?> rangeQuery(ESPrimaryVersionSpec source, int upper, int lower, boolean allVersions, boolean incoming,
+		boolean outgoing, boolean includeChangePackages);
 
 	/**
 	 * Factory method for creating a {@link ESPathQuery}, which fetches

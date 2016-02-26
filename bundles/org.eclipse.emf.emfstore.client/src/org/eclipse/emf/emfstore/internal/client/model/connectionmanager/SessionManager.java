@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2015 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
+ * Edgar Mueller - Bug 482407
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.connectionmanager;
 
@@ -22,6 +23,9 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerCallImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
+import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
+import org.eclipse.emf.emfstore.internal.common.ESRunnableWrapperProvider;
+import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.SessionTimedOutException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.UnknownSessionException;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -60,9 +64,8 @@ public class SessionManager {
 		final ESUsersessionImpl session = (ESUsersessionImpl) getSessionProvider().provideUsersession(
 			new ESServerCallImpl<T>(serverCall));
 		serverCall.setUsersession(session.toInternalAPI());
-		// TODO OTS
-		final Usersession loginUsersession = loginUsersession(session.toInternalAPI(), false);
-		executeCall(serverCall, loginUsersession, true);
+		final Usersession loggedInSession = loginUsersession(session.toInternalAPI(), false);
+		executeCall(serverCall, loggedInSession, true);
 	}
 
 	/**
@@ -112,6 +115,26 @@ public class SessionManager {
 				});
 			return ((ESUsersessionImpl) session).toInternalAPI();
 		}
+
+		// having isLoggedIn return true does not necessarily mean we have a
+		// session representation on the server side, which always must be the case
+		ESRunnableWrapperProvider.getInstance().embedInContext(new Runnable() {
+
+			public void run() {
+				RunESCommand.run(new Callable<Void>() {
+					public Void call() throws Exception {
+						try {
+							usersession.logIn();
+						} catch (final AccessControlException ex) {
+							WorkspaceUtil.logException(ex.getMessage(), ex);
+						} catch (final ESException ex) {
+							WorkspaceUtil.logException(ex.getMessage(), ex);
+						}
+						return null;
+					}
+				});
+			}
+		}).run();
 
 		return usersession;
 	}

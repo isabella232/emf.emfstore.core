@@ -25,6 +25,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.layout.PixelConverter;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -59,7 +60,8 @@ public class ProjectComposite extends PropertiesComposite {
 
 	// Set column names
 	private final String[] roleNames = new String[] { Messages.ProjectComposite_Reader,
-		Messages.ProjectComposite_Writer, Messages.ProjectComposite_ProjectAdmin, Messages.ProjectComposite_ServerAdmin };
+		Messages.ProjectComposite_Writer, Messages.ProjectComposite_ProjectAdmin,
+		Messages.ProjectComposite_ServerAdmin };
 
 	private Label lblVersion;
 	private Text txtVersion;
@@ -206,10 +208,11 @@ public class ProjectComposite extends PropertiesComposite {
 	protected void createTableViewer(Composite parent) {
 
 		super.createTableViewer(parent);
+		final PixelConverter pixelConverter = new PixelConverter(this);
 
 		final TableViewerColumn roleColumnViewer = new TableViewerColumn(getTableViewer(), SWT.NONE);
 		roleColumnViewer.getColumn().setText(Messages.ProjectComposite_Role);
-		roleColumnViewer.getColumn().setWidth(120);
+		roleColumnViewer.getColumn().setWidth(pixelConverter.convertHorizontalDLUsToPixels(120));
 		roleColumnViewer.setLabelProvider(new ColumnLabelProvider() {
 			@Override
 			public String getText(Object element) {

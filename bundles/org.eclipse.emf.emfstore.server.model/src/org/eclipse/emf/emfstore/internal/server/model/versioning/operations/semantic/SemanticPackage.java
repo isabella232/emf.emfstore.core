@@ -71,7 +71,8 @@ public interface SemanticPackage extends EPackage {
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticCompositeOperationImpl
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.
+	 *      SemanticCompositeOperationImpl
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticPackageImpl#getSemanticCompositeOperation()
 	 * @generated
 	 */
@@ -209,7 +210,8 @@ public interface SemanticPackage extends EPackage {
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
 		 *
-		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticCompositeOperationImpl
+		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.
+		 *      SemanticCompositeOperationImpl
 		 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.impl.SemanticPackageImpl#getSemanticCompositeOperation()
 		 * @generated
 		 */

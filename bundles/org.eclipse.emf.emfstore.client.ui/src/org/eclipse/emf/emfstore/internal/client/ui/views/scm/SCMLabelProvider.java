@@ -33,6 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangeP
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
@@ -45,6 +46,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -69,10 +72,8 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	private final Image currentRevision;
 	private final Image headRevision;
 
-	private final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
-		ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-	private final AdapterFactoryLabelProvider adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-		adapterFactory);
+	private ComposedAdapterFactory adapterFactory;
+	private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
 	private Project project;
 
 	/**
@@ -89,6 +90,17 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		baseRevision = Activator.getImageDescriptor("icons/HistoryInfo_base.png").createImage(); //$NON-NLS-1$
 		currentRevision = Activator.getImageDescriptor("icons/HistoryInfo_current.png").createImage(); //$NON-NLS-1$
 		headRevision = Activator.getImageDescriptor("icons/HistoryInfo_head.png").createImage(); //$NON-NLS-1$
+		init();
+	}
+
+	private void init() {
+		if (adapterFactory == null) {
+			adapterFactory = new ComposedAdapterFactory(
+				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		}
+		if (adapterFactoryLabelProvider == null) {
+			adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		}
 	}
 
 	/**
@@ -227,11 +239,18 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		return proxy.getLabel();
 	}
 
-	private Image getImage(OperationProxy proxy) {
+	private ImageData createImageFromProxy(OperationProxy proxy) {
 		if (!proxy.isLabelProviderReady()) {
 			initProxy(proxy);
 		}
-		return proxy.getImage();
+		final ImageProxy imageProxy = proxy.getImage();
+		final ImageData imageData = new ImageData(imageProxy.getWidth(),
+			imageProxy.getHeight(),
+			imageProxy.getDepth(),
+			new PaletteData(imageProxy.getRedMask(), imageProxy.getGreenMask(), imageProxy.getBlueMask()),
+			imageProxy.getScanlinePad(),
+			imageProxy.getData());
+		return imageData;
 	}
 
 	private void initProxy(OperationProxy proxy) {
@@ -241,8 +260,19 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 	}
 
 	private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
-		proxy.setImage(
-			changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation));
+		final ImageData imageData = changePackageVisualizationHelper
+			.getImage(adapterFactoryLabelProvider, operation)
+			.getImageData();
+		final ImageProxy imageProxy = ImageProxy.create()
+			.setWitdh(imageData.width)
+			.setHeight(imageData.height)
+			.setDepth(imageData.depth)
+			.setRedMask(imageData.palette.redMask)
+			.setGreenMask(imageData.palette.greenMask)
+			.setBlueMask(imageData.palette.blueMask)
+			.setScanlinePad(imageData.scanlinePad)
+			.setData(imageData.data);
+		proxy.setImage(imageProxy);
 		proxy.setLabel(
 			changePackageVisualizationHelper.getDescription(operation));
 
@@ -341,7 +371,11 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 
 		if (element instanceof OperationProxy) {
 			final OperationProxy proxy = (OperationProxy) element;
-			return getImage(proxy);
+			final ImageData imageData = createImageFromProxy(proxy);
+			final Image swtImage = new Image(
+				Display.getDefault(),
+				imageData);
+			return swtImage;
 		} else if (element instanceof ModelElementId) {
 			return adapterFactoryLabelProvider
 				.getImage(changePackageVisualizationHelper
@@ -419,8 +453,17 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		headRevision.dispose();
 		currentRevision.dispose();
 		baseRevision.dispose();
+		disposeAdapterFactories();
+	}
+
+	private void disposeAdapterFactories() {
 		if (adapterFactory != null) {
 			adapterFactory.dispose();
+			adapterFactory = null;
+		}
+		if (adapterFactoryLabelProvider != null) {
+			adapterFactoryLabelProvider.dispose();
+			adapterFactoryLabelProvider = null;
 		}
 	}
 

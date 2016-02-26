@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.cases;
@@ -34,9 +34,9 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * Common base class for all tests which need an actual EMFStore server started.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class ESTestWithServer extends ESTest {
 
@@ -77,10 +77,15 @@ public abstract class ESTestWithServer extends ESTest {
 		ServerUtil.stopServer();
 		// give the server some time to unbind from it's ips. Not the nicest solution ...
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		} catch (final InterruptedException ex) {
 			fail(ex.getMessage());
 		}
+	}
+
+	public static void restartEMFStore() {
+		stopEMFStore();
+		startEMFStore(Collections.<String, String> emptyMap());
 	}
 
 	protected static void deleteRemoteProjects() throws IOException, FatalESException, ESException {

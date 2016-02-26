@@ -19,7 +19,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * Mapping between {@link ESOperation} and {@link AbstractOperation}.
  *
  */
-public class ESOperationImpl extends AbstractAPIImpl<ESOperation, AbstractOperation> implements ESOperation {
+public class ESOperationImpl extends AbstractAPIImpl<ESOperation, AbstractOperation>implements ESOperation {
 
 	/**
 	 * Constructs a new {@link ESOperation} by wrapping an internal operation type.

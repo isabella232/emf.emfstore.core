@@ -35,8 +35,10 @@ import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl.ACOrgUnitImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl.ACOrgUnitImpl#getRoles <em>Roles</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl.ACOrgUnitImpl#getName <em>Name</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl.ACOrgUnitImpl#getRoles <em>Roles</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl.ACOrgUnitImpl#getDescription <em>
  * Description</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.impl.ACOrgUnitImpl#getProperties <em>
@@ -150,7 +152,8 @@ public class ACOrgUnitImpl<E extends ESOrgUnit> extends IdentifiableElementImpl 
 		final String oldName = name;
 		name = newName;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_ORG_UNIT__NAME, oldName, name));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, AccesscontrolPackage.AC_ORG_UNIT__NAME, oldName, name));
 		}
 	}
 

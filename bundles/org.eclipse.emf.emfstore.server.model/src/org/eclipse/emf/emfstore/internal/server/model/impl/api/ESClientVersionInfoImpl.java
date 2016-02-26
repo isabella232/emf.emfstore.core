@@ -19,9 +19,8 @@ import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
  * @author emueller
  *
  */
-public class ESClientVersionInfoImpl
-extends AbstractAPIImpl<ESClientVersionInfo, ClientVersionInfo>
-implements ESClientVersionInfo {
+public class ESClientVersionInfoImpl extends AbstractAPIImpl<ESClientVersionInfo, ClientVersionInfo>
+	implements ESClientVersionInfo {
 
 	/**
 	 * Constructor.

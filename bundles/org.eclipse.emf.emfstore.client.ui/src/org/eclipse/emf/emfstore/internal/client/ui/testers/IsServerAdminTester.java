@@ -66,7 +66,7 @@ public class IsServerAdminTester extends PropertyTester {
 						}
 					}
 
-					return new Boolean(isAdmin).equals(expectedValue);
+					return Boolean.valueOf(isAdmin).equals(expectedValue);
 				}
 			};
 			final Boolean result = command.run(false);

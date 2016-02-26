@@ -190,7 +190,8 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 		referencedValue = newReferencedValue;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE, oldReferencedValue, referencedValue));
+				OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE, oldReferencedValue,
+				referencedValue));
 		}
 	}
 
@@ -267,8 +268,8 @@ public class MultiAttributeMoveOperationImpl extends FeatureOperationImpl implem
 		case OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__NEW_INDEX:
 			return newIndex != NEW_INDEX_EDEFAULT;
 		case OperationsPackage.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE:
-			return REFERENCED_VALUE_EDEFAULT == null ? referencedValue != null : !REFERENCED_VALUE_EDEFAULT
-				.equals(referencedValue);
+			return REFERENCED_VALUE_EDEFAULT == null ? referencedValue != null
+				: !REFERENCED_VALUE_EDEFAULT.equals(referencedValue);
 		}
 		return super.eIsSet(featureID);
 	}

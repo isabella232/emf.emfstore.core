@@ -73,11 +73,11 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
-				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, null);
+				NotificationChain msgs = oldProjectId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null) {
-					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
+					msgs = newProjectId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -129,12 +129,12 @@ public abstract class ServerProjectEventImpl extends ServerEventImpl implements 
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
-				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) projectId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
 			}
 			if (newProjectId != null) {
-				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) newProjectId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ServerPackage.SERVER_PROJECT_EVENT__PROJECT_ID, null, msgs);
 			}
 			msgs = basicSetProjectId(newProjectId, msgs);
 			if (msgs != null) {

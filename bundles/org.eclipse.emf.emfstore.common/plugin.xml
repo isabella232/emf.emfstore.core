@@ -3,4 +3,5 @@
 <plugin>
    <extension-point id="observerBusExtensionPointRegistration" name="Observer Markup Interface" schema="schema/observerBusExtensionPointRegistration.exsd"/>
    <extension-point id="discardDanglingHREFs" name="Discard Dangling HREFs" schema="schema/discardDanglingHREFs.exsd"/>
+   <extension-point id="runnableWrapper" name="Runnable Wrapper" schema="schema/runnableWrapper.exsd"/>
 </plugin>

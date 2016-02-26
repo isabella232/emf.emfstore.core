@@ -46,6 +46,7 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.server.auth.ESMethod;
 import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
@@ -304,7 +305,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 		return UUID.randomUUID().toString();
 	}
 
-	private ChangePackage resolveChangePackageProxy(
+	private AbstractChangePackage resolveChangePackageProxy(
 		final Optional<SessionId> maybeSession,
 		final ChangePackageProxy changePackageProxy) throws ESException {
 
@@ -327,19 +328,36 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 
 		final ChangePackageFragmentUploadAdapter adapter = maybeAdapter.get();
 
-		final Optional<ChangePackage> maybeCompletedChangePackage = adapter
-			.getCompletedChangePackage(changePackageProxy.getId());
+		/*
+		 * Based on server configuration, convert the filebased changepackage to in memory or return the temporary file
+		 * based change package
+		 */
+		AbstractChangePackage changePackage;
+		if (ServerConfiguration.useFileBasedChangePackageOnServer()) {
+			final Optional<FileBasedChangePackage> fileBasedChangePackage = adapter
+				.getFileBasedChangePackage(changePackageProxy.getId());
+			if (!fileBasedChangePackage.isPresent()) {
+				throw new ESException(
+					Messages.EMFStoreImpl_NoCompletedChangePackageFound);
+			}
+			changePackage = fileBasedChangePackage.get();
+		} else {
+			final Optional<ChangePackage> maybeCompletedChangePackage = adapter
+				.convertFileBasedToInMemoryChangePackage(changePackageProxy.getId());
 
-		if (!maybeCompletedChangePackage.isPresent()) {
-			throw new ESException(
-				Messages.EMFStoreImpl_NoCompletedChangePackageFound);
+			if (!maybeCompletedChangePackage.isPresent()) {
+				throw new ESException(
+					Messages.EMFStoreImpl_NoCompletedChangePackageFound);
+			}
+
+			changePackage = maybeCompletedChangePackage.get();
 		}
 
-		final ChangePackage changePackage = maybeCompletedChangePackage.get();
 		adapter.clearCompleted(changePackageProxy.getId());
 		changePackage.setLogMessage(
 			ModelUtil.clone(changePackageProxy.getLogMessage()));
 		return changePackage;
+
 	}
 
 	/**

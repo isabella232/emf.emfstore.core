@@ -76,12 +76,16 @@ public class LdapSourceDialog extends TitleAreaDialog {
 		final Label name = new Label(contents, SWT.NULL);
 		name.setText(Messages.LdapSourceDialog_ServerName);
 		serverName = new Text(contents, SWT.SINGLE | SWT.BORDER);
-		serverName.setSize(350, 20);
+		serverName.setSize(
+			convertHorizontalDLUsToPixels(350),
+			convertVerticalDLUsToPixels(20));
 
 		final Label desc = new Label(contents, SWT.NULL);
 		desc.setText(Messages.LdapSourceDialog_ServerBase);
 		ldapBase = new Text(contents, SWT.SINGLE | SWT.BORDER);
-		ldapBase.setSize(350, 20);
+		ldapBase.setSize(
+			convertHorizontalDLUsToPixels(350),
+			convertVerticalDLUsToPixels(20));
 
 		final Point defaultMargins = LayoutConstants.getMargins();
 		GridLayoutFactory.fillDefaults().numColumns(2).margins(defaultMargins.x, defaultMargins.y)

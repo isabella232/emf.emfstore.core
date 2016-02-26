@@ -61,6 +61,7 @@ import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.client.provider.ClientXMIResourceSetProvider;
 import org.eclipse.emf.emfstore.internal.client.startup.ClientHrefMigrator;
 import org.eclipse.emf.emfstore.internal.common.ESDisposable;
+import org.eclipse.emf.emfstore.internal.common.ESRunnableWrapperProvider;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.observer.ObserverBus;
@@ -80,7 +81,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author jfaltermeier
  */
 public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCommitObserver, ESUpdateObserver,
-ESShareObserver, ESCheckoutObserver, ESDisposable {
+	ESShareObserver, ESCheckoutObserver, ESDisposable {
 
 	private static final String WORKSPACE_INIT_EXT_POINT_ID = "org.eclipse.emf.emfstore.client.workspaceInitObserver"; //$NON-NLS-1$
 
@@ -143,12 +144,12 @@ ESShareObserver, ESCheckoutObserver, ESDisposable {
 	 */
 	public static Runnable initRunnable(final Runnable runnable) {
 		final ESWorkspaceProviderImpl ws = WS_THREAD_LOCAL.get();
-		return new Runnable() {
+		return ESRunnableWrapperProvider.getInstance().embedInContext(new Runnable() {
 			public void run() {
 				WS_THREAD_LOCAL.set(ws);
 				runnable.run();
 			}
-		};
+		});
 	}
 
 	/**
@@ -520,8 +521,8 @@ ESShareObserver, ESCheckoutObserver, ESDisposable {
 		for (final ESExtensionElement element : extensionElements) {
 			try {
 				element
-				.getClass("class", ESWorkspaceInitObserver.class) //$NON-NLS-1$
-				.workspaceInitComplete(currentWorkspace.toAPI());
+					.getClass("class", ESWorkspaceInitObserver.class) //$NON-NLS-1$
+					.workspaceInitComplete(currentWorkspace.toAPI());
 			} catch (final ESExtensionPointException e) {
 				WorkspaceUtil.logException(e.getMessage(), e);
 			}
@@ -602,7 +603,7 @@ ESShareObserver, ESCheckoutObserver, ESDisposable {
 		} catch (final IOException e) {
 			WorkspaceUtil.logException(
 				Messages.ESWorkspaceProviderImpl_Create_Workspace_Failed
-				+ Configuration.getFileInfo().getWorkspaceDirectory(),
+					+ Configuration.getFileInfo().getWorkspaceDirectory(),
 				e);
 		}
 		return workspace;

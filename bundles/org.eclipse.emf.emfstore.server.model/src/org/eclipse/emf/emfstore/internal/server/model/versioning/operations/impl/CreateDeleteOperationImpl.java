@@ -91,7 +91,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 				}
 			}
 
-			collection.clearAllocatedCaches(eObjectToIdMap.values());
+			collection.clearAllocatedCaches(new LinkedHashSet<ModelElementId>(getEObjectToIdMap().values()));
 		} else {
 			if (collection.contains(getModelElementId())) {
 				// silently fail

@@ -100,7 +100,7 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 	 *            will be created
 	 * @return the aggregated {@link ChangePackage} as an {@link Optional}
 	 */
-	public Optional<ChangePackage> getCompletedChangePackage(String proxyId) {
+	public Optional<ChangePackage> convertFileBasedToInMemoryChangePackage(String proxyId) {
 		final FileBasedChangePackage fileBasedChangePackage = proxyIdToCompletedChangePackages.get(proxyId);
 		if (fileBasedChangePackage == null) {
 			return Optional.absent();
@@ -116,6 +116,21 @@ public class ChangePackageFragmentUploadAdapter extends AdapterImpl {
 		}
 
 		return Optional.of(changePackage);
+	}
+
+	/**
+	 * Returns the temporary file based changepackage for the given proxy id, if present. The change package is backed
+	 * by temporary files on server side, so {@link FileBasedChangePackage#move(String)} might be needed.
+	 *
+	 * @param proxyId the ID that identifies the {@link FileBasedChangePackage}
+	 * @return the file based change package as an {@link Optional}
+	 */
+	public Optional<FileBasedChangePackage> getFileBasedChangePackage(String proxyId) {
+		final FileBasedChangePackage fileBasedChangePackage = proxyIdToCompletedChangePackages.get(proxyId);
+		if (fileBasedChangePackage == null) {
+			return Optional.absent();
+		}
+		return Optional.of(fileBasedChangePackage);
 	}
 
 	/**

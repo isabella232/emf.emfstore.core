@@ -8,6 +8,7 @@
  *
  * Contributors:
  * koegel
+ * Johannes Faltermeier - API Delegate
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model;
 
@@ -15,6 +16,8 @@ import java.util.Date;
 
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.InvalidHandleException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.OperationRecorder;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESCompositeOperationHandleImpl;
+import org.eclipse.emf.emfstore.internal.common.api.APIDelegate;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.semantic.SemanticCompositeOperation;
@@ -23,12 +26,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.sema
  * A handle to control a composite operation during recording.
  *
  * @author koegel
+ * @author Johannes Faltermeier
  */
-public class CompositeOperationHandle {
+public class CompositeOperationHandle implements APIDelegate<ESCompositeOperationHandleImpl> {
 
 	private boolean isValid;
 	private CompositeOperation compositeOperation;
 	private OperationRecorder operationRecorder;
+	private ESCompositeOperationHandleImpl handle;
 
 	/**
 	 * Default constructor.
@@ -117,5 +122,26 @@ public class CompositeOperationHandle {
 		semanticCompositeOperation.setReversed(false);
 		semanticCompositeOperation.getSubOperations().addAll(compositeOperation.getSubOperations());
 		operationRecorder.endCompositeOperation(semanticCompositeOperation);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#toAPI()
+	 */
+	public ESCompositeOperationHandleImpl toAPI() {
+		if (handle == null) {
+			handle = createAPI();
+		}
+		return handle;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.emf.emfstore.internal.common.api.APIDelegate#createAPI()
+	 */
+	public ESCompositeOperationHandleImpl createAPI() {
+		return new ESCompositeOperationHandleImpl(this);
 	}
 }

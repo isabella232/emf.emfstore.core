@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar - initial API and implementation
  ******************************************************************************/
@@ -16,11 +16,13 @@ import static org.eclipse.emf.emfstore.client.test.common.util.ServerUtil.create
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
 import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup;
@@ -31,6 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,9 +41,9 @@ import org.junit.Test;
 /**
  * Test the {@link ESProjectAdminPrivileges#AssignRoleToOrgUnit} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class AssignRoleToOrgUnitTests extends ProjectAdminTest {
 
@@ -54,6 +57,17 @@ public class AssignRoleToOrgUnitTests extends ProjectAdminTest {
 	@AfterClass
 	public static void afterClass() {
 		stopEMFStore();
+	}
+
+	@After
+	@Override
+	public void after() {
+		try {
+			ServerUtil.deleteGroup(getSuperUsersession(), getNewGroupName());
+		} catch (final ESException ex) {
+			fail(ex.getMessage());
+		}
+		super.after();
 	}
 
 	@Test
@@ -220,6 +234,19 @@ public class AssignRoleToOrgUnitTests extends ProjectAdminTest {
 	}
 
 	@Test
+	public void changeRoleToSAViaGroupAsSA() throws ESException {
+		final ACOrgUnitId newGroup = ServerUtil.createGroup(getSuperUsersession(), getNewGroupName());
+		makeUserPA();
+		ProjectUtil.share(getSuperUsersession(), getLocalProject());
+		final ACOrgUnitId id = ((ESUsersessionImpl) getUsersession()).toInternalAPI().getACUser().getId();
+		getSuperAdminBroker().addMember(newGroup, id);
+		getSuperAdminBroker().changeRole(getProjectSpace().getProjectId(), newGroup, Roles.serverAdmin());
+
+		final ACOrgUnitId createUser2 = getAdminBroker().createUser("foo"); //$NON-NLS-1$
+		getAdminBroker().changeRole(getProjectSpace().getProjectId(), createUser2, Roles.writer());
+	}
+
+	@Test
 	public void changeRoleToWriterOnDifferentProjectsAsPA() throws ESException {
 		final ACOrgUnitId newUser = ServerUtil.createUser(getSuperUsersession(), getNewUsername());
 		makeUserPA();
@@ -227,8 +254,7 @@ public class AssignRoleToOrgUnitTests extends ProjectAdminTest {
 
 		final ProjectSpace clonedProjectSpace = cloneProjectSpace(getProjectSpace());
 		final ProjectId projectId = ESGlobalProjectIdImpl.class.cast(
-			share(getUsersession(), clonedProjectSpace.toAPI())
-			).toInternalAPI();
+			share(getUsersession(), clonedProjectSpace.toAPI())).toInternalAPI();
 
 		getAdminBroker().changeRole(getProjectSpace().getProjectId(), newUser, Roles.writer());
 		getAdminBroker().changeRole(

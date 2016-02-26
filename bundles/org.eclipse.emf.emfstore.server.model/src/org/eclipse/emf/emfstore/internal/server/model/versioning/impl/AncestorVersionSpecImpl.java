@@ -87,11 +87,11 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 			target = (PrimaryVersionSpec) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				final InternalEObject newTarget = (InternalEObject) target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, null);
+				NotificationChain msgs = oldTarget.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, null);
 				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, msgs);
+					msgs = newTarget.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -143,12 +143,12 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null) {
-				msgs = ((InternalEObject) target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, msgs);
+				msgs = ((InternalEObject) target).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, msgs);
 			}
 			if (newTarget != null) {
-				msgs = ((InternalEObject) newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, msgs);
+				msgs = ((InternalEObject) newTarget).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__TARGET, null, msgs);
 			}
 			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null) {
@@ -171,11 +171,11 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 			source = (PrimaryVersionSpec) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				final InternalEObject newSource = (InternalEObject) source;
-				NotificationChain msgs = oldSource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, null);
+				NotificationChain msgs = oldSource.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, null);
 				if (newSource.eInternalContainer() == null) {
-					msgs = newSource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, msgs);
+					msgs = newSource.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -227,12 +227,12 @@ public class AncestorVersionSpecImpl extends VersionSpecImpl implements Ancestor
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null) {
-				msgs = ((InternalEObject) source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, msgs);
+				msgs = ((InternalEObject) source).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, msgs);
 			}
 			if (newSource != null) {
-				msgs = ((InternalEObject) newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, msgs);
+				msgs = ((InternalEObject) newSource).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.ANCESTOR_VERSION_SPEC__SOURCE, null, msgs);
 			}
 			msgs = basicSetSource(newSource, msgs);
 			if (msgs != null) {

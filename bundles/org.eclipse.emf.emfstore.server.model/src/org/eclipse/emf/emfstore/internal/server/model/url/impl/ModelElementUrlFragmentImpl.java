@@ -120,11 +120,11 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 			modelElementId = (ModelElementId) eResolveProxy(oldModelElementId);
 			if (modelElementId != oldModelElementId) {
 				final InternalEObject newModelElementId = (InternalEObject) modelElementId;
-				NotificationChain msgs = oldModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, null);
+				NotificationChain msgs = oldModelElementId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, null);
 				if (newModelElementId.eInternalContainer() == null) {
-					msgs = newModelElementId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
+					msgs = newModelElementId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -176,12 +176,12 @@ public class ModelElementUrlFragmentImpl extends EObjectImpl implements ModelEle
 		if (newModelElementId != modelElementId) {
 			NotificationChain msgs = null;
 			if (modelElementId != null) {
-				msgs = ((InternalEObject) modelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
+				msgs = ((InternalEObject) modelElementId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
 			}
 			if (newModelElementId != null) {
-				msgs = ((InternalEObject) newModelElementId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
+				msgs = ((InternalEObject) newModelElementId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UrlPackage.MODEL_ELEMENT_URL_FRAGMENT__MODEL_ELEMENT_ID, null, msgs);
 			}
 			msgs = basicSetModelElementId(newModelElementId, msgs);
 			if (msgs != null) {

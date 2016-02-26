@@ -15,7 +15,6 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -52,14 +51,12 @@ import org.xml.sax.SAXException;
 public class EObjectSerializer extends TypeSerializerImpl {
 
 	private static final String SELF_CONTAINMENT_CHECK_OPTION = "SelfContainmentCheck"; //$NON-NLS-1$
-	private static final String HREF_CHECK_OPTION = "HrefCheck"; //$NON-NLS-1$
 	private static final String SERIALIZATION_OPTIONS_EXT = "org.eclipse.emf.emfstore.common.model.serializationOptions"; //$NON-NLS-1$
 	/**
 	 * EObject Tag for parsing.
 	 */
 	public static final String EOBJECT_TAG = "EObject"; //$NON-NLS-1$
 	private static final String EX_EOBJECT_TAG = "ex:" + EOBJECT_TAG; //$NON-NLS-1$
-	private static boolean hrefCheckEnabled;
 	private static boolean containmentCheckEnabled;
 	private static boolean serializationOptionsInitialized;
 
@@ -110,14 +107,8 @@ public class EObjectSerializer extends TypeSerializerImpl {
 					}
 
 					resource.getContents().add(copy);
-					final StringWriter writer = new StringWriter();
-					uws = new URIConverter.WriteableOutputStream(writer, CommonUtil.getEncoding());
-					// save string into Stringwriter
 					checkResource(resource);
-					resource.save(uws, ModelUtil.getResourceSaveOptions());
-					final String string = writer.toString();
-					hrefCheck(string);
-					bos.write(string.getBytes(CommonUtil.getEncoding()));
+					resource.save(bos, ModelUtil.getResourceSaveOptions());
 				}
 			} catch (final SerializationException e) {
 				throw new SAXException(e);
@@ -196,27 +187,6 @@ public class EObjectSerializer extends TypeSerializerImpl {
 		}
 	}
 
-	private static void hrefCheck(String result) throws SerializationException {
-		if (!hrefCheckEnabled) {
-			return;
-		}
-		final char[] needle = "href".toCharArray(); //$NON-NLS-1$
-		int pointer = 0;
-		boolean insideQuotes = false;
-		for (final char character : result.toCharArray()) {
-			if (character == '"') {
-				insideQuotes = !insideQuotes;
-			}
-			if (!insideQuotes && character == needle[pointer]) {
-				if (++pointer == needle.length) {
-					throw new SerializationException(Messages.EObjectSerializer_HrefDetectionFailed);
-				}
-			} else {
-				pointer = 0;
-			}
-		}
-	}
-
 	/**
 	 * Initializes the serialization options.
 	 */
@@ -229,10 +199,10 @@ public class EObjectSerializer extends TypeSerializerImpl {
 			SERIALIZATION_OPTIONS_EXT).getFirst();
 
 		if (element != null) {
-			hrefCheckEnabled = element.getBoolean(HREF_CHECK_OPTION);
 			containmentCheckEnabled = element.getBoolean(SELF_CONTAINMENT_CHECK_OPTION);
 		}
 
 		serializationOptionsInitialized = true;
 	}
 }
+

@@ -75,7 +75,9 @@ public class NewOrgUnitDialog extends Dialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(450, 165);
+		return new Point(
+			convertHorizontalDLUsToPixels(250),
+			convertVerticalDLUsToPixels(90));
 	}
 
 	@Override

@@ -35,11 +35,12 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
  *
  *
  * @extends
- *          <!-- end-user-doc -->
+ * 			<!-- end-user-doc -->
  *          <p>
  *          The following features are implemented:
  *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getGroups <em>Groups</em>}
+ *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getProjects <em>Projects
  *          </em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ServerSpaceImpl#getOpenSessions <em>Open

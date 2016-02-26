@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.emfstore.sdk.feature"
       label="EMFStore SDK"
-      version="1.6.2.qualifier"
+      version="1.7.0.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.branding"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.6.2.qualifier">
+      license-feature-version="1.7.0.qualifier">
 
    <description url="http://emfstore.org">
       This feature contains all core plugins including sources to use the EMFStore.
@@ -131,12 +131,19 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
+
    <plugin
          id="org.eclipse.emf.emfstore.ecore.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>  
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.emfstore.client.ui.rcp.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

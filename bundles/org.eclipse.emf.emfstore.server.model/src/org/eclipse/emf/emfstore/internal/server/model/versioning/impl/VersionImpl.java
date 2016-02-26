@@ -240,11 +240,11 @@ public class VersionImpl extends EObjectImpl implements Version {
 			primarySpec = (PrimaryVersionSpec) eResolveProxy(oldPrimarySpec);
 			if (primarySpec != oldPrimarySpec) {
 				final InternalEObject newPrimarySpec = (InternalEObject) primarySpec;
-				NotificationChain msgs = oldPrimarySpec.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.VERSION__PRIMARY_SPEC, null, null);
+				NotificationChain msgs = oldPrimarySpec.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__PRIMARY_SPEC, null, null);
 				if (newPrimarySpec.eInternalContainer() == null) {
-					msgs = newPrimarySpec.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
+					msgs = newPrimarySpec.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -296,12 +296,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		if (newPrimarySpec != primarySpec) {
 			NotificationChain msgs = null;
 			if (primarySpec != null) {
-				msgs = ((InternalEObject) primarySpec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
+				msgs = ((InternalEObject) primarySpec).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
 			}
 			if (newPrimarySpec != null) {
-				msgs = ((InternalEObject) newPrimarySpec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
+				msgs = ((InternalEObject) newPrimarySpec).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__PRIMARY_SPEC, null, msgs);
 			}
 			msgs = basicSetPrimarySpec(newPrimarySpec, msgs);
 			if (msgs != null) {
@@ -383,12 +383,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		if (newNextVersion != nextVersion) {
 			NotificationChain msgs = null;
 			if (nextVersion != null) {
-				msgs = ((InternalEObject) nextVersion).eInverseRemove(this,
-					VersioningPackage.VERSION__PREVIOUS_VERSION, Version.class, msgs);
+				msgs = ((InternalEObject) nextVersion).eInverseRemove(this, VersioningPackage.VERSION__PREVIOUS_VERSION,
+					Version.class, msgs);
 			}
 			if (newNextVersion != null) {
-				msgs = ((InternalEObject) newNextVersion).eInverseAdd(this,
-					VersioningPackage.VERSION__PREVIOUS_VERSION, Version.class, msgs);
+				msgs = ((InternalEObject) newNextVersion).eInverseAdd(this, VersioningPackage.VERSION__PREVIOUS_VERSION,
+					Version.class, msgs);
 			}
 			msgs = basicSetNextVersion(newNextVersion, msgs);
 			if (msgs != null) {
@@ -457,12 +457,12 @@ public class VersionImpl extends EObjectImpl implements Version {
 		if (newPreviousVersion != previousVersion) {
 			NotificationChain msgs = null;
 			if (previousVersion != null) {
-				msgs = ((InternalEObject) previousVersion).eInverseRemove(this,
-					VersioningPackage.VERSION__NEXT_VERSION, Version.class, msgs);
+				msgs = ((InternalEObject) previousVersion).eInverseRemove(this, VersioningPackage.VERSION__NEXT_VERSION,
+					Version.class, msgs);
 			}
 			if (newPreviousVersion != null) {
-				msgs = ((InternalEObject) newPreviousVersion).eInverseAdd(this,
-					VersioningPackage.VERSION__NEXT_VERSION, Version.class, msgs);
+				msgs = ((InternalEObject) newPreviousVersion).eInverseAdd(this, VersioningPackage.VERSION__NEXT_VERSION,
+					Version.class, msgs);
 			}
 			msgs = basicSetPreviousVersion(newPreviousVersion, msgs);
 			if (msgs != null) {
@@ -518,11 +518,11 @@ public class VersionImpl extends EObjectImpl implements Version {
 			logMessage = (LogMessage) eResolveProxy(oldLogMessage);
 			if (logMessage != oldLogMessage) {
 				final InternalEObject newLogMessage = (InternalEObject) logMessage;
-				NotificationChain msgs = oldLogMessage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.VERSION__LOG_MESSAGE, null, null);
+				NotificationChain msgs = oldLogMessage.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__LOG_MESSAGE, null, null);
 				if (newLogMessage.eInternalContainer() == null) {
-					msgs = newLogMessage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
+					msgs = newLogMessage.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -574,20 +574,20 @@ public class VersionImpl extends EObjectImpl implements Version {
 		if (newLogMessage != logMessage) {
 			NotificationChain msgs = null;
 			if (logMessage != null) {
-				msgs = ((InternalEObject) logMessage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
+				msgs = ((InternalEObject) logMessage).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
 			}
 			if (newLogMessage != null) {
-				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
+				msgs = ((InternalEObject) newLogMessage).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.VERSION__LOG_MESSAGE, null, msgs);
 			}
 			msgs = basicSetLogMessage(newLogMessage, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
 		} else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__LOG_MESSAGE,
-				newLogMessage, newLogMessage));
+			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.VERSION__LOG_MESSAGE, newLogMessage,
+				newLogMessage));
 		}
 	}
 
@@ -715,14 +715,14 @@ public class VersionImpl extends EObjectImpl implements Version {
 		switch (featureID) {
 		case VersioningPackage.VERSION__NEXT_VERSION:
 			if (nextVersion != null) {
-				msgs = ((InternalEObject) nextVersion).eInverseRemove(this,
-					VersioningPackage.VERSION__PREVIOUS_VERSION, Version.class, msgs);
+				msgs = ((InternalEObject) nextVersion).eInverseRemove(this, VersioningPackage.VERSION__PREVIOUS_VERSION,
+					Version.class, msgs);
 			}
 			return basicSetNextVersion((Version) otherEnd, msgs);
 		case VersioningPackage.VERSION__PREVIOUS_VERSION:
 			if (previousVersion != null) {
-				msgs = ((InternalEObject) previousVersion).eInverseRemove(this,
-					VersioningPackage.VERSION__NEXT_VERSION, Version.class, msgs);
+				msgs = ((InternalEObject) previousVersion).eInverseRemove(this, VersioningPackage.VERSION__NEXT_VERSION,
+					Version.class, msgs);
 			}
 			return basicSetPreviousVersion((Version) otherEnd, msgs);
 		case VersioningPackage.VERSION__ANCESTOR_VERSION:
@@ -736,8 +736,8 @@ public class VersionImpl extends EObjectImpl implements Version {
 		case VersioningPackage.VERSION__MERGED_TO_VERSION:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getMergedToVersion()).basicAdd(otherEnd, msgs);
 		case VersioningPackage.VERSION__MERGED_FROM_VERSION:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getMergedFromVersion())
-				.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getMergedFromVersion()).basicAdd(otherEnd,
+				msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1084,8 +1084,9 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * @return the uri for the project state resource
 	 */
 	private URI getProjectURI() {
-		return getBaseURI() == null ? null : getBaseURI().appendSegment(PROJECTSTATES_SEGMENT).appendSegment(
-			Integer.toString(getPrimarySpec().getIdentifier()));
+		return getBaseURI() == null ? null
+			: getBaseURI().appendSegment(PROJECTSTATES_SEGMENT)
+				.appendSegment(Integer.toString(getPrimarySpec().getIdentifier()));
 	}
 
 	/**
@@ -1094,8 +1095,9 @@ public class VersionImpl extends EObjectImpl implements Version {
 	 * @return the uri for the ChangePackage resource
 	 */
 	private URI getChangePackageURI() {
-		return getBaseURI() == null ? null : getBaseURI().appendSegment(CHANGEPACKAGES_SEGMENT).appendSegment(
-			Integer.toString(getPrimarySpec().getIdentifier()));
+		return getBaseURI() == null ? null
+			: getBaseURI().appendSegment(CHANGEPACKAGES_SEGMENT)
+				.appendSegment(Integer.toString(getPrimarySpec().getIdentifier()));
 	}
 
 	/**

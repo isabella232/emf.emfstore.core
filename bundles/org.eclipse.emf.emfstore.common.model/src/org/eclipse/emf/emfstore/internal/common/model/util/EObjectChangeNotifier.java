@@ -176,6 +176,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 
 			// Do not create notifications for transient features
 			if (eReference.isTransient()) {
+				currentNotifications.pop();
 				return;
 			}
 

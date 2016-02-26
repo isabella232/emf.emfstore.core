@@ -82,7 +82,7 @@ public class AcUserImportPageTwo extends WizardPage {
 
 		gridData = new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL);
 		gridData.horizontalSpan = 2;
-		gridData.heightHint = 280; // TODO remove this "magic number"?
+		gridData.heightHint = convertHorizontalDLUsToPixels(280);
 		filter.setLayoutData(gridData);
 
 		tv = filter.getViewer();

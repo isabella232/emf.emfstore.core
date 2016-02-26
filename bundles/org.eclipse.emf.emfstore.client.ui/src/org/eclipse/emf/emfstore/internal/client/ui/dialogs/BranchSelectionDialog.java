@@ -182,7 +182,9 @@ public class BranchSelectionDialog extends TitleAreaDialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(400, 350);
+		return new Point(
+			convertHorizontalDLUsToPixels(400),
+			convertVerticalDLUsToPixels(350));
 	}
 
 	/**

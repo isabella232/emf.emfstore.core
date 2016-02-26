@@ -27,6 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.layout.PixelConverter;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -213,26 +214,25 @@ public abstract class PropertiesComposite extends Composite {
 		// Create and configure the "Add" button
 		final Button add = new Button(parent, SWT.PUSH | SWT.CENTER);
 		add.setText(Messages.PropertiesComposite_Add);
+		final PixelConverter pixelConverter = new PixelConverter(this);
 
 		GridData gridData = new GridData();
-		gridData.widthHint = 80;
+		gridData.widthHint = pixelConverter.convertHorizontalDLUsToPixels(80);
 		gridData.horizontalAlignment = GridData.END;
 		gridData.horizontalSpan = 4;
 		add.setLayoutData(gridData);
 		add.addSelectionListener(new SelectionAdapter() {
-
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				addNewOrgUnit();
 			}
-
 		});
 
 		// Create and configure the "Delete" button
 		final Button remove = new Button(parent, SWT.PUSH | SWT.CENTER);
 		remove.setText(Messages.PropertiesComposite_Remove);
 		gridData = new GridData(SWT.END);
-		gridData.widthHint = 80;
+		gridData.widthHint = pixelConverter.convertHorizontalDLUsToPixels(80);
 		remove.setLayoutData(gridData);
 
 		remove.addSelectionListener(new SelectionAdapter() {

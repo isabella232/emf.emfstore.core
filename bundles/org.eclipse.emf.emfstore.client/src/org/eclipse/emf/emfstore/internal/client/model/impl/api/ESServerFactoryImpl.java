@@ -83,9 +83,12 @@ public final class ESServerFactoryImpl implements ESServerFactory {
 				throw new ESServerStartFailedException(e);
 			}
 		}
+		final String port = ServerConfiguration.getProperties().getProperty(
+			ServerConfiguration.XML_RPC_PORT,
+			ServerConfiguration.XML_RPC_PORT_DEFAULT);
 		final ESServer server = createServer(LOCAL_SERVER_NAME,
 			LOCALHOST,
-			Integer.parseInt(ServerConfiguration.XML_RPC_PORT_DEFAULT),
+			Integer.parseInt(port),
 			KeyStoreManager.DEFAULT_CERTIFICATE);
 		return server;
 	}

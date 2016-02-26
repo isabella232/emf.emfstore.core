@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
-import org.eclipse.swt.graphics.Image;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +49,8 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	 * @ordered
 	 */
 	protected EList<OperationProxy> proxies;
-	private Image image;
+
+	private ImageProxy imageProxy;
 	private String label = ""; //$NON-NLS-1$
 	private int index = -1;
 
@@ -177,21 +178,23 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	}
 
 	/**
-	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(org.eclipse.swt.graphics.Image)
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy)
 	 */
-	public void setImage(Image image) {
-		this.image = image;
+	public void setImage(ImageProxy imageProxy) {
+		this.imageProxy = imageProxy;
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#getImage()
 	 */
-	public Image getImage() {
-		return image;
+	public ImageProxy getImage() {
+		return imageProxy;
 	}
 
 	/**

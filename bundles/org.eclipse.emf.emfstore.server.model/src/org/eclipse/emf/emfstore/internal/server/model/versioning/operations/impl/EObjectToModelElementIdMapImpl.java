@@ -132,11 +132,11 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 			value = (ModelElementId) eResolveProxy(oldValue);
 			if (value != oldValue) {
 				final InternalEObject newValue = (InternalEObject) value;
-				NotificationChain msgs = oldValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, null);
+				NotificationChain msgs = oldValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, null);
 				if (newValue.eInternalContainer() == null) {
-					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, msgs);
+					msgs = newValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -188,12 +188,12 @@ public class EObjectToModelElementIdMapImpl extends EObjectImpl implements Basic
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null) {
-				msgs = ((InternalEObject) value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, msgs);
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, msgs);
 			}
 			if (newValue != null) {
-				msgs = ((InternalEObject) newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, msgs);
+				msgs = ((InternalEObject) newValue).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__VALUE, null, msgs);
 			}
 			msgs = basicSetTypedValue(newValue, msgs);
 			if (msgs != null) {

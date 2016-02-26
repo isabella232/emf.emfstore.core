@@ -13,7 +13,7 @@
    <element name="extension">
       <annotation>
          <appInfo>
-            <meta.element />
+            <meta.element deprecated="true" />
          </appInfo>
       </annotation>
       <complexType>
@@ -48,6 +48,11 @@
    </element>
 
    <element name="provider">
+      <annotation>
+         <appInfo>
+            <meta.element deprecated="true"/>
+         </appInfo>
+      </annotation>
       <complexType>
          <attribute name="class" type="string" use="required">
             <annotation>
@@ -55,7 +60,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.client.ui.ESUIRunnableProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.client.ui.ESUIRunnableProvider" deprecated="true"/>
                </appInfo>
             </annotation>
          </attribute>

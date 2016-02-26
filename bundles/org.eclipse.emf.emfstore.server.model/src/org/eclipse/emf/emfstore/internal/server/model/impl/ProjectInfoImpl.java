@@ -28,7 +28,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  * The following features are implemented:
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getDescription <em>Description</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getProjectId <em>Project Id</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getVersion <em>Version</em>}</li>
  * </ul>
@@ -184,11 +185,11 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
-				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_INFO__PROJECT_ID, null, null);
+				NotificationChain msgs = oldProjectId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null) {
-					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.PROJECT_INFO__PROJECT_ID, null, msgs);
+					msgs = newProjectId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__PROJECT_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -240,12 +241,12 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
-				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_INFO__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) projectId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__PROJECT_ID, null, msgs);
 			}
 			if (newProjectId != null) {
-				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_INFO__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) newProjectId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__PROJECT_ID, null, msgs);
 			}
 			msgs = basicSetProjectId(newProjectId, msgs);
 			if (msgs != null) {
@@ -268,8 +269,8 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 			version = (PrimaryVersionSpec) eResolveProxy(oldVersion);
 			if (version != oldVersion) {
 				final InternalEObject newVersion = (InternalEObject) version;
-				NotificationChain msgs = oldVersion.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_INFO__VERSION, null, null);
+				NotificationChain msgs = oldVersion.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__VERSION, null, null);
 				if (newVersion.eInternalContainer() == null) {
 					msgs = newVersion.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__VERSION,
 						null, msgs);
@@ -333,12 +334,12 @@ public class ProjectInfoImpl extends EObjectImpl implements ProjectInfo {
 		if (newVersion != version) {
 			NotificationChain msgs = null;
 			if (version != null) {
-				msgs = ((InternalEObject) version).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_INFO__VERSION, null, msgs);
+				msgs = ((InternalEObject) version).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__VERSION, null, msgs);
 			}
 			if (newVersion != null) {
-				msgs = ((InternalEObject) newVersion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_INFO__VERSION, null, msgs);
+				msgs = ((InternalEObject) newVersion).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_INFO__VERSION, null, msgs);
 			}
 			msgs = basicSetVersion(newVersion, msgs);
 			if (msgs != null) {

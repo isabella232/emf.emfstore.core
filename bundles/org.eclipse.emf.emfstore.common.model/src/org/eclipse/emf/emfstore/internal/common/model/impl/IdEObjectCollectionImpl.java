@@ -332,7 +332,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		// remove cross references
 		ModelUtil.deleteOutgoingCrossReferences(this, modelElement);
 		final Collection<Setting> crossReferences = UsageCrossReferencer.find(modelElement, this);
-		ModelUtil.deleteIncomingCrossReferencesFromParent(crossReferences, modelElement);
+		ModelUtil.deleteIncomingCrossReferencesToElement(modelElement, crossReferences, new LinkedHashSet<EObject>());
 
 		// remove containment
 		final EObject containerModelElement = ModelUtil.getContainerModelElement(modelElement);
@@ -816,10 +816,10 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	/**
 	 *
 	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#clearAllocatedCaches(java.util.Collection)
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#clearAllocatedCaches(java.util.Set)
 	 */
-	public void clearAllocatedCaches(Collection<ModelElementId> modelElementIds) {
+	public void clearAllocatedCaches(Set<ModelElementId> modelElementIds) {
 		allocatedIdToEObjectMap.keySet().removeAll(modelElementIds);
 		allocatedEObjectToIdMap.values().removeAll(modelElementIds);
 	}

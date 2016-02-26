@@ -8,6 +8,7 @@
  *
  * Contributors:
  * Otto von Wesendonk, Edgar Mueller, Maximilian Koegel - initial API and implementation
+ * Johannes Faltermeier - ESCompositeOperationHandle support
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client;
 
@@ -34,6 +35,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESVersionSpec;
  * @author emueller
  * @author wesendon
  * @author mkoegel
+ * @author jfaltermeier
  *
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
@@ -304,4 +306,15 @@ public interface ESLocalProject extends ESProject, ESObjectContainer<ESModelElem
 	 * @return the ID of the project
 	 */
 	ESLocalProjectId getLocalProjectId();
+
+	/**
+	 * Call this method to begin a composite operation. A composite operation will group all operations which are
+	 * recorded during the composite operation's lifetime as a logical unit.
+	 *
+	 * @return a {@link ESCompositeOperationHandle handle} to
+	 *         {@link ESCompositeOperationHandle#end(String, String, ESModelElementId) stop} the composite operation or
+	 *         to {@link ESCompositeOperationHandle#abort() abort} it.
+	 * @since 1.7
+	 */
+	ESCompositeOperationHandle beginCompositeOperation();
 }

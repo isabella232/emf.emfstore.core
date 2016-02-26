@@ -63,6 +63,13 @@ This option is available on the server as well as on the client side.
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="useFileBasedChangePackage" type="boolean">
+            <annotation>
+               <documentation>
+                  Whether the server should use file based change packages (true) or in-memory changepackages.
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

@@ -11,6 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.core.subinterfaces;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.ESCollections;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
@@ -269,6 +271,13 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final String proxyId = generateProxyId(projectId.getId());
 
 		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
+
+		if (resolvedSession == null) {
+			throw new ESException(
+				MessageFormat.format(
+					Messages.VersionSubInterfaceImpl_0, sessionId.getId()));
+		}
+
 		final SessionId session = APIUtil.toInternal(SessionId.class, resolvedSession);
 		final Optional<ChangePackageFragmentUploadAdapter> maybeAdapter = ESCollections.find(session.eAdapters(),
 			ChangePackageFragmentUploadAdapter.class);
@@ -367,9 +376,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final ACUser user = (ACUser) ESUserImpl.class.cast(copyAndResolveUser).toInternalAPI();
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 
-		// File-based change package should never arrive here in production mode
-		if (FileBasedChangePackage.class.isInstance(changePackage)) {
+		if (FileBasedChangePackage.class.isInstance(changePackage)
+			&& !ServerConfiguration.useFileBasedChangePackageOnServer()) {
+			// File-based change package should never arrive here in production mode
 			throw new ESException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageNotAllowed);
+		} else if (ChangePackage.class.isInstance(changePackage)
+			&& ServerConfiguration.useFileBasedChangePackageOnServer()) {
+			// Regular change package should never arrive here in production mode
+			throw new ESException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageExpected);
 		}
 
 		return internalCreateVersion(projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion,
@@ -538,6 +552,19 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			newVersion.getPrimarySpec(), projectHistory.getProjectId());
 		getResourceHelper().createResourceForChangePackage(changePackage, newVersion.getPrimarySpec(),
 			projectId);
+		if (FileBasedChangePackage.class.isInstance(changePackage)) {
+			try {
+				/* move the temporary file to the project folder */
+				final URI uri = changePackage.eResource().getURI();
+				final URI normalizedUri = changePackage.eResource().getResourceSet().getURIConverter().normalize(uri);
+				final String filePath = normalizedUri.toFileString() + ".1"; //$NON-NLS-1$
+				FileBasedChangePackage.class.cast(changePackage).move(filePath);
+				ModelUtil.saveResource(changePackage.eResource(), ModelUtil.getResourceLogger());
+			} catch (final IOException ex) {
+				throw new FatalESException(StorageException.NOSAVE, ex);
+			}
+		}
+
 		getResourceHelper().createResourceForVersion(newVersion, projectHistory.getProjectId());
 
 		newVersion.setProjectStateResource(newProjectState.eResource());

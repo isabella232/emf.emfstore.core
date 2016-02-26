@@ -22,7 +22,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  * @author emueller
  *
  */
-public class ESBranchInfoImpl extends AbstractAPIImpl<ESBranchInfo, BranchInfo> implements ESBranchInfo {
+public class ESBranchInfoImpl extends AbstractAPIImpl<ESBranchInfo, BranchInfo>implements ESBranchInfo {
 
 	/**
 	 * Constructor.

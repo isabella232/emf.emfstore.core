@@ -101,11 +101,11 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 			oldValue = (ModelElementId) eResolveProxy(oldOldValue);
 			if (oldValue != oldOldValue) {
 				final InternalEObject newOldValue = (InternalEObject) oldValue;
-				NotificationChain msgs = oldOldValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, null);
+				NotificationChain msgs = oldOldValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, null);
 				if (newOldValue.eInternalContainer() == null) {
-					msgs = newOldValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, msgs);
+					msgs = newOldValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -157,12 +157,12 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 		if (newOldValue != oldValue) {
 			NotificationChain msgs = null;
 			if (oldValue != null) {
-				msgs = ((InternalEObject) oldValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, msgs);
+				msgs = ((InternalEObject) oldValue).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, msgs);
 			}
 			if (newOldValue != null) {
-				msgs = ((InternalEObject) newOldValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, msgs);
+				msgs = ((InternalEObject) newOldValue).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__OLD_VALUE, null, msgs);
 			}
 			msgs = basicSetOldValue(newOldValue, msgs);
 			if (msgs != null) {
@@ -185,11 +185,11 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 			newValue = (ModelElementId) eResolveProxy(oldNewValue);
 			if (newValue != oldNewValue) {
 				final InternalEObject newNewValue = (InternalEObject) newValue;
-				NotificationChain msgs = oldNewValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, null);
+				NotificationChain msgs = oldNewValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, null);
 				if (newNewValue.eInternalContainer() == null) {
-					msgs = newNewValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, msgs);
+					msgs = newNewValue.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -241,12 +241,12 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 		if (newNewValue != newValue) {
 			NotificationChain msgs = null;
 			if (newValue != null) {
-				msgs = ((InternalEObject) newValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, msgs);
+				msgs = ((InternalEObject) newValue).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, msgs);
 			}
 			if (newNewValue != null) {
-				msgs = ((InternalEObject) newNewValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, msgs);
+				msgs = ((InternalEObject) newNewValue).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - OperationsPackage.SINGLE_REFERENCE_OPERATION__NEW_VALUE, null, msgs);
 			}
 			msgs = basicSetNewValue(newNewValue, msgs);
 			if (msgs != null) {

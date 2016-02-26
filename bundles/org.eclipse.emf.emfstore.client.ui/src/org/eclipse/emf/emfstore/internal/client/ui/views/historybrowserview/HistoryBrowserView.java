@@ -47,7 +47,6 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ModelElementIdToEObjectMappingImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESHistoryInfoImpl;
-import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
@@ -109,6 +108,10 @@ import org.eclipse.ui.part.ViewPart;
  */
 // TODO: review setInput methods
 public class HistoryBrowserView extends ViewPart implements ProjectSpaceContainer {
+
+	// icons
+	private static final String EXPAND_ALL_GIF = "icons/expandall.gif"; //$NON-NLS-1$
+	private static final String COLLAPSE_ALL_GIF = "icons/collapseall.gif"; //$NON-NLS-1$
 
 	// Config
 	private static final int UPPER_LIMIT = 10;
@@ -315,8 +318,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private List<HistoryInfo> getHistoryInfos() {
-		final Shell shell =
-			getViewSite().getShell();
+		final Shell shell = getViewSite().getShell();
 
 		final List<HistoryInfo> result = new AbstractEMFStoreUIController<List<HistoryInfo>>(shell, true,
 			false) {
@@ -374,8 +376,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			true);
 		// TODO: proivde util method
 		final ESHistoryQuery<ESModelElementQuery> api = query.toAPI();
-		final List<ESHistoryInfo> infos =
-			projectSpace.toAPI().getHistoryInfos(api, new NullProgressMonitor());
+		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(api, new NullProgressMonitor());
 		return infos;
 	}
 
@@ -407,11 +408,9 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 				try {
 					for (final AbstractOperation operation : operations.iterable()) {
 
-						final AbstractOperation ao = ESOperationImpl.class.cast(operation).toInternalAPI();
-
-						if (!ao.getAllInvolvedModelElements().contains(
+						if (!operation.getAllInvolvedModelElements().contains(
 							ModelUtil.getProject(modelElement).getModelElementId(modelElement))) {
-							operationsToRemove.add(ao);
+							operationsToRemove.add(operation);
 						}
 					}
 				} finally {
@@ -505,7 +504,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		GridDataFactory.fillDefaults().align(SWT.CENTER, SWT.CENTER).grab(true, false).applyTo(noProjectHint);
 
 		noProjectHint
-		.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
+			.setText(Messages.HistoryBrowserView_SelectProjectOrCallHistory);
 		noProjectHint.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
 				final ElementListSelectionDialog elsd = new ElementListSelectionDialog(parent.getShell(),
@@ -551,6 +550,8 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	@Override
 	public void dispose() {
 		adapterFactoryLabelProvider.dispose();
+		changeLabel.dispose();
+		commitLabel.dispose();
 		super.dispose();
 	}
 
@@ -687,7 +688,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		for (final HistoryInfo info : resultCandidates) {
 			if (info.getPrimarySpec().getIdentifier() != -1
 				&& (biggest && info.getPrimarySpec().compareTo(result) == 1 || !biggest && info.getPrimarySpec()
-				.compareTo(result) == -1)) {
+					.compareTo(result) == -1)) {
 				result = info.getPrimarySpec();
 			}
 		}
@@ -778,12 +779,12 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	}
 
 	private void addExpandAllAndCollapseAllAction(IToolBarManager menuManager) {
-		final ImageDescriptor expandImg = Activator.getImageDescriptor("icons/expandall.gif");
-		final ImageDescriptor collapseImg = Activator.getImageDescriptor("icons/collapseall.gif");
+		final ImageDescriptor expandImg = Activator.getImageDescriptor(EXPAND_ALL_GIF);
+		final ImageDescriptor collapseImg = Activator.getImageDescriptor(COLLAPSE_ALL_GIF);
 
-		expandAndCollapse = new ExpandCollapseAction("", SWT.TOGGLE, expandImg, collapseImg);
+		expandAndCollapse = new ExpandCollapseAction(StringUtils.EMPTY, SWT.TOGGLE, expandImg, collapseImg);
 		expandAndCollapse.setImageDescriptor(expandImg);
-		expandAndCollapse.setToolTipText("Use this toggle to expand or collapse all elements");
+		expandAndCollapse.setToolTipText(Messages.HistoryBrowserView_ExpandCollapseToggle);
 		menuManager.add(expandAndCollapse);
 	}
 

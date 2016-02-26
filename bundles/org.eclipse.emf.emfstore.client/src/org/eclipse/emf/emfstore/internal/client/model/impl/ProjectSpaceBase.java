@@ -660,28 +660,12 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		initPropertyMap();
 
 		final URI localChangePackageUri = ESClientURIUtil.createOperationsURI(this);
-		AbstractChangePackage localChangePackage = getLocalChangePackage();
+		final AbstractChangePackage localChangePackage = getLocalChangePackage();
 
 		if (localChangePackage == null) {
-			if (Configuration.getClientBehavior().useInMemoryChangePackage()) {
-				localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
-				final Resource resource = getResourceSet().createResource(localChangePackageUri);
-				resource.getContents().add(localChangePackage);
-			} else {
-				final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
-				final String filePath = normalizedUri.toFileString();
-				localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
-				((FileBasedChangePackage) localChangePackage)
-					.initialize(filePath + FileBasedChangePackageImpl.FILE_OP_INDEX);
-				final Resource resource = getResourceSet().createResource(localChangePackageUri);
-				resource.getContents().add(localChangePackage);
-				try {
-					resource.save(ModelUtil.getResourceSaveOptions());
-				} catch (final IOException ex) {
-					WorkspaceUtil.logException(ex.getMessage(), ex);
-				}
-			}
-			setChangePackage(localChangePackage);
+			setChangePackage(createChangePackage(localChangePackageUri, true));
+		} else if (localChangePackage.eIsProxy()) {
+			setChangePackage(createChangePackage(localChangePackageUri, false));
 		} else {
 			if (!Configuration.getClientBehavior().useInMemoryChangePackage()) {
 				final FileBasedChangePackage changePackage = (FileBasedChangePackage) getLocalChangePackage();
@@ -719,13 +703,48 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 		cleanCutElements();
 	}
 
+	private AbstractChangePackage createChangePackage(URI localChangePackageUri, boolean initialize) {
+
+		AbstractChangePackage localChangePackage;
+
+		if (Configuration.getClientBehavior().useInMemoryChangePackage()) {
+			localChangePackage = VersioningFactory.eINSTANCE.createChangePackage();
+			final Resource resource = getResourceSet().createResource(localChangePackageUri);
+			resource.getContents().add(localChangePackage);
+		} else {
+			final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
+			final String filePath = normalizedUri.toFileString();
+			localChangePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+
+			if (initialize) {
+				((FileBasedChangePackage) localChangePackage)
+					.initialize(filePath + FileBasedChangePackageImpl.FILE_OP_INDEX);
+			} else {
+				((FileBasedChangePackage) localChangePackage).setFilePath(
+					filePath + FileBasedChangePackageImpl.FILE_OP_INDEX);
+			}
+
+			final Resource resource = getResourceSet().createResource(localChangePackageUri);
+			resource.getContents().add(localChangePackage);
+			try {
+				resource.save(ModelUtil.getResourceSaveOptions());
+			} catch (final IOException ex) {
+				WorkspaceUtil.logException(ex.getMessage(), ex);
+			}
+		}
+
+		return localChangePackage;
+	}
+
 	private void migrateFileBasedChangePackageIntoDedicatedResource(final URI localChangePackageUri,
 		final FileBasedChangePackage changePackage) {
 
 		final URI normalizedUri = getResourceSet().getURIConverter().normalize(localChangePackageUri);
 		final String filePath = normalizedUri.toFileString();
+
 		final String tempPath = changePackage.getTempFilePath();
 		final String path = changePackage.getFilePath();
+
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
@@ -733,19 +752,27 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 			}
 		});
 
-		try {
-			FileUtils.moveFile(new File(tempPath), new File(changePackage.getTempFilePath()));
-			FileUtils.moveFile(new File(path), new File(changePackage.getFilePath()));
-		} catch (final IOException ex) {
-			WorkspaceUtil.logException(ex.getMessage(), ex);
+		if (path != null) {
+			// temp file depends on path
+			try {
+				FileUtils.moveFile(new File(tempPath), new File(changePackage.getTempFilePath()));
+				FileUtils.moveFile(new File(path), new File(changePackage.getFilePath()));
+			} catch (final IOException ex) {
+				WorkspaceUtil.logException(ex.getMessage(), ex);
+			}
 		}
 
+		Resource resource = getResourceSet().getResource(localChangePackageUri, true);
+		if (resource == null) {
+			resource = getResourceSet().createResource(localChangePackageUri);
+		}
+
+		final Resource r = resource;
 		// move change package into its own resource
-		final Resource resource = getResourceSet().createResource(localChangePackageUri);
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
-				resource.getContents().add(changePackage);
+				r.getContents().add(changePackage);
 				setChangePackage(changePackage);
 			}
 		});

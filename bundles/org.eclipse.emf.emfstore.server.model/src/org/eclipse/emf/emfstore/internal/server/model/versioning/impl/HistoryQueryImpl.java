@@ -124,11 +124,11 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 			source = (PrimaryVersionSpec) eResolveProxy(oldSource);
 			if (source != oldSource) {
 				final InternalEObject newSource = (InternalEObject) source;
-				NotificationChain msgs = oldSource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.HISTORY_QUERY__SOURCE, null, null);
+				NotificationChain msgs = oldSource.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.HISTORY_QUERY__SOURCE, null, null);
 				if (newSource.eInternalContainer() == null) {
-					msgs = newSource.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - VersioningPackage.HISTORY_QUERY__SOURCE, null, msgs);
+					msgs = newSource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VersioningPackage.HISTORY_QUERY__SOURCE,
+						null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -180,12 +180,12 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null) {
-				msgs = ((InternalEObject) source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.HISTORY_QUERY__SOURCE, null, msgs);
+				msgs = ((InternalEObject) source).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.HISTORY_QUERY__SOURCE, null, msgs);
 			}
 			if (newSource != null) {
-				msgs = ((InternalEObject) newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- VersioningPackage.HISTORY_QUERY__SOURCE, null, msgs);
+				msgs = ((InternalEObject) newSource).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - VersioningPackage.HISTORY_QUERY__SOURCE, null, msgs);
 			}
 			msgs = basicSetSource(newSource, msgs);
 			if (msgs != null) {
@@ -215,9 +215,9 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 		final boolean oldIncludeChangePackages = includeChangePackages;
 		includeChangePackages = newIncludeChangePackages;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				VersioningPackage.HISTORY_QUERY__INCLUDE_CHANGE_PACKAGES, oldIncludeChangePackages,
-				includeChangePackages));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, VersioningPackage.HISTORY_QUERY__INCLUDE_CHANGE_PACKAGES,
+					oldIncludeChangePackages, includeChangePackages));
 		}
 	}
 
@@ -239,8 +239,8 @@ public abstract class HistoryQueryImpl<T extends ESHistoryQuery<?>> extends EObj
 		final boolean oldIncludeAllVersions = includeAllVersions;
 		includeAllVersions = newIncludeAllVersions;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				VersioningPackage.HISTORY_QUERY__INCLUDE_ALL_VERSIONS, oldIncludeAllVersions, includeAllVersions));
+			eNotify(new ENotificationImpl(this, Notification.SET, VersioningPackage.HISTORY_QUERY__INCLUDE_ALL_VERSIONS,
+				oldIncludeAllVersions, includeAllVersions));
 		}
 	}
 

@@ -22,8 +22,8 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESDateVersionSpec;
  * @author emueller
  *
  */
-public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, DateVersionSpec> implements
-	ESDateVersionSpec {
+public class ESDateVersionSpecImpl extends ESVersionSpecImpl<ESDateVersionSpec, DateVersionSpec>
+	implements ESDateVersionSpec {
 
 	/**
 	 * Constructor.

@@ -31,15 +31,29 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 */
 	protected static final String UNKOWN_ELEMENT = Messages.DefaultOperationLabelProvider_UnknownElement;
 
-	private final AdapterFactoryLabelProvider adapterFactoryLabelProvider;
-	private final ComposedAdapterFactory adapterFactory;
+	private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
+	private ComposedAdapterFactory adapterFactory;
+
+	private boolean isDisposed;
 
 	/**
 	 * Constructor.
 	 */
 	public DefaultOperationLabelProvider() {
-		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		init();
+	}
+
+	/**
+	 * Initializes the label provider.
+	 */
+	protected void init() {
+		if (adapterFactory == null) {
+			adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		}
+		if (adapterFactoryLabelProvider == null) {
+			adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+		}
+		isDisposed = false;
 	}
 
 	/**
@@ -49,7 +63,6 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getDescription(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public String getDescription(AbstractOperation operation) {
-
 		if (operation instanceof CompositeOperation) {
 			final CompositeOperation compositeOperation = (CompositeOperation) operation;
 			// artificial composite because of opposite reference,
@@ -58,7 +71,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 				return getDescription(compositeOperation.getMainOperation());
 			}
 		}
-
+		if (isDisposed()) {
+			init();
+		}
 		return adapterFactoryLabelProvider.getText(operation);
 	}
 
@@ -69,6 +84,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getImage(org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */
 	public Object getImage(AbstractOperation operation) {
+		if (isDisposed()) {
+			init();
+		}
 		return adapterFactoryLabelProvider.getImage(operation);
 	}
 
@@ -89,7 +107,9 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.common.OperationCustomLabelProvider#getModelElementName(org.eclipse.emf.ecore.EObject)
 	 */
 	public String getModelElementName(EObject modelElement) {
-
+		if (isDisposed()) {
+			init();
+		}
 		if (modelElement == null) {
 			return UNKOWN_ELEMENT;
 		}
@@ -118,10 +138,21 @@ public class DefaultOperationLabelProvider implements OperationCustomLabelProvid
 	public void dispose() {
 		if (adapterFactory != null) {
 			adapterFactory.dispose();
+			adapterFactory = null;
 		}
 		if (adapterFactoryLabelProvider != null) {
 			adapterFactoryLabelProvider.dispose();
+			adapterFactoryLabelProvider = null;
 		}
+		isDisposed = true;
+	}
+
+	/**
+	 * @return whether the label provider is disposed. A disposed label provider has to be {@link #init() initialized}
+	 *         again.
+	 */
+	protected boolean isDisposed() {
+		return isDisposed;
 	}
 
 	/**
