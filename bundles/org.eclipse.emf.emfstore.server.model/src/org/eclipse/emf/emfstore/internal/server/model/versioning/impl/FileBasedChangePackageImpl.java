@@ -102,9 +102,11 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 	private static final String TEMP_FILE_PREFIX = "temp-"; //$NON-NLS-1$
 
 	/**
+	 * Suffix for temporary operation files.
+	 * 
 	 * @generated NOT
 	 */
-	private static final String TEMP_SUFFIX = ".temp"; //$NON-NLS-1$
+	public static final String TEMP_SUFFIX = ".temp"; //$NON-NLS-1$
 
 	// FIXME we also have a constant for this on the client side
 	private static final String OPERATION_FILE_SUFFIX = ".eoc"; //$NON-NLS-1$
