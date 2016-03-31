@@ -9,229 +9,218 @@
  * Contributors:
  * wesendon
  * koegel
+ * jfaltermeier
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.startup;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.io.FileUtils;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.emfstore.common.ESSystemOutProgressMonitor;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.migration.EMFStoreMigrationException;
+import org.eclipse.emf.emfstore.internal.migration.EMFStoreMigrator;
+import org.eclipse.emf.emfstore.internal.migration.EMFStoreMigratorUtil;
+import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
+import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
+import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.Direction;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent.SerializedOperationEmitter;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage;
+import org.eclipse.emf.emfstore.server.ESServerURIUtil;
+
+import com.google.common.base.Optional;
 
 /**
  * Applies migrator to files on server.
  *
  * @author koegel
  * @author wesendon
+ * @author jfaltermeier
  */
-// TODO: internal
-public class MigrationManager {
-	//
-	// /**
-	// * Starts migration.
-	// *
-	// * @throws FatalESException in case of failure
-	// */
-	// public void migrateModel() throws FatalESException {
-	// int modelVersionNumber = 0;
-	// // try {
-	// // modelVersionNumber = ModelUtil.getModelVersionNumber();
-	// // } catch (MalformedModelVersionException e1) {
-	// // throw new FatalESException(e1);
-	// // }
-	//
-	// // check for legacy server space
-	// File versionFile = new File(ServerConfiguration.getModelReleaseNumberFileName());
-	// if (!versionFile.exists()) {
-	// stampCurrentVersionNumber(modelVersionNumber);
-	// }
-	//
-	// // check if we need to migrate
-	// ModelVersion modelVersion;
-	// URI versionFileUri = URI.createFileURI(ServerConfiguration.getModelReleaseNumberFileName());
-	// ResourceSet resourceSet = new ResourceSetImpl();
-	// try {
-	// Resource resource = resourceSet.getResource(versionFileUri, true);
-	// EList<EObject> directContents = resource.getContents();
-	// modelVersion = (ModelVersion) directContents.get(0);
-	// // BEGIN SUPRESS CATCH EXCEPTION
-	// } catch (RuntimeException e) {
-	// // END SUPRESS CATCH EXCEPTION
-	// // resource can not be loaded, assume version number before metamodel split
-	// modelVersion = ModelFactory.eINSTANCE.createModelVersion();
-	// modelVersion.setReleaseNumber(4);
-	// }
-	//
-	// if (modelVersion.getReleaseNumber() == modelVersionNumber) {
-	// return;
-	// }
-	//
-	// if (!EMFStoreMigratorUtil.isMigratorAvailable()) {
-	// throw new FatalESException("Model must be migrated to new version, but no migrators are available.");
-	// }
-	//
-	// // ask for confirmation
-	// boolean doProcceed = askForConfirmationForMigration();
-	// if (!doProcceed) {
-	// String message = "Server shutting down, model update is mandatory.";
-	// System.out.println(message);
-	// throw new FatalESException(message);
-	// }
-	//
-	// // migrate all versions of all projects
-	// // we need to migrate
-	// File serverSpaceDirectory = new File(ServerConfiguration.getServerHome());
-	// // for all projects
-	// for (File projectDirectory : serverSpaceDirectory.listFiles()) {
-	// if (projectDirectory.getName().startsWith(ServerConfiguration.FILE_PREFIX_PROJECTFOLDER)
-	// && projectDirectory.isDirectory()) {
-	//
-	// System.out.println("Migrating project at " + projectDirectory + "...");
-	//
-	// convertInitialProjectState(modelVersion, projectDirectory);
-	//
-	// File[] listFiles = projectDirectory.listFiles(new FileFilter() {
-	// public boolean accept(File pathname) {
-	// if (pathname.isFile()
-	// && (pathname.getName().endsWith(".ucp") || pathname.getName().endsWith(".ups"))) {
-	// return true;
-	// }
-	// return false;
-	// }
-	// });
-	//
-	// convertAllVersions(modelVersion, projectDirectory, listFiles);
-	//
-	// // convertAllBackupStates(modelVersion, projectDirectory, listFiles);
-	// }
-	// }
-	// stampCurrentVersionNumber(modelVersionNumber);
-	// }
-	//
-	// private void convertInitialProjectState(ModelVersion modelVersion, File projectDirectory)
-	// throws FatalESException {
-	// URI version0StateURI = URI.createFileURI(projectDirectory.getAbsolutePath() + File.separatorChar
-	// + ServerConfiguration.FILE_PREFIX_PROJECTSTATE + "0" + ServerConfiguration.FILE_EXTENSION_PROJECTSTATE);
-	// try {
-	// System.out.println("Migrating version 0...");
-	// migrate(version0StateURI, new ArrayList<URI>(), modelVersion.getReleaseNumber());
-	// } catch (EMFStoreMigrationException e) {
-	// throw new FatalESException("Migration of project at " + projectDirectory + " failed!", e);
-	// }
-	// }
-	//
-	// private void convertAllVersions(ModelVersion modelVersion, File projectDirectory, File[] listFiles)
-	// throws FatalESException {
-	// List<URI> changePackageURIs = new ArrayList<URI>();
-	//
-	// Arrays.sort(listFiles, new Comparator<File>() {
-	//
-	// public int compare(File o1, File o2) {
-	// return compare(o1.getName(), o2.getName());
-	// }
-	//
-	// private int compare(String name1, String name2) {
-	// return getNumber(name1).compareTo(getNumber(name2));
-	// }
-	//
-	// private Integer getNumber(String filename) {
-	// String name = filename.substring(0, filename.lastIndexOf("."));
-	//
-	// int i = name.length() - 1;
-	// while (i >= 0 && '0' <= name.charAt(i) && name.charAt(i) <= '9') {
-	// i--;
-	// }
-	// i++;
-	//
-	// String number = name.substring(i);
-	// return number.equals("") ? 0 : Integer.parseInt(number);
-	// }
-	// });
-	//
-	// for (File changePackageFile : listFiles) {
-	// String changePackageName = changePackageFile.getName();
-	// if (changePackageName.startsWith(ServerConfiguration.FILE_PREFIX_CHANGEPACKAGE)) {
-	// int versionSpec = parseVersionSpecFromFileName(changePackageName);
-	// URI changePackageURI = URI.createFileURI(changePackageFile.getAbsolutePath());
-	// changePackageURIs.add(changePackageURI);
-	// String projectStateFilename = projectDirectory.getAbsolutePath() + File.separatorChar
-	// + ServerConfiguration.FILE_PREFIX_PROJECTSTATE + versionSpec
-	// + ServerConfiguration.FILE_EXTENSION_PROJECTSTATE;
-	// File projectStateFile = new File(projectStateFilename);
-	// if (projectStateFile.exists()) {
-	// URI projectURI = URI.createFileURI(projectStateFilename);
-	// try {
-	// System.out.println("Migrating version " + versionSpec + " with its "
-	// + (changePackageURIs.size() - 1) + " previous versions...");
-	// migrate(projectURI, changePackageURIs, modelVersion.getReleaseNumber());
-	// } catch (EMFStoreMigrationException e) {
-	// throw new FatalESException("Migration of project at " + projectDirectory + " failed!", e);
-	// }
-	// changePackageURIs.clear();
-	// }
-	//
-	// }
-	//
-	// }
-	// }
-	//
-	// private int parseVersionSpecFromFileName(String versionName) {
-	// int startOfFileExtension = versionName.lastIndexOf(".");
-	// int prefixLength = ServerConfiguration.FILE_PREFIX_CHANGEPACKAGE.length();
-	// String versionSpecString = versionName.substring(prefixLength, startOfFileExtension);
-	// int versionSpec = Integer.parseInt(versionSpecString);
-	// return versionSpec;
-	// }
-	//
-	// /**
-	// * Migrate the model instance if neccessary.
-	// *
-	// * @param projectURI the uri of the project state
-	// * @param changesURI the uri of the local changes of the project state
-	// * @param sourceModelReleaseNumber
-	// * @throws ModelMigrationException
-	// */
-	// private void migrate(URI projectURI, List<URI> changesURIs, int sourceModelReleaseNumber)
-	// throws EMFStoreMigrationException {
-	//
-	// List<URI> modelURIs = new ArrayList<URI>();
-	// modelURIs.add(projectURI);
-	// for (URI changeURI : changesURIs) {
-	// modelURIs.add(changeURI);
-	// }
-	// EMFStoreMigratorUtil.getEMFStoreMigrator().migrate(modelURIs,
-	// new ConsoleProgressMonitor());
-	// }
-	//
-	// private void stampCurrentVersionNumber(int modelReleaseNumber) {
-	// URI versionFileUri = URI.createFileURI(ServerConfiguration.getModelReleaseNumberFileName());
-	// Resource versionResource = new ResourceSetImpl().createResource(versionFileUri);
-	// ModelVersion modelVersion = ModelFactory.eINSTANCE.createModelVersion();
-	// modelVersion.setReleaseNumber(modelReleaseNumber);
-	// versionResource.getContents().add(modelVersion);
-	// try {
-	// ModelUtil.saveResource(versionResource, ModelUtil.getResourceLogger());
-	// } catch (IOException e) {
-	// // MK Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
-	//
-	// /**
-	// * Ask for Confirmation for model migration.
-	// *
-	// * @return true if user wants to proceed
-	// * @throws FatalESException
-	// */
-	// private boolean askForConfirmationForMigration() throws FatalESException {
-	// System.out
-	// .println("Your model is not up to date. Do you want to update now and did you backup your emfstore folder? (y/n)");
-	//
-	// byte[] buffer = new byte[1];
-	// String input = "";
-	// int read = 0;
-	//
-	// try {
-	// read = System.in.read(buffer, 0, 1);
-	// } catch (IOException e) {
-	// throw new FatalESException("Cannot read from input", e);
-	// }
-	//
-	// input = new String(buffer, 0, read);
-	// return input.equalsIgnoreCase("y");
-	// }
+@SuppressWarnings("restriction")
+public final class MigrationManager {
+
+	private MigrationManager() {
+	}
+
+	/**
+	 * Performs a migration of the server space.
+	 *
+	 * @param resourceSet a resource set which contains all necessary converters/handler and may be safely used by the
+	 *            migrator.
+	 * @param inMemoryChangePackage <code>true</code> if server is configured to use in memory change packages,
+	 *            <code>false</code> otherwise
+	 * @throws FatalESException in case of a fatal state
+	 */
+	public static void migrate(ResourceSet resourceSet, boolean inMemoryChangePackage) throws FatalESException {
+		/* check if migrator is available */
+		if (!EMFStoreMigratorUtil.isMigratorAvailable()) {
+			return;
+		}
+
+		/* get migrator */
+		EMFStoreMigrator migrator = null;
+		try {
+			migrator = EMFStoreMigratorUtil.getEMFStoreMigrator();
+		} catch (final EMFStoreMigrationException ex1) {
+			throw new FatalESException(
+				"No EMFStore Migrator could be created even though a migrator should be available."); //$NON-NLS-1$
+		}
+
+		/* load server space in order to access versions */
+		final URI serverSpaceURI = ESServerURIUtil.createServerSpaceURI();
+		final Resource resource = resourceSet.createResource(serverSpaceURI);
+		try {
+			resource.load(null);
+		} catch (final IOException ex) {
+			ModelUtil.logException(ex);
+			return;
+		}
+		final ServerSpace serverSpace = (ServerSpace) resource.getContents().get(0);
+
+		/* get uris which might have to be migrated */
+		final Set<URI> urisToMigrate = new LinkedHashSet<URI>();
+		final Map<URI, List<URI>> fileBasedCPToTempFiles = new LinkedHashMap<URI, List<URI>>();
+		fillURIsToMigrate(resourceSet.getURIConverter(), serverSpace, urisToMigrate, fileBasedCPToTempFiles,
+			inMemoryChangePackage);
+
+		/* check if all URIs may be handled by the migrator */
+		final Set<URI> urisWhichCantBeHandled = migrator.canHandle(urisToMigrate);
+		if (!urisWhichCantBeHandled.isEmpty()) {
+			urisToMigrate.removeAll(urisWhichCantBeHandled);
+			for (final URI uri : urisWhichCantBeHandled) {
+				ModelUtil.logInfo(MessageFormat.format(
+					"No migrator found for URI {0}. If a migration is needed for this URI you may encounter problems.", //$NON-NLS-1$
+					uri));
+			}
+		}
+
+		/* get URIs that actually need migration */
+		final Set<URI> urisWhichNeedMigration = migrator.needsMigration(urisToMigrate);
+
+		if (urisWhichNeedMigration.isEmpty()) {
+			return;
+		}
+
+		/* perform the actual migration */
+		try {
+			migrator.migrate(urisWhichNeedMigration, new ESSystemOutProgressMonitor());
+		} catch (final EMFStoreMigrationException ex) {
+			ModelUtil.logException(ex);
+		}
+
+		/*
+		 * fix file based changepackages (every operation was migrated on its own in a temp file. these need to be
+		 * reassembled)
+		 */
+		fixFileBasedCPs(fileBasedCPToTempFiles);
+
+	}
+
+	private static void fixFileBasedCPs(final Map<URI, List<URI>> fileBasedCPToTempFiles) {
+		for (final URI fileBasedCPURI : fileBasedCPToTempFiles.keySet()) {
+			/* create a new file based changepackage and add all migrated operations to it */
+			final FileBasedChangePackage changePackage = VersioningFactory.eINSTANCE.createFileBasedChangePackage();
+			changePackage.initialize(fileBasedCPURI.toFileString());
+			for (final URI tempOperationFileURI : fileBasedCPToTempFiles.get(fileBasedCPURI)) {
+				try {
+					final AbstractOperation operation = ModelUtil.loadEObjectFromResource(
+						OperationsPackage.eINSTANCE.getAbstractOperation(),
+						tempOperationFileURI, false);
+					changePackage.add(operation);
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
+
+			/* copy temp file to regular file */
+			try {
+				FileUtils.copyFile(new File(changePackage.getTempFilePath()),
+					new File(changePackage.getFilePath()));
+			} catch (final IOException ex) {
+				ModelUtil.logException(ex);
+			}
+		}
+	}
+
+	private static void fillURIsToMigrate(
+		URIConverter uriConverter,
+		final ServerSpace serverSpace,
+		Set<URI> urisToMigrate,
+		Map<URI, List<URI>> fileBasedCPToTempFiles,
+		boolean inMemoryChangePackage) {
+		/* loop over all versions and check if changepackage/projectstate resources are available */
+		for (final ProjectHistory project : serverSpace.getProjects()) {
+			for (final Version version : project.getVersions()) {
+				final URI versionURI = EcoreUtil.getURI(version);
+				final URI projectStateURI = ESServerURIUtil.createProjectStateURI(versionURI);
+				if (uriConverter.exists(projectStateURI, null)) {
+					urisToMigrate.add(uriConverter.normalize(projectStateURI));
+				}
+				final URI changePackageURI = ESServerURIUtil.createChangePackageURI(versionURI);
+				if (!inMemoryChangePackage) {
+					fillURIsToMigrateForFileBasedCP(uriConverter, changePackageURI, urisToMigrate,
+						fileBasedCPToTempFiles);
+				} else {
+					if (uriConverter.exists(changePackageURI, null)) {
+						urisToMigrate.add(uriConverter.normalize(changePackageURI));
+					}
+				}
+			}
+		}
+	}
+
+	private static void fillURIsToMigrateForFileBasedCP(
+		URIConverter uriConverter,
+		URI changePackageURI,
+		Set<URI> urisToMigrate,
+		Map<URI, List<URI>> fileBasedCPToTempFiles) {
+		final URI normalizedFileBasedChangePackageURI = uriConverter.normalize(changePackageURI);
+		final URI operationsFile = URI.createURI(
+			normalizedFileBasedChangePackageURI.toString() + FileBasedChangePackageImpl.FILE_OP_INDEX);
+		try {
+			final File operationsJavaFile = new File(operationsFile.toFileString());
+			if (!operationsJavaFile.exists()) {
+				/* no file -> nothing to add */
+				return;
+			}
+			fileBasedCPToTempFiles.put(operationsFile, new ArrayList<URI>());
+			final SerializedOperationEmitter operationEmitter = new SerializedOperationEmitter(
+				Direction.Forward, operationsJavaFile);
+			Optional<String> operation = operationEmitter.tryEmit();
+			while (operation.isPresent()) {
+				final File tempFile = File.createTempFile("esMigration", ".xmi"); //$NON-NLS-1$//$NON-NLS-2$
+				tempFile.deleteOnExit();
+				FileUtils.writeStringToFile(tempFile,
+					"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + operation.get(), //$NON-NLS-1$
+					"UTF-8"); //$NON-NLS-1$
+				final URI tempFileURI = URI.createFileURI(tempFile.getAbsolutePath());
+				urisToMigrate.add(tempFileURI);
+				fileBasedCPToTempFiles.get(operationsFile).add(tempFileURI);
+				operation = operationEmitter.tryEmit();
+			}
+			operationEmitter.close();
+		} catch (final IOException ex) {
+			ModelUtil.logException(ex);
+		}
+	}
 }

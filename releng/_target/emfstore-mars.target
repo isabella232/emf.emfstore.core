@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="EMFStore" sequenceNumber="244">
+<?pde version="3.8"?><target name="EMFStore" sequenceNumber="241">
 <locations>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.ecp.view.categorization.feature.feature.group" version="0.0.0"/>
@@ -41,7 +41,7 @@
 <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
 <unit id="org.eclipse.pde.source.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/eclipse/updates/4.2"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.log4j.source" version="0.0.0"/>
@@ -85,7 +85,7 @@
 <unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.ocl.all.sdk.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/releases/luna/"/>
+<repository location="http://download.eclipse.org/releases/mars/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="0.0.0"/>

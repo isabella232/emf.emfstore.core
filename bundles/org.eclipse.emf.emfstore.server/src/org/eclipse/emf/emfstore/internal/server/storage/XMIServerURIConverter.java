@@ -82,7 +82,7 @@ public class XMIServerURIConverter extends ESAbstractServerURIConverter {
 
 	@Override
 	protected URI normalizeServerSpaceURI(String profile) {
-		return URI.createFileURI(ServerConfiguration.getServerHome() + "storage" + FILE_EXTENSION_MAINSTORAGE); //$NON-NLS-1$
+		return URI.createFileURI(getServerHome() + "storage" + FILE_EXTENSION_MAINSTORAGE); //$NON-NLS-1$
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class XMIServerURIConverter extends ESAbstractServerURIConverter {
 	}
 
 	private String getProjectFolder(String projectId) {
-		return ServerConfiguration.getServerHome() + FILE_PREFIX_PROJECTFOLDER + projectId
+		return getServerHome() + FILE_PREFIX_PROJECTFOLDER + projectId
 			+ File.separatorChar;
 	}
 
@@ -129,6 +129,13 @@ public class XMIServerURIConverter extends ESAbstractServerURIConverter {
 		extensions.add(FILE_EXTENSION_PROJECTSTATE);
 		extensions.add(FILE_EXTENSION_VERSION);
 		return extensions;
+	}
+
+	/**
+	 * @return The path to the server home.
+	 */
+	protected String getServerHome() {
+		return ServerConfiguration.getServerHome();
 	}
 
 }

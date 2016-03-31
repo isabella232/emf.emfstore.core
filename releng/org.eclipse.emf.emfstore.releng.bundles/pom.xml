@@ -18,6 +18,7 @@
 		<module>../../bundles/org.eclipse.emf.emfstore.common</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.common.model</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.migration</module>
+		<module>../../bundles/org.eclipse.emf.emfstore.migration.edapt</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.server</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.server.model</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client.model.edit</module>

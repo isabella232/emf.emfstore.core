@@ -12,7 +12,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.migration;
 
-import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -32,17 +32,17 @@ public interface EMFStoreMigrator {
 	 * Checks if this migrator can work with the specified URIs.
 	 *
 	 * @param uris the physical URIs
-	 * @return true if migrator can handle the URI, false otherwise
+	 * @return a set of URIs which <b>cannot</b> be handled. The set is empty of all uris may be handled
 	 */
-	boolean canHandle(List<URI> uris);
+	Set<URI> canHandle(Set<URI> uris);
 
 	/**
 	 * Checks whether the models in the specified URIs need a to be migrated.
 	 *
 	 * @param uris the physical URIs
-	 * @return true if migration is needed, false otherwise
+	 * @return the URIs which <b>need</b> to be migrated. The set is empty if no URIs need to be migrated
 	 */
-	boolean needsMigration(List<URI> uris);
+	Set<URI> needsMigration(Set<URI> uris);
 
 	/**
 	 * Migrate the models in the given URIs from the given source version to the most recent version.
@@ -52,7 +52,7 @@ public interface EMFStoreMigrator {
 	 *
 	 * @throws EMFStoreMigrationException if the migration fails.
 	 */
-	void migrate(List<URI> resources, IProgressMonitor monitor)
+	void migrate(Set<URI> resources, IProgressMonitor monitor)
 		throws EMFStoreMigrationException;
 
 }
