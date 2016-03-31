@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.common.model:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.common.model="http://eclipse.org/emf/emfstore/common/model" xmlns:org.eclipse.emfstore.migration.edapt.test.a="http://eclipse.org/emf/emfstore/migration/edapt/test/a/2">
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.a:AClazz" xmi:id="_6P3dUNcTEeW10o5bJuBejA"/>
+</org.eclipse.emf.emfstore.internal.common.model:Project>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2016-02-19T13:50:59.200+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="a.ecore#/">
+        <changes xsi:type="history:Set" element="a.ecore#/" featureName="name" dataValue="a"/>
+        <changes xsi:type="history:Set" element="a.ecore#/" featureName="nsURI" dataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/a"/>
+        <changes xsi:type="history:Set" element="a.ecore#/" featureName="nsPrefix"
+            dataValue="org.eclipse.emfstore.migration.edapt.test.a"/>
+      </changes>
+      <changes xsi:type="history:Create" target="a.ecore#/" referenceName="eClassifiers"
+          element="a.ecore#//AClazz">
+        <changes xsi:type="history:Set" element="a.ecore#//AClazz" featureName="name"
+            dataValue="A"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2016-02-19T16:48:56.554+0100">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="a.ecore#//AClazz" featureName="name"
+          dataValue="AClazz" oldDataValue="A"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="a.ecore#//AClazz"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>AClazz</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="a.ecore#/" featureName="nsURI" dataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/a/2"
+        oldDataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/a"/>
+  </releases>
+  <releases/>
+</history:History>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations">
+  <logMessage author="super" message="Setting multi attributes" clientDate="2016-03-31T12:12:01.620+0200"/>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:MultiAttributeOperation" identifier="_ArHhgPcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.560+0200" featureName="atts" add="true">
+    <modelElementId id="_AmpRMPcpEeWnk-MlMuAN6w"/>
+    <indexes>0</indexes>
+    <indexes>1</indexes>
+    <referencedValues>ACED0005740003666F6F</referencedValues>
+    <referencedValues>ACED0005740003626172</referencedValues>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:MultiAttributeOperation" identifier="_ArHhhPcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.560+0200" featureName="atts" add="true">
+    <modelElementId id="_Amp4Q_cpEeWnk-MlMuAN6w"/>
+    <indexes>0</indexes>
+    <indexes>1</indexes>
+    <referencedValues>ACED0005740003464F4F</referencedValues>
+    <referencedValues>ACED0005740003424152</referencedValues>
+  </operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>

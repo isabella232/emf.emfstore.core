@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+   <extension
+         point="org.eclipse.emf.edapt.migrators">
+      <migrator
+            path="model/a.history">
+      </migrator>
+   </extension>
+   <extension
+         point="org.eclipse.emf.edapt.migrators">
+      <migrator
+            path="model/b.history">
+      </migrator>
+   </extension>
+   <extension
+         point="org.eclipse.emf.edapt.migrators">
+      <migrator
+            path="model/d.history">
+      </migrator>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated a -->
+      <package
+            uri="http://eclipse.org/emf/emfstore/migration/edapt/test/a/2"
+            class="org.eclipse.emf.emfstore.migration.edapt.test.model.a.model.APackage"
+            genModel="model/a.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated d -->
+      <package
+            uri="http://eclipse.org/emf/emfstore/migration/edapt/test/d/2"
+            class="org.eclipse.emf.emfstore.migration.edapt.test.model.d.model.DPackage"
+            genModel="model/d.genmodel"/>
+   </extension>
+
+</fragment>

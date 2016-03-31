@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2016-03-31T14:02:04.794+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="d.ecore#/">
+        <changes xsi:type="history:Set" element="d.ecore#/" featureName="name" dataValue="d"/>
+        <changes xsi:type="history:Set" element="d.ecore#/" featureName="nsURI" dataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/d"/>
+        <changes xsi:type="history:Set" element="d.ecore#/" featureName="nsPrefix"
+            dataValue="org.eclipse.emfstore.migration.edapt.test.d"/>
+      </changes>
+      <changes xsi:type="history:Create" target="d.ecore#/" referenceName="eClassifiers"
+          element="d.ecore#//D">
+        <changes xsi:type="history:Set" element="d.ecore#//D" featureName="name" dataValue="D"/>
+      </changes>
+      <changes xsi:type="history:Create" target="d.ecore#//D" referenceName="eStructuralFeatures"
+          element="d.ecore#//D/name">
+        <changes xsi:type="history:Set" element="d.ecore#//D/name" featureName="name"
+            dataValue="att"/>
+        <changes xsi:type="history:Set" element="d.ecore#//D/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="d.ecore#//D" referenceName="eStructuralFeatures"
+          element="d.ecore#//D/atts">
+        <changes xsi:type="history:Set" element="d.ecore#//D/atts" featureName="name"
+            dataValue="atts"/>
+        <changes xsi:type="history:Set" element="d.ecore#//D/atts" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="d.ecore#//D/atts" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="d.ecore#//D" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.0/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.0/@element"
+            featureName="name" dataValue="ref"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.0/@element"
+            featureName="eType" referenceValue="d.ecore#//D"/>
+      </changes>
+      <changes xsi:type="history:Create" target="d.ecore#//D" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.0/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.1/@element"
+            featureName="name" dataValue="refs"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.1/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.1/@element"
+            featureName="eType" referenceValue="d.ecore#//D"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2016-03-31T14:04:11.362+0200">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="d.ecore#//D" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="ref" eType="ecore:EClass d.ecore#//D"
+            containment="true"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="d.ecore#//D" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="refs" upperBound="-1" eType="ecore:EClass d.ecore#//D"
+            containment="true"/>
+      </changes>
+      <changes xsi:type="history:Create" target="d.ecore#//D" referenceName="eStructuralFeatures"
+          element="d.ecore#//D/refs">
+        <changes xsi:type="history:Set" element="d.ecore#//D/refs" featureName="name"
+            dataValue="refs"/>
+        <changes xsi:type="history:Set" element="d.ecore#//D/refs" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="d.ecore#//D/refs" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="d.ecore#//D/refs" featureName="eType"
+            referenceValue="d.ecore#//D"/>
+      </changes>
+      <operation name="uniteReferences">
+        <parameters name="references">
+          <referenceValue element="#//@releases.1/@changes.0/@changes.0/@element"/>
+          <referenceValue element="#//@releases.1/@changes.0/@changes.1/@element"/>
+        </parameters>
+        <parameters name="unitedReferenceName">
+          <dataValue>refs</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="d.ecore#//D/name" featureName="name"
+          dataValue="name" oldDataValue="att"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="d.ecore#//D/name"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>name</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="d.ecore#/" featureName="nsURI" dataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/d/2"
+        oldDataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/d"/>
+  </releases>
+  <releases/>
+</history:History>

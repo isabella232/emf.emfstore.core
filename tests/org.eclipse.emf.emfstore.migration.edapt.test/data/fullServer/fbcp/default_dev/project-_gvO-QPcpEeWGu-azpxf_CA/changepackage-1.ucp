@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:FileBasedChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" filePath="/home/johannes/Workspaces/junit-workspace/profiles/default_dev/project-_gvO-QPcpEeWGu-azpxf_CA/changepackage-1.ucp.1">
+  <logMessage author="super" message="Added root Element" clientDate="2016-03-31T12:15:37.118+0200"/>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:FileBasedChangePackage>

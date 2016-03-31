@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.common.model:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.common.model="http://eclipse.org/emf/emfstore/common/model" xmlns:org.eclipse.emfstore.migration.edapt.test.d="http://eclipse.org/emf/emfstore/migration/edapt/test/d">
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_gw2u4PcpEeWGu-azpxf_CA" att="d1" ref="#_g1y5QPcpEeWGu-azpxf_CA" refs="#_g57LUPcpEeWGu-azpxf_CA #_g57yYPcpEeWGu-azpxf_CA"/>
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_g1y5QPcpEeWGu-azpxf_CA" att="d2"/>
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_g57LUPcpEeWGu-azpxf_CA" att="d31"/>
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_g57yYPcpEeWGu-azpxf_CA" att="d32"/>
+</org.eclipse.emf.emfstore.internal.common.model:Project>

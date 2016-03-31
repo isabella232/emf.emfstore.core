@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.common.model:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.common.model="http://eclipse.org/emf/emfstore/common/model" xmlns:org.eclipse.emfstore.migration.edapt.test.d="http://eclipse.org/emf/emfstore/migration/edapt/test/d">
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_AgUmwPcpEeWnk-MlMuAN6w" ref="#_Aj100PcpEeWnk-MlMuAN6w" refs="#_AmpRMPcpEeWnk-MlMuAN6w #_Amp4Q_cpEeWnk-MlMuAN6w"/>
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_Aj100PcpEeWnk-MlMuAN6w"/>
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_AmpRMPcpEeWnk-MlMuAN6w"/>
+  <modelElements xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D" xmi:id="_Amp4Q_cpEeWnk-MlMuAN6w"/>
+</org.eclipse.emf.emfstore.internal.common.model:Project>

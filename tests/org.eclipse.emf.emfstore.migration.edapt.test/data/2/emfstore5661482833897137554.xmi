@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" xmlns:org.eclipse.emfstore.migration.edapt.test.a="http://eclipse.org/emf/emfstore/migration/edapt/test/a/2">
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:CreateDeleteOperation" identifier="_nWik4NcpEeWXpr-TVzJa6g">
+    <modelElementId id="_6P3dUNcTEeW10o5bJuBejA"/>
+    <modelElement xsi:type="org.eclipse.emfstore.migration.edapt.test.a:AClazz"/>
+    <eObjectToIdMap key="//@operations.0/@modelElement">
+      <value id="_nYNY0tcpEeWXpr-TVzJa6g"/>
+    </eObjectToIdMap>
+  </operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>

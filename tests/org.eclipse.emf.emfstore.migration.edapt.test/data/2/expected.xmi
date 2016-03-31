@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" xmlns:org.eclipse.emfstore.migration.edapt.test.a="http://eclipse.org/emf/emfstore/migration/edapt/test/a/2">
+  <logMessage author="super" message="Commit" clientDate="2016-02-19T15:20:21.923+0100"/>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:CreateDeleteOperation" identifier="_6P884NcTEeW10o5bJuBejA" clientDate="2016-02-19T15:20:21.808+0100">
+    <modelElementId id="_6P3dUNcTEeW10o5bJuBejA"/>
+    <modelElement xsi:type="org.eclipse.emfstore.migration.edapt.test.a:AClazz"/>
+    <eObjectToIdMap key="#//@operations.0/@modelElement">
+      <value id="_6P3dUNcTEeW10o5bJuBejA"/>
+    </eObjectToIdMap>
+  </operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>
