@@ -70,6 +70,15 @@ This option is available on the server as well as on the client side.
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="saveProjectStateOnTag" type="boolean">
+            <annotation>
+               <documentation>
+                  If this attribute is set to true the projectstate for a version will be saved in its entirety when the version is tagged. 
+
+This option is valuable when used in conjunction with a changing metamodel an thus resulting migrations.
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

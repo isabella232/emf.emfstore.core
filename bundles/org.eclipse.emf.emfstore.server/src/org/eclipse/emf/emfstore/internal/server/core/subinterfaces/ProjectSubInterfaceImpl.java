@@ -146,6 +146,18 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 *             in case of failure
 	 */
 	protected Project getProject(Version version) throws InvalidVersionSpecException, ESException {
+		return getProjectFromVersion(version);
+	}
+
+	/**
+	 * Returns the project of a version.
+	 * 
+	 * @param version the version
+	 * @return the project
+	 * @throws InvalidVersionSpecException if the given version is invalid
+	 * @throws ESException in case of failure
+	 */
+	static Project getProjectFromVersion(Version version) throws InvalidVersionSpecException, ESException {
 		if (version.getProjectState() == null) {
 
 			// TODO BRANCH Review potential performance optimization by searching state in both directions
@@ -222,7 +234,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 					description,
 					logMessage,
 					org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
-					.createProject());
+						.createProject());
 			} catch (final FatalESException e) {
 				throw new StorageException(StorageException.NOSAVE);
 			}

@@ -31,6 +31,7 @@ import org.eclipse.emf.emfstore.internal.server.EMFStoreController;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
+import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.BranchInfoMissingException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
@@ -133,7 +134,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	private PrimaryVersionSpec resolveAncestorVersionSpec(ProjectHistory projectHistory,
 		AncestorVersionSpec versionSpec)
-			throws InvalidVersionSpecException {
+		throws InvalidVersionSpecException {
 
 		Version currentSource = getVersion(projectHistory, versionSpec.getSource());
 		Version currentTarget = getVersion(projectHistory, versionSpec.getTarget());
@@ -455,7 +456,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				if (newVersion.getAncestorVersion() == null && baseVersion.getProjectState() != null) {
 					// delete projectstate from last revision depending on
 					// persistence policy
-					deleteOldProjectSpaceAccordingToOptions(projectId, baseVersion);
+					deleteOldProjectStateAccordingToOptions(projectId, baseVersion);
 				}
 
 				save(baseVersion);
@@ -522,7 +523,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	private void rollback(final ProjectHistory projectHistory, final BranchInfo baseBranch,
 		final Version baseVersion, Version newVersion, BranchInfo newBranch, final FatalESException e)
-			throws StorageException {
+		throws StorageException {
 		projectHistory.getVersions().remove(newVersion);
 
 		if (newBranch == null) {
@@ -676,26 +677,52 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @param previousHeadVersion
 	 *            last head version
 	 */
-	private void deleteOldProjectSpaceAccordingToOptions(ProjectId projectId, Version previousHeadVersion) {
+	private void deleteOldProjectStateAccordingToOptions(ProjectId projectId, Version previousHeadVersion) {
+		if (shouldDeleteOldProjectStateAccordingToOptions(projectId, previousHeadVersion, getResourceHelper())) {
+			getResourceHelper().deleteProjectState(previousHeadVersion, projectId);
+		}
+	}
+
+	/**
+	 * Whether a projectstate should be deleted according to the server configuration.
+	 *
+	 * @param projectId project id
+	 * @param previousHeadVersion last head version
+	 * @param resourceHelper the resource helper
+	 * @return <code>true</code> if project state should be deleted, <code>false</code> otherwise
+	 */
+	static boolean shouldDeleteOldProjectStateAccordingToOptions(
+		ProjectId projectId,
+		Version previousHeadVersion,
+		ResourceHelper resourceHelper) {
+
+		final boolean keepBecauseOfTaggedVersion = ServerConfiguration.createProjectStateOnTag()
+			&& !previousHeadVersion.getTagSpecs().isEmpty();
+		if (keepBecauseOfTaggedVersion) {
+			return false;
+		}
+
 		final String property = ServerConfiguration.getProperties().getProperty(
 			ServerConfiguration.PROJECTSTATE_VERSION_PERSISTENCE,
 			ServerConfiguration.PROJECTSPACE_VERSION_PERSISTENCE_DEFAULT);
 
 		if (property.equals(ServerConfiguration.PROJECTSTATE_VERSION_PERSISTENCE_EVERYXVERSIONS)) {
 
-			final int x = getResourceHelper().getXFromPolicy(
+			final int x = resourceHelper.getXFromPolicy(
 				ServerConfiguration.PROJECTSTATE_VERSION_PERSISTENCE_EVERYXVERSIONS_X,
 				ServerConfiguration.PROJECTSTATE_VERSION_PERSISTENCE_EVERYXVERSIONS_X_DEFAULT, false);
 
 			// always save projecstate of first version
 			final int lastVersion = previousHeadVersion.getPrimarySpec().getIdentifier();
 			if (lastVersion != 0 && lastVersion % x != 0) {
-				getResourceHelper().deleteProjectState(previousHeadVersion, projectId);
+				return true;
 			}
 
 		} else {
-			getResourceHelper().deleteProjectState(previousHeadVersion, projectId);
+			return true;
 		}
+
+		return false;
 	}
 
 	/**
