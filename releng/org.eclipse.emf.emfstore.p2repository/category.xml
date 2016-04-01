@@ -48,7 +48,7 @@
    <feature id="org.eclipse.emf.emfstore.client.ui.rap.feature" version="0.0.0">
       <category name="org.eclipse.emf.emfstore.other"/>
    </feature>
-   <feature url="features/org.eclipse.emf.emfstore.migration.edapt.feature_1.7.0.qualifier.jar" id="org.eclipse.emf.emfstore.migration.edapt.feature" version="1.7.0.qualifier">
+   <feature id="org.eclipse.emf.emfstore.migration.edapt.feature" version="0.0.0">
       <category name="org.eclipse.emf.emfstore.other"/>
    </feature>
    <category-def name="org.eclipse.emf.emfstore.core" label="EMFStore Core Features">

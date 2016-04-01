@@ -2,22 +2,24 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.emfstore.migration.edapt.test;singleton:=true
-Bundle-Version: 1.7.0.qualifier
+Bundle-Version: 1.8.0.qualifier
 Bundle-ClassPath: .
-Fragment-Host: org.eclipse.emf.emfstore.migration.edapt;bundle-version="[1.7.0,2.0.0)"
+Fragment-Host: org.eclipse.emf.emfstore.migration.edapt;bundle-version="[1.8.0,2.0.0)"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.eclipse.emf.emfstore.internal.migration.edapt;version="1.7.0";x-internal:=true,
- org.eclipse.emf.emfstore.internal.migration.edapt.test;version="1.7.0";x-internal:=true,
- org.eclipse.emf.emfstore.migration.edapt.test.model.a.model;version="1.7.0",
- org.eclipse.emf.emfstore.migration.edapt.test.model.a.model.impl;version="1.7.0",
- org.eclipse.emf.emfstore.migration.edapt.test.model.a.model.util;version="1.7.0",
- org.eclipse.emf.emfstore.migration.edapt.test.model.d.model;version="1.7.0",
- org.eclipse.emf.emfstore.migration.edapt.test.model.d.model.impl;version="1.7.0",
- org.eclipse.emf.emfstore.migration.edapt.test.model.d.model.util;version="1.7.0"
+Export-Package: org.eclipse.emf.emfstore.internal.migration.edapt;vers
+ ion="1.8.0";x-internal:=true,org.eclipse.emf.emfstore.internal.migrat
+ ion.edapt.test;version="1.8.0";x-internal:=true,org.eclipse.emf.emfst
+ ore.migration.edapt.test.model.a.model;version="1.8.0",org.eclipse.em
+ f.emfstore.migration.edapt.test.model.a.model.impl;version="1.8.0",or
+ g.eclipse.emf.emfstore.migration.edapt.test.model.a.model.util;versio
+ n="1.8.0",org.eclipse.emf.emfstore.migration.edapt.test.model.d.model
+ ;version="1.8.0",org.eclipse.emf.emfstore.migration.edapt.test.model.
+ d.model.impl;version="1.8.0",org.eclipse.emf.emfstore.migration.edapt
+ .test.model.d.model.util;version="1.8.0"
 Require-Bundle: org.junit;bundle-version="[4.0.0,5.0.0)",
  org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
  org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.emfstore.client;bundle-version="[1.7.0,2.0.0)"
+ org.eclipse.emf.emfstore.client;bundle-version="[1.8.0,2.0.0)"
 Bundle-ActivationPolicy: lazy
