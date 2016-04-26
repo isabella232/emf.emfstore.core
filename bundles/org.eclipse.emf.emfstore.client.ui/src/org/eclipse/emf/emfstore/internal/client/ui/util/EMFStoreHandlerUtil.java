@@ -7,7 +7,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * ovonwesen
+ * Otto von Wesendonk - initial implementation and API
+ * Edgar Mueller - Bug 476839
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.util;
 
@@ -86,4 +87,21 @@ public final class EMFStoreHandlerUtil {
 		return selection;
 	}
 
+	/**
+	 * Returns whether an object of the given <code>clazz</code> can be extracted from
+	 * the current selection.
+	 *
+	 * @param event
+	 *            the event from which to extract the selection
+	 * @param clazz
+	 *            the type of the object that is requested to be extracted from the current selection
+	 * @return {@code true} if an object of type <b>T</b> is contained within the current selection,
+	 *         {@code false} otherwise
+	 *
+	 * @param <T> the type of the object to be extracted from the current selection
+	 */
+	public static <T> boolean hasSelection(ExecutionEvent event, Class<T> clazz) {
+		final T selection = getSelection(event, clazz);
+		return selection != null;
+	}
 }
