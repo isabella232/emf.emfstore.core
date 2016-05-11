@@ -36,7 +36,10 @@ import org.eclipse.ui.PlatformUI;
  */
 public class MessageLine extends CLabel {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * Serial version UID for RAP.
+	 */
+	public static final long serialVersionUID = 1L;
 
 	private final Color fNormalMsgAreaBackground;
 

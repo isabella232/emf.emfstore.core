@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2016 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -46,6 +46,11 @@ import org.eclipse.swt.widgets.Text;
  * @author pfeifferc
  */
 public class CertificateSelectionDialog extends ElementListSelectionDialog {
+
+	/**
+	 * Serial version UID for RAP.
+	 */
+	public static final long serialVersionUID = 1L;
 
 	private TableItem selectedTableItem;
 	private String alias = StringUtils.EMPTY;
@@ -127,26 +132,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 		// Delete certificate
 		final Button delete = new Button(certButtonsComposite, SWT.NONE);
 		delete.setText(Messages.CertificateSelectionDialog_Delete);
-		delete.addSelectionListener(new SelectionListener() {
-
-			private static final long serialVersionUID = 1L;
-
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// nothing to do
-			}
-
-			public void widgetSelected(SelectionEvent e) {
-				if (selectedTableItem != null && StringUtils.isNotBlank(selectedTableItem.getText())) {
-					final String alias = selectedTableItem.getText();
-					try {
-						KeyStoreManager.getInstance().deleteCertificate(alias);
-						setListElements(KeyStoreManager.getInstance().getCertificates().toArray());
-					} catch (final ESCertificateException e1) {
-						setErrorMessage(e1.getMessage());
-					}
-				}
-			}
-		});
+		delete.addSelectionListener(new DeleteButtonSelectionListener());
 		getFilteredList().addSelectionListener(new SelectionListenerImplementation(certDetails, certAlias));
 		return control;
 	}
@@ -178,8 +164,11 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 	 * @author koegel
 	 *
 	 */
-	private final class SelectionListenerImplementation implements SelectionListener {
-		private static final long serialVersionUID = 1L;
+	final class SelectionListenerImplementation implements SelectionListener {
+		/**
+		 * Serial version UID for RAP.
+		 */
+		public static final long serialVersionUID = 1L;
 		private final Text certDetails;
 		private final Text certAlias;
 
@@ -188,10 +177,22 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 			this.certAlias = certAlias;
 		}
 
+		/**
+		 *
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
+		 */
 		public void widgetDefaultSelected(SelectionEvent e) {
 			// nothing to do
 		}
 
+		/**
+		 *
+		 * {@inheritDoc}
+		 * 
+		 * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+		 */
 		public void widgetSelected(SelectionEvent e) {
 			if (((Table) e.getSource()).getItems().length > 0) {
 				selectedTableItem = ((Table) e.getSource()).getItems()[((Table) e.getSource()).getSelectionIndex()];
@@ -219,7 +220,10 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 	 * @author pfeifferc
 	 */
 	class CertificateSelectionListener implements SelectionListener {
-		private static final long serialVersionUID = 1L;
+		/**
+		 * Serial version UID for RAP.
+		 */
+		public static final long serialVersionUID = 1L;
 
 		/**
 		 * Add a certificate specified by the user.
@@ -270,6 +274,46 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 		 */
 		public void widgetDefaultSelected(SelectionEvent e) {
 			// nothing to do
+		}
+	}
+
+	/**
+	 * Selection listener for the delete button.
+	 *
+	 */
+	final class DeleteButtonSelectionListener implements SelectionListener {
+
+		/**
+		 * Serial version UID for RAP.
+		 */
+		public static final long serialVersionUID = 1L;
+
+		/**
+		 *
+		 * {@inheritDoc}
+		 *
+		 * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
+		 */
+		public void widgetDefaultSelected(SelectionEvent e) {
+			// nothing to do
+		}
+
+		/**
+		 *
+		 * {@inheritDoc}
+		 *
+		 * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+		 */
+		public void widgetSelected(SelectionEvent e) {
+			if (selectedTableItem != null && StringUtils.isNotBlank(selectedTableItem.getText())) {
+				final String alias = selectedTableItem.getText();
+				try {
+					KeyStoreManager.getInstance().deleteCertificate(alias);
+					setListElements(KeyStoreManager.getInstance().getCertificates().toArray());
+				} catch (final ESCertificateException e1) {
+					setErrorMessage(e1.getMessage());
+				}
+			}
 		}
 	}
 }
