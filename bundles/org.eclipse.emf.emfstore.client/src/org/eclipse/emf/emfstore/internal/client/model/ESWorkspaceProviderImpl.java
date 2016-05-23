@@ -211,6 +211,20 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	/**
+	 * removes a workspace that is no longer needed, this also removes the
+	 * threadlocal reference to the workspace from the calling thread.
+	 *
+	 * @param token
+	 */
+	public static void removeInstance(String token) {
+		if (WorkspaceLocator.hasId(token)) {
+			WorkspaceLocator.removeWorkspaceProviderFor(token);
+		}
+		WS_THREAD_LOCAL.remove();
+
+	}
+
+	/**
 	 * Initialize the Workspace Manager.
 	 */
 	public static synchronized void init() {

@@ -42,6 +42,16 @@ public final class WorkspaceLocator {
 	}
 
 	/**
+	 * Removes a workspace which is no longer needed.
+	 *
+	 * @param token
+	 */
+	public static void removeWorkspaceProviderFor(String workspaceProviderId) {
+		// TODO Auto-generated method stub
+		WORKSPACE_PROVIDER_MAP.remove(workspaceProviderId);
+	}
+
+	/**
 	 * Creates a workspace with a particular ID.
 	 *
 	 * @param workspaceProviderId
@@ -98,4 +108,5 @@ public final class WorkspaceLocator {
 
 		return createWorkspaceProviderFor(workspaceProviderId);
 	}
+
 }
