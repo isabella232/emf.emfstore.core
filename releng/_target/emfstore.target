@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="EMFStore" sequenceNumber="244">
+<?pde version="3.8"?><target name="EMFStore" sequenceNumber="249">
 <locations>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.ecp.view.categorization.feature.feature.group" version="0.0.0"/>
@@ -44,20 +44,6 @@
 <repository location="http://download.eclipse.org/eclipse/updates/4.2"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.apache.log4j.source" version="0.0.0"/>
-<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="0.0.0"/>
-<unit id="org.hamcrest.core" version="0.0.0"/>
-<unit id="org.eclipse.swtbot.forms.feature.group" version="0.0.0"/>
-<unit id="org.apache.log4j" version="0.0.0"/>
-<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="0.0.0"/>
-<unit id="org.hamcrest.library.source" version="0.0.0"/>
-<unit id="org.hamcrest.library" version="0.0.0"/>
-<unit id="org.eclipse.swtbot.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
-<unit id="org.hamcrest.core.source" version="0.0.0"/>
-<repository location="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipselabs.mongo.emf.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipselabs.mongo.emf.feature.source.feature.group" version="0.0.0"/>
 <repository location="http://bryanhunt.github.com/mongo-emf/releases/0.7.1"/>
@@ -96,7 +82,21 @@
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.edapt.runtime.feature.source.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/edapt/p2/nightly"/>
+<repository location="http://download.eclipse.org/edapt/releases/12x"/>
+</location>
+<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.hamcrest.core.source" version="1.3.0.v201303031735"/>
+<unit id="org.hamcrest.library.source" version="1.3.0.v201305281000"/>
+<unit id="org.eclipse.swtbot.forms.feature.group" version="2.3.0.201506081302"/>
+<unit id="org.eclipse.swtbot.feature.group" version="2.3.0.201506081302"/>
+<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.3.0.201506081302"/>
+<unit id="org.apache.log4j.source" version="1.2.15.v201012070815"/>
+<unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
+<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.3.0.201506081302"/>
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.3.0.201506081302"/>
+<unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+<unit id="org.hamcrest.library" version="1.3.0.v201305281000"/>
+<repository location="http://download.eclipse.org/technology/swtbot/releases/2.3.0/"/>
 </location>
 </locations>
 </target>
