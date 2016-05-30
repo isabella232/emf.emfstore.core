@@ -31,6 +31,7 @@ import org.junit.runners.Suite;
 	UIDeleteRemoteProjectControllerTest.class,
 	UIMergeControllerTest.class,
 	UIRevertCommitControllerTest.class,
+	UIRemoveServerControllerTest.class,
 	UIRevertCommitControllerTest2.class,
 	UIServerControllerTest.class,
 	UISessionControllerTest.class,
@@ -40,7 +41,9 @@ import org.junit.runners.Suite;
 	UIPagedUpdateProjectControllerTest.class,
 	UIShowHistoryControllerTest.class,
 	UIShowHistoryControllerForElementTest.class,
-	UIUndoLastOperationControllerTest.class })
+	UIUndoLastOperationControllerTest.class
+})
+
 public class AllUIControllerTests {
 
 }
