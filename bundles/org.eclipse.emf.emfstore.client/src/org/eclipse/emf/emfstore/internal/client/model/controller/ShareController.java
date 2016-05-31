@@ -80,7 +80,9 @@ public class ShareController extends ServerCall<ProjectInfo> {
 			getProjectSpace().save();
 			getProjectSpace().startChangeRecording();
 			getProgressMonitor().done();
+			return null;
 		}
+
 		getProgressMonitor().subTask(Messages.ShareController_Sharing_Project_With_Server);
 
 		// make sure, current state of caches is written to resource
@@ -115,6 +117,7 @@ public class ShareController extends ServerCall<ProjectInfo> {
 		getProgressMonitor().subTask(Messages.ShareController_Finalizing_Share);
 		getProjectSpace().getLocalChangePackage().clear();
 		getProjectSpace().save();
+		// TODO EM: do we really need to save 3 times in row?!
 		getProjectSpace().updateDirtyState();
 
 		getProgressMonitor().done();
