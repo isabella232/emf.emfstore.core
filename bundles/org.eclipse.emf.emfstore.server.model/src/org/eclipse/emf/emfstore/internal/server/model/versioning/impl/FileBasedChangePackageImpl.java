@@ -103,7 +103,7 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 
 	/**
 	 * Suffix for temporary operation files.
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public static final String TEMP_SUFFIX = ".temp"; //$NON-NLS-1$
@@ -783,6 +783,13 @@ public class FileBasedChangePackageImpl extends EObjectImpl implements FileBased
 		final File tempOpFile = new File(getTempFilePath());
 		opFile.delete();
 		tempOpFile.delete();
+		if (eResource() != null) {
+			try {
+				eResource().delete(null);
+			} catch (final IOException ex) {
+				ModelUtil.logException(ex);
+			}
+		}
 	}
 
 	/**
