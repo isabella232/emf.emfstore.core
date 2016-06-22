@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.eclipse.emf.emfstore</groupId>
+    <artifactId>emfstore-tests-parent</artifactId>
+    <version>1.8.0-SNAPSHOT</version>
+    <relativePath>../../releng/org.eclipse.emf.emfstore.releng.tests</relativePath>
+  </parent>
+
+  <groupId>org.eclipse.emf.emfstore</groupId>
+  <artifactId>org.eclipse.emf.emfstore.migration.edapt.test</artifactId>
+  <version>1.8.0-SNAPSHOT</version>
+  <packaging>eclipse-test-plugin</packaging>
+  
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+                <version>${tycho-version}</version>
+
+                <goals>
+                    <goal>test</goal>
+                </goals>
+                <configuration>
+                    <testSuite>org.eclipse.emf.emfstore.migration.edapt.test</testSuite>
+                    <testClass>org.eclipse.emf.emfstore.internal.migration.edapt.test.AllMigrationEdaptTests</testClass>
+                    <useUIHarness>true</useUIHarness>
+                    <useUIThread>false</useUIThread>
+                    <argLine>${tycho.testArgLine} -Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m
+                    </argLine>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

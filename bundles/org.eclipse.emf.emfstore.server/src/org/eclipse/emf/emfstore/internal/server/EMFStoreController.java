@@ -61,6 +61,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.internal.server.startup.MigrationManager;
 import org.eclipse.emf.emfstore.internal.server.startup.PostStartupListener;
 import org.eclipse.emf.emfstore.internal.server.startup.ServerHrefMigrator;
 import org.eclipse.emf.emfstore.internal.server.startup.StartupListener;
@@ -152,9 +153,11 @@ public class EMFStoreController implements IApplication, Runnable {
 
 		registerDynamicModels();
 
-		// FIXME: JF
-		// new MigrationManager().migrateModel();
-		serverSpace = initServerSpace();
+		serverSpace = initServerSpace(Boolean.getBoolean("emfstore.migration")); //$NON-NLS-1$
+
+		if (serverSpace == null) {
+			return;
+		}
 
 		initializeBranchesIfRequired(serverSpace);
 
@@ -235,8 +238,7 @@ public class EMFStoreController implements IApplication, Runnable {
 	}
 
 	private void initLogging() {
-		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new
-			ILogListener() {
+		Platform.getLog(Platform.getBundle(EMFSTORE_COMMON_BUNDLE)).addLogListener(new ILogListener() {
 
 			public void logging(IStatus status, String plugin) {
 				if (status.getSeverity() == IStatus.INFO) {
@@ -295,7 +297,8 @@ public class EMFStoreController implements IApplication, Runnable {
 					try {
 						FileUtil.copyFile(new URL("platform:/plugin/" //$NON-NLS-1$
 							+ element.getIConfigurationElement().getNamespaceIdentifier() + "/" + attribute) //$NON-NLS-1$
-						.openConnection().getInputStream(), targetFile);
+								.openConnection().getInputStream(),
+							targetFile);
 						return;
 					} catch (final IOException e) {
 						ModelUtil.logWarning(
@@ -333,7 +336,7 @@ public class EMFStoreController implements IApplication, Runnable {
 		return connectionHandlers;
 	}
 
-	private ServerSpace initServerSpace() throws FatalESException {
+	private ServerSpace initServerSpace(boolean migrationMode) throws FatalESException {
 
 		final ESResourceSetProvider resourceSetProvider = getResourceSetProvider();
 
@@ -359,6 +362,12 @@ public class EMFStoreController implements IApplication, Runnable {
 				if (!new ServerHrefMigrator().migrate()) {
 					throw new FatalESException(Messages.EMFStoreController_Error_During_Migration);
 				}
+			}
+			/* file has been fixed. check if metamodel migration is needed */
+			if (migrationMode) {
+				MigrationManager.migrate(getResourceSetProvider().getResourceSet(),
+					!ServerConfiguration.useFileBasedChangePackageOnServer());
+				return null;
 			}
 			resource = resourceSet.createResource(serverspaceURI);
 		}

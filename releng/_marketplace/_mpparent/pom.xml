@@ -30,11 +30,11 @@
             <configuration>
               <source>
                 <repository>
-                    <url>http://download.eclipse.org/ecp/releases/releases_17/171</url>
+                    <url>http://download.eclipse.org/ecp/releases/releases_18/180_RC4</url>
                     <layout>p2</layout>
                 </repository>
                 <repository>
-                    <url>http://download.eclipse.org/emfstore/releases_16/162</url>
+                    <url>http://download.eclipse.org/emfstore/releases_17/170</url>
                     <layout>p2</layout>
                 </repository>
               </source>

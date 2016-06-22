@@ -22,7 +22,10 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
@@ -42,6 +45,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
+import org.eclipse.emf.emfstore.server.ESServerURIUtil;
 import org.eclipse.emf.emfstore.server.auth.ESMethod;
 import org.eclipse.emf.emfstore.server.auth.ESMethod.MethodId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -99,6 +103,20 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			} catch (final FatalESException e) {
 				throw new StorageException(StorageException.NOSAVE);
 			}
+
+			if (ServerConfiguration.createProjectStateOnTag()) {
+				final URI projectStateURI = ESServerURIUtil.createProjectStateURI(projectId, version.getPrimarySpec());
+				if (ESServerURIUtil.exists(projectStateURI)) {
+					/* the project state is existing, just return */
+					return;
+				}
+				final Project projectState = ProjectSubInterfaceImpl.getProjectFromVersion(version);
+				try {
+					getResourceHelper().createResourceForProject(projectState, versionSpec, projectId);
+				} catch (final FatalESException e) {
+					throw new StorageException(StorageException.NOSAVE);
+				}
+			}
 		}
 	}
 
@@ -119,6 +137,7 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		throws ESException {
 		sanityCheckObjects(projectId, versionSpec, tag);
 		synchronized (getMonitor()) {
+			/* remove tag */
 			final Version version = getSubInterface(VersionSubInterfaceImpl.class).getVersion(projectId, versionSpec);
 			final Iterator<TagVersionSpec> iterator = version.getTagSpecs().iterator();
 			while (iterator.hasNext()) {
@@ -130,6 +149,19 @@ public class HistorySubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				save(version);
 			} catch (final FatalESException e) {
 				throw new StorageException(StorageException.NOSAVE);
+			}
+
+			/* delete project state if necessary */
+			if (ServerConfiguration.createProjectStateOnTag()) {
+				final URI projectStateURI = ESServerURIUtil.createProjectStateURI(projectId, version.getPrimarySpec());
+				if (!ESServerURIUtil.exists(projectStateURI)) {
+					/* the project state is not existing, just return */
+					return;
+				}
+				if (VersionSubInterfaceImpl.shouldDeleteOldProjectStateAccordingToOptions(projectId, version,
+					getResourceHelper())) {
+					getResourceHelper().deleteProjectState(version, projectId);
+				}
 			}
 		}
 	}

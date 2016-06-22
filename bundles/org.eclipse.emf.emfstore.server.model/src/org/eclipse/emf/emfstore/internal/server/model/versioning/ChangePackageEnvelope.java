@@ -13,7 +13,6 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,15 +21,15 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Abst
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentIndex <em>
- * Fragment Index</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentCount <em>
- * Fragment Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragment <em>Fragment
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentIndex
+ * <em>Fragment Index</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragmentCount
+ * <em>Fragment Count</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope#getFragment
+ * <em>Fragment</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackageEnvelope()
  * @model
@@ -98,9 +97,8 @@ public interface ChangePackageEnvelope extends EObject {
 	void setFragmentCount(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Fragment</b></em>' containment reference list.
-	 * The list contents are of type
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation}.
+	 * Returns the value of the '<em><b>Fragment</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Fragment</em>' containment reference isn't clear, there really should be more of a
@@ -108,12 +106,12 @@ public interface ChangePackageEnvelope extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the value of the '<em>Fragment</em>' containment reference list.
+	 * @return the value of the '<em>Fragment</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackageEnvelope_Fragment()
-	 * @model containment="true" resolveProxies="true"
+	 * @model unique="false"
 	 * @generated
 	 */
-	EList<AbstractOperation> getFragment();
+	EList<String> getFragment();
 
 	/**
 	 * Whether the fragment contained in this envelope is the last one in a series of fragments.

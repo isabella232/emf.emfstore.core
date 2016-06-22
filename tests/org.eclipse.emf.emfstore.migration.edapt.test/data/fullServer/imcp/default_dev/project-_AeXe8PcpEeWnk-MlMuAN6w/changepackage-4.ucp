@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations">
+  <logMessage author="super" message="Setting attributes" clientDate="2016-03-31T12:12:01.387+0200"/>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation" identifier="_Ao1pkvcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.321+0200" featureName="att" newValue="ACED00057400026431">
+    <modelElementId id="_AgUmwPcpEeWnk-MlMuAN6w"/>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation" identifier="_Ao1plvcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.321+0200" featureName="att" newValue="ACED00057400026432">
+    <modelElementId id="_Aj100PcpEeWnk-MlMuAN6w"/>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation" identifier="_Ao1pmvcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.321+0200" featureName="att" newValue="ACED0005740003643331">
+    <modelElementId id="_AmpRMPcpEeWnk-MlMuAN6w"/>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation" identifier="_Ao1pnvcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.321+0200" featureName="att" newValue="ACED0005740003643332">
+    <modelElementId id="_Amp4Q_cpEeWnk-MlMuAN6w"/>
+  </operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>

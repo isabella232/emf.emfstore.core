@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2016 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -32,6 +32,11 @@ import org.eclipse.swt.widgets.Text;
  */
 // TODO: remove description
 public class CreateProjectDialog extends TitleAreaDialog {
+
+	/**
+	 * Serial version UID for RAP.
+	 */
+	public static final long serialVersionUID = 1L;
 
 	private Text txtProjectName;
 	private String name;

@@ -11,7 +11,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.test.persistence;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
@@ -75,7 +75,7 @@ public class ProjectLastUpdatedTest extends ESTestWithSharedProject {
 		final Date before = clonedProject.getLastUpdated();
 		clonedProject.update(new NullProgressMonitor());
 		final Date after = clonedProject.getLastUpdated();
-		assertNotEquals(before, after);
+		assertFalse(before.equals(after));
 	}
 
 }

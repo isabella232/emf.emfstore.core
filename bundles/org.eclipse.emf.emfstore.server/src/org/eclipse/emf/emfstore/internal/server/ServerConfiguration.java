@@ -49,6 +49,7 @@ public final class ServerConfiguration {
 	private static final String RESOURCE_OPTIONS_EXTENSION_POINT = "org.eclipse.emf.emfstore.server.resourceOptions"; //$NON-NLS-1$
 	private static final String CHANGEPACKAGE_FRAGMENT_SIZE_ATTRIBUTE = "changePackageFragmentSize"; //$NON-NLS-1$
 	private static final String SERVER_USE_FILEBASED_CHANGEPACKAGE = "useFileBasedChangePackage"; //$NON-NLS-1$
+	private static final String SAVE_PROJECT_STATE_ON_TAG = "saveProjectStateOnTag"; //$NON-NLS-1$
 
 	private static final String CHECKSUM_KEY = "org.eclipse.emf.emfstore.server.computeChecksum"; //$NON-NLS-1$
 
@@ -294,6 +295,11 @@ public final class ServerConfiguration {
 	 */
 	public static final String AUTHENTICATION_MATCH_USERS_IGNORE_CASE = "emfstore.accesscontrol.authentication.matchusers.ignorecase"; //$NON-NLS-1$
 
+	/**
+	 * Whether authenticated users (eg. by LDAP) should be created in the server workspace on-the-fly on login.
+	 */
+	public static final String AUTHENTICATION_CREATE_AUTHENTICATED_USERS = "emfstore.accesscontrol.authentication.createusers"; //$NON-NLS-1$
+
 	private static final List<PostStartupListener> POST_STARTUP_LISTENERS = new ArrayList<PostStartupListener>();
 	private static final List<StartupListener> STARTUP_LISTENERS = new ArrayList<StartupListener>();
 
@@ -379,6 +385,7 @@ public final class ServerConfiguration {
 	private static Boolean isChecksumComputationOnCommitActive;
 	private static Optional<Integer> changePackageFragmentSize;
 	private static Boolean useFileBasedChangePackageOnServer;
+	private static Boolean saveProjectStateOnTag;
 
 	/**
 	 * Return the server home directory location.
@@ -709,5 +716,22 @@ public final class ServerConfiguration {
 
 	public static void addPostStartupListener(PostStartupListener listener) {
 		POST_STARTUP_LISTENERS.add(listener);
+	}
+
+	/**
+	 * Whether the project state of a tagged version should be kept as a file.
+	 *
+	 * @return <code>true</code> if project state should be kept, <code>false</code> otherwise
+	 */
+	public static boolean createProjectStateOnTag() {
+		if (saveProjectStateOnTag == null) {
+			try {
+				saveProjectStateOnTag = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT, true)
+					.getBoolean(SAVE_PROJECT_STATE_ON_TAG, false);
+			} catch (final ESExtensionPointException e) {
+				saveProjectStateOnTag = false;
+			}
+		}
+		return saveProjectStateOnTag;
 	}
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" xmlns:org.eclipse.emfstore.migration.edapt.test.d="http://eclipse.org/emf/emfstore/migration/edapt/test/d">
+  <logMessage author="super" message="Added child Element" clientDate="2016-03-31T12:12:00.942+0200"/>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:CreateDeleteOperation" identifier="_Aj100fcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:00.797+0200">
+    <modelElementId id="_Aj100PcpEeWnk-MlMuAN6w"/>
+    <modelElement xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D"/>
+    <eObjectToIdMap key="#//@operations.0/@modelElement">
+      <value id="_Aj100PcpEeWnk-MlMuAN6w"/>
+    </eObjectToIdMap>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:SingleReferenceOperation" identifier="_Aj44IPcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:00.802+0200" featureName="ref">
+    <modelElementId id="_AgUmwPcpEeWnk-MlMuAN6w"/>
+    <newValue id="_Aj100PcpEeWnk-MlMuAN6w"/>
+  </operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>

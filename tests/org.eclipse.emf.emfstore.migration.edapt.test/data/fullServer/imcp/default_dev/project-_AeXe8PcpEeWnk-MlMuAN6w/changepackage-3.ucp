@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" xmlns:org.eclipse.emfstore.migration.edapt.test.d="http://eclipse.org/emf/emfstore/migration/edapt/test/d">
+  <logMessage author="super" message="Added multiple child elements" clientDate="2016-03-31T12:12:01.170+0200"/>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:CreateDeleteOperation" identifier="_AmpRMfcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.092+0200">
+    <modelElementId id="_AmpRMPcpEeWnk-MlMuAN6w"/>
+    <modelElement xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D"/>
+    <eObjectToIdMap key="#//@operations.0/@modelElement">
+      <value id="_AmpRMPcpEeWnk-MlMuAN6w"/>
+    </eObjectToIdMap>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:CreateDeleteOperation" identifier="_Amp4RPcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.092+0200">
+    <modelElementId id="_Amp4Q_cpEeWnk-MlMuAN6w"/>
+    <modelElement xsi:type="org.eclipse.emfstore.migration.edapt.test.d:D"/>
+    <eObjectToIdMap key="#//@operations.1/@modelElement">
+      <value id="_Amp4Q_cpEeWnk-MlMuAN6w"/>
+    </eObjectToIdMap>
+  </operations>
+  <operations xsi:type="org.eclipse.emf.emfstore.internal.server.model.versioning.operations:MultiReferenceOperation" identifier="_AmqfUPcpEeWnk-MlMuAN6w" clientDate="2016-03-31T12:12:01.093+0200" featureName="refs" add="true">
+    <modelElementId id="_AgUmwPcpEeWnk-MlMuAN6w"/>
+    <referencedModelElements id="_AmpRMPcpEeWnk-MlMuAN6w"/>
+    <referencedModelElements id="_Amp4Q_cpEeWnk-MlMuAN6w"/>
+  </operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>

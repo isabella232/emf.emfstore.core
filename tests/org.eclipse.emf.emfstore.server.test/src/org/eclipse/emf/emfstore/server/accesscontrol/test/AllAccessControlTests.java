@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -16,9 +16,9 @@ import org.junit.runners.Suite;
 
 /**
  * Suite for all access control tests.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -40,7 +40,8 @@ import org.junit.runners.Suite;
 	CreateUserWithPasswordTests.class,
 	CreateUserWithPasswordMissingPrivilegTests.class,
 	AdminEMFStoreTests.class,
-	AddInitialParticipantTest.class
+	AddInitialParticipantTest.class,
+	AutoCreateACUserTestTest.class
 
 })
 public class AllAccessControlTests {

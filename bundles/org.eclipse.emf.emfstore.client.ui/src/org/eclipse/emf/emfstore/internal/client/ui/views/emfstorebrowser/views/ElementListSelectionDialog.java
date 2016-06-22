@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2016 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,6 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
+ * Edgar Mueller - Fix for Bug 493074
  ******************************************************************************/
 /*******************************************************************************
  *
@@ -61,11 +62,10 @@ import org.eclipse.ui.dialogs.ISelectionStatusValidator;
  */
 public abstract class ElementListSelectionDialog extends TrayDialog {
 
-	// private static final String SELECT_ALL_TITLE =
-	// Messages.ElementListSelectionDialog_SelectAll;
-
-	// private static final String DESELECT_ALL_TITLE =
-	// Messages.ElementListSelectionDialog_DeselectAll;
+	/**
+	 * Serial version UID for RAP.
+	 */
+	public static final long serialVersionUID = 1L;
 
 	private FilteredList fFilteredList;
 
@@ -163,10 +163,14 @@ public abstract class ElementListSelectionDialog extends TrayDialog {
 	 */
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
+		createButton(parent,
+			IDialogConstants.OK_ID,
+			"Ok", //$NON-NLS-1$
 			true);
-		createButton(parent, IDialogConstants.CANCEL_ID,
-			IDialogConstants.CANCEL_LABEL, false);
+		createButton(parent,
+			IDialogConstants.CANCEL_ID,
+			"Cancel", //$NON-NLS-1$
+			false);
 	}
 
 	/*
@@ -751,7 +755,6 @@ public abstract class ElementListSelectionDialog extends TrayDialog {
 	 * @param parent the parent composite.
 	 * @return returns the filtered list widget.
 	 */
-	@SuppressWarnings("serial")
 	protected FilteredList createFilteredList(Composite parent) {
 		final int flags = SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL
 			| (fIsMultipleSelection ? SWT.MULTI : SWT.SINGLE);
@@ -816,7 +819,6 @@ public abstract class ElementListSelectionDialog extends TrayDialog {
 
 		text.setText(fFilter == null ? "" : fFilter); //$NON-NLS-1$
 
-		@SuppressWarnings("serial")
 		final Listener listener = new Listener() {
 			public void handleEvent(Event e) {
 				fFilteredList.setFilter(fFilterText.getText());

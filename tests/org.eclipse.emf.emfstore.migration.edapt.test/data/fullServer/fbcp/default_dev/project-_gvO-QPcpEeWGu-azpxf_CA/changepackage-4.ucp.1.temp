@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"/>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations">
+<operations>
+<org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" identifier="_g_lucPcpEeWGu-azpxf_CA" clientDate="2016-03-31T12:15:38.455+0200" featureName="att" newValue="ACED00057400026431">
+  <modelElementId id="_gw2u4PcpEeWGu-azpxf_CA"/>
+</org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation>
+</operations>
+<operations>
+<org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" identifier="_g_ludPcpEeWGu-azpxf_CA" clientDate="2016-03-31T12:15:38.455+0200" featureName="att" newValue="ACED00057400026432">
+  <modelElementId id="_g1y5QPcpEeWGu-azpxf_CA"/>
+</org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation>
+</operations>
+<operations>
+<org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" identifier="_g_luePcpEeWGu-azpxf_CA" clientDate="2016-03-31T12:15:38.455+0200" featureName="att" newValue="ACED0005740003643331">
+  <modelElementId id="_g57LUPcpEeWGu-azpxf_CA"/>
+</org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation>
+</operations>
+<operations>
+<org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning.operations="http://eclipse.org/emf/emfstore/server/model/versioning/operations" identifier="_g_lufPcpEeWGu-azpxf_CA" clientDate="2016-03-31T12:15:38.455+0200" featureName="att" newValue="ACED0005740003643332">
+  <modelElementId id="_g57yYPcpEeWGu-azpxf_CA"/>
+</org.eclipse.emf.emfstore.internal.server.model.versioning.operations:AttributeOperation>
+</operations>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:ChangePackage>

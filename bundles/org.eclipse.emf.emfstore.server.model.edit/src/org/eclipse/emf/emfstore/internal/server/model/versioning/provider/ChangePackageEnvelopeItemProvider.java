@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -31,7 +30,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageEnvelope;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsFactory;
 
 /**
  * This is the item provider adapter for a
@@ -42,7 +40,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * @generated
  */
 public class ChangePackageEnvelopeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -204,35 +202,7 @@ public class ChangePackageEnvelopeItemProvider extends ItemProviderAdapter imple
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createCompositeOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createCreateDeleteOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createAttributeOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createMultiAttributeOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createMultiAttributeSetOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createMultiAttributeMoveOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createSingleReferenceOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createMultiReferenceSetOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createMultiReferenceOperation()));
-
-		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT,
-			OperationsFactory.eINSTANCE.createMultiReferenceMoveOperation()));
+		newChildDescriptors.add(createChildParameter(VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT, "")); //$NON-NLS-1$
 	}
 
 	/**

@@ -7,8 +7,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- * ovonwesen
- * emueller
+ * Otto von Wesendonk, Edgar Mueller - initial implementation and API
+ * Edgar Mueller - Bug 476839
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.handlers;
 
@@ -89,6 +89,22 @@ public abstract class AbstractEMFStoreHandlerWithResult<T> extends AbstractHandl
 	 */
 	public <U> U requireSelection(Class<U> clazz) throws RequiredSelectionException {
 		return EMFStoreHandlerUtil.requireSelection(getEvent(), clazz);
+	}
+
+	/**
+	 * Returns whether an object of the given <code>clazz</code>
+	 * can be extracted from the current selection.
+	 *
+	 * @param clazz
+	 *            the type of the object that is requested to be extracted from the current selection
+	 * @return {@code true}, if an object of type <b>T</b> is contained within the current selection,
+	 *         {@code false} otherwise
+	 *
+	 *
+	 * @param <U> the type of the object to be extracted from the current selection
+	 */
+	public <U> boolean hasSelection(Class<U> clazz) {
+		return EMFStoreHandlerUtil.hasSelection(getEvent(), clazz);
 	}
 
 	/**

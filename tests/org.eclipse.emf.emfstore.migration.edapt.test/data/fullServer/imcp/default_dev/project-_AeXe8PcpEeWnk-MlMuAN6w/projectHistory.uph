@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model:ProjectHistory xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.emf.emfstore.internal.server.model="http://eclipse.org/emf/emfstore/server/model" projectName="DemoProject" projectDescription="">
+  <projectId id="_AeXe8PcpEeWnk-MlMuAN6w"/>
+  <versions href="versions/0#/"/>
+  <versions href="versions/1#/"/>
+  <versions href="versions/2#/"/>
+  <versions href="versions/3#/"/>
+  <versions href="versions/4#/"/>
+  <versions href="versions/5#/"/>
+  <branches name="trunk">
+    <head identifier="5" projectStateChecksum="-4649578963142994355"/>
+    <source/>
+  </branches>
+</org.eclipse.emf.emfstore.internal.server.model:ProjectHistory>

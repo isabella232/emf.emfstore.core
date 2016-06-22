@@ -6,18 +6,19 @@
 	<parent>
 		<groupId>org.eclipse.emf.emfstore</groupId>
 		<artifactId>emfstore-parent</artifactId>
-		<version>1.7.0-SNAPSHOT</version>
+		<version>1.8.0-SNAPSHOT</version>
 		<relativePath>../emfstore-parent/</relativePath>
 	</parent>
 	<groupId>org.eclipse.emf.emfstore</groupId>
 	<artifactId>emfstore-bundles-parent</artifactId>
-	<version>1.7.0-SNAPSHOT</version>
+	<version>1.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
 		<module>../../bundles/org.eclipse.emf.emfstore.common</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.common.model</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.migration</module>
+		<module>../../bundles/org.eclipse.emf.emfstore.migration.edapt</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.server</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.server.model</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client.model.edit</module>

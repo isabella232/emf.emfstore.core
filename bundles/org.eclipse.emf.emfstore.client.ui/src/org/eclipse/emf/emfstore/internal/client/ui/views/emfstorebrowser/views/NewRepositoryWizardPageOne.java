@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2011 Chair for Applied Software Engineering,
+ * Copyright (c) 2008-2016 Chair for Applied Software Engineering,
  * Technische Universitaet Muenchen.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -41,6 +41,10 @@ import org.eclipse.swt.widgets.Text;
  */
 public class NewRepositoryWizardPageOne extends WizardPage {
 
+	/**
+	 * Serial version UID for RAP.
+	 */
+	public static final long serialVersionUID = 1L;
 	private static final int DEFAULT_PORT = 8080;
 	private Text name;
 	private Text url;
@@ -207,7 +211,10 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 	 */
 	class SelectionDialogListener implements SelectionListener {
 
-		private static final long serialVersionUID = 1L;
+		/**
+		 * Serial version UID for RAP.
+		 */
+		public static final long serialVersionUID = 1L;
 
 		/**
 		 * @param e
@@ -226,15 +233,7 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 		public void widgetSelected(SelectionEvent e) {
 			final CertificateSelectionDialog csd = new CertificateSelectionDialog(
 				Display.getCurrent().getActiveShell(),
-				new LabelProvider() {
-					@Override
-					public String getText(Object element) {
-						if (element instanceof String) {
-							return element.toString();
-						}
-						return StringUtils.EMPTY;
-					}
-				});
+				new CertificateSelectionDialogLabelProvider());
 			ArrayList<String> certificates;
 			try {
 				certificates = KeyStoreManager.getInstance().getCertificates();
@@ -255,6 +254,26 @@ public class NewRepositoryWizardPageOne extends WizardPage {
 					}
 				}
 			}
+		}
+	}
+
+	/**
+	 * {@link LabelProvider} for the certificate selection dialog.
+	 *
+	 */
+	final class CertificateSelectionDialogLabelProvider extends LabelProvider {
+
+		/**
+		 * Serial version UID for RAP.
+		 */
+		public static final long serialVersionUID = 1L;
+
+		@Override
+		public String getText(Object element) {
+			if (element instanceof String) {
+				return element.toString();
+			}
+			return StringUtils.EMPTY;
 		}
 	}
 }

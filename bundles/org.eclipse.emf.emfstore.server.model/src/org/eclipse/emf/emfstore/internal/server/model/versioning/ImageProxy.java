@@ -12,12 +12,62 @@
 package org.eclipse.emf.emfstore.internal.server.model.versioning;
 
 /**
- * Proxy for an ImageData object in order to avoid depdendency to SWT.
+ * Proxy for an ImageData object in order to avoid dependency to SWT.
  *
  * @author emueller
  *
  */
 public final class ImageProxy {
+
+	/**
+	 * Helper class for representing RGB values.
+	 */
+	public static class RGB {
+		private final int red;
+		private final int green;
+		private final int blue;
+
+		/**
+		 * Value constructor for a RGB value.
+		 *
+		 * @param red the red value
+		 * @param green the green value
+		 * @param blue the blue value
+		 */
+		public RGB(int red, int green, int blue) {
+			this.red = red;
+			this.green = green;
+			this.blue = blue;
+		}
+
+		/**
+		 * Returns the red value.
+		 *
+		 * @return the red value
+		 */
+		public int getRed() {
+			return red;
+		}
+
+		/**
+		 * Returns the green value.
+		 *
+		 * @return the green value
+		 */
+		public int getGreen() {
+			return green;
+		}
+
+		/**
+		 * Returns the blue value.
+		 *
+		 * @return the blue value
+		 */
+		public int getBlue() {
+			return blue;
+		}
+
+	}
 
 	private int width;
 	private int height;
@@ -27,6 +77,8 @@ public final class ImageProxy {
 	private int redMask;
 	private int greenMask;
 	private int blueMask;
+	private boolean direct = true;
+	private RGB[] paletteColors;
 
 	private ImageProxy() {
 
@@ -196,6 +248,36 @@ public final class ImageProxy {
 	public ImageProxy setBlueMask(int mask) {
 		blueMask = mask;
 		return this;
+	}
+
+	/**
+	 * Set palette colors, the palette direct flag is set to false.
+	 *
+	 * @param colors colors to set
+	 * @return this {@link ImageProxy}
+	 */
+	public ImageProxy setPaletteColors(RGB[] colors) {
+		paletteColors = colors;
+		direct = false;
+		return this;
+	}
+
+	/**
+	 * Returns the palette colors.
+	 *
+	 * @return the palette colors
+	 */
+	public RGB[] getPaletteColors() {
+		return paletteColors;
+	}
+
+	/**
+	 * Whether this is a palette is direct.
+	 *
+	 * @return {@code true}, if this palette is direct, {@code false} otherwise.
+	 */
+	public boolean isDirect() {
+		return direct;
 	}
 
 }

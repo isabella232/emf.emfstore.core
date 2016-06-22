@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>org.eclipse.emf.emfstore</groupId>
 		<artifactId>emfstore-parent</artifactId>
-		<version>1.7.0-SNAPSHOT</version>
+		<version>1.8.0-SNAPSHOT</version>
 		<relativePath>../emfstore-parent/</relativePath>
 	</parent>
 	<groupId>org.eclipse.emf.emfstore</groupId>
 	<artifactId>emfstore-features-parent</artifactId>
-	<version>1.7.0-SNAPSHOT</version>
+	<version>1.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -32,6 +32,7 @@
 		<module>../../features/org.eclipse.emf.emfstore.fuzzy.test.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.test.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.license.feature</module>
+		<module>../../features/org.eclipse.emf.emfstore.migration.edapt.feature</module>
 	</modules>
 
 	<!-- Parent used for features. This POM contains all build steps for code signing. -->

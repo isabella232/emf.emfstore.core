@@ -41,7 +41,7 @@ public class AllUITests extends ESTestWithLoggedInUser {
 
 	public static final int TIMEOUT = 20000;
 
-	private static final Optional<Integer> MIN_CHANGEPACKAGE_FRAGMENT_SIZE = Optional.of(1);
+	private static final Optional<Integer> MIN_CHANGEPACKAGE_FRAGMENT_SIZE = Optional.of(10000);
 
 	private static Behavior clientBehavior = Configuration.getClientBehavior();
 	private static Optional<Integer> clientFragmentSize;

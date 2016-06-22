@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2016-02-19T13:51:15.363+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="b.ecore#/">
+        <changes xsi:type="history:Set" element="b.ecore#/" featureName="name" dataValue="b"/>
+        <changes xsi:type="history:Set" element="b.ecore#/" featureName="nsURI" dataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/b"/>
+        <changes xsi:type="history:Set" element="b.ecore#/" featureName="nsPrefix"
+            dataValue="org.eclipse.emfstore.migration.edapt.test.b"/>
+      </changes>
+      <changes xsi:type="history:Create" target="b.ecore#/" referenceName="eClassifiers"
+          element="b.ecore#//B">
+        <changes xsi:type="history:Set" element="b.ecore#//B" featureName="name" dataValue="B"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2016-02-19T14:00:35.505+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="c.ecore#/">
+        <changes xsi:type="history:Set" element="c.ecore#/" featureName="name" dataValue="c"/>
+        <changes xsi:type="history:Set" element="c.ecore#/" featureName="nsURI" dataValue="http://eclipse.org/emf/emfstore/migration/edapt/test/c"/>
+        <changes xsi:type="history:Set" element="c.ecore#/" featureName="nsPrefix"
+            dataValue="org.eclipse.emfstore.migration.edapt.test.c"/>
+      </changes>
+      <changes xsi:type="history:Create" target="c.ecore#/" referenceName="eAnnotations"
+          element="c.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%">
+        <changes xsi:type="history:Set" element="c.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%"
+            featureName="source" dataValue="http://www.eclipse.org/edapt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="c.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%"
+          referenceName="details" element="c.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%/@details.0">
+        <changes xsi:type="history:Set" element="c.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%/@details.0"
+            featureName="key" dataValue="historyURI"/>
+        <changes xsi:type="history:Set" element="c.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%/@details.0"
+            featureName="value" dataValue="b.history"/>
+      </changes>
+      <changes xsi:type="history:Create" target="c.ecore#/" referenceName="eClassifiers"
+          element="c.ecore#//C">
+        <changes xsi:type="history:Set" element="c.ecore#//C" featureName="name" dataValue="C"/>
+        <changes xsi:type="history:Add" element="c.ecore#//C" featureName="eSuperTypes"
+            referenceValue="b.ecore#//B"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases/>
+</history:History>

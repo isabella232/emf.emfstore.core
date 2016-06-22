@@ -20,7 +20,6 @@ import java.util.concurrent.Callable;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -65,9 +64,6 @@ import org.eclipse.emf.emfstore.internal.common.ESRunnableWrapperProvider;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.common.observer.ObserverBus;
-import org.eclipse.emf.emfstore.internal.migration.EMFStoreMigrationException;
-import org.eclipse.emf.emfstore.internal.migration.EMFStoreMigrator;
-import org.eclipse.emf.emfstore.internal.migration.EMFStoreMigratorUtil;
 import org.eclipse.emf.emfstore.server.model.ESChangePackage;
 import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
 
@@ -212,6 +208,20 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 		final ESWorkspaceProviderImpl ws = WorkspaceLocator.createWorkspaceProviderFor(workspaceProviderId);
 		WS_THREAD_LOCAL.set(ws);
 		return ws;
+	}
+
+	/**
+	 * removes a workspace that is no longer needed, this also removes the
+	 * threadlocal reference to the workspace from the calling thread.
+	 *
+	 * @param token
+	 */
+	public static void removeInstance(String token) {
+		if (WorkspaceLocator.hasId(token)) {
+			WorkspaceLocator.removeWorkspaceProviderFor(token);
+		}
+		WS_THREAD_LOCAL.remove();
+
 	}
 
 	/**
@@ -610,32 +620,33 @@ public final class ESWorkspaceProviderImpl implements ESWorkspaceProvider, ESCom
 	}
 
 	private void migrateModelIfNeeded(ResourceSet resourceSet) {
-		// FIXME JF
-		EMFStoreMigrator migrator = null;
-		try {
-			migrator = EMFStoreMigratorUtil.getEMFStoreMigrator();
-		} catch (final EMFStoreMigrationException e2) {
-			WorkspaceUtil.logWarning(e2.getMessage(), null);
-			return;
-		}
+		// FIXME JF: currently we will only support server side migration
 
-		for (final List<URI> curModels : getPhysicalURIsForMigration()) {
-			// TODO logging?
-			if (!migrator.canHandle(curModels)) {
-				return;
-			}
-
-			if (!migrator.needsMigration(curModels)) {
-				return;
-			}
-
-			try {
-				migrator.migrate(curModels, new NullProgressMonitor());
-			} catch (final EMFStoreMigrationException e) {
-				WorkspaceUtil.logException(MessageFormat.format(
-					Messages.ESWorkspaceProviderImpl_Migration_Of_Project_Failed, curModels.get(0)), e);
-			}
-		}
+		// EMFStoreMigrator migrator = null;
+		// try {
+		// migrator = EMFStoreMigratorUtil.getEMFStoreMigrator();
+		// } catch (final EMFStoreMigrationException e2) {
+		// WorkspaceUtil.logWarning(e2.getMessage(), null);
+		// return;
+		// }
+		//
+		// for (final List<URI> curModels : getPhysicalURIsForMigration()) {
+		// // TODO logging?
+		// if (!migrator.canHandle(curModels)) {
+		// return;
+		// }
+		//
+		// if (!migrator.needsMigration(curModels)) {
+		// return;
+		// }
+		//
+		// try {
+		// migrator.migrate(curModels, new NullProgressMonitor());
+		// } catch (final EMFStoreMigrationException e) {
+		// WorkspaceUtil.logException(MessageFormat.format(
+		// Messages.ESWorkspaceProviderImpl_Migration_Of_Project_Failed, curModels.get(0)), e);
+		// }
+		// }
 	}
 
 	private List<List<URI>> getPhysicalURIsForMigration() {

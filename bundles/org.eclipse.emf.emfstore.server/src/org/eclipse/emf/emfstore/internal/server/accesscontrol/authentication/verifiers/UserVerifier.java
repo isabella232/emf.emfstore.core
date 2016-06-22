@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.ve
 
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
@@ -20,6 +21,7 @@ import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolFactory;
 import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
@@ -85,6 +87,9 @@ public abstract class UserVerifier extends PasswordVerifier {
 		final Boolean ignoreCase = Boolean.parseBoolean(ServerConfiguration.getProperties().getProperty(
 			ServerConfiguration.AUTHENTICATION_MATCH_USERS_IGNORE_CASE, Boolean.FALSE.toString()));
 
+		final Boolean createAuthenticatedUsers = Boolean.parseBoolean(ServerConfiguration.getProperties().getProperty(
+			ServerConfiguration.AUTHENTICATION_CREATE_AUTHENTICATED_USERS, Boolean.FALSE.toString()));
+
 		synchronized (MonitorProvider.getInstance().getMonitor()) {
 			final Set<ESUser> users = orgUnitProvider.getUsers();
 			final Set<ACUser> internal = APIUtil.toInternal(users);
@@ -98,6 +103,13 @@ public abstract class UserVerifier extends PasswordVerifier {
 						return user;
 					}
 				}
+			}
+			if (createAuthenticatedUsers) {
+				final ACUser acUser = AccesscontrolFactory.eINSTANCE.createACUser();
+				acUser.setName(username);
+				acUser.setDescription(StringUtils.EMPTY);
+				orgUnitProvider.addUser(acUser.toAPI());
+				return acUser;
 			}
 			throw new AccessControlException();
 		}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.emf.emfstore.internal.server.model.versioning:Version xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.emf.emfstore.internal.server.model.versioning="http://eclipse.org/emf/emfstore/server/model/versioning" nextVersion="4#/" previousVersion="2#/">
+  <primarySpec identifier="3" projectStateChecksum="-4621077678384738851"/>
+  <tagSpecs name="foo"/>
+  <logMessage author="super" message="Added multiple child elements" date="2016-03-31T12:15:38.323+0200" clientDate="2016-03-31T12:15:37.955+0200"/>
+</org.eclipse.emf.emfstore.internal.server.model.versioning:Version>

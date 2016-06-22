@@ -16,6 +16,10 @@ import java.net.URLEncoder;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.emfstore.common.ESResourceSetProvider;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESPriorityComparator;
 import org.eclipse.emf.emfstore.internal.common.CommonUtil;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
@@ -95,6 +99,8 @@ public final class ESServerURIUtil {
 	 */
 	public static final String DYNAMIC_MODELS_SEGMENT = "dynamic-models"; //$NON-NLS-1$
 
+	private static URIConverter uriConverter;
+
 	private ESServerURIUtil() {
 		// private constructor
 	}
@@ -170,6 +176,20 @@ public final class ESServerURIUtil {
 	}
 
 	/**
+	 * Creates an EMFStore URI for addressing a specific changepackage of a project.
+	 * <p />
+	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/changepackages/<i>nr</i>
+	 *
+	 * @param versionURI the valid uri of a version
+	 * @return the EMFStore URI
+	 * @since 1.8
+	 */
+	public static URI createChangePackageURI(URI versionURI) {
+		return versionURI.trimSegments(2).appendSegment(CHANGEPACKAGES_SEGMENT)
+			.appendSegment(versionURI.segment(versionURI.segmentCount() - 1));
+	}
+
+	/**
 	 * Creates an EMFStore URI for addressing a specific state of a project.
 	 * <p />
 	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/projectstates/<i>nr</i>
@@ -180,6 +200,20 @@ public final class ESServerURIUtil {
 	 */
 	public static URI createProjectStateURI(ProjectId projectId, PrimaryVersionSpec versionId) {
 		return URI.createURI(getProjectsPrefix(projectId) + PROJECTSTATES_SEGMENT + "/" + versionId.getIdentifier()); //$NON-NLS-1$
+	}
+
+	/**
+	 * Creates an EMFStore URI for addressing a specific state of a project.
+	 * <p />
+	 * Example URI: emfstore://serverspaces/<i>profile</i>/projects/<i>identifier</i>/projectstates/<i>nr</i>
+	 *
+	 * @param versionURI the valid uri of a version
+	 * @return the EMFStore URI
+	 * @since 1.8
+	 */
+	public static URI createProjectStateURI(URI versionURI) {
+		return versionURI.trimSegments(2).appendSegment(PROJECTSTATES_SEGMENT)
+			.appendSegment(versionURI.segment(versionURI.segmentCount() - 1));
 	}
 
 	/**
@@ -212,6 +246,31 @@ public final class ESServerURIUtil {
 
 	private static String getProjectsPrefix(ProjectId projectId) {
 		return getServerPrefix() + PROJECTS_SEGMENT + "/" + projectId.getId() + "/"; //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	/**
+	 * Whether a resource for the given uri is existing. Please note that this method will only return valid arguments
+	 * when used with EMFStore-URIs or standard EMF-URIs.
+	 *
+	 * @param uri the uri to check
+	 * @return <code>true</code> if a resource for the given URI is existing, <code>false</code> otherwise
+	 * @since 1.8
+	 */
+	public static boolean exists(URI uri) {
+		return getURIConverter().exists(uri, null);
+	}
+
+	private static URIConverter getURIConverter() {
+		if (uriConverter == null) {
+			final ESExtensionPoint extensionPoint = new ESExtensionPoint(
+				"org.eclipse.emf.emfstore.server.resourceSetProvider", //$NON-NLS-1$
+				true, new ESPriorityComparator("priority", true)); //$NON-NLS-1$
+			final ESResourceSetProvider resourceSetProvider = extensionPoint
+				.getElementWithHighestPriority()
+				.getClass("class", ESResourceSetProvider.class); //$NON-NLS-1$
+			uriConverter = resourceSetProvider.getResourceSet().getURIConverter();
+		}
+		return uriConverter;
 	}
 
 }
