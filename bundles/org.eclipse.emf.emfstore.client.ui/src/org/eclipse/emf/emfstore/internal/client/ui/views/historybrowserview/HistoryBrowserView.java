@@ -26,6 +26,8 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.client.common.UnknownEMFStoreWorkloadCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -149,6 +151,25 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	private boolean isUnlinkedFromNavigator;
 	private Action showAllBranches;
 
+	// changes can be transferred with historyInfos. However, this must be avoided if the server sends
+	// FileBasedChangePackages which the client can not open
+	private final static Boolean isLazyLoadingChanges;
+	private static final String ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT = "org.eclipse.emf.emfstore.client.ui.enableLazyLoadingOfChangePackages"; //$NON-NLS-1$
+
+	static {
+		Boolean result;
+		try {
+			result = new ESExtensionPoint(ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT, true)
+				.getBoolean("enabled", false); //$NON-NLS-1$
+			// set system property to be in sync with extension point and to be queryable for menu point enablement
+			System.setProperty(ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT, result.toString()); // $NON-NLS-1$
+		} catch (final ESExtensionPointException e) {
+			// if no extension is available, check for system property
+			result = Boolean.getBoolean(ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT); // $NON-NLS-1$
+		}
+		isLazyLoadingChanges = result;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -158,6 +179,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	@Override
 	public void createPartControl(Composite parent) {
+
 		GridLayoutFactory.fillDefaults().applyTo(parent);
 
 		initNoProjectHint(parent);
@@ -288,6 +310,15 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		viewer.setInput(infos);
 	}
 
+	/**
+	 * Refresh a history info. Useful if a change package has been loaded lazily.
+	 * 
+	 * @param historyInfo the {@link HistoryInfo} to refresh
+	 */
+	public void refresh(HistoryInfo historyInfo) {
+		viewer.refresh(historyInfo);
+	}
+
 	private void addBaseVersionTag(List<HistoryInfo> infos) {
 		final HistoryInfo historyInfo = getHistoryInfo(projectSpace.getBaseVersion());
 		if (historyInfo != null) {
@@ -373,7 +404,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			UPPER_LIMIT,
 			LOWER_LIMIT,
 			showAllVersions,
-			true);
+			!isLazyLoadingChanges);
 		// TODO: proivde util method
 		final ESHistoryQuery<ESModelElementQuery> api = query.toAPI();
 		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(api, new NullProgressMonitor());
@@ -386,7 +417,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 				centerVersion,
 				UPPER_LIMIT,
 				LOWER_LIMIT,
-				showAllVersions, true, true, true);
+				showAllVersions, true, true, !isLazyLoadingChanges);
 		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(
 			rangeQuery.toAPI(),
 			new NullProgressMonitor());
