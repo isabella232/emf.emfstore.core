@@ -77,10 +77,10 @@ public final class ChangePackageUtil {
 		return new Iterator<ChangePackageEnvelope>() {
 
 			private int fragmentIndex;
-			private int currentOpIndex;
 			private int count;
-			private boolean isInitialized;
 			private ChangePackageEnvelope envelope;
+			private Iterator<AbstractOperation> operationsIterator;
+			private ESCloseableIterable<AbstractOperation> operationsIterable;
 
 			private void init() {
 				int leafSizeCounter = 0;
@@ -101,12 +101,13 @@ public final class ChangePackageUtil {
 				if (leafSizeCounter != 0 || count == 0) {
 					count += 1;
 				}
-				isInitialized = true;
+				operationsIterable = changePackage.operations();
+				operationsIterator = operationsIterable.iterable().iterator();
 			}
 
 			public boolean hasNext() {
 
-				if (!isInitialized) {
+				if (operationsIterable == null) {
 					init();
 				}
 
@@ -117,16 +118,19 @@ public final class ChangePackageUtil {
 					envelope.setFragmentCount(count);
 				}
 
+				boolean iteratorHasNext = false;
 				while (countLeafOperations(envelope.getFragment()) < changePackageFragmentSize
-					&& currentOpIndex < changePackage.size()) {
+					&& (iteratorHasNext = operationsIterator.hasNext())) {
 
-					// FIXME: get(opIndex) might be slow
-					final AbstractOperation op = changePackage.get(currentOpIndex);
+					final AbstractOperation op = operationsIterator.next();
 					envelope.getFragment().add(ModelUtil.clone(op));
-					currentOpIndex += 1;
 				}
 
 				envelope.setFragmentIndex(fragmentIndex);
+
+				if (!iteratorHasNext) {
+					operationsIterable.close();
+				}
 
 				if (!envelope.getFragment().isEmpty() || fragmentIndex == 0) {
 					return true;
