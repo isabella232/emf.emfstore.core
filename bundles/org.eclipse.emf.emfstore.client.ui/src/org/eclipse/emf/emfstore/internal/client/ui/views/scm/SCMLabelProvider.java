@@ -254,7 +254,7 @@ public class SCMLabelProvider extends ColumnLabelProvider {
     prepareProxy(proxy, operation);
   }
 
-  private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
+  void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
     final ImageData imageData = changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation)
       .getImageData();
     final ImageProxy imageProxy = ImageProxy.create().setWitdh(imageData.width).setHeight(imageData.height)

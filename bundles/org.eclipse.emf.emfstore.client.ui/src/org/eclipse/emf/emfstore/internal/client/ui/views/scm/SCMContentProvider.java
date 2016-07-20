@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -45,6 +45,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 	private final Map<ChangePackage, VirtualNode<AbstractOperation>> changePackageToFilteredMapping;
 	private final Map<ChangePackage, List<Object>> changePackageToNonFilteredMapping;
 	private ModelElementIdToEObjectMapping idToEObjectMapping;
+	private SCMLabelProvider scmLabelProvider = null;
 
 	/**
 	 * Default constructor.
@@ -195,6 +196,9 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 		if (object instanceof FileBasedChangePackage) {
 			return true;
 		}
+		if (object instanceof OperationProxy){
+			return true;
+		}
 		return getChildren(object).length > 0;
 	}
 
@@ -242,6 +246,7 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 	}
 
 	private void createOperationProxies(final FileBasedChangePackage changePackage) {
+		// Performance Optimization: calculate label properties of proxies here if label provider was passed
 		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
 		int opIndex = 0;
 		final List<OperationProxy> updatedProxies = new ArrayList<OperationProxy>();
@@ -249,6 +254,9 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 			for (final Iterator<AbstractOperation> iterator = operations.iterable().iterator(); iterator.hasNext();) {
 				final AbstractOperation operation = iterator.next();
 				final OperationProxy newProxy = createProxy(operation);
+				if (scmLabelProvider != null) {
+					scmLabelProvider.prepareProxy(newProxy, operation);
+				}
 				newProxy.setIndex(opIndex);
 				updatedProxies.add(newProxy);
 
@@ -292,6 +300,16 @@ public class SCMContentProvider extends AdapterFactoryContentProvider {
 	 */
 	public void setShowRootNodes(boolean showRootNodes) {
 		this.showRootNodes = showRootNodes;
+	}
+
+	/**
+	 * set a label Provider to precalculate labels in filebased change package case
+	 *
+	 * @param labelProvider labelProvider or null
+	 */
+	public void setLabelProvider(SCMLabelProvider labelProvider) {
+		scmLabelProvider = labelProvider;
+
 	}
 
 }
