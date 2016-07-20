@@ -57,6 +57,8 @@ public class OperationEmitter implements Closeable {
 	private int currentOpIndex;
 	private long startOffset;
 
+	private boolean isClosed;
+
 	/**
 	 * Constructor.
 	 *
@@ -71,6 +73,7 @@ public class OperationEmitter implements Closeable {
 		determineOperationOffsets();
 		currentOpIndex = direction == Direction.Forward ? 0 : backwardsOffsets.size() - 1;
 		initReader();
+		isClosed = false;
 	}
 
 	private void determineOperationOffsets() {
@@ -223,6 +226,9 @@ public class OperationEmitter implements Closeable {
 				}
 			}
 		}).start();
+		if (isClosed) {
+			return Optional.absent();
+		}
 
 		try {
 			return Optional.of(deserialize(pis));
@@ -259,6 +265,7 @@ public class OperationEmitter implements Closeable {
 	 */
 	public void close() {
 		try {
+			isClosed = true;
 			reader.close();
 		} catch (final IOException ex) {
 			ModelUtil.logException(ex);
