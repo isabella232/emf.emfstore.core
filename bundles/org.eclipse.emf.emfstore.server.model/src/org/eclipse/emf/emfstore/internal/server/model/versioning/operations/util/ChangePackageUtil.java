@@ -84,19 +84,17 @@ public final class ChangePackageUtil {
 
 			private void init() {
 				int leafSizeCounter = 0;
+				// it is not necessary to close the operations iterable, because the iterator already does this
+				// in hasNext() if there are no more operations
 				final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
-				try {
-					for (final AbstractOperation operation : operations.iterable()) {
-						final int countLeafOperations = countLeafOperations(operation);
-						leafSizeCounter += countLeafOperations;
-						if (leafSizeCounter < changePackageFragmentSize) {
-							continue;
-						}
-						leafSizeCounter = 0;
-						count += 1;
+				for (final AbstractOperation operation : operations.iterable()) {
+					final int countLeafOperations = countLeafOperations(operation);
+					leafSizeCounter += countLeafOperations;
+					if (leafSizeCounter < changePackageFragmentSize) {
+						continue;
 					}
-				} finally {
-					operations.close();
+					leafSizeCounter = 0;
+					count += 1;
 				}
 				if (leafSizeCounter != 0 || count == 0) {
 					count += 1;
@@ -118,19 +116,14 @@ public final class ChangePackageUtil {
 					envelope.setFragmentCount(count);
 				}
 
-				boolean iteratorHasNext = false;
 				while (countLeafOperations(envelope.getFragment()) < changePackageFragmentSize
-					&& (iteratorHasNext = operationsIterator.hasNext())) {
+					&& operationsIterator.hasNext()) {
 
 					final AbstractOperation op = operationsIterator.next();
 					envelope.getFragment().add(ModelUtil.clone(op));
 				}
 
 				envelope.setFragmentIndex(fragmentIndex);
-
-				if (!iteratorHasNext) {
-					operationsIterable.close();
-				}
 
 				if (!envelope.getFragment().isEmpty() || fragmentIndex == 0) {
 					return true;
