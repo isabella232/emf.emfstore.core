@@ -12,13 +12,15 @@
 package org.eclipse.emf.emfstore.internal.server.model.versioning.impl.persistent;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.DataInput;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +125,7 @@ public class OperationEmitter implements Closeable {
 		return backwardsOffsets.get(currentOpIndex);
 	}
 
-	private void readForward(PipedOutputStream pos) {
+	private void readForward(ByteArrayOutputStream pos) {
 		try {
 			boolean withinOperationsElement = false;
 			final boolean isForwardDir = direction == Direction.Forward;
@@ -151,7 +153,7 @@ public class OperationEmitter implements Closeable {
 		}
 	}
 
-	private void readForward(DataInput reader, PipedOutputStream pos) {
+	private void readForward(DataInput reader, OutputStream pos) {
 		try {
 			boolean withinOperationsElement = true;
 			final String closingTag = getClosingTag(true);
@@ -175,7 +177,7 @@ public class OperationEmitter implements Closeable {
 		}
 	}
 
-	private void readBackward(PipedOutputStream pos) {
+	private void readBackward(OutputStream pos) {
 
 		if (currentOpIndex < 0) {
 			try {
@@ -214,31 +216,24 @@ public class OperationEmitter implements Closeable {
 	 *             in case reading from the {@link ReadLineCapable} fails
 	 */
 	public Optional<AbstractOperation> tryEmit() throws IOException {
-		final PipedOutputStream pos = new PipedOutputStream();
-		final PipedInputStream pis = new PipedInputStream(pos);
 
-		new Thread(new Runnable() {
-			public void run() {
-				if (direction == Direction.Forward) {
-					readForward(pos);
-				} else {
-					readBackward(pos);
-				}
-			}
-		}).start();
 		if (isClosed) {
 			return Optional.absent();
 		}
+		final ByteArrayOutputStream pos = new ByteArrayOutputStream(1000000);
+		if (direction == Direction.Forward) {
+			readForward(pos);
+		} else {
+			readBackward(pos);
+		}
 
 		try {
+			final ByteArrayInputStream pis = new ByteArrayInputStream(pos.toByteArray());
 			return Optional.of(deserialize(pis));
 		} catch (final IOException e) {
 			// e.printStackTrace();
 			return Optional.absent();
-		} finally {
-			pis.close();
 		}
-
 	}
 
 	private String getClosingTag(boolean isForward) {
@@ -249,7 +244,7 @@ public class OperationEmitter implements Closeable {
 		return isForward ? XmlTags.OPERATIONS_START_TAG : XmlTags.OPERATIONS_END_TAG;
 	}
 
-	private AbstractOperation deserialize(final PipedInputStream pis) throws IOException {
+	private AbstractOperation deserialize(final InputStream pis) throws IOException {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		final Resource resource = resourceSet.createResource(URI.createURI("virtualResource.xmi")); //$NON-NLS-1$
 		((XMLResourceImpl) resource).setIntrinsicIDToEObjectMap(Maps.<String, EObject> newLinkedHashMap());
