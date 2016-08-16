@@ -26,11 +26,11 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.StringToStringMapImpl#getTypedKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.StringToStringMapImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -120,8 +120,8 @@ public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entr
 		String oldKey = key;
 		key = newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.STRING_TO_STRING_MAP__KEY, oldKey,
-				key));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, TestmodelPackage.STRING_TO_STRING_MAP__KEY, oldKey, key));
 	}
 
 	/**
@@ -156,8 +156,7 @@ public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_STRING_MAP__KEY:
 			return getTypedKey();
 		case TestmodelPackage.STRING_TO_STRING_MAP__VALUE:
@@ -174,8 +173,7 @@ public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_STRING_MAP__KEY:
 			setTypedKey((String) newValue);
 			return;
@@ -194,8 +192,7 @@ public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_STRING_MAP__KEY:
 			setTypedKey(KEY_EDEFAULT);
 			return;
@@ -214,8 +211,7 @@ public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_STRING_MAP__KEY:
 			return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
 		case TestmodelPackage.STRING_TO_STRING_MAP__VALUE:
@@ -259,8 +255,7 @@ public class StringToStringMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 * @generated
 	 */
 	public int getHash() {
-		if (hash == -1)
-		{
+		if (hash == -1) {
 			Object theKey = getKey();
 			hash = (theKey == null ? 0 : theKey.hashCode());
 		}

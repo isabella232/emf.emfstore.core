@@ -22,11 +22,11 @@ import org.osgi.framework.Version;
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Version Info</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.VersionInfoImpl#getEmfStoreVersionString <em>Emf Store
- * Version String</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.VersionInfoImpl#getEmfStoreVersionString
+ * <em>Emf Store Version String</em>}</li>
+ * </ul>
  *
  * @generated
  */

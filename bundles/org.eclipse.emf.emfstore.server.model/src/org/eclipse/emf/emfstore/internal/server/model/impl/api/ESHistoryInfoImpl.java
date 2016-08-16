@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESTagVersionSpec;
  *
  * @author emueller
  */
-public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInfo>implements ESHistoryInfo {
+public class ESHistoryInfoImpl extends AbstractAPIImpl<ESHistoryInfo, HistoryInfo> implements ESHistoryInfo {
 
 	/**
 	 * Constructor.

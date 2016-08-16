@@ -60,8 +60,8 @@ public class UISessionControllerTest extends AbstractUIControllerTest {
 	private void logout() {
 		UIThreadRunnable.syncExec(new VoidResult() {
 			public void run() {
-				logoutSessionController =
-					new UILogoutSessionController(getBot().getDisplay().getActiveShell(), getUsersession());
+				logoutSessionController = new UILogoutSessionController(getBot().getDisplay().getActiveShell(),
+					getUsersession());
 				logoutSessionController.execute();
 			}
 		});

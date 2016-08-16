@@ -23,10 +23,10 @@ import org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyStringValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -35,7 +35,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected PropertyStringValueImpl() {
@@ -66,7 +66,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getValue() {
@@ -87,22 +87,21 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
-		final String oldValue = value;
+		String oldValue = value;
 		value = newValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_STRING_VALUE__VALUE, oldValue,
 				value));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -117,7 +116,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,7 +132,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -149,7 +148,7 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -164,16 +163,15 @@ public class PropertyStringValueImpl extends EObjectImpl implements PropertyStri
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');

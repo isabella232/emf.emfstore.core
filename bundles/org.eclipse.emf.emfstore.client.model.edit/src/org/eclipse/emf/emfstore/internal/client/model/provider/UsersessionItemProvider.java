@@ -43,7 +43,7 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public UsersessionItemProvider(AdapterFactory adapterFactory) {
@@ -53,13 +53,12 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addUsernamePropertyDescriptor(object);
@@ -75,17 +74,16 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Username feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addUsernamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_username_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Usersession_username_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Usersession_username_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_Usersession_type"), //$NON-NLS-1$
 				ModelPackage.Literals.USERSESSION__USERNAME,
 				true,
 				false,
@@ -98,17 +96,16 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Password feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addPasswordPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_password_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Usersession_password_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Usersession_password_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_Usersession_type"), //$NON-NLS-1$
 				ModelPackage.Literals.USERSESSION__PASSWORD,
 				true,
 				false,
@@ -121,17 +118,16 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Session Id feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addSessionIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_sessionId_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Usersession_sessionId_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Usersession_sessionId_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_Usersession_type"), //$NON-NLS-1$
 				ModelPackage.Literals.USERSESSION__SESSION_ID,
 				true,
 				false,
@@ -149,13 +145,11 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addPersistentPasswordPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_persistentPassword_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Usersession_persistentPassword_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Usersession_persistentPassword_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_Usersession_type"), //$NON-NLS-1$
 				ModelPackage.Literals.USERSESSION__PERSISTENT_PASSWORD,
 				true,
 				false,
@@ -168,18 +162,16 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Server Info feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addServerInfoPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_serverInfo_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Usersession_serverInfo_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Usersession_serverInfo_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_Usersession_type"), //$NON-NLS-1$
 				ModelPackage.Literals.USERSESSION__SERVER_INFO,
 				true,
 				false,
@@ -192,18 +184,16 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This adds a property descriptor for the Save Password feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addSavePasswordPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Usersession_savePassword_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Usersession_savePassword_feature", "_UI_Usersession_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Usersession_savePassword_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_Usersession_type"), //$NON-NLS-1$
 				ModelPackage.Literals.USERSESSION__SAVE_PASSWORD,
 				true,
 				false,
@@ -219,13 +209,12 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.USERSESSION__AC_USER);
 			childrenFeatures.add(ModelPackage.Literals.USERSESSION__CHANGED_PROPERTIES);
@@ -235,7 +224,7 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -249,7 +238,7 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	/**
 	 * This returns Usersession.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -282,8 +271,7 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Usersession.class))
-		{
+		switch (notification.getFeatureID(Usersession.class)) {
 		case ModelPackage.USERSESSION__USERNAME:
 		case ModelPackage.USERSESSION__PASSWORD:
 		case ModelPackage.USERSESSION__PERSISTENT_PASSWORD:
@@ -302,28 +290,24 @@ public class UsersessionItemProvider extends ItemProviderAdapter implements IEdi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.USERSESSION__AC_USER,
-				AccesscontrolFactory.eINSTANCE.createACUser()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.USERSESSION__AC_USER,
+			AccesscontrolFactory.eINSTANCE.createACUser()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.USERSESSION__CHANGED_PROPERTIES,
-				AccesscontrolFactory.eINSTANCE.createOrgUnitProperty()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.USERSESSION__CHANGED_PROPERTIES,
+			AccesscontrolFactory.eINSTANCE.createOrgUnitProperty()));
 	}
 
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

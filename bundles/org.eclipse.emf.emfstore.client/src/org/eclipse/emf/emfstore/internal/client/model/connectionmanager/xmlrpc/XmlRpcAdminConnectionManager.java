@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *
  * @author wesendon
  */
-public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlRpcClientManager>implements
+public class XmlRpcAdminConnectionManager extends AbstractConnectionManager<XmlRpcClientManager> implements
 	AdminConnectionManager {
 
 	private static final String ASSIGN_ROLE = "assignRole"; //$NON-NLS-1$

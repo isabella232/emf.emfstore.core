@@ -18,10 +18,10 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackageProxy()
  * @model

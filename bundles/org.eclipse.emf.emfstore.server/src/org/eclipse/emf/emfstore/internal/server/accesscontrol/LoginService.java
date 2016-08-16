@@ -118,7 +118,7 @@ public class LoginService {
 	 */
 	public ESAuthenticationInformation logIn(String username, String password,
 		ESClientVersionInfo clientVersionInfo)
-			throws AccessControlException {
+		throws AccessControlException {
 
 		synchronized (MonitorProvider.getInstance().getMonitor(MONITOR_NAME)) {
 			final ESAuthenticationInformation authInfo = getUserVerifierService().verifyUser(

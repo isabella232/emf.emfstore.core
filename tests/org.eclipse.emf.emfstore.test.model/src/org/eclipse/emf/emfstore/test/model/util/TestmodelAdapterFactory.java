@@ -50,8 +50,7 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public TestmodelAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = TestmodelPackage.eINSTANCE;
 		}
 	}
@@ -68,12 +67,10 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -86,63 +83,52 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 * 
 	 * @generated
 	 */
-	protected TestmodelSwitch<Adapter> modelSwitch =
-		new TestmodelSwitch<Adapter>()
-		{
-			@Override
-			public Adapter caseTestElement(TestElement object)
-			{
-				return createTestElementAdapter();
-			}
+	protected TestmodelSwitch<Adapter> modelSwitch = new TestmodelSwitch<Adapter>() {
+		@Override
+		public Adapter caseTestElement(TestElement object) {
+			return createTestElementAdapter();
+		}
 
-			@Override
-			public Adapter caseTestElementToStringMap(Map.Entry<TestElement, String> object)
-			{
-				return createTestElementToStringMapAdapter();
-			}
+		@Override
+		public Adapter caseTestElementToStringMap(Map.Entry<TestElement, String> object) {
+			return createTestElementToStringMapAdapter();
+		}
 
-			@Override
-			public Adapter caseStringToStringMap(Map.Entry<String, String> object)
-			{
-				return createStringToStringMapAdapter();
-			}
+		@Override
+		public Adapter caseStringToStringMap(Map.Entry<String, String> object) {
+			return createStringToStringMapAdapter();
+		}
 
-			@Override
-			public Adapter caseTestElementToTestElementMap(Map.Entry<TestElement, TestElement> object)
-			{
-				return createTestElementToTestElementMapAdapter();
-			}
+		@Override
+		public Adapter caseTestElementToTestElementMap(Map.Entry<TestElement, TestElement> object) {
+			return createTestElementToTestElementMapAdapter();
+		}
 
-			@Override
-			public Adapter caseStringToTestElementMap(Map.Entry<String, TestElement> object)
-			{
-				return createStringToTestElementMapAdapter();
-			}
+		@Override
+		public Adapter caseStringToTestElementMap(Map.Entry<String, TestElement> object) {
+			return createStringToTestElementMapAdapter();
+		}
 
-			@Override
-			public Adapter caseTestType(TestType object)
-			{
-				return createTestTypeAdapter();
-			}
+		@Override
+		public Adapter caseTestType(TestType object) {
+			return createTestTypeAdapter();
+		}
 
-			@Override
-			public Adapter caseTypeWithFeatureMapNonContainment(TypeWithFeatureMapNonContainment object)
-			{
-				return createTypeWithFeatureMapNonContainmentAdapter();
-			}
+		@Override
+		public Adapter caseTypeWithFeatureMapNonContainment(TypeWithFeatureMapNonContainment object) {
+			return createTypeWithFeatureMapNonContainmentAdapter();
+		}
 
-			@Override
-			public Adapter caseTypeWithFeatureMapContainment(TypeWithFeatureMapContainment object)
-			{
-				return createTypeWithFeatureMapContainmentAdapter();
-			}
+		@Override
+		public Adapter caseTypeWithFeatureMapContainment(TypeWithFeatureMapContainment object) {
+			return createTypeWithFeatureMapContainmentAdapter();
+		}
 
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+		@Override
+		public Adapter defaultCase(EObject object) {
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -247,8 +233,7 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.emfstore.test.model.TestType
 	 * @generated
 	 */
-	public Adapter createTestTypeAdapter()
-	{
+	public Adapter createTestTypeAdapter() {
 		return null;
 	}
 
@@ -265,8 +250,7 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment
 	 * @generated
 	 */
-	public Adapter createTypeWithFeatureMapNonContainmentAdapter()
-	{
+	public Adapter createTypeWithFeatureMapNonContainmentAdapter() {
 		return null;
 	}
 
@@ -283,8 +267,7 @@ public class TestmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment
 	 * @generated
 	 */
-	public Adapter createTypeWithFeatureMapContainmentAdapter()
-	{
+	public Adapter createTypeWithFeatureMapContainmentAdapter() {
 		return null;
 	}
 

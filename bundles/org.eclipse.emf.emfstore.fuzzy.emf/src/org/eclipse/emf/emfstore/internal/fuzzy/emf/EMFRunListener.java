@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import junit.framework.AssertionFailedError;
-
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigFactory;
@@ -26,6 +24,8 @@ import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
+
+import junit.framework.AssertionFailedError;
 
 /**
  * {@link RunListener} used to create the report of a run of the {@link ESEMFDataProvider}.

@@ -175,7 +175,7 @@ public class EmfStoreValidator {
 						for (final AbstractOperation abstractOperation : operations.iterable()) {
 							if (!(abstractOperation instanceof CompositeOperation)
 								&& (abstractOperation.getModelElementId() == null
-								|| abstractOperation.getModelElementId().getId() == null)) {
+									|| abstractOperation.getModelElementId().getId() == null)) {
 								errors.add(
 									MessageFormat.format(
 										Messages.EmfStoreValidator_ChangeOperation_Has_No_ModelElementId,

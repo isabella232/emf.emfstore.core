@@ -384,7 +384,8 @@ public final class ServerUtil {
 					try {
 						FileUtil.copyFile(new URL("platform:/plugin/" //$NON-NLS-1$
 							+ element.getIConfigurationElement().getNamespaceIdentifier() + "/" + attribute) //$NON-NLS-1$
-							.openConnection().getInputStream(), targetFile);
+								.openConnection().getInputStream(),
+							targetFile);
 						return;
 					} catch (final IOException e) {
 						ModelUtil.logWarning("Copy of file from " + source + " to " + target + " failed", e); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -404,8 +405,7 @@ public final class ServerUtil {
 	// TODO: duplicate method
 	private static InputStream getResource(String resource) throws IOException {
 
-		final URL configURL =
-			FrameworkUtil.getBundle(ServerUtil.class).getEntry(resource);
+		final URL configURL = FrameworkUtil.getBundle(ServerUtil.class).getEntry(resource);
 		// Activator.getDefault().getBundle().getBundleContext().getBundle()
 		// .getEntry(resource);
 

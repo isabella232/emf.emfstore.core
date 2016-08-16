@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement;
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- *
+ * 
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage
  * @generated
  */
@@ -34,7 +34,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected static ModelPackage modelPackage;
@@ -43,12 +43,11 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * Creates an instance of the adapter factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public ModelAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = ModelPackage.eINSTANCE;
 		}
 	}
@@ -58,18 +57,16 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc --> This implementation returns <code>true</code> if
 	 * the object is either the model's package or is an instance object of the
 	 * model. <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -81,47 +78,39 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected ModelSwitch<Adapter> modelSwitch = new ModelSwitch<Adapter>()
-	{
+	protected ModelSwitch<Adapter> modelSwitch = new ModelSwitch<Adapter>() {
 		@Override
-		public Adapter caseWorkspace(Workspace object)
-		{
+		public Adapter caseWorkspace(Workspace object) {
 			return createWorkspaceAdapter();
 		}
 
 		@Override
-		public Adapter caseServerInfo(ServerInfo object)
-		{
+		public Adapter caseServerInfo(ServerInfo object) {
 			return createServerInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseUsersession(Usersession object)
-		{
+		public Adapter caseUsersession(Usersession object) {
 			return createUsersessionAdapter();
 		}
 
 		@Override
-		public Adapter caseProjectSpace(ProjectSpace object)
-		{
+		public Adapter caseProjectSpace(ProjectSpace object) {
 			return createProjectSpaceAdapter();
 		}
 
 		@Override
-		public Adapter casePendingFileTransfer(PendingFileTransfer object)
-		{
+		public Adapter casePendingFileTransfer(PendingFileTransfer object) {
 			return createPendingFileTransferAdapter();
 		}
 
 		@Override
-		public Adapter caseIdentifiableElement(IdentifiableElement object)
-		{
+		public Adapter caseIdentifiableElement(IdentifiableElement object) {
 			return createIdentifiableElementAdapter();
 		}
 
 		@Override
-		public Adapter defaultCase(EObject object)
-		{
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};
@@ -130,7 +119,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * Creates an adapter for the <code>target</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
@@ -162,7 +151,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ServerInfo
 	 * @generated
@@ -178,7 +167,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.Usersession
 	 * @generated
@@ -194,7 +183,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace
 	 * @generated
@@ -210,7 +199,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer
 	 * @generated
@@ -226,7 +215,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement
 	 * @generated
@@ -239,7 +228,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc --> This
 	 * default implementation returns null. <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the new adapter.
 	 * @generated
 	 */

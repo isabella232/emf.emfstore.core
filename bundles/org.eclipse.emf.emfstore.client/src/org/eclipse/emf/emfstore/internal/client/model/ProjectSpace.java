@@ -435,11 +435,11 @@ public interface ProjectSpace extends IdentifiableElement, APIDelegate<ESLocalPr
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
-	 * @param changePackage the new value of the '<em>Local Change Package</em>' containment reference.
+	 * @param value the new value of the '<em>Local Change Package</em>' containment reference.
 	 * @see #getLocalChangePackage()
 	 * @generated
 	 */
-	void setLocalChangePackage(AbstractChangePackage changePackage);
+	void setLocalChangePackage(AbstractChangePackage value);
 
 	/**
 	 * Gathers all local operations and canonizes them.

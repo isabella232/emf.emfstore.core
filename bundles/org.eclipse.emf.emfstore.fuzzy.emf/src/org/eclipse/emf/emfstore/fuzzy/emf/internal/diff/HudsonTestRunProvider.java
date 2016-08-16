@@ -106,7 +106,8 @@ public class HudsonTestRunProvider extends TestRunProvider {
 
 		firstBuildNumber = getLastValidBuildNumber(
 			Integer.parseInt(getFirstElementValue(jobUrl + LAST_BUILD
-				+ "/api/xml?tree=number")), jobUrl); //$NON-NLS-1$
+				+ "/api/xml?tree=number")), //$NON-NLS-1$
+			jobUrl);
 		secondBuildNumber = getLastValidBuildNumber(firstBuildNumber - 1,
 			jobUrl);
 	}
@@ -175,7 +176,8 @@ public class HudsonTestRunProvider extends TestRunProvider {
 		} catch (final DocumentException ex) {
 			throw new DocumentException(
 				MessageFormat.format(
-					Messages.HudsonTestRunProvider_ReadFailed, url), ex);
+					Messages.HudsonTestRunProvider_ReadFailed, url),
+				ex);
 		}
 		final List<Element> elements = doc.getRootElement().elements();
 		if (elements.size() == 0) {
@@ -254,7 +256,8 @@ public class HudsonTestRunProvider extends TestRunProvider {
 			+ "/"; //$NON-NLS-1$
 		final int lastValidNumber = getLastValidBuildNumber(
 			Integer.parseInt(getFirstElementValue(diffJobUrl + LAST_BUILD
-				+ "/api/xml?tree=number")), diffJobUrl); //$NON-NLS-1$
+				+ "/api/xml?tree=number")), //$NON-NLS-1$
+			diffJobUrl);
 		return FuzzyUtil.createResource(diffJobUrl + lastValidNumber + ARTIFACT
 			+ FuzzyUtil.FUZZY_FOLDER + "diff" + FuzzyUtil.FILE_SUFFIX); //$NON-NLS-1$
 	}

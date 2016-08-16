@@ -16,8 +16,6 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Element Id</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
@@ -38,7 +36,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

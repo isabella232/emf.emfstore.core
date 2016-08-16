@@ -356,7 +356,8 @@ public final class FileDownloadStatus {
 		 *            the file where the download can be found
 		 * @return the created status object
 		 */
-		public static FileDownloadStatus createAlreadyFinished(ProjectSpace p, FileIdentifier id, File transferredFile) {
+		public static FileDownloadStatus createAlreadyFinished(ProjectSpace p, FileIdentifier id,
+			File transferredFile) {
 			return new FileDownloadStatus(p, id, Status.FINISHED, transferredFile);
 		}
 

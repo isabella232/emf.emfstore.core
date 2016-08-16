@@ -16,17 +16,16 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation#isBidirectional
  * <em>Bidirectional</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation#getOppositeFeatureName
  * <em>Opposite Feature Name</em>}</li>
- * <li>
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation#getContainmentType
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation#getContainmentType
  * <em>Containment Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getReferenceOperation()
  * @model abstract="true"

@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.ESOrgUnitId;
  * @author emueller
  *
  */
-public class ESOrgUnitIdImpl extends AbstractAPIImpl<ESOrgUnitIdImpl, ACOrgUnitId>implements ESOrgUnitId {
+public class ESOrgUnitIdImpl extends AbstractAPIImpl<ESOrgUnitIdImpl, ACOrgUnitId> implements ESOrgUnitId {
 
 	/**
 	 * Constructor.

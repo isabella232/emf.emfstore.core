@@ -123,14 +123,10 @@ public class DeleteOrgUnitTest extends ProjectAdminTest {
 		makeUserPA();
 
 		final ACOrgUnitId newUserId = ServerUtil.createUser(getSuperUsersession(), getNewUsername());
-		final ProjectId secondProjectId =
-			ESGlobalProjectIdImpl.class.cast(
-				ProjectUtil.share(getUsersession(), getLocalProject())
-				).toInternalAPI();
-		final ProjectId thirdProjectId =
-			ESGlobalProjectIdImpl.class.cast(
-				ProjectUtil.share(getUsersession(), getLocalProject())
-				).toInternalAPI();
+		final ProjectId secondProjectId = ESGlobalProjectIdImpl.class.cast(
+			ProjectUtil.share(getUsersession(), getLocalProject())).toInternalAPI();
+		final ProjectId thirdProjectId = ESGlobalProjectIdImpl.class.cast(
+			ProjectUtil.share(getUsersession(), getLocalProject())).toInternalAPI();
 
 		getAdminBroker().changeRole(
 			secondProjectId,
@@ -155,8 +151,7 @@ public class DeleteOrgUnitTest extends ProjectAdminTest {
 
 		final ACOrgUnitId newUser = ServerUtil.createUser(getSuperUsersession(), getNewUsername());
 		final ProjectId secondProjectId = ESGlobalProjectIdImpl.class.cast(
-			ProjectUtil.share(getUsersession(), getLocalProject())
-			).toInternalAPI();
+			ProjectUtil.share(getUsersession(), getLocalProject())).toInternalAPI();
 
 		getAdminBroker().changeRole(
 			secondProjectId,
@@ -183,10 +178,8 @@ public class DeleteOrgUnitTest extends ProjectAdminTest {
 		makeUserPA();
 
 		final ACOrgUnitId newUser = ServerUtil.createUser(getSuperUsersession(), getNewUsername());
-		final ProjectId secondProjectId =
-			ESGlobalProjectIdImpl.class.cast(
-				ProjectUtil.share(getUsersession(), getLocalProject())
-				).toInternalAPI();
+		final ProjectId secondProjectId = ESGlobalProjectIdImpl.class.cast(
+			ProjectUtil.share(getUsersession(), getLocalProject())).toInternalAPI();
 
 		getAdminBroker().changeRole(
 			secondProjectId,
@@ -203,8 +196,7 @@ public class DeleteOrgUnitTest extends ProjectAdminTest {
 
 		final ACOrgUnitId newUser = ServerUtil.createUser(getSuperUsersession(), getNewUsername());
 		final ProjectId secondProjectId = ESGlobalProjectIdImpl.class.cast(
-			ProjectUtil.share(getUsersession(), getLocalProject())
-			).toInternalAPI();
+			ProjectUtil.share(getUsersession(), getLocalProject())).toInternalAPI();
 		getAdminBroker().changeRole(
 			secondProjectId,
 			newUser,

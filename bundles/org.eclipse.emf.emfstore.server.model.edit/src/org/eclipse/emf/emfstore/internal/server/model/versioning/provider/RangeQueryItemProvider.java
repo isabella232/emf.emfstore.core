@@ -67,12 +67,10 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	 */
 	protected void addUpperLimitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RangeQuery_upperLimit_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_upperLimit_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_RangeQuery_upperLimit_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_upperLimit_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_RangeQuery_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.RANGE_QUERY__UPPER_LIMIT, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
@@ -85,12 +83,10 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	 */
 	protected void addLowerLimitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_RangeQuery_lowerLimit_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RangeQuery_lowerLimit_feature", "_UI_RangeQuery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_RangeQuery_lowerLimit_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_lowerLimit_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_RangeQuery_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.RANGE_QUERY__LOWER_LIMIT, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
@@ -102,14 +98,13 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	 * @generated
 	 */
 	protected void addIncludeIncomingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_RangeQuery_includeIncoming_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeIncoming_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_RangeQuery_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.RANGE_QUERY__INCLUDE_INCOMING, true, false, false,
-			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_RangeQuery_includeIncoming_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeIncoming_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_RangeQuery_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.RANGE_QUERY__INCLUDE_INCOMING, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -119,14 +114,13 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	 * @generated
 	 */
 	protected void addIncludeOutgoingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_RangeQuery_includeOutgoing_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeOutgoing_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_RangeQuery_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.RANGE_QUERY__INCLUDE_OUTGOING, true, false, false,
-			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_RangeQuery_includeOutgoing_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_RangeQuery_includeOutgoing_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_RangeQuery_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.RANGE_QUERY__INCLUDE_OUTGOING, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -149,7 +143,7 @@ public class RangeQueryItemProvider extends HistoryQueryItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		final RangeQuery<?> rangeQuery = (RangeQuery<?>) object;
+		final RangeQuery rangeQuery = (RangeQuery) object;
 		return getString("_UI_RangeQuery_type") + " " + rangeQuery.isIncludeChangePackages(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

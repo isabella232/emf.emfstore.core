@@ -20,7 +20,8 @@ import org.junit.runner.notification.RunListener;
 import org.junit.runners.model.TestClass;
 
 /**
- * A Data Provider for the JUnit Runner: {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner ESFuzzyRunner}.<br>
+ * A Data Provider for the JUnit Runner: {@link org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner ESFuzzyRunner}.
+ * <br>
  * <br>
  * An implementation of it must have a zero-parameter constructor.
  *

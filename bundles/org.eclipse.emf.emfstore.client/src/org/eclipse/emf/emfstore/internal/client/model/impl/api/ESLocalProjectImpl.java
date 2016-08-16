@@ -427,7 +427,7 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 	 */
 	public ESPrimaryVersionSpec commitToBranch(final ESBranchVersionSpec branch, final String logMessage,
 		final ESCommitCallback callback, final IProgressMonitor monitor) throws InvalidVersionSpecException,
-			ESUpdateRequiredException, ESException {
+		ESUpdateRequiredException, ESException {
 
 		final PrimaryVersionSpec versionSpec = RunESCommand.WithException.runWithResult(ESException.class,
 			new Callable<PrimaryVersionSpec>() {
@@ -476,7 +476,7 @@ public class ESLocalProjectImpl extends AbstractAPIImpl<ESLocalProjectImpl, Proj
 	 */
 	public ESPrimaryVersionSpec update(ESVersionSpec versionSpec, final ESUpdateCallback callback,
 		final IProgressMonitor monitor)
-			throws ChangeConflictException, ESException {
+		throws ChangeConflictException, ESException {
 
 		final VersionSpec version;
 

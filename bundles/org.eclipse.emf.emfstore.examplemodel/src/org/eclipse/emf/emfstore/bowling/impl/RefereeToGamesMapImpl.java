@@ -29,11 +29,11 @@ import org.eclipse.emf.emfstore.bowling.Referee;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.RefereeToGamesMapImpl#getTypedKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.RefereeToGamesMapImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
@@ -63,7 +63,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected RefereeToGamesMapImpl() {
@@ -73,7 +73,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -84,28 +84,26 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Referee getTypedKey() {
 		if (key != null && key.eIsProxy()) {
-			final InternalEObject oldKey = (InternalEObject) key;
+			InternalEObject oldKey = (InternalEObject) key;
 			key = (Referee) eResolveProxy(oldKey);
 			if (key != oldKey) {
-				final InternalEObject newKey = (InternalEObject) key;
-				NotificationChain msgs = oldKey.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, null);
+				InternalEObject newKey = (InternalEObject) key;
+				NotificationChain msgs = oldKey.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, null);
 				if (newKey.eInternalContainer() == null) {
 					msgs = newKey.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY,
 						null, msgs);
 				}
-				if (msgs != null) {
+				if (msgs != null)
 					msgs.dispatch();
-				}
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.REFEREE_TO_GAMES_MAP__KEY,
 						oldKey, key));
-				}
 			}
 		}
 		return key;
@@ -114,7 +112,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Referee basicGetTypedKey() {
@@ -124,20 +122,19 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTypedKey(Referee newKey, NotificationChain msgs) {
-		final Referee oldKey = key;
+		Referee oldKey = key;
 		key = newKey;
 		if (eNotificationRequired()) {
-			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, oldKey, newKey);
-			if (msgs == null) {
+			if (msgs == null)
 				msgs = notification;
-			} else {
+			else
 				msgs.add(notification);
-			}
 		}
 		return msgs;
 	}
@@ -145,46 +142,40 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setTypedKey(Referee newKey) {
 		if (newKey != key) {
 			NotificationChain msgs = null;
-			if (key != null) {
-				msgs = ((InternalEObject) key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
-			}
-			if (newKey != null) {
-				msgs = ((InternalEObject) newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
-			}
+			if (key != null)
+				msgs = ((InternalEObject) key).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
+			if (newKey != null)
+				msgs = ((InternalEObject) newKey).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
 			msgs = basicSetTypedKey(newKey, msgs);
-			if (msgs != null) {
+			if (msgs != null)
 				msgs.dispatch();
-			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, newKey,
 				newKey));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Game getTypedValue() {
 		if (value != null && value.eIsProxy()) {
-			final InternalEObject oldValue = (InternalEObject) value;
+			InternalEObject oldValue = (InternalEObject) value;
 			value = (Game) eResolveProxy(oldValue);
 			if (value != oldValue) {
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						BowlingPackage.REFEREE_TO_GAMES_MAP__VALUE, oldValue, value));
-				}
 			}
 		}
 		return value;
@@ -193,7 +184,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Game basicGetTypedValue() {
@@ -203,22 +194,21 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setTypedValue(Game newValue) {
-		final Game oldValue = value;
+		Game oldValue = value;
 		value = newValue;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE_TO_GAMES_MAP__VALUE, oldValue,
 				value));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -233,21 +223,19 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BowlingPackage.REFEREE_TO_GAMES_MAP__KEY:
-			if (resolve) {
+			if (resolve)
 				return getTypedKey();
-			}
 			return basicGetTypedKey();
 		case BowlingPackage.REFEREE_TO_GAMES_MAP__VALUE:
-			if (resolve) {
+			if (resolve)
 				return getTypedValue();
-			}
 			return basicGetTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -256,7 +244,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -275,7 +263,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -294,7 +282,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -311,7 +299,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected int hash = -1;
@@ -319,13 +307,13 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public int getHash() {
 		if (hash == -1) {
-			final Object theKey = getKey();
-			hash = theKey == null ? 0 : theKey.hashCode();
+			Object theKey = getKey();
+			hash = (theKey == null ? 0 : theKey.hashCode());
 		}
 		return hash;
 	}
@@ -333,7 +321,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setHash(int hash) {
@@ -343,7 +331,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Referee getKey() {
@@ -353,7 +341,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setKey(Referee key) {
@@ -363,7 +351,7 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Game getValue() {
@@ -373,11 +361,11 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Game setValue(Game value) {
-		final Game oldValue = getValue();
+		Game oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -385,12 +373,12 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EMap<Referee, Game> getEMap() {
-		final EObject container = eContainer();
+		EObject container = eContainer();
 		return container == null ? null : (EMap<Referee, Game>) container.eGet(eContainmentFeature());
 	}
 

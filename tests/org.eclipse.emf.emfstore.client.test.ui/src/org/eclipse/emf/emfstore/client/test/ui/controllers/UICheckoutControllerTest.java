@@ -52,7 +52,8 @@ public class UICheckoutControllerTest extends AbstractUIControllerTestWithCommit
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects()) {
+				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace()
+					.getLocalProjects()) {
 					if (localProject.getProjectName().equals("checkout")) {
 						if (localProject.getBaseVersion().getIdentifier() == 1) {
 							return true;

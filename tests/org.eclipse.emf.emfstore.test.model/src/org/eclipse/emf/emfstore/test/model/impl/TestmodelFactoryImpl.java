@@ -41,16 +41,13 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 * @generated
 	 */
 	public static TestmodelFactory init() {
-		try
-		{
+		try {
 			TestmodelFactory theTestmodelFactory = (TestmodelFactory) EPackage.Registry.INSTANCE
 				.getEFactory(TestmodelPackage.eNS_URI);
-			if (theTestmodelFactory != null)
-			{
+			if (theTestmodelFactory != null) {
 				return theTestmodelFactory;
 			}
-		} catch (Exception exception)
-		{
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new TestmodelFactoryImpl();
@@ -75,8 +72,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID())
-		{
+		switch (eClass.getClassifierID()) {
 		case TestmodelPackage.TEST_ELEMENT:
 			return createTestElement();
 		case TestmodelPackage.TEST_ELEMENT_TO_STRING_MAP:
@@ -159,8 +155,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 * 
 	 * @generated
 	 */
-	public TestType createTestType()
-	{
+	public TestType createTestType() {
 		TestTypeImpl testType = new TestTypeImpl();
 		return testType;
 	}
@@ -171,8 +166,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 * 
 	 * @generated
 	 */
-	public TypeWithFeatureMapNonContainment createTypeWithFeatureMapNonContainment()
-	{
+	public TypeWithFeatureMapNonContainment createTypeWithFeatureMapNonContainment() {
 		TypeWithFeatureMapNonContainmentImpl typeWithFeatureMapNonContainment = new TypeWithFeatureMapNonContainmentImpl();
 		return typeWithFeatureMapNonContainment;
 	}
@@ -183,8 +177,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 * 
 	 * @generated
 	 */
-	public TypeWithFeatureMapContainment createTypeWithFeatureMapContainment()
-	{
+	public TypeWithFeatureMapContainment createTypeWithFeatureMapContainment() {
 		TypeWithFeatureMapContainmentImpl typeWithFeatureMapContainment = new TypeWithFeatureMapContainmentImpl();
 		return typeWithFeatureMapContainment;
 	}

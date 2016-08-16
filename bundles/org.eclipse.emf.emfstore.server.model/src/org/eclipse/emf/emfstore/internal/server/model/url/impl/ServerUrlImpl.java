@@ -21,11 +21,11 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Server Url</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ServerUrlImpl#getHostName <em>Host Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ServerUrlImpl#getPort <em>Port</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

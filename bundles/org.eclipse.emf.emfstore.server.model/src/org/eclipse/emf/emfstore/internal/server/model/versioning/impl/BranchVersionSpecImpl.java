@@ -18,8 +18,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Branch Version Spec</b></em>'. <!--
  * end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

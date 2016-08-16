@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -36,16 +35,16 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Tournament} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class TournamentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public TournamentItemProvider(AdapterFactory adapterFactory) {
@@ -56,7 +55,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -78,17 +77,16 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Matchups feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addMatchupsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Tournament_matchups_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Tournament_matchups_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_matchups_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Tournament_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.TOURNAMENT__MATCHUPS,
 				true,
 				false,
@@ -102,13 +100,12 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Tournament_type_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_type_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -125,17 +122,16 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Players feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addPlayersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Tournament_players_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_players_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_players_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Tournament_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.TOURNAMENT__PLAYERS,
 				true,
 				false,
@@ -149,17 +145,16 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Price Money feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addPriceMoneyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Tournament_priceMoney_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Tournament_priceMoney_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_priceMoney_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Tournament_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.TOURNAMENT__PRICE_MONEY,
 				true,
 				false,
@@ -173,18 +168,16 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Receives Trophy feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addReceivesTrophyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Tournament_receivesTrophy_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Tournament_receivesTrophy_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_receivesTrophy_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Tournament_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.TOURNAMENT__RECEIVES_TROPHY,
 				true,
 				false,
@@ -198,17 +191,16 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Match Days feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addMatchDaysPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Tournament_matchDays_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Tournament_matchDays_feature", "_UI_Tournament_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Tournament_matchDays_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Tournament_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.TOURNAMENT__MATCH_DAYS,
 				true,
 				false,
@@ -224,7 +216,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -241,7 +233,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -256,7 +248,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns Tournament.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -268,15 +260,14 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final TournamentType labelValue = ((Tournament) object).getType();
-		final String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Tournament_type") : //$NON-NLS-1$
+		TournamentType labelValue = ((Tournament) object).getType();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ? getString("_UI_Tournament_type") : //$NON-NLS-1$
 			getString("_UI_Tournament_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -285,7 +276,7 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -313,34 +304,28 @@ public class TournamentItemProvider extends ItemProviderAdapter implements IEdit
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.TOURNAMENT__MATCHUPS,
-				BowlingFactory.eINSTANCE.createMatchup()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.TOURNAMENT__MATCHUPS,
+			BowlingFactory.eINSTANCE.createMatchup()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.TOURNAMENT__PLAYER_POINTS,
-				BowlingFactory.eINSTANCE.create(BowlingPackage.Literals.PLAYER_TO_POINTS_MAP)));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.TOURNAMENT__PLAYER_POINTS,
+			BowlingFactory.eINSTANCE.create(BowlingPackage.Literals.PLAYER_TO_POINTS_MAP)));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.TOURNAMENT__REFEREES,
-				BowlingFactory.eINSTANCE.create(BowlingPackage.Literals.REFEREE_TO_GAMES_MAP)));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.TOURNAMENT__REFEREES,
+			BowlingFactory.eINSTANCE.create(BowlingPackage.Literals.REFEREE_TO_GAMES_MAP)));
 	}
 
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

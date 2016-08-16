@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getDateOfBirth <em>Date Of Birth</em>}</li>
@@ -36,7 +37,6 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getWinLossRatio <em>Win Loss Ratio</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getGender <em>Gender</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer()
  * @model
@@ -50,7 +50,7 @@ public interface Player extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_Name()
@@ -63,7 +63,7 @@ public interface Player extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Player#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -78,7 +78,7 @@ public interface Player extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Date Of Birth</em>' attribute.
 	 * @see #setDateOfBirth(Date)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_DateOfBirth()
@@ -92,7 +92,7 @@ public interface Player extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Date Of Birth</em>' attribute.
 	 * @see #getDateOfBirth()
 	 * @generated
@@ -107,7 +107,7 @@ public interface Player extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(double)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_Height()
@@ -120,7 +120,7 @@ public interface Player extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Player#getHeight <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Height</em>' attribute.
 	 * @see #getHeight()
 	 * @generated
@@ -135,7 +135,7 @@ public interface Player extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Is Professional</em>' attribute.
 	 * @see #setIsProfessional(boolean)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_IsProfessional()
@@ -149,7 +149,7 @@ public interface Player extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Is Professional</em>' attribute.
 	 * @see #isIsProfessional()
 	 * @generated
@@ -165,7 +165,7 @@ public interface Player extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>EMails</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_EMails()
 	 * @model required="true"
@@ -181,7 +181,7 @@ public interface Player extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Number Of Victories</em>' attribute.
 	 * @see #setNumberOfVictories(int)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_NumberOfVictories()
@@ -195,7 +195,7 @@ public interface Player extends EObject {
 	 * <em>Number Of Victories</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Number Of Victories</em>' attribute.
 	 * @see #getNumberOfVictories()
 	 * @generated
@@ -212,7 +212,7 @@ public interface Player extends EObject {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Played Tournament Types</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.bowling.TournamentType
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_PlayedTournamentTypes()
@@ -229,7 +229,7 @@ public interface Player extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Win Loss Ratio</em>' attribute.
 	 * @see #setWinLossRatio(BigDecimal)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer_WinLossRatio()
@@ -243,7 +243,7 @@ public interface Player extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Win Loss Ratio</em>' attribute.
 	 * @see #getWinLossRatio()
 	 * @generated
@@ -259,7 +259,7 @@ public interface Player extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Gender</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.bowling.Gender
 	 * @see #setGender(Gender)
@@ -273,7 +273,7 @@ public interface Player extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Player#getGender <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Gender</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.bowling.Gender
 	 * @see #getGender()
@@ -284,7 +284,7 @@ public interface Player extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */

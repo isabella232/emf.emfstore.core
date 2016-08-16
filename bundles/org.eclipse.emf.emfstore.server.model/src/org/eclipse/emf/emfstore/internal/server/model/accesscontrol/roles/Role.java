@@ -24,11 +24,11 @@ import org.eclipse.emf.emfstore.server.model.ESRole;
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#getProjects <em>Projects
- *          </em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role#getProjects
+ *          <em>Projects</em>}</li>
+ *          </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage#getRole()
  * @model abstract="true"

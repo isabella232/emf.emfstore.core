@@ -318,8 +318,8 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return getCopy().getBaseVersion().getIdentifier() ==
-				getLocalProject().getBaseVersion().getIdentifier() - 1;
+				return getCopy().getBaseVersion().getIdentifier() == getLocalProject().getBaseVersion().getIdentifier()
+					- 1;
 			}
 
 			// END SUPRESS CATCH EXCEPTION
@@ -337,8 +337,7 @@ public abstract class AbstractUIControllerTestWithCommit extends AbstractUIContr
 		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				return getCopy().getBaseVersion().getIdentifier() ==
-				getLocalProject().getBaseVersion().getIdentifier();
+				return getCopy().getBaseVersion().getIdentifier() == getLocalProject().getBaseVersion().getIdentifier();
 			}
 
 			// END SUPRESS CATCH EXCEPTION

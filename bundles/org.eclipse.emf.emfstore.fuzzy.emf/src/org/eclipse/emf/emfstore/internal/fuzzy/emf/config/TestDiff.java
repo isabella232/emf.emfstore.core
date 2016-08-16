@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getLastUpdate <em>Last Update</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getConfig <em>Config</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getOldResult <em>Old Result</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getNewResult <em>New Result</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestDiff()
  * @model
@@ -42,7 +42,7 @@ public interface TestDiff extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Last Update</em>' attribute.
 	 * @see #setLastUpdate(Date)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestDiff_LastUpdate()
@@ -56,7 +56,7 @@ public interface TestDiff extends EObject {
 	 * <em>Last Update</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Last Update</em>' attribute.
 	 * @see #getLastUpdate()
 	 * @generated
@@ -71,7 +71,7 @@ public interface TestDiff extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Config</em>' reference.
 	 * @see #setConfig(TestConfig)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestDiff_Config()
@@ -85,7 +85,7 @@ public interface TestDiff extends EObject {
 	 * <em>Config</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Config</em>' reference.
 	 * @see #getConfig()
 	 * @generated
@@ -100,7 +100,7 @@ public interface TestDiff extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Old Result</em>' containment reference.
 	 * @see #setOldResult(TestResult)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestDiff_OldResult()
@@ -114,7 +114,7 @@ public interface TestDiff extends EObject {
 	 * <em>Old Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Old Result</em>' containment reference.
 	 * @see #getOldResult()
 	 * @generated
@@ -129,7 +129,7 @@ public interface TestDiff extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>New Result</em>' containment reference.
 	 * @see #setNewResult(TestResult)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestDiff_NewResult()
@@ -143,7 +143,7 @@ public interface TestDiff extends EObject {
 	 * <em>New Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>New Result</em>' containment reference.
 	 * @see #getNewResult()
 	 * @generated

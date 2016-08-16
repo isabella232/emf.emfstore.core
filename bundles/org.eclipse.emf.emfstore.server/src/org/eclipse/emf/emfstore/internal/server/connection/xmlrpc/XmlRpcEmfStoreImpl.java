@@ -152,7 +152,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
 		FileTransferInformation fileInformation)
-			throws ESException {
+		throws ESException {
 		return getEmfStore().downloadFileChunk(sessionId, projectId, fileInformation);
 	}
 

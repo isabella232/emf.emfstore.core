@@ -73,14 +73,13 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_VersionProperty_name_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_VersionProperty_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.VERSION_PROPERTY__NAME, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_VersionProperty_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_VersionProperty_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.VERSION_PROPERTY__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,14 +89,13 @@ public class VersionPropertyItemProvider extends ItemProviderAdapter implements 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_VersionProperty_value_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_VersionProperty_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.VERSION_PROPERTY__VALUE, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_VersionProperty_value_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_VersionProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_VersionProperty_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.VERSION_PROPERTY__VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

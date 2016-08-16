@@ -64,14 +64,13 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * @generated
 	 */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_PrimaryVersionSpec_identifier_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.PRIMARY_VERSION_SPEC__IDENTIFIER, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_PrimaryVersionSpec_identifier_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.PRIMARY_VERSION_SPEC__IDENTIFIER, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -82,14 +81,13 @@ public class PrimaryVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * @generated
 	 */
 	protected void addProjectStateChecksumPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_PrimaryVersionSpec_projectStateChecksum_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_projectStateChecksum_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_PrimaryVersionSpec_projectStateChecksum_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_PrimaryVersionSpec_projectStateChecksum_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PrimaryVersionSpec_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.PRIMARY_VERSION_SPEC__PROJECT_STATE_CHECKSUM, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**

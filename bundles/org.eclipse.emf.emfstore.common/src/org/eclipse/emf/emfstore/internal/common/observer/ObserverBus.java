@@ -381,11 +381,11 @@ public class ObserverBus {
 	public void collectionExtensionPoints() {
 		for (final ESExtensionElement outer : new ESExtensionPoint(
 			EXTENSION_POINT_ID, true)
-			.getExtensionElements()) {
+				.getExtensionElements()) {
 			try {
 				for (final ESExtensionElement inner : new ESExtensionPoint(outer.getAttribute("extensionPointName"), //$NON-NLS-1$
 					true)
-					.getExtensionElements()) {
+						.getExtensionElements()) {
 					register(inner.getClass(outer.getAttribute("observerAttributeName"), ESObserver.class)); //$NON-NLS-1$
 				}
 			} catch (final ESExtensionPointException e) {

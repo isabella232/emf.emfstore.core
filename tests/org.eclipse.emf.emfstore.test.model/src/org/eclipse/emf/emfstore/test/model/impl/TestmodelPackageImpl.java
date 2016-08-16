@@ -127,8 +127,9 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
 	 * <p>
-	 * This method is used to initialize {@link TestmodelPackage#eINSTANCE} when that field is accessed. Clients should
-	 * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
+	 * This method is used to initialize {@link TestmodelPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * 
 	 * @see #eNS_URI
@@ -141,9 +142,9 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 			return (TestmodelPackage) EPackage.Registry.INSTANCE.getEPackage(TestmodelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		TestmodelPackageImpl theTestmodelPackage = (TestmodelPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof TestmodelPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new TestmodelPackageImpl());
+		TestmodelPackageImpl theTestmodelPackage = (TestmodelPackageImpl) (EPackage.Registry.INSTANCE
+			.get(eNS_URI) instanceof TestmodelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+				: new TestmodelPackageImpl());
 
 		isInited = true;
 
@@ -377,8 +378,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTestElement_ContainedElements_NoOpposite()
-	{
+	public EReference getTestElement_ContainedElements_NoOpposite() {
 		return (EReference) testElementEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -388,8 +388,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTestElement_ContainedElement_NoOpposite()
-	{
+	public EReference getTestElement_ContainedElement_NoOpposite() {
 		return (EReference) testElementEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -399,8 +398,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EAttribute getTestElement_FeatureMapEntries()
-	{
+	public EAttribute getTestElement_FeatureMapEntries() {
 		return (EAttribute) testElementEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -410,8 +408,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTestElement_FeatureMapReferences1()
-	{
+	public EReference getTestElement_FeatureMapReferences1() {
 		return (EReference) testElementEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -421,8 +418,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTestElement_FeatureMapReferences2()
-	{
+	public EReference getTestElement_FeatureMapReferences2() {
 		return (EReference) testElementEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -552,8 +548,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EClass getTestType()
-	{
+	public EClass getTestType() {
 		return testTypeEClass;
 	}
 
@@ -563,8 +558,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EAttribute getTestType_Name()
-	{
+	public EAttribute getTestType_Name() {
 		return (EAttribute) testTypeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -574,8 +568,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EClass getTypeWithFeatureMapNonContainment()
-	{
+	public EClass getTypeWithFeatureMapNonContainment() {
 		return typeWithFeatureMapNonContainmentEClass;
 	}
 
@@ -585,8 +578,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EAttribute getTypeWithFeatureMapNonContainment_Map()
-	{
+	public EAttribute getTypeWithFeatureMapNonContainment_Map() {
 		return (EAttribute) typeWithFeatureMapNonContainmentEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -596,8 +588,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTypeWithFeatureMapNonContainment_FirstKey()
-	{
+	public EReference getTypeWithFeatureMapNonContainment_FirstKey() {
 		return (EReference) typeWithFeatureMapNonContainmentEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -607,8 +598,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTypeWithFeatureMapNonContainment_SecondKey()
-	{
+	public EReference getTypeWithFeatureMapNonContainment_SecondKey() {
 		return (EReference) typeWithFeatureMapNonContainmentEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -618,8 +608,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EClass getTypeWithFeatureMapContainment()
-	{
+	public EClass getTypeWithFeatureMapContainment() {
 		return typeWithFeatureMapContainmentEClass;
 	}
 
@@ -629,8 +618,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EAttribute getTypeWithFeatureMapContainment_MapContainment()
-	{
+	public EAttribute getTypeWithFeatureMapContainment_MapContainment() {
 		return (EAttribute) typeWithFeatureMapContainmentEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -640,8 +628,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTypeWithFeatureMapContainment_FirstKeyContainment()
-	{
+	public EReference getTypeWithFeatureMapContainment_FirstKeyContainment() {
 		return (EReference) typeWithFeatureMapContainmentEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -651,8 +638,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	public EReference getTypeWithFeatureMapContainment_SecondKeyContainment()
-	{
+	public EReference getTypeWithFeatureMapContainment_SecondKeyContainment() {
 		return (EReference) typeWithFeatureMapContainmentEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -742,7 +728,8 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 		typeWithFeatureMapContainmentEClass = createEClass(TYPE_WITH_FEATURE_MAP_CONTAINMENT);
 		createEAttribute(typeWithFeatureMapContainmentEClass, TYPE_WITH_FEATURE_MAP_CONTAINMENT__MAP_CONTAINMENT);
 		createEReference(typeWithFeatureMapContainmentEClass, TYPE_WITH_FEATURE_MAP_CONTAINMENT__FIRST_KEY_CONTAINMENT);
-		createEReference(typeWithFeatureMapContainmentEClass, TYPE_WITH_FEATURE_MAP_CONTAINMENT__SECOND_KEY_CONTAINMENT);
+		createEReference(typeWithFeatureMapContainmentEClass,
+			TYPE_WITH_FEATURE_MAP_CONTAINMENT__SECOND_KEY_CONTAINMENT);
 	}
 
 	/**
@@ -781,217 +768,147 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 		typeWithFeatureMapContainmentEClass.getESuperTypes().add(this.getTestType());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(testElementEClass, TestElement.class,
-			"TestElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getTestElement_Name(),
-			ecorePackage.getEString(),
-			"name", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTestElement_Strings(),
-			ecorePackage.getEString(),
-			"strings", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_References(),
-			this.getTestElement(),
-			null,
-			"references", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ContainedElements(),
-			this.getTestElement(),
-			this.getTestElement_Container(),
-			"containedElements", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_Reference(),
-			this.getTestElement(),
-			null,
-			"reference", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ContainedElement(),
-			this.getTestElement(),
-			this.getTestElement_SrefContainer(),
-			"containedElement", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_OtherReference(),
-			this.getTestElement(),
-			null,
-			"otherReference", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTestElement_Description(),
-			ecorePackage.getEString(),
-			"description", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_Container(),
-			this.getTestElement(),
-			this.getTestElement_ContainedElements(),
-			"container", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_SrefContainer(),
-			this.getTestElement(),
-			this.getTestElement_ContainedElement(),
-			"srefContainer", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ElementMap(),
-			this.getTestElementToTestElementMap(),
-			null,
-			"elementMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_StringToStringMap(),
-			this.getStringToStringMap(),
-			null,
-			"stringToStringMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ElementToStringMap(),
-			this.getTestElementToStringMap(),
-			null,
-			"elementToStringMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_StringToElementMap(),
-			this.getStringToTestElementMap(),
-			null,
-			"stringToElementMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_NonContained_NTo1(),
-			this.getTestElement(),
-			this.getTestElement_NonContained_1ToN(),
-			"nonContained_NTo1", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_NonContained_1ToN(),
-			this.getTestElement(),
-			this.getTestElement_NonContained_NTo1(),
-			"nonContained_1ToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_NonContained_NToM(),
-			this.getTestElement(),
-			this.getTestElement_NonContained_MToN(),
-			"nonContained_NToM", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_NonContained_MToN(),
-			this.getTestElement(),
-			this.getTestElement_NonContained_NToM(),
-			"nonContained_MToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ContainedElements2(),
-			this.getTestElement(),
-			this.getTestElement_Container2(),
-			"containedElements2", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_Container2(),
-			this.getTestElement(),
-			this.getTestElement_ContainedElements2(),
-			"container2", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ContainedElements_NoOpposite(),
-			this.getTestElement(),
-			null,
-			"containedElements_NoOpposite", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_ContainedElement_NoOpposite(),
-			this.getTestElement(),
-			null,
-			"containedElement_NoOpposite", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTestElement_FeatureMapEntries(),
-			ecorePackage.getEFeatureMapEntry(),
-			"featureMapEntries", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_FeatureMapReferences1(),
-			this.getTestElement(),
-			null,
-			"featureMapReferences1", null, 0, -1, TestElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElement_FeatureMapReferences2(),
-			this.getTestElement(),
-			null,
-			"featureMapReferences2", null, 0, -1, TestElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(testElementEClass, TestElement.class, "TestElement", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, TestElement.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestElement_Strings(), ecorePackage.getEString(), "strings", null, 0, -1, TestElement.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_References(), this.getTestElement(), null, "references", null, 0, -1, //$NON-NLS-1$
+			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_ContainedElements(), this.getTestElement(), this.getTestElement_Container(),
+			"containedElements", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_Reference(), this.getTestElement(), null, "reference", null, 0, 1, //$NON-NLS-1$
+			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_ContainedElement(), this.getTestElement(), this.getTestElement_SrefContainer(),
+			"containedElement", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
+			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_OtherReference(), this.getTestElement(), null, "otherReference", null, 0, 1, //$NON-NLS-1$
+			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
+			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_Container(), this.getTestElement(), this.getTestElement_ContainedElements(),
+			"container", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
+			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_SrefContainer(), this.getTestElement(), this.getTestElement_ContainedElement(),
+			"srefContainer", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
+			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_ElementMap(), this.getTestElementToTestElementMap(), null, "elementMap", null, 0, //$NON-NLS-1$
+			-1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_StringToStringMap(), this.getStringToStringMap(), null, "stringToStringMap", null, //$NON-NLS-1$
+			0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_ElementToStringMap(), this.getTestElementToStringMap(), null,
+			"elementToStringMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_StringToElementMap(), this.getStringToTestElementMap(), null,
+			"stringToElementMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_NonContained_NTo1(), this.getTestElement(),
+			this.getTestElement_NonContained_1ToN(), "nonContained_NTo1", null, 0, 1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEReference(getTestElement_NonContained_1ToN(), this.getTestElement(),
+			this.getTestElement_NonContained_NTo1(), "nonContained_1ToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEReference(getTestElement_NonContained_NToM(), this.getTestElement(),
+			this.getTestElement_NonContained_MToN(), "nonContained_NToM", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEReference(getTestElement_NonContained_MToN(), this.getTestElement(),
+			this.getTestElement_NonContained_NToM(), "nonContained_MToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEReference(getTestElement_ContainedElements2(), this.getTestElement(), this.getTestElement_Container2(),
+			"containedElements2", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_Container2(), this.getTestElement(), this.getTestElement_ContainedElements2(),
+			"container2", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
+			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_ContainedElements_NoOpposite(), this.getTestElement(), null,
+			"containedElements_NoOpposite", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_ContainedElement_NoOpposite(), this.getTestElement(), null,
+			"containedElement_NoOpposite", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
+			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestElement_FeatureMapEntries(), ecorePackage.getEFeatureMapEntry(), "featureMapEntries", //$NON-NLS-1$
+			null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_FeatureMapReferences1(), this.getTestElement(), null, "featureMapReferences1", //$NON-NLS-1$
+			null, 0, -1, TestElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElement_FeatureMapReferences2(), this.getTestElement(), null, "featureMapReferences2", //$NON-NLS-1$
+			null, 0, -1, TestElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(testElementToStringMapEClass, Map.Entry.class,
-			"TestElementToStringMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getTestElementToStringMap_Value(),
-			ecorePackage.getEString(),
-			"value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElementToStringMap_Key(),
-			this.getTestElement(),
-			null,
-			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(testElementToStringMapEClass, Map.Entry.class, "TestElementToStringMap", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestElementToStringMap_Value(), ecorePackage.getEString(), "value", null, 0, 1, //$NON-NLS-1$
+			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEReference(getTestElementToStringMap_Key(), this.getTestElement(), null, "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
 
-		initEClass(stringToStringMapEClass, Map.Entry.class,
-			"StringToStringMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getStringToStringMap_Key(),
-			ecorePackage.getEString(),
-			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getStringToStringMap_Value(),
-			ecorePackage.getEString(),
-			"value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(stringToStringMapEClass, Map.Entry.class, "StringToStringMap", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringToStringMap_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringToStringMap_Value(), ecorePackage.getEString(), "value", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(testElementToTestElementMapEClass, Map.Entry.class,
-			"TestElementToTestElementMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getTestElementToTestElementMap_Value(),
-			this.getTestElement(),
-			null,
-			"value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTestElementToTestElementMap_Key(),
-			this.getTestElement(),
-			null,
-			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(testElementToTestElementMapEClass, Map.Entry.class, "TestElementToTestElementMap", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestElementToTestElementMap_Value(), this.getTestElement(), null, "value", null, 0, 1, //$NON-NLS-1$
+			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestElementToTestElementMap_Key(), this.getTestElement(), null, "key", null, 0, 1, //$NON-NLS-1$
+			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stringToTestElementMapEClass, Map.Entry.class,
-			"StringToTestElementMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getStringToTestElementMap_Value(),
-			this.getTestElement(),
-			null,
-			"value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getStringToTestElementMap_Key(),
-			ecorePackage.getEString(),
-			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(stringToTestElementMapEClass, Map.Entry.class, "StringToTestElementMap", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStringToTestElementMap_Value(), this.getTestElement(), null, "value", null, 0, 1, //$NON-NLS-1$
+			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringToTestElementMap_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(testTypeEClass, TestType.class, "TestType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getTestType_Name(),
-			ecorePackage.getEString(),
-			"name", null, 0, 1, TestType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(testTypeEClass, TestType.class, "TestType", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestType_Name(), ecorePackage.getEString(), "name", null, 0, 1, TestType.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeWithFeatureMapNonContainmentEClass, TypeWithFeatureMapNonContainment.class,
 			"TypeWithFeatureMapNonContainment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getTypeWithFeatureMapNonContainment_Map(),
-			ecorePackage.getEFeatureMapEntry(),
-			"map", null, 0, -1, TypeWithFeatureMapNonContainment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTypeWithFeatureMapNonContainment_FirstKey(),
-			this.getTestType(),
-			null,
-			"firstKey", null, 0, -1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTypeWithFeatureMapNonContainment_SecondKey(),
-			this.getTestType(),
-			null,
-			"secondKey", null, 0, -1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getTypeWithFeatureMapNonContainment_Map(), ecorePackage.getEFeatureMapEntry(), "map", null, 0, //$NON-NLS-1$
+			-1, TypeWithFeatureMapNonContainment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+			!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypeWithFeatureMapNonContainment_FirstKey(), this.getTestType(), null, "firstKey", null, 0, //$NON-NLS-1$
+			-1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+			IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getTypeWithFeatureMapNonContainment_SecondKey(), this.getTestType(), null, "secondKey", null, 0, //$NON-NLS-1$
+			-1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+			IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeWithFeatureMapContainmentEClass, TypeWithFeatureMapContainment.class,
 			"TypeWithFeatureMapContainment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getTypeWithFeatureMapContainment_MapContainment(),
-			ecorePackage.getEFeatureMapEntry(),
-			"mapContainment", null, 0, -1, TypeWithFeatureMapContainment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTypeWithFeatureMapContainment_FirstKeyContainment(),
-			this.getTestType(),
-			null,
-			"firstKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTypeWithFeatureMapContainment_SecondKeyContainment(),
-			this.getTestType(),
-			null,
-			"secondKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getTypeWithFeatureMapContainment_MapContainment(), ecorePackage.getEFeatureMapEntry(),
+			"mapContainment", null, 0, -1, TypeWithFeatureMapContainment.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypeWithFeatureMapContainment_FirstKeyContainment(), this.getTestType(), null,
+			"firstKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypeWithFeatureMapContainment_SecondKeyContainment(), this.getTestType(), null,
+			"secondKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1008,53 +925,52 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * 
 	 * @generated
 	 */
-	protected void createExtendedMetaDataAnnotations()
-	{
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$	
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
 		addAnnotation(getTestElement_FeatureMapEntries(),
 			source,
-			new String[]
-			{ "kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTestElement_FeatureMapReferences1(),
 			source,
-			new String[]
-			{ "group", "#featureMapEntries" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"group", "#featureMapEntries" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTestElement_FeatureMapReferences2(),
 			source,
-			new String[]
-			{ "group", "#featureMapEntries" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"group", "#featureMapEntries" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTypeWithFeatureMapNonContainment_Map(),
 			source,
-			new String[]
-			{ "kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTypeWithFeatureMapNonContainment_FirstKey(),
 			source,
-			new String[]
-			{ "group", "#map" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"group", "#map" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTypeWithFeatureMapNonContainment_SecondKey(),
 			source,
-			new String[]
-			{ "group", "#map" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"group", "#map" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTypeWithFeatureMapContainment_MapContainment(),
 			source,
-			new String[]
-			{ "kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"kind", "group" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTypeWithFeatureMapContainment_FirstKeyContainment(),
 			source,
-			new String[]
-			{ "group", "#mapContainment" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"group", "#mapContainment" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 		addAnnotation(getTypeWithFeatureMapContainment_SecondKeyContainment(),
 			source,
-			new String[]
-			{ "group", "#mapContainment" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"group", "#mapContainment" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 	}
 

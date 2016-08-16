@@ -36,7 +36,7 @@ import org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage
  * @generated
  */
@@ -45,7 +45,7 @@ public class ModelSwitch<T> {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected static ModelPackage modelPackage;
@@ -54,7 +54,7 @@ public class ModelSwitch<T> {
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public ModelSwitch() {
@@ -68,7 +68,7 @@ public class ModelSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -81,7 +81,7 @@ public class ModelSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -89,7 +89,7 @@ public class ModelSwitch<T> {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
@@ -98,94 +98,83 @@ public class ModelSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 		case ModelPackage.PROJECT: {
-			final Project project = (Project) theEObject;
+			Project project = (Project) theEObject;
 			T result = caseProject(project);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.UNIQUE_IDENTIFIER: {
-			final UniqueIdentifier uniqueIdentifier = (UniqueIdentifier) theEObject;
+			UniqueIdentifier uniqueIdentifier = (UniqueIdentifier) theEObject;
 			T result = caseUniqueIdentifier(uniqueIdentifier);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.IDENTIFIABLE_ELEMENT: {
-			final IdentifiableElement identifiableElement = (IdentifiableElement) theEObject;
+			IdentifiableElement identifiableElement = (IdentifiableElement) theEObject;
 			T result = caseIdentifiableElement(identifiableElement);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.MODEL_ELEMENT_ID: {
-			final ModelElementId modelElementId = (ModelElementId) theEObject;
+			ModelElementId modelElementId = (ModelElementId) theEObject;
 			T result = caseModelElementId(modelElementId);
-			if (result == null) {
+			if (result == null)
 				result = caseUniqueIdentifier(modelElementId);
-			}
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.MODEL_VERSION: {
-			final ModelVersion modelVersion = (ModelVersion) theEObject;
+			ModelVersion modelVersion = (ModelVersion) theEObject;
 			T result = caseModelVersion(modelVersion);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.NON_DOMAIN_ELEMENT: {
-			final NonDomainElement nonDomainElement = (NonDomainElement) theEObject;
+			NonDomainElement nonDomainElement = (NonDomainElement) theEObject;
 			T result = caseNonDomainElement(nonDomainElement);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.ASSOCIATION_CLASS_ELEMENT: {
-			final AssociationClassElement associationClassElement = (AssociationClassElement) theEObject;
+			AssociationClassElement associationClassElement = (AssociationClassElement) theEObject;
 			T result = caseAssociationClassElement(associationClassElement);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.EMF_STORE_PROPERTY: {
-			final EMFStoreProperty emfStoreProperty = (EMFStoreProperty) theEObject;
+			EMFStoreProperty emfStoreProperty = (EMFStoreProperty) theEObject;
 			T result = caseEMFStoreProperty(emfStoreProperty);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.PROPERTY_MAP_ENTRY: {
 			@SuppressWarnings("unchecked")
-			final Map.Entry<String, EMFStoreProperty> propertyMapEntry = (Map.Entry<String, EMFStoreProperty>) theEObject;
+			Map.Entry<String, EMFStoreProperty> propertyMapEntry = (Map.Entry<String, EMFStoreProperty>) theEObject;
 			T result = casePropertyMapEntry(propertyMapEntry);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		case ModelPackage.PROPERTY_STRING_VALUE: {
-			final PropertyStringValue propertyStringValue = (PropertyStringValue) theEObject;
+			PropertyStringValue propertyStringValue = (PropertyStringValue) theEObject;
 			T result = casePropertyStringValue(propertyStringValue);
-			if (result == null) {
+			if (result == null)
 				result = defaultCase(theEObject);
-			}
 			return result;
 		}
 		default:
@@ -199,7 +188,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Project</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -215,7 +204,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Unique Identifier</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -231,7 +220,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Identifiable Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -247,7 +236,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Element Id</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -263,7 +252,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Version</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -279,7 +268,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Non Domain Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -295,7 +284,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Association Class Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -311,7 +300,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EMF Store Property</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -327,7 +316,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Property Map Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -343,7 +332,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Property String Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -359,7 +348,7 @@ public class ModelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)

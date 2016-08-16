@@ -33,8 +33,8 @@ public class UIShowHistoryControllerTest extends AbstractUIControllerTestWithCom
 		createPlayerAndCommit();
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				final UIShowHistoryController showHistoryController =
-					new UIShowHistoryController(getBot().getDisplay().getActiveShell(), getLocalProject());
+				final UIShowHistoryController showHistoryController = new UIShowHistoryController(
+					getBot().getDisplay().getActiveShell(), getLocalProject());
 				showHistoryController.execute();
 			}
 		});

@@ -110,7 +110,8 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertEquals(TestElementFeatures.nonContained1ToN().getName(), multiReferenceOperation.getFeatureName());
 		assertEquals(0, multiReferenceOperation.getIndex());
 		assertEquals(actorId, multiReferenceOperation.getModelElementId());
-		assertEquals(TestElementFeatures.nonContainedNTo1().getName(), multiReferenceOperation.getOppositeFeatureName());
+		assertEquals(TestElementFeatures.nonContainedNTo1().getName(),
+			multiReferenceOperation.getOppositeFeatureName());
 		assertTrue(multiReferenceOperation.isAdd());
 		assertTrue(multiReferenceOperation.isBidirectional());
 
@@ -173,7 +174,8 @@ public class MultiReferenceOperationTest extends ESTest {
 		final ModelElementId useCaseId = ModelUtil.getProject(useCase).getModelElementId(useCase);
 
 		final MultiReferenceOperation reversedMultiReferenceOperation = (MultiReferenceOperation) reverse;
-		assertEquals(TestElementFeatures.nonContained1ToN().getName(), reversedMultiReferenceOperation.getFeatureName());
+		assertEquals(TestElementFeatures.nonContained1ToN().getName(),
+			reversedMultiReferenceOperation.getFeatureName());
 		assertEquals(0, reversedMultiReferenceOperation.getIndex());
 		assertEquals(actorId, reversedMultiReferenceOperation.getModelElementId());
 		assertEquals(TestElementFeatures.nonContainedNTo1().getName(),
@@ -282,7 +284,8 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertEquals(TestElementFeatures.nonContained1ToN().getName(), multiReferenceOperation.getFeatureName());
 		assertEquals(0, multiReferenceOperation.getIndex());
 		assertEquals(actorId, multiReferenceOperation.getModelElementId());
-		assertEquals(TestElementFeatures.nonContainedNTo1().getName(), multiReferenceOperation.getOppositeFeatureName());
+		assertEquals(TestElementFeatures.nonContainedNTo1().getName(),
+			multiReferenceOperation.getOppositeFeatureName());
 		assertTrue(multiReferenceOperation.isAdd());
 		assertTrue(multiReferenceOperation.isBidirectional());
 
@@ -380,7 +383,8 @@ public class MultiReferenceOperationTest extends ESTest {
 		assertEquals(TestElementFeatures.nonContained1ToN().getName(), multiReferenceOperation.getFeatureName());
 		assertEquals(0, multiReferenceOperation.getIndex());
 		assertEquals(actorId, multiReferenceOperation.getModelElementId());
-		assertEquals(TestElementFeatures.nonContainedNTo1().getName(), multiReferenceOperation.getOppositeFeatureName());
+		assertEquals(TestElementFeatures.nonContainedNTo1().getName(),
+			multiReferenceOperation.getOppositeFeatureName());
 		assertFalse(multiReferenceOperation.isAdd());
 		assertTrue(multiReferenceOperation.isBidirectional());
 

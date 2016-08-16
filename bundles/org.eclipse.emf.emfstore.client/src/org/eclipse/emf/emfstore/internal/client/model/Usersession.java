@@ -28,20 +28,21 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getUsername <em>Username</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPassword <em>Password</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getSessionId <em>Session Id</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPersistentPassword <em>Persistent
- *          Password</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getServerInfo <em>Server Info</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPersistentPassword
+ *          <em>Persistent Password</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getServerInfo <em>Server Info</em>}
+ *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#isSavePassword <em>Save Password</em>}
  *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getACUser <em>AC User</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getChangedProperties <em>Changed
- *          Properties</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getChangedProperties
+ *          <em>Changed Properties</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession()
  * @model
@@ -56,7 +57,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_Username()
@@ -69,7 +70,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getUsername
 	 * <em>Username</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Username</em>' attribute.
 	 * @see #getUsername()
 	 * @generated
@@ -84,7 +85,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_Password()
@@ -97,7 +98,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPassword
 	 * <em>Password</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Password</em>' attribute.
 	 * @see #getPassword()
 	 * @generated
@@ -112,7 +113,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Session Id</em>' reference.
 	 * @see #setSessionId(SessionId)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_SessionId()
@@ -125,7 +126,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getSessionId
 	 * <em>Session Id</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Session Id</em>' reference.
 	 * @see #getSessionId()
 	 * @generated
@@ -140,7 +141,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Persistent Password</em>' attribute.
 	 * @see #setPersistentPassword(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_PersistentPassword()
@@ -153,7 +154,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPersistentPassword
 	 * <em>Persistent Password</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Persistent Password</em>' attribute.
 	 * @see #getPersistentPassword()
 	 * @generated
@@ -168,7 +169,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Server Info</em>' reference.
 	 * @see #setServerInfo(ServerInfo)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_ServerInfo()
@@ -181,7 +182,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getServerInfo
 	 * <em>Server Info</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Server Info</em>' reference.
 	 * @see #getServerInfo()
 	 * @generated
@@ -196,7 +197,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Save Password</em>' attribute.
 	 * @see #setSavePassword(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_SavePassword()
@@ -209,7 +210,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#isSavePassword
 	 * <em>Save Password</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Save Password</em>' attribute.
 	 * @see #isSavePassword()
 	 * @generated
@@ -224,7 +225,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>AC User</em>' containment reference.
 	 * @see #setACUser(ACUser)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_ACUser()
@@ -237,7 +238,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getACUser
 	 * <em>AC User</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>AC User</em>' containment reference.
 	 * @see #getACUser()
 	 * @generated
@@ -254,7 +255,7 @@ public interface Usersession extends EObject, APIDelegate<ESUsersessionImpl> {
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Changed Properties</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession_ChangedProperties()
 	 * @model containment="true" resolveProxies="true"

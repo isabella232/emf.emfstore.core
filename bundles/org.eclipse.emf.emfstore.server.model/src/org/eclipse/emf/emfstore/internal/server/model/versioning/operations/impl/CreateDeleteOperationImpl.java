@@ -45,6 +45,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl#isDelete
@@ -59,7 +60,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl#getEObjectToIdMap
  * <em>EObject To Id Map</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -416,8 +416,9 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 		case OperationsPackage.CREATE_DELETE_OPERATION__EOBJECT_TO_ID_MAP:
 			if (coreType) {
 				return getEObjectToIdMap();
+			} else {
+				return getEObjectToIdMap().map();
 			}
-			return getEObjectToIdMap().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

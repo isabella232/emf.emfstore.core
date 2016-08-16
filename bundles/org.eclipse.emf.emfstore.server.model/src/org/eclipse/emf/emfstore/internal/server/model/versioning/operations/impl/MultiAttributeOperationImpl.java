@@ -33,6 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiAttributeOperationImpl#isAdd
@@ -44,7 +45,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiAttributeOperationImpl#getReferencedValues
  * <em>Referenced Values</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -632,8 +632,7 @@ public class CommandTest extends ESTest {
 
 		// cut to clipboard
 		final Command cutCommand = CutToClipboardCommand.create(editingDomain, leafSection,
-			TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS
-			, actor);
+			TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS, actor);
 
 		if (cutCommand.canExecute()) {
 			editingDomain.getCommandStack().execute(cutCommand);

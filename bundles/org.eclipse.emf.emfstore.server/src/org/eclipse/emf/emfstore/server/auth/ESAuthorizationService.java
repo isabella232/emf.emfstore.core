@@ -43,7 +43,7 @@ public interface ESAuthorizationService {
 	 */
 	boolean checkProjectAdminAccess(ESSessionId sessionId, ESGlobalProjectId projectId,
 		ESProjectAdminPrivileges privileg)
-			throws AccessControlException;
+		throws AccessControlException;
 
 	/**
 	 * Check if the session is valid for admin access to the given organizational unit.
@@ -76,7 +76,7 @@ public interface ESAuthorizationService {
 	 */
 	boolean checkProjectAdminAccessForOrgUnit(ESSessionId sessionId, ESOrgUnitId orgUnitId,
 		Set<ESGlobalProjectId> projectIds)
-			throws AccessControlException;
+		throws AccessControlException;
 
 	/**
 	 * Check if the session is valid for admin access to the given project.

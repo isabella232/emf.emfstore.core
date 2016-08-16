@@ -33,26 +33,22 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class MutatorConfigItemProvider
 	extends ItemProviderAdapter
 	implements
-	IEditingDomainItemProvider,
-	ITreeItemContentProvider,
-	IItemLabelProvider,
-	IItemPropertySource
-{
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public MutatorConfigItemProvider(AdapterFactory adapterFactory)
-	{
+	public MutatorConfigItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,14 +56,12 @@ public class MutatorConfigItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addRootEClassPropertyDescriptor(object);
@@ -89,19 +83,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Root EClass feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addRootEClassPropertyDescriptor(Object object)
-	{
+	protected void addRootEClassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_rootEClass_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_rootEClass_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_rootEClass_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__ROOT_ECLASS,
 				true,
 				false,
@@ -115,19 +106,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Min Objects Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addMinObjectsCountPropertyDescriptor(Object object)
-	{
+	protected void addMinObjectsCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_minObjectsCount_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_minObjectsCount_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_minObjectsCount_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__MIN_OBJECTS_COUNT,
 				true,
 				false,
@@ -141,19 +129,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Ignore And Log feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addIgnoreAndLogPropertyDescriptor(Object object)
-	{
+	protected void addIgnoreAndLogPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_ignoreAndLog_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_ignoreAndLog_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_ignoreAndLog_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__IGNORE_AND_LOG,
 				true,
 				false,
@@ -167,19 +152,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Do Not Generate Root feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addDoNotGenerateRootPropertyDescriptor(Object object)
-	{
+	protected void addDoNotGenerateRootPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_doNotGenerateRoot_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_doNotGenerateRoot_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_doNotGenerateRoot_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT,
 				true,
 				false,
@@ -190,22 +172,19 @@ public class MutatorConfigItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Use Ecore ESFuzzyUtil Delete feature.
+	 * This adds a property descriptor for the Use Ecore Util Delete feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addUseEcoreUtilDeletePropertyDescriptor(Object object)
-	{
+	protected void addUseEcoreUtilDeletePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_useEcoreUtilDelete_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_useEcoreUtilDelete_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_useEcoreUtilDelete_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__USE_ECORE_UTIL_DELETE,
 				true,
 				false,
@@ -219,19 +198,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EClasses To Ignore feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addEClassesToIgnorePropertyDescriptor(Object object)
-	{
+	protected void addEClassesToIgnorePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_eClassesToIgnore_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_eClassesToIgnore_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_eClassesToIgnore_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__ECLASSES_TO_IGNORE,
 				true,
 				false,
@@ -245,19 +221,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EStructural Features To Ignore feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addEStructuralFeaturesToIgnorePropertyDescriptor(Object object)
-	{
+	protected void addEStructuralFeaturesToIgnorePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_eStructuralFeaturesToIgnore_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__ESTRUCTURAL_FEATURES_TO_IGNORE,
 				true,
 				false,
@@ -271,19 +244,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EPackages feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addEPackagesPropertyDescriptor(Object object)
-	{
+	protected void addEPackagesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_ePackages_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_ePackages_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_ePackages_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__EPACKAGES,
 				true,
 				false,
@@ -297,19 +267,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Max Delete Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addMaxDeleteCountPropertyDescriptor(Object object)
-	{
+	protected void addMaxDeleteCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_maxDeleteCount_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_maxDeleteCount_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_maxDeleteCount_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__MAX_DELETE_COUNT,
 				true,
 				false,
@@ -323,19 +290,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Mutation Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addMutationCountPropertyDescriptor(Object object)
-	{
+	protected void addMutationCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_mutationCount_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_mutationCount_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_mutationCount_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__MUTATION_COUNT,
 				true,
 				false,
@@ -349,19 +313,16 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Allow Duplicate IDs feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addAllowDuplicateIDsPropertyDescriptor(Object object)
-	{
+	protected void addAllowDuplicateIDsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_MutatorConfig_allowDuplicateIDs_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MutatorConfig_allowDuplicateIDs_feature", "_UI_MutatorConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_MutatorConfig_allowDuplicateIDs_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_MutatorConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS,
 				true,
 				false,
@@ -375,12 +336,11 @@ public class MutatorConfigItemProvider
 	 * This returns MutatorConfig.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/MutatorConfig")); //$NON-NLS-1$
 	}
 
@@ -388,13 +348,12 @@ public class MutatorConfigItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
-		final MutatorConfig mutatorConfig = (MutatorConfig) object;
+	public String getText(Object object) {
+		MutatorConfig mutatorConfig = (MutatorConfig) object;
 		return getString("_UI_MutatorConfig_type") + " " + mutatorConfig.getMinObjectsCount(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -403,16 +362,14 @@ public class MutatorConfigItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MutatorConfig.class))
-		{
+		switch (notification.getFeatureID(MutatorConfig.class)) {
 		case ConfigPackage.MUTATOR_CONFIG__MIN_OBJECTS_COUNT:
 		case ConfigPackage.MUTATOR_CONFIG__IGNORE_AND_LOG:
 		case ConfigPackage.MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT:
@@ -431,12 +388,11 @@ public class MutatorConfigItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -444,12 +400,11 @@ public class MutatorConfigItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return ConfigEditPlugin.INSTANCE;
 	}
 

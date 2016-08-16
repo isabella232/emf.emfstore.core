@@ -25,13 +25,13 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ModelElementUrlFragmentImpl#getName <em>Name</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ModelElementUrlFragmentImpl#getModelElementId <em>
- * Model Element Id</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ModelElementUrlFragmentImpl#getModelElementId
+ * <em>Model Element Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

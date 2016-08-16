@@ -112,7 +112,6 @@ public class AccesscontrolSwitch<T> {
 			return result;
 		}
 		case AccesscontrolPackage.AC_ORG_UNIT: {
-			@SuppressWarnings("rawtypes")
 			final ACOrgUnit acOrgUnit = (ACOrgUnit) theEObject;
 			T result = caseACOrgUnit(acOrgUnit);
 			if (result == null) {
@@ -189,7 +188,7 @@ public class AccesscontrolSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseACOrgUnit(@SuppressWarnings("rawtypes") ACOrgUnit object) {
+	public T caseACOrgUnit(ACOrgUnit object) {
 		return null;
 	}
 

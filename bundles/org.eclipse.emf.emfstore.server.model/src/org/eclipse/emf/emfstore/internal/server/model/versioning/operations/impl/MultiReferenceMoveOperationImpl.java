@@ -35,6 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceMoveOperationImpl#getOldIndex
@@ -46,7 +47,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceMoveOperationImpl#getReferencedModelElementId
  * <em>Referenced Model Element Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

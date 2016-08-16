@@ -21,19 +21,19 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getMap <em>Map</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getFirstKey <em>First Key</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getSecondKey <em>Second Key</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getSecondKey <em>Second Key</em>}
+ * </li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapNonContainment()
  * @model
  * @generated
  */
-public interface TypeWithFeatureMapNonContainment extends TestType
-{
+public interface TypeWithFeatureMapNonContainment extends TestType {
 	/**
 	 * Returns the value of the '<em><b>Map</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.

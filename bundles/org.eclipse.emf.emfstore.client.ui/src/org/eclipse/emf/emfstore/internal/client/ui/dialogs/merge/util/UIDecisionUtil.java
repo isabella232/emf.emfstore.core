@@ -122,7 +122,8 @@ public final class UIDecisionUtil {
 	 *
 	 * @return visualizationhelper
 	 */
-	public static ChangePackageVisualizationHelper getChangePackageVisualizationHelper(DecisionManager decisionManager) {
+	public static ChangePackageVisualizationHelper getChangePackageVisualizationHelper(
+		DecisionManager decisionManager) {
 		return new ChangePackageVisualizationHelper(decisionManager.getIdToEObjectMapping());
 	}
 

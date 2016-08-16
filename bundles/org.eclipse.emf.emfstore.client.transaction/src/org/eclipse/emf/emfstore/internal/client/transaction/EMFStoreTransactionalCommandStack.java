@@ -88,8 +88,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 	private void redoOfBasicCommandStack() {
 		final Command command = commandList.get(++top);
 
-		try
-		{
+		try {
 			command.redo();
 			mostRecentCommand = command;
 			// BEGIN SUPRESS CATCH EXCEPTION
@@ -103,8 +102,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 			// Clear the list past the top.
 			//
 			for (final Iterator<Command> commands = commandList.listIterator(top--); commands.hasNext(); commands
-				.remove())
-			{
+				.remove()) {
 				final Command otherCommand = commands.next();
 				otherCommand.dispose();
 			}
@@ -115,8 +113,7 @@ public class EMFStoreTransactionalCommandStack extends AbstractEMFStoreTransacti
 
 	private void undoOfBasicCommandStack() {
 		final Command command = commandList.get(top--);
-		try
-		{
+		try {
 			command.undo();
 			mostRecentCommand = command;
 			// BEGIN SUPRESS CATCH EXCEPTION

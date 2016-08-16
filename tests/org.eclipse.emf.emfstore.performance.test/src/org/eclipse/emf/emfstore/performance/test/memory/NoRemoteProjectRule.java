@@ -56,7 +56,7 @@ public class NoRemoteProjectRule extends ExternalResource {
 	}
 
 	private void deleteRemoteProjects() throws IOException, FatalESException,
-			ESException {
+		ESException {
 		for (ESRemoteProject project : rule.server().getRemoteProjects()) {
 			project.delete(rule.defaultSession(), new NullProgressMonitor());
 		}

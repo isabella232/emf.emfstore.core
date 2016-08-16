@@ -23,11 +23,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.EventsPa
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Event</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.events.impl.EventImpl#getTimestamp <em>Timestamp
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.events.impl.EventImpl#getTimestamp
+ * <em>Timestamp</em>}</li>
+ * </ul>
  *
  * @generated
  */

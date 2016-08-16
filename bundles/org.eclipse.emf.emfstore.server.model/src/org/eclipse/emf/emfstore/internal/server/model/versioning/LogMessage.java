@@ -24,16 +24,16 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getAuthor <em>Author</em>}
  *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getMessage <em>Message</em>}
  *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getDate <em>Date</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getClientDate <em>Client
- *          Date</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.LogMessage#getClientDate
+ *          <em>Client Date</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getLogMessage()
  * @model

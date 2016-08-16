@@ -66,8 +66,8 @@ public final class APIUtil {
 	 * @param <API> the type of the API interface
 	 * @param <IMPL> the type of the API implementation class
 	 */
-	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API>
-		List<INT> toInternal(List<API> toCopy) {
+	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API> List<INT> toInternal(
+		List<API> toCopy) {
 
 		if (toCopy == null) {
 			return null;
@@ -98,8 +98,8 @@ public final class APIUtil {
 	 * @param <API> the type of the API interface
 	 * @param <IMPL> the type of the API implementation class
 	 */
-	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API, DESIRED>
-		List<INT> toInternal(Class<DESIRED> cls, List<API> toCopy) {
+	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API, DESIRED> List<INT> toInternal(
+		Class<DESIRED> cls, List<API> toCopy) {
 
 		if (toCopy == null) {
 			return null;
@@ -127,8 +127,8 @@ public final class APIUtil {
 	 * @param <API> the type of the API interface
 	 * @param <IMPL> the type of the API implementation class
 	 */
-	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API>
-		List<API> toExternal(List<INT> toCopy) {
+	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API> List<API> toExternal(
+		List<INT> toCopy) {
 
 		if (toCopy == null) {
 			return null;
@@ -154,8 +154,8 @@ public final class APIUtil {
 	 * @param <API> the type of the API interface
 	 * @param <IMPL> the type of the API implementation class
 	 */
-	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API>
-		Set<API> toExternal(Set<INT> toCopy) {
+	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API> Set<API> toExternal(
+		Set<INT> toCopy) {
 
 		if (toCopy == null) {
 			return null;
@@ -247,8 +247,8 @@ public final class APIUtil {
 	 * @param <API> the type of the API interface
 	 * @param <IMPL> the type of the API implementation class
 	 */
-	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API>
-		Set<INT> toInternal(Set<API> toCopy) {
+	public static <IMPL extends InternalAPIDelegator<API, INT>, INT extends APIDelegate<API>, API> Set<INT> toInternal(
+		Set<API> toCopy) {
 
 		if (toCopy == null) {
 			return null;

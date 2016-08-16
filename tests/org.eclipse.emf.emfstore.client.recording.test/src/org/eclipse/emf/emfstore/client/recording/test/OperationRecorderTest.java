@@ -134,7 +134,8 @@ public class OperationRecorderTest extends ComparingESTest {
 	@Test
 	public void rescueElementAndDeleteIt() {
 
-		if (ESWorkspaceProviderImpl.getInstance().getEditingDomain().getCommandStack() instanceof EMFStoreBasicCommandStack) {
+		if (ESWorkspaceProviderImpl.getInstance().getEditingDomain()
+			.getCommandStack() instanceof EMFStoreBasicCommandStack) {
 
 			// ExtensionRegistry.INSTANCE.set(ESOperationModifier.ID, new AutoOperationWrapper());
 

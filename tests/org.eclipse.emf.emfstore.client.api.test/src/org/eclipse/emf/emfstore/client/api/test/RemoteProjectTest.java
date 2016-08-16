@@ -169,7 +169,8 @@ public class RemoteProjectTest extends ESTestWithRemoteProject {
 			getUsersession(),
 			ESHistoryQuery.FACTORY
 				.pathQuery(getRemoteProject().getHeadVersion(monitor),
-					getRemoteProject().getHeadVersion(monitor), true, true), monitor);
+					getRemoteProject().getHeadVersion(monitor), true, true),
+			monitor);
 		assertEquals(1, historyInfos.size());
 	}
 
@@ -179,7 +180,8 @@ public class RemoteProjectTest extends ESTestWithRemoteProject {
 		final List<? extends ESHistoryInfo> historyInfos = getRemoteProject().getHistoryInfos(
 			ESHistoryQuery.FACTORY.pathQuery(
 				getRemoteProject().getHeadVersion(monitor),
-				getRemoteProject().getHeadVersion(monitor), true, true), monitor);
+				getRemoteProject().getHeadVersion(monitor), true, true),
+			monitor);
 		assertEquals(1, historyInfos.size());
 	}
 

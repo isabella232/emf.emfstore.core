@@ -33,12 +33,10 @@ import org.junit.Test;
 public class DeleteObjectMutationTest extends AbstractMutationTest {
 
 	@Test
-	public void deleteObjectForGivenFeatureAndGivenContainer()
-			throws ESMutationException {
+	public void deleteObjectForGivenFeatureAndGivenContainer() throws ESMutationException {
 
-		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setTargetObject(ePackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
+		ESMutationFactory.delete(utilForEPackageWithTwoClasses).setTargetObject(ePackageWithTwoClasses)
+			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
 
 		assertEquals(1, ePackageWithTwoClasses.getEClassifiers().size());
 	}
@@ -46,8 +44,8 @@ public class DeleteObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void deleteObjectForGivenFeature() throws ESMutationException {
 
-		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
+		ESMutationFactory.delete(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEPackage_EClassifiers())
+			.apply();
 
 		// we only have one possible target container with the given feature
 		// so apply() should have added one new EClassifier to it
@@ -55,12 +53,10 @@ public class DeleteObjectMutationTest extends AbstractMutationTest {
 	}
 
 	@Test
-	public void selectTargetContainerForGivenFeature()
-			throws ESMutationException {
+	public void selectTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESDeleteObjectMutation mutation = ESMutationFactory.delete(
-				utilForEPackageWithTwoClasses).setTargetFeature(
-				E_PACKAGE.getEPackage_EClassifiers());
+		ESDeleteObjectMutation mutation = ESMutationFactory.delete(utilForEPackageWithTwoClasses)
+			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 
 		mutation.apply();
 
@@ -71,74 +67,61 @@ public class DeleteObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetFeatureForGivenObject() throws ESMutationException {
 
-		ESDeleteObjectMutation mutation = ESMutationFactory.delete(
-				utilForEPackageWithTwoClasses).setTargetObject(
-				ePackageWithTwoClasses);
+		ESDeleteObjectMutation mutation = ESMutationFactory.delete(utilForEPackageWithTwoClasses)
+			.setTargetObject(ePackageWithTwoClasses);
 
 		mutation.apply();
 
 		final EStructuralFeature targetFeature = mutation.getTargetFeature();
 		final EClass targetContainerClass = ePackageWithTwoClasses.eClass();
-		final EList<EReference> allContainmentFeatures = targetContainerClass
-				.getEAllContainments();
+		final EList<EReference> allContainmentFeatures = targetContainerClass.getEAllContainments();
 		assertTrue(allContainmentFeatures.contains(targetFeature));
 	}
 
 	@Test
 	public void deleteObject() throws ESMutationException {
 
-		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setMaxNumberOfContainments(1).apply();
+		ESMutationFactory.delete(utilForEPackageWithTwoClasses).setMaxNumberOfContainments(1).apply();
 
 		assertEquals(1, getAllObjectsCount(ePackageWithTwoClasses));
 	}
 
 	@Test
-	public void deleteInGivenTargetContainerForGivenFeature()
-			throws ESMutationException {
+	public void deleteInGivenTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers())
-				.setTargetObject(ePackageWithTwoClasses)
-				.setMaxNumberOfContainments(1).apply();
+		ESMutationFactory.delete(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEPackage_EClassifiers())
+			.setTargetObject(ePackageWithTwoClasses).setMaxNumberOfContainments(1).apply();
 
 		assertEquals(1, ePackageWithTwoClasses.getEClassifiers().size());
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfNoValidTargetContainerIsAvailable()
-			throws ESMutationException {
+	public void throwsExceptionIfNoValidTargetContainerIsAvailable() throws ESMutationException {
 
-		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEEnum_ELiterals()).apply();
+		ESMutationFactory.delete(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEEnum_ELiterals())
+			.apply();
 
-		fail("Should have thrown a Mutation Exception, because there is "
-				+ "no valid target container.");
+		fail("Should have thrown a Mutation Exception, because there is " + "no valid target container.");
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfSelectionOfTargetContainerIsImpossible()
-			throws ESMutationException {
+	public void throwsExceptionIfSelectionOfTargetContainerIsImpossible() throws ESMutationException {
 
 		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures())
-				.setTargetObject(ePackageWithTwoClasses).apply();
+			.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures()).setTargetObject(ePackageWithTwoClasses)
+			.apply();
 
-		fail("Should have thrown a Mutation Exception, because there is "
-				+ "no valid target container.");
+		fail("Should have thrown a Mutation Exception, because there is " + "no valid target container.");
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfSelectionOfTargetContainerViolatesMaxNumberOfObjects()
-			throws ESMutationException {
+	public void throwsExceptionIfSelectionOfTargetContainerViolatesMaxNumberOfObjects() throws ESMutationException {
 
-		ESMutationFactory.delete(utilForEPackageWithTwoClasses)
-				.setMaxNumberOfContainments(-1)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers())
-				.setTargetObject(ePackageWithTwoClasses).apply();
+		ESMutationFactory.delete(utilForEPackageWithTwoClasses).setMaxNumberOfContainments(-1)
+			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).setTargetObject(ePackageWithTwoClasses).apply();
 
 		fail("Should have thrown a Mutation Exception, because there this mutation "
-				+ "would delete more than the specified maximum number of objects.");
+			+ "would delete more than the specified maximum number of objects.");
 	}
 
 }

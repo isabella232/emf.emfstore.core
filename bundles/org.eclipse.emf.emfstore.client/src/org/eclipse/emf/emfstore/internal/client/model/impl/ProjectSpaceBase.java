@@ -252,7 +252,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void applyChanges(PrimaryVersionSpec baseSpec, List<AbstractChangePackage> incomingChangePackages,
 		AbstractChangePackage myChanges, IProgressMonitor progressMonitor, boolean runChecksumCheckOnBaseSpec)
-			throws ESException {
+		throws ESException {
 
 		// revert local changes
 		notifyPreRevertMyChanges(getLocalChangePackage());
@@ -288,7 +288,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 
 	private void runChecksumTests(PrimaryVersionSpec baseSpec, List<AbstractChangePackage> incomingChangePackages,
 		IProgressMonitor progressMonitor)
-			throws ESException {
+		throws ESException {
 
 		progressMonitor.subTask(Messages.ProjectSpaceBase_Computing_Checksum);
 
@@ -1030,7 +1030,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public void mergeBranch(final PrimaryVersionSpec branchSpec, final ConflictResolver conflictResolver,
 		final IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 
 		if (branchSpec == null || conflictResolver == null) {
 			throw new IllegalArgumentException(Messages.ProjectSpaceBase_Arguments_Must_Not_Be_Null);
@@ -1076,7 +1076,7 @@ public abstract class ProjectSpaceBase extends IdentifiableElementImpl
 	 */
 	public AbstractChangePackage mergeResolvedConflicts(ChangeConflictSet conflictSet,
 		List<AbstractChangePackage> myChangePackages, List<AbstractChangePackage> theirChangePackages)
-			throws ChangeConflictException {
+		throws ChangeConflictException {
 
 		final Set<AbstractOperation> accceptedMineSet = new LinkedHashSet<AbstractOperation>();
 		final Set<AbstractOperation> rejectedTheirsSet = new LinkedHashSet<AbstractOperation>();

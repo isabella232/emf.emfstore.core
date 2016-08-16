@@ -6,10 +6,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AddObjectMutationTest.class, AttributeChangeMutationTest.class,
-		DeleteObjectMutationTest.class, FeatureMapKeyMutationTest.class,
-		MoveObjectMutationTest.class, MutationTargetSelectorTest.class,
-		ReferenceChangeMutationTest.class })
+@SuiteClasses({ AddObjectMutationTest.class, AttributeChangeMutationTest.class, DeleteObjectMutationTest.class,
+	FeatureMapKeyMutationTest.class, MoveObjectMutationTest.class, MutationTargetSelectorTest.class,
+	ReferenceChangeMutationTest.class })
 public class AllMutationTests {
 
 }

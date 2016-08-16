@@ -43,14 +43,14 @@ import org.eclipse.emf.emfstore.bowling.util.BowlingValidator;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass playerEClass = null;
@@ -58,7 +58,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass leagueEClass = null;
@@ -66,7 +66,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass tournamentEClass = null;
@@ -74,7 +74,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass matchupEClass = null;
@@ -82,7 +82,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass gameEClass = null;
@@ -90,7 +90,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass playerToPointsMapEClass = null;
@@ -98,7 +98,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass refereeEClass = null;
@@ -106,7 +106,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass refereeToGamesMapEClass = null;
@@ -114,7 +114,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass areaEClass = null;
@@ -122,7 +122,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass fanEClass = null;
@@ -130,7 +130,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass merchandiseEClass = null;
@@ -138,7 +138,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum tournamentTypeEEnum = null;
@@ -146,7 +146,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum genderEEnum = null;
@@ -154,7 +154,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EDataType xmlDateEDataType = null;
@@ -180,33 +180,33 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 *
+	 * 
 	 * <p>
-	 * This method is used to initialize {@link BowlingPackage#eINSTANCE} when that field is accessed. Clients should
-	 * not invoke it directly. Instead, they should simply access that field to obtain the package. <!-- begin-user-doc
+	 * This method is used to initialize {@link BowlingPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static BowlingPackage init() {
-		if (isInited) {
+		if (isInited)
 			return (BowlingPackage) EPackage.Registry.INSTANCE.getEPackage(BowlingPackage.eNS_URI);
-		}
 
 		// Obtain or create and register package
-		final BowlingPackageImpl theBowlingPackage = (BowlingPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof BowlingPackageImpl ? EPackage.Registry.INSTANCE
-			.get(eNS_URI)
-			: new BowlingPackageImpl());
+		BowlingPackageImpl theBowlingPackage = (BowlingPackageImpl) (EPackage.Registry.INSTANCE
+			.get(eNS_URI) instanceof BowlingPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
+				: new BowlingPackageImpl());
 
 		isInited = true;
 
@@ -217,13 +217,12 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 		theBowlingPackage.initializePackageContents();
 
 		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theBowlingPackage,
-				new EValidator.Descriptor() {
-					public EValidator getEValidator() {
-						return BowlingValidator.INSTANCE;
-					}
-				});
+		EValidator.Registry.INSTANCE.put(theBowlingPackage,
+			new EValidator.Descriptor() {
+				public EValidator getEValidator() {
+					return BowlingValidator.INSTANCE;
+				}
+			});
 
 		// Mark meta-data to indicate it can't be changed
 		theBowlingPackage.freeze();
@@ -236,7 +235,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getPlayer() {
@@ -246,7 +245,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_Name() {
@@ -256,7 +255,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_DateOfBirth() {
@@ -266,7 +265,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_Height() {
@@ -276,7 +275,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_IsProfessional() {
@@ -286,7 +285,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_EMails() {
@@ -296,7 +295,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_NumberOfVictories() {
@@ -306,7 +305,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_PlayedTournamentTypes() {
@@ -316,7 +315,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_WinLossRatio() {
@@ -326,7 +325,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayer_Gender() {
@@ -336,7 +335,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getLeague() {
@@ -346,7 +345,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getLeague_Name() {
@@ -356,7 +355,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getLeague_Players() {
@@ -366,7 +365,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getTournament() {
@@ -376,7 +375,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getTournament_Matchups() {
@@ -386,7 +385,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTournament_Type() {
@@ -396,7 +395,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getTournament_PlayerPoints() {
@@ -406,7 +405,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getTournament_Players() {
@@ -416,7 +415,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getTournament_Referees() {
@@ -426,7 +425,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTournament_PriceMoney() {
@@ -436,7 +435,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTournament_ReceivesTrophy() {
@@ -446,7 +445,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getTournament_MatchDays() {
@@ -456,7 +455,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getMatchup() {
@@ -466,7 +465,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getMatchup_Games() {
@@ -476,7 +475,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMatchup_NrSpectators() {
@@ -486,7 +485,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getGame() {
@@ -496,7 +495,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getGame_Matchup() {
@@ -506,7 +505,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getGame_Player() {
@@ -516,7 +515,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getGame_Frames() {
@@ -526,7 +525,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getPlayerToPointsMap() {
@@ -536,7 +535,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getPlayerToPointsMap_Key() {
@@ -546,7 +545,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getPlayerToPointsMap_Value() {
@@ -556,7 +555,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getReferee() {
@@ -566,7 +565,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getReferee_DateOfBirth() {
@@ -576,7 +575,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getReferee_League() {
@@ -586,7 +585,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getRefereeToGamesMap() {
@@ -596,7 +595,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getRefereeToGamesMap_Key() {
@@ -606,7 +605,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getRefereeToGamesMap_Value() {
@@ -616,7 +615,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getArea() {
@@ -626,7 +625,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getArea_Areas() {
@@ -636,7 +635,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getArea_Tournaments() {
@@ -646,7 +645,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getFan() {
@@ -656,7 +655,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_Name() {
@@ -666,7 +665,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_DateOfBirth() {
@@ -676,7 +675,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_HasSeasonTicket() {
@@ -686,7 +685,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_EMails() {
@@ -696,7 +695,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_Gender() {
@@ -706,7 +705,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getFan_FavouritePlayer() {
@@ -716,7 +715,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getFan_VisitedTournaments() {
@@ -726,7 +725,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_NumberOfTournamentsVisited() {
@@ -736,7 +735,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getFan_MoneySpentOnTickets() {
@@ -746,7 +745,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getFan_FanMerchandise() {
@@ -756,7 +755,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EReference getFan_FavouriteMerchandise() {
@@ -766,7 +765,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EClass getMerchandise() {
@@ -776,7 +775,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMerchandise_Name() {
@@ -786,7 +785,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMerchandise_Price() {
@@ -796,7 +795,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EAttribute getMerchandise_SerialNumber() {
@@ -806,7 +805,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EEnum getTournamentType() {
@@ -816,7 +815,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EEnum getGender() {
@@ -826,7 +825,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EDataType getXMLDate() {
@@ -836,7 +835,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public BowlingFactory getBowlingFactory() {
@@ -846,7 +845,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -856,13 +855,12 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) {
+		if (isCreated)
 			return;
-		}
 		isCreated = true;
 
 		// Create classes and their features
@@ -945,7 +943,7 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -955,13 +953,12 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) {
+		if (isInitialized)
 			return;
-		}
 		isInitialized = true;
 
 		// Initialize package
@@ -977,47 +974,33 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(playerEClass, Player.class, "Player", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_Name(),
-			ecorePackage.getEString(),
-			"name", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_DateOfBirth(),
-			ecorePackage.getEDate(),
-			"dateOfBirth", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_Height(),
-			ecorePackage.getEDouble(),
-			"height", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_IsProfessional(),
-			ecorePackage.getEBoolean(),
-			"isProfessional", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_EMails(),
-			ecorePackage.getEString(),
-			"eMails", null, 1, -1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_NumberOfVictories(),
-			ecorePackage.getEInt(),
-			"numberOfVictories", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_PlayedTournamentTypes(),
-			getTournamentType(),
-			"playedTournamentTypes", null, 0, -1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_WinLossRatio(),
-			ecorePackage.getEBigDecimal(),
-			"winLossRatio", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayer_Gender(),
-			getGender(),
-			"gender", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getPlayer_Name(), ecorePackage.getEString(), "name", null, 0, 1, Player.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlayer_DateOfBirth(), ecorePackage.getEDate(), "dateOfBirth", null, 0, 1, Player.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlayer_Height(), ecorePackage.getEDouble(), "height", null, 0, 1, Player.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlayer_IsProfessional(), ecorePackage.getEBoolean(), "isProfessional", null, 0, 1, //$NON-NLS-1$
+			Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEAttribute(getPlayer_EMails(), ecorePackage.getEString(), "eMails", null, 1, -1, Player.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlayer_NumberOfVictories(), ecorePackage.getEInt(), "numberOfVictories", null, 0, 1, //$NON-NLS-1$
+			Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEAttribute(getPlayer_PlayedTournamentTypes(), this.getTournamentType(), "playedTournamentTypes", null, 0, //$NON-NLS-1$
+			-1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlayer_WinLossRatio(), ecorePackage.getEBigDecimal(), "winLossRatio", null, 0, 1, //$NON-NLS-1$
+			Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEAttribute(getPlayer_Gender(), this.getGender(), "gender", null, 0, 1, Player.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		final EOperation op = addEOperation(playerEClass, ecorePackage.getEBoolean(),
-			"validate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		EOperation op = addEOperation(playerEClass, ecorePackage.getEBoolean(), "validate", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		final EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType();
@@ -1025,194 +1008,127 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(leagueEClass, League.class, "League", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getLeague_Name(),
-			ecorePackage.getEString(),
-			"name", null, 0, 1, League.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getLeague_Players(),
-			getPlayer(),
-			null,
-			"players", null, 0, -1, League.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getLeague_Name(), ecorePackage.getEString(), "name", null, 0, 1, League.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLeague_Players(), this.getPlayer(), null, "players", null, 0, -1, League.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 
-		initEClass(tournamentEClass, Tournament.class,
-			"Tournament", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getTournament_Matchups(),
-			getMatchup(),
-			null,
-			"matchups", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTournament_Type(),
-			getTournamentType(),
-			"type", null, 0, 1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTournament_PlayerPoints(),
-			getPlayerToPointsMap(),
-			null,
-			"playerPoints", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTournament_Players(),
-			getPlayer(),
-			null,
-			"players", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getTournament_Referees(),
-			getRefereeToGamesMap(),
-			null,
-			"referees", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTournament_PriceMoney(),
-			ecorePackage.getEDouble(),
-			"priceMoney", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTournament_ReceivesTrophy(),
-			ecorePackage.getEBoolean(),
-			"receivesTrophy", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getTournament_MatchDays(),
-			ecorePackage.getEDate(),
-			"matchDays", null, 0, -1, Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(tournamentEClass, Tournament.class, "Tournament", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTournament_Matchups(), this.getMatchup(), null, "matchups", null, 0, -1, Tournament.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTournament_Type(), this.getTournamentType(), "type", null, 0, 1, Tournament.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTournament_PlayerPoints(), this.getPlayerToPointsMap(), null, "playerPoints", null, 0, -1, //$NON-NLS-1$
+			Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTournament_Players(), this.getPlayer(), null, "players", null, 0, -1, Tournament.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getTournament_Referees(), this.getRefereeToGamesMap(), null, "referees", null, 0, -1, //$NON-NLS-1$
+			Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTournament_PriceMoney(), ecorePackage.getEDouble(), "priceMoney", null, 0, -1, //$NON-NLS-1$
+			Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTournament_ReceivesTrophy(), ecorePackage.getEBoolean(), "receivesTrophy", null, 0, -1, //$NON-NLS-1$
+			Tournament.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTournament_MatchDays(), ecorePackage.getEDate(), "matchDays", null, 0, -1, Tournament.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matchupEClass, Matchup.class, "Matchup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getMatchup_Games(),
-			getGame(),
-			getGame_Matchup(),
-			"games", null, 2, 2, Matchup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getMatchup_NrSpectators(),
-			ecorePackage.getEBigInteger(),
-			"nrSpectators", null, 0, 1, Matchup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getMatchup_Games(), this.getGame(), this.getGame_Matchup(), "games", null, 2, 2, Matchup.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMatchup_NrSpectators(), ecorePackage.getEBigInteger(), "nrSpectators", null, 0, 1, //$NON-NLS-1$
+			Matchup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 
 		initEClass(gameEClass, Game.class, "Game", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getGame_Matchup(),
-			getMatchup(),
-			getMatchup_Games(),
-			"matchup", null, 1, 1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getGame_Player(),
-			getPlayer(),
-			null,
-			"player", null, 0, 1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getGame_Frames(),
-			ecorePackage.getEInt(),
-			"frames", null, 0, 10, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getGame_Matchup(), this.getMatchup(), this.getMatchup_Games(), "matchup", null, 1, 1, Game.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getGame_Player(), this.getPlayer(), null, "player", null, 0, 1, Game.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEAttribute(getGame_Frames(), ecorePackage.getEInt(), "frames", null, 0, 10, Game.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(playerToPointsMapEClass, Map.Entry.class,
-			"PlayerToPointsMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getPlayerToPointsMap_Key(),
-			getPlayer(),
-			null,
-			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getPlayerToPointsMap_Value(),
-			ecorePackage.getEIntegerObject(),
-			"value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(playerToPointsMapEClass, Map.Entry.class, "PlayerToPointsMap", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPlayerToPointsMap_Key(), this.getPlayer(), null, "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlayerToPointsMap_Value(), ecorePackage.getEIntegerObject(), "value", null, 0, 1, //$NON-NLS-1$
+			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 
 		initEClass(refereeEClass, Referee.class, "Referee", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getReferee_DateOfBirth(),
-			getXMLDate(),
-			"dateOfBirth", null, 0, 1, Referee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getReferee_League(),
-			getLeague(),
-			null,
-			"league", null, 0, 1, Referee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getReferee_DateOfBirth(), this.getXMLDate(), "dateOfBirth", null, 0, 1, Referee.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReferee_League(), this.getLeague(), null, "league", null, 0, 1, Referee.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 
-		initEClass(refereeToGamesMapEClass, Map.Entry.class,
-			"RefereeToGamesMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getRefereeToGamesMap_Key(),
-			getReferee(),
-			null,
-			"key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getRefereeToGamesMap_Value(),
-			getGame(),
-			null,
-			"value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(refereeToGamesMapEClass, Map.Entry.class, "RefereeToGamesMap", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRefereeToGamesMap_Key(), this.getReferee(), null, "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getRefereeToGamesMap_Value(), this.getGame(), null, "value", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
 
 		initEClass(areaEClass, Area.class, "Area", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getArea_Areas(),
-			getArea(),
-			null,
-			"areas", null, 0, -1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getArea_Tournaments(),
-			getTournament(),
-			null,
-			"tournaments", null, 0, -1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getArea_Areas(), this.getArea(), null, "areas", null, 0, -1, Area.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEReference(getArea_Tournaments(), this.getTournament(), null, "tournaments", null, 0, -1, Area.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
 
 		initEClass(fanEClass, Fan.class, "Fan", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getFan_Name(),
-			ecorePackage.getEString(),
-			"name", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getFan_DateOfBirth(),
-			ecorePackage.getEDate(),
-			"dateOfBirth", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getFan_HasSeasonTicket(),
-			ecorePackage.getEBoolean(),
-			"hasSeasonTicket", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getFan_EMails(),
-			ecorePackage.getEString(),
-			"eMails", null, 0, -1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getFan_Gender(),
-			getGender(),
-			"gender", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getFan_FavouritePlayer(),
-			getPlayer(),
-			null,
-			"favouritePlayer", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getFan_FanMerchandise(),
-			getMerchandise(),
-			null,
-			"fanMerchandise", null, 0, -1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getFan_FavouriteMerchandise(),
-			getMerchandise(),
-			null,
-			"favouriteMerchandise", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getFan_VisitedTournaments(),
-			getTournament(),
-			null,
-			"visitedTournaments", null, 0, -1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getFan_NumberOfTournamentsVisited(),
-			ecorePackage.getEInt(),
-			"numberOfTournamentsVisited", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getFan_MoneySpentOnTickets(),
-			ecorePackage.getEDouble(),
-			"moneySpentOnTickets", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getFan_Name(), ecorePackage.getEString(), "name", null, 0, 1, Fan.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFan_DateOfBirth(), ecorePackage.getEDate(), "dateOfBirth", null, 0, 1, Fan.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFan_HasSeasonTicket(), ecorePackage.getEBoolean(), "hasSeasonTicket", null, 0, 1, Fan.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFan_EMails(), ecorePackage.getEString(), "eMails", null, 0, -1, Fan.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFan_Gender(), this.getGender(), "gender", null, 0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFan_FavouritePlayer(), this.getPlayer(), null, "favouritePlayer", null, 0, 1, Fan.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getFan_FanMerchandise(), this.getMerchandise(), null, "fanMerchandise", null, 0, -1, Fan.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
+		initEReference(getFan_FavouriteMerchandise(), this.getMerchandise(), null, "favouriteMerchandise", null, 0, 1, //$NON-NLS-1$
+			Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFan_VisitedTournaments(), this.getTournament(), null, "visitedTournaments", null, 0, -1, //$NON-NLS-1$
+			Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFan_NumberOfTournamentsVisited(), ecorePackage.getEInt(), "numberOfTournamentsVisited", null, //$NON-NLS-1$
+			0, 1, Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
+		initEAttribute(getFan_MoneySpentOnTickets(), ecorePackage.getEDouble(), "moneySpentOnTickets", null, 0, 1, //$NON-NLS-1$
+			Fan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 
-		initEClass(merchandiseEClass, Merchandise.class,
-			"Merchandise", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-			getMerchandise_Name(),
-			ecorePackage.getEString(),
-			"name", null, 0, 1, Merchandise.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getMerchandise_Price(),
-			ecorePackage.getEBigDecimal(),
-			"price", null, 0, 1, Merchandise.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-			getMerchandise_SerialNumber(),
-			ecorePackage.getEBigInteger(),
-			"serialNumber", null, 0, 1, Merchandise.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(merchandiseEClass, Merchandise.class, "Merchandise", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMerchandise_Name(), ecorePackage.getEString(), "name", null, 0, 1, Merchandise.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMerchandise_Price(), ecorePackage.getEBigDecimal(), "price", null, 0, 1, Merchandise.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMerchandise_SerialNumber(), ecorePackage.getEBigInteger(), "serialNumber", null, 0, 1, //$NON-NLS-1$
+			Merchandise.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+			!IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(tournamentTypeEEnum, TournamentType.class, "TournamentType"); //$NON-NLS-1$
@@ -1224,8 +1140,8 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 		addEEnumLiteral(genderEEnum, Gender.MALE);
 
 		// Initialize data types
-		initEDataType(xmlDateEDataType, XMLGregorianCalendar.class,
-			"XMLDate", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEDataType(xmlDateEDataType, XMLGregorianCalendar.class, "XMLDate", IS_SERIALIZABLE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1239,15 +1155,15 @@ public class BowlingPackageImpl extends EPackageImpl implements BowlingPackage {
 	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
-	 * @since 1.5
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		final String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
 		addAnnotation(xmlDateEDataType,
 			source,
-			new String[] { "baseType", "http://www.eclipse.org/emf/2003/XMLType#date" //$NON-NLS-1$ //$NON-NLS-2$
+			new String[] {
+				"baseType", "http://www.eclipse.org/emf/2003/XMLType#date" //$NON-NLS-1$ //$NON-NLS-2$
 			});
 	}
 

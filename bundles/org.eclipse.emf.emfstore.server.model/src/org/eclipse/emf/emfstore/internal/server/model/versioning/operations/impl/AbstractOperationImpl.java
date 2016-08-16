@@ -34,18 +34,17 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#getModelElementId
  * <em>Model Element Id</em>}</li>
- * <li>
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#isAccepted
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#isAccepted
  * <em>Accepted</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.AbstractOperationImpl#getClientDate
  * <em>Client Date</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

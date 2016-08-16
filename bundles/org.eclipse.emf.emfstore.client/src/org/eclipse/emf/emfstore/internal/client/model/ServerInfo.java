@@ -24,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getName <em>Name</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getUrl <em>Url</em>}</li>
@@ -31,12 +32,11 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPath <em>Path</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getProjectInfos <em>Project Infos</em>}
  *          </li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getLastUsersession <em>Last Usersession
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getCertificateAlias <em>Certificate
- *          Alias</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getLastUsersession
+ *          <em>Last Usersession</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getCertificateAlias
+ *          <em>Certificate Alias</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo()
  * @model
@@ -50,7 +50,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_Name()
@@ -63,7 +63,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getName <em>Name</em>}'
 	 * attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -77,7 +77,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * If the meaning of the '<em>Url</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Url</em>' attribute.
 	 * @see #setUrl(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_Url()
@@ -90,7 +90,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getUrl <em>Url</em>}'
 	 * attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Url</em>' attribute.
 	 * @see #getUrl()
 	 * @generated
@@ -104,7 +104,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * If the meaning of the '<em>Port</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Port</em>' attribute.
 	 * @see #setPort(int)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_Port()
@@ -117,7 +117,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPort <em>Port</em>}'
 	 * attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Port</em>' attribute.
 	 * @see #getPort()
 	 * @generated
@@ -161,7 +161,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Project Infos</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_ProjectInfos()
 	 * @model containment="true" resolveProxies="true"
@@ -177,7 +177,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Last Usersession</em>' reference.
 	 * @see #setLastUsersession(Usersession)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_LastUsersession()
@@ -190,7 +190,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getLastUsersession
 	 * <em>Last Usersession</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Last Usersession</em>' reference.
 	 * @see #getLastUsersession()
 	 * @generated
@@ -205,7 +205,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Certificate Alias</em>' attribute.
 	 * @see #setCertificateAlias(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_CertificateAlias()
@@ -218,7 +218,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getCertificateAlias
 	 * <em>Certificate Alias</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Certificate Alias</em>' attribute.
 	 * @see #getCertificateAlias()
 	 * @generated

@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Matchup#getGames <em>Games</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Matchup#getNrSpectators <em>Nr Spectators</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMatchup()
  * @model
@@ -36,15 +36,15 @@ public interface Matchup extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Games</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.emfstore.bowling.Game}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.emfstore.bowling.Game#getMatchup
-	 * <em>Matchup</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.emfstore.bowling.Game#getMatchup <em>Matchup</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Games</em>' containment reference list isn't clear, there really should be more of a
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Games</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMatchup_Games()
 	 * @see org.eclipse.emf.emfstore.bowling.Game#getMatchup
@@ -61,7 +61,7 @@ public interface Matchup extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Nr Spectators</em>' attribute.
 	 * @see #setNrSpectators(BigInteger)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMatchup_NrSpectators()
@@ -75,7 +75,7 @@ public interface Matchup extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Nr Spectators</em>' attribute.
 	 * @see #getNrSpectators()
 	 * @generated

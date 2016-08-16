@@ -54,8 +54,7 @@ public class TestmodelSwitch<T> {
 	 * @generated
 	 */
 	public TestmodelSwitch() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = TestmodelPackage.eINSTANCE;
 		}
 	}
@@ -83,14 +82,11 @@ public class TestmodelSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage)
-		{
+		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		List<EClass> eSuperTypes = theEClass.getESuperTypes();
-		return eSuperTypes.isEmpty() ?
-			defaultCase(theEObject) :
-			doSwitch(eSuperTypes.get(0), theEObject);
+		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
 	/**
@@ -103,8 +99,7 @@ public class TestmodelSwitch<T> {
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID)
-		{
+		switch (classifierID) {
 		case TestmodelPackage.TEST_ELEMENT: {
 			TestElement testElement = (TestElement) theEObject;
 			T result = caseTestElement(testElement);
@@ -266,8 +261,7 @@ public class TestmodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTestType(TestType object)
-	{
+	public T caseTestType(TestType object) {
 		return null;
 	}
 
@@ -283,8 +277,7 @@ public class TestmodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTypeWithFeatureMapNonContainment(TypeWithFeatureMapNonContainment object)
-	{
+	public T caseTypeWithFeatureMapNonContainment(TypeWithFeatureMapNonContainment object) {
 		return null;
 	}
 
@@ -300,8 +293,7 @@ public class TestmodelSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTypeWithFeatureMapContainment(TypeWithFeatureMapContainment object)
-	{
+	public T caseTypeWithFeatureMapContainment(TypeWithFeatureMapContainment object) {
 		return null;
 	}
 

@@ -17,8 +17,8 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -34,16 +33,16 @@ import org.eclipse.emf.emfstore.bowling.BowlingPackage;
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public RefereeToGamesMapItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +53,7 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -71,18 +70,16 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RefereeToGamesMap_value_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RefereeToGamesMap_value_feature", "_UI_RefereeToGamesMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_RefereeToGamesMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_RefereeToGamesMap_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.REFEREE_TO_GAMES_MAP__VALUE,
 				true,
 				false,
@@ -98,7 +95,7 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +110,7 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -128,7 +125,7 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * This returns RefereeToGamesMap.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -140,12 +137,12 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final Map.Entry<?, ?> refereeToGamesMap = (Map.Entry<?, ?>) object;
+		Map.Entry<?, ?> refereeToGamesMap = (Map.Entry<?, ?>) object;
 		return "" + refereeToGamesMap.getKey() + " -> " + refereeToGamesMap.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -154,7 +151,7 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -174,24 +171,22 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.REFEREE_TO_GAMES_MAP__KEY,
-				BowlingFactory.eINSTANCE.createReferee()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.REFEREE_TO_GAMES_MAP__KEY,
+			BowlingFactory.eINSTANCE.createReferee()));
 	}
 
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getValue <em>Value</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType <em>Type</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty()
  * @model
@@ -43,7 +43,7 @@ public interface EMFStoreProperty extends EObject {
 	 * If the meaning of the '<em>Key</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty_Key()
@@ -53,12 +53,11 @@ public interface EMFStoreProperty extends EObject {
 	String getKey();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey
-	 * <em>Key</em>}'
-	 * attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey <em>Key</em>
+	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Key</em>' attribute.
 	 * @see #getKey()
 	 * @generated
@@ -73,7 +72,7 @@ public interface EMFStoreProperty extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(EObject)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty_Value()
@@ -84,11 +83,10 @@ public interface EMFStoreProperty extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getValue
-	 * <em>Value</em>}'
-	 * containment reference.
+	 * <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
@@ -104,7 +102,7 @@ public interface EMFStoreProperty extends EObject {
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 	 * @see #setType(EMFStorePropertyType)
@@ -116,11 +114,10 @@ public interface EMFStoreProperty extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType
-	 * <em>Type</em>}'
-	 * attribute.
+	 * <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 	 * @see #getType()
@@ -136,7 +133,7 @@ public interface EMFStoreProperty extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(int)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty_Version()
@@ -147,10 +144,10 @@ public interface EMFStoreProperty extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getVersion
-	 * <em>Version</em>} ' attribute.
+	 * <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Version</em>' attribute.
 	 * @see #getVersion()
 	 * @generated

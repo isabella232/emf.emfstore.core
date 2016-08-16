@@ -421,7 +421,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 *         there were more recent versions of these properties on the server
 	 * @throws ESException
 	 *             if any error occurs in the EmfStore
-	 * */
+	 */
 	List<EMFStoreProperty> setEMFProperties(SessionId sessionId, List<EMFStoreProperty> property, ProjectId projectId)
 		throws ESException;
 
@@ -438,7 +438,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 * @throws ESException
 	 *             if any error occurs in the EmfStore
 	 *
-	 * **/
+	 **/
 	List<EMFStoreProperty> getEMFProperties(SessionId sessionId, ProjectId projectId) throws ESException;
 
 	/**

@@ -186,8 +186,7 @@ public class UICommitProjectController extends
 
 					final LogMessage logMessage = LogMessageFactory.INSTANCE.createLogMessage(
 						commitDialog.getLogText(),
-						projectSpace.getUsersession().getUsername()
-						);
+						projectSpace.getUsersession().getUsername());
 					changePackage.setLogMessage(logMessage.toAPI());
 					return null;
 				}

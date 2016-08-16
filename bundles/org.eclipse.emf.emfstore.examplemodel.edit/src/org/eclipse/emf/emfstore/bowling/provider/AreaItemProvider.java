@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -33,16 +32,16 @@ import org.eclipse.emf.emfstore.bowling.BowlingPackage;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Area} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class AreaItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public AreaItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +52,7 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -71,7 +70,7 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -87,7 +86,7 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,7 +101,7 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * This returns Area.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,7 +113,7 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,7 +126,7 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -148,29 +147,25 @@ public class AreaItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.AREA__AREAS,
-				BowlingFactory.eINSTANCE.createArea()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.AREA__AREAS,
+			BowlingFactory.eINSTANCE.createArea()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.AREA__TOURNAMENTS,
-				BowlingFactory.eINSTANCE.createTournament()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.AREA__TOURNAMENTS,
+			BowlingFactory.eINSTANCE.createTournament()));
 	}
 
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

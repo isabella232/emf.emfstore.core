@@ -16,6 +16,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeMoveOperation#getOldIndex
@@ -27,7 +28,6 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeMoveOperation#getReferencedValue
  * <em>Referenced Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeMoveOperation()
  * @model

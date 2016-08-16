@@ -21,7 +21,7 @@ public enum Direction {
 	/**
 	 * For iterating operations from the beginning.
 	 */
-	Forward, 
+	Forward,
 	/**
 	 * For iterating operations from the back.
 	 */

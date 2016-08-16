@@ -20,13 +20,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo#getProjectId <em>Project Id</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectInfo#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectInfo()
  * @model

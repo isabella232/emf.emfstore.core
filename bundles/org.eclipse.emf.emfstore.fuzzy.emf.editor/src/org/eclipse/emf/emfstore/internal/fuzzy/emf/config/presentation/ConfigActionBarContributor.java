@@ -51,8 +51,7 @@ import org.eclipse.ui.PartInitException;
  */
 public class ConfigActionBarContributor
 	extends EditingDomainActionBarContributor
-	implements ISelectionChangedListener
-{
+	implements ISelectionChangedListener {
 	/**
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
@@ -78,22 +77,18 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	protected IAction showPropertiesViewAction =
-		new Action(ConfigEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
-		{
-			@Override
-			public void run()
-			{
-				try
-				{
-					getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
-				}
-				catch (final PartInitException exception)
-				{
-					ConfigEditorPlugin.INSTANCE.log(exception);
-				}
+	protected IAction showPropertiesViewAction = new Action(
+		ConfigEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
+	{
+		@Override
+		public void run() {
+			try {
+				getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
+			} catch (final PartInitException exception) {
+				ConfigEditorPlugin.INSTANCE.log(exception);
 			}
-		};
+		}
+	};
 
 	/**
 	 * This action refreshes the viewer of the current editor if the editor
@@ -103,28 +98,24 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	protected IAction refreshViewerAction =
-		new Action(ConfigEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
-		{
-			@Override
-			public boolean isEnabled()
-			{
-				return activeEditorPart instanceof IViewerProvider;
-			}
+	protected IAction refreshViewerAction = new Action(
+		ConfigEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+	{
+		@Override
+		public boolean isEnabled() {
+			return activeEditorPart instanceof IViewerProvider;
+		}
 
-			@Override
-			public void run()
-			{
-				if (activeEditorPart instanceof IViewerProvider)
-				{
-					final Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
-					if (viewer != null)
-					{
-						viewer.refresh();
-					}
+		@Override
+		public void run() {
+			if (activeEditorPart instanceof IViewerProvider) {
+				final Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
+				if (viewer != null) {
+					viewer.refresh();
 				}
 			}
-		};
+		}
+	};
 
 	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
@@ -171,8 +162,7 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	public ConfigActionBarContributor()
-	{
+	public ConfigActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
@@ -187,8 +177,7 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	@Override
-	public void contributeToToolBar(IToolBarManager toolBarManager)
-	{
+	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		toolBarManager.add(new Separator("config-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("config-additions")); //$NON-NLS-1$
 	}
@@ -202,12 +191,12 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	@Override
-	public void contributeToMenu(IMenuManager menuManager)
-	{
+	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
 		final IMenuManager submenuManager = new MenuManager(
-			ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigEditor_menu"), "org.eclipse.emf.emfstore.internal.fuzzy.emf.configMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+			ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigEditor_menu"), //$NON-NLS-1$
+			"org.eclipse.emf.emfstore.internal.fuzzy.emf.configMenuID"); //$NON-NLS-1$
 		menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
 		submenuManager.add(new Separator("settings")); //$NON-NLS-1$
 		submenuManager.add(new Separator("actions")); //$NON-NLS-1$
@@ -221,19 +210,17 @@ public class ConfigActionBarContributor
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(ConfigEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+		createSiblingMenuManager = new MenuManager(
+			ConfigEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
 		// Force an update because Eclipse hides empty menus now.
 		//
-		submenuManager.addMenuListener
-			(new IMenuListener()
-			{
-				public void menuAboutToShow(IMenuManager menuManager)
-				{
-					menuManager.updateAll(true);
-				}
-			});
+		submenuManager.addMenuListener(new IMenuListener() {
+			public void menuAboutToShow(IMenuManager menuManager) {
+				menuManager.updateAll(true);
+			}
+		});
 
 		addGlobalActions(submenuManager);
 	}
@@ -246,30 +233,24 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	@Override
-	public void setActiveEditor(IEditorPart part)
-	{
+	public void setActiveEditor(IEditorPart part) {
 		super.setActiveEditor(part);
 		activeEditorPart = part;
 
 		// Switch to the new selection provider.
 		//
-		if (selectionProvider != null)
-		{
+		if (selectionProvider != null) {
 			selectionProvider.removeSelectionChangedListener(this);
 		}
-		if (part == null)
-		{
+		if (part == null) {
 			selectionProvider = null;
-		}
-		else
-		{
+		} else {
 			selectionProvider = part.getSite().getSelectionProvider();
 			selectionProvider.addSelectionChangedListener(this);
 
 			// Fake a selection changed event to update the menus.
 			//
-			if (selectionProvider.getSelection() != null)
-			{
+			if (selectionProvider.getSelection() != null) {
 				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
 			}
 		}
@@ -284,16 +265,13 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	public void selectionChanged(SelectionChangedEvent event)
-	{
+	public void selectionChanged(SelectionChangedEvent event) {
 		// Remove any menu items for old selection.
 		//
-		if (createChildMenuManager != null)
-		{
+		if (createChildMenuManager != null) {
 			depopulateManager(createChildMenuManager, createChildActions);
 		}
-		if (createSiblingMenuManager != null)
-		{
+		if (createSiblingMenuManager != null) {
 			depopulateManager(createSiblingMenuManager, createSiblingActions);
 		}
 
@@ -303,8 +281,7 @@ public class ConfigActionBarContributor
 		Collection<?> newSiblingDescriptors = null;
 
 		final ISelection selection = event.getSelection();
-		if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1)
-		{
+		if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
 			final Object object = ((IStructuredSelection) selection).getFirstElement();
 
 			final EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
@@ -318,13 +295,11 @@ public class ConfigActionBarContributor
 		createChildActions = generateCreateChildActions(newChildDescriptors, selection);
 		createSiblingActions = generateCreateSiblingActions(newSiblingDescriptors, selection);
 
-		if (createChildMenuManager != null)
-		{
+		if (createChildMenuManager != null) {
 			populateManager(createChildMenuManager, createChildActions, null);
 			createChildMenuManager.update(true);
 		}
-		if (createSiblingMenuManager != null)
-		{
+		if (createSiblingMenuManager != null) {
 			populateManager(createSiblingMenuManager, createSiblingActions, null);
 			createSiblingMenuManager.update(true);
 		}
@@ -339,13 +314,10 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection)
-	{
+	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
 		final Collection<IAction> actions = new ArrayList<IAction>();
-		if (descriptors != null)
-		{
-			for (final Object descriptor : descriptors)
-			{
+		if (descriptors != null) {
+			for (final Object descriptor : descriptors) {
 				actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
 			}
 		}
@@ -361,13 +333,10 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection)
-	{
+	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
 		final Collection<IAction> actions = new ArrayList<IAction>();
-		if (descriptors != null)
-		{
-			for (final Object descriptor : descriptors)
-			{
+		if (descriptors != null) {
+			for (final Object descriptor : descriptors) {
 				actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
 			}
 		}
@@ -385,18 +354,12 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions,
-		String contributionID)
-	{
-		if (actions != null)
-		{
-			for (final IAction action : actions)
-			{
-				if (contributionID != null)
-				{
+		String contributionID) {
+		if (actions != null) {
+			for (final IAction action : actions) {
+				if (contributionID != null) {
 					manager.insertBefore(contributionID, action);
-				}
-				else
-				{
+				} else {
 					manager.add(action);
 				}
 			}
@@ -411,28 +374,22 @@ public class ConfigActionBarContributor
 	 *
 	 * @generated
 	 */
-	protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions)
-	{
-		if (actions != null)
-		{
+	protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
+		if (actions != null) {
 			final IContributionItem[] items = manager.getItems();
-			for (int i = 0; i < items.length; i++)
-			{
+			for (int i = 0; i < items.length; i++) {
 				// Look into SubContributionItems
 				//
 				IContributionItem contributionItem = items[i];
-				while (contributionItem instanceof SubContributionItem)
-				{
+				while (contributionItem instanceof SubContributionItem) {
 					contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
 				}
 
 				// Delete the ActionContributionItems with matching action.
 				//
-				if (contributionItem instanceof ActionContributionItem)
-				{
+				if (contributionItem instanceof ActionContributionItem) {
 					final IAction action = ((ActionContributionItem) contributionItem).getAction();
-					if (actions.contains(action))
-					{
+					if (actions.contains(action)) {
 						manager.remove(contributionItem);
 					}
 				}
@@ -448,8 +405,7 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	@Override
-	public void menuAboutToShow(IMenuManager menuManager)
-	{
+	public void menuAboutToShow(IMenuManager menuManager) {
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
@@ -470,8 +426,7 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	@Override
-	protected void addGlobalActions(IMenuManager menuManager)
-	{
+	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
 
@@ -489,8 +444,7 @@ public class ConfigActionBarContributor
 	 * @generated
 	 */
 	@Override
-	protected boolean removeAllReferencesOnDelete()
-	{
+	protected boolean removeAllReferencesOnDelete() {
 		return true;
 	}
 

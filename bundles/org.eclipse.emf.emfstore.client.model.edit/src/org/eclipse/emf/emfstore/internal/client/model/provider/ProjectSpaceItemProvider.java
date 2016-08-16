@@ -88,13 +88,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	protected void addProjectNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_projectName_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_projectName_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_projectName_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__PROJECT_NAME,
 				true,
 				false,
@@ -112,13 +110,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	protected void addProjectDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_projectDescription_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_projectDescription_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_projectDescription_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__PROJECT_DESCRIPTION,
 				true,
 				false,
@@ -136,13 +132,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	protected void addUsersessionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_usersession_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_usersession_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_usersession_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__USERSESSION,
 				true,
 				false,
@@ -160,13 +154,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	protected void addLastUpdatedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_lastUpdated_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_lastUpdated_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_lastUpdated_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__LAST_UPDATED,
 				true,
 				false,
@@ -184,13 +176,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	protected void addResourceCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_resourceCount_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_resourceCount_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_resourceCount_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__RESOURCE_COUNT,
 				true,
 				false,
@@ -207,13 +197,12 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * @generated
 	 */
 	protected void addDirtyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_dirty_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_dirty_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_dirty_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__DIRTY,
 				true,
 				false,
@@ -231,13 +220,11 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 */
 	protected void addOldLogMessagesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_oldLogMessages_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_oldLogMessages_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_oldLogMessages_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__OLD_LOG_MESSAGES,
 				true,
 				false,
@@ -251,18 +238,16 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * This adds a property descriptor for the Changed Shared Properties feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addChangedSharedPropertiesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ProjectSpace_changedSharedProperties_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ProjectSpace_changedSharedProperties_feature", "_UI_ProjectSpace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectSpace_changedSharedProperties_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ProjectSpace_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PROJECT_SPACE__CHANGED_SHARED_PROPERTIES,
 				true,
 				false,
@@ -277,13 +262,12 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.PROJECT_SPACE__PROJECT);
 			childrenFeatures.add(ModelPackage.Literals.PROJECT_SPACE__PROJECT_ID);
@@ -298,7 +282,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -368,8 +352,7 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	private void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ProjectSpace.class))
-		{
+		switch (notification.getFeatureID(ProjectSpace.class)) {
 		case ModelPackage.PROJECT_SPACE__PROJECT_NAME:
 		case ModelPackage.PROJECT_SPACE__PROJECT_DESCRIPTION:
 		case ModelPackage.PROJECT_SPACE__LAST_UPDATED:
@@ -402,65 +385,50 @@ public class ProjectSpaceItemProvider extends IdentifiableElementItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__PROJECT,
-				ModelFactory.eINSTANCE.createProject()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__PROJECT,
+			ModelFactory.eINSTANCE.createProject()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__PROJECT_ID,
-				org.eclipse.emf.emfstore.internal.server.model.ModelFactory.eINSTANCE.createProjectId()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__PROJECT_ID,
+			org.eclipse.emf.emfstore.internal.server.model.ModelFactory.eINSTANCE.createProjectId()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__BASE_VERSION,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__BASE_VERSION,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__WAITING_UPLOADS,
-				org.eclipse.emf.emfstore.internal.server.model.ModelFactory.eINSTANCE.createFileIdentifier()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__WAITING_UPLOADS,
+			org.eclipse.emf.emfstore.internal.server.model.ModelFactory.eINSTANCE.createFileIdentifier()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__PROPERTIES,
-				ModelFactory.eINSTANCE.createEMFStoreProperty()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__PROPERTIES,
+			ModelFactory.eINSTANCE.createEMFStoreProperty()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE,
-				VersioningFactory.eINSTANCE.createChangePackage()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE,
+			VersioningFactory.eINSTANCE.createChangePackage()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE,
-				VersioningFactory.eINSTANCE.createFileBasedChangePackage()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE,
+			VersioningFactory.eINSTANCE.createFileBasedChangePackage()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT_SPACE__MERGED_VERSION,
-				VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE,
+			VersioningFactory.eINSTANCE.createChangePackageProxy()));
+
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT_SPACE__MERGED_VERSION,
+			VersioningFactory.eINSTANCE.createPrimaryVersionSpec()));
 	}
 
 	/**
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		final Object childFeature = feature;
-		final Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-		final boolean qualify =
-			childFeature == ModelPackage.Literals.PROJECT_SPACE__BASE_VERSION ||
-				childFeature == ModelPackage.Literals.PROJECT_SPACE__MERGED_VERSION;
+		boolean qualify = childFeature == ModelPackage.Literals.PROJECT_SPACE__BASE_VERSION ||
+			childFeature == ModelPackage.Literals.PROJECT_SPACE__MERGED_VERSION;
 
-		if (qualify)
-		{
+		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}

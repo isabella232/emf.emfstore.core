@@ -27,11 +27,12 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedKey <em>Key</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedValue <em>Value</em>}
+ * </li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -40,7 +41,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
@@ -51,7 +52,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
@@ -62,7 +63,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTypedValue()
 	 * @generated
 	 * @ordered
@@ -72,7 +73,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected PropertyMapEntryImpl() {
@@ -82,7 +83,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -93,7 +94,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getTypedKey() {
@@ -103,32 +104,30 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setTypedKey(String newKey) {
-		final String oldKey = key;
+		String oldKey = key;
 		key = newKey;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_MAP_ENTRY__KEY, oldKey, key));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EMFStoreProperty getTypedValue() {
 		if (value != null && value.eIsProxy()) {
-			final InternalEObject oldValue = (InternalEObject) value;
+			InternalEObject oldValue = (InternalEObject) value;
 			value = (EMFStoreProperty) eResolveProxy(oldValue);
 			if (value != oldValue) {
-				if (eNotificationRequired()) {
+				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.PROPERTY_MAP_ENTRY__VALUE,
 						oldValue, value));
-				}
 			}
 		}
 		return value;
@@ -137,7 +136,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EMFStoreProperty basicGetTypedValue() {
@@ -147,22 +146,21 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setTypedValue(EMFStoreProperty newValue) {
-		final EMFStoreProperty oldValue = value;
+		EMFStoreProperty oldValue = value;
 		value = newValue;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_MAP_ENTRY__VALUE, oldValue,
-				value));
-		}
+		if (eNotificationRequired())
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_MAP_ENTRY__VALUE, oldValue, value));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -171,9 +169,8 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 		case ModelPackage.PROPERTY_MAP_ENTRY__KEY:
 			return getTypedKey();
 		case ModelPackage.PROPERTY_MAP_ENTRY__VALUE:
-			if (resolve) {
+			if (resolve)
 				return getTypedValue();
-			}
 			return basicGetTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -182,7 +179,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -201,7 +198,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,7 +217,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -237,16 +234,15 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (key: "); //$NON-NLS-1$
 		result.append(key);
 		result.append(')');
@@ -256,7 +252,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected int hash = -1;
@@ -264,13 +260,13 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public int getHash() {
 		if (hash == -1) {
-			final Object theKey = getKey();
-			hash = theKey == null ? 0 : theKey.hashCode();
+			Object theKey = getKey();
+			hash = (theKey == null ? 0 : theKey.hashCode());
 		}
 		return hash;
 	}
@@ -278,7 +274,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setHash(int hash) {
@@ -288,7 +284,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getKey() {
@@ -298,7 +294,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setKey(String key) {
@@ -308,7 +304,7 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EMFStoreProperty getValue() {
@@ -318,11 +314,11 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EMFStoreProperty setValue(EMFStoreProperty value) {
-		final EMFStoreProperty oldValue = getValue();
+		EMFStoreProperty oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -330,12 +326,12 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EMap<String, EMFStoreProperty> getEMap() {
-		final EObject container = eContainer();
+		EObject container = eContainer();
 		return container == null ? null : (EMap<String, EMFStoreProperty>) container.eGet(eContainmentFeature());
 	}
 

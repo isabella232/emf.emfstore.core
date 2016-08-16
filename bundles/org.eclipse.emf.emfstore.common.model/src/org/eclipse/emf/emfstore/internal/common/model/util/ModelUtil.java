@@ -772,7 +772,7 @@ public final class ModelUtil {
 	@SuppressWarnings("unchecked")
 	public static <T extends EObject> T loadEObjectFromResource(EClass eClass, URI resourceURI,
 		boolean checkConstraints)
-			throws IOException {
+		throws IOException {
 
 		final ResourceSet resourceSet = getResourceSetForURI(resourceURI);
 

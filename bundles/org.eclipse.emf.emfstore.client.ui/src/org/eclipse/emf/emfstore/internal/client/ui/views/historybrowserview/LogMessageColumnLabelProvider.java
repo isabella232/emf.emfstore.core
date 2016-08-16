@@ -47,7 +47,8 @@ public class LogMessageColumnLabelProvider extends SCMLabelProvider {
 				builder.append(""); //$NON-NLS-1$
 			} else if (historyInfo.getLogMessage() != null) {
 				logMessage = historyInfo.getLogMessage();
-			} else if (historyInfo.getChangePackage() != null && historyInfo.getChangePackage().getLogMessage() != null) {
+			} else if (historyInfo.getChangePackage() != null
+				&& historyInfo.getChangePackage().getLogMessage() != null) {
 				logMessage = historyInfo.getChangePackage().getLogMessage();
 			}
 			if (logMessage != null) {

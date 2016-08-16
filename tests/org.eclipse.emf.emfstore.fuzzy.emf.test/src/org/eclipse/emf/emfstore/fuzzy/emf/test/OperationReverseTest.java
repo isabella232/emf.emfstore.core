@@ -13,8 +13,8 @@
 package org.eclipse.emf.emfstore.fuzzy.emf.test;
 
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
-import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;

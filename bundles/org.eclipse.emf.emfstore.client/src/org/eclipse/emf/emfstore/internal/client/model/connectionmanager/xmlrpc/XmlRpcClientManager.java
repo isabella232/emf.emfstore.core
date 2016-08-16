@@ -297,7 +297,7 @@ public class XmlRpcClientManager {
 
 	private ChangePackageProxy uploadInFragments(SessionId sessionId,
 		ProjectId projectId, FileBasedChangePackage changePackage)
-			throws ESException {
+		throws ESException {
 
 		// get() is guarded
 		final Iterator<ChangePackageEnvelope> envelopes = ChangePackageUtil.splitChangePackage(

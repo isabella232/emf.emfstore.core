@@ -71,8 +71,8 @@ public interface TestmodelPackage extends EPackage {
 	TestmodelPackage eINSTANCE = org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl
-	 * <em>Test Element</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl <em>Test Element</em>
+	 * }' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
@@ -692,8 +692,8 @@ public interface TestmodelPackage extends EPackage {
 	EAttribute getTestElement_Name();
 
 	/**
-	 * Returns the meta object for the attribute list '
-	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getStrings <em>Strings</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.emfstore.test.model.TestElement#getStrings
+	 * <em>Strings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
@@ -835,8 +835,8 @@ public interface TestmodelPackage extends EPackage {
 	EReference getTestElement_StringToStringMap();
 
 	/**
-	 * Returns the meta object for the map '
-	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getElementToStringMap <em>Element To String Map</em>}'.
+	 * Returns the meta object for the map '{@link org.eclipse.emf.emfstore.test.model.TestElement#getElementToStringMap
+	 * <em>Element To String Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
@@ -848,8 +848,8 @@ public interface TestmodelPackage extends EPackage {
 	EReference getTestElement_ElementToStringMap();
 
 	/**
-	 * Returns the meta object for the map '
-	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getStringToElementMap <em>String To Element Map</em>}'.
+	 * Returns the meta object for the map '{@link org.eclipse.emf.emfstore.test.model.TestElement#getStringToElementMap
+	 * <em>String To Element Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

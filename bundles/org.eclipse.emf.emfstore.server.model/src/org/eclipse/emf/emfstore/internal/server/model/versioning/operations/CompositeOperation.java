@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation#getSubOperations
  * <em>Sub Operations</em>}</li>
@@ -28,10 +29,9 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation#getCompositeDescription
  * <em>Composite Description</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation#isReversed <em>
- * Reversed</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation#isReversed
+ * <em>Reversed</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCompositeOperation()
  * @model

@@ -38,7 +38,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
  *
  * @author emueller
  */
-public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace>implements ESWorkspace {
+public class ESWorkspaceImpl extends AbstractAPIImpl<ESWorkspaceImpl, Workspace> implements ESWorkspace {
 
 	/**
 	 * Constructor.

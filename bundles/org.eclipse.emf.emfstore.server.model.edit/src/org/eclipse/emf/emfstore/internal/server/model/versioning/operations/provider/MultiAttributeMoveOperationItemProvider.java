@@ -65,14 +65,13 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addOldIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MultiAttributeMoveOperation_oldIndex_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_oldIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__OLD_INDEX, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_MultiAttributeMoveOperation_oldIndex_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_oldIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__OLD_INDEX, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -82,14 +81,13 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addNewIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MultiAttributeMoveOperation_newIndex_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_newIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__NEW_INDEX, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_MultiAttributeMoveOperation_newIndex_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiAttributeMoveOperation_newIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__NEW_INDEX, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -99,14 +97,13 @@ public class MultiAttributeMoveOperationItemProvider extends FeatureOperationIte
 	 * @generated
 	 */
 	protected void addReferencedValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MultiAttributeMoveOperation_referencedValue_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
-				"_UI_MultiAttributeMoveOperation_referencedValue_feature", "_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$
-			OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_MultiAttributeMoveOperation_referencedValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+					"_UI_MultiAttributeMoveOperation_referencedValue_feature", "_UI_MultiAttributeMoveOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				OperationsPackage.Literals.MULTI_ATTRIBUTE_MOVE_OPERATION__REFERENCED_VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

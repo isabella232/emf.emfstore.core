@@ -79,7 +79,8 @@ public abstract class VisualConflict extends Observable {
 	 * @param leftIsMy true if left operation is my operation
 	 * @param init true if conflict should be initialized on construction
 	 */
-	public VisualConflict(ConflictBucket conflictBucket, DecisionManager decisionManager, boolean leftIsMy, boolean init) {
+	public VisualConflict(ConflictBucket conflictBucket, DecisionManager decisionManager, boolean leftIsMy,
+		boolean init) {
 		this(leftIsMy ? conflictBucket.getMyOperations() : conflictBucket.getTheirOperations(),
 			leftIsMy ? conflictBucket.getTheirOperations() : conflictBucket.getMyOperations(),
 			leftIsMy ? conflictBucket.getMyOperation() : conflictBucket.getTheirOperation(),

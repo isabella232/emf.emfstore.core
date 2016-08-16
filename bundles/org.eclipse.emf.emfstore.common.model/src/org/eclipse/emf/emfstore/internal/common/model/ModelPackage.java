@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.eclipse.emf.emfstore.internal.common.model.ModelFactory
  * @model kind="package"
  * @generated
@@ -38,7 +38,7 @@ public interface ModelPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	String eNAME = "model"; //$NON-NLS-1$
@@ -47,7 +47,7 @@ public interface ModelPackage extends EPackage {
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	String eNS_URI = "http://eclipse.org/emf/emfstore/common/model"; //$NON-NLS-1$
@@ -56,27 +56,26 @@ public interface ModelPackage extends EPackage {
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.common.model"; //$NON-NLS-1$
+	String eNS_PREFIX = "org.eclipse.emf.emfstore.common.model"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	ModelPackage eINSTANCE = org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl
-	 * <em>Project</em>}'
-	 * class.
+	 * <em>Project</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getProject()
 	 * @generated
@@ -87,7 +86,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Model Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -97,7 +96,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Cut Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -107,7 +106,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -118,7 +117,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Unique Identifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.UniqueIdentifierImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getUniqueIdentifier()
 	 * @generated
@@ -129,7 +128,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -139,7 +138,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Unique Identifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -150,7 +149,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Identifiable Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getIdentifiableElement()
 	 * @generated
@@ -161,7 +160,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -171,7 +170,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Identifiable Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -182,7 +181,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Element Id</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelElementIdImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getModelElementId()
 	 * @generated
@@ -193,7 +192,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -203,7 +202,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Element Id</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -211,11 +210,10 @@ public interface ModelPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.common.model.impl.ModelVersionImpl
-	 * <em>Version</em>}'
-	 * class.
+	 * <em>Version</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelVersionImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getModelVersion()
 	 * @generated
@@ -226,7 +224,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Release Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -236,7 +234,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Version</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -247,7 +245,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Non Domain Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NonDomainElement
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getNonDomainElement()
 	 * @generated
@@ -258,7 +256,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Non Domain Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -269,7 +267,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Association Class Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.AssociationClassElement
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getAssociationClassElement()
 	 * @generated
@@ -280,7 +278,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Association Class Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -291,7 +289,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>EMF Store Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getEMFStoreProperty()
 	 * @generated
@@ -302,7 +300,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -312,7 +310,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -322,7 +320,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -332,7 +330,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -342,7 +340,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>EMF Store Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -353,7 +351,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Property Map Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getPropertyMapEntry()
 	 * @generated
@@ -364,7 +362,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -374,7 +372,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -384,7 +382,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Property Map Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -395,7 +393,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Property String Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.PropertyStringValueImpl
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getPropertyStringValue()
 	 * @generated
@@ -406,7 +404,7 @@ public interface ModelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -416,7 +414,7 @@ public interface ModelPackage extends EPackage {
 	 * The number of structural features of the '<em>Property String Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -427,7 +425,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>EMF Store Property Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 	 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getEMFStorePropertyType()
 	 * @generated
@@ -435,11 +433,11 @@ public interface ModelPackage extends EPackage {
 	int EMF_STORE_PROPERTY_TYPE = 10;
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.common.model.Project
-	 * <em>Project</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.common.model.Project <em>Project</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Project</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.Project
 	 * @generated
@@ -451,7 +449,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.Project#getModelElements <em>Model Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference list '<em>Model Elements</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.Project#getModelElements()
 	 * @see #getProject()
@@ -464,7 +462,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.Project#getCutElements <em>Cut Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference list '<em>Cut Elements</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.Project#getCutElements()
 	 * @see #getProject()
@@ -477,7 +475,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Unique Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Unique Identifier</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier
 	 * @generated
@@ -486,11 +484,10 @@ public interface ModelPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier#getId
-	 * <em>Id</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Id</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier#getId()
 	 * @see #getUniqueIdentifier()
@@ -503,7 +500,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Identifiable Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Identifiable Element</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement
 	 * @generated
@@ -515,7 +512,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement#getIdentifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Identifier</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement#getIdentifier()
 	 * @see #getIdentifiableElement()
@@ -528,7 +525,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Element Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Element Id</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelElementId
 	 * @generated
@@ -540,7 +537,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Version</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelVersion
 	 * @generated
@@ -552,7 +549,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.ModelVersion#getReleaseNumber <em>Release Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Release Number</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelVersion#getReleaseNumber()
 	 * @see #getModelVersion()
@@ -565,7 +562,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Non Domain Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Non Domain Element</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.NonDomainElement
 	 * @generated
@@ -577,7 +574,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Association Class Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Association Class Element</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.AssociationClassElement
 	 * @generated
@@ -589,7 +586,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>EMF Store Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>EMF Store Property</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty
 	 * @generated
@@ -598,11 +595,10 @@ public interface ModelPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey
-	 * <em>Key</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Key</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey()
 	 * @see #getEMFStoreProperty()
@@ -615,7 +611,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getValue()
 	 * @see #getEMFStoreProperty()
@@ -625,11 +621,10 @@ public interface ModelPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType
-	 * <em>Type</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType()
 	 * @see #getEMFStoreProperty()
@@ -642,7 +637,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getVersion <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Version</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getVersion()
 	 * @see #getEMFStoreProperty()
@@ -654,7 +649,7 @@ public interface ModelPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Property Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Property Map Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyDataType="org.eclipse.emf.ecore.EString"
@@ -667,7 +662,7 @@ public interface ModelPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getPropertyMapEntry()
@@ -679,7 +674,7 @@ public interface ModelPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getPropertyMapEntry()
@@ -692,7 +687,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>Property String Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Property String Value</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue
 	 * @generated
@@ -704,7 +699,7 @@ public interface ModelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue#getValue()
 	 * @see #getPropertyStringValue()
@@ -717,7 +712,7 @@ public interface ModelPackage extends EPackage {
 	 * <em>EMF Store Property Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for enum '<em>EMF Store Property Type</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 	 * @generated
@@ -728,7 +723,7 @@ public interface ModelPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -744,7 +739,7 @@ public interface ModelPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	interface Literals {
@@ -753,7 +748,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getProject()
 		 * @generated
@@ -764,7 +759,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Model Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EReference PROJECT__MODEL_ELEMENTS = eINSTANCE.getProject_ModelElements();
@@ -773,18 +768,18 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Cut Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EReference PROJECT__CUT_ELEMENTS = eINSTANCE.getProject_CutElements();
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.UniqueIdentifierImpl
-		 * <em>Unique Identifier</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.UniqueIdentifierImpl <em>Unique Identifier</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.UniqueIdentifierImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getUniqueIdentifier()
 		 * @generated
@@ -795,7 +790,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute UNIQUE_IDENTIFIER__ID = eINSTANCE.getUniqueIdentifier_Id();
@@ -806,7 +801,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>Identifiable Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getIdentifiableElement()
 		 * @generated
@@ -817,18 +812,17 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute IDENTIFIABLE_ELEMENT__IDENTIFIER = eINSTANCE.getIdentifiableElement_Identifier();
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.ModelElementIdImpl
-		 * <em>Element Id</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.ModelElementIdImpl <em>Element Id</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelElementIdImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getModelElementId()
 		 * @generated
@@ -840,7 +834,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>Version</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelVersionImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getModelVersion()
 		 * @generated
@@ -851,7 +845,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Release Number</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute MODEL_VERSION__RELEASE_NUMBER = eINSTANCE.getModelVersion_ReleaseNumber();
@@ -861,7 +855,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>Non Domain Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.NonDomainElement
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getNonDomainElement()
 		 * @generated
@@ -874,7 +868,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>Association Class Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.AssociationClassElement
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getAssociationClassElement()
 		 * @generated
@@ -883,11 +877,11 @@ public interface ModelPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl
-		 * <em>EMF Store Property</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl <em>EMF Store Property</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getEMFStoreProperty()
 		 * @generated
@@ -898,7 +892,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute EMF_STORE_PROPERTY__KEY = eINSTANCE.getEMFStoreProperty_Key();
@@ -907,7 +901,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EReference EMF_STORE_PROPERTY__VALUE = eINSTANCE.getEMFStoreProperty_Value();
@@ -916,7 +910,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute EMF_STORE_PROPERTY__TYPE = eINSTANCE.getEMFStoreProperty_Type();
@@ -925,18 +919,18 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute EMF_STORE_PROPERTY__VERSION = eINSTANCE.getEMFStoreProperty_Version();
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl
-		 * <em>Property Map Entry</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl <em>Property Map Entry</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getPropertyMapEntry()
 		 * @generated
@@ -947,7 +941,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute PROPERTY_MAP_ENTRY__KEY = eINSTANCE.getPropertyMapEntry_Key();
@@ -956,7 +950,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EReference PROPERTY_MAP_ENTRY__VALUE = eINSTANCE.getPropertyMapEntry_Value();
@@ -967,7 +961,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>Property String Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.PropertyStringValueImpl
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getPropertyStringValue()
 		 * @generated
@@ -978,7 +972,7 @@ public interface ModelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute PROPERTY_STRING_VALUE__VALUE = eINSTANCE.getPropertyStringValue_Value();
@@ -988,7 +982,7 @@ public interface ModelPackage extends EPackage {
 		 * <em>EMF Store Property Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 		 * @see org.eclipse.emf.emfstore.internal.common.model.impl.ModelPackageImpl#getEMFStorePropertyType()
 		 * @generated

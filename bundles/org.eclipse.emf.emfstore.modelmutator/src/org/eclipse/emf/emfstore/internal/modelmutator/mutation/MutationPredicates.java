@@ -52,123 +52,112 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is a {@link EReference}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_REFERENCE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return input != null && input instanceof EReference;
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_REFERENCE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return input != null && input instanceof EReference;
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is a containment {@link EReference}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_CONTAINMENT_REFERENCE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return IS_REFERENCE.apply(input)
-					&& ((EReference) input).isContainment();
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_CONTAINMENT_REFERENCE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return IS_REFERENCE.apply(input)
+				&& ((EReference) input).isContainment();
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is a containment {@link EReference} or the opposite of
 	 * a containment {@link EReference}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_CONTAINMENT_OR_OPPOSITE_OF_CONTAINMENT_REFERENCE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return IS_CONTAINMENT_REFERENCE.apply(input) || IS_OPPOSITE_OF_CONTAINMENT_REFERENCE.apply(input);
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_CONTAINMENT_OR_OPPOSITE_OF_CONTAINMENT_REFERENCE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return IS_CONTAINMENT_REFERENCE.apply(input) || IS_OPPOSITE_OF_CONTAINMENT_REFERENCE.apply(input);
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is the opposite of a containment {@link EReference}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_OPPOSITE_OF_CONTAINMENT_REFERENCE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return input != null
-					&& input instanceof EReference
-					&& ((EReference) input).getEOpposite() != null
-					&& ((EReference) input).getEOpposite().isContainment();
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_OPPOSITE_OF_CONTAINMENT_REFERENCE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return input != null
+				&& input instanceof EReference
+				&& ((EReference) input).getEOpposite() != null
+				&& ((EReference) input).getEOpposite().isContainment();
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is a mutable containment {@link EReference}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_MUTABLE_CONTAINMENT_REFERENCE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return IS_MUTABLE.apply(input)
-					&& IS_CONTAINMENT_REFERENCE.apply(input);
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_MUTABLE_CONTAINMENT_REFERENCE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return IS_MUTABLE.apply(input)
+				&& IS_CONTAINMENT_REFERENCE.apply(input);
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is mutable.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_MUTABLE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return input != null && input.isChangeable();
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_MUTABLE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return input != null && input.isChangeable();
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is multi-valued.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_MULTI_VALUED =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return input != null && input.isMany();
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_MULTI_VALUED = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return input != null && input.isMany();
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is a mutable {@link EAttribute}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_MUTABLE_ATTRIBUTE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return IS_MUTABLE.apply(input) && input instanceof EAttribute;
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_MUTABLE_ATTRIBUTE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return IS_MUTABLE.apply(input) && input instanceof EAttribute;
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is a mutable {@link EReference}.
 	 */
-	public static final Predicate<? super EStructuralFeature> IS_MUTABLE_REFERENCE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return IS_MUTABLE.apply(input) && input instanceof EReference;
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> IS_MUTABLE_REFERENCE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return IS_MUTABLE.apply(input) && input instanceof EReference;
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is of type
 	 * {@link org.eclipse.emf.ecore.change.FeatureMapEntry FeatureMapEntry}.
 	 */
-	public static final Predicate<? super EStructuralFeature> HAS_FEATURE_MAP_ENTRY_TYPE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return input != null
-					&& EcorePackage.eINSTANCE.getEFeatureMapEntry().equals(input.getEType());
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> HAS_FEATURE_MAP_ENTRY_TYPE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return input != null
+				&& EcorePackage.eINSTANCE.getEFeatureMapEntry().equals(input.getEType());
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} is the feature map attribute of a feature map group.
 	 */
-	public static final Predicate<? super EStructuralFeature> HAS_GROUP_FEATURE_MAP_ENTRY_TYPE =
-		new Predicate<EStructuralFeature>() {
-			public boolean apply(EStructuralFeature input) {
-				return HAS_FEATURE_MAP_ENTRY_TYPE.apply(input)
-					&& input.getEAnnotation(EXTENDED_META_DATA) != null
-					&& input.getEAnnotation(EXTENDED_META_DATA).getDetails().get(KIND) != null
-					&& input.getEAnnotation(EXTENDED_META_DATA).getDetails().get(KIND).equals(GROUP);
-			}
-		};
+	public static final Predicate<? super EStructuralFeature> HAS_GROUP_FEATURE_MAP_ENTRY_TYPE = new Predicate<EStructuralFeature>() {
+		public boolean apply(EStructuralFeature input) {
+			return HAS_FEATURE_MAP_ENTRY_TYPE.apply(input)
+				&& input.getEAnnotation(EXTENDED_META_DATA) != null
+				&& input.getEAnnotation(EXTENDED_META_DATA).getDetails().get(KIND) != null
+				&& input.getEAnnotation(EXTENDED_META_DATA).getDetails().get(KIND).equals(GROUP);
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link EStructuralFeature} may take the given {@code eObject} as value.
@@ -199,7 +188,7 @@ public final class MutationPredicates {
 			public boolean apply(EStructuralFeature input) {
 				return input != null &&
 					(input.getEType() == feature.getEType()
-					|| isSubTypeOf(input.getEType(), feature.getEType()));
+						|| isSubTypeOf(input.getEType(), feature.getEType()));
 			}
 		};
 	}
@@ -333,12 +322,11 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link Object} is not <code>null</code> or an empty list.
 	 */
-	public static final Predicate<? super Object> IS_NON_EMPTY_VALUE_OR_LIST =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return !(input == null || isEmptyList(input));
-			}
-		};
+	public static final Predicate<? super Object> IS_NON_EMPTY_VALUE_OR_LIST = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return !(input == null || isEmptyList(input));
+		}
+	};
 
 	private static boolean isEmptyList(Object input) {
 		if (input instanceof List<?>) {
@@ -351,44 +339,40 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link Object} is a feature map containing at least one value.
 	 */
-	public static final Predicate<? super Object> IS_NON_EMPTY_FEATURE_MAP =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return input != null && input instanceof FeatureMap && ((FeatureMap) input).size() > 0;
-			}
-		};
+	public static final Predicate<? super Object> IS_NON_EMPTY_FEATURE_MAP = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return input != null && input instanceof FeatureMap && ((FeatureMap) input).size() > 0;
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link Object} is an {@link EObject} or a list of {@link EObject EObjects}
 	 * containing at least one EObject.
 	 */
-	public static final Predicate<? super Object> IS_NON_EMPTY_EOBJECT_OR_LIST =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return IS_NON_NULL_EOBJECT.apply(input) || IS_NON_EMPTY_EOBJECT_LIST.apply(input);
-			}
-		};
+	public static final Predicate<? super Object> IS_NON_EMPTY_EOBJECT_OR_LIST = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return IS_NON_NULL_EOBJECT.apply(input) || IS_NON_EMPTY_EOBJECT_LIST.apply(input);
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link Object} is not null and an {@link EObject}.
 	 */
-	public static final Predicate<? super Object> IS_NON_NULL_EOBJECT =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return input != null && input instanceof EObject;
-			}
-		};
+	public static final Predicate<? super Object> IS_NON_NULL_EOBJECT = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return input != null && input instanceof EObject;
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link Object} is a list of {@link EObject EObjects} containing at least one
 	 * EObject.
 	 */
-	public static final Predicate<? super Object> IS_NON_EMPTY_EOBJECT_LIST =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return input instanceof List<?> && isNonEmptyEObjectList((List<?>) input);
-			}
-		};
+	public static final Predicate<? super Object> IS_NON_EMPTY_EOBJECT_LIST = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return input instanceof List<?> && isNonEmptyEObjectList((List<?>) input);
+		}
+	};
 
 	private static boolean isNonEmptyEObjectList(List<?> input) {
 		return !input.isEmpty() && all(input, IS_NON_NULL_EOBJECT);
@@ -397,22 +381,20 @@ public final class MutationPredicates {
 	/**
 	 * Predicate specifying whether an {@link Object} is <code>null</code> or a list.
 	 */
-	public static final Predicate<? super Object> IS_NULL_OR_LIST =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return input == null || IS_LIST.apply(input);
-			}
-		};
+	public static final Predicate<? super Object> IS_NULL_OR_LIST = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return input == null || IS_LIST.apply(input);
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link Object} is a list.
 	 */
-	public static final Predicate<? super Object> IS_LIST =
-		new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return input instanceof List<?>;
-			}
-		};
+	public static final Predicate<? super Object> IS_LIST = new Predicate<Object>() {
+		public boolean apply(Object input) {
+			return input instanceof List<?>;
+		}
+	};
 
 	/**
 	 * Predicate specifying whether an {@link Object} is the container of an {@link EObject} that itself has at most the
@@ -422,7 +404,8 @@ public final class MutationPredicates {
 	 * @return <code>true</code> if it contains an {@link EObject} that itself has a less or equal number of
 	 *         containments than specified in {@code maxNumberOfContainments}, <code>false</code> otherwise.
 	 */
-	public static Predicate<? super Object> containsEObjectWithMaxNumberOfContainments(final int maxNumberOfContainments) {
+	public static Predicate<? super Object> containsEObjectWithMaxNumberOfContainments(
+		final int maxNumberOfContainments) {
 		return new Predicate<Object>() {
 			public boolean apply(Object input) {
 				return input != null

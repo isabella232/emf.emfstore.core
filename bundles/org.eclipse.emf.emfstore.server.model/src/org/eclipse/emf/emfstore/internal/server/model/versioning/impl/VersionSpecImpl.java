@@ -21,11 +21,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Version Spec</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionSpecImpl#getBranch <em>Branch</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @generated
  */

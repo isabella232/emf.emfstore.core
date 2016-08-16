@@ -133,8 +133,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
  */
 public class ConfigEditor
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker
-{
+	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 * <!-- begin-user-doc -->
@@ -310,54 +309,40 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected IPartListener partListener =
-		new IPartListener()
-		{
-			public void partActivated(IWorkbenchPart p)
-			{
-				if (p instanceof ContentOutline)
-				{
-					if (((ContentOutline) p).getCurrentPage() == contentOutlinePage)
-					{
-						getActionBarContributor().setActiveEditor(ConfigEditor.this);
+	protected IPartListener partListener = new IPartListener() {
+		public void partActivated(IWorkbenchPart p) {
+			if (p instanceof ContentOutline) {
+				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
+					getActionBarContributor().setActiveEditor(ConfigEditor.this);
 
-						setCurrentViewer(contentOutlineViewer);
-					}
+					setCurrentViewer(contentOutlineViewer);
 				}
-				else if (p instanceof PropertySheet)
-				{
-					if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage()))
-					{
-						getActionBarContributor().setActiveEditor(ConfigEditor.this);
-						handleActivate();
-					}
-				}
-				else if (p == ConfigEditor.this)
-				{
+			} else if (p instanceof PropertySheet) {
+				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
+					getActionBarContributor().setActiveEditor(ConfigEditor.this);
 					handleActivate();
 				}
+			} else if (p == ConfigEditor.this) {
+				handleActivate();
 			}
+		}
 
-			public void partBroughtToTop(IWorkbenchPart p)
-			{
-				// Ignore.
-			}
+		public void partBroughtToTop(IWorkbenchPart p) {
+			// Ignore.
+		}
 
-			public void partClosed(IWorkbenchPart p)
-			{
-				// Ignore.
-			}
+		public void partClosed(IWorkbenchPart p) {
+			// Ignore.
+		}
 
-			public void partDeactivated(IWorkbenchPart p)
-			{
-				// Ignore.
-			}
+		public void partDeactivated(IWorkbenchPart p) {
+			// Ignore.
+		}
 
-			public void partOpened(IWorkbenchPart p)
-			{
-				// Ignore.
-			}
-		};
+		public void partOpened(IWorkbenchPart p) {
+			// Ignore.
+		}
+	};
 
 	/**
 	 * Resources that have been removed since last activation.
@@ -411,76 +396,55 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected EContentAdapter problemIndicationAdapter =
-		new EContentAdapter()
-		{
-			@Override
-			public void notifyChanged(Notification notification)
-			{
-				if (notification.getNotifier() instanceof Resource)
-				{
-					switch (notification.getFeatureID(Resource.class))
-					{
-					case Resource.RESOURCE__IS_LOADED:
-					case Resource.RESOURCE__ERRORS:
-					case Resource.RESOURCE__WARNINGS:
-					{
-						final Resource resource = (Resource) notification.getNotifier();
-						final Diagnostic diagnostic = analyzeResourceProblems(resource, null);
-						if (diagnostic.getSeverity() != Diagnostic.OK)
-						{
-							resourceToDiagnosticMap.put(resource, diagnostic);
-						}
-						else
-						{
-							resourceToDiagnosticMap.remove(resource);
-						}
-
-						if (updateProblemIndication)
-						{
-							getSite().getShell().getDisplay().asyncExec
-								(new Runnable()
-								{
-									public void run()
-									{
-										updateProblemIndication();
-									}
-								});
-						}
-						break;
+	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+		@Override
+		public void notifyChanged(Notification notification) {
+			if (notification.getNotifier() instanceof Resource) {
+				switch (notification.getFeatureID(Resource.class)) {
+				case Resource.RESOURCE__IS_LOADED:
+				case Resource.RESOURCE__ERRORS:
+				case Resource.RESOURCE__WARNINGS: {
+					final Resource resource = (Resource) notification.getNotifier();
+					final Diagnostic diagnostic = analyzeResourceProblems(resource, null);
+					if (diagnostic.getSeverity() != Diagnostic.OK) {
+						resourceToDiagnosticMap.put(resource, diagnostic);
+					} else {
+						resourceToDiagnosticMap.remove(resource);
 					}
-					}
-				}
-				else
-				{
-					super.notifyChanged(notification);
-				}
-			}
 
-			@Override
-			protected void setTarget(Resource target)
-			{
-				basicSetTarget(target);
-			}
-
-			@Override
-			protected void unsetTarget(Resource target)
-			{
-				basicUnsetTarget(target);
-				resourceToDiagnosticMap.remove(target);
-				if (updateProblemIndication)
-				{
-					getSite().getShell().getDisplay().asyncExec
-						(new Runnable()
-						{
-							public void run()
-							{
+					if (updateProblemIndication) {
+						getSite().getShell().getDisplay().asyncExec(new Runnable() {
+							public void run() {
 								updateProblemIndication();
 							}
 						});
+					}
+					break;
 				}
+				}
+			} else {
+				super.notifyChanged(notification);
 			}
-		};
+		}
+
+		@Override
+		protected void setTarget(Resource target) {
+			basicSetTarget(target);
+		}
+
+		@Override
+		protected void unsetTarget(Resource target) {
+			basicUnsetTarget(target);
+			resourceToDiagnosticMap.remove(target);
+			if (updateProblemIndication) {
+				getSite().getShell().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						updateProblemIndication();
+					}
+				});
+			}
+		}
+	};
 
 	/**
 	 * This listens for workspace changes.
@@ -489,100 +453,74 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected IResourceChangeListener resourceChangeListener =
-		new IResourceChangeListener()
-		{
-			public void resourceChanged(IResourceChangeEvent event)
-			{
-				final IResourceDelta delta = event.getDelta();
-				try
-				{
-					class ResourceDeltaVisitor implements IResourceDeltaVisitor
-					{
-						protected ResourceSet resourceSet = editingDomain.getResourceSet();
-						protected Collection<Resource> changedResources = new ArrayList<Resource>();
-						protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
+		public void resourceChanged(IResourceChangeEvent event) {
+			final IResourceDelta delta = event.getDelta();
+			try {
+				class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+					protected ResourceSet resourceSet = editingDomain.getResourceSet();
+					protected Collection<Resource> changedResources = new ArrayList<Resource>();
+					protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
-						public boolean visit(IResourceDelta delta)
-						{
-							if (delta.getResource().getType() == IResource.FILE)
-							{
-								if (delta.getKind() == IResourceDelta.REMOVED ||
-									delta.getKind() == IResourceDelta.CHANGED
-									&& delta.getFlags() != IResourceDelta.MARKERS)
-								{
-									final Resource resource = resourceSet.getResource(
-										URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
-									if (resource != null)
-									{
-										if (delta.getKind() == IResourceDelta.REMOVED)
-										{
-											removedResources.add(resource);
-										}
-										else if (!savedResources.remove(resource))
-										{
-											changedResources.add(resource);
-										}
+					public boolean visit(IResourceDelta delta) {
+						if (delta.getResource().getType() == IResource.FILE) {
+							if (delta.getKind() == IResourceDelta.REMOVED ||
+								delta.getKind() == IResourceDelta.CHANGED
+									&& delta.getFlags() != IResourceDelta.MARKERS) {
+								final Resource resource = resourceSet.getResource(
+									URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
+								if (resource != null) {
+									if (delta.getKind() == IResourceDelta.REMOVED) {
+										removedResources.add(resource);
+									} else if (!savedResources.remove(resource)) {
+										changedResources.add(resource);
 									}
 								}
-								return false;
 							}
-
-							return true;
+							return false;
 						}
 
-						public Collection<Resource> getChangedResources()
-						{
-							return changedResources;
-						}
-
-						public Collection<Resource> getRemovedResources()
-						{
-							return removedResources;
-						}
+						return true;
 					}
 
-					final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
-					delta.accept(visitor);
-
-					if (!visitor.getRemovedResources().isEmpty())
-					{
-						getSite().getShell().getDisplay().asyncExec
-							(new Runnable()
-							{
-								public void run()
-								{
-									removedResources.addAll(visitor.getRemovedResources());
-									if (!isDirty())
-									{
-										getSite().getPage().closeEditor(ConfigEditor.this, false);
-									}
-								}
-							});
+					public Collection<Resource> getChangedResources() {
+						return changedResources;
 					}
 
-					if (!visitor.getChangedResources().isEmpty())
-					{
-						getSite().getShell().getDisplay().asyncExec
-							(new Runnable()
-							{
-								public void run()
-								{
-									changedResources.addAll(visitor.getChangedResources());
-									if (getSite().getPage().getActiveEditor() == ConfigEditor.this)
-									{
-										handleActivate();
-									}
-								}
-							});
+					public Collection<Resource> getRemovedResources() {
+						return removedResources;
 					}
 				}
-				catch (final CoreException exception)
-				{
-					ConfigEditorPlugin.INSTANCE.log(exception);
+
+				final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+				delta.accept(visitor);
+
+				if (!visitor.getRemovedResources().isEmpty()) {
+					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						public void run() {
+							removedResources.addAll(visitor.getRemovedResources());
+							if (!isDirty()) {
+								getSite().getPage().closeEditor(ConfigEditor.this, false);
+							}
+						}
+					});
 				}
+
+				if (!visitor.getChangedResources().isEmpty()) {
+					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						public void run() {
+							changedResources.addAll(visitor.getChangedResources());
+							if (getSite().getPage().getActiveEditor() == ConfigEditor.this) {
+								handleActivate();
+							}
+						}
+					});
+				}
+			} catch (final CoreException exception) {
+				ConfigEditorPlugin.INSTANCE.log(exception);
 			}
-		};
+		}
+	};
 
 	/**
 	 * Handles activation of the editor or it's associated views.
@@ -591,12 +529,10 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void handleActivate()
-	{
+	protected void handleActivate() {
 		// Recompute the read only state.
 		//
-		if (editingDomain.getResourceToReadOnlyMap() != null)
-		{
+		if (editingDomain.getResourceToReadOnlyMap() != null) {
 			editingDomain.getResourceToReadOnlyMap().clear();
 
 			// Refresh any actions that may become enabled or disabled.
@@ -604,21 +540,15 @@ public class ConfigEditor
 			setSelection(getSelection());
 		}
 
-		if (!removedResources.isEmpty())
-		{
-			if (handleDirtyConflict())
-			{
+		if (!removedResources.isEmpty()) {
+			if (handleDirtyConflict()) {
 				getSite().getPage().closeEditor(ConfigEditor.this, false);
-			}
-			else
-			{
+			} else {
 				removedResources.clear();
 				changedResources.clear();
 				savedResources.clear();
 			}
-		}
-		else if (!changedResources.isEmpty())
-		{
+		} else if (!changedResources.isEmpty()) {
 			changedResources.removeAll(savedResources);
 			handleChangedResources();
 			changedResources.clear();
@@ -633,37 +563,28 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void handleChangedResources()
-	{
-		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict()))
-		{
-			if (isDirty())
-			{
+	protected void handleChangedResources() {
+		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+			if (isDirty()) {
 				changedResources.addAll(editingDomain.getResourceSet().getResources());
 			}
 			editingDomain.getCommandStack().flush();
 
 			updateProblemIndication = false;
-			for (final Resource resource : changedResources)
-			{
-				if (resource.isLoaded())
-				{
+			for (final Resource resource : changedResources) {
+				if (resource.isLoaded()) {
 					resource.unload();
-					try
-					{
+					try {
 						resource.load(Collections.EMPTY_MAP);
-					} catch (final IOException exception)
-					{
-						if (!resourceToDiagnosticMap.containsKey(resource))
-						{
+					} catch (final IOException exception) {
+						if (!resourceToDiagnosticMap.containsKey(resource)) {
 							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 						}
 					}
 				}
 			}
 
-			if (AdapterFactoryEditingDomain.isStale(editorSelection))
-			{
+			if (AdapterFactoryEditingDomain.isStale(editorSelection)) {
 				setSelection(StructuredSelection.EMPTY);
 			}
 
@@ -679,60 +600,45 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void updateProblemIndication()
-	{
-		if (updateProblemIndication)
-		{
-			final BasicDiagnostic diagnostic =
-				new BasicDiagnostic
-				(Diagnostic.OK, "org.eclipse.emf.emfstore.fuzzy.emf.editor", //$NON-NLS-1$
-					0,
-					null,
-					new Object[] { editingDomain.getResourceSet() });
-			for (final Diagnostic childDiagnostic : resourceToDiagnosticMap.values())
-			{
-				if (childDiagnostic.getSeverity() != Diagnostic.OK)
-				{
+	protected void updateProblemIndication() {
+		if (updateProblemIndication) {
+			final BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
+				"org.eclipse.emf.emfstore.fuzzy.emf.editor", //$NON-NLS-1$
+				0,
+				null,
+				new Object[] { editingDomain.getResourceSet() });
+			for (final Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
+				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
 					diagnostic.add(childDiagnostic);
 				}
 			}
 
 			int lastEditorPage = getPageCount() - 1;
-			if (lastEditorPage >= 0 && getEditor(lastEditorPage) instanceof ProblemEditorPart)
-			{
+			if (lastEditorPage >= 0 && getEditor(lastEditorPage) instanceof ProblemEditorPart) {
 				((ProblemEditorPart) getEditor(lastEditorPage)).setDiagnostic(diagnostic);
-				if (diagnostic.getSeverity() != Diagnostic.OK)
-				{
+				if (diagnostic.getSeverity() != Diagnostic.OK) {
 					setActivePage(lastEditorPage);
 				}
-			}
-			else if (diagnostic.getSeverity() != Diagnostic.OK)
-			{
+			} else if (diagnostic.getSeverity() != Diagnostic.OK) {
 				final ProblemEditorPart problemEditorPart = new ProblemEditorPart();
 				problemEditorPart.setDiagnostic(diagnostic);
 				problemEditorPart.setMarkerHelper(markerHelper);
-				try
-				{
+				try {
 					addPage(++lastEditorPage, problemEditorPart, getEditorInput());
 					setPageText(lastEditorPage, problemEditorPart.getPartName());
 					setActivePage(lastEditorPage);
 					showTabs();
-				} catch (final PartInitException exception)
-				{
+				} catch (final PartInitException exception) {
 					ConfigEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
-			if (markerHelper.hasMarkers(editingDomain.getResourceSet()))
-			{
+			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
 				markerHelper.deleteMarkers(editingDomain.getResourceSet());
-				if (diagnostic.getSeverity() != Diagnostic.OK)
-				{
-					try
-					{
+				if (diagnostic.getSeverity() != Diagnostic.OK) {
+					try {
 						markerHelper.createMarkers(diagnostic);
-					} catch (final CoreException exception)
-					{
+					} catch (final CoreException exception) {
 						ConfigEditorPlugin.INSTANCE.log(exception);
 					}
 				}
@@ -747,12 +653,10 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected boolean handleDirtyConflict()
-	{
-		return MessageDialog.openQuestion
-			(getSite().getShell(),
-				getString("_UI_FileConflict_label"), //$NON-NLS-1$
-				getString("_WARN_FileConflict")); //$NON-NLS-1$
+	protected boolean handleDirtyConflict() {
+		return MessageDialog.openQuestion(getSite().getShell(),
+			getString("_UI_FileConflict_label"), //$NON-NLS-1$
+			getString("_WARN_FileConflict")); //$NON-NLS-1$
 	}
 
 	/**
@@ -762,8 +666,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public ConfigEditor()
-	{
+	public ConfigEditor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -775,8 +678,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void initializeEditingDomain()
-	{
+	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -792,42 +694,31 @@ public class ConfigEditor
 		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with
 		// focus.
 		//
-		commandStack.addCommandStackListener
-			(new CommandStackListener()
-			{
-				public void commandStackChanged(final EventObject event)
-				{
-					getContainer().getDisplay().asyncExec
-						(new Runnable()
-						{
-							public void run()
-							{
-								firePropertyChange(IEditorPart.PROP_DIRTY);
+		commandStack.addCommandStackListener(new CommandStackListener() {
+			public void commandStackChanged(final EventObject event) {
+				getContainer().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						firePropertyChange(IEditorPart.PROP_DIRTY);
 
-								// Try to select the affected objects.
-								//
-								final Command mostRecentCommand = ((CommandStack) event.getSource())
-									.getMostRecentCommand();
-								if (mostRecentCommand != null)
-								{
-									setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-								}
-								for (final Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext();)
-								{
-									final PropertySheetPage propertySheetPage = i.next();
-									if (propertySheetPage.getControl().isDisposed())
-									{
-										i.remove();
-									}
-									else
-									{
-										propertySheetPage.refresh();
-									}
-								}
+						// Try to select the affected objects.
+						//
+						final Command mostRecentCommand = ((CommandStack) event.getSource())
+							.getMostRecentCommand();
+						if (mostRecentCommand != null) {
+							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+						}
+						for (final Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext();) {
+							final PropertySheetPage propertySheetPage = i.next();
+							if (propertySheetPage.getControl().isDisposed()) {
+								i.remove();
+							} else {
+								propertySheetPage.refresh();
 							}
-						});
-				}
-			});
+						}
+					}
+				});
+			}
+		});
 
 		// Create the editing domain with a special command stack.
 		//
@@ -842,8 +733,7 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	protected void firePropertyChange(int action)
-	{
+	protected void firePropertyChange(int action) {
 		super.firePropertyChange(action);
 	}
 
@@ -854,26 +744,20 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void setSelectionToViewer(Collection<?> collection)
-	{
+	public void setSelectionToViewer(Collection<?> collection) {
 		final Collection<?> theSelection = collection;
 		// Make sure it's okay.
 		//
-		if (theSelection != null && !theSelection.isEmpty())
-		{
-			final Runnable runnable =
-				new Runnable()
-				{
-					public void run()
-					{
-						// Try to select the items in the current content viewer of the editor.
-						//
-						if (currentViewer != null)
-						{
-							currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
-						}
+		if (theSelection != null && !theSelection.isEmpty()) {
+			final Runnable runnable = new Runnable() {
+				public void run() {
+					// Try to select the items in the current content viewer of the editor.
+					//
+					if (currentViewer != null) {
+						currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
 					}
-				};
+				}
+			};
 			getSite().getShell().getDisplay().asyncExec(runnable);
 		}
 	}
@@ -887,8 +771,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public EditingDomain getEditingDomain()
-	{
+	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
 
@@ -898,16 +781,14 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider
-	{
+	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
 		 * @generated
 		 */
-		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory)
-		{
+		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
 			super(adapterFactory);
 		}
 
@@ -918,8 +799,7 @@ public class ConfigEditor
 		 * @generated
 		 */
 		@Override
-		public Object[] getElements(Object object)
-		{
+		public Object[] getElements(Object object) {
 			final Object parent = super.getParent(object);
 			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
 		}
@@ -931,8 +811,7 @@ public class ConfigEditor
 		 * @generated
 		 */
 		@Override
-		public Object[] getChildren(Object object)
-		{
+		public Object[] getChildren(Object object) {
 			final Object parent = super.getParent(object);
 			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
 		}
@@ -944,8 +823,7 @@ public class ConfigEditor
 		 * @generated
 		 */
 		@Override
-		public boolean hasChildren(Object object)
-		{
+		public boolean hasChildren(Object object) {
 			final Object parent = super.getParent(object);
 			return parent != null;
 		}
@@ -957,8 +835,7 @@ public class ConfigEditor
 		 * @generated
 		 */
 		@Override
-		public Object getParent(Object object)
-		{
+		public Object getParent(Object object) {
 			return null;
 		}
 	}
@@ -969,12 +846,9 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void setCurrentViewerPane(ViewerPane viewerPane)
-	{
-		if (currentViewerPane != viewerPane)
-		{
-			if (currentViewerPane != null)
-			{
+	public void setCurrentViewerPane(ViewerPane viewerPane) {
+		if (currentViewerPane != viewerPane) {
+			if (currentViewerPane != null) {
 				currentViewerPane.showFocus(false);
 			}
 			currentViewerPane = viewerPane;
@@ -990,39 +864,31 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void setCurrentViewer(Viewer viewer)
-	{
+	public void setCurrentViewer(Viewer viewer) {
 		// If it is changing...
 		//
-		if (currentViewer != viewer)
-		{
-			if (selectionChangedListener == null)
-			{
+		if (currentViewer != viewer) {
+			if (selectionChangedListener == null) {
 				// Create the listener on demand.
 				//
-				selectionChangedListener =
-					new ISelectionChangedListener()
-					{
-						// This just notifies those things that are affected by the section.
-						//
-						public void selectionChanged(SelectionChangedEvent selectionChangedEvent)
-						{
-							setSelection(selectionChangedEvent.getSelection());
-						}
-					};
+				selectionChangedListener = new ISelectionChangedListener() {
+					// This just notifies those things that are affected by the section.
+					//
+					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
+						setSelection(selectionChangedEvent.getSelection());
+					}
+				};
 			}
 
 			// Stop listening to the old one.
 			//
-			if (currentViewer != null)
-			{
+			if (currentViewer != null) {
 				currentViewer.removeSelectionChangedListener(selectionChangedListener);
 			}
 
 			// Start listening to the new one.
 			//
-			if (viewer != null)
-			{
+			if (viewer != null) {
 				viewer.addSelectionChangedListener(selectionChangedListener);
 			}
 
@@ -1043,8 +909,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public Viewer getViewer()
-	{
+	public Viewer getViewer() {
 		return currentViewer;
 	}
 
@@ -1055,8 +920,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void createContextMenuFor(StructuredViewer viewer)
-	{
+	protected void createContextMenuFor(StructuredViewer viewer) {
 		final MenuManager contextMenu = new MenuManager("#PopUp"); //$NON-NLS-1$
 		contextMenu.add(new Separator("additions")); //$NON-NLS-1$
 		contextMenu.setRemoveAllWhenShown(true);
@@ -1078,25 +942,21 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void createModel()
-	{
+	public void createModel() {
 		final URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
 		Resource resource = null;
-		try
-		{
+		try {
 			// Load the resource through the editing domain.
 			//
 			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
-		} catch (final Exception e)
-		{
+		} catch (final Exception e) {
 			exception = e;
 			resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		}
 
 		final Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
-		if (diagnostic.getSeverity() != Diagnostic.OK)
-		{
+		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
@@ -1110,28 +970,21 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception)
-	{
-		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty())
-		{
-			final BasicDiagnostic basicDiagnostic =
-				new BasicDiagnostic
-				(Diagnostic.ERROR, "org.eclipse.emf.emfstore.fuzzy.emf.editor", //$NON-NLS-1$
-					0,
-					getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
-					new Object[] { exception == null ? (Object) resource : exception });
+	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
+		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
+			final BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR,
+				"org.eclipse.emf.emfstore.fuzzy.emf.editor", //$NON-NLS-1$
+				0,
+				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+				new Object[] { exception == null ? (Object) resource : exception });
 			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
 			return basicDiagnostic;
-		}
-		else if (exception != null)
-		{
+		} else if (exception != null) {
 			return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.emf.emfstore.fuzzy.emf.editor", //$NON-NLS-1$
 				0,
 				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 				new Object[] { exception });
-		}
-		else
-		{
+		} else {
 			return Diagnostic.OK_INSTANCE;
 		}
 	}
@@ -1144,37 +997,31 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public void createPages()
-	{
+	public void createPages() {
 		// Creates the model from the editor input
 		//
 		createModel();
 
 		// Only creates the other pages if there is something that can be edited
 		//
-		if (!getEditingDomain().getResourceSet().getResources().isEmpty())
-		{
+		if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
 			// Create a page for the selection tree view.
 			//
 			{
-				final ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this)
-					{
-						@Override
-						public Viewer createViewer(Composite composite)
-						{
-							final Tree tree = new Tree(composite, SWT.MULTI);
-							final TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
+				final ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						final Tree tree = new Tree(composite, SWT.MULTI);
+						final TreeViewer newTreeViewer = new TreeViewer(tree);
+						return newTreeViewer;
+					}
 
-						@Override
-						public void requestActivation()
-						{
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
 				viewerPane.createControl(getContainer());
 
 				selectionViewer = (TreeViewer) viewerPane.getViewer();
@@ -1196,24 +1043,20 @@ public class ConfigEditor
 			// Create a page for the parent tree view.
 			//
 			{
-				final ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this)
-					{
-						@Override
-						public Viewer createViewer(Composite composite)
-						{
-							final Tree tree = new Tree(composite, SWT.MULTI);
-							final TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
+				final ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						final Tree tree = new Tree(composite, SWT.MULTI);
+						final TreeViewer newTreeViewer = new TreeViewer(tree);
+						return newTreeViewer;
+					}
 
-						@Override
-						public void requestActivation()
-						{
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
 				viewerPane.createControl(getContainer());
 
 				parentViewer = (TreeViewer) viewerPane.getViewer();
@@ -1229,22 +1072,18 @@ public class ConfigEditor
 			// This is the page for the list viewer
 			//
 			{
-				final ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this)
-					{
-						@Override
-						public Viewer createViewer(Composite composite)
-						{
-							return new ListViewer(composite);
-						}
+				final ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new ListViewer(composite);
+					}
 
-						@Override
-						public void requestActivation()
-						{
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
 				viewerPane.createControl(getContainer());
 				listViewer = (ListViewer) viewerPane.getViewer();
 				listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
@@ -1258,22 +1097,18 @@ public class ConfigEditor
 			// This is the page for the tree viewer
 			//
 			{
-				final ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this)
-					{
-						@Override
-						public Viewer createViewer(Composite composite)
-						{
-							return new TreeViewer(composite);
-						}
+				final ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new TreeViewer(composite);
+					}
 
-						@Override
-						public void requestActivation()
-						{
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
 				viewerPane.createControl(getContainer());
 				treeViewer = (TreeViewer) viewerPane.getViewer();
 				treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
@@ -1289,22 +1124,18 @@ public class ConfigEditor
 			// This is the page for the table viewer.
 			//
 			{
-				final ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this)
-					{
-						@Override
-						public Viewer createViewer(Composite composite)
-						{
-							return new TableViewer(composite);
-						}
+				final ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new TableViewer(composite);
+					}
 
-						@Override
-						public void requestActivation()
-						{
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
 				viewerPane.createControl(getContainer());
 				tableViewer = (TableViewer) viewerPane.getViewer();
 
@@ -1336,22 +1167,18 @@ public class ConfigEditor
 			// This is the page for the table tree viewer.
 			//
 			{
-				final ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ConfigEditor.this)
-					{
-						@Override
-						public Viewer createViewer(Composite composite)
-						{
-							return new TreeViewer(composite);
-						}
+				final ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ConfigEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new TreeViewer(composite);
+					}
 
-						@Override
-						public void requestActivation()
-						{
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
 				viewerPane.createControl(getContainer());
 
 				treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
@@ -1380,44 +1207,34 @@ public class ConfigEditor
 				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label")); //$NON-NLS-1$
 			}
 
-			getSite().getShell().getDisplay().asyncExec
-				(new Runnable()
-				{
-					public void run()
-					{
-						setActivePage(0);
-					}
-				});
+			getSite().getShell().getDisplay().asyncExec(new Runnable() {
+				public void run() {
+					setActivePage(0);
+				}
+			});
 		}
 
 		// Ensures that this editor will only display the page's tab
 		// area if there are more than one page
 		//
-		getContainer().addControlListener
-			(new ControlAdapter()
-			{
-				boolean guard = false;
+		getContainer().addControlListener(new ControlAdapter() {
+			boolean guard = false;
 
-				@Override
-				public void controlResized(ControlEvent event)
-				{
-					if (!guard)
-					{
-						guard = true;
-						hideTabs();
-						guard = false;
-					}
+			@Override
+			public void controlResized(ControlEvent event) {
+				if (!guard) {
+					guard = true;
+					hideTabs();
+					guard = false;
 				}
-			});
+			}
+		});
 
-		getSite().getShell().getDisplay().asyncExec
-			(new Runnable()
-			{
-				public void run()
-				{
-					updateProblemIndication();
-				}
-			});
+		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				updateProblemIndication();
+			}
+		});
 	}
 
 	/**
@@ -1428,13 +1245,10 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void hideTabs()
-	{
-		if (getPageCount() <= 1)
-		{
+	protected void hideTabs() {
+		if (getPageCount() <= 1) {
 			setPageText(0, ""); //$NON-NLS-1$
-			if (getContainer() instanceof CTabFolder)
-			{
+			if (getContainer() instanceof CTabFolder) {
 				((CTabFolder) getContainer()).setTabHeight(1);
 				final Point point = getContainer().getSize();
 				getContainer().setSize(point.x, point.y + 6);
@@ -1450,13 +1264,10 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void showTabs()
-	{
-		if (getPageCount() > 1)
-		{
+	protected void showTabs() {
+		if (getPageCount() > 1) {
 			setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
-			if (getContainer() instanceof CTabFolder)
-			{
+			if (getContainer() instanceof CTabFolder) {
 				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
 				final Point point = getContainer().getSize();
 				getContainer().setSize(point.x, point.y - 6);
@@ -1472,12 +1283,10 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	protected void pageChange(int pageIndex)
-	{
+	protected void pageChange(int pageIndex) {
 		super.pageChange(pageIndex);
 
-		if (contentOutlinePage != null)
-		{
+		if (contentOutlinePage != null) {
 			handleContentOutlineSelection(contentOutlinePage.getSelection());
 		}
 	}
@@ -1490,22 +1299,14 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class key)
-	{
-		if (key.equals(IContentOutlinePage.class))
-		{
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
+		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView() ? getContentOutlinePage() : null;
-		}
-		else if (key.equals(IPropertySheetPage.class))
-		{
+		} else if (key.equals(IPropertySheetPage.class)) {
 			return getPropertySheetPage();
-		}
-		else if (key.equals(IGotoMarker.class))
-		{
+		} else if (key.equals(IGotoMarker.class)) {
 			return this;
-		}
-		else
-		{
+		} else {
 			return super.getAdapter(key);
 		}
 	}
@@ -1517,17 +1318,13 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public IContentOutlinePage getContentOutlinePage()
-	{
-		if (contentOutlinePage == null)
-		{
+	public IContentOutlinePage getContentOutlinePage() {
+		if (contentOutlinePage == null) {
 			// The content outline is just a tree.
 			//
-			class MyContentOutlinePage extends ContentOutlinePage
-			{
+			class MyContentOutlinePage extends ContentOutlinePage {
 				@Override
-				public void createControl(Composite parent)
-				{
+				public void createControl(Composite parent) {
 					super.createControl(parent);
 					contentOutlineViewer = getTreeViewer();
 					contentOutlineViewer.addSelectionChangedListener(this);
@@ -1542,8 +1339,7 @@ public class ConfigEditor
 					//
 					createContextMenuFor(contentOutlineViewer);
 
-					if (!editingDomain.getResourceSet().getResources().isEmpty())
-					{
+					if (!editingDomain.getResourceSet().getResources().isEmpty()) {
 						// Select the root object in the view.
 						//
 						contentOutlineViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet()
@@ -1553,15 +1349,13 @@ public class ConfigEditor
 
 				@Override
 				public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager,
-					IStatusLineManager statusLineManager)
-				{
+					IStatusLineManager statusLineManager) {
 					super.makeContributions(menuManager, toolBarManager, statusLineManager);
 					contentOutlineStatusLineManager = statusLineManager;
 				}
 
 				@Override
-				public void setActionBars(IActionBars actionBars)
-				{
+				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this, actionBars);
 				}
@@ -1571,16 +1365,13 @@ public class ConfigEditor
 
 			// Listen to selection so that we can handle it is a special way.
 			//
-			contentOutlinePage.addSelectionChangedListener
-				(new ISelectionChangedListener()
-				{
-					// This ensures that we handle selections correctly.
-					//
-					public void selectionChanged(SelectionChangedEvent event)
-					{
-						handleContentOutlineSelection(event.getSelection());
-					}
-				});
+			contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
+				// This ensures that we handle selections correctly.
+				//
+				public void selectionChanged(SelectionChangedEvent event) {
+					handleContentOutlineSelection(event.getSelection());
+				}
+			});
 		}
 
 		return contentOutlinePage;
@@ -1593,25 +1384,20 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public IPropertySheetPage getPropertySheetPage()
-	{
-		final PropertySheetPage propertySheetPage =
-			new ExtendedPropertySheetPage(editingDomain)
-			{
-				@Override
-				public void setSelectionToViewer(List<?> selection)
-				{
-					ConfigEditor.this.setSelectionToViewer(selection);
-					ConfigEditor.this.setFocus();
-				}
+	public IPropertySheetPage getPropertySheetPage() {
+		final PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
+			@Override
+			public void setSelectionToViewer(List<?> selection) {
+				ConfigEditor.this.setSelectionToViewer(selection);
+				ConfigEditor.this.setFocus();
+			}
 
-				@Override
-				public void setActionBars(IActionBars actionBars)
-				{
-					super.setActionBars(actionBars);
-					getActionBarContributor().shareGlobalActions(this, actionBars);
-				}
-			};
+			@Override
+			public void setActionBars(IActionBars actionBars) {
+				super.setActionBars(actionBars);
+				getActionBarContributor().shareGlobalActions(this, actionBars);
+			}
+		};
 		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
 		propertySheetPages.add(propertySheetPage);
 
@@ -1625,38 +1411,30 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void handleContentOutlineSelection(ISelection selection)
-	{
-		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection)
-		{
+	public void handleContentOutlineSelection(ISelection selection) {
+		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
 			final Iterator<?> selectedElements = ((IStructuredSelection) selection).iterator();
-			if (selectedElements.hasNext())
-			{
+			if (selectedElements.hasNext()) {
 				// Get the first selected element.
 				//
 				final Object selectedElement = selectedElements.next();
 
 				// If it's the selection viewer, then we want it to select the same selection as this selection.
 				//
-				if (currentViewerPane.getViewer() == selectionViewer)
-				{
+				if (currentViewerPane.getViewer() == selectionViewer) {
 					final ArrayList<Object> selectionList = new ArrayList<Object>();
 					selectionList.add(selectedElement);
-					while (selectedElements.hasNext())
-					{
+					while (selectedElements.hasNext()) {
 						selectionList.add(selectedElements.next());
 					}
 
 					// Set the selection to the widget.
 					//
 					selectionViewer.setSelection(new StructuredSelection(selectionList));
-				}
-				else
-				{
+				} else {
 					// Set the input to the widget.
 					//
-					if (currentViewerPane.getViewer().getInput() != selectedElement)
-					{
+					if (currentViewerPane.getViewer().getInput() != selectedElement) {
 						currentViewerPane.getViewer().setInput(selectedElement);
 						currentViewerPane.setTitle(selectedElement);
 					}
@@ -1673,8 +1451,7 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public boolean isDirty()
-	{
+	public boolean isDirty() {
 		return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
 	}
 
@@ -1686,8 +1463,7 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public void doSave(IProgressMonitor progressMonitor)
-	{
+	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
@@ -1695,44 +1471,34 @@ public class ConfigEditor
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
-		final WorkspaceModifyOperation operation =
-			new WorkspaceModifyOperation()
-			{
-				// This is the method that gets invoked when the operation runs.
+		final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+			// This is the method that gets invoked when the operation runs.
+			//
+			@Override
+			public void execute(IProgressMonitor monitor) {
+				// Save the resources to the file system.
 				//
-				@Override
-				public void execute(IProgressMonitor monitor)
-				{
-					// Save the resources to the file system.
-					//
-					boolean first = true;
-					for (final Resource resource : editingDomain.getResourceSet().getResources())
-					{
-						if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
-							&& !editingDomain.isReadOnly(resource))
-						{
-							try
-							{
-								final long timeStamp = resource.getTimeStamp();
-								resource.save(saveOptions);
-								if (resource.getTimeStamp() != timeStamp)
-								{
-									savedResources.add(resource);
-								}
+				boolean first = true;
+				for (final Resource resource : editingDomain.getResourceSet().getResources()) {
+					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+						&& !editingDomain.isReadOnly(resource)) {
+						try {
+							final long timeStamp = resource.getTimeStamp();
+							resource.save(saveOptions);
+							if (resource.getTimeStamp() != timeStamp) {
+								savedResources.add(resource);
 							}
-							catch (final Exception exception)
-							{
-								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-							}
-							first = false;
+						} catch (final Exception exception) {
+							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 						}
+						first = false;
 					}
 				}
-			};
+			}
+		};
 
 		updateProblemIndication = false;
-		try
-		{
+		try {
 			// This runs the options, and shows progress.
 			//
 			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
@@ -1741,8 +1507,7 @@ public class ConfigEditor
 			//
 			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
 			firePropertyChange(IEditorPart.PROP_DIRTY);
-		} catch (final Exception exception)
-		{
+		} catch (final Exception exception) {
 			// Something went wrong that shouldn't.
 			//
 			ConfigEditorPlugin.INSTANCE.log(exception);
@@ -1759,20 +1524,16 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected boolean isPersisted(Resource resource)
-	{
+	protected boolean isPersisted(Resource resource) {
 		boolean result = false;
-		try
-		{
+		try {
 			final InputStream stream = editingDomain.getResourceSet().getURIConverter()
 				.createInputStream(resource.getURI());
-			if (stream != null)
-			{
+			if (stream != null) {
 				result = true;
 				stream.close();
 			}
-		} catch (final IOException e)
-		{
+		} catch (final IOException e) {
 			// Ignore
 		}
 		return result;
@@ -1786,8 +1547,7 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public boolean isSaveAsAllowed()
-	{
+	public boolean isSaveAsAllowed() {
 		return true;
 	}
 
@@ -1799,16 +1559,13 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public void doSaveAs()
-	{
+	public void doSaveAs() {
 		final SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
 		saveAsDialog.open();
 		final IPath path = saveAsDialog.getResult();
-		if (path != null)
-		{
+		if (path != null) {
 			final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-			if (file != null)
-			{
+			if (file != null) {
 				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));
 			}
 		}
@@ -1820,15 +1577,12 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected void doSaveAs(URI uri, IEditorInput editorInput)
-	{
+	protected void doSaveAs(URI uri, IEditorInput editorInput) {
 		editingDomain.getResourceSet().getResources().get(0).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
-		final IProgressMonitor progressMonitor =
-			getActionBars().getStatusLineManager() != null ?
-				getActionBars().getStatusLineManager().getProgressMonitor() :
-				new NullProgressMonitor();
+		final IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null
+			? getActionBars().getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
 
@@ -1838,11 +1592,9 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void gotoMarker(IMarker marker)
-	{
+	public void gotoMarker(IMarker marker) {
 		final List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
-		if (!targetObjects.isEmpty())
-		{
+		if (!targetObjects.isEmpty()) {
 			setSelectionToViewer(targetObjects);
 		}
 	}
@@ -1855,8 +1607,7 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public void init(IEditorSite site, IEditorInput editorInput)
-	{
+	public void init(IEditorSite site, IEditorInput editorInput) {
 		setSite(site);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
@@ -1873,14 +1624,10 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public void setFocus()
-	{
-		if (currentViewerPane != null)
-		{
+	public void setFocus() {
+		if (currentViewerPane != null) {
 			currentViewerPane.setFocus();
-		}
-		else
-		{
+		} else {
 			getControl(getActivePage()).setFocus();
 		}
 	}
@@ -1892,8 +1639,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void addSelectionChangedListener(ISelectionChangedListener listener)
-	{
+	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.add(listener);
 	}
 
@@ -1904,8 +1650,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void removeSelectionChangedListener(ISelectionChangedListener listener)
-	{
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.remove(listener);
 	}
 
@@ -1916,8 +1661,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public ISelection getSelection()
-	{
+	public ISelection getSelection() {
 		return editorSelection;
 	}
 
@@ -1929,12 +1673,10 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void setSelection(ISelection selection)
-	{
+	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 
-		for (final ISelectionChangedListener listener : selectionChangedListeners)
-		{
+		for (final ISelectionChangedListener listener : selectionChangedListeners) {
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
 		setStatusLineManager(selection);
@@ -1946,18 +1688,14 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void setStatusLineManager(ISelection selection)
-	{
-		final IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ?
-			contentOutlineStatusLineManager : getActionBars().getStatusLineManager();
+	public void setStatusLineManager(ISelection selection) {
+		final IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer
+			? contentOutlineStatusLineManager : getActionBars().getStatusLineManager();
 
-		if (statusLineManager != null)
-		{
-			if (selection instanceof IStructuredSelection)
-			{
+		if (statusLineManager != null) {
+			if (selection instanceof IStructuredSelection) {
 				final Collection<?> collection = ((IStructuredSelection) selection).toList();
-				switch (collection.size())
-				{
+				switch (collection.size()) {
 				case 0: {
 					statusLineManager.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
 					break;
@@ -1974,9 +1712,7 @@ public class ConfigEditor
 					break;
 				}
 				}
-			}
-			else
-			{
+			} else {
 				statusLineManager.setMessage(""); //$NON-NLS-1$
 			}
 		}
@@ -1989,8 +1725,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	private static String getString(String key)
-	{
+	private static String getString(String key) {
 		return ConfigEditorPlugin.INSTANCE.getString(key);
 	}
 
@@ -2001,8 +1736,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	private static String getString(String key, Object s1)
-	{
+	private static String getString(String key, Object s1) {
 		return ConfigEditorPlugin.INSTANCE.getString(key, new Object[] { s1 });
 	}
 
@@ -2014,8 +1748,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public void menuAboutToShow(IMenuManager menuManager)
-	{
+	public void menuAboutToShow(IMenuManager menuManager) {
 		((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
 	}
 
@@ -2025,8 +1758,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public EditingDomainActionBarContributor getActionBarContributor()
-	{
+	public EditingDomainActionBarContributor getActionBarContributor() {
 		return (EditingDomainActionBarContributor) getEditorSite().getActionBarContributor();
 	}
 
@@ -2036,8 +1768,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public IActionBars getActionBars()
-	{
+	public IActionBars getActionBars() {
 		return getActionBarContributor().getActionBars();
 	}
 
@@ -2047,8 +1778,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	public AdapterFactory getAdapterFactory()
-	{
+	public AdapterFactory getAdapterFactory() {
 		return adapterFactory;
 	}
 
@@ -2059,8 +1789,7 @@ public class ConfigEditor
 	 * @generated
 	 */
 	@Override
-	public void dispose()
-	{
+	public void dispose() {
 		updateProblemIndication = false;
 
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
@@ -2069,18 +1798,15 @@ public class ConfigEditor
 
 		adapterFactory.dispose();
 
-		if (getActionBarContributor().getActiveEditor() == this)
-		{
+		if (getActionBarContributor().getActiveEditor() == this) {
 			getActionBarContributor().setActiveEditor(null);
 		}
 
-		for (final PropertySheetPage propertySheetPage : propertySheetPages)
-		{
+		for (final PropertySheetPage propertySheetPage : propertySheetPages) {
 			propertySheetPage.dispose();
 		}
 
-		if (contentOutlinePage != null)
-		{
+		if (contentOutlinePage != null) {
 			contentOutlinePage.dispose();
 		}
 
@@ -2094,8 +1820,7 @@ public class ConfigEditor
 	 *
 	 * @generated
 	 */
-	protected boolean showOutlineView()
-	{
+	protected boolean showOutlineView() {
 		return true;
 	}
 }

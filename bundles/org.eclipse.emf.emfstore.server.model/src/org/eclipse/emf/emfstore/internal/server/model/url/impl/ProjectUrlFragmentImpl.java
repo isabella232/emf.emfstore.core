@@ -25,12 +25,12 @@ import org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ProjectUrlFragmentImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ProjectUrlFragmentImpl#getProjectId <em>Project Id
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ProjectUrlFragmentImpl#getProjectId
+ * <em>Project Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

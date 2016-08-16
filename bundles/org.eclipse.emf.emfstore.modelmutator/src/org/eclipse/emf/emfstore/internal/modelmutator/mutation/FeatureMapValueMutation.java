@@ -122,7 +122,7 @@ public class FeatureMapValueMutation extends StructuralFeatureMutation<ESFeature
 				final FeatureMapEntryImpl featureMapEntry = FeatureMapEntryImpl.class.cast(entry);
 				featureMapEntry.setReferenceValue(
 					createOfType(
-					EReference.class.cast(featureMapEntry.getEStructuralFeature()).getEReferenceType()));
+						EReference.class.cast(featureMapEntry.getEStructuralFeature()).getEReferenceType()));
 			}
 		} else if (ContainmentUpdatingFeatureMapEntry.class.isInstance(entry)) {
 			// TODO

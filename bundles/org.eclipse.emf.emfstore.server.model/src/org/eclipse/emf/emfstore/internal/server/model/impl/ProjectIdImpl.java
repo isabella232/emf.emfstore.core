@@ -18,8 +18,6 @@ import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectId
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Project Id</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

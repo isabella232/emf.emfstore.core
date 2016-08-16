@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Game#getMatchup <em>Matchup</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Game#getPlayer <em>Player</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Game#getFrames <em>Frames</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getGame()
  * @model
@@ -42,7 +42,7 @@ public interface Game extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Matchup</em>' container reference.
 	 * @see #setMatchup(Matchup)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getGame_Matchup()
@@ -57,7 +57,7 @@ public interface Game extends EObject {
 	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Matchup</em>' container reference.
 	 * @see #getMatchup()
 	 * @generated
@@ -72,7 +72,7 @@ public interface Game extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Player</em>' reference.
 	 * @see #setPlayer(Player)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getGame_Player()
@@ -85,7 +85,7 @@ public interface Game extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Game#getPlayer <em>Player</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Player</em>' reference.
 	 * @see #getPlayer()
 	 * @generated
@@ -101,7 +101,7 @@ public interface Game extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Frames</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getGame_Frames()
 	 * @model unique="false" upper="10"

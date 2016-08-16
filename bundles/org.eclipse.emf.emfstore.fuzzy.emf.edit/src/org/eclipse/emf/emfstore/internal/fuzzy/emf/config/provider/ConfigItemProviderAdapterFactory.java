@@ -37,17 +37,16 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.util.ConfigAdapterFact
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable
-{
+	IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
@@ -56,7 +55,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -65,7 +64,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -74,11 +73,10 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public ConfigItemProviderAdapterFactory()
-	{
+	public ConfigItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -91,7 +89,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected TestConfigItemProvider testConfigItemProvider;
@@ -100,14 +98,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestConfigAdapter()
-	{
-		if (testConfigItemProvider == null)
-		{
+	public Adapter createTestConfigAdapter() {
+		if (testConfigItemProvider == null) {
 			testConfigItemProvider = new TestConfigItemProvider(this);
 		}
 
@@ -119,7 +115,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected TestRunItemProvider testRunItemProvider;
@@ -128,14 +124,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestRunAdapter()
-	{
-		if (testRunItemProvider == null)
-		{
+	public Adapter createTestRunAdapter() {
+		if (testRunItemProvider == null) {
 			testRunItemProvider = new TestRunItemProvider(this);
 		}
 
@@ -147,7 +141,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected TestResultItemProvider testResultItemProvider;
@@ -156,14 +150,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestResultAdapter()
-	{
-		if (testResultItemProvider == null)
-		{
+	public Adapter createTestResultAdapter() {
+		if (testResultItemProvider == null) {
 			testResultItemProvider = new TestResultItemProvider(this);
 		}
 
@@ -175,7 +167,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected TestDiffItemProvider testDiffItemProvider;
@@ -184,14 +176,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestDiffAdapter()
-	{
-		if (testDiffItemProvider == null)
-		{
+	public Adapter createTestDiffAdapter() {
+		if (testDiffItemProvider == null) {
 			testDiffItemProvider = new TestDiffItemProvider(this);
 		}
 
@@ -203,7 +193,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.DiffReport} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DiffReportItemProvider diffReportItemProvider;
@@ -212,14 +202,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.DiffReport}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createDiffReportAdapter()
-	{
-		if (diffReportItemProvider == null)
-		{
+	public Adapter createDiffReportAdapter() {
+		if (diffReportItemProvider == null) {
 			diffReportItemProvider = new DiffReportItemProvider(this);
 		}
 
@@ -231,7 +219,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected RootItemProvider rootItemProvider;
@@ -240,14 +228,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.Root}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createRootAdapter()
-	{
-		if (rootItemProvider == null)
-		{
+	public Adapter createRootAdapter() {
+		if (rootItemProvider == null) {
 			rootItemProvider = new RootItemProvider(this);
 		}
 
@@ -259,7 +245,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MutatorConfigItemProvider mutatorConfigItemProvider;
@@ -268,14 +254,12 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter createMutatorConfigAdapter()
-	{
-		if (mutatorConfigItemProvider == null)
-		{
+	public Adapter createMutatorConfigAdapter() {
+		if (mutatorConfigItemProvider == null) {
 			mutatorConfigItemProvider = new MutatorConfigItemProvider(this);
 		}
 
@@ -286,11 +270,10 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public ComposeableAdapterFactory getRootAdapterFactory()
-	{
+	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
@@ -298,23 +281,21 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
-	{
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public boolean isFactoryForType(Object type)
-	{
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
@@ -322,29 +303,25 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Adapter adapt(Notifier notifier, Object type)
-	{
+	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Object adapt(Object object, Object type)
-	{
-		if (isFactoryForType(type))
-		{
-			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+	public Object adapt(Object object, Object type) {
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -356,11 +333,10 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public void addListener(INotifyChangedListener notifyChangedListener)
-	{
+	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
@@ -368,11 +344,10 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener)
-	{
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
@@ -380,15 +355,13 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public void fireNotifyChanged(Notification notification)
-	{
+	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}
@@ -397,32 +370,24 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * This disposes all of the item providers created by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public void dispose()
-	{
-		if (testConfigItemProvider != null) {
+	public void dispose() {
+		if (testConfigItemProvider != null)
 			testConfigItemProvider.dispose();
-		}
-		if (testRunItemProvider != null) {
+		if (testRunItemProvider != null)
 			testRunItemProvider.dispose();
-		}
-		if (testResultItemProvider != null) {
+		if (testResultItemProvider != null)
 			testResultItemProvider.dispose();
-		}
-		if (testDiffItemProvider != null) {
+		if (testDiffItemProvider != null)
 			testDiffItemProvider.dispose();
-		}
-		if (diffReportItemProvider != null) {
+		if (diffReportItemProvider != null)
 			diffReportItemProvider.dispose();
-		}
-		if (rootItemProvider != null) {
+		if (rootItemProvider != null)
 			rootItemProvider.dispose();
-		}
-		if (mutatorConfigItemProvider != null) {
+		if (mutatorConfigItemProvider != null)
 			mutatorConfigItemProvider.dispose();
-		}
 	}
 
 }

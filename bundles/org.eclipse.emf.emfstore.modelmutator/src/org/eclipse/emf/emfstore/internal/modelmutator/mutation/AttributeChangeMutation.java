@@ -126,16 +126,15 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 		final EAttribute eAttribute = (EAttribute) getTargetContainerSelector().getTargetFeature();
 
 		Object newValue = createNewValue(eAttribute);
-		if (newValue != null && eAttribute.isID() && !getUtil().getModelMutatorConfiguration().isAllowDuplicateIDs())
-		{
+		if (newValue != null && eAttribute.isID() && !getUtil().getModelMutatorConfiguration().isAllowDuplicateIDs()) {
 			while (!getUtil().isUniqueID(newValue)) {
 				newValue = createNewValue(eAttribute);
 			}
 			getUtil().registerID(newValue);
 		}
 		if (eAttribute.isMany()) {
-			final int insertionIndex = getTargetContainerSelector().
-				getRandomIndexFromTargetObjectAndFeatureValueRange();
+			final int insertionIndex = getTargetContainerSelector()
+				.getRandomIndexFromTargetObjectAndFeatureValueRange();
 			getUtil().setPerCommand(eObject, eAttribute, newValue, insertionIndex);
 		} else {
 			getUtil().setPerCommand(eObject, eAttribute, newValue);
@@ -151,8 +150,7 @@ public class AttributeChangeMutation extends StructuralFeatureMutation<ESAttribu
 
 		if (eAttribute.isMany()) {
 			final List<?> currentValues = (List<?>) eObject.eGet(eAttribute);
-			final int deletionIndex = getTargetContainerSelector().
-				getRandomIndexFromTargetObjectAndFeatureValueRange();
+			final int deletionIndex = getTargetContainerSelector().getRandomIndexFromTargetObjectAndFeatureValueRange();
 			currentValues.remove(deletionIndex);
 			getUtil().setPerCommand(eObject, eAttribute, currentValues);
 		} else {

@@ -19,12 +19,12 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment#getModelElementId <em>Model
- * Element Id</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ModelElementUrlFragment#getModelElementId
+ * <em>Model Element Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getModelElementUrlFragment()
  * @model

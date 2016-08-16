@@ -33,8 +33,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  *
  * @generated
  */
-public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -70,12 +70,12 @@ public class EObjectToModelElementIdMapItemProvider extends ItemProviderAdapter 
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EObjectToModelElementIdMap_key_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_EObjectToModelElementIdMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_EObjectToModelElementIdMap_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP__KEY, true, false, true, null, null, null));
 	}
 
 	/**

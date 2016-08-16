@@ -74,7 +74,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public AdminEmfStoreImpl(ServerSpace serverSpace,
 		AccessControl accessControl)
-			throws FatalESException {
+		throws FatalESException {
 		super(serverSpace, accessControl);
 	}
 
@@ -541,7 +541,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			if (!isServerAdmin && role.canAdministrate(resolvedProjectId)) {
 				throw new AccessControlException(
 					Messages.AdminEmfStoreImpl_RemovePA_Violation_1
-					+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
+						+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
 			}
 
 			role.getProjects().remove(resolvedProjectId);

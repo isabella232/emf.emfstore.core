@@ -27,6 +27,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.EObjectToModelElementIdMapImpl#getTypedKey
@@ -35,7 +36,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.EObjectToModelElementIdMapImpl#getTypedValue
  * <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

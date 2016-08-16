@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Area#getAreas <em>Areas</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Area#getTournaments <em>Tournaments</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getArea()
  * @model
@@ -40,7 +40,7 @@ public interface Area extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Areas</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getArea_Areas()
 	 * @model containment="true" resolveProxies="true"
@@ -57,7 +57,7 @@ public interface Area extends EObject {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Tournaments</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getArea_Tournaments()
 	 * @model containment="true" resolveProxies="true"

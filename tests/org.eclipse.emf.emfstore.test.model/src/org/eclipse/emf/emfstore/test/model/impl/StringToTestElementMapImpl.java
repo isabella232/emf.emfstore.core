@@ -28,11 +28,11 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.StringToTestElementMapImpl#getTypedValue <em>Value</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.StringToTestElementMapImpl#getTypedKey <em>Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -98,12 +98,10 @@ public class StringToTestElementMapImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 */
 	public TestElement getTypedValue() {
-		if (value != null && value.eIsProxy())
-		{
+		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject) value;
 			value = (TestElement) eResolveProxy(oldValue);
-			if (value != oldValue)
-			{
+			if (value != oldValue) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP__VALUE, oldValue, value));
@@ -168,8 +166,7 @@ public class StringToTestElementMapImpl extends EObjectImpl implements BasicEMap
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP__VALUE:
 			if (resolve)
 				return getTypedValue();
@@ -188,8 +185,7 @@ public class StringToTestElementMapImpl extends EObjectImpl implements BasicEMap
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP__VALUE:
 			setTypedValue((TestElement) newValue);
 			return;
@@ -208,8 +204,7 @@ public class StringToTestElementMapImpl extends EObjectImpl implements BasicEMap
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP__VALUE:
 			setTypedValue((TestElement) null);
 			return;
@@ -228,8 +223,7 @@ public class StringToTestElementMapImpl extends EObjectImpl implements BasicEMap
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP__VALUE:
 			return value != null;
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP__KEY:
@@ -271,8 +265,7 @@ public class StringToTestElementMapImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 */
 	public int getHash() {
-		if (hash == -1)
-		{
+		if (hash == -1) {
 			Object theKey = getKey();
 			hash = (theKey == null ? 0 : theKey.hashCode());
 		}

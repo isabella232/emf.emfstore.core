@@ -41,7 +41,6 @@ import org.junit.Test;
  * @author Dmitry Litvinov
  */
 public class PerformanceTest extends ESTestWithLoggedInUserMock {
-	
 
 	private static final int PROJECTSIZE = 10000;
 	private static final int NR_OF_CHANGES = 100;
@@ -107,9 +106,9 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 			memoryMeter.startMeasurements();
 			memBefore[i] = usedMemory();
 			long time = System.currentTimeMillis();
-			
+
 			ProjectUtil.share(getUsersession(), getLocalProject());
-			
+
 			times[i] = (System.currentTimeMillis() - time) / 1000.0;
 
 			memAfter[i] = usedMemory();
@@ -144,7 +143,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 	public void testCheckoutProject() throws ESException {
 
 		ProjectUtil.share(getUsersession(), getLocalProject());
-		
+
 		long memAfterThreshold = 0;
 		for (int i = 0; i < NUM_ITERATIONS; i++) {
 			memoryMeter.startMeasurements();
@@ -183,9 +182,9 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 	public void testCommitAndUpdateProject() throws ESException {
 
 		getLocalProject().shareProject(nullMonitor());
-	
+
 		final ESLocalProject checkout = ProjectUtil.checkout(getLocalProject());
-		
+
 		double[] modelChangeTimes = new double[NUM_ITERATIONS];
 		double[] commitTimes = new double[NUM_ITERATIONS];
 		double[] updateTimes = new double[NUM_ITERATIONS];
@@ -209,7 +208,8 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 			memAfterMut[i] = usedMemory();
 			ModelUtil.logInfo("change model-  iteration #" + (i + 1) + ": time=" + modelChangeTimes[i]
 				+ " memory used before:" + memBeforeMut[i] / 1024 / 1024 + "MB, during: " + memDuringMut[i] / 1024
-				/ 1024 + "MB, after: " + memAfterMut[i] / 1024 / 1024 + "MB");
+					/ 1024
+				+ "MB, after: " + memAfterMut[i] / 1024 / 1024 + "MB");
 
 			System.out.println("VERSION BEFORE commit:" + getLocalProject().getBaseVersion().getIdentifier());
 			time = System.currentTimeMillis();
@@ -223,7 +223,8 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 			memAfterCommit[i] = usedMemory();
 			ModelUtil.logInfo("commit project - iteration #" + (i + 1) + ": time=" + commitTimes[i]
 				+ ", memory used before: " + memAfterMut[i] / 1024 / 1024 + "MB, during: " + memDuringCommit[i] / 1024
-				/ 1024 + "MB, after: " + memAfterCommit[i] / 1024 / 1024 + "MB");
+					/ 1024
+				+ "MB, after: " + memAfterCommit[i] / 1024 / 1024 + "MB");
 			if (i > 0 && memAfter[i] > memAfterThreshold * ACCEPTED_VARIANCE) {
 				fail();
 			}
@@ -242,7 +243,8 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 			memAfterUpdate[i] = usedMemory();
 			ModelUtil.logInfo("update project - iteration #" + (i + 1) + ": time=" + updateTimes[i]
 				+ ", memory used before: " + memAfterCommit[i] / 1024 / 1024 + "MB, during: " + memDuringUpdate[i]
-					/ 1024 / 1024 + "MB, after: " + memAfterUpdate[i] / 1024 / 1024 + "MB");
+					/ 1024 / 1024
+				+ "MB, after: " + memAfterUpdate[i] / 1024 / 1024 + "MB");
 
 			if (i > 0 && memAfter[i] > memAfterThreshold * ACCEPTED_VARIANCE) {
 				fail();
@@ -270,17 +272,17 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		Runtime.getRuntime().gc();
 		return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 	}
-	
+
 	private static IProgressMonitor nullMonitor() {
 		return new NullProgressMonitor();
 	}
-	
+
 	public void generateModels(final ProjectSpace projectSpace, int numberOfModleElements) {
 		lastSeed = lastSeed == seed ? seed + 1 : seed;
 		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
-				ESModelMutatorUtil.getEPackage(MODEL_KEY),
-				projectSpace.getProject(), lastSeed);
-		
+			ESModelMutatorUtil.getEPackage(MODEL_KEY),
+			projectSpace.getProject(), lastSeed);
+
 		mmc.setMaxDeleteCount(1);
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(numberOfModleElements);
@@ -288,22 +290,22 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
 		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_CutElements());
 		mmc.seteStructuralFeaturesToIgnore(features);
-		
+
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
 				ESDefaultModelMutator.generateModel(mmc);
 			}
 		});
-		
-//		System.out.println("Number of changes: " + projectSpace.getOperations().size());
+
+		// System.out.println("Number of changes: " + projectSpace.getOperations().size());
 	}
 
 	public void changeModel(final ProjectSpace prjSpace, final int nrOfChanges) {
 		lastSeed = lastSeed == seed ? seed + 1 : seed;
 		final ESModelMutatorConfiguration mmc = new ESModelMutatorConfiguration(
-						ESModelMutatorUtil.getEPackage(MODEL_KEY),
-						prjSpace.getProject(), lastSeed);
+			ESModelMutatorUtil.getEPackage(MODEL_KEY),
+			prjSpace.getProject(), lastSeed);
 		mmc.setMaxDeleteCount(1);
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(1);
@@ -314,9 +316,9 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		List<EPackage> packages = new ArrayList<EPackage>();
 		packages.add(BowlingPackage.eINSTANCE);
 		mmc.setModelPackages(packages);
-		
+
 		long time = System.currentTimeMillis();
-		RunESCommand.run(new ESVoidCallable() {			
+		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {
 				mmc.setMinObjectsCount(nrOfChanges);
@@ -324,6 +326,6 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 			}
 		});
 		System.out.println("Changed model: " + (System.currentTimeMillis() - time) / 1000.0 + "sec");
-//		System.out.println("Number of changes: " + prjSpace.getOperations().size());
+		// System.out.println("Number of changes: " + prjSpace.getOperations().size());
 	}
 }

@@ -71,7 +71,8 @@ public class UIUndoLastOperationControllerTest extends AbstractUIControllerTest 
 			public void run() {
 				final UIUndoLastOperationController undoLastOperationController = new UIUndoLastOperationController(
 					getBot()
-						.getDisplay().getActiveShell(), getLocalProject());
+						.getDisplay().getActiveShell(),
+					getLocalProject());
 				undoLastOperationController.execute();
 			}
 		});

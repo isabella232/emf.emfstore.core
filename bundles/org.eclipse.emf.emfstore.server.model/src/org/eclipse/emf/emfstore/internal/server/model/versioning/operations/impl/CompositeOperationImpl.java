@@ -37,6 +37,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CompositeOperationImpl#getSubOperations
@@ -54,7 +55,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Oper
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CompositeOperationImpl#isReversed
  * <em>Reversed</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

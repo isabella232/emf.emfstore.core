@@ -57,8 +57,7 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -79,9 +78,8 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerInfo_name_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_name_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -102,9 +100,8 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addUrlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerInfo_url_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_url_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -125,9 +122,8 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * @generated
 	 */
 	protected void addPortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerInfo_port_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_port_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -144,13 +140,12 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 * This adds a property descriptor for the Path feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	protected void addPathPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerInfo_path_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_path_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -171,13 +166,11 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	protected void addLastUsersessionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerInfo_lastUsersession_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ServerInfo_lastUsersession_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_lastUsersession_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ServerInfo_type"), //$NON-NLS-1$
 				ModelPackage.Literals.SERVER_INFO__LAST_USERSESSION,
 				true,
 				false,
@@ -195,13 +188,11 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	protected void addCertificateAliasPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ServerInfo_certificateAlias_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ServerInfo_certificateAlias_feature", "_UI_ServerInfo_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_ServerInfo_certificateAlias_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_ServerInfo_type"), //$NON-NLS-1$
 				ModelPackage.Literals.SERVER_INFO__CERTIFICATE_ALIAS,
 				true,
 				false,
@@ -221,8 +212,7 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.SERVER_INFO__PROJECT_INFOS);
 		}
@@ -263,8 +253,7 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	@Override
 	public String getText(Object object) {
 		final String label = ((ServerInfo) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ServerInfo_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_ServerInfo_type") : //$NON-NLS-1$
 			getString("_UI_ServerInfo_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -280,8 +269,7 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ServerInfo.class))
-		{
+		switch (notification.getFeatureID(ServerInfo.class)) {
 		case ModelPackage.SERVER_INFO__NAME:
 		case ModelPackage.SERVER_INFO__URL:
 		case ModelPackage.SERVER_INFO__PORT:
@@ -307,10 +295,8 @@ public class ServerInfoItemProvider extends ItemProviderAdapter implements IEdit
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.SERVER_INFO__PROJECT_INFOS,
-				ModelFactory.eINSTANCE.createProjectInfo()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.SERVER_INFO__PROJECT_INFOS,
+			ModelFactory.eINSTANCE.createProjectInfo()));
 	}
 
 	/**

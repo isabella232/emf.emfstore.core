@@ -21,22 +21,21 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getMapContainment <em>Map Containment
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getFirstKeyContainment <em>First Key
- * Containment</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getSecondKeyContainment <em>Second Key
- * Containment</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getMapContainment
+ * <em>Map Containment</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getFirstKeyContainment
+ * <em>First Key Containment</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getSecondKeyContainment
+ * <em>Second Key Containment</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapContainment()
  * @model
  * @generated
  */
-public interface TypeWithFeatureMapContainment extends TestType
-{
+public interface TypeWithFeatureMapContainment extends TestType {
 	/**
 	 * Returns the value of the '<em><b>Map Containment</b></em>' attribute list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.

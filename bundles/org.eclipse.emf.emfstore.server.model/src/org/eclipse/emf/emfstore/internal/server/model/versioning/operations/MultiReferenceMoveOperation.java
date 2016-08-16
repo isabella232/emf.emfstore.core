@@ -18,6 +18,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceMoveOperation#getOldIndex
@@ -29,7 +30,6 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceMoveOperation#getReferencedModelElementId
  * <em>Referenced Model Element Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceMoveOperation()
  * @model

@@ -122,8 +122,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		checkAndRemoveDuplicateOperations(incomingChanges);
 
 		AbstractChangePackage copiedLocalChangedPackage = ChangePackageUtil.createChangePackage(
-			Configuration.getClientBehavior().useInMemoryChangePackage()
-			);
+			Configuration.getClientBehavior().useInMemoryChangePackage());
 		final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
 			.operations();
 		try {
@@ -163,12 +162,12 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		}
 
 		ESWorkspaceProviderImpl
-		.getObserverBus()
-		.notify(ESUpdateObserver.class, true)
-		.inspectChanges(
-			getProjectSpace().toAPI(),
-			incomingAPIChangePackages,
-			getProgressMonitor());
+			.getObserverBus()
+			.notify(ESUpdateObserver.class, true)
+			.inspectChanges(
+				getProjectSpace().toAPI(),
+				incomingAPIChangePackages,
+				getProgressMonitor());
 
 		if (!getProjectSpace().getLocalChangePackage().isEmpty()) {
 			final ChangeConflictSet changeConflictSet = calcConflicts(copiedLocalChangedPackage, incomingChanges,
@@ -216,7 +215,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		return resolvedVersion.compareTo(getProjectSpace().getBaseVersion()) == 0;
 	}
 
-	private List<AbstractChangePackage> getIncomingChanges(final PrimaryVersionSpec resolvedVersion) throws ESException {
+	private List<AbstractChangePackage> getIncomingChanges(final PrimaryVersionSpec resolvedVersion)
+		throws ESException {
 		final List<AbstractChangePackage> changePackages = new UnknownEMFStoreWorkloadCommand<List<AbstractChangePackage>>(
 			getProgressMonitor()) {
 			@Override
@@ -250,7 +250,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		ModelUtil.logError(MessageFormat
 			.format(
 				Messages.UpdateController_ChangePackagesRemoved
-				+ Messages.UpdateController_PullingUpBaseVersion,
+					+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 		getProjectSpace().save();
 	}
@@ -289,7 +289,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	 * @param localChanges local change package
 	 * @return <code>true</code> when all change packages have been consumed
 	 */
-	public boolean removeDuplicateOperations(AbstractChangePackage incomingChanges, AbstractChangePackage localChanges) {
+	public boolean removeDuplicateOperations(AbstractChangePackage incomingChanges,
+		AbstractChangePackage localChanges) {
 
 		// TODO: cleanup this mess, ensure compatibility with in-memory change package
 		if (localChanges.size() == 0) {
@@ -297,8 +298,7 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		}
 
 		final AbstractChangePackage tempChangePackage = ChangePackageUtil.createChangePackage(
-			Configuration.getClientBehavior().useInMemoryChangePackage()
-			);
+			Configuration.getClientBehavior().useInMemoryChangePackage());
 		final ESCloseableIterable<AbstractOperation> localOperations = localChanges.operations();
 		final ESCloseableIterable<AbstractOperation> incomingOps = incomingChanges.operations();
 		final int incomingOpsSize = incomingChanges.size();

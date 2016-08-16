@@ -39,8 +39,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class ChangePackageEnvelopeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ChangePackageEnvelopeItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -80,12 +80,10 @@ public class ChangePackageEnvelopeItemProvider extends ItemProviderAdapter imple
 	 */
 	protected void addFragmentIndexPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ChangePackageEnvelope_fragmentIndex_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ChangePackageEnvelope_fragmentIndex_feature", "_UI_ChangePackageEnvelope_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ChangePackageEnvelope_fragmentIndex_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ChangePackageEnvelope_fragmentIndex_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ChangePackageEnvelope_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT_INDEX, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
@@ -99,12 +97,10 @@ public class ChangePackageEnvelopeItemProvider extends ItemProviderAdapter imple
 	 */
 	protected void addFragmentCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ChangePackageEnvelope_fragmentCount_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ChangePackageEnvelope_fragmentCount_feature", "_UI_ChangePackageEnvelope_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ChangePackageEnvelope_fragmentCount_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ChangePackageEnvelope_fragmentCount_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ChangePackageEnvelope_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.CHANGE_PACKAGE_ENVELOPE__FRAGMENT_COUNT, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}

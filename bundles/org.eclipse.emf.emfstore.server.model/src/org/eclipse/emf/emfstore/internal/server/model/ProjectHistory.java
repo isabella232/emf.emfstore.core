@@ -26,26 +26,21 @@ import org.eclipse.emf.emfstore.server.model.ESProjectHistory;
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectId
- *          <em>Project Id</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getVersions
- *          <em>Versions</em>}</li>
- *          <li>
- *          {@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectName
- *          <em>Project Name</em>}</li>
- *          <li>
- *          {@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectDescription
- *          <em>Project Description</em>}</li>
- *          <li>
- *          {@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getSharedProperties
- *          <em>Shared Properties</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getBranches
- *          <em>Branches</em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectId <em>Project Id</em>}
+ *          </li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getVersions <em>Versions</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectName
+ *          <em>Project Name</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectDescription
+ *          <em>Project Description</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getSharedProperties
+ *          <em>Shared Properties</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getBranches <em>Branches</em>}</li>
+ *          </ul>
  *
- * @see ModelPackage#getProjectHistory()
+ * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectHistory()
  * @model
  * @generated
  */
@@ -152,8 +147,7 @@ public interface ProjectHistory extends EObject, APIDelegate<ESProjectHistory> {
 	String getProjectDescription();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectDescription
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.ProjectHistory#getProjectDescription
 	 * <em>Project Description</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->

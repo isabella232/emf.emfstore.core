@@ -141,14 +141,15 @@ public class SWTPlotRenderer extends AbstractPlotRenderer {
 		// try {
 		// commit.parseBody();
 		// } catch (IOException e) {
-		//			Activator.error("Error parsing body", e); //$NON-NLS-1$
+		// Activator.error("Error parsing body", e); //$NON-NLS-1$
 		// return;
 		// }
 		paintCommit(representer, event.height);
 	}
 
 	@Override
-	protected void drawLine(final Color color, final int x1, final int y1, final int x2, final int y2, final int width) {
+	protected void drawLine(final Color color, final int x1, final int y1, final int x2, final int y2,
+		final int width) {
 		g.setForeground(color);
 		g.setLineWidth(width);
 		g.drawLine(cellX + x1, cellY + y1, cellX + x2, cellY + y2);

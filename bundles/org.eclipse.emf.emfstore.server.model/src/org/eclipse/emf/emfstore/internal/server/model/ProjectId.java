@@ -17,7 +17,7 @@ import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectId
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Project Id</b></em>'.
  *
- * @extends APIDelegate<ESGlobalProjectId><!-- end-user-doc -->
+ * @extends APIDelegate<ESGlobalProjectIdImpl><!-- end-user-doc -->
  *
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getProjectId()

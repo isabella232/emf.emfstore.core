@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getStrings <em>Strings</em>}</li>
@@ -44,17 +45,16 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_MToN <em>Non Contained MTo N</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements2 <em>Contained Elements2</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getContainer2 <em>Container2</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements_NoOpposite <em>Contained Elements No
- * Opposite</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElement_NoOpposite <em>Contained Element No
- * Opposite</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements_NoOpposite
+ * <em>Contained Elements No Opposite</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElement_NoOpposite
+ * <em>Contained Element No Opposite</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapReferences1 <em>Feature Map References1</em>}
  * </li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapReferences2 <em>Feature Map References2</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement()
  * @model
@@ -250,8 +250,8 @@ public interface TestElement extends EObject {
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.emfstore.test.model.TestElement#getDescription
-	 * <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.test.model.TestElement#getDescription <em>Description</em>
+	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 

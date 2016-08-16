@@ -86,7 +86,7 @@ public class AccesscontrolAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseACOrgUnit(@SuppressWarnings("rawtypes") ACOrgUnit object) {
+		public Adapter caseACOrgUnit(ACOrgUnit object) {
 			return createACOrgUnitAdapter();
 		}
 

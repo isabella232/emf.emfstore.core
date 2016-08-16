@@ -162,7 +162,8 @@ public class FileTransferManager {
 							Messages.FileTransferManager_FileNoInCache_1
 								+ Messages.FileTransferManager_FileNoInCache_2
 								+ Messages.FileTransferManager_FileNoInCache_3,
-							fi.getIdentifier()), null);
+							fi.getIdentifier()),
+						null);
 					// Remove from commit queue
 					new EMFStoreCommand() {
 						@Override

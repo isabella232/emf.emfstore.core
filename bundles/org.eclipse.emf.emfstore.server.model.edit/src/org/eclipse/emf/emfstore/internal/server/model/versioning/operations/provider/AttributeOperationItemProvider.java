@@ -65,14 +65,13 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_AttributeOperation_oldValue_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_AttributeOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_AttributeOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.ATTRIBUTE_OPERATION__OLD_VALUE, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_AttributeOperation_oldValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AttributeOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_AttributeOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.ATTRIBUTE_OPERATION__OLD_VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -82,14 +81,13 @@ public class AttributeOperationItemProvider extends FeatureOperationItemProvider
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_AttributeOperation_newValue_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_AttributeOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_AttributeOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.ATTRIBUTE_OPERATION__NEW_VALUE, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_AttributeOperation_newValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AttributeOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_AttributeOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.ATTRIBUTE_OPERATION__NEW_VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	// begin of custom code

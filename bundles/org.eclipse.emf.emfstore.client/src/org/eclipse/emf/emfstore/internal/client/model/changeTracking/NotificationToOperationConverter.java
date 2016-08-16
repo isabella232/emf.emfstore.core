@@ -409,7 +409,8 @@ public final class NotificationToOperationConverter {
 		operation.setModelElementId(id);
 	}
 
-	private static void setBidirectionalAndContainmentInfo(ReferenceOperation referenceOperation, EReference reference) {
+	private static void setBidirectionalAndContainmentInfo(ReferenceOperation referenceOperation,
+		EReference reference) {
 		if (reference.getEOpposite() != null) {
 			referenceOperation.setBidirectional(true);
 			referenceOperation.setOppositeFeatureName(reference.getEOpposite().getName());

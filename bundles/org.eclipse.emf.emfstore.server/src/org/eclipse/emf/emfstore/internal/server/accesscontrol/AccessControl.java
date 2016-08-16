@@ -158,7 +158,7 @@ public class AccessControl {
 					MessageFormat.format(
 						Messages.AccessControl_MultipleExtensionsDiscovered,
 						ACCESSCONTROL_EXTENSION_ID + "." + ORG_UNIT_RESOLVER_SERVICE_CLASS //$NON-NLS-1$
-				));
+					));
 			}
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom org unit resolver class not be initialized"; //$NON-NLS-1$

@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.server.model.ESGroup;
  *
  * @generated
  */
-public class ACGroupImpl extends ACOrgUnitImpl<ESGroup>implements ACGroup {
+public class ACGroupImpl extends ACOrgUnitImpl<ESGroup> implements ACGroup {
 
 	/**
 	 * @generated NOT

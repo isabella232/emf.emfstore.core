@@ -19,17 +19,19 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getAttachmentId <em>Attachment Id</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileVersion <em>File Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getChunkNumber <em>Chunk Number</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileVersion <em>File Version</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getChunkNumber <em>Chunk Number</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#isUpload <em>Upload</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileName <em>File Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getPreliminaryFileName <em>Preliminary
- * File Name</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getPreliminaryFileName
+ * <em>Preliminary File Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer()
  * @model
@@ -44,7 +46,7 @@ public interface PendingFileTransfer extends EObject {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Attachment Id</em>' containment reference.
 	 * @see #setAttachmentId(ModelElementId)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer_AttachmentId()
@@ -58,7 +60,7 @@ public interface PendingFileTransfer extends EObject {
 	 * <em>Attachment Id</em>}' containment reference.
 	 * <!-- begin-user-doc --> A null value indicates that the transfer
 	 * is to be cancelled. <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Attachment Id</em>' containment reference.
 	 * @see #getAttachmentId()
 	 * @generated
@@ -73,7 +75,7 @@ public interface PendingFileTransfer extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>File Version</em>' attribute.
 	 * @see #setFileVersion(int)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer_FileVersion()
@@ -86,7 +88,7 @@ public interface PendingFileTransfer extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileVersion
 	 * <em>File Version</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>File Version</em>' attribute.
 	 * @see #getFileVersion()
 	 * @generated
@@ -101,7 +103,7 @@ public interface PendingFileTransfer extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Chunk Number</em>' attribute.
 	 * @see #setChunkNumber(int)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer_ChunkNumber()
@@ -114,7 +116,7 @@ public interface PendingFileTransfer extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getChunkNumber
 	 * <em>Chunk Number</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Chunk Number</em>' attribute.
 	 * @see #getChunkNumber()
 	 * @generated
@@ -129,7 +131,7 @@ public interface PendingFileTransfer extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Upload</em>' attribute.
 	 * @see #setUpload(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer_Upload()
@@ -142,7 +144,7 @@ public interface PendingFileTransfer extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#isUpload
 	 * <em>Upload</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Upload</em>' attribute.
 	 * @see #isUpload()
 	 * @generated
@@ -157,7 +159,7 @@ public interface PendingFileTransfer extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>File Name</em>' attribute.
 	 * @see #setFileName(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer_FileName()
@@ -170,7 +172,7 @@ public interface PendingFileTransfer extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileName
 	 * <em>File Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>File Name</em>' attribute.
 	 * @see #getFileName()
 	 * @generated
@@ -185,7 +187,7 @@ public interface PendingFileTransfer extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Preliminary File Name</em>' attribute.
 	 * @see #setPreliminaryFileName(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer_PreliminaryFileName()
@@ -199,7 +201,7 @@ public interface PendingFileTransfer extends EObject {
 	 * {@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getPreliminaryFileName
 	 * <em>Preliminary File Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Preliminary File Name</em>' attribute.
 	 * @see #getPreliminaryFileName()
 	 * @generated

@@ -44,6 +44,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceOperationImpl#isAdd
@@ -55,7 +56,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceOperationImpl#getReferencedModelElements
  * <em>Referenced Model Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

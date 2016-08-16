@@ -23,11 +23,11 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl#getIdentifier <em>Identifier
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl#getIdentifier
+ * <em>Identifier</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -36,7 +36,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getIdentifier()
 	 * @generated
 	 * @ordered
@@ -47,7 +47,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getIdentifier()
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> . <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getIdentifier() {
@@ -85,21 +85,20 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setIdentifier(String newIdentifier) {
-		final String oldIdentifier = identifier;
+		String oldIdentifier = identifier;
 		identifier = newIdentifier;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.IDENTIFIABLE_ELEMENT__IDENTIFIER,
 				oldIdentifier, identifier));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +112,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -128,7 +127,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -143,7 +142,7 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -157,16 +156,15 @@ public abstract class IdentifiableElementImpl extends EObjectImpl implements Ide
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (identifier: "); //$NON-NLS-1$
 		result.append(identifier);
 		result.append(')');

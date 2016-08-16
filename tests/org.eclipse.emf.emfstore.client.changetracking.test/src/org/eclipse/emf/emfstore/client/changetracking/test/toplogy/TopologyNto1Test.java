@@ -151,7 +151,7 @@ public class TopologyNto1Test extends ESTest {
 	 */
 	@Test
 	public void setNoncontainingParentFromNullToValue() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement actor = Create.testElement();
 		final TestElement useCase = Create.testElement();
@@ -206,7 +206,7 @@ public class TopologyNto1Test extends ESTest {
 	 */
 	@Test
 	public void setNoncontainingParentFromValueToNull() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement actor = Create.testElement();
 		final TestElement useCase = Create.testElement();
@@ -262,7 +262,7 @@ public class TopologyNto1Test extends ESTest {
 	 */
 	@Test
 	public void setNoncontainingParentFromValueToOtherValue() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement actor = Create.testElement();
 		final TestElement otherTestElement = Create.testElement();
@@ -331,7 +331,7 @@ public class TopologyNto1Test extends ESTest {
 
 	@Test
 	public void setContainerFromValueToOtherValueSameFeature() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement section1 = Create.testElement();
 		final TestElement section2 = Create.testElement();
@@ -398,7 +398,7 @@ public class TopologyNto1Test extends ESTest {
 
 	@Test
 	public void setContainerFromValueToOtherValueDifferentFeatureN() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement pack = Create.testElement();
@@ -471,7 +471,7 @@ public class TopologyNto1Test extends ESTest {
 
 	@Test
 	public void setContainerFromValueToOtherValueDifferentFeature1() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement section = Create.testElement();

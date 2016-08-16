@@ -58,7 +58,7 @@ public class MemoryLoadTest {
 													// be kept
 
 	private static final Logger LOGGER = Logger
-			.getLogger("org.eclipse.emf.emfstore.client.test");
+		.getLogger("org.eclipse.emf.emfstore.client.test");
 	private long currentProjectCount; // The current project count.
 	private ESModelMutatorConfiguration currentProjectConfiguration;
 	private static final ESSystemOutProgressMonitor MONITOR = new ESSystemOutProgressMonitor();
@@ -70,7 +70,7 @@ public class MemoryLoadTest {
 	/** Rule for deleting all remote projects. */
 	@Rule
 	public NoRemoteProjectRule noRemoteProjectRule = new NoRemoteProjectRule(
-			runningEMFStoreRule);
+		runningEMFStoreRule);
 
 	/**
 	 * Starts the EMFstore.
@@ -84,7 +84,7 @@ public class MemoryLoadTest {
 	 */
 	@BeforeClass
 	public static void before() throws IOException, FatalESException,
-			ESException {
+		ESException {
 		runningEMFStoreRule.before();
 	}
 
@@ -110,18 +110,18 @@ public class MemoryLoadTest {
 	}
 
 	private void shareProjectsLoadTest(int minProjectSize, int projectCount)
-			throws ESException {
+		throws ESException {
 		for (int i = 0; i < projectCount; i++) {
 			final ESLocalProject project = generateRandomProject(minProjectSize);
 			long time = System.nanoTime();
 			project.shareProject(runningEMFStoreRule.defaultSession(), null);
 			time = System.nanoTime() - time;
 			log("Shared Project: " + project.getProjectName() + " ,Memory: "
-					+ usedMemoryInMib() + " MiB");
+				+ usedMemoryInMib() + " MiB");
 
 			deleteLocallyIfNeeded(project);
 			log("Shared Project: " + project.getProjectName() + " ,Memory: "
-					+ usedMemoryInMib() + " MiB");
+				+ usedMemoryInMib() + " MiB");
 		}
 	}
 
@@ -138,7 +138,7 @@ public class MemoryLoadTest {
 	}
 
 	private void shareCheckoutProjectsLoadTest(int minProjectSize,
-			int projectCount) throws ESException {
+		int projectCount) throws ESException {
 		final long start = currentProjectCount;
 		final int[] sizes = new int[projectCount];
 
@@ -150,22 +150,22 @@ public class MemoryLoadTest {
 			sizes[i] = project.getAllModelElements().size();
 
 			log("Shared Project: " + project.getProjectName() + " ,Memory: "
-					+ usedMemoryInMib() + " MiB");
+				+ usedMemoryInMib() + " MiB");
 		}
 
 		int i = 0;
 		for (final ESRemoteProject remoteProject : runningEMFStoreRule.server()
-				.getRemoteProjects(runningEMFStoreRule.defaultSession())) {
+			.getRemoteProjects(runningEMFStoreRule.defaultSession())) {
 			final ESLocalProject project = remoteProject.checkout(
-					"Generated project_" + (start + i), MONITOR);
+				"Generated project_" + (start + i), MONITOR);
 			assertEquals("Generated project_" + (start + i),
-					project.getProjectName());
+				project.getProjectName());
 			// Assert.assertEquals(sizes[i],
 			// project.getAllModelElements().size());
 
 			deleteLocallyIfNeeded(project);
 			log("Checked out Project: " + project.getProjectName() + "Memory: "
-					+ usedMemoryInMib() + " MiB");
+				+ usedMemoryInMib() + " MiB");
 			i++;
 		}
 
@@ -184,7 +184,7 @@ public class MemoryLoadTest {
 	}
 
 	private void commitLoadTest(int minProjectSize, int projectCount,
-			int historySize, int minChangeSize) throws ESException {
+		int historySize, int minChangeSize) throws ESException {
 		for (int i = 0; i < projectCount; i++) {
 
 			final ESLocalProject project = generateRandomProject(minProjectSize);
@@ -195,8 +195,8 @@ public class MemoryLoadTest {
 				commitProject(project);
 
 				log("Committed Change: " + z + " of Project "
-						+ project.getProjectName() + " ,Memory: "
-						+ usedMemoryInMib() + " MiB");
+					+ project.getProjectName() + " ,Memory: "
+					+ usedMemoryInMib() + " MiB");
 			}
 			deleteLocallyIfNeeded(project);
 		}
@@ -216,8 +216,8 @@ public class MemoryLoadTest {
 	}
 
 	private void commitCheckoutLoadTest(int minProjectSize, int projectCount,
-			int historySize, int minChangeSize, int checkoutStep)
-			throws ESException {
+		int historySize, int minChangeSize, int checkoutStep)
+		throws ESException {
 
 		for (int i = 0; i < projectCount; i++) {
 
@@ -230,8 +230,8 @@ public class MemoryLoadTest {
 				mutateProject(project, minChangeSize);
 				versions.add(commitProject(project));
 				log("Committed Change: " + z + " of Project "
-						+ project.getProjectName() + " ,Memory: "
-						+ usedMemoryInMib() + " MiB");
+					+ project.getProjectName() + " ,Memory: "
+					+ usedMemoryInMib() + " MiB");
 
 			}
 			deleteLocallyIfNeeded(project);
@@ -240,12 +240,12 @@ public class MemoryLoadTest {
 				log("Checking out version: " + versions.get(x).getIdentifier());
 
 				final ESLocalProject projectCopy = project.getRemoteProject()
-						.checkout(project.getProjectName() + "_Copy" + x,
-								runningEMFStoreRule.defaultSession(),
-								versions.get(x), MONITOR);
+					.checkout(project.getProjectName() + "_Copy" + x,
+						runningEMFStoreRule.defaultSession(),
+						versions.get(x), MONITOR);
 
 				log("Checked out version: " + versions.get(x).getIdentifier()
-						+ " ,Memory: " + usedMemoryInMib() + " MiB");
+					+ " ,Memory: " + usedMemoryInMib() + " MiB");
 				deleteLocallyIfNeeded(projectCopy);
 			}
 		}
@@ -263,7 +263,7 @@ public class MemoryLoadTest {
 	}
 
 	private void updateLoadTest(int minProjectSize, int projectCount,
-			int historySize, int minChangeSize) throws ESException {
+		int historySize, int minChangeSize) throws ESException {
 
 		for (int i = 0; i < projectCount; i++) {
 
@@ -271,10 +271,10 @@ public class MemoryLoadTest {
 			project.shareProject(runningEMFStoreRule.defaultSession(), null);
 
 			final ESLocalProject projectSecondCheckout = project
-					.getRemoteProject().checkout(
-							project.getProjectName() + "_SecondCheckout_" + i,
-							runningEMFStoreRule.defaultSession(),
-							project.getBaseVersion(), null);
+				.getRemoteProject().checkout(
+					project.getProjectName() + "_SecondCheckout_" + i,
+					runningEMFStoreRule.defaultSession(),
+					project.getBaseVersion(), null);
 
 			final List<ESVersionSpec> versions = new ArrayList<ESVersionSpec>();
 
@@ -287,7 +287,7 @@ public class MemoryLoadTest {
 			deleteLocallyIfNeeded(project);
 
 			projectSecondCheckout.update(
-					versions.get((versions.size() - 1) / 2), null, null);
+				versions.get((versions.size() - 1) / 2), null, null);
 			projectSecondCheckout.update(versions.get(1), null, null);
 			projectSecondCheckout.update(null);
 			deleteLocallyIfNeeded(projectSecondCheckout);
@@ -309,7 +309,7 @@ public class MemoryLoadTest {
 	}
 
 	private void commitGetChangesLoadTest(int minProjectSize, int projectCount,
-			int historySize, int minChangeSize) throws ESException {
+		int historySize, int minChangeSize) throws ESException {
 
 		for (int i = 0; i < projectCount; i++) {
 
@@ -321,11 +321,11 @@ public class MemoryLoadTest {
 			for (int z = 0; z < historySize; z++) {
 				mutateProject(project, minChangeSize);
 				versions.add(((ESPrimaryVersionSpecImpl) commitProject(project))
-						.toInternalAPI());
+					.toInternalAPI());
 
 			}
 			((ESLocalProjectImpl) project).toInternalAPI().getChanges(
-					versions.get(0), versions.get(versions.size() - 1));
+				versions.get(0), versions.get(versions.size() - 1));
 
 			deleteLocallyIfNeeded(project);
 			log("Memory: " + usedMemoryInMib() + " MiB");
@@ -335,16 +335,16 @@ public class MemoryLoadTest {
 
 	private long usedMemoryInMib() {
 		return Runtime.getRuntime().totalMemory()
-				- Runtime.getRuntime().freeMemory() >> 20;
+			- Runtime.getRuntime().freeMemory() >> 20;
 	}
 
 	private ESLocalProject generateRandomProject(int minProjectSize) {
 		final String projectName = "Generated project_" + currentProjectCount;
 		final Project project = org.eclipse.emf.emfstore.internal.common.model.ModelFactory.eINSTANCE
-				.createProject();
+			.createProject();
 
 		final ESModelMutatorConfiguration config = createModelMutatorConfigurationRandom(
-				modelKey, project, minProjectSize, seed);
+			modelKey, project, minProjectSize, seed);
 
 		new EMFStoreCommand() {
 			@Override
@@ -354,7 +354,7 @@ public class MemoryLoadTest {
 		}.run(false);
 
 		final ProjectSpace projectSpace = ((ESWorkspaceImpl) runningEMFStoreRule
-				.connectedWorkspace()).toInternalAPI().importProject(project,
+			.connectedWorkspace()).toInternalAPI().importProject(project,
 				projectName, "");
 
 		currentProjectCount++;
@@ -364,12 +364,13 @@ public class MemoryLoadTest {
 	private void mutateProject(final ESLocalProject project, int minChangeSize) {
 
 		if (currentProjectConfiguration == null
-				|| currentProjectConfiguration.getRootEObject() != ((ESLocalProjectImpl) project)
-						.toInternalAPI().getProject()) {
+			|| currentProjectConfiguration.getRootEObject() != ((ESLocalProjectImpl) project)
+				.toInternalAPI().getProject()) {
 
 			currentProjectConfiguration = createModelMutatorConfigurationRandom(
-					modelKey, ((ESLocalProjectImpl) project).toInternalAPI()
-							.getProject(), minChangeSize, seed);
+				modelKey, ((ESLocalProjectImpl) project).toInternalAPI()
+					.getProject(),
+				minChangeSize, seed);
 		}
 		currentProjectConfiguration.setMinObjectsCount(minChangeSize);
 
@@ -381,16 +382,16 @@ public class MemoryLoadTest {
 				final long time = System.currentTimeMillis();
 				ESDefaultModelMutator.changeModel(mmc);
 				System.out.println("Changed model: "
-						+ (System.currentTimeMillis() - time) / 1000.0 + "sec");
+					+ (System.currentTimeMillis() - time) / 1000.0 + "sec");
 			}
 		}.run(false);
 	}
 
 	private ESModelMutatorConfiguration createModelMutatorConfigurationRandom(
-			String modelKey, EObject rootObject, int minObjectsCount, long seed) {
+		String modelKey, EObject rootObject, int minObjectsCount, long seed) {
 
 		final ESModelMutatorConfiguration config = new ESModelMutatorConfiguration(
-				ESModelMutatorUtil.getEPackage(modelKey), rootObject, seed);
+			ESModelMutatorUtil.getEPackage(modelKey), rootObject, seed);
 
 		config.setIgnoreAndLog(false);
 		config.setMinObjectsCount(minObjectsCount);
@@ -398,7 +399,7 @@ public class MemoryLoadTest {
 		final List<EStructuralFeature> eStructuralFeaturesToIgnore = new ArrayList<EStructuralFeature>();
 
 		config.setEditingDomain(((ESWorkspaceImpl) runningEMFStoreRule
-				.connectedWorkspace()).toInternalAPI().getEditingDomain());
+			.connectedWorkspace()).toInternalAPI().getEditingDomain());
 		config.seteStructuralFeaturesToIgnore(eStructuralFeaturesToIgnore);
 		return config;
 	}

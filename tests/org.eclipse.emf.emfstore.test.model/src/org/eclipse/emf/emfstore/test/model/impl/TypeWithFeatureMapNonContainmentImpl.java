@@ -30,19 +30,18 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl#getMap <em>Map</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl#getFirstKey <em>First Key
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl#getSecondKey <em>Second Key
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl#getFirstKey
+ * <em>First Key</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl#getSecondKey
+ * <em>Second Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implements TypeWithFeatureMapNonContainment
-{
+public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implements TypeWithFeatureMapNonContainment {
 	/**
 	 * The cached value of the '{@link #getMap() <em>Map</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -60,8 +59,7 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * 
 	 * @generated
 	 */
-	protected TypeWithFeatureMapNonContainmentImpl()
-	{
+	protected TypeWithFeatureMapNonContainmentImpl() {
 		super();
 	}
 
@@ -72,8 +70,7 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * @generated
 	 */
 	@Override
-	protected EClass eStaticClass()
-	{
+	protected EClass eStaticClass() {
 		return TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT;
 	}
 
@@ -83,10 +80,8 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * 
 	 * @generated
 	 */
-	public FeatureMap getMap()
-	{
-		if (map == null)
-		{
+	public FeatureMap getMap() {
+		if (map == null) {
 			map = new BasicFeatureMap(this, TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP);
 		}
 		return map;
@@ -98,8 +93,7 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * 
 	 * @generated
 	 */
-	public EList<TestType> getFirstKey()
-	{
+	public EList<TestType> getFirstKey() {
 		return getMap().list(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY);
 	}
 
@@ -109,8 +103,7 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * 
 	 * @generated
 	 */
-	public EList<TestType> getSecondKey()
-	{
+	public EList<TestType> getSecondKey() {
 		return getMap().list(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY);
 	}
 
@@ -121,10 +114,8 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-	{
-		switch (featureID)
-		{
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP:
 			return ((InternalEList<?>) getMap()).basicRemove(otherEnd, msgs);
 		}
@@ -138,10 +129,8 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType)
-	{
-		switch (featureID)
-		{
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP:
 			if (coreType)
 				return getMap();
@@ -162,10 +151,8 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void eSet(int featureID, Object newValue)
-	{
-		switch (featureID)
-		{
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP:
 			((FeatureMap.Internal) getMap()).set(newValue);
 			return;
@@ -188,10 +175,8 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * @generated
 	 */
 	@Override
-	public void eUnset(int featureID)
-	{
-		switch (featureID)
-		{
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP:
 			getMap().clear();
 			return;
@@ -212,10 +197,8 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * @generated
 	 */
 	@Override
-	public boolean eIsSet(int featureID)
-	{
-		switch (featureID)
-		{
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP:
 			return map != null && !map.isEmpty();
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY:
@@ -233,8 +216,7 @@ public class TypeWithFeatureMapNonContainmentImpl extends TestTypeImpl implement
 	 * @generated
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		if (eIsProxy())
 			return super.toString();
 

@@ -51,7 +51,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  * @author wesendon
  */
 public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcClientManager> implements
-ConnectionManager {
+	ConnectionManager {
 
 	/**
 	 * {@inheritDoc}
@@ -120,7 +120,8 @@ ConnectionManager {
 	/**
 	 * {@inheritDoc}
 	 */
-	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId, FileTransferInformation fileInformation)
+	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
+		FileTransferInformation fileInformation)
 		throws ESException {
 		return getConnectionProxy(sessionId).callWithResult("downloadFileChunk", FileChunk.class, sessionId, projectId, //$NON-NLS-1$
 			fileInformation);

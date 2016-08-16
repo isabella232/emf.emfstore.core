@@ -25,13 +25,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Branch Info</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getHead <em>Head</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.BranchInfoImpl#getSource <em>Source</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @generated
  */

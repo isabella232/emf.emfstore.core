@@ -78,13 +78,13 @@ public class RunningEMFStoreRule extends ExternalResource {
 
 		workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
 		server = ESServer.FACTORY.createServer("RunningEMFStoreRuleStore",
-				"localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE);
+			"localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE);
 		server = workspace.addServer(server);
 
 		startEMFStore();
 		session = server.login("super", "super");
 		((ESWorkspaceImpl) workspace).toInternalAPI().getUsersessions()
-				.add(((ESUsersessionImpl) session).toInternalAPI());
+			.add(((ESUsersessionImpl) session).toInternalAPI());
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class RunningEMFStoreRule extends ExternalResource {
 	protected void after() {
 		stopEMFStore();
 		((ESWorkspaceImpl) workspace).toInternalAPI().getUsersessions()
-				.remove(((ESUsersessionImpl) session).toInternalAPI());
+			.remove(((ESUsersessionImpl) session).toInternalAPI());
 		if (server.getName().equals("RunningEMFStoreRuleStore")) {
 			try {
 				workspace.removeServer(server);

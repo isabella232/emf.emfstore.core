@@ -57,7 +57,8 @@ public class UIAskForBranchCheckoutControllerTest extends AbstractUIControllerTe
 
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects()) {
+				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace()
+					.getLocalProjects()) {
 					if (localProject.getProjectName().equals("checkout")) {
 						return true;
 					}

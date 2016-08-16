@@ -28,11 +28,12 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementToTestElementMapImpl#getTypedValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementToTestElementMapImpl#getTypedValue <em>Value</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementToTestElementMapImpl#getTypedKey <em>Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -87,12 +88,10 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 * @generated
 	 */
 	public TestElement getTypedValue() {
-		if (value != null && value.eIsProxy())
-		{
+		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject) value;
 			value = (TestElement) eResolveProxy(oldValue);
-			if (value != oldValue)
-			{
+			if (value != oldValue) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__VALUE, oldValue, value));
@@ -132,12 +131,10 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 * @generated
 	 */
 	public TestElement getTypedKey() {
-		if (key != null && key.eIsProxy())
-		{
+		if (key != null && key.eIsProxy()) {
 			InternalEObject oldKey = (InternalEObject) key;
 			key = (TestElement) eResolveProxy(oldKey);
-			if (key != oldKey)
-			{
+			if (key != oldKey) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__KEY, oldKey, key));
@@ -178,8 +175,7 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__VALUE:
 			if (resolve)
 				return getTypedValue();
@@ -200,8 +196,7 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__VALUE:
 			setTypedValue((TestElement) newValue);
 			return;
@@ -220,8 +215,7 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__VALUE:
 			setTypedValue((TestElement) null);
 			return;
@@ -240,8 +234,7 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__VALUE:
 			return value != null;
 		case TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP__KEY:
@@ -265,8 +258,7 @@ public class TestElementToTestElementMapImpl extends EObjectImpl implements Basi
 	 * @generated
 	 */
 	public int getHash() {
-		if (hash == -1)
-		{
+		if (hash == -1) {
 			Object theKey = getKey();
 			hash = (theKey == null ? 0 : theKey.hashCode());
 		}

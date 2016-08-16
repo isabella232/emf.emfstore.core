@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.emfstore.internal.modelmutator.mutation.Mutation;
-import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
 import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorConfiguration;
+import org.eclipse.emf.emfstore.modelmutator.ESModelMutatorUtil;
 import org.eclipse.emf.emfstore.test.model.TestmodelFactory;
 import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment;
 import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
@@ -68,17 +68,14 @@ public abstract class AbstractMutationTest {
 	private TypeWithFeatureMapContainment createTestTypeModel() {
 		TestmodelFactory tFactory = TestmodelFactory.eINSTANCE;
 
-		TypeWithFeatureMapContainment root = tFactory
-				.createTypeWithFeatureMapContainment();
+		TypeWithFeatureMapContainment root = tFactory.createTypeWithFeatureMapContainment();
 		root.setName("Root");
 
-		TypeWithFeatureMapContainment child1 = tFactory
-				.createTypeWithFeatureMapContainment();
+		TypeWithFeatureMapContainment child1 = tFactory.createTypeWithFeatureMapContainment();
 		child1.setName("Child2Containment");
 		root.getSecondKeyContainment().add(child1);
 
-		TypeWithFeatureMapNonContainment child2 = tFactory
-				.createTypeWithFeatureMapNonContainment();
+		TypeWithFeatureMapNonContainment child2 = tFactory.createTypeWithFeatureMapNonContainment();
 		child2.setName("Child1NonContainment");
 		child2.getFirstKey().add(root);
 		child2.getSecondKey().add(child2);

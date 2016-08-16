@@ -39,7 +39,6 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public WorkspaceItemProvider(AdapterFactory adapterFactory) {
@@ -49,13 +48,11 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -68,13 +65,11 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.WORKSPACE__PROJECT_SPACES);
 			childrenFeatures.add(ModelPackage.Literals.WORKSPACE__SERVER_INFOS);
@@ -85,7 +80,6 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -99,7 +93,6 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns Workspace.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -110,7 +103,6 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -129,8 +121,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Workspace.class))
-		{
+		switch (notification.getFeatureID(Workspace.class)) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 		case ModelPackage.WORKSPACE__SERVER_INFOS:
 		case ModelPackage.WORKSPACE__USERSESSIONS:
@@ -144,33 +135,25 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.WORKSPACE__PROJECT_SPACES,
-				ModelFactory.eINSTANCE.createProjectSpace()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.WORKSPACE__PROJECT_SPACES,
+			ModelFactory.eINSTANCE.createProjectSpace()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.WORKSPACE__SERVER_INFOS,
-				ModelFactory.eINSTANCE.createServerInfo()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.WORKSPACE__SERVER_INFOS,
+			ModelFactory.eINSTANCE.createServerInfo()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.WORKSPACE__USERSESSIONS,
-				ModelFactory.eINSTANCE.createUsersession()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.WORKSPACE__USERSESSIONS,
+			ModelFactory.eINSTANCE.createUsersession()));
 	}
 
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override

@@ -73,8 +73,8 @@ public class ComparingESTest extends ESTest {
 		RunESCommand.run(new Callable<Void>() {
 			public Void call() throws Exception {
 				if (isCompareAtEnd) {
-					final ESCloseableIterable<AbstractOperation> operations =
-						getProjectSpace().getLocalChangePackage().operations();
+					final ESCloseableIterable<AbstractOperation> operations = getProjectSpace().getLocalChangePackage()
+						.operations();
 					try {
 						clonedProjectSpace.applyOperations(operations.iterable(), false);
 					} finally {
@@ -116,7 +116,8 @@ public class ComparingESTest extends ESTest {
 			clonedProjectSpace.save();
 
 			assertTrue(
-				MessageFormat.format("Projects are not equal.\n\n{0}\n\n{1}", projectString, clonedProjectString), areEqual); //$NON-NLS-1$
+				MessageFormat.format("Projects are not equal.\n\n{0}\n\n{1}", projectString, clonedProjectString), //$NON-NLS-1$
+				areEqual);
 		}
 		super.after();
 	}

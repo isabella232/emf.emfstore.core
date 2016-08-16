@@ -70,16 +70,16 @@ import com.google.common.io.Closeables;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl#getLogMessage
  * <em>Log Message</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl#getFilePath <em>
- * File Path</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl#getFilePath
+ * <em>File Path</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.FileBasedChangePackageImpl#getOperationProxies
  * <em>Operation Proxies</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

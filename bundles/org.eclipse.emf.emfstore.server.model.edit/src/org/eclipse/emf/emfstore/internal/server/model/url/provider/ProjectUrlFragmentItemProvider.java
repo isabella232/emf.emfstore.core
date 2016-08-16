@@ -74,14 +74,13 @@ public class ProjectUrlFragmentItemProvider extends ItemProviderAdapter implemen
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ProjectUrlFragment_name_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ProjectUrlFragment_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_ProjectUrlFragment_type"), //$NON-NLS-1$
-			UrlPackage.Literals.PROJECT_URL_FRAGMENT__NAME, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ProjectUrlFragment_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectUrlFragment_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectUrlFragment_type"), //$NON-NLS-1$
+				UrlPackage.Literals.PROJECT_URL_FRAGMENT__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

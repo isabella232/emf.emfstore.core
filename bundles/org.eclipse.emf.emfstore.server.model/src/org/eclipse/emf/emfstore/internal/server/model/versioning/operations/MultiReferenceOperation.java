@@ -19,16 +19,16 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation#isAdd <em>Add
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation#getIndex <em>
- * Index</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation#isAdd
+ * <em>Add</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation#getIndex
+ * <em>Index</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation#getReferencedModelElements
  * <em>Referenced Model Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceOperation()
  * @model

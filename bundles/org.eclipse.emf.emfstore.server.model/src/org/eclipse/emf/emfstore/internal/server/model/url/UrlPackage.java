@@ -103,8 +103,7 @@ public interface UrlPackage extends EPackage {
 	int SERVER_URL_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ProjectUrlFragmentImpl
+	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ProjectUrlFragmentImpl
 	 * <em>Project Url Fragment</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -416,8 +415,8 @@ public interface UrlPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ServerUrlImpl <em>Server Url</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ServerUrlImpl
+		 * <em>Server Url</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
 		 *
@@ -505,8 +504,8 @@ public interface UrlPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ModelElementUrlImpl
-		 * <em>Model Element Url</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.url.impl.ModelElementUrlImpl <em>Model Element Url</em>
+		 * }' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
 		 *

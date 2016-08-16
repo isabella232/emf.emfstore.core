@@ -22,11 +22,11 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#isDelete <em>
- * Delete</em>}</li>
- * <li>
- * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#getModelElement
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#isDelete
+ * <em>Delete</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#getModelElement
  * <em>Model Element</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#getSubOperations
@@ -35,7 +35,6 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation#getEObjectToIdMap
  * <em>EObject To Id Map</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation()
  * @model

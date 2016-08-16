@@ -77,7 +77,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 	/**
 	 * Certificate Alias for development test certificate.
 	 */
-	public static final String DEFAULT_CERTIFICATE = "emfstore test certificate (do not use in production!)"; // "EMFStore Test Certificate (DO NOT USE IN PRODUCTION!)"; //$NON-NLS-1$
+	public static final String DEFAULT_CERTIFICATE = "emfstore test certificate (do not use in production!)"; //$NON-NLS-1$
 
 	private static KeyStoreManager instance;
 
@@ -93,7 +93,7 @@ public final class KeyStoreManager implements ESKeyStoreManager {
 	private void loadConfiguration() {
 		final ESClientConfigurationProvider provider = new ESExtensionPoint(
 			ORG_ECLIPSE_EMF_EMFSTORE_CLIENT_DEFAULT_CONFIGURATION_PROVIDER).getClass(PROVIDER_CLASS,
-			ESClientConfigurationProvider.class);
+				ESClientConfigurationProvider.class);
 		if (provider == null) {
 			return;
 		}

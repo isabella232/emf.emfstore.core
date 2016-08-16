@@ -27,7 +27,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Test the {@link ESProjectAdminPrivileges#CreateUser} and {@link ESProjectAdminPrivileges#ChangeUserPassword} privileges of a
+ * Test the {@link ESProjectAdminPrivileges#CreateUser} and {@link ESProjectAdminPrivileges#ChangeUserPassword}
+ * privileges of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
  * 
  * @author emueller

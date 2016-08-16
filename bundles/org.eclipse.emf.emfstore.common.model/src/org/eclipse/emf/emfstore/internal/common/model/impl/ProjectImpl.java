@@ -38,7 +38,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	 * The cached value of the '{@link #getModelElements() <em>Model Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getModelElements()
 	 * @generated
 	 * @ordered
@@ -48,7 +48,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 	/**
 	 * The cached value of the '{@link #getCutElements() <em>Cut Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getCutElements()
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> .<!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -80,7 +80,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 
@@ -95,7 +95,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EList<EObject> getCutElements() {
@@ -108,7 +108,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -124,7 +124,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -140,7 +140,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -161,7 +161,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class ProjectImpl extends NotifiableIdEObjectCollectionImpl implements Pr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

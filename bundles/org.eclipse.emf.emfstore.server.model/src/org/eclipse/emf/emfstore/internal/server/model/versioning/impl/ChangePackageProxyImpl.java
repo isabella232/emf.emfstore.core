@@ -37,13 +37,13 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl#getLogMessage <em>
- * Log Message</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl#getLogMessage
+ * <em>Log Message</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.ChangePackageProxyImpl#getId <em>Id</em>}
  * </li>
  * </ul>
- * </p>
  *
  * @generated
  */

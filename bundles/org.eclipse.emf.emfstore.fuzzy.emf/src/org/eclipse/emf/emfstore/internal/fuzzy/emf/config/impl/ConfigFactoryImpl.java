@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
@@ -37,17 +37,17 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static ConfigFactory init() {
 		try {
-			final ConfigFactory theConfigFactory = (ConfigFactory) EPackage.Registry.INSTANCE
+			ConfigFactory theConfigFactory = (ConfigFactory) EPackage.Registry.INSTANCE
 				.getEFactory(ConfigPackage.eNS_URI);
 			if (theConfigFactory != null) {
 				return theConfigFactory;
 			}
-		} catch (final Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ConfigFactoryImpl();
@@ -57,7 +57,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public ConfigFactoryImpl() {
@@ -67,7 +67,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -95,84 +95,84 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public TestConfig createTestConfig() {
-		final TestConfigImpl testConfig = new TestConfigImpl();
+		TestConfigImpl testConfig = new TestConfigImpl();
 		return testConfig;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public TestRun createTestRun() {
-		final TestRunImpl testRun = new TestRunImpl();
+		TestRunImpl testRun = new TestRunImpl();
 		return testRun;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public TestResult createTestResult() {
-		final TestResultImpl testResult = new TestResultImpl();
+		TestResultImpl testResult = new TestResultImpl();
 		return testResult;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public TestDiff createTestDiff() {
-		final TestDiffImpl testDiff = new TestDiffImpl();
+		TestDiffImpl testDiff = new TestDiffImpl();
 		return testDiff;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public DiffReport createDiffReport() {
-		final DiffReportImpl diffReport = new DiffReportImpl();
+		DiffReportImpl diffReport = new DiffReportImpl();
 		return diffReport;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public Root createRoot() {
-		final RootImpl root = new RootImpl();
+		RootImpl root = new RootImpl();
 		return root;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public MutatorConfig createMutatorConfig() {
-		final MutatorConfigImpl mutatorConfig = new MutatorConfigImpl();
+		MutatorConfigImpl mutatorConfig = new MutatorConfigImpl();
 		return mutatorConfig;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public ConfigPackage getConfigPackage() {
@@ -182,7 +182,7 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

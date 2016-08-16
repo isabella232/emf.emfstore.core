@@ -134,12 +134,11 @@ public class MultiReferenceConflict extends VisualConflict {
 					getClassAndName(getDecisionManager()
 						.getModelElement(getTheirOperation().getModelElementId()))));
 		} else {
-			myOption.setOptionLabel(isLeftMy() ?
-				Messages.MultiReferenceConflict_Add
+			myOption.setOptionLabel(isLeftMy() ? Messages.MultiReferenceConflict_Add
 				: Messages.MultiReferenceConflict_Remove
 					+ " " + getClassAndName(target)); //$NON-NLS-1$
-			theirOption.setOptionLabel(!isLeftMy() ?
-				Messages.MultiReferenceConflict_Add : Messages.MultiReferenceConflict_Remove
+			theirOption.setOptionLabel(
+				!isLeftMy() ? Messages.MultiReferenceConflict_Add : Messages.MultiReferenceConflict_Remove
 					+ " " + getClassAndName(target)); //$NON-NLS-1$
 		}
 

@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.bowling.util.BowlingAdapterFactory;
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory implements ComposeableAdapterFactory,
@@ -46,7 +46,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
@@ -55,7 +55,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -64,7 +64,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -73,7 +73,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public BowlingItemProviderAdapterFactory() {
@@ -88,7 +88,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Player} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected PlayerItemProvider playerItemProvider;
@@ -97,7 +97,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Player}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.League} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected LeagueItemProvider leagueItemProvider;
@@ -122,7 +122,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.League}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Tournament} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected TournamentItemProvider tournamentItemProvider;
@@ -147,7 +147,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Tournament}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -163,7 +163,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Matchup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MatchupItemProvider matchupItemProvider;
@@ -172,7 +172,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Matchup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -188,7 +188,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Game} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected GameItemProvider gameItemProvider;
@@ -197,7 +197,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Game}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -213,7 +213,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected PlayerToPointsMapItemProvider playerToPointsMapItemProvider;
@@ -222,7 +222,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -238,7 +238,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Referee} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected RefereeItemProvider refereeItemProvider;
@@ -247,7 +247,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Referee}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -263,7 +263,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected RefereeToGamesMapItemProvider refereeToGamesMapItemProvider;
@@ -272,7 +272,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -288,7 +288,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Area} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected AreaItemProvider areaItemProvider;
@@ -297,7 +297,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Area}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -313,7 +313,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Fan} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected FanItemProvider fanItemProvider;
@@ -322,7 +322,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Fan}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -338,7 +338,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.emfstore.bowling.Merchandise} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MerchandiseItemProvider merchandiseItemProvider;
@@ -347,7 +347,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.bowling.Merchandise}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -363,7 +363,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
@@ -374,7 +374,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
@@ -384,7 +384,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -396,7 +396,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -407,14 +407,14 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
-			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -426,7 +426,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void addListener(INotifyChangedListener notifyChangedListener) {
@@ -437,7 +437,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
@@ -448,7 +448,7 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void fireNotifyChanged(Notification notification) {
@@ -463,43 +463,32 @@ public class BowlingItemProviderAdapterFactory extends BowlingAdapterFactory imp
 	 * This disposes all of the item providers created by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void dispose() {
-		if (playerItemProvider != null) {
+		if (playerItemProvider != null)
 			playerItemProvider.dispose();
-		}
-		if (leagueItemProvider != null) {
+		if (leagueItemProvider != null)
 			leagueItemProvider.dispose();
-		}
-		if (tournamentItemProvider != null) {
+		if (tournamentItemProvider != null)
 			tournamentItemProvider.dispose();
-		}
-		if (matchupItemProvider != null) {
+		if (matchupItemProvider != null)
 			matchupItemProvider.dispose();
-		}
-		if (gameItemProvider != null) {
+		if (gameItemProvider != null)
 			gameItemProvider.dispose();
-		}
-		if (playerToPointsMapItemProvider != null) {
+		if (playerToPointsMapItemProvider != null)
 			playerToPointsMapItemProvider.dispose();
-		}
-		if (refereeItemProvider != null) {
+		if (refereeItemProvider != null)
 			refereeItemProvider.dispose();
-		}
-		if (refereeToGamesMapItemProvider != null) {
+		if (refereeToGamesMapItemProvider != null)
 			refereeToGamesMapItemProvider.dispose();
-		}
-		if (areaItemProvider != null) {
+		if (areaItemProvider != null)
 			areaItemProvider.dispose();
-		}
-		if (fanItemProvider != null) {
+		if (fanItemProvider != null)
 			fanItemProvider.dispose();
-		}
-		if (merchandiseItemProvider != null) {
+		if (merchandiseItemProvider != null)
 			merchandiseItemProvider.dispose();
-		}
 	}
 
 }

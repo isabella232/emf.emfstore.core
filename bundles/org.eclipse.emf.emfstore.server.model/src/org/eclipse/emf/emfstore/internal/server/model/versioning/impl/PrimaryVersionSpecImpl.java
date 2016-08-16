@@ -22,14 +22,14 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PrimaryVersionSpecImpl#getIdentifier <em>
- * Identifier</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PrimaryVersionSpecImpl#getIdentifier
+ * <em>Identifier</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PrimaryVersionSpecImpl#getProjectStateChecksum
  * <em>Project State Checksum</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -16,13 +16,13 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation#getOldValue <em>
- * Old Value</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation#getNewValue <em>
- * New Value</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation#getOldValue
+ * <em>Old Value</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AttributeOperation#getNewValue
+ * <em>New Value</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getAttributeOperation()
  * @model

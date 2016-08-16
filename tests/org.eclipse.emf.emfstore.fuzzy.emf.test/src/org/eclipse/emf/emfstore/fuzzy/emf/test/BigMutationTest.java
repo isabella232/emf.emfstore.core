@@ -43,8 +43,7 @@ public class BigMutationTest {
 	/***/
 	@Test
 	public void createModel() {
-		final ESModelMutatorConfiguration config =
-			new ESModelMutatorConfiguration(util.getEPackages(), root, 1L);
+		final ESModelMutatorConfiguration config = new ESModelMutatorConfiguration(util.getEPackages(), root, 1L);
 		config.setMinObjectsCount(util.getMinObjectsCount());
 		ESDefaultModelMutator.changeModel(config);
 		// TODO: no assert here..

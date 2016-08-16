@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -33,16 +32,16 @@ import org.eclipse.emf.emfstore.bowling.BowlingPackage;
  * This is the item provider adapter for a {@link java.util.Map.Entry} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public PlayerToPointsMapItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +52,7 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -71,18 +70,16 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * This adds a property descriptor for the Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PlayerToPointsMap_key_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_key_feature", "_UI_PlayerToPointsMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PlayerToPointsMap_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.PLAYER_TO_POINTS_MAP__KEY,
 				true,
 				false,
@@ -96,18 +93,16 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PlayerToPointsMap_value_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_value_feature", "_UI_PlayerToPointsMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PlayerToPointsMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PlayerToPointsMap_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.PLAYER_TO_POINTS_MAP__VALUE,
 				true,
 				false,
@@ -121,7 +116,7 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * This returns PlayerToPointsMap.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,12 +128,12 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final Map.Entry<?, ?> playerToPointsMap = (Map.Entry<?, ?>) object;
+		Map.Entry<?, ?> playerToPointsMap = (Map.Entry<?, ?>) object;
 		return "" + playerToPointsMap.getKey() + " -> " + playerToPointsMap.getValue(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -147,7 +142,7 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -167,7 +162,7 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -179,7 +174,7 @@ public class PlayerToPointsMapItemProvider extends ItemProviderAdapter implement
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

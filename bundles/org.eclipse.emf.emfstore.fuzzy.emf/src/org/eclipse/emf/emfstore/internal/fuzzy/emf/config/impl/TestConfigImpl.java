@@ -24,19 +24,23 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>ESFuzzyTest Config</b></em>'.
- * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getSeed <em>Seed</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getCount <em>Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getTestClass <em>ESFuzzyTest Class
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getMutatorConfig <em>Mutator Config
- * </em>}</li>
- * </ul>
- * </p>
+ *
+ * @extends AbstractAPIDeletegateImpl<ESTestConfigImpl, TestConfig>
+ *          <!-- end-user-doc -->
+ *          <p>
+ *          The following features are implemented:
+ *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getSeed <em>Seed</em>}
+ *          </li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getCount <em>Count</em>}
+ *          </li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getTestClass
+ *          <em>Test Class</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getId <em>Id</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl#getMutatorConfig
+ *          <em>Mutator Config</em>}</li>
+ *          </ul>
  *
  * @generated
  */
@@ -87,7 +91,7 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 	protected int count = COUNT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTestClass() <em>ESFuzzyTest Class</em>}' attribute.
+	 * The cached value of the '{@link #getTestClass() <em>Test Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -289,19 +293,18 @@ public class TestConfigImpl extends AbstractAPIDeletegateImpl<ESTestConfigImpl, 
 		if (newMutatorConfig != mutatorConfig) {
 			NotificationChain msgs = null;
 			if (mutatorConfig != null) {
-				msgs = ((InternalEObject) mutatorConfig).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ConfigPackage.TEST_CONFIG__MUTATOR_CONFIG, null, msgs);
+				msgs = ((InternalEObject) mutatorConfig).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_CONFIG__MUTATOR_CONFIG, null, msgs);
 			}
 			if (newMutatorConfig != null) {
-				msgs = ((InternalEObject) newMutatorConfig).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ConfigPackage.TEST_CONFIG__MUTATOR_CONFIG, null, msgs);
+				msgs = ((InternalEObject) newMutatorConfig).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_CONFIG__MUTATOR_CONFIG, null, msgs);
 			}
 			msgs = basicSetMutatorConfig(newMutatorConfig, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_CONFIG__MUTATOR_CONFIG,
 				newMutatorConfig, newMutatorConfig));
 		}

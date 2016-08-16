@@ -36,8 +36,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class HistoryQueryItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -73,12 +73,12 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	 * @generated
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_HistoryQuery_source_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_source_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_HistoryQuery_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.HISTORY_QUERY__SOURCE, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_HistoryQuery_source_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_source_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_HistoryQuery_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.HISTORY_QUERY__SOURCE, true, false, true, null, null, null));
 	}
 
 	/**
@@ -88,14 +88,13 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	 * @generated
 	 */
 	protected void addIncludeChangePackagesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_HistoryQuery_includeChangePackages_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeChangePackages_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_HistoryQuery_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_CHANGE_PACKAGES, true, false, false,
-			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_HistoryQuery_includeChangePackages_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeChangePackages_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_HistoryQuery_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_CHANGE_PACKAGES, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -105,14 +104,13 @@ public class HistoryQueryItemProvider extends ItemProviderAdapter implements IEd
 	 * @generated
 	 */
 	protected void addIncludeAllVersionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_HistoryQuery_includeAllVersions_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeAllVersions_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_HistoryQuery_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_ALL_VERSIONS, true, false, false,
-			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_HistoryQuery_includeAllVersions_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_HistoryQuery_includeAllVersions_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_HistoryQuery_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.HISTORY_QUERY__INCLUDE_ALL_VERSIONS, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**

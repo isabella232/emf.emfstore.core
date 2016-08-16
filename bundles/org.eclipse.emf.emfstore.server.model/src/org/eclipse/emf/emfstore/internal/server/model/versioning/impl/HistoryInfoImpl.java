@@ -34,27 +34,27 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>History Info</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getPrimarySpec <em>Primary
- * Spec</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getNextSpec <em>Next Spec
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getPreviousSpec <em>
- * Previous Spec</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getMergedFrom <em>Merged
- * From</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getMergedTo <em>Merged To
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getLogMessage <em>Log
- * Message</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getTagSpecs <em>Tag Specs
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getVersionProperties <em>
- * Version Properties</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getChangePackage <em>Change
- * Package</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getPrimarySpec
+ * <em>Primary Spec</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getNextSpec
+ * <em>Next Spec</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getPreviousSpec
+ * <em>Previous Spec</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getMergedFrom
+ * <em>Merged From</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getMergedTo
+ * <em>Merged To</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getLogMessage
+ * <em>Log Message</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getTagSpecs
+ * <em>Tag Specs</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getVersionProperties
+ * <em>Version Properties</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.HistoryInfoImpl#getChangePackage
+ * <em>Change Package</em>}</li>
+ * </ul>
  *
  * @generated
  */

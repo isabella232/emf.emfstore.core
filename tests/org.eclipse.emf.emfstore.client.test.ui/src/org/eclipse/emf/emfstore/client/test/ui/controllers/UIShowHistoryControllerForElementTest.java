@@ -35,8 +35,8 @@ public class UIShowHistoryControllerForElementTest extends AbstractUIControllerT
 
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				final UIShowHistoryController showHistoryController =
-					new UIShowHistoryController(getBot().getDisplay().getActiveShell(), player);
+				final UIShowHistoryController showHistoryController = new UIShowHistoryController(
+					getBot().getDisplay().getActiveShell(), player);
 				showHistoryController.execute();
 			}
 		});

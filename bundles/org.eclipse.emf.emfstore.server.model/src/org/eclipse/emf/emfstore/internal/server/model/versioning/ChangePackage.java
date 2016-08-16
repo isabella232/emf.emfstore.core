@@ -29,15 +29,15 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getOperations <em>
- *          Operations</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getEvents <em>Events
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getVersionProperties <em>
- *          Version Properties</em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getOperations
+ *          <em>Operations</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getEvents <em>Events</em>
+ *          }</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackage#getVersionProperties
+ *          <em>Version Properties</em>}</li>
+ *          </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getChangePackage()
  * @model

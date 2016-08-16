@@ -56,7 +56,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentNullToValueNotContainedAlreadyOperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -109,7 +109,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentNullToValueNotContainedAlreadyOperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -163,7 +163,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentValueToOtherValueNotContainedAlreadyOperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solutionOld = Create.testElement();
@@ -232,7 +232,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentValueToOtherValueNotContainedAlreadyOperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solutionOld = Create.testElement();
@@ -308,7 +308,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentValueToOtherValueContainedAlready1OperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -384,7 +384,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentValueToOtherValueContainedAlready1OperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -460,7 +460,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentNullToOtherValueContainedAlready1OperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -525,7 +525,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentNullToOtherValueContainedAlready1OperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue1 = Create.testElement();
 		final TestElement issue2 = Create.testElement();
@@ -596,7 +596,7 @@ public class Topology1to1Test extends ESTest {
 	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentValueToOtherValueContainedAlreadyNOperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -692,7 +692,7 @@ public class Topology1to1Test extends ESTest {
 	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentValueToOtherValueContainedAlreadyNOperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -784,7 +784,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentNullToValueContainedAlreadyNOperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -863,7 +863,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentNullToValueContainedAlreadyNOperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement leafSection = Create.testElement();
@@ -946,7 +946,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentValueToNullOperateOnParent() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();
@@ -994,7 +994,7 @@ public class Topology1to1Test extends ESTest {
 	 */
 	@Test
 	public void containmentValueToNullOperateOnChild() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement issue = Create.testElement();
 		final TestElement solution = Create.testElement();

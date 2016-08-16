@@ -413,7 +413,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void containmentAddUncontainedChildrenFakeManyToNonEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement actor1 = Create.testElement();
@@ -1251,7 +1251,7 @@ public class Topology1toNTest extends ESTest {
 	// BEGIN COMPLEX CODE
 	@Test
 	public void containmentAddDifferentFeatureContained1ChildrenToNonEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement issue1 = Create.testElement();
@@ -1728,7 +1728,8 @@ public class Topology1toNTest extends ESTest {
 	 * @throws UnsupportedNotificationException on test fail
 	 */
 	@Test
-	public void containmentRemoveChildAndEmpty() throws UnsupportedOperationException, UnsupportedNotificationException {
+	public void containmentRemoveChildAndEmpty()
+		throws UnsupportedOperationException, UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement actor = Create.testElement();
@@ -1776,7 +1777,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void containmentRemoveChildrenAndEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement section = Create.testElement();
 		final TestElement actor1 = Create.testElement();
@@ -1939,7 +1940,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void nonContainmentAddChildrenToEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement actor1 = Create.testElement();
@@ -2004,7 +2005,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void nonContainmentAddChildToNonEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement oldTestElement = Create.testElement();
@@ -2060,7 +2061,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void nonContainmentAddChildrenToNonEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement oldTestElement = Create.testElement();
@@ -2127,7 +2128,7 @@ public class Topology1toNTest extends ESTest {
 	 */
 	@Test
 	public void nonContainmentRemoveChildAndEmpty() throws UnsupportedOperationException,
-	UnsupportedNotificationException {
+		UnsupportedNotificationException {
 
 		final TestElement useCase = Create.testElement();
 		final TestElement actor = Create.testElement();

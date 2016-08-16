@@ -46,7 +46,8 @@ import com.google.common.base.Predicate;
  * @author Philip Langer
  *
  */
-public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMutation> implements ESMoveObjectMutation {
+public class MoveObjectMutation extends ContainmentChangeMutation<ESMoveObjectMutation>
+	implements ESMoveObjectMutation {
 
 	private final MutationTargetSelector sourceContainerSelector;
 	private EObject eObjectToMove;

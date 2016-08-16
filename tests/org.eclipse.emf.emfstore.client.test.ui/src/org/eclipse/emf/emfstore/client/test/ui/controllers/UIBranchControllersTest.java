@@ -82,7 +82,8 @@ public class UIBranchControllersTest extends AbstractUIControllerTestWithCommit 
 		getBot().waitUntil(new DefaultCondition() {
 			// BEGIN SUPRESS CATCH EXCEPTION
 			public boolean test() throws Exception {
-				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace().getLocalProjects()) {
+				for (final ESLocalProject localProject : ESWorkspaceProvider.INSTANCE.getWorkspace()
+					.getLocalProjects()) {
 					if (localProject.getProjectName().equals("branch-checkout")) {
 						return true;
 					}

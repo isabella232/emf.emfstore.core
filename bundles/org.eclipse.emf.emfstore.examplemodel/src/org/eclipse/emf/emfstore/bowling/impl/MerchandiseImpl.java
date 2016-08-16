@@ -26,12 +26,12 @@ import org.eclipse.emf.emfstore.bowling.Merchandise;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getPrice <em>Price</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -40,7 +40,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrice()
 	 * @generated
 	 * @ordered
@@ -73,7 +73,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The cached value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrice()
 	 * @generated
 	 * @ordered
@@ -84,7 +84,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * This is true if the Price attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -94,7 +94,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The default value of the '{@link #getSerialNumber() <em>Serial Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getSerialNumber()
 	 * @generated
 	 * @ordered
@@ -105,7 +105,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * The cached value of the '{@link #getSerialNumber() <em>Serial Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getSerialNumber()
 	 * @generated
 	 * @ordered
@@ -116,7 +116,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	 * This is true if the Serial Number attribute has been set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +125,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MerchandiseImpl() {
@@ -135,7 +135,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,7 +146,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -156,21 +156,20 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
-		final String oldName = name;
+		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MERCHANDISE__NAME, oldName, name));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public BigDecimal getPrice() {
@@ -180,41 +179,39 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setPrice(BigDecimal newPrice) {
-		final BigDecimal oldPrice = price;
+		BigDecimal oldPrice = price;
 		price = newPrice;
-		final boolean oldPriceESet = priceESet;
+		boolean oldPriceESet = priceESet;
 		priceESet = true;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MERCHANDISE__PRICE, oldPrice, price,
 				!oldPriceESet));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void unsetPrice() {
-		final BigDecimal oldPrice = price;
-		final boolean oldPriceESet = priceESet;
+		BigDecimal oldPrice = price;
+		boolean oldPriceESet = priceESet;
 		price = PRICE_EDEFAULT;
 		priceESet = false;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET, BowlingPackage.MERCHANDISE__PRICE, oldPrice,
 				PRICE_EDEFAULT, oldPriceESet));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public boolean isSetPrice() {
@@ -224,7 +221,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public BigInteger getSerialNumber() {
@@ -234,41 +231,39 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setSerialNumber(BigInteger newSerialNumber) {
-		final BigInteger oldSerialNumber = serialNumber;
+		BigInteger oldSerialNumber = serialNumber;
 		serialNumber = newSerialNumber;
-		final boolean oldSerialNumberESet = serialNumberESet;
+		boolean oldSerialNumberESet = serialNumberESet;
 		serialNumberESet = true;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MERCHANDISE__SERIAL_NUMBER,
 				oldSerialNumber, serialNumber, !oldSerialNumberESet));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void unsetSerialNumber() {
-		final BigInteger oldSerialNumber = serialNumber;
-		final boolean oldSerialNumberESet = serialNumberESet;
+		BigInteger oldSerialNumber = serialNumber;
+		boolean oldSerialNumberESet = serialNumberESet;
 		serialNumber = SERIAL_NUMBER_EDEFAULT;
 		serialNumberESet = false;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET, BowlingPackage.MERCHANDISE__SERIAL_NUMBER,
 				oldSerialNumber, SERIAL_NUMBER_EDEFAULT, oldSerialNumberESet));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public boolean isSetSerialNumber() {
@@ -278,7 +273,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -297,7 +292,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -319,7 +314,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -341,7 +336,7 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -360,32 +355,27 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
+		if (eIsProxy())
 			return super.toString();
-		}
 
-		final StringBuffer result = new StringBuffer(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", price: "); //$NON-NLS-1$
-		if (priceESet) {
+		if (priceESet)
 			result.append(price);
-		}
-		else {
+		else
 			result.append("<unset>"); //$NON-NLS-1$
-		}
 		result.append(", serialNumber: "); //$NON-NLS-1$
-		if (serialNumberESet) {
+		if (serialNumberESet)
 			result.append(serialNumber);
-		}
-		else {
+		else
 			result.append("<unset>"); //$NON-NLS-1$
-		}
 		result.append(')');
 		return result.toString();
 	}

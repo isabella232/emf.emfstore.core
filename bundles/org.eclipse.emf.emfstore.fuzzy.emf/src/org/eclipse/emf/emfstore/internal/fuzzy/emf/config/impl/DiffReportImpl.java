@@ -29,10 +29,10 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.DiffReportImpl#getDiffs <em>Diffs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -42,7 +42,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	 * The cached value of the '{@link #getDiffs() <em>Diffs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDiffs()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DiffReportImpl() {
@@ -62,7 +62,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -73,7 +73,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public EList<TestDiff> getDiffs() {
@@ -86,7 +86,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -101,7 +101,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,7 +116,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -134,7 +134,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -150,7 +150,7 @@ public class DiffReportImpl extends EObjectImpl implements DiffReport {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

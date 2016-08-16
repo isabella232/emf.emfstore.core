@@ -77,7 +77,8 @@ public enum ChecksumErrorHandler implements ESChecksumErrorHandler {
 			final ESLocalProject serverESProject = localProject
 				.getRemoteProject()
 				.checkout(
-					"log_error_checksum_debug_checkout", localProject.getUsersession(), versionSpec, new NullProgressMonitor()); //$NON-NLS-1$
+					"log_error_checksum_debug_checkout", localProject.getUsersession(), versionSpec, //$NON-NLS-1$
+					new NullProgressMonitor());
 			final Project serverProject = ESLocalProjectImpl.class.cast(serverESProject).toInternalAPI()
 				.getProject();
 			try {

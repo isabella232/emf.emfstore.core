@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -35,19 +34,19 @@ import org.eclipse.emf.emfstore.bowling.Fan;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Fan} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class FanItemProvider
 	extends ItemProviderAdapter
 	implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
 	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public FanItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +57,7 @@ public class FanItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,13 +82,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_name_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_name_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -106,13 +104,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Date Of Birth feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addDateOfBirthPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_dateOfBirth_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_dateOfBirth_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -129,13 +126,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Has Season Ticket feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addHasSeasonTicketPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_hasSeasonTicket_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_hasSeasonTicket_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -152,13 +148,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the EMails feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addEMailsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_eMails_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_eMails_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -175,13 +170,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Gender feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addGenderPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_gender_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_gender_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -198,13 +192,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Favourite Player feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addFavouritePlayerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_favouritePlayer_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_favouritePlayer_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -221,13 +214,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Visited Tournaments feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addVisitedTournamentsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_visitedTournaments_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_visitedTournaments_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -244,18 +236,16 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Number Of Tournaments Visited feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addNumberOfTournamentsVisitedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_numberOfTournamentsVisited_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Fan_numberOfTournamentsVisited_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Fan_numberOfTournamentsVisited_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Fan_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.FAN__NUMBER_OF_TOURNAMENTS_VISITED,
 				true,
 				false,
@@ -269,13 +259,12 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Money Spent On Tickets feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected void addMoneySpentOnTicketsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Fan_moneySpentOnTickets_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Fan_moneySpentOnTickets_feature", "_UI_Fan_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -294,7 +283,7 @@ public class FanItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -310,7 +299,7 @@ public class FanItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -325,7 +314,7 @@ public class FanItemProvider
 	 * This returns Fan.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -337,14 +326,13 @@ public class FanItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		final String label = ((Fan) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Fan_type") : //$NON-NLS-1$
+		String label = ((Fan) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Fan_type") : //$NON-NLS-1$
 			getString("_UI_Fan_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -353,7 +341,7 @@ public class FanItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -383,39 +371,34 @@ public class FanItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.FAN__FAN_MERCHANDISE,
-				BowlingFactory.eINSTANCE.createMerchandise()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.FAN__FAN_MERCHANDISE,
+			BowlingFactory.eINSTANCE.createMerchandise()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.FAN__FAVOURITE_MERCHANDISE,
-				BowlingFactory.eINSTANCE.createMerchandise()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.FAN__FAVOURITE_MERCHANDISE,
+			BowlingFactory.eINSTANCE.createMerchandise()));
 	}
 
 	/**
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		final Object childFeature = feature;
-		final Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-		final boolean qualify =
-			childFeature == BowlingPackage.Literals.FAN__FAN_MERCHANDISE ||
-				childFeature == BowlingPackage.Literals.FAN__FAVOURITE_MERCHANDISE;
+		boolean qualify = childFeature == BowlingPackage.Literals.FAN__FAN_MERCHANDISE ||
+			childFeature == BowlingPackage.Literals.FAN__FAVOURITE_MERCHANDISE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -428,7 +411,7 @@ public class FanItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

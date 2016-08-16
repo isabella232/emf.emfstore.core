@@ -40,13 +40,15 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getProjectSpaces <em>Project Spaces
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getServerInfos <em>Server Infos</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getUsersessions <em>Usersessions</em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getProjectSpaces <em>Project Spaces</em>
+ *          }</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getServerInfos <em>Server Infos</em>}
+ *          </li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Workspace#getUsersessions <em>Usersessions</em>}
+ *          </li>
+ *          </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace()
  * @model
@@ -175,7 +177,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Project Spaces</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace_ProjectSpaces()
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getWorkspace

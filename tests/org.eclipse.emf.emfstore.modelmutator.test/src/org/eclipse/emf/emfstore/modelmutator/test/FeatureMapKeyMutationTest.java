@@ -39,52 +39,38 @@ public class FeatureMapKeyMutationTest extends AbstractMutationTest {
 	private static final TestmodelPackage TEST_MODEL_PACKAGE = TestmodelPackage.eINSTANCE;
 
 	@Test
-	public void runUnconfiguredFeatureMapKeyMutation()
-			throws ESMutationException {
-		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(
-				utilForTestTypeModel);
+	public void runUnconfiguredFeatureMapKeyMutation() throws ESMutationException {
+		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(utilForTestTypeModel);
 		mutation.apply();
 
 		EStructuralFeature feature = mutation.getTargetFeature();
-		assertTrue(feature == TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapNonContainment_Map()
-				|| feature == TEST_MODEL_PACKAGE
-						.getTypeWithFeatureMapContainment_MapContainment());
+		assertTrue(feature == TEST_MODEL_PACKAGE.getTypeWithFeatureMapNonContainment_Map()
+			|| feature == TEST_MODEL_PACKAGE.getTypeWithFeatureMapContainment_MapContainment());
 	}
 
 	@Test
 	public void containmentFeatureMapKeyMutation() throws ESMutationException {
-		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(
-				utilForTestTypeModel);
-		mutation.setTargetFeature(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapContainment_MapContainment());
+		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(utilForTestTypeModel);
+		mutation.setTargetFeature(TEST_MODEL_PACKAGE.getTypeWithFeatureMapContainment_MapContainment());
 		mutation.apply();
 
-		final EList<TestType> firstKeyContainments = testTypeModel
-				.getFirstKeyContainment();
-		final EList<TestType> secondKeyContainments = testTypeModel
-				.getSecondKeyContainment();
+		final EList<TestType> firstKeyContainments = testTypeModel.getFirstKeyContainment();
+		final EList<TestType> secondKeyContainments = testTypeModel.getSecondKeyContainment();
 
 		// originally we had one in first key and one in second key containment
 		// after the key change mutation, there should be two in either one of
 		// them
-		assertTrue((firstKeyContainments.size() == 2 && secondKeyContainments
-				.size() == 0)
-				|| (firstKeyContainments.size() == 0 && secondKeyContainments
-						.size() == 2));
+		assertTrue((firstKeyContainments.size() == 2 && secondKeyContainments.size() == 0)
+			|| (firstKeyContainments.size() == 0 && secondKeyContainments.size() == 2));
 	}
 
 	@Test
-	public void nonContainmentFeatureMapKeyMutation()
-			throws ESMutationException {
-		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(
-				utilForTestTypeModel);
-		mutation.setTargetFeature(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapNonContainment_Map());
+	public void nonContainmentFeatureMapKeyMutation() throws ESMutationException {
+		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(utilForTestTypeModel);
+		mutation.setTargetFeature(TEST_MODEL_PACKAGE.getTypeWithFeatureMapNonContainment_Map());
 		mutation.apply();
 
-		final EList<TestType> firstKeyContainments = testTypeModel
-				.getFirstKeyContainment();
+		final EList<TestType> firstKeyContainments = testTypeModel.getFirstKeyContainment();
 		final TestType firstKeyContainmentsIdx0 = firstKeyContainments.get(0);
 		final TypeWithFeatureMapNonContainment mutationTarget = (TypeWithFeatureMapNonContainment) firstKeyContainmentsIdx0;
 
@@ -95,39 +81,33 @@ public class FeatureMapKeyMutationTest extends AbstractMutationTest {
 		// after the key change mutation, there should be two in either one of
 		// them
 		assertTrue((firstKeyValues.size() == 2 && secondKeyValues.size() == 0)
-				|| (firstKeyValues.size() == 0 && secondKeyValues.size() == 2));
+			|| (firstKeyValues.size() == 0 && secondKeyValues.size() == 2));
 	}
 
 	@Test
 	public void getFeaturesOfFeatureMapGroupContainment() {
-		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(
-				utilForTestTypeModel);
-		mutation.setTargetFeature(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapContainment_MapContainment());
-		List<EStructuralFeature> featuresOfFeatureMapGroup = mutation
-				.getFeaturesOfFeatureMapGroup();
+		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(utilForTestTypeModel);
+		mutation.setTargetFeature(TEST_MODEL_PACKAGE.getTypeWithFeatureMapContainment_MapContainment());
+		List<EStructuralFeature> featuresOfFeatureMapGroup = mutation.getFeaturesOfFeatureMapGroup();
 
 		assertEquals(2, featuresOfFeatureMapGroup.size());
-		assertTrue(featuresOfFeatureMapGroup.contains(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapContainment_FirstKeyContainment()));
-		assertTrue(featuresOfFeatureMapGroup.contains(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapContainment_SecondKeyContainment()));
+		assertTrue(featuresOfFeatureMapGroup
+			.contains(TEST_MODEL_PACKAGE.getTypeWithFeatureMapContainment_FirstKeyContainment()));
+		assertTrue(featuresOfFeatureMapGroup
+			.contains(TEST_MODEL_PACKAGE.getTypeWithFeatureMapContainment_SecondKeyContainment()));
 	}
 
 	@Test
 	public void getFeaturesOfFeatureMapGroupNonContainment() {
-		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(
-				utilForTestTypeModel);
-		mutation.setTargetFeature(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapNonContainment_Map());
-		List<EStructuralFeature> featuresOfFeatureMapGroup = mutation
-				.getFeaturesOfFeatureMapGroup();
+		FeatureMapKeyMutation mutation = new FeatureMapKeyMutation(utilForTestTypeModel);
+		mutation.setTargetFeature(TEST_MODEL_PACKAGE.getTypeWithFeatureMapNonContainment_Map());
+		List<EStructuralFeature> featuresOfFeatureMapGroup = mutation.getFeaturesOfFeatureMapGroup();
 
 		assertEquals(2, featuresOfFeatureMapGroup.size());
-		assertTrue(featuresOfFeatureMapGroup.contains(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapNonContainment_FirstKey()));
-		assertTrue(featuresOfFeatureMapGroup.contains(TEST_MODEL_PACKAGE
-				.getTypeWithFeatureMapNonContainment_SecondKey()));
+		assertTrue(
+			featuresOfFeatureMapGroup.contains(TEST_MODEL_PACKAGE.getTypeWithFeatureMapNonContainment_FirstKey()));
+		assertTrue(
+			featuresOfFeatureMapGroup.contains(TEST_MODEL_PACKAGE.getTypeWithFeatureMapNonContainment_SecondKey()));
 	}
 
 }

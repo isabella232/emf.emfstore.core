@@ -77,11 +77,11 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addNextVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_Version_nextVersion_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_Version_nextVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			VersioningPackage.Literals.VERSION__NEXT_VERSION, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Version_nextVersion_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Version_nextVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				VersioningPackage.Literals.VERSION__NEXT_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -91,11 +91,12 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addPreviousVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_Version_previousVersion_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_Version_previousVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			VersioningPackage.Literals.VERSION__PREVIOUS_VERSION, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Version_previousVersion_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Version_previousVersion_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Version_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.VERSION__PREVIOUS_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -105,11 +106,12 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addAncestorVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_Version_ancestorVersion_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_Version_ancestorVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			VersioningPackage.Literals.VERSION__ANCESTOR_VERSION, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Version_ancestorVersion_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Version_ancestorVersion_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Version_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.VERSION__ANCESTOR_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -121,10 +123,9 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	protected void addBranchedVersionsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Version_branchedVersions_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Version_branchedVersions_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getResourceLocator(), getString("_UI_Version_branchedVersions_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Version_branchedVersions_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Version_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.VERSION__BRANCHED_VERSIONS, true, false, true, null, null, null));
 	}
 
@@ -135,11 +136,12 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addMergedToVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_Version_mergedToVersion_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_Version_mergedToVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			VersioningPackage.Literals.VERSION__MERGED_TO_VERSION, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Version_mergedToVersion_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Version_mergedToVersion_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Version_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.VERSION__MERGED_TO_VERSION, true, false, true, null, null, null));
 	}
 
 	/**
@@ -151,10 +153,9 @@ public class VersionItemProvider extends ItemProviderAdapter implements IEditing
 	protected void addMergedFromVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Version_mergedFromVersion_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Version_mergedFromVersion_feature", "_UI_Version_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getResourceLocator(), getString("_UI_Version_mergedFromVersion_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Version_mergedFromVersion_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Version_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.VERSION__MERGED_FROM_VERSION, true, false, true, null, null, null));
 	}
 

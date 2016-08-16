@@ -31,20 +31,18 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
-public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemProvider
-{
+public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public TypeWithFeatureMapNonContainmentItemProvider(AdapterFactory adapterFactory)
-	{
+	public TypeWithFeatureMapNonContainmentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -52,14 +50,12 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addFirstKeyPropertyDescriptor(object);
@@ -72,19 +68,16 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This adds a property descriptor for the First Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addFirstKeyPropertyDescriptor(Object object)
-	{
+	protected void addFirstKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TypeWithFeatureMapNonContainment_firstKey_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TypeWithFeatureMapNonContainment_firstKey_feature", "_UI_TypeWithFeatureMapNonContainment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_TypeWithFeatureMapNonContainment_firstKey_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_TypeWithFeatureMapNonContainment_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
 				true,
 				false,
@@ -98,19 +91,17 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This adds a property descriptor for the Second Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	protected void addSecondKeyPropertyDescriptor(Object object)
-	{
+	protected void addSecondKeyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TypeWithFeatureMapNonContainment_secondKey_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TypeWithFeatureMapNonContainment_secondKey_feature", "_UI_TypeWithFeatureMapNonContainment_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+					"_UI_TypeWithFeatureMapNonContainment_secondKey_feature", //$NON-NLS-1$
+					"_UI_TypeWithFeatureMapNonContainment_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
 				true,
 				false,
@@ -126,14 +117,12 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-	{
-		if (childrenFeatures == null)
-		{
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP);
 		}
@@ -143,12 +132,11 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
-	{
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
@@ -159,12 +147,11 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns TypeWithFeatureMapNonContainment.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/TypeWithFeatureMapNonContainment")); //$NON-NLS-1$
 	}
 
@@ -172,15 +159,13 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
-		final String label = ((TypeWithFeatureMapNonContainment) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TypeWithFeatureMapNonContainment_type") : //$NON-NLS-1$
+	public String getText(Object object) {
+		String label = ((TypeWithFeatureMapNonContainment) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_TypeWithFeatureMapNonContainment_type") : //$NON-NLS-1$
 			getString("_UI_TypeWithFeatureMapNonContainment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -189,16 +174,14 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TypeWithFeatureMapNonContainment.class))
-		{
+		switch (notification.getFeatureID(TypeWithFeatureMapNonContainment.class)) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -211,84 +194,67 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
-						TestmodelFactory.eINSTANCE.createTestType())));
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
+				FeatureMapUtil.createEntry(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
+					TestmodelFactory.eINSTANCE.createTestType())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
-						TestmodelFactory.eINSTANCE.createTypeWithFeatureMapNonContainment())));
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
+				FeatureMapUtil.createEntry(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
+					TestmodelFactory.eINSTANCE.createTypeWithFeatureMapNonContainment())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
-						TestmodelFactory.eINSTANCE.createTypeWithFeatureMapContainment())));
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
+				FeatureMapUtil.createEntry(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY,
+					TestmodelFactory.eINSTANCE.createTypeWithFeatureMapContainment())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
-						TestmodelFactory.eINSTANCE.createTestType())));
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
+				FeatureMapUtil.createEntry(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
+					TestmodelFactory.eINSTANCE.createTestType())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
-						TestmodelFactory.eINSTANCE.createTypeWithFeatureMapNonContainment())));
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
+				FeatureMapUtil.createEntry(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
+					TestmodelFactory.eINSTANCE.createTypeWithFeatureMapNonContainment())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
-						TestmodelFactory.eINSTANCE.createTypeWithFeatureMapContainment())));
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP,
+				FeatureMapUtil.createEntry(TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY,
+					TestmodelFactory.eINSTANCE.createTypeWithFeatureMapContainment())));
 	}
 
 	/**
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
-	{
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
 		if (childFeature instanceof EStructuralFeature
-			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature))
-		{
-			final FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
+			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature)) {
+			FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
 
-		final boolean qualify =
-			childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY ||
-				childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY;
+		boolean qualify = childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY ||
+			childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY;
 
-		if (qualify)
-		{
+		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}

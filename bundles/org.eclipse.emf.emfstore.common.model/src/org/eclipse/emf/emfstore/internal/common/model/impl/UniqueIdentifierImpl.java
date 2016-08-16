@@ -34,7 +34,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -44,7 +44,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -85,20 +85,19 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
-		final String oldId = id;
+		String oldId = id;
 		id = newId;
-		if (eNotificationRequired()) {
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.UNIQUE_IDENTIFIER__ID, oldId, id));
-		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,7 +111,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,7 +126,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,7 +141,7 @@ public abstract class UniqueIdentifierImpl extends EObjectImpl implements Unique
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

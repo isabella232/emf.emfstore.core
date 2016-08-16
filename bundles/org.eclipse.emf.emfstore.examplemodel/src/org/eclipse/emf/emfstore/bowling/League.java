@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.League#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.League#getPlayers <em>Players</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getLeague()
  * @model
@@ -38,7 +38,7 @@ public interface League extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getLeague_Name()
@@ -51,7 +51,7 @@ public interface League extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.League#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -67,7 +67,7 @@ public interface League extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Players</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getLeague_Players()
 	 * @model containment="true" resolveProxies="true"

@@ -26,6 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Project Info</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getDescription <em>Description</em>}
@@ -33,7 +34,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getProjectId <em>Project Id</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ProjectInfoImpl#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

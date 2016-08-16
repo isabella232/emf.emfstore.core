@@ -205,4 +205,3 @@ public class EObjectSerializer extends TypeSerializerImpl {
 		serializationOptionsInitialized = true;
 	}
 }
-

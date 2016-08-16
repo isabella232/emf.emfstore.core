@@ -183,8 +183,7 @@ public class ESEMFDataProvider implements ESFuzzyEMFDataProvider {
 				resource.load(null);
 			}
 
-			final TestConfig internalConfig =
-				ESTestConfigImpl.class.cast(config).toInternalAPI();
+			final TestConfig internalConfig = ESTestConfigImpl.class.cast(config).toInternalAPI();
 
 			if (!FuzzyUtil.containsConfig(resource, internalConfig)) {
 				resource.getContents().add(internalConfig);

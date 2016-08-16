@@ -18,6 +18,7 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceSetOperation#getIndex
  * <em>Index</em>}</li>
@@ -28,7 +29,6 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceSetOperation#getNewValue
  * <em>New Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiReferenceSetOperation()
  * @model

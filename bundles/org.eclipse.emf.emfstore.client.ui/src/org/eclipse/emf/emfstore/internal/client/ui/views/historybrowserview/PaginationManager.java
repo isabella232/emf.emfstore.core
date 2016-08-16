@@ -75,7 +75,8 @@ public class PaginationManager {
 	 * @param belowCenterCount
 	 *            The number of versions shown below the central version.
 	 */
-	public PaginationManager(ProjectSpace projectSpace, EObject modelElement, int aboveCenterCount, int belowCenterCount) {
+	public PaginationManager(ProjectSpace projectSpace, EObject modelElement, int aboveCenterCount,
+		int belowCenterCount) {
 		this.aboveCenterCount = aboveCenterCount;
 		this.belowCenterCount = belowCenterCount;
 		this.projectSpace = projectSpace;
@@ -406,8 +407,7 @@ public class PaginationManager {
 		}
 
 		final HistoryQuery<ESHistoryQuery> query = getQuery(Versions.createPRIMARY(projectSpace.getBaseVersion(), id),
-			aboveCenterCount
-				+ belowCenterCount, aboveCenterCount + belowCenterCount);
+			aboveCenterCount + belowCenterCount, aboveCenterCount + belowCenterCount);
 		// TODO: monitor
 		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(query.toAPI(),
 			new NullProgressMonitor());

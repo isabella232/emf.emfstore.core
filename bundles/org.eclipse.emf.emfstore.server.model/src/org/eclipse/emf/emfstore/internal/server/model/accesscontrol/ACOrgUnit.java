@@ -24,23 +24,24 @@ import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getName <em>Name</em>}
  *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getRoles <em>Roles</em>}
  *          </li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>
- *          Description </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getProperties <em>
- *          Properties</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription
+ *          <em>Description</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getProperties
+ *          <em>Properties</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACOrgUnit()
  * @model
  * @generated
  */
 public interface ACOrgUnit<E extends ESOrgUnit> extends IdentifiableElement, APIDelegate<E> {
+
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -116,8 +117,8 @@ public interface ACOrgUnit<E extends ESOrgUnit> extends IdentifiableElement, API
 
 	/**
 	 * Sets the value of the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription
-	 * <em>Description</em>}' attribute.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>Description</em>
+	 * }' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 *
