@@ -15,7 +15,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.emfstore.common.model.ESModelElementId;
 import org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver;
@@ -37,6 +36,8 @@ public class ETypeIdResolver implements ESSingletonIdResolver {
 		// eclass stuff
 		datatypes.put("EClass", EcorePackage.eINSTANCE.getEClass()); //$NON-NLS-1$
 		datatypes.put("EStructuralFeature", EcorePackage.eINSTANCE.getEStructuralFeature()); //$NON-NLS-1$
+		datatypes.put("EGenericType", EcorePackage.eINSTANCE.getEGenericType()); //$NON-NLS-1$
+		datatypes.put("EPackage", EcorePackage.eINSTANCE.getEPackage()); //$NON-NLS-1$
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class ETypeIdResolver implements ESSingletonIdResolver {
 	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#getSingletonModelElementId(org.eclipse.emf.ecore.EObject)
 	 */
 	public ESModelElementId getSingletonModelElementId(EObject singleton) {
-		if (!(singleton instanceof EClass || EStructuralFeature.class.isInstance(singleton)) || singleton == null) {
+		if (!isSingleton(singleton) || singleton == null) {
 			return null;
 		}
 
@@ -86,7 +87,13 @@ public class ETypeIdResolver implements ESSingletonIdResolver {
 	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#isSingleton(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean isSingleton(EObject eDataType) {
-		return EClass.class.isInstance(eDataType) || EStructuralFeature.class.isInstance(eDataType);
+		for (final EClass eClass : datatypes.values()) {
+			if (eClass.isInstance(eDataType)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

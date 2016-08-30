@@ -31,5 +31,6 @@
 		<module>../../tests/org.eclipse.emf.emfstore.performance.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.client.ui.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.migration.edapt.test</module>
+		<module>../../tests/org.eclipse.emf.emfstore.ecore.test</module>
 	</modules>
 </project>
