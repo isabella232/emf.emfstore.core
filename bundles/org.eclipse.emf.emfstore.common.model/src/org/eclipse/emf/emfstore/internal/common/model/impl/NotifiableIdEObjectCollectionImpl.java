@@ -14,6 +14,7 @@
 package org.eclipse.emf.emfstore.internal.common.model.impl;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -145,20 +146,21 @@ public abstract class NotifiableIdEObjectCollectionImpl extends IdEObjectCollect
 					if (exceptionThrowingObservers.contains(changeObserver)) {
 						if (!undetachableObservers.contains(changeObserver)) {
 							observersToRemove.add(changeObserver);
-							ModelUtil.logException(
-								Messages.NotifiableIdEObjectCollectionImpl_Exception_Detach
-									+ changeObserver.getClass().getName(),
-								exception);
+							final String msg = MessageFormat.format(
+								Messages.NotifiableIdEObjectCollectionImpl_Exception_Detach,
+								changeObserver.getClass().getName());
+							ModelUtil.logException(msg, exception);
 						} else {
-							ModelUtil.logException(
-								Messages.NotifiableIdEObjectCollectionImpl_Exception_NoDetach
-									+ changeObserver.getClass().getName(),
-								exception);
+							final String msg = MessageFormat.format(
+								Messages.NotifiableIdEObjectCollectionImpl_Exception_NoDetach,
+								changeObserver.getClass().getName());
+							ModelUtil.logException(msg, exception);
 						}
 					} else {
 						exceptionThrowingObservers.add(changeObserver);
-						ModelUtil.logWarning(Messages.NotifiableIdEObjectCollectionImpl_Exception
-							+ changeObserver.getClass().getName(), exception);
+						final String msg = MessageFormat.format(Messages.NotifiableIdEObjectCollectionImpl_Exception,
+							changeObserver.getClass().getName());
+						ModelUtil.logWarning(msg, exception);
 					}
 				}
 			};
