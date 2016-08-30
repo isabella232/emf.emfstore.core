@@ -35,14 +35,15 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.changetracking.ESCommandObserver;
 import org.eclipse.emf.emfstore.client.observer.ESCommitObserver;
 import org.eclipse.emf.emfstore.client.observer.ESPostCreationObserver;
 import org.eclipse.emf.emfstore.client.observer.ESShareObserver;
 import org.eclipse.emf.emfstore.client.observer.ESUpdateObserver;
+import org.eclipse.emf.emfstore.client.util.ESCopier;
 import org.eclipse.emf.emfstore.internal.client.model.CompositeOperationHandle;
+import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.changeTracking.NotificationToOperationConverter;
@@ -402,9 +403,8 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		final List<EObject> allContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(element, false);
 		allContainedModelElements.add(element);
 
-		final Copier copier = new Copier(true, false);
+		final ESCopier copier = Configuration.getClientBehavior().getESCopierFor(element);
 		final EObject copiedElement = copier.copy(element);
-		copier.copyReferences();
 
 		final List<EObject> copiedAllContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
 			copiedElement,
@@ -426,8 +426,8 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 		createDeleteOperation.setModelElement(copiedElement);
 		createDeleteOperation.setModelElementId(collection.getModelElementId(modelElement));
-
 		createDeleteOperation.setClientDate(new Date());
+
 		return createDeleteOperation;
 	}
 
@@ -1078,7 +1078,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		 * @param setting
 		 *            a setting consisting of an {@link EObject} and a non-many reference
 		 */
-		public SettingWithElementsToRemove(Setting setting) {
+		SettingWithElementsToRemove(Setting setting) {
 			this.setting = setting;
 		}
 
@@ -1090,7 +1090,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		 * @param elementsToRemove
 		 *            the elemets to be removed from the many reference
 		 */
-		public SettingWithElementsToRemove(Setting setting, Set<EObject> elementsToRemove) {
+		SettingWithElementsToRemove(Setting setting, Set<EObject> elementsToRemove) {
 			this.setting = setting;
 			this.elementsToRemove.addAll(elementsToRemove);
 		}

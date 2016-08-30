@@ -15,10 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.handler.ESChecksumErrorHandler;
 import org.eclipse.emf.emfstore.client.handler.ESOperationModifier;
 import org.eclipse.emf.emfstore.client.provider.ESClientConfigurationProvider;
+import org.eclipse.emf.emfstore.client.util.ESCopier;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
@@ -26,6 +28,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
+import org.eclipse.emf.emfstore.internal.client.model.impl.api.DefaultCopier;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl;
 import org.eclipse.emf.emfstore.internal.client.model.util.ChecksumErrorHandler;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
@@ -91,6 +94,11 @@ public class Behavior {
 	 */
 	public static final String OPERATION_MODIFIER = "operationModifier"; //$NON-NLS-1$
 
+	/**
+	 * Copier option identifier.
+	 */
+	public static final String COPIER = "copier"; //$NON-NLS-1$
+
 	private static Boolean isAutoSaveActive;
 	private static Boolean isRerecordingActive;
 	private static Boolean isCutOffIncomingCrossReferencesActive;
@@ -99,6 +107,7 @@ public class Behavior {
 	private static Boolean isUseMemoryChangePackageActive;
 	private static Optional<Integer> changePackageFragmentSize;
 	private static ESOperationModifier operationModifier;
+	private static List<ESCopier> copierList;
 
 	private ESChecksumErrorHandler checksumErrorHandler;
 
@@ -303,6 +312,29 @@ public class Behavior {
 		}
 
 		return operationModifier;
+	}
+
+	/**
+	 * Returns the copier that is used to copy {@link EObject}s.
+	 *
+	 * @param eObject the {@link EObject} to be copied
+	 *
+	 * @return the copier
+	 */
+	public ESCopier getESCopierFor(EObject eObject) {
+		if (copierList == null) {
+			copierList = new ESExtensionPoint(RESOURCE_OPTIONS_EXTENSION_POINT_NAME).getClasses(COPIER, ESCopier.class);
+		}
+
+		ESCopier selectedCopier = new DefaultCopier();
+		final int maxPriority = -1;
+		for (final ESCopier copier : copierList) {
+			if (copier.shouldHandle(eObject) > maxPriority) {
+				selectedCopier = copier;
+			}
+		}
+
+		return selectedCopier;
 	}
 
 	/**
