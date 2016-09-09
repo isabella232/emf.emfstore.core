@@ -20,7 +20,7 @@ public class MemoryMeter extends Thread {
 		try {
 			while (!stop) {
 				if (active) {
-					long usedMemory = Runtime.getRuntime().totalMemory()
+					final long usedMemory = Runtime.getRuntime().totalMemory()
 						- Runtime.getRuntime().freeMemory();
 					if (usedMemory > maxUsedMemory) {
 						maxUsedMemory = usedMemory;
@@ -28,7 +28,7 @@ public class MemoryMeter extends Thread {
 				}
 				Thread.sleep(MEASUREMENT_PERIOD);
 			}
-		} catch (InterruptedException e) {
+		} catch (final InterruptedException e) {
 		}
 	}
 
@@ -39,7 +39,7 @@ public class MemoryMeter extends Thread {
 
 	public long stopMeasurements() {
 		active = false;
-		long usedMemory = Runtime.getRuntime().totalMemory()
+		final long usedMemory = Runtime.getRuntime().totalMemory()
 			- Runtime.getRuntime().freeMemory();
 		long curMaxMemory = maxUsedMemory;
 		if (usedMemory > curMaxMemory) {

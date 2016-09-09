@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -45,7 +45,7 @@ public interface TypeWithFeatureMapContainment extends TestType {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Map Containment</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapContainment_MapContainment()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
@@ -63,7 +63,7 @@ public interface TypeWithFeatureMapContainment extends TestType {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>First Key Containment</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapContainment_FirstKeyContainment()
 	 * @model containment="true" transient="true" volatile="true"
@@ -81,7 +81,7 @@ public interface TypeWithFeatureMapContainment extends TestType {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Second Key Containment</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapContainment_SecondKeyContainment()
 	 * @model containment="true" transient="true" volatile="true"

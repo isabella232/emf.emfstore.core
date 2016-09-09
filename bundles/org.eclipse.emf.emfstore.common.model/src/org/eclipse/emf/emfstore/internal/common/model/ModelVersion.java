@@ -35,7 +35,7 @@ public interface ModelVersion extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Release Number</em>' attribute.
 	 * @see #setReleaseNumber(int)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getModelVersion_ReleaseNumber()
@@ -48,7 +48,7 @@ public interface ModelVersion extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.ModelVersion#getReleaseNumber
 	 * <em>Release Number</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Release Number</em>' attribute.
 	 * @see #getReleaseNumber()
 	 * @generated

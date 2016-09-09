@@ -88,7 +88,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	/**
 	 * The cached value of the '{@link #getUrl() <em>Url</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUrl()
 	 * @generated
 	 * @ordered
@@ -119,7 +119,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPath()
 	 * @generated
 	 * @ordered
@@ -129,7 +129,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPath()
 	 * @generated
 	 * @ordered
@@ -149,7 +149,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * The cached value of the '{@link #getLastUsersession() <em>Last Usersession</em>}' reference.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastUsersession()
 	 * @generated
 	 * @ordered
@@ -178,7 +178,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ServerInfoImpl() {
@@ -187,7 +187,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -197,7 +197,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -206,19 +206,20 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__NAME, oldName, name));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getUrl() {
@@ -227,19 +228,20 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setUrl(String newUrl) {
-		String oldUrl = url;
+		final String oldUrl = url;
 		url = newUrl;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__URL, oldUrl, url));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getPort() {
@@ -248,20 +250,21 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPort(int newPort) {
-		int oldPort = port;
+		final int oldPort = port;
 		port = newPort;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__PORT, oldPort, port));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getPath() {
@@ -271,19 +274,20 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPath(String newPath) {
-		String oldPath = path;
+		final String oldPath = path;
 		path = newPath;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__PATH, oldPath, path));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ProjectInfo> getProjectInfos() {
@@ -296,17 +300,18 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Usersession getLastUsersession() {
 		if (lastUsersession != null && lastUsersession.eIsProxy()) {
-			InternalEObject oldLastUsersession = (InternalEObject) lastUsersession;
+			final InternalEObject oldLastUsersession = (InternalEObject) lastUsersession;
 			lastUsersession = (Usersession) eResolveProxy(oldLastUsersession);
 			if (lastUsersession != oldLastUsersession) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ModelPackage.SERVER_INFO__LAST_USERSESSION, oldLastUsersession, lastUsersession));
+				}
 			}
 		}
 		return lastUsersession;
@@ -314,7 +319,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Usersession basicGetLastUsersession() {
@@ -323,20 +328,21 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLastUsersession(Usersession newLastUsersession) {
-		Usersession oldLastUsersession = lastUsersession;
+		final Usersession oldLastUsersession = lastUsersession;
 		lastUsersession = newLastUsersession;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__LAST_USERSESSION,
 				oldLastUsersession, lastUsersession));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getCertificateAlias() {
@@ -345,20 +351,21 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setCertificateAlias(String newCertificateAlias) {
-		String oldCertificateAlias = certificateAlias;
+		final String oldCertificateAlias = certificateAlias;
 		certificateAlias = newCertificateAlias;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__CERTIFICATE_ALIAS,
 				oldCertificateAlias, certificateAlias));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -372,7 +379,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -389,8 +396,9 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			return getProjectInfos();
 		case ModelPackage.SERVER_INFO__LAST_USERSESSION:
-			if (resolve)
+			if (resolve) {
 				return getLastUsersession();
+			}
 			return basicGetLastUsersession();
 		case ModelPackage.SERVER_INFO__CERTIFICATE_ALIAS:
 			return getCertificateAlias();
@@ -400,7 +408,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -435,7 +443,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -468,7 +476,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -495,15 +503,16 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", url: "); //$NON-NLS-1$

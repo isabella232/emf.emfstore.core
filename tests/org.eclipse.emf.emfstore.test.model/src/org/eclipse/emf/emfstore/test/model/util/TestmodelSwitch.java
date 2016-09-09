@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage
  * @generated
  */
@@ -41,7 +41,7 @@ public class TestmodelSwitch<T> {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected static TestmodelPackage modelPackage;
@@ -50,7 +50,7 @@ public class TestmodelSwitch<T> {
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestmodelSwitch() {
@@ -64,7 +64,7 @@ public class TestmodelSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -77,7 +77,7 @@ public class TestmodelSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -85,7 +85,7 @@ public class TestmodelSwitch<T> {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
@@ -94,74 +94,84 @@ public class TestmodelSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 		case TestmodelPackage.TEST_ELEMENT: {
-			TestElement testElement = (TestElement) theEObject;
+			final TestElement testElement = (TestElement) theEObject;
 			T result = caseTestElement(testElement);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.TEST_ELEMENT_TO_STRING_MAP: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<TestElement, String> testElementToStringMap = (Map.Entry<TestElement, String>) theEObject;
+			final Map.Entry<TestElement, String> testElementToStringMap = (Map.Entry<TestElement, String>) theEObject;
 			T result = caseTestElementToStringMap(testElementToStringMap);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.STRING_TO_STRING_MAP: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<String, String> stringToStringMap = (Map.Entry<String, String>) theEObject;
+			final Map.Entry<String, String> stringToStringMap = (Map.Entry<String, String>) theEObject;
 			T result = caseStringToStringMap(stringToStringMap);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.TEST_ELEMENT_TO_TEST_ELEMENT_MAP: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<TestElement, TestElement> testElementToTestElementMap = (Map.Entry<TestElement, TestElement>) theEObject;
+			final Map.Entry<TestElement, TestElement> testElementToTestElementMap = (Map.Entry<TestElement, TestElement>) theEObject;
 			T result = caseTestElementToTestElementMap(testElementToTestElementMap);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.STRING_TO_TEST_ELEMENT_MAP: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<String, TestElement> stringToTestElementMap = (Map.Entry<String, TestElement>) theEObject;
+			final Map.Entry<String, TestElement> stringToTestElementMap = (Map.Entry<String, TestElement>) theEObject;
 			T result = caseStringToTestElementMap(stringToTestElementMap);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.TEST_TYPE: {
-			TestType testType = (TestType) theEObject;
+			final TestType testType = (TestType) theEObject;
 			T result = caseTestType(testType);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT: {
-			TypeWithFeatureMapNonContainment typeWithFeatureMapNonContainment = (TypeWithFeatureMapNonContainment) theEObject;
+			final TypeWithFeatureMapNonContainment typeWithFeatureMapNonContainment = (TypeWithFeatureMapNonContainment) theEObject;
 			T result = caseTypeWithFeatureMapNonContainment(typeWithFeatureMapNonContainment);
-			if (result == null)
+			if (result == null) {
 				result = caseTestType(typeWithFeatureMapNonContainment);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_CONTAINMENT: {
-			TypeWithFeatureMapContainment typeWithFeatureMapContainment = (TypeWithFeatureMapContainment) theEObject;
+			final TypeWithFeatureMapContainment typeWithFeatureMapContainment = (TypeWithFeatureMapContainment) theEObject;
 			T result = caseTypeWithFeatureMapContainment(typeWithFeatureMapContainment);
-			if (result == null)
+			if (result == null) {
 				result = caseTestType(typeWithFeatureMapContainment);
-			if (result == null)
+			}
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		default:
@@ -175,7 +185,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -191,7 +201,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Element To String Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -207,7 +217,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>String To String Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -223,7 +233,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Element To Test Element Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -239,7 +249,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>String To Test Element Map</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -255,7 +265,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Type</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -271,7 +281,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Type With Feature Map Non Containment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -287,7 +297,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Type With Feature Map Containment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -303,7 +313,7 @@ public class TestmodelSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)

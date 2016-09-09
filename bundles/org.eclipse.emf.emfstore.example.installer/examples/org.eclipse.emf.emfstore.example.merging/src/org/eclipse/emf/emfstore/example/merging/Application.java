@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.example.merging;
@@ -51,7 +51,7 @@ public class Application implements IApplication {
 
 		try {
 			// Create a client representation for a local server and start a local server.
-			ESServer localServer = ESServer.FACTORY.createAndStartLocalServer();
+			final ESServer localServer = ESServer.FACTORY.createAndStartLocalServer();
 
 			// Reuse the client from the hello world example. It will clean up all local and remote projects and create
 			// one project with some content on the server and two checked-out copies of the project on the client.
@@ -60,10 +60,10 @@ public class Application implements IApplication {
 			// We run our own client code to demonstrate merging now.
 			runClient(localServer);
 
-		} catch (ESServerStartFailedException e) {
+		} catch (final ESServerStartFailedException e) {
 			System.out.println("Server start failed!");
 			e.printStackTrace();
-		} catch (ESException e) {
+		} catch (final ESException e) {
 			// If there is a problem with the connection to the server
 			// e.g. a network, a specific EMFStoreException will be thrown
 			System.out.println("Connection to Server failed!");
@@ -75,15 +75,15 @@ public class Application implements IApplication {
 	public static void runClient(ESServer server) throws ESException {
 		System.out.println("Client starting...");
 
-		ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
-		ESLocalProject demoProject = workspace.getLocalProjects().get(0);
-		League league = (League) demoProject.getModelElements().get(0);
+		final ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
+		final ESLocalProject demoProject = workspace.getLocalProjects().get(0);
+		final League league = (League) demoProject.getModelElements().get(0);
 		final ESLocalProject demoProjectCopy = workspace.getLocalProjects().get(1);
-		League leagueCopy = (League) demoProjectCopy.getModelElements().get(0);
+		final League leagueCopy = (League) demoProjectCopy.getModelElements().get(0);
 
 		// Change the name of the league in project 1,add a new player and commit the change
 		league.setName("Euro-League");
-		Player newPlayer = BowlingFactory.eINSTANCE.createPlayer();
+		final Player newPlayer = BowlingFactory.eINSTANCE.createPlayer();
 		newPlayer.setName("Eugene");
 		league.getPlayers().add(newPlayer);
 
@@ -96,7 +96,7 @@ public class Application implements IApplication {
 
 		try {
 			demoProjectCopy.commit(new ESSystemOutProgressMonitor());
-		} catch (ESUpdateRequiredException e) {
+		} catch (final ESUpdateRequiredException e) {
 			// The commit failed since the other demoProject was committed first and therefore demoProjectCopy needs an
 			// update
 			System.out.println("\nCommit of demoProjectCopy failed.");
@@ -119,7 +119,7 @@ public class Application implements IApplication {
 
 					// One or more conflicts have occured, they are delivered in a change conflict set
 					// We know there is only one conflict so we grab it
-					ESConflict conflict = changeConflictSet.getConflicts().iterator().next();
+					final ESConflict conflict = changeConflictSet.getConflicts().iterator().next();
 
 					// We resolve the conflict by accepting all of the conflicting local operations and rejecting all of
 					// the remote

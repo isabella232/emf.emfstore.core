@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PropertyStringValueItemProvider extends RootElementItemProvider {
@@ -36,7 +36,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PropertyStringValueItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +47,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -64,7 +64,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
@@ -87,7 +87,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * This returns PropertyStringValue.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -99,12 +99,12 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PropertyStringValue) object).getValue();
+		final String label = ((PropertyStringValue) object).getValue();
 		return label == null || label.length() == 0 ? getString("_UI_PropertyStringValue_type") : //$NON-NLS-1$
 			getString("_UI_PropertyStringValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -114,7 +114,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -134,7 +134,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -146,7 +146,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

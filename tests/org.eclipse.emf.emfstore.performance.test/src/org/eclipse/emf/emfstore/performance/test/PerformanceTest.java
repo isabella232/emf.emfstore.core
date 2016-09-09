@@ -37,7 +37,7 @@ import org.junit.Test;
 
 /**
  * This TestCase tests all methods in the main {@link org.unicase.emfstore.EmfStore} interface.
- * 
+ *
  * @author Dmitry Litvinov
  */
 public class PerformanceTest extends ESTestWithLoggedInUserMock {
@@ -70,7 +70,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 
 	/**
 	 * Start server and gain session id.
-	 * 
+	 *
 	 * @throws ESException in case of failure
 	 * @throws IOException
 	 */
@@ -90,7 +90,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 
 	/**
 	 * Opens projects of different sizes, shares them with the server and then deletes them. r
-	 * 
+	 *
 	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId, String, String,
 	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage, Project)
 	 * @see org.unicase.emfstore.EmfStore#getProjectList(org.eclipse.emf.emfstore.server.model.SessionId)
@@ -105,7 +105,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		for (int i = 0; i < NUM_ITERATIONS; i++) {
 			memoryMeter.startMeasurements();
 			memBefore[i] = usedMemory();
-			long time = System.currentTimeMillis();
+			final long time = System.currentTimeMillis();
 
 			ProjectUtil.share(getUsersession(), getLocalProject());
 
@@ -133,7 +133,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 	/**
 	 * Measures average time, spent for the checkout operation. Opens projects of different sizes, shares them with the
 	 * server, checkouts and then deletes them.
-	 * 
+	 *
 	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId, String, String,
 	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage, Project)
 	 * @see org.unicase.emfstore.EmfStore#getProjectList(org.eclipse.emf.emfstore.server.model.SessionId)
@@ -148,7 +148,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		for (int i = 0; i < NUM_ITERATIONS; i++) {
 			memoryMeter.startMeasurements();
 			memBefore[i] = usedMemory();
-			long time = System.currentTimeMillis();
+			final long time = System.currentTimeMillis();
 
 			ProjectUtil.checkout(getLocalProject());
 			times[i] = (System.currentTimeMillis() - time) / 1000.0;
@@ -172,7 +172,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 	 * with the server and checks it out as two different projects. Then the test generates changes in one of the
 	 * projects, using the ModelMutator, commits them to the server, and updates the second project. The test performs
 	 * model change, commit and update NUM_ITERATIONS times and calculates times for commit and update operations
-	 * 
+	 *
 	 * @see org.unicase.emfstore.EmfStore#createProject(org.eclipse.emf.emfstore.server.model.SessionId, String, String,
 	 *      org.eclipse.emf.emfstore.server.model.versioning.LogMessage, Project)
 	 * @see org.unicase.emfstore.EmfStore#getProjectList(org.eclipse.emf.emfstore.server.model.SessionId)
@@ -185,16 +185,16 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 
 		final ESLocalProject checkout = ProjectUtil.checkout(getLocalProject());
 
-		double[] modelChangeTimes = new double[NUM_ITERATIONS];
-		double[] commitTimes = new double[NUM_ITERATIONS];
-		double[] updateTimes = new double[NUM_ITERATIONS];
-		long[] memBeforeMut = new long[NUM_ITERATIONS];
-		long[] memDuringMut = new long[NUM_ITERATIONS];
-		long[] memAfterMut = new long[NUM_ITERATIONS];
-		long[] memDuringCommit = new long[NUM_ITERATIONS];
-		long[] memAfterCommit = new long[NUM_ITERATIONS];
-		long[] memDuringUpdate = new long[NUM_ITERATIONS];
-		long[] memAfterUpdate = new long[NUM_ITERATIONS];
+		final double[] modelChangeTimes = new double[NUM_ITERATIONS];
+		final double[] commitTimes = new double[NUM_ITERATIONS];
+		final double[] updateTimes = new double[NUM_ITERATIONS];
+		final long[] memBeforeMut = new long[NUM_ITERATIONS];
+		final long[] memDuringMut = new long[NUM_ITERATIONS];
+		final long[] memAfterMut = new long[NUM_ITERATIONS];
+		final long[] memDuringCommit = new long[NUM_ITERATIONS];
+		final long[] memAfterCommit = new long[NUM_ITERATIONS];
+		final long[] memDuringUpdate = new long[NUM_ITERATIONS];
+		final long[] memAfterUpdate = new long[NUM_ITERATIONS];
 
 		for (int i = 0; i < NUM_ITERATIONS; i++) {
 			memoryMeter.startMeasurements();
@@ -287,7 +287,7 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(numberOfModleElements);
 		mmc.setEditingDomain(ESWorkspaceProviderImpl.getInstance().getInternalWorkspace().getEditingDomain());
-		Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
+		final Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
 		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_CutElements());
 		mmc.seteStructuralFeaturesToIgnore(features);
 
@@ -310,14 +310,14 @@ public class PerformanceTest extends ESTestWithLoggedInUserMock {
 		mmc.setUseEcoreUtilDelete(false);
 		mmc.setMinObjectsCount(1);
 		mmc.setEditingDomain(ESWorkspaceProviderImpl.getInstance().getInternalWorkspace().getEditingDomain());
-		Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
+		final Collection<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
 		features.add(org.eclipse.emf.emfstore.internal.common.model.ModelPackage.eINSTANCE.getProject_CutElements());
 		mmc.seteStructuralFeaturesToIgnore(features);
-		List<EPackage> packages = new ArrayList<EPackage>();
+		final List<EPackage> packages = new ArrayList<EPackage>();
 		packages.add(BowlingPackage.eINSTANCE);
 		mmc.setModelPackages(packages);
 
-		long time = System.currentTimeMillis();
+		final long time = System.currentTimeMillis();
 		RunESCommand.run(new ESVoidCallable() {
 			@Override
 			public void run() {

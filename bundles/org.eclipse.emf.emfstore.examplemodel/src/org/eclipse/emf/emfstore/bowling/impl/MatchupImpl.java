@@ -45,7 +45,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	 * The cached value of the '{@link #getGames() <em>Games</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGames()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	 * The default value of the '{@link #getNrSpectators() <em>Nr Spectators</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNrSpectators()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	 * The cached value of the '{@link #getNrSpectators() <em>Nr Spectators</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNrSpectators()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MatchupImpl() {
@@ -87,7 +87,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Game> getGames() {
@@ -112,7 +112,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BigInteger getNrSpectators() {
@@ -122,21 +122,22 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNrSpectators(BigInteger newNrSpectators) {
-		BigInteger oldNrSpectators = nrSpectators;
+		final BigInteger oldNrSpectators = nrSpectators;
 		nrSpectators = newNrSpectators;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.MATCHUP__NR_SPECTATORS,
 				oldNrSpectators, nrSpectators));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -152,7 +153,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -167,7 +168,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -184,7 +185,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -205,7 +206,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -224,7 +225,7 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -241,15 +242,16 @@ public class MatchupImpl extends EObjectImpl implements Matchup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (nrSpectators: "); //$NON-NLS-1$
 		result.append(nrSpectators);
 		result.append(')');

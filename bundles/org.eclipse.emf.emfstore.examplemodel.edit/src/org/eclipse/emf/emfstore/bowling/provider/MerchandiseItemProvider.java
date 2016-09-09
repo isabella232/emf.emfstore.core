@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.bowling.Merchandise;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Merchandise} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MerchandiseItemProvider
@@ -44,7 +44,7 @@ public class MerchandiseItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MerchandiseItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +55,7 @@ public class MerchandiseItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -74,7 +74,7 @@ public class MerchandiseItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
@@ -96,7 +96,7 @@ public class MerchandiseItemProvider
 	 * This adds a property descriptor for the Price feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addPricePropertyDescriptor(Object object) {
@@ -119,7 +119,7 @@ public class MerchandiseItemProvider
 	 * This adds a property descriptor for the Serial Number feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addSerialNumberPropertyDescriptor(Object object) {
@@ -142,7 +142,7 @@ public class MerchandiseItemProvider
 	 * This returns Merchandise.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,12 +154,12 @@ public class MerchandiseItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Merchandise) object).getName();
+		final String label = ((Merchandise) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Merchandise_type") : //$NON-NLS-1$
 			getString("_UI_Merchandise_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -169,7 +169,7 @@ public class MerchandiseItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -191,7 +191,7 @@ public class MerchandiseItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -203,7 +203,7 @@ public class MerchandiseItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

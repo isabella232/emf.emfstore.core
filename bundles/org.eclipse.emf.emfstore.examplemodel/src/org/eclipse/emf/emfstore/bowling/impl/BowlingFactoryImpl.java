@@ -40,7 +40,7 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
@@ -48,17 +48,17 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static BowlingFactory init() {
 		try {
-			BowlingFactory theBowlingFactory = (BowlingFactory) EPackage.Registry.INSTANCE
+			final BowlingFactory theBowlingFactory = (BowlingFactory) EPackage.Registry.INSTANCE
 				.getEFactory(BowlingPackage.eNS_URI);
 			if (theBowlingFactory != null) {
 				return theBowlingFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new BowlingFactoryImpl();
@@ -68,7 +68,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BowlingFactoryImpl() {
@@ -78,7 +78,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -114,7 +114,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -134,7 +134,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,142 +154,143 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Player createPlayer() {
-		PlayerImpl player = new PlayerImpl();
+		final PlayerImpl player = new PlayerImpl();
 		return player;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public League createLeague() {
-		LeagueImpl league = new LeagueImpl();
+		final LeagueImpl league = new LeagueImpl();
 		return league;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Tournament createTournament() {
-		TournamentImpl tournament = new TournamentImpl();
+		final TournamentImpl tournament = new TournamentImpl();
 		return tournament;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Matchup createMatchup() {
-		MatchupImpl matchup = new MatchupImpl();
+		final MatchupImpl matchup = new MatchupImpl();
 		return matchup;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Game createGame() {
-		GameImpl game = new GameImpl();
+		final GameImpl game = new GameImpl();
 		return game;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<Player, Integer> createPlayerToPointsMap() {
-		PlayerToPointsMapImpl playerToPointsMap = new PlayerToPointsMapImpl();
+		final PlayerToPointsMapImpl playerToPointsMap = new PlayerToPointsMapImpl();
 		return playerToPointsMap;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Referee createReferee() {
-		RefereeImpl referee = new RefereeImpl();
+		final RefereeImpl referee = new RefereeImpl();
 		return referee;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<Referee, Game> createRefereeToGamesMap() {
-		RefereeToGamesMapImpl refereeToGamesMap = new RefereeToGamesMapImpl();
+		final RefereeToGamesMapImpl refereeToGamesMap = new RefereeToGamesMapImpl();
 		return refereeToGamesMap;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Area createArea() {
-		AreaImpl area = new AreaImpl();
+		final AreaImpl area = new AreaImpl();
 		return area;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Fan createFan() {
-		FanImpl fan = new FanImpl();
+		final FanImpl fan = new FanImpl();
 		return fan;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Merchandise createMerchandise() {
-		MerchandiseImpl merchandise = new MerchandiseImpl();
+		final MerchandiseImpl merchandise = new MerchandiseImpl();
 		return merchandise;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TournamentType createTournamentTypeFromString(EDataType eDataType, String initialValue) {
-		TournamentType result = TournamentType.get(initialValue);
-		if (result == null)
+		final TournamentType result = TournamentType.get(initialValue);
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		}
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertTournamentTypeToString(EDataType eDataType, Object instanceValue) {
@@ -299,21 +300,22 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Gender createGenderFromString(EDataType eDataType, String initialValue) {
-		Gender result = Gender.get(initialValue);
-		if (result == null)
+		final Gender result = Gender.get(initialValue);
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		}
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertGenderToString(EDataType eDataType, Object instanceValue) {
@@ -323,7 +325,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public XMLGregorianCalendar createXMLDateFromString(EDataType eDataType, String initialValue) {
@@ -334,7 +336,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertXMLDateToString(EDataType eDataType, Object instanceValue) {
@@ -344,7 +346,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BowlingPackage getBowlingPackage() {
@@ -354,7 +356,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

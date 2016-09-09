@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * TobiasVerhoeven
  ******************************************************************************/
@@ -46,7 +46,7 @@ import org.junit.Test;
 
 /**
  * Tests for creating big amounts of data in order to test memory management.
- * 
+ *
  * @author Tobias Verhoeven
  */
 @SuppressWarnings("restriction")
@@ -74,7 +74,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Starts the EMFstore.
-	 * 
+	 *
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @throws FatalESException
@@ -98,7 +98,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Test for solely sharing projects.
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */
@@ -127,7 +127,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Test for sharing and checking out projects.
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */
@@ -173,7 +173,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Test for committing changes.
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */
@@ -204,7 +204,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Test for committing changes and checking out resulting projectstates.
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */
@@ -253,7 +253,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Shares projects, commits changes and updates local versions.
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */
@@ -299,7 +299,7 @@ public class MemoryLoadTest {
 
 	/**
 	 * Shares projects, commits changes and retrieves specific changePackages.
-	 * 
+	 *
 	 * @throws ESException
 	 *             in case of an error
 	 */

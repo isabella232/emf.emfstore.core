@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.test.model.provider.TestmodelEditPlugin;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.test.model.TestType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestTypeItemProvider
@@ -47,7 +47,7 @@ public class TestTypeItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestTypeItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +58,7 @@ public class TestTypeItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -75,7 +75,7 @@ public class TestTypeItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
@@ -97,7 +97,7 @@ public class TestTypeItemProvider
 	 * This returns TestType.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -109,12 +109,12 @@ public class TestTypeItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TestType) object).getName();
+		final String label = ((TestType) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_TestType_type") : //$NON-NLS-1$
 			getString("_UI_TestType_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -124,7 +124,7 @@ public class TestTypeItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -144,7 +144,7 @@ public class TestTypeItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,7 +156,7 @@ public class TestTypeItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

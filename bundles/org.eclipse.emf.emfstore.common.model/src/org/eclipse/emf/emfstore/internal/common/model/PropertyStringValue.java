@@ -37,7 +37,7 @@ public interface PropertyStringValue extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getPropertyStringValue_Value()
@@ -51,7 +51,7 @@ public interface PropertyStringValue extends EObject {
 	 * <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated

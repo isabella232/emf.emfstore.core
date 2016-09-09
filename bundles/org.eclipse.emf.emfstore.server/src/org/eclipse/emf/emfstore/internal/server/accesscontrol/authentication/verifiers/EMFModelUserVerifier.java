@@ -65,7 +65,7 @@ public class EMFModelUserVerifier extends UserVerifier {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.auth.ESUserVerifier#init(org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider)
 	 */
 	public void init(ESOrgUnitProvider orgUnitProvider) {

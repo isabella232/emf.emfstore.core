@@ -44,7 +44,7 @@ import org.eclipse.emf.emfstore.server.model.ESUser;
  *
  * @generated
  */
-public class ACUserImpl extends ACOrgUnitImpl<ESUser>implements ACUser {
+public class ACUserImpl extends ACOrgUnitImpl<ESUser> implements ACUser {
 
 	/**
 	 * @generated NOT

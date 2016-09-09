@@ -27,7 +27,7 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link ESDeleteObjectMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class DeleteObjectMutationTest extends AbstractMutationTest {
@@ -55,7 +55,7 @@ public class DeleteObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESDeleteObjectMutation mutation = ESMutationFactory.delete(utilForEPackageWithTwoClasses)
+		final ESDeleteObjectMutation mutation = ESMutationFactory.delete(utilForEPackageWithTwoClasses)
 			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 
 		mutation.apply();
@@ -67,7 +67,7 @@ public class DeleteObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetFeatureForGivenObject() throws ESMutationException {
 
-		ESDeleteObjectMutation mutation = ESMutationFactory.delete(utilForEPackageWithTwoClasses)
+		final ESDeleteObjectMutation mutation = ESMutationFactory.delete(utilForEPackageWithTwoClasses)
 			.setTargetObject(ePackageWithTwoClasses);
 
 		mutation.apply();

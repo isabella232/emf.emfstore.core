@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * chodnick
  ******************************************************************************/
@@ -29,7 +29,7 @@ import org.junit.Test;
 
 /**
  * Tests the notification recording for attribute features.
- * 
+ *
  * @author chodnick
  */
 public class AttributeNotificationTest extends ESTest {
@@ -39,7 +39,7 @@ public class AttributeNotificationTest extends ESTest {
 
 	/**
 	 * Change an attribute and check the generated notification.
-	 * 
+	 *
 	 * @throws UnsupportedOperationException on test fail
 	 * @throws UnsupportedNotificationException on test fail
 	 */

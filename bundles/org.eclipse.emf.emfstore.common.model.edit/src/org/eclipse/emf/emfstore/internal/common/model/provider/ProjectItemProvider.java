@@ -68,7 +68,7 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -83,7 +83,7 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -99,7 +99,7 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -171,10 +171,10 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+		final Object childFeature = feature;
+		final Object childObject = child;
 
-		boolean qualify = childFeature == ModelPackage.Literals.PROJECT__MODEL_ELEMENTS ||
+		final boolean qualify = childFeature == ModelPackage.Literals.PROJECT__MODEL_ELEMENTS ||
 			childFeature == ModelPackage.Literals.PROJECT__CUT_ELEMENTS;
 
 		if (qualify) {

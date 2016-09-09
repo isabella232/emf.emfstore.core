@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -47,7 +47,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	 * The cached value of the '{@link #getMapContainment() <em>Map Containment</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMapContainment()
 	 * @generated
 	 * @ordered
@@ -57,7 +57,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TypeWithFeatureMapContainmentImpl() {
@@ -67,7 +67,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public FeatureMap getMapContainment() {
@@ -92,7 +92,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestType> getFirstKeyContainment() {
@@ -103,7 +103,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestType> getSecondKeyContainment() {
@@ -114,7 +114,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -133,15 +133,16 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_CONTAINMENT__MAP_CONTAINMENT:
-			if (coreType)
+			if (coreType) {
 				return getMapContainment();
+			}
 			return ((FeatureMap.Internal) getMapContainment()).getWrapper();
 		case TestmodelPackage.TYPE_WITH_FEATURE_MAP_CONTAINMENT__FIRST_KEY_CONTAINMENT:
 			return getFirstKeyContainment();
@@ -154,7 +155,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -179,7 +180,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -201,7 +202,7 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -220,15 +221,16 @@ public class TypeWithFeatureMapContainmentImpl extends TestTypeImpl implements T
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mapContainment: "); //$NON-NLS-1$
 		result.append(mapContainment);
 		result.append(')');

@@ -42,7 +42,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	 * The cached value of the '{@link #getAreas() <em>Areas</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getAreas()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	 * The cached value of the '{@link #getTournaments() <em>Tournaments</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTournaments()
 	 * @generated
 	 * @ordered
@@ -63,7 +63,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AreaImpl() {
@@ -73,7 +73,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -84,7 +84,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Area> getAreas() {
@@ -97,7 +97,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Tournament> getTournaments() {
@@ -111,7 +111,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -167,7 +167,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public class AreaImpl extends EObjectImpl implements Area {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

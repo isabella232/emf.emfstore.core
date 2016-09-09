@@ -26,7 +26,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Workspace;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
@@ -34,16 +34,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ModelFactory init() {
 		try {
-			ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE.getEFactory(ModelPackage.eNS_URI);
+			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
+				.getEFactory(ModelPackage.eNS_URI);
 			if (theModelFactory != null) {
 				return theModelFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ModelFactoryImpl();
@@ -53,7 +54,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelFactoryImpl() {
@@ -62,7 +63,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -85,57 +86,57 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Workspace createWorkspace() {
-		WorkspaceImpl workspace = new WorkspaceImpl();
+		final WorkspaceImpl workspace = new WorkspaceImpl();
 		return workspace;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ServerInfo createServerInfo() {
-		ServerInfoImpl serverInfo = new ServerInfoImpl();
+		final ServerInfoImpl serverInfo = new ServerInfoImpl();
 		return serverInfo;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Usersession createUsersession() {
-		UsersessionImpl usersession = new UsersessionImpl();
+		final UsersessionImpl usersession = new UsersessionImpl();
 		return usersession;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ProjectSpace createProjectSpace() {
-		ProjectSpaceImpl projectSpace = new ProjectSpaceImpl();
+		final ProjectSpaceImpl projectSpace = new ProjectSpaceImpl();
 		return projectSpace;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PendingFileTransfer createPendingFileTransfer() {
-		PendingFileTransferImpl pendingFileTransfer = new PendingFileTransferImpl();
+		final PendingFileTransferImpl pendingFileTransfer = new PendingFileTransferImpl();
 		return pendingFileTransfer;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelPackage getModelPackage() {
@@ -144,7 +145,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

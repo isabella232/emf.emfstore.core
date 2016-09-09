@@ -57,7 +57,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The default value of the '{@link #getFileVersion() <em>File Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFileVersion()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The cached value of the '{@link #getFileVersion() <em>File Version</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getFileVersion()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The default value of the '{@link #getChunkNumber() <em>Chunk Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getChunkNumber()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The cached value of the '{@link #getChunkNumber() <em>Chunk Number</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getChunkNumber()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The default value of the '{@link #isUpload() <em>Upload</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isUpload()
 	 * @generated
 	 * @ordered
@@ -112,7 +112,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The cached value of the '{@link #isUpload() <em>Upload</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #isUpload()
 	 * @generated
 	 * @ordered
@@ -123,7 +123,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The default value of the '{@link #getFileName() <em>File Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getFileName()
 	 * @generated
 	 * @ordered
@@ -134,7 +134,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 	 * The cached value of the '{@link #getFileName() <em>File Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getFileName()
 	 * @generated
 	 * @ordered
@@ -163,7 +163,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PendingFileTransferImpl() {
@@ -172,7 +172,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -182,26 +182,28 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId getAttachmentId() {
 		if (attachmentId != null && attachmentId.eIsProxy()) {
-			InternalEObject oldAttachmentId = (InternalEObject) attachmentId;
+			final InternalEObject oldAttachmentId = (InternalEObject) attachmentId;
 			attachmentId = (ModelElementId) eResolveProxy(oldAttachmentId);
 			if (attachmentId != oldAttachmentId) {
-				InternalEObject newAttachmentId = (InternalEObject) attachmentId;
+				final InternalEObject newAttachmentId = (InternalEObject) attachmentId;
 				NotificationChain msgs = oldAttachmentId.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE - ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID, null, null);
 				if (newAttachmentId.eInternalContainer() == null) {
 					msgs = newAttachmentId.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE - ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID, null, msgs);
 				}
-				if (msgs != null)
+				if (msgs != null) {
 					msgs.dispatch();
-				if (eNotificationRequired())
+				}
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID, oldAttachmentId, attachmentId));
+				}
 			}
 		}
 		return attachmentId;
@@ -209,7 +211,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId basicGetAttachmentId() {
@@ -218,48 +220,53 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetAttachmentId(ModelElementId newAttachmentId, NotificationChain msgs) {
-		ModelElementId oldAttachmentId = attachmentId;
+		final ModelElementId oldAttachmentId = attachmentId;
 		attachmentId = newAttachmentId;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID, oldAttachmentId, newAttachmentId);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setAttachmentId(ModelElementId newAttachmentId) {
 		if (newAttachmentId != attachmentId) {
 			NotificationChain msgs = null;
-			if (attachmentId != null)
+			if (attachmentId != null) {
 				msgs = ((InternalEObject) attachmentId).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE - ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID, null, msgs);
-			if (newAttachmentId != null)
+			}
+			if (newAttachmentId != null) {
 				msgs = ((InternalEObject) newAttachmentId).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE - ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID, null, msgs);
+			}
 			msgs = basicSetAttachmentId(newAttachmentId, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
-		} else if (eNotificationRequired())
+			}
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID,
 				newAttachmentId, newAttachmentId));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getFileVersion() {
@@ -268,20 +275,21 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFileVersion(int newFileVersion) {
-		int oldFileVersion = fileVersion;
+		final int oldFileVersion = fileVersion;
 		fileVersion = newFileVersion;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PENDING_FILE_TRANSFER__FILE_VERSION,
 				oldFileVersion, fileVersion));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getChunkNumber() {
@@ -290,20 +298,21 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setChunkNumber(int newChunkNumber) {
-		int oldChunkNumber = chunkNumber;
+		final int oldChunkNumber = chunkNumber;
 		chunkNumber = newChunkNumber;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PENDING_FILE_TRANSFER__CHUNK_NUMBER,
 				oldChunkNumber, chunkNumber));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isUpload() {
@@ -312,20 +321,21 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setUpload(boolean newUpload) {
-		boolean oldUpload = upload;
+		final boolean oldUpload = upload;
 		upload = newUpload;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PENDING_FILE_TRANSFER__UPLOAD, oldUpload,
 				upload));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getFileName() {
@@ -334,20 +344,21 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFileName(String newFileName) {
-		String oldFileName = fileName;
+		final String oldFileName = fileName;
 		fileName = newFileName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PENDING_FILE_TRANSFER__FILE_NAME,
 				oldFileName, fileName));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getPreliminaryFileName() {
@@ -356,21 +367,22 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setPreliminaryFileName(String newPreliminaryFileName) {
-		String oldPreliminaryFileName = preliminaryFileName;
+		final String oldPreliminaryFileName = preliminaryFileName;
 		preliminaryFileName = newPreliminaryFileName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(
 				new ENotificationImpl(this, Notification.SET, ModelPackage.PENDING_FILE_TRANSFER__PRELIMINARY_FILE_NAME,
 					oldPreliminaryFileName, preliminaryFileName));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -384,15 +396,16 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case ModelPackage.PENDING_FILE_TRANSFER__ATTACHMENT_ID:
-			if (resolve)
+			if (resolve) {
 				return getAttachmentId();
+			}
 			return basicGetAttachmentId();
 		case ModelPackage.PENDING_FILE_TRANSFER__FILE_VERSION:
 			return getFileVersion();
@@ -410,7 +423,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -440,7 +453,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -470,7 +483,7 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -495,15 +508,16 @@ public class PendingFileTransferImpl extends EObjectImpl implements PendingFileT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileVersion: "); //$NON-NLS-1$
 		result.append(fileVersion);
 		result.append(", chunkNumber: "); //$NON-NLS-1$

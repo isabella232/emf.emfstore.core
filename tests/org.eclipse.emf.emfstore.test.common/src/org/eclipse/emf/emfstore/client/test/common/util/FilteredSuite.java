@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * JulianSommerfeldt
  * jsommerfeldt
@@ -27,15 +27,15 @@ import org.junit.runners.model.RunnerBuilder;
 
 /**
  * {@link Suite} to filter tests and run only when runFuzzyTests system property is true.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 public class FilteredSuite extends Suite {
 
 	/**
 	 * Called reflectively on classes annotated with <code>@RunWith(Suite.class)</code>.
-	 * 
+	 *
 	 * @param klass the root class
 	 * @param builder builds runners for classes in the suite
 	 * @throws InitializationError if a class could not be initialized.
@@ -67,9 +67,9 @@ public class FilteredSuite extends Suite {
 
 	/**
 	 * Annotation to configure the system parameters.
-	 * 
+	 *
 	 * @author jsommerfeldt
-	 * 
+	 *
 	 */
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ ElementType.TYPE })

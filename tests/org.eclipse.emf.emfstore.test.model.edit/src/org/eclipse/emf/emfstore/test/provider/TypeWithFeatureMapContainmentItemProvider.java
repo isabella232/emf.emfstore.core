@@ -27,7 +27,7 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvider {
@@ -35,7 +35,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TypeWithFeatureMapContainmentItemProvider(AdapterFactory adapterFactory) {
@@ -46,7 +46,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -64,7 +64,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -94,7 +94,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * This returns TypeWithFeatureMapContainment.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -106,12 +106,12 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TypeWithFeatureMapContainment) object).getName();
+		final String label = ((TypeWithFeatureMapContainment) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_TypeWithFeatureMapContainment_type") : //$NON-NLS-1$
 			getString("_UI_TypeWithFeatureMapContainment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -121,7 +121,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -141,7 +141,7 @@ public class TypeWithFeatureMapContainmentItemProvider extends TestTypeItemProvi
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

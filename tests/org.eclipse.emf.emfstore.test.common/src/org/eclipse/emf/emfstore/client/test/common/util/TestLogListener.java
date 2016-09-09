@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - intial API and implementation
  ******************************************************************************/
@@ -17,9 +17,9 @@ import org.eclipse.core.runtime.IStatus;
 /**
  * Utility class that may be used to verify that a certain log message
  * has been logged.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class TestLogListener implements ILogListener {
 
@@ -28,7 +28,7 @@ public class TestLogListener implements ILogListener {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param expectedMessage
 	 *            the message that is expected to be logged.
 	 */
@@ -38,7 +38,7 @@ public class TestLogListener implements ILogListener {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.ILogListener#logging(org.eclipse.core.runtime.IStatus, java.lang.String)
 	 */
 	public void logging(IStatus status, String plugin) {
@@ -49,7 +49,7 @@ public class TestLogListener implements ILogListener {
 
 	/**
 	 * Whether the listener received the exepected message.
-	 * 
+	 *
 	 * @return {@code true}, if the listener did receive the expected message, {@code false} otherwise
 	 */
 	public boolean didReceive() {

@@ -57,7 +57,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -112,7 +112,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getHeight()
 	 * @generated
 	 * @ordered
@@ -123,7 +123,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #isIsProfessional() <em>Is Professional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIsProfessional()
 	 * @generated
 	 * @ordered
@@ -134,7 +134,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #isIsProfessional() <em>Is Professional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isIsProfessional()
 	 * @generated
 	 * @ordered
@@ -145,7 +145,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getEMails() <em>EMails</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getEMails()
 	 * @generated
 	 * @ordered
@@ -156,7 +156,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getNumberOfVictories() <em>Number Of Victories</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNumberOfVictories()
 	 * @generated
 	 * @ordered
@@ -167,7 +167,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getNumberOfVictories() <em>Number Of Victories</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNumberOfVictories()
 	 * @generated
 	 * @ordered
@@ -178,7 +178,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getPlayedTournamentTypes() <em>Played Tournament Types</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPlayedTournamentTypes()
 	 * @generated
 	 * @ordered
@@ -189,7 +189,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getWinLossRatio() <em>Win Loss Ratio</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getWinLossRatio()
 	 * @generated
 	 * @ordered
@@ -200,7 +200,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getWinLossRatio() <em>Win Loss Ratio</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getWinLossRatio()
 	 * @generated
 	 * @ordered
@@ -211,7 +211,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The default value of the '{@link #getGender() <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGender()
 	 * @generated
 	 * @ordered
@@ -222,7 +222,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * The cached value of the '{@link #getGender() <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getGender()
 	 * @generated
 	 * @ordered
@@ -232,7 +232,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PlayerImpl() {
@@ -242,7 +242,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -253,7 +253,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -263,20 +263,21 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__NAME, oldName, name));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getDateOfBirth() {
@@ -286,21 +287,22 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDateOfBirth(Date newDateOfBirth) {
-		Date oldDateOfBirth = dateOfBirth;
+		final Date oldDateOfBirth = dateOfBirth;
 		dateOfBirth = newDateOfBirth;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__DATE_OF_BIRTH, oldDateOfBirth,
 				dateOfBirth));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public double getHeight() {
@@ -310,20 +312,21 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setHeight(double newHeight) {
-		double oldHeight = height;
+		final double oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__HEIGHT, oldHeight, height));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean isIsProfessional() {
@@ -333,21 +336,22 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setIsProfessional(boolean newIsProfessional) {
-		boolean oldIsProfessional = isProfessional;
+		final boolean oldIsProfessional = isProfessional;
 		isProfessional = newIsProfessional;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__IS_PROFESSIONAL,
 				oldIsProfessional, isProfessional));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<String> getEMails() {
@@ -360,7 +364,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getNumberOfVictories() {
@@ -370,21 +374,22 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNumberOfVictories(int newNumberOfVictories) {
-		int oldNumberOfVictories = numberOfVictories;
+		final int oldNumberOfVictories = numberOfVictories;
 		numberOfVictories = newNumberOfVictories;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__NUMBER_OF_VICTORIES,
 				oldNumberOfVictories, numberOfVictories));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TournamentType> getPlayedTournamentTypes() {
@@ -398,7 +403,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public BigDecimal getWinLossRatio() {
@@ -408,21 +413,22 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setWinLossRatio(BigDecimal newWinLossRatio) {
-		BigDecimal oldWinLossRatio = winLossRatio;
+		final BigDecimal oldWinLossRatio = winLossRatio;
 		winLossRatio = newWinLossRatio;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__WIN_LOSS_RATIO,
 				oldWinLossRatio, winLossRatio));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Gender getGender() {
@@ -432,14 +438,15 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setGender(Gender newGender) {
-		Gender oldGender = gender;
+		final Gender oldGender = gender;
 		gender = newGender == null ? GENDER_EDEFAULT : newGender;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER__GENDER, oldGender, gender));
+		}
 	}
 
 	/**
@@ -470,7 +477,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	 * <!-- begin-user-doc -->
 	 * .
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -501,7 +508,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -544,7 +551,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -584,7 +591,7 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -616,15 +623,16 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", dateOfBirth: "); //$NON-NLS-1$

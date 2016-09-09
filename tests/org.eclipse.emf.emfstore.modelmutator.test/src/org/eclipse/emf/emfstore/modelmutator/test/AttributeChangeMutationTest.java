@@ -31,7 +31,7 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link ESAttributeChangeMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class AttributeChangeMutationTest extends AbstractMutationTest {
@@ -60,7 +60,7 @@ public class AttributeChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
+		final ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.ADD).setTargetFeature(E_PACKAGE.getEClass_Abstract());
 
 		mutation.apply();
@@ -72,7 +72,7 @@ public class AttributeChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetFeatureForGivenTargetContainer() throws ESMutationException {
 
-		ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
+		final ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.ADD).setTargetObject(ePackageWithTwoClasses);
 
 		mutation.apply();
@@ -87,7 +87,7 @@ public class AttributeChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void addObject() throws ESMutationException {
 
-		ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
+		final ESAttributeChangeMutation mutation = ESMutationFactory.attributeChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.ADD);
 
 		mutation.apply();

@@ -46,7 +46,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 * The cached value of the '{@link #getProjectSpaces() <em>Project Spaces</em>}' containment reference list.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getProjectSpaces()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	/**
 	 * The cached value of the '{@link #getServerInfos() <em>Server Infos</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getServerInfos()
 	 * @generated
 	 * @ordered
@@ -76,7 +76,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected WorkspaceImpl() {
@@ -85,7 +85,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -104,7 +104,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -119,7 +119,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -137,7 +137,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -155,7 +155,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -180,7 +180,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -190,7 +190,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -211,7 +211,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ProjectSpace> getProjectSpaces() {
@@ -224,7 +224,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<ServerInfo> getServerInfos() {
@@ -237,7 +237,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<Usersession> getUsersessions() {

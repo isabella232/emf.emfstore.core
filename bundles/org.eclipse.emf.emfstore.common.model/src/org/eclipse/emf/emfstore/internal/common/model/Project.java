@@ -46,7 +46,7 @@ public interface Project extends IAdaptable, NotifiableIdEObjectCollection {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Model Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getProject_ModelElements()
 	 * @model containment="true" resolveProxies="true" ordered="false"
@@ -63,7 +63,7 @@ public interface Project extends IAdaptable, NotifiableIdEObjectCollection {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Cut Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getProject_CutElements()
 	 * @model containment="true" resolveProxies="true"

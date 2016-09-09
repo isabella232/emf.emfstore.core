@@ -42,7 +42,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getSeedCount() <em>Seed Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSeedCount()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getSeedCount() <em>Seed Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getSeedCount()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getTestName() <em>Test Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTestName()
 	 * @generated
 	 * @ordered
@@ -75,7 +75,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getTestName() <em>Test Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTestName()
 	 * @generated
 	 * @ordered
@@ -86,7 +86,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getError() <em>Error</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getError()
 	 * @generated
 	 * @ordered
@@ -97,7 +97,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getError() <em>Error</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getError()
 	 * @generated
 	 * @ordered
@@ -108,7 +108,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getFailure() <em>Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFailure()
 	 * @generated
 	 * @ordered
@@ -119,7 +119,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getFailure() <em>Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFailure()
 	 * @generated
 	 * @ordered
@@ -130,7 +130,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The default value of the '{@link #getExecutionTime() <em>Execution Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExecutionTime()
 	 * @generated
 	 * @ordered
@@ -141,7 +141,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	 * The cached value of the '{@link #getExecutionTime() <em>Execution Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExecutionTime()
 	 * @generated
 	 * @ordered
@@ -151,7 +151,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestResultImpl() {
@@ -161,7 +161,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -172,7 +172,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getSeedCount() {
@@ -182,21 +182,22 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSeedCount(int newSeedCount) {
-		int oldSeedCount = seedCount;
+		final int oldSeedCount = seedCount;
 		seedCount = newSeedCount;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__SEED_COUNT, oldSeedCount,
 				seedCount));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getTestName() {
@@ -206,21 +207,22 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTestName(String newTestName) {
-		String oldTestName = testName;
+		final String oldTestName = testName;
 		testName = newTestName;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__TEST_NAME, oldTestName,
 				testName));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getError() {
@@ -230,20 +232,21 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setError(String newError) {
-		String oldError = error;
+		final String oldError = error;
 		error = newError;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__ERROR, oldError, error));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getFailure() {
@@ -253,21 +256,22 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setFailure(String newFailure) {
-		String oldFailure = failure;
+		final String oldFailure = failure;
 		failure = newFailure;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(
 				new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__FAILURE, oldFailure, failure));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public long getExecutionTime() {
@@ -277,21 +281,22 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setExecutionTime(long newExecutionTime) {
-		long oldExecutionTime = executionTime;
+		final long oldExecutionTime = executionTime;
 		executionTime = newExecutionTime;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__EXECUTION_TIME,
 				oldExecutionTime, executionTime));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -314,7 +319,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -342,7 +347,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -370,7 +375,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -393,15 +398,16 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (seedCount: "); //$NON-NLS-1$
 		result.append(seedCount);
 		result.append(", testName: "); //$NON-NLS-1$

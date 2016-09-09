@@ -70,7 +70,7 @@ public class ESOrgUnitProviderImpl implements ESOrgUnitProvider {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider#init(org.eclipse.emf.emfstore.server.model.ESOrgUnitRepository)
 	 */
 	public void init(ESOrgUnitRepository repository) {

@@ -126,7 +126,7 @@ public class DefaultESOrgUnitResolverService implements ESOrgUnitResolver {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @throws AccessControlException
 	 *
 	 * @see org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver#getGroups(org.eclipse.emf.emfstore.server.model.ESOrgUnitId)

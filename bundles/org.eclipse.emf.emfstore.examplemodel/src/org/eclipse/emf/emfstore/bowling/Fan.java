@@ -50,7 +50,7 @@ public interface Fan extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #isSetName()
 	 * @see #unsetName()
@@ -65,7 +65,7 @@ public interface Fan extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #isSetName()
 	 * @see #unsetName()
@@ -78,7 +78,7 @@ public interface Fan extends EObject {
 	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetName()
 	 * @see #getName()
 	 * @see #setName(String)
@@ -91,7 +91,7 @@ public interface Fan extends EObject {
 	 * is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Name</em>' attribute is set.
 	 * @see #unsetName()
 	 * @see #getName()
@@ -108,7 +108,7 @@ public interface Fan extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Date Of Birth</em>' attribute.
 	 * @see #isSetDateOfBirth()
 	 * @see #unsetDateOfBirth()
@@ -124,7 +124,7 @@ public interface Fan extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Date Of Birth</em>' attribute.
 	 * @see #isSetDateOfBirth()
 	 * @see #unsetDateOfBirth()
@@ -138,7 +138,7 @@ public interface Fan extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetDateOfBirth()
 	 * @see #getDateOfBirth()
 	 * @see #setDateOfBirth(Date)
@@ -151,7 +151,7 @@ public interface Fan extends EObject {
 	 * <em>Date Of Birth</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Date Of Birth</em>' attribute is set.
 	 * @see #unsetDateOfBirth()
 	 * @see #getDateOfBirth()
@@ -168,7 +168,7 @@ public interface Fan extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Has Season Ticket</em>' attribute.
 	 * @see #isSetHasSeasonTicket()
 	 * @see #unsetHasSeasonTicket()
@@ -184,7 +184,7 @@ public interface Fan extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Has Season Ticket</em>' attribute.
 	 * @see #isSetHasSeasonTicket()
 	 * @see #unsetHasSeasonTicket()
@@ -198,7 +198,7 @@ public interface Fan extends EObject {
 	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetHasSeasonTicket()
 	 * @see #isHasSeasonTicket()
 	 * @see #setHasSeasonTicket(boolean)
@@ -211,7 +211,7 @@ public interface Fan extends EObject {
 	 * <em>Has Season Ticket</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Has Season Ticket</em>' attribute is set.
 	 * @see #unsetHasSeasonTicket()
 	 * @see #isHasSeasonTicket()
@@ -229,7 +229,7 @@ public interface Fan extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>EMails</em>' attribute list.
 	 * @see #isSetEMails()
 	 * @see #unsetEMails()
@@ -243,7 +243,7 @@ public interface Fan extends EObject {
 	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getEMails <em>EMails</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetEMails()
 	 * @see #getEMails()
 	 * @generated
@@ -255,7 +255,7 @@ public interface Fan extends EObject {
 	 * attribute list is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>EMails</em>' attribute list is set.
 	 * @see #unsetEMails()
 	 * @see #getEMails()
@@ -272,7 +272,7 @@ public interface Fan extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Gender</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.bowling.Gender
 	 * @see #isSetGender()
@@ -288,7 +288,7 @@ public interface Fan extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getGender <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Gender</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.bowling.Gender
 	 * @see #isSetGender()
@@ -302,7 +302,7 @@ public interface Fan extends EObject {
 	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getGender <em>Gender</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetGender()
 	 * @see #getGender()
 	 * @see #setGender(Gender)
@@ -315,7 +315,7 @@ public interface Fan extends EObject {
 	 * attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Gender</em>' attribute is set.
 	 * @see #unsetGender()
 	 * @see #getGender()
@@ -332,7 +332,7 @@ public interface Fan extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Favourite Player</em>' reference.
 	 * @see #isSetFavouritePlayer()
 	 * @see #unsetFavouritePlayer()
@@ -348,7 +348,7 @@ public interface Fan extends EObject {
 	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Favourite Player</em>' reference.
 	 * @see #isSetFavouritePlayer()
 	 * @see #unsetFavouritePlayer()
@@ -362,7 +362,7 @@ public interface Fan extends EObject {
 	 * }' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetFavouritePlayer()
 	 * @see #getFavouritePlayer()
 	 * @see #setFavouritePlayer(Player)
@@ -375,7 +375,7 @@ public interface Fan extends EObject {
 	 * <em>Favourite Player</em>}' reference is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Favourite Player</em>' reference is set.
 	 * @see #unsetFavouritePlayer()
 	 * @see #getFavouritePlayer()
@@ -393,7 +393,7 @@ public interface Fan extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Visited Tournaments</em>' reference list.
 	 * @see #isSetVisitedTournaments()
 	 * @see #unsetVisitedTournaments()
@@ -408,7 +408,7 @@ public interface Fan extends EObject {
 	 * <em>Visited Tournaments</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetVisitedTournaments()
 	 * @see #getVisitedTournaments()
 	 * @generated
@@ -420,7 +420,7 @@ public interface Fan extends EObject {
 	 * <em>Visited Tournaments</em>}' reference list is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Visited Tournaments</em>' reference list is set.
 	 * @see #unsetVisitedTournaments()
 	 * @see #getVisitedTournaments()
@@ -436,7 +436,7 @@ public interface Fan extends EObject {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Number Of Tournaments Visited</em>' attribute.
 	 * @see #isSetNumberOfTournamentsVisited()
 	 * @see #unsetNumberOfTournamentsVisited()
@@ -452,7 +452,7 @@ public interface Fan extends EObject {
 	 * <em>Number Of Tournaments Visited</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Number Of Tournaments Visited</em>' attribute.
 	 * @see #isSetNumberOfTournamentsVisited()
 	 * @see #unsetNumberOfTournamentsVisited()
@@ -466,7 +466,7 @@ public interface Fan extends EObject {
 	 * <em>Number Of Tournaments Visited</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetNumberOfTournamentsVisited()
 	 * @see #getNumberOfTournamentsVisited()
 	 * @see #setNumberOfTournamentsVisited(int)
@@ -479,7 +479,7 @@ public interface Fan extends EObject {
 	 * <em>Number Of Tournaments Visited</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Number Of Tournaments Visited</em>' attribute is set.
 	 * @see #unsetNumberOfTournamentsVisited()
 	 * @see #getNumberOfTournamentsVisited()
@@ -496,7 +496,7 @@ public interface Fan extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Money Spent On Tickets</em>' attribute.
 	 * @see #isSetMoneySpentOnTickets()
 	 * @see #unsetMoneySpentOnTickets()
@@ -512,7 +512,7 @@ public interface Fan extends EObject {
 	 * <em>Money Spent On Tickets</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Money Spent On Tickets</em>' attribute.
 	 * @see #isSetMoneySpentOnTickets()
 	 * @see #unsetMoneySpentOnTickets()
@@ -526,7 +526,7 @@ public interface Fan extends EObject {
 	 * <em>Money Spent On Tickets</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetMoneySpentOnTickets()
 	 * @see #getMoneySpentOnTickets()
 	 * @see #setMoneySpentOnTickets(double)
@@ -539,7 +539,7 @@ public interface Fan extends EObject {
 	 * <em>Money Spent On Tickets</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Money Spent On Tickets</em>' attribute is set.
 	 * @see #unsetMoneySpentOnTickets()
 	 * @see #getMoneySpentOnTickets()
@@ -557,7 +557,7 @@ public interface Fan extends EObject {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Fan Merchandise</em>' containment reference list.
 	 * @see #isSetFanMerchandise()
 	 * @see #unsetFanMerchandise()
@@ -572,7 +572,7 @@ public interface Fan extends EObject {
 	 * containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetFanMerchandise()
 	 * @see #getFanMerchandise()
 	 * @generated
@@ -584,7 +584,7 @@ public interface Fan extends EObject {
 	 * <em>Fan Merchandise</em>}' containment reference list is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Fan Merchandise</em>' containment reference list is set.
 	 * @see #unsetFanMerchandise()
 	 * @see #getFanMerchandise()
@@ -600,7 +600,7 @@ public interface Fan extends EObject {
 	 * more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Favourite Merchandise</em>' containment reference.
 	 * @see #isSetFavouriteMerchandise()
 	 * @see #unsetFavouriteMerchandise()
@@ -616,7 +616,7 @@ public interface Fan extends EObject {
 	 * <em>Favourite Merchandise</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Favourite Merchandise</em>' containment reference.
 	 * @see #isSetFavouriteMerchandise()
 	 * @see #unsetFavouriteMerchandise()
@@ -630,7 +630,7 @@ public interface Fan extends EObject {
 	 * <em>Favourite Merchandise</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isSetFavouriteMerchandise()
 	 * @see #getFavouriteMerchandise()
 	 * @see #setFavouriteMerchandise(Merchandise)
@@ -643,7 +643,7 @@ public interface Fan extends EObject {
 	 * <em>Favourite Merchandise</em>}' containment reference is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return whether the value of the '<em>Favourite Merchandise</em>' containment reference is set.
 	 * @see #unsetFavouriteMerchandise()
 	 * @see #getFavouriteMerchandise()

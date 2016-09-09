@@ -39,7 +39,7 @@ public interface Root extends EObject {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getRoot_Elements()
 	 * @model containment="true"

@@ -46,7 +46,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * If the meaning of the '<em>Seed</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Seed</em>' attribute.
 	 * @see #setSeed(long)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_Seed()
@@ -60,7 +60,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Seed</em>' attribute.
 	 * @see #getSeed()
 	 * @generated
@@ -75,7 +75,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Count</em>' attribute.
 	 * @see #setCount(int)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_Count()
@@ -89,7 +89,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Count</em>' attribute.
 	 * @see #getCount()
 	 * @generated
@@ -104,7 +104,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Test Class</em>' attribute.
 	 * @see #setTestClass(Class)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_TestClass()
@@ -118,7 +118,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>Test Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Test Class</em>' attribute.
 	 * @see #getTestClass()
 	 * @generated
@@ -132,7 +132,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_Id()
@@ -146,7 +146,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -161,7 +161,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Mutator Config</em>' containment reference.
 	 * @see #setMutatorConfig(MutatorConfig)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestConfig_MutatorConfig()
@@ -175,7 +175,7 @@ public interface TestConfig extends EObject, APIDelegate<ESTestConfigImpl> {
 	 * <em>Mutator Config</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Mutator Config</em>' containment reference.
 	 * @see #getMutatorConfig()
 	 * @generated

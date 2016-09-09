@@ -35,7 +35,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestDiffItemProvider
@@ -47,7 +47,7 @@ public class TestDiffItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestDiffItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +58,7 @@ public class TestDiffItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class TestDiffItemProvider
 	 * This adds a property descriptor for the Last Update feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addLastUpdatePropertyDescriptor(Object object) {
@@ -98,7 +98,7 @@ public class TestDiffItemProvider
 	 * This adds a property descriptor for the Config feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addConfigPropertyDescriptor(Object object) {
@@ -122,7 +122,7 @@ public class TestDiffItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class TestDiffItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public class TestDiffItemProvider
 	 * This returns TestDiff.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -165,13 +165,13 @@ public class TestDiffItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		Date labelValue = ((TestDiff) object).getLastUpdate();
-		String label = labelValue == null ? null : labelValue.toString();
+		final Date labelValue = ((TestDiff) object).getLastUpdate();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_TestDiff_type") : //$NON-NLS-1$
 			getString("_UI_TestDiff_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -181,7 +181,7 @@ public class TestDiffItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -205,7 +205,7 @@ public class TestDiffItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -223,15 +223,15 @@ public class TestDiffItemProvider
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+		final Object childFeature = feature;
+		final Object childObject = child;
 
-		boolean qualify = childFeature == ConfigPackage.Literals.TEST_DIFF__OLD_RESULT ||
+		final boolean qualify = childFeature == ConfigPackage.Literals.TEST_DIFF__OLD_RESULT ||
 			childFeature == ConfigPackage.Literals.TEST_DIFF__NEW_RESULT;
 
 		if (qualify) {
@@ -245,7 +245,7 @@ public class TestDiffItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

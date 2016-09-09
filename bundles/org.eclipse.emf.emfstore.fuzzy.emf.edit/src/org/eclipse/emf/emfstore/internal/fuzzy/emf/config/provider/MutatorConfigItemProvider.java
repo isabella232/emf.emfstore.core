@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MutatorConfigItemProvider
@@ -45,7 +45,7 @@ public class MutatorConfigItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MutatorConfigItemProvider(AdapterFactory adapterFactory) {
@@ -56,7 +56,7 @@ public class MutatorConfigItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -83,7 +83,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Root EClass feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addRootEClassPropertyDescriptor(Object object) {
@@ -106,7 +106,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Min Objects Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMinObjectsCountPropertyDescriptor(Object object) {
@@ -129,7 +129,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Ignore And Log feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIgnoreAndLogPropertyDescriptor(Object object) {
@@ -152,7 +152,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Do Not Generate Root feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDoNotGenerateRootPropertyDescriptor(Object object) {
@@ -175,7 +175,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Use Ecore Util Delete feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addUseEcoreUtilDeletePropertyDescriptor(Object object) {
@@ -198,7 +198,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EClasses To Ignore feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEClassesToIgnorePropertyDescriptor(Object object) {
@@ -221,7 +221,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EStructural Features To Ignore feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEStructuralFeaturesToIgnorePropertyDescriptor(Object object) {
@@ -244,7 +244,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the EPackages feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEPackagesPropertyDescriptor(Object object) {
@@ -267,7 +267,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Max Delete Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMaxDeleteCountPropertyDescriptor(Object object) {
@@ -290,7 +290,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Mutation Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMutationCountPropertyDescriptor(Object object) {
@@ -313,7 +313,7 @@ public class MutatorConfigItemProvider
 	 * This adds a property descriptor for the Allow Duplicate IDs feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addAllowDuplicateIDsPropertyDescriptor(Object object) {
@@ -336,7 +336,7 @@ public class MutatorConfigItemProvider
 	 * This returns MutatorConfig.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -348,12 +348,12 @@ public class MutatorConfigItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		MutatorConfig mutatorConfig = (MutatorConfig) object;
+		final MutatorConfig mutatorConfig = (MutatorConfig) object;
 		return getString("_UI_MutatorConfig_type") + " " + mutatorConfig.getMinObjectsCount(); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -362,7 +362,7 @@ public class MutatorConfigItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -388,7 +388,7 @@ public class MutatorConfigItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -400,7 +400,7 @@ public class MutatorConfigItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

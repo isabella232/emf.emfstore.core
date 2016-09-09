@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -29,14 +29,14 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass testElementEClass = null;
@@ -44,7 +44,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass testElementToStringMapEClass = null;
@@ -52,7 +52,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass stringToStringMapEClass = null;
@@ -60,7 +60,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass testElementToTestElementMapEClass = null;
@@ -68,7 +68,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass stringToTestElementMapEClass = null;
@@ -76,7 +76,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass testTypeEClass = null;
@@ -84,7 +84,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass typeWithFeatureMapNonContainmentEClass = null;
@@ -92,7 +92,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass typeWithFeatureMapContainmentEClass = null;
@@ -105,7 +105,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
 	 * performs initialization of the package, or returns the registered package, if one already exists. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#eNS_URI
 	 * @see #init()
@@ -118,31 +118,32 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>
 	 * This method is used to initialize {@link TestmodelPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static TestmodelPackage init() {
-		if (isInited)
+		if (isInited) {
 			return (TestmodelPackage) EPackage.Registry.INSTANCE.getEPackage(TestmodelPackage.eNS_URI);
+		}
 
 		// Obtain or create and register package
-		TestmodelPackageImpl theTestmodelPackage = (TestmodelPackageImpl) (EPackage.Registry.INSTANCE
+		final TestmodelPackageImpl theTestmodelPackage = (TestmodelPackageImpl) (EPackage.Registry.INSTANCE
 			.get(eNS_URI) instanceof TestmodelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
 				: new TestmodelPackageImpl());
 
@@ -165,7 +166,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTestElement() {
@@ -175,7 +176,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTestElement_Name() {
@@ -185,7 +186,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTestElement_Strings() {
@@ -195,7 +196,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_References() {
@@ -205,7 +206,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ContainedElements() {
@@ -215,7 +216,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_Reference() {
@@ -225,7 +226,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ContainedElement() {
@@ -235,7 +236,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_OtherReference() {
@@ -245,7 +246,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTestElement_Description() {
@@ -255,7 +256,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_Container() {
@@ -265,7 +266,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_SrefContainer() {
@@ -275,7 +276,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ElementMap() {
@@ -285,7 +286,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_StringToStringMap() {
@@ -295,7 +296,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ElementToStringMap() {
@@ -305,7 +306,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_StringToElementMap() {
@@ -315,7 +316,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_NonContained_NTo1() {
@@ -325,7 +326,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_NonContained_1ToN() {
@@ -335,7 +336,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_NonContained_NToM() {
@@ -345,7 +346,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_NonContained_MToN() {
@@ -355,7 +356,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ContainedElements2() {
@@ -365,7 +366,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_Container2() {
@@ -375,7 +376,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ContainedElements_NoOpposite() {
@@ -385,7 +386,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_ContainedElement_NoOpposite() {
@@ -395,7 +396,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTestElement_FeatureMapEntries() {
@@ -405,7 +406,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_FeatureMapReferences1() {
@@ -415,7 +416,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElement_FeatureMapReferences2() {
@@ -425,7 +426,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTestElementToStringMap() {
@@ -435,7 +436,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTestElementToStringMap_Value() {
@@ -445,7 +446,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElementToStringMap_Key() {
@@ -455,7 +456,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getStringToStringMap() {
@@ -465,7 +466,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getStringToStringMap_Key() {
@@ -475,7 +476,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getStringToStringMap_Value() {
@@ -485,7 +486,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTestElementToTestElementMap() {
@@ -495,7 +496,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElementToTestElementMap_Value() {
@@ -505,7 +506,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTestElementToTestElementMap_Key() {
@@ -515,7 +516,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getStringToTestElementMap() {
@@ -525,7 +526,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getStringToTestElementMap_Value() {
@@ -535,7 +536,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getStringToTestElementMap_Key() {
@@ -545,7 +546,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTestType() {
@@ -555,7 +556,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTestType_Name() {
@@ -565,7 +566,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTypeWithFeatureMapNonContainment() {
@@ -575,7 +576,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTypeWithFeatureMapNonContainment_Map() {
@@ -585,7 +586,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTypeWithFeatureMapNonContainment_FirstKey() {
@@ -595,7 +596,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTypeWithFeatureMapNonContainment_SecondKey() {
@@ -605,7 +606,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EClass getTypeWithFeatureMapContainment() {
@@ -615,7 +616,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EAttribute getTypeWithFeatureMapContainment_MapContainment() {
@@ -625,7 +626,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTypeWithFeatureMapContainment_FirstKeyContainment() {
@@ -635,7 +636,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EReference getTypeWithFeatureMapContainment_SecondKeyContainment() {
@@ -645,7 +646,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestmodelFactory getTestmodelFactory() {
@@ -655,7 +656,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -665,12 +666,13 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated)
+		if (isCreated) {
 			return;
+		}
 		isCreated = true;
 
 		// Create classes and their features
@@ -735,7 +737,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -745,12 +747,13 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized)
+		if (isInitialized) {
 			return;
+		}
 		isInitialized = true;
 
 		// Initialize package
@@ -764,8 +767,8 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 
 		// Add supertypes to classes
 		testElementEClass.getESuperTypes().add(ecorePackage.getEObject());
-		typeWithFeatureMapNonContainmentEClass.getESuperTypes().add(this.getTestType());
-		typeWithFeatureMapContainmentEClass.getESuperTypes().add(this.getTestType());
+		typeWithFeatureMapNonContainmentEClass.getESuperTypes().add(getTestType());
+		typeWithFeatureMapContainmentEClass.getESuperTypes().add(getTestType());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(testElementEClass, TestElement.class, "TestElement", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
@@ -774,77 +777,77 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestElement_Strings(), ecorePackage.getEString(), "strings", null, 0, -1, TestElement.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_References(), this.getTestElement(), null, "references", null, 0, -1, //$NON-NLS-1$
+		initEReference(getTestElement_References(), getTestElement(), null, "references", null, 0, -1, //$NON-NLS-1$
 			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_ContainedElements(), this.getTestElement(), this.getTestElement_Container(),
+		initEReference(getTestElement_ContainedElements(), getTestElement(), getTestElement_Container(),
 			"containedElements", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_Reference(), this.getTestElement(), null, "reference", null, 0, 1, //$NON-NLS-1$
+		initEReference(getTestElement_Reference(), getTestElement(), null, "reference", null, 0, 1, //$NON-NLS-1$
 			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_ContainedElement(), this.getTestElement(), this.getTestElement_SrefContainer(),
+		initEReference(getTestElement_ContainedElement(), getTestElement(), getTestElement_SrefContainer(),
 			"containedElement", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
 			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_OtherReference(), this.getTestElement(), null, "otherReference", null, 0, 1, //$NON-NLS-1$
+		initEReference(getTestElement_OtherReference(), getTestElement(), null, "otherReference", null, 0, 1, //$NON-NLS-1$
 			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
 			TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_Container(), this.getTestElement(), this.getTestElement_ContainedElements(),
+		initEReference(getTestElement_Container(), getTestElement(), getTestElement_ContainedElements(),
 			"container", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
 			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_SrefContainer(), this.getTestElement(), this.getTestElement_ContainedElement(),
+		initEReference(getTestElement_SrefContainer(), getTestElement(), getTestElement_ContainedElement(),
 			"srefContainer", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
 			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_ElementMap(), this.getTestElementToTestElementMap(), null, "elementMap", null, 0, //$NON-NLS-1$
+		initEReference(getTestElement_ElementMap(), getTestElementToTestElementMap(), null, "elementMap", null, 0, //$NON-NLS-1$
 			-1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_StringToStringMap(), this.getStringToStringMap(), null, "stringToStringMap", null, //$NON-NLS-1$
+		initEReference(getTestElement_StringToStringMap(), getStringToStringMap(), null, "stringToStringMap", null, //$NON-NLS-1$
 			0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_ElementToStringMap(), this.getTestElementToStringMap(), null,
+		initEReference(getTestElement_ElementToStringMap(), getTestElementToStringMap(), null,
 			"elementToStringMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_StringToElementMap(), this.getStringToTestElementMap(), null,
+		initEReference(getTestElement_StringToElementMap(), getStringToTestElementMap(), null,
 			"stringToElementMap", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_NonContained_NTo1(), this.getTestElement(),
-			this.getTestElement_NonContained_1ToN(), "nonContained_NTo1", null, 0, 1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+		initEReference(getTestElement_NonContained_NTo1(), getTestElement(),
+			getTestElement_NonContained_1ToN(), "nonContained_NTo1", null, 0, 1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
 			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
-		initEReference(getTestElement_NonContained_1ToN(), this.getTestElement(),
-			this.getTestElement_NonContained_NTo1(), "nonContained_1ToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+		initEReference(getTestElement_NonContained_1ToN(), getTestElement(),
+			getTestElement_NonContained_NTo1(), "nonContained_1ToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
 			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
-		initEReference(getTestElement_NonContained_NToM(), this.getTestElement(),
-			this.getTestElement_NonContained_MToN(), "nonContained_NToM", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+		initEReference(getTestElement_NonContained_NToM(), getTestElement(),
+			getTestElement_NonContained_MToN(), "nonContained_NToM", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
 			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
-		initEReference(getTestElement_NonContained_MToN(), this.getTestElement(),
-			this.getTestElement_NonContained_NToM(), "nonContained_MToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
+		initEReference(getTestElement_NonContained_MToN(), getTestElement(),
+			getTestElement_NonContained_NToM(), "nonContained_MToN", null, 0, -1, TestElement.class, !IS_TRANSIENT, //$NON-NLS-1$
 			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
-		initEReference(getTestElement_ContainedElements2(), this.getTestElement(), this.getTestElement_Container2(),
+		initEReference(getTestElement_ContainedElements2(), getTestElement(), getTestElement_Container2(),
 			"containedElements2", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_Container2(), this.getTestElement(), this.getTestElement_ContainedElements2(),
+		initEReference(getTestElement_Container2(), getTestElement(), getTestElement_ContainedElements2(),
 			"container2", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
 			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_ContainedElements_NoOpposite(), this.getTestElement(), null,
+		initEReference(getTestElement_ContainedElements_NoOpposite(), getTestElement(), null,
 			"containedElements_NoOpposite", null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_ContainedElement_NoOpposite(), this.getTestElement(), null,
+		initEReference(getTestElement_ContainedElement_NoOpposite(), getTestElement(), null,
 			"containedElement_NoOpposite", null, 0, 1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 			IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestElement_FeatureMapEntries(), ecorePackage.getEFeatureMapEntry(), "featureMapEntries", //$NON-NLS-1$
 			null, 0, -1, TestElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 			IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_FeatureMapReferences1(), this.getTestElement(), null, "featureMapReferences1", //$NON-NLS-1$
+		initEReference(getTestElement_FeatureMapReferences1(), getTestElement(), null, "featureMapReferences1", //$NON-NLS-1$
 			null, 0, -1, TestElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElement_FeatureMapReferences2(), this.getTestElement(), null, "featureMapReferences2", //$NON-NLS-1$
+		initEReference(getTestElement_FeatureMapReferences2(), getTestElement(), null, "featureMapReferences2", //$NON-NLS-1$
 			null, 0, -1, TestElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -853,7 +856,7 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 		initEAttribute(getTestElementToStringMap_Value(), ecorePackage.getEString(), "value", null, 0, 1, //$NON-NLS-1$
 			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
-		initEReference(getTestElementToStringMap_Key(), this.getTestElement(), null, "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
+		initEReference(getTestElementToStringMap_Key(), getTestElement(), null, "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
 
@@ -866,16 +869,16 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 
 		initEClass(testElementToTestElementMapEClass, Map.Entry.class, "TestElementToTestElementMap", !IS_ABSTRACT, //$NON-NLS-1$
 			!IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTestElementToTestElementMap_Value(), this.getTestElement(), null, "value", null, 0, 1, //$NON-NLS-1$
+		initEReference(getTestElementToTestElementMap_Value(), getTestElement(), null, "value", null, 0, 1, //$NON-NLS-1$
 			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTestElementToTestElementMap_Key(), this.getTestElement(), null, "key", null, 0, 1, //$NON-NLS-1$
+		initEReference(getTestElementToTestElementMap_Key(), getTestElement(), null, "key", null, 0, 1, //$NON-NLS-1$
 			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringToTestElementMapEClass, Map.Entry.class, "StringToTestElementMap", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 			!IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStringToTestElementMap_Value(), this.getTestElement(), null, "value", null, 0, 1, //$NON-NLS-1$
+		initEReference(getStringToTestElementMap_Value(), getTestElement(), null, "value", null, 0, 1, //$NON-NLS-1$
 			Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStringToTestElementMap_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, //$NON-NLS-1$
@@ -891,10 +894,10 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 		initEAttribute(getTypeWithFeatureMapNonContainment_Map(), ecorePackage.getEFeatureMapEntry(), "map", null, 0, //$NON-NLS-1$
 			-1, TypeWithFeatureMapNonContainment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 			!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTypeWithFeatureMapNonContainment_FirstKey(), this.getTestType(), null, "firstKey", null, 0, //$NON-NLS-1$
+		initEReference(getTypeWithFeatureMapNonContainment_FirstKey(), getTestType(), null, "firstKey", null, 0, //$NON-NLS-1$
 			-1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 			IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getTypeWithFeatureMapNonContainment_SecondKey(), this.getTestType(), null, "secondKey", null, 0, //$NON-NLS-1$
+		initEReference(getTypeWithFeatureMapNonContainment_SecondKey(), getTestType(), null, "secondKey", null, 0, //$NON-NLS-1$
 			-1, TypeWithFeatureMapNonContainment.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 			IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
@@ -903,10 +906,10 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 		initEAttribute(getTypeWithFeatureMapContainment_MapContainment(), ecorePackage.getEFeatureMapEntry(),
 			"mapContainment", null, 0, -1, TypeWithFeatureMapContainment.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 			IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTypeWithFeatureMapContainment_FirstKeyContainment(), this.getTestType(), null,
+		initEReference(getTypeWithFeatureMapContainment_FirstKeyContainment(), getTestType(), null,
 			"firstKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, //$NON-NLS-1$
 			IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTypeWithFeatureMapContainment_SecondKeyContainment(), this.getTestType(), null,
+		initEReference(getTypeWithFeatureMapContainment_SecondKeyContainment(), getTestType(), null,
 			"secondKeyContainment", null, 0, -1, TypeWithFeatureMapContainment.class, IS_TRANSIENT, IS_VOLATILE, //$NON-NLS-1$
 			IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -922,11 +925,11 @@ public class TestmodelPackageImpl extends EPackageImpl implements TestmodelPacka
 	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
+		final String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
 		addAnnotation(getTestElement_FeatureMapEntries(),
 			source,
 			new String[] {

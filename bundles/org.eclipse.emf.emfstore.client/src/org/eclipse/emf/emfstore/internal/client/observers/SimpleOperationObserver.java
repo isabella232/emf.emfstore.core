@@ -66,7 +66,7 @@ public abstract class SimpleOperationObserver implements OperationObserver, ESCo
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.observers.OperationObserver#operationUndone(org.eclipse.emf.emfstore.internal.client.model.ProjectSpace,
 	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
 	 */

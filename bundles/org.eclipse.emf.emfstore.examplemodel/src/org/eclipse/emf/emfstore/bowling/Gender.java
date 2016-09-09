@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Gender</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getGender()
  * @model
  * @generated
@@ -31,7 +31,7 @@ public enum Gender implements Enumerator {
 	 * The '<em><b>Female</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #FEMALE_VALUE
 	 * @generated
 	 * @ordered
@@ -42,7 +42,7 @@ public enum Gender implements Enumerator {
 	 * The '<em><b>Male</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #MALE_VALUE
 	 * @generated
 	 * @ordered
@@ -57,7 +57,7 @@ public enum Gender implements Enumerator {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #FEMALE
 	 * @model name="Female"
 	 * @generated
@@ -73,7 +73,7 @@ public enum Gender implements Enumerator {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #MALE
 	 * @model name="Male"
 	 * @generated
@@ -85,7 +85,7 @@ public enum Gender implements Enumerator {
 	 * An array of all the '<em><b>Gender</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static final Gender[] VALUES_ARRAY = new Gender[] {
@@ -97,7 +97,7 @@ public enum Gender implements Enumerator {
 	 * A public read-only list of all the '<em><b>Gender</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<Gender> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -106,14 +106,14 @@ public enum Gender implements Enumerator {
 	 * Returns the '<em><b>Gender</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Gender get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Gender result = VALUES_ARRAY[i];
+			final Gender result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -125,14 +125,14 @@ public enum Gender implements Enumerator {
 	 * Returns the '<em><b>Gender</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Gender getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Gender result = VALUES_ARRAY[i];
+			final Gender result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -144,7 +144,7 @@ public enum Gender implements Enumerator {
 	 * Returns the '<em><b>Gender</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
@@ -162,7 +162,7 @@ public enum Gender implements Enumerator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
@@ -170,7 +170,7 @@ public enum Gender implements Enumerator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
@@ -178,7 +178,7 @@ public enum Gender implements Enumerator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -187,7 +187,7 @@ public enum Gender implements Enumerator {
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private Gender(int value, String name, String literal) {
@@ -199,7 +199,7 @@ public enum Gender implements Enumerator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public int getValue() {
@@ -209,7 +209,7 @@ public enum Gender implements Enumerator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -219,7 +219,7 @@ public enum Gender implements Enumerator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -230,7 +230,7 @@ public enum Gender implements Enumerator {
 	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

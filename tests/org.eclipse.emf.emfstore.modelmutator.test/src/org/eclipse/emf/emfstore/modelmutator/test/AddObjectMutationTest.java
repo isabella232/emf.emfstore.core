@@ -28,7 +28,7 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link ESAddObjectMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class AddObjectMutationTest extends AbstractMutationTest {
@@ -56,7 +56,7 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
+		final ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
 			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 
 		mutation.apply();
@@ -68,7 +68,7 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetFeatureForGivenTargetContainer() throws ESMutationException {
 
-		ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
+		final ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
 			.setTargetObject(ePackageWithTwoClasses);
 
 		mutation.apply();
@@ -83,7 +83,7 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetFeatureAndContainerForGivenEObjectToAdd() throws ESMutationException {
 
-		ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
+		final ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
 			.setEObjectToAdd(E_FACTORY.createEAttribute());
 
 		mutation.apply();

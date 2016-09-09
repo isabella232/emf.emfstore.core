@@ -43,7 +43,7 @@ public interface EMFStoreProperty extends EObject {
 	 * If the meaning of the '<em>Key</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Key</em>' attribute.
 	 * @see #setKey(String)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty_Key()
@@ -57,7 +57,7 @@ public interface EMFStoreProperty extends EObject {
 	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Key</em>' attribute.
 	 * @see #getKey()
 	 * @generated
@@ -72,7 +72,7 @@ public interface EMFStoreProperty extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(EObject)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty_Value()
@@ -86,7 +86,7 @@ public interface EMFStoreProperty extends EObject {
 	 * <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
@@ -102,7 +102,7 @@ public interface EMFStoreProperty extends EObject {
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 	 * @see #setType(EMFStorePropertyType)
@@ -117,7 +117,7 @@ public interface EMFStoreProperty extends EObject {
 	 * <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.eclipse.emf.emfstore.internal.common.model.EMFStorePropertyType
 	 * @see #getType()
@@ -133,7 +133,7 @@ public interface EMFStoreProperty extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(int)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty_Version()
@@ -147,7 +147,7 @@ public interface EMFStoreProperty extends EObject {
 	 * <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Version</em>' attribute.
 	 * @see #getVersion()
 	 * @generated

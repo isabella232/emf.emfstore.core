@@ -40,7 +40,7 @@ public interface Area extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Areas</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getArea_Areas()
 	 * @model containment="true" resolveProxies="true"
@@ -57,7 +57,7 @@ public interface Area extends EObject {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Tournaments</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getArea_Tournaments()
 	 * @model containment="true" resolveProxies="true"

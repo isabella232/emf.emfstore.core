@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.common.cases;
@@ -41,9 +41,9 @@ import org.junit.Before;
  * <br/>
  * <b>NOTE</b>: Remember to call {@code startEMFStore()} and {@code stopEMFStore()} respectively in
  * {@code beforeClass()} and {@code afterClass()}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public abstract class ESTestWithLoggedInUserMock extends ESTestWithMockServer {
 
@@ -71,7 +71,7 @@ public abstract class ESTestWithLoggedInUserMock extends ESTestWithMockServer {
 
 	/**
 	 * Returns the name of the user that is used by the test.
-	 * 
+	 *
 	 * @return the user name
 	 */
 	public String getUser() {
@@ -80,7 +80,7 @@ public abstract class ESTestWithLoggedInUserMock extends ESTestWithMockServer {
 
 	/**
 	 * Returns the password of the user that is used by the test to login the user.
-	 * 
+	 *
 	 * @return the password to be used to perform the login.
 	 */
 	public String getPassword() {

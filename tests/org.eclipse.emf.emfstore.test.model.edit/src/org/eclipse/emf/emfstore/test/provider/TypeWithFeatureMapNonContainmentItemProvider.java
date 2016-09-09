@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
  * object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemProvider {
@@ -39,7 +39,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TypeWithFeatureMapNonContainmentItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,7 +68,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This adds a property descriptor for the First Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addFirstKeyPropertyDescriptor(Object object) {
@@ -91,7 +91,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This adds a property descriptor for the Second Key feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addSecondKeyPropertyDescriptor(Object object) {
@@ -117,7 +117,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -132,7 +132,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -147,7 +147,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns TypeWithFeatureMapNonContainment.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -159,12 +159,12 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TypeWithFeatureMapNonContainment) object).getName();
+		final String label = ((TypeWithFeatureMapNonContainment) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_TypeWithFeatureMapNonContainment_type") : //$NON-NLS-1$
 			getString("_UI_TypeWithFeatureMapNonContainment_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -174,7 +174,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -194,7 +194,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -236,7 +236,7 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -246,12 +246,13 @@ public class TypeWithFeatureMapNonContainmentItemProvider extends TestTypeItemPr
 
 		if (childFeature instanceof EStructuralFeature
 			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature)) {
-			FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
+			final FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
 
-		boolean qualify = childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY ||
+		final boolean qualify = childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY
+			||
 			childFeature == TestmodelPackage.Literals.TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY;
 
 		if (qualify) {

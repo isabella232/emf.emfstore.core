@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - Performance refactorings
@@ -56,14 +56,14 @@ import org.junit.Test;
 
 /**
  * Branches for history test
- * 
+ *
  * <pre>
  *     b1    b2    b3
- * 
+ *
  * v7              o
  * 				/  |
  * v6         /    o
- * v5 	      o   / 
+ * v5 	      o   /
  * v4	o	  |  /
  * v3	|	  o
  * v2	o	 /
@@ -71,7 +71,7 @@ import org.junit.Test;
  *     	   |
  * v0  	   o
  * </pre>
- * 
+ *
  * @author wesendon
  * @author emueller
  */

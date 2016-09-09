@@ -30,7 +30,7 @@ import org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
@@ -38,16 +38,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ModelFactory init() {
 		try {
-			ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE.getEFactory(ModelPackage.eNS_URI);
+			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
+				.getEFactory(ModelPackage.eNS_URI);
 			if (theModelFactory != null) {
 				return theModelFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ModelFactoryImpl();
@@ -57,7 +58,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelFactoryImpl() {
@@ -66,7 +67,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -91,7 +92,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -106,7 +107,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -121,81 +122,82 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Project createProject() {
-		ProjectImpl project = new ProjectImpl();
+		final ProjectImpl project = new ProjectImpl();
 		return project;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelElementId createModelElementId() {
-		ModelElementIdImpl modelElementId = new ModelElementIdImpl();
+		final ModelElementIdImpl modelElementId = new ModelElementIdImpl();
 		return modelElementId;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelVersion createModelVersion() {
-		ModelVersionImpl modelVersion = new ModelVersionImpl();
+		final ModelVersionImpl modelVersion = new ModelVersionImpl();
 		return modelVersion;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMFStoreProperty createEMFStoreProperty() {
-		EMFStorePropertyImpl emfStoreProperty = new EMFStorePropertyImpl();
+		final EMFStorePropertyImpl emfStoreProperty = new EMFStorePropertyImpl();
 		return emfStoreProperty;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<String, EMFStoreProperty> createPropertyMapEntry() {
-		PropertyMapEntryImpl propertyMapEntry = new PropertyMapEntryImpl();
+		final PropertyMapEntryImpl propertyMapEntry = new PropertyMapEntryImpl();
 		return propertyMapEntry;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public PropertyStringValue createPropertyStringValue() {
-		PropertyStringValueImpl propertyStringValue = new PropertyStringValueImpl();
+		final PropertyStringValueImpl propertyStringValue = new PropertyStringValueImpl();
 		return propertyStringValue;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMFStorePropertyType createEMFStorePropertyTypeFromString(EDataType eDataType, String initialValue) {
-		EMFStorePropertyType result = EMFStorePropertyType.get(initialValue);
-		if (result == null)
+		final EMFStorePropertyType result = EMFStorePropertyType.get(initialValue);
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		}
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertEMFStorePropertyTypeToString(EDataType eDataType, Object instanceValue) {
@@ -204,7 +206,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelPackage getModelPackage() {
@@ -213,7 +215,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

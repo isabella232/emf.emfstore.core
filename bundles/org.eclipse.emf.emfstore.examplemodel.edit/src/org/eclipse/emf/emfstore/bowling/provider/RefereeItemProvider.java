@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.bowling.Referee;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Referee} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class RefereeItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -43,7 +43,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public RefereeItemProvider(AdapterFactory adapterFactory) {
@@ -54,7 +54,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -72,7 +72,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * This adds a property descriptor for the Date Of Birth feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDateOfBirthPropertyDescriptor(Object object) {
@@ -94,7 +94,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * This adds a property descriptor for the League feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addLeaguePropertyDescriptor(Object object) {
@@ -116,7 +116,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * This returns Referee.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,13 +128,13 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		XMLGregorianCalendar labelValue = ((Referee) object).getDateOfBirth();
-		String label = labelValue == null ? null : labelValue.toString();
+		final XMLGregorianCalendar labelValue = ((Referee) object).getDateOfBirth();
+		final String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Referee_type") : //$NON-NLS-1$
 			getString("_UI_Referee_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -144,7 +144,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -176,7 +176,7 @@ public class RefereeItemProvider extends ItemProviderAdapter implements IEditing
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

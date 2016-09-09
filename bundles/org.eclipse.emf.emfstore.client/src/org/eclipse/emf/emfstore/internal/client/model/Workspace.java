@@ -177,7 +177,7 @@ public interface Workspace extends EObject, IAdaptable, APIDelegate<ESWorkspaceI
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Project Spaces</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getWorkspace_ProjectSpaces()
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ProjectSpace#getWorkspace

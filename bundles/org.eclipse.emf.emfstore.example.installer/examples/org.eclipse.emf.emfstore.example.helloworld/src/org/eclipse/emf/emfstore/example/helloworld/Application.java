@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Florian Pirchner
  * Maximilian Koegel
@@ -44,13 +44,13 @@ public class Application implements IApplication {
 
 		try {
 			// Create a client representation for a local server and start a local server.
-			ESServer localServer = ESServer.FACTORY.createAndStartLocalServer();
+			final ESServer localServer = ESServer.FACTORY.createAndStartLocalServer();
 			// Run a client on the local server that shows the basic features of the EMFstore
 			runClient(localServer);
-		} catch (ESServerStartFailedException e) {
+		} catch (final ESServerStartFailedException e) {
 			System.out.println("Server start failed!");
 			e.printStackTrace();
-		} catch (ESException e) {
+		} catch (final ESException e) {
 			// If there is a problem with the connection to the server,
 			// e.g., a network, a specific EMFStoreException will be thrown.
 			System.out.println("Connection to Server failed!");
@@ -61,7 +61,7 @@ public class Application implements IApplication {
 
 	/**
 	 * Run an EMFStore Client connecting to the given server.
-	 * 
+	 *
 	 * @param server the server
 	 * @throws ESException if the server connection fails
 	 */
@@ -71,18 +71,18 @@ public class Application implements IApplication {
 		// The workspace is the core controller to access local and remote projects.
 		// A project is a container for models and their elements (EObjects).
 		// To get started, we obtain the current workspace of the client.
-		ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
+		final ESWorkspace workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
 
 		// The workspace stores all available servers that have been configured. We add the local server that has
 		// already
 		// been started on the workspace.
 		workspace.addServer(server);
 		// Next, we remove all other existing servers
-		for (ESServer existingServer : workspace.getServers()) {
+		for (final ESServer existingServer : workspace.getServers()) {
 			if (existingServer != server) {
 				try {
 					workspace.removeServer(existingServer);
-				} catch (ESServerNotFoundException e) {
+				} catch (final ESServerNotFoundException e) {
 					e.printStackTrace();
 				}
 			}
@@ -91,14 +91,14 @@ public class Application implements IApplication {
 		// The workspace also contains a list of local projects that have either been created locally or checked out
 		// from a server.
 		// We create a new local project. The project new created is not yet shared with the server.
-		ESLocalProject demoProject = workspace.createLocalProject("DemoProject");
+		final ESLocalProject demoProject = workspace.createLocalProject("DemoProject");
 
 		// We delete all projects from the local workspace other than the one just created.
-		for (ESLocalProject existingLocalProject : workspace.getLocalProjects()) {
+		for (final ESLocalProject existingLocalProject : workspace.getLocalProjects()) {
 			if (existingLocalProject != demoProject) {
 				try {
 					existingLocalProject.delete(new ESSystemOutProgressMonitor());
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -106,15 +106,16 @@ public class Application implements IApplication {
 
 		// Next, we create a user session by logging in to the local EMFStore server with default super user
 		// credentials.
-		ESUsersession usersession = server.login("super", "super");
+		final ESUsersession usersession = server.login("super", "super");
 
 		// Now we can share the created local project to our server.
-		ESRemoteProject remoteDemoProject = demoProject.shareProject(usersession, new ESSystemOutProgressMonitor());
+		final ESRemoteProject remoteDemoProject = demoProject.shareProject(usersession,
+			new ESSystemOutProgressMonitor());
 
 		// We also retrieve a list of existing (and accessible) remote projects on the server.
 		// Remote projects represent a project that is currently available on the server.
 		// We delete all remote projects to clean up remaining projects from previous launches.
-		for (ESRemoteProject existingRemoteProject : server.getRemoteProjects(usersession)) {
+		for (final ESRemoteProject existingRemoteProject : server.getRemoteProjects(usersession)) {
 			if (!existingRemoteProject.getGlobalProjectId().equals(remoteDemoProject.getGlobalProjectId())) {
 				existingRemoteProject.delete(usersession, new NullProgressMonitor());
 			}
@@ -124,7 +125,7 @@ public class Application implements IApplication {
 		// server with only this one project.
 
 		// We check out a second, independent copy of the project (simulating a second client).
-		ESLocalProject demoProjectCopy = demoProject.getRemoteProject().checkout("DemoProject Copy",
+		final ESLocalProject demoProjectCopy = demoProject.getRemoteProject().checkout("DemoProject Copy",
 			usersession, new ESSystemOutProgressMonitor());
 
 		// We start working now with the local project and later we will synchronize it with the copy of the project we
@@ -136,7 +137,7 @@ public class Application implements IApplication {
 		// project. We will use an example model about bowling.
 
 		// First we add a league and set the league name.
-		League league = BowlingFactory.eINSTANCE.createLeague();
+		final League league = BowlingFactory.eINSTANCE.createLeague();
 		league.setName("Suprbowling League");
 
 		// Next we add the league to the root of the project. The project has a containment feature called model
@@ -146,9 +147,9 @@ public class Application implements IApplication {
 		demoProject.getModelElements().add(league);
 
 		// Then we create two players.
-		Player player1 = BowlingFactory.eINSTANCE.createPlayer();
+		final Player player1 = BowlingFactory.eINSTANCE.createPlayer();
 		player1.setName("Maximilian");
-		Player player2 = BowlingFactory.eINSTANCE.createPlayer();
+		final Player player2 = BowlingFactory.eINSTANCE.createPlayer();
 		player2.setName("Ottgar");
 
 		// Finally, we add the players to the league. Since the league is already part of the project and League.players

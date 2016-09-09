@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.bowling.Fan;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.bowling.Fan} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FanItemProvider
@@ -46,7 +46,7 @@ public class FanItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public FanItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +57,7 @@ public class FanItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -82,7 +82,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
@@ -104,7 +104,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Date Of Birth feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addDateOfBirthPropertyDescriptor(Object object) {
@@ -126,7 +126,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Has Season Ticket feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addHasSeasonTicketPropertyDescriptor(Object object) {
@@ -148,7 +148,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the EMails feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addEMailsPropertyDescriptor(Object object) {
@@ -170,7 +170,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Gender feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addGenderPropertyDescriptor(Object object) {
@@ -192,7 +192,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Favourite Player feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addFavouritePlayerPropertyDescriptor(Object object) {
@@ -214,7 +214,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Visited Tournaments feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addVisitedTournamentsPropertyDescriptor(Object object) {
@@ -236,7 +236,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Number Of Tournaments Visited feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addNumberOfTournamentsVisitedPropertyDescriptor(Object object) {
@@ -259,7 +259,7 @@ public class FanItemProvider
 	 * This adds a property descriptor for the Money Spent On Tickets feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMoneySpentOnTicketsPropertyDescriptor(Object object) {
@@ -283,7 +283,7 @@ public class FanItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -299,7 +299,7 @@ public class FanItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -314,7 +314,7 @@ public class FanItemProvider
 	 * This returns Fan.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -326,12 +326,12 @@ public class FanItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Fan) object).getName();
+		final String label = ((Fan) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Fan_type") : //$NON-NLS-1$
 			getString("_UI_Fan_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -341,7 +341,7 @@ public class FanItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -371,7 +371,7 @@ public class FanItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -389,15 +389,15 @@ public class FanItemProvider
 	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
+		final Object childFeature = feature;
+		final Object childObject = child;
 
-		boolean qualify = childFeature == BowlingPackage.Literals.FAN__FAN_MERCHANDISE ||
+		final boolean qualify = childFeature == BowlingPackage.Literals.FAN__FAN_MERCHANDISE ||
 			childFeature == BowlingPackage.Literals.FAN__FAVOURITE_MERCHANDISE;
 
 		if (qualify) {
@@ -411,7 +411,7 @@ public class FanItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

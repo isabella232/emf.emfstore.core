@@ -47,7 +47,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The cached value of the '{@link #getConfig() <em>Config</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getConfig()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTime()
 	 * @generated
 	 * @ordered
@@ -69,7 +69,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTime()
 	 * @generated
 	 * @ordered
@@ -80,7 +80,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	 * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getResults()
 	 * @generated
 	 * @ordered
@@ -90,7 +90,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestRunImpl() {
@@ -100,7 +100,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig getConfig() {
@@ -121,19 +121,20 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetConfig(TestConfig newConfig, NotificationChain msgs) {
-		TestConfig oldConfig = config;
+		final TestConfig oldConfig = config;
 		config = newConfig;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ConfigPackage.TEST_RUN__CONFIG, oldConfig, newConfig);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -141,30 +142,34 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setConfig(TestConfig newConfig) {
 		if (newConfig != config) {
 			NotificationChain msgs = null;
-			if (config != null)
+			if (config != null) {
 				msgs = ((InternalEObject) config).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_RUN__CONFIG, null, msgs);
-			if (newConfig != null)
+			}
+			if (newConfig != null) {
 				msgs = ((InternalEObject) newConfig).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_RUN__CONFIG, null, msgs);
+			}
 			msgs = basicSetConfig(newConfig, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
-		} else if (eNotificationRequired())
+			}
+		} else if (eNotificationRequired()) {
 			eNotify(
 				new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RUN__CONFIG, newConfig, newConfig));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getTime() {
@@ -174,20 +179,21 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setTime(Date newTime) {
-		Date oldTime = time;
+		final Date oldTime = time;
 		time = newTime;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RUN__TIME, oldTime, time));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestResult> getResults() {
@@ -200,7 +206,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -217,7 +223,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -236,7 +242,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -260,7 +266,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -282,7 +288,7 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -301,15 +307,16 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (time: "); //$NON-NLS-1$
 		result.append(time);
 		result.append(')');

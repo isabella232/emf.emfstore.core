@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * emueller
  ******************************************************************************/
@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
  * A session provider implementation meant to be used by any tests.
- * 
+ *
  * @author emueller
  */
 public final class TestSessionProvider2 extends ESAbstractSessionProvider {
@@ -35,7 +35,7 @@ public final class TestSessionProvider2 extends ESAbstractSessionProvider {
 
 	/**
 	 * Returns the singleton instance.
-	 * 
+	 *
 	 * @return the singleton instance
 	 */
 	public static TestSessionProvider2 getInstance() {
@@ -44,7 +44,7 @@ public final class TestSessionProvider2 extends ESAbstractSessionProvider {
 
 	/**
 	 * Returns the default {@link Usersession}.
-	 * 
+	 *
 	 * @return the default user session
 	 * @throws ESException if anything else fails
 	 */

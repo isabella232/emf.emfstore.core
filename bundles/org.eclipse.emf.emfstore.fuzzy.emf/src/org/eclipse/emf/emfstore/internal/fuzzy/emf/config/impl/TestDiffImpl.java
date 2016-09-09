@@ -47,7 +47,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The default value of the '{@link #getLastUpdate() <em>Last Update</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastUpdate()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getLastUpdate() <em>Last Update</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLastUpdate()
 	 * @generated
 	 * @ordered
@@ -69,7 +69,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getConfig() <em>Config</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getConfig()
 	 * @generated
 	 * @ordered
@@ -80,7 +80,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getOldResult() <em>Old Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOldResult()
 	 * @generated
 	 * @ordered
@@ -91,7 +91,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	 * The cached value of the '{@link #getNewResult() <em>New Result</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNewResult()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestDiffImpl() {
@@ -111,7 +111,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -122,7 +122,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Date getLastUpdate() {
@@ -132,31 +132,33 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLastUpdate(Date newLastUpdate) {
-		Date oldLastUpdate = lastUpdate;
+		final Date oldLastUpdate = lastUpdate;
 		lastUpdate = newLastUpdate;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_DIFF__LAST_UPDATE, oldLastUpdate,
 				lastUpdate));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig getConfig() {
 		if (config != null && config.eIsProxy()) {
-			InternalEObject oldConfig = (InternalEObject) config;
+			final InternalEObject oldConfig = (InternalEObject) config;
 			config = (TestConfig) eResolveProxy(oldConfig);
 			if (config != oldConfig) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.TEST_DIFF__CONFIG,
 						oldConfig, config));
+				}
 			}
 		}
 		return config;
@@ -165,7 +167,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfig basicGetConfig() {
@@ -175,20 +177,21 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setConfig(TestConfig newConfig) {
-		TestConfig oldConfig = config;
+		final TestConfig oldConfig = config;
 		config = newConfig;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_DIFF__CONFIG, oldConfig, config));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestResult getOldResult() {
@@ -198,19 +201,20 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetOldResult(TestResult newOldResult, NotificationChain msgs) {
-		TestResult oldOldResult = oldResult;
+		final TestResult oldOldResult = oldResult;
 		oldResult = newOldResult;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ConfigPackage.TEST_DIFF__OLD_RESULT, oldOldResult, newOldResult);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -218,30 +222,34 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOldResult(TestResult newOldResult) {
 		if (newOldResult != oldResult) {
 			NotificationChain msgs = null;
-			if (oldResult != null)
+			if (oldResult != null) {
 				msgs = ((InternalEObject) oldResult).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_DIFF__OLD_RESULT, null, msgs);
-			if (newOldResult != null)
+			}
+			if (newOldResult != null) {
 				msgs = ((InternalEObject) newOldResult).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_DIFF__OLD_RESULT, null, msgs);
+			}
 			msgs = basicSetOldResult(newOldResult, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
-		} else if (eNotificationRequired())
+			}
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_DIFF__OLD_RESULT, newOldResult,
 				newOldResult));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestResult getNewResult() {
@@ -251,19 +259,20 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNewResult(TestResult newNewResult, NotificationChain msgs) {
-		TestResult oldNewResult = newResult;
+		final TestResult oldNewResult = newResult;
 		newResult = newNewResult;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				ConfigPackage.TEST_DIFF__NEW_RESULT, oldNewResult, newNewResult);
-			if (msgs == null)
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -271,30 +280,34 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNewResult(TestResult newNewResult) {
 		if (newNewResult != newResult) {
 			NotificationChain msgs = null;
-			if (newResult != null)
+			if (newResult != null) {
 				msgs = ((InternalEObject) newResult).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_DIFF__NEW_RESULT, null, msgs);
-			if (newNewResult != null)
+			}
+			if (newNewResult != null) {
 				msgs = ((InternalEObject) newNewResult).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_DIFF__NEW_RESULT, null, msgs);
+			}
 			msgs = basicSetNewResult(newNewResult, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
-		} else if (eNotificationRequired())
+			}
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_DIFF__NEW_RESULT, newNewResult,
 				newNewResult));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -311,7 +324,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -320,8 +333,9 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 		case ConfigPackage.TEST_DIFF__LAST_UPDATE:
 			return getLastUpdate();
 		case ConfigPackage.TEST_DIFF__CONFIG:
-			if (resolve)
+			if (resolve) {
 				return getConfig();
+			}
 			return basicGetConfig();
 		case ConfigPackage.TEST_DIFF__OLD_RESULT:
 			return getOldResult();
@@ -334,7 +348,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -359,7 +373,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -384,7 +398,7 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -405,15 +419,16 @@ public class TestDiffImpl extends EObjectImpl implements TestDiff {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (lastUpdate: "); //$NON-NLS-1$
 		result.append(lastUpdate);
 		result.append(')');

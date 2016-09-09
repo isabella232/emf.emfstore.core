@@ -34,7 +34,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 	@Test
 	public void isSelectionValidForInvalidCombinationOfFeatureAndObject() {
 
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.setTargetFeature(E_PACKAGE.getEEnum_ELiterals());
 		selector.setTargetObject(ePackageWithTwoClasses);
 		assertFalse(selector.isValid());
@@ -42,7 +42,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForValidCombinationOfFeatureAndObject() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.setTargetFeature(E_PACKAGE.getEClass_ESuperTypes());
 		selector.setTargetObject(ePackageWithTwoClasses.getEClassifiers().get(0));
 		assertTrue(selector.isValid());
@@ -50,7 +50,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForInvalidTargetFeaturePredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.getTargetFeaturePredicates().add(IS_CONTAINMENT_REFERENCE);
 		selector.setTargetFeature(E_PACKAGE.getEClass_ESuperTypes());
 		selector.setTargetObject(ePackageWithTwoClasses.getEClassifiers().get(0));
@@ -59,7 +59,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForInvalidTargetObjectPredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.getTargetObjectPredicates().add(hasMaxNumberOfContainments(1));
 		selector.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 		selector.setTargetObject(ePackageWithTwoClasses);
@@ -68,7 +68,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForValidTargetObjectButInvalidTargetFeaturePredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.getTargetFeaturePredicates().add(hasMaxNumberOfContainments(1));
 		selector.getTargetFeaturePredicates().add(IS_CONTAINMENT_REFERENCE);
 		selector.setTargetFeature(E_PACKAGE.getEClass_ESuperTypes());
@@ -78,7 +78,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForInvalidTargetObjectButValidTargetFeaturePredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.getTargetObjectPredicates().add(hasMaxNumberOfContainments(0));
 		selector.getTargetFeaturePredicates().add(IS_CONTAINMENT_REFERENCE);
 		selector.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
@@ -88,7 +88,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForValidTargetObjectPredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.getTargetObjectPredicates().add(hasMaxNumberOfContainments(0));
 		selector.getTargetFeaturePredicates().add(IS_CONTAINMENT_REFERENCE);
 		selector.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures());
@@ -98,7 +98,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForInvalidOriginalFeatureValuePredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 		selector.setTargetObject(ePackageWithTwoClasses);
 		selector.getOriginalFeatureValuePredicates().add(isListWithSpecifiedSize(0));
@@ -107,7 +107,7 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void isSelectionValidForValidOriginalFeatureValuePredicate() {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 		selector.setTargetObject(ePackageWithTwoClasses);
 		selector.getOriginalFeatureValuePredicates().add(isListWithSpecifiedSize(2));
@@ -134,24 +134,24 @@ public class MutationTargetSelectorTest extends AbstractMutationTest {
 
 	@Test
 	public void findingTargetFeatureByObject() throws ESMutationException {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.setTargetObject(ePackageWithTwoClasses);
 
 		selector.doSelection();
-		EStructuralFeature targetFeature = selector.getTargetFeature();
+		final EStructuralFeature targetFeature = selector.getTargetFeature();
 		assertTrue(ePackageWithTwoClasses.eClass().getEAllStructuralFeatures().contains(targetFeature));
 		assertEquals(ePackageWithTwoClasses, selector.getTargetObject());
 	}
 
 	@Test
 	public void findingTargetFeatureAndTargetObjectByPredicates() throws ESMutationException {
-		MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
+		final MutationTargetSelector selector = new MutationTargetSelector(utilForEPackageWithTwoClasses);
 		selector.getTargetFeaturePredicates().add(IS_CONTAINMENT_REFERENCE);
 		selector.getTargetObjectPredicates().add(hasMaxNumberOfContainments(0));
 
 		selector.doSelection();
-		EObject targetObject = selector.getTargetObject();
-		EStructuralFeature targetReference = selector.getTargetFeature();
+		final EObject targetObject = selector.getTargetObject();
+		final EStructuralFeature targetReference = selector.getTargetFeature();
 		assertTrue(IS_CONTAINMENT_REFERENCE.apply(targetReference));
 		assertTrue(hasMaxNumberOfContainments(0).apply(targetObject));
 	}

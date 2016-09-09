@@ -816,7 +816,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#clearAllocatedCaches(java.util.Set)
 	 */
 	public void clearAllocatedCaches(Set<ModelElementId> modelElementIds) {

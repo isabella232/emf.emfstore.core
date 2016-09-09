@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestConfigItemProvider
@@ -46,7 +46,7 @@ public class TestConfigItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestConfigItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +57,7 @@ public class TestConfigItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class TestConfigItemProvider
 	 * This adds a property descriptor for the Seed feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addSeedPropertyDescriptor(Object object) {
@@ -99,7 +99,7 @@ public class TestConfigItemProvider
 	 * This adds a property descriptor for the Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addCountPropertyDescriptor(Object object) {
@@ -121,7 +121,7 @@ public class TestConfigItemProvider
 	 * This adds a property descriptor for the Test Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addTestClassPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class TestConfigItemProvider
 	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
@@ -168,7 +168,7 @@ public class TestConfigItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -183,7 +183,7 @@ public class TestConfigItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -198,7 +198,7 @@ public class TestConfigItemProvider
 	 * This returns TestConfig.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -210,12 +210,12 @@ public class TestConfigItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TestConfig) object).getId();
+		final String label = ((TestConfig) object).getId();
 		return label == null || label.length() == 0 ? getString("_UI_TestConfig_type") : //$NON-NLS-1$
 			getString("_UI_TestConfig_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -225,7 +225,7 @@ public class TestConfigItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -251,7 +251,7 @@ public class TestConfigItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -266,7 +266,7 @@ public class TestConfigItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

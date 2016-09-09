@@ -312,7 +312,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	/**
 	 * Refresh a history info. Useful if a change package has been loaded lazily.
-	 * 
+	 *
 	 * @param historyInfo the {@link HistoryInfo} to refresh
 	 */
 	public void refresh(HistoryInfo historyInfo) {

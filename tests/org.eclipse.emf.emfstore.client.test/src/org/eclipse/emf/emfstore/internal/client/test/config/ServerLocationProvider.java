@@ -18,7 +18,7 @@ public class ServerLocationProvider extends DefaultServerWorkspaceLocationProvid
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.DefaultServerWorkspaceLocationProvider#getRootDirectory()
 	 */
 	@Override

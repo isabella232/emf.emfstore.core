@@ -44,7 +44,7 @@ public interface Matchup extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Games</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMatchup_Games()
 	 * @see org.eclipse.emf.emfstore.bowling.Game#getMatchup
@@ -61,7 +61,7 @@ public interface Matchup extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Nr Spectators</em>' attribute.
 	 * @see #setNrSpectators(BigInteger)
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMatchup_NrSpectators()
@@ -75,7 +75,7 @@ public interface Matchup extends EObject {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Nr Spectators</em>' attribute.
 	 * @see #getNrSpectators()
 	 * @generated

@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -29,7 +29,7 @@ import org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFactory {
@@ -37,17 +37,17 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static TestmodelFactory init() {
 		try {
-			TestmodelFactory theTestmodelFactory = (TestmodelFactory) EPackage.Registry.INSTANCE
+			final TestmodelFactory theTestmodelFactory = (TestmodelFactory) EPackage.Registry.INSTANCE
 				.getEFactory(TestmodelPackage.eNS_URI);
 			if (theTestmodelFactory != null) {
 				return theTestmodelFactory;
 			}
-		} catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new TestmodelFactoryImpl();
@@ -57,7 +57,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestmodelFactoryImpl() {
@@ -67,7 +67,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -97,95 +97,95 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement createTestElement() {
-		TestElementImpl testElement = new TestElementImpl();
+		final TestElementImpl testElement = new TestElementImpl();
 		return testElement;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<TestElement, String> createTestElementToStringMap() {
-		TestElementToStringMapImpl testElementToStringMap = new TestElementToStringMapImpl();
+		final TestElementToStringMapImpl testElementToStringMap = new TestElementToStringMapImpl();
 		return testElementToStringMap;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<String, String> createStringToStringMap() {
-		StringToStringMapImpl stringToStringMap = new StringToStringMapImpl();
+		final StringToStringMapImpl stringToStringMap = new StringToStringMapImpl();
 		return stringToStringMap;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<TestElement, TestElement> createTestElementToTestElementMap() {
-		TestElementToTestElementMapImpl testElementToTestElementMap = new TestElementToTestElementMapImpl();
+		final TestElementToTestElementMapImpl testElementToTestElementMap = new TestElementToTestElementMapImpl();
 		return testElementToTestElementMap;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map.Entry<String, TestElement> createStringToTestElementMap() {
-		StringToTestElementMapImpl stringToTestElementMap = new StringToTestElementMapImpl();
+		final StringToTestElementMapImpl stringToTestElementMap = new StringToTestElementMapImpl();
 		return stringToTestElementMap;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestType createTestType() {
-		TestTypeImpl testType = new TestTypeImpl();
+		final TestTypeImpl testType = new TestTypeImpl();
 		return testType;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TypeWithFeatureMapNonContainment createTypeWithFeatureMapNonContainment() {
-		TypeWithFeatureMapNonContainmentImpl typeWithFeatureMapNonContainment = new TypeWithFeatureMapNonContainmentImpl();
+		final TypeWithFeatureMapNonContainmentImpl typeWithFeatureMapNonContainment = new TypeWithFeatureMapNonContainmentImpl();
 		return typeWithFeatureMapNonContainment;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TypeWithFeatureMapContainment createTypeWithFeatureMapContainment() {
-		TypeWithFeatureMapContainmentImpl typeWithFeatureMapContainment = new TypeWithFeatureMapContainmentImpl();
+		final TypeWithFeatureMapContainmentImpl typeWithFeatureMapContainment = new TypeWithFeatureMapContainmentImpl();
 		return typeWithFeatureMapContainment;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestmodelPackage getTestmodelPackage() {
@@ -195,7 +195,7 @@ public class TestmodelFactoryImpl extends EFactoryImpl implements TestmodelFacto
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

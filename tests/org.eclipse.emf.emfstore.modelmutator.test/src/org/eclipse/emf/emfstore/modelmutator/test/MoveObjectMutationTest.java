@@ -28,15 +28,15 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link MoveObjectMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class MoveObjectMutationTest extends AbstractMutationTest {
 
 	@Before
 	public void addEAttributeToFirstEClassInEPackageWithTwoClasses() {
-		EAttribute eAttributeToAdd = E_FACTORY.createEAttribute();
-		EClass firstEClass = getFirstEClass();
+		final EAttribute eAttributeToAdd = E_FACTORY.createEAttribute();
+		final EClass firstEClass = getFirstEClass();
 		firstEClass.getEStructuralFeatures().add(eAttributeToAdd);
 	}
 
@@ -67,7 +67,7 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 	public void moveObjectForGivenSourceFeatureAndSourceContainerAndTargetFeatureAndTargetContainer()
 		throws ESMutationException {
 
-		EAttribute attributeToMove = getEAttributeInFirstClass();
+		final EAttribute attributeToMove = getEAttributeInFirstClass();
 
 		ESMutationFactory.move(utilForEPackageWithTwoClasses).setSourceObject(getFirstEClass())
 			.setSourceFeature(E_PACKAGE.getEClass_EStructuralFeatures()).setTargetObject(getSecondEClass())
@@ -84,9 +84,10 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 			try {
 				applyUnconfigeredMove();
 				success = true;
-			} catch (Exception e) {
-				if (tries++ > 3)
+			} catch (final Exception e) {
+				if (tries++ > 3) {
 					fail();
+				}
 			}
 		}
 	}
@@ -116,9 +117,9 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 
 	@Test
 	public void setupForSourceGivenFeature() throws ESMutationException {
-		EAttribute eAttribute = getEAttributeInFirstClass();
+		final EAttribute eAttribute = getEAttributeInFirstClass();
 
-		ESMoveObjectMutation mutation = ESMutationFactory.move(utilForEPackageWithTwoClasses)
+		final ESMoveObjectMutation mutation = ESMutationFactory.move(utilForEPackageWithTwoClasses)
 			.setSourceFeature(E_PACKAGE.getEClass_EStructuralFeatures());
 
 		mutation.apply();
@@ -131,9 +132,9 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 
 	@Test
 	public void setupForGivenTargetContainer() throws ESMutationException {
-		EAttribute eAttribute = getEAttributeInFirstClass();
+		final EAttribute eAttribute = getEAttributeInFirstClass();
 
-		ESMoveObjectMutation mutation = ESMutationFactory.move(utilForEPackageWithTwoClasses)
+		final ESMoveObjectMutation mutation = ESMutationFactory.move(utilForEPackageWithTwoClasses)
 			.setTargetObject(getSecondEClass());
 
 		mutation.apply();

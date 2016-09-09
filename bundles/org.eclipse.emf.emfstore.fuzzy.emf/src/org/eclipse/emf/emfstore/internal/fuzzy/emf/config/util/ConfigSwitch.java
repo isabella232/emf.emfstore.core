@@ -33,7 +33,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage
  * @generated
  */
@@ -42,7 +42,7 @@ public class ConfigSwitch<T> {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected static ConfigPackage modelPackage;
@@ -51,7 +51,7 @@ public class ConfigSwitch<T> {
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ConfigSwitch() {
@@ -65,7 +65,7 @@ public class ConfigSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -78,7 +78,7 @@ public class ConfigSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -86,7 +86,7 @@ public class ConfigSwitch<T> {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
 		return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
 	}
 
@@ -95,59 +95,66 @@ public class ConfigSwitch<T> {
 	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 		case ConfigPackage.TEST_CONFIG: {
-			TestConfig testConfig = (TestConfig) theEObject;
+			final TestConfig testConfig = (TestConfig) theEObject;
 			T result = caseTestConfig(testConfig);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ConfigPackage.TEST_RUN: {
-			TestRun testRun = (TestRun) theEObject;
+			final TestRun testRun = (TestRun) theEObject;
 			T result = caseTestRun(testRun);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ConfigPackage.TEST_RESULT: {
-			TestResult testResult = (TestResult) theEObject;
+			final TestResult testResult = (TestResult) theEObject;
 			T result = caseTestResult(testResult);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ConfigPackage.TEST_DIFF: {
-			TestDiff testDiff = (TestDiff) theEObject;
+			final TestDiff testDiff = (TestDiff) theEObject;
 			T result = caseTestDiff(testDiff);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ConfigPackage.DIFF_REPORT: {
-			DiffReport diffReport = (DiffReport) theEObject;
+			final DiffReport diffReport = (DiffReport) theEObject;
 			T result = caseDiffReport(diffReport);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ConfigPackage.ROOT: {
-			Root root = (Root) theEObject;
+			final Root root = (Root) theEObject;
 			T result = caseRoot(root);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		case ConfigPackage.MUTATOR_CONFIG: {
-			MutatorConfig mutatorConfig = (MutatorConfig) theEObject;
+			final MutatorConfig mutatorConfig = (MutatorConfig) theEObject;
 			T result = caseMutatorConfig(mutatorConfig);
-			if (result == null)
+			if (result == null) {
 				result = defaultCase(theEObject);
+			}
 			return result;
 		}
 		default:
@@ -161,7 +168,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Config</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -177,7 +184,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Run</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -193,7 +200,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Result</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -209,7 +216,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Test Diff</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -225,7 +232,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Diff Report</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -241,7 +248,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Root</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -257,7 +264,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Mutator Config</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -273,7 +280,7 @@ public class ConfigSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)

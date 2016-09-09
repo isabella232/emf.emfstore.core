@@ -39,6 +39,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public WorkspaceItemProvider(AdapterFactory adapterFactory) {
@@ -48,6 +49,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -65,6 +67,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -80,6 +83,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,6 +97,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns Workspace.gif.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,6 +108,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -135,6 +141,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,6 +161,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

@@ -39,7 +39,7 @@ public interface DiffReport extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Diffs</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getDiffReport_Diffs()
 	 * @model containment="true"

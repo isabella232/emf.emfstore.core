@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.test.model.TestmodelFactory
  * @model kind="package"
  * @generated
@@ -38,7 +38,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNAME = "test"; //$NON-NLS-1$
@@ -47,7 +47,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_URI = "http://eclipse.org/emf/emfstore/test/model"; //$NON-NLS-1$
@@ -56,7 +56,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_PREFIX = "org.eclipse.emf.emfstore.test.model"; //$NON-NLS-1$
@@ -65,7 +65,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	TestmodelPackage eINSTANCE = org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl.init();
@@ -75,7 +75,7 @@ public interface TestmodelPackage extends EPackage {
 	 * }' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestElementImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestElement()
 	 * @generated
@@ -86,7 +86,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -96,7 +96,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Strings</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -106,7 +106,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>References</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -116,7 +116,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Contained Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -126,7 +126,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -136,7 +136,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Contained Element</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -146,7 +146,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Other Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -156,7 +156,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -166,7 +166,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -176,7 +176,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Sref Container</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -186,7 +186,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Element Map</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -196,7 +196,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>String To String Map</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -206,7 +206,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Element To String Map</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -216,7 +216,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>String To Element Map</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -226,7 +226,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Non Contained NTo1</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -236,7 +236,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Non Contained 1To N</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -246,7 +246,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Non Contained NTo M</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -256,7 +256,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Non Contained MTo N</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -266,7 +266,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Contained Elements2</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -276,7 +276,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Container2</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -286,7 +286,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Contained Elements No Opposite</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -296,7 +296,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Contained Element No Opposite</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -306,7 +306,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Map Entries</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -316,7 +316,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Map References1</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -326,7 +326,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Map References2</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -336,7 +336,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>Test Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -347,7 +347,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Test Element To String Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestElementToStringMapImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestElementToStringMap()
 	 * @generated
@@ -358,7 +358,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -368,7 +368,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -378,7 +378,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>Test Element To String Map</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -389,7 +389,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>String To String Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.StringToStringMapImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getStringToStringMap()
 	 * @generated
@@ -400,7 +400,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -410,7 +410,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -420,7 +420,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>String To String Map</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -431,7 +431,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Test Element To Test Element Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestElementToTestElementMapImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestElementToTestElementMap()
 	 * @generated
@@ -442,7 +442,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -452,7 +452,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -462,7 +462,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>Test Element To Test Element Map</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -473,7 +473,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>String To Test Element Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.StringToTestElementMapImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getStringToTestElementMap()
 	 * @generated
@@ -484,7 +484,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -494,7 +494,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -504,7 +504,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>String To Test Element Map</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -515,7 +515,7 @@ public interface TestmodelPackage extends EPackage {
 	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestTypeImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestType()
 	 * @generated
@@ -526,7 +526,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -536,7 +536,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>Test Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -547,7 +547,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Type With Feature Map Non Containment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapNonContainment()
 	 * @generated
@@ -558,7 +558,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -568,7 +568,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Map</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -578,7 +578,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>First Key</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -588,7 +588,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Second Key</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -598,7 +598,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>Type With Feature Map Non Containment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -609,7 +609,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Type With Feature Map Containment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapContainmentImpl
 	 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapContainment()
 	 * @generated
@@ -620,7 +620,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -630,7 +630,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Map Containment</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -640,7 +640,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>First Key Containment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -650,7 +650,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The feature id for the '<em><b>Second Key Containment</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -660,7 +660,7 @@ public interface TestmodelPackage extends EPackage {
 	 * The number of structural features of the '<em>Type With Feature Map Containment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -671,7 +671,7 @@ public interface TestmodelPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Test Element</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement
 	 * @generated
@@ -683,7 +683,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getName()
 	 * @see #getTestElement()
@@ -696,7 +696,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Strings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Strings</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getStrings()
 	 * @see #getTestElement()
@@ -709,7 +709,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getReferences <em>References</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>References</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getReferences()
 	 * @see #getTestElement()
@@ -722,7 +722,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements <em>Contained Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Contained Elements</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements()
 	 * @see #getTestElement()
@@ -735,7 +735,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Reference</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getReference()
 	 * @see #getTestElement()
@@ -748,7 +748,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElement <em>Contained Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference '<em>Contained Element</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainedElement()
 	 * @see #getTestElement()
@@ -761,7 +761,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getOtherReference <em>Other Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Other Reference</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getOtherReference()
 	 * @see #getTestElement()
@@ -774,7 +774,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Description</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getDescription()
 	 * @see #getTestElement()
@@ -787,7 +787,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the container reference '<em>Container</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainer()
 	 * @see #getTestElement()
@@ -800,7 +800,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getSrefContainer <em>Sref Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the container reference '<em>Sref Container</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getSrefContainer()
 	 * @see #getTestElement()
@@ -813,7 +813,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Element Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the map '<em>Element Map</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getElementMap()
 	 * @see #getTestElement()
@@ -826,7 +826,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>String To String Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the map '<em>String To String Map</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getStringToStringMap()
 	 * @see #getTestElement()
@@ -839,7 +839,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Element To String Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the map '<em>Element To String Map</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getElementToStringMap()
 	 * @see #getTestElement()
@@ -852,7 +852,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>String To Element Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the map '<em>String To Element Map</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getStringToElementMap()
 	 * @see #getTestElement()
@@ -865,7 +865,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_NTo1 <em>Non Contained NTo1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Non Contained NTo1</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_NTo1()
 	 * @see #getTestElement()
@@ -878,7 +878,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_1ToN <em>Non Contained 1To N</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>Non Contained 1To N</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_1ToN()
 	 * @see #getTestElement()
@@ -891,7 +891,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_NToM <em>Non Contained NTo M</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>Non Contained NTo M</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_NToM()
 	 * @see #getTestElement()
@@ -904,7 +904,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_MToN <em>Non Contained MTo N</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>Non Contained MTo N</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_MToN()
 	 * @see #getTestElement()
@@ -917,7 +917,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements2 <em>Contained Elements2</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Contained Elements2</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements2()
 	 * @see #getTestElement()
@@ -930,7 +930,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getContainer2 <em>Container2</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the container reference '<em>Container2</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainer2()
 	 * @see #getTestElement()
@@ -944,7 +944,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Contained Elements No Opposite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Contained Elements No Opposite</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainedElements_NoOpposite()
 	 * @see #getTestElement()
@@ -958,7 +958,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Contained Element No Opposite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference '<em>Contained Element No Opposite</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainedElement_NoOpposite()
 	 * @see #getTestElement()
@@ -971,7 +971,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapEntries <em>Feature Map Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Feature Map Entries</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapEntries()
 	 * @see #getTestElement()
@@ -985,7 +985,7 @@ public interface TestmodelPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Feature Map References1</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapReferences1()
 	 * @see #getTestElement()
@@ -999,7 +999,7 @@ public interface TestmodelPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Feature Map References2</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getFeatureMapReferences2()
 	 * @see #getTestElement()
@@ -1011,7 +1011,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Test Element To String Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Test Element To String Map</em>'.
 	 * @see java.util.Map.Entry
 	 * @model features="value key"
@@ -1025,7 +1025,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getTestElementToStringMap()
@@ -1037,7 +1037,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getTestElementToStringMap()
@@ -1049,7 +1049,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To String Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>String To String Map</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyDataType="org.eclipse.emf.ecore.EString"
@@ -1062,7 +1062,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getStringToStringMap()
@@ -1074,7 +1074,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getStringToStringMap()
@@ -1086,7 +1086,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Test Element To Test Element Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Test Element To Test Element Map</em>'.
 	 * @see java.util.Map.Entry
 	 * @model features="value key"
@@ -1100,7 +1100,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getTestElementToTestElementMap()
@@ -1112,7 +1112,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getTestElementToTestElementMap()
@@ -1124,7 +1124,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To Test Element Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>String To Test Element Map</em>'.
 	 * @see java.util.Map.Entry
 	 * @model features="value key"
@@ -1138,7 +1138,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getStringToTestElementMap()
@@ -1150,7 +1150,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getStringToTestElementMap()
@@ -1162,7 +1162,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.test.model.TestType <em>Test Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Test Type</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestType
 	 * @generated
@@ -1174,7 +1174,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TestType#getName()
 	 * @see #getTestType()
@@ -1187,7 +1187,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Type With Feature Map Non Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Type With Feature Map Non Containment</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment
 	 * @generated
@@ -1199,7 +1199,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getMap <em>Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Map</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getMap()
 	 * @see #getTypeWithFeatureMapNonContainment()
@@ -1212,7 +1212,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getFirstKey <em>First Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>First Key</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getFirstKey()
 	 * @see #getTypeWithFeatureMapNonContainment()
@@ -1225,7 +1225,7 @@ public interface TestmodelPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getSecondKey <em>Second Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>Second Key</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapNonContainment#getSecondKey()
 	 * @see #getTypeWithFeatureMapNonContainment()
@@ -1238,7 +1238,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Type With Feature Map Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Type With Feature Map Containment</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment
 	 * @generated
@@ -1251,7 +1251,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Map Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Map Containment</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getMapContainment()
 	 * @see #getTypeWithFeatureMapContainment()
@@ -1265,7 +1265,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>First Key Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>First Key Containment</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getFirstKeyContainment()
 	 * @see #getTypeWithFeatureMapContainment()
@@ -1279,7 +1279,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <em>Second Key Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Second Key Containment</em>'.
 	 * @see org.eclipse.emf.emfstore.test.model.TypeWithFeatureMapContainment#getSecondKeyContainment()
 	 * @see #getTypeWithFeatureMapContainment()
@@ -1291,7 +1291,7 @@ public interface TestmodelPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -1307,7 +1307,7 @@ public interface TestmodelPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	interface Literals {
@@ -1316,7 +1316,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>Test Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestElementImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestElement()
 		 * @generated
@@ -1327,7 +1327,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_ELEMENT__NAME = eINSTANCE.getTestElement_Name();
@@ -1336,7 +1336,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Strings</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_ELEMENT__STRINGS = eINSTANCE.getTestElement_Strings();
@@ -1345,7 +1345,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>References</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__REFERENCES = eINSTANCE.getTestElement_References();
@@ -1354,7 +1354,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Contained Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINED_ELEMENTS = eINSTANCE.getTestElement_ContainedElements();
@@ -1363,7 +1363,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__REFERENCE = eINSTANCE.getTestElement_Reference();
@@ -1372,7 +1372,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Contained Element</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINED_ELEMENT = eINSTANCE.getTestElement_ContainedElement();
@@ -1381,7 +1381,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Other Reference</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__OTHER_REFERENCE = eINSTANCE.getTestElement_OtherReference();
@@ -1390,7 +1390,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_ELEMENT__DESCRIPTION = eINSTANCE.getTestElement_Description();
@@ -1399,7 +1399,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINER = eINSTANCE.getTestElement_Container();
@@ -1408,7 +1408,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Sref Container</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__SREF_CONTAINER = eINSTANCE.getTestElement_SrefContainer();
@@ -1417,7 +1417,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Element Map</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__ELEMENT_MAP = eINSTANCE.getTestElement_ElementMap();
@@ -1426,7 +1426,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>String To String Map</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__STRING_TO_STRING_MAP = eINSTANCE.getTestElement_StringToStringMap();
@@ -1435,7 +1435,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Element To String Map</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__ELEMENT_TO_STRING_MAP = eINSTANCE.getTestElement_ElementToStringMap();
@@ -1444,7 +1444,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>String To Element Map</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__STRING_TO_ELEMENT_MAP = eINSTANCE.getTestElement_StringToElementMap();
@@ -1453,7 +1453,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Non Contained NTo1</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__NON_CONTAINED_NTO1 = eINSTANCE.getTestElement_NonContained_NTo1();
@@ -1462,7 +1462,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Non Contained 1To N</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__NON_CONTAINED_1TO_N = eINSTANCE.getTestElement_NonContained_1ToN();
@@ -1471,7 +1471,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Non Contained NTo M</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__NON_CONTAINED_NTO_M = eINSTANCE.getTestElement_NonContained_NToM();
@@ -1480,7 +1480,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Non Contained MTo N</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__NON_CONTAINED_MTO_N = eINSTANCE.getTestElement_NonContained_MToN();
@@ -1489,7 +1489,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Contained Elements2</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINED_ELEMENTS2 = eINSTANCE.getTestElement_ContainedElements2();
@@ -1498,7 +1498,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Container2</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINER2 = eINSTANCE.getTestElement_Container2();
@@ -1508,7 +1508,7 @@ public interface TestmodelPackage extends EPackage {
 		 * feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINED_ELEMENTS_NO_OPPOSITE = eINSTANCE
@@ -1519,7 +1519,7 @@ public interface TestmodelPackage extends EPackage {
 		 * feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE = eINSTANCE.getTestElement_ContainedElement_NoOpposite();
@@ -1528,7 +1528,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Feature Map Entries</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_ELEMENT__FEATURE_MAP_ENTRIES = eINSTANCE.getTestElement_FeatureMapEntries();
@@ -1537,7 +1537,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Feature Map References1</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__FEATURE_MAP_REFERENCES1 = eINSTANCE.getTestElement_FeatureMapReferences1();
@@ -1546,7 +1546,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Feature Map References2</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT__FEATURE_MAP_REFERENCES2 = eINSTANCE.getTestElement_FeatureMapReferences2();
@@ -1556,7 +1556,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>Test Element To String Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestElementToStringMapImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestElementToStringMap()
 		 * @generated
@@ -1567,7 +1567,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_ELEMENT_TO_STRING_MAP__VALUE = eINSTANCE.getTestElementToStringMap_Value();
@@ -1576,7 +1576,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT_TO_STRING_MAP__KEY = eINSTANCE.getTestElementToStringMap_Key();
@@ -1586,7 +1586,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>String To String Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.StringToStringMapImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getStringToStringMap()
 		 * @generated
@@ -1597,7 +1597,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute STRING_TO_STRING_MAP__KEY = eINSTANCE.getStringToStringMap_Key();
@@ -1606,7 +1606,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute STRING_TO_STRING_MAP__VALUE = eINSTANCE.getStringToStringMap_Value();
@@ -1617,7 +1617,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>Test Element To Test Element Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestElementToTestElementMapImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestElementToTestElementMap()
 		 * @generated
@@ -1628,7 +1628,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT_TO_TEST_ELEMENT_MAP__VALUE = eINSTANCE.getTestElementToTestElementMap_Value();
@@ -1637,7 +1637,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TEST_ELEMENT_TO_TEST_ELEMENT_MAP__KEY = eINSTANCE.getTestElementToTestElementMap_Key();
@@ -1647,7 +1647,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>String To Test Element Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.StringToTestElementMapImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getStringToTestElementMap()
 		 * @generated
@@ -1658,7 +1658,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference STRING_TO_TEST_ELEMENT_MAP__VALUE = eINSTANCE.getStringToTestElementMap_Value();
@@ -1667,7 +1667,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute STRING_TO_TEST_ELEMENT_MAP__KEY = eINSTANCE.getStringToTestElementMap_Key();
@@ -1677,7 +1677,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>Test Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestTypeImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTestType()
 		 * @generated
@@ -1688,7 +1688,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_TYPE__NAME = eINSTANCE.getTestType_Name();
@@ -1699,7 +1699,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>Type With Feature Map Non Containment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapNonContainmentImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapNonContainment()
 		 * @generated
@@ -1710,7 +1710,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Map</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__MAP = eINSTANCE.getTypeWithFeatureMapNonContainment_Map();
@@ -1719,7 +1719,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>First Key</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__FIRST_KEY = eINSTANCE
@@ -1729,7 +1729,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Second Key</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TYPE_WITH_FEATURE_MAP_NON_CONTAINMENT__SECOND_KEY = eINSTANCE
@@ -1741,7 +1741,7 @@ public interface TestmodelPackage extends EPackage {
 		 * <em>Type With Feature Map Containment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TypeWithFeatureMapContainmentImpl
 		 * @see org.eclipse.emf.emfstore.test.model.impl.TestmodelPackageImpl#getTypeWithFeatureMapContainment()
 		 * @generated
@@ -1752,7 +1752,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Map Containment</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TYPE_WITH_FEATURE_MAP_CONTAINMENT__MAP_CONTAINMENT = eINSTANCE
@@ -1762,7 +1762,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>First Key Containment</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TYPE_WITH_FEATURE_MAP_CONTAINMENT__FIRST_KEY_CONTAINMENT = eINSTANCE
@@ -1772,7 +1772,7 @@ public interface TestmodelPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Second Key Containment</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TYPE_WITH_FEATURE_MAP_CONTAINMENT__SECOND_KEY_CONTAINMENT = eINSTANCE

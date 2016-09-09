@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.emf.emfstore.bowling.BowlingFactory
  * @model kind="package"
  * @generated
@@ -38,7 +38,7 @@ public interface BowlingPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNAME = "bowling"; //$NON-NLS-1$
@@ -47,7 +47,7 @@ public interface BowlingPackage extends EPackage {
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_URI = "http://org/eclipse/example/bowling"; //$NON-NLS-1$
@@ -56,7 +56,7 @@ public interface BowlingPackage extends EPackage {
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_PREFIX = "org.eclipse.example.bowling"; //$NON-NLS-1$
@@ -65,7 +65,7 @@ public interface BowlingPackage extends EPackage {
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	BowlingPackage eINSTANCE = org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl.init();
@@ -74,7 +74,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl <em>Player</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.PlayerImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getPlayer()
 	 * @generated
@@ -85,7 +85,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -95,7 +95,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Date Of Birth</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -105,7 +105,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -115,7 +115,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Is Professional</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +125,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>EMails</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -135,7 +135,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Number Of Victories</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -145,7 +145,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Played Tournament Types</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -155,7 +155,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Win Loss Ratio</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -165,7 +165,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Gender</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -175,7 +175,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Player</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -185,7 +185,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.LeagueImpl <em>League</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.LeagueImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getLeague()
 	 * @generated
@@ -196,7 +196,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -206,7 +206,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Players</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -216,7 +216,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>League</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -227,7 +227,7 @@ public interface BowlingPackage extends EPackage {
 	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.TournamentImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getTournament()
 	 * @generated
@@ -238,7 +238,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Matchups</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -248,7 +248,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -258,7 +258,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Player Points</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -268,7 +268,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Players</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -278,7 +278,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Referees</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -288,7 +288,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Price Money</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -298,7 +298,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Receives Trophy</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -308,7 +308,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Match Days</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -318,7 +318,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Tournament</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -328,7 +328,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl <em>Matchup</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.MatchupImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getMatchup()
 	 * @generated
@@ -339,7 +339,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Games</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -349,7 +349,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Nr Spectators</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -359,7 +359,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Matchup</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -369,7 +369,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.GameImpl <em>Game</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.GameImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getGame()
 	 * @generated
@@ -380,7 +380,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Matchup</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -390,7 +390,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Player</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -400,7 +400,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Frames</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -410,7 +410,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Game</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -421,7 +421,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Player To Points Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getPlayerToPointsMap()
 	 * @generated
@@ -432,7 +432,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -442,7 +442,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -452,7 +452,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Player To Points Map</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -462,7 +462,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.RefereeImpl <em>Referee</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.RefereeImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getReferee()
 	 * @generated
@@ -473,7 +473,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Date Of Birth</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -483,7 +483,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>League</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -493,7 +493,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Referee</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -504,7 +504,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Referee To Games Map</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.RefereeToGamesMapImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getRefereeToGamesMap()
 	 * @generated
@@ -515,7 +515,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -525,7 +525,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -535,7 +535,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Referee To Games Map</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -545,7 +545,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.AreaImpl <em>Area</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.AreaImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getArea()
 	 * @generated
@@ -556,7 +556,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Areas</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -566,7 +566,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Tournaments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -576,7 +576,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Area</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -586,7 +586,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl <em>Fan</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.FanImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getFan()
 	 * @generated
@@ -597,7 +597,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -607,7 +607,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Date Of Birth</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -617,7 +617,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Has Season Ticket</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -627,7 +627,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>EMails</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -637,7 +637,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Gender</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -647,7 +647,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Favourite Player</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -657,7 +657,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Fan Merchandise</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -667,7 +667,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Favourite Merchandise</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -677,7 +677,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Visited Tournaments</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -687,7 +687,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Number Of Tournaments Visited</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -697,7 +697,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Money Spent On Tickets</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -707,7 +707,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Fan</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -718,7 +718,7 @@ public interface BowlingPackage extends EPackage {
 	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getMerchandise()
 	 * @generated
@@ -729,7 +729,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -739,7 +739,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Price</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -749,7 +749,7 @@ public interface BowlingPackage extends EPackage {
 	 * The feature id for the '<em><b>Serial Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -759,7 +759,7 @@ public interface BowlingPackage extends EPackage {
 	 * The number of structural features of the '<em>Merchandise</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -770,7 +770,7 @@ public interface BowlingPackage extends EPackage {
 	 * enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.TournamentType
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getTournamentType()
 	 * @generated
@@ -781,7 +781,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.bowling.Gender <em>Gender</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.bowling.Gender
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getGender()
 	 * @generated
@@ -792,7 +792,7 @@ public interface BowlingPackage extends EPackage {
 	 * The meta object id for the '<em>XML Date</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see javax.xml.datatype.XMLGregorianCalendar
 	 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getXMLDate()
 	 * @generated
@@ -803,7 +803,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Player <em>Player</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Player</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player
 	 * @generated
@@ -815,7 +815,7 @@ public interface BowlingPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getName()
 	 * @see #getPlayer()
@@ -828,7 +828,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Date Of Birth</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Date Of Birth</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getDateOfBirth()
 	 * @see #getPlayer()
@@ -841,7 +841,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Height</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getHeight()
 	 * @see #getPlayer()
@@ -854,7 +854,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Is Professional</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Is Professional</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#isIsProfessional()
 	 * @see #getPlayer()
@@ -867,7 +867,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>EMails</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>EMails</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getEMails()
 	 * @see #getPlayer()
@@ -880,7 +880,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Number Of Victories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Number Of Victories</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getNumberOfVictories()
 	 * @see #getPlayer()
@@ -893,7 +893,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Player#getPlayedTournamentTypes <em>Played Tournament Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Played Tournament Types</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getPlayedTournamentTypes()
 	 * @see #getPlayer()
@@ -906,7 +906,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Win Loss Ratio</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Win Loss Ratio</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getWinLossRatio()
 	 * @see #getPlayer()
@@ -919,7 +919,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Gender</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Gender</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Player#getGender()
 	 * @see #getPlayer()
@@ -931,7 +931,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.League <em>League</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>League</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.League
 	 * @generated
@@ -943,7 +943,7 @@ public interface BowlingPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.League#getName()
 	 * @see #getLeague()
@@ -956,7 +956,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.League#getPlayers <em>Players</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Players</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.League#getPlayers()
 	 * @see #getLeague()
@@ -968,7 +968,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Tournament <em>Tournament</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Tournament</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament
 	 * @generated
@@ -980,7 +980,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchups <em>Matchups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Matchups</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getMatchups()
 	 * @see #getTournament()
@@ -993,7 +993,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getType()
 	 * @see #getTournament()
@@ -1006,7 +1006,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Player Points</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the map '<em>Player Points</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getPlayerPoints()
 	 * @see #getTournament()
@@ -1019,7 +1019,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Players</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>Players</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getPlayers()
 	 * @see #getTournament()
@@ -1032,7 +1032,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Referees</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the map '<em>Referees</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getReferees()
 	 * @see #getTournament()
@@ -1045,7 +1045,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Price Money</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Price Money</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getPriceMoney()
 	 * @see #getTournament()
@@ -1058,7 +1058,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Tournament#getReceivesTrophy <em>Receives Trophy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Receives Trophy</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getReceivesTrophy()
 	 * @see #getTournament()
@@ -1071,7 +1071,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Match Days</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Match Days</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Tournament#getMatchDays()
 	 * @see #getTournament()
@@ -1083,7 +1083,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Matchup <em>Matchup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Matchup</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Matchup
 	 * @generated
@@ -1095,7 +1095,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Matchup#getGames <em>Games</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Games</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Matchup#getGames()
 	 * @see #getMatchup()
@@ -1108,7 +1108,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Nr Spectators</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Nr Spectators</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Matchup#getNrSpectators()
 	 * @see #getMatchup()
@@ -1120,7 +1120,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Game <em>Game</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Game</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Game
 	 * @generated
@@ -1132,7 +1132,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Matchup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the container reference '<em>Matchup</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Game#getMatchup()
 	 * @see #getGame()
@@ -1145,7 +1145,7 @@ public interface BowlingPackage extends EPackage {
 	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Player</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Game#getPlayer()
 	 * @see #getGame()
@@ -1158,7 +1158,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Frames</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>Frames</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Game#getFrames()
 	 * @see #getGame()
@@ -1170,7 +1170,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Player To Points Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Player To Points Map</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyType="org.eclipse.emf.emfstore.bowling.Player"
@@ -1183,7 +1183,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getPlayerToPointsMap()
@@ -1195,7 +1195,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getPlayerToPointsMap()
@@ -1207,7 +1207,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Referee <em>Referee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Referee</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Referee
 	 * @generated
@@ -1219,7 +1219,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Date Of Birth</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Date Of Birth</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Referee#getDateOfBirth()
 	 * @see #getReferee()
@@ -1232,7 +1232,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>League</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>League</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Referee#getLeague()
 	 * @see #getReferee()
@@ -1244,7 +1244,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Referee To Games Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Referee To Games Map</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyType="org.eclipse.emf.emfstore.bowling.Referee" keyContainment="true" keyResolveProxies="true"
@@ -1257,7 +1257,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getRefereeToGamesMap()
@@ -1269,7 +1269,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getRefereeToGamesMap()
@@ -1281,7 +1281,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Area <em>Area</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Area</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Area
 	 * @generated
@@ -1293,7 +1293,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Areas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Areas</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Area#getAreas()
 	 * @see #getArea()
@@ -1306,7 +1306,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Area#getTournaments <em>Tournaments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Tournaments</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Area#getTournaments()
 	 * @see #getArea()
@@ -1318,7 +1318,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Fan <em>Fan</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Fan</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan
 	 * @generated
@@ -1329,7 +1329,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.emfstore.bowling.Fan#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getName()
 	 * @see #getFan()
@@ -1342,7 +1342,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Date Of Birth</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Date Of Birth</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getDateOfBirth()
 	 * @see #getFan()
@@ -1355,7 +1355,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Has Season Ticket</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Has Season Ticket</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#isHasSeasonTicket()
 	 * @see #getFan()
@@ -1368,7 +1368,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>EMails</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute list '<em>EMails</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getEMails()
 	 * @see #getFan()
@@ -1381,7 +1381,7 @@ public interface BowlingPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Gender</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getGender()
 	 * @see #getFan()
@@ -1394,7 +1394,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Favourite Player</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference '<em>Favourite Player</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getFavouritePlayer()
 	 * @see #getFan()
@@ -1407,7 +1407,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Visited Tournaments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the reference list '<em>Visited Tournaments</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getVisitedTournaments()
 	 * @see #getFan()
@@ -1421,7 +1421,7 @@ public interface BowlingPackage extends EPackage {
 	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Number Of Tournaments Visited</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getNumberOfTournamentsVisited()
 	 * @see #getFan()
@@ -1434,7 +1434,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Money Spent On Tickets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Money Spent On Tickets</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getMoneySpentOnTickets()
 	 * @see #getFan()
@@ -1447,7 +1447,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Fan#getFanMerchandise <em>Fan Merchandise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference list '<em>Fan Merchandise</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getFanMerchandise()
 	 * @see #getFan()
@@ -1460,7 +1460,7 @@ public interface BowlingPackage extends EPackage {
 	 * {@link org.eclipse.emf.emfstore.bowling.Fan#getFavouriteMerchandise <em>Favourite Merchandise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the containment reference '<em>Favourite Merchandise</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Fan#getFavouriteMerchandise()
 	 * @see #getFan()
@@ -1472,7 +1472,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.bowling.Merchandise <em>Merchandise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Merchandise</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Merchandise
 	 * @generated
@@ -1484,7 +1484,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Merchandise#getName()
 	 * @see #getMerchandise()
@@ -1497,7 +1497,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Price</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Price</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Merchandise#getPrice()
 	 * @see #getMerchandise()
@@ -1510,7 +1510,7 @@ public interface BowlingPackage extends EPackage {
 	 * <em>Serial Number</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for the attribute '<em>Serial Number</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Merchandise#getSerialNumber()
 	 * @see #getMerchandise()
@@ -1523,7 +1523,7 @@ public interface BowlingPackage extends EPackage {
 	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for enum '<em>Tournament Type</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.TournamentType
 	 * @generated
@@ -1534,7 +1534,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for enum '{@link org.eclipse.emf.emfstore.bowling.Gender <em>Gender</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for enum '<em>Gender</em>'.
 	 * @see org.eclipse.emf.emfstore.bowling.Gender
 	 * @generated
@@ -1545,7 +1545,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the meta object for data type '{@link javax.xml.datatype.XMLGregorianCalendar <em>XML Date</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for data type '<em>XML Date</em>'.
 	 * @see javax.xml.datatype.XMLGregorianCalendar
 	 * @model instanceClass="javax.xml.datatype.XMLGregorianCalendar"
@@ -1558,7 +1558,7 @@ public interface BowlingPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -1574,7 +1574,7 @@ public interface BowlingPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	interface Literals {
@@ -1583,7 +1583,7 @@ public interface BowlingPackage extends EPackage {
 		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.PlayerImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getPlayer()
 		 * @generated
@@ -1594,7 +1594,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__NAME = eINSTANCE.getPlayer_Name();
@@ -1603,7 +1603,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Date Of Birth</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__DATE_OF_BIRTH = eINSTANCE.getPlayer_DateOfBirth();
@@ -1612,7 +1612,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__HEIGHT = eINSTANCE.getPlayer_Height();
@@ -1621,7 +1621,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Is Professional</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__IS_PROFESSIONAL = eINSTANCE.getPlayer_IsProfessional();
@@ -1630,7 +1630,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>EMails</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__EMAILS = eINSTANCE.getPlayer_EMails();
@@ -1639,7 +1639,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Number Of Victories</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__NUMBER_OF_VICTORIES = eINSTANCE.getPlayer_NumberOfVictories();
@@ -1648,7 +1648,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Played Tournament Types</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__PLAYED_TOURNAMENT_TYPES = eINSTANCE.getPlayer_PlayedTournamentTypes();
@@ -1657,7 +1657,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Win Loss Ratio</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__WIN_LOSS_RATIO = eINSTANCE.getPlayer_WinLossRatio();
@@ -1666,7 +1666,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Gender</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER__GENDER = eINSTANCE.getPlayer_Gender();
@@ -1676,7 +1676,7 @@ public interface BowlingPackage extends EPackage {
 		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.LeagueImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getLeague()
 		 * @generated
@@ -1687,7 +1687,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute LEAGUE__NAME = eINSTANCE.getLeague_Name();
@@ -1696,7 +1696,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Players</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference LEAGUE__PLAYERS = eINSTANCE.getLeague_Players();
@@ -1706,7 +1706,7 @@ public interface BowlingPackage extends EPackage {
 		 * <em>Tournament</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.TournamentImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getTournament()
 		 * @generated
@@ -1717,7 +1717,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Matchups</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TOURNAMENT__MATCHUPS = eINSTANCE.getTournament_Matchups();
@@ -1726,7 +1726,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TOURNAMENT__TYPE = eINSTANCE.getTournament_Type();
@@ -1735,7 +1735,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Player Points</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TOURNAMENT__PLAYER_POINTS = eINSTANCE.getTournament_PlayerPoints();
@@ -1744,7 +1744,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Players</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TOURNAMENT__PLAYERS = eINSTANCE.getTournament_Players();
@@ -1753,7 +1753,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Referees</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference TOURNAMENT__REFEREES = eINSTANCE.getTournament_Referees();
@@ -1762,7 +1762,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Price Money</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TOURNAMENT__PRICE_MONEY = eINSTANCE.getTournament_PriceMoney();
@@ -1771,7 +1771,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Receives Trophy</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TOURNAMENT__RECEIVES_TROPHY = eINSTANCE.getTournament_ReceivesTrophy();
@@ -1780,7 +1780,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Match Days</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute TOURNAMENT__MATCH_DAYS = eINSTANCE.getTournament_MatchDays();
@@ -1790,7 +1790,7 @@ public interface BowlingPackage extends EPackage {
 		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.MatchupImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getMatchup()
 		 * @generated
@@ -1801,7 +1801,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Games</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference MATCHUP__GAMES = eINSTANCE.getMatchup_Games();
@@ -1810,7 +1810,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Nr Spectators</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute MATCHUP__NR_SPECTATORS = eINSTANCE.getMatchup_NrSpectators();
@@ -1819,7 +1819,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.bowling.impl.GameImpl <em>Game</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.GameImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getGame()
 		 * @generated
@@ -1830,7 +1830,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Matchup</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference GAME__MATCHUP = eINSTANCE.getGame_Matchup();
@@ -1839,7 +1839,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Player</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference GAME__PLAYER = eINSTANCE.getGame_Player();
@@ -1848,7 +1848,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Frames</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute GAME__FRAMES = eINSTANCE.getGame_Frames();
@@ -1858,7 +1858,7 @@ public interface BowlingPackage extends EPackage {
 		 * <em>Player To Points Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getPlayerToPointsMap()
 		 * @generated
@@ -1869,7 +1869,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference PLAYER_TO_POINTS_MAP__KEY = eINSTANCE.getPlayerToPointsMap_Key();
@@ -1878,7 +1878,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute PLAYER_TO_POINTS_MAP__VALUE = eINSTANCE.getPlayerToPointsMap_Value();
@@ -1888,7 +1888,7 @@ public interface BowlingPackage extends EPackage {
 		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.RefereeImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getReferee()
 		 * @generated
@@ -1899,7 +1899,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Date Of Birth</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute REFEREE__DATE_OF_BIRTH = eINSTANCE.getReferee_DateOfBirth();
@@ -1908,7 +1908,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>League</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference REFEREE__LEAGUE = eINSTANCE.getReferee_League();
@@ -1918,7 +1918,7 @@ public interface BowlingPackage extends EPackage {
 		 * <em>Referee To Games Map</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.RefereeToGamesMapImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getRefereeToGamesMap()
 		 * @generated
@@ -1929,7 +1929,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference REFEREE_TO_GAMES_MAP__KEY = eINSTANCE.getRefereeToGamesMap_Key();
@@ -1938,7 +1938,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference REFEREE_TO_GAMES_MAP__VALUE = eINSTANCE.getRefereeToGamesMap_Value();
@@ -1947,7 +1947,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.bowling.impl.AreaImpl <em>Area</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.AreaImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getArea()
 		 * @generated
@@ -1958,7 +1958,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Areas</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference AREA__AREAS = eINSTANCE.getArea_Areas();
@@ -1967,7 +1967,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Tournaments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference AREA__TOURNAMENTS = eINSTANCE.getArea_Tournaments();
@@ -1976,7 +1976,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl <em>Fan</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.FanImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getFan()
 		 * @generated
@@ -1987,7 +1987,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__NAME = eINSTANCE.getFan_Name();
@@ -1996,7 +1996,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Date Of Birth</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__DATE_OF_BIRTH = eINSTANCE.getFan_DateOfBirth();
@@ -2005,7 +2005,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Has Season Ticket</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__HAS_SEASON_TICKET = eINSTANCE.getFan_HasSeasonTicket();
@@ -2014,7 +2014,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>EMails</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__EMAILS = eINSTANCE.getFan_EMails();
@@ -2023,7 +2023,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Gender</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__GENDER = eINSTANCE.getFan_Gender();
@@ -2032,7 +2032,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Favourite Player</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference FAN__FAVOURITE_PLAYER = eINSTANCE.getFan_FavouritePlayer();
@@ -2041,7 +2041,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Visited Tournaments</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference FAN__VISITED_TOURNAMENTS = eINSTANCE.getFan_VisitedTournaments();
@@ -2050,7 +2050,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Number Of Tournaments Visited</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__NUMBER_OF_TOURNAMENTS_VISITED = eINSTANCE.getFan_NumberOfTournamentsVisited();
@@ -2059,7 +2059,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Money Spent On Tickets</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute FAN__MONEY_SPENT_ON_TICKETS = eINSTANCE.getFan_MoneySpentOnTickets();
@@ -2068,7 +2068,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Fan Merchandise</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference FAN__FAN_MERCHANDISE = eINSTANCE.getFan_FanMerchandise();
@@ -2077,7 +2077,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Favourite Merchandise</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EReference FAN__FAVOURITE_MERCHANDISE = eINSTANCE.getFan_FavouriteMerchandise();
@@ -2087,7 +2087,7 @@ public interface BowlingPackage extends EPackage {
 		 * <em>Merchandise</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getMerchandise()
 		 * @generated
@@ -2098,7 +2098,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute MERCHANDISE__NAME = eINSTANCE.getMerchandise_Name();
@@ -2107,7 +2107,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute MERCHANDISE__PRICE = eINSTANCE.getMerchandise_Price();
@@ -2116,7 +2116,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Serial Number</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		EAttribute MERCHANDISE__SERIAL_NUMBER = eINSTANCE.getMerchandise_SerialNumber();
@@ -2126,7 +2126,7 @@ public interface BowlingPackage extends EPackage {
 		 * <em>Tournament Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.TournamentType
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getTournamentType()
 		 * @generated
@@ -2137,7 +2137,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.bowling.Gender <em>Gender</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see org.eclipse.emf.emfstore.bowling.Gender
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getGender()
 		 * @generated
@@ -2148,7 +2148,7 @@ public interface BowlingPackage extends EPackage {
 		 * The meta object literal for the '<em>XML Date</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
+		 *
 		 * @see javax.xml.datatype.XMLGregorianCalendar
 		 * @see org.eclipse.emf.emfstore.bowling.impl.BowlingPackageImpl#getXMLDate()
 		 * @generated

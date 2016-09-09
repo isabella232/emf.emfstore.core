@@ -45,8 +45,7 @@ public class TestElementItemProvider
 	extends ItemProviderAdapter
 	implements
 	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
-	IItemPropertySource
-{
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -54,8 +53,7 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	public TestElementItemProvider(AdapterFactory adapterFactory)
-	{
+	public TestElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -67,10 +65,8 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
@@ -95,12 +91,9 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object)
-	{
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_name_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_TestElement_name_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -120,11 +113,9 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addStringsPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addStringsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_strings_feature"), //$NON-NLS-1$
 				getString(
@@ -145,12 +136,9 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addReferencesPropertyDescriptor(Object object)
-	{
+	protected void addReferencesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_references_feature"), //$NON-NLS-1$
 				getString(
@@ -171,11 +159,9 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addReferencePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addReferencePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_reference_feature"), //$NON-NLS-1$
 				getString(
@@ -196,16 +182,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addOtherReferencePropertyDescriptor(Object object)
-	{
+	protected void addOtherReferencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_otherReference_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_otherReference_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_otherReference_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__OTHER_REFERENCE,
 				true,
 				false,
@@ -222,16 +206,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addDescriptionPropertyDescriptor(Object object)
-	{
+	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_description_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_description_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__DESCRIPTION,
 				true,
 				false,
@@ -248,16 +230,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addNonContained_NTo1PropertyDescriptor(Object object)
-	{
+	protected void addNonContained_NTo1PropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_nonContained_NTo1_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_NTo1_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_NTo1_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__NON_CONTAINED_NTO1,
 				true,
 				false,
@@ -274,16 +254,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addNonContained_1ToNPropertyDescriptor(Object object)
-	{
+	protected void addNonContained_1ToNPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_nonContained_1ToN_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_1ToN_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_1ToN_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__NON_CONTAINED_1TO_N,
 				true,
 				false,
@@ -300,16 +278,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addNonContained_NToMPropertyDescriptor(Object object)
-	{
+	protected void addNonContained_NToMPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_nonContained_NToM_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_NToM_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_NToM_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__NON_CONTAINED_NTO_M,
 				true,
 				false,
@@ -326,16 +302,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addNonContained_MToNPropertyDescriptor(Object object)
-	{
+	protected void addNonContained_MToNPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_nonContained_MToN_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_MToN_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_nonContained_MToN_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__NON_CONTAINED_MTO_N,
 				true,
 				false,
@@ -352,16 +326,14 @@ public class TestElementItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addContainedElements_NoOppositePropertyDescriptor(Object object)
-	{
+	protected void addContainedElements_NoOppositePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestElement_containedElements_NoOpposite_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestElement_containedElements_NoOpposite_feature", "_UI_TestElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					"_UI_PropertyDescriptor_description", "_UI_TestElement_containedElements_NoOpposite_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_TestElement_type"), //$NON-NLS-1$
 				TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS_NO_OPPOSITE,
 				true,
 				false,
@@ -381,10 +353,8 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-	{
-		if (childrenFeatures == null)
-		{
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS);
 			childrenFeatures.add(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT);
@@ -408,8 +378,7 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
-	{
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
@@ -424,8 +393,7 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/TestElement")); //$NON-NLS-1$
 	}
 
@@ -437,11 +405,9 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		final String label = ((TestElement) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TestElement_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_TestElement_type") : //$NON-NLS-1$
 			getString("_UI_TestElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -454,12 +420,10 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TestElement.class))
-		{
+		switch (notification.getFeatureID(TestElement.class)) {
 		case TestmodelPackage.TEST_ELEMENT__NAME:
 		case TestmodelPackage.TEST_ELEMENT__STRINGS:
 		case TestmodelPackage.TEST_ELEMENT__DESCRIPTION:
@@ -489,73 +453,47 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS,
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS,
+			TestmodelFactory.eINSTANCE.createTestElement()));
+
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT,
+			TestmodelFactory.eINSTANCE.createTestElement()));
+
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__ELEMENT_MAP,
+			TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.TEST_ELEMENT_TO_TEST_ELEMENT_MAP)));
+
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__STRING_TO_STRING_MAP,
+			TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.STRING_TO_STRING_MAP)));
+
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__ELEMENT_TO_STRING_MAP,
+			TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.TEST_ELEMENT_TO_STRING_MAP)));
+
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__STRING_TO_ELEMENT_MAP,
+			TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.STRING_TO_TEST_ELEMENT_MAP)));
+
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS2,
+			TestmodelFactory.eINSTANCE.createTestElement()));
+
+		newChildDescriptors
+			.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE,
 				TestmodelFactory.eINSTANCE.createTestElement()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT,
-				TestmodelFactory.eINSTANCE.createTestElement()));
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_ENTRIES,
+			FeatureMapUtil.createEntry(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1,
+				TestmodelFactory.eINSTANCE.createTestElement())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__ELEMENT_MAP,
-				TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.TEST_ELEMENT_TO_TEST_ELEMENT_MAP)));
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_ENTRIES,
+			FeatureMapUtil.createEntry(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2,
+				TestmodelFactory.eINSTANCE.createTestElement())));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__STRING_TO_STRING_MAP,
-				TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.STRING_TO_STRING_MAP)));
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1,
+			TestmodelFactory.eINSTANCE.createTestElement()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__ELEMENT_TO_STRING_MAP,
-				TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.TEST_ELEMENT_TO_STRING_MAP)));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__STRING_TO_ELEMENT_MAP,
-				TestmodelFactory.eINSTANCE.create(TestmodelPackage.Literals.STRING_TO_TEST_ELEMENT_MAP)));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS2,
-				TestmodelFactory.eINSTANCE.createTestElement()));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE,
-				TestmodelFactory.eINSTANCE.createTestElement()));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_ENTRIES,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1,
-						TestmodelFactory.eINSTANCE.createTestElement())));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_ENTRIES,
-				FeatureMapUtil.createEntry
-					(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2,
-						TestmodelFactory.eINSTANCE.createTestElement())));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1,
-				TestmodelFactory.eINSTANCE.createTestElement()));
-
-		newChildDescriptors.add
-			(createChildParameter
-			(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2,
-				TestmodelFactory.eINSTANCE.createTestElement()));
+		newChildDescriptors.add(createChildParameter(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2,
+			TestmodelFactory.eINSTANCE.createTestElement()));
 	}
 
 	/**
@@ -566,29 +504,25 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
-	{
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
 		if (childFeature instanceof EStructuralFeature
-			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature))
-		{
+			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature)) {
 			final FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
 
-		final boolean qualify =
-			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS ||
-				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT ||
-				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS2 ||
-				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE ||
-				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1 ||
-				childFeature == TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2;
+		final boolean qualify = childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS ||
+			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT ||
+			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENTS2 ||
+			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE ||
+			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1 ||
+			childFeature == TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2;
 
-		if (qualify)
-		{
+		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
@@ -603,8 +537,7 @@ public class TestElementItemProvider
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return TestmodelEditPlugin.INSTANCE;
 	}
 

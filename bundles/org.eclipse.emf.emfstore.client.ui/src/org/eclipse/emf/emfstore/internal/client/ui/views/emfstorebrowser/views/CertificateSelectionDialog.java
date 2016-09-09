@@ -180,7 +180,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 		/**
 		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
 		 */
 		public void widgetDefaultSelected(SelectionEvent e) {
@@ -190,7 +190,7 @@ public class CertificateSelectionDialog extends ElementListSelectionDialog {
 		/**
 		 *
 		 * {@inheritDoc}
-		 * 
+		 *
 		 * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
 		 */
 		public void widgetSelected(SelectionEvent e) {

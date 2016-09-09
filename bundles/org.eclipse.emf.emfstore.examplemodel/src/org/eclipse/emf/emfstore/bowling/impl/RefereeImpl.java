@@ -40,7 +40,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	 * The default value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	 * The cached value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDateOfBirth()
 	 * @generated
 	 * @ordered
@@ -60,7 +60,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	 * The cached value of the '{@link #getLeague() <em>League</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLeague()
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected RefereeImpl() {
@@ -80,7 +80,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -91,7 +91,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public XMLGregorianCalendar getDateOfBirth() {
@@ -101,31 +101,33 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDateOfBirth(XMLGregorianCalendar newDateOfBirth) {
-		XMLGregorianCalendar oldDateOfBirth = dateOfBirth;
+		final XMLGregorianCalendar oldDateOfBirth = dateOfBirth;
 		dateOfBirth = newDateOfBirth;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE__DATE_OF_BIRTH, oldDateOfBirth,
 				dateOfBirth));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public League getLeague() {
 		if (league != null && league.eIsProxy()) {
-			InternalEObject oldLeague = (InternalEObject) league;
+			final InternalEObject oldLeague = (InternalEObject) league;
 			league = (League) eResolveProxy(oldLeague);
 			if (league != oldLeague) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.REFEREE__LEAGUE, oldLeague,
 						league));
+				}
 			}
 		}
 		return league;
@@ -134,7 +136,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public League basicGetLeague() {
@@ -144,20 +146,21 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setLeague(League newLeague) {
-		League oldLeague = league;
+		final League oldLeague = league;
 		league = newLeague;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE__LEAGUE, oldLeague, league));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -166,8 +169,9 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 		case BowlingPackage.REFEREE__DATE_OF_BIRTH:
 			return getDateOfBirth();
 		case BowlingPackage.REFEREE__LEAGUE:
-			if (resolve)
+			if (resolve) {
 				return getLeague();
+			}
 			return basicGetLeague();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -176,7 +180,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -195,7 +199,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -214,7 +218,7 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,15 +235,16 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
+		final StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (dateOfBirth: "); //$NON-NLS-1$
 		result.append(dateOfBirth);
 		result.append(')');

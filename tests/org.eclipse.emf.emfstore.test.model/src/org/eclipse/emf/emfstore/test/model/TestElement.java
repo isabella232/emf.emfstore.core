@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -68,7 +68,7 @@ public interface TestElement extends EObject {
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_Name()
@@ -81,7 +81,7 @@ public interface TestElement extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.test.model.TestElement#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -97,7 +97,7 @@ public interface TestElement extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Strings</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_Strings()
 	 * @model
@@ -114,7 +114,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>References</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_References()
 	 * @model
@@ -133,7 +133,7 @@ public interface TestElement extends EObject {
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Contained Elements</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ContainedElements()
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainer
@@ -150,7 +150,7 @@ public interface TestElement extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Reference</em>' reference.
 	 * @see #setReference(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_Reference()
@@ -164,7 +164,7 @@ public interface TestElement extends EObject {
 	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Reference</em>' reference.
 	 * @see #getReference()
 	 * @generated
@@ -181,7 +181,7 @@ public interface TestElement extends EObject {
 	 * of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Contained Element</em>' containment reference.
 	 * @see #setContainedElement(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ContainedElement()
@@ -196,7 +196,7 @@ public interface TestElement extends EObject {
 	 * <em>Contained Element</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Contained Element</em>' containment reference.
 	 * @see #getContainedElement()
 	 * @generated
@@ -211,7 +211,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Other Reference</em>' reference.
 	 * @see #setOtherReference(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_OtherReference()
@@ -225,7 +225,7 @@ public interface TestElement extends EObject {
 	 * <em>Other Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Other Reference</em>' reference.
 	 * @see #getOtherReference()
 	 * @generated
@@ -240,7 +240,7 @@ public interface TestElement extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_Description()
@@ -254,7 +254,7 @@ public interface TestElement extends EObject {
 	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Description</em>' attribute.
 	 * @see #getDescription()
 	 * @generated
@@ -271,7 +271,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Container</em>' container reference.
 	 * @see #setContainer(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_Container()
@@ -286,7 +286,7 @@ public interface TestElement extends EObject {
 	 * container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Container</em>' container reference.
 	 * @see #getContainer()
 	 * @generated
@@ -303,7 +303,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Sref Container</em>' container reference.
 	 * @see #setSrefContainer(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_SrefContainer()
@@ -318,7 +318,7 @@ public interface TestElement extends EObject {
 	 * <em>Sref Container</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Sref Container</em>' container reference.
 	 * @see #getSrefContainer()
 	 * @generated
@@ -335,11 +335,12 @@ public interface TestElement extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Element Map</em>' map.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ElementMap()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.test.model.TestElementToTestElementMap<org.eclipse.emf.emfstore.test.model.TestElement, org.eclipse.emf.emfstore.test.model.TestElement>"
+	 *        "org.eclipse.emf.emfstore.test.model.TestElementToTestElementMap<org.eclipse.emf.emfstore.test.model.TestElement,
+	 *        org.eclipse.emf.emfstore.test.model.TestElement>"
 	 * @generated
 	 */
 	EMap<TestElement, TestElement> getElementMap();
@@ -354,11 +355,12 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>String To String Map</em>' map.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_StringToStringMap()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.test.model.StringToStringMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 *        "org.eclipse.emf.emfstore.test.model.StringToStringMap<org.eclipse.emf.ecore.EString,
+	 *        org.eclipse.emf.ecore.EString>"
 	 * @generated
 	 */
 	EMap<String, String> getStringToStringMap();
@@ -373,11 +375,12 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Element To String Map</em>' map.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ElementToStringMap()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.test.model.TestElementToStringMap<org.eclipse.emf.emfstore.test.model.TestElement, org.eclipse.emf.ecore.EString>"
+	 *        "org.eclipse.emf.emfstore.test.model.TestElementToStringMap<org.eclipse.emf.emfstore.test.model.TestElement,
+	 *        org.eclipse.emf.ecore.EString>"
 	 * @generated
 	 */
 	EMap<TestElement, String> getElementToStringMap();
@@ -392,11 +395,12 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>String To Element Map</em>' map.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_StringToElementMap()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.test.model.StringToTestElementMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.emfstore.test.model.TestElement>"
+	 *        "org.eclipse.emf.emfstore.test.model.StringToTestElementMap<org.eclipse.emf.ecore.EString,
+	 *        org.eclipse.emf.emfstore.test.model.TestElement>"
 	 * @generated
 	 */
 	EMap<String, TestElement> getStringToElementMap();
@@ -411,7 +415,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Non Contained NTo1</em>' reference.
 	 * @see #setNonContained_NTo1(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_NonContained_NTo1()
@@ -426,7 +430,7 @@ public interface TestElement extends EObject {
 	 * <em>Non Contained NTo1</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Non Contained NTo1</em>' reference.
 	 * @see #getNonContained_NTo1()
 	 * @generated
@@ -444,7 +448,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Non Contained 1To N</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_NonContained_1ToN()
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_NTo1
@@ -464,7 +468,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Non Contained NTo M</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_NonContained_NToM()
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_MToN
@@ -484,7 +488,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Non Contained MTo N</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_NonContained_MToN()
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getNonContained_NToM
@@ -504,7 +508,7 @@ public interface TestElement extends EObject {
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Contained Elements2</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ContainedElements2()
 	 * @see org.eclipse.emf.emfstore.test.model.TestElement#getContainer2
@@ -523,7 +527,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Container2</em>' container reference.
 	 * @see #setContainer2(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_Container2()
@@ -538,7 +542,7 @@ public interface TestElement extends EObject {
 	 * container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Container2</em>' container reference.
 	 * @see #getContainer2()
 	 * @generated
@@ -554,7 +558,7 @@ public interface TestElement extends EObject {
 	 * be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Contained Elements No Opposite</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ContainedElements_NoOpposite()
 	 * @model containment="true"
@@ -570,7 +574,7 @@ public interface TestElement extends EObject {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Contained Element No Opposite</em>' containment reference.
 	 * @see #setContainedElement_NoOpposite(TestElement)
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_ContainedElement_NoOpposite()
@@ -584,7 +588,7 @@ public interface TestElement extends EObject {
 	 * <em>Contained Element No Opposite</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Contained Element No Opposite</em>' containment reference.
 	 * @see #getContainedElement_NoOpposite()
 	 * @generated
@@ -600,7 +604,7 @@ public interface TestElement extends EObject {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Feature Map Entries</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_FeatureMapEntries()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
@@ -618,7 +622,7 @@ public interface TestElement extends EObject {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Feature Map References1</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_FeatureMapReferences1()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
@@ -636,7 +640,7 @@ public interface TestElement extends EObject {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Feature Map References2</em>' containment reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTestElement_FeatureMapReferences2()
 	 * @model containment="true" transient="true" volatile="true" derived="true"

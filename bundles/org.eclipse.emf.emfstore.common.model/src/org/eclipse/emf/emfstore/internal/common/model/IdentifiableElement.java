@@ -36,7 +36,7 @@ public interface IdentifiableElement extends EObject {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Identifier</em>' attribute.
 	 * @see #setIdentifier(String)
 	 * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getIdentifiableElement_Identifier()
@@ -49,7 +49,7 @@ public interface IdentifiableElement extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement#getIdentifier
 	 * <em>Identifier</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Identifier</em>' attribute.
 	 * @see #getIdentifier()
 	 * @generated

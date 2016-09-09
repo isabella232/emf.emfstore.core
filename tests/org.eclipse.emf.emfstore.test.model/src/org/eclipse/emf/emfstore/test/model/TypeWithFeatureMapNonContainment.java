@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -43,7 +43,7 @@ public interface TypeWithFeatureMapNonContainment extends TestType {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Map</em>' attribute list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapNonContainment_Map()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
@@ -61,7 +61,7 @@ public interface TypeWithFeatureMapNonContainment extends TestType {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>First Key</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapNonContainment_FirstKey()
 	 * @model transient="true" volatile="true" derived="true"
@@ -79,7 +79,7 @@ public interface TypeWithFeatureMapNonContainment extends TestType {
 	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Second Key</em>' reference list.
 	 * @see org.eclipse.emf.emfstore.test.model.TestmodelPackage#getTypeWithFeatureMapNonContainment_SecondKey()
 	 * @model transient="true" volatile="true" derived="true"

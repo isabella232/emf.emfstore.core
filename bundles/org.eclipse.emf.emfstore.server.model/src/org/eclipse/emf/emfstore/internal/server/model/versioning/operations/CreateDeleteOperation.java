@@ -133,7 +133,8 @@ public interface CreateDeleteOperation extends AbstractOperation {
 	 * @return the value of the '<em>EObject To Id Map</em>' map.
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getCreateDeleteOperation_EObjectToIdMap()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.internal.server.model.versioning.operations.EObjectToModelElementIdMap<org.eclipse.emf.ecore.EObject, org.eclipse.emf.emfstore.internal.common.model.ModelElementId>"
+	 *        "org.eclipse.emf.emfstore.internal.server.model.versioning.operations.EObjectToModelElementIdMap<org.eclipse.emf.ecore.EObject,
+	 *        org.eclipse.emf.emfstore.internal.common.model.ModelElementId>"
 	 * @generated
 	 */
 	EMap<EObject, ModelElementId> getEObjectToIdMap();

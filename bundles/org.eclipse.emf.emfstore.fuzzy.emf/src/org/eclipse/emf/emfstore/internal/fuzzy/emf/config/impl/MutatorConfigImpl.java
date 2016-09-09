@@ -28,7 +28,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Mutator Config</b></em>'.
- * 
+ *
  * @extends AbstractAPIDeletegateImpl<ESMutatorConfigImpl, MutatorConfig>
  *          <!-- end-user-doc -->
  *          <p>

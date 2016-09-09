@@ -27,7 +27,7 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link AttributeChangeMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class ReferenceChangeMutationTest extends AbstractMutationTest {
@@ -56,7 +56,7 @@ public class ReferenceChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void reorderValuesInGivenReferenceAndContainer() throws ESMutationException {
 
-		ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
+		final ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.REORDER).setTargetObject(ePackageWithTwoClasses)
 			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 		final EObject firstEClass = getFirstEClass();
@@ -70,7 +70,7 @@ public class ReferenceChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
+		final ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.ADD).setTargetFeature(E_PACKAGE.getEClass_ESuperTypes());
 
 		mutation.apply();
@@ -82,7 +82,7 @@ public class ReferenceChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void selectTargetFeatureForGivenTargetContainer() throws ESMutationException {
 
-		ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
+		final ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.ADD).setTargetObject(getFirstEClass());
 
 		mutation.apply();
@@ -93,7 +93,7 @@ public class ReferenceChangeMutationTest extends AbstractMutationTest {
 	@Test
 	public void unconfiguredAdd() throws ESMutationException {
 
-		ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
+		final ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.ADD);
 
 		mutation.apply();
@@ -115,7 +115,7 @@ public class ReferenceChangeMutationTest extends AbstractMutationTest {
 	public void unconfiguredDelete_2() throws ESMutationException {
 		getFirstEClass().getESuperTypes().add(getSecondEClass());
 
-		ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
+		final ESReferenceChangeMutation mutation = ESMutationFactory.referenceChange(utilForEPackageWithTwoClasses)
 			.setRandomChangeMode(ESRandomChangeMode.DELETE);
 
 		mutation.apply();

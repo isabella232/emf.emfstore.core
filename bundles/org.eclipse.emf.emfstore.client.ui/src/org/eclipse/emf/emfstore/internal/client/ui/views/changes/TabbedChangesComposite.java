@@ -126,7 +126,7 @@ public class TabbedChangesComposite extends Composite {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.swt.widgets.Widget#dispose()
 	 */
 	@Override

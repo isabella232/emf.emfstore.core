@@ -36,7 +36,7 @@ public class ModelElementIdImpl extends UniqueIdentifierImpl implements ModelEle
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

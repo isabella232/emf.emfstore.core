@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.internal.common.model.util.ModelAdapterFactory;
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ModelItemProviderAdapterFactory extends ModelAdapterFactory implements ComposeableAdapterFactory,
@@ -46,7 +46,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
@@ -55,7 +55,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -64,7 +64,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -73,7 +73,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ModelItemProviderAdapterFactory() {
@@ -89,7 +89,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ProjectItemProvider projectItemProvider;
@@ -98,7 +98,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.common.model.Project}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -115,7 +115,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.ModelElementId} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ModelElementIdItemProvider modelElementIdItemProvider;
@@ -124,7 +124,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.common.model.ModelElementId}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -141,7 +141,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.ModelVersion} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ModelVersionItemProvider modelVersionItemProvider;
@@ -150,7 +150,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.common.model.ModelVersion}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -167,7 +167,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected EMFStorePropertyItemProvider emfStorePropertyItemProvider;
@@ -176,7 +176,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -192,7 +192,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PropertyMapEntryItemProvider propertyMapEntryItemProvider;
@@ -201,7 +201,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -218,7 +218,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * {@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PropertyStringValueItemProvider propertyStringValueItemProvider;
@@ -227,7 +227,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This creates an adapter for a {@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -243,7 +243,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
@@ -254,7 +254,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
@@ -264,7 +264,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -276,7 +276,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -287,14 +287,14 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
+			final Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -306,7 +306,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void addListener(INotifyChangedListener notifyChangedListener) {
@@ -317,7 +317,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
@@ -328,7 +328,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void fireNotifyChanged(Notification notification) {
@@ -343,22 +343,28 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 * This disposes all of the item providers created by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void dispose() {
-		if (projectItemProvider != null)
+		if (projectItemProvider != null) {
 			projectItemProvider.dispose();
-		if (modelElementIdItemProvider != null)
+		}
+		if (modelElementIdItemProvider != null) {
 			modelElementIdItemProvider.dispose();
-		if (modelVersionItemProvider != null)
+		}
+		if (modelVersionItemProvider != null) {
 			modelVersionItemProvider.dispose();
-		if (emfStorePropertyItemProvider != null)
+		}
+		if (emfStorePropertyItemProvider != null) {
 			emfStorePropertyItemProvider.dispose();
-		if (propertyMapEntryItemProvider != null)
+		}
+		if (propertyMapEntryItemProvider != null) {
 			propertyMapEntryItemProvider.dispose();
-		if (propertyStringValueItemProvider != null)
+		}
+		if (propertyStringValueItemProvider != null) {
 			propertyStringValueItemProvider.dispose();
+		}
 	}
 
 }

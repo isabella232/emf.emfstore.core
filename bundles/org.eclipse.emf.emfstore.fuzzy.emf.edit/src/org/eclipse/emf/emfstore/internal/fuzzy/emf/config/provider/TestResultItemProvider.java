@@ -32,7 +32,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
  * This is the item provider adapter for a {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TestResultItemProvider
@@ -44,7 +44,7 @@ public class TestResultItemProvider
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestResultItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +55,7 @@ public class TestResultItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class TestResultItemProvider
 	 * This adds a property descriptor for the Seed Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addSeedCountPropertyDescriptor(Object object) {
@@ -99,7 +99,7 @@ public class TestResultItemProvider
 	 * This adds a property descriptor for the Test Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addTestNamePropertyDescriptor(Object object) {
@@ -122,7 +122,7 @@ public class TestResultItemProvider
 	 * This adds a property descriptor for the Error feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addErrorPropertyDescriptor(Object object) {
@@ -144,7 +144,7 @@ public class TestResultItemProvider
 	 * This adds a property descriptor for the Failure feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addFailurePropertyDescriptor(Object object) {
@@ -167,7 +167,7 @@ public class TestResultItemProvider
 	 * This adds a property descriptor for the Execution Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addExecutionTimePropertyDescriptor(Object object) {
@@ -190,7 +190,7 @@ public class TestResultItemProvider
 	 * This returns TestResult.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -202,12 +202,12 @@ public class TestResultItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((TestResult) object).getTestName();
+		final String label = ((TestResult) object).getTestName();
 		return label == null || label.length() == 0 ? getString("_UI_TestResult_type") : //$NON-NLS-1$
 			getString("_UI_TestResult_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
@@ -217,7 +217,7 @@ public class TestResultItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -241,7 +241,7 @@ public class TestResultItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -253,7 +253,7 @@ public class TestResultItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

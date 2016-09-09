@@ -30,7 +30,7 @@ import org.junit.Before;
 /**
  * Abstract test case providing common functionalities for all unit tests of
  * {@link Mutation mutations}.
- * 
+ *
  * @author Philip Langer
  */
 @SuppressWarnings("restriction")
@@ -50,32 +50,32 @@ public abstract class AbstractMutationTest {
 
 	@Before
 	public void setUp() {
-		this.ePackageWithTwoClasses = createRootEPackageWithTwoClasses();
-		this.utilForEPackageWithTwoClasses = createMutationUtil(this.ePackageWithTwoClasses);
-		this.testTypeModel = createTestTypeModel();
-		this.utilForTestTypeModel = createMutationUtil(this.testTypeModel);
+		ePackageWithTwoClasses = createRootEPackageWithTwoClasses();
+		utilForEPackageWithTwoClasses = createMutationUtil(ePackageWithTwoClasses);
+		testTypeModel = createTestTypeModel();
+		utilForTestTypeModel = createMutationUtil(testTypeModel);
 	}
 
 	private EPackage createRootEPackageWithTwoClasses() {
-		EPackage rootEPackage = E_FACTORY.createEPackage();
-		EClass eClass1 = E_FACTORY.createEClass();
-		EClass eClass2 = E_FACTORY.createEClass();
+		final EPackage rootEPackage = E_FACTORY.createEPackage();
+		final EClass eClass1 = E_FACTORY.createEClass();
+		final EClass eClass2 = E_FACTORY.createEClass();
 		rootEPackage.getEClassifiers().add(eClass1);
 		rootEPackage.getEClassifiers().add(eClass2);
 		return rootEPackage;
 	}
 
 	private TypeWithFeatureMapContainment createTestTypeModel() {
-		TestmodelFactory tFactory = TestmodelFactory.eINSTANCE;
+		final TestmodelFactory tFactory = TestmodelFactory.eINSTANCE;
 
-		TypeWithFeatureMapContainment root = tFactory.createTypeWithFeatureMapContainment();
+		final TypeWithFeatureMapContainment root = tFactory.createTypeWithFeatureMapContainment();
 		root.setName("Root");
 
-		TypeWithFeatureMapContainment child1 = tFactory.createTypeWithFeatureMapContainment();
+		final TypeWithFeatureMapContainment child1 = tFactory.createTypeWithFeatureMapContainment();
 		child1.setName("Child2Containment");
 		root.getSecondKeyContainment().add(child1);
 
-		TypeWithFeatureMapNonContainment child2 = tFactory.createTypeWithFeatureMapNonContainment();
+		final TypeWithFeatureMapNonContainment child2 = tFactory.createTypeWithFeatureMapNonContainment();
 		child2.setName("Child1NonContainment");
 		child2.getFirstKey().add(root);
 		child2.getSecondKey().add(child2);
@@ -85,8 +85,8 @@ public abstract class AbstractMutationTest {
 	}
 
 	private ESModelMutatorUtil createMutationUtil(EObject rootEObject) {
-		ESModelMutatorConfiguration config = new ESModelMutatorConfiguration();
-		List<EPackage> modelPackages = new ArrayList<EPackage>();
+		final ESModelMutatorConfiguration config = new ESModelMutatorConfiguration();
+		final List<EPackage> modelPackages = new ArrayList<EPackage>();
 		modelPackages.add(rootEObject.eClass().getEPackage());
 		config.setModelPackages(modelPackages);
 		config.setRootEObject(rootEObject);
