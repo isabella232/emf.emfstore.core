@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The copy of an {@link EObject} should be self-contained, if possible, i.e.
  * there should be no references pointing outside the copied containment tree.
  *
- * @since 1.8
+ * @since 1.9
  *
  */
 public interface ESCopier {
 
 	/**
 	 * Whether this copier wants to copy the given {@link EObject}.
-	 * 
+	 *
 	 * @param eObject the {@link EObject} to be copied
 	 * @return an integer that specifies how critical it is that the copier handles the given
 	 *         object. The copier that specifies the highest priority will be used to copy the object.

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse Modeling Project
 Bundle-SymbolicName: org.eclipse.emf.emfstore.ecore.test;singleton:=true
-Bundle-Version: 1.8.0.qualifier
+Bundle-Version: 1.9.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.emf.emfstore.test.common;bundle-version="[2.0.0,3.0.0)"
-Export-Package: org.eclipse.emf.emfstore.ecore.test;version="1.8.0"
+Export-Package: org.eclipse.emf.emfstore.ecore.test;version="1.9.0"
