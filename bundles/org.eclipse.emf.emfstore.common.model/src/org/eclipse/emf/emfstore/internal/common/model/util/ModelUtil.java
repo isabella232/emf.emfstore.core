@@ -281,15 +281,13 @@ public final class ModelUtil {
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
-	private static long computeChecksum(String eObjectString) {
+	private static long computeChecksumLegacy(String eObjectString) {
 		long h = 1125899906842597L; // prime
 		final int len = eObjectString.length();
 
 		for (int i = 0; i < len; i++) {
 			final char c = eObjectString.charAt(i);
-
 			h = 31 * h + c;
-
 		}
 
 		return h;
@@ -305,8 +303,54 @@ public final class ModelUtil {
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
+	public static long computeChecksumLegacy(EObject eObject) throws SerializationException {
+		return computeChecksumLegacy(eObjectToString(eObject, getChecksumSaveOptions()));
+	}
+
+	/**
+	 * Converts the given {@link EObject} to a string.
+	 *
+	 * @param copy The copied {@link EObject}.
+	 * @param resource The resource for the {@link EObject}.
+	 * @param saveOptions define the format of the returned serialization.
+	 * @return The checksum of the serialized {@link EObject}.
+	 * @throws SerializationException If a serialization problem occurs.
+	 */
+	private static long computeChecksumForCopiedEObject(EObject copy, XMIResource resource, Map<?, ?> saveOptions)
+		throws SerializationException {
+		resource.getContents().add(copy);
+
+		final ChecksumCalculatorWriter checksumCalculatorWriter = new ChecksumCalculatorWriter();
+		final URIConverter.WriteableOutputStream uws = new URIConverter.WriteableOutputStream(checksumCalculatorWriter,
+			CommonUtil.getEncoding());
+
+		try {
+			resource.save(uws, saveOptions);
+		} catch (final IOException e) {
+			throw new SerializationException(e);
+		} finally {
+			try {
+				uws.close();
+			} catch (final IOException exception) {
+				logException(exception);
+			}
+		}
+
+		return checksumCalculatorWriter.getChecksum();
+	}
+
+	/**
+	 * Computes the checksum for a given {@link EObject}.
+	 *
+	 * @param eObject
+	 *            the EObject for which to compute a checksum
+	 * @return the computed checksum
+	 *
+	 * @throws SerializationException
+	 *             in case any errors occur during computation of the checksum
+	 */
 	public static long computeChecksum(EObject eObject) throws SerializationException {
-		return computeChecksum(eObjectToString(eObject, getChecksumSaveOptions()));
+		return computeChecksumInternal(eObject, false);
 	}
 
 	/**
@@ -322,23 +366,32 @@ public final class ModelUtil {
 	 *             in case any errors occur during computation of the checksum
 	 */
 	public static long computeChecksum(IdEObjectCollection collection) throws SerializationException {
+		return computeChecksumInternal(collection, true);
+	}
 
+	private static long computeChecksumInternal(EObject eObject, boolean sort) throws SerializationException {
 		final ResourceSetImpl resourceSetImpl = new ResourceSetImpl();
 		// TODO: do we need to instantiate the factory registry each time?
 		resourceSetImpl.setResourceFactoryRegistry(new ResourceFactoryRegistry());
 		final XMIResource res = (XMIResource) resourceSetImpl.createResource(VIRTUAL_URI);
 		((ResourceImpl) res).setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
-		final IdEObjectCollection copy = copyIdEObjectCollection(collection, res);
-
-		ECollections.sort(copy.getModelElements(), new Comparator<EObject>() {
-			public int compare(EObject o1, EObject o2) {
-				return copy.getModelElementId(o1).getId().compareTo(copy.getModelElementId(o2).getId());
+		EObject copy;
+		if (eObject instanceof IdEObjectCollection) {
+			copy = copyIdEObjectCollection((IdEObjectCollection) eObject, res);
+			final IdEObjectCollection castedCopy = (IdEObjectCollection) copy;
+			if (sort) {
+				ECollections.sort(castedCopy.getModelElements(), new Comparator<EObject>() {
+					public int compare(EObject o1, EObject o2) {
+						return castedCopy.getModelElementId(o1).getId()
+							.compareTo(castedCopy.getModelElementId(o2).getId());
+					}
+				});
 			}
-		});
+		} else {
+			copy = copyEObject(ModelUtil.getProject(eObject), eObject, res);
+		}
 
-		final String serialized = copiedEObjectToString(copy, res);
-
-		return computeChecksum(serialized);
+		return computeChecksumForCopiedEObject(copy, res, getChecksumSaveOptions());
 	}
 
 	/**
