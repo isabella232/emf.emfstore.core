@@ -106,7 +106,7 @@ public class TabbedChangesComposite extends Composite {
 		GridLayoutFactory.fillDefaults().applyTo(tabComposite);
 
 		tabTreeViewer = new TreeViewer(tabComposite, SWT.H_SCROLL
-			| SWT.V_SCROLL);
+			| SWT.V_SCROLL | SWT.VIRTUAL);
 		GridDataFactory.fillDefaults().grab(true, true)
 			.applyTo(tabTreeViewer.getControl());
 
@@ -115,6 +115,7 @@ public class TabbedChangesComposite extends Composite {
 		labelProvider = new SCMLabelProvider(project);
 		labelProvider.setChangePackageVisualizationHelper(
 			new ChangePackageVisualizationHelper(idToEObjectMapping));
+		contentProvider.setProxyInitializer(labelProvider);
 		tabTreeViewer.setContentProvider(contentProvider);
 		tabTreeViewer.setLabelProvider(labelProvider);
 		tabTreeViewer.expandToLevel(1);

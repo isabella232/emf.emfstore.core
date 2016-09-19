@@ -56,7 +56,7 @@ import org.eclipse.swt.widgets.Display;
  *
  * @author Shterev
  */
-public class SCMLabelProvider extends ColumnLabelProvider {
+public class SCMLabelProvider extends ColumnLabelProvider implements ProxyInitializer {
 
 	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm"); //$NON-NLS-1$
 
@@ -279,7 +279,14 @@ public class SCMLabelProvider extends ColumnLabelProvider {
 		return result;
 	}
 
-	private void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
+	/**
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.emfstore.internal.client.ui.views.scm.ProxyInitializer#prepareProxy(org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy,
+	 *      org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation)
+	 */
+	public void prepareProxy(OperationProxy proxy, AbstractOperation operation) {
 		final ImageData imageData = changePackageVisualizationHelper.getImage(adapterFactoryLabelProvider, operation)
 			.getImageData();
 		final ImageProxy imageProxy = ImageProxy.create().setWitdh(imageData.width).setHeight(imageData.height)
