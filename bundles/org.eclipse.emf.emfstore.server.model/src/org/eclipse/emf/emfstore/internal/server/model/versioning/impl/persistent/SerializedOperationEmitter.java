@@ -64,6 +64,14 @@ public class SerializedOperationEmitter extends AbstractOperationEmitter {
 			}
 		}).start();
 
+		if (isClosed()) {
+			try {
+				return Optional.absent();
+			} finally {
+				pis.close();
+			}
+		}
+
 		try {
 			final String streamToString = convertStreamToString(pis);
 			if (XmlTags.XML_RESOURCE_WITH_EOBJECT.equals(streamToString)) {

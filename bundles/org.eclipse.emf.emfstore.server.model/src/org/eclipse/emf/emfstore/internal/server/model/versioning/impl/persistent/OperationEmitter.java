@@ -73,6 +73,14 @@ public class OperationEmitter extends AbstractOperationEmitter {
 			}
 		}).start();
 
+		if (isClosed()) {
+			try {
+				return Optional.absent();
+			} finally {
+				pis.close();
+			}
+		}
+
 		try {
 			final EObject deserializedObject = deserialize(pis);
 			if (AbstractOperation.class.isInstance(deserializedObject)) {
