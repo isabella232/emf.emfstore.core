@@ -10,10 +10,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.ecore;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.emfstore.common.model.ESModelElementId;
@@ -21,23 +19,12 @@ import org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 
-/**
- *
- *
- */
-public class ETypeIdResolver implements ESSingletonIdResolver {
-
-	private final Map<String, EClass> datatypes = new LinkedHashMap<String, EClass>();
+public class ECoreElementsResolver implements ESSingletonIdResolver {
 
 	/**
 	 * Constructor.
 	 */
-	public ETypeIdResolver() {
-		// eclass stuff
-		datatypes.put("EClass", EcorePackage.eINSTANCE.getEClass()); //$NON-NLS-1$
-		datatypes.put("EStructuralFeature", EcorePackage.eINSTANCE.getEStructuralFeature()); //$NON-NLS-1$
-		datatypes.put("EGenericType", EcorePackage.eINSTANCE.getEGenericType()); //$NON-NLS-1$
-		datatypes.put("EPackage", EcorePackage.eINSTANCE.getEPackage()); //$NON-NLS-1$
+	public ECoreElementsResolver() {
 	}
 
 	/**
@@ -51,30 +38,14 @@ public class ETypeIdResolver implements ESSingletonIdResolver {
 			return null;
 		}
 
-		return datatypes.get(singletonId.getId());
-	}
+		final String id = singletonId.getId();
 
-	/**
-	 *
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#getSingletonModelElementId(org.eclipse.emf.ecore.EObject)
-	 */
-	public ESModelElementId getSingletonModelElementId(EObject singleton) {
-		if (!isSingleton(singleton) || singleton == null) {
-			return null;
-		}
-
-		// TODO: EM, provide 2nd map for performance reasons
-		for (final Map.Entry<String, EClass> entry : datatypes.entrySet()) {
-			if (!entry.getValue().isInstance(singleton)) {
-				continue;
+		// TODO: build up cache
+		final EList<EClassifier> eClassifiers = EcorePackage.eINSTANCE.getEClassifiers();
+		for (final EClassifier eClassifier : eClassifiers) {
+			if (eClassifier.getName().equals(id)) {
+				return eClassifier;
 			}
-
-			// TODO: don't create IDs on the fly rather put them directly into the map
-			final ModelElementId id = ModelFactory.eINSTANCE.createModelElementId();
-			id.setId(entry.getKey());
-			return id.toAPI();
 		}
 
 		return null;
@@ -84,16 +55,28 @@ public class ETypeIdResolver implements ESSingletonIdResolver {
 	 *
 	 * {@inheritDoc}
 	 *
+	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#getSingletonModelElementId(org.eclipse.emf.ecore.EObject)
+	 */
+	public ESModelElementId getSingletonModelElementId(EObject singleton) {
+		if (singleton == null || !isSingleton(singleton) || !EClassifier.class.isInstance(singleton)) {
+			return null;
+		}
+
+		final EClassifier eClassifier = EClassifier.class.cast(singleton);
+		final ModelElementId id = ModelFactory.eINSTANCE.createModelElementId();
+		id.setId(eClassifier.getName());
+
+		return id.toAPI();
+	}
+
+	/**
+	 *
+	 * {@inheritDoc}
+	 *
 	 * @see org.eclipse.emf.emfstore.common.model.ESSingletonIdResolver#isSingleton(org.eclipse.emf.ecore.EObject)
 	 */
 	public boolean isSingleton(EObject eDataType) {
-		for (final EClass eClass : datatypes.values()) {
-			if (eClass.isInstance(eDataType)) {
-				return true;
-			}
-		}
-
-		return false;
+		return eDataType.eContainer() == EcorePackage.eINSTANCE;
 	}
 
 }

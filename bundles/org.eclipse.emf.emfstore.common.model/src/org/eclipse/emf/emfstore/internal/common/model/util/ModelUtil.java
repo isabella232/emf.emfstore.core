@@ -398,6 +398,25 @@ public final class ModelUtil {
 	 */
 	public static synchronized boolean isIgnoredDatatype(EObject eObject) {
 
+		return false;
+
+		// if (ignoredDataTypes == null) {
+		// ignoredDataTypes = new LinkedHashSet<String>();
+		// for (final ESExtensionElement element : new ESExtensionPoint(
+		// IGNORED_DATATYPE_EXT_POINT_ID,
+		// true).getExtensionElements()) {
+		// try {
+		// ignoredDataTypes.add(element.getAttribute("type")); //$NON-NLS-1$
+		// } catch (final ESExtensionPointException e) {
+		// }
+		// }
+		// }
+		//
+		// return ignoredDataTypes.contains(eObject.eClass().getInstanceClassName());
+	}
+
+	public static synchronized boolean isIgnoredDatatype2(EObject eObject) {
+
 		if (ignoredDataTypes == null) {
 			ignoredDataTypes = new LinkedHashSet<String>();
 			for (final ESExtensionElement element : new ESExtensionPoint(
