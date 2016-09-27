@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -50,6 +51,7 @@ import org.eclipse.emf.emfstore.internal.common.model.impl.IdEObjectCollectionIm
 import org.eclipse.emf.emfstore.internal.common.model.impl.ProjectImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CompositeOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiReferenceOperation;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.ReferenceOperation;
@@ -947,14 +949,15 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(getProject(), ModelUtil.getProject(parentTestElement));
 		assertTrue(getProject().contains(testElement));
 		assertEquals(getProject(), ModelUtil.getProject(testElement));
-		assertFalse(getProject().contains(newTestElement));
-		assertFalse(getProject().contains(newChildElement1));
-		assertFalse(getProject().contains(newChildElement2));
+		assertTrue(getProject().contains(newTestElement));
+		assertTrue(getProject().contains(newChildElement1));
+		assertTrue(getProject().contains(newChildElement2));
 		assertTrue(getProject().contains(newChildElement3));
 
-		assertEquals(2, newTestElement.getContainedElements().size());
+		assertEquals(3, newTestElement.getContainedElements().size());
 		assertEquals(newChildElement1, newTestElement.getContainedElements().get(0));
 		assertEquals(newChildElement2, newTestElement.getContainedElements().get(1));
+		assertEquals(newChildElement3, newTestElement.getContainedElements().get(2));
 
 		assertEquals(newTestElement, newChildElement1.getReferences().get(0));
 		assertEquals(newChildElement1, newChildElement2.getReferences().get(0));
@@ -984,9 +987,10 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertTrue(getProject().contains(newChildElement2));
 		assertTrue(getProject().contains(newChildElement3));
 
-		assertEquals(2, newTestElement.getContainedElements().size());
+		assertEquals(3, newTestElement.getContainedElements().size());
 		assertEquals(newChildElement1, newTestElement.getContainedElements().get(0));
 		assertEquals(newChildElement2, newTestElement.getContainedElements().get(1));
+		assertEquals(newChildElement3, newTestElement.getContainedElements().get(2));
 
 		assertEquals(newTestElement, newChildElement1.getReferences().get(0));
 		assertEquals(newChildElement1, newChildElement2.getReferences().get(0));
@@ -994,49 +998,20 @@ public class CreateDeleteOperationTest extends ESTest {
 		assertEquals(newChildElement3, testElement.getReferences().get(0));
 
 		final List<AbstractOperation> operations = forceGetOperations();
-		assertEquals(2, operations.size());
-		final AbstractOperation operation = operations.get(0);
-		assertTrue(operation instanceof CreateDeleteOperation);
-		final CreateDeleteOperation createDeleteOperation = (CreateDeleteOperation) operation;
-
-		final ModelElementId newTestElementId = ModelUtil.getProject(newTestElement).getModelElementId(newTestElement);
-		final TestElement copiedNewTestElement = (TestElement) createDeleteOperation.getModelElement();
-		final TestElement copiedNewChildElement1 = copiedNewTestElement.getContainedElements().get(0);
-		final TestElement copiedNewChildElement2 = copiedNewTestElement.getContainedElements().get(1);
-
-		assertEquals(2, copiedNewTestElement.getContainedElements().size());
-		assertEquals(copiedNewTestElement, copiedNewChildElement1.getReferences().get(0));
-		assertEquals(copiedNewChildElement1, copiedNewChildElement2.getReferences().get(0));
-		assertEquals(1, copiedNewChildElement2.getReferences().size());
-
-		assertEquals(newTestElementId, createDeleteOperation.getModelElementId());
-		assertEquals(1, createDeleteOperation.getSubOperations().size());
-		assertFalse(createDeleteOperation.isDelete());
-		assertTrue(CommonUtil.isSelfContained(createDeleteOperation, true));
-
-		// check sub-operations of 1st operation
-		final MultiReferenceOperation subOperation1 = (MultiReferenceOperation) createDeleteOperation
-			.getSubOperations().get(
-				0);
-
-		// sub-operation 1
-		assertEquals(newChildElement2, getProject().getModelElement(subOperation1.getModelElementId()));
-		assertEquals(REFERENCES, subOperation1.getFeatureName());
-		assertEquals(testElement, getProject().getModelElement(subOperation1.getReferencedModelElements().get(0)));
+		assertEquals(1, operations.size());
 
 		// check 2nd operation
-		final MultiReferenceOperation operation2 = (MultiReferenceOperation) operations.get(1);
+		final CompositeOperation operation1 = (CompositeOperation) operations.get(0);
+
+		final MultiReferenceOperation operation2 = (MultiReferenceOperation) operation1.getMainOperation();// operations.get(0);
 
 		assertEquals(parentTestElement, getProject().getModelElement(operation2.getModelElementId()));
 		assertEquals(newTestElement, getProject().getModelElement(operation2.getReferencedModelElements().get(0)));
 
-		assertTrue(operations.get(1) instanceof MultiReferenceOperation);
-		final MultiReferenceOperation multiRefOp = (MultiReferenceOperation) operations.get(1);
-
-		assertEquals(parentTestElement, getProject().getModelElement(multiRefOp.getModelElementId()));
-		assertEquals(TestElementFeatures.containedElements().getName(), multiRefOp.getFeatureName());
-		assertEquals(newTestElement, getProject().getModelElement(multiRefOp.getReferencedModelElements().get(0)));
-		assertTrue(multiRefOp.isAdd());
+		assertEquals(parentTestElement, getProject().getModelElement(operation2.getModelElementId()));
+		assertEquals(TestElementFeatures.containedElements().getName(), operation2.getFeatureName());
+		assertEquals(newTestElement, getProject().getModelElement(operation2.getReferencedModelElements().get(0)));
+		assertTrue(operation2.isAdd());
 	}
 
 	// END COMPLEX CODE
@@ -1663,4 +1638,70 @@ public class CreateDeleteOperationTest extends ESTest {
 	 * child.getContainingWorkpackage()); assertSame(child, existing.getContainingWorkpackage());
 	 * assertEquals(getProject().getAllModelElements().size(), 3); }
 	 */
+
+	@Test
+	public void testCreateCutElementsFromOtherProject() {
+		/* Setup */
+		final ProjectSpace projectSpaceOriginal = getProjectSpace();
+		final ProjectSpace projectSpaceCopy = cloneProjectSpace(projectSpaceOriginal);
+
+		final TestElement testElementA = Create.testElement();
+		final TestElement testElementB = Create.testElement();
+		final TestElement testElementC = Create.testElement();
+		testElementB.setContainedElement(testElementC);
+
+		RunESCommand.run(new Callable<Void>() {
+			public Void call() throws Exception {
+				projectSpaceOriginal.getProject().getModelElements().add(testElementA);
+				projectSpaceCopy.getProject().getModelElements().add(testElementB);
+				return null;
+			}
+		});
+
+		/* Act */
+		RunESCommand.run(new Callable<Void>() {
+			public Void call() throws Exception {
+				testElementA.setReference(testElementC);
+				return null;
+			}
+		});
+
+		/* Assert */
+		// A+C
+		assertSame(testElementA, projectSpaceOriginal.getProject().getModelElements().get(0));
+		assertSame(testElementC, projectSpaceOriginal.getProject().getModelElements().get(1));
+		// B
+		assertSame(testElementB, projectSpaceCopy.getProject().getModelElements().get(0));
+	}
+
+	@Test
+	public void testCreateCutElementsFromNonProject() {
+		/* Setup */
+		final ProjectSpace projectSpaceOriginal = getProjectSpace();
+
+		final TestElement testElementA = Create.testElement();
+		final TestElement testElementB = Create.testElement();
+		final TestElement testElementC = Create.testElement();
+		testElementB.setContainedElement(testElementC);
+
+		RunESCommand.run(new Callable<Void>() {
+			public Void call() throws Exception {
+				projectSpaceOriginal.getProject().getModelElements().add(testElementA);
+				return null;
+			}
+		});
+
+		/* Act */
+		RunESCommand.run(new Callable<Void>() {
+			public Void call() throws Exception {
+				testElementA.setReference(testElementC);
+				return null;
+			}
+		});
+
+		/* Assert */
+		// A+B(C)
+		assertSame(testElementA, projectSpaceOriginal.getProject().getModelElements().get(0));
+		assertSame(testElementB, projectSpaceOriginal.getProject().getModelElements().get(1));
+	}
 }
