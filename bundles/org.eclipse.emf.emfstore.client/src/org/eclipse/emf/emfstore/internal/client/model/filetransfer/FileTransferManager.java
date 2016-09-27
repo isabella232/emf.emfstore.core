@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreClientUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
@@ -34,6 +35,8 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
  * @author jfinis
  */
 public class FileTransferManager {
+
+	private static final String LOGGING_PREFIX = "UPLOAD"; //$NON-NLS-1$
 
 	/**
 	 * The associated cache manager.
@@ -175,6 +178,8 @@ public class FileTransferManager {
 					continue;
 
 				}
+				EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX,
+					MessageFormat.format("Uploading file with identifier {0}", fi.getIdentifier())); //$NON-NLS-1$
 				final FileUploadJob job = new FileUploadJob(this, fi, true);
 				final IStatus result = job.run(progress);
 
