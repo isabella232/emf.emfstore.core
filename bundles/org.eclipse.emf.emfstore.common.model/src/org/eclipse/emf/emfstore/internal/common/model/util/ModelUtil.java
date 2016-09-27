@@ -420,19 +420,19 @@ public final class ModelUtil {
 		final IdEObjectCollection copiedCollection = clone(collection);
 
 		for (final EObject modelElement : copiedCollection.getAllModelElements()) {
-			if (isIgnoredDatatype(modelElement)) {
+			final ModelElementId modelElementId = copiedCollection.getModelElementId(modelElement);
+			if (modelElementId == null && isIgnoredDatatype2(modelElement)) {
 				continue;
 			}
-			final ModelElementId modelElementId = copiedCollection.getModelElementId(modelElement);
 			res.setID(modelElement, modelElementId.getId());
 		}
 
 		for (final EObject modelElement : ((Project) copiedCollection).getCutElements()) {
-			if (isIgnoredDatatype(modelElement)) {
-				continue;
-			}
 			final ModelElementId modelElementId = ((IdEObjectCollectionImpl) copiedCollection)
 				.getModelElementId(modelElement);
+			if (modelElementId == null && isIgnoredDatatype2(modelElement)) {
+				continue;
+			}
 			res.setID(modelElement, modelElementId.getId());
 		}
 

@@ -125,11 +125,12 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		while (it.hasNext()) {
 			final EObject eObject = it.next();
 
-			if (ModelUtil.isIgnoredDatatype(eObject)) {
+			final String id = xmiResource.getID(eObject);
+
+			if (id == null && ModelUtil.isIgnoredDatatype2(eObject)) {
 				continue;
 			}
 
-			final String id = xmiResource.getID(eObject);
 			final ModelElementId eObjectId = getNewModelElementID();
 
 			if (id != null) {

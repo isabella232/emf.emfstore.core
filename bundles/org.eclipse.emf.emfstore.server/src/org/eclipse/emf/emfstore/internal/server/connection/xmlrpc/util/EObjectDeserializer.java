@@ -98,13 +98,11 @@ public class EObjectDeserializer extends ByteArrayParser {
 			final Map<String, EObject> idToEObjectMap = new LinkedHashMap<String, EObject>();
 
 			for (final EObject modelElement : collection.getAllModelElements()) {
-				String modelElementId;
-				if (ModelUtil.isIgnoredDatatype(modelElement)) {
+				String modelElementId = res.getID(modelElement);
+				if (ModelUtil.isIgnoredDatatype2(modelElement) && modelElementId == null) {
 					// create random ID for generic types, won't get serialized
 					// anyway
 					modelElementId = ModelFactory.eINSTANCE.createModelElementId().getId();
-				} else {
-					modelElementId = res.getID(modelElement);
 				}
 
 				if (modelElementId == null) {
