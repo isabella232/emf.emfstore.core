@@ -35,6 +35,7 @@ public final class FileDownloadStatus {
 	private final ProjectSpace transferringProjectSpace;
 	private final Observable finishedObservable = new Obs();
 	private final Observable failedObservable = new Obs();
+	private final Observable cancelledObservable = new Obs();
 
 	private final FileTransferStatistics statistics = new FileTransferStatistics(this);
 	private Status status;
@@ -55,7 +56,7 @@ public final class FileDownloadStatus {
 	 *
 	 * @author jfinis
 	 */
-	public static enum Status {
+	public enum Status {
 		/**
 		 * The file transfer was not yet started.
 		 */
@@ -124,6 +125,16 @@ public final class FileDownloadStatus {
 		// Instantly notify if the transfer is already finished
 		if (isTransferFinished()) {
 			o.update(finishedObservable, this);
+		}
+	}
+
+	private void addTransferCancelledObserver(Observer o) {
+		// Add
+		cancelledObservable.addObserver(o);
+
+		// Instantly notify if the transfer is already finished
+		if (status == Status.CANCELLED) {
+			o.update(cancelledObservable, this);
 		}
 	}
 
@@ -225,7 +236,6 @@ public final class FileDownloadStatus {
 	 *             in case of an error during transfer
 	 */
 	public File getTransferredFile(boolean block) throws FileTransferException {
-
 		if (!isTransferFinished() && block) {
 			/**
 			 * TODO: Double-check this code
@@ -240,6 +250,7 @@ public final class FileDownloadStatus {
 			};
 			addTransferFailedObserver(observer);
 			addTransferFinishedObserver(observer);
+			addTransferCancelledObserver(observer);
 			try {
 				synchronized (observer) {
 					observer.wait();
@@ -279,6 +290,7 @@ public final class FileDownloadStatus {
 		}
 		statistics.registerStop();
 		status = Status.CANCELLED;
+		cancelledObservable.notifyObservers(this);
 	}
 
 	/**
