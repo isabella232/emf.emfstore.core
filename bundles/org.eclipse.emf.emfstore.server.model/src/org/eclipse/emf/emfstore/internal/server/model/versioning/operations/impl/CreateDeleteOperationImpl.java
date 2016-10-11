@@ -29,6 +29,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
+import org.eclipse.emf.emfstore.common.model.ESMaterializedModelElementIdGenerator;
 import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
@@ -65,6 +68,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  */
 public class CreateDeleteOperationImpl extends AbstractOperationImpl implements CreateDeleteOperation {
 
+	private static final String MATERIALIZED_MODELELEMENTID_GENERATOR_EXTENSIONPOINT = "org.eclipse.emf.emfstore.common.model.materializedModelElementIdGenerator"; //$NON-NLS-1$
+
 	public void apply(IdEObjectCollection collection) {
 		if (isDelete()) {
 			if (!collection.contains(getModelElementId())) {
@@ -93,6 +98,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 			collection.clearAllocatedCaches(new LinkedHashSet<ModelElementId>(getEObjectToIdMap().values()));
 		} else {
+
 			if (collection.contains(getModelElementId())) {
 				// silently fail
 				applySubOperations(collection);
@@ -127,8 +133,19 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 				clone.getEObjectToIdMap().put(copiedChild, childId);
 			}
 
-			collection.allocateModelElementIds(clone.getEObjectToIdMap().map());
-			collection.addModelElement(clone.getModelElement());
+			boolean isModelElementMaterialized = false;
+
+			final ESMaterializedModelElementIdGenerator<ModelElementId> materializedElementIdGenerator = getMaterializedElementIdGenerator();
+			if (materializedElementIdGenerator != null) {
+				isModelElementMaterialized = materializedElementIdGenerator.skip(getModelElementId().getId(),
+					collection);
+			}
+
+			// if the element already has been materialized, we don't want to add it
+			if (!isModelElementMaterialized) {
+				collection.allocateModelElementIds(clone.getEObjectToIdMap().map());
+				collection.addModelElement(clone.getModelElement());
+			}
 
 			applySubOperations(collection);
 		}
@@ -170,6 +187,20 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 			clonedSubOperations.add(0, (ReferenceOperation) operation.reverse());
 		}
 		return createDeleteOperation;
+	}
+
+	private ESMaterializedModelElementIdGenerator<ModelElementId> getMaterializedElementIdGenerator() {
+		final ESExtensionElement element = new ESExtensionPoint(MATERIALIZED_MODELELEMENTID_GENERATOR_EXTENSIONPOINT)
+			.getElementWithHighestPriority();
+
+		if (element != null) {
+			@SuppressWarnings("unchecked")
+			final ESMaterializedModelElementIdGenerator<ModelElementId> generator = element.getClass("class", //$NON-NLS-1$
+				ESMaterializedModelElementIdGenerator.class);
+			return generator;
+		}
+
+		return null;
 	}
 
 	/**
@@ -416,9 +447,8 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 		case OperationsPackage.CREATE_DELETE_OPERATION__EOBJECT_TO_ID_MAP:
 			if (coreType) {
 				return getEObjectToIdMap();
-			} else {
-				return getEObjectToIdMap().map();
 			}
+			return getEObjectToIdMap().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -71,47 +71,25 @@ public enum ChecksumErrorHandler implements ESChecksumErrorHandler {
 		 */
 		public boolean execute(ESLocalProject localProject, ESPrimaryVersionSpec versionSpec, IProgressMonitor monitor)
 			throws ESException {
-			WorkspaceUtil.logWarning("Checksum comparison failed.", null); //$NON-NLS-1$
-
-			final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
-			final ESLocalProject serverESProject = localProject
-				.getRemoteProject()
-				.checkout(
-					"log_error_checksum_debug_checkout", localProject.getUsersession(), versionSpec, //$NON-NLS-1$
-					new NullProgressMonitor());
-			final Project serverProject = ESLocalProjectImpl.class.cast(serverESProject).toInternalAPI()
-				.getProject();
-			try {
-
-				final Map<Object, Object> formatOptions = new LinkedHashMap<Object, Object>();
-				formatOptions.put(XMLResource.OPTION_DECLARE_XML, Boolean.TRUE);
-				formatOptions.put(XMLResource.OPTION_FORMATTED, Boolean.TRUE);
-
-				final String localSerialization = ModelUtil
-					.eObjectToString(project, ModelUtil.getResourceSaveOptions());
-				final String serverSerialization = ModelUtil.eObjectToString(serverProject,
-					ModelUtil.getResourceSaveOptions());
-
-				serverESProject.delete(new NullProgressMonitor());
-
-				final File localFile = Activator.getDefault().getBundle().getDataFile("localProjectSerialization.txt"); //$NON-NLS-1$
-				final File serverFile = Activator.getDefault().getBundle()
-					.getDataFile("serverProjectSerialization.txt"); //$NON-NLS-1$
-
-				final FileWriter fileWriterLocal = new FileWriter(localFile);
-				fileWriterLocal.write(localSerialization);
-				fileWriterLocal.close();
-				final FileWriter fileWriterServer = new FileWriter(serverFile);
-				fileWriterServer.write(serverSerialization);
-				fileWriterServer.close();
-			} catch (final SerializationException ex) {
-				WorkspaceUtil.logException("Couldn't log the serializations.", ex); //$NON-NLS-1$
-			} catch (final IOException ex) {
-				WorkspaceUtil.logException("Couldn't save the serializations.", ex); //$NON-NLS-1$
-			}
-			return true;
+			return LogDetailed.execute(localProject, versionSpec, monitor, false);
 		}
+	},
 
+	/**
+	 * Logs the checksum comparison failure detailed: the serialization of both project spaces is written in seperate
+	 * files. The execution of the caller will then be discontinued.
+	 */
+	LOG_DETAILED_AND_CANCEL
+
+	{
+
+		/**
+		 * {@inheritDoc}
+		 */
+		public boolean execute(ESLocalProject localProject, ESPrimaryVersionSpec versionSpec, IProgressMonitor monitor)
+			throws ESException {
+			return LogDetailed.execute(localProject, versionSpec, monitor, true);
+		}
 	},
 
 	/**
@@ -148,18 +126,13 @@ public enum ChecksumErrorHandler implements ESChecksumErrorHandler {
 				public Project run(IProgressMonitor monitor) throws ESException {
 
 					final ESSessionIdImpl sessionIdImpl = (ESSessionIdImpl) project.getUsersession().getSessionId();
-					final ESGlobalProjectIdImpl globalProjectIdImpl = (ESGlobalProjectIdImpl) project
-						.getRemoteProject()
+					final ESGlobalProjectIdImpl globalProjectIdImpl = (ESGlobalProjectIdImpl) project.getRemoteProject()
 						.getGlobalProjectId();
 					final ESVersionSpecImpl<?, ? extends VersionSpec> versionSpecImpl = (ESVersionSpecImpl<?, ?>) versionSpec;
 
-					return ESWorkspaceProviderImpl
-						.getInstance()
-						.getConnectionManager()
-						.getProject(
-							sessionIdImpl.toInternalAPI(),
-							globalProjectIdImpl.toInternalAPI(),
-							ModelUtil.clone(versionSpecImpl.toInternalAPI()));
+					return ESWorkspaceProviderImpl.getInstance().getConnectionManager().getProject(
+						sessionIdImpl.toInternalAPI(), globalProjectIdImpl.toInternalAPI(),
+						ModelUtil.clone(versionSpecImpl.toInternalAPI()));
 				}
 			}.execute();
 
@@ -179,5 +152,72 @@ public enum ChecksumErrorHandler implements ESChecksumErrorHandler {
 
 			return true;
 		}
+	}
+}
+
+/**
+ * Logs the checksum comparison failure detailed: the serialization of both project spaces is written in separate
+ * files.
+ */
+final class LogDetailed {
+
+	private LogDetailed() {
+		// private ctor
+	}
+
+	/**
+	 * Execute the detailed comparison.
+	 *
+	 * @param localProject the {@link ESLocalProject} whose contents should be checked
+	 * @param versionSpec the version for which the comparison should be checked
+	 * @param monitor a {@link IProgressMonitor} instance
+	 * @param shouldFail whether to continue with in case the comparison failed
+	 * @return the inverse of {@code shouldFail} meaning that we indicate an error occurred
+	 *         in case the comparison failed
+	 *
+	 * @throws ESException in case the comparison fails for technical reasons
+	 */
+	public static boolean execute(ESLocalProject localProject, ESPrimaryVersionSpec versionSpec,
+		IProgressMonitor monitor, boolean shouldFail) throws ESException {
+
+		WorkspaceUtil.logWarning("Checksum comparison failed.", null); //$NON-NLS-1$
+
+		final Project project = ESLocalProjectImpl.class.cast(localProject).toInternalAPI().getProject();
+		final ESLocalProject serverESProject = localProject
+			.getRemoteProject()
+			.checkout(
+				"log_error_checksum_debug_checkout", localProject.getUsersession(), versionSpec, //$NON-NLS-1$
+				new NullProgressMonitor());
+		final Project serverProject = ESLocalProjectImpl.class.cast(serverESProject).toInternalAPI()
+			.getProject();
+		try {
+
+			final Map<Object, Object> formatOptions = new LinkedHashMap<Object, Object>();
+			formatOptions.put(XMLResource.OPTION_DECLARE_XML, Boolean.TRUE);
+			formatOptions.put(XMLResource.OPTION_FORMATTED, Boolean.TRUE);
+
+			final String localSerialization = ModelUtil
+				.eObjectToString(project, ModelUtil.getResourceSaveOptions());
+			final String serverSerialization = ModelUtil.eObjectToString(serverProject,
+				ModelUtil.getResourceSaveOptions());
+
+			serverESProject.delete(new NullProgressMonitor());
+
+			final File localFile = Activator.getDefault().getBundle().getDataFile("localProjectSerialization.txt"); //$NON-NLS-1$
+			final File serverFile = Activator.getDefault().getBundle()
+				.getDataFile("serverProjectSerialization.txt"); //$NON-NLS-1$
+
+			final FileWriter fileWriterLocal = new FileWriter(localFile);
+			fileWriterLocal.write(localSerialization);
+			fileWriterLocal.close();
+			final FileWriter fileWriterServer = new FileWriter(serverFile);
+			fileWriterServer.write(serverSerialization);
+			fileWriterServer.close();
+		} catch (final SerializationException ex) {
+			WorkspaceUtil.logException("Couldn't log the serializations.", ex); //$NON-NLS-1$
+		} catch (final IOException ex) {
+			WorkspaceUtil.logException("Couldn't save the serializations.", ex); //$NON-NLS-1$
+		}
+		return !shouldFail;
 	}
 }

@@ -14,9 +14,14 @@
       </singletonidresolver>
    </extension>
    <extension
+         point="org.eclipse.emf.emfstore.common.model.materializedModelElementIdGenerator">
+      <materializedModelElementIdGenerator
+            class="org.eclipse.emf.emfstore.internal.ecore.EGenericTypeModelElementIdGenerator">
+      </materializedModelElementIdGenerator>
+   </extension>
+   <extension
          point="org.eclipse.emf.emfstore.client.changeRecordingOptions">
       <RecordingOptions
-            copier="org.eclipse.emf.emfstore.internal.ecore.EcoreCopier"
             useInMemoryChangePackage="true">
       </RecordingOptions>
    </extension>

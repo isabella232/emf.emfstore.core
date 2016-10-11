@@ -32,6 +32,7 @@ import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.AdminCon
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESServerImpl;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -114,6 +115,16 @@ public final class Delete {
 			@Override
 			public void run() {
 				final Project project = ((ESLocalProjectImpl) localProject).toInternalAPI().getProject();
+				project.deleteModelElement(eObject);
+			}
+		});
+	}
+
+	public static void fromProject(final EObject eObject) {
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				final Project project = ModelUtil.getProject(eObject);
 				project.deleteModelElement(eObject);
 			}
 		});
