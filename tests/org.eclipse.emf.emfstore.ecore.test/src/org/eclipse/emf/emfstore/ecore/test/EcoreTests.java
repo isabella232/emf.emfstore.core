@@ -114,6 +114,34 @@ public class EcoreTests extends ESTestWithLoggedInUser {
 	}
 
 	@Test
+	public void setESuperTypeAndCheckout() throws SerializationException, ESException {
+		share(getUsersession(), getLocalProject());
+
+		getLocalProject().getBaseVersion();
+		final EPackage ePackage = ECreate.ePackage("mypackage"); //$NON-NLS-1$
+		final EClass clsA = ECreate.eClass("A"); //$NON-NLS-1$
+		EAdd.to(ePackage, clsA);
+
+		Add.toProject(getLocalProject(), ePackage);
+		getLocalProject().commit(NPM);
+
+		final EClass clsB = ECreate.eClass("B"); //$NON-NLS-1$
+		EAdd.to(ePackage, clsB);
+		// set B as super type of A
+		EUpdate.superType(clsA, clsB);
+
+		final ESPrimaryVersionSpec head = getLocalProject().commit(NPM);
+
+		final ESLocalProject copy = checkoutCopy();
+
+		// commit must succeed
+		assertEquals(2, head.getIdentifier());
+		final ESModelElementId modelElementId = getLocalProject().getModelElementId(clsA);
+		final EClass copiedClsA = (EClass) copy.getModelElement(modelElementId);
+		assertEquals(copiedClsA.getESuperTypes().size(), 1);
+	}
+
+	@Test
 	public void changeESuperType() throws SerializationException, ESException {
 		share(getUsersession(), getLocalProject());
 		final ESLocalProject copy = checkoutCopy();
@@ -122,15 +150,19 @@ public class EcoreTests extends ESTestWithLoggedInUser {
 		final EClass clsA = ECreate.eClass("A"); //$NON-NLS-1$
 		final EClass clsB = ECreate.eClass("B"); //$NON-NLS-1$
 		final EClass clsC = ECreate.eClass("C"); //$NON-NLS-1$
-		EAdd.to(pkg, clsA, clsB, clsC);
+		final EClass clsD = ECreate.eClass("D"); //$NON-NLS-1$
+		EAdd.to(pkg, clsA, clsB, clsC, clsD);
 		EUpdate.superType(clsA, clsB);
 		Add.toProject(getLocalProject(), pkg);
 		getLocalProject().commit(new NullProgressMonitor());
 
 		// change super type from A to C
 		EUpdate.superType(clsA, clsC);
+		getLocalProject().commit(NPM);
 
-		getLocalProject().commit(new NullProgressMonitor());
+		EUpdate.superType(clsA, clsD);
+		getLocalProject().commit(NPM);
+
 		copy.update(NPM);
 
 		assertTrue(ModelUtil.areEqual(
@@ -174,8 +206,11 @@ public class EcoreTests extends ESTestWithLoggedInUser {
 		Add.toProject(getLocalProject(), pkg);
 
 		EUpdate.eAttr(eAttr, ECreate.eStringType());
-
 		getLocalProject().commit(NPM);
+
+		EUpdate.eAttr(eAttr, ECreate.eDateType());
+		getLocalProject().commit(NPM);
+
 		copy.update(NPM);
 
 		assertTrue(

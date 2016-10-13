@@ -936,9 +936,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		}
 
 		checkCommandConstraints(modelElement);
-
 		notificationRecorder.record(notification);
-
 		if (notificationRecorder.isRecordingComplete()) {
 
 			final List<AbstractOperation> ops = recordingFinished();

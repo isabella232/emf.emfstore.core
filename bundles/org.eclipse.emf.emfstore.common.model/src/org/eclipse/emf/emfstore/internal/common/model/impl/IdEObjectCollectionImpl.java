@@ -206,6 +206,9 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#addModelElement(org.eclipse.emf.ecore.EObject)
 	 */
 	public void addModelElement(EObject eObject) {
+		if (ModelUtil.isIgnoredDatatype2(eObject)) {
+			return;
+		}
 		getModelElements().add(eObject);
 	}
 
@@ -677,7 +680,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 
 			if (childId == null) {
 				// if not, create a new ID
-				childId = getNewModelElementID(modelElement).getId();
+				childId = getNewModelElementID(child).getId();
 			} else {
 				removableIds.add(childId);
 			}
@@ -866,11 +869,13 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 			return modelElementId.toInternalAPI();
 		}
 
-		final String materializedModelElementId = createMaterializedModelElementID(eObject);
-		if (materializedModelElementId != null && isCacheInitialized()) {
-			final ModelElementId modelElementId = ModelFactory.eINSTANCE.createModelElementId();
-			modelElementId.setId(materializedModelElementId);
-			return modelElementId;
+		if (isCacheInitialized()) {
+			final String materializedModelElementId = createMaterializedModelElementID(eObject);
+			if (materializedModelElementId != null) {
+				final ModelElementId modelElementId = ModelFactory.eINSTANCE.createModelElementId();
+				modelElementId.setId(materializedModelElementId);
+				return modelElementId;
+			}
 		}
 
 		// else create it via ModelFactory

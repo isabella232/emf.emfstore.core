@@ -78,6 +78,17 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 				return;
 			}
 
+			boolean isModelElementMaterialized = false;
+			final ESMaterializedModelElementIdGenerator<ModelElementId> materializedElementIdGenerator = getMaterializedElementIdGenerator();
+			if (materializedElementIdGenerator != null) {
+				isModelElementMaterialized = materializedElementIdGenerator.skip(getModelElementId().getId(),
+					collection);
+			}
+
+			if (isModelElementMaterialized) {
+				return;
+			}
+
 			final EObject localModelElement = collection.getModelElement(getModelElementId());
 			final List<EObject> allContainedModelElements = ModelUtil
 				.getAllContainedModelElementsAsList(localModelElement, false);

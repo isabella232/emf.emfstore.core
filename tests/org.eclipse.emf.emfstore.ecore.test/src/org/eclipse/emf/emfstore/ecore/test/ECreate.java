@@ -88,7 +88,7 @@ public final class ECreate {
 
 	/**
 	 * Create a boolean {@link EDataType}.
-	 * 
+	 *
 	 * @return a boolean data type
 	 */
 	public static EDataType eBooleanType() {
@@ -97,7 +97,7 @@ public final class ECreate {
 
 	/**
 	 * Create a string {@link EDataType}.
-	 * 
+	 *
 	 * @return the string data type
 	 */
 	public static EDataType eStringType() {
@@ -106,7 +106,7 @@ public final class ECreate {
 
 	/**
 	 * Create an {@link EEnum} with the given name.
-	 * 
+	 *
 	 * @param name the name of the enum
 	 * @return the created enum
 	 */
@@ -118,7 +118,7 @@ public final class ECreate {
 
 	/**
 	 * Create a {@link EEnumLiteral} with the given name and value.
-	 * 
+	 *
 	 * @param name the name of the literal
 	 * @param value the value of the literal
 	 * @return the created literal
@@ -128,5 +128,12 @@ public final class ECreate {
 		literal.setName(name);
 		literal.setValue(value);
 		return literal;
+	}
+
+	/**
+	 * Returns an {@link java.util.Date}.
+	 */
+	public static EDataType eDateType() {
+		return EcorePackage.eINSTANCE.getEDate();
 	}
 }

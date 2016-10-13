@@ -486,6 +486,10 @@ public final class ModelUtil {
 			}
 		}
 
+		if (eObject == null) {
+			return false;
+		}
+
 		return ignoredDataTypes.contains(eObject.eClass().getInstanceClassName());
 	}
 
