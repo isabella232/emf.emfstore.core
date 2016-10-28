@@ -5,7 +5,6 @@
    <extension-point id="ignoreDatatype" name="Ignore Datatype" schema="schema/ignoreDatatype.exsd"/>
    <extension-point id="singletonIdResolver" name="Singleton ID Resolver" schema="schema/singletonIdResolver.exsd"/>
    <extension-point id="serializationOptions" name="Serialization Options" schema="schema/serializationOptions.exsd"/>
-   <extension-point id="materializedModelElementIdGenerator" name="Materialized Model Element ID Generator" schema="schema/materializedModelElementIdGenerator.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package

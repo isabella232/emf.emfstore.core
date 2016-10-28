@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionElement;
 import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
-import org.eclipse.emf.emfstore.common.model.ESMaterializedModelElementIdGenerator;
 import org.eclipse.emf.emfstore.common.model.ESModelElementIdGenerator;
 import org.eclipse.emf.emfstore.internal.common.ESDisposable;
 import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
@@ -83,11 +82,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	private ESModelElementIdGenerator<ModelElementId> modelElementIdGenerator;
 
 	/**
-	 * A {@link ESModelElementIdGenerator} for other plugins to register a special ID generation.
-	 */
-	private ESMaterializedModelElementIdGenerator<ModelElementId> materializedModelElementIdGenerator;
-
-	/**
 	 * Constructor.
 	 */
 	public IdEObjectCollectionImpl() {
@@ -98,7 +92,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		allocatedIdToEObjectMap = new LinkedHashMap<String, EObject>();
 
 		initModelElementIdGenerator();
-		initMaterializedElementIdGenerator();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -110,18 +103,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 			modelElementIdGenerator = element.getClass(
 				MODELELEMENTID_GENERATOR_CLASS_ATTRIBUTE,
 				ESModelElementIdGenerator.class);
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private void initMaterializedElementIdGenerator() {
-		final ESExtensionElement element = new ESExtensionPoint(MATERIALIZED_MODELELEMENTID_GENERATOR_EXTENSIONPOINT)
-			.getElementWithHighestPriority();
-
-		if (element != null) {
-			materializedModelElementIdGenerator = element.getClass(
-				MODELELEMENTID_GENERATOR_CLASS_ATTRIBUTE,
-				ESMaterializedModelElementIdGenerator.class);
 		}
 	}
 
@@ -154,11 +135,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 			final EObject eObject = it.next();
 
 			final String id = xmiResource.getID(eObject);
-
-			if (id == null && ModelUtil.isIgnoredDatatype2(eObject)) {
-				continue;
-			}
-
 			final ModelElementId eObjectId = getNewModelElementID(eObject);
 
 			if (id != null) {
@@ -206,9 +182,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#addModelElement(org.eclipse.emf.ecore.EObject)
 	 */
 	public void addModelElement(EObject eObject) {
-		if (ModelUtil.isIgnoredDatatype2(eObject)) {
-			return;
-		}
 		getModelElements().add(eObject);
 	}
 
@@ -869,26 +842,8 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 			return modelElementId.toInternalAPI();
 		}
 
-		if (isCacheInitialized()) {
-			final String materializedModelElementId = createMaterializedModelElementID(eObject);
-			if (materializedModelElementId != null) {
-				final ModelElementId modelElementId = ModelFactory.eINSTANCE.createModelElementId();
-				modelElementId.setId(materializedModelElementId);
-				return modelElementId;
-			}
-		}
-
 		// else create it via ModelFactory
 		return ModelFactory.eINSTANCE.createModelElementId();
-	}
-
-	private String createMaterializedModelElementID(EObject eObject) {
-		// if there is registered modelElementIdGenerator, use it
-		if (materializedModelElementIdGenerator != null) {
-			return materializedModelElementIdGenerator.generateModelElementId(eObject, this);
-		}
-
-		return null;
 	}
 
 	/**

@@ -293,12 +293,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.emf.emfstore.ecore"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.eclipse.emf.emfstore.migration"
          download-size="0"
          install-size="0"

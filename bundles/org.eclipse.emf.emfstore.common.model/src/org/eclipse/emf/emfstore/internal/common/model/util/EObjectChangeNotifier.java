@@ -85,7 +85,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 		final Notification currentNotification = currentNotifications.peek();
 
 		if (currentNotification != null && !currentNotification.isTouch() && !isInitializing
-			&& notifier instanceof EObject && !ModelUtil.isIgnoredDatatype((EObject) notifier)) {
+			&& notifier instanceof EObject) {
 			final EObject modelElement = (EObject) notifier;
 			if (!collection.contains(modelElement) && isInCollectionHierarchy(modelElement)) {
 				collection.modelElementAdded(collection, modelElement);

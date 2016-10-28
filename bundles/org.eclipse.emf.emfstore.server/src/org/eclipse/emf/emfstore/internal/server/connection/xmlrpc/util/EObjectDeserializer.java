@@ -99,7 +99,7 @@ public class EObjectDeserializer extends ByteArrayParser {
 
 			for (final EObject modelElement : collection.getAllModelElements()) {
 				String modelElementId = res.getID(modelElement);
-				if (ModelUtil.isIgnoredDatatype2(modelElement) && modelElementId == null) {
+				if (modelElementId == null) {
 					// create random ID for generic types, won't get serialized
 					// anyway
 					modelElementId = ModelFactory.eINSTANCE.createModelElementId().getId();

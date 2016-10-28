@@ -354,7 +354,7 @@ public class SingleReferenceOperationImpl extends ReferenceOperationImpl impleme
 		EObject oldModelElementValue = getModelElement(project, getOldValue());
 		final EObject newModelElementValue = getModelElement(project, getNewValue());
 
-		if (modelElement == null || ModelUtil.isIgnoredDatatype2(newModelElementValue)) {
+		if (modelElement == null) {
 			// silently fail
 			return;
 		}

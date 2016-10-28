@@ -89,8 +89,6 @@ public final class ModelUtil {
 
 	private static final String SINGLETON_ID_RESOLVER_EXT_POINT_ID = "org.eclipse.emf.emfstore.common.model.singletonIdResolver"; //$NON-NLS-1$
 
-	private static final String IGNORED_DATATYPE_EXT_POINT_ID = "org.eclipse.emf.emfstore.common.model.ignoreDatatype"; //$NON-NLS-1$
-
 	/**
 	 * Constant that may be used in case no checksum computation has taken place.
 	 */
@@ -119,11 +117,6 @@ public final class ModelUtil {
 			ModelUtil.logError(msg);
 		}
 	};
-
-	/**
-	 * Contains the canonical names of classes which will be ignored.
-	 */
-	private static Set<String> ignoredDataTypes;
 
 	/**
 	 * Contains all ID resolvers for singleton datatypes.
@@ -421,7 +414,7 @@ public final class ModelUtil {
 
 		for (final EObject modelElement : copiedCollection.getAllModelElements()) {
 			final ModelElementId modelElementId = copiedCollection.getModelElementId(modelElement);
-			if (modelElementId == null && isIgnoredDatatype2(modelElement)) {
+			if (modelElementId == null) {
 				continue;
 			}
 			res.setID(modelElement, modelElementId.getId());
@@ -430,7 +423,7 @@ public final class ModelUtil {
 		for (final EObject modelElement : ((Project) copiedCollection).getCutElements()) {
 			final ModelElementId modelElementId = ((IdEObjectCollectionImpl) copiedCollection)
 				.getModelElementId(modelElement);
-			if (modelElementId == null && isIgnoredDatatype2(modelElement)) {
+			if (modelElementId == null) {
 				continue;
 			}
 			res.setID(modelElement, modelElementId.getId());
@@ -444,53 +437,6 @@ public final class ModelUtil {
 		final IdEObjectCollection copiedCollection = copyIdEObjectCollection(collection, res);
 		final EObject copiedEObject = copiedCollection.getModelElement(collection.getModelElementId(object));
 		return copiedEObject;
-	}
-
-	/**
-	 * Determines whether the type of an EObject is an ignored one.
-	 *
-	 * @param eObject
-	 *            the EObject which is to be checked
-	 * @return true, if the EObject will be ignored, false otherwise
-	 */
-	public static synchronized boolean isIgnoredDatatype(EObject eObject) {
-
-		return false;
-
-		// if (ignoredDataTypes == null) {
-		// ignoredDataTypes = new LinkedHashSet<String>();
-		// for (final ESExtensionElement element : new ESExtensionPoint(
-		// IGNORED_DATATYPE_EXT_POINT_ID,
-		// true).getExtensionElements()) {
-		// try {
-		// ignoredDataTypes.add(element.getAttribute("type")); //$NON-NLS-1$
-		// } catch (final ESExtensionPointException e) {
-		// }
-		// }
-		// }
-		//
-		// return ignoredDataTypes.contains(eObject.eClass().getInstanceClassName());
-	}
-
-	public static synchronized boolean isIgnoredDatatype2(EObject eObject) {
-
-		if (ignoredDataTypes == null) {
-			ignoredDataTypes = new LinkedHashSet<String>();
-			for (final ESExtensionElement element : new ESExtensionPoint(
-				IGNORED_DATATYPE_EXT_POINT_ID,
-				true).getExtensionElements()) {
-				try {
-					ignoredDataTypes.add(element.getAttribute("type")); //$NON-NLS-1$
-				} catch (final ESExtensionPointException e) {
-				}
-			}
-		}
-
-		if (eObject == null) {
-			return false;
-		}
-
-		return ignoredDataTypes.contains(eObject.eClass().getInstanceClassName());
 	}
 
 	/**
@@ -1410,8 +1356,7 @@ public final class ModelUtil {
 			return false;
 		}
 
-		return !ModelUtil.isSingleton(referencedElement) && !ModelUtil.isIgnoredDatatype(referencedElement)
-			&& !allModelElements.contains(referencedElement);
+		return !ModelUtil.isSingleton(referencedElement) && !allModelElements.contains(referencedElement);
 	}
 
 	/**

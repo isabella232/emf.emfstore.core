@@ -44,10 +44,6 @@
          id="org.eclipse.emf.emfstore.license.feature"
          version="0.0.0"/>
 
-   <includes
-         id="org.eclipse.emf.emfstore.ecore.feature"
-         version="0.0.0"/>
-
    <plugin
          id="org.eclipse.emf.emfstore.client.source"
          download-size="0"
@@ -127,13 +123,6 @@
 
    <plugin
          id="org.eclipse.emf.emfstore.server.model.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.emfstore.ecore.source"
          download-size="0"
          install-size="0"
          version="0.0.0"

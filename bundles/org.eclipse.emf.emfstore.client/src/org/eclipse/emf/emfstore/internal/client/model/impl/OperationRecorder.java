@@ -403,29 +403,16 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		allContainedModelElements.add(element);
 
 		final Copier copier = new Copier(true, false);
-		EObject copiedElement = copier.copy(element);
+		final EObject copiedElement = copier.copy(element);
 		copier.copyReferences();
 
-		List<EObject> copiedAllContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
+		final List<EObject> copiedAllContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
 			copiedElement,
 			false);
 		copiedAllContainedModelElements.add(copiedElement);
 
-		if (allContainedModelElements.size() != copiedAllContainedModelElements.size()) {
-			copiedElement = EcoreUtil.copy(element);
-			copiedAllContainedModelElements = ModelUtil.getAllContainedModelElementsAsList(
-				copiedElement,
-				false);
-			copiedAllContainedModelElements.add(copiedElement);
-
-		}
-
 		for (int i = 0; i < allContainedModelElements.size(); i++) {
 			final EObject child = allContainedModelElements.get(i);
-
-			if (ModelUtil.isIgnoredDatatype(child)) {
-				continue;
-			}
 
 			final EObject copiedChild = copiedAllContainedModelElements.get(i);
 			final ModelElementId childId = collection.getModelElementId(child);

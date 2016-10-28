@@ -140,7 +140,7 @@ public class EObjectSerializer extends TypeSerializerImpl {
 		final IdEObjectCollection collection = (IdEObjectCollection) eObject;
 		for (final EObject element : collection.getAllModelElements()) {
 			final ModelElementId elementId = collection.getModelElementId(element);
-			if (elementId == null && ModelUtil.isIgnoredDatatype2(element)) {
+			if (elementId == null) {
 				continue;
 			}
 			resource.setID(element, elementId.getId());
