@@ -22,10 +22,17 @@ import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
 import org.eclipse.emf.emfstore.internal.server.connection.ServerKeyStoreManager;
+import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolFactory;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
+
+import com.google.common.base.Optional;
 
 /**
  * Verifies user name/password using LDAP.
@@ -42,6 +49,7 @@ public class LDAPUserVerifier extends UserVerifier {
 	private static final String DEFAULT_CTX = "com.sun.jndi.ldap.LdapCtxFactory"; //$NON-NLS-1$
 	private final String authUser;
 	private final String authPassword;
+	private final ESOrgUnitProvider orgUnitProvider;
 
 	/**
 	 * Default constructor.
@@ -59,6 +67,7 @@ public class LDAPUserVerifier extends UserVerifier {
 	public LDAPUserVerifier(ESOrgUnitProvider orgUnitProvider,
 		String ldapUrl, String ldapBase, String searchDn, String authUser, String authPassword) {
 		super(orgUnitProvider);
+		this.orgUnitProvider = orgUnitProvider;
 		this.ldapUrl = ldapUrl;
 		this.ldapBase = ldapBase;
 		this.searchDn = searchDn;
@@ -198,6 +207,33 @@ public class LDAPUserVerifier extends UserVerifier {
 	 */
 	public void init(ESOrgUnitProvider orgUnitProvider) {
 
+	}
+
+	@Override
+	protected ACUser findUser(String username) throws AccessControlException {
+		final Boolean ignoreCase = Boolean.parseBoolean(ServerConfiguration.getProperties().getProperty(
+			ServerConfiguration.AUTHENTICATION_MATCH_USERS_IGNORE_CASE, Boolean.FALSE.toString()));
+
+		final Boolean createAuthenticatedUsers = Boolean.parseBoolean(ServerConfiguration.getProperties().getProperty(
+			ServerConfiguration.AUTHENTICATION_CREATE_AUTHENTICATED_USERS, Boolean.FALSE.toString()));
+
+		synchronized (MonitorProvider.getInstance().getMonitor()) {
+			final Optional<ACUser> user = findExistingUser(orgUnitProvider, username, ignoreCase);
+
+			if (user.isPresent()) {
+				return user.get();
+			}
+
+			if (createAuthenticatedUsers) {
+				final ACUser acUser = AccesscontrolFactory.eINSTANCE.createACUser();
+				acUser.setName(username);
+				acUser.setDescription(StringUtils.EMPTY);
+				orgUnitProvider.addUser(acUser.toAPI());
+				return acUser;
+			}
+
+			throw new AccessControlException();
+		}
 	}
 
 }
