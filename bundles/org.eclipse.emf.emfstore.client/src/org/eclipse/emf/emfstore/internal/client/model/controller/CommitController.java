@@ -136,6 +136,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().worked(10);
 		getProgressMonitor().subTask(Messages.CommitController_GatheringChanges);
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Gathering changes...", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
 
 		final AbstractChangePackage localChangePackage = getProjectSpace().getLocalChangePackage();
 
@@ -147,7 +149,12 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), localChangePackage);
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Gathering changes... done", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
+
 		getProgressMonitor().subTask(Messages.CommitController_PresentingChanges);
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Presenting changes...", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
 		if (!callback.inspectChanges(getProjectSpace().toAPI(),
 			localChangePackage.toAPI(),
 			idToEObjectMapping.toAPI())
@@ -157,6 +164,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 			return getProjectSpace().getBaseVersion();
 		}
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Presenting changes... done", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
 
 		getProgressMonitor().subTask(Messages.CommitController_SendingFilesToServer);
 		// TODO reimplement with ObserverBus and think about subtasks for commit

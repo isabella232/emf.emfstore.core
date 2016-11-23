@@ -376,6 +376,11 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final ACUser user = (ACUser) ESUserImpl.class.cast(copyAndResolveUser).toInternalAPI();
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 
+		final ProjectHistory projectHistory = getSubInterface(ProjectSubInterfaceImpl.class).getProject(projectId);
+		ModelUtil.logProjectDetails("Creating version on server...", user.getName(), projectHistory.getProjectName(), //$NON-NLS-1$
+			projectHistory.getProjectId().getId(), targetBranch != null ? targetBranch.getBranch() : null,
+			baseVersionSpec.getIdentifier());
+
 		if (FileBasedChangePackage.class.isInstance(changePackage)
 			&& !ServerConfiguration.useFileBasedChangePackageOnServer()) {
 			// File-based change package should never arrive here in production mode
@@ -386,8 +391,14 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			throw new ESException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageExpected);
 		}
 
-		return internalCreateVersion(projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion,
-			logMessage, user);
+		final PrimaryVersionSpec result = internalCreateVersion(projectId, baseVersionSpec, changePackage, targetBranch,
+			sourceVersion, logMessage, user);
+
+		ModelUtil.logProjectDetails("Creating version on server... done", user.getName(), //$NON-NLS-1$
+			projectHistory.getProjectName(), projectHistory.getProjectId().getId(), targetBranch != null ? targetBranch.getBranch() : null,
+			baseVersionSpec.getIdentifier());
+
+		return result;
 	}
 
 	private PrimaryVersionSpec internalCreateVersion(ProjectId projectId, PrimaryVersionSpec baseVersionSpec,
