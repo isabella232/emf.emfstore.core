@@ -193,6 +193,16 @@ public final class ServerConfiguration {
 	public static final String SUPER_USER_PASSWORD = "emfstore.accesscontrol.authentication.superuser.password"; //$NON-NLS-1$
 
 	/**
+	 * Property for the super user's password hash.
+	 */
+	public static final String SUPER_USER_PASSWORD_HASH = "emfstore.accesscontrol.authentication.superuser.password.hash"; //$NON-NLS-1$
+
+	/**
+	 * Property for the super user's password salt.
+	 */
+	public static final String SUPER_USER_PASSWORD_SALT = "emfstore.accesscontrol.authentication.superuser.password.salt"; //$NON-NLS-1$
+
+	/**
 	 * Default super user password.
 	 */
 	public static final String SUPER_USER_PASSWORD_DEFAULT = "super"; //$NON-NLS-1$
@@ -379,6 +389,8 @@ public final class ServerConfiguration {
 	private static Boolean isChecksumComputationOnCommitActive;
 	private static Optional<Integer> changePackageFragmentSize;
 	private static Boolean useFileBasedChangePackageOnServer;
+
+	private static boolean migrateUserPasswords;
 
 	/**
 	 * Return the server home directory location.
@@ -709,5 +721,22 @@ public final class ServerConfiguration {
 
 	public static void addPostStartupListener(PostStartupListener listener) {
 		POST_STARTUP_LISTENERS.add(listener);
+	}
+
+	/**
+	 * Sets {@link #isUserPasswordMigrationRequired()} to <code>true</code>.
+	 */
+	static void initUserVerifierMigration() {
+		ServerConfiguration.migrateUserPasswords = true;
+	}
+
+	/**
+	 *
+	 * @return <code>true</code> if the super user password was migrated from clear text to hashed property. In this
+	 *         case user verifiers should hash their user password as well. <code>false</code> if no migration is
+	 *         needed.
+	 */
+	public static boolean isUserPasswordMigrationRequired() {
+		return ServerConfiguration.migrateUserPasswords;
 	}
 }

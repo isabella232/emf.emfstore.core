@@ -11,9 +11,18 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers;
 
+import java.io.IOException;
+import java.util.Set;
+
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.emfstore.internal.common.APIUtil;
+import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
+import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator.ESHashAndSalt;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
 /**
@@ -30,6 +39,28 @@ public class EMFModelUserVerifier extends UserVerifier {
 	 */
 	public EMFModelUserVerifier(ESOrgUnitProvider orgUnitProvider) {
 		super(orgUnitProvider);
+		migrateToHashedPasswordIfNeeded(orgUnitProvider);
+
+	}
+
+	private void migrateToHashedPasswordIfNeeded(ESOrgUnitProvider orgUnitProvider) {
+		if (!ServerConfiguration.isUserPasswordMigrationRequired()) {
+			return;
+		}
+		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+		final Set<ACUser> users = APIUtil.toInternal(orgUnitProvider.getUsers());
+		for (final ACUser user : users) {
+			if (user.getPassword() == null) {
+				continue;
+			}
+			final ESHashAndSalt hashAndSalt = passwordHashGenerator.hashPassword(user.getPassword());
+			user.setPassword(hashAndSalt.getHash() + ESHashAndSalt.SEPARATOR + hashAndSalt.getSalt());
+		}
+		try {
+			orgUnitProvider.save();
+		} catch (final IOException ex) {
+			ModelUtil.logException("Migration of user passwords failed", ex); //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -59,7 +90,12 @@ public class EMFModelUserVerifier extends UserVerifier {
 			return false;
 		}
 
-		return userPassword.equals(password);
+		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+		final int separatorIndex = userPassword.indexOf(ESHashAndSalt.SEPARATOR);
+		final String hash = userPassword.substring(0, separatorIndex);
+		final String salt = userPassword.substring(separatorIndex + 1);
+		return passwordHashGenerator.verifyPassword(password, hash, salt);
+
 	}
 
 	/**

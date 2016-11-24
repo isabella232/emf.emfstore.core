@@ -48,6 +48,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator.ESHashAndSalt;
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESGroup;
@@ -783,7 +785,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		final ACUser user = (ACUser) getOrgUnit(userId);
 		user.setName(name);
-		user.setPassword(password);
+		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+		final ESHashAndSalt hashAndSalt = passwordHashGenerator.hashPassword(password);
+		user.setPassword(hashAndSalt.getHash() + ESHashAndSalt.SEPARATOR + hashAndSalt.getSalt());
 		save();
 	}
 
