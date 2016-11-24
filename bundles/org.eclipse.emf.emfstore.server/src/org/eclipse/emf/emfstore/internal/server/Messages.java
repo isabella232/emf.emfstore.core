@@ -34,11 +34,16 @@ public final class Messages extends NLS {
 	public static String EMFStoreController_Default_Properties_File_Copied;
 	public static String EMFStoreController_Dynamic_Model_Loaded;
 	public static String EMFStoreController_EMFStore_Controller_Already_Running;
+	public static String EMFStoreController_EnterSuperUserPasswordAgain;
 	public static String EMFStoreController_Error_During_Migration;
 	public static String EMFStoreController_Failed_To_Copy_Keystore;
 	public static String EMFStoreController_Init_Complete;
 	public static String EMFStoreController_JVM_Max_Memory;
 	public static String EMFStoreController_Keystore_Copied;
+	public static String EMFStoreController_NoSuperUserPasswordPrompt;
+	public static String EMFStoreController_PasswordDidNotMatch;
+	public static String EMFStoreController_PasswordHashFailFileNotFound;
+	public static String EMFStoreController_PasswordHashFailIOException;
 	public static String EMFStoreController_Property_Init_Failed;
 	public static String EMFStoreController_PropertyFile_Read;
 	public static String EMFStoreController_Serve_Forcefully_Stopped;

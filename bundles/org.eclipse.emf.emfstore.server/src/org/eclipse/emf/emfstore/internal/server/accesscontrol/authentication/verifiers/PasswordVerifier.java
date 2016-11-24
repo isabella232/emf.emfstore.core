@@ -13,12 +13,14 @@
 package org.eclipse.emf.emfstore.internal.server.accesscontrol.authentication.verifiers;
 
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.connection.ServerKeyStoreManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ClientVersionOutOfDateException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.ServerKeyStoreException;
 import org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator;
 import org.eclipse.emf.emfstore.server.auth.ESUserVerifier;
 import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 
@@ -30,7 +32,8 @@ import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
 public abstract class PasswordVerifier implements ESUserVerifier {
 
 	private final String superuser;
-	private final String superuserpw;
+	private final String hash;
+	private final String salt;
 
 	/**
 	 * Default constructor.
@@ -38,8 +41,8 @@ public abstract class PasswordVerifier implements ESUserVerifier {
 	public PasswordVerifier() {
 		superuser = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER,
 			ServerConfiguration.SUPER_USER_DEFAULT);
-		superuserpw = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER_PASSWORD,
-			ServerConfiguration.SUPER_USER_PASSWORD_DEFAULT);
+		hash = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER_PASSWORD_HASH);
+		salt = ServerConfiguration.getProperties().getProperty(ServerConfiguration.SUPER_USER_PASSWORD_SALT);
 	}
 
 	/**
@@ -75,7 +78,11 @@ public abstract class PasswordVerifier implements ESUserVerifier {
 	 * @return true if super user
 	 */
 	protected boolean verifySuperUser(String username, String password) {
-		return username.equals(superuser) && password.equals(superuserpw);
+		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+		if (hash == null && salt == null) {
+			return username.equals(superuser) && ServerConfiguration.SUPER_USER_PASSWORD_DEFAULT.equals(password);
+		}
+		return username.equals(superuser) && passwordHashGenerator.verifyPassword(password, hash, salt);
 	}
 
 	/**
