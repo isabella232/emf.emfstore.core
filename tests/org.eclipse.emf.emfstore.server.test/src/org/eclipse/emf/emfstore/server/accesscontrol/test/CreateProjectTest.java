@@ -44,7 +44,12 @@ public class CreateProjectTest extends ProjectAdminTest {
 
 	@Test(expected = AccessControlException.class)
 	public void shareProjectNotPA() throws ESException {
-		ProjectUtil.share(getUsersession(), getLocalProject());
+		try {
+			ProjectUtil.share(getUsersession(), getLocalProject());
+		} catch (final ESException ex) {
+			assertTrue(getServerMock().getServerSpace().getProjects().isEmpty());
+			throw ex;
+		}
 	}
 
 	@Test

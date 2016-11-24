@@ -167,6 +167,7 @@ public class EMFStoreImpl extends AbstractEmfstoreInterface implements Invocatio
 	 */
 	public Object invoke(Object obj, final Method method, final Object[] args) throws ESException {
 		final ESMethodInvocation methodInvocation = new ESMethodInvocation(method.getName(), args);
+		getAccessControl().getAuthorizationService().checkAccess(methodInvocation);
 
 		final Object[] adjustedArgs = adjustParameters(args);
 
