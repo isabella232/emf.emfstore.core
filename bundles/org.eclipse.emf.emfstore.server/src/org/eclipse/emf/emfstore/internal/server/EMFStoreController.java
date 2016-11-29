@@ -54,6 +54,7 @@ import org.eclipse.emf.emfstore.internal.server.core.helper.EPackageHelper;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
+import org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
@@ -184,12 +185,25 @@ public class EMFStoreController implements IApplication, Runnable {
 		handlePostStartupListener();
 		registerShutdownHook();
 
+		if (ServerConfiguration.isUserPasswordMigrationRequired()) {
+			performDummyLogin();
+		}
+
 		ModelUtil.logInfo(Messages.EMFStoreController_Init_Complete);
 		ModelUtil.logInfo(Messages.EMFStoreController_Server_Running);
 		if (waitForTermination) {
 			waitForTermination();
 		}
 
+	}
+
+	/**
+	 * Verify a dummy user in order to trigger an eager startup of the user verifiers.
+	 */
+	private void performDummyLogin() {
+		final ClientVersionInfo clientVersionInfo = ModelFactory.eINSTANCE.createClientVersionInfo();
+		clientVersionInfo.setVersion("1.0.0."); //$NON-NLS-1$ // actual version is unimportant
+		getAccessControl().getLoginService().verifyUser("", "", clientVersionInfo.toAPI()); //$NON-NLS-1$//$NON-NLS-2$
 	}
 
 	private void registerShutdownHook() {
