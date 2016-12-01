@@ -146,6 +146,8 @@ public interface EMFStore extends EMFStoreInterface {
 	 *
 	 * @param sessionId
 	 *            the {@link SessionId} for authentication purposes
+	 * @param projectId
+	 *            the {@link ProjectId} for access control purposes
 	 * @param proxyId
 	 *            the ID of the change package proxy that is used to identify available fragments
 	 * @param fragmentIndex
@@ -153,8 +155,9 @@ public interface EMFStore extends EMFStoreInterface {
 	 * @return a {@link ChangePackageEnvelope} containing the requested change package fragment
 	 * @throws ESException in case the fragment could not be fetched
 	 */
-	ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
-		throws ESException;
+	ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, ProjectId projectId, String proxyId,
+		int fragmentIndex)
+			throws ESException;
 
 	/**
 	 * Resolve a version specified to a primary version specifier.
@@ -192,7 +195,7 @@ public interface EMFStore extends EMFStoreInterface {
 	 */
 	List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
 		VersionSpec target)
-		throws ESException;
+			throws ESException;
 
 	/**
 	 * Lista all branches of the given project.

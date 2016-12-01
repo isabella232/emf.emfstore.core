@@ -153,7 +153,7 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
 		FileTransferInformation fileInformation)
-		throws ESException {
+			throws ESException {
 		try {
 			return getEmfStore().downloadFileChunk(sessionId, projectId, fileInformation);
 		} catch (final FileNotOnServerException ex) {
@@ -308,15 +308,16 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	}
 
 	/**
-	 *
+	 * 
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
-	 *      java.lang.String, int)
+	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.lang.String, int)
 	 */
-	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
-		throws ESException {
-		return getEmfStore().downloadChangePackageFragment(sessionId, proxyId, fragmentIndex);
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, ProjectId projectId, String proxyId,
+		int fragmentIndex)
+			throws ESException {
+		return getEmfStore().downloadChangePackageFragment(sessionId, projectId, proxyId, fragmentIndex);
 	}
 
 }

@@ -26,6 +26,7 @@ public final class Messages extends NLS {
 	public static String XmlRpcClientManager_DownloadOfFragmentFailed;
 	public static String XmlRpcClientManager_UploadChangePackageFragmentCallFailed;
 	public static String XmlRpcClientManager_Malformed_URL_Or_Port;
+	public static String XmlRpcClientManager_NoValidProjectId;
 	public static String XmlRpcClientManager_NoValidSessionAndOrProjectId;
 	public static String XmlRpcClientManager_NoValidSessionId;
 	public static String XmlRpcClientManager_SaveChangePackageFailed;

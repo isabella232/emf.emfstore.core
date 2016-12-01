@@ -182,7 +182,10 @@ public class XmlRpcClientManager {
 
 		try {
 			final T result = (T) client.execute(serverInterface + "." + methodName, adjustedParams); //$NON-NLS-1$
-			return adjustResult(ESCollections.find(params, SessionId.class), result);
+			return adjustResult(
+				ESCollections.find(params, SessionId.class),
+				ESCollections.find(params, ProjectId.class),
+				result);
 
 		} catch (final XmlRpcException e) {
 			if (e.getCause() instanceof ESException) {
@@ -225,31 +228,38 @@ public class XmlRpcClientManager {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private <T> T adjustResult(final Optional<SessionId> maybeSessionId, final T result) throws ESException {
+	private <T> T adjustResult(
+		final Optional<SessionId> maybeSessionId,
+		final Optional<ProjectId> maybeProjectId,
+		final T result) throws ESException {
 		if (result instanceof Object[]) {
 			final Object[] objects = (Object[]) result;
 			for (int i = 0; i < objects.length; i++) {
 				final Object item = objects[i];
-				objects[i] = adjustResult(maybeSessionId, item);
+				objects[i] = adjustResult(maybeSessionId, maybeProjectId, item);
 			}
 			return (T) objects;
 		} else if (result instanceof List) {
 			final List l = (List) result;
 			for (int i = 0; i < l.size(); i++) {
-				l.set(i, adjustResult(maybeSessionId, result));
+				l.set(i, adjustResult(maybeSessionId, maybeProjectId, result));
 			}
 		} else if (result instanceof ChangePackageProxy) {
-			return (T) downloadAndResolveChangePackage((ChangePackageProxy) result, maybeSessionId);
+			return (T) downloadAndResolveChangePackage((ChangePackageProxy) result, maybeSessionId, maybeProjectId);
 		}
 
 		return result;
 	}
 
 	private AbstractChangePackage downloadAndResolveChangePackage(final ChangePackageProxy proxy,
-		final Optional<SessionId> maybeSession) throws ESException {
+		final Optional<SessionId> maybeSession, Optional<ProjectId> maybeProjectId) throws ESException {
 
 		if (!maybeSession.isPresent()) {
 			throw new ESException(Messages.XmlRpcClientManager_NoValidSessionId);
+		}
+
+		if (!maybeProjectId.isPresent()) {
+			throw new ESException(Messages.XmlRpcClientManager_NoValidProjectId);
 		}
 
 		int fragmentIndex = 0;
@@ -265,6 +275,7 @@ public class XmlRpcClientManager {
 			do {
 				envelope = executeCall("downloadChangePackageFragment", ChangePackageEnvelope.class, new Object[] { //$NON-NLS-1$
 					maybeSession.get(),
+					maybeProjectId.get(),
 					proxy.getId(),
 					fragmentIndex
 				});

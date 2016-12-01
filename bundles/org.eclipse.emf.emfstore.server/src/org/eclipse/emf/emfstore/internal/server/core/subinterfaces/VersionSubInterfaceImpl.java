@@ -304,6 +304,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 *
 	 * @param sessionId
 	 *            the {@link SessionId} representing the requesting user
+	 * @param projectId the {@link ProjectId} of the associated Project
 	 * @param proxyId
 	 *            the ID that identifies the list of stored fragments
 	 * @param fragmentIndex
@@ -312,7 +313,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException in case the mandatory session adapter is missing
 	 */
 	@ESMethod(MethodId.DOWNLOADCHANGEPACKAGEFRAGMENT)
-	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, ProjectId projectId, String proxyId,
+		int fragmentIndex)
 		throws ESException {
 
 		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
@@ -396,7 +398,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			sourceVersion, logMessage, user);
 
 		ModelUtil.logProjectDetails("Creating version on server... done", user.getName(), //$NON-NLS-1$
-			projectHistory.getProjectName(), projectHistory.getProjectId().getId(), targetBranch != null ? targetBranch.getBranch() : null,
+			projectHistory.getProjectName(), projectHistory.getProjectId().getId(),
+			targetBranch != null ? targetBranch.getBranch() : null,
 			baseVersionSpec.getIdentifier());
 
 		return result;

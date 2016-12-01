@@ -329,17 +329,20 @@ public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcCli
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
-	 *      java.lang.String, int)
+	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.lang.String, int)
 	 */
-	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, ProjectId projectId, String proxyId,
+		int fragmentIndex)
 		throws ESException {
 		return getConnectionProxy(sessionId)
 			.callWithResult("downloadChangePackageFragment", //$NON-NLS-1$
 				ChangePackageEnvelope.class,
 				sessionId,
+				projectId,
 				proxyId,
 				fragmentIndex);
 	}

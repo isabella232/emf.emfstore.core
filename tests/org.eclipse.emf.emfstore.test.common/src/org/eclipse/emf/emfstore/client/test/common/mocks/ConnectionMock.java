@@ -337,18 +337,20 @@ public class ConnectionMock implements ConnectionManager {
 	}
 
 	/**
+	 *
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.EMFStore#downloadChangePackageFragment(org.eclipse.emf.emfstore.internal.server.model.SessionId,
-	 *      java.lang.String, int)
+	 *      org.eclipse.emf.emfstore.internal.server.model.ProjectId, java.lang.String, int)
 	 */
-	public ChangePackageEnvelope downloadChangePackageFragment(final SessionId sessionId, final String proxyId,
-		final int fragmentIndex)
+	public ChangePackageEnvelope downloadChangePackageFragment(final SessionId sessionId, ProjectId projectId,
+		final String proxyId, final int fragmentIndex)
 		throws ESException {
 		final SessionId clonedSessionId = checkSessionId(sessionId);
 		return ModelUtil.clone(
 			emfStore.downloadChangePackageFragment(
 				clonedSessionId,
+				projectId,
 				proxyId,
 				fragmentIndex));
 	}
