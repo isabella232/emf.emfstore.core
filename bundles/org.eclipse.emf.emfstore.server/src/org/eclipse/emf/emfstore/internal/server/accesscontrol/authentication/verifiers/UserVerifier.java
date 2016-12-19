@@ -64,14 +64,22 @@ public abstract class UserVerifier extends PasswordVerifier {
 
 		checkClientVersion(clientVersionInfo);
 		final String preparedPassword = preparePassword(password);
+		final String superUser = ServerConfiguration.getProperties()
+			.getProperty(ServerConfiguration.SUPER_USER, ServerConfiguration.SUPER_USER_DEFAULT);
 
-		if (verifySuperUser(username, preparedPassword) || verifyPassword(username, preparedPassword)) {
-			final AuthenticationInformation createAuthenticationInfo = createAuthenticationInfo();
-			createAuthenticationInfo.setResolvedACUser(ModelUtil.clone(findUser(username)));
-			return createAuthenticationInfo.toAPI();
+		if (verifySuperUser(username, preparedPassword)) {
+			return createAuthInfo(username);
+		} else if (!username.equals(superUser) && verifyPassword(username, preparedPassword)) {
+			return createAuthInfo(username);
 		}
 
 		throw new AccessControlException();
+	}
+
+	private ESAuthenticationInformation createAuthInfo(String username) throws AccessControlException {
+		final AuthenticationInformation createAuthenticationInfo = createAuthenticationInfo();
+		createAuthenticationInfo.setResolvedACUser(ModelUtil.clone(findUser(username)));
+		return createAuthenticationInfo.toAPI();
 	}
 
 	/**
