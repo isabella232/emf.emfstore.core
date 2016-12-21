@@ -11,20 +11,19 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.server.accesscontrol.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.emf.emfstore.client.test.common.cases.ESTestWithLoggedInUserMock;
-import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.server.ServerConfiguration;
-import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Assert that it is not possible to log in without password when auto-create authenticated users is set to true outside
+ * of LDAP auth.
+ */
 public class AutoCreateACUserTestTest extends ESTestWithLoggedInUserMock {
 
 	private static final String NOT_EXISTING_USER_NAME = "FOO_USER"; //$NON-NLS-1$
@@ -40,13 +39,9 @@ public class AutoCreateACUserTestTest extends ESTestWithLoggedInUserMock {
 		startEMFStoreWithAutoCreateProperty();
 	}
 
-	@Test
+	@Test(expected = ESException.class)
 	public void testAutoCreateACUser() throws ESException {
 		/* act */
 		getServer().login(NOT_EXISTING_USER_NAME, ""); //$NON-NLS-1$
-		/* assert */
-		final ACUser user = ServerUtil.getUser(getUsersession(), NOT_EXISTING_USER_NAME);
-		assertNotNull(user);
-		assertEquals(NOT_EXISTING_USER_NAME, user.getName());
 	}
 }
