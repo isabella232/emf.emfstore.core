@@ -22,6 +22,7 @@ import org.eclipse.emf.emfstore.internal.server.EMFStore;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.ShareProjectAdapter;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
+import org.eclipse.emf.emfstore.internal.server.exceptions.FileNotOnServerException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidVersionSpecException;
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FileChunk;
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FileTransferInformation;
@@ -152,8 +153,12 @@ public class XmlRpcEmfStoreImpl implements EMFStore {
 	 */
 	public FileChunk downloadFileChunk(SessionId sessionId, ProjectId projectId,
 		FileTransferInformation fileInformation)
-			throws ESException {
-		return getEmfStore().downloadFileChunk(sessionId, projectId, fileInformation);
+		throws ESException {
+		try {
+			return getEmfStore().downloadFileChunk(sessionId, projectId, fileInformation);
+		} catch (final FileNotOnServerException ex) {
+			return null;
+		}
 	}
 
 	/**

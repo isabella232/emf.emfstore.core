@@ -22,7 +22,6 @@ import org.eclipse.emf.emfstore.internal.server.core.AbstractEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.AbstractSubEmfstoreInterface;
 import org.eclipse.emf.emfstore.internal.server.core.MonitorProvider;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
-import org.eclipse.emf.emfstore.internal.server.exceptions.FileNotOnServerException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FileChunk;
@@ -86,7 +85,8 @@ public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		try {
 			file = findFile(fileInformation, projectId);
 		} catch (final FileNotFoundException e) {
-			throw new FileNotOnServerException(projectId, fileInformation.getFileIdentifier());
+			// throw new FileNotOnServerException(projectId, fileInformation.getFileIdentifier());
+			return null;
 		}
 
 		return FilePartitionerUtil.readChunk(file, fileInformation);
