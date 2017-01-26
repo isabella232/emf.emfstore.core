@@ -11,21 +11,13 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.server.model.versioning.operations.util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.LineIterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.emfstore.internal.common.model.util.FileUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -80,9 +72,11 @@ public final class ChangePackageUtil {
 	 *            the max number of operations a single fragment may consists of
 	 * @return an iterator for the created fragments
 	 */
-	public static Iterator<ChangePackageEnvelope> splitChangePackage(final FileBasedChangePackage changePackage,
+	public static Iterator<ChangePackageEnvelope> splitChangePackage(final AbstractChangePackage changePackage,
 		final int changePackageFragmentSize) {
+
 		return new ChangePackageSplittingIterator(changePackageFragmentSize, changePackage);
+
 	}
 
 	/**
@@ -173,100 +167,80 @@ public final class ChangePackageUtil {
 	 */
 	private static final class ChangePackageSplittingIterator implements Iterator<ChangePackageEnvelope> {
 		private final int changePackageFragmentSize;
-		private final FileBasedChangePackage changePackage;
+		private final AbstractChangePackage changePackage;
 		private int fragmentIndex;
 		private int count;
 		private ChangePackageEnvelope envelope;
-		private boolean isInitialized;
+		private Iterator<AbstractOperation> operationsIterator;
+		private ESCloseableIterable<AbstractOperation> operationsIterable;
 
-		ChangePackageSplittingIterator(int changePackageFragmentSize, FileBasedChangePackage changePackage) {
+		ChangePackageSplittingIterator(int changePackageFragmentSize, AbstractChangePackage changePackage) {
 			this.changePackageFragmentSize = changePackageFragmentSize;
 			this.changePackage = changePackage;
-			ModelUtil.logProjectDetails(
-				MessageFormat.format("Splitting change package {0}", changePackage.getFilePath()), null, null, null, //$NON-NLS-1$
-				null, -1);
+			if (FileBasedChangePackage.class.isInstance(changePackage)) {
+				ModelUtil.logProjectDetails(MessageFormat.format("Splitting change package {0}", //$NON-NLS-1$
+					FileBasedChangePackage.class.cast(changePackage).getFilePath()), null, null, null, null, -1);
+			}
+		}
+
+		private void init() {
+			int leafSizeCounter = 0;
+			// it is not necessary to close the operations iterable, because the iterator already does this
+			// in hasNext() if there are no more operations
+			final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
+			for (final AbstractOperation operation : operations.iterable()) {
+				final int countLeafOperations = countLeafOperations(operation);
+				leafSizeCounter += countLeafOperations;
+				if (leafSizeCounter < changePackageFragmentSize) {
+					continue;
+				}
+				leafSizeCounter = 0;
+				count += 1;
+			}
+			if (leafSizeCounter != 0 || count == 0) {
+				count += 1;
+			}
+			operationsIterable = changePackage.operations();
+			operationsIterator = operationsIterable.iterable().iterator();
 		}
 
 		public boolean hasNext() {
 
-			if (!isInitialized) {
+			if (operationsIterable == null) {
 				init();
 			}
 
 			if (envelope == null) {
 				envelope = VersioningFactory.eINSTANCE.createChangePackageEnvelope();
+				final ChangePackage cp = VersioningFactory.eINSTANCE.createChangePackage();
+				cp.setLogMessage(ModelUtil.clone(changePackage.getLogMessage()));
 				envelope.setFragmentCount(count);
 			}
 
-			final List<String> readLines = readLines(fragmentIndex * changePackageFragmentSize, changePackage,
-				changePackageFragmentSize);
-			envelope.getFragment().addAll(readLines);
+			while (countLeafOperations(envelope.getFragment()) < changePackageFragmentSize
+				&& operationsIterator.hasNext()) {
+
+				final AbstractOperation op = operationsIterator.next();
+				envelope.getFragment().add(ModelUtil.clone(op));
+			}
 
 			envelope.setFragmentIndex(fragmentIndex);
 
 			if (!envelope.getFragment().isEmpty() || fragmentIndex == 0) {
-				ModelUtil.logProjectDetails(MessageFormat.format("Fragment {1} for Change package {0} prepared", //$NON-NLS-1$
-					changePackage.getFilePath(), fragmentIndex), null, null, null, null, -1);
+				if (FileBasedChangePackage.class.isInstance(changePackage)) {
+					ModelUtil.logProjectDetails(
+						MessageFormat.format("Fragment {1} for Change package {0} prepared", //$NON-NLS-1$
+							FileBasedChangePackage.class.cast(changePackage).getFilePath(), fragmentIndex),
+						null, null, null, null, -1);
+				}
 				return true;
 			}
 
-			ModelUtil.logProjectDetails(
-				MessageFormat.format("No more change package fragments for {0}", changePackage.getFilePath()), null, //$NON-NLS-1$
-				null, null, null, -1);
+			if (FileBasedChangePackage.class.isInstance(changePackage)) {
+				ModelUtil.logProjectDetails(MessageFormat.format("No more change package fragments for {0}", //$NON-NLS-1$
+					FileBasedChangePackage.class.cast(changePackage).getFilePath()), null, null, null, null, -1);
+			}
 			return false;
-		}
-
-		private void init() {
-			LineNumberReader lineNumberReader = null;
-			try {
-				lineNumberReader = new LineNumberReader(new FileReader(new File(changePackage.getTempFilePath())));
-				lineNumberReader.skip(Long.MAX_VALUE);
-				final int lines = lineNumberReader.getLineNumber() + 1;
-				count = lines / changePackageFragmentSize;
-				if (lines % changePackageFragmentSize != 0) {
-					count += 1;
-				}
-			} catch (final FileNotFoundException ex) {
-				throw new IllegalStateException(ex);
-			} catch (final IOException ex) {
-				throw new IllegalStateException(ex);
-			} finally {
-				IOUtils.closeQuietly(lineNumberReader);
-			}
-			isInitialized = true;
-		}
-
-		private List<String> readLines(int from, final FileBasedChangePackage changePackage,
-			final int changePackageFragmentSize) {
-
-			int readLines = 0;
-			FileReader reader;
-			final List<String> lines = new ArrayList<String>();
-
-			try {
-				reader = new FileReader(new File(changePackage.getTempFilePath()));
-				final LineIterator lineIterator = new LineIterator(reader);
-				int read = 0;
-
-				while (read < from) {
-					if (!lineIterator.hasNext()) {
-						return lines;
-					}
-					lineIterator.next();
-					read += 1;
-				}
-
-				while (readLines < changePackageFragmentSize && lineIterator.hasNext()) {
-					final String nextLine = lineIterator.next();
-					readLines += 1;
-					lines.add(nextLine);
-				}
-
-			} catch (final FileNotFoundException ex) {
-				throw new IllegalStateException(ex);
-			}
-
-			return lines;
 		}
 
 		public ChangePackageEnvelope next() {
