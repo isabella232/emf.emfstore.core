@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.AbstractConnectionManager;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreClientUtil;
 import org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.XmlRpcConnectionHandler;
@@ -52,6 +53,8 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  */
 public class XmlRpcConnectionManager extends AbstractConnectionManager<XmlRpcClientManager> implements
 ConnectionManager {
+
+	private static final String LOGGING_PREFIX = "XMLRPC-Client"; //$NON-NLS-1$
 
 	/**
 	 * {@inheritDoc}
@@ -106,6 +109,7 @@ ConnectionManager {
 	public PrimaryVersionSpec createVersion(SessionId sessionId, ProjectId projectId,
 		PrimaryVersionSpec baseVersionSpec, AbstractChangePackage changePackage, BranchVersionSpec targetBranch,
 		PrimaryVersionSpec sourceVersion, LogMessage logMessage) throws ESException, InvalidVersionSpecException {
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Server call to create version", projectId, targetBranch); //$NON-NLS-1$
 		return getConnectionProxy(sessionId).callWithResult("createVersion", PrimaryVersionSpec.class, sessionId, //$NON-NLS-1$
 			projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion, logMessage);
 	}
@@ -140,6 +144,8 @@ ConnectionManager {
 	 */
 	public List<AbstractChangePackage> getChanges(SessionId sessionId, ProjectId projectId, VersionSpec source,
 		VersionSpec target) throws InvalidVersionSpecException, ESException {
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Server call to get changes", projectId, //$NON-NLS-1$
+			source == null ? null : source.getBranch());
 		return getConnectionProxy(sessionId).callWithListResult("getChanges", AbstractChangePackage.class, sessionId, //$NON-NLS-1$
 			projectId, source, target);
 	}

@@ -28,6 +28,7 @@ import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.exceptions.ChangeConflictException;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreClientUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.conflictDetection.ChangeConflictSet;
@@ -53,6 +54,8 @@ import com.google.common.collect.Lists;
  * @author emueller
  */
 public class UpdateController extends ServerCall<PrimaryVersionSpec> {
+
+	private static final String LOGGING_PREFIX = "UPDATE"; //$NON-NLS-1$
 
 	private final VersionSpec version;
 	private final ESUpdateCallback callback;
@@ -98,6 +101,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	 */
 	@Override
 	protected PrimaryVersionSpec run() throws ESException {
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Starting update", getProjectSpace(), version.getBranch(), //$NON-NLS-1$
+			getUsersession());
 		return doUpdate(version);
 	}
 
@@ -107,11 +112,15 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		getProgressMonitor().subTask(Messages.UpdateController_ResolvingNewVersion);
 		final PrimaryVersionSpec resolvedVersion = getProjectSpace().resolveVersionSpec(version, getProgressMonitor());
 		if (equalsBaseVersion(resolvedVersion)) {
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Update not required", getProjectSpace(), //$NON-NLS-1$
+				version.getBranch(), getUsersession());
 			return resolvedVersion;
 		}
 		getProgressMonitor().worked(5);
 
 		if (getProgressMonitor().isCanceled()) {
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Update cancelled", getProjectSpace(), //$NON-NLS-1$
+				version.getBranch(), getUsersession());
 			return getProjectSpace().getBaseVersion();
 		}
 
@@ -121,6 +130,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		checkAndRemoveDuplicateOperations(incomingChanges);
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Creating local change package", getProjectSpace(), //$NON-NLS-1$
+			version.getBranch(), getUsersession());
 		AbstractChangePackage copiedLocalChangedPackage = ChangePackageUtil.createChangePackage(
 			Configuration.getClientBehavior().useInMemoryChangePackage()
 			);
@@ -133,6 +144,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 		} finally {
 			operations.close();
 		}
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Creating local change package..done", getProjectSpace(), //$NON-NLS-1$
+			version.getBranch(), getUsersession());
 
 		// build a mapping including deleted and create model elements in local and incoming change packages
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
@@ -158,6 +171,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				getProjectSpace().toAPI(),
 				incomingAPIChangePackages,
 				idToEObjectMapping.toAPI())) {
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Update cancelled by user.", getProjectSpace(), //$NON-NLS-1$
+				version.getBranch(), getUsersession());
 
 			return getProjectSpace().getBaseVersion();
 		}
@@ -195,12 +210,16 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().subTask(Messages.UpdateController_ApplyingChanges);
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Applying local changes", getProjectSpace(), //$NON-NLS-1$
+			version.getBranch(), getUsersession());
 		getProjectSpace().applyChanges(
 			resolvedVersion,
 			incomingChanges,
 			copiedLocalChangedPackage,
 			getProgressMonitor(),
 			true);
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Applying local changes..done", getProjectSpace(), //$NON-NLS-1$
+			version.getBranch(), getUsersession());
 
 		final Date now = new Date();
 		getProjectSpace().setLastUpdated(now);
@@ -209,6 +228,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 			.notify(ESUpdateObserver.class, true)
 			.updateCompleted(getProjectSpace().toAPI(), getProgressMonitor());
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Update completed", getProjectSpace(), version.getBranch(), //$NON-NLS-1$
+			getUsersession());
 		return getProjectSpace().getBaseVersion();
 	}
 
@@ -237,10 +258,14 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 	}
 
 	private void checkAndRemoveDuplicateOperations(List<AbstractChangePackage> incomingChanges) {
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Check and remove duplicate operations..", //$NON-NLS-1$
+			getProjectSpace(), version.getBranch(), getUsersession());
 
 		final int baseVersionDelta = removeFromChangePackages(incomingChanges);
 
 		if (baseVersionDelta == 0) {
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Check and remove duplicate operations..done", //$NON-NLS-1$
+				getProjectSpace(), version.getBranch(), getUsersession());
 			return;
 		}
 
@@ -253,6 +278,8 @@ public class UpdateController extends ServerCall<PrimaryVersionSpec> {
 				+ Messages.UpdateController_PullingUpBaseVersion,
 				baseVersionDelta, baseVersion.getIdentifier(), baseVersion.getIdentifier() + baseVersionDelta));
 		getProjectSpace().save();
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Check and remove duplicate operations..done", //$NON-NLS-1$
+			getProjectSpace(), version.getBranch(), getUsersession());
 	}
 
 	/**

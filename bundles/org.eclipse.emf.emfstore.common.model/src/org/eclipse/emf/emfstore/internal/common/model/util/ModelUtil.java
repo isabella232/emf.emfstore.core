@@ -16,10 +16,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -130,6 +132,8 @@ public final class ModelUtil {
 	private static HashMap<Object, Object> resourceLoadOptions;
 	private static HashMap<Object, Object> resourceSaveOptions;
 	private static Map<Object, Object> checksumSaveOptions;
+
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //$NON-NLS-1$
 
 	/**
 	 * Private constructor.
@@ -750,6 +754,37 @@ public final class ModelUtil {
 	 */
 	public static void logInfo(String message) {
 		log(message, null, IStatus.INFO);
+	}
+
+	/**
+	 * Logs detailed information about the project state.
+	 *
+	 * @param message the message
+	 * @param user the user name
+	 * @param projectName the project name
+	 * @param projectId the project id
+	 * @param branch the branch
+	 * @param revision the revision
+	 */
+	public static void logProjectDetails(
+		String message,
+		String user,
+		String projectName,
+		String projectId,
+		String branch,
+		int revision) {
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+		logInfo(MessageFormat.format(
+			"Time: {0} | Msg: {1} | User: {2} | Project Name: {3} | Project Id: {4} | Branch: {5} | Revision: {6}", //$NON-NLS-1$
+			dateFormat.format(new Date()),
+			message != null ? message : "", //$NON-NLS-1$
+			user != null ? user : "not available", //$NON-NLS-1$
+			projectName != null ? projectName : "not available", //$NON-NLS-1$
+			projectId != null ? projectId : "not available", //$NON-NLS-1$
+			branch != null ? branch : "not available", //$NON-NLS-1$
+			revision != -1 ? revision : "not available")); //$NON-NLS-1$
 	}
 
 	/**

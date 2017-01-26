@@ -594,6 +594,9 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		try {
 			if (ServerConfiguration.isComputeChecksumOnCommitActive()) {
 				computedChecksum = ModelUtil.computeChecksum(projectState);
+				ModelUtil.logProjectDetails(
+					MessageFormat.format("Checksum computation during version create: {0}", computedChecksum), //$NON-NLS-1$
+					user.getName(), projectHistory.getProjectName(), projectHistory.getProjectId().getId(), null, -1);
 			}
 		} catch (final SerializationException exception) {
 			// TODO: clarify what to do in case checksum computation fails + provide ext. point
