@@ -17,6 +17,7 @@ import java.io.IOException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
@@ -130,7 +131,16 @@ public class ResourceHelper {
 	 */
 	public void deleteProjectState(Version version, ProjectId projectId) {
 		try {
-			version.getProjectState().eResource().delete(null);
+			/*
+			 * the project state of the version may not have been loaded yet. calling the getter however will load it,
+			 * just to delete if afterwards. it is more performant to create a new unloaded resource for the purpose of
+			 * deletion.
+			 */
+			final URI projectStateURI = ESServerURIUtil.createProjectStateURI(version.eResource().getURI());
+			final ResourceSet resourceSet = ModelUtil.createResourceSetForURI(projectStateURI);
+			final Resource deleteResource = resourceSet.createResource(projectStateURI);
+			deleteResource.delete(null);
+			version.setProjectStateResource(null);
 		} catch (final IOException e) {
 			ModelUtil.logWarning("Could not delete project state with id " + projectId.getId() + " and version "
 				+ version.getPrimarySpec().getIdentifier() + ".", e);

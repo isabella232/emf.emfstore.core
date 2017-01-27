@@ -831,7 +831,7 @@ public final class ModelUtil {
 		boolean checkConstraints)
 		throws IOException {
 
-		final ResourceSet resourceSet = getResourceSetForURI(resourceURI);
+		final ResourceSet resourceSet = createResourceSetForURI(resourceURI);
 
 		Resource resource;
 
@@ -882,9 +882,15 @@ public final class ModelUtil {
 		return (T) eObject;
 	}
 
-	private static ResourceSet getResourceSetForURI(URI resourceURI) {
+	/**
+	 * Creates and returns a new ResourceSet which may be used to load the given URI.
+	 *
+	 * @param resourceURI the resource URI
+	 * @return the newly created resourceset
+	 */
+	public static ResourceSet createResourceSetForURI(URI resourceURI) {
 		ResourceSet resourceSet = null;
-		if (resourceURI != null && resourceURI.scheme().equals("emfstore")) { //$NON-NLS-1$
+		if (resourceURI != null && resourceURI.scheme() != null && resourceURI.scheme().equals("emfstore")) { //$NON-NLS-1$
 			ESExtensionPoint extensionPoint = null;
 			if (resourceURI.authority().equals("workspaces")) { //$NON-NLS-1$
 				extensionPoint = new ESExtensionPoint(CLIENT_RESOURCE_SET_PROVIDER_EXT_POINT_ID,
@@ -904,7 +910,8 @@ public final class ModelUtil {
 				resourceSet = resourceSetProvider.getResourceSet();
 			}
 
-		} else {
+		}
+		if (resourceSet == null) {
 			resourceSet = new ResourceSetImpl();
 		}
 		return resourceSet;
