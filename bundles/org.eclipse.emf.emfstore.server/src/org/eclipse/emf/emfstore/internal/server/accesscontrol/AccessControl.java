@@ -53,7 +53,7 @@ public class AccessControl {
 	private final ESAuthorizationService authorizationService;
 	private final ESOrgUnitResolver orgUnitResolver;
 
-	private final ESSessions sessions;
+	private final EMFStoreSessions sessions;
 
 	private final LoginService loginService;
 
@@ -69,7 +69,7 @@ public class AccessControl {
 	 */
 	public AccessControl(ServerSpace serverSpace) {
 		this.serverSpace = serverSpace;
-		sessions = new ESSessions();
+		sessions = new EMFStoreSessions();
 
 		orgUnitProvider = initOrgUnitProviderService();
 		orgUnitResolver = initOrgUnitResolverService();
@@ -91,7 +91,7 @@ public class AccessControl {
 
 		this.authenticationControlType = authenticationControlType;
 		this.serverSpace = serverSpace;
-		sessions = new ESSessions();
+		sessions = new EMFStoreSessions();
 
 		orgUnitProvider = initOrgUnitProviderService();
 		orgUnitResolver = initOrgUnitResolverService();

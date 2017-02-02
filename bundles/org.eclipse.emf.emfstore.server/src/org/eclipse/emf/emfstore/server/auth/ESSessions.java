@@ -40,7 +40,12 @@ import com.google.common.base.Preconditions;
  */
 public class ESSessions {
 
-	private final Map<SessionId, ACUserContainer> sessionUserMap;
+	/**
+	 * Map holding valid session IDs and the respective users.
+	 *
+	 * @since 1.9
+	 */
+	protected final Map<SessionId, ACUserContainer> sessionUserMap;
 
 	/**
 	 * Default constructor.

@@ -24,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESAuthenticationInformationImpl;
+import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESSessionIdImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
@@ -45,7 +46,7 @@ public class LoginService {
 	private static final String USER_VERIFIER_SERVICE_CLASS = "userVerifierServiceClass"; //$NON-NLS-1$
 	private static final String MONITOR_NAME = "authentication"; //$NON-NLS-1$
 	private static final String ACCESSCONTROL_EXTENSION_ID = "org.eclipse.emf.emfstore.server.accessControl"; //$NON-NLS-1$
-	private final ESSessions sessions;
+	private final EMFStoreSessions sessions;
 	private final ESOrgUnitResolver orgUnitResolver;
 	private final ESOrgUnitProvider orgUnitProvider;
 	private final ESAuthenticationControlType authenticationControlType;
@@ -67,7 +68,7 @@ public class LoginService {
 	 */
 	public LoginService(
 		ESAuthenticationControlType authenticationControlType,
-		ESSessions sessions,
+		EMFStoreSessions sessions,
 		ESOrgUnitProvider orgUnitProvider,
 		ESOrgUnitResolver orgUnitResolver) {
 
@@ -125,15 +126,21 @@ public class LoginService {
 				username,
 				password,
 				clientVersionInfo);
+			final AuthenticationInformation authenticationInformation = ESAuthenticationInformationImpl.class.cast(
+				authInfo).toInternalAPI();
 
-			sessions.add(authInfo);
+			final ESSessionId existingSession = sessions.resolveByUser(authInfo.getUser());
+
+			if (existingSession == null) {
+				sessions.add(authInfo);
+			} else {
+				authenticationInformation.setSessionId(
+					ESSessionIdImpl.class.cast(existingSession).toInternalAPI());
+			}
 
 			final ACUser resolvedUser = (ACUser) ESUserImpl.class.cast(
 				orgUnitResolver.resolveRoles(authInfo))
 				.toInternalAPI();
-
-			final AuthenticationInformation authenticationInformation = ESAuthenticationInformationImpl.class.cast(
-				authInfo).toInternalAPI();
 
 			authenticationInformation.setResolvedACUser(resolvedUser);
 			return authInfo;
