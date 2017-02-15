@@ -100,7 +100,12 @@ public class ESSessions {
 			return null;
 		}
 
-		return container.getUser().toAPI();
+		try {
+			return container.getUser().toAPI();
+		} catch (final SessionTimedOutException ex) {
+			remove(sessionId);
+			throw ex;
+		}
 	}
 
 	/**
@@ -121,7 +126,12 @@ public class ESSessions {
 			return null;
 		}
 
-		return container.getUser().getId().toAPI();
+		try {
+			return container.getUser().getId().toAPI();
+		} catch (final SessionTimedOutException ex) {
+			remove(sessionId);
+			throw ex;
+		}
 	}
 
 	/**
