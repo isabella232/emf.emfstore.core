@@ -42,7 +42,8 @@ import org.junit.runners.Suite;
 	AdminEMFStoreTests.class,
 	AddInitialParticipantTest.class,
 	AutoCreateACUserTestTest.class,
-	DefaultESPasswordHashGeneratorTests.class
+	DefaultESPasswordHashGeneratorTests.class,
+	DefaultESAuthorizationServiceTests.class
 
 })
 public class AllAccessControlTests {
