@@ -79,7 +79,10 @@ public class ACUserContainer {
 		}
 	}
 
-	private void active() {
+	/**
+	 * Update timestamp when user was last active.
+	 */
+	public void active() {
 		lastActive = System.currentTimeMillis();
 	}
 }

@@ -38,6 +38,7 @@ public class EMFStoreSessions extends ESSessions {
 		for (final Entry<SessionId, ACUserContainer> entry : sessionUserMap.entrySet()) {
 			final ACUserContainer container = entry.getValue();
 			if (container.getRawUser().getId().equals(userId)) {
+				container.active();
 				return entry.getKey().toAPI();
 			}
 		}
