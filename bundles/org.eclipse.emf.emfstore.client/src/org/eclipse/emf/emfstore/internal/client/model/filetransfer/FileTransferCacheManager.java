@@ -53,11 +53,6 @@ public class FileTransferCacheManager {
 	public static final String FILE_NAME_DELIMITER = "_"; //$NON-NLS-1$
 
 	/**
-	 * The associated project space.
-	 */
-	private final ProjectSpace projectSpace;
-
-	/**
 	 * The cache folder, constructed from the identifier of the project space.
 	 */
 	private final File cacheFolder;
@@ -74,10 +69,20 @@ public class FileTransferCacheManager {
 	 *            the project space to which this cache belongs.
 	 */
 	public FileTransferCacheManager(ProjectSpace projectSpaceImpl) {
-		projectSpace = projectSpaceImpl;
-		cacheFolder = new File(getCacheFolder(projectSpace));
+		cacheFolder = new File(getCacheFolder(projectSpaceImpl));
 		tempCacheFolder = new File(cacheFolder, "temp"); //$NON-NLS-1$
 		mkdirs();
+	}
+
+	/**
+	 * Default constructor for uploads without an available project space.
+	 */
+	public FileTransferCacheManager() {
+		cacheFolder = new File(new File(System.getProperty("java.io.tmpdir")), //$NON-NLS-1$
+			"ESFileTransferCacheManager" + System.currentTimeMillis()); //$NON-NLS-1$
+		tempCacheFolder = new File(cacheFolder, "temp"); //$NON-NLS-1$
+		mkdirs();
+		cacheFolder.deleteOnExit();
 	}
 
 	/**
@@ -160,6 +165,7 @@ public class FileTransferCacheManager {
 	public File createTempFile(FileIdentifier id) throws FileTransferException {
 		mkdirs();
 		final File cacheFile = getFileFromId(tempCacheFolder, id);
+		cacheFile.getParentFile().mkdirs();
 		if (cacheFile.exists()) {
 			cacheFile.delete();
 		}
@@ -224,6 +230,7 @@ public class FileTransferCacheManager {
 				Messages.FileTransferCacheManager_MoveToCacheFailed_Exists
 					+ id.getIdentifier());
 		}
+		cacheFile.getParentFile().mkdirs();
 		if (!tmpFile.renameTo(cacheFile)) {
 			throw new FileTransferException(Messages.FileTransferCacheManager_MoveToCacheFailed_MoveFailed);
 		}

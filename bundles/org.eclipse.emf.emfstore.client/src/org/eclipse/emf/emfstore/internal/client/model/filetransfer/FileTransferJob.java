@@ -17,7 +17,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ConnectionManager;
-import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
 import org.eclipse.emf.emfstore.internal.server.filetransfer.FilePartitionerUtil;
@@ -40,7 +39,6 @@ public abstract class FileTransferJob extends Job {
 	private SessionId sessionId;
 	private boolean canceled;
 
-	private final ProjectSpaceBase projectSpace;
 	private final FileTransferManager transferManager;
 	private final FileTransferCacheManager cache;
 	private final FileTransferInformation fileInformation;
@@ -57,7 +55,6 @@ public abstract class FileTransferJob extends Job {
 		super(name);
 		fileInformation = fileInfo;
 		fileId = fileInfo.getFileIdentifier();
-		projectSpace = transferManager.getProjectSpace();
 		this.transferManager = transferManager;
 		cache = transferManager.getCache();
 	}
@@ -70,16 +67,16 @@ public abstract class FileTransferJob extends Job {
 	protected void getConnectionAttributes() throws FileTransferException {
 
 		connectionManager = ESWorkspaceProviderImpl.getInstance().getConnectionManager();
-		projectId = projectSpace.getProjectId();
+		projectId = transferManager.getProjectId();
 
-		if (projectSpace.getUsersession() == null) {
+		if (transferManager.getUsersession() == null) {
 			throw new FileTransferException(Messages.FileTransferJob_UnknownSession);
 		}
 
 		new EMFStoreCommand() {
 			@Override
 			protected void doRun() {
-				sessionId = projectSpace.getUsersession().getSessionId();
+				sessionId = transferManager.getUsersession().getSessionId();
 			}
 		}.run(false);
 	}
@@ -177,15 +174,6 @@ public abstract class FileTransferJob extends Job {
 	 */
 	protected boolean isCanceled() {
 		return canceled;
-	}
-
-	/**
-	 * Returns the project space which is associated with the file transfer.
-	 *
-	 * @return the associated project space
-	 */
-	protected ProjectSpaceBase getProjectSpace() {
-		return projectSpace;
 	}
 
 	/**

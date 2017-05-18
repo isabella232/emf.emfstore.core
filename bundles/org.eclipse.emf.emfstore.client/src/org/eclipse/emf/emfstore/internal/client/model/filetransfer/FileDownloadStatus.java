@@ -22,6 +22,8 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.FileNotOnServerExcept
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
 import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 
+import com.google.common.base.Optional;
+
 /**
  * An object of this class is returned from any workspace method that starts a
  * file transfer. It provides information about this file transfer and allows to
@@ -267,8 +269,8 @@ public final class FileDownloadStatus {
 	 *
 	 * @return the project space owning this file transfer
 	 */
-	public ProjectSpace getTransferringProjectSpace() {
-		return transferringProjectSpace;
+	public Optional<ProjectSpace> getTransferringProjectSpace() {
+		return Optional.fromNullable(transferringProjectSpace);
 	}
 
 	/**

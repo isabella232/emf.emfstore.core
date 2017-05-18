@@ -123,6 +123,7 @@ public class FileTransferSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 				throw new FileTransferException(
 					Messages.FileTransferSubInterfaceImpl_File_Inaccessible, e);
 			}
+			tmpFile.getParentFile().mkdirs();
 			// file reslicer for reslicing temp file
 			FilePartitionerUtil.writeChunk(tmpFile, fileChunk);
 			// move file from temp folder to attachment folder if last file chunk is received

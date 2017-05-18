@@ -14,17 +14,21 @@ package org.eclipse.emf.emfstore.internal.client.model.filetransfer;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.emfstore.internal.client.model.Usersession;
+import org.eclipse.emf.emfstore.internal.client.model.filetransfer.util.ProjectSpaceUploadQueue;
+import org.eclipse.emf.emfstore.internal.client.model.filetransfer.util.SimpleUploadQueue;
+import org.eclipse.emf.emfstore.internal.client.model.filetransfer.util.UploadQueue;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreClientUtil;
-import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreCommand;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
 import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
+import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 
 /**
  * The main managing class on the client side for file transfers. Each project
@@ -48,6 +52,12 @@ public class FileTransferManager {
 	 */
 	private final ProjectSpaceBase projectSpace;
 
+	private final UploadQueue uploadQueue;
+
+	private ProjectId projectId;
+
+	private Usersession usersession;
+
 	/**
 	 * Constructor that creates a file transfer manager for a specific project
 	 * space. Only to be called in the init of a project space!
@@ -57,7 +67,22 @@ public class FileTransferManager {
 	 */
 	public FileTransferManager(ProjectSpaceBase projectSpaceImpl) {
 		cacheManager = new FileTransferCacheManager(projectSpaceImpl);
+		uploadQueue = new ProjectSpaceUploadQueue(projectSpaceImpl);
 		projectSpace = projectSpaceImpl;
+	}
+
+	/**
+	 * Constructor that creates a file transfer manager when no project space is available.
+	 *
+	 * @param projectId the project id
+	 * @param usersession the usersession
+	 */
+	public FileTransferManager(ProjectId projectId, Usersession usersession) {
+		this.projectId = projectId;
+		this.usersession = usersession;
+		cacheManager = new FileTransferCacheManager();
+		uploadQueue = new SimpleUploadQueue();
+		projectSpace = null;
 	}
 
 	/**
@@ -127,20 +152,13 @@ public class FileTransferManager {
 	 * @param identifier
 	 */
 	private void addToCommitQueue(final FileIdentifier identifier) {
-		for (final FileIdentifier f : projectSpace.getWaitingUploads()) {
+		for (final FileIdentifier f : uploadQueue.getWaitingUploads()) {
 			if (f.getIdentifier().equals(identifier.getIdentifier())) {
 				return;
 			}
 
 		}
-		new EMFStoreCommand() {
-			@Override
-			protected void doRun() {
-				projectSpace.getWaitingUploads().add(identifier);
-				projectSpace.saveProjectSpaceOnly();
-			}
-		}.run(true);
-
+		uploadQueue.add(identifier);
 	}
 
 	/**
@@ -152,7 +170,7 @@ public class FileTransferManager {
 	 */
 	public void uploadQueuedFiles(IProgressMonitor progress) {
 		try {
-			final EList<FileIdentifier> uploads = projectSpace.getWaitingUploads();
+			final List<FileIdentifier> uploads = uploadQueue.getWaitingUploads();
 			while (!uploads.isEmpty()) {
 				final FileIdentifier fi = uploads.get(0);
 
@@ -168,13 +186,7 @@ public class FileTransferManager {
 							fi.getIdentifier()),
 						null);
 					// Remove from commit queue
-					new EMFStoreCommand() {
-						@Override
-						protected void doRun() {
-							projectSpace.getWaitingUploads().remove(fi);
-							projectSpace.saveProjectSpaceOnly();
-						}
-					}.run(true);
+					uploadQueue.remove(fi);
 					continue;
 
 				}
@@ -226,7 +238,9 @@ public class FileTransferManager {
 
 		// If the file is cached locally, get it
 		// if (cacheManager.hasCachedFile(fileIdentifier)) {
-		return FileDownloadStatus.Factory.createAlreadyFinished(projectSpace, fileIdentifier,
+		return FileDownloadStatus.Factory.createAlreadyFinished(
+			getProjectSpace()/* may be null */,
+			fileIdentifier,
 			cacheManager.getCachedFile(fileIdentifier));
 		// }
 
@@ -261,7 +275,9 @@ public class FileTransferManager {
 	 * @return the status
 	 */
 	private FileDownloadStatus startDownload(FileIdentifier fileIdentifier, boolean isTriggeredByUI) {
-		final FileDownloadStatus fds = FileDownloadStatus.Factory.createNew(projectSpace, fileIdentifier);
+		final FileDownloadStatus fds = FileDownloadStatus.Factory.createNew(
+			getProjectSpace()/* may be null */,
+			fileIdentifier);
 		// TODO Check if true is correct here
 		final FileDownloadJob job = new FileDownloadJob(fds, this, fileIdentifier, isTriggeredByUI);
 		job.schedule();
@@ -297,7 +313,7 @@ public class FileTransferManager {
 		 * the element. Equals is not well-defined for EObjects, so we cannot
 		 * use it here.
 		 */
-		for (final FileIdentifier upload : projectSpace.getWaitingUploads()) {
+		for (final FileIdentifier upload : uploadQueue.getWaitingUploads()) {
 			// This is our equals: Compare the strings!
 			if (upload.getIdentifier().equals(fileId.getIdentifier())) {
 				return i;
@@ -319,8 +335,7 @@ public class FileTransferManager {
 	void removeWaitingUpload(FileIdentifier fileId) throws FileTransferException {
 		final int index = getWaitingUploadIndex(fileId);
 		if (index != -1) {
-			projectSpace.getWaitingUploads().remove(index);
-			projectSpace.saveProjectSpaceOnly();
+			uploadQueue.remove(index);
 
 		} else {
 			// Not found in list? exception!
@@ -380,6 +395,26 @@ public class FileTransferManager {
 	 */
 	ProjectSpaceBase getProjectSpace() {
 		return projectSpace;
+	}
+
+	/**
+	 * @return the {@link ProjectId}
+	 */
+	ProjectId getProjectId() {
+		if (getProjectSpace() != null) {
+			return getProjectSpace().getProjectId();
+		}
+		return projectId;
+	}
+
+	/**
+	 * @return the {@link Usersession}
+	 */
+	Usersession getUsersession() {
+		if (getProjectSpace() != null) {
+			return getProjectSpace().getUsersession();
+		}
+		return usersession;
 	}
 
 }
