@@ -18,7 +18,7 @@
 		<javadoc-version>2.9</javadoc-version>
 		<javadoc-title>EMFStore 1.9.0 API</javadoc-title>
 		<emfstore-version>1.9.0-SNAPSHOT</emfstore-version>
-		<jarsigner-version>1.0.5</jarsigner-version>
+		<jarsigner-version>1.1.0</jarsigner-version>
 		<maven.antrun.plugin.version>1.7</maven.antrun.plugin.version>
 		<!-- Properties to enable jacoco code coverage analysis with sonar -->
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
