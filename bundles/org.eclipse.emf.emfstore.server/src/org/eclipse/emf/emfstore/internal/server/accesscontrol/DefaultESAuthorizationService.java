@@ -67,7 +67,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	/**
 	 * Contains possible access levels.
 	 */
-	private enum AccessLevel {
+	protected enum AccessLevel {
 		PROJECT_READ, PROJECT_WRITE, PROJECT_ADMIN, SERVER_ADMIN, NONE
 	}
 
@@ -127,9 +127,25 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 		}
 
 		addAccessMapping(AccessLevel.NONE, MethodId.GETPROJECTLIST, MethodId.RESOLVEUSER);
+
+		updateAccessMappings();
 	}
 
-	private void addAccessMapping(AccessLevel type, MethodId... operationTypes) {
+	/**
+	 * Override this method in order to {@link #addAccessMapping(AccessLevel, MethodId...) change} the default access
+	 * mappings.
+	 */
+	protected void updateAccessMappings() {
+		/* no op, may be overriden by clients */
+	}
+
+	/**
+	 * Adds mappings for the given operation types and the access level.
+	 *
+	 * @param type the {@link AccessLevel}
+	 * @param operationTypes the {@link MethodId operation types}
+	 */
+	protected final void addAccessMapping(AccessLevel type, MethodId... operationTypes) {
 		for (final MethodId opType : operationTypes) {
 			accessMap.put(opType, type);
 		}
@@ -236,7 +252,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	 */
 	public boolean checkProjectAdminAccessForOrgUnit(ESSessionId sessionId, ESOrgUnitId orgUnitId,
 		Set<ESGlobalProjectId> projectIds)
-		throws AccessControlException {
+			throws AccessControlException {
 
 		checkSession(sessionId);
 		cleanupPARole(orgUnitId);
