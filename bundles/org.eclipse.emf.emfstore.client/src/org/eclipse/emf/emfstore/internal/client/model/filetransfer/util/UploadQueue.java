@@ -23,7 +23,7 @@ public interface UploadQueue {
 	/**
 	 * @return the {@link FileIdentifier files} waiting to be uploaded
 	 */
-	List<FileIdentifier> getWaitingUploads();
+	List<FileIdentifier> getPendingUploads();
 
 	/**
 	 * Enqueues a {@link FileIdentifier file} for upload.

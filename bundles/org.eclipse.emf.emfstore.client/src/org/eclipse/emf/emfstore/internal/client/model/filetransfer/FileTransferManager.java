@@ -152,7 +152,7 @@ public class FileTransferManager {
 	 * @param identifier
 	 */
 	private void addToCommitQueue(final FileIdentifier identifier) {
-		for (final FileIdentifier f : uploadQueue.getWaitingUploads()) {
+		for (final FileIdentifier f : uploadQueue.getPendingUploads()) {
 			if (f.getIdentifier().equals(identifier.getIdentifier())) {
 				return;
 			}
@@ -170,7 +170,7 @@ public class FileTransferManager {
 	 */
 	public void uploadQueuedFiles(IProgressMonitor progress) {
 		try {
-			final List<FileIdentifier> uploads = uploadQueue.getWaitingUploads();
+			final List<FileIdentifier> uploads = uploadQueue.getPendingUploads();
 			while (!uploads.isEmpty()) {
 				final FileIdentifier fi = uploads.get(0);
 
@@ -313,7 +313,7 @@ public class FileTransferManager {
 		 * the element. Equals is not well-defined for EObjects, so we cannot
 		 * use it here.
 		 */
-		for (final FileIdentifier upload : uploadQueue.getWaitingUploads()) {
+		for (final FileIdentifier upload : uploadQueue.getPendingUploads()) {
 			// This is our equals: Compare the strings!
 			if (upload.getIdentifier().equals(fileId.getIdentifier())) {
 				return i;

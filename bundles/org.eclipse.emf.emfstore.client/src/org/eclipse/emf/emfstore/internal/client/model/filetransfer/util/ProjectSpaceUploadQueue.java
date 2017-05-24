@@ -35,9 +35,9 @@ public class ProjectSpaceUploadQueue implements UploadQueue {
 	 *
 	 * {@inheritDoc}
 	 *
-	 * @see org.eclipse.emf.emfstore.internal.client.model.filetransfer.util.UploadQueue#getWaitingUploads()
+	 * @see org.eclipse.emf.emfstore.internal.client.model.filetransfer.util.UploadQueue#getPendingUploads()
 	 */
-	public List<FileIdentifier> getWaitingUploads() {
+	public List<FileIdentifier> getPendingUploads() {
 		return projectSpace.getWaitingUploads();
 	}
 
