@@ -247,6 +247,7 @@
 					<show>public</show>
 					<nohelp>true</nohelp>
 					<excludePackageNames>*.test.*:*.bowling.*:*.example.*:*.eclipse.wb.*</excludePackageNames>
+					<additionalparam>-Xdoclint:none</additionalparam>
 					<tags>
 						<tag>
 							<name>generated</name>
