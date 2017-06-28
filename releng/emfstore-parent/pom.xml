@@ -15,7 +15,7 @@
 		<junit-version>4.8.2</junit-version>
 		<maven-checkstyle-version>2.10</maven-checkstyle-version>
 		<jacoco-version>0.7.4.201502262128</jacoco-version>
-		<javadoc-version>2.9</javadoc-version>
+		<javadoc-version>2.10.4</javadoc-version>
 		<javadoc-title>EMFStore 1.9.0 API</javadoc-title>
 		<emfstore-version>1.9.0-SNAPSHOT</emfstore-version>
 		<jarsigner-version>1.1.4</jarsigner-version>
