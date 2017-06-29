@@ -103,6 +103,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 			MethodId.UPLOADFILECHUNK,
 			MethodId.CREATEVERSION,
 			MethodId.UPLOADCHANGEPACKAGEFRAGMENT,
+			MethodId.DELETEFILE,
 			MethodId.GETBRANCHES);
 
 		addAccessMapping(AccessLevel.PROJECT_ADMIN,
@@ -252,7 +253,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	 */
 	public boolean checkProjectAdminAccessForOrgUnit(ESSessionId sessionId, ESOrgUnitId orgUnitId,
 		Set<ESGlobalProjectId> projectIds)
-			throws AccessControlException {
+		throws AccessControlException {
 
 		checkSession(sessionId);
 		cleanupPARole(orgUnitId);
