@@ -130,7 +130,8 @@ public final class FileUtil {
 		zipOutputStream.close();
 	}
 
-	private static void zip(File current, String rootPath, ZipOutputStream zipStream, byte[] buffer) throws IOException {
+	private static void zip(File current, String rootPath, ZipOutputStream zipStream, byte[] buffer)
+		throws IOException {
 		if (current.isDirectory()) {
 			for (final File file : current.listFiles()) {
 				if (!".".equals(file.getName()) && !"..".equals(file.getName())) { //$NON-NLS-1$ //$NON-NLS-2$

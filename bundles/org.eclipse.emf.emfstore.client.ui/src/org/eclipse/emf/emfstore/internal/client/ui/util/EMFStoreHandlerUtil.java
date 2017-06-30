@@ -43,6 +43,9 @@ public final class EMFStoreHandlerUtil {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T getSelection(ExecutionEvent event, Class<T> clazz) {
+		if (event == null) {
+			return null;
+		}
 		ISelection sel = HandlerUtil.getCurrentSelection(event);
 		if (sel == null) {
 			sel = HandlerUtil.getActiveMenuSelection(event);

@@ -25,7 +25,7 @@ import com.google.common.base.Preconditions;
  * @author emueller
  */
 public class ESAuthenticationInformationImpl extends
-	AbstractAPIImpl<ESAuthenticationInformation, AuthenticationInformation>implements ESAuthenticationInformation {
+	AbstractAPIImpl<ESAuthenticationInformation, AuthenticationInformation> implements ESAuthenticationInformation {
 
 	/**
 	 * Constructor.

@@ -1307,8 +1307,8 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		initEReference(getChangePackage_Events(), theEventsPackage.getEvent(), null, "events", null, 0, -1, //$NON-NLS-1$
 			ChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChangePackage_VersionProperties(), getVersionProperty(), null, "versionProperties", null, 0, //$NON-NLS-1$
-			-1, ChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getChangePackage_VersionProperties(), getVersionProperty(), null, "versionProperties", null, //$NON-NLS-1$
+			0, -1, ChangePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(historyInfoEClass, HistoryInfo.class, "HistoryInfo", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
@@ -1328,17 +1328,17 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		initEReference(getHistoryInfo_MergedTo(), getPrimaryVersionSpec(), null, "mergedTo", null, 1, -1, //$NON-NLS-1$
 			HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHistoryInfo_LogMessage(), getLogMessage(), null, "logMessage", null, 1, 1, HistoryInfo.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getHistoryInfo_TagSpecs(), getTagVersionSpec(), null, "tagSpecs", null, 0, -1, HistoryInfo.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
-		initEReference(getHistoryInfo_VersionProperties(), getVersionProperty(), null, "versionProperties", null, 0, -1, //$NON-NLS-1$
+		initEReference(getHistoryInfo_LogMessage(), getLogMessage(), null, "logMessage", null, 1, 1, //$NON-NLS-1$
 			HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHistoryInfo_ChangePackage(), getAbstractChangePackage(), null, "changePackage", null, 0, 1, //$NON-NLS-1$
+		initEReference(getHistoryInfo_TagSpecs(), getTagVersionSpec(), null, "tagSpecs", null, 0, -1, //$NON-NLS-1$
 			HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHistoryInfo_VersionProperties(), getVersionProperty(), null, "versionProperties", null, //$NON-NLS-1$
+			0, -1, HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHistoryInfo_ChangePackage(), getAbstractChangePackage(), null, "changePackage", null, 0, //$NON-NLS-1$
+			1, HistoryInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(historyQueryEClass, HistoryQuery.class, "HistoryQuery", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
@@ -1385,8 +1385,8 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		initEReference(getVersion_TagSpecs(), getTagVersionSpec(), null, "tagSpecs", null, 0, -1, Version.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
-		initEReference(getVersion_NextVersion(), getVersion(), getVersion_PreviousVersion(), "nextVersion", null, 0, 1, //$NON-NLS-1$
-			Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getVersion_NextVersion(), getVersion(), getVersion_PreviousVersion(), "nextVersion", //$NON-NLS-1$
+			null, 0, 1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVersion_PreviousVersion(), getVersion(), getVersion_NextVersion(), "previousVersion", null, 0, //$NON-NLS-1$
 			1, Version.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -1428,9 +1428,9 @@ public class VersioningPackageImpl extends EPackageImpl implements VersioningPac
 		initEReference(getBranchInfo_Head(), getPrimaryVersionSpec(), null, "head", null, 0, 1, BranchInfo.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
-		initEReference(getBranchInfo_Source(), getPrimaryVersionSpec(), null, "source", null, 0, 1, BranchInfo.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
+		initEReference(getBranchInfo_Source(), getPrimaryVersionSpec(), null, "source", null, 0, 1, //$NON-NLS-1$
+			BranchInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ancestorVersionSpecEClass, AncestorVersionSpec.class, "AncestorVersionSpec", !IS_ABSTRACT, //$NON-NLS-1$
 			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

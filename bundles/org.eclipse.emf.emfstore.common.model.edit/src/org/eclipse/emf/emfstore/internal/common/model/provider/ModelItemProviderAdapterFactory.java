@@ -103,8 +103,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createProjectAdapter() {
-		if (projectItemProvider == null)
-		{
+		if (projectItemProvider == null) {
 			projectItemProvider = new ProjectItemProvider(this);
 		}
 
@@ -130,8 +129,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createModelElementIdAdapter() {
-		if (modelElementIdItemProvider == null)
-		{
+		if (modelElementIdItemProvider == null) {
 			modelElementIdItemProvider = new ModelElementIdItemProvider(this);
 		}
 
@@ -157,8 +155,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createModelVersionAdapter() {
-		if (modelVersionItemProvider == null)
-		{
+		if (modelVersionItemProvider == null) {
 			modelVersionItemProvider = new ModelVersionItemProvider(this);
 		}
 
@@ -184,8 +181,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createEMFStorePropertyAdapter() {
-		if (emfStorePropertyItemProvider == null)
-		{
+		if (emfStorePropertyItemProvider == null) {
 			emfStorePropertyItemProvider = new EMFStorePropertyItemProvider(this);
 		}
 
@@ -210,8 +206,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createPropertyMapEntryAdapter() {
-		if (propertyMapEntryItemProvider == null)
-		{
+		if (propertyMapEntryItemProvider == null) {
 			propertyMapEntryItemProvider = new PropertyMapEntryItemProvider(this);
 		}
 
@@ -237,8 +232,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createPropertyStringValueAdapter() {
-		if (propertyStringValueItemProvider == null)
-		{
+		if (propertyStringValueItemProvider == null) {
 			propertyStringValueItemProvider = new PropertyStringValueItemProvider(this);
 		}
 
@@ -298,11 +292,9 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type))
-		{
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -342,8 +334,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}

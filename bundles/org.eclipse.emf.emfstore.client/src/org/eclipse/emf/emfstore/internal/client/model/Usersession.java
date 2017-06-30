@@ -28,20 +28,21 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getUsername <em>Username</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPassword <em>Password</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getSessionId <em>Session Id</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPersistentPassword <em>Persistent
- *          Password</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getServerInfo <em>Server Info</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getPersistentPassword
+ *          <em>Persistent Password</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getServerInfo <em>Server Info</em>}
+ *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#isSavePassword <em>Save Password</em>}
  *          </li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getACUser <em>AC User</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getChangedProperties <em>Changed
- *          Properties</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.Usersession#getChangedProperties
+ *          <em>Changed Properties</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getUsersession()
  * @model

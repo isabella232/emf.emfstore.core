@@ -2,11 +2,11 @@
 <feature
       id="org.eclipse.emf.emfstore.fuzzy.feature"
       label="Fuzzy Testing Feature"
-      version="1.8.0.qualifier"
+      version="1.9.0.qualifier"
       provider-name="Eclipse Modeling Project"
       plugin="org.eclipse.emf.emfstore.branding"
       license-feature="org.eclipse.emf.emfstore.license.feature"
-      license-feature-version="1.8.0.qualifier">
+      license-feature-version="1.9.0.qualifier">
 
    <description url="http://emfstore.org">
       This feature contains the fuzzy testing framework and the EMFDataProvider
@@ -22,16 +22,17 @@ to use it for EMF Models.
    </license>
 
    <requires>
-      <import plugin="org.eclipse.emf.emfstore.modelmutator"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.ecore.xmi" version="2.5.0" match="compatible"/>
-      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
-      <import plugin="org.junit" version="4.11.0" match="compatible"/>
       <import plugin="org.eclipse.emf.edit" version="2.5.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.emfstore.client.test"/>
       <import plugin="org.eclipse.core.resources" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.5.0" match="compatible"/>
       <import plugin="org.eclipse.emf.edit.ui" version="2.5.0" match="compatible"/>
       <import plugin="org.eclipse.ui.ide" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.emfstore.modelmutator" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.8.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.emfstore.fuzzy.emf" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.emfstore.fuzzy.emf.edit" version="2.0.0" match="compatible"/>
+      <import plugin="org.junit" version="4.10.0" match="compatible"/>
    </requires>
 
    <plugin

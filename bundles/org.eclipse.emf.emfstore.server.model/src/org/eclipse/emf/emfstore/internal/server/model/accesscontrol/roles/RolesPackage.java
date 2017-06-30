@@ -215,8 +215,8 @@ public interface RolesPackage extends EPackage {
 	int SERVER_ADMIN_FEATURE_COUNT = ROLE_FEATURE_COUNT + 0;
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role <em>Role</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role
+	 * <em>Role</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>Role</em>'.

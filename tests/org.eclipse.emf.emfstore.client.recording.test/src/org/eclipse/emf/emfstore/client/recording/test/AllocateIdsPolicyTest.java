@@ -105,7 +105,8 @@ public class AllocateIdsPolicyTest extends ESTestWithLoggedInUserMock {
 	public void commandIdAllocation() {
 		removeAddWithCommand(new EqualComparator());
 		removeAddWithCommands(new NotEqualComparator());
-		if (ESWorkspaceProviderImpl.getInstance().getEditingDomain().getCommandStack() instanceof EMFStoreBasicCommandStack) {
+		if (ESWorkspaceProviderImpl.getInstance().getEditingDomain()
+			.getCommandStack() instanceof EMFStoreBasicCommandStack) {
 			removeAddWithoutCommand(new NotEqualComparator());
 			removeAddWithoutCommand2(new NotEqualComparator());
 		}

@@ -24,7 +24,7 @@ import org.eclipse.emf.emfstore.server.model.ESRole;
  * @author emueller
  *
  */
-public class ESGroupImpl extends ESOrgUnitImpl<ESGroup>implements ESGroup {
+public class ESGroupImpl extends ESOrgUnitImpl<ESGroup> implements ESGroup {
 
 	/**
 	 * Constructor.

@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -38,7 +37,7 @@ import org.eclipse.emf.emfstore.bowling.BowlingPackage;
  * @generated
  */
 public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -76,13 +75,11 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_RefereeToGamesMap_value_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_RefereeToGamesMap_value_feature", "_UI_RefereeToGamesMap_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_RefereeToGamesMap_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_RefereeToGamesMap_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.REFEREE_TO_GAMES_MAP__VALUE,
 				true,
 				false,
@@ -181,10 +178,8 @@ public class RefereeToGamesMapItemProvider extends ItemProviderAdapter implement
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.REFEREE_TO_GAMES_MAP__KEY,
-				BowlingFactory.eINSTANCE.createReferee()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.REFEREE_TO_GAMES_MAP__KEY,
+			BowlingFactory.eINSTANCE.createReferee()));
 	}
 
 	/**

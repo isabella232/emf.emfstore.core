@@ -57,7 +57,7 @@ public interface ModelPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @generated
+	 * @generated NOT
 	 */
 	String eNS_PREFIX = "org.eclipse.emf.emfstore.internal.common.model"; //$NON-NLS-1$
 

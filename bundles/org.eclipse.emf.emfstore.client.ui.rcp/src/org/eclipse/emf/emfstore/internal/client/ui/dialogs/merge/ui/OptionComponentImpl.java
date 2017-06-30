@@ -86,12 +86,12 @@ public class OptionComponentImpl implements OptionComponent {
 		case MyOperation:
 			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_IncomingBranch
 				: Messages.OptionComponentImpl_KeepMyChange + countInfo
-				+ ": "; //$NON-NLS-1$
+					+ ": "; //$NON-NLS-1$
 			break;
 		case TheirOperation:
 			result = dBox.getDecisionManager().isBranchMerge() ? Messages.OptionComponentImpl_CurrentBranch
 				: Messages.OptionComponentImpl_KeepTheirChange + countInfo
-				+ ": "; //$NON-NLS-1$
+					+ ": "; //$NON-NLS-1$
 			break;
 		case Custom:
 			if (option instanceof CustomConflictOption) {
@@ -185,7 +185,8 @@ public class OptionComponentImpl implements OptionComponent {
 			detailsButton.addSelectionListener(new SelectionListener() {
 
 				public void widgetSelected(SelectionEvent e) {
-					final DetailsDialog detailsDialog = new DetailsDialog(getShell(), dBox.getDecisionManager(), option);
+					final DetailsDialog detailsDialog = new DetailsDialog(getShell(), dBox.getDecisionManager(),
+						option);
 					detailsDialog.open();
 				}
 

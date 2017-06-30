@@ -121,7 +121,7 @@ public abstract class AbstractUIControllerTest extends SWTBotTestCase {
 	}
 
 	protected static void deleteRemoteProjects(ESUsersession usersession) throws IOException, FatalESException,
-	ESException {
+		ESException {
 		for (final ESRemoteProject project : ESWorkspaceProvider.INSTANCE.getWorkspace().getServers().get(0)
 			.getRemoteProjects(usersession)) {
 			project.delete(usersession, new NullProgressMonitor());

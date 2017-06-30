@@ -46,8 +46,7 @@ public class ServerSpaceFileURIHandler extends FileURIHandlerImpl {
 	}
 
 	@Override
-	public void delete(URI uri, Map<?, ?> options) throws IOException
-	{
+	public void delete(URI uri, Map<?, ?> options) throws IOException {
 		// TODO options?
 		final File file = new File(uri.toFileString());
 		final File parent = file.getParentFile();

@@ -32,12 +32,12 @@ import org.eclipse.emf.emfstore.bowling.Player;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.GameImpl#getMatchup <em>Matchup</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.GameImpl#getPlayer <em>Player</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.GameImpl#getFrames <em>Frames</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -131,8 +131,7 @@ public class GameImpl extends EObjectImpl implements Game {
 	public void setMatchup(Matchup newMatchup) {
 		if (newMatchup != eInternalContainer()
 			|| eContainerFeatureID() != BowlingPackage.GAME__MATCHUP && newMatchup != null) {
-			if (EcoreUtil.isAncestor(this, newMatchup))
-			{
+			if (EcoreUtil.isAncestor(this, newMatchup)) {
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			}
 			NotificationChain msgs = null;
@@ -147,9 +146,9 @@ public class GameImpl extends EObjectImpl implements Game {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.GAME__MATCHUP, newMatchup, newMatchup));
+		} else if (eNotificationRequired()) {
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, BowlingPackage.GAME__MATCHUP, newMatchup, newMatchup));
 		}
 	}
 

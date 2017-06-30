@@ -24,12 +24,12 @@ import org.eclipse.emf.emfstore.server.model.ESClientVersionInfo;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getVersion <em>Version</em>}
  * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

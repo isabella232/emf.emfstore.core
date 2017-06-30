@@ -25,13 +25,13 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.AncestorVersionSpecImpl#getTarget <em>
- * Target</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.AncestorVersionSpecImpl#getSource <em>
- * Source</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.AncestorVersionSpecImpl#getTarget
+ * <em>Target</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.AncestorVersionSpecImpl#getSource
+ * <em>Source</em>}</li>
+ * </ul>
  *
  * @generated
  */

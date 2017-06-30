@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection;
 import org.eclipse.emf.emfstore.internal.common.model.impl.NotifiableIdEObjectCollectionImpl;
 
 /**
@@ -84,7 +85,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 		final Notification currentNotification = currentNotifications.peek();
 
 		if (currentNotification != null && !currentNotification.isTouch() && !isInitializing
-			&& notifier instanceof EObject && !ModelUtil.isIgnoredDatatype((EObject) notifier)) {
+			&& notifier instanceof EObject) {
 			final EObject modelElement = (EObject) notifier;
 			if (!collection.contains(modelElement) && isInCollectionHierarchy(modelElement)) {
 				collection.modelElementAdded(collection, modelElement);
@@ -247,7 +248,7 @@ public class EObjectChangeNotifier extends EContentAdapter {
 			final EObject eObject = (EObject) obj;
 
 			if (!collection.contains(eObject)) {
-				collection.addCutElement(eObject);
+				collection.addCutElement(getCutElement(eObject));
 			}
 		}
 	}
@@ -257,8 +258,30 @@ public class EObjectChangeNotifier extends EContentAdapter {
 			if (ModelUtil.isSingleton(newEObject)) {
 				return;
 			}
-			collection.addCutElement(newEObject);
+			collection.addCutElement(getCutElement(newEObject));
 		}
+	}
+
+	private EObject getCutElement(EObject eObject) {
+		final EObject referenceElement = eObject;
+		/* find topmost parent */
+		while (eObject.eContainer() != null) {
+			/*
+			 * Bug 501971
+			 * if we are contained in a different IdEObjectCollection (e.g. a second EMFStore project) simply add the
+			 * used element from the reference as a cut element (default before 501971)
+			 */
+			if (IdEObjectCollection.class.isInstance(eObject)) {
+				return referenceElement;
+			}
+			eObject = eObject.eContainer();
+		}
+
+		/*
+		 * Bug 501971
+		 * otherwise move the full containment tree
+		 */
+		return eObject;
 	}
 
 	/**

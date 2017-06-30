@@ -24,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESOrgUnitReposito
 import org.eclipse.emf.emfstore.server.auth.ESAuthenticationControlType;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
 import org.eclipse.emf.emfstore.server.auth.ESOrgUnitResolver;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator;
 import org.eclipse.emf.emfstore.server.auth.ESSessions;
 import org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider;
 
@@ -41,14 +42,18 @@ public class AccessControl {
 
 	private static final String AUTHORIZATION_SERVICE_CLASS = "authorizationServiceClass"; //$NON-NLS-1$
 
+	private static final String PASSWORD_HASH_GENERATOR_CLASS = "passwordHashGeneratorClass"; //$NON-NLS-1$
+
 	private static final String ACCESSCONTROL_EXTENSION_ID = "org.eclipse.emf.emfstore.server.accessControl"; //$NON-NLS-1$
+
+	private static ESPasswordHashGenerator passwordHashGenerator;
 
 	private final ESOrgUnitProvider orgUnitProvider;
 
 	private final ESAuthorizationService authorizationService;
 	private final ESOrgUnitResolver orgUnitResolver;
 
-	private final ESSessions sessions;
+	private final EMFStoreSessions sessions;
 
 	private final LoginService loginService;
 
@@ -64,7 +69,7 @@ public class AccessControl {
 	 */
 	public AccessControl(ServerSpace serverSpace) {
 		this.serverSpace = serverSpace;
-		sessions = new ESSessions();
+		sessions = new EMFStoreSessions();
 
 		orgUnitProvider = initOrgUnitProviderService();
 		orgUnitResolver = initOrgUnitResolverService();
@@ -86,12 +91,44 @@ public class AccessControl {
 
 		this.authenticationControlType = authenticationControlType;
 		this.serverSpace = serverSpace;
-		sessions = new ESSessions();
+		sessions = new EMFStoreSessions();
 
 		orgUnitProvider = initOrgUnitProviderService();
 		orgUnitResolver = initOrgUnitResolverService();
 		authorizationService = initAuthorizationService();
 		loginService = initLoginService();
+	}
+
+	/**
+	 * Parses the access control extension point and return the {@link ESPasswordHashGenerator} if found.
+	 *
+	 * @return the generator
+	 */
+	public static ESPasswordHashGenerator getESPasswordHashGenerator() {
+		if (AccessControl.passwordHashGenerator != null) {
+			return AccessControl.passwordHashGenerator;
+		}
+		ESPasswordHashGenerator passwordHashGenerator;
+		try {
+			final List<ESPasswordHashGenerator> services = new ESExtensionPoint(ACCESSCONTROL_EXTENSION_ID, false)
+				.getClasses(PASSWORD_HASH_GENERATOR_CLASS, ESPasswordHashGenerator.class);
+			if (services.isEmpty()) {
+				passwordHashGenerator = new DefaultESPasswordHashGenerator();
+			} else if (services.size() == 1) {
+				passwordHashGenerator = services.get(0);
+			} else {
+				throw new IllegalStateException(
+					MessageFormat.format(
+						Messages.AccessControl_MultipleExtensionsDiscovered,
+						ACCESSCONTROL_EXTENSION_ID + "." + PASSWORD_HASH_GENERATOR_CLASS)); //$NON-NLS-1$
+			}
+		} catch (final ESExtensionPointException e) {
+			final String message = Messages.AccessControl_CustomAuthorizationInitFailed;
+			ModelUtil.logException(message, e);
+			passwordHashGenerator = new DefaultESPasswordHashGenerator();
+		}
+		AccessControl.passwordHashGenerator = passwordHashGenerator;
+		return passwordHashGenerator;
 	}
 
 	/**
@@ -158,7 +195,7 @@ public class AccessControl {
 					MessageFormat.format(
 						Messages.AccessControl_MultipleExtensionsDiscovered,
 						ACCESSCONTROL_EXTENSION_ID + "." + ORG_UNIT_RESOLVER_SERVICE_CLASS //$NON-NLS-1$
-				));
+					));
 			}
 		} catch (final ESExtensionPointException e) {
 			final String message = "Custom org unit resolver class not be initialized"; //$NON-NLS-1$

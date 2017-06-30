@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  */
@@ -41,6 +41,7 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getStrings <em>Strings</em>}</li>
@@ -48,42 +49,42 @@ import org.eclipse.emf.emfstore.test.model.TestmodelPackage;
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElements <em>Contained Elements</em>}
  * </li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getReference <em>Reference</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElement <em>Contained Element</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElement <em>Contained Element</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getOtherReference <em>Other Reference</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getDescription <em>Description</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainer <em>Container</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getSrefContainer <em>Sref Container</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getElementMap <em>Element Map</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getStringToStringMap <em>String To String Map
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getElementToStringMap <em>Element To String Map
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getStringToElementMap <em>String To Element Map
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getStringToStringMap
+ * <em>String To String Map</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getElementToStringMap
+ * <em>Element To String Map</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getStringToElementMap
+ * <em>String To Element Map</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_NTo1 <em>Non Contained NTo1</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_1ToN <em>Non Contained 1To N
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_NToM <em>Non Contained NTo M
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_MToN <em>Non Contained MTo N
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElements2 <em>Contained Elements2
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_1ToN <em>Non Contained 1To N</em>
+ * }</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_NToM <em>Non Contained NTo M</em>
+ * }</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getNonContained_MToN <em>Non Contained MTo N</em>
+ * }</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElements2
+ * <em>Contained Elements2</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainer2 <em>Container2</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElements_NoOpposite <em>Contained
- * Elements No Opposite</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElement_NoOpposite <em>Contained
- * Element No Opposite</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getFeatureMapEntries <em>Feature Map Entries
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getFeatureMapReferences1 <em>Feature Map
- * References1</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getFeatureMapReferences2 <em>Feature Map
- * References2</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElements_NoOpposite
+ * <em>Contained Elements No Opposite</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getContainedElement_NoOpposite
+ * <em>Contained Element No Opposite</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getFeatureMapEntries <em>Feature Map Entries</em>
+ * }</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getFeatureMapReferences1
+ * <em>Feature Map References1</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.test.model.impl.TestElementImpl#getFeatureMapReferences2
+ * <em>Feature Map References2</em>}</li>
  * </ul>
- * </p>
- * 
+ *
  * @generated
  */
 public class TestElementImpl extends EObjectImpl implements TestElement {
@@ -91,7 +92,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -102,7 +103,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -113,7 +114,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getStrings() <em>Strings</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getStrings()
 	 * @generated
 	 * @ordered
@@ -124,7 +125,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getReferences() <em>References</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getReferences()
 	 * @generated
 	 * @ordered
@@ -135,7 +136,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getContainedElements() <em>Contained Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainedElements()
 	 * @generated
 	 * @ordered
@@ -146,7 +147,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getReference()
 	 * @generated
 	 * @ordered
@@ -157,7 +158,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getContainedElement() <em>Contained Element</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainedElement()
 	 * @generated
 	 * @ordered
@@ -168,7 +169,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getOtherReference() <em>Other Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getOtherReference()
 	 * @generated
 	 * @ordered
@@ -179,7 +180,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -190,7 +191,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -201,7 +202,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getElementMap() <em>Element Map</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getElementMap()
 	 * @generated
 	 * @ordered
@@ -212,7 +213,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getStringToStringMap() <em>String To String Map</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getStringToStringMap()
 	 * @generated
 	 * @ordered
@@ -223,7 +224,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getElementToStringMap() <em>Element To String Map</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getElementToStringMap()
 	 * @generated
 	 * @ordered
@@ -234,7 +235,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getStringToElementMap() <em>String To Element Map</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getStringToElementMap()
 	 * @generated
 	 * @ordered
@@ -245,7 +246,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getNonContained_NTo1() <em>Non Contained NTo1</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNonContained_NTo1()
 	 * @generated
 	 * @ordered
@@ -256,7 +257,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getNonContained_1ToN() <em>Non Contained 1To N</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNonContained_1ToN()
 	 * @generated
 	 * @ordered
@@ -267,7 +268,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getNonContained_NToM() <em>Non Contained NTo M</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNonContained_NToM()
 	 * @generated
 	 * @ordered
@@ -278,7 +279,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getNonContained_MToN() <em>Non Contained MTo N</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getNonContained_MToN()
 	 * @generated
 	 * @ordered
@@ -290,7 +291,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainedElements2()
 	 * @generated
 	 * @ordered
@@ -302,7 +303,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainedElements_NoOpposite()
 	 * @generated
 	 * @ordered
@@ -314,7 +315,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getContainedElement_NoOpposite()
 	 * @generated
 	 * @ordered
@@ -325,7 +326,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	 * The cached value of the '{@link #getFeatureMapEntries() <em>Feature Map Entries</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFeatureMapEntries()
 	 * @generated
 	 * @ordered
@@ -335,7 +336,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TestElementImpl() {
@@ -345,7 +346,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -356,7 +357,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getName() {
@@ -366,7 +367,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -380,12 +381,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<String> getStrings() {
-		if (strings == null)
-		{
+		if (strings == null) {
 			strings = new EDataTypeUniqueEList<String>(String.class, this, TestmodelPackage.TEST_ELEMENT__STRINGS);
 		}
 		return strings;
@@ -394,12 +394,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestElement> getReferences() {
-		if (references == null)
-		{
+		if (references == null) {
 			references = new EObjectResolvingEList<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__REFERENCES);
 		}
@@ -409,12 +408,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestElement> getContainedElements() {
-		if (containedElements == null)
-		{
+		if (containedElements == null) {
 			containedElements = new EObjectContainmentWithInverseEList<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS, TestmodelPackage.TEST_ELEMENT__CONTAINER);
 		}
@@ -424,16 +422,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getReference() {
-		if (reference != null && reference.eIsProxy())
-		{
+		if (reference != null && reference.eIsProxy()) {
 			final InternalEObject oldReference = (InternalEObject) reference;
 			reference = (TestElement) eResolveProxy(oldReference);
-			if (reference != oldReference)
-			{
+			if (reference != oldReference) {
 				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TestmodelPackage.TEST_ELEMENT__REFERENCE,
 						oldReference, reference));
@@ -446,7 +442,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement basicGetReference() {
@@ -456,7 +452,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setReference(TestElement newReference) {
@@ -471,7 +467,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getContainedElement() {
@@ -481,14 +477,13 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetContainedElement(TestElement newContainedElement, NotificationChain msgs) {
 		final TestElement oldContainedElement = containedElement;
 		containedElement = newContainedElement;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT, oldContainedElement, newContainedElement);
 			if (msgs == null) {
@@ -503,12 +498,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setContainedElement(TestElement newContainedElement) {
-		if (newContainedElement != containedElement)
-		{
+		if (newContainedElement != containedElement) {
 			NotificationChain msgs = null;
 			if (containedElement != null) {
 				msgs = ((InternalEObject) containedElement).eInverseRemove(this,
@@ -522,8 +516,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT,
 				newContainedElement, newContainedElement));
 		}
@@ -532,16 +525,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getOtherReference() {
-		if (otherReference != null && otherReference.eIsProxy())
-		{
+		if (otherReference != null && otherReference.eIsProxy()) {
 			final InternalEObject oldOtherReference = (InternalEObject) otherReference;
 			otherReference = (TestElement) eResolveProxy(oldOtherReference);
-			if (otherReference != oldOtherReference)
-			{
+			if (otherReference != oldOtherReference) {
 				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.TEST_ELEMENT__OTHER_REFERENCE, oldOtherReference, otherReference));
@@ -554,7 +545,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement basicGetOtherReference() {
@@ -564,7 +555,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setOtherReference(TestElement newOtherReference) {
@@ -579,7 +570,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String getDescription() {
@@ -589,7 +580,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
@@ -604,7 +595,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getContainer() {
@@ -617,7 +608,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetContainer(TestElement newContainer, NotificationChain msgs) {
@@ -628,15 +619,13 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setContainer(TestElement newContainer) {
 		if (newContainer != eInternalContainer()
-			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER && newContainer != null)
-		{
-			if (EcoreUtil.isAncestor(this, newContainer))
-			{
+			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER && newContainer != null) {
+			if (EcoreUtil.isAncestor(this, newContainer)) {
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			}
 			NotificationChain msgs = null;
@@ -651,8 +640,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__CONTAINER,
 				newContainer, newContainer));
 		}
@@ -661,7 +649,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getSrefContainer() {
@@ -674,7 +662,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetSrefContainer(TestElement newSrefContainer, NotificationChain msgs) {
@@ -686,15 +674,13 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSrefContainer(TestElement newSrefContainer) {
 		if (newSrefContainer != eInternalContainer()
-			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER && newSrefContainer != null)
-		{
-			if (EcoreUtil.isAncestor(this, newSrefContainer))
-			{
+			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER && newSrefContainer != null) {
+			if (EcoreUtil.isAncestor(this, newSrefContainer)) {
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			}
 			NotificationChain msgs = null;
@@ -709,8 +695,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__SREF_CONTAINER,
 				newSrefContainer, newSrefContainer));
 		}
@@ -719,15 +704,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<TestElement, TestElement> getElementMap() {
-		if (elementMap == null)
-		{
+		if (elementMap == null) {
 			elementMap = new EcoreEMap<TestElement, TestElement>(
-				TestmodelPackage.Literals.TEST_ELEMENT_TO_TEST_ELEMENT_MAP, TestElementToTestElementMapImpl.class,
-				this, TestmodelPackage.TEST_ELEMENT__ELEMENT_MAP);
+				TestmodelPackage.Literals.TEST_ELEMENT_TO_TEST_ELEMENT_MAP, TestElementToTestElementMapImpl.class, this,
+				TestmodelPackage.TEST_ELEMENT__ELEMENT_MAP);
 		}
 		return elementMap;
 	}
@@ -735,12 +719,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<String, String> getStringToStringMap() {
-		if (stringToStringMap == null)
-		{
+		if (stringToStringMap == null) {
 			stringToStringMap = new EcoreEMap<String, String>(TestmodelPackage.Literals.STRING_TO_STRING_MAP,
 				StringToStringMapImpl.class, this, TestmodelPackage.TEST_ELEMENT__STRING_TO_STRING_MAP);
 		}
@@ -750,12 +733,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<TestElement, String> getElementToStringMap() {
-		if (elementToStringMap == null)
-		{
+		if (elementToStringMap == null) {
 			elementToStringMap = new EcoreEMap<TestElement, String>(
 				TestmodelPackage.Literals.TEST_ELEMENT_TO_STRING_MAP, TestElementToStringMapImpl.class, this,
 				TestmodelPackage.TEST_ELEMENT__ELEMENT_TO_STRING_MAP);
@@ -766,12 +748,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EMap<String, TestElement> getStringToElementMap() {
-		if (stringToElementMap == null)
-		{
+		if (stringToElementMap == null) {
 			stringToElementMap = new EcoreEMap<String, TestElement>(
 				TestmodelPackage.Literals.STRING_TO_TEST_ELEMENT_MAP, StringToTestElementMapImpl.class, this,
 				TestmodelPackage.TEST_ELEMENT__STRING_TO_ELEMENT_MAP);
@@ -782,16 +763,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getNonContained_NTo1() {
-		if (nonContained_NTo1 != null && nonContained_NTo1.eIsProxy())
-		{
+		if (nonContained_NTo1 != null && nonContained_NTo1.eIsProxy()) {
 			final InternalEObject oldNonContained_NTo1 = (InternalEObject) nonContained_NTo1;
 			nonContained_NTo1 = (TestElement) eResolveProxy(oldNonContained_NTo1);
-			if (nonContained_NTo1 != oldNonContained_NTo1)
-			{
+			if (nonContained_NTo1 != oldNonContained_NTo1) {
 				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1, oldNonContained_NTo1, nonContained_NTo1));
@@ -804,7 +783,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement basicGetNonContained_NTo1() {
@@ -814,14 +793,13 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetNonContained_NTo1(TestElement newNonContained_NTo1, NotificationChain msgs) {
 		final TestElement oldNonContained_NTo1 = nonContained_NTo1;
 		nonContained_NTo1 = newNonContained_NTo1;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1, oldNonContained_NTo1, newNonContained_NTo1);
 			if (msgs == null) {
@@ -836,12 +814,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setNonContained_NTo1(TestElement newNonContained_NTo1) {
-		if (newNonContained_NTo1 != nonContained_NTo1)
-		{
+		if (newNonContained_NTo1 != nonContained_NTo1) {
 			NotificationChain msgs = null;
 			if (nonContained_NTo1 != null) {
 				msgs = ((InternalEObject) nonContained_NTo1).eInverseRemove(this,
@@ -855,8 +832,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1,
 				newNonContained_NTo1, newNonContained_NTo1));
 		}
@@ -865,12 +841,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestElement> getNonContained_1ToN() {
-		if (nonContained_1ToN == null)
-		{
+		if (nonContained_1ToN == null) {
 			nonContained_1ToN = new EObjectWithInverseResolvingEList<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N, TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1);
 		}
@@ -880,12 +855,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestElement> getNonContained_NToM() {
-		if (nonContained_NToM == null)
-		{
+		if (nonContained_NToM == null) {
 			nonContained_NToM = new EObjectWithInverseResolvingEList.ManyInverse<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO_M, TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_MTO_N);
 		}
@@ -895,12 +869,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestElement> getNonContained_MToN() {
-		if (nonContained_MToN == null)
-		{
+		if (nonContained_MToN == null) {
 			nonContained_MToN = new EObjectWithInverseResolvingEList.ManyInverse<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_MTO_N, TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO_M);
 		}
@@ -910,12 +883,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EList<TestElement> getContainedElements2() {
-		if (containedElements2 == null)
-		{
+		if (containedElements2 == null) {
 			containedElements2 = new EObjectContainmentWithInverseEList<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS2, TestmodelPackage.TEST_ELEMENT__CONTAINER2);
 		}
@@ -925,7 +897,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public TestElement getContainer2() {
@@ -938,7 +910,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetContainer2(TestElement newContainer2, NotificationChain msgs) {
@@ -949,15 +921,13 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setContainer2(TestElement newContainer2) {
 		if (newContainer2 != eInternalContainer()
-			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER2 && newContainer2 != null)
-		{
-			if (EcoreUtil.isAncestor(this, newContainer2))
-			{
+			|| eContainerFeatureID() != TestmodelPackage.TEST_ELEMENT__CONTAINER2 && newContainer2 != null) {
+			if (EcoreUtil.isAncestor(this, newContainer2)) {
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			}
 			NotificationChain msgs = null;
@@ -972,8 +942,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelPackage.TEST_ELEMENT__CONTAINER2,
 				newContainer2, newContainer2));
 		}
@@ -982,13 +951,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public EList<TestElement> getContainedElements_NoOpposite()
-	{
-		if (containedElements_NoOpposite == null)
-		{
+	public EList<TestElement> getContainedElements_NoOpposite() {
+		if (containedElements_NoOpposite == null) {
 			containedElements_NoOpposite = new EObjectContainmentEList<TestElement>(TestElement.class, this,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS_NO_OPPOSITE);
 		}
@@ -998,27 +965,24 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public TestElement getContainedElement_NoOpposite()
-	{
+	public TestElement getContainedElement_NoOpposite() {
 		return containedElement_NoOpposite;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetContainedElement_NoOpposite(TestElement newContainedElement_NoOpposite,
-		NotificationChain msgs)
-	{
+		NotificationChain msgs) {
 		final TestElement oldContainedElement_NoOpposite = containedElement_NoOpposite;
 		containedElement_NoOpposite = newContainedElement_NoOpposite;
-		if (eNotificationRequired())
-		{
+		if (eNotificationRequired()) {
 			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, oldContainedElement_NoOpposite,
 				newContainedElement_NoOpposite);
@@ -1034,28 +998,25 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public void setContainedElement_NoOpposite(TestElement newContainedElement_NoOpposite)
-	{
-		if (newContainedElement_NoOpposite != containedElement_NoOpposite)
-		{
+	public void setContainedElement_NoOpposite(TestElement newContainedElement_NoOpposite) {
+		if (newContainedElement_NoOpposite != containedElement_NoOpposite) {
 			NotificationChain msgs = null;
 			if (containedElement_NoOpposite != null) {
-				msgs = ((InternalEObject) containedElement_NoOpposite).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, null, msgs);
+				msgs = ((InternalEObject) containedElement_NoOpposite).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, null, msgs);
 			}
 			if (newContainedElement_NoOpposite != null) {
-				msgs = ((InternalEObject) newContainedElement_NoOpposite).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, null, msgs);
+				msgs = ((InternalEObject) newContainedElement_NoOpposite).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, null, msgs);
 			}
 			msgs = basicSetContainedElement_NoOpposite(newContainedElement_NoOpposite, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT_NO_OPPOSITE, newContainedElement_NoOpposite,
 				newContainedElement_NoOpposite));
@@ -1065,13 +1026,11 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public FeatureMap getFeatureMapEntries()
-	{
-		if (featureMapEntries == null)
-		{
+	public FeatureMap getFeatureMapEntries() {
+		if (featureMapEntries == null) {
 			featureMapEntries = new BasicFeatureMap(this, TestmodelPackage.TEST_ELEMENT__FEATURE_MAP_ENTRIES);
 		}
 		return featureMapEntries;
@@ -1080,43 +1039,40 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public EList<TestElement> getFeatureMapReferences1()
-	{
+	public EList<TestElement> getFeatureMapReferences1() {
 		return getFeatureMapEntries().list(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES1);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public EList<TestElement> getFeatureMapReferences2()
-	{
+	public EList<TestElement> getFeatureMapReferences2() {
 		return getFeatureMapEntries().list(TestmodelPackage.Literals.TEST_ELEMENT__FEATURE_MAP_REFERENCES2);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getContainedElements())
-				.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getContainedElements()).basicAdd(otherEnd,
+				msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT:
 			if (containedElement != null) {
-				msgs = ((InternalEObject) containedElement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT, null, msgs);
+				msgs = ((InternalEObject) containedElement).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT, null, msgs);
 			}
 			return basicSetContainedElement((TestElement) otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINER:
@@ -1136,14 +1092,14 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 			}
 			return basicSetNonContained_NTo1((TestElement) otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_1TO_N:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_1ToN())
-				.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_1ToN()).basicAdd(otherEnd,
+				msgs);
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO_M:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_NToM())
-				.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_NToM()).basicAdd(otherEnd,
+				msgs);
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_MTO_N:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_MToN())
-				.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNonContained_MToN()).basicAdd(otherEnd,
+				msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS2:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getContainedElements2()).basicAdd(otherEnd,
 				msgs);
@@ -1159,13 +1115,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS:
 			return ((InternalEList<?>) getContainedElements()).basicRemove(otherEnd, msgs);
 		case TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENT:
@@ -1211,13 +1166,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID())
-		{
+		switch (eContainerFeatureID()) {
 		case TestmodelPackage.TEST_ELEMENT__CONTAINER:
 			return eInternalContainer().eInverseRemove(this, TestmodelPackage.TEST_ELEMENT__CONTAINED_ELEMENTS,
 				TestElement.class, msgs);
@@ -1234,13 +1188,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT__NAME:
 			return getName();
 		case TestmodelPackage.TEST_ELEMENT__STRINGS:
@@ -1270,23 +1223,27 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 		case TestmodelPackage.TEST_ELEMENT__ELEMENT_MAP:
 			if (coreType) {
 				return getElementMap();
+			} else {
+				return getElementMap().map();
 			}
-			return getElementMap().map();
 		case TestmodelPackage.TEST_ELEMENT__STRING_TO_STRING_MAP:
 			if (coreType) {
 				return getStringToStringMap();
+			} else {
+				return getStringToStringMap().map();
 			}
-			return getStringToStringMap().map();
 		case TestmodelPackage.TEST_ELEMENT__ELEMENT_TO_STRING_MAP:
 			if (coreType) {
 				return getElementToStringMap();
+			} else {
+				return getElementToStringMap().map();
 			}
-			return getElementToStringMap().map();
 		case TestmodelPackage.TEST_ELEMENT__STRING_TO_ELEMENT_MAP:
 			if (coreType) {
 				return getStringToElementMap();
+			} else {
+				return getStringToElementMap().map();
 			}
-			return getStringToElementMap().map();
 		case TestmodelPackage.TEST_ELEMENT__NON_CONTAINED_NTO1:
 			if (resolve) {
 				return getNonContained_NTo1();
@@ -1322,14 +1279,13 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT__NAME:
 			setName((String) newValue);
 			return;
@@ -1422,13 +1378,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -1511,13 +1466,12 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case TestmodelPackage.TEST_ELEMENT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case TestmodelPackage.TEST_ELEMENT__STRINGS:
@@ -1575,7 +1529,7 @@ public class TestElementImpl extends EObjectImpl implements TestElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

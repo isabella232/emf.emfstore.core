@@ -44,6 +44,7 @@ public abstract class AbstractOperationEmitter implements Closeable {
 	private final List<Long> backwardsOffsets = new ArrayList<Long>();
 	private int currentOpIndex;
 	private long startOffset;
+	private boolean isClosed;
 
 	/**
 	 * Constructor.
@@ -265,11 +266,23 @@ public abstract class AbstractOperationEmitter implements Closeable {
 	 * Closes the emitter.
 	 */
 	public void close() {
+		setClosed(true);
 		try {
 			reader.close();
 		} catch (final IOException ex) {
 			ModelUtil.logException(ex);
 		}
+	}
+
+	/**
+	 * @return <code>true</code> if emitter was closed, <code>false</code> otherwise
+	 */
+	protected boolean isClosed() {
+		return isClosed;
+	}
+
+	private void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
 	}
 
 }

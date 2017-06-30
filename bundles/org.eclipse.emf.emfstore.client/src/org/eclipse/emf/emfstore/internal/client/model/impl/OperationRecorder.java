@@ -414,10 +414,6 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		for (int i = 0; i < allContainedModelElements.size(); i++) {
 			final EObject child = allContainedModelElements.get(i);
 
-			if (ModelUtil.isIgnoredDatatype(child)) {
-				continue;
-			}
-
 			final EObject copiedChild = copiedAllContainedModelElements.get(i);
 			final ModelElementId childId = collection.getModelElementId(child);
 
@@ -426,8 +422,8 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 
 		createDeleteOperation.setModelElement(copiedElement);
 		createDeleteOperation.setModelElementId(collection.getModelElementId(modelElement));
-
 		createDeleteOperation.setClientDate(new Date());
+
 		return createDeleteOperation;
 	}
 
@@ -927,9 +923,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		}
 
 		checkCommandConstraints(modelElement);
-
 		notificationRecorder.record(notification);
-
 		if (notificationRecorder.isRecordingComplete()) {
 
 			final List<AbstractOperation> ops = recordingFinished();
@@ -1078,7 +1072,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		 * @param setting
 		 *            a setting consisting of an {@link EObject} and a non-many reference
 		 */
-		public SettingWithElementsToRemove(Setting setting) {
+		SettingWithElementsToRemove(Setting setting) {
 			this.setting = setting;
 		}
 
@@ -1090,7 +1084,7 @@ public class OperationRecorder implements ESCommandObserver, ESCommitObserver, E
 		 * @param elementsToRemove
 		 *            the elemets to be removed from the many reference
 		 */
-		public SettingWithElementsToRemove(Setting setting, Set<EObject> elementsToRemove) {
+		SettingWithElementsToRemove(Setting setting, Set<EObject> elementsToRemove) {
 			this.setting = setting;
 			this.elementsToRemove.addAll(elementsToRemove);
 		}

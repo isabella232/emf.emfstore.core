@@ -55,8 +55,7 @@ public class UniqueIdentifierItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addIdPropertyDescriptor(object);
@@ -71,9 +70,8 @@ public class UniqueIdentifierItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_UniqueIdentifier_id_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_UniqueIdentifier_id_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -96,8 +94,7 @@ public class UniqueIdentifierItemProvider extends RootElementItemProvider implem
 	@Override
 	public String getText(Object object) {
 		final String label = ((UniqueIdentifier) object).getId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_UniqueIdentifier_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_UniqueIdentifier_type") : //$NON-NLS-1$
 			getString("_UI_UniqueIdentifier_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -112,8 +109,7 @@ public class UniqueIdentifierItemProvider extends RootElementItemProvider implem
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(UniqueIdentifier.class))
-		{
+		switch (notification.getFeatureID(UniqueIdentifier.class)) {
 		case ModelPackage.UNIQUE_IDENTIFIER__ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

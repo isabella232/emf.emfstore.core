@@ -219,7 +219,8 @@ public final class FuzzyUtil {
 			} catch (final IOException e) {
 				throw new RuntimeException(
 					MessageFormat.format(Messages.FuzzyUtil_LoadPropertiesFailed,
-						file.getAbsolutePath()), e);
+						file.getAbsolutePath()),
+					e);
 			}
 		}
 	}

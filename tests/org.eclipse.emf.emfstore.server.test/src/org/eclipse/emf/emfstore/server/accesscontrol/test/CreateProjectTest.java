@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -26,9 +26,9 @@ import org.junit.Test;
 /**
  * Test the {@link ESProjectAdminPrivileges#ShareProject} privilege of a
  * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole ProjectAdminRole}.
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class CreateProjectTest extends ProjectAdminTest {
 
@@ -44,7 +44,12 @@ public class CreateProjectTest extends ProjectAdminTest {
 
 	@Test(expected = AccessControlException.class)
 	public void shareProjectNotPA() throws ESException {
-		ProjectUtil.share(getUsersession(), getLocalProject());
+		try {
+			ProjectUtil.share(getUsersession(), getLocalProject());
+		} catch (final ESException ex) {
+			assertTrue(getServerMock().getServerSpace().getProjects().isEmpty());
+			throw ex;
+		}
 	}
 
 	@Test

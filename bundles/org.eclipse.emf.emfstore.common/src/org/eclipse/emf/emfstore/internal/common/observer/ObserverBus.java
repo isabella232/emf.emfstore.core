@@ -53,34 +53,34 @@ import org.eclipse.emf.emfstore.internal.common.observer.ObserverCall.Result;
  * <pre>
  * // A is ESObserver
  * A a = new A() {
- * 
+ *
  * 	public void foo() {
  * 		System.out.println(&quot;A says: go!&quot;);
  * 	}
  * };
- * 
+ *
  * // B extends A and is ESObserver
  * B b = new B() {
- * 
+ *
  * 	public void say(String ja) {
  * 		System.out.println(&quot;B says: &quot; + ja);
  * 	}
- * 
+ *
  * 	public void foo() {
  * 		System.out.println(&quot;B says: h??&quot;);
  * 	}
  * };
- * 
+ *
  * // B is registered first
  * ObserverBus.register(b);
  * ObserverBus.register(a);
- * 
+ *
  * ObserverBus.notify(A.class).foo();
- * 
+ *
  * ObserverBus.notify(B.class).say(&quot;w00t&quot;);
- * 
+ *
  * // Output:
- * 
+ *
  * // B says: h??
  * // A says: go!
  * //
@@ -381,11 +381,11 @@ public class ObserverBus {
 	public void collectionExtensionPoints() {
 		for (final ESExtensionElement outer : new ESExtensionPoint(
 			EXTENSION_POINT_ID, true)
-			.getExtensionElements()) {
+				.getExtensionElements()) {
 			try {
 				for (final ESExtensionElement inner : new ESExtensionPoint(outer.getAttribute("extensionPointName"), //$NON-NLS-1$
 					true)
-					.getExtensionElements()) {
+						.getExtensionElements()) {
 					register(inner.getClass(outer.getAttribute("observerAttributeName"), ESObserver.class)); //$NON-NLS-1$
 				}
 			} catch (final ESExtensionPointException e) {

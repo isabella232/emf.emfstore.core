@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.performance.test.memory;
@@ -25,11 +25,11 @@ import org.junit.rules.ExternalResource;
 @SuppressWarnings("restriction")
 public class NoRemoteProjectRule extends ExternalResource {
 
-	private RunningEMFStoreRule rule;
+	private final RunningEMFStoreRule rule;
 
 	/**
 	 * Instantiates a new no remote project rule.
-	 * 
+	 *
 	 * @param rule
 	 *            the EMFStore rule
 	 */
@@ -46,18 +46,18 @@ public class NoRemoteProjectRule extends ExternalResource {
 	protected void after() {
 		try {
 			deleteRemoteProjects();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			ModelUtil.logException(e);
-		} catch (FatalESException e) {
+		} catch (final FatalESException e) {
 			ModelUtil.logException(e);
-		} catch (ESException e) {
+		} catch (final ESException e) {
 			ModelUtil.logException(e);
 		}
 	}
 
 	private void deleteRemoteProjects() throws IOException, FatalESException,
-			ESException {
-		for (ESRemoteProject project : rule.server().getRemoteProjects()) {
+		ESException {
+		for (final ESRemoteProject project : rule.server().getRemoteProjects()) {
 			project.delete(rule.defaultSession(), new NullProgressMonitor());
 		}
 	}

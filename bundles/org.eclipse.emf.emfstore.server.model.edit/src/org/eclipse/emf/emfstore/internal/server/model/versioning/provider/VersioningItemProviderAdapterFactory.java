@@ -40,8 +40,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.util.Versioning
  *
  * @generated
  */
-public class VersioningItemProviderAdapterFactory extends VersioningAdapterFactory implements
-	ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class VersioningItemProviderAdapterFactory extends VersioningAdapterFactory
+	implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

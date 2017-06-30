@@ -27,14 +27,14 @@ import org.eclipse.emf.emfstore.internal.server.model.dao.ACDAOFacade;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace#getGroups <em>Groups</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace#getProjects <em>Projects</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace#getOpenSessions <em>Open Sessions
- *          </em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace#getOpenSessions <em>Open Sessions</em>
+ *          }</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.ServerSpace#getUsers <em>Users</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getServerSpace()
  * @model

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * JulianSommerfeldt
  ******************************************************************************/
@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESEMFDataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.ESMutateUtil;
-import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESDefaultModelMutator;
-import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Data;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.DataProvider;
 import org.eclipse.emf.emfstore.fuzzy.emf.junit.Annotations.Util;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESDefaultModelMutator;
+import org.eclipse.emf.emfstore.fuzzy.emf.junit.ESFuzzyRunner;
 import org.eclipse.emf.emfstore.internal.common.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
@@ -34,9 +34,9 @@ import org.junit.runner.RunWith;
 
 /**
  * ESFuzzyTest to test the {@link ESDefaultModelMutator}.
- * 
+ *
  * @author Julian Sommerfeldt
- * 
+ *
  */
 @RunWith(ESFuzzyRunner.class)
 @DataProvider(ESEMFDataProvider.class)
@@ -50,7 +50,7 @@ public class MutatorTest {
 
 	/**
 	 * Tests if two generated models are equal.
-	 * 
+	 *
 	 * @throws SerializationException
 	 */
 	@Test

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.ui.views.historybrowserview;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +27,8 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPoint;
+import org.eclipse.emf.emfstore.common.extensionpoint.ESExtensionPointException;
 import org.eclipse.emf.emfstore.internal.client.common.UnknownEMFStoreWorkloadCommand;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
@@ -52,6 +55,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.ModelElementQuery;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.RangeQuery;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.TagVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFactory;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Versions;
@@ -78,6 +82,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -148,6 +154,28 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 	private ExpandCollapseAction expandAndCollapse;
 	private boolean isUnlinkedFromNavigator;
 	private Action showAllBranches;
+	private Action filterTagAction;
+
+	private String filteredTag;
+
+	// changes can be transferred with historyInfos. However, this must be avoided if the server sends
+	// FileBasedChangePackages which the client can not open
+	private final static Boolean isLazyLoadingChanges;
+	private static final String ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT = "org.eclipse.emf.emfstore.client.ui.enableLazyLoadingOfChangePackages"; //$NON-NLS-1$
+
+	static {
+		Boolean result;
+		try {
+			result = new ESExtensionPoint(ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT, true)
+				.getBoolean("enabled", false); //$NON-NLS-1$
+			// set system property to be in sync with extension point and to be queryable for menu point enablement
+			System.setProperty(ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT, result.toString()); // $NON-NLS-1$
+		} catch (final ESExtensionPointException e) {
+			// if no extension is available, check for system property
+			result = Boolean.getBoolean(ENABLE_LAZY_LOADING_OF_CHANGE_PACKAGES_EXTENSION_POINT); // $NON-NLS-1$
+		}
+		isLazyLoadingChanges = result;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -158,12 +186,31 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 
 	@Override
 	public void createPartControl(Composite parent) {
+
 		GridLayoutFactory.fillDefaults().applyTo(parent);
 
 		initNoProjectHint(parent);
 
 		// init viewer
 		viewer = new TreeViewerWithModelElementSelectionProvider(parent);
+		viewer.setFilters(new ViewerFilter[] { new ViewerFilter() {
+
+			@Override
+			public boolean select(Viewer viewer, Object parentElement, Object element) {
+				if (filteredTag == null || filteredTag.length() == 0) {
+					return true;
+				}
+				if (!HistoryInfo.class.isInstance(element)) {
+					return true;
+				}
+				for (final TagVersionSpec tagVersionSpec : HistoryInfo.class.cast(element).getTagSpecs()) {
+					if (filteredTag.equalsIgnoreCase(tagVersionSpec.getName())) {
+						return true;
+					}
+				}
+				return false;
+			}
+		} });
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(viewer.getControl());
 		final Tree tree = viewer.getTree();
 		tree.setHeaderVisible(true);
@@ -288,6 +335,15 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		viewer.setInput(infos);
 	}
 
+	/**
+	 * Refresh a history info. Useful if a change package has been loaded lazily.
+	 *
+	 * @param historyInfo the {@link HistoryInfo} to refresh
+	 */
+	public void refresh(HistoryInfo historyInfo) {
+		viewer.refresh(historyInfo);
+	}
+
 	private void addBaseVersionTag(List<HistoryInfo> infos) {
 		final HistoryInfo historyInfo = getHistoryInfo(projectSpace.getBaseVersion());
 		if (historyInfo != null) {
@@ -312,6 +368,10 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			label += projectSpace.getProjectName() + " [" + projectSpace.getBaseVersion().getBranch() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
 			label += adapterFactoryLabelProvider.getText(modelElement);
+		}
+		if (filteredTag != null && filteredTag.length() > 0) {
+			label += MessageFormat.format(" [{0}]", //$NON-NLS-1$
+				MessageFormat.format(Messages.HistoryBrowserView_TaggedWithOnly, filteredTag));
 		}
 		showNoProjectHint(false);
 		setContentDescription(label);
@@ -373,7 +433,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 			UPPER_LIMIT,
 			LOWER_LIMIT,
 			showAllVersions,
-			true);
+			!isLazyLoadingChanges);
 		// TODO: proivde util method
 		final ESHistoryQuery<ESModelElementQuery> api = query.toAPI();
 		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(api, new NullProgressMonitor());
@@ -386,7 +446,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 				centerVersion,
 				UPPER_LIMIT,
 				LOWER_LIMIT,
-				showAllVersions, true, true, true);
+				showAllVersions, true, true, !isLazyLoadingChanges);
 		final List<ESHistoryInfo> infos = projectSpace.toAPI().getHistoryInfos(
 			rangeQuery.toAPI(),
 			new NullProgressMonitor());
@@ -577,6 +637,7 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		addExpandAllAndCollapseAllAction(menuManager);
 		addNextAndPreviousAction(menuManager);
 		addJumpToRevisionAction(menuManager);
+		addFilterTagAction(menuManager);
 		addLinkWithNavigatorAction(menuManager);
 	}
 
@@ -725,6 +786,35 @@ public class HistoryBrowserView extends ViewPart implements ProjectSpaceContaine
 		showAllBranches.setToolTipText(Messages.HistoryBrowserView_ShowAllBranches);
 		showAllBranches.setChecked(true);
 		menuManager.add(showAllBranches);
+	}
+
+	private void addFilterTagAction(IToolBarManager menuManager) {
+		filterTagAction = new Action("", SWT.TOGGLE) { //$NON-NLS-1$
+
+			@Override
+			public void run() {
+				if (filterTagAction.isChecked()) {
+					final InputDialog inputDialog = new InputDialog(getSite().getShell(),
+						Messages.HistoryBrowserView_FilterByTagDialog,
+						Messages.HistoryBrowserView_TagDialog,
+						StringUtils.EMPTY,
+						null);
+					if (inputDialog.open() == Window.OK) {
+						filteredTag = inputDialog.getValue();
+					} else {
+						filterTagAction.setChecked(false);
+					}
+				} else {
+					filteredTag = null;
+				}
+				refresh();
+			}
+
+		};
+		filterTagAction.setImageDescriptor(Activator.getImageDescriptor("icons/find.png")); //$NON-NLS-1$
+		filterTagAction.setToolTipText(Messages.HistoryBrowserView_FilterByTagAction);
+		filterTagAction.setChecked(false);
+		menuManager.add(filterTagAction);
 	}
 
 	private void addJumpToRevisionAction(IToolBarManager menuManager) {

@@ -236,8 +236,7 @@ public class ESServerImpl extends AbstractAPIImpl<ESServerImpl, ServerInfo> impl
 		usersession.setPassword(password);
 		final ESUsersessionImpl esSession = usersession.toAPI();
 
-		final EMFStoreCommandWithException<ESException> cmd =
-			new EMFStoreCommandWithException<ESException>() {
+		final EMFStoreCommandWithException<ESException> cmd = new EMFStoreCommandWithException<ESException>() {
 			@Override
 			protected void doRun() {
 				workspace.toInternalAPI().getUsersessions().add(usersession);

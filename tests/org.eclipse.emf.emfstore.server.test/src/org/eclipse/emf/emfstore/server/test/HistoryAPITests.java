@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  * Edgar Mueller - Performance refactorings
@@ -21,6 +21,8 @@ import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.merge
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.rename;
 import static org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil.share;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -32,9 +34,12 @@ import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.exceptions.ESServerStartFailedException;
+import org.eclipse.emf.emfstore.client.test.common.dsl.Add;
 import org.eclipse.emf.emfstore.client.test.common.dsl.Create;
 import org.eclipse.emf.emfstore.client.test.common.dsl.CreateAPI;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
+import org.eclipse.emf.emfstore.client.util.ESVoidCallable;
+import org.eclipse.emf.emfstore.client.util.RunESCommand;
 import org.eclipse.emf.emfstore.common.model.ESModelElementId;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
@@ -56,14 +61,14 @@ import org.junit.Test;
 
 /**
  * Branches for history test
- * 
+ *
  * <pre>
  *     b1    b2    b3
- * 
+ *
  * v7              o
  * 				/  |
  * v6         /    o
- * v5 	      o   / 
+ * v5 	      o   /
  * v4	o	  |  /
  * v3	|	  o
  * v2	o	 /
@@ -71,11 +76,13 @@ import org.junit.Test;
  *     	   |
  * v0  	   o
  * </pre>
- * 
+ *
  * @author wesendon
  * @author emueller
  */
 public class HistoryAPITests {
+
+	static final NullProgressMonitor NPM = new NullProgressMonitor();
 
 	public static final ESPrimaryVersionSpec[] VERSIONS = {
 		ESVersionSpec.FACTORY.createPRIMARY("trunk", 0), //$NON-NLS-1$
@@ -191,7 +198,7 @@ public class HistoryAPITests {
 			false);
 
 		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+			.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(4, result.size());
 		assertEquals(VERSIONS[5], result.get(0).getPrimarySpec());
@@ -207,8 +214,7 @@ public class HistoryAPITests {
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[3], 5, 25, true, false, false,
 			false);
 
-		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery,
-			new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(8, result.size());
 		assertEquals(VERSIONS[7], result.get(0).getPrimarySpec());
@@ -227,8 +233,7 @@ public class HistoryAPITests {
 
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[3], 1,
 			25, false, false, false, true);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(4, result.size());
 		assertEquals(VERSIONS[5], result.get(0).getPrimarySpec());
@@ -249,8 +254,7 @@ public class HistoryAPITests {
 
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[5], 5,
 			1, false, false, false, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(2, result.size());
 		assertEquals(VERSIONS[5], result.get(0).getPrimarySpec());
@@ -263,8 +267,7 @@ public class HistoryAPITests {
 
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[0], 1,
 			20, false, false, false, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(2, result.size());
 		assertEquals(VERSIONS[1], result.get(0).getPrimarySpec());
@@ -276,8 +279,7 @@ public class HistoryAPITests {
 		final ESLocalProject localProject = getProject();
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[0], 0,
 			0, false, false, false, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(1, result.size());
 		assertEquals(VERSIONS[0], result.get(0).getPrimarySpec());
@@ -289,8 +291,7 @@ public class HistoryAPITests {
 
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[7], 0,
 			2, false, true, false, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(3, result.size());
 		assertEquals(VERSIONS[7], result.get(0).getPrimarySpec());
@@ -304,8 +305,7 @@ public class HistoryAPITests {
 
 		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(VERSIONS[3], 2,
 			0, false, false, true, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(rangeQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(rangeQuery, NPM);
 
 		assertEquals(3, result.size());
 		assertEquals(VERSIONS[6], result.get(0).getPrimarySpec());
@@ -318,8 +318,7 @@ public class HistoryAPITests {
 		final ESLocalProject localProject = getProject();
 
 		final ESPathQuery pathQuery = ESHistoryQuery.FACTORY.pathQuery(VERSIONS[0], VERSIONS[5], false, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(pathQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(pathQuery, NPM);
 
 		assertEquals(4, result.size());
 		assertEquals(VERSIONS[0], result.get(0).getPrimarySpec());
@@ -333,8 +332,7 @@ public class HistoryAPITests {
 		final ESLocalProject localProject = getProject();
 
 		final ESPathQuery pathQuery = ESHistoryQuery.FACTORY.pathQuery(VERSIONS[5], VERSIONS[0], false, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(pathQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(pathQuery, NPM);
 
 		assertEquals(4, result.size());
 		assertEquals(VERSIONS[5], result.get(0).getPrimarySpec());
@@ -348,8 +346,7 @@ public class HistoryAPITests {
 		final ESLocalProject localProject = getProject();
 
 		final ESPathQuery pathQuery = ESHistoryQuery.FACTORY.pathQuery(VERSIONS[1], VERSIONS[3], true, false);
-		final List<ESHistoryInfo> result = localProject
-			.getHistoryInfos(pathQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(pathQuery, NPM);
 
 		assertEquals(3, result.size());
 		assertEquals(VERSIONS[1], result.get(0).getPrimarySpec());
@@ -361,7 +358,7 @@ public class HistoryAPITests {
 	public void invalidPathQuery() throws ESException {
 		final ESLocalProject ploEsLocalProject = getProject();
 		final ESPathQuery pathQuery = ESHistoryQuery.FACTORY.pathQuery(VERSIONS[2], VERSIONS[3], false, false);
-		ploEsLocalProject.getHistoryInfos(pathQuery, new NullProgressMonitor());
+		ploEsLocalProject.getHistoryInfos(pathQuery, NPM);
 	}
 
 	@Test
@@ -372,8 +369,7 @@ public class HistoryAPITests {
 
 		final ESModelElementQuery modelElementQuery = ESHistoryQuery.FACTORY.modelElementQuery(VERSIONS[3],
 			modelElementId, 0, 0, false, false);
-		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelElementQuery,
-			new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelElementQuery, NPM);
 
 		assertEquals(1, result.size());
 		assertEquals(VERSIONS[3], result.get(0).getPrimarySpec());
@@ -387,8 +383,7 @@ public class HistoryAPITests {
 
 		final ESModelElementQuery modelElementQuery = ESHistoryQuery.FACTORY.modelElementQuery(VERSIONS[1],
 			id, 0, 1, false, false);
-		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelElementQuery,
-			new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelElementQuery, NPM);
 
 		assertEquals(2, result.size());
 		assertEquals(VERSIONS[1], result.get(0).getPrimarySpec());
@@ -403,8 +398,7 @@ public class HistoryAPITests {
 
 		final ESModelElementQuery modelelementQuery = ESHistoryQuery.FACTORY.modelElementQuery(VERSIONS[3],
 			id, 1, 1, false, false);
-		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelelementQuery,
-			new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelelementQuery, NPM);
 
 		assertEquals(3, result.size());
 		assertEquals(VERSIONS[5], result.get(0).getPrimarySpec());
@@ -420,12 +414,106 @@ public class HistoryAPITests {
 
 		final ESModelElementQuery modelElementQuery = ESHistoryQuery.FACTORY.modelElementQuery(VERSIONS[3],
 			id, 1, 1, true, false);
-		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelElementQuery,
-			new NullProgressMonitor());
+		final List<ESHistoryInfo> result = localProject.getHistoryInfos(modelElementQuery, NPM);
 
 		assertEquals(3, result.size());
 		assertEquals(VERSIONS[4], result.get(0).getPrimarySpec());
 		assertEquals(VERSIONS[3], result.get(1).getPrimarySpec());
 		assertEquals(VERSIONS[2], result.get(2).getPrimarySpec());
+	}
+
+	@Test
+	public void getSingleVersionViaRangeQuery() throws ESException {
+		final ESLocalProject project = Create.project("Test Project"); //$NON-NLS-1$
+		project.shareProject(NPM);
+
+		// Create three versions
+		Add.toProject(project, Create.testElement("A")); //$NON-NLS-1$
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("B")); //$NON-NLS-1$
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("C")); //$NON-NLS-1$
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("D")); //$NON-NLS-1$
+		project.commit(NPM);
+
+		final ESPrimaryVersionSpec wantedVersion = ESVersionSpec.FACTORY.createPRIMARY(1);
+
+		final ESRangeQuery<?> rangeQuery = ESHistoryQuery.FACTORY.rangeQuery(wantedVersion, 1, 0, false, false, false,
+			false);
+		final List<ESHistoryInfo> historyInfos = project.getHistoryInfos(rangeQuery, NPM);
+		assertEquals(2, historyInfos.size());
+		assertEquals(2, historyInfos.get(0).getPrimarySpec().getIdentifier());
+		assertEquals(1, historyInfos.get(1).getPrimarySpec().getIdentifier());
+	}
+
+	@Test
+	public void modelElementQueryWithoutIncludingChangePackages() throws ESException {
+		final ESLocalProject project = Create.project("Test Project"); //$NON-NLS-1$
+		project.shareProject(NPM);
+
+		// Create four versions
+		Add.toProject(project, Create.testElement("A")); //$NON-NLS-1$
+		project.commit(NPM);
+		final TestElement b = Create.testElement("B"); //$NON-NLS-1$
+		Add.toProject(project, b);
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("C")); //$NON-NLS-1$
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("D")); //$NON-NLS-1$
+		project.commit(NPM);
+
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				b.setName("BB"); //$NON-NLS-1$
+			}
+		});
+		project.commit(NPM);
+
+		final ESModelElementId modelElementId = project.getModelElementId(b);
+
+		final ESModelElementQuery query = ESHistoryQuery.FACTORY.modelElementQuery(
+			project.getBaseVersion(), modelElementId, 0, 50, false, false);
+
+		final List<ESHistoryInfo> historyInfos = project.getHistoryInfos(query, NPM);
+		assertNull(historyInfos.get(0).getChangePackage());
+		assertNull(historyInfos.get(1).getChangePackage());
+		assertEquals(historyInfos.size(), 2);
+	}
+
+	@Test
+	public void modelElementQueryWithIncludingChangePackages() throws ESException {
+		final ESLocalProject project = Create.project("Test Project"); //$NON-NLS-1$
+		project.shareProject(NPM);
+
+		// Create four versions
+		Add.toProject(project, Create.testElement("A")); //$NON-NLS-1$
+		project.commit(NPM);
+		final TestElement b = Create.testElement("B"); //$NON-NLS-1$
+		Add.toProject(project, b);
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("C")); //$NON-NLS-1$
+		project.commit(NPM);
+		Add.toProject(project, Create.testElement("D")); //$NON-NLS-1$
+		project.commit(NPM);
+
+		RunESCommand.run(new ESVoidCallable() {
+			@Override
+			public void run() {
+				b.setName("BB"); //$NON-NLS-1$
+			}
+		});
+		project.commit(NPM);
+
+		final ESModelElementId modelElementId = project.getModelElementId(b);
+
+		final ESModelElementQuery query = ESHistoryQuery.FACTORY.modelElementQuery(
+			project.getBaseVersion(), modelElementId, 0, 50, false, true);
+
+		final List<ESHistoryInfo> historyInfos = project.getHistoryInfos(query, NPM);
+		assertNotNull(historyInfos.get(0).getChangePackage());
+		assertNotNull(historyInfos.get(1).getChangePackage());
+		assertEquals(historyInfos.size(), 2);
 	}
 }

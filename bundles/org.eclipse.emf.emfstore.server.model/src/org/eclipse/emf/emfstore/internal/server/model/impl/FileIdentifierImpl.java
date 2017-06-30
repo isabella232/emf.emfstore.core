@@ -21,8 +21,6 @@ import org.eclipse.emf.emfstore.internal.server.model.ModelPackage;
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>File Identifier</b></em>'.
  *
  * @implements Serializable <!-- end-user-doc -->
- *             <p>
- *             </p>
  *
  * @generated
  */

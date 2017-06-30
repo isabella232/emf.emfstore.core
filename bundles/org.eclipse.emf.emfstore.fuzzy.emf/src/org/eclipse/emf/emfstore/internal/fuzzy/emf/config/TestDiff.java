@@ -21,13 +21,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getLastUpdate <em>Last Update</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getConfig <em>Config</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getOldResult <em>Old Result</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff#getNewResult <em>New Result</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestDiff()
  * @model

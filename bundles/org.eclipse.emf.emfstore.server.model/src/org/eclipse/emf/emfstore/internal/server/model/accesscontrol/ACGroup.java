@@ -16,16 +16,15 @@ import org.eclipse.emf.emfstore.server.model.ESGroup;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>AC Group</b></em>'.
  *
- * @extends APIDelegate<ESGroup>
- *          <!-- end-user-doc -->
+ * <!-- end-user-doc -->
  *
- *          <p>
- *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup#getMembers <em>Members</em>}
- *          </li>
- *          </ul>
- *          </p>
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACGroup#getMembers <em>Members</em>}
+ * </li>
+ * </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolPackage#getACGroup()
  * @model
@@ -47,7 +46,6 @@ public interface ACGroup extends ACOrgUnit<ESGroup> {
 	 * @model keys="identifier"
 	 * @generated
 	 */
-	@SuppressWarnings("rawtypes")
 	EList<ACOrgUnit> getMembers();
 
 } // ACGroup

@@ -94,6 +94,10 @@ public class FileDownloadJob extends FileTransferJob {
 		// download file chunk to retrieve filesize (file chunk is discarded)
 		FileChunk fileChunk = null;
 		fileChunk = getConnectionManager().downloadFileChunk(getSessionId(), getProjectId(), getFileInformation());
+		if (fileChunk == null) {
+			status.transferCancelled();
+			return false;
+		}
 
 		getFileInformation().setFileSize(fileChunk.getFileSize());
 		initializeMonitor(monitor);

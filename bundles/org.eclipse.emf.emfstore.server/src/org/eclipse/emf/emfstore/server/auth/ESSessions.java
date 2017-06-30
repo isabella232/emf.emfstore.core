@@ -40,7 +40,12 @@ import com.google.common.base.Preconditions;
  */
 public class ESSessions {
 
-	private final Map<SessionId, ACUserContainer> sessionUserMap;
+	/**
+	 * Map holding valid session IDs and the respective users.
+	 *
+	 * @since 1.9
+	 */
+	protected final Map<SessionId, ACUserContainer> sessionUserMap;
 
 	/**
 	 * Default constructor.
@@ -95,7 +100,12 @@ public class ESSessions {
 			return null;
 		}
 
-		return container.getUser().toAPI();
+		try {
+			return container.getUser().toAPI();
+		} catch (final SessionTimedOutException ex) {
+			remove(sessionId);
+			throw ex;
+		}
 	}
 
 	/**
@@ -116,7 +126,12 @@ public class ESSessions {
 			return null;
 		}
 
-		return container.getUser().getId().toAPI();
+		try {
+			return container.getUser().getId().toAPI();
+		} catch (final SessionTimedOutException ex) {
+			remove(sessionId);
+			throw ex;
+		}
 	}
 
 	/**

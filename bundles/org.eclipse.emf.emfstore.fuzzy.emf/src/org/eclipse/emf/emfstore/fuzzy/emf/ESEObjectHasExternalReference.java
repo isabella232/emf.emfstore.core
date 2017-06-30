@@ -38,8 +38,8 @@ public class ESEObjectHasExternalReference implements Predicate<EObject> {
 	 * @see com.google.common.base.Predicate#apply(java.lang.Object)
 	 */
 	public boolean apply(EObject root) {
-		final Map<EObject, Collection<Setting>> externalCrossReferences =
-			EcoreUtil.ExternalCrossReferencer.find(Collections.singleton(root));
+		final Map<EObject, Collection<Setting>> externalCrossReferences = EcoreUtil.ExternalCrossReferencer
+			.find(Collections.singleton(root));
 
 		final Resource rootResource = root.eResource();
 		final Set<EObject> externalEObjects = externalCrossReferences.keySet();

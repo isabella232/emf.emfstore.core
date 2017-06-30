@@ -64,14 +64,13 @@ public class DateVersionSpecItemProvider extends VersionSpecItemProvider {
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_DateVersionSpec_date_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_DateVersionSpec_date_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_DateVersionSpec_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.DATE_VERSION_SPEC__DATE, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_DateVersionSpec_date_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_DateVersionSpec_date_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_DateVersionSpec_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.DATE_VERSION_SPEC__DATE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

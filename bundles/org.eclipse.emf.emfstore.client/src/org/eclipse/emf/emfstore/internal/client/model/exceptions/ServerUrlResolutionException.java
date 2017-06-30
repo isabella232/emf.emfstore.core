@@ -19,8 +19,7 @@ package org.eclipse.emf.emfstore.internal.client.model.exceptions;
 @SuppressWarnings("serial")
 public class ServerUrlResolutionException extends Exception {
 
-	private static final String EXCEPTION_MESSAGE =
-		Messages.ServerUrlResolutionException_ResolutionFailed;
+	private static final String EXCEPTION_MESSAGE = Messages.ServerUrlResolutionException_ResolutionFailed;
 
 	/**
 	 * Constructor.

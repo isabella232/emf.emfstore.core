@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * koegel
  ******************************************************************************/
@@ -22,7 +22,7 @@ import org.junit.Test;
 
 /**
  * Tests the Attribute Operation.
- * 
+ *
  * @author koegel
  */
 public class OneToOneContainmentTest extends ESTest {

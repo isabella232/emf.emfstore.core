@@ -36,8 +36,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class VersionSpecItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class VersionSpecItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -71,13 +71,13 @@ public class VersionSpecItemProvider extends ItemProviderAdapter implements IEdi
 	 * @generated
 	 */
 	protected void addBranchPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_VersionSpec_branch_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_VersionSpec_branch_feature", "_UI_VersionSpec_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			VersioningPackage.Literals.VERSION_SPEC__BRANCH, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_VersionSpec_branch_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_VersionSpec_branch_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_VersionSpec_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.VERSION_SPEC__BRANCH, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

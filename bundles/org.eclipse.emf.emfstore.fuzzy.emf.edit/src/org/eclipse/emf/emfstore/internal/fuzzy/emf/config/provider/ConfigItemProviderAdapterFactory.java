@@ -41,8 +41,7 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.util.ConfigAdapterFact
  * @generated
  */
 public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable
-{
+	IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -77,8 +76,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public ConfigItemProviderAdapterFactory()
-	{
+	public ConfigItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -104,10 +102,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestConfigAdapter()
-	{
-		if (testConfigItemProvider == null)
-		{
+	public Adapter createTestConfigAdapter() {
+		if (testConfigItemProvider == null) {
 			testConfigItemProvider = new TestConfigItemProvider(this);
 		}
 
@@ -132,10 +128,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestRunAdapter()
-	{
-		if (testRunItemProvider == null)
-		{
+	public Adapter createTestRunAdapter() {
+		if (testRunItemProvider == null) {
 			testRunItemProvider = new TestRunItemProvider(this);
 		}
 
@@ -160,10 +154,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestResultAdapter()
-	{
-		if (testResultItemProvider == null)
-		{
+	public Adapter createTestResultAdapter() {
+		if (testResultItemProvider == null) {
 			testResultItemProvider = new TestResultItemProvider(this);
 		}
 
@@ -188,10 +180,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestDiffAdapter()
-	{
-		if (testDiffItemProvider == null)
-		{
+	public Adapter createTestDiffAdapter() {
+		if (testDiffItemProvider == null) {
 			testDiffItemProvider = new TestDiffItemProvider(this);
 		}
 
@@ -216,10 +206,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createDiffReportAdapter()
-	{
-		if (diffReportItemProvider == null)
-		{
+	public Adapter createDiffReportAdapter() {
+		if (diffReportItemProvider == null) {
 			diffReportItemProvider = new DiffReportItemProvider(this);
 		}
 
@@ -244,10 +232,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createRootAdapter()
-	{
-		if (rootItemProvider == null)
-		{
+	public Adapter createRootAdapter() {
+		if (rootItemProvider == null) {
 			rootItemProvider = new RootItemProvider(this);
 		}
 
@@ -272,10 +258,8 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter createMutatorConfigAdapter()
-	{
-		if (mutatorConfigItemProvider == null)
-		{
+	public Adapter createMutatorConfigAdapter() {
+		if (mutatorConfigItemProvider == null) {
 			mutatorConfigItemProvider = new MutatorConfigItemProvider(this);
 		}
 
@@ -289,8 +273,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public ComposeableAdapterFactory getRootAdapterFactory()
-	{
+	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
@@ -301,8 +284,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
-	{
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -313,8 +295,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public boolean isFactoryForType(Object type)
-	{
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
@@ -326,8 +307,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Adapter adapt(Notifier notifier, Object type)
-	{
+	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
@@ -338,13 +318,10 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 * @generated
 	 */
 	@Override
-	public Object adapt(Object object, Object type)
-	{
-		if (isFactoryForType(type))
-		{
+	public Object adapt(Object object, Object type) {
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -359,8 +336,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public void addListener(INotifyChangedListener notifyChangedListener)
-	{
+	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
@@ -371,8 +347,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener)
-	{
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
@@ -383,12 +358,10 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public void fireNotifyChanged(Notification notification)
-	{
+	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}
@@ -400,8 +373,7 @@ public class ConfigItemProviderAdapterFactory extends ConfigAdapterFactory imple
 	 *
 	 * @generated
 	 */
-	public void dispose()
-	{
+	public void dispose() {
 		if (testConfigItemProvider != null) {
 			testConfigItemProvider.dispose();
 		}

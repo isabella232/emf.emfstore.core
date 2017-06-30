@@ -38,11 +38,8 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
 public class TestResultItemProvider
 	extends ItemProviderAdapter
 	implements
-	IEditingDomainItemProvider,
-	ITreeItemContentProvider,
-	IItemLabelProvider,
-	IItemPropertySource
-{
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -50,8 +47,7 @@ public class TestResultItemProvider
 	 *
 	 * @generated
 	 */
-	public TestResultItemProvider(AdapterFactory adapterFactory)
-	{
+	public TestResultItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,10 +59,8 @@ public class TestResultItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addSeedCountPropertyDescriptor(object);
@@ -85,15 +79,13 @@ public class TestResultItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addSeedCountPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addSeedCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestResult_seedCount_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestResult_seedCount_feature", "_UI_TestResult_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_TestResult_seedCount_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_TestResult_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.TEST_RESULT__SEED_COUNT,
 				true,
 				false,
@@ -104,21 +96,19 @@ public class TestResultItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the ESFuzzyTest Name feature.
+	 * This adds a property descriptor for the Test Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
 	 */
-	protected void addTestNamePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addTestNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestResult_testName_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestResult_testName_feature", "_UI_TestResult_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_TestResult_testName_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_TestResult_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.TEST_RESULT__TEST_NAME,
 				true,
 				false,
@@ -135,11 +125,9 @@ public class TestResultItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addErrorPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addErrorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestResult_error_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_TestResult_error_feature", "_UI_TestResult_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -159,15 +147,13 @@ public class TestResultItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addFailurePropertyDescriptor(Object object)
-	{
+	protected void addFailurePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestResult_failure_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_TestResult_failure_feature", "_UI_TestResult_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_TestResult_failure_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_TestResult_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.TEST_RESULT__FAILURE,
 				true,
 				false,
@@ -184,16 +170,13 @@ public class TestResultItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addExecutionTimePropertyDescriptor(Object object)
-	{
+	protected void addExecutionTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestResult_executionTime_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestResult_executionTime_feature", "_UI_TestResult_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_TestResult_executionTime_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_TestResult_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.TEST_RESULT__EXECUTION_TIME,
 				true,
 				false,
@@ -211,8 +194,7 @@ public class TestResultItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/TestResult")); //$NON-NLS-1$
 	}
 
@@ -224,11 +206,9 @@ public class TestResultItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		final String label = ((TestResult) object).getTestName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TestResult_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_TestResult_type") : //$NON-NLS-1$
 			getString("_UI_TestResult_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -241,12 +221,10 @@ public class TestResultItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TestResult.class))
-		{
+		switch (notification.getFeatureID(TestResult.class)) {
 		case ConfigPackage.TEST_RESULT__SEED_COUNT:
 		case ConfigPackage.TEST_RESULT__TEST_NAME:
 		case ConfigPackage.TEST_RESULT__ERROR:
@@ -267,8 +245,7 @@ public class TestResultItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -280,8 +257,7 @@ public class TestResultItemProvider
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return ConfigEditPlugin.INSTANCE;
 	}
 

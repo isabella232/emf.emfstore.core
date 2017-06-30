@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchups <em>Matchups</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getType <em>Type</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getReceivesTrophy <em>Receives Trophy</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Tournament#getMatchDays <em>Match Days</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament()
  * @model
@@ -101,7 +101,8 @@ public interface Tournament extends EObject {
 	 * @return the value of the '<em>Player Points</em>' map.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_PlayerPoints()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.bowling.PlayerToPointsMap<org.eclipse.emf.emfstore.bowling.Player, org.eclipse.emf.ecore.EIntegerObject>"
+	 *        "org.eclipse.emf.emfstore.bowling.PlayerToPointsMap<org.eclipse.emf.emfstore.bowling.Player,
+	 *        org.eclipse.emf.ecore.EIntegerObject>"
 	 * @generated
 	 */
 	EMap<Player, Integer> getPlayerPoints();
@@ -136,7 +137,8 @@ public interface Tournament extends EObject {
 	 * @return the value of the '<em>Referees</em>' map.
 	 * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getTournament_Referees()
 	 * @model mapType=
-	 *        "org.eclipse.emf.emfstore.bowling.RefereeToGamesMap<org.eclipse.emf.emfstore.bowling.Referee, org.eclipse.emf.emfstore.bowling.Game>"
+	 *        "org.eclipse.emf.emfstore.bowling.RefereeToGamesMap<org.eclipse.emf.emfstore.bowling.Referee,
+	 *        org.eclipse.emf.emfstore.bowling.Game>"
 	 * @generated
 	 */
 	EMap<Referee, Game> getReferees();

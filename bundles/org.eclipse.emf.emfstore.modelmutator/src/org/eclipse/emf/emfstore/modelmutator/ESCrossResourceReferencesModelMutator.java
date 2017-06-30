@@ -135,9 +135,8 @@ public class ESCrossResourceReferencesModelMutator extends ESAbstractModelMutato
 	private ResourceSet createResourceSet(int howManyResources) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		for (int i = 0; i < howManyResources; i++) {
-			final Resource resource =
-				resourceSet.createResource(
-					createVirtualUri(Integer.toString(i)));
+			final Resource resource = resourceSet.createResource(
+				createVirtualUri(Integer.toString(i)));
 			resources.add(resource);
 		}
 		return resourceSet;

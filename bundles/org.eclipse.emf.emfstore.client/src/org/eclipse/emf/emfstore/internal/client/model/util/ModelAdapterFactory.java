@@ -47,8 +47,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public ModelAdapterFactory() {
-		if (modelPackage == null)
-		{
+		if (modelPackage == null) {
 			modelPackage = ModelPackage.eINSTANCE;
 		}
 	}
@@ -64,12 +63,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage)
-		{
+		if (object == modelPackage) {
 			return true;
 		}
-		if (object instanceof EObject)
-		{
+		if (object instanceof EObject) {
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
@@ -81,47 +78,39 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected ModelSwitch<Adapter> modelSwitch = new ModelSwitch<Adapter>()
-	{
+	protected ModelSwitch<Adapter> modelSwitch = new ModelSwitch<Adapter>() {
 		@Override
-		public Adapter caseWorkspace(Workspace object)
-		{
+		public Adapter caseWorkspace(Workspace object) {
 			return createWorkspaceAdapter();
 		}
 
 		@Override
-		public Adapter caseServerInfo(ServerInfo object)
-		{
+		public Adapter caseServerInfo(ServerInfo object) {
 			return createServerInfoAdapter();
 		}
 
 		@Override
-		public Adapter caseUsersession(Usersession object)
-		{
+		public Adapter caseUsersession(Usersession object) {
 			return createUsersessionAdapter();
 		}
 
 		@Override
-		public Adapter caseProjectSpace(ProjectSpace object)
-		{
+		public Adapter caseProjectSpace(ProjectSpace object) {
 			return createProjectSpaceAdapter();
 		}
 
 		@Override
-		public Adapter casePendingFileTransfer(PendingFileTransfer object)
-		{
+		public Adapter casePendingFileTransfer(PendingFileTransfer object) {
 			return createPendingFileTransferAdapter();
 		}
 
 		@Override
-		public Adapter caseIdentifiableElement(IdentifiableElement object)
-		{
+		public Adapter caseIdentifiableElement(IdentifiableElement object) {
 			return createIdentifiableElementAdapter();
 		}
 
 		@Override
-		public Adapter defaultCase(EObject object)
-		{
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};

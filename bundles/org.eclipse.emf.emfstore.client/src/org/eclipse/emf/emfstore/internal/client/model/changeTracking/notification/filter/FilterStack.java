@@ -37,7 +37,7 @@ public final class FilterStack implements ESNotificationFilter {
 	private static final String NOTIFICATION_FILTER_EXTENSION_ID = "org.eclipse.emf.emfstore.client.notificationFilter"; //$NON-NLS-1$
 
 	private static final ESNotificationFilter[] DEFAULT_STACK = { new TouchFilter(), new TransientFilter(),
-		new UnknownEventTypeFilter(), new EmptyRemovalsFilter(), new IgnoreDatatypeFilter(),
+		new UnknownEventTypeFilter(), new EmptyRemovalsFilter(), // new IgnoreDatatypeFilter(),
 		new IgnoreOutsideProjectReferencesFilter(), new IgnoreNullFeatureNotificationsFilter(),
 		new NotifiableIdEObjectCollectionFilter(), new IgnoreNotificationsOutsideProject() };
 

@@ -216,11 +216,10 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	 */
 	public List<ESHistoryInfo> getHistoryInfos(final ESHistoryQuery<? extends ESHistoryQuery<?>> query,
 		IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 
 		@SuppressWarnings("unchecked")
-		final ESHistoryQueryImpl<ESHistoryQuery<? extends ESHistoryQuery<?>>, ?> queryImpl =
-		(ESHistoryQueryImpl<ESHistoryQuery<? extends ESHistoryQuery<?>>, ?>) query;
+		final ESHistoryQueryImpl<ESHistoryQuery<? extends ESHistoryQuery<?>>, ?> queryImpl = (ESHistoryQueryImpl<ESHistoryQuery<? extends ESHistoryQuery<?>>, ?>) query;
 
 		return APIUtil.mapToAPI(ESHistoryInfo.class, new ServerCall<List<HistoryInfo>>(getServerInfo(), monitor) {
 			@Override
@@ -242,7 +241,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	 */
 	public List<ESHistoryInfo> getHistoryInfos(final ESUsersession session,
 		final ESHistoryQuery<? extends ESHistoryQuery<?>> query,
-			final IProgressMonitor monitor) throws ESException {
+		final IProgressMonitor monitor) throws ESException {
 
 		return RunESCommand.WithException.runWithResult(ESException.class, new Callable<List<ESHistoryInfo>>() {
 			public List<ESHistoryInfo> call() throws Exception {
@@ -276,7 +275,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	 */
 	public void addTag(final ESPrimaryVersionSpec primaryVersionSpec, final ESTagVersionSpec tagVersionSpec,
 		final IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 
 		final ESPrimaryVersionSpecImpl primaryVersionSpecImpl = (ESPrimaryVersionSpecImpl) primaryVersionSpec;
 		final ESTagVersionSpecImpl tagVersionSpecImpl = (ESTagVersionSpecImpl) tagVersionSpec;
@@ -308,7 +307,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	 */
 	public void removeTag(final ESPrimaryVersionSpec versionSpec, final ESTagVersionSpec tag,
 		final IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 
 		final ESPrimaryVersionSpecImpl versionSpecImpl = (ESPrimaryVersionSpecImpl) versionSpec;
 		final ESTagVersionSpecImpl tagVersionSpecImpl = (ESTagVersionSpecImpl) tag;
@@ -362,7 +361,7 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	 */
 	public ESLocalProjectImpl checkout(final String name, final ESUsersession usersession,
 		final IProgressMonitor monitor)
-			throws ESException {
+		throws ESException {
 		return RunESCommand.WithException.runWithResult(ESException.class, new Callable<ESLocalProjectImpl>() {
 			public ESLocalProjectImpl call() throws Exception {
 				final ESPrimaryVersionSpec primaryVersionSpec = resolveVersionSpec(usersession, Versions.createHEAD()
@@ -434,11 +433,11 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 	 */
 	public ESLocalProjectImpl checkout(final String name, final ESUsersession session,
 		final ESPrimaryVersionSpec versionSpec, final IProgressMonitor progressMonitor)
-			throws ESException {
+		throws ESException {
 		final ESLocalProjectImpl project = fetch(name, session, versionSpec, progressMonitor);
 		project.addToWorkspace(progressMonitor);
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCheckoutObserver.class)
-		.checkoutDone(project);
+			.checkoutDone(project);
 
 		return project;
 	}
@@ -476,9 +475,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 		RunESCommand.WithException.run(ESException.class, new Callable<Void>() {
 			public Void call() throws Exception {
 				getDeleteProjectServerCall()
-				.setProgressMonitor(monitor)
-				.setServer(getServerInfo())
-				.execute();
+					.setProgressMonitor(monitor)
+					.setServer(getServerInfo())
+					.execute();
 				return null;
 			}
 		});
@@ -496,9 +495,9 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 		RunESCommand.WithException.run(ESException.class, new Callable<Void>() {
 			public Void call() throws Exception {
 				getDeleteProjectServerCall()
-				.setProgressMonitor(monitor)
-				.setUsersession(usersession)
-				.execute();
+					.setProgressMonitor(monitor)
+					.setUsersession(usersession)
+					.execute();
 				return null;
 			}
 		});
@@ -565,10 +564,10 @@ public class ESRemoteProjectImpl implements ESRemoteProject {
 
 						if (canDeleteFiles(user, getProjectInfo().getProjectId())) {
 							getConnectionManager()
-							.deleteProject(getSessionId(), getProjectInfo().getProjectId(), true);
+								.deleteProject(getSessionId(), getProjectInfo().getProjectId(), true);
 						} else {
 							getConnectionManager()
-							.deleteProject(getSessionId(), getProjectInfo().getProjectId(), false);
+								.deleteProject(getSessionId(), getProjectInfo().getProjectId(), false);
 						}
 						return null;
 					}

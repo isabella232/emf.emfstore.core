@@ -21,7 +21,7 @@ import org.eclipse.emf.emfstore.server.model.ESRole;
  * @author emueller
  *
  */
-public class ESRoleImpl extends AbstractAPIImpl<ESRole, Role>implements ESRole {
+public class ESRoleImpl extends AbstractAPIImpl<ESRole, Role> implements ESRole {
 
 	/**
 	 * Constructor.

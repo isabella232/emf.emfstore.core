@@ -37,7 +37,7 @@ public class CompareRevisionsHandler extends AbstractEMFStoreHandler {
 
 		new UICompareRevisionsController(getShell(), list.get(0).getPrimarySpec().toAPI(),
 			list.get(1).getPrimarySpec().toAPI(), view.getProjectSpace().toAPI())
-			.execute();
+				.execute();
 	}
 
 }

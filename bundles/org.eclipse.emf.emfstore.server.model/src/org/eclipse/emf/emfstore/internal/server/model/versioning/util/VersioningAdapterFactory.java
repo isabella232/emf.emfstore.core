@@ -265,8 +265,8 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec
-	 * <em>Primary Version Spec</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec <em>Primary Version Spec</em>
+	 * }'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
@@ -593,8 +593,8 @@ public class VersioningAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy
-	 * <em>Change Package Proxy</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.ChangePackageProxy <em>Change Package Proxy</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.

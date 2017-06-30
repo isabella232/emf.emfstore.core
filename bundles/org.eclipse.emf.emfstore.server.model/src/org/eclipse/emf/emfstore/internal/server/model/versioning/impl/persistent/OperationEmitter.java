@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -39,6 +41,8 @@ import com.google.common.collect.Maps;
  */
 public class OperationEmitter extends AbstractOperationEmitter {
 
+	private final ExecutorService executorService;
+
 	/**
 	 * Constructor.
 	 *
@@ -49,6 +53,7 @@ public class OperationEmitter extends AbstractOperationEmitter {
 	 */
 	public OperationEmitter(Direction direction, File file) {
 		super(direction, file);
+		executorService = Executors.newCachedThreadPool();
 	}
 
 	/**
@@ -63,7 +68,7 @@ public class OperationEmitter extends AbstractOperationEmitter {
 		final PipedOutputStream pos = new PipedOutputStream();
 		final PipedInputStream pis = new PipedInputStream(pos);
 
-		new Thread(new Runnable() {
+		executorService.execute(new Runnable() {
 			public void run() {
 				if (getDirection() == Direction.Forward) {
 					readForward(pos);
@@ -71,7 +76,15 @@ public class OperationEmitter extends AbstractOperationEmitter {
 					readBackward(pos);
 				}
 			}
-		}).start();
+		});
+
+		if (isClosed()) {
+			try {
+				return Optional.absent();
+			} finally {
+				pis.close();
+			}
+		}
 
 		try {
 			final EObject deserializedObject = deserialize(pis);

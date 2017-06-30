@@ -525,7 +525,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 
 		final List<AbstractOperation> operations = forceGetOperations();
 		assertEquals(2, operations.size());
-		final CreateDeleteOperation createDeleteOperation = checkAndCast(operations.get(0), CreateDeleteOperation.class);
+		final CreateDeleteOperation createDeleteOperation = checkAndCast(operations.get(0),
+			CreateDeleteOperation.class);
 
 		final MultiReferenceOperation multiRefOp = checkAndCast(
 			createDeleteOperation.getSubOperations().get(0),
@@ -565,10 +566,8 @@ public class ConflictDetectionMapTest extends ConflictDetectionTest {
 	private void addObserverTo(ESLocalProject localProject,
 		IdEObjectCollectionChangeObserver idEObjectCollectionChangeObserver) {
 		ESLocalProjectImpl.class.cast(
-			localProject
-			).toInternalAPI().getProject().addIdEObjectCollectionChangeObserver(
-				idEObjectCollectionChangeObserver
-			);
+			localProject).toInternalAPI().getProject().addIdEObjectCollectionChangeObserver(
+				idEObjectCollectionChangeObserver);
 	}
 
 	@Test

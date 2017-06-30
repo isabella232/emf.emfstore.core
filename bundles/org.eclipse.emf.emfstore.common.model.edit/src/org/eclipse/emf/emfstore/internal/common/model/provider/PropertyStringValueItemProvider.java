@@ -17,11 +17,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
@@ -35,8 +31,7 @@ import org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue;
  *
  * @generated
  */
-public class PropertyStringValueItemProvider extends RootElementItemProvider implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class PropertyStringValueItemProvider extends RootElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -57,8 +52,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider imp
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
@@ -74,9 +68,8 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider imp
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PropertyStringValue_value_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_PropertyStringValue_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -112,8 +105,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider imp
 	@Override
 	public String getText(Object object) {
 		final String label = ((PropertyStringValue) object).getValue();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PropertyStringValue_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_PropertyStringValue_type") : //$NON-NLS-1$
 			getString("_UI_PropertyStringValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -129,8 +121,7 @@ public class PropertyStringValueItemProvider extends RootElementItemProvider imp
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(PropertyStringValue.class))
-		{
+		switch (notification.getFeatureID(PropertyStringValue.class)) {
 		case ModelPackage.PROPERTY_STRING_VALUE__VALUE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

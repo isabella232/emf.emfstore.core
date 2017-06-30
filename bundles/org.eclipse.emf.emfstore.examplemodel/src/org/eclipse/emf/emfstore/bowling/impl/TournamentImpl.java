@@ -42,6 +42,7 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.TournamentImpl#getMatchups <em>Matchups</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.TournamentImpl#getType <em>Type</em>}</li>
@@ -52,7 +53,6 @@ import org.eclipse.emf.emfstore.bowling.TournamentType;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.TournamentImpl#getReceivesTrophy <em>Receives Trophy</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.TournamentImpl#getMatchDays <em>Match Days</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

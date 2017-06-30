@@ -45,6 +45,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl#isDelete
@@ -59,7 +60,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl#getEObjectToIdMap
  * <em>EObject To Id Map</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -93,6 +93,7 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 
 			collection.clearAllocatedCaches(new LinkedHashSet<ModelElementId>(getEObjectToIdMap().values()));
 		} else {
+
 			if (collection.contains(getModelElementId())) {
 				// silently fail
 				applySubOperations(collection);
@@ -117,16 +118,13 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 				final EObject copiedChild = copiedAllContainedModelElements.get(i);
 				final ModelElementId childId = ModelUtil.clone(getEObjectToIdMap().get(child));
 
-				if (ModelUtil.isIgnoredDatatype(child)) {
-					continue;
-				}
-
 				if (childId.equals(clone.getModelElementId())) {
 					clone.setModelElement(copiedChild);
 				}
 				clone.getEObjectToIdMap().put(copiedChild, childId);
 			}
 
+			// if the element already has been materialized, we don't want to add it
 			collection.allocateModelElementIds(clone.getEObjectToIdMap().map());
 			collection.addModelElement(clone.getModelElement());
 
@@ -365,18 +363,22 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
 	 *
-	 * @generated
+	 * @return the {@link EObject} to {@link ModelElementId}-Map
+	 *         <!-- end-user-doc -->
+	 *
+	 * @generated NOT
 	 */
 	public EMap<EObject, ModelElementId> getEObjectToIdMap() {
 		if (eObjectToIdMap == null) {
-			eObjectToIdMap = new EcoreEMap<EObject, ModelElementId>(
-				OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP, EObjectToModelElementIdMapImpl.class, this,
+			eObjectToIdMap = new CreateDeleteOperationEMap(OperationsPackage.Literals.EOBJECT_TO_MODEL_ELEMENT_ID_MAP,
+				EObjectToModelElementIdMapImpl.class, this,
 				OperationsPackage.CREATE_DELETE_OPERATION__EOBJECT_TO_ID_MAP);
 		}
 		return eObjectToIdMap;
 	}
+	// end of custom code
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -584,6 +586,40 @@ public class CreateDeleteOperationImpl extends AbstractOperationImpl implements 
 		} catch (final UnkownFeatureException e) {
 			// parent does not exist any more or feature does not exist
 			return null;
+		}
+	}
+
+	/**
+	 * Custom {@link EcoreEMap} which avoids the unique checks.
+	 */
+	private final class CreateDeleteOperationEMap extends EcoreEMap<EObject, ModelElementId> {
+
+		private static final long serialVersionUID = 4760475977383113249L;
+
+		CreateDeleteOperationEMap(EClass entryEClass, Class<?> entryClass, InternalEObject owner, int featureID) {
+			super(entryEClass, entryClass, owner, featureID);
+			delegateEList = new CreateDeleteOperationEList<Entry<EObject, ModelElementId>>(entryClass, owner,
+				featureID);
+		}
+
+		/**
+		 * Custom EList for Map entries.
+		 *
+		 * @param <E> entry class
+		 */
+		protected class CreateDeleteOperationEList<E extends Object & Entry<EObject, ModelElementId>>
+			extends DelegateEObjectContainmentEList<E> {
+
+			private static final long serialVersionUID = 636483596488471965L;
+
+			CreateDeleteOperationEList(Class<?> entryClass, InternalEObject owner, int featureID) {
+				super(entryClass, owner, featureID);
+			}
+
+			@Override
+			protected boolean isUnique() {
+				return false;
+			}
 		}
 	}
 

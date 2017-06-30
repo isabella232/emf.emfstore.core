@@ -37,6 +37,7 @@ import org.eclipse.emf.emfstore.bowling.Tournament;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getDateOfBirth <em>Date Of Birth</em>}</li>
@@ -47,11 +48,10 @@ import org.eclipse.emf.emfstore.bowling.Tournament;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getFanMerchandise <em>Fan Merchandise</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getFavouriteMerchandise <em>Favourite Merchandise</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getVisitedTournaments <em>Visited Tournaments</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getNumberOfTournamentsVisited <em>Number Of Tournaments
- * Visited</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getNumberOfTournamentsVisited
+ * <em>Number Of Tournaments Visited</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.FanImpl#getMoneySpentOnTickets <em>Money Spent On Tickets</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -369,7 +369,8 @@ public class FanImpl extends EObjectImpl implements Fan {
 		final boolean oldNameESet = nameESet;
 		nameESet = true;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.FAN__NAME, oldName, name, !oldNameESet));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, BowlingPackage.FAN__NAME, oldName, name, !oldNameESet));
 		}
 	}
 
@@ -864,18 +865,18 @@ public class FanImpl extends EObjectImpl implements Fan {
 			favouriteMerchandise = (Merchandise) eResolveProxy(oldFavouriteMerchandise);
 			if (favouriteMerchandise != oldFavouriteMerchandise) {
 				final InternalEObject newFavouriteMerchandise = (InternalEObject) favouriteMerchandise;
-				NotificationChain msgs = oldFavouriteMerchandise.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, null);
+				NotificationChain msgs = oldFavouriteMerchandise.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, null);
 				if (newFavouriteMerchandise.eInternalContainer() == null) {
-					msgs = newFavouriteMerchandise.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
+					msgs = newFavouriteMerchandise.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
 				}
 				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						BowlingPackage.FAN__FAVOURITE_MERCHANDISE, oldFavouriteMerchandise, favouriteMerchandise));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.FAN__FAVOURITE_MERCHANDISE,
+						oldFavouriteMerchandise, favouriteMerchandise));
 				}
 			}
 		}
@@ -926,19 +927,18 @@ public class FanImpl extends EObjectImpl implements Fan {
 		if (newFavouriteMerchandise != favouriteMerchandise) {
 			NotificationChain msgs = null;
 			if (favouriteMerchandise != null) {
-				msgs = ((InternalEObject) favouriteMerchandise).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
+				msgs = ((InternalEObject) favouriteMerchandise).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
 			}
 			if (newFavouriteMerchandise != null) {
-				msgs = ((InternalEObject) newFavouriteMerchandise).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
+				msgs = ((InternalEObject) newFavouriteMerchandise).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
 			}
 			msgs = basicSetFavouriteMerchandise(newFavouriteMerchandise, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else {
+		} else {
 			final boolean oldFavouriteMerchandiseESet = favouriteMerchandiseESet;
 			favouriteMerchandiseESet = true;
 			if (eNotificationRequired()) {
@@ -980,19 +980,18 @@ public class FanImpl extends EObjectImpl implements Fan {
 	public void unsetFavouriteMerchandise() {
 		if (favouriteMerchandise != null) {
 			NotificationChain msgs = null;
-			msgs = ((InternalEObject) favouriteMerchandise).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
+			msgs = ((InternalEObject) favouriteMerchandise).eInverseRemove(this,
+				EOPPOSITE_FEATURE_BASE - BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null, msgs);
 			msgs = basicUnsetFavouriteMerchandise(msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else {
+		} else {
 			final boolean oldFavouriteMerchandiseESet = favouriteMerchandiseESet;
 			favouriteMerchandiseESet = false;
 			if (eNotificationRequired()) {
-				eNotify(new ENotificationImpl(this, Notification.UNSET, BowlingPackage.FAN__FAVOURITE_MERCHANDISE,
-					null, null, oldFavouriteMerchandiseESet));
+				eNotify(new ENotificationImpl(this, Notification.UNSET, BowlingPackage.FAN__FAVOURITE_MERCHANDISE, null,
+					null, oldFavouriteMerchandiseESet));
 			}
 		}
 	}
@@ -1212,22 +1211,19 @@ public class FanImpl extends EObjectImpl implements Fan {
 		result.append(" (name: "); //$NON-NLS-1$
 		if (nameESet) {
 			result.append(name);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(", dateOfBirth: "); //$NON-NLS-1$
 		if (dateOfBirthESet) {
 			result.append(dateOfBirth);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(", hasSeasonTicket: "); //$NON-NLS-1$
 		if (hasSeasonTicketESet) {
 			result.append(hasSeasonTicket);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(", eMails: "); //$NON-NLS-1$
@@ -1235,22 +1231,19 @@ public class FanImpl extends EObjectImpl implements Fan {
 		result.append(", gender: "); //$NON-NLS-1$
 		if (genderESet) {
 			result.append(gender);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(", numberOfTournamentsVisited: "); //$NON-NLS-1$
 		if (numberOfTournamentsVisitedESet) {
 			result.append(numberOfTournamentsVisited);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(", moneySpentOnTickets: "); //$NON-NLS-1$
 		if (moneySpentOnTicketsESet) {
 			result.append(moneySpentOnTickets);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(')');

@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * wesendon
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.junit.Test;
 
 /**
  * Conflicttests for MultiAttribute, -Set and -Move operations.
- * 
+ *
  * @author wesendon
  */
 public class ConflictDetectionMultiAttributeTest extends ConflictDetectionTest {

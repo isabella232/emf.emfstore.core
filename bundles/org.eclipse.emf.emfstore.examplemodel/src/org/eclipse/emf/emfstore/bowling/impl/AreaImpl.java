@@ -29,11 +29,11 @@ import org.eclipse.emf.emfstore.bowling.Tournament;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.AreaImpl#getAreas <em>Areas</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.AreaImpl#getTournaments <em>Tournaments</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

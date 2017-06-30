@@ -33,12 +33,12 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestRunImpl#getConfig <em>Config</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestRunImpl#getTime <em>Time</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestRunImpl#getResults <em>Results</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -149,20 +149,20 @@ public class TestRunImpl extends EObjectImpl implements TestRun {
 		if (newConfig != config) {
 			NotificationChain msgs = null;
 			if (config != null) {
-				msgs = ((InternalEObject) config).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ConfigPackage.TEST_RUN__CONFIG, null, msgs);
+				msgs = ((InternalEObject) config).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_RUN__CONFIG, null, msgs);
 			}
 			if (newConfig != null) {
-				msgs = ((InternalEObject) newConfig).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ConfigPackage.TEST_RUN__CONFIG, null, msgs);
+				msgs = ((InternalEObject) newConfig).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ConfigPackage.TEST_RUN__CONFIG, null, msgs);
 			}
 			msgs = basicSetConfig(newConfig, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RUN__CONFIG, newConfig, newConfig));
+		} else if (eNotificationRequired()) {
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RUN__CONFIG, newConfig, newConfig));
 		}
 	}
 

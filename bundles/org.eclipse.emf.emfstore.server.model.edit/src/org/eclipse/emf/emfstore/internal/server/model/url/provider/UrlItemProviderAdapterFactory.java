@@ -40,8 +40,8 @@ import org.eclipse.emf.emfstore.internal.server.model.url.util.UrlAdapterFactory
  *
  * @generated
  */
-public class UrlItemProviderAdapterFactory extends UrlAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+public class UrlItemProviderAdapterFactory extends UrlAdapterFactory
+	implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -486,8 +486,8 @@ public interface AccesscontrolPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription
-	 * <em>Description</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit#getDescription <em>Description</em>
+	 * }'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for the attribute '<em>Description</em>'.

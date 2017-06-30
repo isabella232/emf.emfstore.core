@@ -23,16 +23,17 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getSeedCount <em>Seed Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getTestName <em>ESFuzzyTest Name
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getSeedCount <em>Seed Count</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getTestName <em>Test Name</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getError <em>Error</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getFailure <em>Failure</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getExecutionTime <em>Execution Time
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl#getExecutionTime
+ * <em>Execution Time</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -60,7 +61,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	protected int seedCount = SEED_COUNT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTestName() <em>ESFuzzyTest Name</em>}' attribute.
+	 * The default value of the '{@link #getTestName() <em>Test Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -71,7 +72,7 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 	protected static final String TEST_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTestName() <em>ESFuzzyTest Name</em>}' attribute.
+	 * The cached value of the '{@link #getTestName() <em>Test Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -262,8 +263,8 @@ public class TestResultImpl extends EObjectImpl implements TestResult {
 		final String oldFailure = failure;
 		failure = newFailure;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__FAILURE, oldFailure,
-				failure));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, ConfigPackage.TEST_RESULT__FAILURE, oldFailure, failure));
 		}
 	}
 

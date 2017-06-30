@@ -27,11 +27,11 @@ import org.eclipse.emf.emfstore.bowling.Player;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl#getTypedKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerToPointsMapImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -130,7 +130,8 @@ public class PlayerToPointsMapImpl extends EObjectImpl implements BasicEMap.Entr
 		final Player oldKey = key;
 		key = newKey;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER_TO_POINTS_MAP__KEY, oldKey, key));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, BowlingPackage.PLAYER_TO_POINTS_MAP__KEY, oldKey, key));
 		}
 	}
 

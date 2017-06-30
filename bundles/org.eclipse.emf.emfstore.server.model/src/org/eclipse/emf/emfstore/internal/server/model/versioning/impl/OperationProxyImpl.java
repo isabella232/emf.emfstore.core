@@ -30,11 +30,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl#getProxies <em>Proxies
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.OperationProxyImpl#getProxies
+ * <em>Proxies</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -180,7 +180,7 @@ public class OperationProxyImpl extends EObjectImpl implements OperationProxy {
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.server.model.versioning.OperationProxy#setImage(org.eclipse.emf.emfstore.internal.server.model.versioning.ImageProxy)
 	 */
 	public void setImage(ImageProxy imageProxy) {

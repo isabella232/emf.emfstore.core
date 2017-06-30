@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getDateOfBirth <em>Date Of Birth</em>}</li>
@@ -36,7 +37,6 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getWinLossRatio <em>Win Loss Ratio</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Player#getGender <em>Gender</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getPlayer()
  * @model

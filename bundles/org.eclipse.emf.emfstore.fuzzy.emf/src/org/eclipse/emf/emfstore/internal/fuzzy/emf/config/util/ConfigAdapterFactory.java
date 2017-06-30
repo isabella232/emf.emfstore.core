@@ -83,48 +83,47 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected ConfigSwitch<Adapter> modelSwitch =
-		new ConfigSwitch<Adapter>() {
-			@Override
-			public Adapter caseTestConfig(TestConfig object) {
-				return createTestConfigAdapter();
-			}
+	protected ConfigSwitch<Adapter> modelSwitch = new ConfigSwitch<Adapter>() {
+		@Override
+		public Adapter caseTestConfig(TestConfig object) {
+			return createTestConfigAdapter();
+		}
 
-			@Override
-			public Adapter caseTestRun(TestRun object) {
-				return createTestRunAdapter();
-			}
+		@Override
+		public Adapter caseTestRun(TestRun object) {
+			return createTestRunAdapter();
+		}
 
-			@Override
-			public Adapter caseTestResult(TestResult object) {
-				return createTestResultAdapter();
-			}
+		@Override
+		public Adapter caseTestResult(TestResult object) {
+			return createTestResultAdapter();
+		}
 
-			@Override
-			public Adapter caseTestDiff(TestDiff object) {
-				return createTestDiffAdapter();
-			}
+		@Override
+		public Adapter caseTestDiff(TestDiff object) {
+			return createTestDiffAdapter();
+		}
 
-			@Override
-			public Adapter caseDiffReport(DiffReport object) {
-				return createDiffReportAdapter();
-			}
+		@Override
+		public Adapter caseDiffReport(DiffReport object) {
+			return createDiffReportAdapter();
+		}
 
-			@Override
-			public Adapter caseRoot(Root object) {
-				return createRootAdapter();
-			}
+		@Override
+		public Adapter caseRoot(Root object) {
+			return createRootAdapter();
+		}
 
-			@Override
-			public Adapter caseMutatorConfig(MutatorConfig object) {
-				return createMutatorConfigAdapter();
-			}
+		@Override
+		public Adapter caseMutatorConfig(MutatorConfig object) {
+			return createMutatorConfigAdapter();
+		}
 
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+		@Override
+		public Adapter defaultCase(EObject object) {
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -142,7 +141,7 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig <em>ESFuzzyTest Config</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig <em>Test Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -158,7 +157,7 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun
-	 * <em>ESFuzzyTest Run</em>}'.
+	 * <em>Test Run</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -174,7 +173,7 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult <em>ESFuzzyTest Result</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult <em>Test Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -190,7 +189,7 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff
-	 * <em>ESFuzzyTest Diff</em>}'.
+	 * <em>Test Diff</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.

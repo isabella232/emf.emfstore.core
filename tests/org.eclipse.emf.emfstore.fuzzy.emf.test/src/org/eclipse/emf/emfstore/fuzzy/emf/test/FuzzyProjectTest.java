@@ -70,7 +70,7 @@ public abstract class FuzzyProjectTest {
 		{
 			put(ESEMFDataProvider.MUTATOR_EDITINGDOMAIN,
 				((ESWorkspaceProviderImpl) ESWorkspaceProvider.INSTANCE)
-				.getEditingDomain());
+					.getEditingDomain());
 		}
 	};
 

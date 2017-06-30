@@ -20,25 +20,25 @@ import org.eclipse.emf.emfstore.internal.common.model.Project;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getPrimarySpec <em>Primary Spec</em>}
  * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getTagSpecs <em>Tag Specs</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getNextVersion <em>Next Version</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getPreviousVersion <em>Previous Version
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getPreviousVersion
+ * <em>Previous Version</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getLogMessage <em>Log Message</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getAncestorVersion <em>Ancestor Version
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getBranchedVersions <em>Branched
- * Versions</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getMergedToVersion <em>Merged To Version
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getMergedFromVersion <em>Merged From
- * Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getAncestorVersion
+ * <em>Ancestor Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getBranchedVersions
+ * <em>Branched Versions</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getMergedToVersion
+ * <em>Merged To Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.Version#getMergedFromVersion
+ * <em>Merged From Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getVersion()
  * @model

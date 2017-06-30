@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getHostName <em>Host Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.url.ServerUrl#getPort <em>Port</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.url.UrlPackage#getServerUrl()
  * @model

@@ -68,14 +68,13 @@ public class PagedUpdateVersionSpecItemProvider extends VersionSpecItemProvider 
 	 * @generated
 	 */
 	protected void addMaxChangesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_PagedUpdateVersionSpec_maxChanges_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_maxChanges_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_PagedUpdateVersionSpec_maxChanges_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_maxChanges_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__MAX_CHANGES, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -86,14 +85,13 @@ public class PagedUpdateVersionSpecItemProvider extends VersionSpecItemProvider 
 	 * @generated
 	 */
 	protected void addBaseVersionSpecPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_PagedUpdateVersionSpec_baseVersionSpec_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_baseVersionSpec_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
-			VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, true, false, true, null, null,
-			null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_PagedUpdateVersionSpec_baseVersionSpec_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_PagedUpdateVersionSpec_baseVersionSpec_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_PagedUpdateVersionSpec_type"), //$NON-NLS-1$
+				VersioningPackage.Literals.PAGED_UPDATE_VERSION_SPEC__BASE_VERSION_SPEC, true, false, true, null, null,
+				null));
 	}
 
 	/**

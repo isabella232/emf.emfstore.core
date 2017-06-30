@@ -304,6 +304,7 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 *
 	 * @param sessionId
 	 *            the {@link SessionId} representing the requesting user
+	 * @param projectId the {@link ProjectId} of the associated Project
 	 * @param proxyId
 	 *            the ID that identifies the list of stored fragments
 	 * @param fragmentIndex
@@ -312,7 +313,8 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 	 * @throws ESException in case the mandatory session adapter is missing
 	 */
 	@ESMethod(MethodId.DOWNLOADCHANGEPACKAGEFRAGMENT)
-	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, String proxyId, int fragmentIndex)
+	public ChangePackageEnvelope downloadChangePackageFragment(SessionId sessionId, ProjectId projectId, String proxyId,
+		int fragmentIndex)
 		throws ESException {
 
 		final ESSessionId resolvedSession = getAccessControl().getSessions().resolveSessionById(sessionId.getId());
@@ -377,6 +379,11 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		final ACUser user = (ACUser) ESUserImpl.class.cast(copyAndResolveUser).toInternalAPI();
 		sanityCheckObjects(sessionId, projectId, baseVersionSpec, changePackage, logMessage);
 
+		final ProjectHistory projectHistory = getSubInterface(ProjectSubInterfaceImpl.class).getProject(projectId);
+		ModelUtil.logProjectDetails("Creating version on server...", user.getName(), projectHistory.getProjectName(), //$NON-NLS-1$
+			projectHistory.getProjectId().getId(), targetBranch != null ? targetBranch.getBranch() : null,
+			baseVersionSpec.getIdentifier());
+
 		if (FileBasedChangePackage.class.isInstance(changePackage)
 			&& !ServerConfiguration.useFileBasedChangePackageOnServer()) {
 			// File-based change package should never arrive here in production mode
@@ -387,8 +394,15 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 			throw new ESException(Messages.VersionSubInterfaceImpl_FileBasedChangePackageExpected);
 		}
 
-		return internalCreateVersion(projectId, baseVersionSpec, changePackage, targetBranch, sourceVersion,
-			logMessage, user);
+		final PrimaryVersionSpec result = internalCreateVersion(projectId, baseVersionSpec, changePackage, targetBranch,
+			sourceVersion, logMessage, user);
+
+		ModelUtil.logProjectDetails("Creating version on server... done", user.getName(), //$NON-NLS-1$
+			projectHistory.getProjectName(), projectHistory.getProjectId().getId(),
+			targetBranch != null ? targetBranch.getBranch() : null,
+			baseVersionSpec.getIdentifier());
+
+		return result;
 	}
 
 	private PrimaryVersionSpec internalCreateVersion(ProjectId projectId, PrimaryVersionSpec baseVersionSpec,
@@ -595,6 +609,9 @@ public class VersionSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 		try {
 			if (ServerConfiguration.isComputeChecksumOnCommitActive()) {
 				computedChecksum = ModelUtil.computeChecksum(projectState);
+				ModelUtil.logProjectDetails(
+					MessageFormat.format("Checksum computation during version create: {0}", computedChecksum), //$NON-NLS-1$
+					user.getName(), projectHistory.getProjectName(), projectHistory.getProjectId().getId(), null, -1);
 			}
 		} catch (final SerializationException exception) {
 			// TODO: clarify what to do in case checksum computation fails + provide ext. point

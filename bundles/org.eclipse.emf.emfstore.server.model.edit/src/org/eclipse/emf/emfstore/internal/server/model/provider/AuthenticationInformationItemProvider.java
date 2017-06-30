@@ -36,8 +36,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  *
  * @generated
  */
-public class AuthenticationInformationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AuthenticationInformationItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -153,8 +153,7 @@ public class AuthenticationInformationItemProvider extends ItemProviderAdapter i
 		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.AUTHENTICATION_INFORMATION__SESSION_ID,
 			ModelFactory.eINSTANCE.createSessionId()));
 
-		newChildDescriptors.add(createChildParameter(
-			ModelPackage.Literals.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER,
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.AUTHENTICATION_INFORMATION__RESOLVED_AC_USER,
 			AccesscontrolFactory.eINSTANCE.createACUser()));
 	}
 

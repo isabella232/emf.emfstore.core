@@ -23,10 +23,10 @@ import org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyStringValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

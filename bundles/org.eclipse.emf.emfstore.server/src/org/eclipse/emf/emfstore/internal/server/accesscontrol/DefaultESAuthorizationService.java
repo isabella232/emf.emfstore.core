@@ -13,6 +13,7 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -66,7 +67,7 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 	/**
 	 * Contains possible access levels.
 	 */
-	private enum AccessLevel {
+	protected enum AccessLevel {
 		PROJECT_READ, PROJECT_WRITE, PROJECT_ADMIN, SERVER_ADMIN, NONE
 	}
 
@@ -126,9 +127,25 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 		}
 
 		addAccessMapping(AccessLevel.NONE, MethodId.GETPROJECTLIST, MethodId.RESOLVEUSER);
+
+		updateAccessMappings();
 	}
 
-	private void addAccessMapping(AccessLevel type, MethodId... operationTypes) {
+	/**
+	 * Override this method in order to {@link #addAccessMapping(AccessLevel, MethodId...) change} the default access
+	 * mappings.
+	 */
+	protected void updateAccessMappings() {
+		/* no op, may be overriden by clients */
+	}
+
+	/**
+	 * Adds mappings for the given operation types and the access level.
+	 *
+	 * @param type the {@link AccessLevel}
+	 * @param operationTypes the {@link MethodId operation types}
+	 */
+	protected final void addAccessMapping(AccessLevel type, MethodId... operationTypes) {
 		for (final MethodId opType : operationTypes) {
 			accessMap.put(opType, type);
 		}
@@ -295,31 +312,45 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 			return true;
 		}
 
-		for (final Role role : roles) {
+		final Iterable<ProjectAdminRole> projectAdminRoles = Iterables.filter(roles, ProjectAdminRole.class);
 
-			if (!ProjectAdminRole.class.isInstance(role)) {
-				continue;
-			}
+		final Iterator<ProjectAdminRole> iterator = projectAdminRoles.iterator();
 
-			if (!ServerConfiguration.isProjectAdminPrivileg(privileg)) {
+		if (iterator.hasNext()) {
+			/* if at least one project admin role, perform validity checks */
+			if (!isProjectAdminPrivileg(privileg)) {
 				throw new AccessControlException(Messages.AccessControlImpl_PARole_Missing_Privilege);
 			}
-
 			if (globalProjectId == null) {
 				return false;
 			}
+		}
 
-			final ProjectAdminRole projectAdminRole = ProjectAdminRole.class.cast(role);
-			final ProjectId projectId = APIUtil.toInternal(ProjectId.class, globalProjectId);
+		final ProjectId projectId = APIUtil.toInternal(ProjectId.class, globalProjectId);
 
-			if (!projectAdminRole.canAdministrate(projectId)) {
-				throw new AccessControlException(Messages.AccessControlImpl_PARole_Missing_Privilege);
+		while (iterator.hasNext()) {
+			final ProjectAdminRole projectAdminRole = iterator.next();
+
+			if (projectAdminRole.canAdministrate(projectId)) {
+				/* return false, because no server admin. no exception because still valid */
+				return false;
 			}
 
-			return false;
+			if (!iterator.hasNext()) {
+				/* no project admin role allows this operation -> throw exception */
+				throw new AccessControlException(Messages.AccessControlImpl_PARole_Missing_Privilege);
+			}
 		}
 
 		throw new AccessControlException(Messages.AccessControlImpl_Insufficient_Rights);
+	}
+
+	/**
+	 * @param privileg the {@link ESProjectAdminPrivileges}
+	 * @return <code>true</code> if a project admin has the required privileges, <code>false</code> otherwise
+	 */
+	protected boolean isProjectAdminPrivileg(ESProjectAdminPrivileges privileg) {
+		return ServerConfiguration.isProjectAdminPrivileg(privileg);
 	}
 
 	/**

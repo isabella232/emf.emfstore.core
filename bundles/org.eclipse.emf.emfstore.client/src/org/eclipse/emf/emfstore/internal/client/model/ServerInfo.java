@@ -24,6 +24,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getName <em>Name</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getUrl <em>Url</em>}</li>
@@ -31,12 +32,11 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getPath <em>Path</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getProjectInfos <em>Project Infos</em>}
  *          </li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getLastUsersession <em>Last Usersession
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getCertificateAlias <em>Certificate
- *          Alias</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getLastUsersession
+ *          <em>Last Usersession</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.client.model.ServerInfo#getCertificateAlias
+ *          <em>Certificate Alias</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo()
  * @model
@@ -131,7 +131,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * If the meaning of the '<em>Path</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
 	 * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getServerInfo_Path()
@@ -145,7 +145,7 @@ public interface ServerInfo extends EObject, APIDelegate<ESServerImpl> {
 	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Path</em>' attribute.
 	 * @see #getPath()
 	 * @generated

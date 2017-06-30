@@ -19,14 +19,15 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getSeedCount <em>Seed Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getTestName <em>ESFuzzyTest Name</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getTestName <em>Test Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getError <em>Error</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getFailure <em>Failure</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getExecutionTime <em>Execution Time</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getExecutionTime <em>Execution Time</em>}
+ * </li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult()
  * @model
@@ -63,7 +64,7 @@ public interface TestResult extends EObject {
 	void setSeedCount(int value);
 
 	/**
-	 * Returns the value of the '<em><b>ESFuzzyTest Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Test Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>ESFuzzyTest Name</em>' attribute isn't clear, there really should be more of a
@@ -71,7 +72,7 @@ public interface TestResult extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the value of the '<em>ESFuzzyTest Name</em>' attribute.
+	 * @return the value of the '<em>Test Name</em>' attribute.
 	 * @see #setTestName(String)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getTestResult_TestName()
 	 * @model
@@ -81,11 +82,11 @@ public interface TestResult extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getTestName
-	 * <em>ESFuzzyTest Name</em>}' attribute.
+	 * <em>Test Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @param value the new value of the '<em>ESFuzzyTest Name</em>' attribute.
+	 * @param value the new value of the '<em>Test Name</em>' attribute.
 	 * @see #getTestName()
 	 * @generated
 	 */

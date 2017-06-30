@@ -18,9 +18,11 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESServer;
 import org.eclipse.emf.emfstore.client.ESUsersession;
 import org.eclipse.emf.emfstore.client.exceptions.ESServerStartFailedException;
@@ -30,8 +32,11 @@ import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileDownloadStatus;
 import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileDownloadStatus.Status;
+import org.eclipse.emf.emfstore.internal.client.model.filetransfer.FileTransferManager;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
+import org.eclipse.emf.emfstore.internal.server.exceptions.FileTransferException;
 import org.eclipse.emf.emfstore.internal.server.model.FileIdentifier;
+import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -132,5 +137,135 @@ public class FileManagerTest extends TransmissionTests {
 			fileInputStream.close();
 			fileInputStream2.close();
 		}
+	}
+
+	@Test
+	public void testFileUploadWithoutDirectProjectSpaceUsage()
+		throws IOException, FileTransferException, InterruptedException {
+		/* setup */
+		file = File.createTempFile("foo", "tmp"); //$NON-NLS-1$//$NON-NLS-2$
+		file.deleteOnExit();
+		FileUtils.writeStringToFile(file, System.currentTimeMillis() + "FOObar"); //$NON-NLS-1$
+
+		/* act */
+		final FileTransferManager transferManager1 = new FileTransferManager(
+			getProjectSpace1().getProjectId()/* id */,
+			getProjectSpace1().getUsersession()/* usersession */);
+		transferManager1.addFile(file, "myId"); //$NON-NLS-1$
+		transferManager1.uploadQueuedFiles(new NullProgressMonitor());
+
+		/* assert */
+		final FileTransferManager transferManager2 = new FileTransferManager(
+			getProjectSpace2().getProjectId()/* id */,
+			getProjectSpace2().getUsersession()/* usersession */);
+		final FileIdentifier fileIdentifier = ModelFactory.eINSTANCE.createFileIdentifier();
+		fileIdentifier.setIdentifier("myId"); //$NON-NLS-1$
+		final FileDownloadStatus status = transferManager2.getFile(fileIdentifier, false);
+		assertTrue(status != null);
+		// wait for file to be completely transferred
+		while (status.getStatus() != Status.FINISHED) {
+			if (status.getStatus() == Status.FAILED) {
+				fail("download failed"); //$NON-NLS-1$
+			}
+			Thread.sleep(100);
+		}
+		final File transferredFile = status.getTransferredFile(true);
+		final FileInputStream fileInputStream = new FileInputStream(file);
+		final FileInputStream fileInputStream2 = new FileInputStream(transferredFile);
+		try {
+			assertTrue(Arrays.equals(IOUtils.toByteArray(fileInputStream), IOUtils.toByteArray(fileInputStream2)));
+		} finally {
+			fileInputStream.close();
+			fileInputStream2.close();
+		}
+	}
+
+	@Test
+	public void testFileUploadWithoutDirectProjectSpaceUsageOverride()
+		throws IOException, FileTransferException, InterruptedException {
+		/* setup */
+		file = File.createTempFile("foo", "tmp"); //$NON-NLS-1$//$NON-NLS-2$
+		file.deleteOnExit();
+		FileUtils.writeStringToFile(file, System.currentTimeMillis() + "FOObar"); //$NON-NLS-1$
+		final FileTransferManager transferManager1 = new FileTransferManager(
+			getProjectSpace1().getProjectId()/* id */,
+			getProjectSpace1().getUsersession()/* usersession */);
+		transferManager1.addFile(file, "myId"); //$NON-NLS-1$
+		transferManager1.uploadQueuedFiles(new NullProgressMonitor());
+
+		/* act */
+		final File file2 = File.createTempFile("foo2", "tmp"); //$NON-NLS-1$//$NON-NLS-2$
+		file2.deleteOnExit();
+		FileUtils.writeStringToFile(file2, System.currentTimeMillis() + "FOObar2"); //$NON-NLS-1$
+		transferManager1.addFile(file2, "myId"); //$NON-NLS-1$
+		transferManager1.uploadQueuedFiles(new NullProgressMonitor());
+
+		/* assert */
+		final FileTransferManager transferManager2 = new FileTransferManager(
+			getProjectSpace2().getProjectId()/* id */,
+			getProjectSpace2().getUsersession()/* usersession */);
+		final FileIdentifier fileIdentifier = ModelFactory.eINSTANCE.createFileIdentifier();
+		fileIdentifier.setIdentifier("myId"); //$NON-NLS-1$
+		final FileDownloadStatus status = transferManager2.getFile(fileIdentifier, false);
+		assertTrue(status != null);
+		// wait for file to be completely transferred
+		while (status.getStatus() != Status.FINISHED) {
+			if (status.getStatus() == Status.FAILED) {
+				fail("download failed"); //$NON-NLS-1$
+			}
+			Thread.sleep(100);
+		}
+		final File transferredFile = status.getTransferredFile(true);
+		final FileInputStream fileInputStream = new FileInputStream(file2);
+		final FileInputStream fileInputStream2 = new FileInputStream(transferredFile);
+		try {
+			assertTrue(Arrays.equals(IOUtils.toByteArray(fileInputStream), IOUtils.toByteArray(fileInputStream2)));
+		} finally {
+			fileInputStream.close();
+			fileInputStream2.close();
+		}
+	}
+
+	@Test
+	public void testFileUploadWithoutDirectProjectSpaceUsagePathSeparatorInId()
+		throws IOException, FileTransferException, InterruptedException {
+		/* setup */
+		file = File.createTempFile("foo", "tmp"); //$NON-NLS-1$//$NON-NLS-2$
+		file.deleteOnExit();
+		FileUtils.writeStringToFile(file, System.currentTimeMillis() + "FOObar"); //$NON-NLS-1$
+
+		/* act */
+		final FileTransferManager transferManager1 = new FileTransferManager(
+			getProjectSpace1().getProjectId()/* id */,
+			getProjectSpace1().getUsersession()/* usersession */);
+		transferManager1.addFile(file, "myFolder/myId"); //$NON-NLS-1$
+		transferManager1.uploadQueuedFiles(new NullProgressMonitor());
+
+		/* assert */
+		final FileTransferManager transferManager2 = new FileTransferManager(
+			getProjectSpace2().getProjectId()/* id */,
+			getProjectSpace2().getUsersession()/* usersession */);
+		final FileIdentifier fileIdentifier = ModelFactory.eINSTANCE.createFileIdentifier();
+		fileIdentifier.setIdentifier("myFolder/myId"); //$NON-NLS-1$
+		final FileDownloadStatus status = transferManager2.getFile(fileIdentifier, false);
+		assertTrue(status != null);
+		// wait for file to be completely transferred
+		while (status.getStatus() != Status.FINISHED) {
+			if (status.getStatus() == Status.FAILED) {
+				fail("download failed"); //$NON-NLS-1$
+			}
+			Thread.sleep(100);
+		}
+		final File transferredFile = status.getTransferredFile(true);
+		final FileInputStream fileInputStream = new FileInputStream(file);
+		final FileInputStream fileInputStream2 = new FileInputStream(transferredFile);
+		try {
+			assertTrue(Arrays.equals(IOUtils.toByteArray(fileInputStream), IOUtils.toByteArray(fileInputStream2)));
+		} finally {
+			fileInputStream.close();
+			fileInputStream2.close();
+		}
+		assertEquals("myId", transferredFile.getName()); //$NON-NLS-1$
+		assertEquals("myFolder", transferredFile.getParentFile().getName()); //$NON-NLS-1$
 	}
 }

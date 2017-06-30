@@ -15,6 +15,8 @@ package org.eclipse.emf.emfstore.internal.server;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -23,6 +25,7 @@ import java.text.MessageFormat;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.Set;
 
 import org.eclipse.core.runtime.ILogListener;
@@ -51,6 +54,7 @@ import org.eclipse.emf.emfstore.internal.server.core.helper.EPackageHelper;
 import org.eclipse.emf.emfstore.internal.server.core.helper.ResourceHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.StorageException;
+import org.eclipse.emf.emfstore.internal.server.model.ClientVersionInfo;
 import org.eclipse.emf.emfstore.internal.server.model.ModelFactory;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectHistory;
 import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
@@ -68,6 +72,8 @@ import org.eclipse.emf.emfstore.internal.server.startup.StartupListener;
 import org.eclipse.emf.emfstore.internal.server.storage.ServerXMIResourceSetProvider;
 import org.eclipse.emf.emfstore.server.ESDynamicModelProvider;
 import org.eclipse.emf.emfstore.server.ESServerURIUtil;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator.ESHashAndSalt;
 import org.eclipse.emf.emfstore.server.exceptions.ESServerInitException;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
@@ -147,7 +153,9 @@ public class EMFStoreController implements IApplication, Runnable {
 			Messages.EMFStoreController_Could_Not_Copy_Properties_File,
 			Messages.EMFStoreController_Default_Properties_File_Copied);
 
-		initProperties();
+		final Properties properties = initProperties();
+
+		assureSuperUserPasswordIsSet(properties);
 
 		logGeneralInformation();
 
@@ -177,12 +185,25 @@ public class EMFStoreController implements IApplication, Runnable {
 		handlePostStartupListener();
 		registerShutdownHook();
 
+		if (ServerConfiguration.isUserPasswordMigrationRequired()) {
+			performDummyLogin();
+		}
+
 		ModelUtil.logInfo(Messages.EMFStoreController_Init_Complete);
 		ModelUtil.logInfo(Messages.EMFStoreController_Server_Running);
 		if (waitForTermination) {
 			waitForTermination();
 		}
 
+	}
+
+	/**
+	 * Verify a dummy user in order to trigger an eager startup of the user verifiers.
+	 */
+	private void performDummyLogin() {
+		final ClientVersionInfo clientVersionInfo = ModelFactory.eINSTANCE.createClientVersionInfo();
+		clientVersionInfo.setVersion("1.0.0."); //$NON-NLS-1$ // actual version is unimportant
+		getAccessControl().getLoginService().verifyUser("", "", clientVersionInfo.toAPI()); //$NON-NLS-1$//$NON-NLS-2$
 	}
 
 	private void registerShutdownHook() {
@@ -456,6 +477,73 @@ public class EMFStoreController implements IApplication, Runnable {
 			throw new FatalESException(StorageException.NOSAVE, e);
 		}
 		ModelUtil.logInfo(Messages.EMFStoreController_Added_SuperUser + superuser);
+	}
+
+	private void assureSuperUserPasswordIsSet(final Properties properties) {
+
+		final boolean unhashedPasswordWasPresent = properties.containsKey(ServerConfiguration.SUPER_USER_PASSWORD);
+
+		String password = null;
+		if (!unhashedPasswordWasPresent) {
+
+			if (properties.containsKey(ServerConfiguration.SUPER_USER_PASSWORD_HASH) &&
+				properties.containsKey(ServerConfiguration.SUPER_USER_PASSWORD_SALT)) {
+				/* super user password not present but hash and salt -> all is fine */
+				return;
+			}
+
+			/* no password is available in properties -> get password from user */
+			final Scanner scanner = new Scanner(System.in);
+			try {
+				boolean passwordDidNotMatch = true;
+				while (passwordDidNotMatch) {
+					System.out.println(Messages.EMFStoreController_NoSuperUserPasswordPrompt);
+					final String pw1 = scanner.nextLine();
+					System.out.println(Messages.EMFStoreController_EnterSuperUserPasswordAgain);
+					final String pw2 = scanner.nextLine();
+					if (pw1 != null && pw1.equals(pw2)) {
+						password = pw1;
+						passwordDidNotMatch = false;
+					} else {
+						System.out.println(Messages.EMFStoreController_PasswordDidNotMatch);
+					}
+				}
+			} finally {
+				scanner.close();
+			}
+		} else {
+			/* get unhashed password */
+			password = properties.getProperty(ServerConfiguration.SUPER_USER_PASSWORD);
+		}
+
+		/* migrate non hashed password */
+		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+		final File propertyFile = new File(ServerConfiguration.getConfFile());
+		FileOutputStream propertyFileOutputStream = null;
+		try {
+			propertyFileOutputStream = new FileOutputStream(propertyFile);
+			final ESHashAndSalt hashAndSalt = passwordHashGenerator.hashPassword(password);
+			properties.setProperty(ServerConfiguration.SUPER_USER_PASSWORD_SALT, hashAndSalt.getSalt());
+			properties.setProperty(ServerConfiguration.SUPER_USER_PASSWORD_HASH, hashAndSalt.getHash());
+			properties.remove(ServerConfiguration.SUPER_USER_PASSWORD);
+			properties.store(propertyFileOutputStream, ""); //$NON-NLS-1$
+		} catch (final FileNotFoundException ex) {
+			ModelUtil.logWarning(Messages.EMFStoreController_PasswordHashFailFileNotFound, ex);
+		} catch (final IOException ex) {
+			ModelUtil.logWarning(Messages.EMFStoreController_PasswordHashFailIOException, ex);
+		} finally {
+			if (propertyFileOutputStream != null) {
+				try {
+					propertyFileOutputStream.close();
+				} catch (final IOException ex) {
+					ModelUtil.logException(ex);
+				}
+			}
+		}
+
+		if (unhashedPasswordWasPresent) {
+			ServerConfiguration.initUserVerifierMigration();
+		}
 	}
 
 	private Properties initProperties() {

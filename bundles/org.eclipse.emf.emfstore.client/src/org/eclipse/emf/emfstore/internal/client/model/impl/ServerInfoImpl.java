@@ -33,6 +33,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getUrl <em>Url</em>}</li>
@@ -40,12 +41,11 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectInfo;
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getPath <em>Path</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getProjectInfos <em>Project Infos</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getLastUsersession <em>Last Usersession
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getCertificateAlias <em>Certificate
- * Alias</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getLastUsersession
+ * <em>Last Usersession</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.ServerInfoImpl#getCertificateAlias
+ * <em>Certificate Alias</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -119,6 +119,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getPath()
 	 * @generated
 	 * @ordered
@@ -128,6 +129,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getPath()
 	 * @generated
 	 * @ordered
@@ -262,24 +264,25 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	public String getPath()
-	{
+	public String getPath() {
 		return path;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	public void setPath(String newPath)
-	{
-		String oldPath = path;
+	public void setPath(String newPath) {
+		final String oldPath = path;
 		path = newPath;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER_INFO__PATH, oldPath, path));
+		}
 	}
 
 	/**
@@ -288,8 +291,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public EList<ProjectInfo> getProjectInfos() {
-		if (projectInfos == null)
-		{
+		if (projectInfos == null) {
 			projectInfos = new EObjectContainmentEList.Resolving<ProjectInfo>(ProjectInfo.class, this,
 				ModelPackage.SERVER_INFO__PROJECT_INFOS);
 		}
@@ -302,12 +304,10 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 * @generated
 	 */
 	public Usersession getLastUsersession() {
-		if (lastUsersession != null && lastUsersession.eIsProxy())
-		{
+		if (lastUsersession != null && lastUsersession.eIsProxy()) {
 			final InternalEObject oldLastUsersession = (InternalEObject) lastUsersession;
 			lastUsersession = (Usersession) eResolveProxy(oldLastUsersession);
-			if (lastUsersession != oldLastUsersession)
-			{
+			if (lastUsersession != oldLastUsersession) {
 				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						ModelPackage.SERVER_INFO__LAST_USERSESSION, oldLastUsersession, lastUsersession));
@@ -370,8 +370,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.SERVER_INFO__PROJECT_INFOS:
 			return ((InternalEList<?>) getProjectInfos()).basicRemove(otherEnd, msgs);
 		}
@@ -385,8 +384,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.SERVER_INFO__NAME:
 			return getName();
 		case ModelPackage.SERVER_INFO__URL:
@@ -416,8 +414,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.SERVER_INFO__NAME:
 			setName((String) newValue);
 			return;
@@ -451,8 +448,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.SERVER_INFO__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -485,8 +481,7 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.SERVER_INFO__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ModelPackage.SERVER_INFO__URL:
@@ -500,8 +495,8 @@ public class ServerInfoImpl extends EObjectImpl implements ServerInfo {
 		case ModelPackage.SERVER_INFO__LAST_USERSESSION:
 			return lastUsersession != null;
 		case ModelPackage.SERVER_INFO__CERTIFICATE_ALIAS:
-			return CERTIFICATE_ALIAS_EDEFAULT == null ? certificateAlias != null : !CERTIFICATE_ALIAS_EDEFAULT
-				.equals(certificateAlias);
+			return CERTIFICATE_ALIAS_EDEFAULT == null ? certificateAlias != null
+				: !CERTIFICATE_ALIAS_EDEFAULT.equals(certificateAlias);
 		}
 		return super.eIsSet(featureID);
 	}

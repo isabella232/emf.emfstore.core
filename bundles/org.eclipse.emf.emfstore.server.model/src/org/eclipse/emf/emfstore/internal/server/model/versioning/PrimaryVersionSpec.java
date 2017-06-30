@@ -22,14 +22,14 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec#getIdentifier <em>
- *          Identifier</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec#getIdentifier
+ *          <em>Identifier</em>}</li>
  *          <li>
  *          {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec#getProjectStateChecksum
  *          <em>Project State Checksum</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPrimaryVersionSpec()
  * @model

@@ -48,6 +48,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesP
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator.ESHashAndSalt;
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESGroup;
@@ -74,7 +76,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	 */
 	public AdminEmfStoreImpl(ServerSpace serverSpace,
 		AccessControl accessControl)
-			throws FatalESException {
+		throws FatalESException {
 		super(serverSpace, accessControl);
 	}
 
@@ -541,7 +543,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			if (!isServerAdmin && role.canAdministrate(resolvedProjectId)) {
 				throw new AccessControlException(
 					Messages.AdminEmfStoreImpl_RemovePA_Violation_1
-					+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
+						+ Messages.AdminEmfStoreImpl_RemovePA_Violation_2);
 			}
 
 			role.getProjects().remove(resolvedProjectId);
@@ -783,7 +785,9 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		final ACUser user = (ACUser) getOrgUnit(userId);
 		user.setName(name);
-		user.setPassword(password);
+		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+		final ESHashAndSalt hashAndSalt = passwordHashGenerator.hashPassword(password);
+		user.setPassword(hashAndSalt.getHash() + ESHashAndSalt.SEPARATOR + hashAndSalt.getSalt());
 		save();
 	}
 

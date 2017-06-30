@@ -42,8 +42,7 @@ import org.eclipse.emf.emfstore.test.model.util.TestmodelAdapterFactory;
  * @generated
  */
 public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable
-{
+	IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -78,8 +77,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public TestmodelItemProviderAdapterFactory()
-	{
+	public TestmodelItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -105,10 +103,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestElementAdapter()
-	{
-		if (testElementItemProvider == null)
-		{
+	public Adapter createTestElementAdapter() {
+		if (testElementItemProvider == null) {
 			testElementItemProvider = new TestElementItemProvider(this);
 		}
 
@@ -132,10 +128,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestElementToStringMapAdapter()
-	{
-		if (testElementToStringMapItemProvider == null)
-		{
+	public Adapter createTestElementToStringMapAdapter() {
+		if (testElementToStringMapItemProvider == null) {
 			testElementToStringMapItemProvider = new TestElementToStringMapItemProvider(this);
 		}
 
@@ -159,10 +153,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createStringToStringMapAdapter()
-	{
-		if (stringToStringMapItemProvider == null)
-		{
+	public Adapter createStringToStringMapAdapter() {
+		if (stringToStringMapItemProvider == null) {
 			stringToStringMapItemProvider = new StringToStringMapItemProvider(this);
 		}
 
@@ -186,10 +178,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestElementToTestElementMapAdapter()
-	{
-		if (testElementToTestElementMapItemProvider == null)
-		{
+	public Adapter createTestElementToTestElementMapAdapter() {
+		if (testElementToTestElementMapItemProvider == null) {
 			testElementToTestElementMapItemProvider = new TestElementToTestElementMapItemProvider(this);
 		}
 
@@ -213,10 +203,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createStringToTestElementMapAdapter()
-	{
-		if (stringToTestElementMapItemProvider == null)
-		{
+	public Adapter createStringToTestElementMapAdapter() {
+		if (stringToTestElementMapItemProvider == null) {
 			stringToTestElementMapItemProvider = new StringToTestElementMapItemProvider(this);
 		}
 
@@ -240,10 +228,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createTestTypeAdapter()
-	{
-		if (testTypeItemProvider == null)
-		{
+	public Adapter createTestTypeAdapter() {
+		if (testTypeItemProvider == null) {
 			testTypeItemProvider = new TestTypeItemProvider(this);
 		}
 
@@ -268,10 +254,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createTypeWithFeatureMapNonContainmentAdapter()
-	{
-		if (typeWithFeatureMapNonContainmentItemProvider == null)
-		{
+	public Adapter createTypeWithFeatureMapNonContainmentAdapter() {
+		if (typeWithFeatureMapNonContainmentItemProvider == null) {
 			typeWithFeatureMapNonContainmentItemProvider = new TypeWithFeatureMapNonContainmentItemProvider(this);
 		}
 
@@ -296,10 +280,8 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter createTypeWithFeatureMapContainmentAdapter()
-	{
-		if (typeWithFeatureMapContainmentItemProvider == null)
-		{
+	public Adapter createTypeWithFeatureMapContainmentAdapter() {
+		if (typeWithFeatureMapContainmentItemProvider == null) {
 			typeWithFeatureMapContainmentItemProvider = new TypeWithFeatureMapContainmentItemProvider(this);
 		}
 
@@ -313,8 +295,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public ComposeableAdapterFactory getRootAdapterFactory()
-	{
+	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
@@ -325,8 +306,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
-	{
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -337,8 +317,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public boolean isFactoryForType(Object type)
-	{
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
@@ -350,8 +329,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Adapter adapt(Notifier notifier, Object type)
-	{
+	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
@@ -362,13 +340,10 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public Object adapt(Object object, Object type)
-	{
-		if (isFactoryForType(type))
-		{
+	public Object adapt(Object object, Object type) {
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -383,8 +358,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public void addListener(INotifyChangedListener notifyChangedListener)
-	{
+	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
@@ -395,8 +369,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener)
-	{
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
@@ -407,12 +380,10 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public void fireNotifyChanged(Notification notification)
-	{
+	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}
@@ -424,8 +395,7 @@ public class TestmodelItemProviderAdapterFactory extends TestmodelAdapterFactory
 	 *
 	 * @generated
 	 */
-	public void dispose()
-	{
+	public void dispose() {
 		if (testElementItemProvider != null) {
 			testElementItemProvider.dispose();
 		}

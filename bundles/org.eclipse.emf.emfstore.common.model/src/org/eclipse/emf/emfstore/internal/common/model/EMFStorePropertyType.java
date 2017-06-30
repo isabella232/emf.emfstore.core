@@ -88,7 +88,10 @@ public enum EMFStorePropertyType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final EMFStorePropertyType[] VALUES_ARRAY = new EMFStorePropertyType[] { SHARED, LOCAL, };
+	private static final EMFStorePropertyType[] VALUES_ARRAY = new EMFStorePropertyType[] {
+		SHARED,
+		LOCAL,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>EMF Store Property Type</b></em>' enumerators.
@@ -104,6 +107,8 @@ public enum EMFStorePropertyType implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static EMFStorePropertyType get(String literal) {
@@ -121,6 +126,8 @@ public enum EMFStorePropertyType implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static EMFStorePropertyType getByName(String name) {
@@ -138,6 +145,8 @@ public enum EMFStorePropertyType implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static EMFStorePropertyType get(int value) {

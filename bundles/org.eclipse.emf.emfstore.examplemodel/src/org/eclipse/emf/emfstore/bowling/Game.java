@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Game#getMatchup <em>Matchup</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Game#getPlayer <em>Player</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Game#getFrames <em>Frames</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getGame()
  * @model

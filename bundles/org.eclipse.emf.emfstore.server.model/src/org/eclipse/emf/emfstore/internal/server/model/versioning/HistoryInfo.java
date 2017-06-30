@@ -23,27 +23,27 @@ import org.eclipse.emf.emfstore.server.model.ESHistoryInfo;
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPrimarySpec <em>Primary
- *          Spec</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getNextSpec <em>Next Spec
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPreviousSpec <em>
- *          Previous Spec</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getMergedFrom <em>Merged
- *          From</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getMergedTo <em>Merged To
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getLogMessage <em>Log
- *          Message</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getTagSpecs <em>Tag Specs
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getVersionProperties <em>
- *          Version Properties</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getChangePackage <em>Change
- *          Package</em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPrimarySpec
+ *          <em>Primary Spec</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getNextSpec
+ *          <em>Next Spec</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPreviousSpec
+ *          <em>Previous Spec</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getMergedFrom
+ *          <em>Merged From</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getMergedTo
+ *          <em>Merged To</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getLogMessage
+ *          <em>Log Message</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getTagSpecs
+ *          <em>Tag Specs</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getVersionProperties
+ *          <em>Version Properties</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getChangePackage
+ *          <em>Change Package</em>}</li>
+ *          </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getHistoryInfo()
  * @model
@@ -69,8 +69,8 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 
 	/**
 	 * Sets the value of the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPrimarySpec
-	 * <em>Primary Spec</em>}' containment reference.
+	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getPrimarySpec <em>Primary Spec</em>
+	 * }' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -182,9 +182,8 @@ public interface HistoryInfo extends EObject, APIDelegate<ESHistoryInfo> {
 	LogMessage getLogMessage();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getLogMessage <em>Log Message</em>}'
-	 * containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.server.model.versioning.HistoryInfo#getLogMessage
+	 * <em>Log Message</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *

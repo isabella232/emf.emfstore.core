@@ -54,8 +54,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -73,8 +72,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.WORKSPACE__PROJECT_SPACES);
 			childrenFeatures.add(ModelPackage.Literals.WORKSPACE__SERVER_INFOS);
@@ -129,8 +127,7 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Workspace.class))
-		{
+		switch (notification.getFeatureID(Workspace.class)) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 		case ModelPackage.WORKSPACE__SERVER_INFOS:
 		case ModelPackage.WORKSPACE__USERSESSIONS:
@@ -151,20 +148,14 @@ public class WorkspaceItemProvider extends ItemProviderAdapter implements IEditi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.WORKSPACE__PROJECT_SPACES,
-				ModelFactory.eINSTANCE.createProjectSpace()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.WORKSPACE__PROJECT_SPACES,
+			ModelFactory.eINSTANCE.createProjectSpace()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.WORKSPACE__SERVER_INFOS,
-				ModelFactory.eINSTANCE.createServerInfo()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.WORKSPACE__SERVER_INFOS,
+			ModelFactory.eINSTANCE.createServerInfo()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.WORKSPACE__USERSESSIONS,
-				ModelFactory.eINSTANCE.createUsersession()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.WORKSPACE__USERSESSIONS,
+			ModelFactory.eINSTANCE.createUsersession()));
 	}
 
 	/**

@@ -57,8 +57,7 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addKeyPropertyDescriptor(object);
@@ -77,9 +76,8 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EMFStoreProperty_key_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -101,9 +99,8 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EMFStoreProperty_value_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -125,9 +122,8 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EMFStoreProperty_type_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_type_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -149,9 +145,8 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_EMFStoreProperty_version_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_EMFStoreProperty_version_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -187,8 +182,7 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	@Override
 	public String getText(Object object) {
 		final String label = ((EMFStoreProperty) object).getKey();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EMFStoreProperty_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_EMFStoreProperty_type") : //$NON-NLS-1$
 			getString("_UI_EMFStoreProperty_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -204,8 +198,7 @@ public class EMFStorePropertyItemProvider extends RootElementItemProvider implem
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(EMFStoreProperty.class))
-		{
+		switch (notification.getFeatureID(EMFStoreProperty.class)) {
 		case ModelPackage.EMF_STORE_PROPERTY__KEY:
 		case ModelPackage.EMF_STORE_PROPERTY__TYPE:
 		case ModelPackage.EMF_STORE_PROPERTY__VERSION:

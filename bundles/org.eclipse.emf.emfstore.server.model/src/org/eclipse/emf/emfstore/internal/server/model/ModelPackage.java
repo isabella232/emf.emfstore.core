@@ -1011,8 +1011,8 @@ public interface ModelPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl
-		 * <em>Client Version Info</em>}' class.
+		 * {@link org.eclipse.emf.emfstore.internal.server.model.impl.ClientVersionInfoImpl <em>Client Version Info</em>
+		 * }' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
 		 *

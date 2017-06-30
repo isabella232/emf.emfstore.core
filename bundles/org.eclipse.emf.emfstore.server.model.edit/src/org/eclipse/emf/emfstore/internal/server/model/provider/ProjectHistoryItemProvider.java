@@ -38,8 +38,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningFacto
  *
  * @generated
  */
-public class ProjectHistoryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ProjectHistoryItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -74,14 +74,13 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 * @generated
 	 */
 	protected void addProjectNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ProjectHistory_projectName_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectName_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_ProjectHistory_type"), //$NON-NLS-1$
-			ModelPackage.Literals.PROJECT_HISTORY__PROJECT_NAME, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ProjectHistory_projectName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectName_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectHistory_type"), //$NON-NLS-1$
+				ModelPackage.Literals.PROJECT_HISTORY__PROJECT_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -91,14 +90,13 @@ public class ProjectHistoryItemProvider extends ItemProviderAdapter implements I
 	 * @generated
 	 */
 	protected void addProjectDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ProjectHistory_projectDescription_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectDescription_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_ProjectHistory_type"), //$NON-NLS-1$
-			ModelPackage.Literals.PROJECT_HISTORY__PROJECT_DESCRIPTION, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ProjectHistory_projectDescription_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ProjectHistory_projectDescription_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ProjectHistory_type"), //$NON-NLS-1$
+				ModelPackage.Literals.PROJECT_HISTORY__PROJECT_DESCRIPTION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

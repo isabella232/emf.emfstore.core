@@ -71,13 +71,12 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ACOrgUnit_name_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_name_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			AccesscontrolPackage.Literals.AC_ORG_UNIT__NAME, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACOrgUnit_name_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_name_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				AccesscontrolPackage.Literals.AC_ORG_UNIT__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -87,11 +86,11 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * @generated
 	 */
 	protected void addRolesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_ACOrgUnit_roles_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_roles_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			AccesscontrolPackage.Literals.AC_ORG_UNIT__ROLES, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACOrgUnit_roles_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_roles_feature", "_UI_ACOrgUnit_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				AccesscontrolPackage.Literals.AC_ORG_UNIT__ROLES, true, false, true, null, null, null));
 	}
 
 	/**
@@ -101,14 +100,13 @@ public class ACOrgUnitItemProvider extends IdentifiableElementItemProvider {
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ACOrgUnit_description_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_ACOrgUnit_type"), //$NON-NLS-1$
-			AccesscontrolPackage.Literals.AC_ORG_UNIT__DESCRIPTION, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACOrgUnit_description_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACOrgUnit_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ACOrgUnit_type"), //$NON-NLS-1$
+				AccesscontrolPackage.Literals.AC_ORG_UNIT__DESCRIPTION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

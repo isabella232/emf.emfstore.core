@@ -18,8 +18,6 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Server
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Server Admin</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

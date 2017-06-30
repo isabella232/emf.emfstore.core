@@ -109,10 +109,9 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	protected void addModelElementIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_AbstractOperation_modelElementId_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_AbstractOperation_modelElementId_feature", "_UI_AbstractOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getResourceLocator(), getString("_UI_AbstractOperation_modelElementId_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AbstractOperation_modelElementId_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_AbstractOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.ABSTRACT_OPERATION__MODEL_ELEMENT_ID, true, false, true, null, null, null));
 	}
 
@@ -124,12 +123,10 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 */
 	protected void addAcceptedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_AbstractOperation_accepted_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_AbstractOperation_accepted_feature", "_UI_AbstractOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_AbstractOperation_accepted_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AbstractOperation_accepted_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_AbstractOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.ABSTRACT_OPERATION__ACCEPTED, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
@@ -142,12 +139,10 @@ public class AbstractOperationItemProvider extends IdentifiableElementItemProvid
 	 */
 	protected void addClientDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_AbstractOperation_clientDate_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_AbstractOperation_clientDate_feature", "_UI_AbstractOperation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_AbstractOperation_clientDate_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_AbstractOperation_clientDate_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_AbstractOperation_type"), //$NON-NLS-1$
 				OperationsPackage.Literals.ABSTRACT_OPERATION__CLIENT_DATE, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}

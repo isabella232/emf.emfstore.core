@@ -32,11 +32,11 @@ import org.eclipse.emf.emfstore.bowling.Matchup;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl#getGames <em>Games</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MatchupImpl#getNrSpectators <em>Nr Spectators</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

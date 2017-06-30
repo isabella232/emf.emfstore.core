@@ -38,11 +38,8 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.Root;
 public class RootItemProvider
 	extends ItemProviderAdapter
 	implements
-	IEditingDomainItemProvider,
-	ITreeItemContentProvider,
-	IItemLabelProvider,
-	IItemPropertySource
-{
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -50,8 +47,7 @@ public class RootItemProvider
 	 *
 	 * @generated
 	 */
-	public RootItemProvider(AdapterFactory adapterFactory)
-	{
+	public RootItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,10 +59,8 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -83,10 +77,8 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-	{
-		if (childrenFeatures == null)
-		{
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ConfigPackage.Literals.ROOT__ELEMENTS);
 		}
@@ -100,8 +92,7 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
-	{
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
@@ -116,8 +107,7 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/Root")); //$NON-NLS-1$
 	}
 
@@ -129,8 +119,7 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		return getString("_UI_Root_type"); //$NON-NLS-1$
 	}
 
@@ -143,12 +132,10 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Root.class))
-		{
+		switch (notification.getFeatureID(Root.class)) {
 		case ConfigPackage.ROOT__ELEMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -165,44 +152,29 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createTestConfig()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createTestConfig()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createTestRun()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createTestRun()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createTestResult()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createTestResult()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createTestDiff()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createTestDiff()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createDiffReport()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createDiffReport()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createRoot()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createRoot()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.ROOT__ELEMENTS,
-				ConfigFactory.eINSTANCE.createMutatorConfig()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.ROOT__ELEMENTS,
+			ConfigFactory.eINSTANCE.createMutatorConfig()));
 	}
 
 	/**
@@ -213,8 +185,7 @@ public class RootItemProvider
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return ConfigEditPlugin.INSTANCE;
 	}
 

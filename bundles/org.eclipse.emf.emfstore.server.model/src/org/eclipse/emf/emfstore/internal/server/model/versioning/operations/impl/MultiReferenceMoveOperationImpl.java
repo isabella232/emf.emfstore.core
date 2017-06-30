@@ -35,6 +35,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceMoveOperationImpl#getOldIndex
@@ -46,7 +47,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unko
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.MultiReferenceMoveOperationImpl#getReferencedModelElementId
  * <em>Referenced Model Element Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -178,11 +178,8 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 			referencedModelElementId = (ModelElementId) eResolveProxy(oldReferencedModelElementId);
 			if (referencedModelElementId != oldReferencedModelElementId) {
 				final InternalEObject newReferencedModelElementId = (InternalEObject) referencedModelElementId;
-				NotificationChain msgs = oldReferencedModelElementId
-					.eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-							- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
-						null, null);
+				NotificationChain msgs = oldReferencedModelElementId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+					- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, null);
 				if (newReferencedModelElementId.eInternalContainer() == null) {
 					msgs = newReferencedModelElementId.eInverseAdd(this,
 						EOPPOSITE_FEATURE_BASE
@@ -242,18 +239,12 @@ public class MultiReferenceMoveOperationImpl extends FeatureOperationImpl implem
 		if (newReferencedModelElementId != referencedModelElementId) {
 			NotificationChain msgs = null;
 			if (referencedModelElementId != null) {
-				msgs = ((InternalEObject) referencedModelElementId)
-					.eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-							- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
-						null, msgs);
+				msgs = ((InternalEObject) referencedModelElementId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+					- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, msgs);
 			}
 			if (newReferencedModelElementId != null) {
-				msgs = ((InternalEObject) newReferencedModelElementId)
-					.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID,
-						null, msgs);
+				msgs = ((InternalEObject) newReferencedModelElementId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+					- OperationsPackage.MULTI_REFERENCE_MOVE_OPERATION__REFERENCED_MODEL_ELEMENT_ID, null, msgs);
 			}
 			msgs = basicSetReferencedModelElementId(newReferencedModelElementId, msgs);
 			if (msgs != null) {

@@ -31,11 +31,11 @@ import org.eclipse.emf.emfstore.bowling.Player;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.LeagueImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.LeagueImpl#getPlayers <em>Players</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

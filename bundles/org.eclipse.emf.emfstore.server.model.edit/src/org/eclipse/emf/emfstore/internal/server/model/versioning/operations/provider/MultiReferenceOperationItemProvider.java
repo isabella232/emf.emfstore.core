@@ -69,14 +69,13 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	 * @generated
 	 */
 	protected void addAddPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MultiReferenceOperation_add_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_add_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_MultiReferenceOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__ADD, true, false, false,
-			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_MultiReferenceOperation_add_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_add_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiReferenceOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__ADD, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -86,14 +85,13 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MultiReferenceOperation_index_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_MultiReferenceOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__INDEX, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_MultiReferenceOperation_index_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiReferenceOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__INDEX, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -156,7 +154,8 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 
 			final String elemNames = getModelElementClassesAndNames(op.getReferencedModelElements(), featureType);
 			final String elementNameAndClass = getModelElementClassAndName(op.getModelElementId());
-			final String children = op.getReferencedModelElements().size() > 1 ? Messages.MultiReferenceOperationItemProvider_Children
+			final String children = op.getReferencedModelElements().size() > 1
+				? Messages.MultiReferenceOperationItemProvider_Children
 				: Messages.MultiReferenceOperationItemProvider_Child;
 
 			final boolean isAdd = op.isAdd();
@@ -214,9 +213,9 @@ public class MultiReferenceOperationItemProvider extends ReferenceOperationItemP
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__REFERENCED_MODEL_ELEMENTS,
-			ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors
+			.add(createChildParameter(OperationsPackage.Literals.MULTI_REFERENCE_OPERATION__REFERENCED_MODEL_ELEMENTS,
+				ModelFactory.eINSTANCE.createModelElementId()));
 	}
 
 }

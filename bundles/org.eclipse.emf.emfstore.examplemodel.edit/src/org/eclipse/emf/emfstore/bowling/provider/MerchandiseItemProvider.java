@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -39,7 +38,7 @@ import org.eclipse.emf.emfstore.bowling.Merchandise;
 public class MerchandiseItemProvider
 	extends ItemProviderAdapter
 	implements
-	IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
 	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -80,9 +79,7 @@ public class MerchandiseItemProvider
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Merchandise_name_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_name_feature", "_UI_Merchandise_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -104,12 +101,11 @@ public class MerchandiseItemProvider
 	 */
 	protected void addPricePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Merchandise_price_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_price_feature", "_UI_Merchandise_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_price_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Merchandise_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.MERCHANDISE__PRICE,
 				true,
 				false,
@@ -128,13 +124,11 @@ public class MerchandiseItemProvider
 	 */
 	protected void addSerialNumberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Merchandise_serialNumber_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Merchandise_serialNumber_feature", "_UI_Merchandise_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_Merchandise_serialNumber_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Merchandise_type"), //$NON-NLS-1$
 				BowlingPackage.Literals.MERCHANDISE__SERIAL_NUMBER,
 				true,
 				false,
@@ -166,8 +160,7 @@ public class MerchandiseItemProvider
 	@Override
 	public String getText(Object object) {
 		final String label = ((Merchandise) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Merchandise_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_Merchandise_type") : //$NON-NLS-1$
 			getString("_UI_Merchandise_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

@@ -65,14 +65,13 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	 * @generated
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_MultiReferenceSetOperation_index_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceSetOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_MultiReferenceSetOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__INDEX, true, false, false,
-			ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_MultiReferenceSetOperation_index_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MultiReferenceSetOperation_index_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MultiReferenceSetOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__INDEX, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -167,13 +166,13 @@ public class MultiReferenceSetOperationItemProvider extends ReferenceOperationIt
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__OLD_VALUE,
-			ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors
+			.add(createChildParameter(OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__OLD_VALUE,
+				ModelFactory.eINSTANCE.createModelElementId()));
 
-		newChildDescriptors.add(createChildParameter(
-			OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__NEW_VALUE,
-			ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors
+			.add(createChildParameter(OperationsPackage.Literals.MULTI_REFERENCE_SET_OPERATION__NEW_VALUE,
+				ModelFactory.eINSTANCE.createModelElementId()));
 	}
 
 	/**

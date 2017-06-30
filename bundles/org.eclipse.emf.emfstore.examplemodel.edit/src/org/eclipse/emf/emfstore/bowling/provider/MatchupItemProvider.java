@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -40,7 +39,7 @@ import org.eclipse.emf.emfstore.bowling.Matchup;
  * @generated
  */
 public class MatchupItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,9 +77,8 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 	 * @generated
 	 */
 	protected void addGamesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Matchup_games_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Matchup_games_feature", "_UI_Matchup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -102,9 +100,7 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	protected void addNrSpectatorsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Matchup_nrSpectators_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Matchup_nrSpectators_feature", "_UI_Matchup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -172,8 +168,7 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 	public String getText(Object object) {
 		final BigInteger labelValue = ((Matchup) object).getNrSpectators();
 		final String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Matchup_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_Matchup_type") : //$NON-NLS-1$
 			getString("_UI_Matchup_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -212,10 +207,8 @@ public class MatchupItemProvider extends ItemProviderAdapter implements IEditing
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(BowlingPackage.Literals.MATCHUP__GAMES,
-				BowlingFactory.eINSTANCE.createGame()));
+		newChildDescriptors.add(createChildParameter(BowlingPackage.Literals.MATCHUP__GAMES,
+			BowlingFactory.eINSTANCE.createGame()));
 	}
 
 	/**

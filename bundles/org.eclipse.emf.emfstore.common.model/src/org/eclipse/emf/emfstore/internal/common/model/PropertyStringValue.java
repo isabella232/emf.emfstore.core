@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getPropertyStringValue()
  * @model
@@ -48,8 +48,7 @@ public interface PropertyStringValue extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue#getValue
-	 * <em>Value</em>}'
-	 * attribute.
+	 * <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *

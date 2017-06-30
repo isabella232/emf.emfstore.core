@@ -21,8 +21,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
  *
  * @generated
  */
-public final class ConfigEditorPlugin extends EMFPlugin
-{
+public final class ConfigEditorPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
@@ -48,11 +47,9 @@ public final class ConfigEditorPlugin extends EMFPlugin
 	 *
 	 * @generated
 	 */
-	public ConfigEditorPlugin()
-	{
-		super(new ResourceLocator[]
-		{
-			});
+	public ConfigEditorPlugin() {
+		super(new ResourceLocator[] {
+		});
 	}
 
 	/**
@@ -64,8 +61,7 @@ public final class ConfigEditorPlugin extends EMFPlugin
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getPluginResourceLocator()
-	{
+	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}
 
@@ -77,8 +73,7 @@ public final class ConfigEditorPlugin extends EMFPlugin
 	 * @return the singleton instance.
 	 * @generated
 	 */
-	public static Implementation getPlugin()
-	{
+	public static Implementation getPlugin() {
 		return plugin;
 	}
 
@@ -89,8 +84,7 @@ public final class ConfigEditorPlugin extends EMFPlugin
 	 *
 	 * @generated
 	 */
-	public static class Implementation extends EclipseUIPlugin
-	{
+	public static class Implementation extends EclipseUIPlugin {
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
@@ -98,8 +92,7 @@ public final class ConfigEditorPlugin extends EMFPlugin
 		 *
 		 * @generated
 		 */
-		public Implementation()
-		{
+		public Implementation() {
 			super();
 
 			// Remember the static instance.

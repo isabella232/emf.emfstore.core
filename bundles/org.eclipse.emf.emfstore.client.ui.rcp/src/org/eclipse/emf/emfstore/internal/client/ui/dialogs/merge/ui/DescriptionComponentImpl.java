@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Otto von Wesendonk - initial API and implementation
  ******************************************************************************/
@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Label;
 
 /**
  * Displays the description in the decision box.
- * 
+ *
  * @author wesendon
  */
 public class DescriptionComponentImpl implements DescriptionComponent {
@@ -40,9 +40,9 @@ public class DescriptionComponentImpl implements DescriptionComponent {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.MergeComponent#init(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.emf.emfstore.internal.client.ui.dialogs.merge.ui.DecisionBox,
 	 *      org.eclipse.emf.emfstore.internal.client.model.changeTracking.merging.conflict.VisualConflict)

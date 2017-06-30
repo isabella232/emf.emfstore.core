@@ -22,6 +22,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec#getMaxChanges
  *          <em>Max Changes</em>}</li>
@@ -29,7 +30,6 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPagedUpdateVersionSpe
  *          {@link org.eclipse.emf.emfstore.internal.server.model.versioning.PagedUpdateVersionSpec#getBaseVersionSpec
  *          <em>Base Version Spec</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getPagedUpdateVersionSpec()
  * @model

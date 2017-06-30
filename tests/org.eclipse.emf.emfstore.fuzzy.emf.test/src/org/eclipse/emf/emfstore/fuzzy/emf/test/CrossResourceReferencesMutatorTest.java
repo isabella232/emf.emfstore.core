@@ -84,10 +84,10 @@ public class CrossResourceReferencesMutatorTest {
 
 		final Project clonedProject = EcoreUtil.copy(project);
 
-		final ESCrossResourceReferencesModelMutator mutator =
-			new ESCrossResourceReferencesModelMutator(getConfig(project));
-		final ESCrossResourceReferencesModelMutator secondMutator =
-			new ESCrossResourceReferencesModelMutator(getConfig(clonedProject));
+		final ESCrossResourceReferencesModelMutator mutator = new ESCrossResourceReferencesModelMutator(
+			getConfig(project));
+		final ESCrossResourceReferencesModelMutator secondMutator = new ESCrossResourceReferencesModelMutator(
+			getConfig(clonedProject));
 
 		mutator.mutateUntil(ESPredicates.hasExternalReference());
 		secondMutator.mutateUntil(ESPredicates.hasExternalReference());

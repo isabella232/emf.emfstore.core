@@ -23,12 +23,12 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.S
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Project Event</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.impl.ServerProjectEventImpl#getProjectId
  * <em>Project Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

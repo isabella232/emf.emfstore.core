@@ -57,8 +57,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addFileVersionPropertyDescriptor(object);
@@ -78,13 +77,11 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	protected void addFileVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PendingFileTransfer_fileVersion_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_fileVersion_feature", "_UI_PendingFileTransfer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_fileVersion_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_PendingFileTransfer_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PENDING_FILE_TRANSFER__FILE_VERSION,
 				true,
 				false,
@@ -102,13 +99,11 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	protected void addChunkNumberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PendingFileTransfer_chunkNumber_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_chunkNumber_feature", "_UI_PendingFileTransfer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_chunkNumber_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_PendingFileTransfer_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PENDING_FILE_TRANSFER__CHUNK_NUMBER,
 				true,
 				false,
@@ -126,13 +121,11 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	protected void addUploadPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PendingFileTransfer_upload_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_upload_feature", "_UI_PendingFileTransfer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_upload_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_PendingFileTransfer_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PENDING_FILE_TRANSFER__UPLOAD,
 				true,
 				false,
@@ -150,13 +143,11 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	protected void addFileNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PendingFileTransfer_fileName_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_fileName_feature", "_UI_PendingFileTransfer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_fileName_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_PendingFileTransfer_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PENDING_FILE_TRANSFER__FILE_NAME,
 				true,
 				false,
@@ -174,13 +165,11 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	protected void addPreliminaryFileNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PendingFileTransfer_preliminaryFileName_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_preliminaryFileName_feature", "_UI_PendingFileTransfer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_PendingFileTransfer_preliminaryFileName_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_PendingFileTransfer_type"), //$NON-NLS-1$
 				ModelPackage.Literals.PENDING_FILE_TRANSFER__PRELIMINARY_FILE_NAME,
 				true,
 				false,
@@ -201,8 +190,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.PENDING_FILE_TRANSFER__ATTACHMENT_ID);
 		}
@@ -242,8 +230,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	@Override
 	public String getText(Object object) {
 		final String label = ((PendingFileTransfer) object).getFileName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PendingFileTransfer_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_PendingFileTransfer_type") : //$NON-NLS-1$
 			getString("_UI_PendingFileTransfer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -258,8 +245,7 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(PendingFileTransfer.class))
-		{
+		switch (notification.getFeatureID(PendingFileTransfer.class)) {
 		case ModelPackage.PENDING_FILE_TRANSFER__FILE_VERSION:
 		case ModelPackage.PENDING_FILE_TRANSFER__CHUNK_NUMBER:
 		case ModelPackage.PENDING_FILE_TRANSFER__UPLOAD:
@@ -285,10 +271,8 @@ public class PendingFileTransferItemProvider extends ItemProviderAdapter impleme
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PENDING_FILE_TRANSFER__ATTACHMENT_ID,
-				ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PENDING_FILE_TRANSFER__ATTACHMENT_ID,
+			ModelFactory.eINSTANCE.createModelElementId()));
 	}
 
 	/**

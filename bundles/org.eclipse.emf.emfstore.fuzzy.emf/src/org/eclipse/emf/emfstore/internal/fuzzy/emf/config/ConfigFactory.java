@@ -32,41 +32,41 @@ public interface ConfigFactory extends EFactory {
 	ConfigFactory eINSTANCE = org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.ConfigFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>ESFuzzyTest Config</em>'.
+	 * Returns a new object of class '<em>Test Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return a new object of class '<em>ESFuzzyTest Config</em>'.
+	 * @return a new object of class '<em>Test Config</em>'.
 	 * @generated
 	 */
 	TestConfig createTestConfig();
 
 	/**
-	 * Returns a new object of class '<em>ESFuzzyTest Run</em>'.
+	 * Returns a new object of class '<em>Test Run</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return a new object of class '<em>ESFuzzyTest Run</em>'.
+	 * @return a new object of class '<em>Test Run</em>'.
 	 * @generated
 	 */
 	TestRun createTestRun();
 
 	/**
-	 * Returns a new object of class '<em>ESFuzzyTest Result</em>'.
+	 * Returns a new object of class '<em>Test Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return a new object of class '<em>ESFuzzyTest Result</em>'.
+	 * @return a new object of class '<em>Test Result</em>'.
 	 * @generated
 	 */
 	TestResult createTestResult();
 
 	/**
-	 * Returns a new object of class '<em>ESFuzzyTest Diff</em>'.
+	 * Returns a new object of class '<em>Test Diff</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return a new object of class '<em>ESFuzzyTest Diff</em>'.
+	 * @return a new object of class '<em>Test Diff</em>'.
 	 * @generated
 	 */
 	TestDiff createTestDiff();

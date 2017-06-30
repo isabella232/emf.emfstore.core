@@ -41,7 +41,7 @@ public interface ESUserVerifier {
 	 */
 	ESAuthenticationInformation verifyUser(String username, String password,
 		ESClientVersionInfo clientVersionInfo)
-			throws AccessControlException;
+		throws AccessControlException;
 
 	/**
 	 * Initializes this verifier.

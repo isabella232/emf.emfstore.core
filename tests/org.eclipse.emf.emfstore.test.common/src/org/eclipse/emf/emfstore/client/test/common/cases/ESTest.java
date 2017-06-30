@@ -89,8 +89,7 @@ public abstract class ESTest {
 		}
 		CommonUtil.setTesting(true);
 		final ESLocalProject project = Create.project(ProjectUtil.defaultName());
-		projectSpace = (ProjectSpaceBase) ESLocalProjectImpl.class.cast(project
-			).toInternalAPI();
+		projectSpace = (ProjectSpaceBase) ESLocalProjectImpl.class.cast(project).toInternalAPI();
 	}
 
 	@After

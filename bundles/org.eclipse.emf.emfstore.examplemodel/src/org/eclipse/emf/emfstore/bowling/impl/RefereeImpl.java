@@ -27,11 +27,11 @@ import org.eclipse.emf.emfstore.bowling.Referee;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.RefereeImpl#getDateOfBirth <em>Date Of Birth</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.RefereeImpl#getLeague <em>League</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -108,8 +108,8 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 		final XMLGregorianCalendar oldDateOfBirth = dateOfBirth;
 		dateOfBirth = newDateOfBirth;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE__DATE_OF_BIRTH,
-				oldDateOfBirth, dateOfBirth));
+			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE__DATE_OF_BIRTH, oldDateOfBirth,
+				dateOfBirth));
 		}
 	}
 
@@ -125,8 +125,8 @@ public class RefereeImpl extends EObjectImpl implements Referee {
 			league = (League) eResolveProxy(oldLeague);
 			if (league != oldLeague) {
 				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.REFEREE__LEAGUE,
-						oldLeague, league));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BowlingPackage.REFEREE__LEAGUE, oldLeague,
+						league));
 				}
 			}
 		}

@@ -145,7 +145,8 @@ public class VersionDecorator extends AdapterImpl implements ILightweightLabelDe
 	 *
 	 * {@inheritDoc}
 	 */
-	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages, IProgressMonitor monitor) {
+	public boolean inspectChanges(ESLocalProject project, List<ESChangePackage> changePackages,
+		IProgressMonitor monitor) {
 		return true;
 	}
 

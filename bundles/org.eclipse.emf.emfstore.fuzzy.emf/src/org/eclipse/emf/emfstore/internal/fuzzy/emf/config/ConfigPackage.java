@@ -70,7 +70,7 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl
-	 * <em>ESFuzzyTest Config</em>}' class.
+	 * <em>Test Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -101,7 +101,7 @@ public interface ConfigPackage extends EPackage {
 	int TEST_CONFIG__COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>ESFuzzyTest Class</b></em>' attribute.
+	 * The feature id for the '<em><b>Test Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -131,7 +131,7 @@ public interface ConfigPackage extends EPackage {
 	int TEST_CONFIG__MUTATOR_CONFIG = 4;
 
 	/**
-	 * The number of structural features of the '<em>ESFuzzyTest Config</em>' class.
+	 * The number of structural features of the '<em>Test Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -142,7 +142,7 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestRunImpl
-	 * <em>ESFuzzyTest Run</em>}' class.
+	 * <em>Test Run</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -183,7 +183,7 @@ public interface ConfigPackage extends EPackage {
 	int TEST_RUN__RESULTS = 2;
 
 	/**
-	 * The number of structural features of the '<em>ESFuzzyTest Run</em>' class.
+	 * The number of structural features of the '<em>Test Run</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -194,7 +194,7 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl
-	 * <em>ESFuzzyTest Result</em>}' class.
+	 * <em>Test Result</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -215,7 +215,7 @@ public interface ConfigPackage extends EPackage {
 	int TEST_RESULT__SEED_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>ESFuzzyTest Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Test Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -255,7 +255,7 @@ public interface ConfigPackage extends EPackage {
 	int TEST_RESULT__EXECUTION_TIME = 4;
 
 	/**
-	 * The number of structural features of the '<em>ESFuzzyTest Result</em>' class.
+	 * The number of structural features of the '<em>Test Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -266,7 +266,7 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestDiffImpl
-	 * <em>ESFuzzyTest Diff</em>}' class.
+	 * <em>Test Diff</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -317,7 +317,7 @@ public interface ConfigPackage extends EPackage {
 	int TEST_DIFF__NEW_RESULT = 3;
 
 	/**
-	 * The number of structural features of the '<em>ESFuzzyTest Diff</em>' class.
+	 * The number of structural features of the '<em>Test Diff</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -359,8 +359,8 @@ public interface ConfigPackage extends EPackage {
 	int DIFF_REPORT_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.RootImpl
-	 * <em>Root</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.RootImpl <em>Root</em>
+	 * }' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -443,7 +443,7 @@ public interface ConfigPackage extends EPackage {
 	int MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Use Ecore ESFuzzyUtil Delete</b></em>' attribute.
+	 * The feature id for the '<em><b>Use Ecore Util Delete</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -524,11 +524,11 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig
-	 * <em>ESFuzzyTest Config</em>}'.
+	 * <em>Test Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for class '<em>ESFuzzyTest Config</em>'.
+	 * @return the meta object for class '<em>Test Config</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig
 	 * @generated
 	 */
@@ -562,11 +562,11 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass <em>ESFuzzyTest Class</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass <em>Test Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the attribute '<em>ESFuzzyTest Class</em>'.
+	 * @return the meta object for the attribute '<em>Test Class</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig#getTestClass()
 	 * @see #getTestConfig()
 	 * @generated
@@ -601,11 +601,11 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun
-	 * <em>ESFuzzyTest Run</em>}'.
+	 * <em>Test Run</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for class '<em>ESFuzzyTest Run</em>'.
+	 * @return the meta object for class '<em>Test Run</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestRun
 	 * @generated
 	 */
@@ -652,11 +652,11 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult
-	 * <em>ESFuzzyTest Result</em>}'.
+	 * <em>Test Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for class '<em>ESFuzzyTest Result</em>'.
+	 * @return the meta object for class '<em>Test Result</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult
 	 * @generated
 	 */
@@ -677,11 +677,11 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getTestName <em>ESFuzzyTest Name</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getTestName <em>Test Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the attribute '<em>ESFuzzyTest Name</em>'.
+	 * @return the meta object for the attribute '<em>Test Name</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestResult#getTestName()
 	 * @see #getTestResult()
 	 * @generated
@@ -729,11 +729,11 @@ public interface ConfigPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff
-	 * <em>ESFuzzyTest Diff</em>}'.
+	 * <em>Test Diff</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for class '<em>ESFuzzyTest Diff</em>'.
+	 * @return the meta object for class '<em>Test Diff</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff
 	 * @generated
 	 */
@@ -910,11 +910,11 @@ public interface ConfigPackage extends EPackage {
 	/**
 	 * Returns the meta object for the attribute '
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isUseEcoreUtilDelete
-	 * <em>Use Ecore ESFuzzyUtil Delete</em>}'.
+	 * <em>Use Ecore Util Delete</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the meta object for the attribute '<em>Use Ecore ESFuzzyUtil Delete</em>'.
+	 * @return the meta object for the attribute '<em>Use Ecore Util Delete</em>'.
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isUseEcoreUtilDelete()
 	 * @see #getMutatorConfig()
 	 * @generated
@@ -1030,8 +1030,7 @@ public interface ConfigPackage extends EPackage {
 	interface Literals {
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl <em>ESFuzzyTest Config</em>}'
-		 * class.
+		 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestConfigImpl <em>Test Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
@@ -1060,7 +1059,7 @@ public interface ConfigPackage extends EPackage {
 		EAttribute TEST_CONFIG__COUNT = eINSTANCE.getTestConfig_Count();
 
 		/**
-		 * The meta object literal for the '<em><b>ESFuzzyTest Class</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Test Class</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
@@ -1088,7 +1087,7 @@ public interface ConfigPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestRunImpl
-		 * <em>ESFuzzyTest Run</em>}' class.
+		 * <em>Test Run</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
@@ -1127,8 +1126,7 @@ public interface ConfigPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl <em>ESFuzzyTest Result</em>}'
-		 * class.
+		 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestResultImpl <em>Test Result</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
@@ -1148,7 +1146,7 @@ public interface ConfigPackage extends EPackage {
 		EAttribute TEST_RESULT__SEED_COUNT = eINSTANCE.getTestResult_SeedCount();
 
 		/**
-		 * The meta object literal for the '<em><b>ESFuzzyTest Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Test Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
@@ -1185,7 +1183,7 @@ public interface ConfigPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.TestDiffImpl
-		 * <em>ESFuzzyTest Diff</em>}' class.
+		 * <em>Test Diff</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *
@@ -1323,7 +1321,7 @@ public interface ConfigPackage extends EPackage {
 		EAttribute MUTATOR_CONFIG__DO_NOT_GENERATE_ROOT = eINSTANCE.getMutatorConfig_DoNotGenerateRoot();
 
 		/**
-		 * The meta object literal for the '<em><b>Use Ecore ESFuzzyUtil Delete</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Use Ecore Util Delete</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 *

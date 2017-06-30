@@ -151,7 +151,7 @@ public class ProjectSubInterfaceImpl extends AbstractSubEmfstoreInterface {
 
 	/**
 	 * Returns the project of a version.
-	 * 
+	 *
 	 * @param version the version
 	 * @return the project
 	 * @throws InvalidVersionSpecException if the given version is invalid

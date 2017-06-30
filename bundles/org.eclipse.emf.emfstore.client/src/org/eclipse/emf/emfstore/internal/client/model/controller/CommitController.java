@@ -26,6 +26,7 @@ import org.eclipse.emf.emfstore.internal.client.model.Configuration;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.ServerCall;
 import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
+import org.eclipse.emf.emfstore.internal.client.model.util.EMFStoreClientUtil;
 import org.eclipse.emf.emfstore.internal.client.model.util.WorkspaceUtil;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
@@ -47,6 +48,8 @@ import org.eclipse.emf.emfstore.server.exceptions.ESUpdateRequiredException;
  * @author wesendon
  */
 public class CommitController extends ServerCall<PrimaryVersionSpec> {
+
+	private static final String LOGGING_PREFIX = "COMMIT"; //$NON-NLS-1$
 
 	private final String logMessage;
 	private final ESCommitCallback callback;
@@ -104,8 +107,12 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	private PrimaryVersionSpec commit(final String logMessage, final BranchVersionSpec branch)
 		throws InvalidVersionSpecException, ESUpdateRequiredException, ESException {
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "CommitController started", getProjectSpace(), branch, //$NON-NLS-1$
+			getUsersession());
 
 		if (!getProjectSpace().isShared()) {
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Stopping commit because project is not shared", //$NON-NLS-1$
+				getProjectSpace(), branch, getUsersession());
 			throw new ESProjectNotSharedException();
 		}
 
@@ -116,6 +123,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		// check if there are any changes. Branch commits are allowed with no changes, whereas normal commits are not.
 		if (!getProjectSpace().isDirty() && branch == null) {
 			callback.noLocalChanges(getProjectSpace().toAPI());
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Stopping commit because no changes and no new branch", //$NON-NLS-1$
+				getProjectSpace(), branch, getUsersession());
 			return getProjectSpace().getBaseVersion();
 		}
 
@@ -127,6 +136,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 		getProgressMonitor().worked(10);
 		getProgressMonitor().subTask(Messages.CommitController_GatheringChanges);
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Gathering changes...", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
 
 		final AbstractChangePackage localChangePackage = getProjectSpace().getLocalChangePackage();
 
@@ -138,14 +149,23 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		final ModelElementIdToEObjectMappingImpl idToEObjectMapping = new ModelElementIdToEObjectMappingImpl(
 			getProjectSpace().getProject(), localChangePackage);
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Gathering changes... done", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
+
 		getProgressMonitor().subTask(Messages.CommitController_PresentingChanges);
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Presenting changes...", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
 		if (!callback.inspectChanges(getProjectSpace().toAPI(),
 			localChangePackage.toAPI(),
 			idToEObjectMapping.toAPI())
 			|| getProgressMonitor().isCanceled()) {
+			EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Commit vetoed by ESCommitCallback/ProgressMonitor", //$NON-NLS-1$
+				getProjectSpace(), branch, getUsersession());
 
 			return getProjectSpace().getBaseVersion();
 		}
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Presenting changes... done", //$NON-NLS-1$
+			getProjectSpace(), branch, getUsersession());
 
 		getProgressMonitor().subTask(Messages.CommitController_SendingFilesToServer);
 		// TODO reimplement with ObserverBus and think about subtasks for commit
@@ -163,10 +183,17 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 				localChangePackage.toAPI(),
 				idToEObjectMapping.toAPI())
 				|| getProgressMonitor().isCanceled()) {
+				EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX,
+					"Stopping commit because updated project was vetoed.", getProjectSpace(), branch, getUsersession()); //$NON-NLS-1$
 				return getProjectSpace().getBaseVersion();
 			}
 		}
 
+		return commitAfterUpdate(branch, localChangePackage);
+	}
+
+	private PrimaryVersionSpec commitAfterUpdate(final BranchVersionSpec branch,
+		final AbstractChangePackage localChangePackage) throws ESException {
 		final PrimaryVersionSpec newBaseVersion = performCommit(branch, localChangePackage);
 
 		// TODO reimplement with ObserverBus and think about subtasks for commit
@@ -195,6 +222,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		ESWorkspaceProviderImpl.getObserverBus().notify(ESCommitObserver.class)
 			.commitCompleted(getProjectSpace().toAPI(), newBaseVersion.toAPI(), getProgressMonitor());
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Commit successful", getProjectSpace(), branch, //$NON-NLS-1$
+			getUsersession());
 		return newBaseVersion;
 	}
 
@@ -220,6 +249,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 	private PrimaryVersionSpec performCommit(final BranchVersionSpec branch, final AbstractChangePackage changePackage)
 		throws ESException {
 
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Perform commit..", getProjectSpace(), branch, //$NON-NLS-1$
+			getUsersession());
 		// Branching case: branch specifier added
 		final PrimaryVersionSpec newBaseVersion = new UnknownEMFStoreWorkloadCommand<PrimaryVersionSpec>(
 			getProgressMonitor()) {
@@ -235,6 +266,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 					changePackage.getLogMessage());
 			}
 		}.execute();
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Perform commit.. done", getProjectSpace(), branch, //$NON-NLS-1$
+			getUsersession());
 		return newBaseVersion;
 	}
 
@@ -253,9 +286,15 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 
 	private boolean performChecksumCheck(PrimaryVersionSpec newBaseVersion, Project project)
 		throws SerializationException {
+		EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Perform checksum check..", getProjectSpace(), branch, //$NON-NLS-1$
+			getUsersession());
 
 		if (Configuration.getClientBehavior().isChecksumCheckActive()) {
 			final long computedChecksum = ModelUtil.computeChecksum(project);
+			EMFStoreClientUtil.logProjectDetails(
+				LOGGING_PREFIX, MessageFormat.format("Computed Checksum: {0} , ProjectState Checksum: {1}", //$NON-NLS-1$
+					computedChecksum, newBaseVersion.getProjectStateChecksum()),
+				getProjectSpace(), branch, getUsersession());
 			return computedChecksum == newBaseVersion.getProjectStateChecksum();
 		}
 
@@ -268,6 +307,8 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 		if (branch != null) {
 			// check branch conditions
 			if (StringUtils.isEmpty(branch.getBranch())) {
+				EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Stopping commit because of empty branch name", //$NON-NLS-1$
+					getProjectSpace(), branch, getUsersession());
 				throw new InvalidVersionSpecException(Messages.CommitController_EmptyBranchName);
 			}
 			PrimaryVersionSpec potentialBranch = null;
@@ -286,7 +327,11 @@ public class CommitController extends ServerCall<PrimaryVersionSpec> {
 				.resolveVersionSpec(
 					Versions.createHEAD(getProjectSpace().getBaseVersion()), monitor);
 			if (!getProjectSpace().getBaseVersion().equals(resolvedVersion)) {
+				EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Update required", getProjectSpace(), branch, //$NON-NLS-1$
+					getUsersession());
 				if (!callback.baseVersionOutOfDate(getProjectSpace().toAPI(), getProgressMonitor())) {
+					EMFStoreClientUtil.logProjectDetails(LOGGING_PREFIX, "Stopping commit because update required", //$NON-NLS-1$
+						getProjectSpace(), branch, getUsersession());
 					throw new ESUpdateRequiredException();
 				}
 				return true;

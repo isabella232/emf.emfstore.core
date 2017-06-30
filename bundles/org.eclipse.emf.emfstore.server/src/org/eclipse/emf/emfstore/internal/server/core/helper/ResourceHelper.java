@@ -13,13 +13,11 @@ package org.eclipse.emf.emfstore.internal.server.core.helper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
 import org.eclipse.emf.emfstore.internal.common.model.Project;
@@ -33,11 +31,7 @@ import org.eclipse.emf.emfstore.internal.server.model.ServerSpace;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionSpec;
 import org.eclipse.emf.emfstore.internal.server.model.versioning.Version;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.AbstractOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.CreateDeleteOperation;
-import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.CreateDeleteOperationImpl;
 import org.eclipse.emf.emfstore.internal.server.storage.XMIServerURIConverter;
-import org.eclipse.emf.emfstore.server.ESCloseableIterable;
 import org.eclipse.emf.emfstore.server.ESServerURIUtil;
 
 /**
@@ -123,34 +117,6 @@ public class ResourceHelper {
 	public void createResourceForChangePackage(AbstractChangePackage changePackage, PrimaryVersionSpec versionId,
 		ProjectId projectId) throws FatalESException {
 		final URI changePackageURI = ESServerURIUtil.createChangePackageURI(projectId, versionId);
-		final List<Map.Entry<EObject, ModelElementId>> ignoredDatatypes = new ArrayList<Map.Entry<EObject, ModelElementId>>();
-		final ESCloseableIterable<AbstractOperation> operations = changePackage.operations();
-
-		try {
-			for (final AbstractOperation operation : operations.iterable()) {
-
-				if (operation instanceof CreateDeleteOperation) {
-					final CreateDeleteOperation createDeleteOp = (CreateDeleteOperation) operation;
-
-					for (final Map.Entry<EObject, ModelElementId> e : ((CreateDeleteOperationImpl) createDeleteOp)
-						.getEObjectToIdMap().entrySet()) {
-
-						final EObject modelElement = e.getKey();
-
-						if (ModelUtil.isIgnoredDatatype(modelElement)) {
-							ignoredDatatypes.add(e);
-							continue;
-						}
-					}
-
-					// remove types to be ignored from mapping
-					createDeleteOp.getEObjectToIdMap().removeAll(ignoredDatatypes);
-				}
-			}
-		} finally {
-			operations.close();
-		}
-
 		saveInResource(changePackage, changePackageURI);
 	}
 
@@ -165,7 +131,16 @@ public class ResourceHelper {
 	 */
 	public void deleteProjectState(Version version, ProjectId projectId) {
 		try {
-			version.getProjectState().eResource().delete(null);
+			/*
+			 * the project state of the version may not have been loaded yet. calling the getter however will load it,
+			 * just to delete if afterwards. it is more performant to create a new unloaded resource for the purpose of
+			 * deletion.
+			 */
+			final URI projectStateURI = ESServerURIUtil.createProjectStateURI(version.eResource().getURI());
+			final ResourceSet resourceSet = ModelUtil.createResourceSetForURI(projectStateURI);
+			final Resource deleteResource = resourceSet.createResource(projectStateURI);
+			deleteResource.delete(null);
+			version.setProjectStateResource(null);
 		} catch (final IOException e) {
 			ModelUtil.logWarning("Could not delete project state with id " + projectId.getId() + " and version "
 				+ version.getPrimarySpec().getIdentifier() + ".", e);

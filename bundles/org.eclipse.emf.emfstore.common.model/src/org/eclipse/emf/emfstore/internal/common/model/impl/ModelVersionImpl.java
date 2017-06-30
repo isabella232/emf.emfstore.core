@@ -21,11 +21,11 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelVersion;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Version</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.ModelVersionImpl#getReleaseNumber <em>Release Number
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.ModelVersionImpl#getReleaseNumber
+ * <em>Release Number</em>}</li>
+ * </ul>
  *
  * @generated
  */

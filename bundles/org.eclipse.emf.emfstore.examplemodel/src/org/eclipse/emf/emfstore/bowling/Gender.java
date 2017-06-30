@@ -88,11 +88,10 @@ public enum Gender implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final Gender[] VALUES_ARRAY =
-		new Gender[] {
-			FEMALE,
-			MALE,
-		};
+	private static final Gender[] VALUES_ARRAY = new Gender[] {
+		FEMALE,
+		MALE,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>Gender</b></em>' enumerators.
@@ -108,6 +107,8 @@ public enum Gender implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Gender get(String literal) {
@@ -125,6 +126,8 @@ public enum Gender implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Gender getByName(String name) {
@@ -142,6 +145,8 @@ public enum Gender implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static Gender get(int value) {

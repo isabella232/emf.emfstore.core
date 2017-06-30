@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.test.ui.controllers;
@@ -30,10 +30,11 @@ public class UIAddTagControllerTest extends AbstractUIControllerTestWithCommit {
 	@Override
 	@Test
 	public void testController() throws ESException {
-		ESPathQuery pathQuery = createTag();
-		List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery, new NullProgressMonitor());
+		final ESPathQuery pathQuery = createTag();
+		final List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery,
+			new NullProgressMonitor());
 		assertEquals(2, historyInfos.size());
-		ESHistoryInfo historyInfo2 = historyInfos.get(1);
+		final ESHistoryInfo historyInfo2 = historyInfos.get(1);
 		assertEquals(3, historyInfo2.getTagSpecs().size());
 		removeTag(historyInfo2, pathQuery);
 	}
@@ -41,28 +42,30 @@ public class UIAddTagControllerTest extends AbstractUIControllerTestWithCommit {
 	private void removeTag(final ESHistoryInfo historyInfo, ESPathQuery pathQuery) throws ESException {
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			public void run() {
-				UIRemoveTagController removeTagController = new UIRemoveTagController(
+				final UIRemoveTagController removeTagController = new UIRemoveTagController(
 					getBot().getDisplay().getActiveShell(), historyInfo);
 				removeTagController.execute();
 			}
 		});
-		List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery,
+			new NullProgressMonitor());
 		assertEquals(2, historyInfos.size());
 	}
 
 	private ESPathQuery createTag() throws ESException {
-		ESPrimaryVersionSpec baseVersion = getLocalProject().getBaseVersion();
+		final ESPrimaryVersionSpec baseVersion = getLocalProject().getBaseVersion();
 		createPlayerAndCommit();
-		ESPathQuery pathQuery = ESHistoryQuery.FACTORY
+		final ESPathQuery pathQuery = ESHistoryQuery.FACTORY
 			.pathQuery(baseVersion, getLocalProject().getBaseVersion(), true, true);
-		List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery, new NullProgressMonitor());
+		final List<ESHistoryInfo> historyInfos = getLocalProject().getHistoryInfos(pathQuery,
+			new NullProgressMonitor());
 		assertEquals(2, historyInfos.size());
 		final ESHistoryInfo historyInfo = historyInfos.get(1);
 		assertEquals(2, historyInfo.getTagSpecs().size());
 		UIThreadRunnable.asyncExec(
 			new VoidResult() {
 				public void run() {
-					UIAddTagController addTagController = new UIAddTagController(
+					final UIAddTagController addTagController = new UIAddTagController(
 						getBot().getDisplay().getActiveShell(),
 						getLocalProject(), historyInfo);
 					addTagController.execute();
@@ -70,7 +73,7 @@ public class UIAddTagControllerTest extends AbstractUIControllerTestWithCommit {
 			});
 
 		getBot().table(0).select(0);
-		SWTBotButton button = getBot().button("OK");
+		final SWTBotButton button = getBot().button("OK");
 		button.click();
 		return pathQuery;
 	}

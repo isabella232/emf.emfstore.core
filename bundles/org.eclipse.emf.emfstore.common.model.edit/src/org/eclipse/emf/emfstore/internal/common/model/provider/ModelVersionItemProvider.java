@@ -54,8 +54,7 @@ public class ModelVersionItemProvider extends RootElementItemProvider implements
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addReleaseNumberPropertyDescriptor(object);
@@ -70,9 +69,8 @@ public class ModelVersionItemProvider extends RootElementItemProvider implements
 	 * @generated
 	 */
 	protected void addReleaseNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_ModelVersion_releaseNumber_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_ModelVersion_releaseNumber_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -120,8 +118,7 @@ public class ModelVersionItemProvider extends RootElementItemProvider implements
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModelVersion.class))
-		{
+		switch (notification.getFeatureID(ModelVersion.class)) {
 		case ModelPackage.MODEL_VERSION__RELEASE_NUMBER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

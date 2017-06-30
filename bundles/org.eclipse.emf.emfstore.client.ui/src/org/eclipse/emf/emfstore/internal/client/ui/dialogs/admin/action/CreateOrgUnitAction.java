@@ -89,10 +89,13 @@ public abstract class CreateOrgUnitAction extends Action {
 				return;
 			}
 
-			if (orgUnitExists(getPrimaryFieldName())) {
-				openOrgUnitExistsDialog(shell, getPrimaryFieldName());
+			final Map<String, String> fieldValues = getFieldValues(newUserDialog);
+			final String primaryName = fieldValues.get(getPrimaryFieldName());
+
+			if (orgUnitExists(primaryName)) {
+				openOrgUnitExistsDialog(shell, primaryName);
 			} else {
-				newUserId = createOrgUnit(getFieldValues(newUserDialog));
+				newUserId = createOrgUnit(fieldValues);
 			}
 		} catch (final ESException e) {
 			EMFStoreMessageDialog.showExceptionDialog(e);
@@ -106,7 +109,7 @@ public abstract class CreateOrgUnitAction extends Action {
 				if (!ACOrgUnit.class.isInstance(tableItem.getData())) {
 					continue;
 				}
-				final ACOrgUnit orgUnit = ACOrgUnit.class.cast(tableItem.getData());
+				final ACOrgUnit<?> orgUnit = ACOrgUnit.class.cast(tableItem.getData());
 				if (orgUnit.getId().equals(newUserId)) {
 					index = tableViewer.getTable().indexOf(tableItem);
 					form.setInput(orgUnit);

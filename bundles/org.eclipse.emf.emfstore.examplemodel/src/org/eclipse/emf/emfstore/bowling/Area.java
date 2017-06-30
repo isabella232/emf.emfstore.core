@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Area#getAreas <em>Areas</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Area#getTournaments <em>Tournaments</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getArea()
  * @model

@@ -41,7 +41,9 @@ import org.junit.runners.Suite;
 	CreateUserWithPasswordMissingPrivilegTests.class,
 	AdminEMFStoreTests.class,
 	AddInitialParticipantTest.class,
-	AutoCreateACUserTestTest.class
+	AutoCreateACUserTestTest.class,
+	DefaultESPasswordHashGeneratorTests.class,
+	DefaultESAuthorizationServiceTests.class
 
 })
 public class AllAccessControlTests {

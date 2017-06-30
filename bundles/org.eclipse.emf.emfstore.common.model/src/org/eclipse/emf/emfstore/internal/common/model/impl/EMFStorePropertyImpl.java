@@ -27,13 +27,13 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl#getKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl#getValue <em>Value</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl#getType <em>Type</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.EMFStorePropertyImpl#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -173,8 +173,8 @@ public class EMFStorePropertyImpl extends EObjectImpl implements EMFStorePropert
 			value = eResolveProxy(oldValue);
 			if (value != oldValue) {
 				final InternalEObject newValue = (InternalEObject) value;
-				NotificationChain msgs = oldValue.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.EMF_STORE_PROPERTY__VALUE, null, null);
+				NotificationChain msgs = oldValue.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.EMF_STORE_PROPERTY__VALUE, null, null);
 				if (newValue.eInternalContainer() == null) {
 					msgs = newValue.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.EMF_STORE_PROPERTY__VALUE,
 						null, msgs);
@@ -232,12 +232,12 @@ public class EMFStorePropertyImpl extends EObjectImpl implements EMFStorePropert
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null) {
-				msgs = ((InternalEObject) value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.EMF_STORE_PROPERTY__VALUE, null, msgs);
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.EMF_STORE_PROPERTY__VALUE, null, msgs);
 			}
 			if (newValue != null) {
-				msgs = ((InternalEObject) newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.EMF_STORE_PROPERTY__VALUE, null, msgs);
+				msgs = ((InternalEObject) newValue).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.EMF_STORE_PROPERTY__VALUE, null, msgs);
 			}
 			msgs = basicSetValue(newValue, msgs);
 			if (msgs != null) {
@@ -269,7 +269,8 @@ public class EMFStorePropertyImpl extends EObjectImpl implements EMFStorePropert
 		final EMFStorePropertyType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EMF_STORE_PROPERTY__TYPE, oldType, type));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, ModelPackage.EMF_STORE_PROPERTY__TYPE, oldType, type));
 		}
 	}
 

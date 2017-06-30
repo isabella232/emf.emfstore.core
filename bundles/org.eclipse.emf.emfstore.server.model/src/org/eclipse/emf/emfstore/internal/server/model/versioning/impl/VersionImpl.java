@@ -53,27 +53,27 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Version</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getPrimarySpec <em>Primary Spec
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getPrimarySpec
+ * <em>Primary Spec</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getTagSpecs <em>Tag Specs</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getNextVersion <em>Next Version
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getPreviousVersion <em>Previous
- * Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getLogMessage <em>Log Message
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getAncestorVersion <em>Ancestor
- * Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getBranchedVersions <em>
- * Branched Versions</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getMergedToVersion <em>Merged
- * To Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getMergedFromVersion <em>Merged
- * From Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getNextVersion
+ * <em>Next Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getPreviousVersion
+ * <em>Previous Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getLogMessage
+ * <em>Log Message</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getAncestorVersion
+ * <em>Ancestor Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getBranchedVersions
+ * <em>Branched Versions</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getMergedToVersion
+ * <em>Merged To Version</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.VersionImpl#getMergedFromVersion
+ * <em>Merged From Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

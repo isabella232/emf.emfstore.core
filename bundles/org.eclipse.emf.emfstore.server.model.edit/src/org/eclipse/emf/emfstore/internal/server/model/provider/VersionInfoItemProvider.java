@@ -35,8 +35,8 @@ import org.eclipse.emf.emfstore.internal.server.model.VersionInfo;
  *
  * @generated
  */
-public class VersionInfoItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class VersionInfoItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -70,14 +70,13 @@ public class VersionInfoItemProvider extends ItemProviderAdapter implements IEdi
 	 * @generated
 	 */
 	protected void addEmfStoreVersionStringPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_VersionInfo_emfStoreVersionString_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_VersionInfo_emfStoreVersionString_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_VersionInfo_type"), //$NON-NLS-1$
-			ModelPackage.Literals.VERSION_INFO__EMF_STORE_VERSION_STRING, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_VersionInfo_emfStoreVersionString_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_VersionInfo_emfStoreVersionString_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_VersionInfo_type"), //$NON-NLS-1$
+				ModelPackage.Literals.VERSION_INFO__EMF_STORE_VERSION_STRING, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

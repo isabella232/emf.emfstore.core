@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
  ******************************************************************************/
@@ -13,17 +13,15 @@ package org.eclipse.emf.emfstore.internal.client.ui.util;
 
 import java.io.File;
 
-import org.eclipse.emf.emfstore.internal.client.ui.util.EMFStoreFileDialogHelper;
-import org.eclipse.emf.emfstore.internal.client.ui.util.EMFStorePreferenceHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 
 /**
  * {@link EMFStoreFileDialogHelper} using the SWT implementation of the {@link FileDialog}.
- * 
+ *
  * @author jfaltermeier
- * 
+ *
  */
 public class EMFStoreFileDialogHelperImpl implements EMFStoreFileDialogHelper {
 
@@ -32,9 +30,9 @@ public class EMFStoreFileDialogHelperImpl implements EMFStoreFileDialogHelper {
 	private static final String FILE_EXTENSION = "xmi"; //$NON-NLS-1$
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.util.EMFStoreFileDialogHelper#getPathForImport(org.eclipse.swt.widgets.Shell)
 	 */
 	public String getPathForImport(Shell shell) {
@@ -60,9 +58,9 @@ public class EMFStoreFileDialogHelperImpl implements EMFStoreFileDialogHelper {
 	}
 
 	/**
-	 * 
+	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.client.ui.util.EMFStoreFileDialogHelper#getPathForExport(org.eclipse.swt.widgets.Shell,
 	 *      java.lang.String)
 	 */

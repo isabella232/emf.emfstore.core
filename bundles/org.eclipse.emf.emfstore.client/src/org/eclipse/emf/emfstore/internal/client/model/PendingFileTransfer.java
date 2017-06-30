@@ -19,17 +19,19 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelElementId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getAttachmentId <em>Attachment Id</em>}
  * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileVersion <em>File Version</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getChunkNumber <em>Chunk Number</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileVersion <em>File Version</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getChunkNumber <em>Chunk Number</em>}
+ * </li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#isUpload <em>Upload</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getFileName <em>File Name</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getPreliminaryFileName <em>Preliminary
- * File Name</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.PendingFileTransfer#getPreliminaryFileName
+ * <em>Preliminary File Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.client.model.ModelPackage#getPendingFileTransfer()
  * @model

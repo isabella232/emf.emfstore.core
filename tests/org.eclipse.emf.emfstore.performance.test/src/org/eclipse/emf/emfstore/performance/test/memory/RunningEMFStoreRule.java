@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.performance.test.memory;
@@ -40,7 +40,7 @@ public class RunningEMFStoreRule extends ExternalResource {
 
 	/**
 	 * Server.
-	 * 
+	 *
 	 * @return the Server
 	 */
 	public ESServer server() {
@@ -49,7 +49,7 @@ public class RunningEMFStoreRule extends ExternalResource {
 
 	/**
 	 * Default session.
-	 * 
+	 *
 	 * @return the user-session.
 	 */
 	public ESUsersession defaultSession() {
@@ -58,7 +58,7 @@ public class RunningEMFStoreRule extends ExternalResource {
 
 	/**
 	 * Connected workspace.
-	 * 
+	 *
 	 * @return the connected workspace.
 	 */
 	public ESWorkspace connectedWorkspace() {
@@ -67,7 +67,7 @@ public class RunningEMFStoreRule extends ExternalResource {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.junit.rules.ExternalResource#before()
 	 */
 	@Override
@@ -78,29 +78,29 @@ public class RunningEMFStoreRule extends ExternalResource {
 
 		workspace = ESWorkspaceProvider.INSTANCE.getWorkspace();
 		server = ESServer.FACTORY.createServer("RunningEMFStoreRuleStore",
-				"localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE);
+			"localhost", 8080, KeyStoreManager.DEFAULT_CERTIFICATE);
 		server = workspace.addServer(server);
 
 		startEMFStore();
 		session = server.login("super", "super");
 		((ESWorkspaceImpl) workspace).toInternalAPI().getUsersessions()
-				.add(((ESUsersessionImpl) session).toInternalAPI());
+			.add(((ESUsersessionImpl) session).toInternalAPI());
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.junit.rules.ExternalResource#after()
 	 */
 	@Override
 	protected void after() {
 		stopEMFStore();
 		((ESWorkspaceImpl) workspace).toInternalAPI().getUsersessions()
-				.remove(((ESUsersessionImpl) session).toInternalAPI());
+			.remove(((ESUsersessionImpl) session).toInternalAPI());
 		if (server.getName().equals("RunningEMFStoreRuleStore")) {
 			try {
 				workspace.removeServer(server);
-			} catch (ESServerNotFoundException e) {
+			} catch (final ESServerNotFoundException e) {
 				// ignore
 			}
 		}
@@ -109,13 +109,13 @@ public class RunningEMFStoreRule extends ExternalResource {
 	private static void startEMFStore() {
 		try {
 			EMFStoreController.runAsNewThread();
-		} catch (FatalESException e) {
+		} catch (final FatalESException e) {
 			System.out.println(e.toString());
 		}
 	}
 
 	private static void stopEMFStore() {
-		EMFStoreController server = EMFStoreController.getInstance();
+		final EMFStoreController server = EMFStoreController.getInstance();
 		if (server != null) {
 			server.stop();
 		}
@@ -123,7 +123,7 @@ public class RunningEMFStoreRule extends ExternalResource {
 			// give the server some time to unbind from it's ips. Not the nicest
 			// solution ...
 			Thread.sleep(2000);
-		} catch (InterruptedException e) {
+		} catch (final InterruptedException e) {
 			System.out.println(e.toString());
 		}
 

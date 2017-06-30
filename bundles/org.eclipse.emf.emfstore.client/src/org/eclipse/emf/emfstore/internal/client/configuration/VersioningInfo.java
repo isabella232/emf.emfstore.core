@@ -29,7 +29,7 @@ import org.osgi.framework.Bundle;
  */
 public class VersioningInfo {
 
-	private static final String CLIENT_NAME = "emfstore eclipse client";
+	private static final String CLIENT_NAME = "emfstore eclipse client"; //$NON-NLS-1$
 
 	/**
 	 * Get the client version as specified
@@ -44,17 +44,17 @@ public class VersioningInfo {
 		clientVersionInfo.setName(CLIENT_NAME);
 
 		String versionId;
-		final ESExtensionElement version = new ESExtensionPoint("org.eclipse.emf.emfstore.client.clientVersion")
+		final ESExtensionElement version = new ESExtensionPoint("org.eclipse.emf.emfstore.client.clientVersion") //$NON-NLS-1$
 			.setThrowException(false).getFirst();
 
 		if (version != null) {
-			final ESClientVersionProvider versionProvider = version.getClass("class", ESClientVersionProvider.class);
+			final ESClientVersionProvider versionProvider = version.getClass("class", ESClientVersionProvider.class); //$NON-NLS-1$
 			clientVersionInfo.setName(versionProvider.getName());
 			clientVersionInfo.setVersion(versionProvider.getVersion());
 			return clientVersionInfo;
 		}
 
-		final Bundle emfStoreBundle = Platform.getBundle("org.eclipse.emf.emfstore.client");
+		final Bundle emfStoreBundle = Platform.getBundle("org.eclipse.emf.emfstore.client"); //$NON-NLS-1$
 		versionId = (String) emfStoreBundle.getHeaders().get(org.osgi.framework.Constants.BUNDLE_VERSION);
 		clientVersionInfo.setVersion(versionId);
 
@@ -67,7 +67,7 @@ public class VersioningInfo {
 	 * @return {@code true} if it is a release version, {@code false} otherwise
 	 */
 	public boolean isReleaseVersion() {
-		return !isInternalReleaseVersion() && !getClientVersion().getVersion().endsWith("qualifier");
+		return !isInternalReleaseVersion() && !getClientVersion().getVersion().endsWith("qualifier"); //$NON-NLS-1$
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class VersioningInfo {
 	 * @return {@code true} if it is an internal release, {@code false} otherwise
 	 */
 	public boolean isInternalReleaseVersion() {
-		return getClientVersion().getVersion().endsWith("internal");
+		return getClientVersion().getVersion().endsWith("internal"); //$NON-NLS-1$
 	}
 
 	/**

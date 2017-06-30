@@ -17,11 +17,11 @@ import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerProjectEvent#getProjectId
  * <em>Project Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerPackage#getServerProjectEvent()
  * @model abstract="true"

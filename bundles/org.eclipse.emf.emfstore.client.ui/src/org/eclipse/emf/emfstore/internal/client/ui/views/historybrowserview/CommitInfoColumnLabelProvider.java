@@ -32,7 +32,8 @@ public class CommitInfoColumnLabelProvider extends ColumnLabelProvider {
 			final StringBuilder builder = new StringBuilder();
 			if (historyInfo.getLogMessage() != null) {
 				logMessage = historyInfo.getLogMessage();
-			} else if (historyInfo.getChangePackage() != null && historyInfo.getChangePackage().getLogMessage() != null) {
+			} else if (historyInfo.getChangePackage() != null
+				&& historyInfo.getChangePackage().getLogMessage() != null) {
 				logMessage = historyInfo.getChangePackage().getLogMessage();
 			}
 			if (logMessage != null) {

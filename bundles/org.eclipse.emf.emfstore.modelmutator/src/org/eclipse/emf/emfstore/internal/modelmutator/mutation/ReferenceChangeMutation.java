@@ -127,8 +127,8 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation<ESReferen
 		final boolean success;
 		if (newValue != null) {
 			if (eReference.isMany()) {
-				final int insertionIndex = getTargetContainerSelector().
-					getRandomIndexFromTargetObjectAndFeatureValueRange();
+				final int insertionIndex = getTargetContainerSelector()
+					.getRandomIndexFromTargetObjectAndFeatureValueRange();
 				getUtil().addPerCommand(eObject, eReference, newValue, insertionIndex);
 			} else {
 				getUtil().setPerCommand(eObject, eReference, newValue);
@@ -155,8 +155,7 @@ public class ReferenceChangeMutation extends StructuralFeatureMutation<ESReferen
 		final EObject newReferenceValue;
 		final EReference eReference = (EReference) getTargetContainerSelector().getTargetFeature();
 
-		final Iterable<EObject> suitableEObjects = getUtil().
-			getSuitableEObjectsForAvailableFeature(eReference);
+		final Iterable<EObject> suitableEObjects = getUtil().getSuitableEObjectsForAvailableFeature(eReference);
 		final int numberOfAvailableEObjects = size(suitableEObjects);
 
 		if (numberOfAvailableEObjects < 1) {

@@ -26,7 +26,8 @@ import org.eclipse.emf.emfstore.internal.server.model.SessionId;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
- * This class is intended to wrap all server calls. It may be used either by sub-classing or using anonymous classes.<br/>
+ * This class is intended to wrap all server calls. It may be used either by sub-classing or using anonymous classes.
+ * <br/>
  * The {@link SessionManager} ensures there's a valid session before executing the call.<br/>
  * For call of the {@link ConnectionManager}, always use {@link #getSessionId()}, since it is injected by the
  * {@link SessionManager}.<br/>

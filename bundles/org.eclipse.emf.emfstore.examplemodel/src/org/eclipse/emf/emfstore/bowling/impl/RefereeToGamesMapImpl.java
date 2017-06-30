@@ -29,11 +29,11 @@ import org.eclipse.emf.emfstore.bowling.Referee;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.RefereeToGamesMapImpl#getTypedKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.RefereeToGamesMapImpl#getTypedValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -93,8 +93,8 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 			key = (Referee) eResolveProxy(oldKey);
 			if (key != oldKey) {
 				final InternalEObject newKey = (InternalEObject) key;
-				NotificationChain msgs = oldKey.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, null);
+				NotificationChain msgs = oldKey.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, null);
 				if (newKey.eInternalContainer() == null) {
 					msgs = newKey.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY,
 						null, msgs);
@@ -152,19 +152,18 @@ public class RefereeToGamesMapImpl extends EObjectImpl implements BasicEMap.Entr
 		if (newKey != key) {
 			NotificationChain msgs = null;
 			if (key != null) {
-				msgs = ((InternalEObject) key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
+				msgs = ((InternalEObject) key).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
 			}
 			if (newKey != null) {
-				msgs = ((InternalEObject) newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
+				msgs = ((InternalEObject) newKey).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, null, msgs);
 			}
 			msgs = basicSetTypedKey(newKey, msgs);
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, BowlingPackage.REFEREE_TO_GAMES_MAP__KEY, newKey,
 				newKey));
 		}

@@ -56,7 +56,7 @@ public class FileDynamicModelProvider implements ESDynamicModelProvider {
 			for (final File file : files) {
 				final ResourceSet resourceSet = new ResourceSetImpl();
 				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("ecore", new EcoreResourceFactoryImpl());
+					.put("ecore", new EcoreResourceFactoryImpl());
 				final Resource resource = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 				final EPackage model = (EPackage) resource.getContents().get(0);
 				result.add(model);

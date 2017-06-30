@@ -280,8 +280,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 */
 	public TournamentType createTournamentTypeFromString(EDataType eDataType, String initialValue) {
 		final TournamentType result = TournamentType.get(initialValue);
-		if (result == null)
-		{
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
@@ -306,8 +305,7 @@ public class BowlingFactoryImpl extends EFactoryImpl implements BowlingFactory {
 	 */
 	public Gender createGenderFromString(EDataType eDataType, String initialValue) {
 		final Gender result = Gender.get(initialValue);
-		if (result == null)
-		{
+		if (result == null) {
 			throw new IllegalArgumentException(
 				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}

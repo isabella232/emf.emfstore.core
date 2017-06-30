@@ -16,6 +16,7 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation#getIndex
  * <em>Index</em>}</li>
@@ -26,7 +27,6 @@ package org.eclipse.emf.emfstore.internal.server.model.versioning.operations;
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeSetOperation#getNewValue
  * <em>New Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeSetOperation()
  * @model

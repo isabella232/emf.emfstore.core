@@ -40,11 +40,8 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestConfig;
 public class TestConfigItemProvider
 	extends ItemProviderAdapter
 	implements
-	IEditingDomainItemProvider,
-	ITreeItemContentProvider,
-	IItemLabelProvider,
-	IItemPropertySource
-{
+	IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -52,8 +49,7 @@ public class TestConfigItemProvider
 	 *
 	 * @generated
 	 */
-	public TestConfigItemProvider(AdapterFactory adapterFactory)
-	{
+	public TestConfigItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,10 +61,8 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-	{
-		if (itemPropertyDescriptors == null)
-		{
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addSeedPropertyDescriptor(object);
@@ -86,11 +80,9 @@ public class TestConfigItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addSeedPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addSeedPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestConfig_seed_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_TestConfig_seed_feature", "_UI_TestConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -110,11 +102,9 @@ public class TestConfigItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addCountPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestConfig_count_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_TestConfig_count_feature", "_UI_TestConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -128,21 +118,19 @@ public class TestConfigItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the ESFuzzyTest Class feature.
+	 * This adds a property descriptor for the Test Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
 	 */
-	protected void addTestClassPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addTestClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestConfig_testClass_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TestConfig_testClass_feature", "_UI_TestConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				getString("_UI_PropertyDescriptor_description", "_UI_TestConfig_testClass_feature", //$NON-NLS-1$//$NON-NLS-2$
+					"_UI_TestConfig_type"), //$NON-NLS-1$
 				ConfigPackage.Literals.TEST_CONFIG__TEST_CLASS,
 				true,
 				false,
@@ -159,11 +147,9 @@ public class TestConfigItemProvider
 	 *
 	 * @generated
 	 */
-	protected void addIdPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_TestConfig_id_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_TestConfig_id_feature", "_UI_TestConfig_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -186,10 +172,8 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-	{
-		if (childrenFeatures == null)
-		{
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ConfigPackage.Literals.TEST_CONFIG__MUTATOR_CONFIG);
 		}
@@ -203,8 +187,7 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
-	{
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
@@ -219,8 +202,7 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	public Object getImage(Object object)
-	{
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/TestConfig")); //$NON-NLS-1$
 	}
 
@@ -232,11 +214,9 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getText(Object object)
-	{
+	public String getText(Object object) {
 		final String label = ((TestConfig) object).getId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TestConfig_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_TestConfig_type") : //$NON-NLS-1$
 			getString("_UI_TestConfig_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -249,12 +229,10 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	public void notifyChanged(Notification notification)
-	{
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TestConfig.class))
-		{
+		switch (notification.getFeatureID(TestConfig.class)) {
 		case ConfigPackage.TEST_CONFIG__SEED:
 		case ConfigPackage.TEST_CONFIG__COUNT:
 		case ConfigPackage.TEST_CONFIG__TEST_CLASS:
@@ -277,14 +255,11 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-	{
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ConfigPackage.Literals.TEST_CONFIG__MUTATOR_CONFIG,
-				ConfigFactory.eINSTANCE.createMutatorConfig()));
+		newChildDescriptors.add(createChildParameter(ConfigPackage.Literals.TEST_CONFIG__MUTATOR_CONFIG,
+			ConfigFactory.eINSTANCE.createMutatorConfig()));
 	}
 
 	/**
@@ -295,8 +270,7 @@ public class TestConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	public ResourceLocator getResourceLocator()
-	{
+	public ResourceLocator getResourceLocator() {
 		return ConfigEditPlugin.INSTANCE;
 	}
 

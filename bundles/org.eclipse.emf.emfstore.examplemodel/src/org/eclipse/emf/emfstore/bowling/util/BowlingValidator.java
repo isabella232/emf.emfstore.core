@@ -97,7 +97,6 @@ public class BowlingValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
-	 * @since 1.5
 	 */
 	protected XMLTypeValidator xmlTypeValidator;
 
@@ -133,7 +132,8 @@ public class BowlingValidator extends EObjectValidator {
 	 * @generated
 	 */
 	@Override
-	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics,
+		Map<Object, Object> context) {
 		switch (classifierID) {
 		case BowlingPackage.PLAYER:
 			return validatePlayer((Player) value, diagnostics, context);
@@ -312,7 +312,8 @@ public class BowlingValidator extends EObjectValidator {
 	 *
 	 * @generated
 	 */
-	public boolean validateMerchandise(Merchandise merchandise, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMerchandise(Merchandise merchandise, DiagnosticChain diagnostics,
+		Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(merchandise, diagnostics, context);
 	}
 

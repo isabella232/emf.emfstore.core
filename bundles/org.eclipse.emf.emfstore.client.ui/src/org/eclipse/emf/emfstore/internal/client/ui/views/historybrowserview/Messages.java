@@ -27,6 +27,8 @@ public class Messages extends NLS {
 	public static String HistoryBrowserView_ExpandCollapseToggle;
 	public static String HistoryBrowserView_ExpandToggle;
 	public static String HistoryBrowserView_FetchingHistory;
+	public static String HistoryBrowserView_FilterByTagAction;
+	public static String HistoryBrowserView_FilterByTagDialog;
 	public static String HistoryBrowserView_GoToRevision;
 	public static String HistoryBrowserView_GoToRevisionToolTip;
 	public static String HistoryBrowserView_HistoryFor;
@@ -41,6 +43,8 @@ public class Messages extends NLS {
 	public static String HistoryBrowserView_SelectProjectOrCallHistory;
 	public static String HistoryBrowserView_SelectProjectTitle;
 	public static String HistoryBrowserView_ShowAllBranches;
+	public static String HistoryBrowserView_TagDialog;
+	public static String HistoryBrowserView_TaggedWithOnly;
 	public static String HistoryBrowserView_VersionDoesNotExist;
 	static {
 		// initialize resource bundle

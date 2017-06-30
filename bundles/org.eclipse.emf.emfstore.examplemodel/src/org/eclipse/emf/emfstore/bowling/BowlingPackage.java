@@ -1141,8 +1141,8 @@ public interface BowlingPackage extends EPackage {
 	EReference getGame_Matchup();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.emfstore.bowling.Game#getPlayer
-	 * <em>Player</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.emfstore.bowling.Game#getPlayer <em>Player</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -1289,8 +1289,8 @@ public interface BowlingPackage extends EPackage {
 	EClass getArea();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.eclipse.emf.emfstore.bowling.Area#getAreas <em>Areas</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.emfstore.bowling.Area#getAreas
+	 * <em>Areas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -1403,8 +1403,8 @@ public interface BowlingPackage extends EPackage {
 	EReference getFan_FavouritePlayer();
 
 	/**
-	 * Returns the meta object for the reference list '
-	 * {@link org.eclipse.emf.emfstore.bowling.Fan#getVisitedTournaments <em>Visited Tournaments</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.emfstore.bowling.Fan#getVisitedTournaments
+	 * <em>Visited Tournaments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -1519,8 +1519,8 @@ public interface BowlingPackage extends EPackage {
 	EAttribute getMerchandise_SerialNumber();
 
 	/**
-	 * Returns the meta object for enum '{@link org.eclipse.emf.emfstore.bowling.TournamentType
-	 * <em>Tournament Type</em>}'.
+	 * Returns the meta object for enum '{@link org.eclipse.emf.emfstore.bowling.TournamentType <em>Tournament Type</em>
+	 * }'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *

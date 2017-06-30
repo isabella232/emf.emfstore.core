@@ -32,8 +32,10 @@ import org.eclipse.emf.emfstore.internal.client.model.Usersession;
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl#getProjectSpaces <em>Project Spaces
  * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl#getServerInfos <em>Server Infos</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl#getUsersessions <em>Usersessions </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl#getServerInfos <em>Server Infos</em>}
+ * </li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceImpl#getUsersessions <em>Usersessions </em>}
+ * </li>
  * </ul>
  * </p>
  *
@@ -88,8 +90,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 			return getProjectSpaces();
 		case ModelPackage.WORKSPACE__SERVER_INFOS:
@@ -109,8 +110,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getProjectSpaces()).basicAdd(otherEnd, msgs);
 		}
@@ -124,8 +124,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 			return ((InternalEList<?>) getProjectSpaces()).basicRemove(otherEnd, msgs);
 		case ModelPackage.WORKSPACE__SERVER_INFOS:
@@ -143,8 +142,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 			return projectSpaces != null && !projectSpaces.isEmpty();
 		case ModelPackage.WORKSPACE__SERVER_INFOS:
@@ -163,8 +161,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 			getProjectSpaces().clear();
 			getProjectSpaces().addAll((Collection<? extends ProjectSpace>) newValue);
@@ -198,8 +195,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID)
-		{
+		switch (featureID) {
 		case ModelPackage.WORKSPACE__PROJECT_SPACES:
 			getProjectSpaces().clear();
 			return;
@@ -219,8 +215,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 * @generated
 	 */
 	public EList<ProjectSpace> getProjectSpaces() {
-		if (projectSpaces == null)
-		{
+		if (projectSpaces == null) {
 			projectSpaces = new EObjectContainmentWithInverseEList.Resolving<ProjectSpace>(ProjectSpace.class, this,
 				ModelPackage.WORKSPACE__PROJECT_SPACES, ModelPackage.PROJECT_SPACE__WORKSPACE);
 		}
@@ -233,8 +228,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 * @generated
 	 */
 	public EList<ServerInfo> getServerInfos() {
-		if (serverInfos == null)
-		{
+		if (serverInfos == null) {
 			serverInfos = new EObjectContainmentEList.Resolving<ServerInfo>(ServerInfo.class, this,
 				ModelPackage.WORKSPACE__SERVER_INFOS);
 		}
@@ -247,8 +241,7 @@ public class WorkspaceImpl extends WorkspaceBase {
 	 * @generated
 	 */
 	public EList<Usersession> getUsersessions() {
-		if (usersessions == null)
-		{
+		if (usersessions == null) {
 			usersessions = new EObjectContainmentEList.Resolving<Usersession>(Usersession.class, this,
 				ModelPackage.WORKSPACE__USERSESSIONS);
 		}

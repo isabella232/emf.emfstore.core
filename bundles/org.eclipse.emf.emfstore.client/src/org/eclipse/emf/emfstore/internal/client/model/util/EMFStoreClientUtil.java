@@ -11,6 +11,8 @@
  ******************************************************************************/
 package org.eclipse.emf.emfstore.internal.client.model.util;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.emfstore.client.ESLocalProject;
 import org.eclipse.emf.emfstore.internal.client.model.ESWorkspaceProviderImpl;
 import org.eclipse.emf.emfstore.internal.client.model.ModelFactory;
@@ -18,11 +20,14 @@ import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.ServerInfo;
 import org.eclipse.emf.emfstore.internal.client.model.Usersession;
 import org.eclipse.emf.emfstore.internal.client.model.connectionmanager.KeyStoreManager;
+import org.eclipse.emf.emfstore.internal.client.model.impl.ProjectSpaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.WorkspaceBase;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESLocalProjectImpl;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESWorkspaceImpl;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
+import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
+import org.eclipse.emf.emfstore.internal.server.model.versioning.BranchVersionSpec;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 
 /**
@@ -32,6 +37,7 @@ import org.eclipse.emf.emfstore.server.exceptions.ESException;
  */
 public final class EMFStoreClientUtil {
 
+	private static final String MSG_FORMAT = "{0}: {1}"; //$NON-NLS-1$
 	private static final String LOCALHOST_GENERATED_ENTRY_NAME = "EMFStore (generated entry)"; //$NON-NLS-1$
 
 	/**
@@ -166,5 +172,155 @@ public final class EMFStoreClientUtil {
 		final ProjectSpace projectSpaceB = ((ESLocalProjectImpl) projectB).toInternalAPI();
 
 		return ModelUtil.areEqual(projectSpaceA.getProject(), projectSpaceB.getProject());
+	}
+
+	/**
+	 * Logs fine grained details about the state of a project action.
+	 *
+	 * @param loggingPrefix the logging prefix
+	 * @param message the message describing the current state
+	 * @param projectSpace the project space
+	 * @param branchSpec the branch spec
+	 * @param usersession the usersession
+	 */
+	public static void logProjectDetails(
+		String loggingPrefix,
+		String message,
+		ProjectSpaceBase projectSpace,
+		BranchVersionSpec branchSpec,
+		Usersession usersession) {
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+		String branch = null;
+		if (branchSpec != null) {
+			branch = branchSpec.getBranch();
+		}
+		EMFStoreClientUtil.logProjectDetails(loggingPrefix, message, projectSpace, branch, usersession);
+	}
+
+	/**
+	 * Logs fine grained details about the state of a project action.
+	 *
+	 * @param loggingPrefix the logging prefix
+	 * @param message the message describing the current state
+	 * @param projectSpace the project space
+	 * @param branch the branch name
+	 * @param usersession the usersession
+	 */
+	public static void logProjectDetails(
+		String loggingPrefix,
+		String message,
+		ProjectSpaceBase projectSpace,
+		String branch,
+		Usersession usersession) {
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+		String projectName = null;
+		String projectId = null;
+		int revision = -1;
+		String user = null;
+
+		if (projectSpace != null) {
+			projectName = projectSpace.getProjectName();
+			if (projectSpace.getProjectId() != null) {
+				projectId = projectSpace.getProjectId().getId();
+			}
+			if (projectSpace.getBaseVersion() != null) {
+				revision = projectSpace.getBaseVersion().getIdentifier();
+			}
+		}
+
+		if (usersession != null) {
+			user = usersession.getUsername();
+		}
+
+		ModelUtil.logProjectDetails(
+			MessageFormat.format(MSG_FORMAT, loggingPrefix, message),
+			user,
+			projectName,
+			projectId,
+			branch,
+			revision);
+	}
+
+	/**
+	 * Logs fine grained details about the state of a project action.
+	 *
+	 * @param loggingPrefix the logging prefix
+	 * @param message the message describing the current state
+	 * @param projectIdO the project id
+	 * @param branchSpec the branch spec
+	 */
+	public static void logProjectDetails(
+		String loggingPrefix,
+		String message,
+		ProjectId projectIdO,
+		BranchVersionSpec branchSpec) {
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+
+		String branch = null;
+		if (branchSpec != null) {
+			branch = branchSpec.getBranch();
+		}
+
+		EMFStoreClientUtil.logProjectDetails(loggingPrefix, message, projectIdO, branch);
+	}
+
+	/**
+	 * Logs fine grained details about the state of a project action.
+	 *
+	 * @param loggingPrefix the logging prefix
+	 * @param message the message describing the current state
+	 * @param projectIdO the project id
+	 * @param branch the branch spec
+	 */
+	public static void logProjectDetails(
+		String loggingPrefix,
+		String message,
+		ProjectId projectIdO,
+		String branch) {
+
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+		String projectId = null;
+		if (projectIdO != null) {
+			projectId = projectIdO.getId();
+		}
+
+		ModelUtil.logProjectDetails(
+			MessageFormat.format(MSG_FORMAT, loggingPrefix, message),
+			null,
+			null,
+			projectId,
+			branch,
+			-1);
+	}
+
+	/**
+	 * Logs fine grained details about the state of a project action.
+	 *
+	 * @param loggingPrefix the logging prefix
+	 * @param message the message describing the current state
+	 */
+	public static void logProjectDetails(
+		String loggingPrefix,
+		String message) {
+
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+
+		ModelUtil.logProjectDetails(
+			MessageFormat.format(MSG_FORMAT, loggingPrefix, message),
+			null,
+			null,
+			null,
+			null,
+			-1);
 	}
 }

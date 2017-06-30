@@ -64,12 +64,12 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_SingleReferenceOperation_oldValue_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__OLD_VALUE, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_SingleReferenceOperation_oldValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_oldValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__OLD_VALUE, true, false, true, null, null, null));
 	}
 
 	/**
@@ -79,12 +79,12 @@ public class SingleReferenceOperationItemProvider extends ReferenceOperationItem
 	 * @generated
 	 */
 	protected void addNewValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_SingleReferenceOperation_newValue_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
-				"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
-			OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__NEW_VALUE, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_SingleReferenceOperation_newValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_SingleReferenceOperation_newValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_SingleReferenceOperation_type"), //$NON-NLS-1$
+				OperationsPackage.Literals.SINGLE_REFERENCE_OPERATION__NEW_VALUE, true, false, true, null, null, null));
 	}
 
 	// begin of custom code

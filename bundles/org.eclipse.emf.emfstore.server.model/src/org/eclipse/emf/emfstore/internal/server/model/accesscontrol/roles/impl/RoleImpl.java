@@ -30,11 +30,11 @@ import org.eclipse.emf.emfstore.server.model.ESRole;
  * <!-- begin-user-doc --> An implementation of the model object ' <em><b>Role</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.impl.RoleImpl#getProjects <em>Projects
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.impl.RoleImpl#getProjects
+ * <em>Projects</em>}</li>
+ * </ul>
  *
  * @generated
  */

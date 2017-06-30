@@ -18,16 +18,16 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation#isAdd <em>Add
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation#isAdd
+ * <em>Add</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation#getIndexes
  * <em>Indexes</em>}</li>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.MultiAttributeOperation#getReferencedValues
  * <em>Referenced Values</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.operations.OperationsPackage#getMultiAttributeOperation()
  * @model

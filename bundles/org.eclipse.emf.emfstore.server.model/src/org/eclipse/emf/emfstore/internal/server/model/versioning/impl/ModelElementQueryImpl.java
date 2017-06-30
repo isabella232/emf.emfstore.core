@@ -37,7 +37,7 @@ import org.eclipse.emf.emfstore.server.model.query.ESModelElementQuery;
  *
  * @generated NOT
  */
-public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery>implements ModelElementQuery {
+public class ModelElementQueryImpl extends RangeQueryImpl<ESModelElementQuery> implements ModelElementQuery {
 
 	/**
 	 * The cached value of the '{@link #getModelElements() <em>Model Elements</em>}' containment reference list.

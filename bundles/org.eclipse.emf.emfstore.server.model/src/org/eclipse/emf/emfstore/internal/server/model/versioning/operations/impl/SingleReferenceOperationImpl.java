@@ -38,6 +38,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.SingleReferenceOperationImpl#getOldValue
@@ -46,7 +47,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Unse
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.SingleReferenceOperationImpl#getNewValue
  * <em>New Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

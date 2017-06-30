@@ -61,11 +61,11 @@ public class ACGroupItemProvider extends ACOrgUnitItemProvider {
 	 * @generated
 	 */
 	protected void addMembersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_ACGroup_members_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACGroup_members_feature", "_UI_ACGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			AccesscontrolPackage.Literals.AC_GROUP__MEMBERS, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACGroup_members_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACGroup_members_feature", "_UI_ACGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				AccesscontrolPackage.Literals.AC_GROUP__MEMBERS, true, false, true, null, null, null));
 	}
 
 	/**

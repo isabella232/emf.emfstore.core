@@ -27,11 +27,11 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#getLogMessage <em>Log
- * Message</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.AbstractChangePackage#getLogMessage
+ * <em>Log Message</em>}</li>
+ * </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getAbstractChangePackage()
  * @model interface="true" abstract="true"

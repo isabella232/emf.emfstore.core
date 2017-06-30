@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  ******************************************************************************/
 package org.eclipse.emf.emfstore.client.api.test;
@@ -169,7 +169,8 @@ public class RemoteProjectTest extends ESTestWithRemoteProject {
 			getUsersession(),
 			ESHistoryQuery.FACTORY
 				.pathQuery(getRemoteProject().getHeadVersion(monitor),
-					getRemoteProject().getHeadVersion(monitor), true, true), monitor);
+					getRemoteProject().getHeadVersion(monitor), true, true),
+			monitor);
 		assertEquals(1, historyInfos.size());
 	}
 
@@ -179,7 +180,8 @@ public class RemoteProjectTest extends ESTestWithRemoteProject {
 		final List<? extends ESHistoryInfo> historyInfos = getRemoteProject().getHistoryInfos(
 			ESHistoryQuery.FACTORY.pathQuery(
 				getRemoteProject().getHeadVersion(monitor),
-				getRemoteProject().getHeadVersion(monitor), true, true), monitor);
+				getRemoteProject().getHeadVersion(monitor), true, true),
+			monitor);
 		assertEquals(1, historyInfos.size());
 	}
 

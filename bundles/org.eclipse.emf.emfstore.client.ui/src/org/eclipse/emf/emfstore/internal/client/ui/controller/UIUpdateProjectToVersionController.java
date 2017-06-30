@@ -77,7 +77,7 @@ public class UIUpdateProjectToVersionController extends
 						getShell(),
 						projectSpace,
 						ESVersionSpec.FACTORY.createHEAD(projectSpace.getBaseVersion()))
-						.execute();
+							.execute();
 				}
 			});
 

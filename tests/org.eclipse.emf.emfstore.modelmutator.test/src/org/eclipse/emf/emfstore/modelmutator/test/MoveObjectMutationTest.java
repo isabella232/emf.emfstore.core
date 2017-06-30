@@ -28,15 +28,15 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link MoveObjectMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class MoveObjectMutationTest extends AbstractMutationTest {
 
 	@Before
 	public void addEAttributeToFirstEClassInEPackageWithTwoClasses() {
-		EAttribute eAttributeToAdd = E_FACTORY.createEAttribute();
-		EClass firstEClass = getFirstEClass();
+		final EAttribute eAttributeToAdd = E_FACTORY.createEAttribute();
+		final EClass firstEClass = getFirstEClass();
 		firstEClass.getEStructuralFeatures().add(eAttributeToAdd);
 	}
 
@@ -65,16 +65,13 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 
 	@Test
 	public void moveObjectForGivenSourceFeatureAndSourceContainerAndTargetFeatureAndTargetContainer()
-			throws ESMutationException {
+		throws ESMutationException {
 
-		EAttribute attributeToMove = getEAttributeInFirstClass();
+		final EAttribute attributeToMove = getEAttributeInFirstClass();
 
-		ESMutationFactory.move(utilForEPackageWithTwoClasses)
-				.setSourceObject(getFirstEClass())
-				.setSourceFeature(E_PACKAGE.getEClass_EStructuralFeatures())
-				.setTargetObject(getSecondEClass())
-				.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures())
-				.setEObjectToMove(attributeToMove).apply();
+		ESMutationFactory.move(utilForEPackageWithTwoClasses).setSourceObject(getFirstEClass())
+			.setSourceFeature(E_PACKAGE.getEClass_EStructuralFeatures()).setTargetObject(getSecondEClass())
+			.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures()).setEObjectToMove(attributeToMove).apply();
 
 		assertEquals(getSecondEClass(), attributeToMove.eContainer());
 	}
@@ -87,9 +84,10 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 			try {
 				applyUnconfigeredMove();
 				success = true;
-			} catch (Exception e) {
-				if (tries++ > 3)
+			} catch (final Exception e) {
+				if (tries++ > 3) {
 					fail();
+				}
 			}
 		}
 	}
@@ -105,8 +103,7 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 	public void moveObjectForGivenFeature() throws ESMutationException {
 
 		ESMutationFactory.move(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures())
-				.apply();
+			.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures()).apply();
 
 		assertEAttributeInFirstClassHasBeenMoved();
 	}
@@ -115,60 +112,52 @@ public class MoveObjectMutationTest extends AbstractMutationTest {
 		final EObject eAttributeInFirstClass = getEAttributeInFirstClass();
 		final EObject eAttributeInSecondClass = getEAttributeInSecondClass();
 		assertNull(eAttributeInFirstClass);
-		assertTrue("Attribute has not been moved",
-				eAttributeInSecondClass != null);
+		assertTrue("Attribute has not been moved", eAttributeInSecondClass != null);
 	}
 
 	@Test
 	public void setupForSourceGivenFeature() throws ESMutationException {
-		EAttribute eAttribute = getEAttributeInFirstClass();
+		final EAttribute eAttribute = getEAttributeInFirstClass();
 
-		ESMoveObjectMutation mutation = ESMutationFactory.move(
-				utilForEPackageWithTwoClasses).setSourceFeature(
-				E_PACKAGE.getEClass_EStructuralFeatures());
+		final ESMoveObjectMutation mutation = ESMutationFactory.move(utilForEPackageWithTwoClasses)
+			.setSourceFeature(E_PACKAGE.getEClass_EStructuralFeatures());
 
 		mutation.apply();
 
 		assertEquals(getFirstEClass(), mutation.getSourceObject());
 		assertEquals(eAttribute, mutation.getEObjectToMove());
-		assertEquals(E_PACKAGE.getEClass_EStructuralFeatures(),
-				mutation.getTargetFeature());
+		assertEquals(E_PACKAGE.getEClass_EStructuralFeatures(), mutation.getTargetFeature());
 		assertTrue(mutation.getTargetObject() == getSecondEClass());
 	}
 
 	@Test
 	public void setupForGivenTargetContainer() throws ESMutationException {
-		EAttribute eAttribute = getEAttributeInFirstClass();
+		final EAttribute eAttribute = getEAttributeInFirstClass();
 
-		ESMoveObjectMutation mutation = ESMutationFactory.move(
-				utilForEPackageWithTwoClasses).setTargetObject(
-				getSecondEClass());
+		final ESMoveObjectMutation mutation = ESMutationFactory.move(utilForEPackageWithTwoClasses)
+			.setTargetObject(getSecondEClass());
 
 		mutation.apply();
 
 		assertEquals(getFirstEClass(), mutation.getSourceObject());
 		assertEquals(eAttribute, mutation.getEObjectToMove());
-		assertEquals(E_PACKAGE.getEClass_EStructuralFeatures(),
-				mutation.getTargetFeature());
+		assertEquals(E_PACKAGE.getEClass_EStructuralFeatures(), mutation.getTargetFeature());
 		assertEquals(getSecondEClass(), eAttribute.eContainer());
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfNoValidObjectToMoveIsAvailable()
-			throws ESMutationException {
+	public void throwsExceptionIfNoValidObjectToMoveIsAvailable() throws ESMutationException {
 
-		ESMutationFactory.move(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEEnum_ELiterals()).apply();
+		ESMutationFactory.move(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEEnum_ELiterals()).apply();
 
 		fail("Should have thrown a Mutation Exception, because there is no valid setup.");
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfNoValidTargetContainerIsAvailable()
-			throws ESMutationException {
+	public void throwsExceptionIfNoValidTargetContainerIsAvailable() throws ESMutationException {
 
-		ESMutationFactory.move(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
+		ESMutationFactory.move(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEPackage_EClassifiers())
+			.apply();
 
 		fail("Should have thrown a Mutation Exception, because there is no valid setup.");
 	}

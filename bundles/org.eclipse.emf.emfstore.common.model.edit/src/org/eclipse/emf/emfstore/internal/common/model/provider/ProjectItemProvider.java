@@ -56,8 +56,7 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 		}
@@ -74,8 +73,7 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null)
-		{
+		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS);
 			childrenFeatures.add(ModelPackage.Literals.PROJECT__CUT_ELEMENTS);
@@ -108,8 +106,7 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Project.class))
-		{
+		switch (notification.getFeatureID(Project.class)) {
 		case ModelPackage.PROJECT__MODEL_ELEMENTS:
 		case ModelPackage.PROJECT__CUT_ELEMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -129,65 +126,41 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.createProject()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.createProject()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.createModelElementId()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.createModelVersion()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.createModelVersion()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.createEMFStoreProperty()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.createEMFStoreProperty()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.create(ModelPackage.Literals.PROPERTY_MAP_ENTRY)));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.create(ModelPackage.Literals.PROPERTY_MAP_ENTRY)));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
-				ModelFactory.eINSTANCE.createPropertyStringValue()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__MODEL_ELEMENTS,
+			ModelFactory.eINSTANCE.createPropertyStringValue()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
-				ModelFactory.eINSTANCE.createProject()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
+			ModelFactory.eINSTANCE.createProject()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
-				ModelFactory.eINSTANCE.createModelElementId()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
+			ModelFactory.eINSTANCE.createModelElementId()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
-				ModelFactory.eINSTANCE.createModelVersion()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
+			ModelFactory.eINSTANCE.createModelVersion()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
-				ModelFactory.eINSTANCE.createEMFStoreProperty()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
+			ModelFactory.eINSTANCE.createEMFStoreProperty()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
-				ModelFactory.eINSTANCE.create(ModelPackage.Literals.PROPERTY_MAP_ENTRY)));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
+			ModelFactory.eINSTANCE.create(ModelPackage.Literals.PROPERTY_MAP_ENTRY)));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
-				ModelFactory.eINSTANCE.createPropertyStringValue()));
+		newChildDescriptors.add(createChildParameter(ModelPackage.Literals.PROJECT__CUT_ELEMENTS,
+			ModelFactory.eINSTANCE.createPropertyStringValue()));
 	}
 
 	/**
@@ -201,12 +174,10 @@ public class ProjectItemProvider extends RootElementItemProvider implements IEdi
 		final Object childFeature = feature;
 		final Object childObject = child;
 
-		final boolean qualify =
-			childFeature == ModelPackage.Literals.PROJECT__MODEL_ELEMENTS ||
-				childFeature == ModelPackage.Literals.PROJECT__CUT_ELEMENTS;
+		final boolean qualify = childFeature == ModelPackage.Literals.PROJECT__MODEL_ELEMENTS ||
+			childFeature == ModelPackage.Literals.PROJECT__CUT_ELEMENTS;
 
-		if (qualify)
-		{
+		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
 				new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}

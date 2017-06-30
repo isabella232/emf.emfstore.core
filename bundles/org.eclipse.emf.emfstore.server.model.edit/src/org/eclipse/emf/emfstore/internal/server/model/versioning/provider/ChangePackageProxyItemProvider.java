@@ -40,8 +40,8 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  *
  * @generated
  */
-public class ChangePackageProxyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ChangePackageProxyItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -79,12 +79,10 @@ public class ChangePackageProxyItemProvider extends ItemProviderAdapter implemen
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-		.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ChangePackageProxy_id_feature"), //$NON-NLS-1$
-			getString(
-				"_UI_PropertyDescriptor_description", "_UI_ChangePackageProxy_id_feature", "_UI_ChangePackageProxy_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ChangePackageProxy_id_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ChangePackageProxy_id_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ChangePackageProxy_type"), //$NON-NLS-1$
 				VersioningPackage.Literals.CHANGE_PACKAGE_PROXY__ID, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}

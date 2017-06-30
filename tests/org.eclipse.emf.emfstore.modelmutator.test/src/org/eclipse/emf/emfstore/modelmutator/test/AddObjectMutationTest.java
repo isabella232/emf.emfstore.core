@@ -28,18 +28,16 @@ import org.junit.Test;
 
 /**
  * Unit tests for {@link ESAddObjectMutation}.
- * 
+ *
  * @author Philip Langer
  */
 public class AddObjectMutationTest extends AbstractMutationTest {
 
 	@Test
-	public void addObjectForGivenFeatureAndContainer()
-			throws ESMutationException {
+	public void addObjectForGivenFeatureAndContainer() throws ESMutationException {
 
-		ESMutationFactory.add(utilForEPackageWithTwoClasses)
-				.setTargetObject(ePackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
+		ESMutationFactory.add(utilForEPackageWithTwoClasses).setTargetObject(ePackageWithTwoClasses)
+			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
 
 		assertEquals(3, ePackageWithTwoClasses.getEClassifiers().size());
 	}
@@ -47,8 +45,8 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	@Test
 	public void addObjectForGivenFeature() throws ESMutationException {
 
-		ESMutationFactory.add(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers()).apply();
+		ESMutationFactory.add(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEPackage_EClassifiers())
+			.apply();
 
 		// we only have one possible target container with the given feature
 		// so apply() should have added one new EClassifier to it
@@ -56,12 +54,10 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	}
 
 	@Test
-	public void selectTargetContainerForGivenFeature()
-			throws ESMutationException {
+	public void selectTargetContainerForGivenFeature() throws ESMutationException {
 
-		ESAddObjectMutation mutation = ESMutationFactory.add(
-				utilForEPackageWithTwoClasses).setTargetFeature(
-				E_PACKAGE.getEPackage_EClassifiers());
+		final ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
+			.setTargetFeature(E_PACKAGE.getEPackage_EClassifiers());
 
 		mutation.apply();
 
@@ -70,30 +66,25 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	}
 
 	@Test
-	public void selectTargetFeatureForGivenTargetContainer()
-			throws ESMutationException {
+	public void selectTargetFeatureForGivenTargetContainer() throws ESMutationException {
 
-		ESAddObjectMutation mutation = ESMutationFactory.add(
-				utilForEPackageWithTwoClasses).setTargetObject(
-				ePackageWithTwoClasses);
+		final ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
+			.setTargetObject(ePackageWithTwoClasses);
 
 		mutation.apply();
 
 		final EStructuralFeature targetFeature = mutation.getTargetFeature();
 		final EClass targetContainerClass = ePackageWithTwoClasses.eClass();
-		final EList<EReference> allContainmentFeatures = targetContainerClass
-				.getEAllContainments();
+		final EList<EReference> allContainmentFeatures = targetContainerClass.getEAllContainments();
 
 		assertTrue(allContainmentFeatures.contains(targetFeature));
 	}
 
 	@Test
-	public void selectTargetFeatureAndContainerForGivenEObjectToAdd()
-			throws ESMutationException {
+	public void selectTargetFeatureAndContainerForGivenEObjectToAdd() throws ESMutationException {
 
-		ESAddObjectMutation mutation = ESMutationFactory.add(
-				utilForEPackageWithTwoClasses).setEObjectToAdd(
-				E_FACTORY.createEAttribute());
+		final ESAddObjectMutation mutation = ESMutationFactory.add(utilForEPackageWithTwoClasses)
+			.setEObjectToAdd(E_FACTORY.createEAttribute());
 
 		mutation.apply();
 
@@ -103,8 +94,7 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 
 		assertEquals(E_PACKAGE.getEClass_EStructuralFeatures(), targetFeature);
 		assertEquals(E_PACKAGE.getEClass(), targetContainer.eClass());
-		assertTrue(ePackageWithTwoClasses.getEClassifiers().contains(
-				realContainer));
+		assertTrue(ePackageWithTwoClasses.getEClassifiers().contains(realContainer));
 	}
 
 	@Test
@@ -116,22 +106,18 @@ public class AddObjectMutationTest extends AbstractMutationTest {
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfNoValidTargetContainerIsAvailable()
-			throws ESMutationException {
+	public void throwsExceptionIfNoValidTargetContainerIsAvailable() throws ESMutationException {
 
-		ESMutationFactory.add(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEEnum_ELiterals()).apply();
+		ESMutationFactory.add(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEEnum_ELiterals()).apply();
 
 		fail("Should have thrown a Mutation Exception, because there is no valid target container.");
 	}
 
 	@Test(expected = ESMutationException.class)
-	public void throwsExceptionIfSelectionOfTargetContainerIsImpossible()
-			throws ESMutationException {
+	public void throwsExceptionIfSelectionOfTargetContainerIsImpossible() throws ESMutationException {
 
-		ESMutationFactory.add(utilForEPackageWithTwoClasses)
-				.setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures())
-				.setTargetObject(ePackageWithTwoClasses).apply();
+		ESMutationFactory.add(utilForEPackageWithTwoClasses).setTargetFeature(E_PACKAGE.getEClass_EStructuralFeatures())
+			.setTargetObject(ePackageWithTwoClasses).apply();
 
 		fail("Should have thrown a Mutation Exception, because there is no valid target container.");
 	}

@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2012-2013 EclipseSource Muenchen GmbH and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Edgar Mueller - initial API and implementation
  ******************************************************************************/
@@ -21,9 +21,9 @@ import org.junit.Test;
 
 /**
  * Tests login/logout
- * 
+ *
  * @author emueller
- * 
+ *
  */
 public class UISessionControllerTest extends AbstractUIControllerTest {
 
@@ -60,8 +60,8 @@ public class UISessionControllerTest extends AbstractUIControllerTest {
 	private void logout() {
 		UIThreadRunnable.syncExec(new VoidResult() {
 			public void run() {
-				logoutSessionController =
-					new UILogoutSessionController(getBot().getDisplay().getActiveShell(), getUsersession());
+				logoutSessionController = new UILogoutSessionController(getBot().getDisplay().getActiveShell(),
+					getUsersession());
 				logoutSessionController.execute();
 			}
 		});

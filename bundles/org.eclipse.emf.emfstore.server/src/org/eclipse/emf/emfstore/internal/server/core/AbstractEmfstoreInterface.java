@@ -216,7 +216,7 @@ public abstract class AbstractEmfstoreInterface {
 	 */
 	protected synchronized void checkProjectAdminAccess(SessionId sessionId, ProjectId projectId,
 		ESProjectAdminPrivileges privilege)
-			throws AccessControlException {
+		throws AccessControlException {
 		if (accessControlDisabled) {
 			return;
 		}

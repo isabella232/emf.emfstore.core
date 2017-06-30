@@ -55,8 +55,7 @@ public class IdentifiableElementItemProvider extends RootElementItemProvider imp
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addIdentifierPropertyDescriptor(object);
@@ -71,9 +70,8 @@ public class IdentifiableElementItemProvider extends RootElementItemProvider imp
 	 * @generated
 	 */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_IdentifiableElement_identifier_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableElement_identifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -96,8 +94,7 @@ public class IdentifiableElementItemProvider extends RootElementItemProvider imp
 	@Override
 	public String getText(Object object) {
 		final String label = ((IdentifiableElement) object).getIdentifier();
-		return label == null || label.length() == 0 ?
-			getString("_UI_IdentifiableElement_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_IdentifiableElement_type") : //$NON-NLS-1$
 			getString("_UI_IdentifiableElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -112,8 +109,7 @@ public class IdentifiableElementItemProvider extends RootElementItemProvider imp
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(IdentifiableElement.class))
-		{
+		switch (notification.getFeatureID(IdentifiableElement.class)) {
 		case ModelPackage.IDENTIFIABLE_ELEMENT__IDENTIFIER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

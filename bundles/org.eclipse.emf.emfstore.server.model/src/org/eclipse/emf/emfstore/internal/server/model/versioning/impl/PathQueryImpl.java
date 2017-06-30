@@ -34,7 +34,7 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESPrimaryVersionSpec;
  *
  * @generated NOT
  */
-public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery>implements PathQuery {
+public class PathQueryImpl extends HistoryQueryImpl<ESPathQuery> implements PathQuery {
 
 	/**
 	 * @generated NOT

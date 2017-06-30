@@ -43,8 +43,7 @@ public abstract class UnknownEMFStoreWorkloadCommand<T> {
 	 * Singleton.
 	 */
 	private static class SingletonHolder {
-		private static ScopedWorkspaceThreadPoolExecutor executor =
-			new ScopedWorkspaceThreadPoolExecutor();
+		private static ScopedWorkspaceThreadPoolExecutor executor = new ScopedWorkspaceThreadPoolExecutor();
 	}
 
 	/**

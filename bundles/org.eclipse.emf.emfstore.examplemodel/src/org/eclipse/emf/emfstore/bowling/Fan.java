@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Fan#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Fan#getDateOfBirth <em>Date Of Birth</em>}</li>
@@ -36,7 +37,6 @@ import org.eclipse.emf.ecore.EObject;
  * </li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Fan#getMoneySpentOnTickets <em>Money Spent On Tickets</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getFan()
  * @model
@@ -194,8 +194,8 @@ public interface Fan extends EObject {
 	void setHasSeasonTicket(boolean value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#isHasSeasonTicket
-	 * <em>Has Season Ticket</em>}' attribute.
+	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#isHasSeasonTicket <em>Has Season Ticket</em>
+	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -358,8 +358,8 @@ public interface Fan extends EObject {
 	void setFavouritePlayer(Player value);
 
 	/**
-	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getFavouritePlayer
-	 * <em>Favourite Player</em>}' reference.
+	 * Unsets the value of the '{@link org.eclipse.emf.emfstore.bowling.Fan#getFavouritePlayer <em>Favourite Player</em>
+	 * }' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *

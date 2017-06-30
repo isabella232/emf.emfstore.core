@@ -198,7 +198,7 @@ public class ServerHrefMigrator {
 	}
 
 	private String getProjectAttribute(String pathToFile) throws ParserConfigurationException, SAXException,
-	IOException {
+		IOException {
 		final DocumentBuilderFactory docFactory = DocumentBuilderFactory
 			.newInstance();
 		final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -269,7 +269,8 @@ public class ServerHrefMigrator {
 		}
 	}
 
-	private void removeReferencesToCorruptProject(String serverHome, String projectId) throws InvocationTargetException {
+	private void removeReferencesToCorruptProject(String serverHome, String projectId)
+		throws InvocationTargetException {
 		try {
 			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			final DocumentBuilder builder = factory.newDocumentBuilder();

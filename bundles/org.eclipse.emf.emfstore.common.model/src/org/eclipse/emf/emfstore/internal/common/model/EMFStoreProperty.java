@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey <em>Key</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getValue <em>Value</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType <em>Type</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.common.model.ModelPackage#getEMFStoreProperty()
  * @model
@@ -53,9 +53,8 @@ public interface EMFStoreProperty extends EObject {
 	String getKey();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey
-	 * <em>Key</em>}'
-	 * attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getKey <em>Key</em>
+	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -84,8 +83,7 @@ public interface EMFStoreProperty extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getValue
-	 * <em>Value</em>}'
-	 * containment reference.
+	 * <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -116,8 +114,7 @@ public interface EMFStoreProperty extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getType
-	 * <em>Type</em>}'
-	 * attribute.
+	 * <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -147,7 +144,7 @@ public interface EMFStoreProperty extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty#getVersion
-	 * <em>Version</em>} ' attribute.
+	 * <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *

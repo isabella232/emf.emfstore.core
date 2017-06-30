@@ -171,8 +171,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier
-	 * <em>Unique Identifier</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.UniqueIdentifier <em>Unique Identifier</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
@@ -188,8 +187,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement
-	 * <em>Identifiable Element</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.IdentifiableElement <em>Identifiable Element</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
@@ -205,8 +203,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.ModelElementId
-	 * <em>Element Id</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.ModelElementId <em>Element Id</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
@@ -238,8 +235,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.NonDomainElement
-	 * <em>Non Domain Element</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.NonDomainElement <em>Non Domain Element</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
@@ -272,8 +268,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty
-	 * <em>EMF Store Property</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.EMFStoreProperty <em>EMF Store Property</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
@@ -304,8 +299,7 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Creates a new adapter for an object of class '
-	 * {@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue
-	 * <em>Property String Value</em>}'.
+	 * {@link org.eclipse.emf.emfstore.internal.common.model.PropertyStringValue <em>Property String Value</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.

@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.server.model.ESOrgUnit;
  * @author emueller
  *
  */
-public class ESOrgUnitImpl<E extends ESOrgUnit> extends AbstractAPIImpl<E, ACOrgUnit<E>>implements ESOrgUnit {
+public class ESOrgUnitImpl<E extends ESOrgUnit> extends AbstractAPIImpl<E, ACOrgUnit<E>> implements ESOrgUnit {
 
 	/**
 	 * Constructor.

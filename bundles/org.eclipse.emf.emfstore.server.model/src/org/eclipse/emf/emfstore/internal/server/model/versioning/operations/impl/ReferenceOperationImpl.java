@@ -23,6 +23,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.ReferenceOperationImpl#isBidirectional
@@ -34,7 +35,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.operations.Refe
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.operations.impl.ReferenceOperationImpl#getContainmentType
  * <em>Containment Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

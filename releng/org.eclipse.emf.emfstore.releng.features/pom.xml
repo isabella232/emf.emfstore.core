@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>org.eclipse.emf.emfstore</groupId>
 		<artifactId>emfstore-parent</artifactId>
-		<version>1.8.0-SNAPSHOT</version>
+		<version>1.9.0-SNAPSHOT</version>
 		<relativePath>../emfstore-parent/</relativePath>
 	</parent>
 	<groupId>org.eclipse.emf.emfstore</groupId>
 	<artifactId>emfstore-features-parent</artifactId>
-	<version>1.8.0-SNAPSHOT</version>
+	<version>1.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -19,7 +19,6 @@
 		<module>../../features/org.eclipse.emf.emfstore.server.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.ui.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.ui.rap.feature</module>
-		<module>../../features/org.eclipse.emf.emfstore.ecore.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.transaction.feature</module>
 		<module>../../features/org.eclipse.emf.emfstore.client.ui.historybrowsercomparator.feature</module>

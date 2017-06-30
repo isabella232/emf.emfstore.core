@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>org.eclipse.emf.emfstore</groupId>
 		<artifactId>emfstore-parent</artifactId>
-		<version>1.8.0-SNAPSHOT</version>
+		<version>1.9.0-SNAPSHOT</version>
 		<relativePath>../emfstore-parent/</relativePath>
 	</parent>
 	<groupId>org.eclipse.emf.emfstore</groupId>
 	<artifactId>emfstore-bundles-parent</artifactId>
-	<version>1.8.0-SNAPSHOT</version>
+	<version>1.9.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -27,7 +27,6 @@
 		<module>../../bundles/org.eclipse.emf.emfstore.client.ui.rap</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.common.model.edit</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.server.model.edit</module>
-		<module>../../bundles/org.eclipse.emf.emfstore.ecore</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client.transaction</module>
 		<module>../../bundles/org.eclipse.emf.emfstore.client.ui.transaction</module>

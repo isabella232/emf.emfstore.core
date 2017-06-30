@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * jsommerfeldt
  ******************************************************************************/
@@ -32,9 +32,9 @@ import org.junit.Test;
 
 /**
  * Test the {@link NotificationToOperationConverter}.
- * 
+ *
  * @author jsommerfeldt
- * 
+ *
  */
 public class NotificationToOperationConverterTest extends ESTest {
 
@@ -54,7 +54,7 @@ public class NotificationToOperationConverterTest extends ESTest {
 
 	/**
 	 * Remove all attributes in a many attribute.
-	 * 
+	 *
 	 */
 	@Test
 	public void removeAllAttributes() {

@@ -67,13 +67,12 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * @generated
 	 */
 	protected void addFirstNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ACUser_firstName_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACUser_firstName_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			AccesscontrolPackage.Literals.AC_USER__FIRST_NAME, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACUser_firstName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_firstName_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				AccesscontrolPackage.Literals.AC_USER__FIRST_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -83,13 +82,12 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * @generated
 	 */
 	protected void addLastNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ACUser_lastName_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACUser_lastName_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			AccesscontrolPackage.Literals.AC_USER__LAST_NAME, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACUser_lastName_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_lastName_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				AccesscontrolPackage.Literals.AC_USER__LAST_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,13 +98,12 @@ public class ACUserItemProvider extends ACOrgUnitItemProvider {
 	 * @generated
 	 */
 	protected void addPasswordPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-			getResourceLocator(),
-			getString("_UI_ACUser_password_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_ACUser_password_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			AccesscontrolPackage.Literals.AC_USER__PASSWORD, true, false, false,
-			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ACUser_password_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ACUser_password_feature", "_UI_ACUser_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				AccesscontrolPackage.Literals.AC_USER__PASSWORD, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

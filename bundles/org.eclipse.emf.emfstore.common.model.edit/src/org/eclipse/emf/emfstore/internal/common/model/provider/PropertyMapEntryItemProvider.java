@@ -56,8 +56,7 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null)
-		{
+		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addKeyPropertyDescriptor(object);
@@ -74,9 +73,8 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PropertyMapEntry_key_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_PropertyMapEntry_key_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -98,9 +96,8 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_PropertyMapEntry_value_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_PropertyMapEntry_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -151,8 +148,7 @@ public class PropertyMapEntryItemProvider extends RootElementItemProvider implem
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class))
-		{
+		switch (notification.getFeatureID(Map.Entry.class)) {
 		case ModelPackage.PROPERTY_MAP_ENTRY__KEY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

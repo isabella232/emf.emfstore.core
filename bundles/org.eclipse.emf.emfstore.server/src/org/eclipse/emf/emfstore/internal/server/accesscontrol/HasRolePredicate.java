@@ -36,7 +36,7 @@ public class HasRolePredicate implements Predicate<Role> {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see com.google.common.base.Predicate#apply(java.lang.Object)
 	 */
 	public boolean apply(final Role role) {

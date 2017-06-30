@@ -27,31 +27,31 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.api.ESMutatorConfigImpl;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getRootEClass <em>Root EClass
- *          </em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMinObjectsCount <em>Min
- *          Objects Count</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isIgnoreAndLog <em>Ignore And
- *          Log</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isDoNotGenerateRoot <em>Do Not
- *          Generate Root</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isUseEcoreUtilDelete <em>Use
- *          Ecore ESFuzzyUtil Delete</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getEClassesToIgnore <em>EClasses
- *          To Ignore</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getRootEClass
+ *          <em>Root EClass</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMinObjectsCount
+ *          <em>Min Objects Count</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isIgnoreAndLog
+ *          <em>Ignore And Log</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isDoNotGenerateRoot
+ *          <em>Do Not Generate Root</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isUseEcoreUtilDelete
+ *          <em>Use Ecore Util Delete</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getEClassesToIgnore
+ *          <em>EClasses To Ignore</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getEStructuralFeaturesToIgnore
  *          <em>EStructural Features To Ignore</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getEPackages <em>EPackages</em>}
  *          </li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMaxDeleteCount <em>Max Delete
- *          Count</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMutationCount <em>Mutation
- *          Count</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isAllowDuplicateIDs <em>Allow
- *          Duplicate IDs</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMaxDeleteCount
+ *          <em>Max Delete Count</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMutationCount
+ *          <em>Mutation Count</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isAllowDuplicateIDs
+ *          <em>Allow Duplicate IDs</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getMutatorConfig()
  * @model
@@ -106,8 +106,7 @@ public interface MutatorConfig extends EObject, APIDelegate<ESMutatorConfigImpl>
 	int getMinObjectsCount();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMinObjectsCount
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#getMinObjectsCount
 	 * <em>Min Objects Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,7 +179,7 @@ public interface MutatorConfig extends EObject, APIDelegate<ESMutatorConfigImpl>
 	void setDoNotGenerateRoot(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Use Ecore ESFuzzyUtil Delete</b></em>' attribute.
+	 * Returns the value of the '<em><b>Use Ecore Util Delete</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -189,7 +188,7 @@ public interface MutatorConfig extends EObject, APIDelegate<ESMutatorConfigImpl>
 	 * </p>
 	 * <!-- end-user-doc -->
 	 *
-	 * @return the value of the '<em>Use Ecore ESFuzzyUtil Delete</em>' attribute.
+	 * @return the value of the '<em>Use Ecore Util Delete</em>' attribute.
 	 * @see #setUseEcoreUtilDelete(boolean)
 	 * @see org.eclipse.emf.emfstore.internal.fuzzy.emf.config.ConfigPackage#getMutatorConfig_UseEcoreUtilDelete()
 	 * @model default="false"
@@ -200,11 +199,11 @@ public interface MutatorConfig extends EObject, APIDelegate<ESMutatorConfigImpl>
 	/**
 	 * Sets the value of the '
 	 * {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig#isUseEcoreUtilDelete
-	 * <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
+	 * <em>Use Ecore Util Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @param value the new value of the '<em>Use Ecore ESFuzzyUtil Delete</em>' attribute.
+	 * @param value the new value of the '<em>Use Ecore Util Delete</em>' attribute.
 	 * @see #isUseEcoreUtilDelete()
 	 * @generated
 	 */

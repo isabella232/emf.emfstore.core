@@ -16,10 +16,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -87,8 +89,6 @@ public final class ModelUtil {
 
 	private static final String SINGLETON_ID_RESOLVER_EXT_POINT_ID = "org.eclipse.emf.emfstore.common.model.singletonIdResolver"; //$NON-NLS-1$
 
-	private static final String IGNORED_DATATYPE_EXT_POINT_ID = "org.eclipse.emf.emfstore.common.model.ignoreDatatype"; //$NON-NLS-1$
-
 	/**
 	 * Constant that may be used in case no checksum computation has taken place.
 	 */
@@ -119,17 +119,14 @@ public final class ModelUtil {
 	};
 
 	/**
-	 * Contains the canonical names of classes which will be ignored.
-	 */
-	private static Set<String> ignoredDataTypes;
-
-	/**
 	 * Contains all ID resolvers for singleton datatypes.
 	 */
 	private static Set<ESSingletonIdResolver> singletonIdResolvers;
 	private static HashMap<Object, Object> resourceLoadOptions;
 	private static HashMap<Object, Object> resourceSaveOptions;
 	private static Map<Object, Object> checksumSaveOptions;
+
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"); //$NON-NLS-1$
 
 	/**
 	 * Private constructor.
@@ -281,15 +278,13 @@ public final class ModelUtil {
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
-	private static long computeChecksum(String eObjectString) {
+	private static long computeChecksumLegacy(String eObjectString) {
 		long h = 1125899906842597L; // prime
 		final int len = eObjectString.length();
 
 		for (int i = 0; i < len; i++) {
 			final char c = eObjectString.charAt(i);
-
 			h = 31 * h + c;
-
 		}
 
 		return h;
@@ -305,8 +300,54 @@ public final class ModelUtil {
 	 * @throws SerializationException
 	 *             in case any errors occur during computation of the checksum
 	 */
+	public static long computeChecksumLegacy(EObject eObject) throws SerializationException {
+		return computeChecksumLegacy(eObjectToString(eObject, getChecksumSaveOptions()));
+	}
+
+	/**
+	 * Converts the given {@link EObject} to a string.
+	 *
+	 * @param copy The copied {@link EObject}.
+	 * @param resource The resource for the {@link EObject}.
+	 * @param saveOptions define the format of the returned serialization.
+	 * @return The checksum of the serialized {@link EObject}.
+	 * @throws SerializationException If a serialization problem occurs.
+	 */
+	private static long computeChecksumForCopiedEObject(EObject copy, XMIResource resource, Map<?, ?> saveOptions)
+		throws SerializationException {
+		resource.getContents().add(copy);
+
+		final ChecksumCalculatorWriter checksumCalculatorWriter = new ChecksumCalculatorWriter();
+		final URIConverter.WriteableOutputStream uws = new URIConverter.WriteableOutputStream(checksumCalculatorWriter,
+			CommonUtil.getEncoding());
+
+		try {
+			resource.save(uws, saveOptions);
+		} catch (final IOException e) {
+			throw new SerializationException(e);
+		} finally {
+			try {
+				uws.close();
+			} catch (final IOException exception) {
+				logException(exception);
+			}
+		}
+
+		return checksumCalculatorWriter.getChecksum();
+	}
+
+	/**
+	 * Computes the checksum for a given {@link EObject}.
+	 *
+	 * @param eObject
+	 *            the EObject for which to compute a checksum
+	 * @return the computed checksum
+	 *
+	 * @throws SerializationException
+	 *             in case any errors occur during computation of the checksum
+	 */
 	public static long computeChecksum(EObject eObject) throws SerializationException {
-		return computeChecksum(eObjectToString(eObject, getChecksumSaveOptions()));
+		return computeChecksumInternal(eObject, false);
 	}
 
 	/**
@@ -322,23 +363,32 @@ public final class ModelUtil {
 	 *             in case any errors occur during computation of the checksum
 	 */
 	public static long computeChecksum(IdEObjectCollection collection) throws SerializationException {
+		return computeChecksumInternal(collection, true);
+	}
 
+	private static long computeChecksumInternal(EObject eObject, boolean sort) throws SerializationException {
 		final ResourceSetImpl resourceSetImpl = new ResourceSetImpl();
 		// TODO: do we need to instantiate the factory registry each time?
 		resourceSetImpl.setResourceFactoryRegistry(new ResourceFactoryRegistry());
 		final XMIResource res = (XMIResource) resourceSetImpl.createResource(VIRTUAL_URI);
 		((ResourceImpl) res).setIntrinsicIDToEObjectMap(new HashMap<String, EObject>());
-		final IdEObjectCollection copy = copyIdEObjectCollection(collection, res);
-
-		ECollections.sort(copy.getModelElements(), new Comparator<EObject>() {
-			public int compare(EObject o1, EObject o2) {
-				return copy.getModelElementId(o1).getId().compareTo(copy.getModelElementId(o2).getId());
+		EObject copy;
+		if (eObject instanceof IdEObjectCollection) {
+			copy = copyIdEObjectCollection((IdEObjectCollection) eObject, res);
+			final IdEObjectCollection castedCopy = (IdEObjectCollection) copy;
+			if (sort) {
+				ECollections.sort(castedCopy.getModelElements(), new Comparator<EObject>() {
+					public int compare(EObject o1, EObject o2) {
+						return castedCopy.getModelElementId(o1).getId()
+							.compareTo(castedCopy.getModelElementId(o2).getId());
+					}
+				});
 			}
-		});
+		} else {
+			copy = copyEObject(ModelUtil.getProject(eObject), eObject, res);
+		}
 
-		final String serialized = copiedEObjectToString(copy, res);
-
-		return computeChecksum(serialized);
+		return computeChecksumForCopiedEObject(copy, res, getChecksumSaveOptions());
 	}
 
 	/**
@@ -363,19 +413,19 @@ public final class ModelUtil {
 		final IdEObjectCollection copiedCollection = clone(collection);
 
 		for (final EObject modelElement : copiedCollection.getAllModelElements()) {
-			if (isIgnoredDatatype(modelElement)) {
+			final ModelElementId modelElementId = copiedCollection.getModelElementId(modelElement);
+			if (modelElementId == null) {
 				continue;
 			}
-			final ModelElementId modelElementId = copiedCollection.getModelElementId(modelElement);
 			res.setID(modelElement, modelElementId.getId());
 		}
 
 		for (final EObject modelElement : ((Project) copiedCollection).getCutElements()) {
-			if (isIgnoredDatatype(modelElement)) {
-				continue;
-			}
 			final ModelElementId modelElementId = ((IdEObjectCollectionImpl) copiedCollection)
 				.getModelElementId(modelElement);
+			if (modelElementId == null) {
+				continue;
+			}
 			res.setID(modelElement, modelElementId.getId());
 		}
 
@@ -387,30 +437,6 @@ public final class ModelUtil {
 		final IdEObjectCollection copiedCollection = copyIdEObjectCollection(collection, res);
 		final EObject copiedEObject = copiedCollection.getModelElement(collection.getModelElementId(object));
 		return copiedEObject;
-	}
-
-	/**
-	 * Determines whether the type of an EObject is an ignored one.
-	 *
-	 * @param eObject
-	 *            the EObject which is to be checked
-	 * @return true, if the EObject will be ignored, false otherwise
-	 */
-	public static synchronized boolean isIgnoredDatatype(EObject eObject) {
-
-		if (ignoredDataTypes == null) {
-			ignoredDataTypes = new LinkedHashSet<String>();
-			for (final ESExtensionElement element : new ESExtensionPoint(
-				IGNORED_DATATYPE_EXT_POINT_ID,
-				true).getExtensionElements()) {
-				try {
-					ignoredDataTypes.add(element.getAttribute("type")); //$NON-NLS-1$
-				} catch (final ESExtensionPointException e) {
-				}
-			}
-		}
-
-		return ignoredDataTypes.contains(eObject.eClass().getInstanceClassName());
 	}
 
 	/**
@@ -698,6 +724,37 @@ public final class ModelUtil {
 	}
 
 	/**
+	 * Logs detailed information about the project state.
+	 *
+	 * @param message the message
+	 * @param user the user name
+	 * @param projectName the project name
+	 * @param projectId the project id
+	 * @param branch the branch
+	 * @param revision the revision
+	 */
+	public static void logProjectDetails(
+		String message,
+		String user,
+		String projectName,
+		String projectId,
+		String branch,
+		int revision) {
+		if (!Boolean.getBoolean("emfstore.logDetails")) { //$NON-NLS-1$
+			return;
+		}
+		logInfo(MessageFormat.format(
+			"Time: {0} | Msg: {1} | User: {2} | Project Name: {3} | Project Id: {4} | Branch: {5} | Revision: {6}", //$NON-NLS-1$
+			dateFormat.format(new Date()),
+			message != null ? message : "", //$NON-NLS-1$
+			user != null ? user : "not available", //$NON-NLS-1$
+			projectName != null ? projectName : "not available", //$NON-NLS-1$
+			projectId != null ? projectId : "not available", //$NON-NLS-1$
+			branch != null ? branch : "not available", //$NON-NLS-1$
+			revision != -1 ? revision : "not available")); //$NON-NLS-1$
+	}
+
+	/**
 	 * Clone any EObject.
 	 *
 	 * @param <T>
@@ -772,9 +829,9 @@ public final class ModelUtil {
 	@SuppressWarnings("unchecked")
 	public static <T extends EObject> T loadEObjectFromResource(EClass eClass, URI resourceURI,
 		boolean checkConstraints)
-			throws IOException {
+		throws IOException {
 
-		final ResourceSet resourceSet = getResourceSetForURI(resourceURI);
+		final ResourceSet resourceSet = createResourceSetForURI(resourceURI);
 
 		Resource resource;
 
@@ -825,9 +882,15 @@ public final class ModelUtil {
 		return (T) eObject;
 	}
 
-	private static ResourceSet getResourceSetForURI(URI resourceURI) {
+	/**
+	 * Creates and returns a new ResourceSet which may be used to load the given URI.
+	 *
+	 * @param resourceURI the resource URI
+	 * @return the newly created resourceset
+	 */
+	public static ResourceSet createResourceSetForURI(URI resourceURI) {
 		ResourceSet resourceSet = null;
-		if (resourceURI != null && resourceURI.scheme().equals("emfstore")) { //$NON-NLS-1$
+		if (resourceURI != null && resourceURI.scheme() != null && resourceURI.scheme().equals("emfstore")) { //$NON-NLS-1$
 			ESExtensionPoint extensionPoint = null;
 			if (resourceURI.authority().equals("workspaces")) { //$NON-NLS-1$
 				extensionPoint = new ESExtensionPoint(CLIENT_RESOURCE_SET_PROVIDER_EXT_POINT_ID,
@@ -847,7 +910,8 @@ public final class ModelUtil {
 				resourceSet = resourceSetProvider.getResourceSet();
 			}
 
-		} else {
+		}
+		if (resourceSet == null) {
 			resourceSet = new ResourceSetImpl();
 		}
 		return resourceSet;
@@ -1299,8 +1363,7 @@ public final class ModelUtil {
 			return false;
 		}
 
-		return !ModelUtil.isSingleton(referencedElement) && !ModelUtil.isIgnoredDatatype(referencedElement)
-			&& !allModelElements.contains(referencedElement);
+		return !ModelUtil.isSingleton(referencedElement) && !allModelElements.contains(referencedElement);
 	}
 
 	/**

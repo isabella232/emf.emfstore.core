@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Merchandise#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Merchandise#getPrice <em>Price</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.Merchandise#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.bowling.BowlingPackage#getMerchandise()
  * @model
@@ -139,8 +139,8 @@ public interface Merchandise extends EObject {
 	BigInteger getSerialNumber();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Merchandise#getSerialNumber
-	 * <em>Serial Number</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.emfstore.bowling.Merchandise#getSerialNumber <em>Serial Number</em>
+	 * }' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *

@@ -31,7 +31,7 @@ import org.eclipse.emf.emfstore.server.model.ESOperation;
  * @author emueller
  *
  */
-public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePackage>implements ESChangePackage {
+public class ESChangePackageImpl extends ESAbstractChangePackageImpl<ChangePackage> implements ESChangePackage {
 
 	/**
 	 * Constructor.

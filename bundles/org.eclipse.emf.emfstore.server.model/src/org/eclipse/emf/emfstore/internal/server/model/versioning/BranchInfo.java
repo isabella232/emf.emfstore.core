@@ -22,13 +22,13 @@ import org.eclipse.emf.emfstore.server.model.ESBranchInfo;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo#getName <em>Name</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo#getHead <em>Head</em>}</li>
  *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.BranchInfo#getSource <em>Source</em>}
  *          </li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getBranchInfo()
  * @model

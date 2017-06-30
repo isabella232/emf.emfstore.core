@@ -562,8 +562,8 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		case ModelPackage.PROJECT_SPACE__PROJECT_NAME:
 			return PROJECT_NAME_EDEFAULT == null ? projectName != null : !PROJECT_NAME_EDEFAULT.equals(projectName);
 		case ModelPackage.PROJECT_SPACE__PROJECT_DESCRIPTION:
-			return PROJECT_DESCRIPTION_EDEFAULT == null ? projectDescription != null : !PROJECT_DESCRIPTION_EDEFAULT
-				.equals(projectDescription);
+			return PROJECT_DESCRIPTION_EDEFAULT == null ? projectDescription != null
+				: !PROJECT_DESCRIPTION_EDEFAULT.equals(projectDescription);
 		case ModelPackage.PROJECT_SPACE__USERSESSION:
 			return usersession != null;
 		case ModelPackage.PROJECT_SPACE__LAST_UPDATED:
@@ -738,11 +738,11 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			baseVersion = (PrimaryVersionSpec) eResolveProxy(oldBaseVersion);
 			if (baseVersion != oldBaseVersion) {
 				final InternalEObject newBaseVersion = (InternalEObject) baseVersion;
-				NotificationChain msgs = oldBaseVersion.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__BASE_VERSION, null, null);
+				NotificationChain msgs = oldBaseVersion.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__BASE_VERSION, null, null);
 				if (newBaseVersion.eInternalContainer() == null) {
-					msgs = newBaseVersion.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.PROJECT_SPACE__BASE_VERSION, null, msgs);
+					msgs = newBaseVersion.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__BASE_VERSION, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -802,8 +802,8 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			project = (Project) eResolveProxy(oldProject);
 			if (project != oldProject) {
 				final InternalEObject newProject = (InternalEObject) project;
-				NotificationChain msgs = oldProject.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__PROJECT, null, null);
+				NotificationChain msgs = oldProject.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT, null, null);
 				if (newProject.eInternalContainer() == null) {
 					msgs = newProject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT,
 						null, msgs);
@@ -840,11 +840,11 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			projectId = (ProjectId) eResolveProxy(oldProjectId);
 			if (projectId != oldProjectId) {
 				final InternalEObject newProjectId = (InternalEObject) projectId;
-				NotificationChain msgs = oldProjectId.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__PROJECT_ID, null, null);
+				NotificationChain msgs = oldProjectId.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT_ID, null, null);
 				if (newProjectId.eInternalContainer() == null) {
-					msgs = newProjectId.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.PROJECT_SPACE__PROJECT_ID, null, msgs);
+					msgs = newProjectId.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT_ID, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -952,12 +952,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		if (newBaseVersion != baseVersion) {
 			NotificationChain msgs = null;
 			if (baseVersion != null) {
-				msgs = ((InternalEObject) baseVersion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__BASE_VERSION, null, msgs);
+				msgs = ((InternalEObject) baseVersion).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__BASE_VERSION, null, msgs);
 			}
 			if (newBaseVersion != null) {
-				msgs = ((InternalEObject) newBaseVersion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__BASE_VERSION, null, msgs);
+				msgs = ((InternalEObject) newBaseVersion).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__BASE_VERSION, null, msgs);
 			}
 			msgs = basicSetBaseVersion(newBaseVersion, msgs);
 			if (msgs != null) {
@@ -1005,12 +1005,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		if (newProject != project) {
 			NotificationChain msgs = null;
 			if (project != null) {
-				msgs = ((InternalEObject) project).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__PROJECT, null, msgs);
+				msgs = ((InternalEObject) project).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT, null, msgs);
 			}
 			if (newProject != null) {
-				msgs = ((InternalEObject) newProject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__PROJECT, null, msgs);
+				msgs = ((InternalEObject) newProject).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT, null, msgs);
 			}
 			msgs = basicSetProject(newProject, msgs);
 			if (msgs != null) {
@@ -1045,12 +1045,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		if (newProjectId != projectId) {
 			NotificationChain msgs = null;
 			if (projectId != null) {
-				msgs = ((InternalEObject) projectId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) projectId).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT_ID, null, msgs);
 			}
 			if (newProjectId != null) {
-				msgs = ((InternalEObject) newProjectId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__PROJECT_ID, null, msgs);
+				msgs = ((InternalEObject) newProjectId).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__PROJECT_ID, null, msgs);
 			}
 			msgs = basicSetProjectId(newProjectId, msgs);
 			if (msgs != null) {
@@ -1146,11 +1146,11 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			localChangePackage = (AbstractChangePackage) eResolveProxy(oldLocalChangePackage);
 			if (localChangePackage != oldLocalChangePackage) {
 				final InternalEObject newLocalChangePackage = (InternalEObject) localChangePackage;
-				NotificationChain msgs = oldLocalChangePackage.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, null);
+				NotificationChain msgs = oldLocalChangePackage.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, null);
 				if (newLocalChangePackage.eInternalContainer() == null) {
-					msgs = newLocalChangePackage.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, msgs);
+					msgs = newLocalChangePackage.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -1206,12 +1206,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		if (newLocalChangePackage != localChangePackage) {
 			NotificationChain msgs = null;
 			if (localChangePackage != null) {
-				msgs = ((InternalEObject) localChangePackage).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, msgs);
+				msgs = ((InternalEObject) localChangePackage).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, msgs);
 			}
 			if (newLocalChangePackage != null) {
-				msgs = ((InternalEObject) newLocalChangePackage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, msgs);
+				msgs = ((InternalEObject) newLocalChangePackage).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__LOCAL_CHANGE_PACKAGE, null, msgs);
 			}
 			msgs = basicSetLocalChangePackage(newLocalChangePackage, msgs);
 			if (msgs != null) {
@@ -1235,11 +1235,11 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 			mergedVersion = (PrimaryVersionSpec) eResolveProxy(oldMergedVersion);
 			if (mergedVersion != oldMergedVersion) {
 				final InternalEObject newMergedVersion = (InternalEObject) mergedVersion;
-				NotificationChain msgs = oldMergedVersion.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, null);
+				NotificationChain msgs = oldMergedVersion.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, null);
 				if (newMergedVersion.eInternalContainer() == null) {
-					msgs = newMergedVersion.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-						- ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, msgs);
+					msgs = newMergedVersion.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, msgs);
 				}
 				if (msgs != null) {
 					msgs.dispatch();
@@ -1294,12 +1294,12 @@ public class ProjectSpaceImpl extends ProjectSpaceBase {
 		if (newMergedVersion != mergedVersion) {
 			NotificationChain msgs = null;
 			if (mergedVersion != null) {
-				msgs = ((InternalEObject) mergedVersion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, msgs);
+				msgs = ((InternalEObject) mergedVersion).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, msgs);
 			}
 			if (newMergedVersion != null) {
-				msgs = ((InternalEObject) newMergedVersion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-					- ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, msgs);
+				msgs = ((InternalEObject) newMergedVersion).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - ModelPackage.PROJECT_SPACE__MERGED_VERSION, null, msgs);
 			}
 			msgs = basicSetMergedVersion(newMergedVersion, msgs);
 			if (msgs != null) {

@@ -55,6 +55,11 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	public static final String MODELELEMENTID_GENERATOR_EXTENSIONPOINT = "org.eclipse.emf.emfstore.common.model.modelelementIdGenerator"; //$NON-NLS-1$
 
 	/**
+	 * The extension point id to configure the {@link ESModelElementIdGenerator}.
+	 */
+	public static final String MATERIALIZED_MODELELEMENTID_GENERATOR_EXTENSIONPOINT = "org.eclipse.emf.emfstore.common.model.materializedModelElementIdGenerator"; //$NON-NLS-1$
+
+	/**
 	 * The attribute identifying the class of the {@link ESModelElementIdGenerator} extension point.
 	 */
 	public static final String MODELELEMENTID_GENERATOR_CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
@@ -79,7 +84,6 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	/**
 	 * Constructor.
 	 */
-	@SuppressWarnings("unchecked")
 	public IdEObjectCollectionImpl() {
 		eObjectToIdMap = new LinkedHashMap<EObject, String>();
 		idToEObjectMap = new LinkedHashMap<String, EObject>();
@@ -87,6 +91,11 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		allocatedEObjectToIdMap = new LinkedHashMap<EObject, String>();
 		allocatedIdToEObjectMap = new LinkedHashMap<String, EObject>();
 
+		initModelElementIdGenerator();
+	}
+
+	@SuppressWarnings("unchecked")
+	private void initModelElementIdGenerator() {
 		final ESExtensionElement element = new ESExtensionPoint(MODELELEMENTID_GENERATOR_EXTENSIONPOINT)
 			.getElementWithHighestPriority();
 
@@ -125,12 +134,8 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		while (it.hasNext()) {
 			final EObject eObject = it.next();
 
-			if (ModelUtil.isIgnoredDatatype(eObject)) {
-				continue;
-			}
-
 			final String id = xmiResource.getID(eObject);
-			final ModelElementId eObjectId = getNewModelElementID();
+			final ModelElementId eObjectId = getNewModelElementID(eObject);
 
 			if (id != null) {
 				eObjectId.setId(id);
@@ -256,7 +261,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 
 		// EObject _is_ project -> assign magic ModelElementId
 		if (this == eObject) {
-			final ModelElementId modelElementId = getNewModelElementID();
+			final ModelElementId modelElementId = getNewModelElementID(eObject);
 			modelElementId.setId("001"); //$NON-NLS-1$
 			return modelElementId;
 		}
@@ -274,7 +279,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 
 				final XMIResource xmiResource = (XMIResource) resource;
 				ModelUtil.loadResource(xmiResource, ModelUtil.getResourceLogger());
-				final ModelElementId modelElementId = getNewModelElementID();
+				final ModelElementId modelElementId = getNewModelElementID(eObject);
 				final String id = xmiResource.getID(eObject);
 
 				if (id != null) {
@@ -291,7 +296,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		}
 
 		final String id = eObjectToIdMap.get(eObject);
-		final ModelElementId modelElementId = getNewModelElementID();
+		final ModelElementId modelElementId = getNewModelElementID(eObject);
 		modelElementId.setId(id);
 
 		return id != null ? modelElementId : ModelUtil.getSingletonModelElementId(eObject);
@@ -426,14 +431,14 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 			}
 			final String id = xmiResource.getID(modelElement);
 			if (id != null) {
-				final ModelElementId objId = getNewModelElementID();
+				final ModelElementId objId = getNewModelElementID(modelElement);
 				objId.setId(id);
 				return objId;
 			}
 		}
 
 		// create new ID
-		return getNewModelElementID();
+		return getNewModelElementID(modelElement);
 	}
 
 	/**
@@ -648,7 +653,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 
 			if (childId == null) {
 				// if not, create a new ID
-				childId = getNewModelElementID().getId();
+				childId = getNewModelElementID(child).getId();
 			} else {
 				removableIds.add(childId);
 			}
@@ -816,7 +821,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 	/**
 	 *
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.eclipse.emf.emfstore.internal.common.model.IdEObjectCollection#clearAllocatedCaches(java.util.Set)
 	 */
 	public void clearAllocatedCaches(Set<ModelElementId> modelElementIds) {
@@ -829,7 +834,7 @@ public abstract class IdEObjectCollectionImpl extends EObjectImpl implements IdE
 		allocatedIdToEObjectMap.put(modelElementId.getId(), modelElement);
 	}
 
-	private ModelElementId getNewModelElementID() {
+	private ModelElementId getNewModelElementID(EObject eObject) {
 		// if there is registered modelElementIdGenerator, use it
 		if (modelElementIdGenerator != null) {
 			final ESModelElementIdImpl modelElementId = (ESModelElementIdImpl) modelElementIdGenerator

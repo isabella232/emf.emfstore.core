@@ -97,8 +97,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createWorkspaceAdapter() {
-		if (workspaceItemProvider == null)
-		{
+		if (workspaceItemProvider == null) {
 			workspaceItemProvider = new WorkspaceItemProvider(this);
 		}
 
@@ -123,8 +122,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createServerInfoAdapter() {
-		if (serverInfoItemProvider == null)
-		{
+		if (serverInfoItemProvider == null) {
 			serverInfoItemProvider = new ServerInfoItemProvider(this);
 		}
 
@@ -149,8 +147,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createUsersessionAdapter() {
-		if (usersessionItemProvider == null)
-		{
+		if (usersessionItemProvider == null) {
 			usersessionItemProvider = new UsersessionItemProvider(this);
 		}
 
@@ -175,8 +172,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createProjectSpaceAdapter() {
-		if (projectSpaceItemProvider == null)
-		{
+		if (projectSpaceItemProvider == null) {
 			projectSpaceItemProvider = new ProjectSpaceItemProvider(this);
 		}
 
@@ -201,8 +197,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Adapter createPendingFileTransferAdapter() {
-		if (pendingFileTransferItemProvider == null)
-		{
+		if (pendingFileTransferItemProvider == null) {
 			pendingFileTransferItemProvider = new PendingFileTransferItemProvider(this);
 		}
 
@@ -258,11 +253,9 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	 */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type))
-		{
+		if (isFactoryForType(type)) {
 			final Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter))
-			{
+			if (!(type instanceof Class<?>) || ((Class<?>) type).isInstance(adapter)) {
 				return adapter;
 			}
 		}
@@ -300,8 +293,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null)
-		{
+		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
 	}

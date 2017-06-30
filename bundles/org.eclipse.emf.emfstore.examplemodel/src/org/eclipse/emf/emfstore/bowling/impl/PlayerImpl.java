@@ -36,6 +36,7 @@ import org.eclipse.emf.emfstore.bowling.util.BowlingValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getDateOfBirth <em>Date Of Birth</em>}</li>
@@ -43,12 +44,11 @@ import org.eclipse.emf.emfstore.bowling.util.BowlingValidator;
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#isIsProfessional <em>Is Professional</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getEMails <em>EMails</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getNumberOfVictories <em>Number Of Victories</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getPlayedTournamentTypes <em>Played Tournament Types
- * </em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getPlayedTournamentTypes <em>Played Tournament Types</em>
+ * }</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getWinLossRatio <em>Win Loss Ratio</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.PlayerImpl#getGender <em>Gender</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -463,12 +463,10 @@ public class PlayerImpl extends EObjectImpl implements Player {
 	public boolean validate(DiagnosticChain chain, Map<?, ?> context) {
 		if (getHeight() > 10) {
 			if (chain != null) {
-				chain.add
-					(new BasicDiagnostic
-					(Diagnostic.ERROR,
-						BowlingValidator.DIAGNOSTIC_SOURCE,
-						BowlingValidator.PLAYER__VALIDATE, "Height seems too big.", //$NON-NLS-1$
-						new Object[] { this, BowlingPackage.eINSTANCE.getPlayer_Height() }));
+				chain.add(new BasicDiagnostic(Diagnostic.ERROR,
+					BowlingValidator.DIAGNOSTIC_SOURCE,
+					BowlingValidator.PLAYER__VALIDATE, "Height seems too big.", //$NON-NLS-1$
+					new Object[] { this, BowlingPackage.eINSTANCE.getPlayer_Height() }));
 			}
 			return false;
 		}
@@ -614,8 +612,8 @@ public class PlayerImpl extends EObjectImpl implements Player {
 		case BowlingPackage.PLAYER__PLAYED_TOURNAMENT_TYPES:
 			return playedTournamentTypes != null && !playedTournamentTypes.isEmpty();
 		case BowlingPackage.PLAYER__WIN_LOSS_RATIO:
-			return WIN_LOSS_RATIO_EDEFAULT == null ? winLossRatio != null : !WIN_LOSS_RATIO_EDEFAULT
-				.equals(winLossRatio);
+			return WIN_LOSS_RATIO_EDEFAULT == null ? winLossRatio != null
+				: !WIN_LOSS_RATIO_EDEFAULT.equals(winLossRatio);
 		case BowlingPackage.PLAYER__GENDER:
 			return gender != GENDER_EDEFAULT;
 		}

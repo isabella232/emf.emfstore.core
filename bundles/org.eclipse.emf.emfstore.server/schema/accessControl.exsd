@@ -22,6 +22,7 @@
             <element ref="authorizationServiceProvider" minOccurs="0" maxOccurs="1"/>
             <element ref="userVerifierServiceProvider" minOccurs="0" maxOccurs="1"/>
             <element ref="orgUnitProvider" minOccurs="0" maxOccurs="1"/>
+            <element ref="passwordHashGenerator" minOccurs="0" maxOccurs="1"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -104,6 +105,21 @@
                </documentation>
                <appInfo>
                   <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.server.model.ESOrgUnitProvider"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="passwordHashGenerator">
+      <complexType>
+         <attribute name="passwordHashGeneratorClass" type="string">
+            <annotation>
+               <documentation>
+                  A PasswordHash Generator is able to generate a hash using a newly created salt for a given password. Moreover it is able to verify if a password matches a stored hash/salt.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator"/>
                </appInfo>
             </annotation>
          </attribute>

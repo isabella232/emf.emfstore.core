@@ -73,8 +73,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
  *
  * @generated
  */
-public class ConfigModelWizard extends Wizard implements INewWizard
-{
+public class ConfigModelWizard extends Wizard implements INewWizard {
 	/**
 	 * The supported extensions for created files.
 	 * <!-- begin-user-doc -->
@@ -82,8 +81,8 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS =
-		Collections.unmodifiableList(Arrays.asList(ConfigEditorPlugin.INSTANCE.getString(
+	public static final List<String> FILE_EXTENSIONS = Collections
+		.unmodifiableList(Arrays.asList(ConfigEditorPlugin.INSTANCE.getString(
 			"_UI_ConfigEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
@@ -93,8 +92,8 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	public static final String FORMATTED_FILE_EXTENSIONS =
-		ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+	public static final String FORMATTED_FILE_EXTENSIONS = ConfigEditorPlugin.INSTANCE
+		.getString("_UI_ConfigEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 	/**
 	 * This caches an instance of the model package.
@@ -166,8 +165,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	public void init(IWorkbench workbench, IStructuredSelection selection)
-	{
+	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(ConfigEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
@@ -182,18 +180,13 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	protected Collection<String> getInitialObjectNames()
-	{
-		if (initialObjectNames == null)
-		{
+	protected Collection<String> getInitialObjectNames() {
+		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (final EClassifier eClassifier : configPackage.getEClassifiers())
-			{
-				if (eClassifier instanceof EClass)
-				{
+			for (final EClassifier eClassifier : configPackage.getEClassifiers()) {
+				if (eClassifier instanceof EClass) {
 					final EClass eClass = (EClass) eClassifier;
-					if (!eClass.isAbstract())
-					{
+					if (!eClass.isAbstract()) {
 						initialObjectNames.add(eClass.getName());
 					}
 				}
@@ -210,8 +203,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	protected EObject createInitialModel()
-	{
+	protected EObject createInitialModel() {
 		final EClass eClass = (EClass) configPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
 		final EObject rootObject = configFactory.create(eClass);
 		return rootObject;
@@ -225,60 +217,49 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 * @generated
 	 */
 	@Override
-	public boolean performFinish()
-	{
-		try
-		{
+	public boolean performFinish() {
+		try {
 			// Remember the file.
 			//
 			final IFile modelFile = getModelFile();
 
 			// Do the work within an operation.
 			//
-			final WorkspaceModifyOperation operation =
-				new WorkspaceModifyOperation()
-				{
-					@Override
-					protected void execute(IProgressMonitor progressMonitor)
-					{
-						try
-						{
-							// Create a resource set
-							//
-							final ResourceSet resourceSet = new ResourceSetImpl();
+			final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+				@Override
+				protected void execute(IProgressMonitor progressMonitor) {
+					try {
+						// Create a resource set
+						//
+						final ResourceSet resourceSet = new ResourceSetImpl();
 
-							// Get the URI of the model file.
-							//
-							final URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+						// Get the URI of the model file.
+						//
+						final URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-							// Create a resource for this file.
-							//
-							final Resource resource = resourceSet.createResource(fileURI);
+						// Create a resource for this file.
+						//
+						final Resource resource = resourceSet.createResource(fileURI);
 
-							// Add the initial model object to the contents.
-							//
-							final EObject rootObject = createInitialModel();
-							if (rootObject != null)
-							{
-								resource.getContents().add(rootObject);
-							}
-
-							// Save the contents of the resource to the file system.
-							//
-							final Map<Object, Object> options = new HashMap<Object, Object>();
-							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-							resource.save(options);
+						// Add the initial model object to the contents.
+						//
+						final EObject rootObject = createInitialModel();
+						if (rootObject != null) {
+							resource.getContents().add(rootObject);
 						}
-						catch (final Exception exception)
-						{
-							ConfigEditorPlugin.INSTANCE.log(exception);
-						}
-						finally
-						{
-							progressMonitor.done();
-						}
+
+						// Save the contents of the resource to the file system.
+						//
+						final Map<Object, Object> options = new HashMap<Object, Object>();
+						options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
+						resource.save(options);
+					} catch (final Exception exception) {
+						ConfigEditorPlugin.INSTANCE.log(exception);
+					} finally {
+						progressMonitor.done();
 					}
-				};
+				}
+			};
 
 			getContainer().run(false, false, operation);
 
@@ -287,36 +268,28 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 			final IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 			final IWorkbenchPage page = workbenchWindow.getActivePage();
 			final IWorkbenchPart activePart = page.getActivePart();
-			if (activePart instanceof ISetSelectionTarget)
-			{
+			if (activePart instanceof ISetSelectionTarget) {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
-				getShell().getDisplay().asyncExec
-					(new Runnable()
-					{
-						public void run()
-						{
-							((ISetSelectionTarget) activePart).selectReveal(targetSelection);
-						}
-					});
+				getShell().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						((ISetSelectionTarget) activePart).selectReveal(targetSelection);
+					}
+				});
 			}
 
 			// Open an editor on the new file.
 			//
-			try
-			{
-				page.openEditor
-					(new FileEditorInput(modelFile),
-						workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
-			} catch (final PartInitException exception)
-			{
+			try {
+				page.openEditor(new FileEditorInput(modelFile),
+					workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
+			} catch (final PartInitException exception) {
 				MessageDialog.openError(workbenchWindow.getShell(),
 					ConfigEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
 				return false;
 			}
 
 			return true;
-		} catch (final Exception exception)
-		{
+		} catch (final Exception exception) {
 			ConfigEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
@@ -329,8 +302,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	public class ConfigModelWizardNewFileCreationPage extends WizardNewFileCreationPage
-	{
+	public class ConfigModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
@@ -338,8 +310,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		public ConfigModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection)
-		{
+		public ConfigModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
 			super(pageId, selection);
 		}
 
@@ -351,14 +322,12 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 * @generated
 		 */
 		@Override
-		protected boolean validatePage()
-		{
-			if (super.validatePage())
-			{
+		protected boolean validatePage() {
+			if (super.validatePage()) {
 				final String extension = new Path(getFileName()).getFileExtension();
-				if (extension == null || !FILE_EXTENSIONS.contains(extension))
-				{
-					final String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
+				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+					final String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" //$NON-NLS-1$
+						: "_WARN_FilenameExtension"; //$NON-NLS-1$
 					setErrorMessage(ConfigEditorPlugin.INSTANCE.getString(key,
 						new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
@@ -374,8 +343,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		public IFile getModelFile()
-		{
+		public IFile getModelFile() {
 			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
@@ -387,8 +355,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	public class ConfigModelWizardInitialObjectCreationPage extends WizardPage
-	{
+	public class ConfigModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -399,7 +366,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 
 		/**
 		 * @generated
-		 *            <!-- begin-user-doc -->
+		 * 			<!-- begin-user-doc -->
 		 *            <!-- end-user-doc -->
 		 */
 		protected List<String> encodings;
@@ -419,8 +386,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		public ConfigModelWizardInitialObjectCreationPage(String pageId)
-		{
+		public ConfigModelWizardInitialObjectCreationPage(String pageId) {
 			super(pageId);
 		}
 
@@ -430,8 +396,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		public void createControl(Composite parent)
-		{
+		public void createControl(Composite parent) {
 			final Composite composite = new Composite(parent, SWT.NONE);
 			{
 				final GridLayout layout = new GridLayout();
@@ -463,13 +428,11 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 				initialObjectField.setLayoutData(data);
 			}
 
-			for (final String objectName : getInitialObjectNames())
-			{
+			for (final String objectName : getInitialObjectNames()) {
 				initialObjectField.add(getLabel(objectName));
 			}
 
-			if (initialObjectField.getItemCount() == 1)
-			{
+			if (initialObjectField.getItemCount() == 1) {
 				initialObjectField.select(0);
 			}
 			initialObjectField.addModifyListener(validator);
@@ -490,8 +453,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 				encodingField.setLayoutData(data);
 			}
 
-			for (final String encoding : getEncodings())
-			{
+			for (final String encoding : getEncodings()) {
 				encodingField.add(encoding);
 			}
 
@@ -508,14 +470,11 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		protected ModifyListener validator =
-			new ModifyListener()
-			{
-				public void modifyText(ModifyEvent e)
-				{
-					setPageComplete(validatePage());
-				}
-			};
+		protected ModifyListener validator = new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		};
 
 		/**
 		 * <!-- begin-user-doc -->
@@ -523,8 +482,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		protected boolean validatePage()
-		{
+		protected boolean validatePage() {
 			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
 		}
 
@@ -535,18 +493,13 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 * @generated
 		 */
 		@Override
-		public void setVisible(boolean visible)
-		{
+		public void setVisible(boolean visible) {
 			super.setVisible(visible);
-			if (visible)
-			{
-				if (initialObjectField.getItemCount() == 1)
-				{
+			if (visible) {
+				if (initialObjectField.getItemCount() == 1) {
 					initialObjectField.clearSelection();
 					encodingField.setFocus();
-				}
-				else
-				{
+				} else {
 					encodingField.clearSelection();
 					initialObjectField.setFocus();
 				}
@@ -559,14 +512,11 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		public String getInitialObjectName()
-		{
+		public String getInitialObjectName() {
 			final String label = initialObjectField.getText();
 
-			for (final String name : getInitialObjectNames())
-			{
-				if (getLabel(name).equals(label))
-				{
+			for (final String name : getInitialObjectNames()) {
+				if (getLabel(name).equals(label)) {
 					return name;
 				}
 			}
@@ -579,8 +529,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		public String getEncoding()
-		{
+		public String getEncoding() {
 			return encodingField.getText();
 		}
 
@@ -591,13 +540,10 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		protected String getLabel(String typeName)
-		{
-			try
-			{
+		protected String getLabel(String typeName) {
+			try {
 				return ConfigEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
-			} catch (final MissingResourceException mre)
-			{
+			} catch (final MissingResourceException mre) {
 				ConfigEditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
@@ -609,10 +555,8 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 		 *
 		 * @generated
 		 */
-		protected Collection<String> getEncodings()
-		{
-			if (encodings == null)
-			{
+		protected Collection<String> getEncodings() {
+			if (encodings == null) {
 				encodings = new ArrayList<String>();
 				for (final StringTokenizer stringTokenizer = new StringTokenizer(
 					ConfigEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
@@ -632,38 +576,34 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 * @generated
 	 */
 	@Override
-	public void addPages()
-	{
+	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
 		newFileCreationPage = new ConfigModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
 		newFileCreationPage.setTitle(ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigModelWizard_label")); //$NON-NLS-1$
 		newFileCreationPage.setDescription(ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigModelWizard_description")); //$NON-NLS-1$
 		newFileCreationPage
-			.setFileName(ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
+			.setFileName(ConfigEditorPlugin.INSTANCE.getString("_UI_ConfigEditorFilenameDefaultBase") + "." //$NON-NLS-1$ //$NON-NLS-2$
+				+ FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
 		//
-		if (selection != null && !selection.isEmpty())
-		{
+		if (selection != null && !selection.isEmpty()) {
 			// Get the resource...
 			//
 			final Object selectedElement = selection.iterator().next();
-			if (selectedElement instanceof IResource)
-			{
+			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
 				IResource selectedResource = (IResource) selectedElement;
-				if (selectedResource.getType() == IResource.FILE)
-				{
+				if (selectedResource.getType() == IResource.FILE) {
 					selectedResource = selectedResource.getParent();
 				}
 
 				// This gives us a directory...
 				//
-				if (selectedResource instanceof IFolder || selectedResource instanceof IProject)
-				{
+				if (selectedResource instanceof IFolder || selectedResource instanceof IProject) {
 					// Set this for the container.
 					//
 					newFileCreationPage.setContainerFullPath(selectedResource.getFullPath());
@@ -674,8 +614,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 						.getString("_UI_ConfigEditorFilenameDefaultBase"); //$NON-NLS-1$
 					final String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
-					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i)
-					{
+					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
 						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension; //$NON-NLS-1$
 					}
 					newFileCreationPage.setFileName(modelFilename);
@@ -696,8 +635,7 @@ public class ConfigModelWizard extends Wizard implements INewWizard
 	 *
 	 * @generated
 	 */
-	public IFile getModelFile()
-	{
+	public IFile getModelFile() {
 		return newFileCreationPage.getModelFile();
 	}
 

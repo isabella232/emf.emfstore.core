@@ -18,11 +18,11 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.PrimaryVersionS
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ProjectUpdatedEvent#getNewVersion
  * <em>New Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.events.server.ServerPackage#getProjectUpdatedEvent()
  * @model

@@ -28,34 +28,38 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.MutatorConfig;
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Mutator Config</b></em>'.
- * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getRootEClass <em>Root EClass
- * </em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getMinObjectsCount <em>Min
- * Objects Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isIgnoreAndLog <em>Ignore And
- * Log</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isDoNotGenerateRoot <em>Do Not
- * Generate Root</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isUseEcoreUtilDelete <em>Use
- * Ecore ESFuzzyUtil Delete</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEClassesToIgnore <em>EClasses
- * To Ignore</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEStructuralFeaturesToIgnore
- * <em>EStructural Features To Ignore</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEPackages <em>EPackages</em>}
- * </li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getMaxDeleteCount <em>Max Delete
- * Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getMutationCount <em>Mutation
- * Count</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isAllowDuplicateIDs <em>Allow
- * Duplicate IDs</em>}</li>
- * </ul>
- * </p>
+ *
+ * @extends AbstractAPIDeletegateImpl<ESMutatorConfigImpl, MutatorConfig>
+ *          <!-- end-user-doc -->
+ *          <p>
+ *          The following features are implemented:
+ *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getRootEClass
+ *          <em>Root EClass</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getMinObjectsCount
+ *          <em>Min Objects Count</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isIgnoreAndLog
+ *          <em>Ignore And Log</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isDoNotGenerateRoot
+ *          <em>Do Not Generate Root</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isUseEcoreUtilDelete
+ *          <em>Use Ecore Util Delete</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEClassesToIgnore
+ *          <em>EClasses To Ignore</em>}</li>
+ *          <li>
+ *          {@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEStructuralFeaturesToIgnore
+ *          <em>EStructural Features To Ignore</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getEPackages
+ *          <em>EPackages</em>}
+ *          </li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getMaxDeleteCount
+ *          <em>Max Delete Count</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#getMutationCount
+ *          <em>Mutation Count</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.MutatorConfigImpl#isAllowDuplicateIDs
+ *          <em>Allow Duplicate IDs</em>}</li>
+ *          </ul>
  *
  * @generated
  */
@@ -140,7 +144,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	protected boolean doNotGenerateRoot = DO_NOT_GENERATE_ROOT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
+	 * The default value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore Util Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -151,7 +155,7 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 	protected static final boolean USE_ECORE_UTIL_DELETE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore ESFuzzyUtil Delete</em>}' attribute.
+	 * The cached value of the '{@link #isUseEcoreUtilDelete() <em>Use Ecore Util Delete</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -294,8 +298,8 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 			rootEClass = (EClass) eResolveProxy(oldRootEClass);
 			if (rootEClass != oldRootEClass) {
 				if (eNotificationRequired()) {
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						ConfigPackage.MUTATOR_CONFIG__ROOT_ECLASS, oldRootEClass, rootEClass));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.MUTATOR_CONFIG__ROOT_ECLASS,
+						oldRootEClass, rootEClass));
 				}
 			}
 		}
@@ -704,8 +708,8 @@ public class MutatorConfigImpl extends AbstractAPIDeletegateImpl<ESMutatorConfig
 		case ConfigPackage.MUTATOR_CONFIG__EPACKAGES:
 			return ePackages != null && !ePackages.isEmpty();
 		case ConfigPackage.MUTATOR_CONFIG__MAX_DELETE_COUNT:
-			return MAX_DELETE_COUNT_EDEFAULT == null ? maxDeleteCount != null : !MAX_DELETE_COUNT_EDEFAULT
-				.equals(maxDeleteCount);
+			return MAX_DELETE_COUNT_EDEFAULT == null ? maxDeleteCount != null
+				: !MAX_DELETE_COUNT_EDEFAULT.equals(maxDeleteCount);
 		case ConfigPackage.MUTATOR_CONFIG__MUTATION_COUNT:
 			return mutationCount != MUTATION_COUNT_EDEFAULT;
 		case ConfigPackage.MUTATOR_CONFIG__ALLOW_DUPLICATE_IDS:

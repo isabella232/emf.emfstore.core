@@ -12,6 +12,7 @@
 package org.eclipse.emf.emfstore.server.accesscontrol.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.eclipse.emf.emfstore.client.test.common.dsl.Roles;
@@ -19,11 +20,13 @@ import org.eclipse.emf.emfstore.client.test.common.util.ProjectUtil;
 import org.eclipse.emf.emfstore.client.test.common.util.ServerUtil;
 import org.eclipse.emf.emfstore.internal.client.model.ProjectSpace;
 import org.eclipse.emf.emfstore.internal.client.model.impl.api.ESUsersessionImpl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
+import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator.ESHashAndSalt;
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.junit.After;
@@ -85,7 +88,11 @@ public class ChangePasswordTests extends ProjectAdminTest {
 		getAdminBroker().changeRole(getProjectSpace().getProjectId(), createUser, Roles.writer());
 		ServerUtil.changePassword(getUsersession(), createUser, getNewUsername(), NEW_USER_PASSWORD);
 		final ACUser user = ServerUtil.getUser(getSuperUsersession(), createUser);
-		assertEquals(NEW_USER_PASSWORD, user.getPassword());
+		final String userPass = user.getPassword();
+		final int separatorIndex = userPass.indexOf(ESHashAndSalt.SEPARATOR);
+		final String hash = userPass.substring(0, separatorIndex);
+		final String salt = userPass.substring(separatorIndex + 1);
+		assertTrue(AccessControl.getESPasswordHashGenerator().verifyPassword(NEW_USER_PASSWORD, hash, salt));
 	}
 
 	@Test
@@ -96,7 +103,11 @@ public class ChangePasswordTests extends ProjectAdminTest {
 			ESUsersessionImpl.class.cast(getUsersession()).toInternalAPI().getACUser().getId(),
 			getUser(), "new-password"); //$NON-NLS-1$
 		final ACUser user = ServerUtil.getUser(getSuperUsersession(), getUser());
-		assertEquals("new-password", user.getPassword()); //$NON-NLS-1$
+		final String userPass = user.getPassword();
+		final int separatorIndex = userPass.indexOf(ESHashAndSalt.SEPARATOR);
+		final String hash = userPass.substring(0, separatorIndex);
+		final String salt = userPass.substring(separatorIndex + 1);
+		assertTrue(AccessControl.getESPasswordHashGenerator().verifyPassword("new-password", hash, salt)); //$NON-NLS-1$
 	}
 
 	@Test(expected = AccessControlException.class)
@@ -195,6 +206,10 @@ public class ChangePasswordTests extends ProjectAdminTest {
 		getAdminBroker().changeUser(newUser, getNewUsername(), NEW_USER_PASSWORD);
 		final ACUser user = ServerUtil.getUser(getSuperUsersession(), newUser);
 
-		assertEquals(NEW_USER_PASSWORD, user.getPassword());
+		final String userPass = user.getPassword();
+		final int separatorIndex = userPass.indexOf(ESHashAndSalt.SEPARATOR);
+		final String hash = userPass.substring(0, separatorIndex);
+		final String salt = userPass.substring(separatorIndex + 1);
+		assertTrue(AccessControl.getESPasswordHashGenerator().verifyPassword(NEW_USER_PASSWORD, hash, salt));
 	}
 }

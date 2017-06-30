@@ -23,11 +23,11 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl#getIdentifier <em>Identifier
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.IdentifiableElementImpl#getIdentifier
+ * <em>Identifier</em>}</li>
+ * </ul>
  *
  * @generated
  */

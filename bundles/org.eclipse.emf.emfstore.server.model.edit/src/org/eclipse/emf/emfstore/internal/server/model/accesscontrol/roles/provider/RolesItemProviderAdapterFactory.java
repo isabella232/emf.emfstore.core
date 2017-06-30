@@ -40,8 +40,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.util.R
  *
  * @generated
  */
-public class RolesItemProviderAdapterFactory extends RolesAdapterFactory implements ComposeableAdapterFactory,
-	IChangeNotifier, IDisposable {
+public class RolesItemProviderAdapterFactory extends RolesAdapterFactory
+	implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

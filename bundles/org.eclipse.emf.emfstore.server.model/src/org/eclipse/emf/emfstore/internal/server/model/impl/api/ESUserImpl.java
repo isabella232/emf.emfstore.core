@@ -20,7 +20,7 @@ import org.eclipse.emf.emfstore.server.model.ESUser;
  * @author emueller
  *
  */
-public class ESUserImpl extends ESOrgUnitImpl<ESUser>implements ESUser {
+public class ESUserImpl extends ESOrgUnitImpl<ESUser> implements ESUser {
 
 	/**
 	 * Constructor.

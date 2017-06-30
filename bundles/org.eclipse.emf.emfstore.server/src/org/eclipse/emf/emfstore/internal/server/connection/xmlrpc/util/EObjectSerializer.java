@@ -139,10 +139,10 @@ public class EObjectSerializer extends TypeSerializerImpl {
 	private void setResourceIds(EObject eObject, XMIResource resource) {
 		final IdEObjectCollection collection = (IdEObjectCollection) eObject;
 		for (final EObject element : collection.getAllModelElements()) {
-			if (ModelUtil.isIgnoredDatatype(element)) {
+			final ModelElementId elementId = collection.getModelElementId(element);
+			if (elementId == null) {
 				continue;
 			}
-			final ModelElementId elementId = collection.getModelElementId(element);
 			resource.setID(element, elementId.getId());
 		}
 	}
@@ -205,4 +205,3 @@ public class EObjectSerializer extends TypeSerializerImpl {
 		serializationOptionsInitialized = true;
 	}
 }
-

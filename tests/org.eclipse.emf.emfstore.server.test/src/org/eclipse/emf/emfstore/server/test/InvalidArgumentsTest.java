@@ -166,7 +166,7 @@ public class InvalidArgumentsTest {
 		try {
 			testAllInvalidCombinations(connectionManager.getClass().getMethod("createVersion", //$NON-NLS-1$
 				new Class[] { SessionId.class, ProjectId.class, PrimaryVersionSpec.class, AbstractChangePackage.class,
-				BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
+					BranchVersionSpec.class, PrimaryVersionSpec.class, LogMessage.class }));
 		} catch (final SecurityException e) {
 			throw new ESException(e);
 		} catch (final NoSuchMethodException e) {

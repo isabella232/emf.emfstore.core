@@ -48,7 +48,7 @@ public final class BowlingEditPlugin extends EMFPlugin {
 	 */
 	public BowlingEditPlugin() {
 		super(new ResourceLocator[] {
-			});
+		});
 	}
 
 	/**

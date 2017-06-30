@@ -36,8 +36,8 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.Accesscontro
  *
  * @generated
  */
-public class ServerSpaceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ServerSpaceItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->

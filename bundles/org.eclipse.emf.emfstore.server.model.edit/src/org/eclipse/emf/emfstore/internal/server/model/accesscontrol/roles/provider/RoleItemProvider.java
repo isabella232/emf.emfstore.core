@@ -33,8 +33,8 @@ import org.eclipse.emf.emfstore.internal.server.model.provider.ServerEditPlugin;
  *
  * @generated
  */
-public class RoleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RoleItemProvider extends ItemProviderAdapter
+	implements IEditingDomainItemProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -68,11 +68,11 @@ public class RoleItemProvider extends ItemProviderAdapter implements IEditingDom
 	 * @generated
 	 */
 	protected void addProjectsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-			((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-			getString("_UI_Role_projects_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", "_UI_Role_projects_feature", "_UI_Role_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			RolesPackage.Literals.ROLE__PROJECTS, true, false, true, null, null, null));
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Role_projects_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Role_projects_feature", "_UI_Role_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				RolesPackage.Literals.ROLE__PROJECTS, true, false, true, null, null, null));
 	}
 
 	/**

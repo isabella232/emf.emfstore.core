@@ -23,7 +23,7 @@ import org.eclipse.emf.emfstore.server.model.ESLogMessage;
  * @author emueller
  *
  */
-public class ESLogMessageImpl extends AbstractAPIImpl<ESLogMessage, LogMessage>implements ESLogMessage {
+public class ESLogMessageImpl extends AbstractAPIImpl<ESLogMessage, LogMessage> implements ESLogMessage {
 
 	/**
 	 * Constructor.

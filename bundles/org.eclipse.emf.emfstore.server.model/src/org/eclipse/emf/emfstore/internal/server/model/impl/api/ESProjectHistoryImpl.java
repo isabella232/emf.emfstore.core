@@ -21,7 +21,8 @@ import org.eclipse.emf.emfstore.server.model.ESProjectHistory;
  * @author emueller
  *
  */
-public class ESProjectHistoryImpl extends AbstractAPIImpl<ESProjectHistory, ProjectHistory>implements ESProjectHistory {
+public class ESProjectHistoryImpl extends AbstractAPIImpl<ESProjectHistory, ProjectHistory>
+	implements ESProjectHistory {
 
 	/**
 	 * Constructor.

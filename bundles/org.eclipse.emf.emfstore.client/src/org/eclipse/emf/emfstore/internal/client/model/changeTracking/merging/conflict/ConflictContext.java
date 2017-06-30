@@ -62,9 +62,9 @@ public class ConflictContext {
 	 */
 	public ConflictContext(DecisionManager manager, AbstractOperation myOperation, AbstractOperation theirOperation) {
 		this(manager.getModelElement(myOperation.getModelElementId()),
-			myOperation instanceof FeatureOperation ?
-				((FeatureOperation) myOperation).getFeatureName()
-				: StringUtils.EMPTY, manager.getAuthorForOperation(theirOperation));
+			myOperation instanceof FeatureOperation ? ((FeatureOperation) myOperation).getFeatureName()
+				: StringUtils.EMPTY,
+			manager.getAuthorForOperation(theirOperation));
 	}
 
 	/**

@@ -29,10 +29,10 @@ import org.eclipse.emf.emfstore.internal.fuzzy.emf.config.TestDiff;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.fuzzy.emf.config.impl.DiffReportImpl#getDiffs <em>Diffs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

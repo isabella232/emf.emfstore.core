@@ -44,7 +44,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public static ModelFactory init() {
 		try {
 			final ModelFactory theModelFactory = (ModelFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://eclipse.org/emf/emfstore/common/model"); //$NON-NLS-1$
+				.getEFactory(ModelPackage.eNS_URI);
 			if (theModelFactory != null) {
 				return theModelFactory;
 			}
@@ -188,10 +188,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 */
 	public EMFStorePropertyType createEMFStorePropertyTypeFromString(EDataType eDataType, String initialValue) {
 		final EMFStorePropertyType result = EMFStorePropertyType.get(initialValue);
-		if (result == null)
-		{
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" //$NON-NLS-1$ //$NON-NLS-2$
-				+ eDataType.getName() + "'"); //$NON-NLS-1$
+		if (result == null) {
+			throw new IllegalArgumentException(
+				"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 		return result;
 	}

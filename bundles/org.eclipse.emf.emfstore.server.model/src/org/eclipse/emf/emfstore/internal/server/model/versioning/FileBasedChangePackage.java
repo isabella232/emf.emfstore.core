@@ -25,14 +25,14 @@ import org.eclipse.emf.emfstore.server.model.ESChangePackage;
  *
  *          <p>
  *          The following features are supported:
+ *          </p>
  *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getFilePath <em>
- *          File Path</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getFilePath
+ *          <em>File Path</em>}</li>
  *          <li>
  *          {@link org.eclipse.emf.emfstore.internal.server.model.versioning.FileBasedChangePackage#getOperationProxies
  *          <em>Operation Proxies</em>}</li>
  *          </ul>
- *          </p>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getFileBasedChangePackage()
  * @model

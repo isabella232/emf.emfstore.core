@@ -27,11 +27,12 @@ import org.eclipse.emf.emfstore.internal.common.model.ModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedKey <em>Key</em>}</li>
- * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.emfstore.internal.common.model.impl.PropertyMapEntryImpl#getTypedValue <em>Value</em>}
+ * </li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -154,8 +155,8 @@ public class PropertyMapEntryImpl extends EObjectImpl implements BasicEMap.Entry
 		final EMFStoreProperty oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_MAP_ENTRY__VALUE, oldValue,
-				value));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_MAP_ENTRY__VALUE, oldValue, value));
 		}
 	}
 

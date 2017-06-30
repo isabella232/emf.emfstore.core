@@ -26,6 +26,7 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PagedUpdateVersionSpecImpl#getMaxChanges
  * <em>Max Changes</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPacka
  * {@link org.eclipse.emf.emfstore.internal.server.model.versioning.impl.PagedUpdateVersionSpecImpl#getBaseVersionSpec
  * <em>Base Version Spec</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

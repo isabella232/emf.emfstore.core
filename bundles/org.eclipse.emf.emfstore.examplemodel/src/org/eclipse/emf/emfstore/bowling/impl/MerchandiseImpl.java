@@ -26,12 +26,12 @@ import org.eclipse.emf.emfstore.bowling.Merchandise;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getPrice <em>Price</em>}</li>
  * <li>{@link org.eclipse.emf.emfstore.bowling.impl.MerchandiseImpl#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -375,15 +375,13 @@ public class MerchandiseImpl extends EObjectImpl implements Merchandise {
 		result.append(", price: "); //$NON-NLS-1$
 		if (priceESet) {
 			result.append(price);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(", serialNumber: "); //$NON-NLS-1$
 		if (serialNumberESet) {
 			result.append(serialNumber);
-		}
-		else {
+		} else {
 			result.append("<unset>"); //$NON-NLS-1$
 		}
 		result.append(')');

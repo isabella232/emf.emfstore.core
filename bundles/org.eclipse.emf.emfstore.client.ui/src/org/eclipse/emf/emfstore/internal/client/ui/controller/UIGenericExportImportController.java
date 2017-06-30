@@ -74,12 +74,6 @@ public class UIGenericExportImportController extends AbstractEMFStoreUIControlle
 			absoluteFilePath = FileDialogHelper.openImportDialog(shell);
 		}
 
-		// if (controller.getParentFolderPropertyKey() != null) {
-		// final String initialPath = EMFStorePreferenceHelper.getPreference(controller.getParentFolderPropertyKey(),
-		//				System.getProperty("user.home")); //$NON-NLS-1$
-		// dialog.setFilterPath(initialPath);
-		// }
-
 		if (absoluteFilePath == null) {
 			return null;
 		}
@@ -100,15 +94,14 @@ public class UIGenericExportImportController extends AbstractEMFStoreUIControlle
 
 		try {
 			new ExportImportControllerExecutor(file, progressMonitor).execute(controller);
-			MessageDialog.openInformation(getShell(), controller.isExport() ?
-				Messages.UIGenericExportImportController_ExportImport_Title_0 :
-				Messages.UIGenericExportImportController_ExportImport_Title_1 +
-					Messages.UIGenericExportImportController_ExportImport_Title_2,
+			MessageDialog.openInformation(getShell(),
+				controller.isExport() ? Messages.UIGenericExportImportController_ExportImport_Title_0
+					: Messages.UIGenericExportImportController_ExportImport_Title_1 +
+						Messages.UIGenericExportImportController_ExportImport_Title_2,
 				MessageFormat.format(Messages.UIGenericExportImportController_ExportImport_Message_0,
 					controller.getLabel(),
-					controller.isExport() ?
-						Messages.UIGenericExportImportController_ExportImport_Message_1 :
-						Messages.UIGenericExportImportController_ExportImport_Message_2));
+					controller.isExport() ? Messages.UIGenericExportImportController_ExportImport_Message_1
+						: Messages.UIGenericExportImportController_ExportImport_Message_2));
 		} catch (final IOException e) {
 			EMFStoreMessageDialog.showExceptionDialog(getShell(), e);
 		}

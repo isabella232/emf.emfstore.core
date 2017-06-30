@@ -54,7 +54,7 @@ public class AddInitialParticipantTest extends ProjectAdminTest {
 		startEMFStoreWithPAProperties(
 			ESProjectAdminPrivileges.ShareProject,
 			ESProjectAdminPrivileges.AssignRoleToOrgUnit // needed for share
-			);
+		);
 	}
 
 	@Test(expected = ESException.class)

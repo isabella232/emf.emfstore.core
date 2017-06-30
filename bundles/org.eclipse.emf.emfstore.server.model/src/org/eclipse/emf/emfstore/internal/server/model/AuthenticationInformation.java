@@ -18,18 +18,18 @@ import org.eclipse.emf.emfstore.server.model.ESAuthenticationInformation;
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Authentication Information</b></em>'.
  *
- * @extends APIDelegate<ESGlobalProjectId><!-- end-user-doc --
+ * @extends APIDelegate<ESAuthenticationInformation><!-- end-user-doc --
  *          <!-- end-user-doc -->
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getSessionId <em>Session
- *          Id</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getResolvedACUser <em>
- *          Resolved AC User</em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getSessionId
+ *          <em>Session Id</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.AuthenticationInformation#getResolvedACUser
+ *          <em>Resolved AC User</em>}</li>
+ *          </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.ModelPackage#getAuthenticationInformation()
  * @model

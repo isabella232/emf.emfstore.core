@@ -22,13 +22,13 @@ import org.eclipse.emf.emfstore.server.model.versionspec.ESAncestorVersionSpec;
  *
  *          <p>
  *          The following features are supported:
- *          <ul>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec#getTarget <em>
- *          Target</em>}</li>
- *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec#getSource <em>
- *          Source</em>}</li>
- *          </ul>
  *          </p>
+ *          <ul>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec#getTarget
+ *          <em>Target</em>}</li>
+ *          <li>{@link org.eclipse.emf.emfstore.internal.server.model.versioning.AncestorVersionSpec#getSource
+ *          <em>Source</em>}</li>
+ *          </ul>
  *
  * @see org.eclipse.emf.emfstore.internal.server.model.versioning.VersioningPackage#getAncestorVersionSpec()
  * @model
