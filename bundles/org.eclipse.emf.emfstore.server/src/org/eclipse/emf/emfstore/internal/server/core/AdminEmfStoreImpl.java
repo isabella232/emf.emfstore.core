@@ -784,11 +784,33 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 	private void updateUser(ACOrgUnitId userId, String name, String password) throws ESException {
 
 		final ACUser user = (ACUser) getOrgUnit(userId);
-		user.setName(name);
 		final ESPasswordHashGenerator passwordHashGenerator = AccessControl.getESPasswordHashGenerator();
+
+		if (!checkUserNameChanged(user.getName(), name) && user.getPassword() != null) {
+			/*
+			 * when the user name does not change only the password is updated
+			 * -> check if password is really changed
+			 */
+			final int separatorIndex = user.getPassword().indexOf(ESHashAndSalt.SEPARATOR);
+			final String hash = user.getPassword().substring(0, separatorIndex);
+			final String salt = user.getPassword().substring(separatorIndex + 1);
+			if (passwordHashGenerator.verifyPassword(password, hash, salt)) {
+				/* no change */
+				throw new ESException(Messages.AdminEmfStoreImpl_SamePassword);
+			}
+		}
+
+		user.setName(name);
 		final ESHashAndSalt hashAndSalt = passwordHashGenerator.hashPassword(password);
 		user.setPassword(hashAndSalt.getHash() + ESHashAndSalt.SEPARATOR + hashAndSalt.getSalt());
 		save();
+	}
+
+	private boolean checkUserNameChanged(String oldName, String newName) {
+		if (oldName == null) {
+			return newName != null;
+		}
+		return !oldName.equals(newName);
 	}
 
 	/**
