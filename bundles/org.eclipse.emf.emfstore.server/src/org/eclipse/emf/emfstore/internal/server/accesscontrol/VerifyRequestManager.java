@@ -14,8 +14,11 @@ package org.eclipse.emf.emfstore.internal.server.accesscontrol;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang.NotImplementedException;
+
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
 
 /**
  * Helper class for managing failed login requests.
@@ -37,7 +40,15 @@ public class VerifyRequestManager {
 			.expireAfterWrite(
 				delay,
 				TimeUnit.MILLISECONDS)
-			.build();
+			.build(new CacheLoader<String, Integer>() {
+
+				@Override
+				public Integer load(String key) throws Exception {
+					/* use cacheloader for guava 10 compatibility */
+					throw new NotImplementedException();
+				}
+
+			});
 		failedAttemptsCount = cache.asMap();
 	}
 
@@ -65,7 +76,7 @@ public class VerifyRequestManager {
 
 	/**
 	 * Checks whether too many failed requests were recorded.
-	 * 
+	 *
 	 * @param username the user
 	 * @return <code>true</code> if there were to many failed requests, <code>false</code> otherwise
 	 */
