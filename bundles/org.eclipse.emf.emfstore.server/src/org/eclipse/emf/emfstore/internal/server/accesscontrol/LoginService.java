@@ -208,6 +208,7 @@ public class LoginService {
 				/* too many bad attempts, otherwise we get an exception */
 				ModelUtil.logWarning(
 					MessageFormat.format(Messages.LoginService_VerifyUserTooManyFailedRequests, username, delay));
+				return false;
 			}
 			return true;
 		} catch (final AccessControlException ex) {
