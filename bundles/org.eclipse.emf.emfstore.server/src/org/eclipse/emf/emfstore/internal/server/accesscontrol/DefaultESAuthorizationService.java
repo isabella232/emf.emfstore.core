@@ -569,7 +569,12 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 		return roles;
 	}
 
-	private ACOrgUnit<?> getOrgUnit(ESOrgUnitId orgUnitId) throws AccessControlException {
+	/**
+	 * @param orgUnitId the id of the org unit to get
+	 * @return the {@link ACOrgUnit}
+	 * @throws AccessControlException in case no unit with that id was found
+	 */
+	protected ACOrgUnit<?> getOrgUnit(ESOrgUnitId orgUnitId) throws AccessControlException {
 
 		Preconditions.checkNotNull(orgUnitId, "orgUnitId must not be null"); //$NON-NLS-1$
 		final ACOrgUnitId internalId = APIUtil.toInternal(ACOrgUnitId.class, orgUnitId);
@@ -604,7 +609,11 @@ public class DefaultESAuthorizationService implements ESAuthorizationService {
 		this.orgUnitProvider = orgUnitProvider;
 	}
 
-	private void checkSession(ESSessionId sessionId) throws SessionTimedOutException {
+	/**
+	 * @param sessionId the {@link ESSessionId} to check
+	 * @throws SessionTimedOutException in case the session is not valid anymore
+	 */
+	protected void checkSession(ESSessionId sessionId) throws SessionTimedOutException {
 		sessions.isValid(sessionId);
 	}
 }
