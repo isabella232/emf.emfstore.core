@@ -32,7 +32,7 @@
                     <finalName>repository</finalName>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>org.eclipse.tycho.extras</groupId>
                 <artifactId>tycho-eclipserun-plugin</artifactId>
                 <executions>
@@ -40,7 +40,7 @@
                         <id>add-repo-properties</id>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
         </plugins>
         <pluginManagement>
             <plugins>
