@@ -53,8 +53,11 @@ import org.eclipse.emf.emfstore.server.auth.ESPasswordHashGenerator.ESHashAndSal
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
 import org.eclipse.emf.emfstore.server.model.ESGroup;
+import org.eclipse.emf.emfstore.server.model.ESOrgUnitId;
 import org.eclipse.emf.emfstore.server.model.ESSessionId;
 import org.eclipse.emf.emfstore.server.model.ESUser;
+
+import com.google.common.base.Optional;
 
 /**
  * Implementation of {@link AdminEmfStore} interface.
@@ -153,6 +156,10 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		final ACGroup acGroup = AccesscontrolFactory.eINSTANCE.createACGroup();
 		acGroup.setName(name);
 		acGroup.setDescription(StringUtils.EMPTY);
+		final Optional<ACUser> parent = getUserFromSessionId(sessionId);
+		if (parent.isPresent()) {
+			acGroup.setCreatedBy(parent.get().getId().getId());
+		}
 		getAccessControl().getOrgUnitProviderService().addGroup(acGroup.toAPI());
 		save();
 		return ModelUtil.clone(acGroup.getId());
@@ -687,9 +694,32 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		final ACUser acUser = AccesscontrolFactory.eINSTANCE.createACUser();
 		acUser.setName(name);
 		acUser.setDescription(StringUtils.EMPTY);
+		final Optional<ACUser> parent = getUserFromSessionId(sessionId);
+		if (parent.isPresent()) {
+			acUser.setCreatedBy(parent.get().getId().getId());
+		}
 		getAccessControl().getOrgUnitProviderService().addUser(acUser.toAPI());
 		save();
 		return ModelUtil.clone(acUser.getId());
+	}
+
+	private Optional<ACUser> getUserFromSessionId(SessionId sessionId) {
+		try {
+			final ESOrgUnitId orgUnitId = getAccessControl().getSessions().resolveToOrgUnitId(sessionId.toAPI());
+			if (orgUnitId == null) {
+				return Optional.absent();
+			}
+			final ACOrgUnitId internalId = APIUtil.toInternal(ACOrgUnitId.class, orgUnitId);
+			for (final ESUser user : getAccessControl().getOrgUnitProviderService().getUsers()) {
+				final ACUser internalAPI = (ACUser) ESUserImpl.class.cast(user).toInternalAPI();
+				if (internalAPI.getId().equals(internalId)) {
+					return Optional.of(internalAPI);
+				}
+			}
+			return Optional.absent();
+		} catch (final AccessControlException ex) {
+			return Optional.absent();
+		}
 	}
 
 	private boolean userExists(String name) {
@@ -714,19 +744,35 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			sessionId.toAPI(),
 			null,
 			ESProjectAdminPrivileges.DeleteOrgUnit);
+		ACUser userToDelete = null;
 		for (final Iterator<ACUser> iter = getUsers().iterator(); iter.hasNext();) {
 			final ACUser user = iter.next();
-			final List<ACGroup> groups = getGroups(sessionId, userId);
-			if (user.getId().equals(userId)) {
-				for (final ACGroup acGroup : groups) {
-					removeMember(sessionId, acGroup.getId(), userId);
-				}
-				getAccessControl().getOrgUnitProviderService().removeUser(user.toAPI());
-				// TODO: move ecore delete into ServerSpace#deleteUser implementation
-				EcoreUtil.delete(user);
-				save();
-				return;
+
+			/* check if we were created by the deleted user */
+			if (user.getCreatedBy() != null && user.getCreatedBy().equals(userId.getId())) {
+				user.setCreatedBy(null);
 			}
+
+			/* check if we are the deleted user */
+			if (user.getId().equals(userId)) {
+				userToDelete = user;
+			}
+		}
+		for (final ACGroup group : getGroups()) {
+			if (group.getCreatedBy() != null && group.getCreatedBy().equals(userId.getId())) {
+				group.setCreatedBy(null);
+			}
+		}
+		/* perform deletion */
+		if (userToDelete != null) {
+			final List<ACGroup> groups = getGroups(sessionId, userId);
+			for (final ACGroup acGroup : groups) {
+				removeMember(sessionId, acGroup.getId(), userId);
+			}
+			getAccessControl().getOrgUnitProviderService().removeUser(userToDelete.toAPI());
+			// TODO: move ecore delete into ServerSpace#deleteUser implementation
+			EcoreUtil.delete(userToDelete);
+			save();
 		}
 	}
 
