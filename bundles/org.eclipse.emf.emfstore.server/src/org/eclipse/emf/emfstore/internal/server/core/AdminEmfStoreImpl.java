@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.notify.Adapter;
@@ -26,7 +28,9 @@ import org.eclipse.emf.emfstore.internal.common.APIUtil;
 import org.eclipse.emf.emfstore.internal.common.model.util.ModelUtil;
 import org.eclipse.emf.emfstore.internal.server.AdminEmfStore;
 import org.eclipse.emf.emfstore.internal.server.accesscontrol.AccessControl;
+import org.eclipse.emf.emfstore.internal.server.accesscontrol.HasRolePredicate;
 import org.eclipse.emf.emfstore.internal.server.connection.xmlrpc.util.ShareProjectAdapter;
+import org.eclipse.emf.emfstore.internal.server.core.helper.ACHelper;
 import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.FatalESException;
 import org.eclipse.emf.emfstore.internal.server.exceptions.InvalidInputException;
@@ -42,9 +46,11 @@ import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.AccesscontrolFactory;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesFactory;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ServerAdmin;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGroupImpl;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESUserImpl;
 import org.eclipse.emf.emfstore.server.auth.ESAuthorizationService;
@@ -58,6 +64,7 @@ import org.eclipse.emf.emfstore.server.model.ESSessionId;
 import org.eclipse.emf.emfstore.server.model.ESUser;
 
 import com.google.common.base.Optional;
+import com.google.common.collect.Iterables;
 
 /**
  * Implementation of {@link AdminEmfStore} interface.
@@ -98,7 +105,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			clearMembersFromGroup(copy);
 			result.add(copy);
 		}
-		return result;
+		return removeInvisibleOrgUnits(result, sessionId.toAPI());
 	}
 
 	private List<ACGroup> getGroups() {
@@ -135,7 +142,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 				result.add(copy);
 			}
 		}
-		return result;
+		return removeInvisibleOrgUnits(result, sessionId.toAPI());
 	}
 
 	/**
@@ -631,7 +638,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 		for (final ACUser user : getUsers()) {
 			result.add(user);
 		}
-		return result;
+		return removeInvisibleOrgUnits(result, sessionId.toAPI());
 	}
 
 	/**
@@ -656,7 +663,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		// quickfix
 		clearMembersFromGroups(result);
-		return result;
+		return removeInvisibleOrgUnits(result, sessionId.toAPI());
 	}
 
 	/**
@@ -964,6 +971,76 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 				throw new InvalidInputException();
 			}
 		}
+	}
+
+	private <T extends ACOrgUnit<?>> List<T> removeInvisibleOrgUnits(List<T> orgUnits, ESSessionId sessionId)
+		throws AccessControlException {
+		/*
+		 * regular users can't see any orgunits, while server admins can see all of them. Only project admins have
+		 * reduced visibility.
+		 */
+		final ESOrgUnitId adminId = getAccessControl().getSessions().resolveToOrgUnitId(sessionId);
+		final Optional<ACOrgUnit<?>> orgUnit = ACHelper.getOrgUnit(
+			getAccessControl().getOrgUnitProviderService(),
+			adminId);
+		if (!orgUnit.isPresent()) {
+			return orgUnits;
+		}
+		final List<Role> allRolesOfAdmin = ACHelper.getAllRoles(
+			getAccessControl().getOrgUnitResolverServive(),
+			orgUnit.get());
+		if (Iterables.any(allRolesOfAdmin, new HasRolePredicate(ServerAdmin.class))) {
+			return orgUnits;
+		}
+		final List<ProjectAdminRole> projectAdminRoles = new ArrayList<ProjectAdminRole>();
+		for (final Role role : allRolesOfAdmin) {
+			if (ProjectAdminRole.class.isInstance(role)) {
+				projectAdminRoles.add((ProjectAdminRole) role);
+			}
+		}
+
+		/* we are dealing with a project admin */
+		final List<T> result = new ArrayList<T>();
+		for (final T unit : orgUnits) {
+			if (Iterables.any(ACHelper.getAllRoles(getAccessControl().getOrgUnitResolverServive(), unit),
+				new HasRolePredicate(ServerAdmin.class))) {
+				/* server admins should not be visible to project admin */
+				continue;
+			}
+			/* units are visible to project admin if */
+			if (wasCreatedByProjectAdmin(unit, orgUnit.get()) // the unit was created by this admin
+				|| hasRoleInProjectOfProjectAdmin(unit, projectAdminRoles) // the unit has a role on at least one of the
+																			// projects administered by the admin
+			) {
+				result.add(unit);
+			}
+		}
+		return result;
+	}
+
+	private boolean wasCreatedByProjectAdmin(ACOrgUnit<?> orgUnit, ACOrgUnit<?> admin) {
+		return admin.getId().getId().equals(orgUnit.getCreatedBy());
+	}
+
+	private boolean hasRoleInProjectOfProjectAdmin(ACOrgUnit<?> orgUnit, List<ProjectAdminRole> projectAdminRoles) {
+		/* collect all administered projects */
+		final Set<ProjectId> projects = new LinkedHashSet<ProjectId>();
+		for (final ProjectAdminRole projectAdminRole : projectAdminRoles) {
+			projects.addAll(projectAdminRole.getProjects());
+		}
+
+		for (final ProjectId projectId : projects) {
+			/* check if any role of unit has access to project */
+			for (final Role role : ACHelper.getAllRoles(getAccessControl().getOrgUnitResolverServive(), orgUnit)) {
+				if (role.canRead(projectId, null)
+					|| role.canModify(projectId, null)
+					|| role.canCreate(projectId, null)
+					|| role.canDelete(projectId, null)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
