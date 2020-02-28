@@ -443,6 +443,16 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 				return;
 			}
 		}
+
+		// If we get until here, the user has the priviliges to create the project and be the initial participant.
+		// Because the corresponding role was not found in the user's roles, it must be part of one of the user's
+		// groups. To avoid the whole group becoming participants of the project, create the role for the user and add
+		// the project id.
+		final Role newRole = createRoleFromEClass(roleClass);
+
+		newRole.getProjects().add(ModelUtil.clone(projectId));
+		orgUnit.getRoles().add(newRole);
+		save();
 	}
 
 	private static void checkIfSessionIsAssociatedWithProject(SessionId sessionId, ProjectId projectId)
