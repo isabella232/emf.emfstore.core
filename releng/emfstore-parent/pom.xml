@@ -57,14 +57,14 @@
 			<build>
 				<plugins>
 					<!-- Configure build to use the java compiler as specified in manifest -->
-					<plugin>
+					<!--plugin>
 						<groupId>org.eclipse.tycho</groupId>
 						<artifactId>tycho-compiler-plugin</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
 							<useJDK>BREE</useJDK>
 						</configuration>
-					</plugin>
+					</plugin-->
 				</plugins>
 			</build>
 		</profile>
