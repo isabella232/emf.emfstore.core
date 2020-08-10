@@ -15,8 +15,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<!-- module>../../tests/org.eclipse.emf.emfstore.fuzzy.emf.test</module>
-	    <module>../../tests/org.eclipse.emf.emfstore.fuzzy.emf.diff.test</module-->
+		<module>../../tests/org.eclipse.emf.emfstore.fuzzy.emf.test</module>
+	    <module>../../tests/org.eclipse.emf.emfstore.fuzzy.emf.diff.test</module>
 		<module>../../tests/org.eclipse.emf.emfstore.test.model</module>
 		<module>../../tests/org.eclipse.emf.emfstore.test.model.edit</module>
 		<module>../../tests/org.eclipse.emf.emfstore.test.common</module>
