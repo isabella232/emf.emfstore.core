@@ -13,7 +13,12 @@ package org.eclipse.emf.emfstore.server.accesscontrol.test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.emfstore.client.ESRemoteProject;
@@ -26,8 +31,10 @@ import org.eclipse.emf.emfstore.internal.server.exceptions.AccessControlExceptio
 import org.eclipse.emf.emfstore.internal.server.model.ProjectId;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnit;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACOrgUnitId;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.ACUser;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.ProjectAdminRole;
 import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.Role;
+import org.eclipse.emf.emfstore.internal.server.model.accesscontrol.roles.RolesPackage;
 import org.eclipse.emf.emfstore.internal.server.model.impl.api.ESGlobalProjectIdImpl;
 import org.eclipse.emf.emfstore.server.auth.ESProjectAdminPrivileges;
 import org.eclipse.emf.emfstore.server.exceptions.ESException;
@@ -285,5 +292,30 @@ public class AddInitialParticipantTest extends ProjectAdminTest {
 		}
 
 		fail("Expected AccessControlException for second project sharing."); //$NON-NLS-1$
+	}
+
+	@Test
+	public void saShareParticipants() throws ESException {
+		getLocalProject().shareProject(
+			getSuperUsersession(),
+			new NullProgressMonitor());
+		@SuppressWarnings("rawtypes")
+		final List<ACOrgUnit> participants = getSuperAdminBroker().getParticipants(getProjectSpace().getProjectId());
+		assertEquals(1, participants.size());
+		assertEquals(getSuperUsersession().getUsername(), participants.get(0).getName());
+	}
+
+	@Test
+	public void saShareRoles() throws ESException {
+		makeUserPA();
+		getLocalProject().shareProject(
+			getUsersession(),
+			new NullProgressMonitor());
+		makeUserSA();
+
+		final ACUser user = ServerUtil.getUser(getSuperUsersession(), getUser());
+		final Role role = getSuperAdminBroker().getRole(getProjectSpace().getProjectId(), user.getId());
+		assertTrue(hasProjectAdminRole(user, getProjectSpace().getProjectId()));
+		assertSame(RolesPackage.eINSTANCE.getServerAdmin(), role.eClass());
 	}
 }
