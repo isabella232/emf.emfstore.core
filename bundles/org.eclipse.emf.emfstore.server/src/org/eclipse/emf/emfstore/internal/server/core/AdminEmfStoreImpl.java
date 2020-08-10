@@ -342,6 +342,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			for (final Role role : roles) {
 				if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
 					result.add(ModelUtil.clone(orgUnit));
+					break;
 				}
 			}
 		}
@@ -351,6 +352,7 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 			for (final Role role : roles) {
 				if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
 					result.add(ModelUtil.clone(orgUnit));
+					break;
 				}
 			}
 		}
@@ -530,10 +532,17 @@ public class AdminEmfStoreImpl extends AbstractEmfstoreInterface implements Admi
 
 		final ACOrgUnit<?> oUnit = getOrgUnit(orgUnitId);
 		final List<Role> roles = oUnit.getRoles();
+		Role nonServerAdminRole = null;
 		for (final Role role : roles) {
-			if (isServerAdmin(role) || role.getProjects().contains(projectId)) {
+			if (isServerAdmin(role)) {
 				return role;
 			}
+			if (nonServerAdminRole == null && role.getProjects().contains(projectId)) {
+				nonServerAdminRole = role;
+			}
+		}
+		if (nonServerAdminRole != null) {
+			return nonServerAdminRole;
 		}
 		throw new ESException(Messages.AdminEmfStoreImpl_Could_Not_Find_OrgUnit);
 	}
