@@ -46,7 +46,11 @@ public class EObjectTypeFactory extends TypeFactoryImpl {
 		if (EObjectSerializer.EOBJECT_TAG.equals(pLocalName)) {
 			return new EObjectDeserializer();
 		}
-		return super.getParser(pConfig, pContext, pURI, pLocalName);
+		final TypeParser parser = super.getParser(pConfig, pContext, pURI, pLocalName);
+		if (parser instanceof org.apache.xmlrpc.parser.SerializableParser) {
+			throw new IllegalArgumentException("A SerializableParser is not supported"); //$NON-NLS-1$
+		}
+		return parser;
 	}
 
 	/**
