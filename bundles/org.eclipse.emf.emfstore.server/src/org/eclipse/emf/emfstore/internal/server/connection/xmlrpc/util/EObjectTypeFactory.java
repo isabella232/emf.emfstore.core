@@ -18,6 +18,8 @@ import org.apache.xmlrpc.common.XmlRpcStreamConfig;
 import org.apache.xmlrpc.parser.TypeParser;
 import org.apache.xmlrpc.serializer.TypeSerializer;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.emfstore.internal.server.filetransfer.FileChunk;
+import org.eclipse.emf.emfstore.internal.server.filetransfer.FileTransferInformation;
 import org.xml.sax.SAXException;
 
 /**
@@ -46,6 +48,9 @@ public class EObjectTypeFactory extends TypeFactoryImpl {
 		if (EObjectSerializer.EOBJECT_TAG.equals(pLocalName)) {
 			return new EObjectDeserializer();
 		}
+		if (FileTransferInformationSerializer.FTI_TAG.equals(pLocalName)) {
+			return new FileTransferInformationParser();
+		}
 		final TypeParser parser = super.getParser(pConfig, pContext, pURI, pLocalName);
 		if (parser instanceof org.apache.xmlrpc.parser.SerializableParser) {
 			throw new IllegalArgumentException("A SerializableParser is not supported"); //$NON-NLS-1$
@@ -60,6 +65,9 @@ public class EObjectTypeFactory extends TypeFactoryImpl {
 	public TypeSerializer getSerializer(XmlRpcStreamConfig pConfig, Object pObject) throws SAXException {
 		if (pObject instanceof EObject) {
 			return new EObjectSerializer();
+		}
+		if (pObject instanceof FileTransferInformation || pObject instanceof FileChunk) {
+			return new FileTransferInformationSerializer();
 		}
 		return super.getSerializer(pConfig, pObject);
 	}
